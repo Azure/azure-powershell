@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementProperties __identityManagementProperties = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IdentityManagementProperties();
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public string ApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).ApplicationId = value ?? null; }
+        public string ApplicationId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).ApplicationId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).ApplicationId = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).Type = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes)""); }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementPropertiesInternal)__identityManagementProperties).Type = value; }
 
         /// <summary>
         /// Creates an new <see cref="ResourceTypeRegistrationPropertiesIdentityManagement" /> instance.

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[] ExtendedLocation { get => this._extendedLocation; set => this._extendedLocation = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy? FeatureRuleRequiredFeaturesPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)FeaturesRule).RequiredFeaturesPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)FeaturesRule).RequiredFeaturesPolicy = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy)""); }
+        public string FeatureRuleRequiredFeaturesPolicy { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)FeaturesRule).RequiredFeaturesPolicy; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)FeaturesRule).RequiredFeaturesPolicy = value ?? null; }
 
         /// <summary>Backing field for <see cref="FeaturesRule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRule _featuresRule;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         internal Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagement IdentityManagement { get => (this._identityManagement = this._identityManagement ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IdentityManagement()); set => this._identityManagement = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? IdentityManagementType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)IdentityManagement).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)IdentityManagement).Type = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes)""); }
+        public string IdentityManagementType { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)IdentityManagement).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)IdentityManagement).Type = value ?? null; }
 
         /// <summary>Backing field for <see cref="LinkedAccessCheck" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[] _linkedAccessCheck;
@@ -86,11 +86,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string MarketplaceType { get => this._marketplaceType; set => this._marketplaceType = value; }
 
         /// <summary>Backing field for <see cref="Metadata" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny _metadata;
+        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeMetadata _metadata;
 
-        /// <summary>Any object</summary>
+        /// <summary>Dictionary of <string></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Any()); set => this._metadata = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeMetadata Metadata { get => (this._metadata = this._metadata ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ResourceTypeMetadata()); set => this._metadata = value; }
 
         /// <summary>Internal Acessors for FeaturesRule</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRule Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeInternal.FeaturesRule { get => (this._featuresRule = this._featuresRule ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.FeaturesRule()); set { {_featuresRule = value;} } }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         internal Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptions RequestHeaderOption { get => (this._requestHeaderOption = this._requestHeaderOption ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.RequestHeaderOptions()); set => this._requestHeaderOption = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType? RequestHeaderOptionOptInHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)RequestHeaderOption).OptInHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)RequestHeaderOption).OptInHeader = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType)""); }
+        public string RequestHeaderOptionOptInHeader { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)RequestHeaderOption).OptInHeader; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)RequestHeaderOption).OptInHeader = value ?? null; }
 
         /// <summary>Backing field for <see cref="RequiredFeature" /> property.</summary>
         private string[] _requiredFeature;
@@ -126,22 +126,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string[] RequiredFeature { get => this._requiredFeature; set => this._requiredFeature = value; }
 
         /// <summary>Backing field for <see cref="ResourceDeletionPolicy" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ManifestResourceDeletionPolicy? _resourceDeletionPolicy;
+        private string _resourceDeletionPolicy;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ManifestResourceDeletionPolicy? ResourceDeletionPolicy { get => this._resourceDeletionPolicy; set => this._resourceDeletionPolicy = value; }
+        public string ResourceDeletionPolicy { get => this._resourceDeletionPolicy; set => this._resourceDeletionPolicy = value; }
 
         /// <summary>Backing field for <see cref="ResourceValidation" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceValidation? _resourceValidation;
+        private string _resourceValidation;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceValidation? ResourceValidation { get => this._resourceValidation; set => this._resourceValidation = value; }
+        public string ResourceValidation { get => this._resourceValidation; set => this._resourceValidation = value; }
 
         /// <summary>Backing field for <see cref="RoutingType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType? _routingType;
+        private string _routingType;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType? RoutingType { get => this._routingType; set => this._routingType = value; }
+        public string RoutingType { get => this._routingType; set => this._routingType = value; }
 
         /// <summary>Backing field for <see cref="ServiceTreeInfo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[] _serviceTreeInfo;
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         internal Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicy TemplateDeploymentPolicy { get => (this._templateDeploymentPolicy = this._templateDeploymentPolicy ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.TemplateDeploymentPolicy()); set => this._templateDeploymentPolicy = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentCapabilities? TemplateDeploymentPolicyCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).Capability; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).Capability = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentCapabilities)""); }
+        public string TemplateDeploymentPolicyCapability { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).Capability; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).Capability = value ?? null; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentPreflightOptions? TemplateDeploymentPolicyPreflightOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).PreflightOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).PreflightOption = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentPreflightOptions)""); }
+        public string TemplateDeploymentPolicyPreflightOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).PreflightOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicyInternal)TemplateDeploymentPolicy).PreflightOption = value ?? null; }
 
         /// <summary>Backing field for <see cref="ThrottlingRule" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[] _throttlingRule;
@@ -241,16 +241,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"requiredFeaturesPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy? FeatureRuleRequiredFeaturesPolicy { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string FeatureRuleRequiredFeaturesPolicy { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? IdentityManagementType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string IdentityManagementType { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -283,14 +283,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         SerializedName = @"marketplaceType",
         PossibleTypes = new [] { typeof(string) })]
         string MarketplaceType { get; set; }
-        /// <summary>Any object</summary>
+        /// <summary>Dictionary of <string></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Any object",
+        Description = @"Dictionary of <string>",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny Metadata { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeMetadata) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeMetadata Metadata { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -305,8 +305,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"optInHeaders",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType? RequestHeaderOptionOptInHeader { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string RequestHeaderOptionOptInHeader { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -321,24 +321,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"resourceDeletionPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ManifestResourceDeletionPolicy) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ManifestResourceDeletionPolicy? ResourceDeletionPolicy { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceDeletionPolicy { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"resourceValidation",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceValidation) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceValidation? ResourceValidation { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceValidation { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"routingType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType? RoutingType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string RoutingType { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -369,16 +369,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"capabilities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentCapabilities) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentCapabilities? TemplateDeploymentPolicyCapability { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string TemplateDeploymentPolicyCapability { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"preflightOptions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentPreflightOptions) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentPreflightOptions? TemplateDeploymentPolicyPreflightOption { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string TemplateDeploymentPolicyPreflightOption { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -404,13 +404,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[] ExtendedLocation { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy? FeatureRuleRequiredFeaturesPolicy { get; set; }
+        string FeatureRuleRequiredFeaturesPolicy { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRule FeaturesRule { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagement IdentityManagement { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? IdentityManagementType { get; set; }
+        string IdentityManagementType { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[] LinkedAccessCheck { get; set; }
 
@@ -419,22 +419,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[] LoggingRule { get; set; }
 
         string MarketplaceType { get; set; }
-        /// <summary>Any object</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny Metadata { get; set; }
+        /// <summary>Dictionary of <string></summary>
+        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeMetadata Metadata { get; set; }
 
         string Name { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptions RequestHeaderOption { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType? RequestHeaderOptionOptInHeader { get; set; }
+        string RequestHeaderOptionOptInHeader { get; set; }
 
         string[] RequiredFeature { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ManifestResourceDeletionPolicy? ResourceDeletionPolicy { get; set; }
+        string ResourceDeletionPolicy { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceValidation? ResourceValidation { get; set; }
+        string ResourceValidation { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType? RoutingType { get; set; }
+        string RoutingType { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[] ServiceTreeInfo { get; set; }
 
@@ -444,9 +444,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentPolicy TemplateDeploymentPolicy { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentCapabilities? TemplateDeploymentPolicyCapability { get; set; }
+        string TemplateDeploymentPolicyCapability { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TemplateDeploymentPreflightOptions? TemplateDeploymentPolicyPreflightOption { get; set; }
+        string TemplateDeploymentPolicyPreflightOption { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[] ThrottlingRule { get; set; }
 

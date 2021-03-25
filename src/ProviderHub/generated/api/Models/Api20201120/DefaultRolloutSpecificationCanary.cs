@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfiguration __canaryTrafficRegionRolloutConfiguration = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.CanaryTrafficRegionRolloutConfiguration();
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public string[] Region { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).Region; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).Region = value ?? null /* arrayOf */; }
+        public string[] Region { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).Region; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).Region = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public string[] SkipRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).SkipRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).SkipRegion = value ?? null /* arrayOf */; }
+        public string[] SkipRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).SkipRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICanaryTrafficRegionRolloutConfigurationInternal)__canaryTrafficRegionRolloutConfiguration).SkipRegion = value; }
 
         /// <summary>Creates an new <see cref="DefaultRolloutSpecificationCanary" /> instance.</summary>
         public DefaultRolloutSpecificationCanary()

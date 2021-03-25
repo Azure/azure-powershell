@@ -29,12 +29,10 @@ PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace $env.ProviderName
 ```
 
 
-
 ### Example 2: Checkin the resource provider manifest.
 ```powershell
 PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace $env.ProviderNamespace -BaselineArmManifestLocation "EastUS2EUAP" -Environment "Prod"
 ```
-
 
 
 ## PARAMETERS

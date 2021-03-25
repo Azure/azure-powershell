@@ -8,16 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
 
         /// <summary>Backing field for <see cref="Request" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] _request;
+        private string[] _request;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Request { get => this._request; set => this._request = value; }
+        public string[] Request { get => this._request; set => this._request = value; }
 
         /// <summary>Backing field for <see cref="Response" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] _response;
+        private string[] _response;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Response { get => this._response; set => this._response = value; }
+        public string[] Response { get => this._response; set => this._response = value; }
 
         /// <summary>Creates an new <see cref="ExtensionOptions" /> instance.</summary>
         public ExtensionOptions()
@@ -33,24 +33,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"request",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Request { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string[] Request { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"response",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Response { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string[] Response { get; set; }
 
     }
     internal partial interface IExtensionOptionsInternal
 
     {
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Request { get; set; }
+        string[] Request { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[] Response { get; set; }
+        string[] Response { get; set; }
 
     }
 }

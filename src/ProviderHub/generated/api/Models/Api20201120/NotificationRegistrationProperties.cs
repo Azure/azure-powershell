@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string[] IncludedEvent { get => this._includedEvent; set => this._includedEvent = value; }
 
         /// <summary>Backing field for <see cref="MessageScope" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope? _messageScope;
+        private string _messageScope;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope? MessageScope { get => this._messageScope; set => this._messageScope = value; }
+        public string MessageScope { get => this._messageScope; set => this._messageScope = value; }
 
         /// <summary>Backing field for <see cref="NotificationEndpoint" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[] _notificationEndpoint;
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[] NotificationEndpoint { get => this._notificationEndpoint; set => this._notificationEndpoint = value; }
 
         /// <summary>Backing field for <see cref="NotificationMode" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? _notificationMode;
+        private string _notificationMode;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? NotificationMode { get => this._notificationMode; set => this._notificationMode = value; }
+        public string NotificationMode { get => this._notificationMode; set => this._notificationMode = value; }
 
         /// <summary>Creates an new <see cref="NotificationRegistrationProperties" /> instance.</summary>
         public NotificationRegistrationProperties()
@@ -53,8 +53,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"messageScope",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope? MessageScope { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string MessageScope { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"notificationMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? NotificationMode { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string NotificationMode { get; set; }
 
     }
     internal partial interface INotificationRegistrationPropertiesInternal
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
         string[] IncludedEvent { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope? MessageScope { get; set; }
+        string MessageScope { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[] NotificationEndpoint { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode? NotificationMode { get; set; }
+        string NotificationMode { get; set; }
 
     }
 }

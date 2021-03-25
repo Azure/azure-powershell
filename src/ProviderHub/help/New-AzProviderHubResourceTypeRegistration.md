@@ -47,14 +47,6 @@ PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.
 ```
 
 
-
-### Example 2: Create/Update a resource type registration.
-```powershell
-PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
-```
-
-
-
 ## PARAMETERS
 
 ### -AllowedUnauthorizedAction
@@ -733,6 +725,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
@@ -765,6 +761,18 @@ ENDPOINT <IResourceTypeEndpoint[]>: .
 EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
   - `[SupportedPolicy <String>]`:
   - `[Type <String>]`:
+
+INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
+  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
+  - `[NestedResourceTypeThird <String>]`: The third child resource type.
+  - `[NotificationRegistrationName <String>]`: The notification registration.
+  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RolloutName <String>]`: The rollout name.
+  - `[Sku <String>]`: The SKU.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
   - `[ActionName <String>]`:

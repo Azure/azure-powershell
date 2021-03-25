@@ -282,12 +282,13 @@ PROPERTY <ICustomRollout>: Rollout details.
     - `[ManagementIncidentRoutingTeam <String>]`: 
     - `[ManagementManifestOwner <String[]>]`: 
     - `[ManagementResourceAccessPolicy <String>]`: 
-    - `[ManagementResourceAccessRole <IAny[]>]`: 
+    - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`: 
     - `[ManagementSchemaOwner <String[]>]`: 
     - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
       - `[ComponentId <String>]`: 
       - `[ServiceId <String>]`: 
-    - `[Metadata <IAny>]`: Any object
+    - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
+      - `[(Any) <String>]`: This indicates any property can be added to this object.
     - `[Namespace <String>]`: 
     - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
     - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 
@@ -397,12 +398,13 @@ SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
   - `[ManagementIncidentRoutingTeam <String>]`: 
   - `[ManagementManifestOwner <String[]>]`: 
   - `[ManagementResourceAccessPolicy <String>]`: 
-  - `[ManagementResourceAccessRole <IAny[]>]`: 
+  - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`: 
   - `[ManagementSchemaOwner <String[]>]`: 
   - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
     - `[ComponentId <String>]`: 
     - `[ServiceId <String>]`: 
-  - `[Metadata <IAny>]`: Any object
+  - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Namespace <String>]`: 
   - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
   - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 

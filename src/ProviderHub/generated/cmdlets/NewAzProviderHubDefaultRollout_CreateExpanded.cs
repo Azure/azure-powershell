@@ -211,9 +211,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState ProvisioningState { get => PropertiesBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); set => PropertiesBody.ProvisioningState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProvisioningState { get => PropertiesBody.ProvisioningState ?? null; set => PropertiesBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -346,9 +345,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"nextTrafficRegion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory StatusNextTrafficRegion { get => PropertiesBody.StatusNextTrafficRegion ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory)""); set => PropertiesBody.StatusNextTrafficRegion = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string StatusNextTrafficRegion { get => PropertiesBody.StatusNextTrafficRegion ?? null; set => PropertiesBody.StatusNextTrafficRegion = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -369,9 +367,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"subscriptionReregistrationResult",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult StatusSubscriptionReregistrationResult { get => PropertiesBody.StatusSubscriptionReregistrationResult ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult)""); set => PropertiesBody.StatusSubscriptionReregistrationResult = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string StatusSubscriptionReregistrationResult { get => PropertiesBody.StatusSubscriptionReregistrationResult ?? null; set => PropertiesBody.StatusSubscriptionReregistrationResult = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;

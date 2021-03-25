@@ -86,8 +86,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]) content.GetValueForProperty("Response",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType.CreateFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request = (string[]) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response = (string[]) content.GetValueForProperty("Response",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
 
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]) content.GetValueForProperty("Response",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType.CreateFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request = (string[]) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Request, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response = (string[]) content.GetValueForProperty("Response",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtensionOptionsInternal)this).Response, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }
 

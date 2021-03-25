@@ -56,10 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatus Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutPropertiesInternal.Status { get => (this._status = this._status ?? new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.DefaultRolloutStatus()); set { {_status = value;} } }
 
         /// <summary>Backing field for <see cref="ProvisioningState" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? _provisioningState;
+        private string _provisioningState;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
+        public string ProvisioningState { get => this._provisioningState; set => this._provisioningState = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
         public string[] RestOfTheWorldGroupOneRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutSpecificationInternal)Specification).RestOfTheWorldGroupOneRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutSpecificationInternal)Specification).RestOfTheWorldGroupOneRegion = value ?? null /* arrayOf */; }
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseFailedOrSkippedRegions StatusFailedOrSkippedRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)Status).FailedOrSkippedRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)Status).FailedOrSkippedRegion = value ?? null /* model class */; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? StatusNextTrafficRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegion = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory)""); }
+        public string StatusNextTrafficRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegion = value ?? null; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
         public global::System.DateTime? StatusNextTrafficRegionScheduledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegionScheduledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).NextTrafficRegionScheduledTime = value ?? default(global::System.DateTime); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? StatusSubscriptionReregistrationResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).SubscriptionReregistrationResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).SubscriptionReregistrationResult = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult)""); }
+        public string StatusSubscriptionReregistrationResult { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).SubscriptionReregistrationResult; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRolloutStatusInternal)Status).SubscriptionReregistrationResult = value ?? null; }
 
         /// <summary>Creates an new <see cref="DefaultRolloutProperties" /> instance.</summary>
         public DefaultRolloutProperties()
@@ -185,8 +185,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string ProvisioningState { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -257,8 +257,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"nextTrafficRegion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? StatusNextTrafficRegion { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string StatusNextTrafficRegion { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -273,8 +273,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"subscriptionReregistrationResult",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? StatusSubscriptionReregistrationResult { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string StatusSubscriptionReregistrationResult { get; set; }
 
     }
     internal partial interface IDefaultRolloutPropertiesInternal
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         global::System.TimeSpan? MediumTrafficWaitDuration { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState? ProvisioningState { get; set; }
+        string ProvisioningState { get; set; }
 
         string[] RestOfTheWorldGroupOneRegion { get; set; }
 
@@ -330,11 +330,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         /// <summary>Dictionary of <ExtendedErrorInfo></summary>
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseFailedOrSkippedRegions StatusFailedOrSkippedRegion { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? StatusNextTrafficRegion { get; set; }
+        string StatusNextTrafficRegion { get; set; }
 
         global::System.DateTime? StatusNextTrafficRegionScheduledTime { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? StatusSubscriptionReregistrationResult { get; set; }
+        string StatusSubscriptionReregistrationResult { get; set; }
 
     }
 }

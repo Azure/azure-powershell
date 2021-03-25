@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Limit = (long) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Interval = (global::System.TimeSpan?) content.GetValueForProperty("Interval",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Interval, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
             AfterDeserializeDictionary(content);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Type, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Limit = (long) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Limit, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Interval = (global::System.TimeSpan?) content.GetValueForProperty("Interval",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingMetricInternal)this).Interval, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
             AfterDeserializePSObject(content);

@@ -29,19 +29,10 @@ Stops or cancels the rollout, if in progress.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Cancel a default rollout by rollout name.
 ```powershell
-{{ Add code here }}
+PS C:\> Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 ```
-
-{{ Add output here }}
-
-### -------------------------- EXAMPLE 2 --------------------------
-```powershell
-{{ Add code here }}
-```
-
-{{ Add output here }}
 
 ## PARAMETERS
 

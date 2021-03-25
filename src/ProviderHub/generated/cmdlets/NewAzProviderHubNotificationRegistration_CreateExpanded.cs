@@ -84,9 +84,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"messageScope",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope MessageScope { get => PropertiesBody.MessageScope ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.MessageScope)""); set => PropertiesBody.MessageScope = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string MessageScope { get => PropertiesBody.MessageScope ?? null; set => PropertiesBody.MessageScope = value; }
 
         /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -131,9 +130,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"notificationMode",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode NotificationMode { get => PropertiesBody.NotificationMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.NotificationMode)""); set => PropertiesBody.NotificationMode = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string NotificationMode { get => PropertiesBody.NotificationMode ?? null; set => PropertiesBody.NotificationMode = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.HttpPipeline" /> that the remote call will use.

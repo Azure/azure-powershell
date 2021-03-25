@@ -8,10 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
 
         /// <summary>Backing field for <see cref="RequiredFeaturesPolicy" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy _requiredFeaturesPolicy;
+        private string _requiredFeaturesPolicy;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy RequiredFeaturesPolicy { get => this._requiredFeaturesPolicy; set => this._requiredFeaturesPolicy = value; }
+        public string RequiredFeaturesPolicy { get => this._requiredFeaturesPolicy; set => this._requiredFeaturesPolicy = value; }
 
         /// <summary>Creates an new <see cref="FeaturesRule" /> instance.</summary>
         public FeaturesRule()
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"requiredFeaturesPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy RequiredFeaturesPolicy { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string RequiredFeaturesPolicy { get; set; }
 
     }
     internal partial interface IFeaturesRuleInternal
 
     {
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy RequiredFeaturesPolicy { get; set; }
+        string RequiredFeaturesPolicy { get; set; }
 
     }
 }

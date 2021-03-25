@@ -74,9 +74,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"requiredFeaturesPolicy",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy FeatureRuleRequiredFeaturesPolicy { get => PropertiesBody.FeatureRuleRequiredFeaturesPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy)""); set => PropertiesBody.FeatureRuleRequiredFeaturesPolicy = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string FeatureRuleRequiredFeaturesPolicy { get => PropertiesBody.FeatureRuleRequiredFeaturesPolicy ?? null; set => PropertiesBody.FeatureRuleRequiredFeaturesPolicy = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -158,8 +157,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"resourceAccessRoles",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny[] ManagementResourceAccessRole { get => PropertiesBody.ManagementResourceAccessRole ?? null /* arrayOf */; set => PropertiesBody.ManagementResourceAccessRole = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManagementResourceAccessRolesItem) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManagementResourceAccessRolesItem[] ManagementResourceAccessRole { get => PropertiesBody.ManagementResourceAccessRole ?? null /* arrayOf */; set => PropertiesBody.ManagementResourceAccessRole = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -185,16 +184,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo) })]
         public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[] ManagementServiceTreeInfo { get => PropertiesBody.ManagementServiceTreeInfo ?? null /* arrayOf */; set => PropertiesBody.ManagementServiceTreeInfo = value; }
 
-        /// <summary>Any object</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Any object")]
+        /// <summary>Dictionary of <string></summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Dictionary of <string>")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Any object",
+        Description = @"Dictionary of <string>",
         SerializedName = @"metadata",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny Metadata { get => PropertiesBody.Metadata ?? null /* object */; set => PropertiesBody.Metadata = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManifestPropertiesMetadata) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManifestPropertiesMetadata Metadata { get => PropertiesBody.Metadata ?? null /* object */; set => PropertiesBody.Metadata = value; }
 
         /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
@@ -303,9 +303,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"providerType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType ProviderType { get => PropertiesBody.ProviderType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderType)""); set => PropertiesBody.ProviderType = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProviderType { get => PropertiesBody.ProviderType ?? null; set => PropertiesBody.ProviderType = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
@@ -326,9 +325,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"provisioningState",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState ProvisioningState { get => PropertiesBody.ProvisioningState ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState)""); set => PropertiesBody.ProvisioningState = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string ProvisioningState { get => PropertiesBody.ProvisioningState ?? null; set => PropertiesBody.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -354,9 +352,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"optInHeaders",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType RequestHeaderOptionOptInHeader { get => PropertiesBody.RequestHeaderOptionOptInHeader ?? ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType)""); set => PropertiesBody.RequestHeaderOptionOptInHeader = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string RequestHeaderOptionOptInHeader { get => PropertiesBody.RequestHeaderOptionOptInHeader ?? null; set => PropertiesBody.RequestHeaderOptionOptInHeader = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -420,9 +417,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"preflightOptions",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption))]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[] TemplateDeploymentOptionPreflightOption { get => PropertiesBody.TemplateDeploymentOptionPreflightOption ?? null /* arrayOf */; set => PropertiesBody.TemplateDeploymentOptionPreflightOption = value; }
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] TemplateDeploymentOptionPreflightOption { get => PropertiesBody.TemplateDeploymentOptionPreflightOption ?? null /* arrayOf */; set => PropertiesBody.TemplateDeploymentOptionPreflightOption = value; }
 
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]

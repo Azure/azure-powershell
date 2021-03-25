@@ -8,10 +8,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
 
         /// <summary>Backing field for <see cref="Effect" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect _effect;
+        private string _effect;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect Effect { get => this._effect; set => this._effect = value; }
+        public string Effect { get => this._effect; set => this._effect = value; }
 
         /// <summary>Backing field for <see cref="QuotaId" /> property.</summary>
         private string _quotaId;
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"effect",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect Effect { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Effect { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = true,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     internal partial interface IResourceProviderCapabilitiesInternal
 
     {
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect Effect { get; set; }
+        string Effect { get; set; }
 
         string QuotaId { get; set; }
 

@@ -18,8 +18,9 @@ Set-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <String>]
  [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
  [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
- [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
- [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata <IAny>]
+ [-ManagementResourceAccessPolicy <String>]
+ [-ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]
+ [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata <Hashtable>]
  [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
  [-ProviderAuthorization <IResourceProviderAuthorization[]>]
  [-ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]
@@ -201,7 +202,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderManagementResourceAccessRolesItem[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -244,10 +245,10 @@ Accept wildcard characters: False
 ```
 
 ### -Metadata
-Any object
+Dictionary of \<string\>
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -634,12 +635,13 @@ PROPERTY <IProviderRegistration>: .
   - `[ManagementIncidentRoutingTeam <String>]`: 
   - `[ManagementManifestOwner <String[]>]`: 
   - `[ManagementResourceAccessPolicy <String>]`: 
-  - `[ManagementResourceAccessRole <IAny[]>]`: 
+  - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`: 
   - `[ManagementSchemaOwner <String[]>]`: 
   - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`: 
     - `[ComponentId <String>]`: 
     - `[ServiceId <String>]`: 
-  - `[Metadata <IAny>]`: Any object
+  - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Namespace <String>]`: 
   - `[ProviderAuthenticationAllowedAudience <String[]>]`: 
   - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`: 

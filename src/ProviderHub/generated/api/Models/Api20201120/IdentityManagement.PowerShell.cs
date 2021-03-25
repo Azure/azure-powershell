@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes?) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IIdentityManagementInternal)this).Type, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

@@ -14,16 +14,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string Action { get => this._action; set => this._action = value; }
 
         /// <summary>Backing field for <see cref="DetailLevel" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDetails _detailLevel;
+        private string _detailLevel;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDetails DetailLevel { get => this._detailLevel; set => this._detailLevel = value; }
+        public string DetailLevel { get => this._detailLevel; set => this._detailLevel = value; }
 
         /// <summary>Backing field for <see cref="Direction" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDirections _direction;
+        private string _direction;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDirections Direction { get => this._direction; set => this._direction = value; }
+        public string Direction { get => this._direction; set => this._direction = value; }
 
         /// <summary>Backing field for <see cref="HiddenPropertyPath" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingHiddenPropertyPath _hiddenPropertyPath;
@@ -62,16 +62,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"detailLevel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDetails) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDetails DetailLevel { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string DetailLevel { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"direction",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDirections) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDirections Direction { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Direction { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
         string Action { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDetails DetailLevel { get; set; }
+        string DetailLevel { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LoggingDirections Direction { get; set; }
+        string Direction { get; set; }
 
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingHiddenPropertyPath HiddenPropertyPath { get; set; }
 

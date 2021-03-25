@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string[] AllowedAction { get => this._allowedAction; set => this._allowedAction = value; }
 
         /// <summary>Backing field for <see cref="State" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionState? _state;
+        private string _state;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionState? State { get => this._state; set => this._state = value; }
+        public string State { get => this._state; set => this._state = value; }
 
         /// <summary>Creates an new <see cref="SubscriptionStateRule" /> instance.</summary>
         public SubscriptionStateRule()
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionState) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionState? State { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string State { get; set; }
 
     }
     internal partial interface ISubscriptionStateRuleInternal
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
         string[] AllowedAction { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionState? State { get; set; }
+        string State { get; set; }
 
     }
 }

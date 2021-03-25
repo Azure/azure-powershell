@@ -14,17 +14,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBase __rolloutStatusBase = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.RolloutStatusBase();
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public string[] CompletedRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).CompletedRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).CompletedRegion = value ?? null /* arrayOf */; }
+        public string[] CompletedRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).CompletedRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).CompletedRegion = value; }
 
         /// <summary>Dictionary of <ExtendedErrorInfo></summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseFailedOrSkippedRegions FailedOrSkippedRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).FailedOrSkippedRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).FailedOrSkippedRegion = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseFailedOrSkippedRegions FailedOrSkippedRegion { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).FailedOrSkippedRegion; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal)__rolloutStatusBase).FailedOrSkippedRegion = value; }
 
         /// <summary>Backing field for <see cref="NextTrafficRegion" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? _nextTrafficRegion;
+        private string _nextTrafficRegion;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? NextTrafficRegion { get => this._nextTrafficRegion; set => this._nextTrafficRegion = value; }
+        public string NextTrafficRegion { get => this._nextTrafficRegion; set => this._nextTrafficRegion = value; }
 
         /// <summary>Backing field for <see cref="NextTrafficRegionScheduledTime" /> property.</summary>
         private global::System.DateTime? _nextTrafficRegionScheduledTime;
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public global::System.DateTime? NextTrafficRegionScheduledTime { get => this._nextTrafficRegionScheduledTime; set => this._nextTrafficRegionScheduledTime = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionReregistrationResult" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? _subscriptionReregistrationResult;
+        private string _subscriptionReregistrationResult;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? SubscriptionReregistrationResult { get => this._subscriptionReregistrationResult; set => this._subscriptionReregistrationResult = value; }
+        public string SubscriptionReregistrationResult { get => this._subscriptionReregistrationResult; set => this._subscriptionReregistrationResult = value; }
 
         /// <summary>Creates an new <see cref="DefaultRolloutStatus" /> instance.</summary>
         public DefaultRolloutStatus()
@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"nextTrafficRegion",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? NextTrafficRegion { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string NextTrafficRegion { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -81,18 +81,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"subscriptionReregistrationResult",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? SubscriptionReregistrationResult { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string SubscriptionReregistrationResult { get; set; }
 
     }
     internal partial interface IDefaultRolloutStatusInternal :
         Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRolloutStatusBaseInternal
     {
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.TrafficRegionCategory? NextTrafficRegion { get; set; }
+        string NextTrafficRegion { get; set; }
 
         global::System.DateTime? NextTrafficRegionScheduledTime { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionReregistrationResult? SubscriptionReregistrationResult { get; set; }
+        string SubscriptionReregistrationResult { get; set; }
 
     }
 }

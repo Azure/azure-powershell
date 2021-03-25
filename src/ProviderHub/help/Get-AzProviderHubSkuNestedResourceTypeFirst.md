@@ -1,5 +1,5 @@
 ---
-external help file: Az.ProviderHub-help.xml
+external help file:
 Module Name: Az.ProviderHub
 online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubskunestedresourcetypefirst
 schema: 2.0.0
@@ -19,20 +19,26 @@ Get-AzProviderHubSkuNestedResourceTypeFirst -NestedResourceTypeFirst <String> -P
  [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzProviderHubSkuNestedResourceTypeFirst -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the sku details for the given resource type and sku name.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### -------------------------- EXAMPLE 1 --------------------------
+```powershell
 {{ Add code here }}
 ```
 
 {{ Add output here }}
 
-### EXAMPLE 2
-```
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
 {{ Add code here }}
 ```
 

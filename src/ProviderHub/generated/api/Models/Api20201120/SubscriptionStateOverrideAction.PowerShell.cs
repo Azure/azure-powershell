@@ -95,8 +95,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).State, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action = (string) content.GetValueForProperty("Action",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideActionInternal)this).Action, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

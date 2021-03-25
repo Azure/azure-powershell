@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).QuotaId = (string) content.GetValueForProperty("QuotaId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).QuotaId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect) content.GetValueForProperty("Effect",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect = (string) content.GetValueForProperty("Effect",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).RequiredFeature = (string[]) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).RequiredFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).QuotaId = (string) content.GetValueForProperty("QuotaId",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).QuotaId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect) content.GetValueForProperty("Effect",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceProviderCapabilitiesEffect.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect = (string) content.GetValueForProperty("Effect",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).Effect, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).RequiredFeature = (string[]) content.GetValueForProperty("RequiredFeature",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilitiesInternal)this).RequiredFeature, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }

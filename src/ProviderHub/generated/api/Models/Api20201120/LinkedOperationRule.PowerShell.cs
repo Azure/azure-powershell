@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedOperation) content.GetValueForProperty("LinkedOperation",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedOperation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedAction) content.GetValueForProperty("LinkedAction",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedAction.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation = (string) content.GetValueForProperty("LinkedOperation",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction = (string) content.GetValueForProperty("LinkedAction",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedOperation) content.GetValueForProperty("LinkedOperation",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedOperation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedAction) content.GetValueForProperty("LinkedAction",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.LinkedAction.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation = (string) content.GetValueForProperty("LinkedOperation",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedOperation, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction = (string) content.GetValueForProperty("LinkedAction",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedOperationRuleInternal)this).LinkedAction, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

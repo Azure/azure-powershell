@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string ApplicationId { get => this._applicationId; set => this._applicationId = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? _type;
+        private string _type;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? Type { get => this._type; set => this._type = value; }
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="IdentityManagementProperties" /> instance.</summary>
         public IdentityManagementProperties()
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? Type { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Type { get; set; }
 
     }
     internal partial interface IIdentityManagementPropertiesInternal
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
         string ApplicationId { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes? Type { get; set; }
+        string Type { get; set; }
 
     }
 }

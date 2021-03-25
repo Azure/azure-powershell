@@ -26,10 +26,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public int Minimum { get => this._minimum; set => this._minimum = value; }
 
         /// <summary>Backing field for <see cref="ScaleType" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SkuScaleType? _scaleType;
+        private string _scaleType;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SkuScaleType? ScaleType { get => this._scaleType; set => this._scaleType = value; }
+        public string ScaleType { get => this._scaleType; set => this._scaleType = value; }
 
         /// <summary>Creates an new <see cref="SkuCapacity" /> instance.</summary>
         public SkuCapacity()
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"scaleType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SkuScaleType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SkuScaleType? ScaleType { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string ScaleType { get; set; }
 
     }
     internal partial interface ISkuCapacityInternal
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         int Minimum { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SkuScaleType? ScaleType { get; set; }
+        string ScaleType { get; set; }
 
     }
 }

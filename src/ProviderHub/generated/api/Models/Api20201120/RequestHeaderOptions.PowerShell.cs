@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType?) content.GetValueForProperty("OptInHeader",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader = (string) content.GetValueForProperty("OptInHeader",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType?) content.GetValueForProperty("OptInHeader",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader = (string) content.GetValueForProperty("OptInHeader",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IRequestHeaderOptionsInternal)this).OptInHeader, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

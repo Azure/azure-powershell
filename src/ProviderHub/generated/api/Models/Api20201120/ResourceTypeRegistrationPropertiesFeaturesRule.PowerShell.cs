@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy) content.GetValueForProperty("RequiredFeaturesPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy = (string) content.GetValueForProperty("RequiredFeaturesPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy) content.GetValueForProperty("RequiredFeaturesPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.FeaturesPolicy.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy = (string) content.GetValueForProperty("RequiredFeaturesPolicy",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IFeaturesRuleInternal)this).RequiredFeaturesPolicy, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

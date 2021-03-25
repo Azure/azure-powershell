@@ -20,10 +20,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public long Limit { get => this._limit; set => this._limit = value; }
 
         /// <summary>Backing field for <see cref="Type" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType _type;
+        private string _type;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType Type { get => this._type; set => this._type = value; }
+        public string Type { get => this._type; set => this._type = value; }
 
         /// <summary>Creates an new <see cref="ThrottlingMetric" /> instance.</summary>
         public ThrottlingMetric()
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"type",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType Type { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Type { get; set; }
 
     }
     internal partial interface IThrottlingMetricInternal
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
 
         long Limit { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ThrottlingMetricType Type { get; set; }
+        string Type { get; set; }
 
     }
 }

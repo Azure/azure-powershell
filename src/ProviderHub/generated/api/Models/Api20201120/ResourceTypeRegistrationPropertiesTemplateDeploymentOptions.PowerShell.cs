@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightSupported = (bool?) content.GetValueForProperty("PreflightSupported",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]) content.GetValueForProperty("PreflightOption",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption.CreateFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption = (string[]) content.GetValueForProperty("PreflightOption",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializeDictionary(content);
         }
 
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
             }
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightSupported = (bool?) content.GetValueForProperty("PreflightSupported",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption = (Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]) content.GetValueForProperty("PreflightOption",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption>(__y, Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption.CreateFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption = (string[]) content.GetValueForProperty("PreflightOption",((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ITemplateDeploymentOptionsInternal)this).PreflightOption, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
             AfterDeserializePSObject(content);
         }
 

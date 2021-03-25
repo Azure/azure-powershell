@@ -37,7 +37,6 @@ PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -
 ```
 
 
-
 ## PARAMETERS
 
 ### -AsJob
@@ -468,6 +467,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
@@ -480,6 +483,18 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
+  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
+  - `[NestedResourceTypeThird <String>]`: The third child resource type.
+  - `[NotificationRegistrationName <String>]`: The notification registration.
+  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RolloutName <String>]`: The rollout name.
+  - `[Sku <String>]`: The SKU.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 PROPERTY <IDefaultRollout>: Default rollout definition.
   - `[CanaryRegion <String[]>]`:
@@ -506,12 +521,13 @@ PROPERTY <IDefaultRollout>: Default rollout definition.
     - `[ManagementIncidentRoutingTeam <String>]`:
     - `[ManagementManifestOwner <String[]>]`:
     - `[ManagementResourceAccessPolicy <String>]`:
-    - `[ManagementResourceAccessRole <IAny[]>]`:
+    - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`:
     - `[ManagementSchemaOwner <String[]>]`:
     - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
       - `[ComponentId <String>]`:
       - `[ServiceId <String>]`:
-    - `[Metadata <IAny>]`: Any object
+    - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
+      - `[(Any) <String>]`: This indicates any property can be added to this object.
     - `[Namespace <String>]`:
     - `[ProviderAuthenticationAllowedAudience <String[]>]`:
     - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:
@@ -624,12 +640,13 @@ SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
   - `[ManagementIncidentRoutingTeam <String>]`:
   - `[ManagementManifestOwner <String[]>]`:
   - `[ManagementResourceAccessPolicy <String>]`:
-  - `[ManagementResourceAccessRole <IAny[]>]`:
+  - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`:
   - `[ManagementSchemaOwner <String[]>]`:
   - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
     - `[ComponentId <String>]`:
     - `[ServiceId <String>]`:
-  - `[Metadata <IAny>]`: Any object
+  - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Namespace <String>]`:
   - `[ProviderAuthenticationAllowedAudience <String[]>]`:
   - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:

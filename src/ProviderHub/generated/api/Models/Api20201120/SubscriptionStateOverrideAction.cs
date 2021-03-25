@@ -8,16 +8,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
 
         /// <summary>Backing field for <see cref="Action" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation _action;
+        private string _action;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation Action { get => this._action; set => this._action = value; }
+        public string Action { get => this._action; set => this._action = value; }
 
         /// <summary>Backing field for <see cref="State" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState _state;
+        private string _state;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState State { get => this._state; set => this._state = value; }
+        public string State { get => this._state; set => this._state = value; }
 
         /// <summary>Creates an new <see cref="SubscriptionStateOverrideAction" /> instance.</summary>
         public SubscriptionStateOverrideAction()
@@ -33,24 +33,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"action",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation Action { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string Action { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = true,
         ReadOnly = false,
         Description = @"",
         SerializedName = @"state",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState State { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string State { get; set; }
 
     }
     internal partial interface ISubscriptionStateOverrideActionInternal
 
     {
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionNotificationOperation Action { get; set; }
+        string Action { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.SubscriptionTransitioningState State { get; set; }
+        string State { get; set; }
 
     }
 }

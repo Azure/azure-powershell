@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         public string EndpointUri { get => this._endpointUri; set => this._endpointUri = value; }
 
         /// <summary>Backing field for <see cref="ExtensionCategory" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionCategory[] _extensionCategory;
+        private string[] _extensionCategory;
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionCategory[] ExtensionCategory { get => this._extensionCategory; set => this._extensionCategory = value; }
+        public string[] ExtensionCategory { get => this._extensionCategory; set => this._extensionCategory = value; }
 
         /// <summary>Backing field for <see cref="Timeout" /> property.</summary>
         private global::System.TimeSpan? _timeout;
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         ReadOnly = false,
         Description = @"",
         SerializedName = @"extensionCategories",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionCategory) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionCategory[] ExtensionCategory { get; set; }
+        PossibleTypes = new [] { typeof(string) })]
+        string[] ExtensionCategory { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.Info(
         Required = false,
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
     {
         string EndpointUri { get; set; }
 
-        Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionCategory[] ExtensionCategory { get; set; }
+        string[] ExtensionCategory { get; set; }
 
         global::System.TimeSpan? Timeout { get; set; }
 

@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadata __reRegisterSubscriptionMetadata = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ReRegisterSubscriptionMetadata();
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public int? ConcurrencyLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).ConcurrencyLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).ConcurrencyLimit = value ?? default(int); }
+        public int? ConcurrencyLimit { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).ConcurrencyLimit; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).ConcurrencyLimit = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public bool Enabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).Enabled = value ; }
+        public bool Enabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IReRegisterSubscriptionMetadataInternal)__reRegisterSubscriptionMetadata).Enabled = value; }
 
         /// <summary>
         /// Creates an new <see cref="ResourceProviderManifestReRegisterSubscriptionMetadata" /> instance.

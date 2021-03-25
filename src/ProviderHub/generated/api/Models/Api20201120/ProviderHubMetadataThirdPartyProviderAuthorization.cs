@@ -14,10 +14,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120
         private Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorization __thirdPartyProviderAuthorization = new Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ThirdPartyProviderAuthorization();
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization[] Authorizationszzz { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).Authorizationszzz; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).Authorizationszzz = value ?? null /* arrayOf */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization[] Authorizationszzz { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).Authorizationszzz; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).Authorizationszzz = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Origin(Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.PropertyOrigin.Inherited)]
-        public string ManagedByTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).ManagedByTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).ManagedByTenantId = value ?? null; }
+        public string ManagedByTenantId { get => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).ManagedByTenantId; set => ((Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThirdPartyProviderAuthorizationInternal)__thirdPartyProviderAuthorization).ManagedByTenantId = value; }
 
         /// <summary>
         /// Creates an new <see cref="ProviderHubMetadataThirdPartyProviderAuthorization" /> instance.
