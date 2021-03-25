@@ -170,16 +170,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             try
             {
                 var allowPartialScopes = AllowPartialScope.IsPresent;
-                var requestSkip = skip;
-                var requestSkipToken = skipToken;
-                this.WriteVerbose($"Sent top={first} skip={requestSkip} skipToken={requestSkipToken}");
+                this.WriteVerbose($"Sent top={first} skip={skip} skipToken={skipToken}");
 
-                var requestOptions = new QueryRequestOptions(
-                    top: first,
-                    skip: requestSkip,
-                    skipToken: requestSkipToken,
-                    resultFormat: ResultFormat.ObjectArray,
-                    allowPartialScopes: allowPartialScopes);
+                var requestOptions = skipToken == null
+                    ? new QueryRequestOptions(
+                        top: first,
+                        skip: skip,
+                        resultFormat: ResultFormat.ObjectArray,
+                        allowPartialScopes: allowPartialScopes)
+                    : new QueryRequestOptions(
+                        skipToken: skipToken,
+                        resultFormat: ResultFormat.ObjectArray,
+                        allowPartialScopes: allowPartialScopes);
 
                 var request = new QueryRequest(this.Query, subscriptions, managementGroups, options: requestOptions);
                 response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)

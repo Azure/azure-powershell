@@ -7,7 +7,7 @@
       "RequestBody": "{\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e5813a0b-b141-40f1-ae76-d14fcb122e55"
+          "965b147e-ad00-4279-ace9-11593a225f69"
         ],
         "Accept-Language": [
           "en-US"
@@ -48,22 +48,22 @@
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14987"
+          "14990"
         ],
         "x-ms-request-id": [
-          "eb2f5675-e4cf-4afa-9d87-45dafe76603c"
+          "cfba4a18-754e-4b0b-9c5f-a2cc433012c5"
         ],
         "x-ms-correlation-request-id": [
-          "eb2f5675-e4cf-4afa-9d87-45dafe76603c"
+          "cfba4a18-754e-4b0b-9c5f-a2cc433012c5"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210325T104253Z:eb2f5675-e4cf-4afa-9d87-45dafe76603c"
+          "CENTRALUS:20210325T114648Z:cfba4a18-754e-4b0b-9c5f-a2cc433012c5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 10:42:52 GMT"
+          "Thu, 25 Mar 2021 11:46:47 GMT"
         ],
         "Content-Length": [
           "133"
@@ -85,7 +85,7 @@
       "RequestBody": "{\r\n  \"managementGroups\": [\r\n    \"f686d426-8d16-42db-81b7-ab578e110ccd\"\r\n  ],\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "00a8b8cd-051d-4950-b5a9-2283ddfa64fd"
+          "fd49a4d5-ba7c-4f69-b654-34987ddda0e5"
         ],
         "Accept-Language": [
           "en-US"
@@ -114,10 +114,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "12"
+          "13"
         ],
         "x-ms-user-quota-remaining": [
-          "12"
+          "13"
         ],
         "x-ms-user-quota-resets-after": [
           "00:00:05"
@@ -126,22 +126,22 @@
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14986"
+          "14989"
         ],
         "x-ms-request-id": [
-          "d5361cf4-0515-4c18-8922-9e05aae06eb3"
+          "5dbdd9e8-18e9-44b5-834f-0e0f8a6db46c"
         ],
         "x-ms-correlation-request-id": [
-          "d5361cf4-0515-4c18-8922-9e05aae06eb3"
+          "5dbdd9e8-18e9-44b5-834f-0e0f8a6db46c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210325T104253Z:d5361cf4-0515-4c18-8922-9e05aae06eb3"
+          "CENTRALUS:20210325T114648Z:5dbdd9e8-18e9-44b5-834f-0e0f8a6db46c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 10:42:52 GMT"
+          "Thu, 25 Mar 2021 11:46:48 GMT"
         ],
         "Content-Length": [
           "133"
@@ -160,10 +160,10 @@
       "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"managementGroups\": [\r\n    \"f686d426-8d16-42db-81b7-ab578e110ccd\",\r\n    \"makharchMg\",\r\n    \"nonExistentMg\"\r\n  ],\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"managementGroups\": [\r\n    \"f686d426-8d16-42db-81b7-ab578e110ccd\",\r\n    \"makharchMg\",\r\n    \"nonExistentMg\"\r\n  ],\r\n  \"query\": \"distinct subscriptionId | order by subscriptionId asc\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e4470f3e-d072-425d-9523-af4c9b2dfbea"
+          "dce2920f-498d-4079-b950-d00d6ddfccca"
         ],
         "Accept-Language": [
           "en-US"
@@ -178,7 +178,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "314"
+          "313"
         ]
       },
       "ResponseHeaders": {
@@ -192,10 +192,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "10"
+          "12"
         ],
         "x-ms-user-quota-remaining": [
-          "10"
+          "12"
         ],
         "x-ms-user-quota-resets-after": [
           "00:00:05"
@@ -204,22 +204,22 @@
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14985"
+          "14988"
         ],
         "x-ms-request-id": [
-          "95c9eaf2-d5b6-49cc-af68-ed43b0ada1d7"
+          "4217e691-92e8-4d4b-acb2-d4eea81bdd14"
         ],
         "x-ms-correlation-request-id": [
-          "95c9eaf2-d5b6-49cc-af68-ed43b0ada1d7"
+          "4217e691-92e8-4d4b-acb2-d4eea81bdd14"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210325T104253Z:95c9eaf2-d5b6-49cc-af68-ed43b0ada1d7"
+          "CENTRALUS:20210325T114648Z:4217e691-92e8-4d4b-acb2-d4eea81bdd14"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 10:42:53 GMT"
+          "Thu, 25 Mar 2021 11:46:48 GMT"
         ],
         "Content-Length": [
           "133"

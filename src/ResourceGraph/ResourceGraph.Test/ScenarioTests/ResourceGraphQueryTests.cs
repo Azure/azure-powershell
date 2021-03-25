@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SkipTokenQuery()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-SkipTokenQuery");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void QueryError()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Search-AzureRmGraph-QueryError");
