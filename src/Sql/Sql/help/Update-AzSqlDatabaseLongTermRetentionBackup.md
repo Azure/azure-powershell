@@ -14,15 +14,23 @@ Updates a long term retention backup.
 
 ### UpdateBackupDefault (Default)
 ```
-Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
- [-BackupName] <String> [-ResourceGroupName <String>] [-BackupStorageRedundancy <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>]
+ [-BackupStorageRedundancy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateBackupByResourceId
 ```
 Update-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-BackupStorageRedundancy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateByInputObjectSet
+```
+Update-AzSqlDatabaseLongTermRetentionBackup [-BackupStorageRedundancy <String>]
+ [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +140,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The Database Long Term Retention Backup object to update.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBackupModel
+Parameter Sets: UpdateByInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

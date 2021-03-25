@@ -42,27 +42,27 @@ Copies a long term retention backup to a target database.  Target database may b
 
 ## EXAMPLES
 
-### Example 1: Copy a long term retention backup to another server within the same environment.  
+### Example 1: Copy a long term retention backup to another server within the same environment.
 ```powershell
-PS C:\> Copy-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName ayang-stage-seas -DatabaseName ltr3 -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -TargetDatabaseName ltr1 -TargetServerName ayang-eas -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName testrg
+PS C:\> Copy-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName test-server -DatabaseName test-database -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -TargetDatabaseName ltr1 -TargetServerName ayang-eas -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName testrg
 
 
-SourceResourceGroupName              : testrg
+SourceResourceGroupName              : test-rg
 SourceLocation                       : southeastasia
-SourceServerName                     : ayang-stage-seas
-SourceDatabaseName                   : ltr3
+SourceServerName                     : test-server
+SourceDatabaseName                   : test-database
 SourceBackupName                     : e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
-SourceBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/SoutheastAsia/longTermRetentionServers/ayang-stage-seas/longTermRetentionDatabases/ltr3/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
+SourceBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/test-rg/providers/Microsoft.Sql/locations/SoutheastAsia/longTermRetentionServers/test-server/longTermRetentionDatabases/test-database/longTermRetentionBackups/e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000
 SourceBackupStorageRedundancy        : Geo
 TargetSubscriptionId                 : 01c4ec88-e179-44f7-9eb0-e9719a5087ab
-TargetResourceGroupName              : testrg
+TargetResourceGroupName              : test-rg
 TargetLocation                       : East Asia
 TargetServerName                     : ayang-eas
 TargetServerFullyQualifiedDomainName :
-TargetServerResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/servers/ayang-eas
+TargetServerResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/test-rg/providers/Microsoft.Sql/servers/ayang-eas
 TargetDatabaseName                   : ltr1
 TargetBackupName                     : 70554a1f-ae6e-479e-99b1-50ea320654eb;132579992320000000
-TargetBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/testrg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr1/longTermRetentionBackups/70554a1f-ae6e-479e-99b1-50ea320654eb;132579992320000000
+TargetBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9719a5087ab/resourceGroups/test-rg/providers/Microsoft.Sql/locations/East Asia/longTermRetentionServers/ayang-eas/longTermRetentionDatabases/ltr1/longTermRetentionBackups/70554a1f-ae6e-479e-99b1-50ea320654eb;132579992320000000
 ```
 
 This copies a long term retention backup from a source database in Southeast Asia to a target database in East Asia.
