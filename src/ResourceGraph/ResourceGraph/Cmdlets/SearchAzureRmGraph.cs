@@ -155,30 +155,41 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     $"To use more than {ManagementGroupLimit} management groups, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
             }
 
-            var first = this.MyInvocation.BoundParameters.ContainsKey("First")
-                ? Math.Min(First, MaxRowsPerPage)
-                : 100;
-            var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip")
-                ? this.Skip
-                : 0;
-            var skipToken = this.SkipToken ?? null;
-
             var results = new List<PSObject>();
             QueryResponse response = null;
 
             var resultTruncated = false;
             try
             {
+                var skipToken = this.SkipToken;
+                var isSkipTokenPassed = this.MyInvocation.BoundParameters.ContainsKey("SkipToken");
+
+                int? first = null;
+                if (this.MyInvocation.BoundParameters.ContainsKey("First"))
+                {
+                    first = Math.Min(First, MaxRowsPerPage);
+                }
+                else if (!isSkipTokenPassed)
+                {
+                    first = 100;
+                }
+
+                int? skip = null;
+                if (this.MyInvocation.BoundParameters.ContainsKey("Skip"))
+                {
+                    skip = this.Skip;
+                }
+                else if (!isSkipTokenPassed)
+                {
+                    skip = 0;
+                }
+
                 var allowPartialScopes = AllowPartialScope.IsPresent;
                 this.WriteVerbose($"Sent top={first} skip={skip} skipToken={skipToken}");
 
-                var requestOptions = skipToken == null
-                    ? new QueryRequestOptions(
+                var requestOptions = new QueryRequestOptions(
                         top: first,
                         skip: skip,
-                        resultFormat: ResultFormat.ObjectArray,
-                        allowPartialScopes: allowPartialScopes)
-                    : new QueryRequestOptions(
                         skipToken: skipToken,
                         resultFormat: ResultFormat.ObjectArray,
                         allowPartialScopes: allowPartialScopes);

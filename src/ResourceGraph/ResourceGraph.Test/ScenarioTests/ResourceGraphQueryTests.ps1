@@ -133,7 +133,7 @@ Run simple query with the skip token
 #>
 function Search-AzureRmGraph-SkipTokenQuery
 {
-	$queryResult = Search-AzGraph "project id, properties" -Subscription "eaab1166-1e13-4370-a951-6ed345a48c15" -SkipToken "ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogMywNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FybXRvcG9sb2d5Lmt1c3RvLndpbmRvd3MubmV0Ig0KfQ=="
+	$queryResult = Search-AzGraph "project id, properties" -SkipToken "ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNiwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FybXRvcG9sb2d5Lmt1c3RvLndpbmRvd3MubmV0Ig0KfQ=="
 
 	Assert-IsInstance Object[] $queryResult
 	Assert-AreEqual 3 $queryResult.Count

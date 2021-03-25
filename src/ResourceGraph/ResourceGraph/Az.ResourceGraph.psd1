@@ -113,7 +113,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support for the new api version with the ability to query for management group, deprecated tenant and subscription display names support'
+        ReleaseNotes = '* Added support for the new api version with the ability to query with management group scopes using -ManagementGroup param.
+            * Deprecated parameter -Include.
+            * Introduced -SkipToken param and aligned max resources returned per page with server value.'
 
         # Prerelease string of this module
         # Prerelease = ''
