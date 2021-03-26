@@ -4638,8 +4638,8 @@ function Test-NewAzVMDefaultingSize
         $defaultSize = "Standard_D2s_v3";
 
         # Creating a VM using simple parameter set
-        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;    
-        $user = "usertest";
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred;
         
@@ -4650,6 +4650,6 @@ function Test-NewAzVMDefaultingSize
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname;
 	}
 }
