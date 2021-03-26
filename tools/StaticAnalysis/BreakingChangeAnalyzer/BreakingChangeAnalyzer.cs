@@ -143,7 +143,10 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     cmdletResult = powershell.Invoke();
                     var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
-                    if (!nestedModules.Any()) continue;
+                    if (!nestedModules.Any())
+                    {
+                        nestedModules = new List<string> { psd1FileName.Replace(".psd1", "") };
+                    }
 
                     Directory.SetCurrentDirectory(directory);
 
@@ -161,33 +164,24 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
                         var assemblyFileName = Path.GetFileName(assemblyFile);
                         if (!File.Exists(assemblyFile)) continue;
-
                         issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
                         processedHelpFiles.Add(assemblyFileName);
-// TODO: Remove IfDef
-#if NETSTANDARD
-                        var proxy = new CmdletLoader();
-#else
-                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-#endif
-                        var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+
+                        var filePath = Path.Combine(directory, $"{assemblyFileName}.json");
+                        var newModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
 
                         var fileName = assemblyFileName + ".json";
                         var executingPath =
                             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
-                        var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
-
-#if SERIALIZE
-                        SerializeCmdlets(filePath, newModuleMetadata);
-#endif
+                        filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
 
                         if (!File.Exists(filePath))
                         {
                             continue;
                         }
 
-                        var oldModuleMetadata = DeserializeCmdlets(filePath);
+                        var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
 
                         if (cmdletFilter != null)
                         {
@@ -216,10 +210,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         }
 
                         RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                        AppDomain.Unload(_appDomain);
-#endif
                     }
                 }
             }
@@ -234,16 +224,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         {
             var json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
             File.WriteAllText(fileName, json);
-        }
-
-        /// <summary>
-        /// Deserialize the cmdlets to compare them to the changed modules
-        /// </summary>
-        /// <param name="fileName">Name of the file we are to deserialize the cmdlets from.</param>
-        /// <returns></returns>
-        private static ModuleMetadata DeserializeCmdlets(string fileName)
-        {
-           return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
         }
 
         /// <summary>

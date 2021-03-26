@@ -158,6 +158,7 @@
 
     <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('predictor'))" />
     <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('installer'))" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Import-Module $(RepoTools)\ModuleMetadata\GetModuleMetadata.psm1; Import-Module $(RepoArtifacts)/$(Configuration)/Az.Accounts/Az.Accounts.psd1; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.breaking-change)'; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.signature)'; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.help)';&quot;" />
   </Target>
 
   <Target Name="BuildNormalModules">
@@ -233,21 +234,21 @@
     <Message Importance="high" Text="Running static analysis for dependency..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers dependency -u -m '%(FilterTaskResult.breaking-change)'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers dependency -u -m '%(FilterTaskResult.dependency)'" />
   </Target>
   
   <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for signature..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.breaking-change)'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.signature)'" />
   </Target>
   
   <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for help..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.breaking-change)'" />
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.help)'" />
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp">
