@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
 * Added Cross Zonal Restore for managed virtual machines. 
 
 ## Version 3.4.1

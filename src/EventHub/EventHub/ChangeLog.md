@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.2
 * Fixed that `New-AzServiceBusAuthorizationRuleSASToken` returns invalid token. [#12975]
 
 ## Version 1.7.1

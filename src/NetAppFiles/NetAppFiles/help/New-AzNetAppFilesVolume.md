@@ -18,9 +18,10 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String> [-VolumeType <String>]
  -ServiceLevel <String> [-SnapshotId <String>] [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
- [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>] [-SnapshotDirectoryVisible]
- [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
+ [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
+ [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -28,10 +29,10 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
 New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String> -CreationToken <String>
  -ServiceLevel <String> [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>]
  [-ReplicationObject <PSNetAppFilesReplicationObject>] [-Snapshot <PSNetAppFilesVolumeSnapshot>]
- [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>] [-SnapshotDirectoryVisible]
- [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled] [-Tag <Hashtable>]
- -PoolObject <PSNetAppFilesPool> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
+ [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
+ [-SmbEncryption] [-SmbContinuouslyAvailable] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -302,6 +303,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SmbContinuouslyAvailable
+Enables continuously available share property for SMB volume. Only applicable for SMB volume.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbEncryption
+Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Snapshot
 A hashtable array which represents the snapshot object
 
@@ -338,6 +369,21 @@ Create volume from a snapshot. UUID v4 or resource identifier used to identify t
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotPolicyId
+Snapshot Policy ResourceId used to apply a snapshot policy to the volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False

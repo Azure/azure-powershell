@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -455,7 +455,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1235,7 +1235,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1604,7 +1604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
                   "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1917,7 +1917,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2076,7 +2076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
             "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2589,7 +2589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
                   "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralApp, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3177,7 +3177,7 @@
     "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo": {
       "Namespace": "Microsoft.Azure.Commands.IotCentral.Models",
       "Name": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.IotCentral.Models.PSIotCentralAppSkuInfo, Microsoft.Azure.PowerShell.Cmdlets.IotCentral, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String"
       },

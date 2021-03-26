@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
+
+## Version 1.5.2
 * Fixed the issue for starting Python3 runbooks with parameters
 
 ## Version 1.5.1
