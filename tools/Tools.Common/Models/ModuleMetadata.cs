@@ -15,6 +15,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Tools.Common.Models
@@ -25,6 +26,9 @@ namespace Tools.Common.Models
         private List<CmdletMetadata> _cmdlets = new List<CmdletMetadata>();
         private Dictionary<string, TypeMetadata> _typeDictionary = new Dictionary<string, TypeMetadata>();
         private Dictionary<string, bool> _processedTypes = new Dictionary<string, bool>();
+        
+        [JsonIgnore]
+        public String AssemblyFileName { get; set; }
 
         public ModuleMetadata()
         {
@@ -90,6 +94,11 @@ namespace Tools.Common.Models
 
             modulesEqual &= this.Cmdlets.Count == other.Cmdlets.Count;
             return modulesEqual;
+        }
+
+        public static ModuleMetadata DeserializeCmdlets(string fileName)
+        {
+            return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
         }
 
         public override int GetHashCode()
