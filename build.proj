@@ -158,6 +158,7 @@
 
     <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('predictor'))" />
     <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('installer'))" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Import-Module $(RepoTools)\ModuleMetadata\GetModuleMetadata.psm1; Import-Module $(RepoArtifacts)/$(Configuration)/Az.Accounts/Az.Accounts.psd1; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.breaking-change)'; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.signature)'; Export-ModuleMetadata -Configuration $(Configuration) -ModuleList '%(FilterTaskResult.help)';&quot;" />
   </Target>
 
   <Target Name="BuildNormalModules">
