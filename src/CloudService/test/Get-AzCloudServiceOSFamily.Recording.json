@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "dededd23-fdff-4801-be6e-903e8d7deb43" ],
+        "x-ms-client-request-id": [ "3cef6dcd-968f-4634-aa43-2233a525d4b8" ],
         "CommandName": [ "Get-AzCloudServiceOSFamily" ],
         "FullCommandName": [ "Get-AzCloudServiceOSFamily_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,13 +24,13 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "4af5c0d5-36eb-48c0-9a45-6b854ef6754e" ],
+        "x-ms-request-id": [ "f1d410ef-b531-4e98-9363-a1638fd0dc45" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
-        "x-ms-correlation-request-id": [ "b3b17eb2-361f-4313-b01d-8acf3bee2209" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204611Z:b3b17eb2-361f-4313-b01d-8acf3bee2209" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11936" ],
+        "x-ms-correlation-request-id": [ "e7cf6f03-26c9-44f5-8efa-23ec46a38ea6" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010714Z:e7cf6f03-26c9-44f5-8efa-23ec46a38ea6" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 25 Mar 2021 20:46:11 GMT" ]
+        "Date": [ "Fri, 26 Mar 2021 01:07:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "97187" ],
@@ -49,7 +49,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "f8cc80f3-ab48-4ae2-89a3-ad4caff85205" ],
+        "x-ms-client-request-id": [ "3f692f46-d5e4-491a-b8a0-406c27555b7b" ],
         "CommandName": [ "Get-AzCloudServiceOSFamily" ],
         "FullCommandName": [ "Get-AzCloudServiceOSFamily_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,13 +66,13 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "1567f602-80a4-4201-b29b-3e2e34c1639e" ],
+        "x-ms-request-id": [ "8f848e9d-c4a6-47ee-9f32-425f29a4e5ae" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "x-ms-correlation-request-id": [ "aa8b836e-829d-4502-bd22-c24ac7a8936e" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204611Z:aa8b836e-829d-4502-bd22-c24ac7a8936e" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11935" ],
+        "x-ms-correlation-request-id": [ "79e66d98-64b0-4c17-99f3-e289f6343332" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010714Z:79e66d98-64b0-4c17-99f3-e289f6343332" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 25 Mar 2021 20:46:11 GMT" ]
+        "Date": [ "Fri, 26 Mar 2021 01:07:14 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "11378" ],
