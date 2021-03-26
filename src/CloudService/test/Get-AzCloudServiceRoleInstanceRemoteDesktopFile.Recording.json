@@ -2,7 +2,7 @@
   "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

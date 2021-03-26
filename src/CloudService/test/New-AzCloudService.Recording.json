@@ -17,7 +17,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Azure-AsyncOperation": [ "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-request-id": [ "66be7178-5ca9-4263-972a-f1deb74ead18" ],
         "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/CreateUpdateDeleteCloudServiceOperations30Min;290" ],
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+2": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -79,10 +79,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+3": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -121,10 +121,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+4": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -163,10 +163,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+5": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -205,10 +205,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+6": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -247,10 +247,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+7": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -289,10 +289,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+8": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -331,10 +331,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+9": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -373,10 +373,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+10": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -415,10 +415,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+11": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -457,10 +457,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+12": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -499,10 +499,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+13": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -541,10 +541,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+14": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -583,10 +583,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+15": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/eastus2euap/CsOperations/66be7178-5ca9-4263-972a-f1deb74ead18?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -625,10 +625,10 @@
       "isContentBase64": false
     }
   },
-  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01+16": {
+  "New-AzCloudService+[NoContext]+UpdateExpanded: Create new cloud service+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
