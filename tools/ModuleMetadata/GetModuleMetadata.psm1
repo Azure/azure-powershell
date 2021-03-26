@@ -272,6 +272,9 @@ function Get-ModuleMetadata
         $ModuleName
     )
 
+    $AccountPath = [System.IO.Path]::Combine($Psd1Path, "..", "..", "Az.Accounts", "Az.Accounts.psd1")
+    Write-Host $AccountPath
+    Import-Module $AccountPath -Force
     Import-Module $Psd1Path -Force
     $ModuleInfo = Get-Module $ModuleName
     $ModuleMetadata = [ModuleMetadata]::New()
