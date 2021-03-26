@@ -75,11 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
             catch (KeyNotFoundException)
             {
-                throw new AzPSArgumentException(
-                    "Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats: \n" +
-                    "/subscriptions/<subscriptionId>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName> \n" +
-                    "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Sql/locations/<location>/longTermRetentionServers/<serverName>/longTermRetentionDatabases/<databaseName>/longTermRetentionBackups/<backupName>",
-                    "ResourceId");
+                throw new AzPSArgumentException(Properties.Resources.InvalidLongTermRetentionBackupResourceIdFormat, "ResourceId");
             }
 
             return resourceSegments;

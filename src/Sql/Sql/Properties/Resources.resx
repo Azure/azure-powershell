@@ -661,4 +661,10 @@
   <data name="RemoveAzureSqlServerTrustGroupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Trust Group '{0}' in location '{1}'?</value>
   </data>
+  <data name="InvalidLongTermRetentionBackupResourceIdFormat" xml:space="preserve">
+    <value>Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
+/subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+                    "ResourceId"</value>
+  </data>
 </root>

@@ -16,21 +16,21 @@ Updates a long term retention backup.
 ```
 Update-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>]
- [-BackupStorageRedundancy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-BackupStorageRedundancy <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateBackupByResourceId
 ```
-Update-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-BackupStorageRedundancy <String>]
+Update-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-BackupStorageRedundancy <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectSet
 ```
 Update-AzSqlDatabaseLongTermRetentionBackup [-BackupStorageRedundancy <String>]
- [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +80,21 @@ BackupStorageRedundancy			 : Geo
 This command sets the Backup Storage Redundancy of the specified backup using a backup Resource Id. 
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupName
 The name of the backup.
@@ -263,3 +278,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Copy-AzSqlDatabaseLongTermRetentionBackup](./Copy-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzSqlDatabaseLongTermRetentionBackup](./Remove-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Get-AzSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
+
+[Set-AzSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)

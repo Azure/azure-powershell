@@ -17,7 +17,7 @@ Copies a long term retention backup to a target database.
 Copy-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-BackupName] <String> [-ResourceGroupName <String>] -TargetDatabaseName <String>
  [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>] -TargetSubscriptionId <String>
- -TargetResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Copy-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <St
 ```
 Copy-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> -TargetDatabaseName <String>
  [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>] -TargetSubscriptionId <String>
- -TargetResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -TargetResourceGroupName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,8 +33,8 @@ Copy-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> -TargetDatabase
 ```
 Copy-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel>
  -TargetDatabaseName <String> [-TargetServerFullyQualifiedDomainName <String>] [-TargetServerName <String>]
- -TargetSubscriptionId <String> -TargetResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ -TargetSubscriptionId <String> -TargetResourceGroupName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,21 @@ TargetBackupResourceId               : /subscriptions/01c4ec88-e179-44f7-9eb0-e9
 This copies a long term retention backup from a source database in Southeast Asia to a target database in East Asia.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupName
 The name of the backup.
@@ -311,3 +326,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Update-AzSqlDatabaseLongTermRetentionBackup](./Update-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzSqlDatabaseLongTermRetentionBackup](./Remove-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Get-AzSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
+
+[Set-AzSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
+
+[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
