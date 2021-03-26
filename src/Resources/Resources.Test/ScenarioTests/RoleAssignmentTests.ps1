@@ -709,21 +709,19 @@ function Test-RaCreatedBySP
     # Conect to azure with SP
     # If you need to re-record replace this setup
     $passwd = ConvertTo-SecureString 'password' -AsPlainText -Force
-    $pscredential = New-Object System.Management.Automation.PSCredential('15362c03-9e28-4743-bec2-ce3de3699fc9' , $passwd)
-    $tenantId = '395544B0-BF41-429D-921F-E1CA2252FCF4'
+    $pscredential = New-Object System.Management.Automation.PSCredential('0b0f065d-6d84-4ba0-a6ea-efefa3f54365' , $passwd)
+    $tenantId = '01fd65cb-2dca-4aa4-8d2a-62b40c9d27d3'
     Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant $tenantId
 
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions."'
-
     # Create role assignment
-    $testUser = '4b269cfb-d915-410a-8a4b-e47872464ac5'
+    $testUser = '7aa123be-80d1-4aa8-8813-d6a34a6a52d0'
     $data = {New-AzRoleAssignmentWithId `
     -ObjectId $testUser `
     -RoleDefinitionName 'Reader' `
-    -Scope '/subscriptions/f12d26d1-53cd-4eeb-b4de-5014c09fc5d1' `
+    -Scope '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6' `
     -RoleAssignmentId f0f113bd-7ff9-4eb6-b949-5de18d1b38ca}
 
-    Assert-Throws $data $ExpectedError
+    Assert-NotNull $data
 }
 
 <#
@@ -734,8 +732,8 @@ function Test-RaWithV1Conditions{
 
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "1.0"
@@ -761,8 +759,8 @@ Create role assignment with v2 conditions
 function Test-RaWithV2Conditions{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -799,8 +797,8 @@ Create role assignment with v2 conditions
 function Test-RaWithV2ConditionsOnly{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
     $Description = "This test should not fail"
     $Condition = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
 
@@ -835,8 +833,8 @@ Create role assignment with v2 conditions
 function Test-RaWithV2ConditionVersionOnly{
     #Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "01072e9b-c4a1-4246-a756-031b529bbf66"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986/resourceGroups/contoso_rg'
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
     $Description = "This test should not fail"
     $ConditionVersion = "2.0"
 
@@ -861,8 +859,8 @@ function Test-UpdateRa{
 
     # Given
     $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
-    $PrincipalId = "9338059e-8359-4991-bb51-2b67c8bd82cd"
-    $Scope = '/subscriptions/4e5329a6-39ce-4e13-b12e-11b30f015986'
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
     $Description1 = "This test should not fail"
     $Condition1 = "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:Name] StringEqualsIgnoreCase 'foo_storage_container'"
     $ConditionVersion = "2.0"
@@ -917,14 +915,14 @@ function Test-UpdateRa{
 
 <#
 .SYNOPSIS
-Verifies that role assignment does not exist
+Verifies that role assignment maps to a group
 #>
 function Test-CreateRAForGroup
 {    
     #Given
-    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
-    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
-    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -938,14 +936,14 @@ function Test-CreateRAForGroup
 
 <#
 .SYNOPSIS
-Verifies that role assignment does not exist
+Verifies that role assignment maps to a user (not "Guest")
 #>
 function Test-CreateRAForGuest
 {    
     #Given
-    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
-    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
-    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -959,14 +957,14 @@ function Test-CreateRAForGuest
 
 <#
 .SYNOPSIS
-Verifies that role assignment does not exist
+Verifies that role assignment maps to a user (not "Member")
 #>
 function Test-CreateRAForMember
 {    
     #Given
-    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
-    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
-    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -980,14 +978,14 @@ function Test-CreateRAForMember
 
 <#
 .SYNOPSIS
-Verifies that role assignment does not exist
+Verifies that role assignment maps to a ServicePrincipal
 #>
 function Test-CreateRAForServicePrincipal
 {    
     #Given
-    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
-    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
-    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $Scope = '/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6'
 
     #When
     $data = New-AzRoleAssignmentWithId `
@@ -1001,15 +999,39 @@ function Test-CreateRAForServicePrincipal
 
 <#
 .SYNOPSIS
-Verifies that role assignment does not exist
+Verifies that role assignment gets created properly when using objectype
+#>
+function Test-CreateRAWithObjectType
+{    
+    #Given
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="7aa123be-80d1-4aa8-8813-d6a34a6a52d0"
+    $subscription =  (Get-AzContext).Subscription.Id
+    $Scope = "/subscriptions/$subscription"
+    $ObjectType = "User"
+
+    #When
+    $data = New-AzRoleAssignmentWithId `
+    -ObjectId $PrincipalId `
+    -ObjectType $ObjectType `
+    -Scope $Scope `
+    -RoleDefinitionId $RoleDefinitionId `
+    -RoleAssignmentId 734de5f5-c680-41c0-8beb-67b98c3539d9
+
+    Assert-True {$data.ObjectType -eq "User"}
+}
+
+<#
+.SYNOPSIS
+Verifies that role assignment does not get created for a principal ID that doesn't exist'
 #>
 function Test-CreateRAWhenIdNotExist
 {    
     #Given
-    $RoleDefinitionId = "6c80f488-e497-4df5-9684-7e537fde446f"
-    $PrincipalId ="1f28f206-493f-474b-88f7-c70dd663fe6b"
-    $Scope = '/subscriptions/ae0e54d1-0d24-4677-9a0e-eca0c7039a26/resourceGroups/ContosoGroup'
-    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "No AD object was found with the parameters provided please ensure that the display name or GUID is written properly"'
+    $RoleDefinitionId = "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+    $PrincipalId ="6d764d35-6b3b-49ea-83f8-5c223b56eac5"
+    $Scope = '/subscriptions/70cff36b-c4f8-46ea-9655-9cfd44664763'
+    $ExpectedError = 'Exception calling "ExecuteCmdlet" with "0" argument(s): "Principal 6d764d356b3b49ea83f85c223b56eac5 does not exist in the directory 395544B0-BF41-429D-921F-E1CA2252FCF4."'
 
     #When
     $function = {New-AzRoleAssignmentWithId `

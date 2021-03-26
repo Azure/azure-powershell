@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "adb30df9-56bf-4a0b-8089-7fc6ae61b75d"
+          "7ce71487-0e9e-4186-bce8-10728d5e2dad"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "014a0eb3-492c-4748-ad71-7f82db9637e5"
+          "b3c1f1bc-6684-4bd2-8079-a582bcc748c4"
         ],
         "x-ms-correlation-request-id": [
-          "014a0eb3-492c-4748-ad71-7f82db9637e5"
+          "b3c1f1bc-6684-4bd2-8079-a582bcc748c4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20210325T010625Z:014a0eb3-492c-4748-ad71-7f82db9637e5"
+          "WESTUS2:20210326T225548Z:b3c1f1bc-6684-4bd2-8079-a582bcc748c4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 01:06:24 GMT"
+          "Fri, 26 Mar 2021 22:55:48 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -60,72 +60,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/f12d26d1-53cd-4eeb-b4de-5014c09fc5d1\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"f12d26d1-53cd-4eeb-b4de-5014c09fc5d1\",\r\n      \"tenantId\": \"395544B0-BF41-429D-921F-E1CA2252FCF4\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1de8ed49-d13d-4a32-a8cf-2aa8e944c392\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"1de8ed49-d13d-4a32-a8cf-2aa8e944c392\",\r\n      \"tenantId\": \"395544B0-BF41-429D-921F-E1CA2252FCF4\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI2\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"Sponsored_2016-01-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/fe326cf8-4b0d-492d-a4bb-27aeba0b3cbc\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"fe326cf8-4b0d-492d-a4bb-27aeba0b3cbc\",\r\n      \"tenantId\": \"395544B0-BF41-429D-921F-E1CA2252FCF4\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_MG\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"Sponsored_2016-01-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 3\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6\",\r\n      \"tenantId\": \"01fd65cb-2dca-4aa4-8d2a-62b40c9d27d3\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/1de8ed49-d13d-4a32-a8cf-2aa8e944c392\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"1de8ed49-d13d-4a32-a8cf-2aa8e944c392\",\r\n      \"tenantId\": \"01fd65cb-2dca-4aa4-8d2a-62b40c9d27d3\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_CLI2\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"Sponsored_2016-01-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/fe326cf8-4b0d-492d-a4bb-27aeba0b3cbc\",\r\n      \"authorizationSource\": \"RoleBased\",\r\n      \"managedByTenants\": [],\r\n      \"subscriptionId\": \"fe326cf8-4b0d-492d-a4bb-27aeba0b3cbc\",\r\n      \"tenantId\": \"01fd65cb-2dca-4aa4-8d2a-62b40c9d27d3\",\r\n      \"displayName\": \"AAD_POLICY_ADMINISTRATION_SERVICE_TEST_MG\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"Sponsored_2016-01-01\",\r\n        \"spendingLimit\": \"Off\"\r\n      }\r\n    }\r\n  ],\r\n  \"count\": {\r\n    \"type\": \"Total\",\r\n    \"value\": 3\r\n  }\r\n}",
       "StatusCode": 200
-    },
-    {
-      "RequestUri": "//getObjectsByObjectIds?api-version=1.6",
-      "EncodedRequestUri": "Ly9nZXRPYmplY3RzQnlPYmplY3RJZHM/YXBpLXZlcnNpb249MS42",
-      "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"objectIds\": [\r\n    \"4b269cfb-d915-410a-8a4b-e47872464ac5\"\r\n  ],\r\n  \"includeDirectoryObjectReferences\": true\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f1d64019-700c-41a5-af2b-784704c22081"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29812.02",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/3.5.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "116"
-        ]
-      },
-      "ResponseHeaders": {
-        "ocp-aad-diagnostics-server-name": [
-          "ZNrqiwcpPjdCr6s49ceoBz1lquuEoxo9A3LJA+BxyzY="
-        ],
-        "request-id": [
-          "6dfa46b7-e42f-4b83-bd8c-89d7a3f0a648"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Access-Control-Allow-Origin": [
-          "*"
-        ],
-        "Duration": [
-          "246024"
-        ],
-        "Date": [
-          "Thu, 25 Mar 2021 01:06:24 GMT"
-        ],
-        "Content-Length": [
-          "267"
-        ],
-        "Content-Type": [
-          "application/json; odata=verbose"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.error\": {\r\n    \"code\": \"Request_InvalidRequestUrl\",\r\n    \"message\": {\r\n      \"lang\": \"en\",\r\n      \"value\": \"Request url was invalid. The request should be like /tenantdomainname/Entity or /$metadata. Tenant domain name can be any of the verified, unverified domain names or context id.\"\r\n    }\r\n  }\r\n}",
-      "StatusCode": 400
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f12d26d1-53cd-4eeb-b4de-5014c09fc5d1"
+    "SubscriptionId": "7ada13d9-fa86-4ea3-bcdc-7545cc0f1bb6"
   }
 }

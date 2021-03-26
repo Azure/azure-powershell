@@ -129,18 +129,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
             var asigneeID = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
-            var asigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asigneeID }).SingleOrDefault();
-            if (asigneeID == null || asigneeObject == null)
+
+            string asigneeObjectType = parameters.ADObjectFilter?.ObjectType;
+            if (string.IsNullOrWhiteSpace(asigneeObjectType))
             {
-                throw new ArgumentException(ProjectResources.NoADObjectFound);
-            }
-            if (asigneeObject is PSErrorHelperObject)
-            {
-                throw new Rest.Azure.CloudException(ProjectResources.NotAuthorizedInGraph);
+                var asigneeObject = ActiveDirectoryClient.GetObjectsByObjectId(new List<string>() { asigneeID }).SingleOrDefault();
+                asigneeObjectType = (!(asigneeObject is PSErrorHelperObject) && asigneeObject != null) ? asigneeObject.Type : null;
             }
 
             string principalId = asigneeID;
-            string principalType = asigneeObject.Type;
             roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = string.IsNullOrEmpty(parameters.RoleDefinitionName)
@@ -152,7 +149,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             var createParameters = new RoleAssignmentCreateParameters
             {
                 PrincipalId = principalId.ToString(),
-                PrincipalType = principalType,
+                PrincipalType = asigneeObjectType,
                 RoleDefinitionId = roleDefinitionId,
                 CanDelegate = parameters.CanDelegate,
                 Description = parameters.Description,
@@ -303,20 +300,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The updated role assignment.</returns>
         public PSRoleAssignment UpdateRoleAssignment(PSRoleAssignment roleAssignment)
         {
-            string principalType;
+            string principalType = null;
 
             // check added in case Set-AzRoleAssignment is called as a create operation but the user didn't add the object type
             if (roleAssignment.ObjectType == null)
             {
-                PSADObject asignee = ActiveDirectoryClient.GetADObject(new ADObjectFilterOptions() { Id = roleAssignment.ObjectId });
+                var asignee = ActiveDirectoryClient.GetObjectsByObjectId(new List<string> { roleAssignment.ObjectId }).SingleOrDefault();
 
-                if (asignee == null)
+                if (!(asignee is PSErrorHelperObject) && asignee.Type != null)
                 {
-                    throw new ArgumentException("No AD object could be found with current parameters, please confirm the information provided is correct and try again");
+                    principalType = asignee.Type;
                 }
-
-                principalType = asignee.Type;
-
             }
             else
             {
