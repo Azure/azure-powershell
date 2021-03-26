@@ -1,12 +1,13 @@
 {
-  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2020-10-01-preview+1": {
+  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestmdjygq54/providers/Microsoft.Compute/cloudServices/cscmdlettesta9p8gtmy/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2020-10-01-preview",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestmdjygq54/providers/Microsoft.Compute/cloudServices/cscmdlettesta9p8gtmy/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "551c6840-1764-430d-ab3f-c3ba2e38edb1" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "228c1141-b997-4251-9557-676ab5d2f791" ],
         "CommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile" ],
         "FullCommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -18,26 +19,27 @@
     },
     "Response": {
       "StatusCode": 200,
-      "isContentBase64": true,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "bad5061e-63f4-4331-a0f9-1f39bb47a42a" ],
+        "x-ms-request-id": [ "8476cdfc-fc74-4ea5-b5b5-9151e0af13e5" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;383,Microsoft.Compute/GetCloudService30Min;2583" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "d7006b83-4799-47e3-a7b9-0435fec90f70" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210127T100026Z:d7006b83-4799-47e3-a7b9-0435fec90f70" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "318ee48e-74ba-41af-b191-353ee136c053" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204620Z:318ee48e-74ba-41af-b191-353ee136c053" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 27 Jan 2021 10:00:25 GMT" ]
+        "Date": [ "Thu, 25 Mar 2021 20:46:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "104" ],
+        "Content-Length": [ "108" ],
         "Content-Type": [ "application/x-rdp" ],
         "Expires": [ "-1" ],
-        "Content-Disposition": [ "attachment; filename=cscmdlettest1p3wg7ft-WebRole_IN_0.rdp" ]
+        "Content-Disposition": [ "attachment; filename=cscmdlettesta9p8gtmy-WebRole_IN_0.rdp" ]
       },
-      "Content": "ZnVsbCBhZGRyZXNzOnM6NTIuMjI1LjE4MS40DQp1c2VybmFtZTpzOnlvdXJpDQpMb2FkQmFsYW5jZUluZm86czpDb29raWU6IG1zdHNoYXNoPVdlYlJvbGUjV2ViUm9sZV9JTl8wDQo="
+      "Content": "full address:s:40.79.114.28\r\nusername:s:userazure\r\nLoadBalanceInfo:s:Cookie: mstshash=WebRole#WebRole_IN_0\r\n",
+      "isContentBase64": false
     }
   }
 }

@@ -16,7 +16,8 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     # Create Public IP
     Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"
-    
+    $env.PublicIpId = $publicIp.Id
+
     # Create Network Profile
     $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $publicIp.Id
     $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig

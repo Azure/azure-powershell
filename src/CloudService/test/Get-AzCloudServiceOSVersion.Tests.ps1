@@ -25,4 +25,9 @@ Describe 'Get-AzCloudServiceOSVersion' {
         $osVersion.Version | Should Not BeNullOrEmpty
         $osVersion.Label | Should Not BeNullOrEmpty
     }
+
+    # TODO: add this test once id is fixed on server side to match case sensitive req
+    It 'GetViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
 }

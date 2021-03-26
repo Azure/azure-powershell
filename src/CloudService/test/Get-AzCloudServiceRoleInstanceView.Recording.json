@@ -1,12 +1,13 @@
 {
-  "Get-AzCloudServiceRoleInstanceView+[NoContext]+Get cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview+1": {
+  "Get-AzCloudServiceRoleInstanceView+[NoContext]+Get cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestmdjygq54/providers/Microsoft.Compute/cloudServices/cscmdlettesta9p8gtmy/roleInstances/WebRole_IN_0/instanceView?api-version=2021-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/cscmdlettestt7j29u46/providers/Microsoft.Compute/cloudServices/cscmdlettest1p3wg7ft/roleInstances/WebRole_IN_0/instanceView?api-version=2020-10-01-preview",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestmdjygq54/providers/Microsoft.Compute/cloudServices/cscmdlettesta9p8gtmy/roleInstances/WebRole_IN_0/instanceView?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "2ea793ce-8958-473d-8226-589462b9d2ea" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "cfc11998-878b-4d48-b03a-f27fc7ca5fcd" ],
         "CommandName": [ "Get-AzCloudServiceRoleInstanceView" ],
         "FullCommandName": [ "Get-AzCloudServiceRoleInstanceView_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,20 +23,22 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "fe07cc54-f359-4605-a770-f5b7e5231c4f" ],
+        "x-ms-request-id": [ "97525051-ebe2-4121-9991-5c539790f9e2" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;382,Microsoft.Compute/GetCloudService30Min;2582" ],
         "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "f0dc2505-ae61-471a-8d5b-605fa3aee490" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20210126T110137Z:f0dc2505-ae61-471a-8d5b-605fa3aee490" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-correlation-request-id": [ "ca02ce29-a1be-43c8-a85e-29e62e7b6537" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204621Z:ca02ce29-a1be-43c8-a85e-29e62e7b6537" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 26 Jan 2021 11:01:37 GMT" ]
+        "Date": [ "Thu, 25 Mar 2021 20:46:20 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "289" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"platformUpdateDomain\": 0,\r\n  \"platformFaultDomain\": 0,\r\n  \"privateId\": \"d1179eb1-2655-4436-984b-8bf7a1d2cc25\",\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"RoleState/RoleStateStarted\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"RoleStateStarted\",\r\n      \"message\": \"\"\r\n    }\r\n  ]\r\n}"
+      "Content": "{\r\n  \"platformUpdateDomain\": 0,\r\n  \"platformFaultDomain\": 0,\r\n  \"privateId\": \"280937cf-5232-4324-b69f-ee973d2cbd44\",\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"RoleState/RoleStateStarted\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"RoleStateStarted\",\r\n      \"message\": \"\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
     }
   }
 }

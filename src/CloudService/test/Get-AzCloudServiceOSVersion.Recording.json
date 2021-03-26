@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "84d85cb2-a387-41b9-89bd-68c652271a74" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "9550b10c-4562-43fc-a7cd-ab783dcfbd47" ],
         "CommandName": [ "Get-AzCloudServiceOSVersion" ],
         "FullCommandName": [ "Get-AzCloudServiceOSVersion_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,13 +24,13 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "b7d9887f-7536-46d0-9bdf-c7b65ccabdd9" ],
+        "x-ms-request-id": [ "c36d627d-94e9-44dd-b509-29865d1d9121" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-correlation-request-id": [ "9333f431-d2f9-4e04-abeb-99789dcd3ca2" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210324T185948Z:9333f431-d2f9-4e04-abeb-99789dcd3ca2" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
+        "x-ms-correlation-request-id": [ "f920b823-df58-47bf-8626-699c0e5980b5" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204612Z:f920b823-df58-47bf-8626-699c0e5980b5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 24 Mar 2021 18:59:47 GMT" ]
+        "Date": [ "Thu, 25 Mar 2021 20:46:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "266603" ],
@@ -41,15 +41,15 @@
       "isContentBase64": false
     }
   },
-  "Get-AzCloudServiceOSVersion+[NoContext]+Get OS version+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOsVersions/WA-GUEST-OS-4.20_201505-01?api-version=2021-03-01+1": {
+  "Get-AzCloudServiceOSVersion+[NoContext]+Get OS version+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOsVersions/WA-GUEST-OS-2.106_202101-01?api-version=2021-03-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOsVersions/WA-GUEST-OS-4.20_201505-01?api-version=2021-03-01",
+      "RequestUri": "https://brazilus.management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOsVersions/WA-GUEST-OS-2.106_202101-01?api-version=2021-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "65adb6b7-0cd1-4c9d-8215-a41dc7d0bdf6" ],
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "1ab7d0a9-d8e3-4ade-8ae5-2e783f90840f" ],
         "CommandName": [ "Get-AzCloudServiceOSVersion" ],
         "FullCommandName": [ "Get-AzCloudServiceOSVersion_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -66,20 +66,20 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-served-by": [ "5c0ea146-6027-4948-b7cf-c10a0ff2b9df_132606022997966010" ],
-        "x-ms-request-id": [ "f124fbe8-0810-47ee-9e36-9eaf27dacf87" ],
+        "x-ms-request-id": [ "8b050ce7-6bce-41f3-8092-b3594cb51c6f" ],
         "Server": [ "Microsoft-HTTPAPI/2.0", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-correlation-request-id": [ "c593576c-18c9-4baf-a464-5d7736538cec" ],
-        "x-ms-routing-request-id": [ "BRAZILUS:20210324T185948Z:c593576c-18c9-4baf-a464-5d7736538cec" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
+        "x-ms-correlation-request-id": [ "8c167b1d-647a-4349-90f6-04783e082b3a" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210325T204613Z:8c167b1d-647a-4349-90f6-04783e082b3a" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 24 Mar 2021 18:59:48 GMT" ]
+        "Date": [ "Thu, 25 Mar 2021 20:46:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "553" ],
+        "Content-Length": [ "556" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"name\": \"WA-GUEST-OS-4.20_201505-01\",\r\n  \"id\": \"/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOSVersions/WA-GUEST-OS-4.20_201505-01\",\r\n  \"type\": \"Microsoft.Compute/locations/cloudServiceOSVersions\",\r\n  \"location\": \"EastUS2EUAP\",\r\n  \"properties\": {\r\n    \"version\": \"WA-GUEST-OS-4.20_201505-01\",\r\n    \"label\": \"Windows Azure Guest OS 4.20 (Release 201505-01)\",\r\n    \"isDefault\": false,\r\n    \"isActive\": false,\r\n    \"family\": \"4\",\r\n    \"familyLabel\": \"Windows Server 2012 R2\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"name\": \"WA-GUEST-OS-2.106_202101-01\",\r\n  \"id\": \"/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/providers/Microsoft.Compute/locations/EastUS2EUAP/cloudServiceOSVersions/WA-GUEST-OS-2.106_202101-01\",\r\n  \"type\": \"Microsoft.Compute/locations/cloudServiceOSVersions\",\r\n  \"location\": \"EastUS2EUAP\",\r\n  \"properties\": {\r\n    \"version\": \"WA-GUEST-OS-2.106_202101-01\",\r\n    \"label\": \"Windows Azure Guest OS 2.106 (Release 202101-01)\",\r\n    \"isDefault\": false,\r\n    \"isActive\": true,\r\n    \"family\": \"2\",\r\n    \"familyLabel\": \"Windows Server 2008 R2\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   }
