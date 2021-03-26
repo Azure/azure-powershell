@@ -259,7 +259,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string EndIpAddress = "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress.";
 
-        public const string AzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access.";
+        public const string AllowAllAzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access. The Start IP is 0.0.0.0. The End IP is 0.0.0.0.";
+
+        public const string AllowAllIpRule = "Creates a special firewall rule that allows connections from all IP addresses. The Start IP is 0.0.0.0. The End IP is 255.255.255.255.";
 
         public const string RoleAssignmentId = "The ID of the role assignment.";
 
