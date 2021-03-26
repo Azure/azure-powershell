@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
+        /// </summary>
+        internal static string BackupRedundancyChosenIsGeoWarning {
+            get {
+                return ResourceManager.GetString("BackupRedundancyChosenIsGeoWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have not specified the value for backup storage redundancy which will default to geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
         /// </summary>
         internal static string BackupRedundancyNotChosenTakeGeoWarning {
@@ -574,15 +583,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions..
-        /// </summary>
-        internal static string GeoBackupRedundancyChosenWarning {
-            get {
-                return ResourceManager.GetString("GeoBackupRedundancyChosenWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
         internal static string InvalidADGroupNotSecurity {
@@ -651,6 +651,17 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidKeyId {
             get {
                 return ResourceManager.GetString("InvalidKeyId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
+        ////subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+        ////subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string InvalidLongTermRetentionBackupResourceIdFormat {
+            get {
+                return ResourceManager.GetString("InvalidLongTermRetentionBackupResourceIdFormat", resourceCulture);
             }
         }
         

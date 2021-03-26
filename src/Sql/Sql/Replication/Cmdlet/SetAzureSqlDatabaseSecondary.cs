@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 

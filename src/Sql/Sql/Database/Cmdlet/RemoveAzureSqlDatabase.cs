@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;

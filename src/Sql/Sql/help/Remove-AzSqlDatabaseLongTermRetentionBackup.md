@@ -15,19 +15,19 @@ Deletes a long term retention backup.
 ### RemoveBackupDefault (Default)
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force]
+ [-DatabaseName] <String> [-BackupName] <String> [-ResourceGroupName <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveBackupByInputObject
 ```
 Remove-AzSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseLongTermRetentionBackupModel>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveBackupByResourceId
 ```
-Remove-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force]
+Remove-AzSqlDatabaseLongTermRetentionBackup [-ResourceId] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -101,6 +101,21 @@ ServerCreateTime     : 2/28/2018 12:12:19 AM
 This command deletes all long term retention backups for the northeurope location.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupName
 The name of the backup.
@@ -284,6 +299,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzSqlDatabaseLongTermRetentionBackup](./Get-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Update-AzSqlDatabaseLongTermRetentionBackup](./Update-AzSqlDatabaseLongTermRetentionBackup.md)
+
+[Copy-AzSqlDatabaseLongTermRetentionBackup](./Copy-AzSqlDatabaseLongTermRetentionBackup.md)
 
 [Get-AzSqlDatabaseBackupLongTermRetentionPolicy](./Get-AzSqlDatabaseBackupLongTermRetentionPolicy.md)
 

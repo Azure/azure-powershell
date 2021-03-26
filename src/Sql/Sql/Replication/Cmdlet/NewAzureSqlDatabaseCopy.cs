@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
             base.ExecuteCmdlet();
@@ -225,7 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = BackupStorageRedundancy,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

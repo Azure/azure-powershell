@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.17.0'
+ModuleVersion = '3.0.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -121,6 +121,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlDatabaseBackupLongTermRetentionPolicy', 
                'Set-AzSqlDatabaseBackupLongTermRetentionPolicy', 
                'Get-AzSqlDatabaseLongTermRetentionBackup', 
+               'Update-AzSqlDatabaseLongTermRetentionBackup', 
+               'Copy-AzSqlDatabaseLongTermRetentionBackup', 
                'Remove-AzSqlDatabaseLongTermRetentionBackup', 
                'Get-AzSqlDeletedDatabaseBackup', 'Get-AzSqlDatabaseGeoBackup', 
                'Restore-AzSqlDatabase', 'Get-AzSqlDatabaseRestorePoint', 
@@ -333,7 +335,7 @@ PrivateData = @{
 * Added cmdlet ''Get-AzSqlServerTrustGroup'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

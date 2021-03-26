@@ -19,6 +19,14 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0-preview
+* Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
+    - Copy LTR backups to different servers
+* Added cmdlet `Update-AzSqlDatabaseLongTermRetentionBackup`
+    - Update Backup Storage Redundancy values for LTR backups
+* Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
+    - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
+
 ## Version 2.17.0
 * Added cmdlet `New-AzSqlServerTrustGroup`
 * Added cmdlet `Remove-AzSqlServerTrustGroup`
@@ -27,7 +35,6 @@
 ## Version 2.16.0
 * Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
 * Fixed regression in 'Set-AzSqlServerAudit' when PredicateExpression argument is provided
-
 
 ## Version 2.15.0
 * Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag
