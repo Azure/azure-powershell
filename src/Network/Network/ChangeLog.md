@@ -19,7 +19,10 @@
 --->
 
 ## Upcoming Release
-
+* Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+	
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `Get-AzRouteServerPeerAdvertisedRoute`
@@ -44,10 +47,6 @@
 	- `Get-AzVpnClientConfiguration`
 	- `New-AzVirtualNetworkGateway`
 	- `Set-AzVirtualNetworkGateway`
-* Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
-    - `New-AzFirewallPolicy`
-    - `Set-AzFirewallPolicy`
-
 
 ## Version 4.6.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
