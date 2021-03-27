@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.0
 * Fixed an issue that list account from resource group won't use nextlink
     - `Get-AzStorageAccount`
 * Supported ChangeFeedRetentionInDays when Enable ChangeFeed on Blob service
