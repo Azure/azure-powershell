@@ -86,19 +86,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
             HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
             HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
         [Parameter(
             Mandatory = true,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
@@ -106,19 +103,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = true,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         [Parameter(
             Mandatory = true,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         [Parameter(
             Mandatory = true,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
@@ -126,7 +120,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
@@ -134,7 +127,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
@@ -142,7 +134,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "KeyEncryption Algorithm used to encrypt the volume encryption key")]
         [ValidateSet("RSA-OAEP", "RSA1_5")]
@@ -150,7 +141,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS, Data, or All) to encrypt")]
         [ValidateSet(
@@ -161,7 +151,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM")]
         [ValidateNotNullOrEmpty]
@@ -170,7 +159,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
-            Position = 11,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type handler version.")]
         [ValidateNotNullOrEmpty]
@@ -179,7 +167,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Alias("ExtensionName")]
         [Parameter(
             Mandatory = false,
-            Position = 12,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
         [ValidateNotNullOrEmpty]
@@ -187,7 +174,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 13,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The passphrase specified in parameters. This parameter only works for Linux VM.")]
         [ValidateNotNullOrEmpty]
@@ -199,14 +185,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 14,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Disable auto-upgrade of minor version")]
         public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 15,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Skip backup creation for Linux VMs")]
         public SwitchParameter SkipVmBackup { get; set; }
