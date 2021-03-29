@@ -171,18 +171,15 @@ function Test-NewDirectConnectionHighBandwidth {
     $md5 = $md5.ToString()
     Write-Debug "Created Hash $md5"
     $sessionv4 = newIpV4Address $true $true 0 0
-    $sessionv6 = newIpV6Address $true $true 0 0
-    Write-Debug "Created IPs $sessionv4 $sessionv6"
+    Write-Debug "Created IPs $sessionv4"
     $maxv4 = maxAdvertisedIpv4
-    $maxv6 = maxAdvertisedIpv6
-    Write-Debug "Created maxAdvertised $maxv4 $maxv6"
+    Write-Debug "Created maxAdvertised $maxv4"
     #create Connection
-    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -SessionPrefixV6 $sessionv6 -MaxPrefixesAdvertisedIPv6 $maxv6 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 
+    $createdConnection = New-AzPeeringDirectConnectionObject -PeeringDbFacilityId $facilityId -SessionPrefixV4 $sessionv4 -MaxPrefixesAdvertisedIPv4 $maxv4 -BandwidthInMbps $bandwidth -MD5AuthenticationKey $md5 
     Assert-AreEqual $md5 $createdConnection.BgpSession.Md5AuthenticationKey
     Assert-AreEqual $bandwidth $createdConnection.BandwidthInMbps 
     Assert-AreEqual $facilityId $createdConnection.PeeringDBFacilityId 
     Assert-AreEqual $sessionv4 $createdConnection.BgpSession.SessionPrefixV4
-    Assert-Null $createdConnection.BgpSession.SessionPrefixV6
     Assert-AreEqual $false $createdConnection.UseForPeeringService
     Assert-AreEqual "Peer" $createdConnection.SessionAddressProvider
     removePeerAsn $asn
