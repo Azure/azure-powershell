@@ -14,23 +14,23 @@ Copy a blob synchronously.
 
 ### ContainerName (Default)
 ```
-Copy-AzStorageBlob [-DestBlobType <String>] [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String>
- [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
- [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
+Copy-AzStorageBlob [-SrcBlob] <String> -SrcContainer <String> -DestContainer <String> [-DestBlob <String>]
+ [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstance
 ```
-Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] [-DestBlobType <String>] -DestContainer <String>
- [-DestBlob <String>] [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>]
- [-EncryptionScope <String>] [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
+Copy-AzStorageBlob [-BlobBaseClient <BlobBaseClient>] -DestContainer <String> [-DestBlob <String>]
+ [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
+ [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriPipeline
 ```
-Copy-AzStorageBlob [-DestBlobType <String>] -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
+Copy-AzStorageBlob -AbsoluteUri <String> -DestContainer <String> -DestBlob <String>
  [-StandardBlobTier <String>] [-RehydratePriority <RehydratePriority>] [-EncryptionScope <String>]
  [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -43,7 +43,7 @@ The **Copy-AzStorageBlob** cmdlet copies a blob synchronously, currently only su
 
 ### Example 1: Copy a named blob to another
 ```
-C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" 
+C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source container to the destination container with a new blob name. 
@@ -51,7 +51,7 @@ This command copies a blob from source container to the destination container wi
 ### Example 2: Copy blob from a blob object
 ```
 C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
-C:\PS> $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"  
+C:\PS> $destBlob =  $srcBlob | Copy-AzStorageBlob  -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 This command copies a blob from source blob object to the destination container with a new blob name.
@@ -59,7 +59,7 @@ This command copies a blob from source blob object to the destination container 
 ### Example 3: Copy blob from a blob Uri
 ```
 C:\PS> $srcBlobUri = New-AzStorageBlobSASToken -Container $srcContainerName -Blob $srcBlobName -Permission rt -ExpiryTime (Get-Date).AddDays(7) -FullUri 
-C:\PS> $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"  
+C:\PS> $destBlob = Copy-AzStorageBlob -AbsoluteUri $srcBlobUri -DestContainer "destcontainername" -DestBlob "destblobname"
 ```
 
 The first command creates a blob Uri of the source blob, with sas token of permission "rt". The second command copies from source blob Uri to the destination blob.
@@ -181,22 +181,6 @@ Parameter Sets: UriPipeline
 Aliases: DestinationBlob
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestBlobType
-Destiantion Blob Type('Block', 'Page', 'Append'), by default will be same as source.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Block, Page, Append
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -73,6 +73,15 @@ function Test-SnapshotPolicyCrud
         Assert-AreEqual $weeklySchedule["Day"] $getRetrievedSnapshotPolicy.WeeklySchedule.Day
         Assert-AreEqual $monthlySchedule["DaysOfMonth"] $getRetrievedSnapshotPolicy.MonthlySchedule.DaysOfMonth
 
+        #update with set
+        $hourlySchedule2 = @{
+            Minute = 2
+            SnapshotsToKeep = 3
+        }
+        #Check update with set
+        $setRetrievedSnapshotPolicy = Set-AzNetAppFilesSnapshotPolicy -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -Name $snapshotPolicyName1 -Enabled -HourlySchedule $hourlySchedule -DailySchedule $dailySchedule -WeeklySchedule $weeklySchedule -MonthlySchedule $monthlySchedule
+        Assert-AreEqual $hourlySchedule["Minute"] $setRetrievedSnapshotPolicy.HourlySchedule.Minute
+
         $hourlySchedule2 = @{
             Minute = 1
             SnapshotsToKeep = 3

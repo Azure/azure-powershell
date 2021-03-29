@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="PrivateEndpointServiceConnectionStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new PrivateEndpointServiceConnectionStatus(System.Convert.ToString(value));
+            return new PrivateEndpointServiceConnectionStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type PrivateEndpointServiceConnectionStatus</summary>

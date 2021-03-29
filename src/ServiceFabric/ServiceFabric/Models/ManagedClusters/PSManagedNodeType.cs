@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
     public class PSManagedNodeType : NodeType
     {
         public PSManagedNodeType(NodeType nodeType)
-            : base(isPrimary: nodeType.IsPrimary,
-                   vmInstanceCount: nodeType.VmInstanceCount,
-                   dataDiskSizeGB: nodeType.DataDiskSizeGB,
-                   id: nodeType.Id,
+            : base(id: nodeType.Id,
                    name: nodeType.Name,
                    type: nodeType.Type,
                    tags: nodeType.Tags,
+                   isPrimary: nodeType.IsPrimary,
+                   vmInstanceCount: nodeType.VmInstanceCount,
+                   dataDiskSizeGB: nodeType.DataDiskSizeGB,
                    provisioningState: nodeType.ProvisioningState,
                    placementProperties: nodeType.PlacementProperties,
                    capacities: nodeType.Capacities,
@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    vmImageSku: nodeType.VmImageSku,
                    vmImageVersion: nodeType.VmImageVersion,
                    vmSecrets: nodeType.VmSecrets,
-                   vmExtensions: nodeType.VmExtensions)
+                   vmExtensions: nodeType.VmExtensions,
+                   vmManagedIdentity: nodeType.VmManagedIdentity)
         {
         }
     }

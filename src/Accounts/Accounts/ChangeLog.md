@@ -16,10 +16,16 @@
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
--->
+
 ## Upcoming Release
-* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when explict ADFS credential is used [#13560]
 * Fallback to first valid context if current default context key is "Default" which is invalid
+
+## Version 2.2.7
+* Fixed incorrect warning message on Windows PowerShell [#14556]
+* Set Azure Environment variable `AzureKeyVaultServiceEndpointResourceId` according to the value of `AzureKeyVaultDnsSuffix` when discovering environment 
+
+## Version 2.2.6
+* Upgrade Azure.Identity to fix the issue that Connect-AzAccount fails when ADFS credential is used [#13560]
 
 ## Version 2.2.5
 * Tracked CloudError code in exception

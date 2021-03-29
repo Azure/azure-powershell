@@ -31,6 +31,7 @@ Cloud Service                         | `Az.CloudService`                       
 Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
 Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
 Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery]
+Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery]
 Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
 Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
 Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
@@ -45,6 +46,7 @@ Data Factory                          | `Az.DataFactory`                        
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
 Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
+Data Protection                       | `Az.DataProtection`                     | [![DataProtection]][DataProtectionGallery]
 Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
 Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery]
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
@@ -153,6 +155,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CognitiveServices]:          https://img.shields.io/powershellgallery/v/Az.CognitiveServices.svg?style=flat-square&label=Az.CognitiveServices
 [Compute]:                    https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute
 [Communication]:              https://img.shields.io/powershellgallery/v/Az.Communication.svg?style=flat-square&label=Az.Communication
+[Confluent]:                  https://img.shields.io/powershellgallery/v/Az.Confluent.svg?style=flat-square&label=Az.Confluent
 [ConnectedKubernetes]:        https://img.shields.io/powershellgallery/v/Az.ConnectedKubernetes.svg?style=flat-square&label=Az.ConnectedKubernetes
 [ConnectedMachine]:           https://img.shields.io/powershellgallery/v/Az.ConnectedMachine.svg?style=flat-square&label=Az.ConnectedMachine
 [ContainerInstance]:          https://img.shields.io/powershellgallery/v/Az.ContainerInstance.svg?style=flat-square&label=Az.ContainerInstance
@@ -167,6 +170,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalytics]:          https://img.shields.io/powershellgallery/v/Az.DataLakeAnalytics.svg?style=flat-square&label=Az.DataLakeAnalytics
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
 [DataMigration]:              https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration
+[DataProtection]:             https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
 [DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
@@ -273,6 +277,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [CognitiveServicesGallery]:          https://www.powershellgallery.com/packages/Az.CognitiveServices/
 [ComputeGallery]:                    https://www.powershellgallery.com/packages/Az.Compute/
 [CommunicationGallery]:              https://www.powershellgallery.com/packages/Az.Communication/
+[ConfluentGallery]:                  https://www.powershellgallery.com/packages/Az.Confluent/
 [ConnectedKubernetesGallery]:        https://www.powershellgallery.com/packages/Az.ConnectedKubernetes/
 [ConnectedMachineGallery]:           https://www.powershellgallery.com/packages/Az.ConnectedMachine/
 [ContainerInstanceGallery]:          https://www.powershellgallery.com/packages/Az.ContainerInstance/
@@ -287,6 +292,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalyticsGallery]:          https://www.powershellgallery.com/packages/Az.DataLakeAnalytics/
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/
 [DataMigrationGallery]:              https://www.powershellgallery.com/packages/Az.DataMigration/
+[DataProtectionGallery]:             https://www.powershellgallery.com/packages/Az.DataProtection/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
 [DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/

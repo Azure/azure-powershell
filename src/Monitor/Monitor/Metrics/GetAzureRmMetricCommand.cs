@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 timegrain = null;
             }
             string metricNames = (this.MetricName != null && this.MetricName.Count() > 0) ? string.Join(",", this.MetricName) : null;
-            string aggregation = (this.AggregationType != null && this.AggregationType.HasValue) ? this.AggregationType.Value.ToString() : null;
+            string aggregation = this.AggregationType.HasValue ? this.AggregationType.Value.ToString() : null;
             int? top = (this.Top == default(int?)) ? null : this.Top;
             string orderBy = (this.OrderBy == default(string)) ? null : this.OrderBy;
             ResultType? resultType = (this.ResultType == default(ResultType?)) ? null : this.ResultType;

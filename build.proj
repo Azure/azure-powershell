@@ -140,12 +140,6 @@
             TaskParameter="Value"
             PropertyName="SubTasks" />
     </CreateProperty>
-    <CreateProperty
-        Value="@(TestCsprojList->Split(`;`)->Count())">
-        <Output
-            TaskParameter="Value"
-            PropertyName="TestCsprojListCount" />
-    </CreateProperty>
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
@@ -314,10 +308,9 @@
   <Target Name="Test" DependsOnTargets="FilterBuild">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="$(TestCsprojListCount) != 0" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="'$(TestCsprojList)' != ''" />
     <Message Importance="high" Text="Finish running tests..." />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>

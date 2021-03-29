@@ -19,12 +19,23 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.4.0
+* Redirected bicep message to verbose stream
+* Removed the logic of copying Bicep template file to temp folder.
+* Add support of policy exemption resource type
+* Fixed what-if functionality when using `-QueryString` parameter.
+* Normalized `-QueryString` starting with "?" for scenarios involving dynamic parameters.
+
+## Version 3.3.0
 * Added support for Azure resources deployment in Bicep language
-* Fixed issues with TemplateSpec deployments in New-AzTenantDeployment and New-AzManagementGroupDeployment
-* Added support for -QueryString parameter in Test-Az*Deployments cmdlets
-* Fixed issue with dynamic parameters when New-Az*Deployments is used with -QueryString
-* Added support for `-TemplateParameterObject` parameter while using `-TemplateSpecId` parameter in New-Az*Deployments cmdlets.
-* Fixed the inaccurate error message received on trying to deploy a non existant template spec.
+* Fixed issues with TemplateSpec deployments in `New-AzTenantDeployment` and `New-AzManagementGroupDeployment`
+* Added support for `-QueryString` parameter in `Test-Az*Deployments` cmdlets
+* Fixed issue with dynamic parameters when `New-Az*Deployments` is used with `-QueryString`
+* Added support for `-TemplateParameterObject` parameter while using `-TemplateSpecId` parameter in `New-Az*Deployments` cmdlets
+* Fixed the inaccurate error message received on trying to deploy a non-existent template spec
+* Added support for policy export format to ```New-AzPolicyDefinition -Policy```
+* Add support for property updates from ```Set-AzPolicyAssignment -InputObject```
 
 ## Version 3.2.1
 * Removed principal type on New-AzRoleAssignment and Set-AzRoleAssignment because current mapping was breaking certain scenarios

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Update our Azure PowerShell command to use our latest released .NET package with the version of 3.1.0.
+
 ## Version 0.8.0
 * Allow pricing information to be updated using Set-AzIoTCentralApp command.
 

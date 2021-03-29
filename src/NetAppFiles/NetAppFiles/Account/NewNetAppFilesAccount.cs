@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -79,6 +80,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 {
                     tagPairs.Add(key, Tag[key].ToString());
                 }
+            }
+            NetAppAccount existingAccount = null;
+
+            try
+            {
+                existingAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, Name);
+            }
+            catch
+            {
+                existingAccount = null;
+            }
+            if (existingAccount != null)
+            {
+                throw new Exception(string.Format("A NetAppAccount with name '{0}' in resource group '{1}' already exists. Only one active directory allowed. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.", this.Name, this.ResourceGroupName));
             }
 
             var netAppAccountBody = new NetAppAccount()

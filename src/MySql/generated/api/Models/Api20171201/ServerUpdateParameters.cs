@@ -10,7 +10,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Origin(Microsoft.Azure.PowerShell.Cmdlets.MySql.PropertyOrigin.Inlined)]
-        public string AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersPropertiesInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersPropertiesInternal)Property).AdministratorLoginPassword = value ?? null; }
+        public System.Security.SecureString AdministratorLoginPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersPropertiesInternal)Property).AdministratorLoginPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersPropertiesInternal)Property).AdministratorLoginPassword = value ?? null; }
 
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IResourceIdentity _identity;
@@ -150,8 +150,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string AdministratorLoginPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>The Azure Active Directory principal id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(
         Required = false,
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
 
     {
         /// <summary>The password of the administrator login.</summary>
-        string AdministratorLoginPassword { get; set; }
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>The Azure Active Directory identity of the server.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IResourceIdentity Identity { get; set; }
         /// <summary>The Azure Active Directory principal id.</summary>

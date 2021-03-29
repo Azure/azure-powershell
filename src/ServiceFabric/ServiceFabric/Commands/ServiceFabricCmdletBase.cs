@@ -28,7 +28,6 @@ using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
@@ -94,10 +93,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         #endregion
 
         #region RM Client
+        private Lazy<ServiceFabricManagementClient> sfrpClient;
         private Lazy<IComputeManagementClient> computeClient;
         private Lazy<IKeyVaultManagementClient> keyVaultManageClient;
         private Lazy<GraphRbacManagementClient> graphClient;
         private Lazy<IKeyVaultClient> keyVaultClient;
+
+        internal ServiceFabricManagementClient SFRPClient
+        {
+            get { return sfrpClient.Value; }
+            set { sfrpClient = new Lazy<ServiceFabricManagementClient>(() => value); }
+        }
 
         internal IComputeManagementClient ComputeClient
         {
@@ -130,20 +136,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private void InitializeAzureRmClients()
         {
-            computeClient = new Lazy<IComputeManagementClient>(() =>
+            this.sfrpClient = new Lazy<ServiceFabricManagementClient>(() =>
+            {
+                var armClient = AzureSession.Instance.ClientFactory.
+                CreateArmClient<ServiceFabricManagementClient>(
+                DefaultContext,
+                AzureEnvironment.Endpoint.ResourceManager);
+                return armClient;
+            });
+
+            this.computeClient = new Lazy<IComputeManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<ComputeManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
-            keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() =>
+            this.keyVaultManageClient = new Lazy<IKeyVaultManagementClient>(() =>
             AzureSession.Instance.ClientFactory.CreateArmClient<KeyVaultManagementClient>(
                 DefaultContext,
                 AzureEnvironment.Endpoint.ResourceManager));
 
-            keyVaultClient = new Lazy<IKeyVaultClient>(() =>
+            this.keyVaultClient = new Lazy<IKeyVaultClient>(() =>
             new KeyVaultClient(AuthenticationCallback));
 
-            graphClient = new Lazy<GraphRbacManagementClient>(() =>
+            this.graphClient = new Lazy<GraphRbacManagementClient>(() =>
              AzureSession.Instance.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
                 DefaultContext, AzureEnvironment.Endpoint.Graph));
         }
@@ -221,6 +236,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public string GetNodeTypeRefFromExtension(VirtualMachineScaleSetExtension sfExtension)
         {
             return GetSettingFromExtension(sfExtension, "nodeTypeRef");
+        }
+
+        public string GetDurabilityLevelFromExtension(VirtualMachineScaleSetExtension sfExtension)
+        {
+            return GetSettingFromExtension(sfExtension, "durabilityLevel");
         }
 
         internal string GetSettingFromExtension(VirtualMachineScaleSetExtension sfExtension, string settingName)
@@ -603,8 +623,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private bool IsSFExtension(VirtualMachineScaleSetExtension vmssExt)
         {
-            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase) ||
-                   vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase);
+            return vmssExt.Type.Equals(Constants.ServiceFabricWindowsNodeExtName, StringComparison.OrdinalIgnoreCase)
+                   || vmssExt.Type.Equals(Constants.ServiceFabricLinuxNodeExtName, StringComparison.OrdinalIgnoreCase)
+                   || (vmssExt.Type.Contains(Constants.ServiceFabricExtNamePrefix) && vmssExt.Type.Contains(Constants.ServiceFabricExtNameSuffix));
         }
         #endregion
 

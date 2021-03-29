@@ -229,6 +229,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HdInsightManagementClient.Clusters.UpdateAutoScaleConfiguration(resourceGroupName, clusterName, autoscaleConfigurationUpdateParameter);
         }
 
+        public virtual BillingResponseListResult ListBillingSpecs(string location)
+        {
+            return HdInsightManagementClient.Locations.ListBillingSpecs(location);
+        }
+
         private void ResetClusterIdentity(ClusterCreateParametersExtended createParams, string aadAuthority, string dataLakeAudience)
         {
             var configuation = (Dictionary<string, Dictionary<string, string>>)createParams.Properties.ClusterDefinition.Configurations;

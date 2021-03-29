@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             ServiceFabricCmdletBase.RunningTest = true;
             ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
             //change the thumbprint in the common.ps1 file as well
-            ServiceFabricCmdletBase.TestThumbprint = "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC";
+            ServiceFabricCmdletBase.TestThumbprint = "D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D";
             ServiceFabricCmdletBase.TestCommonNameCACert = "azurermsfcntest.southcentralus.cloudapp.azure.com";
             ServiceFabricCmdletBase.TestCommonNameAppCert = "AzureRMSFTestCertApp";
-            ServiceFabricCmdletBase.TestThumbprintAppCert = "3B892D25432FDA538F54B1EADD0B28BA82C488CC";
+            ServiceFabricCmdletBase.TestThumbprintAppCert = "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3";
             ServiceFabricCmdletBase.TestAppCert = false;
         }
 
@@ -169,6 +169,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateAzureRmServiceFabricVmImage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-UpdateAzureRmServiceFabricVmImage");
+        }
+
+        [Fact, TestPriority(0)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DefaultTemplateFilesAvailable()
         {
             var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
@@ -179,9 +186,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
 
-            string linuxTemplateDirectory = Path.Combine(assemblyFolder, Constants.LinuxTemplateRelativePath);
-            templateFilePath = Path.Combine(linuxTemplateDirectory, Constants.TemplateFileName);
-            parameterFilePath = Path.Combine(linuxTemplateDirectory, Constants.ParameterFileName);
+            string ubuntu16TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer16TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu16TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu16TemplateDirectory, Constants.ParameterFileName);
+            Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
+            Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
+
+            string ubuntu18TemplateDirectory = Path.Combine(assemblyFolder, Constants.UbuntuServer18TemplateRelativePath);
+            templateFilePath = Path.Combine(ubuntu18TemplateDirectory, Constants.TemplateFileName);
+            parameterFilePath = Path.Combine(ubuntu18TemplateDirectory, Constants.ParameterFileName);
             Assert.True(File.Exists(templateFilePath), string.Format("file not found: {0}", templateFilePath));
             Assert.True(File.Exists(parameterFilePath), string.Format("file not found: {0}", parameterFilePath));
         }
