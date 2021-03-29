@@ -235,7 +235,6 @@ namespace StaticAnalysis.HelpAnalyzer
             Console.WriteLine(directory);
             Directory.SetCurrentDirectory(directory);
 
-            var filePath = Directory.GetFiles(parentDirectory, $"{moduleName}.json", SearchOption.AllDirectories).FirstOrDefault();
             processedHelpFiles.Add(moduleName);
 
             helpLogger.Decorator.AddDecorator(h =>
@@ -243,7 +242,7 @@ namespace StaticAnalysis.HelpAnalyzer
                 h.HelpFile = moduleName;
                 h.Assembly = moduleName;
             }, "Cmdlet");
-            var module = ModuleMetadata.DeserializeCmdlets(filePath);
+            var module = MetadataLoader.GetModuleMetadata(moduleName);
             var cmdlets = module.Cmdlets;
             allCmdlets.AddRange(cmdlets);
             helpLogger.Decorator.Remove("Cmdlet");

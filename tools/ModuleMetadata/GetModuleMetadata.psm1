@@ -115,13 +115,14 @@ function Get-OutputTypeMetadata
         [ModuleMetadata]
         $ModuleMetadata
     )
-    $OutputMetadataList = New-Object System.Collections.Generic.List[OutputMetadata]
+    $OutputMetadataList = [System.Collections.Generic.List[OutputMetadata]]::New()
     
     foreach ($Output in $Cmdlet.OutputType)
     {
         $OutputMetadata = [OutputMetadata]::new()
         $OutputMetadata.Type = [TypeMetadata]::New($Output.Type, $ModuleMetadata)
-        $OutputMetadata.ParameterSets = $Output.ParameterSetName
+        # $OutputMetadata.ParameterSets = $Output.ParameterSetName
+        $OutputMetadata.ParameterSets = @('__AllParameterSets')
         $OutputMetadataList.Add($OutputMetadata)
     }
 
@@ -164,7 +165,10 @@ function Get-ParameterMetadata
         {
             if ($Attribute.TypeId.FullName -eq 'System.Management.Automation.ValidateSetAttribute')
             {
-                $ParameterMetadata.ValidateSet.AddRange($Attribute.ValidValues)
+                if (-not $Parameter.IsDynamic)
+                {
+                    $ParameterMetadata.ValidateSet.AddRange($Attribute.ValidValues)
+                }
             }
             elseif ($Attribute.TypeId.FullName -eq 'System.Management.Automation.ValidateRangeAttribute')
             {
@@ -248,7 +252,7 @@ function Get-AliasList
         [System.Management.Automation.AliasInfo[]]
         $AliasList
     )
-    $AliasNameList = New-Object System.Collections.Generic.List[string]
+    $AliasNameList = [System.Collections.Generic.List[string]]::New()
     foreach ($Alias in $AliasList)
     {
         $ReferencedCommand = $Alias.ReferencedCommand
@@ -272,9 +276,7 @@ function Get-ModuleMetadata
         $ModuleName
     )
 
-    $AccountPath = [System.IO.Path]::Combine($Psd1Path, "..", "..", "Az.Accounts", "Az.Accounts.psd1")
-    Write-Host $AccountPath
-    Import-Module $AccountPath -Force
+    Write-Host $Psd1Path
     Import-Module $Psd1Path -Force
     $ModuleInfo = Get-Module $ModuleName
     $ModuleMetadata = [ModuleMetadata]::New()

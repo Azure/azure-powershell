@@ -138,20 +138,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     Console.WriteLine(directory);
                     Directory.SetCurrentDirectory(directory);
 
-                    var filePath = Directory.GetFiles(parentDirectory, $"{moduleName}.json", SearchOption.AllDirectories).FirstOrDefault();
-                    Console.WriteLine("==========================");
-                    Console.WriteLine(filePath);
-                    Console.WriteLine("==========================");
                     issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
                     processedHelpFiles.Add(moduleName);
 
-                    var newModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
-
+                    var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
                     var fileName = $"{moduleName}.json";
-                    var executingPath =
-                        Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                    var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
-                    filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
+                    var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
 
                     if (!File.Exists(filePath))
                     {

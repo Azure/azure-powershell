@@ -114,11 +114,10 @@ namespace StaticAnalysis.SignatureVerifier
 
                     Directory.SetCurrentDirectory(directory);
 
-                    var filePath = Directory.GetFiles(parentDirectory, $"{moduleName}.json", SearchOption.AllDirectories).FirstOrDefault();
                     issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
                     processedHelpFiles.Add(moduleName);
 
-                    var module = ModuleMetadata.DeserializeCmdlets(filePath);
+                    var module = MetadataLoader.GetModuleMetadata(moduleName);
                     var cmdlets = module.Cmdlets;
 
                     if (cmdletFilter != null)

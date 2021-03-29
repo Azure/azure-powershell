@@ -14,10 +14,14 @@ oldJsonObj = getJsonObj(oldJsonPath)
 
 def compareMetadata(newMetadata, oldMetadata, ignoreKeyList=[]):
     result = {}
+    ignoreKeyList.append('HasForceSwitch')
+    ignoreKeyList.append('ConfirmImpact')
     for key in newMetadata:
         if key in ignoreKeyList:
             continue
         if newMetadata[key] != oldMetadata.get(key, None):
+            if oldMetadata.get(key, None) == 'System.Reflection.RuntimeParameterInfo':
+                continue
             result[key] = {
                 'new': newMetadata[key],
                 'old': oldMetadata.get(key, None)
@@ -27,6 +31,8 @@ def compareMetadata(newMetadata, oldMetadata, ignoreKeyList=[]):
         if key in ignoreKeyList or key in result:
             continue
         if oldMetadata[key] != newMetadata.get(key, None):
+            if oldMetadata[key] == 'System.Reflection.RuntimeParameterInfo':
+                continue
             result[key] = {
                 'old': oldMetadata[key],
                 'new': newMetadata.get(key, None)
