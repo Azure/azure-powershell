@@ -57,9 +57,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string lastDeploymentName = "oldfooDeployment";
 
+        private string queryString = "foo";
+
         private Dictionary<string, string> deploymentTags = Enumerable.Range(0, 2).ToDictionary(i => $"tagname{i}", i => $"tagvalue{i}");
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+
+        private string templateUri = "http://mytemplate.com";
 
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
@@ -355,6 +359,72 @@ namespace Microsoft.Azure.Commands.Resources.Test
             dynamicParams.Should().NotBeNull();
             dynamicParams.Count().Should().Be(template.Parameters.Count);
             dynamicParams.Keys.Should().Contain(template.Parameters.Keys);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreatesNewDeploymentUsingQueryStringParam()
+        {
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
+            {
+                TemplateFile = templateUri,
+                DeploymentName = deploymentName,
+                QueryString = queryString,
+                Tags = new Dictionary<string, string>(this.deploymentTags)
+            };
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
+            PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
+            {
+                Mode = DeploymentMode.Incremental,
+                DeploymentName = deploymentName,
+                CorrelationId = "123",
+                Outputs = new Dictionary<string, DeploymentVariable>()
+                {
+                    { "Variable1", new DeploymentVariable() { Value = "true", Type = "bool" } },
+                    { "Variable2", new DeploymentVariable() { Value = "10", Type = "int" } },
+                    { "Variable3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
+                },
+                Parameters = new Dictionary<string, DeploymentVariable>()
+                {
+                    { "Parameter1", new DeploymentVariable() { Value = "true", Type = "bool" } },
+                    { "Parameter2", new DeploymentVariable() { Value = "10", Type = "int" } },
+                    { "Parameter3", new DeploymentVariable() { Value = "hello world", Type = "string" } }
+                },
+                ProvisioningState = ProvisioningState.Succeeded.ToString(),
+                ResourceGroupName = resourceGroupName,
+                TemplateLink = new TemplateLink()
+                {
+                    ContentVersion = "1.0",
+                    Uri = "http://mytemplate.com",
+                    QueryString = "foo"
+                },
+                Timestamp = new DateTime(2014, 2, 13)
+            };
+            resourcesClientMock.Setup(f => f.ExecuteResourceGroupDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>()))
+                .Returns(expected)
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
+
+            cmdlet.ResourceGroupName = resourceGroupName;
+            cmdlet.Name = expectedParameters.DeploymentName;
+            cmdlet.TemplateUri = expectedParameters.TemplateFile;
+            cmdlet.QueryString = expectedParameters.QueryString;
+            cmdlet.Tag = new Hashtable(this.deploymentTags);
+
+            cmdlet.ExecuteCmdlet();
+
+            actualParameters.DeploymentName.Should().Equals(expectedParameters.DeploymentName);
+            actualParameters.TemplateFile.Should().Equals(expectedParameters.TemplateFile);
+            actualParameters.QueryString.Should().Equals(expectedParameters.QueryString);
+            actualParameters.TemplateParameterObject.Should().NotBeNull();
+            actualParameters.OnErrorDeployment.Should().BeNull();
+            actualParameters.Tags.Should().NotBeNull();
+
+            var differenceTags = actualParameters.Tags
+                .Where(entry => expectedParameters.Tags[entry.Key] != entry.Value);
+            differenceTags.Should().BeEmpty();
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
     }
 }
