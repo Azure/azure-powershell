@@ -448,7 +448,7 @@ function Test-AddAzureRmMetricAlertRuleV2-autoMitigate
 {
 	# Setup
 	$sub = Get-AzContext
-    $subscription = $sub.subscription.subscriptionId
+	$subscription = $sub.subscription.subscriptionId
 	$rgname = Get-ResourceGroupName
 	$location =Get-ProviderLocation ResourceManagement
 	$resourceName = Get-ResourceName
@@ -457,19 +457,19 @@ function Test-AddAzureRmMetricAlertRuleV2-autoMitigate
 	New-AzResourceGroup -Name $rgname -Location $location -Force
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacity" -Operator GreaterThan -Threshold 8 -TimeAggregation Average
-    try
-    {
-        # Test
-        $actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -Severity 3 -AutoMitigate $false
+	try
+	{
+		# Test
+		$actual = Add-AzMetricAlertRuleV2 -Name $ruleName -ResourceGroupName $rgname -WindowSize 01:00:00 -Frequency 00:01:00 -TargetResourceId $targetResourceId -Condition $condition -Severity 3 -AutoMitigate $false
 		Assert-AreEqual $actual.Name $ruleName
-    }
-    finally
-    {
-        # Cleanup
-        Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzMetricAlertRuleV2 -ResourceGroupName $rgname -Name $ruleName
 		Remove-AzureRmStorageAccount -ResourceGroupName $rgName -Name $resourceName
 		Remove-AzResourceGroup -Name $rgname -Force
-    }
+	}
 }
 
 
