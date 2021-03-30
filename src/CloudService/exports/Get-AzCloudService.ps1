@@ -58,7 +58,7 @@ UpgradeMode       : Auto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -67,6 +67,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -76,7 +79,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 #>
 function Get-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
