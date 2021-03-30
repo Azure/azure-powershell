@@ -118,6 +118,7 @@ namespace StaticAnalysis.SignatureVerifier
                     processedHelpFiles.Add(moduleName);
 
                     var module = MetadataLoader.GetModuleMetadata(moduleName);
+                    CmdletLoader.ModuleMetadata = module;
                     var cmdlets = module.Cmdlets;
 
                     if (cmdletFilter != null)
@@ -279,19 +280,6 @@ namespace StaticAnalysis.SignatureVerifier
                                 remediation: "Define a default parameter set in the cmdlet attribute.");
                         }
 
-                        //if (cmdlet.DefaultParameterSet.Parameters.Count == 0)
-                        //{
-                        //    issueLogger.LogSignatureIssue(
-                        //        cmdlet: cmdlet,
-                        //        severity: 1,
-                        //        problemId: SignatureProblemId.EmptyDefaultParameterSet,
-                        //        description:
-                        //        string.Format(
-                        //            "Default parameter set '{0}' of cmdlet '{1}' is empty.",
-                        //            cmdlet.DefaultParameterSetName, cmdlet.Name),
-                        //        remediation: "Set a non empty parameter set as the default parameter set.");
-                        //}
-
                         ValidateParameterSetWithMandatoryEqual(cmdlet, issueLogger);
                         ValidateParameterSetWithLenientMandatoryEqual(cmdlet, issueLogger);
                     }
@@ -418,6 +406,10 @@ namespace StaticAnalysis.SignatureVerifier
         /// <returns>True if can be covered, false otherwise.</returns>
         public bool IsParameterSetIntersectionCoveredByDefault(ParameterSetMetadata parameterSet1, ParameterSetMetadata parameterSet2, ParameterSetMetadata defaultParameterSet)
         {
+            if (defaultParameterSet == null)
+            {
+                return false;
+            }
             foreach (var parameter1 in parameterSet1.Parameters)
             {
                 foreach (var parameter2 in parameterSet2.Parameters)

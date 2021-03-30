@@ -117,13 +117,43 @@ function Get-OutputTypeMetadata
     )
     $OutputMetadataList = [System.Collections.Generic.List[OutputMetadata]]::New()
     
-    $OutputList = $Cmdlet.ImplementingType.GetTypeInfo().GetCustomAttributes([System.Management.Automation.OutputTypeAttribute], $true)
-    foreach ($Output in $OutputList)
+    if ('Function' -eq $Cmdlet.CommandType)
     {
-        $OutputMetadata = [OutputMetadata]::new()
-        $OutputMetadata.Type = [TypeMetadata]::New($Output.Type.Type, $ModuleMetadata)
-        $OutputMetadata.ParameterSets = $Output.ParameterSetName
-        $OutputMetadataList.Add($OutputMetadata)
+        foreach ($OutputType in $Cmdlet.OutputType)
+        {
+            $OutputMetadata = [OutputMetadata]::new()
+            $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
+            if ($Null -eq $OutputType.ParameterSetName)
+            {
+                $OutputMetadata.ParameterSets = @('__AllParameterSets')
+            }
+            else
+            {
+                $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+            }
+            $OutputMetadataList.Add($OutputMetadata)
+        }
+    }
+    else
+    {
+        $OutputAttributeList = $Cmdlet.ImplementingType.GetTypeInfo().GetCustomAttributes([System.Management.Automation.OutputTypeAttribute], $true)
+        foreach ($OutputAttribute in $OutputAttributeList)
+        {
+            foreach ($OutputType in $OutputAttribute.Type)
+            {
+                $OutputMetadata = [OutputMetadata]::new()
+                $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
+                if ($Null -eq $OutputType.ParameterSetName)
+                {
+                    $OutputMetadata.ParameterSets = @('__AllParameterSets')
+                }
+                else
+                {
+                    $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+                }
+                $OutputMetadataList.Add($OutputMetadata)
+            }
+        }
     }
 
     return $OutputMetadataList
@@ -301,6 +331,10 @@ function Get-ModuleMetadata
         if ($null -ne $Cmdlet.ImplementingType)
         {
             $CmdletMetadata.ClassName = $Cmdlet.ImplementingType.FullName
+        }
+        else
+        {
+            $CmdletMetadata.ClassName = $CmdletMetadata.Name
         }
 
         [System.Collections.Generic.List[OutputMetadata]]$OutputMetadataList = Get-OutputTypeMetadata -Cmdlet $Cmdlet -ModuleMetadata $ModuleMetadata

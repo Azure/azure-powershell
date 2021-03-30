@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.OperationalInsights","Microsoft.Azure.Commands.OperationalInsights.SetAzureOperationalInsightsDataSourceCommand","Set-AzOperationalInsightsDataSource","0","1050","The parameter set 'ByWorkspaceName' for cmdlet 'Set-AzOperationalInsightsDataSource' has been removed.","Add parameter set 'ByWorkspaceName' back to cmdlet 'Set-AzOperationalInsightsDataSource'."
