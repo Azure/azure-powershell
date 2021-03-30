@@ -1348,6 +1348,10 @@
                 <PropertyName>VirtualNetworkName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeeringSyncLevel</Label>
+                <PropertyName>PeeringSyncLevel</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PeeringState</Label>
                 <PropertyName>PeeringState</PropertyName>
               </ListItem>
@@ -1378,6 +1382,10 @@
               <ListItem>
                 <Label>RemoteGateways</Label>
                 <PropertyName>RemoteGatewaysText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeeredRemoteAddressSpace</Label>
+                <PropertyName>PeeredRemoteAddressSpaceText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RemoteVirtualNetworkAddressSpace</Label>
