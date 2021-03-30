@@ -38,7 +38,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         public const string AzPeeringServiceLocation = "AzPeeringServiceLocation";
         public const string AzPeeringServiceProvider = "AzPeeringServiceProvider";
         public const string AzPeeringServiceCountry = "AzPeeringServiceCountry";
-        public const string AzCdnPeeringPrefix = "AzCdnPeeringPrefix";
+        public const string AzPeeringCdnPeeringPrefix = "AzPeeringCdnPeeringPrefix";
         #endregion
 
         #region Kind

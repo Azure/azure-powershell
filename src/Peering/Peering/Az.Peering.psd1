@@ -90,7 +90,7 @@ CmdletsToExport = 'Get-AzPeering', 'Get-AzPeerAsn', 'New-AzPeerAsn', 'New-AzPeer
                'New-AzPeeringRegisteredAsn', 'Set-AzPeeringRegisteredAsn', 
                'Get-AzPeeringRegisteredAsn', 'Remove-AzPeeringRegisteredAsn', 
                'New-AzPeerAsnContactDetail', 'Get-AzPeeringReceivedRoute',
-               'Get-AzCdnPeeringPrefix'
+               'Get-AzPeeringCdnPeeringPrefix'
 
 # Variables to export from this module
 # VariablesToExport = @()

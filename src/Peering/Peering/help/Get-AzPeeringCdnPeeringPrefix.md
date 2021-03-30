@@ -1,33 +1,33 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Peering.dll-Help.xml
 Module Name: Az.Peering
-online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-azcdnpeeringprefix
+online version: https://docs.microsoft.com/en-us/powershell/module/az.peering/get-AzPeeringCdnPeeringPrefix
 schema: 2.0.0
 ---
 
-# Get-AzCdnPeeringPrefix
+# Get-AzPeeringCdnPeeringPrefix
 
 ## SYNOPSIS
-Lists all of the advertised prefixes for the specified peering location
+Lists all of the advertised prefixes for cdn in the specified peering location
 
 ## SYNTAX
 
 ```
-Get-AzCdnPeeringPrefix [-PeeringLocation] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzPeeringCdnPeeringPrefix [-PeeringLocation] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Lists all of the advertised prefixes for the specified peering location
+Lists all of the advertised prefixes for cdn in the specified peering location
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCdnPeeringPrefix -PeeringLocation "Seattle"
+PS C:\> Get-AzPeeringCdnPeeringPrefix -PeeringLocation "Seattle"
 ```
 
-Lists all of the advertised prefixes in the specified physical peering location
+Lists all of the advertised prefixes for cdn in the specified physical peering location
 
 ## PARAMETERS
 

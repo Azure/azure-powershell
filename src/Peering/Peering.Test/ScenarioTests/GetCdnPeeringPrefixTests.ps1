@@ -16,7 +16,7 @@
 GetCdnPeeringPrefixForLocation 
 #>
 function Test-GetCdnPeeringPrefixForLocation {
-        $cdnPeeringPrefix = Get-AzCdnPeeringPrefix -PeeringLocation "Seattle"
+        $cdnPeeringPrefix = Get-AzPeeringCdnPeeringPrefix -PeeringLocation "Seattle"
         Assert-NotNull $cdnPeeringPrefix
         Assert-True { $cdnPeeringPrefix.Count -eq 4 }
 }
@@ -25,6 +25,6 @@ function Test-GetCdnPeeringPrefixForLocation {
 GetCdnPeeringPrefixNonExistentLocation
 #>
 function Test-GetCdnPeeringPrefixNonExistentLocation {
-        $cdnPeeringPrefix = Get-AzCdnPeeringPrefix -PeeringLocation 'abcde'
+        $cdnPeeringPrefix = Get-AzPeeringCdnPeeringPrefix -PeeringLocation 'abcde'
         Assert-Null $cdnPeeringPrefix
 }

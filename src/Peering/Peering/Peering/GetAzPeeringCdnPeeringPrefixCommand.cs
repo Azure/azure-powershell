@@ -26,9 +26,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
     /// <summary>
     ///  The Get Az InputObject cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Constants.AzCdnPeeringPrefix)]
+    [Cmdlet(VerbsCommon.Get, Constants.AzPeeringCdnPeeringPrefix)]
     [OutputType(typeof(PSCdnPeeringPrefix))]
-    public class GetCdnPeeringPrefixCommand : PeeringBaseCmdlet
+    public class GetAzPeeringCdnPeeringPrefixCommand : PeeringBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the PeeringLocation.
