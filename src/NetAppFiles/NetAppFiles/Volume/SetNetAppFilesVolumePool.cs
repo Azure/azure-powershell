@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -137,7 +138,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 PoolName = NameParts[1];
             }
 
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
+            Management.NetApp.Models.Volume existingVolume = null;
+
+            try
+            {
+                existingVolume = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, PoolName, Name);
+            }
+            catch
+            {
+                existingVolume = null;
+            }
+            if (existingVolume == null)
+            {
+                throw new Exception(string.Format("A Volume with name '{0}' in resource group '{1}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.", this.Name, this.ResourceGroupName));
+            }
+
+
+            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.PoolChangeMessage, this.Name)))
             {
                 var poolChangeBody = new PoolChangeRequest() { NewPoolResourceId = NewPoolResourceId};
                 var newPoolResourceIdentifier = new ResourceIdentifier(NewPoolResourceId);

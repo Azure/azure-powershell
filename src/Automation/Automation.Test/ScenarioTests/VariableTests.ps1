@@ -177,23 +177,15 @@ function Test-ArrayVariable
                                                      -value $variableValue `
                                                      -Encrypted:$false `
                                                      -Description "array"
-    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+    Assert-AreEqual ($variableValue | ConvertTo-Json -Compress -Depth 2) ($variableCreated.value | ConvertTo-Json -Compress -Depth 2)
 
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
-
-    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+    $updateVariable = Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $variableName `
                                   -Encrypted:$false `
                                   -value $variableValueUpdated
-
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
                                                  
-    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json -Compress -Depth 2) ($updateVariable.value | ConvertTo-Json -Compress -Depth 2)
 
     Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
@@ -225,23 +217,15 @@ function Test-NormalHashTableVariable
                                                      -value $variableValue `
                                                      -Encrypted:$false `
                                                      -Description "NormalHashTableVariable"
-    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+    Assert-AreEqual ($variableValue | ConvertTo-Json -Compress -Depth 2) ($variableCreated.value | ConvertTo-Json -Compress -Depth 2)
 
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
-
-    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+    $updateVariable = Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $variableName `
                                   -Encrypted:$false `
                                   -value $variableValueUpdated
-
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
                                                  
-    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json -Compress -Depth 2) ($updateVariable.value | ConvertTo-Json -Compress -Depth 2)
 
     Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
@@ -273,23 +257,15 @@ function Test-MultiLevelDictVariable
                                                      -value $variableValue `
                                                      -Encrypted:$false `
                                                      -Description "MultiLevelDict"
-    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+    Assert-AreEqual ($variableValue | ConvertTo-Json -Compress -Depth 2) ($variableCreated.value | ConvertTo-Json -Compress -Depth 2)
 
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
-
-    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+    $updateVariable = Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $variableName `
                                   -Encrypted:$false `
                                   -value $variableValueUpdated
-
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
                                                  
-    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json -Compress -Depth 2) ($updateVariable.value | ConvertTo-Json -Compress -Depth 2)
 
     Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
@@ -321,23 +297,15 @@ function Test-JsonInDictValueVariable
                                                      -value $variableValue `
                                                      -Encrypted:$false `
                                                      -Description "JsonInDictValue"
-    Assert-AreEqual ($variableValue | ConvertTo-Json) $variableCreated.value.toString()
+    Assert-AreEqual ($variableValue | ConvertTo-Json -Compress -Depth 2) ($variableCreated.value | ConvertTo-Json -Compress -Depth 2)
 
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
-
-    Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
+    $updateVariable = Set-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name $variableName `
                                   -Encrypted:$false `
                                   -value $variableValueUpdated
-
-    $getVariable = Get-AzAutomationVariable -ResourceGroupName $resourceGroupName `
-                                                 -AutomationAccountName $automationAccountName `
-                                                 -name $variableName
                                                  
-    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json) $getVariable.value.toString()
+    Assert-AreEqual ($variableValueUpdated | ConvertTo-Json -Compress -Depth 2) ($updateVariable.value | ConvertTo-Json -Compress -Depth 2)
 
     Remove-AzAutomationVariable -ResourceGroupName $resourceGroupName `
                                      -AutomationAccountName $automationAccountName `
