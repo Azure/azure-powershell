@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 0.9.0
 * Added support for the new api version with the ability to query with management group scopes using -ManagementGroup param.
 * Deprecated parameter -Include.
 * Introduced -SkipToken param and aligned max resources returned per page with server value.

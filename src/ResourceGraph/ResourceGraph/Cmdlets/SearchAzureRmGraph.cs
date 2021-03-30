@@ -137,15 +137,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var subscriptions = this.Subscription?.ToList();
-            if (subscriptions!= null && subscriptions.Count > SubscriptionLimit)
-            {
-                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
-                this.WriteWarning("The query included more subscriptions than allowed. " +
-                    $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
-                    $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
-            }
-
             var managementGroups = this.ManagementGroup?.ToList();
             if (managementGroups != null && managementGroups.Count > ManagementGroupLimit)
             {
@@ -153,6 +144,19 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 this.WriteWarning("The query included more management groups than allowed. " +
                     $"Only the first {ManagementGroupLimit} management groups were included for the results. " +
                     $"To use more than {ManagementGroupLimit} management groups, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+            }
+
+            IList<string> subscriptions = null;
+            if (managementGroups == null)
+            {
+                subscriptions = this.GetSubscriptions().ToList();
+                if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
+                {
+                    subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                    this.WriteWarning("The query included more subscriptions than allowed. " +
+                        $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
+                        $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+                }
             }
 
             var results = new List<PSObject>();
@@ -261,7 +265,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return accountSubscriptions;
             }
 
-            return SubscriptionCache.GetSubscriptions(this.DefaultContext);
+            return null;
         }
     }
 }

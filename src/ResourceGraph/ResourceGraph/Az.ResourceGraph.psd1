@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '0.8.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -113,9 +113,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added support for the new api version with the ability to query with management group scopes using -ManagementGroup param.
-            * Deprecated parameter -Include.
-            * Introduced -SkipToken param and aligned max resources returned per page with server value.'
+        ReleaseNotes = '* Added new cmdlets to support query resource'
 
         # Prerelease string of this module
         # Prerelease = ''
