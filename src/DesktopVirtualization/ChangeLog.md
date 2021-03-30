@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Datr/session host report and vm and registration post put get back.
 
 ## Version 2.1.1
 * Added StartVMOnConnect property to hostpool.
