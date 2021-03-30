@@ -12,7 +12,6 @@ Creates or updates the provider registration.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-SubscriptionId <String>]
  [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <String>]
@@ -39,11 +38,23 @@ Creates or updates the provider registration.
 
 ## EXAMPLES
 
-### Example 1: Create/Update a provider registration.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso" -ProviderHubMetadataProviderAuthenticationAllowedAudience "https://management.core.windows.net/" -ProviderHubMetadataProviderAuthorization @{ApplicationId = "00000000-0000-0000-0000-000000000000"; RoleDefinitionId = "00000000-0000-0000-0000-000000000000"} -Namespace "Microsoft.Contoso" -ProviderVersion "2.0" -ProviderType "Internal" -ManagementManifestOwner "SPARTA-PlatformServiceAdministrator" -ManagementIncidentContactEmail "help@microsoft.com" -ManagementIncidentRoutingService "Contoso Service" -ManagementIncidentRoutingTeam "Contoso Team" -ManagementServiceTreeInfo @{ComponentId = "00000000-0000-0000-0000-000000000000"; ServiceId = "00000000-0000-0000-0000-000000000000"} -Capability @{QuotaId = "CSP_2015-05-01"; Effect = "Allow"}, @{QuotaId = "CSP_MG_2017-12-01"; Effect = "Allow"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -274,22 +285,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Property
-.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ProviderAuthenticationAllowedAudience
 .
 
@@ -357,7 +352,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -447,7 +442,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -585,10 +580,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
@@ -603,85 +594,31 @@ To create the parameters described below, construct a hash table containing the 
 
 
 CAPABILITY <IResourceProviderCapabilities[]>: .
-  - `Effect <String>`:
-  - `QuotaId <String>`:
-  - `[RequiredFeature <String[]>]`:
-
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `Effect <String>`: 
+  - `QuotaId <String>`: 
+  - `[RequiredFeature <String[]>]`: 
 
 MANAGEMENTSERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`:
-  - `[ServiceId <String>]`:
-
-PROPERTY <IProviderRegistration>: .
-  - `[Capability <IResourceProviderCapabilities[]>]`:
-    - `Effect <String>`:
-    - `QuotaId <String>`:
-    - `[RequiredFeature <String[]>]`:
-  - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
-  - `[ManagementIncidentContactEmail <String>]`:
-  - `[ManagementIncidentRoutingService <String>]`:
-  - `[ManagementIncidentRoutingTeam <String>]`:
-  - `[ManagementManifestOwner <String[]>]`:
-  - `[ManagementResourceAccessPolicy <String>]`:
-  - `[ManagementResourceAccessRole <IResourceProviderManagementResourceAccessRolesItem[]>]`:
-  - `[ManagementSchemaOwner <String[]>]`:
-  - `[ManagementServiceTreeInfo <IServiceTreeInfo[]>]`:
-    - `[ComponentId <String>]`:
-    - `[ServiceId <String>]`:
-  - `[Metadata <IResourceProviderManifestPropertiesMetadata>]`: Dictionary of <string>
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Namespace <String>]`:
-  - `[ProviderAuthenticationAllowedAudience <String[]>]`:
-  - `[ProviderAuthorization <IResourceProviderAuthorization[]>]`:
-    - `[ApplicationId <String>]`:
-    - `[ManagedByRoleDefinitionId <String>]`:
-    - `[RoleDefinitionId <String>]`:
-  - `[ProviderHubMetadataProviderAuthenticationAllowedAudience <String[]>]`:
-  - `[ProviderHubMetadataProviderAuthorization <IResourceProviderAuthorization[]>]`:
-  - `[ProviderType <String>]`:
-  - `[ProviderVersion <String>]`:
-  - `[ProvisioningState <String>]`:
-  - `[RequestHeaderOptionOptInHeader <String>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-    - `Action <String>`:
-    - `State <String>`:
-  - `[TemplateDeploymentOptionPreflightOption <String[]>]`:
-  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-  - `[ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]`:
-    - `PrincipalId <String>`:
-    - `RoleDefinitionId <String>`:
-  - `[ThirdPartyProviderAuthorizationManagedByTenantId <String>]`:
+  - `[ComponentId <String>]`: 
+  - `[ServiceId <String>]`: 
 
 PROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`:
-  - `[ManagedByRoleDefinitionId <String>]`:
-  - `[RoleDefinitionId <String>]`:
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
 PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`:
-  - `[ManagedByRoleDefinitionId <String>]`:
-  - `[RoleDefinitionId <String>]`:
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <String>`:
-  - `State <String>`:
+  - `Action <String>`: 
+  - `State <String>`: 
 
 THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ <ILightHouseAuthorization[]>: .
-  - `PrincipalId <String>`:
-  - `RoleDefinitionId <String>`:
+  - `PrincipalId <String>`: 
+  - `RoleDefinitionId <String>`: 
 
 ## RELATED LINKS
 

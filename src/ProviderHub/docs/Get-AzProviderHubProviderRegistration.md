@@ -35,13 +35,23 @@ Gets the provider registration details.
 
 ## EXAMPLES
 
-## EXAMPLES
-
-### Example 1: Get the provider registration.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

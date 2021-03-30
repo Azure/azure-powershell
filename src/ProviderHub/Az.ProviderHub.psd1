@@ -1,5 +1,5 @@
 @{
-  GUID = 'ed46e8cd-1eb8-4568-809e-9917eabc3429'
+  GUID = '777d4d04-0051-487d-b453-20def22c3587'
   RootModule = './Az.ProviderHub.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/ProviderHub.private.dll'
   FormatsToProcess = './Az.ProviderHub.format.ps1xml'
-  FunctionsToExport = 'Get-AzProviderHubCustomRollout', 'Get-AzProviderHubDefaultRollout', 'Get-AzProviderHubNotificationRegistration', 'Get-AzProviderHubProviderRegistration', 'Get-AzProviderHubResourceTypeRegistration', 'Get-AzProviderHubSku', 'Get-AzProviderHubSkuNestedResourceTypeFirst', 'Get-AzProviderHubSkuNestedResourceTypeSecond', 'Get-AzProviderHubSkuNestedResourceTypeThird', 'Invoke-AzProviderHubManifestCheckin', 'New-AzProviderHubCustomRollout', 'New-AzProviderHubDefaultRollout', 'New-AzProviderHubManifest', 'New-AzProviderHubNotificationRegistration', 'New-AzProviderHubProviderRegistration', 'New-AzProviderHubProviderRegistrationOperation', 'New-AzProviderHubResourceTypeRegistration', 'New-AzProviderHubSku', 'New-AzProviderHubSkuNestedResourceTypeFirst', 'New-AzProviderHubSkuNestedResourceTypeSecond', 'New-AzProviderHubSkuNestedResourceTypeThird', 'Remove-AzProviderHubDefaultRollout', 'Remove-AzProviderHubNotificationRegistration', 'Remove-AzProviderHubProviderRegistration', 'Remove-AzProviderHubResourceTypeRegistration', 'Remove-AzProviderHubSku', 'Remove-AzProviderHubSkuNestedResourceTypeFirst', 'Remove-AzProviderHubSkuNestedResourceTypeSecond', 'Remove-AzProviderHubSkuNestedResourceTypeThird', 'Set-AzProviderHubCustomRollout', 'Set-AzProviderHubDefaultRollout', 'Set-AzProviderHubNotificationRegistration', 'Set-AzProviderHubProviderRegistration', 'Set-AzProviderHubResourceTypeRegistration', 'Set-AzProviderHubSku', 'Set-AzProviderHubSkuNestedResourceTypeFirst', 'Set-AzProviderHubSkuNestedResourceTypeSecond', 'Set-AzProviderHubSkuNestedResourceTypeThird', 'Stop-AzProviderHubDefaultRollout', '*'
+  FunctionsToExport = 'Get-AzProviderHubCustomRollout', 'Get-AzProviderHubDefaultRollout', 'Get-AzProviderHubNotificationRegistration', 'Get-AzProviderHubProviderRegistration', 'Get-AzProviderHubResourceTypeRegistration', 'Get-AzProviderHubSku', 'Invoke-AzProviderHubManifestCheckin', 'New-AzProviderHubCustomRollout', 'New-AzProviderHubDefaultRollout', 'New-AzProviderHubManifest', 'New-AzProviderHubNotificationRegistration', 'New-AzProviderHubProviderRegistration', 'New-AzProviderHubProviderRegistrationOperation', 'New-AzProviderHubResourceTypeRegistration', 'New-AzProviderHubSku', 'Remove-AzProviderHubDefaultRollout', 'Remove-AzProviderHubNotificationRegistration', 'Remove-AzProviderHubProviderRegistration', 'Remove-AzProviderHubResourceTypeRegistration', 'Remove-AzProviderHubSku', 'Stop-AzProviderHubDefaultRollout', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

@@ -29,11 +29,23 @@ Deletes a notification registration.
 
 ## EXAMPLES
 
-### Example 1: Delete a notification registration by name.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

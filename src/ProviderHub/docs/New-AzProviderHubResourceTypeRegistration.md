@@ -41,11 +41,23 @@ Creates or updates a resource type.
 
 ## EXAMPLES
 
-### Example 1: Create/Update a resource type registration.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -725,10 +737,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
-
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
@@ -743,150 +751,62 @@ To create the parameters described below, construct a hash table containing the 
 
 
 AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
-  - `[Desired <String>]`:
-  - `[Original <String>]`:
+  - `[Desired <String>]`: 
+  - `[Original <String>]`: 
 
 ENDPOINT <IResourceTypeEndpoint[]>: .
-  - `[ApiVersion <String[]>]`:
-  - `[Enabled <Boolean?>]`:
-  - `[Extension <IResourceTypeExtension[]>]`:
-    - `[EndpointUri <String>]`:
-    - `[ExtensionCategory <String[]>]`:
-    - `[Timeout <TimeSpan?>]`:
-  - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
-  - `[Location <String[]>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[Timeout <TimeSpan?>]`:
+  - `[ApiVersion <String[]>]`: 
+  - `[Enabled <Boolean?>]`: 
+  - `[Extension <IResourceTypeExtension[]>]`: 
+    - `[EndpointUri <String>]`: 
+    - `[ExtensionCategory <String[]>]`: 
+    - `[Timeout <TimeSpan?>]`: 
+  - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
+  - `[Location <String[]>]`: 
+  - `[RequiredFeature <String[]>]`: 
+  - `[Timeout <TimeSpan?>]`: 
 
 EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
-  - `[SupportedPolicy <String>]`:
-  - `[Type <String>]`:
-
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
-  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
-  - `[NestedResourceTypeThird <String>]`: The third child resource type.
-  - `[NotificationRegistrationName <String>]`: The notification registration.
-  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
-  - `[ResourceType <String>]`: The resource type.
-  - `[RolloutName <String>]`: The rollout name.
-  - `[Sku <String>]`: The SKU.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[SupportedPolicy <String>]`: 
+  - `[Type <String>]`: 
 
 LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
-  - `[ActionName <String>]`:
-  - `[LinkedAction <String>]`:
-  - `[LinkedActionVerb <String>]`:
-  - `[LinkedProperty <String>]`:
-  - `[LinkedType <String>]`:
+  - `[ActionName <String>]`: 
+  - `[LinkedAction <String>]`: 
+  - `[LinkedActionVerb <String>]`: 
+  - `[LinkedProperty <String>]`: 
+  - `[LinkedType <String>]`: 
 
 LOGGINGRULE <ILoggingRule[]>: .
-  - `Action <String>`:
-  - `DetailLevel <String>`:
-  - `Direction <String>`:
-  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
-  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
-
-PROPERTY <IResourceTypeRegistration>: .
-  - `[AllowedUnauthorizedAction <String[]>]`:
-  - `[AuthorizationActionMapping <IAuthorizationActionMapping[]>]`:
-    - `[Desired <String>]`:
-    - `[Original <String>]`:
-  - `[CheckNameAvailabilitySpecificationEnableDefaultValidation <Boolean?>]`:
-  - `[CheckNameAvailabilitySpecificationResourceTypesWithCustomValidation <String[]>]`:
-  - `[DefaultApiVersion <String>]`:
-  - `[DisallowedActionVerb <String[]>]`:
-  - `[EnableAsyncOperation <Boolean?>]`:
-  - `[EnableThirdPartyS2S <Boolean?>]`:
-  - `[Endpoint <IResourceTypeEndpoint[]>]`:
-    - `[ApiVersion <String[]>]`:
-    - `[Enabled <Boolean?>]`:
-    - `[Extension <IResourceTypeExtension[]>]`:
-      - `[EndpointUri <String>]`:
-      - `[ExtensionCategory <String[]>]`:
-      - `[Timeout <TimeSpan?>]`:
-    - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
-    - `[Location <String[]>]`:
-    - `[RequiredFeature <String[]>]`:
-    - `[Timeout <TimeSpan?>]`:
-  - `[ExtendedLocation <IExtendedLocationOptions[]>]`:
-    - `[SupportedPolicy <String>]`:
-    - `[Type <String>]`:
-  - `[FeatureRuleRequiredFeaturesPolicy <String>]`:
-  - `[IdentityManagementApplicationId <String>]`:
-  - `[IdentityManagementType <String>]`:
-  - `[IsPureProxy <Boolean?>]`:
-  - `[LinkedAccessCheck <ILinkedAccessCheck[]>]`:
-    - `[ActionName <String>]`:
-    - `[LinkedAction <String>]`:
-    - `[LinkedActionVerb <String>]`:
-    - `[LinkedProperty <String>]`:
-    - `[LinkedType <String>]`:
-  - `[LoggingRule <ILoggingRule[]>]`:
-    - `Action <String>`:
-    - `DetailLevel <String>`:
-    - `Direction <String>`:
-    - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`:
-    - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`:
-  - `[MarketplaceType <String>]`:
-  - `[ProvisioningState <String>]`:
-  - `[Regionality <String>]`:
-  - `[RequestHeaderOptionOptInHeader <String>]`:
-  - `[RequiredFeature <String[]>]`:
-  - `[ResourceCreationBeginRequest <String[]>]`:
-  - `[ResourceCreationBeginResponse <String[]>]`:
-  - `[ResourceDeletionPolicy <String>]`:
-  - `[ResourceMovePolicyCrossResourceGroupMoveEnabled <Boolean?>]`:
-  - `[ResourceMovePolicyCrossSubscriptionMoveEnabled <Boolean?>]`:
-  - `[ResourceMovePolicyValidationRequired <Boolean?>]`:
-  - `[RoutingType <String>]`:
-  - `[ServiceTreeInfo <IServiceTreeInfo[]>]`:
-    - `[ComponentId <String>]`:
-    - `[ServiceId <String>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSoftDeleteTtl <TimeSpan?>]`:
-  - `[SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]`:
-    - `Action <String>`:
-    - `State <String>`:
-  - `[SubscriptionStateRule <ISubscriptionStateRule[]>]`:
-    - `[AllowedAction <String[]>]`:
-    - `[State <String>]`:
-  - `[SwaggerSpecification <ISwaggerSpecification[]>]`:
-    - `[ApiVersion <String[]>]`:
-    - `[SwaggerSpecFolderUri <String>]`:
-  - `[TemplateDeploymentOptionPreflightOption <String[]>]`:
-  - `[TemplateDeploymentOptionPreflightSupported <Boolean?>]`:
-  - `[ThrottlingRule <IThrottlingRule[]>]`:
-    - `Action <String>`:
-    - `Metric <IThrottlingMetric[]>`:
-      - `Limit <Int64>`:
-      - `Type <String>`:
-      - `[Interval <TimeSpan?>]`:
-    - `[RequiredFeature <String[]>]`:
+  - `Action <String>`: 
+  - `DetailLevel <String>`: 
+  - `Direction <String>`: 
+  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
+  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
 
 SERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`:
-  - `[ServiceId <String>]`:
+  - `[ComponentId <String>]`: 
+  - `[ServiceId <String>]`: 
 
 SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <String>`:
-  - `State <String>`:
+  - `Action <String>`: 
+  - `State <String>`: 
 
 SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  - `[AllowedAction <String[]>]`:
-  - `[State <String>]`:
+  - `[AllowedAction <String[]>]`: 
+  - `[State <String>]`: 
 
 SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  - `[ApiVersion <String[]>]`:
-  - `[SwaggerSpecFolderUri <String>]`:
+  - `[ApiVersion <String[]>]`: 
+  - `[SwaggerSpecFolderUri <String>]`: 
 
 THROTTLINGRULE <IThrottlingRule[]>: .
-  - `Action <String>`:
-  - `Metric <IThrottlingMetric[]>`:
-    - `Limit <Int64>`:
-    - `Type <String>`:
-    - `[Interval <TimeSpan?>]`:
-  - `[RequiredFeature <String[]>]`:
+  - `Action <String>`: 
+  - `Metric <IThrottlingMetric[]>`: 
+    - `Limit <Int64>`: 
+    - `Type <String>`: 
+    - `[Interval <TimeSpan?>]`: 
+  - `[RequiredFeature <String[]>]`: 
 
 ## RELATED LINKS
 

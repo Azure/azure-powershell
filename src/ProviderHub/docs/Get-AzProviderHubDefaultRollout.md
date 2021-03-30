@@ -35,18 +35,23 @@ Gets the default rollout details.
 
 ## EXAMPLES
 
-### Example 1: List all default rollouts under the resource provider.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso"
-```
-
-
-### Example 2: Get a specific rollout by name.
-```powershell
-PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
-```
+PS C:\> {{ Add code here }}
 
 {{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

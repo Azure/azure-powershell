@@ -12,6 +12,12 @@ Gets the custom rollout details.
 
 ## SYNTAX
 
+### List (Default)
+```
+Get-AzProviderHubCustomRollout -ProviderNamespace <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzProviderHubCustomRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String[]>]
@@ -29,12 +35,23 @@ Gets the custom rollout details.
 
 ## EXAMPLES
 
-### Example 1: Get a custom rollout by rollout name.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +91,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -104,7 +121,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: False

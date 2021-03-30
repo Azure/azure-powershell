@@ -31,11 +31,23 @@ Rollout must be in terminal state.
 
 ## EXAMPLES
 
-### Example 1: Delete a default rollout by name.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Remove-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

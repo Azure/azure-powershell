@@ -29,16 +29,48 @@ Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <St
 Get-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String>
+ -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String>
+ -NestedResourceTypeThird <String> -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets the sku details for the given resource type and sku name.
 
 ## EXAMPLES
 
-### Example 1: Get the resource SKU definition.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -123,7 +155,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: True
@@ -138,7 +170,7 @@ The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: True
@@ -168,7 +200,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: False

@@ -35,17 +35,23 @@ Gets a resource type details in the given subscription and provider.
 
 ## EXAMPLES
 
-### Example 1: List all resource types under the resource provider namespace.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
-### Example 2: Gets a resource type by name.
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
 ## PARAMETERS
 

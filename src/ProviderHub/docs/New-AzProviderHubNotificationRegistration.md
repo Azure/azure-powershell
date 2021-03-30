@@ -19,36 +19,28 @@ New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <Str
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Create
-```
-New-AzProviderHubNotificationRegistration -Name <String> -ProviderNamespace <String>
- -Property <INotificationRegistration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity>
- -Property <INotificationRegistration> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzProviderHubNotificationRegistration -InputObject <IProviderHubIdentity> [-IncludedEvent <String[]>]
- [-MessageScope <String>] [-NotificationEndpoint <INotificationEndpoint[]>] [-NotificationMode <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Creates or updates a notification registration.
 
 ## EXAMPLES
 
-### Example 1: Create/Update a notification registration.
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest" -NotificationMode "EventHub" -MessageScope "RegisteredSubscriptions" -IncludedEvent "*/write", "Microsoft.Contoso/testResourceType/delete" -NotificationEndpoint @{Location = "", "East US"; NotificationDestination = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications"}
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -223,16 +215,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 NOTIFICATIONENDPOINT <INotificationEndpoint[]>: .
-  - `[Location <String[]>]`:
-  - `[NotificationDestination <String>]`:
-
-PROPERTY <INotificationRegistration>: The notification registration definition.
-  - `[IncludedEvent <String[]>]`:
-  - `[MessageScope <String>]`:
-  - `[NotificationEndpoint <INotificationEndpoint[]>]`:
-    - `[Location <String[]>]`:
-    - `[NotificationDestination <String>]`:
-  - `[NotificationMode <String>]`:
+  - `[Location <String[]>]`: 
+  - `[NotificationDestination <String>]`: 
 
 ## RELATED LINKS
 

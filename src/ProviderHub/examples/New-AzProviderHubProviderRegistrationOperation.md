@@ -7,7 +7,7 @@ PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Micro
 
 ### Example 2: Create/Update the Operations API
 ```powershell
-PS C:\> PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
+PS C:\> New-AzProviderHubProviderRegistrationOperation -ProviderNamespace "Microsoft.Contoso"
 ```
 
 {{ Add description here }}
