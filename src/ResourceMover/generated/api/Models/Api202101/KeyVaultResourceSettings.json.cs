@@ -98,4 +98,4 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101
             return container;
         }
     }
-}-az
+}

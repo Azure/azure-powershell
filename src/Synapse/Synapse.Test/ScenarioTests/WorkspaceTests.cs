@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseWorkspaceSecurity()
         {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
                 "Test-SynapseWorkspaceSecurity");
-                "Test-SynapseWorkspace-ActiveDirectoryAdministrator -resourceGroupName '{0}' -workspaceName '{1}'",
-                testResourceGroupName,
-                testWorkspaceName));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseManagedIdentitySqlControlSetting()
         {
             SynapseTestBase.NewInstance.RunPsTest(
@@ -66,12 +66,9 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSynapseWorkspaceKey()
         {
-                testWorkspaceName = nameof(TestWorkspaceName);
-            }
+            SynapseTestBase.NewInstance.RunPsTest(
+                _logger,
                 "Test-SynapseWorkspaceKey");
-                "Test-SynapseWorkspace-Security -resourceGroupName '{0}' -workspaceName '{1}'",
-                testResourceGroupName,
-                testWorkspaceName));
         }
     }
 }

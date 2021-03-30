@@ -69,9 +69,6 @@
     $credentials.HttpRecorderMode = $RecordMode
     $credentials.Environment = $TargetEnvironment
 
-    $ctx = Get-AzContext
-    Write-Host "Connected to subscription '$($ctx.Subscription)' and tenant '$($ctx.Tenant)'..."
-
     if ([string]::IsNullOrEmpty($ServicePrincipalDisplayName) -eq $false) {
         $existingServicePrincipal = Get-AzADServicePrincipal -SearchString $ServicePrincipalDisplayName | Where-Object {$_.DisplayName -eq $ServicePrincipalDisplayName}
         if ($existingServicePrincipal -eq $null -and ($Force -or $PSCmdlet.ShouldContinue("ServicePrincipal `"" + $ServicePrincipalDisplayName + "`" does not exist, would you like to create a new ServicePrincipal with this name?", "Create ServicePrincipal?")))
