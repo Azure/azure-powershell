@@ -47,12 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 88fa0d128fbcf2d1ff3b330add6b4425c84f4149
+branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   # - $(this-folder)/resources/CloudService.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/preview/2020-10-01-preview/cloudService.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
 
 title: CloudService
 module-version: 0.1.0
@@ -60,6 +60,14 @@ module-version: 0.1.0
 identity-correction-for-post: true
 
 directive:
+  - where:
+      subject: ^CloudServiceOperatingSystemOSFamily$
+    set:
+      subject: CloudServiceOSFamily
+  - where:
+      subject: ^CloudServiceOperatingSystemOSVersion$
+    set:
+      subject: CloudServiceOSVersion
   - where:
       variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
       subject: ^CloudService$|^RebuildCloudService$
@@ -239,6 +247,24 @@ directive:
           - Location
           - SkuName
           - SkuTier
+  - where:
+      model-name: OSVersion
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
+          - IsDefault
+          - IsActive
+          - Family
+          - FamilyLabel
+  - where:
+      model-name: OSFamily
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
 
   - where:
       model-name: CloudServiceInstanceView

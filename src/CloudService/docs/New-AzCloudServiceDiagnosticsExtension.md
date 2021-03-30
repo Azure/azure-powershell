@@ -194,7 +194,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 
 ## NOTES
 

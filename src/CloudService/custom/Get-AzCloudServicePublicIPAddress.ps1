@@ -38,7 +38,7 @@ function Get-AzCloudServicePublicIPAddress {
         [string] $CloudServiceName,
 
         [Parameter(Mandatory=$true, ParameterSetName="CloudService", HelpMessage="CloudService instance.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService] $CloudService
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService] $CloudService
     )
     process {
         $ApiVersion = "2020-06-01"

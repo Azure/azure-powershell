@@ -1,73 +1,67 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancereimage
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
 schema: 2.0.0
 ---
 
-# Invoke-AzCloudServiceRoleInstanceReimage
+# Get-AzCloudServiceOSVersion
 
 ## SYNOPSIS
-The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## SYNTAX
 
-### Reimage (Default)
+### List (Default)
 ```
-Invoke-AzCloudServiceRoleInstanceReimage -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzCloudServiceOSVersion -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ReimageViaIdentity
+### Get
 ```
-Invoke-AzCloudServiceRoleInstanceReimage -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzCloudServiceOSVersion -Location <String> -OSVersionName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCloudServiceOSVersion -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## EXAMPLES
 
-### Example 1: Reimage role instance of a cloud service
+### Example 1: Get all OS versions in a location
 ```powershell
-PS C:\> Invoke-AzCloudServiceRoleInstanceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+PS C:\> Get-AzCloudServiceOSVersion -location 'westus2'
+
+Name                        Label                                            IsDefault IsActive Family FamilyLabel
+----                        -----                                            --------- -------- ------ -----------
+WA-GUEST-OS-6.7_201905-01   Windows Azure Guest OS 6.7 (Release 201905-01)   False     False    6      Windows Server 2019
+WA-GUEST-OS-3.21_201411-01  Windows Azure Guest OS 3.21 (Release 201411-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-3.34_201512-01  Windows Azure Guest OS 3.34 (Release 201512-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-3.26_201504-01  Windows Azure Guest OS 3.26 (Release 201504-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-2.46_201512-01  Windows Azure Guest OS 2.46 (Release 201512-01)  False     False    2      Windows Server 2008 R2
 ```
 
-This command reimages role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
+This command gets all OS versions in location westus2
+
+### Example 2: Get OS version
+```powershell
+PS C:\> Get-AzCloudServiceOSVersion -location 'westus2' -OSVersionName 'WA-GUEST-OS-6.7_201905-01'
+
+Name                      Label                                          IsDefault IsActive Family FamilyLabel
+----                      -----                                          --------- -------- ------ -----------
+WA-GUEST-OS-6.7_201905-01 Windows Azure Guest OS 6.7 (Release 201905-01) False     False    6      Windows Server 2019
+```
+
+This command gets OS version named WA-GUEST-OS-6.7_201905-01 that is located in westus2.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CloudServiceName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: Reimage
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -90,7 +84,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
-Parameter Sets: ReimageViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -100,42 +94,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-.
+### -Location
+Name of the location that the OS version pertains to.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -145,12 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoleInstanceName
-Name of the role instance.
+### -OSVersionName
+Name of the OS version.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -165,44 +129,13 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Reimage
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion
 
 ## NOTES
 

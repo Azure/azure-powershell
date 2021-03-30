@@ -1,73 +1,67 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.cloudservice/invoke-azcloudserviceroleinstancereimage
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosfamily
 schema: 2.0.0
 ---
 
-# Invoke-AzCloudServiceRoleInstanceReimage
+# Get-AzCloudServiceOSFamily
 
 ## SYNOPSIS
-The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## SYNTAX
 
-### Reimage (Default)
+### List (Default)
 ```
-Invoke-AzCloudServiceRoleInstanceReimage -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstanceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzCloudServiceOSFamily -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### ReimageViaIdentity
+### Get
 ```
-Invoke-AzCloudServiceRoleInstanceReimage -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzCloudServiceOSFamily -Location <String> -OSFamilyName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCloudServiceOSFamily -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Reimage Role Instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
 
 ## EXAMPLES
 
-### Example 1: Reimage role instance of a cloud service
+### Example 1: Get all OS families in a location
 ```powershell
-PS C:\> Invoke-AzCloudServiceRoleInstanceReimage -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2'
+
+Name Label
+---- -----
+5    Windows Server 2016
+4    Windows Server 2012 R2
+6    Windows Server 2019
+3    Windows Server 2012
+2    Windows Server 2008 R2
 ```
 
-This command reimages role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
+This command gets all OS families in location westus2
+
+### Example 2: Get OS family
+```powershell
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2' -OSFamilyName 5
+
+Name Label
+---- -----
+5    Windows Server 2016
+```
+
+This command gets OS family named 5 that is located in westus2.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CloudServiceName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: Reimage
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -90,7 +84,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
-Parameter Sets: ReimageViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -100,42 +94,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-.
+### -Location
+Name of the location that the OS family pertains to.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -145,12 +109,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RoleInstanceName
-Name of the role instance.
+### -OSFamilyName
+Name of the OS family.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reimage
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -165,44 +129,13 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String
-Parameter Sets: Reimage
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily
 
 ## NOTES
 
