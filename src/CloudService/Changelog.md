@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * GA release for module Az.CloudService.
 
 ## Version 0.1.0
