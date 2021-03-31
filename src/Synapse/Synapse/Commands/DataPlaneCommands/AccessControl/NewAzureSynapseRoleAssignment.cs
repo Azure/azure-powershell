@@ -125,18 +125,16 @@ namespace Microsoft.Azure.Commands.Synapse
         public string ObjectId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItemType)]
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItemType)]
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
-        [PSArgumentCompleter("Apache Spark pool", "Integration runtime", "Linked service", "Credential")]
-        public string ItemType { get; set; }
+        public SynaspeEnums.WorkspaceItemType ItemType { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceNameAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItem)]
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItem)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = NewByWorkspaceObjectAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentItem)]
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItem)]
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
@@ -168,28 +166,31 @@ namespace Microsoft.Azure.Commands.Synapse
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
             {
                 Guid roleAssignmentId = Guid.NewGuid();
-                string scope;
+                string scope = null;
+                string itemType = null;
+
                 if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
                 {
-                    string itemType = "";
                     switch (this.ItemType)
                     {
-                        case "Apache Spark pool":
+                        case SynaspeEnums.WorkspaceItemType.ApacheSparkPool:
                             itemType = "bigDataPools";
                             break;
-                        case "Integration runtime":
+                        case SynaspeEnums.WorkspaceItemType.IntegrationRuntime:
                             itemType = "integrationRuntimes";
                             break;
-                        case "Linked service":
+                        case SynaspeEnums.WorkspaceItemType.LinkedService:
                             itemType = "linkedServices";
                             break;
-                        case "Credential":
+                        case SynaspeEnums.WorkspaceItemType.Credential:
                             itemType = "credentials";
                             break;
                     }
 
                     scope = "workspaces/" + this.WorkspaceName + "/" + itemType + "/" + this.Item;
-                } else {
+                }
+                else
+                {
                     scope = "workspaces/" + this.WorkspaceName;
                 }
 

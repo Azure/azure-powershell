@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _activeDirectoryClient = new ActiveDirectoryClient(context);
         }
 
-        public RoleAssignmentDetailsList ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string continuationToken = null)
+        public IReadOnlyList<RoleAssignmentDetails> ListRoleAssignments(string roleDefinitionId = null, string objectId = null, string scope = null)
         {
-            return _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, continuationToken).Value;
+            return _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, scope).Value.Value;
         }
 
         public RoleAssignmentDetails GetRoleAssignmentById(string roleAssignmentId)
@@ -55,11 +55,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
-        public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId)
+        public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId, string scope, string workspaceName)
         {
-            var roleAssignment = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, null).Value.Value.Select(element => new PSRoleAssignmentDetails(element));
-            string roleAssignmentId = roleAssignment.SingleOrDefault().RoleAssignmentId;
-            _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
+            var roleAssignment = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, scope).Value.Value;
+
+            if (roleAssignment.Count == 0)
+            {
+                throw new AzPSResourceNotFoundCloudException(String.Format(Resources.WorkspaceRoleAssignmentNotFound, workspaceName));
+            }
+            else if (roleAssignment.Count == 1)
+            {
+                string roleAssignmentId = roleAssignment.SingleOrDefault().Id;
+                _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
+            }
+            else {
+                throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceRoleAssignmentMoreThanOneFound, workspaceName));
+            }
         }
 
         public IReadOnlyList<string> ListRoleScopes()
@@ -113,7 +124,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
-            var roleDefinition = _roleDefinitionsClient.ListRoleDefinitions().Value.SingleOrDefault(element => element.Name == roleDefinitionName);
+            var roleDefinition = _roleDefinitionsClient.ListRoleDefinitions().Value.SingleOrDefault(element => element.Name.Equals(roleDefinitionName, StringComparison.OrdinalIgnoreCase));
             if (roleDefinition == null)
             {
                 throw new InvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));

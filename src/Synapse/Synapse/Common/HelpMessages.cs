@@ -265,15 +265,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleAssignmentItemType = "Item type of the role assignment:'bigDataPools', 'integrationRuntimes', 'linkedServices', 'credentials'.";
-
-        public const string RoleAssignmentItem = "Item of the Role that is assigned to the principal.";
-
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
-
-        public const string Scope = "The Scope of the user.";
 
         public const string SignInName = "The email address or the user principal name of the user.";
 
@@ -420,6 +414,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
+
+        public const string WorkspaceItemType = "Item type of the workspace:'bigDataPools', 'integrationRuntimes', 'linkedServices', 'credentials'.";
+
+        public const string WorkspaceItem = "Item of the workspace.";
 
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 

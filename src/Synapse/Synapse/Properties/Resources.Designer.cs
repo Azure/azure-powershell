@@ -1691,5 +1691,23 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
                 return ResourceManager.GetString("WorkspaceKeyExists", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Roleassignment under workspace &apos;{0}&apos; was found. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId.
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find workspace roleassignment under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentNotFound", resourceCulture);
+            }
+        }
     }
 }

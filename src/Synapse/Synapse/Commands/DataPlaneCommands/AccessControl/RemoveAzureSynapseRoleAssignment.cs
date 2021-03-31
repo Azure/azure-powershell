@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet = "RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet";
         private const string RemoveByWorkspaceNameAndServicePrincipalNameParameterSet = "RemoveByWorkspaceNameAndServicePrincipalNameParameterSet";
         private const string RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet = "RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet";
+        private const string RemoveByWorkspaceNameAndItemParameterSet = "RemoveByWorkspaceNameAndItemParameterSet";
+        private const string RemoveByWorkspaceObjectAndItemParameterSet = "RemoveByWorkspaceObjectAndItemParameterSet";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -50,6 +54,8 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
+        [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
@@ -57,6 +63,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentId)]
         [ValidateNotNullOrEmpty]
         public string RoleAssignmentId { get; set; }
 
@@ -72,6 +82,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
@@ -79,6 +93,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionId { get; set; }
 
@@ -86,6 +104,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndSignInNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
         [Alias("Email", "UserPrincipalName")]
         [ValidateNotNullOrEmpty]
         public string SignInName { get; set; }
@@ -94,6 +116,10 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.ServicePrincipalName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.ServicePrincipalName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
@@ -105,9 +131,27 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.PrincipalId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
         [Alias("Id", "PrincipalId")]
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [ValidateNotNullOrEmpty]
+        public SynaspeEnums.WorkspaceItemType ItemType { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndItemParameterSet,
+            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItem)]
+        [ValidateNotNullOrEmpty]
+        public string Item { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -152,7 +196,36 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseRoleAssignment, this.RoleDefinitionId, this.ObjectId, this.WorkspaceName)))
                 {
-                    SynapseAnalyticsClient.DeleteRoleAssignmentByName(this.RoleDefinitionId, this.ObjectId);
+                    string scope = null;
+                    string itemType = null;
+
+                    if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
+                    {
+                        switch (this.ItemType)
+                        {
+                            case SynaspeEnums.WorkspaceItemType.ApacheSparkPool:
+                                itemType = "bigDataPools";
+                                break;
+                            case SynaspeEnums.WorkspaceItemType.IntegrationRuntime:
+                                itemType = "integrationRuntimes";
+                                break;
+                            case SynaspeEnums.WorkspaceItemType.LinkedService:
+                                itemType = "linkedServices";
+                                break;
+                            case SynaspeEnums.WorkspaceItemType.Credential:
+                                itemType = "credentials";
+                                break;
+                        }
+
+                        scope = "workspaces/" + this.WorkspaceName + "/" + itemType + "/" + this.Item;
+                    }
+                    else
+                    {
+                        scope = "workspaces/" + this.WorkspaceName;
+                    }
+
+                    SynapseAnalyticsClient.DeleteRoleAssignmentByName(this.RoleDefinitionId, this.ObjectId, scope, this.WorkspaceName);
+                    
                     if (PassThru)
                     {
                         WriteObject(true);

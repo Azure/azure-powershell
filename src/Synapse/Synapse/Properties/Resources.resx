@@ -660,6 +660,12 @@ Are you sure you want to continue?</value>
   <data name="WorkspaceKeyExists" xml:space="preserve">
     <value>A workspace key with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key.</value>
   </data>
+  <data name="WorkspaceRoleAssignmentMoreThanOneFound" xml:space="preserve">
+    <value>More than one Roleassignment under workspace '{0}' was found. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId</value>
+  </data>
+  <data name="WorkspaceRoleAssignmentNotFound" xml:space="preserve">
+    <value>Cannot find workspace roleassignment under workspace '{0}'.</value>
+  </data>
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
