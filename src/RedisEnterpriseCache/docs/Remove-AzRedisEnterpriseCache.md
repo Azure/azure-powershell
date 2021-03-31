@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/remove-azredisenterprisecache
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecache
 schema: 2.0.0
 ---
 
 # Remove-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 
 ## SYNTAX
 
@@ -25,20 +25,25 @@ Remove-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Def
 ```
 
 ## DESCRIPTION
-Deletes a RedisEnterprise cache cluster.
+Deletes a Redis Enterprise cache cluster.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Remove a Redis Enterprise cache and return the result
 ```powershell
 PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
 True
 ```
 
-### -------------------------- EXAMPLE 2 --------------------------
+This command removes a Redis Enterprise cache and displays whether the operation is successful.
+
+### Example 2: Remove a Redis Enterprise cache and do not display the result
 ```powershell
 PS C:\> Remove-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup"
 ```
+
+This command removes a Redis Enterprise cache.
+Because the PassThru parameter is not specified, the result of the operation is not displayed.
 
 ## PARAMETERS
 
@@ -58,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -135,6 +140,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -149,8 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -216,14 +221,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
+  - `[ClusterName <String>]`: The name of the Redis Enterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The region the operation is in.
   - `[OperationId <String>]`: The operation's unique identifier.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

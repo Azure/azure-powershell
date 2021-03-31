@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Billing
 Module Guid: f6447640-ffdf-42f9-5ffe-a11eed4aa63f
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.billing
+Download Help Link: https://docs.microsoft.com/powershell/module/az.billing
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -51,7 +51,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
   [Scope <String>]: The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for External Billing Account scope and 'providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for External Subscription scope.
   [ViewName <String>]: View name
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.costmanagement/update-azcostmanagementexport
+https://docs.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
 #>
 function Update-AzCostManagementExport {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport])]
@@ -231,16 +231,26 @@ param(
 
     process {
         try {
-            $getExport
+            $CommonPSBoundParameters = @{}
+            if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                $CommonPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+            }
+            if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                $CommonPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+            }
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
+            }
             if($PSBoundParameters['InputObject'] -ne $null)
             {
                 $InputExportObject = $PSBoundParameters['InputObject']
-                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject
+                $getExport = Get-AzCostManagementExport -InputObject $InputExportObject @CommonPSBoundParameters
             }else{
                 $InputExportScope = $PSBoundParameters['Scope']
                 $InputExportName = $PSBoundParameters['Name']
-                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName
+                $getExport = Get-AzCostManagementExport -Scope $InputExportScope -Name $InputExportName @CommonPSBoundParameters
             }
+            
             $null = $PSBoundParameters.Add("ETag",$getExport.Etag)
             if($PSBoundParameters['DataSetGranularity'] -eq $null)
             {

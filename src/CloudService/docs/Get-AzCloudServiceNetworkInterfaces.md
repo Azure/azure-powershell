@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-AzCloudServiceNetworkInterfaces
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-AzCloudServiceNetworkInterfaces
 schema: 2.0.0
 ---
 
@@ -61,7 +61,7 @@ CloudService instance.
 To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService
 Parameter Sets: CloudService
 Aliases:
 
@@ -150,6 +150,7 @@ To create the parameters described below, construct a hash table containing the 
 
 CLOUDSERVICE <CloudService>: CloudService instance.
   - `Location <String>`: Resource location.
+  - `[AllowModelOverride <Boolean?>]`: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   - `[Configuration <String>]`: Specifies the XML service configuration (.cscfg) for the cloud service.
   - `[ConfigurationUrl <String>]`: Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.         This is a write-only property and is not returned in GET calls.
   - `[ExtensionProfile <ICloudServiceExtensionProfile>]`: Describes a cloud service extension profile.
@@ -166,14 +167,15 @@ CLOUDSERVICE <CloudService>: CloudService instance.
       - `[Type <String>]`: Specifies the type of the extension.
       - `[TypeHandlerVersion <String>]`: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
   - `[NetworkProfile <ICloudServiceNetworkProfile>]`: Network Profile for the cloud service.
-    - `[LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]`: The list of load balancer configurations for the cloud service.
-      - `[FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]`: List of IP
-        - `[Name <String>]`: 
-        - `[PrivateIPAddress <String>]`: The private IP address referenced by the cloud service.
+    - `[LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]`: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+      - `FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>`: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+        - `Name <String>`: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+        - `[PrivateIPAddress <String>]`: The virtual network private IP address of the IP configuration.
         - `[PublicIPAddressId <String>]`: Resource Id
         - `[SubnetId <String>]`: Resource Id
-      - `[Name <String>]`: Resource Name
-    - `[SwappableCloudService <ISubResource>]`: 
+      - `Name <String>`: The name of the Load balancer
+      - `[Id <String>]`: Resource Id
+    - `[SwappableCloudService <ISubResource>]`: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       - `[Id <String>]`: Resource Id
   - `[OSProfile <ICloudServiceOSProfile>]`: Describes the OS profile for the cloud service.
     - `[Secret <ICloudServiceVaultSecretGroup[]>]`: Specifies set of certificates that should be installed onto the role instances.

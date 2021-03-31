@@ -4,7 +4,7 @@ Regenerates the primary or secondary connection strings to the queue.
 .Description
 Regenerates the primary or secondary connection strings to the queue.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.servicebus/new-azservicebusqueuekey
+https://docs.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueuekey
 #>
 function New-AzServiceBusKey_Queue {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20170401.IAccessKeys')]

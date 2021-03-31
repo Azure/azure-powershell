@@ -1,7 +1,7 @@
 ---
 Module Name: Az.BotService
 Module Guid: 0fbff4fb-215b-4aca-b867-d1acfecab531
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.botservice
+Download Help Link: https://docs.microsoft.com/powershell/module/az.botservice
 Help Version: 1.0.0.0
 Locale: en-US
 ---

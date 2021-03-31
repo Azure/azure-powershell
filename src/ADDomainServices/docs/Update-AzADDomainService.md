@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ADDomainServices
-online version: https://docs.microsoft.com/en-us/powershell/module/az.addomainservices/update-azaddomainservice
+online version: https://docs.microsoft.com/powershell/module/az.addomainservices/update-azaddomainservice
 schema: 2.0.0
 ---
 

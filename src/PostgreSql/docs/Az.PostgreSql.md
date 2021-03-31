@@ -1,7 +1,7 @@
 ---
 Module Name: Az.PostgreSql
 Module Guid: 85809807-c6ca-41fb-b667-7ac040e536a4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.postgresql
+Download Help Link: https://docs.microsoft.com/powershell/module/az.postgresql
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -94,6 +94,9 @@ Starts a server.
 
 ### [Stop-AzPostgreSqlFlexibleServer](Stop-AzPostgreSqlFlexibleServer.md)
 Stops a server.
+
+### [Test-AzPostgreSqlFlexibleServerConnect](Test-AzPostgreSqlFlexibleServerConnect.md)
+Test out the connection to the database server
 
 ### [Update-AzPostgreSqlConfiguration](Update-AzPostgreSqlConfiguration.md)
 Updates a configuration of a server.
