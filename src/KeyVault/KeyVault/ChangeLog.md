@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
 
 ## Version 3.4.1
 * Supported upcoming new API design for `Export-AzKeyVaultSecurityDomain`
