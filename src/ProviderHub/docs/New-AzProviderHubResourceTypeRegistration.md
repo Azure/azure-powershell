@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 schema: 2.0.0
 ---
 
@@ -32,8 +32,9 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
  [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
- [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,23 +42,10 @@ Creates or updates a resource type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create/Update a resource type registration.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -RoutingType "Default" -Regionality "Regional" -Endpoint @{ApiVersion = "2021-01-01-preview"; Location = "West US 2", "East US 2 EUAP"; RequiredFeature = "Microsoft.Contoso/SampleApp" } -SwaggerSpecification @{ApiVersion = "2021-01-01-preview"; SwaggerSpecFolderUri = "https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/rpsaas/resource-manager/Microsoft.Contoso/" } -EnableAsyncOperation
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -86,7 +74,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -107,6 +95,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CheckNameAvailabilitySpecificationEnableDefaultValidation
 .
 
@@ -117,7 +120,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -192,7 +195,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -207,7 +210,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -259,6 +262,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityManagementApplicationId
 .
 
@@ -299,7 +332,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -361,7 +394,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -392,6 +425,51 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -496,7 +574,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -511,7 +589,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -526,7 +604,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -587,7 +665,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -680,7 +758,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -740,73 +818,71 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
-
 ## NOTES
-
-ALIASES
-
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
 
+AUTHORIZATIONACTIONMAPPING \<IAuthorizationActionMapping\[\]\>: .
+  \[Desired \<String\>\]:
+  \[Original \<String\>\]:
 
-AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
-  - `[Desired <String>]`: 
-  - `[Original <String>]`: 
+ENDPOINT \<IResourceTypeEndpoint\[\]\>: .
+  \[ApiVersion \<String\[\]\>\]:
+  \[Enabled \<Boolean?\>\]:
+  \[Extension \<IResourceTypeExtension\[\]\>\]:
+    \[EndpointUri \<String\>\]:
+    \[ExtensionCategory \<String\[\]\>\]:
+    \[Timeout \<TimeSpan?\>\]:
+  \[FeatureRuleRequiredFeaturesPolicy \<String\>\]:
+  \[Location \<String\[\]\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[Timeout \<TimeSpan?\>\]:
 
-ENDPOINT <IResourceTypeEndpoint[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[Enabled <Boolean?>]`: 
-  - `[Extension <IResourceTypeExtension[]>]`: 
-    - `[EndpointUri <String>]`: 
-    - `[ExtensionCategory <String[]>]`: 
-    - `[Timeout <TimeSpan?>]`: 
-  - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
-  - `[Location <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[Timeout <TimeSpan?>]`: 
+EXTENDEDLOCATION \<IExtendedLocationOptions\[\]\>: .
+  \[SupportedPolicy \<String\>\]:
+  \[Type \<String\>\]:
 
-EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
-  - `[SupportedPolicy <String>]`: 
-  - `[Type <String>]`: 
+LINKEDACCESSCHECK \<ILinkedAccessCheck\[\]\>: .
+  \[ActionName \<String\>\]:
+  \[LinkedAction \<String\>\]:
+  \[LinkedActionVerb \<String\>\]:
+  \[LinkedProperty \<String\>\]:
+  \[LinkedType \<String\>\]:
 
-LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
-  - `[ActionName <String>]`: 
-  - `[LinkedAction <String>]`: 
-  - `[LinkedActionVerb <String>]`: 
-  - `[LinkedProperty <String>]`: 
-  - `[LinkedType <String>]`: 
+LOGGINGRULE \<ILoggingRule\[\]\>: .
+  Action \<String\>:
+  DetailLevel \<String\>:
+  Direction \<String\>:
+  \[HiddenPropertyPathHiddenPathsOnRequest \<String\[\]\>\]:
+  \[HiddenPropertyPathHiddenPathsOnResponse \<String\[\]\>\]:
 
-LOGGINGRULE <ILoggingRule[]>: .
-  - `Action <String>`: 
-  - `DetailLevel <String>`: 
-  - `Direction <String>`: 
-  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
-  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
+SERVICETREEINFO \<IServiceTreeInfo\[\]\>: .
+  \[ComponentId \<String\>\]:
+  \[ServiceId \<String\>\]:
 
-SERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`: 
-  - `[ServiceId <String>]`: 
+SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION \<ISubscriptionStateOverrideAction\[\]\>: .
+  Action \<String\>:
+  State \<String\>:
 
-SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <String>`: 
-  - `State <String>`: 
+SUBSCRIPTIONSTATERULE \<ISubscriptionStateRule\[\]\>: .
+  \[AllowedAction \<String\[\]\>\]:
+  \[State \<String\>\]:
 
-SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  - `[AllowedAction <String[]>]`: 
-  - `[State <String>]`: 
+SWAGGERSPECIFICATION \<ISwaggerSpecification\[\]\>: .
+  \[ApiVersion \<String\[\]\>\]:
+  \[SwaggerSpecFolderUri \<String\>\]:
 
-SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[SwaggerSpecFolderUri <String>]`: 
-
-THROTTLINGRULE <IThrottlingRule[]>: .
-  - `Action <String>`: 
-  - `Metric <IThrottlingMetric[]>`: 
-    - `Limit <Int64>`: 
-    - `Type <String>`: 
-    - `[Interval <TimeSpan?>]`: 
-  - `[RequiredFeature <String[]>]`: 
+THROTTLINGRULE \<IThrottlingRule\[\]\>: .
+  Action \<String\>:
+  Metric \<IThrottlingMetric\[\]\>:
+    Limit \<Int64\>:
+    Type \<String\>:
+    \[Interval \<TimeSpan?\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration)
 

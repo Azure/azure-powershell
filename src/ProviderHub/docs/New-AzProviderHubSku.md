@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubsku
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Creates or updates the resource type skus in the given resource type.
 
 ```
 New-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
- -SkuSetting <ISkuSetting[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -SkuSetting <ISkuSetting[]> [-DefaultProfile <PSObject>] [-Break]
+ [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
+ [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,25 +24,27 @@ Creates or updates the resource type skus in the given resource type.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create/Update a resource SKU definition.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default" -SkuSetting @{Name = "freeSku"; Tier = "Tier1", Kind = "Standard"}
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
+
+### -Break
+Wait for .NET debugger to attach
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -50,6 +53,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelineAppend
+SendAsync Pipeline Steps to be appended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HttpPipelinePrepend
+SendAsync Pipeline Steps to be prepended to the front of the pipeline
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -69,6 +102,51 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Proxy
+The URI for the proxy server to use
+
+```yaml
+Type: System.Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyCredential
+Credentials for a proxy server to use for the remote call
+
+```yaml
+Type: System.Management.Automation.PSCredential
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyUseDefaultCredentials
+Use the default credentials for the proxy
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,7 +207,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -173,44 +251,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
-
 ## NOTES
-
-ALIASES
-
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties.
+For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-SKUSETTING <ISkuSetting[]>: .
-  - `Name <String>`: 
-  - `[Capability <ISkuCapability[]>]`: 
-    - `Name <String>`: 
-    - `Value <String>`: 
-  - `[CapacityDefault <Int32?>]`: 
-  - `[CapacityMaximum <Int32?>]`: 
-  - `[CapacityMinimum <Int32?>]`: 
-  - `[CapacityScaleType <String>]`: 
-  - `[Cost <ISkuCost[]>]`: 
-    - `MeterId <String>`: 
-    - `[ExtendedUnit <String>]`: 
-    - `[Quantity <Int32?>]`: 
-  - `[Family <String>]`: 
-  - `[Kind <String>]`: 
-  - `[Location <String[]>]`: 
-  - `[LocationInfo <ISkuLocationInfo[]>]`: 
-    - `Location <String>`: 
-    - `[ExtendedLocation <String[]>]`: 
-    - `[Type <String>]`: 
-    - `[Zone <String[]>]`: 
-    - `[ZoneDetail <ISkuZoneDetail[]>]`: 
-      - `[Capability <ISkuCapability[]>]`: 
-      - `[Name <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[RequiredQuotaId <String[]>]`: 
-  - `[Size <String>]`: 
-  - `[Tier <String>]`: 
+SKUSETTING \<ISkuSetting\[\]\>: .
+  Name \<String\>:
+  \[Capability \<ISkuCapability\[\]\>\]:
+    Name \<String\>:
+    Value \<String\>:
+  \[CapacityDefault \<Int32?\>\]:
+  \[CapacityMaximum \<Int32?\>\]:
+  \[CapacityMinimum \<Int32?\>\]:
+  \[CapacityScaleType \<String\>\]:
+  \[Cost \<ISkuCost\[\]\>\]:
+    MeterId \<String\>:
+    \[ExtendedUnit \<String\>\]:
+    \[Quantity \<Int32?\>\]:
+  \[Family \<String\>\]:
+  \[Kind \<String\>\]:
+  \[Location \<String\[\]\>\]:
+  \[LocationInfo \<ISkuLocationInfo\[\]\>\]:
+    Location \<String\>:
+    \[ExtendedLocation \<String\[\]\>\]:
+    \[Type \<String\>\]:
+    \[Zone \<String\[\]\>\]:
+    \[ZoneDetail \<ISkuZoneDetail\[\]\>\]:
+      \[Capability \<ISkuCapability\[\]\>\]:
+      \[Name \<String\[\]\>\]:
+  \[RequiredFeature \<String\[\]\>\]:
+  \[RequiredQuotaId \<String\[\]\>\]:
+  \[Size \<String\>\]:
+  \[Tier \<String\>\]:
 
 ## RELATED LINKS
+
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku)
 

@@ -1,5 +1,5 @@
 @{
-  GUID = '777d4d04-0051-487d-b453-20def22c3587'
+  GUID = '68f117c0-d183-4e35-8c4a-d8a268336ace'
   RootModule = './Az.ProviderHub.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

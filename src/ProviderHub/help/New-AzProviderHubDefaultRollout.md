@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Creates or updates the rollout details.
 
 ### Example 1: Create/Update a resource provider default rollout.
 ```powershell
-PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -RestOfTheWorldGroupTwoWaitDuration New-TimeSpan -Hours 24 -CanarySkipRegion "brazilus"
+PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -RestOfTheWorldGroupTwoWaitDuration New-TimeSpan -Hours 24 -CanarySkipRegion "brazilus" -NoWait
 ```
 
 ## PARAMETERS
@@ -687,5 +687,5 @@ SPECIFICATIONRESOURCETYPEREGISTRATION \<IResourceTypeRegistration\[\]\>: .
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubdefaultrollout](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubdefaultrollout)
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubdefaultrollout)
 

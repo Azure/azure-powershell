@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout
 schema: 2.0.0
 ---
 
@@ -44,7 +44,6 @@ Gets the default rollout details.
 ```powershell
 PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso"
 ```
-
 
 ### Example 2: Get a specific rollout by name.
 ```powershell
@@ -248,5 +247,5 @@ INPUTOBJECT \<IProviderHubIdentity\>: Identity Parameter
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubdefaultrollout](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubdefaultrollout)
+[https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout](https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubdefaultrollout)
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubproviderregistration
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration
 schema: 2.0.0
 ---
 
@@ -226,5 +226,5 @@ INPUTOBJECT \<IProviderHubIdentity\>: Identity Parameter
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubproviderregistration](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/get-azproviderhubproviderregistration)
+[https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration](https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubproviderregistration)
 

@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubproviderregistration
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
 schema: 2.0.0
 ---
 
@@ -696,5 +696,5 @@ THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ \<ILightHouseAuthorization\[\]\
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubproviderregistration](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubproviderregistration)
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration)
 

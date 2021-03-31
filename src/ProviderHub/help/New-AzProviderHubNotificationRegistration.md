@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration
 schema: 2.0.0
 ---
 
@@ -294,5 +294,5 @@ NOTIFICATIONENDPOINT \<INotificationEndpoint\[\]\>: .
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubnotificationregistration](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubnotificationregistration)
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubnotificationregistration)
 

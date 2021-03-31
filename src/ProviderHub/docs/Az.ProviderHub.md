@@ -1,77 +1,76 @@
 ---
 Module Name: Az.ProviderHub
-Module Guid: 777d4d04-0051-487d-b453-20def22c3587
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.providerhub
-Help Version: 1.0.0.0
+Module Guid: 68f117c0-d183-4e35-8c4a-d8a268336ace
+Download Help Link: {{ Update Download Link }}
+Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
 ---
 
 # Az.ProviderHub Module
 ## Description
-Microsoft Azure PowerShell: ProviderHub cmdlets
+{{ Fill in the Description }}
 
 ## Az.ProviderHub Cmdlets
 ### [Get-AzProviderHubCustomRollout](Get-AzProviderHubCustomRollout.md)
-Gets the custom rollout details.
+{{ Fill in the Description }}
 
 ### [Get-AzProviderHubDefaultRollout](Get-AzProviderHubDefaultRollout.md)
-Gets the default rollout details.
+{{ Fill in the Description }}
 
 ### [Get-AzProviderHubNotificationRegistration](Get-AzProviderHubNotificationRegistration.md)
-Gets the notification registration details.
+{{ Fill in the Description }}
 
 ### [Get-AzProviderHubProviderRegistration](Get-AzProviderHubProviderRegistration.md)
-Gets the provider registration details.
+{{ Fill in the Description }}
 
 ### [Get-AzProviderHubResourceTypeRegistration](Get-AzProviderHubResourceTypeRegistration.md)
-Gets a resource type details in the given subscription and provider.
+{{ Fill in the Description }}
 
 ### [Get-AzProviderHubSku](Get-AzProviderHubSku.md)
-Gets the sku details for the given resource type and sku name.
+{{ Fill in the Description }}
 
 ### [Invoke-AzProviderHubManifestCheckin](Invoke-AzProviderHubManifestCheckin.md)
-Checkin the manifest.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubCustomRollout](New-AzProviderHubCustomRollout.md)
-Creates or updates the rollout details.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubDefaultRollout](New-AzProviderHubDefaultRollout.md)
-Creates or updates the rollout details.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubManifest](New-AzProviderHubManifest.md)
-Generates the manifest for the given provider.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubNotificationRegistration](New-AzProviderHubNotificationRegistration.md)
-Creates or updates a notification registration.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubProviderRegistration](New-AzProviderHubProviderRegistration.md)
-Creates or updates the provider registration.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubProviderRegistrationOperation](New-AzProviderHubProviderRegistrationOperation.md)
-Generates the operations api for the given provider.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubResourceTypeRegistration](New-AzProviderHubResourceTypeRegistration.md)
-Creates or updates a resource type.
+{{ Fill in the Description }}
 
 ### [New-AzProviderHubSku](New-AzProviderHubSku.md)
-Creates or updates the resource type skus in the given resource type.
+{{ Fill in the Description }}
 
 ### [Remove-AzProviderHubDefaultRollout](Remove-AzProviderHubDefaultRollout.md)
-Deletes the rollout resource.
-Rollout must be in terminal state.
+{{ Fill in the Description }}
 
 ### [Remove-AzProviderHubNotificationRegistration](Remove-AzProviderHubNotificationRegistration.md)
-Deletes a notification registration.
+{{ Fill in the Description }}
 
 ### [Remove-AzProviderHubProviderRegistration](Remove-AzProviderHubProviderRegistration.md)
-Deletes a provider registration.
+{{ Fill in the Description }}
 
 ### [Remove-AzProviderHubResourceTypeRegistration](Remove-AzProviderHubResourceTypeRegistration.md)
-Deletes a resource type
+{{ Fill in the Description }}
 
 ### [Remove-AzProviderHubSku](Remove-AzProviderHubSku.md)
-Deletes a resource type sku.
+{{ Fill in the Description }}
 
 ### [Stop-AzProviderHubDefaultRollout](Stop-AzProviderHubDefaultRollout.md)
-Stops or cancels the rollout, if in progress.
+{{ Fill in the Description }}
 

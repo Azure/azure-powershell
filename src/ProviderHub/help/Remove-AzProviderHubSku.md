@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/remove-azproviderhubsku
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku
 schema: 2.0.0
 ---
 
@@ -295,5 +295,5 @@ INPUTOBJECT \<IProviderHubIdentity\>: Identity Parameter
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/remove-azproviderhubsku](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/remove-azproviderhubsku)
+[https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku](https://docs.microsoft.com/powershell/module/az.providerhub/remove-azproviderhubsku)
 

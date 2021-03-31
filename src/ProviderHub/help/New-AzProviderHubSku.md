@@ -1,7 +1,7 @@
 ---
 external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
-online version: https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubsku
+online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku
 schema: 2.0.0
 ---
 
@@ -288,5 +288,5 @@ SKUSETTING \<ISkuSetting\[\]\>: .
 
 ## RELATED LINKS
 
-[https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubsku](https://docs.microsoft.com/en-us/powershell/module/az.providerhub/new-azproviderhubsku)
+[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubsku)
 
