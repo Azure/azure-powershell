@@ -3,3 +3,4 @@
 PS C:\> New-AzProviderHubCustomRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "customRollout1" -CanaryRegion "Eastus2EUAP"
 ```
 
+Create/Update a resource provider custom rollout.

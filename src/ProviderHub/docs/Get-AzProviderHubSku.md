@@ -1,5 +1,5 @@
 ---
-external help file: Az.ProviderHub-help.xml
+external help file:
 Module Name: Az.ProviderHub
 online version: https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku
 schema: 2.0.0
@@ -15,49 +15,38 @@ Gets the sku details for the given resource type and sku name.
 ### List (Default)
 ```
 Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
-```
-
-### List3
-```
-Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
- -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String> -NestedResourceTypeThird <String>
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
-```
-
-### List2
-```
-Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
- -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>]
- -NestedResourceTypeFirst <String> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzProviderHubSku -ProviderNamespace <String> -ResourceType <String> -Sku <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzProviderHubSku -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String>
+ -ProviderNamespace <String> -ResourceType <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzProviderHubSku -NestedResourceTypeFirst <String> -NestedResourceTypeSecond <String>
+ -NestedResourceTypeThird <String> -ProviderNamespace <String> -ResourceType <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,22 +59,9 @@ Gets the sku details for the given resource type and sku name.
 PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
 ```
 
+Get the resource SKU definition.
+
 ## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -94,36 +70,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +99,7 @@ The first child resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List2, List1
+Parameter Sets: List1, List2, List3
 Aliases:
 
 Required: True
@@ -168,7 +114,7 @@ The second child resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: List3, List2
+Parameter Sets: List2, List3
 Aliases:
 
 Required: True
@@ -198,7 +144,7 @@ The name of the resource provider hosted within ProviderHub.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List3, List2, List1, Get
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: True
@@ -208,57 +154,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceType
 The resource type.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, List3, List2, List1, Get
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: True
@@ -288,12 +189,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List, List3, List2, List1, Get
+Parameter Sets: Get, List, List1, List2, List3
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -304,28 +205,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISkuResource
+
 ## NOTES
+
+ALIASES
+
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT \<IProviderHubIdentity\>: Identity Parameter
-  \[Id \<String\>\]: Resource identity path
-  \[NestedResourceTypeFirst \<String\>\]: The first child resource type.
-  \[NestedResourceTypeSecond \<String\>\]: The second child resource type.
-  \[NestedResourceTypeThird \<String\>\]: The third child resource type.
-  \[NotificationRegistrationName \<String\>\]: The notification registration.
-  \[ProviderNamespace \<String\>\]: The name of the resource provider hosted within ProviderHub.
-  \[ResourceType \<String\>\]: The resource type.
-  \[RolloutName \<String\>\]: The rollout name.
-  \[Sku \<String\>\]: The SKU.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
+
+INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
+  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
+  - `[NestedResourceTypeThird <String>]`: The third child resource type.
+  - `[NotificationRegistrationName <String>]`: The notification registration.
+  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RolloutName <String>]`: The rollout name.
+  - `[Sku <String>]`: The SKU.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku](https://docs.microsoft.com/powershell/module/az.providerhub/get-azproviderhubsku)
 

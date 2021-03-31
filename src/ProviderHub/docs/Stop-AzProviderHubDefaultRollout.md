@@ -1,5 +1,5 @@
 ---
-external help file: Az.ProviderHub-help.xml
+external help file:
 Module Name: Az.ProviderHub
 online version: https://docs.microsoft.com/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout
 schema: 2.0.0
@@ -15,16 +15,13 @@ Stops or cancels the rollout, if in progress.
 ### Stop (Default)
 ```
 Stop-AzProviderHubDefaultRollout -ProviderNamespace <String> -RolloutName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-PassThru] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzProviderHubDefaultRollout -InputObject <IProviderHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,22 +34,16 @@ Stops or cancels the rollout, if in progress.
 PS C:\> Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 ```
 
-## PARAMETERS
+Cancel a default rollout by rollout name.
 
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+### Example 2: Cancel a default rollout by rollout name.
+```powershell
+PS C:\> Stop-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 ```
+
+Cancel a default rollout by rollout name.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -61,36 +52,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +86,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -141,51 +102,6 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -215,7 +131,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -257,28 +173,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderHubIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
+
+ALIASES
+
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT \<IProviderHubIdentity\>: Identity Parameter
-  \[Id \<String\>\]: Resource identity path
-  \[NestedResourceTypeFirst \<String\>\]: The first child resource type.
-  \[NestedResourceTypeSecond \<String\>\]: The second child resource type.
-  \[NestedResourceTypeThird \<String\>\]: The third child resource type.
-  \[NotificationRegistrationName \<String\>\]: The notification registration.
-  \[ProviderNamespace \<String\>\]: The name of the resource provider hosted within ProviderHub.
-  \[ResourceType \<String\>\]: The resource type.
-  \[RolloutName \<String\>\]: The rollout name.
-  \[Sku \<String\>\]: The SKU.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
+
+INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[NestedResourceTypeFirst <String>]`: The first child resource type.
+  - `[NestedResourceTypeSecond <String>]`: The second child resource type.
+  - `[NestedResourceTypeThird <String>]`: The third child resource type.
+  - `[NotificationRegistrationName <String>]`: The notification registration.
+  - `[ProviderNamespace <String>]`: The name of the resource provider hosted within ProviderHub.
+  - `[ResourceType <String>]`: The resource type.
+  - `[RolloutName <String>]`: The rollout name.
+  - `[Sku <String>]`: The SKU.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout](https://docs.microsoft.com/powershell/module/az.providerhub/stop-azproviderhubdefaultrollout)
 

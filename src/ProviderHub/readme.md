@@ -51,17 +51,18 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(this-folder)/2020-11-20/providerhub.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
 
 module-version: 0.1.0
 title: ProviderHub
 subject-prefix: $(service-name)
+identity-correction-for-post: true
 
 directive:
   - no-inline:
     - Error
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Manifest$|^ManifestViaIdentity$|^ManifestViaIdentityExpanded$
     remove: true
   - where:
       verb: Set
@@ -77,5 +78,9 @@ directive:
   - where:
       verb: Get|New|Remove
       subject: SkuNestedResourceTypeThird
+    hide: true
+  - where:
+      verb: New
+      subject: ProviderRegistrationOperation
     hide: true
 ```

@@ -11,7 +11,6 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.ProviderNamespace = "Microsoft.Contoso"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

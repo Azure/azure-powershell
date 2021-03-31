@@ -3,3 +3,4 @@
 PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -RestOfTheWorldGroupTwoWaitDuration New-TimeSpan -Hours 24 -CanarySkipRegion "brazilus" -NoWait
 ```
 
+Create/Update a resource provider default rollout.

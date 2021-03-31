@@ -1,5 +1,5 @@
 ---
-external help file: Az.ProviderHub-help.xml
+external help file:
 Module Name: Az.ProviderHub
 online version: https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
 schema: 2.0.0
@@ -29,9 +29,8 @@ New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-TemplateDeploymentOptionPreflightOption <String[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThirdPartyProviderAuthorizationAuthorizationszzz <ILightHouseAuthorization[]>]
- [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +42,15 @@ Creates or updates the provider registration.
 ```powershell
 PS C:\> New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso" -ProviderHubMetadataProviderAuthenticationAllowedAudience "https://management.core.windows.net/" -ProviderHubMetadataProviderAuthorization @{ApplicationId = "00000000-0000-0000-0000-000000000000"; RoleDefinitionId = "00000000-0000-0000-0000-000000000000"} -Namespace "Microsoft.Contoso" -ProviderVersion "2.0" -ProviderType "Internal" -ManagementManifestOwner "SPARTA-PlatformServiceAdministrator" -ManagementIncidentContactEmail "help@microsoft.com" -ManagementIncidentRoutingService "Contoso Service" -ManagementIncidentRoutingTeam "Contoso Team" -ManagementServiceTreeInfo @{ComponentId = "00000000-0000-0000-0000-000000000000"; ServiceId = "00000000-0000-0000-0000-000000000000"} -Capability @{QuotaId = "CSP_2015-05-01"; Effect = "Allow"}, @{QuotaId = "CSP_MG_2017-12-01"; Effect = "Allow"}
 ```
+
+Create/Update a provider registration.
+
+### Example 2: Create/Update a provider registration.
+```powershell
+PS C:\> New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso" -ProviderHubMetadataProviderAuthenticationAllowedAudience "https://management.core.windows.net/" -ProviderHubMetadataProviderAuthorization @{ApplicationId = "00000000-0000-0000-0000-000000000000"; RoleDefinitionId = "00000000-0000-0000-0000-000000000000"} -Namespace "Microsoft.Contoso" -ProviderVersion "2.0" -ProviderType "Hidden" -ManagementManifestOwner "SPARTA-PlatformServiceAdministrator" -ManagementIncidentContactEmail "help@microsoft.com" -ManagementIncidentRoutingService "Contoso Service" -ManagementIncidentRoutingTeam "Contoso Team" -ManagementServiceTreeInfo @{ComponentId = "00000000-0000-0000-0000-000000000000"; ServiceId = "00000000-0000-0000-0000-000000000000"} -Capability @{QuotaId = "CSP_2015-05-01"; Effect = "Allow"}, @{QuotaId = "CSP_MG_2017-12-01"; Effect = "Allow"}
+```
+
+Create/Update a provider registration.
 
 ## PARAMETERS
 
@@ -56,22 +64,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,36 +105,6 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Runtime.SendAsyncStep[]
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +276,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -440,51 +403,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RequestHeaderOptionOptInHeader
 .
 
@@ -525,7 +443,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -586,7 +504,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -661,40 +579,42 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+
 ## NOTES
+
+ALIASES
+
 COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-CAPABILITY \<IResourceProviderCapabilities\[\]\>: .
-  Effect \<String\>:
-  QuotaId \<String\>:
-  \[RequiredFeature \<String\[\]\>\]:
 
-MANAGEMENTSERVICETREEINFO \<IServiceTreeInfo\[\]\>: .
-  \[ComponentId \<String\>\]:
-  \[ServiceId \<String\>\]:
+CAPABILITY <IResourceProviderCapabilities[]>: .
+  - `Effect <String>`: 
+  - `QuotaId <String>`: 
+  - `[RequiredFeature <String[]>]`: 
 
-PROVIDERAUTHORIZATION \<IResourceProviderAuthorization\[\]\>: .
-  \[ApplicationId \<String\>\]:
-  \[ManagedByRoleDefinitionId \<String\>\]:
-  \[RoleDefinitionId \<String\>\]:
+MANAGEMENTSERVICETREEINFO <IServiceTreeInfo[]>: .
+  - `[ComponentId <String>]`: 
+  - `[ServiceId <String>]`: 
 
-PROVIDERHUBMETADATAPROVIDERAUTHORIZATION \<IResourceProviderAuthorization\[\]\>: .
-  \[ApplicationId \<String\>\]:
-  \[ManagedByRoleDefinitionId \<String\>\]:
-  \[RoleDefinitionId \<String\>\]:
+PROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
-SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION \<ISubscriptionStateOverrideAction\[\]\>: .
-  Action \<String\>:
-  State \<String\>:
+PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
+  - `[ApplicationId <String>]`: 
+  - `[ManagedByRoleDefinitionId <String>]`: 
+  - `[RoleDefinitionId <String>]`: 
 
-THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ \<ILightHouseAuthorization\[\]\>: .
-  PrincipalId \<String\>:
-  RoleDefinitionId \<String\>:
+SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
+  - `Action <String>`: 
+  - `State <String>`: 
+
+THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATIONSZZZ <ILightHouseAuthorization[]>: .
+  - `PrincipalId <String>`: 
+  - `RoleDefinitionId <String>`: 
 
 ## RELATED LINKS
-
-[https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration](https://docs.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration)
 

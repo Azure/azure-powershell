@@ -3,3 +3,4 @@
 PS C:\> Get-AzProviderHubNotificationRegistration -ProviderNamespace "Microsoft.Contoso" -Name "notificationRegistrationTest"
 ```
 
+Get the notification registration by name.

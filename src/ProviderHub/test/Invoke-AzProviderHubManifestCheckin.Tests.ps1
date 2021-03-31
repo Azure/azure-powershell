@@ -15,16 +15,4 @@ Describe 'Invoke-AzProviderHubManifestCheckin' {
     It 'ManifestExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'Manifest' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ManifestViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ManifestViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
