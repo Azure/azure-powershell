@@ -127,7 +127,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* GA release for module Az.CloudService.'
+        ReleaseNotes = '* Bumped API version to stable 2021-03-01
+        * Supported OSFamily and OSVersion'
 
         # Prerelease string of this module
         # Prerelease = ''
