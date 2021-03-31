@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* The value of IdentifierUri parameter will be considered valid only if it exists as a verified domain in a tenant.
+* Added upcoming breaking change warnings on below cmdlets, because the value of IdentifierUri parameter will need verified domain.
   - `New-AzADApplication` 
   - `Update-AzADApplication`
   - `New-AzADServicePrincipal`
