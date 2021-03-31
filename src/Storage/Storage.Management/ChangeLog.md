@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 3.5.0
+* Fixed an issue that list account from resource group won't use nextlink
+    - `Get-AzStorageAccount`
+* Supported ChangeFeedRetentionInDays when Enable ChangeFeed on Blob service
+    - `Update-AzStorageBlobServiceProperty`
+
 ## Version 3.4.0
 * Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.
 * Supported resource access rule in NetworkRuleSet

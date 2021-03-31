@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
@@ -100,7 +100,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Add-AzVMSshPublicKey', 'Add-AzVMSecret', 'Remove-AzVMSecret', 
                'Remove-AzVMNetworkInterface', 'Remove-AzVMDataDisk', 
                'Set-AzVMBootDiagnostic', 'Set-AzVMDataDisk', 'Set-AzVMPlan', 
-               'Set-AzVMSourceImage', 'Set-AzVMOSDisk', 
+               'Set-AzVMSourceImage', 'Set-AzVMOSDisk', 'Set-AzVmSecurityType', 'Set-AzVmUefi',
                'Get-AzVMBootDiagnosticsData', 'Get-AzVM', 'Update-AzVM', 
                'Restart-AzVM', 'New-AzVM', 'Start-AzVM', 'Stop-AzVM', 'Remove-AzVM', 
                'New-AzVMConfig', 'Set-AzVMOperatingSystem', 'Add-AzVMDataDisk', 
@@ -112,7 +112,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'New-AzVmssConfig', 'New-AzVmssIpConfig', 
                'New-AzVmssVaultCertificateConfig', 'Remove-AzVmssExtension', 
                'Remove-AzVmssDataDisk', 
-               'Remove-AzVmssNetworkInterfaceConfiguration', 'Set-AzVmssOsProfile', 
+               'Remove-AzVmssNetworkInterfaceConfiguration', 'Set-AzVmssOsProfile', 'Set-AzVmssSecurityType', 'Set-AzVmssUefi',
                'Set-AzVmssStorageProfile', 'New-AzVmss', 'Update-AzVmss', 
                'Stop-AzVmss', 'Remove-AzVmss', 'Get-AzVmss', 'Get-AzVmssSku', 
                'Set-AzVmss', 'Restart-AzVmss', 'Start-AzVmss', 'Update-AzVmssInstance', 

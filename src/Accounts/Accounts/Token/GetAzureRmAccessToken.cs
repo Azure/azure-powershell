@@ -21,10 +21,10 @@ using System.Text.Json;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Profile
                 try
                 {
                     var tokenParts = accessToken.AccessToken.Split('.');
-                    var decodedToken = Base64UrlHelpers.DecodeToString(tokenParts[1]);
+                    var decodedToken = Base64UrlHelper.DecodeToString(tokenParts[1]);
 
                     var tokenDocument = JsonDocument.Parse(decodedToken);
                     int expSeconds = tokenDocument.RootElement.EnumerateObject()

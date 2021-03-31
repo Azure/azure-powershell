@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
+* Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
+* Fixed the issue of retrieving Apache Spark pool information through management API
+
+## Version 0.9.0
+* Added support for workspace key encryption management
+	- Add `New-AzSynapseWorkspaceKey` cmdlet
+    - Add `Get-AzSynapseWorkspaceKey` cmdlet
+    - Add `Remove-AzSynapseWorkspaceKey` cmdlet
+    - Add `Update-AzSynapseWorkspaceKey` cmdlet
+* Added support for managed identity SQL control
+	- Add `Set-AzSynapseManagedIdentitySqlControlSetting` cmdlet
+    - Add `Get-AzSynapseManagedIdentitySqlControlSetting` cmdlet
+* Added support for data exfiltration
+	- Update `New-AzSynapseWorkspace` cmdlet to accept `-ManagedVirtualNetwork`
+    - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
+    - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
 
 ## Version 0.8.0
 * Added support for operation of getting droppedsqlpool and geobackup

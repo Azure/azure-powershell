@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll'
@@ -78,7 +78,8 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Get-AzLogProfile', 'Add-AzLogProfile', 'Get-AzActivityLog', 
                'New-AzDiagnosticSetting', 'New-AzDiagnosticDetailSetting', 
                'Set-AzDiagnosticSetting', 'Get-AzDiagnosticSetting', 
-               'Get-AzDiagnosticSettingCategory', 'Remove-AzDiagnosticSetting', 
+               'Get-AzDiagnosticSettingCategory', 'Get-AzSubscriptionDiagnosticSettingCategory', 
+               'Remove-AzDiagnosticSetting', 
                'New-AzAutoscaleNotification', 'New-AzAutoscaleProfile', 
                'New-AzAutoscaleRule', 'Add-AzAutoscaleSetting', 
                'Get-AzAutoscaleHistory', 'Get-AzAutoscaleSetting', 

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Cdn.dll'
@@ -91,9 +91,20 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'New-AzCdnDeliveryRule', 'New-AzCdnDeliveryRuleCondition', 
                'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy', 
                'New-AzCdnOrigin', 'Remove-AzCdnOrigin', 'New-AzCdnOriginGroup', 
-               'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 
-               'Set-AzCdnOriginGroup'
-
+               'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 'Set-AzCdnOriginGroup',
+               'Get-AzAfdCustomDomain', 'Get-AzAfdEndpoint', 'Get-AzAfdOrigin',
+               'Get-AzAfdOriginGroup', 'Get-AzAfdProfile', 'Get-AzAfdRoute',
+               'Get-AzAfdRuleSet', 'Get-AzAfdRule', 'Get-AzAfdSecret', 'Get-AzAfdSecurityPolicy',
+               'New-AzAfdCustomDomain', 'New-AzAfdEndpoint', 'New-AzAfdOrigin',
+               'New-AzAfdOriginGroup', 'New-AzAfdProfile', 'New-AzAfdRoute',
+               'New-AzAfdRule', 'New-AzAfdRuleCacheExpirationAction', 'New-AzAfdRuleSet',
+               'New-AzAfdSecret', 'New-AzAfdSecurityPolicy',
+               'Remove-AzAfdCustomDomain','Remove-AzAfdEndpoint', 'Remove-AzAfdOriginGroup',
+               'Remove-AzAfdOrigin', 'Remove-AzAfdProfile', 'Remove-AzAfdRoute',
+               'Remove-AzAfdRule', 'Remove-AzAfdRuleSet', 'Remove-AzAfdSecret', 'Remove-AzAfdSecurityPolicy',
+               'Set-AzAfdCustomDomain','Set-AzAfdEndpoint', 'Set-AzAfdOriginGroup', 'Set-AzAfdOrigin',
+               'Set-AzAfdProfile', 'Set-AzAfdRoute', 'Set-AzAfdSecret', 'Set-AzAfdSecurityPolicy'
+              
 # Variables to export from this module
 # VariablesToExport = @()
 

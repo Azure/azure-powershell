@@ -128,8 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
-[Update-AzActivityLogAlert](./Update-AzActivityLogAlert.md)
-
 [Remove-AzActivityLogAlert](./Remove-AzActivityLogAlert.md)
 
 [New-AzActionGroup](./New-AzActionGroup.md)

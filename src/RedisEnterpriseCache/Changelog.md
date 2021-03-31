@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* GA version of Az.RedisEnterpriseCache
+
 ## Version 0.1.0
 * First preview release for module Az.RedisEnterpriseCache
 
