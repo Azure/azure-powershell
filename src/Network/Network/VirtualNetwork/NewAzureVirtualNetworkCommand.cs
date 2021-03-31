@@ -69,6 +69,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "FlowTimeoutInMinutes")]
+        public int? FlowTimeoutInMinutes { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
         public PSSubnet[] Subnet { get; set; }
 
@@ -139,6 +145,11 @@ namespace Microsoft.Azure.Commands.Network
             if (DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
+            }
+            
+            if (this.FlowTimeoutInMinutes > 0)
+            {
+                vnet.FlowTimeoutInMinutes = this.FlowTimeoutInMinutes;
             }
 
             vnet.Subnets = this.Subnet?.ToList();
