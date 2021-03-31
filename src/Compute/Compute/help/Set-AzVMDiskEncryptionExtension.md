@@ -322,7 +322,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -333,11 +333,11 @@ Specifies the resource ID of the **KeyVault** to which the virtual machine encry
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -348,11 +348,11 @@ Specifies the **KeyVault** URL to which the virtual machine encryption keys shou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -423,7 +423,7 @@ Initiates migration of the VM to latest Azure Disk Encryption extension version 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: MigrateADEVersionParameterSet, MigrateADEVersionRecoveryParameterSet
 Aliases:
 
 Required: False
@@ -438,7 +438,7 @@ Initiates migration recovery for failures during migration of ADE extension vers
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: MigrateADEVersionParameterSet, MigrateADEVersionRecoveryParameterSet
 Aliases:
 
 Required: False
@@ -459,7 +459,7 @@ Aliases:
 Accepted values: RSA-OAEP, RSA1_5
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -475,7 +475,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -491,7 +491,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -507,7 +507,7 @@ Parameter Sets: (All)
 Aliases: ExtensionName
 
 Required: False
-Position: 12
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -523,7 +523,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -555,7 +555,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -570,7 +570,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -585,7 +585,7 @@ Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -620,7 +620,7 @@ Aliases:
 Accepted values: OS, Data, All
 
 Required: False
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
