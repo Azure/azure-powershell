@@ -20,10 +20,10 @@
 
 ## Upcoming Release
 * The value of IdentifierUri parameter will be considered valid only if it exists as a verified domain in a tenant.
-  - New-AzADApplication 
-  - Update-AzADApplication
-  - New-AzADServicePrincipal
-  - Update-AzADServicePrincipal
+  - `New-AzADApplication` 
+  - `Update-AzADApplication`
+  - `New-AzADServicePrincipal`
+  - `Update-AzADServicePrincipal`
 
 ## Version 3.4.0
 * Redirected bicep message to verbose stream
