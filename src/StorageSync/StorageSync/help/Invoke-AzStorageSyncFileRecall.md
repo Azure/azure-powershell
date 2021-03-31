@@ -10,6 +10,9 @@ schema: 2.0.0
 ## SYNOPSIS
 This command recalls all tiered files back to local disk.
 
+> [!IMPORTANT]
+> `Invoke-AzStorageSyncFileRecall` is deprecated. Please use [Invoke-StorageSyncFileRecall](/azure/storage/files/storage-sync-how-to-manage-tiered-files#how-to-recall-a-tiered-file-to-disk).
+
 ## SYNTAX
 
 ### StringParameterSet (Default)
