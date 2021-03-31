@@ -20,12 +20,12 @@
 
 ## Upcoming Release
 * Added Sql Vulnerability Assessment cmdlets for  IAAS: 
-    `Get-AzSqlVulnerabilityAssessmentScanRecord`
-    `Get-AzSqlVulnerabilityAssessmentScanResult`
-    `Add-AzSqlVulnerabilityAssessmentBaseline`
-    `Remove-AzSqlVulnerabilityAssessmentBaseline`
-    `Get-AzSqlVulnerabilityAssessmentBaseline`
-    `Set-AzSqlVulnerabilityAssessmentBaseline`
+    `Get-AzSecuritySqlVulnerabilityAssessmentScanRecord`
+    `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`
+    `Add-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Remove-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Get-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Set-AzSecuritySqlVulnerabilityAssessmentBaseline`
 
 ## Version 0.9.0
 * Added breaking change notification in AzSecurityAlert:
