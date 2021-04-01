@@ -527,10 +527,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 vnetGateway.NatRules = this.NatRule?.ToList();
             }
-            else
-            {
-                vnetGateway.NatRules = null;
-            }
 
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
             vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNatFlag.IsPresent;
