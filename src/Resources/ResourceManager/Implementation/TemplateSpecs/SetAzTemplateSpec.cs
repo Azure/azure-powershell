@@ -154,6 +154,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string VersionDescription { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinition { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -251,6 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Version,
                         Location,
                         packagedTemplate,
+                        UIFormDefinition,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
                         versionDescription: VersionDescription,

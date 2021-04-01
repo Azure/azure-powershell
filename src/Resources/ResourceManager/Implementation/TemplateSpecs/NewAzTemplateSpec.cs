@@ -132,6 +132,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             HelpMessage = "Do not ask for confirmation when overwriting an existing version.")]
         public SwitchParameter Force { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionFile { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -202,6 +207,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         throw new PSNotSupportedException();
                 }
 
+                JObject UIFormDefinition = new JObject();
+                if (UIFormDefinitionFile != null)
+                {
+                    string UIFormFilePath = this.TryResolvePath(UIFormDefinitionFile);
+                    if (!File.Exists(UIFormFilePath))
+                    {
+                        throw new PSInvalidOperationException(
+                            string.Format(ProjectResources.InvalidFilePath, UIFormDefinitionFile)
+                        );
+                    }
+                    string UIFormJson = FileUtilities.DataStore.ReadFileAsText(UIFormDefinitionFile);
+                    UIFormDefinition = JObject.Parse(UIFormJson);
+                }
+
                 Action createOrUpdateAction = () =>
                 {
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
@@ -210,6 +229,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Version,
                         Location,
                         packagedTemplate,
+                        UIFormDefinition,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
                         versionDescription: VersionDescription,
