@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "FlowTimeout value of the virtual network should be between 4 and 30 mins (inclusive)")]
+             HelpMessage = "FlowTimeout value of the virtual network should be between 4 and 30 minutes (inclusive)")]
         public int? FlowTimeout { get; set; }
 
         [Parameter(
