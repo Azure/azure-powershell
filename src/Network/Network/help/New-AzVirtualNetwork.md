@@ -77,7 +77,7 @@ created. The New-AzVirtualNetwork command then creates the virtual network.
 Specifies a range of IP addresses for a virtual network.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The BGP Community advertised over ExpressRoute.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Reference to the DDoS protection plan resource associated with the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies the DNS server for a subnet.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 A switch parameter which represents if DDoS protection is enabled or not.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -179,10 +179,10 @@ Accept wildcard characters: False
 ```
 
 ### -FlowTimeout
-FlowTimeout value of the virtual network should be between 4 and 30 mins (inclusive)
+FlowTimeout enables connection tracking for intra-VM flows for non-Syn packets. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.       
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Specifies IpAllocations for a virtual network.
 
 ```yaml
-Type: PSIpAllocation[]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpAllocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 Specifies the region for the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +242,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group to contain the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -272,7 +272,7 @@ Accept wildcard characters: False
 Specifies a list of subnets to associate with the virtual network.
 
 ```yaml
-Type: PSSubnet[]
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet[]
 Parameter Sets: (All)
 Aliases:
 
@@ -288,7 +288,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -303,7 +303,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -319,7 +319,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
