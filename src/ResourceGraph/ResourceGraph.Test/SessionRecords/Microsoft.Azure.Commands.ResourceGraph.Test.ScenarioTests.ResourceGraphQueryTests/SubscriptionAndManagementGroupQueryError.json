@@ -75,7 +75,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Please provide below info when asking for support: timestamp = 2021-03-25T11:45:12.9331797Z, correlationId = 30ce3d66-fd76-408f-9f26-2022e931c3d5.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"InvalidQuery\",\r\n        \"message\": \"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying.\"\r\n      },\r\n      {\r\n        \"code\": \"ParserFailure\",\r\n        \"message\": \"ParserFailure\",\r\n        \"line\": 1,\r\n        \"characterPositionInLine\": 11,\r\n        \"token\": \"<EOF>\",\r\n        \"expectedToken\": \"Ǐ\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "fake response as query never reaches the server",
       "StatusCode": 400
     }
   ],

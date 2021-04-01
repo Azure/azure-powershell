@@ -19,9 +19,11 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
+    [GenericBreakingChange("The parameters of Remove-AzStreamAnalyticsJob will be updated in an upcoming breaking change release.", "2.0.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsJob", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {

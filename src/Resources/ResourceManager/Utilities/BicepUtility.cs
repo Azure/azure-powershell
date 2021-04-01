@@ -87,10 +87,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     outputMethod(string.Format("Using Bicep v{0}", currentBicepVersion));
                     result.ForEach(r => outputMethod(r.ToString()));
                 }
+
+                string errorMsg = string.Empty;
                 if (powershell.HadErrors)
                 {
-                    string errorMsg = string.Empty;
                     powershell.Streams.Error.ForEach(e => { errorMsg += (e + Environment.NewLine); });
+                    errorMsg = errorMsg.Substring(0, errorMsg.Length- Environment.NewLine.Length);
+                    outputMethod(errorMsg);
+                }
+
+                powershell.AddScript("$LASTEXITCODE");
+                result = powershell.Invoke();
+                int.TryParse(result.ToString(), out int exitcode);
+                
+                if (exitcode != 0)
+                {
                     throw new AzPSApplicationException(errorMsg);
                 }
             }

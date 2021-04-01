@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.1
+* Nullref Bug fixed in get discovered server and initialize replication infrastructure commandlets.
+
 ## Version 1.0.0
 * Az.Migrate GA
 * Incorporated Initialize-AzMigrateReplicationInfrastructure as a cmdlet in the Az.Migrate module, from the external script that is run currently today.
