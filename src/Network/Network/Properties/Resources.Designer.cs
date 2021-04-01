@@ -1858,5 +1858,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VirtualNetworkGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
     }
 }

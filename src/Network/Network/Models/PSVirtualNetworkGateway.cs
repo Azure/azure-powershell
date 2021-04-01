@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string VpnGatewayGeneration { get; set; }
 
+        public List<PSVirtualNetworkGatewayNatRule> NatRules { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
@@ -80,6 +82,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BgpSettingsText
         {
             get { return JsonConvert.SerializeObject(BgpSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string NatRulesText
+        {
+            get { return JsonConvert.SerializeObject(NatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
