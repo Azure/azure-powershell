@@ -3,6 +3,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
+#if GEN3
     public class PSSynapseSqlPoolV3 : PSSynapseTrackedResource
     {
         public PSSynapseSqlPoolV3(SqlPoolV3 sqlPool)
@@ -72,4 +73,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         public bool? AutoResume { get; set; }
     }
+#endif
 }

@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
+#if GEN3
             if (this.Version == 3)
             {
                 if (!string.IsNullOrEmpty(this.Name))
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
+#endif
                 if (!string.IsNullOrEmpty(this.Name))
                 {
                     var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
@@ -94,7 +96,9 @@ namespace Microsoft.Azure.Commands.Synapse
                     var result = this.SynapseAnalyticsClient.ListSqlPools(this.ResourceGroupName, this.WorkspaceName).Select(r => new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, r));
                     WriteObject(result, true);
                 }
+#if GEN3
             }
+#endif
         }
     }
 }

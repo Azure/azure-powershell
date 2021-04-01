@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
+#if GEN3
             if (this.Version == 3)
             {
                 SqlPoolV3 existingSqlPool = null;
@@ -160,6 +161,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
+#endif
                 SqlPool existingSqlPool = null;
                 try
                 {
@@ -193,9 +195,12 @@ namespace Microsoft.Azure.Commands.Synapse
 
                     default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
                 }
+#if GEN3
             }
+#endif
         }
 
+#if GEN3
         private void UpdateSqlPoolV3(SqlPoolV3 existingSqlPool)
         {
             SqlPoolUpdate sqlPoolPatchInfo = new SqlPoolUpdate
@@ -217,6 +222,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             }
         }
+#endif
 
         private void UpdateSqlPool(SqlPool existingSqlPool)
         {

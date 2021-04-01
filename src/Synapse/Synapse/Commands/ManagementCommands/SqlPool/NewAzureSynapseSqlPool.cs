@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
+#if GEN3
             if (this.Version == 3)
             {
 
@@ -120,6 +121,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
+#endif
                 var existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolOrDefault(this.ResourceGroupName, this.WorkspaceName, this.Name);
                 if (existingSqlPool != null)
                 {
@@ -144,7 +146,9 @@ namespace Microsoft.Azure.Commands.Synapse
                     var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.CreateSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name, createParams));
                     WriteObject(result);
                 }
+#if GEN3
             }
+#endif
         }
     }
 }

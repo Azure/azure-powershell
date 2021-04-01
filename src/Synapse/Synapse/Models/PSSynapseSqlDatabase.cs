@@ -2,6 +2,7 @@
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
+#if GEN3
     public class PSSynapseSqlDatabase : PSSynapseTrackedResource
     {
         public PSSynapseSqlDatabase(SqlDatabase sqlDatabase)
@@ -32,4 +33,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         public string StorageRedundancy { get; set; }
     }
+#endif
 }

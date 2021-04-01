@@ -103,14 +103,18 @@ namespace Microsoft.Azure.Commands.Synapse
                 Name,
                 () =>
                 {
+#if GEN3
                     if (this.Version == 3)
                     {
                         this.SynapseAnalyticsClient.DeleteSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
                     }
                     else
                     {
+#endif
                         this.SynapseAnalyticsClient.DeleteSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+#if GEN3
                     }
+#endif
 
                     if (this.PassThru.IsPresent)
                     {

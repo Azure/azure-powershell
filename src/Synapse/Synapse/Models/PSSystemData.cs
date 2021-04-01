@@ -3,6 +3,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
+#if GEN3
     public class PSSystemData
     {
         public PSSystemData(SystemData systemData)
@@ -47,4 +48,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// </summary>
         public DateTime? LastModifiedAt { get; }
     }
+#endif
 }
