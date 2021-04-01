@@ -68,7 +68,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 string roleAssignmentId = roleAssignment.SingleOrDefault().Id;
                 _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
             }
-            else {
+            else 
+            {
                 throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceRoleAssignmentMoreThanOneFound, workspaceName));
             }
         }
@@ -130,6 +131,27 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 throw new InvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));
             }
             return roleDefinition.Id.ToString();
+        }
+
+        public List<string> GetScopeFromRoleItemTypeAndItem(SynaspeEnums.WorkspaceItemType? itemType, string item, string workspaceName, bool isGetRoleAssignment)
+        {
+            string scope = null;
+            string itemTypeString = SynaspeEnums.GetItemTypeString(itemType);
+
+            if (itemType != null && !string.IsNullOrEmpty(item))
+            {
+                scope = "workspaces/" + workspaceName + "/" + itemTypeString + "/" + item;
+            }
+            else if (!isGetRoleAssignment && ((itemType != null && string.IsNullOrEmpty(item)) || (itemType == null && !string.IsNullOrEmpty(item))))
+            {
+                throw new InvalidOperationException(String.Format(Resources.WorkspaceItemTypeAndItemNotAppearTogether));
+            }
+            else if (!isGetRoleAssignment)
+            {
+                scope = "workspaces/" + workspaceName;
+            }
+
+            return new List<string> { scope, itemTypeString };
         }
     }
 }

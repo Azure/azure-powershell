@@ -27,8 +27,6 @@ namespace Microsoft.Azure.Commands.Synapse
         private const string GetByWorkspaceObjectAndAssignmentIdParameterSet = "GetByWorkspaceObjectAndAssignmentIdParameterSet";
         private const string GetByWorkspaceNameAndServicePrincipalNameParameterSet = "GetByWorkspaceNameAndServicePrincipalNameParameterSet";
         private const string GetByWorkspaceObjectAndServicePrincipalNameParameterSet = "GetByWorkspaceObjectAndServicePrincipalNameParameterSet";
-        private const string GetByWorkspaceNameAndItemParameterSet = "GetByWorkspaceNameAndItemParameterSet";
-        private const string GetByWorkspaceObjectAndItemParameterSet = "GetByWorkspaceObjectAndItemParameterSet";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
@@ -39,8 +37,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndAssignmentIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndServicePrincipalNameParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
@@ -56,8 +52,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [Parameter(ValueFromPipeline = true, ParameterSetName = GetByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
@@ -65,10 +59,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndAssignmentIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleAssignmentId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleAssignmentId)]
         [ValidateNotNullOrEmpty]
         public string RoleAssignmentId { get; set; }
 
@@ -84,10 +74,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionName)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
@@ -95,10 +81,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.RoleDefinitionId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.RoleDefinitionId)]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionId { get; set; }
 
@@ -106,10 +88,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.SignInName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.SignInName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.SignInName)]
         [Alias("Email", "UserPrincipalName")]
         [ValidateNotNullOrEmpty]
         public string SignInName { get; set; }
@@ -118,10 +96,6 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndServicePrincipalNameParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.ServicePrincipalName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.ServicePrincipalName)]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
@@ -133,25 +107,15 @@ namespace Microsoft.Azure.Commands.Synapse
             Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
             Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.PrincipalId)]
         [Alias("Id", "PrincipalId")]
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
         [ValidateNotNullOrEmpty]
-        public SynaspeEnums.WorkspaceItemType ItemType { get; set; }
+        public SynaspeEnums.WorkspaceItemType? ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndItemParameterSet,
-            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
@@ -183,46 +147,13 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             else
             {
-                string scope = null;
-                string itemType = null;
-
-                if (this.IsParameterBound(c => c.ItemType))
-                {
-                    switch (this.ItemType)
-                    {
-                        case SynaspeEnums.WorkspaceItemType.ApacheSparkPool:
-                            itemType = "bigDataPools";
-                            break;
-                        case SynaspeEnums.WorkspaceItemType.IntegrationRuntime:
-                            itemType = "integrationRuntimes";
-                            break;
-                        case SynaspeEnums.WorkspaceItemType.LinkedService:
-                            itemType = "linkedServices";
-                            break;
-                        case SynaspeEnums.WorkspaceItemType.Credential:
-                            itemType = "credentials";
-                            break;
-                    }
-
-                    if (this.IsParameterBound(c => c.Item))
-                    {
-                        scope = "workspaces/" + this.WorkspaceName + "/" + itemType + "/" + this.Item;
-                    }
-                    else 
-                    {
-                        scope = null;
-                    }
-                }
-                else
-                {
-                    scope = null;
-                }
-
+                string scope = SynapseAnalyticsClient.GetScopeFromRoleItemTypeAndItem(this.ItemType, this.Item, this.WorkspaceName, true)[0];
+                string itemTypeString = SynapseAnalyticsClient.GetScopeFromRoleItemTypeAndItem(this.ItemType, this.Item, this.WorkspaceName, true)[1];
                 var roleAssignment = SynapseAnalyticsClient.ListRoleAssignments(this.RoleDefinitionId, this.ObjectId, scope).Select(element => new PSRoleAssignmentDetails(element));
 
-                if (!string.IsNullOrEmpty(itemType) && string.IsNullOrEmpty(this.Item))
+                if (this.IsParameterBound(c => c.ItemType) && string.IsNullOrEmpty(this.Item))
                 {
-                    roleAssignment = roleAssignment.Where(element => element.Scope == "workspaces/" + this.WorkspaceName || element.Scope.StartsWith("workspaces/" + this.WorkspaceName + '/' + itemType));
+                    roleAssignment = roleAssignment.Where(element => element.Scope == "workspaces/" + this.WorkspaceName || element.Scope.StartsWith("workspaces/" + this.WorkspaceName + '/' + itemTypeString));
                 }
 
                 WriteObject(roleAssignment, true);

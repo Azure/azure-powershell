@@ -1684,6 +1684,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A workspace itemType and item not appear together. Please input itemType and item together..
+        /// </summary>
+        internal static string WorkspaceItemTypeAndItemNotAppearTogether {
+            get {
+                return ResourceManager.GetString("WorkspaceItemTypeAndItemNotAppearTogether", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A workspace key with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key..
         /// </summary>
         internal static string WorkspaceKeyExists {
@@ -1693,7 +1702,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Roleassignment under workspace &apos;{0}&apos; was found. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId.
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId.
         /// </summary>
         internal static string WorkspaceRoleAssignmentMoreThanOneFound {
             get {
@@ -1702,7 +1711,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find workspace roleassignment under workspace &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Cannot find workspace role assignment under workspace &apos;{0}&apos;..
         /// </summary>
         internal static string WorkspaceRoleAssignmentNotFound {
             get {

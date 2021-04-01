@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.RoleDefinitionId = roleAssignmentDetails.RoleDefinitionId?.ToString();
             this.ObjectId = roleAssignmentDetails.PrincipalId?.ToString();
             this.Scope = roleAssignmentDetails.Scope;
+            this.principalType = roleAssignmentDetails.PrincipalType;
         }
 
         public string RoleAssignmentId { get; set; }
@@ -23,5 +24,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string ObjectId { get; set; }
 
         public string Scope { get; set; }
+
+        public string principalType { get; set; }
     }
 }
