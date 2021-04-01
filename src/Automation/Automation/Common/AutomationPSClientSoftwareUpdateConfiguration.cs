@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     ScheduleInfo = new Sdk.ScheduleProperties()
                     {
-                        StartTime = configuration.ScheduleConfiguration.StartTime.ToUniversalTime(),
-                        ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime.ToUniversalTime(),
+                        StartTime = configuration.ScheduleConfiguration.StartTime,
+                        ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime,
                         Frequency = configuration.ScheduleConfiguration.Frequency.ToString(),
                         Interval = configuration.ScheduleConfiguration.Interval,
                         IsEnabled = true,
