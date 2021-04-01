@@ -12,8 +12,15 @@ Create a in-memory object for LoadBalancerFrontendIPConfiguration
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-PublicIPAddressId <String>]
+ [<CommonParameters>]
+```
+
+### PrivateIP
+```
+New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-PrivateIPAddress <String>]
  [<CommonParameters>]
 ```
 
@@ -49,12 +56,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateIPAddress
+Private IP Address
+
+```yaml
+Type: System.String
+Parameter Sets: PrivateIP
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIPAddressId
 Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False

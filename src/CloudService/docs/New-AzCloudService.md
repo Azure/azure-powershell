@@ -13,6 +13,7 @@ Please note some properties can be set only during cloud service creation.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AllowModelOverride] [-Configuration <String>] [-ConfigurationUrl <String>]
@@ -20,6 +21,24 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> -Location <String>
  [-OSProfile <ICloudServiceOSProfile>] [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>]
  [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### quickCreateParameterSetWithoutStorage
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
+ -DefinitionFile <String> -Location <String> -PackageUrl <String> [-SubscriptionId <String>]
+ [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>] [-KeyVaultName <String>]
+ [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### quickCreateParameterSetWithStorage
+```
+New-AzCloudService -Name <String> -ResourceGroupName <String> -ConfigurationFile <String>
+ -DefinitionFile <String> -Location <String> -PackageFile <String> -StorageAccount <String>
+ [-SubscriptionId <String>] [-DnsName <String>] [-ExtensionProfile <ICloudServiceExtensionProfile>]
+ [-KeyVaultName <String>] [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,7 +203,7 @@ Above set of commands creates a cloud service with single role and certificate f
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -199,7 +218,7 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -214,10 +233,25 @@ Specifies the XML service configuration (.cscfg) for the cloud service.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationFile
+Specifies the XML service configuration (.cscfg) for the cloud service.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -230,7 +264,7 @@ The service package URL can be Shared Access Signature (SAS) URI from any storag
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -245,8 +279,38 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefinitionFile
+Path to .csdef file.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsName
+Name of Dns to be used for the CloudService resource.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
+Aliases:
 
 Required: False
 Position: Named
@@ -262,6 +326,21 @@ To construct, see NOTES section for EXTENSIONPROFILE properties and create a has
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultName
+Name of the KeyVault to be used for the CloudService resource.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithoutStorage, quickCreateParameterSetWithStorage
 Aliases:
 
 Required: False
@@ -307,7 +386,7 @@ To construct, see NOTES section for NETWORKPROFILE properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -322,7 +401,7 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -338,10 +417,26 @@ To construct, see NOTES section for OSPROFILE properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PackageFile
+Path to .cspkg file.
+It will be uploaded to a blob
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -354,10 +449,10 @@ The service package URL can be Shared Access Signature (SAS) URI from any storag
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, quickCreateParameterSetWithoutStorage
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,7 +480,7 @@ To construct, see NOTES section for ROLEPROFILE properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -407,6 +502,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccount
+Name of the storage account that will store the Package file.
+
+```yaml
+Type: System.String
+Parameter Sets: quickCreateParameterSetWithStorage
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
