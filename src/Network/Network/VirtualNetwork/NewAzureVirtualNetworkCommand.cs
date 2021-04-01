@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "FlowTimeoutInMinutes")]
-        public int? FlowTimeoutInMinutes { get; set; }
+             HelpMessage = "FlowTimeout value of the virtual network should be between 4 and 30 mins (inclusive)")]
+        public int? FlowTimeout { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -147,9 +147,9 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
             }
             
-            if (this.FlowTimeoutInMinutes > 0)
+            if (this.FlowTimeout > 0)
             {
-                vnet.FlowTimeoutInMinutes = this.FlowTimeoutInMinutes;
+                vnet.FlowTimeoutInMinutes = this.FlowTimeout;
             }
 
             vnet.Subnets = this.Subnet?.ToList();

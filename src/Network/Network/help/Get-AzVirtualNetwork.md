@@ -49,6 +49,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false
@@ -76,6 +77,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false
@@ -90,7 +92,7 @@ This command gets all virtual networks that start with "MyVirtualNetwork".
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -103,7 +105,7 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases:
 
@@ -118,7 +120,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network that this cmdlet gets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -130,7 +132,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -145,7 +147,7 @@ Accept wildcard characters: True
 Specifies the name of the resource group that virtual network belongs to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases:
 
@@ -157,7 +159,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases:
 

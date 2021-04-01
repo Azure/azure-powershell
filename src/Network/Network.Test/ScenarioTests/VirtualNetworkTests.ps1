@@ -1312,7 +1312,7 @@ function Test-VirtualNetworkCRUD-FlowTimeout
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
         # Create virtual network
-        $actual = New-AzVirtualNetwork -ResourceGroupName $rgname -name $rname -location $location -FlowTimeoutInMinutes 15 -AddressPrefix 10.0.0.0/16
+        $actual = New-AzVirtualNetwork -ResourceGroupName $rgname -name $rname -location $location -FlowTimeout 15 -AddressPrefix 10.0.0.0/16
         $expected = Get-AzVirtualNetwork -ResourceGroupName $rgname -name $rname
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
         Assert-AreEqual $expected.Name $actual.Name 
