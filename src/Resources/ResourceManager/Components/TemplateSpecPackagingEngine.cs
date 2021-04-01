@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public PackagedTemplate(TemplateSpecVersion versionModel)
         {
-            this.RootTemplate = (JObject)versionModel?.Template;
+            this.RootTemplate = (JObject)versionModel?.MainTemplate;
             this.Artifacts = versionModel?.Artifacts?.ToArray() 
                 ?? new TemplateSpecArtifact[0];
         }
