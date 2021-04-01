@@ -16,6 +16,8 @@ Creates a data factory.
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
  [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,6 +25,8 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <
 ### ByResourceId
 ```
 Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -30,6 +34,8 @@ Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtab
 ### ByResourceIdFactoryRepoVstsConfig
 ```
 Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -39,6 +45,8 @@ Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtab
 ### ByResourceIdFactoryRepoGitConfig
 ```
 Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -49,6 +57,8 @@ Set-AzDataFactoryV2 [-ResourceId] <String> [-Location] <String> [[-Tag] <Hashtab
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
  [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -59,6 +69,8 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <
 ```
 Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>]
  [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  -AccountName <String> -RepositoryName <String> -CollaborationBranch <String> -RootFolder <String>
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -68,6 +80,8 @@ Set-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <
 ### ByInputObject
 ```
 Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -75,6 +89,8 @@ Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] 
 ### ByInputObjectFactoryRepoVstsConfig
 ```
 Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
  [-LastCommitId <String>] -ProjectName <String> [-TenantId <String>] [-DefaultProfile <IAzureContextContainer>]
@@ -84,6 +100,8 @@ Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] 
 ### ByInputObjectFactoryRepoGitConfig
 ```
 Set-AzDataFactoryV2 -InputObject <PSDataFactory> [[-Location] <String>] [[-Tag] <Hashtable>] [-Force]
+ [-IdentityType] <String>
+ [-UserAssignedIdentities <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
  [-GlobalParameterDefinition <System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.GlobalParameterSpecification]>]
  [-AccountName <String>] [-RepositoryName <String>] [-CollaborationBranch <String>] [-RootFolder <String>]
  [-LastCommitId <String>] -HostName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -222,6 +240,21 @@ Runs the cmdlet without prompting for confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentitiesDefinition
+The dictionary containing the user assigned identities of the data factory.
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.Object]
 Parameter Sets: (All)
 Aliases:
 
