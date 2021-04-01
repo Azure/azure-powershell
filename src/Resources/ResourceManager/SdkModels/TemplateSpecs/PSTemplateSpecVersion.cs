@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// <summary>
         /// Gets or sets the Azure Resource Manager template (JSON).
         /// </summary>
-        public string Template { get; set; }
+        public string MainTemplate { get; set; }
 
         /// <summary>
         /// Gets the date/time the template spec version was created (PUT to Azure).
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                     ? new Dictionary<string, string>()
                     : new Dictionary<string, string>(templateSpecVersion.Tags),
                 // Note: Cast is redundant, but present for clarity reasons:
-                Template = ((JToken)templateSpecVersion.Template).ToString()
+                MainTemplate = ((JToken)templateSpecVersion.MainTemplate).ToString()
             };
 
             if (templateSpecVersion.Artifacts?.Any() == true) {

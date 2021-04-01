@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             var templateSpecVersionModel = new TemplateSpecVersion
             {
                 Location = templateSpecModel.Location,
-                Template = packagedTemplate.RootTemplate,
+                MainTemplate = packagedTemplate.RootTemplate,
                 Artifacts = packagedTemplate.Artifacts?.ToList(),
                 Description = versionDescription ?? existingTemplateSpecVersion?.Description
             };
