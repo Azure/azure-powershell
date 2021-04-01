@@ -24,11 +24,12 @@
   - `Update-AzADApplication`
   - `New-AzADServicePrincipal`
   - `Update-AzADServicePrincipal`
+* Ignored bicep warning message in error stream if exitcode equals zero.
 
 ## Version 3.4.0
 * Redirected bicep message to verbose stream
 * Removed the logic of copying Bicep template file to temp folder.
-* Add support of policy exemption resource type
+* Added support of policy exemption resource type
 * Fixed what-if functionality when using `-QueryString` parameter.
 * Normalized `-QueryString` starting with "?" for scenarios involving dynamic parameters.
 
