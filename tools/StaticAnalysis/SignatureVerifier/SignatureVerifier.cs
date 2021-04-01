@@ -419,6 +419,10 @@ namespace StaticAnalysis.SignatureVerifier
         /// <returns>True if can be covered, false otherwise.</returns>
         public bool IsParameterSetIntersectionCoveredByDefault(ParameterSetMetadata parameterSet1, ParameterSetMetadata parameterSet2, ParameterSetMetadata defaultParameterSet)
         {
+            if (defaultParameterSet == null)
+            {
+                return false;
+            }
             foreach (var parameter1 in parameterSet1.Parameters)
             {
                 foreach (var parameter2 in parameterSet2.Parameters)

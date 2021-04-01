@@ -332,6 +332,10 @@ function Get-ModuleMetadata
         {
             $CmdletMetadata.ClassName = $Cmdlet.ImplementingType.FullName
         }
+        else
+        {
+            $CmdletMetadata.ClassName = $CmdletMetadata.Name
+        }
 
         [System.Collections.Generic.List[OutputMetadata]]$OutputMetadataList = Get-OutputTypeMetadata -Cmdlet $Cmdlet -ModuleMetadata $ModuleMetadata
         if ($OutputMetadataList.Count -ne 0)
