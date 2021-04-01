@@ -118,6 +118,7 @@ namespace StaticAnalysis.SignatureVerifier
                     processedHelpFiles.Add(moduleName);
 
                     var module = MetadataLoader.GetModuleMetadata(moduleName);
+                    CmdletLoader.ModuleMetadata = module;
                     var cmdlets = module.Cmdlets;
 
                     if (cmdletFilter != null)
