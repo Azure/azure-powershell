@@ -117,15 +117,28 @@ function Get-OutputTypeMetadata
     )
     $OutputMetadataList = [System.Collections.Generic.List[OutputMetadata]]::New()
     
-    $OutputAttributeList = $Cmdlet.ImplementingType.GetTypeInfo().GetCustomAttributes([System.Management.Automation.OutputTypeAttribute], $true)
-    foreach ($OutputAttribute in $OutputAttributeList)
+    if ('Function' -eq $Cmdlet.CommandType)
     {
-        foreach ($OutputType in $OutputAttribute.Type)
+        foreach ($OutputType in $Cmdlet.OutputType)
         {
             $OutputMetadata = [OutputMetadata]::new()
             $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
             $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
             $OutputMetadataList.Add($OutputMetadata)
+        }
+    }
+    else
+    {
+        $OutputAttributeList = $Cmdlet.ImplementingType.GetTypeInfo().GetCustomAttributes([System.Management.Automation.OutputTypeAttribute], $true)
+        foreach ($OutputAttribute in $OutputAttributeList)
+        {
+            foreach ($OutputType in $OutputAttribute.Type)
+            {
+                $OutputMetadata = [OutputMetadata]::new()
+                $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
+                $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+                $OutputMetadataList.Add($OutputMetadata)
+            }
         }
     }
 
