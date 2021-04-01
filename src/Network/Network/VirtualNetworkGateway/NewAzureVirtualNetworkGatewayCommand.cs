@@ -202,6 +202,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The NatRules for Virtual network gateway.")]
+        public PSVirtualNetworkGatewayNatRule[] NatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public SwitchParameter EnableBgpRouteTranslationForNatFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -511,6 +522,18 @@ namespace Microsoft.Azure.Commands.Network
 
                 vnetGateway.VpnGatewayGeneration = this.VpnGatewayGeneration;
             }
+
+            if (this.NatRule != null && this.NatRule.Any())
+            {
+                vnetGateway.NatRules = this.NatRule?.ToList();
+            }
+            else
+            {
+                vnetGateway.NatRules = null;
+            }
+
+            // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
+            vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNatFlag.IsPresent;
 
             // Map to the sdk object
             var vnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);

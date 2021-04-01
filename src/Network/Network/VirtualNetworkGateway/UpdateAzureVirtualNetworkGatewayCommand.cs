@@ -202,6 +202,22 @@ namespace Microsoft.Azure.Commands.Network
         public string[] CustomRoute { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The NatRules for Virtual network gateway.")]
+        public PSVirtualNetworkGatewayNatRule[] NatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public SwitchParameter EnableBgpRouteTranslationForNatFlag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public SwitchParameter DisableBgpRouteTranslationForNatFlag { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -441,6 +457,22 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.VirtualNetworkGateway.CustomRoutes = null;
             }
+
+            if (this.NatRule != null)
+            {
+                this.VirtualNetworkGateway.NatRules = this.NatRule?.ToList();
+            }
+
+            if (this.EnableBgpRouteTranslationForNatFlag.IsPresent)
+            {
+                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = true;
+            }
+
+            if (this.DisableBgpRouteTranslationForNatFlag.IsPresent)
+            {
+                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = false;
+            }
+
 
             // Map to the sdk object
             MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);
