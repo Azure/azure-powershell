@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Added upcoming breaking change warnings on below cmdlets, because the value of IdentifierUri parameter will need verified domain.
+  - `New-AzADApplication` 
+  - `Update-AzADApplication`
+  - `New-AzADServicePrincipal`
+  - `Update-AzADServicePrincipal`
 * Ignored bicep warning message in error stream if exitcode equals zero.
 
 ## Version 3.4.0
