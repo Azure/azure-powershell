@@ -123,7 +123,14 @@ function Get-OutputTypeMetadata
         {
             $OutputMetadata = [OutputMetadata]::new()
             $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
-            $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+            if ($Null -eq $OutputType.ParameterSetName)
+            {
+                $OutputMetadata.ParameterSets = @('__AllParameterSets')
+            }
+            else
+            {
+                $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+            }
             $OutputMetadataList.Add($OutputMetadata)
         }
     }
@@ -136,7 +143,14 @@ function Get-OutputTypeMetadata
             {
                 $OutputMetadata = [OutputMetadata]::new()
                 $OutputMetadata.Type = [TypeMetadata]::New($OutputType.Type, $ModuleMetadata)
-                $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+                if ($Null -eq $OutputType.ParameterSetName)
+                {
+                    $OutputMetadata.ParameterSets = @('__AllParameterSets')
+                }
+                else
+                {
+                    $OutputMetadata.ParameterSets = $OutputType.ParameterSetName
+                }
                 $OutputMetadataList.Add($OutputMetadata)
             }
         }
