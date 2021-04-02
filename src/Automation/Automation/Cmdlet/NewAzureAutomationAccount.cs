@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(
             Mandatory = false,
             HelpMessage = "Generate and assign a new System Identity for this automation account")]
-        public SwitchParameter AssignIdentity { get; set; }
+        public SwitchParameter AssignSystemIdentity { get; set; }
 
         [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.Automation or not.",
             Mandatory = false,
@@ -136,23 +136,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            bool systemId = false;
-            if (AssignIdentity.IsPresent)
+            bool addSystemId = false;
+            if (AssignSystemIdentity.IsPresent)
             {
-                systemId = true;
+                addSystemId = true;
             }
-            bool isAMK = false;
+            bool enableAMK = false;
             if (AutomationServicesEncryption.IsPresent)
             {
-                isAMK = true;
+                enableAMK = true;
             }
-            bool isCMK = false;
+            bool enableCMK = false;
             if (ParameterSetName == KeyVaultEncryptionParameterSet)
             {
-                isCMK = true;
+                enableCMK = true;
             }
 
-            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags, systemId, isAMK, isCMK, KeyName, KeyVersion, KeyVaultUri);
+            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags, addSystemId, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri);
             this.WriteObject(account);               
             
         }

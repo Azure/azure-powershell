@@ -30,6 +30,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class SetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
+        /// AutomationServices Encryption parameter set name
+        /// </summary>
+        private const string AutomationServicesEncryptionParameterSet = "AutomationServicesEncryption";
+
+        /// <summary>
+        /// KeyVault Encryption parameter set name
+        /// </summary>
+        private const string KeyVaultEncryptionParameterSet = "KeyVaultEncryption";
+
+        /// <summary>
         /// The automation client.
         /// </summary>
         private IAutomationPSClient automationClient;
@@ -80,13 +90,62 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Alias("Tag")]
         public IDictionary Tags { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate and assign a new System Identity for this automation account")]
+        public SwitchParameter AssignSystemIdentity { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.Automation or not.",
+            Mandatory = false,
+            ParameterSetName = AutomationServicesEncryptionParameterSet)]
+        public SwitchParameter AutomationServicesEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.KeyVault(enable CMK) or not.",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        public SwitchParameter KeyVaultEncryption { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyVersion",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyVaultUri",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags);
+            bool addSystemId = false;
+            if (AssignSystemIdentity.IsPresent)
+            {
+                addSystemId = true;
+            }
+            bool enableAMK = false;
+            if (AutomationServicesEncryption.IsPresent)
+            {
+                enableAMK = true;
+            }
+            bool enableCMK = false;
+            if (ParameterSetName == KeyVaultEncryptionParameterSet)
+            {
+                enableCMK = true;
+            }
+
+            var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags, addSystemId, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri);
             this.WriteObject(account);
         }
     }
