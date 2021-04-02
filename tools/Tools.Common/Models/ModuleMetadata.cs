@@ -26,9 +26,6 @@ namespace Tools.Common.Models
         private List<CmdletMetadata> _cmdlets = new List<CmdletMetadata>();
         private Dictionary<string, TypeMetadata> _typeDictionary = new Dictionary<string, TypeMetadata>();
         private Dictionary<string, bool> _processedTypes = new Dictionary<string, bool>();
-        
-        [JsonIgnore]
-        public String AssemblyFileName { get; set; }
 
         public ModuleMetadata()
         {
