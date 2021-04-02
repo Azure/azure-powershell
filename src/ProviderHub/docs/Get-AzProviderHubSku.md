@@ -59,6 +59,10 @@ Gets the sku details for the given resource type and sku name.
 PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceType "testResourceType" -Sku "default"
 ```
 
+Name                        Type
+----                        ----
+testResourceType
+
 Get the resource SKU definition.
 
 ## PARAMETERS

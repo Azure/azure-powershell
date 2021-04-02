@@ -51,7 +51,7 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9cee82c90c9c188dda3cf33a9816bdcdb395f00a/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/providerhub.json
 
 module-version: 0.1.0
 title: ProviderHub

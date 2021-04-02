@@ -3,4 +3,8 @@
 PS C:\> Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -RolloutName "customRollout1"
 ```
 
+Name                        Type
+----                        ----
+customRollout1
+
 Get a custom rollout by rollout name.
