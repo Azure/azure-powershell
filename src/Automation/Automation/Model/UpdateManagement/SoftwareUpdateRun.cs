@@ -57,6 +57,6 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 
         public SoftwareUpdateRunStatus Status { get; set; }
 
-        public SoftareUpdateConfigurationRunTasks Tasks { get; set; }
+        public SoftwareUpdateConfigurationRunTasks Tasks { get; set; }
     }
 }
