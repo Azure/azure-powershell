@@ -1328,9 +1328,7 @@ function Test-VirtualNetworkCRUD-FlowTimeout
         Assert-AreEqual 30 $expected.FlowTimeoutInMinutes
 
         # delete
-        $job = Remove-AzVirtualNetwork -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
-        $job | Wait-Job
-        $delete = $job | Receive-Job
+        $delete = Remove-AzVirtualNetwork -ResourceGroupName $actual.ResourceGroupName -Name $rname -PassThru -Force
         Assert-AreEqual true $delete
 
         $list = Get-AzVirtualNetwork -ResourceGroupName $actual.ResourceGroupName
