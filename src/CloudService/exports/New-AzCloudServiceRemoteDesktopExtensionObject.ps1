@@ -26,7 +26,7 @@ PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPEx
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.CloudService/new-azcloudserviceremotedesktopextensionobject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
