@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
@@ -199,7 +200,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     if ((!this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item)) ||
                         (this.IsParameterBound(c => c.ItemType) && !this.IsParameterBound(c => c.Item)))
                     {
-                        throw new InvalidOperationException(String.Format(Resources.WorkspaceItemTypeAndItemNotAppearTogether));
+                        throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceItemTypeAndItemNotAppearTogether));
                     }
 
                     string scope = SynapseAnalyticsClient.GetRoleAssignmentScope(this.WorkspaceName, itemType, this.Item);

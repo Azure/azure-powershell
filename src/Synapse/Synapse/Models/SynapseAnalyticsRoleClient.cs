@@ -1,5 +1,4 @@
-﻿using Azure;
-using Azure.Analytics.Synapse.AccessControl;
+﻿using Azure.Analytics.Synapse.AccessControl;
 using Azure.Analytics.Synapse.AccessControl.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
@@ -11,7 +10,6 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -102,7 +100,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var user = _activeDirectoryClient.GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
             if (user == null)
             {
-                throw new InvalidOperationException(String.Format(Resources.UserNameDoesNotExist, signInName));
+                throw new AzPSInvalidOperationException(String.Format(Resources.UserNameDoesNotExist, signInName));
             }
 
             return user.ObjectId;
@@ -119,7 +117,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var servicePrincipal = _activeDirectoryClient.GraphClient.ServicePrincipals.List(odataQueryFilter.ToString()).SingleOrDefault();
             if (servicePrincipal == null)
             {
-                throw new InvalidOperationException(String.Format(Resources.ServicePrincipalNameDoesNotExist, servicePrincipalName));
+                throw new AzPSInvalidOperationException(String.Format(Resources.ServicePrincipalNameDoesNotExist, servicePrincipalName));
             }
 
             return servicePrincipal.ObjectId;
@@ -135,7 +133,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             var roleDefinition = _roleDefinitionsClient.ListRoleDefinitions().Value.SingleOrDefault(element => element.Name.Equals(roleDefinitionName, StringComparison.OrdinalIgnoreCase));
             if (roleDefinition == null)
             {
-                throw new InvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));
+                throw new AzPSInvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));
             }
 
             return roleDefinition.Id.ToString();
