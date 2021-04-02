@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceLoadBalancerConfigurationObject
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceloadbalancerconfigurationobject
 schema: 2.0.0
 ---
 
