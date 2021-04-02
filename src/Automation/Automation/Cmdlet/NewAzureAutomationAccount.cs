@@ -136,8 +136,25 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags);
-            this.WriteObject(account);
+            bool systemId = false;
+            if (AssignIdentity.IsPresent)
+            {
+                systemId = true;
+            }
+            bool isAMK = false;
+            if (AutomationServicesEncryption.IsPresent)
+            {
+                isAMK = true;
+            }
+            bool isCMK = false;
+            if (ParameterSetName == KeyVaultEncryptionParameterSet)
+            {
+                isCMK = true;
+            }
+
+            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags, systemId, isAMK, isCMK, KeyName, KeyVersion, KeyVaultUri);
+            this.WriteObject(account);               
+            
         }
     }
 }
