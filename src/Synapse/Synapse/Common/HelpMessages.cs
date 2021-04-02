@@ -415,9 +415,9 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
 
-        public const string WorkspaceItemType = "Item type of the workspace:'bigDataPools', 'integrationRuntimes', 'linkedServices', 'credentials'.";
+        public const string WorkspaceItemType = "The workspace item type.";
 
-        public const string WorkspaceItem = "Item of the workspace.";
+        public const string WorkspaceItem = "The workspace item.";
 
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 

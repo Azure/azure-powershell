@@ -4,9 +4,8 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -109,11 +108,41 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndSignInNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndSignInNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
         [ValidateNotNullOrEmpty]
-        public SynaspeEnums.WorkspaceItemType? ItemType { get; set; }
+        public WorkspaceItemType ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndSignInNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndSignInNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
@@ -158,11 +187,23 @@ namespace Microsoft.Azure.Commands.Synapse
                     this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
                 }
 
+                string itemType = null;
+                if (this.IsParameterBound(c => c.ItemType))
+                {
+                    itemType = this.ItemType.ToSdkObject();
+                }
+
                 if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseRoleAssignment, this.RoleDefinitionId, this.ObjectId, this.WorkspaceName)))
                 {
-                    string scope = SynapseAnalyticsClient.GetScopeFromRoleItemTypeAndItem(this.ItemType, this.Item, this.WorkspaceName, false)[0];
-                    SynapseAnalyticsClient.DeleteRoleAssignmentByName(this.RoleDefinitionId, this.ObjectId, scope, this.WorkspaceName);
-                    
+                    // Item type and item should appear Report error if either item type or item is specified.
+                    if ((!this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item)) ||
+                        (this.IsParameterBound(c => c.ItemType) && !this.IsParameterBound(c => c.Item)))
+                    {
+                        throw new InvalidOperationException(String.Format(Resources.WorkspaceItemTypeAndItemNotAppearTogether));
+                    }
+
+                    string scope = SynapseAnalyticsClient.GetRoleAssignmentScope(this.WorkspaceName, itemType, this.Item);
+                    SynapseAnalyticsClient.DeleteRoleAssignmentByName(this.WorkspaceName, this.RoleDefinitionId, this.ObjectId, scope);
                     if (PassThru)
                     {
                         WriteObject(true);

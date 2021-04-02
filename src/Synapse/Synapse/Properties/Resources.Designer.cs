@@ -1684,7 +1684,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A workspace itemType and item not appear together. Please input itemType and item together..
+        ///   Looks up a localized string similar to Either -ItemType and -Item should appear together or neither of them should be..
         /// </summary>
         internal static string WorkspaceItemTypeAndItemNotAppearTogether {
             get {
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentId ContosoRoleAssignmentId.
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
         /// </summary>
         internal static string WorkspaceRoleAssignmentMoreThanOneFound {
             get {
@@ -1711,7 +1711,7 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find workspace role assignment under workspace &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Cannot find role assignment under workspace &apos;{0}&apos;..
         /// </summary>
         internal static string WorkspaceRoleAssignmentNotFound {
             get {

@@ -55,22 +55,24 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
         }
 
-        public void DeleteRoleAssignmentByName(string roleDefinitionId, string objectId, string scope, string workspaceName)
+        public void DeleteRoleAssignmentByName(string workspaceName, string roleDefinitionId, string objectId, string scope)
         {
-            var roleAssignment = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId, scope).Value.Value;
+            var roleAssignments = _roleAssignmentsClient.ListRoleAssignments(roleDefinitionId, objectId).Value.Value
+                .Where(ra => string.IsNullOrEmpty(scope) || scope.Equals(ra.Scope, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
-            if (roleAssignment.Count == 0)
+            if (roleAssignments.Count == 0)
             {
                 throw new AzPSResourceNotFoundCloudException(String.Format(Resources.WorkspaceRoleAssignmentNotFound, workspaceName));
             }
-            else if (roleAssignment.Count == 1)
+            else if (roleAssignments.Count == 1)
             {
-                string roleAssignmentId = roleAssignment.SingleOrDefault().Id;
+                string roleAssignmentId = roleAssignments[0].Id;
                 _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
             }
             else 
             {
-                throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceRoleAssignmentMoreThanOneFound, workspaceName));
+                throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceRoleAssignmentMoreThanOneFound, workspaceName, string.Join(", ", roleAssignments.Select(ra => ra.Id))));
             }
         }
 
@@ -95,12 +97,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
+
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(s => s.UserPrincipalName == signInName);
             var user = _activeDirectoryClient.GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
             if (user == null)
             {
                 throw new InvalidOperationException(String.Format(Resources.UserNameDoesNotExist, signInName));
             }
+
             return user.ObjectId;
         }
 
@@ -110,12 +114,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
+
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(servicePrincipalName));
             var servicePrincipal = _activeDirectoryClient.GraphClient.ServicePrincipals.List(odataQueryFilter.ToString()).SingleOrDefault();
             if (servicePrincipal == null)
             {
                 throw new InvalidOperationException(String.Format(Resources.ServicePrincipalNameDoesNotExist, servicePrincipalName));
             }
+
             return servicePrincipal.ObjectId;
         }
 
@@ -125,33 +131,31 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             {
                 return null;
             }
+
             var roleDefinition = _roleDefinitionsClient.ListRoleDefinitions().Value.SingleOrDefault(element => element.Name.Equals(roleDefinitionName, StringComparison.OrdinalIgnoreCase));
             if (roleDefinition == null)
             {
                 throw new InvalidOperationException(String.Format(Resources.RoleDefinitionNameDoesNotExist, roleDefinitionName));
             }
+
             return roleDefinition.Id.ToString();
         }
 
-        public List<string> GetScopeFromRoleItemTypeAndItem(SynaspeEnums.WorkspaceItemType? itemType, string item, string workspaceName, bool isGetRoleAssignment)
+        public string GetRoleAssignmentScope(string workspaceName, string itemType, string item)
         {
-            string scope = null;
-            string itemTypeString = SynaspeEnums.GetItemTypeString(itemType);
-
-            if (itemType != null && !string.IsNullOrEmpty(item))
+            if (string.IsNullOrEmpty(workspaceName))
             {
-                scope = "workspaces/" + workspaceName + "/" + itemTypeString + "/" + item;
-            }
-            else if (!isGetRoleAssignment && ((itemType != null && string.IsNullOrEmpty(item)) || (itemType == null && !string.IsNullOrEmpty(item))))
-            {
-                throw new InvalidOperationException(String.Format(Resources.WorkspaceItemTypeAndItemNotAppearTogether));
-            }
-            else if (!isGetRoleAssignment)
-            {
-                scope = "workspaces/" + workspaceName;
+                throw new AzPSArgumentNullException("Parameter cannot be null", workspaceName);
             }
 
-            return new List<string> { scope, itemTypeString };
+            if (!string.IsNullOrEmpty(itemType) && !string.IsNullOrEmpty(item))
+            {
+                return $"workspaces/{workspaceName}/{itemType}/{item}";
+            }
+            else
+            {
+                return $"workspaces/{workspaceName}";
+            }
         }
     }
 }

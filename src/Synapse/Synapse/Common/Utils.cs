@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 
 namespace Microsoft.Azure.Commands.Synapse.Common
 {
@@ -196,6 +197,28 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public static Response<T> Poll<T>(this Operation<T> operation)
         {
             return operation.WaitForCompletionAsync().Result;
+        }
+
+        public static string ToSdkObject(this WorkspaceItemType itemType)
+        {
+            string itemTypeString = null;
+            switch (itemType)
+            {
+                case WorkspaceItemType.ApacheSparkPool:
+                    itemTypeString = "bigDataPools";
+                    break;
+                case WorkspaceItemType.IntegrationRuntime:
+                    itemTypeString = "integrationRuntimes";
+                    break;
+                case WorkspaceItemType.LinkedService:
+                    itemTypeString = "linkedServices";
+                    break;
+                case WorkspaceItemType.Credential:
+                    itemTypeString = "credentials";
+                    break;
+            }
+
+            return itemTypeString;
         }
     }
 }

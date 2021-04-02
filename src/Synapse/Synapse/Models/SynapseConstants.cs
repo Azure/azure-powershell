@@ -231,5 +231,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string Unsafe_Action = "Unsafe_Action";
             public const string None = "None";
         }
+
+        public enum WorkspaceItemType
+        {
+            ApacheSparkPool,
+            IntegrationRuntime,
+            LinkedService,
+            Credential
+        }
     }
 }
