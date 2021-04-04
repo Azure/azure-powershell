@@ -24,16 +24,14 @@ function Test-E2ESchedules
     $StartTime = Get-Date "13:00:00"
     $StartTime = $StartTime.AddDays(1)
     $EndTime = $StartTime.AddYears(1)
-    $ScheduleName = "Schedule3"
-    $i1 = [byte] 1
-    $i2 = [byte] 3
+    $ScheduleName = "Schedule3"  
 
     New-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `
                                   -Name "Schedule3" `
                                   -StartTime $StartTime `
                                   -ExpiryTime $EndTime `
-                                  -DayInterval $i1 `
+                                  -DayInterval 1 `
                                   -Description "Hello"
    
     New-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
@@ -41,7 +39,7 @@ function Test-E2ESchedules
                                   -Name $ScheduleName `
                                   -StartTime $StartTime `
                                   -ExpiryTime $EndTime `
-                                  -WeekInterval $i2 `
+                                  -WeekInterval 3 `
                                   -Description "Hello Again"
 
     $getSchedule = Get-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
