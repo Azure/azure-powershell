@@ -277,7 +277,7 @@ function Test-GetAllSoftwareUpdateRunsWithFilters {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa `
                                                     -OperatingSystem Windows `
-                                                    -StartTime ([DateTime]::Parse("2018-05-22T16:40:00")) `
+                                                    -StartTime ([DateTime]::Parse("2021-04-04T14:40:00+05:30")) `
                                                     -Status Succeeded
 
     Assert-AreEqual $runs.Count 2 "Get software update configurations runs with filters didn't return expected number of items"
@@ -290,7 +290,7 @@ function Test-GetAllSoftwareUpdateRunsWithFiltersNoResults {
     $runs = Get-AzAutomationSoftwareUpdateRun  -ResourceGroupName $rg `
                                                     -AutomationAccountName $aa `
                                                     -OperatingSystem Windows `
-                                                    -StartTime ([DateTime]::Parse("2018-05-22T16:40:00.0000000-07:00")) `
+                                                    -StartTime ([DateTime]::Parse("2021-04-04T16:40:00.0000000+05:30")) `
                                                     -Status Failed
 
     Assert-AreEqual $runs.Count 0 "Get software update configurations runs with filters and no results didn't return expected number of items"
