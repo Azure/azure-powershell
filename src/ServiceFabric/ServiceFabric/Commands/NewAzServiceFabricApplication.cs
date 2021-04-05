@@ -24,7 +24,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication", SupportsShouldProcess = true, DefaultParameterSetName = SkipAppTypeVersion), OutputType(typeof(PSApplication))]
+    // Doesn’t support ShouldProcess
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication", DefaultParameterSetName = SkipAppTypeVersion), OutputType(typeof(PSApplication))]
     public class NewAzServiceFabricApplication : ProxyResourceCmdletBase
     {
         protected const string SkipAppTypeVersion = "SkipAppTypeVersion";
@@ -40,7 +41,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
-        public override string ClusterName { get; set; }
+        // Doesn’t use singular noun for a parameter name
+        public override string ClusterNames { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = SkipAppTypeVersion,
             HelpMessage = "Specify the name of the application type")]
@@ -121,7 +123,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var app = SafeGetResource(() =>
                 this.SFRPClient.Applications.Get(
                     this.ResourceGroupName,
-                    this.ClusterName,
+                    this.ClusterNames,
                     this.ApplicationTypeName),
                 false);
 
@@ -155,7 +157,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return StartRequestAndWait<ApplicationResource>(
                 () => this.SFRPClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
-                    this.ClusterName,
+                    this.ClusterNames,
                     this.Name,
                     appParams),
                 () => string.Format("Provisioning state: {0}", GetAppProvisioningStatus() ?? "Not found"));
@@ -166,7 +168,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var resource = SafeGetResource(() =>
                 this.SFRPClient.Applications.Get(
                     this.ResourceGroupName,
-                    this.ClusterName,
+                    this.ClusterNames,
                     this.Name),
                 true);
 

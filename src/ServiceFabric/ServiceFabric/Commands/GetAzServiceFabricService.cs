@@ -23,10 +23,11 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricService", DefaultParameterSetName = "ByResourceGroupAndCluster"), OutputType(typeof(PSService))]
+    // Parameter set name contain white space
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricService", DefaultParameterSetName = "By ResourceGroup And Cluster"), OutputType(typeof(PSService))]
     public class GetAzServiceFabricService : ProxyResourceCmdletBase
     {
-        private const string ByResourceGroupAndCluster = "ByResourceGroupAndCluster";
+        private const string ByResourceGroupAndCluster = "By ResourceGroup And Cluster";
         private const string ByName = "ByName";
         private const string ByResourceId = "ByResourceId";
 

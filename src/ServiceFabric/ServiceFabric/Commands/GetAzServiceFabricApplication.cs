@@ -23,7 +23,8 @@ using Microsoft.Azure.Management.ServiceFabric;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication", DefaultParameterSetName = "ByResourceGroupAndCluster"), OutputType(typeof(PSApplication))]
+    // Has no default parameter set
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + "ServiceFabricApplication"), OutputType(typeof(PSApplication))]
     public class GetAzServiceFabricApplication : ProxyResourceCmdletBase
     {
         private const string ByResourceGroupAndCluster = "ByResourceGroupAndCluster";
