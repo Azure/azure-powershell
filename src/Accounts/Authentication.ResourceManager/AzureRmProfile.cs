@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
                     // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
                     TryRemoveContext(Constants.DefaultValue);
                 }
 
