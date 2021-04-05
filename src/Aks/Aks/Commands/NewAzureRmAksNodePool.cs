@@ -51,8 +51,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
         public int Count { get; set; } = 3;
 
+        // Change the type of parameter
         [Parameter(Mandatory = false, HelpMessage = "The default number of nodes for the node pools.")]
-        public int OsDiskSize { get; set; }
+        public double OsDiskSize { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2.")]
         public string VmSize { get; set; } = "Standard_D2_v2";
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Aks
                 name: Name,
                 count: Count,
                 vmSize: VmSize,
-                osDiskSizeGB: OsDiskSize,
+                osDiskSizeGB: (int)OsDiskSize,
                 type: VmSetType ?? "AvailabilitySet",
                 vnetSubnetID: VnetSubnetID);
 

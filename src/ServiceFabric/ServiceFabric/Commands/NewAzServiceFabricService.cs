@@ -168,7 +168,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
             HelpMessage = "Specify the target replica set size for the service")]
         [ValidateNotNullOrEmpty()]
-        [ValidateRange(1, int.MaxValue)]
+        // Change validate range for parameter
+        [ValidateRange(1, 100)]
         public int TargetReplicaSetSize { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
@@ -181,11 +182,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateRange(1, int.MaxValue)]
         public int MinReplicaSetSize { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
+        // Make an optional parameter to mandatory.
+        [Parameter(Mandatory = true, ParameterSetName = StatefulSingleton,
             HelpMessage = "Specify the replica restart wait duration for the service")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
+        [Parameter(Mandatory = true, ParameterSetName = StatefulUniformInt64,
             HelpMessage = "Specify the replica restart wait duration for the service")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulNamed,
+        [Parameter(Mandatory = true, ParameterSetName = StatefulNamed,
             HelpMessage = "Specify the replica restart wait duration for the service")]
         [ValidateNotNullOrEmpty()]
         public TimeSpan ReplicaRestartWaitDuration { get; set; }

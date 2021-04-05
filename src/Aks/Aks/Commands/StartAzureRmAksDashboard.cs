@@ -48,17 +48,7 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         public PSKubernetesCluster InputObject { get; set; }
 
-        /// <summary>
-        /// Cluster name
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = IdParameterSet,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Id of a managed Kubernetes cluster")]
-        [ValidateNotNullOrEmpty]
-        [Alias("ResourceId")]
-        public string Id { get; set; }
+        // Remove mandatory parameter.
 
         /// <summary>
         /// Resource group name
@@ -100,13 +90,6 @@ namespace Microsoft.Azure.Commands.Aks
 
             switch (ParameterSetName)
             {
-                case IdParameterSet:
-                    {
-                        var resource = new ResourceIdentifier(Id);
-                        ResourceGroupName = resource.ResourceGroupName;
-                        Name = resource.ResourceName;
-                        break;
-                    }
                 case InputObjectParameterSet:
                     {
                         var resource = new ResourceIdentifier(InputObject.Id);

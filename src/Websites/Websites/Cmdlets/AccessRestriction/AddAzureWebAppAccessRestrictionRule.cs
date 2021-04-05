@@ -98,7 +98,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = SubnetNameParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
         [Parameter(ParameterSetName = SubnetIdParameterSet, Mandatory = false, HelpMessage = ActionHelpMessage)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Allow", "Deny")]
+        // Change validation set for parameter.
+        [ValidateSet("Deny", "NewValidateEle")]
         public string Action { get; set; } = "Allow";
 
         [Parameter(ParameterSetName = ServiceTagParameterSet, Mandatory = false, HelpMessage = SlotNameHelpMessage)]
