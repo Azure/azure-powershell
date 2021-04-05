@@ -31,7 +31,6 @@ PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contos
 CommitId IsCheckedIn PullRequest StatusMessage
 -------- ----------- ----------- -------------
          False                   Manifest is successfully merged.
-Use the Default/Custom rollout (http://aka.ms/rpaasrollout) to roll out the manifest.
 
 Checkin the resource provider manifest.
 
@@ -43,7 +42,6 @@ PS C:\> Invoke-AzProviderHubManifestCheckin -ProviderNamespace "Microsoft.Contos
 CommitId IsCheckedIn PullRequest StatusMessage
 -------- ----------- ----------- -------------
          False                   Manifest is successfully merged.
-Use the Default/Custom rollout (http://aka.ms/rpaasrollout) to roll out the manifest.
 
 Checkin the resource provider manifest.
 
