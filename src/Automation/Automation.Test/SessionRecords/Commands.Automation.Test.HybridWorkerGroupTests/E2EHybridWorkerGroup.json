@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnA/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp2?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0cd00f24-d92e-442f-8d97-5780998afe2e"
+          "5ab397a2-c5a4-42d7-adae-c1c86044124a"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0cd00f24-d92e-442f-8d97-5780998afe2e"
+          "5ab397a2-c5a4-42d7-adae-c1c86044124a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -42,22 +42,22 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "12f3c942-f499-4ded-8f22-caaca5595d5c"
+          "85e70e4d-7ab0-40bc-8a14-0129aef59a01"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T180051Z:12f3c942-f499-4ded-8f22-caaca5595d5c"
+          "CENTRALINDIA:20210405T091818Z:85e70e4d-7ab0-40bc-8a14-0129aef59a01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 18:00:51 GMT"
+          "Mon, 05 Apr 2021 09:18:18 GMT"
         ],
         "Content-Length": [
-          "421"
+          "429"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,17 +66,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp\",\r\n  \"name\": \"hw-grp\",\r\n  \"hybridRunbookWorkers\": [\r\n    {\r\n      \"name\": \"hw-vm\",\r\n      \"ip\": \"10.0.4.4\",\r\n      \"registrationTime\": \"2021-04-04T22:54:15.62+05:30\",\r\n      \"lastSeenDateTime\": \"2021-04-04T23:24:58.3066667+05:30\",\r\n      \"azureResourceId\": null\r\n    }\r\n  ],\r\n  \"credential\": {\r\n    \"name\": null\r\n  },\r\n  \"groupType\": \"User\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp2\",\r\n  \"name\": \"hw-grp2\",\r\n  \"hybridRunbookWorkers\": [\r\n    {\r\n      \"name\": \"hw-vm2\",\r\n      \"ip\": \"10.0.4.5\",\r\n      \"registrationTime\": \"2021-04-05T14:45:36.6033333+05:30\",\r\n      \"lastSeenDateTime\": \"2021-04-05T14:46:25.6633333+05:30\",\r\n      \"azureResourceId\": null\r\n    }\r\n  ],\r\n  \"credential\": {\r\n    \"name\": null\r\n  },\r\n  \"groupType\": \"User\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnA/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp2?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "575f18e1-47ee-4e73-be30-8c93c31db846"
+          "39bd3834-0112-40f4-85ba-7571bf711289"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,7 +96,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "575f18e1-47ee-4e73-be30-8c93c31db846"
+          "39bd3834-0112-40f4-85ba-7571bf711289"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,16 +114,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "cf46c641-a0d1-45d7-9421-6267004a7cef"
+          "a429f261-1b33-46e6-b585-1e5f0d9163c2"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T180055Z:cf46c641-a0d1-45d7-9421-6267004a7cef"
+          "CENTRALINDIA:20210405T091821Z:a429f261-1b33-46e6-b585-1e5f0d9163c2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 18:00:55 GMT"
+          "Mon, 05 Apr 2021 09:18:20 GMT"
         ],
         "Content-Length": [
           "61"
@@ -139,13 +139,13 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnA/YXBpLXZlcnNpb249MjAyMC0wMS0xMy1wcmV2aWV3",
+      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp2?api-version=2020-01-13-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAyP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bbd0801e-03d6-46a6-ab71-30824bcef558"
+          "6e846849-7aaf-44e4-bd43-f043f653ada4"
         ],
         "Accept-Language": [
           "en-US"
@@ -165,7 +165,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bbd0801e-03d6-46a6-ab71-30824bcef558"
+          "6e846849-7aaf-44e4-bd43-f043f653ada4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,16 +183,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "2bc183b5-60c7-4fec-9884-05417c973f53"
+          "7615961a-86b6-4e7b-975d-344b825e873e"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210404T180053Z:2bc183b5-60c7-4fec-9884-05417c973f53"
+          "CENTRALINDIA:20210405T091820Z:7615961a-86b6-4e7b-975d-344b825e873e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Sun, 04 Apr 2021 18:00:52 GMT"
+          "Mon, 05 Apr 2021 09:18:20 GMT"
         ],
         "Expires": [
           "-1"
