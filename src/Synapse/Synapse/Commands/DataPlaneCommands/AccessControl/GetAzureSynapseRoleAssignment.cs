@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 string allowedScopePattern = null;
                 if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
                 {
-                    allowedScopePattern = $"(^workspaces/{this.WorkspaceName}$)|(%workspaces/{this.WorkspaceName}/{itemType}/{this.Item}$)";
+                    allowedScopePattern = $"(^workspaces/{this.WorkspaceName}$)|(^workspaces/{this.WorkspaceName}/{itemType}/{this.Item}$)";
                 }
                 else if (this.IsParameterBound(c => c.ItemType) && !this.IsParameterBound(c => c.Item))
                 {

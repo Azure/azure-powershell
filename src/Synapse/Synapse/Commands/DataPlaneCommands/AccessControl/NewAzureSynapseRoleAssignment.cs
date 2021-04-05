@@ -96,6 +96,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
+        // Compared with Remove-AzSynapseRoleAssignment and Get-AzSynapseRoleAssignment, no need to specify roleAssignment, it is created as
+        // random uuid. Hence unnecessary to specify the ParameterSetName
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
         [ValidateNotNullOrEmpty]
         public WorkspaceItemType ItemType { get; set; }
@@ -104,7 +106,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
-        // TODO: add principal type parameter!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspacePrincipleType)]
+        [ValidateNotNullOrEmpty]
+        public string PrincipleType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -148,7 +152,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 string roleAssignmentId = Guid.NewGuid().ToString();
                 string scope = SynapseAnalyticsClient.GetRoleAssignmentScope(this.WorkspaceName, itemType, this.Item);
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope));
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope, this.PrincipleType));
                 WriteObject(roleAssignmentDetails);
             }
         }

@@ -419,6 +419,8 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string WorkspaceItem = "The workspace item.";
 
+        public const string WorkspacePrincipleType = "The workspace principle type.";
+
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 
         public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";

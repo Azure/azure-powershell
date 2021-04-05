@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _roleAssignmentsClient.GetRoleAssignmentById(roleAssignmentId);
         }
 
-        public RoleAssignmentDetails CreateRoleAssignment(string roleAssignmentId, string RoleDefinitionId, string objectId, string scope)
+        public RoleAssignmentDetails CreateRoleAssignment(string roleAssignmentId, string roleDefinitionId, string objectId, string scope, string principleType)
         {
-            return _roleAssignmentsClient.CreateRoleAssignment(roleAssignmentId, new Guid(RoleDefinitionId), new Guid(objectId), scope);
+            return _roleAssignmentsClient.CreateRoleAssignment(roleAssignmentId, new Guid(roleDefinitionId), new Guid(objectId), scope, principleType);
         }
 
         public void DeleteRoleAssignmentById(string roleAssignmentId)
