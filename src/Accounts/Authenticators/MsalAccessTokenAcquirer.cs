@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
+
+using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 
@@ -25,6 +28,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     public class MsalAccessTokenAcquirer
     {
         internal virtual async Task<IAccessToken> GetAccessTokenAsync(
+            string callerClassName,
+            string parametersLog,
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,
             CancellationToken cancellationToken,
@@ -32,22 +37,23 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             string userId = null,
             string homeAccountId = "")
         {
+            TracingAdapter.Information($"{DateTime.Now:T} - [{callerClassName}] Calling {tokenCredential.GetType().Name}.GetTokenAsync {parametersLog}");
             var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
 
-        internal virtual async Task<IAccessToken> GetAccessTokenAsync(
-            Task<AuthenticationRecord> authTask,
-            TokenCredential tokenCredential,
-            TokenRequestContext requestContext,
-            CancellationToken cancellationToken)
-        {
-            var record = await authTask.ConfigureAwait(false);
-            cancellationToken.ThrowIfCancellationRequested();
-            var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
+        //internal virtual async Task<IAccessToken> GetAccessTokenAsync(
+        //    Task<AuthenticationRecord> authTask,
+        //    TokenCredential tokenCredential,
+        //    TokenRequestContext requestContext,
+        //    CancellationToken cancellationToken)
+        //{
+        //    var record = await authTask.ConfigureAwait(false);
+        //    cancellationToken.ThrowIfCancellationRequested();
+        //    var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
 
-            return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
-        }
+        //    return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);
+        //}
 
     }
 }
