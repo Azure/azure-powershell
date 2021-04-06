@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (AsPlainText)
             {
-                WriteObject(ConvertFromSecureString(secret.SecretValue));
+                WriteObject(ConvertFromSecureString(secret?.SecretValue));
             }
             else
             {
@@ -294,6 +294,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private string ConvertFromSecureString(SecureString secretValue)
         {
+            if(secretValue == null)
+            {
+                return null;
+            }
             var ssPtr = Marshal.SecureStringToBSTR(secretValue);
             try
             {

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Bumped API version to stable 2021-03-01
+* Supported OSFamily and OSVersion
+
 ## Version 0.1.0
 * First preview release for module Az.CloudService
 
