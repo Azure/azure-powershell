@@ -14,9 +14,9 @@ Deletes a Synapse Analytics role assignment.
 
 ### RemoveByWorkspaceNameAndNameParameterSet (Default)
 ```
-Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String> [-ItemType <String>] [-Item <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-### RemoveByWorkspaceNameAndIdParameterSet (Default)
+Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndIdParameterSet
@@ -27,21 +27,23 @@ Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleAssignmentId <String
 
 ### RemoveByWorkspaceNameAndObjectIdParameterSet
 ```
-Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String> [-ItemType <String>] [-Item <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet
 ```
-Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String> [-ItemType <String>] [-Item <String>]
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndIdParameterSet
@@ -53,29 +55,29 @@ Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleAssign
 ### RemoveByWorkspaceObjectAndNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -SignInName <String> [-ItemType <String>] [-Item <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndObjectIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String>
- -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 Remove-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,12 +146,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ItemType
-The itemtype of Azure Synapse workspace.
+### -Item
+The item of Azure Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByWorkspaceNameAndNameParameterSet, GetByWorkspaceNameAndIdParameterSet, GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceNameAndServicePrincipalNameParameterSet, GetByWorkspaceObjectAndNameParameterSet, GetByWorkspaceObjectAndIdParameterSet, GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceObjectAndServicePrincipalNameParameterSet
+Parameter Sets: RemoveByWorkspaceNameAndNameParameterSet, RemoveByWorkspaceNameAndObjectIdParameterSet, RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet, RemoveByWorkspaceNameAndServicePrincipalNameParameterSet, RemoveByWorkspaceObjectAndNameParameterSet, RemoveByWorkspaceObjectAndObjectIdParameterSet, RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet, RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
 Aliases:
 
 Required: False
@@ -159,13 +161,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Item
-The item of Azure Synapse workspace.
+### -ItemType
+The itemtype of Azure Synapse workspace.
 
 ```yaml
-Type: System.String
-Parameter Sets: GetByWorkspaceNameAndNameParameterSet, GetByWorkspaceNameAndIdParameterSet, GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceNameAndServicePrincipalNameParameterSet, GetByWorkspaceObjectAndNameParameterSet, GetByWorkspaceObjectAndIdParameterSet, GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceObjectAndServicePrincipalNameParameterSet
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+WorkspaceItemType
+Parameter Sets: RemoveByWorkspaceNameAndNameParameterSet, RemoveByWorkspaceNameAndObjectIdParameterSet, RemoveByWorkspaceNameAndRoleDefinitionIdParameterSet, RemoveByWorkspaceNameAndServicePrincipalNameParameterSet, RemoveByWorkspaceObjectAndNameParameterSet, RemoveByWorkspaceObjectAndObjectIdParameterSet, RemoveByWorkspaceObjectAndRoleDefinitionIdParameterSet, RemoveByWorkspaceObjectAndServicePrincipalNameParameterSet
 Aliases:
+Accepted values: ApacheSparkPool, IntegrationRuntime, LinkedService, Credential
 
 Required: False
 Position: Named
@@ -353,5 +356,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS

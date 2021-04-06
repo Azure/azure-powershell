@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
 online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapserolescope
@@ -14,13 +14,14 @@ Gets a Synapse Analytics role scope.
 
 ### GetByWorkspaceNameParameterSet (Default)
 ```
-Get-AzSynapseRoleScope -WorkspaceName <String>
+Get-AzSynapseRoleScope -WorkspaceName <String> [-ResourceId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectParameterSet
 ```
-Get-AzSynapseRoleScope -WorkspaceObject <PSSynapseWorkspace> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseRoleScope -WorkspaceObject <PSSynapseWorkspace> [-ResourceId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +53,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Resource identifier of Synapse workspace.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

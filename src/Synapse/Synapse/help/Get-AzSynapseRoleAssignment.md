@@ -14,20 +14,23 @@ Gets a Synapse Analytics role assignment.
 
 ### GetByWorkspaceNameAndNameParameterSet (Default)
 ```
-Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-SignInName <String>] [-ItemType <String>] [-Item <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-SignInName <String>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndIdParameterSet
 ```
-Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-ObjectId <String>] [-ItemType <String>] [-Item <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>] [-ObjectId <String>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet
 ```
-Get-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> [-ObjectId <String>] [-ItemType <String>] [-Item <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> [-ObjectId <String>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByWorkspaceNameAndAssignmentIdParameterSet
@@ -39,25 +42,29 @@ Get-AzSynapseRoleAssignment -WorkspaceName <String> -RoleAssignmentId <String>
 ### GetByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceName <String> [-RoleDefinitionName <String>]
- [-ServicePrincipalName <String>] [-ItemType <String>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServicePrincipalName <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- -SignInName <String> [-ItemType <String>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- [-ObjectId <String>] [-ItemType <String>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ObjectId <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String>
- [-ObjectId <String>] [-ItemType <String>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ObjectId <String>] [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByWorkspaceObjectAndAssignmentIdParameterSet
@@ -69,7 +76,8 @@ Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleAssignmen
 ### GetByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 Get-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> [-RoleDefinitionName <String>]
- -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,8 +146,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ItemType
-The itemtype of Azure Synapse workspace.
+### -Item
+The item of Azure Synapse workspace.
 
 ```yaml
 Type: System.String
@@ -153,13 +161,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Item
-The item of Azure Synapse workspace.
+### -ItemType
+The itemtype of Azure Synapse workspace.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+WorkspaceItemType
 Parameter Sets: GetByWorkspaceNameAndNameParameterSet, GetByWorkspaceNameAndIdParameterSet, GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceNameAndServicePrincipalNameParameterSet, GetByWorkspaceObjectAndNameParameterSet, GetByWorkspaceObjectAndIdParameterSet, GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet, GetByWorkspaceObjectAndServicePrincipalNameParameterSet
 Aliases:
+Accepted values: ApacheSparkPool, IntegrationRuntime, LinkedService, Credential
 
 Required: False
 Position: Named
