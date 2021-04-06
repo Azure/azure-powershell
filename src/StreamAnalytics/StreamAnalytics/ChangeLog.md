@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* The parameters of all cmdlet will be updated in an upcoming breaking change release.
+* Added upcoming breaking change warning message to all cmdlets because of upcoming changes on parameters.
 
 ## Version 1.0.1
 * Update references in .psd1 to use relative path
