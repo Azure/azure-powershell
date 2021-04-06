@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
             this.SoftwareUpdateConfigurationName = sucr.SoftwareUpdateConfiguration.Name;
             this.StartTime = sucr.StartTime;
             this.Status = (SoftwareUpdateRunStatus)Enum.Parse(typeof(SoftwareUpdateRunStatus), sucr.Status, true);
-            this.Tasks = sucr.Tasks;
+            this.Tasks = TaskConverter(sucr.Tasks);
         }
 
         public Guid RunId { get; set; }
@@ -57,6 +57,59 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
 
         public SoftwareUpdateRunStatus Status { get; set; }
 
-        public SoftwareUpdateConfigurationRunTasks Tasks { get; set; }
+        public SoftareUpdateConfigurationRunTasks Tasks { get; set; }
+
+        /// <summary>
+        /// Software update configuration run tasks model. 
+        /// Added temporarily to avoid breaking change
+        /// </summary>
+        public partial class SoftareUpdateConfigurationRunTasks
+        {
+            /// <summary>
+            /// Initializes a new instance of the
+            /// SoftwareUpdateConfigurationRunTasks class.
+            /// </summary>
+            public SoftareUpdateConfigurationRunTasks()
+            {
+                CustomInit();
+            }
+
+            /// <summary>
+            /// Initializes a new instance of the
+            /// SoftwareUpdateConfigurationRunTasks class.
+            /// </summary>
+            /// <param name="preTask">Pre task properties.</param>
+            /// <param name="postTask">Post task properties.</param>
+            public SoftareUpdateConfigurationRunTasks(SoftwareUpdateConfigurationRunTaskProperties preTask = default(SoftwareUpdateConfigurationRunTaskProperties), SoftwareUpdateConfigurationRunTaskProperties postTask = default(SoftwareUpdateConfigurationRunTaskProperties))
+            {
+                PreTask = preTask;
+                PostTask = postTask;
+                CustomInit();
+            }
+
+            /// <summary>
+            /// An initialization method that performs custom operations like setting defaults
+            /// </summary>
+            partial void CustomInit();
+
+            /// <summary>
+            /// Gets or sets pre task properties.
+            /// </summary>
+            public SoftwareUpdateConfigurationRunTaskProperties PreTask { get; set; }
+
+            /// <summary>
+            /// Gets or sets post task properties.
+            /// </summary>
+            public SoftwareUpdateConfigurationRunTaskProperties PostTask { get; set; }
+
+        }
+
+        // SoftwareUpdateConfigurationRunTasks to SoftareUpdateConfigurationRunTasks
+        // Added temporarily to avoid breaking change
+        public SoftareUpdateConfigurationRunTasks TaskConverter(SoftwareUpdateConfigurationRunTasks tasks1)
+        {
+            SoftareUpdateConfigurationRunTasks tasks2 = new SoftareUpdateConfigurationRunTasks(tasks1.PreTask, tasks1.PostTask);
+            return tasks2;
+        }
     }
 }
