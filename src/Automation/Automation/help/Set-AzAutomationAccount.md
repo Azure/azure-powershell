@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultEncryption
-Whether to set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault weather this parameter is set or not.
+Specify whether set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault whether this parameter is set or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
