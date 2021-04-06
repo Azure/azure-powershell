@@ -41,8 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the name of the cluster.")]
         [ResourceNameCompleter("Microsoft.ServiceFabric/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty()]
-        // Doesn’t use singular noun for a parameter name
-        public override string ClusterNames { get; set; }
+        public override string ClusterName { get; set; }
 
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = SkipAppTypeVersion,
             HelpMessage = "Specify the name of the application type")]
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var app = SafeGetResource(() =>
                 this.SFRPClient.Applications.Get(
                     this.ResourceGroupName,
-                    this.ClusterNames,
+                    this.ClusterName,
                     this.ApplicationTypeName),
                 false);
 
@@ -157,7 +156,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return StartRequestAndWait<ApplicationResource>(
                 () => this.SFRPClient.Applications.BeginCreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
-                    this.ClusterNames,
+                    this.ClusterName,
                     this.Name,
                     appParams),
                 () => string.Format("Provisioning state: {0}", GetAppProvisioningStatus() ?? "Not found"));
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var resource = SafeGetResource(() =>
                 this.SFRPClient.Applications.Get(
                     this.ResourceGroupName,
-                    this.ClusterNames,
+                    this.ClusterName,
                     this.Name),
                 true);
 

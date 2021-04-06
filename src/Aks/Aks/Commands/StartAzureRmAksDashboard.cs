@@ -73,9 +73,10 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        // Doesn’t use singular noun for a parameter name
         [Parameter(Mandatory = false,
             HelpMessage = "Do not pop open a browser after establishing the kubectl port-forward.")]
-        public SwitchParameter DisableBrowser { get; set; }
+        public SwitchParameter DisableBrowsers { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The listening port for the dashboard. Default value is 8003.")]
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Aks
                 }
 
                 var job = new KubeTunnelJob(tmpFileName, dashPodName, ListenPort, dashboardPort);
-                if (!DisableBrowser)
+                if (!DisableBrowsers)
                 {
                     WriteVerbose(Resources.SettingUpBrowserPop);
                     job.StartJobCompleted += (sender, evt) =>
