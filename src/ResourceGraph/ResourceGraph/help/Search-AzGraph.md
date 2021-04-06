@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.dll-Help.xml
 Module Name: Az.ResourceGraph
 online version: https://docs.microsoft.com/powershell/module/az.resourcegraph/search-azgraph
@@ -12,9 +12,16 @@ Queries the resources managed by Azure Resource Manager.
 
 ## SYNTAX
 
+### SubscriptionScopedQuery (Default)
 ```
 Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### TenantScopedQuery
+```
+Search-AzGraph [-Query] <String> [-ManagementGroup <String[]>] [-AllowPartialScope] [-First <Int32>]
+ [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,26 +64,55 @@ A complex query on resources featuring field selection, filtering and summarizin
 
 ### Example 3
 ```powershell
-PS C:\> Search-AzGraph -Include DisplayName -Query 'where type =~ "Microsoft.Compute/virtualMachines"| where properties.storageProfile.osDisk.managedDisk == "" | project name, resourceGroup, subscriptionDisplayName'
+PS C:\> Search-AzGraph -Query 'project id, name' -SkipToken 'skiptokenvaluefromthepreviousquery=='
 
-name         resourceGroup      subscriptionDisplayName
-----         -------------      -----------------------
-ContosoVM    RG-Contoso         Contoso Production Subscription                                               
 
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-b/providers/Microsoft.Compute/virtualMachineScaleSets/nt2
+name       : nt2
+
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-b/providers/Microsoft.EventGrid/topics/egtopic-2
+name       : egtopic-2
 ```
-A query featuring all virtual machines which are not using Managed Disks and includes subscription display names.
+
+A query with the skip token passed from the previous query results
 
 ### Example 4
 ```powershell
-PS C:\> Search-AzGraph -Include DisplayName -Query 'summarize count() by tenantDisplayName, subscriptionDisplayName'
+PS C:\> Search-AzGraph -Query 'project id, name, type, location, tags' -First 2 -ManagementGroup 'MyManagementGroupId' -AllowPartialScope
 
-tenantDisplayName   subscriptionDisplayName              count_
------------------   -----------------------              ------
-ContosoTenant       Contoso Production Subscription      118                                           
+
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt
+name       : nt
+type       : microsoft.compute/virtualmachinescalesets
+location   : eastus
+tags       : @{resourceType=Service Fabric; clusterName=gov-art-int-nt-a}
+
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-a/providers/Microsoft.EventGrid/topics/egtopic-1
+name       : egtopic-1
+type       : microsoft.eventgrid/topics
+location   : westus2
+tags       :
 ```
-A query displaying the count of resources by tenant and subscription display names.
+
+A query scoped to the management group that allows the query to succeed with partial scope result if MyManagementGroupId has more than N subscriptions underneath.
+N is max number of subscriptions that can be processed by server.
 
 ## PARAMETERS
+
+### -AllowPartialScope
+Indicates if query should succeed when only partial number of subscriptions underneath can be processed by server
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TenantScopedQuery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -85,6 +121,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroup
+Management group(s) to run query against.
+
+```yaml
+Type: System.String[]
+Parameter Sets: TenantScopedQuery
+Aliases:
 
 Required: False
 Position: Named
@@ -108,12 +159,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipToken
+The skip token to use for getting the next page of results if applicable.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Subscription
 Subscription(s) to run query against.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: SubscriptionScopedQuery
 Aliases:
 
 Required: False
@@ -139,7 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-The maximum number of objects to return. Allowed values: 1-5000.
+The maximum number of objects to return. Allowed values: 1-1000.
 Default value is 100.
 
 ```yaml
@@ -155,7 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

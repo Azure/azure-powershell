@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>Argument completer implementation for SharedImageStorageAccountType.</summary>
+    /// <summary>
+    /// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountTypeTypeConverter))]
     public partial struct SharedImageStorageAccountType :
         System.Management.Automation.IArgumentCompleter

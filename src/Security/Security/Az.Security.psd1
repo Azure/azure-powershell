@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.6'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.SecurityCenter.dll'
@@ -89,6 +89,12 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSecurityAdvancedThreatProtection', 
                'Enable-AzSecurityAdvancedThreatProtection', 
                'Disable-AzSecurityAdvancedThreatProtection', 
+               'Get-AzSecuritySqlVulnerabilityAssessmentScanRecord', 
+               'Get-AzSecuritySqlVulnerabilityAssessmentScanResult', 
+               'Add-AzSecuritySqlVulnerabilityAssessmentBaseline', 
+               'Remove-AzSecuritySqlVulnerabilityAssessmentBaseline', 
+               'Get-AzSecuritySqlVulnerabilityAssessmentBaseline', 
+               'Set-AzSecuritySqlVulnerabilityAssessmentBaseline',  
                'Get-AzIotSecuritySolution', 'Set-AzIotSecuritySolution', 
                'Remove-AzIotSecuritySolution', 'Update-AzIotSecuritySolution', 
                'New-AzIotSecuritySolutionRecommendationConfigurationObject', 

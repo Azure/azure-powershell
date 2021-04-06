@@ -37,7 +37,7 @@ function Test-CreateAfdEndpoint
     $endpointName = getAssetName
     $responseSeconds = 75
 
-    $createdEndpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginResponseTimeoutSeconds $responseSeconds
+    $createdEndpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginResponseTimeoutSecond $responseSeconds
 
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $responseSeconds $createdEndpoint.OriginResponseTimeoutSeconds

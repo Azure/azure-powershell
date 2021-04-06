@@ -26,21 +26,23 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Need to be record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAppServiceEnvironment()
         {
             TestRunner.RunTestScript("Test-GetAppServiceEnvironment");
         }
 
-        [Fact]
+
+        [Fact(Skip = "Need to be record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAppServiceEnvironment()
         {
             TestRunner.RunTestScript("Test-RemoveAppServiceEnvironment");
         }
 
-        [Fact]
+
+        [Fact(Skip = "Need to be record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestE2EAppServiceEnvironment()
         {

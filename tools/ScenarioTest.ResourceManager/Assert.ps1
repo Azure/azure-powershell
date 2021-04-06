@@ -67,7 +67,7 @@ function Assert-ThrowsContains
   }
   catch
   {
-    if ($message -ne "")
+    if ($compare -ne "")
     {
       $actualMessage = $_.Exception.Message
       Write-Output ("Caught exception: '$actualMessage'")
@@ -105,7 +105,7 @@ function Assert-ThrowsLike
   }
   catch
   {
-    if ($message -ne "")
+    if ($compare -ne "")
     {
       $actualMessage = $_.Exception.Message
       Write-Output ("Caught exception: '$actualMessage'")

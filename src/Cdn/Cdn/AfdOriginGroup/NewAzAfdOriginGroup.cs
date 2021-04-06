@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
     public class NewAzAfdOriginGroup : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdOriginGroupAdditionalLatencyInMilliseconds, ParameterSetName = FieldsParameterSet)]
-        public int AdditionalLatencyInMilliseconds { get; set; }
+        public int AdditionalLatencyInMillisecond { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdOriginGroupName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
                 // availability of load balancing settings parameters
                 bool isSampleSize = this.MyInvocation.BoundParameters.ContainsKey("SampleSize");
                 bool isSuccessfulSampleRequired = this.MyInvocation.BoundParameters.ContainsKey("SuccessfulSamplesRequired");
-                bool isAdditionalLatencyInMilliseconds = this.MyInvocation.BoundParameters.ContainsKey("AdditionalLatencyInMilliseconds");
+                bool isAdditionalLatencyInMilliseconds = this.MyInvocation.BoundParameters.ContainsKey("AdditionalLatencyInMillisecond");
 
                 // availability of health probe settings parameters
                 bool isProbePath = this.MyInvocation.BoundParameters.ContainsKey("ProbePath");
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdOriginGroup
             {
                 SampleSize = isSampleSize ? this.SampleSize : 4,
                 SuccessfulSamplesRequired = isSuccessfulSampleRequired ? this.SuccessfulSamplesRequired : 2,
-                AdditionalLatencyInMilliseconds = isAdditionalLatencyInMilliseconds ? this.AdditionalLatencyInMilliseconds : 0
+                AdditionalLatencyInMilliseconds = isAdditionalLatencyInMilliseconds ? this.AdditionalLatencyInMillisecond : 0
             };
           
             return loadBalancingSettings;

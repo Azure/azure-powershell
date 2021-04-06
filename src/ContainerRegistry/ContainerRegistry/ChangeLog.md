@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name 
 
 ## Version 2.2.1
 * Fixed authentication for `Connect-AzContainerRegistry`
