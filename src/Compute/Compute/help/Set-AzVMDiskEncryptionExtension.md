@@ -418,7 +418,7 @@ Initiates migration of the VM to latest Azure Disk Encryption extension version 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: MigrateADEVersionParameterSet
 Aliases:
 
 Required: False
