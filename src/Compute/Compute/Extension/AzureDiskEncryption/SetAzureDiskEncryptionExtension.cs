@@ -88,19 +88,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = true,
             Position = 4,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
-            HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
-        [Parameter(
-            Mandatory = true,
-            Position = 4,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
-            HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
-        [Parameter(
-            Mandatory = true,
-            Position = 4,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "URL of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultUrl { get; set; }
 
@@ -108,19 +95,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = true,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
-            HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
-            HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "ResourceID of the KeyVault where generated encryption key will be placed to")]
         public string DiskEncryptionKeyVaultId { get; set; }
 
