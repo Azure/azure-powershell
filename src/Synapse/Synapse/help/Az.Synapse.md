@@ -83,6 +83,9 @@ Gets a Synapse Analytics role assignment.
 ### [Get-AzSynapseRoleDefinition](Get-AzSynapseRoleDefinition.md)
 Gets a Synapse Analytics role definition.
 
+### [Get-AzSynapseRoleScope](Get-AzSynapseRoleScope.md)
+Gets the Synapse Analytics role scope.
+
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
 Gets a Synapse Analytics Spark job.
 
