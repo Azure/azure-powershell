@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.DBforPostgreSQL/servers", "2018-06-01");
             RegisterConfiguration("Microsoft.Devices/IotHubs", "2020-03-01");
             RegisterConfiguration("Microsoft.DocumentDB/databaseAccounts", "2019-08-01-preview");
+            RegisterConfiguration("Microsoft.DigitalTwins/digitalTwinsInstances", "2020-12-01");
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview");
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview"); 
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview");
