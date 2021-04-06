@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             ParameterSetName = AutomationServicesEncryptionParameterSet)]
         public SwitchParameter AutomationServicesEncryption { get; set; }
 
-        [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.KeyVault(enable CMK) or not.",
+        [Parameter(HelpMessage = "Specifiy whether set Automation Account KeySource to Microsoft.KeyVault (enable CMK) or not.",
             Mandatory = false,
             ParameterSetName = KeyVaultEncryptionParameterSet)]
         public SwitchParameter KeyVaultEncryption { get; set; }
