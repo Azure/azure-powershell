@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Management.Automation.Models
     /// Software update configuration run tasks model. 
     /// Added temporarily to avoid breaking change
     /// </summary>
-    public class SoftareUpdateConfigurationRunTasks
+    public partial class SoftareUpdateConfigurationRunTasks
     {
         /// <summary>
         /// Initializes a new instance of the

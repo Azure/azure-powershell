@@ -107,7 +107,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-CreateAndGetSoftwareUpdateConfigurationWithPrePost");
         }
 
-        [Fact]
+        [Fact(Skip = "Temporarily skipping")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
