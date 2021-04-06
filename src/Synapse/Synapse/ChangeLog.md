@@ -23,6 +23,14 @@
 * Fixed the issue of retrieving Apache Spark pool information through management API
 
 ## Version 0.9.0
+* Updated support for workspace role assignment
+	- Update `New-AzSynapseRoleAssignment` cmdlet
+    - Update `Get-AzSynapseRoleAssignment` cmdlet
+    - Update `Remove-AzSynapseRoleAssignment` cmdlet
+* Added support for workspace role scope
+	- Add `Get-AzSynapseRoleScope` cmdlet
+
+## Version 0.9.0
 * Added support for workspace key encryption management
 	- Add `New-AzSynapseWorkspaceKey` cmdlet
     - Add `Get-AzSynapseWorkspaceKey` cmdlet
