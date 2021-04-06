@@ -129,21 +129,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            bool addSystemId = false;
-            if (AssignSystemIdentity.IsPresent)
-            {
-                addSystemId = true;
-            }
-            bool enableAMK = false;
-            if (AutomationServicesEncryption.IsPresent)
-            {
-                enableAMK = true;
-            }
-            bool enableCMK = false;
-            if (ParameterSetName == KeyVaultEncryptionParameterSet)
-            {
-                enableCMK = true;
-            }
+            bool addSystemId = AssignSystemIdentity.IsPresent;
+            bool enableAMK = AutomationServicesEncryption.IsPresent;
+            bool enableCMK =  (ParameterSetName == KeyVaultEncryptionParameterSet);
 
             var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags, addSystemId, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri);
             this.WriteObject(account);
