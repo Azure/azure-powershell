@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 string itemType = null;
                 if (this.IsParameterBound(c => c.ItemType))
                 {
-                    itemType = this.ItemType.ToSdkObject();
+                    itemType = this.ItemType.GetItemTypeString();
                 }
 
                 if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.RemovingSynapseRoleAssignment, this.RoleDefinitionId, this.ObjectId, this.WorkspaceName)))

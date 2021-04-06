@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspacePrincipleType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspacePrincipalType)]
         [ValidateNotNullOrEmpty]
-        public string PrincipleType { get; set; }
+        public PrincipalType PrincipalType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -138,7 +138,13 @@ namespace Microsoft.Azure.Commands.Synapse
             string itemType = null;
             if (this.IsParameterBound(c => c.ItemType))
             {
-                itemType = this.ItemType.ToSdkObject();
+                itemType = this.ItemType.GetItemTypeString();
+            }
+
+            string principalType = null;
+            if (this.IsParameterBound(c => c.PrincipalType))
+            {
+                principalType = this.PrincipalType.GetPrincipalTypeString();
             }
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
@@ -152,7 +158,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 string roleAssignmentId = Guid.NewGuid().ToString();
                 string scope = SynapseAnalyticsClient.GetRoleAssignmentScope(this.WorkspaceName, itemType, this.Item);
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope, this.PrincipleType));
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope, principalType));
                 WriteObject(roleAssignmentDetails);
             }
         }

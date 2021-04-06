@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return operation.WaitForCompletionAsync().Result;
         }
 
-        public static string ToSdkObject(this WorkspaceItemType itemType)
+        public static string GetItemTypeString(this WorkspaceItemType itemType)
         {
             string itemTypeString = null;
             switch (itemType)
@@ -219,6 +219,25 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             }
 
             return itemTypeString;
+        }
+
+        public static string GetPrincipalTypeString(this PrincipalType principalType)
+        {
+            string principalTypeString = null;
+            switch (principalType)
+            {
+                case PrincipalType.User:
+                    principalTypeString = "user";
+                    break;
+                case PrincipalType.Group:
+                    principalTypeString = "group";
+                    break;
+                case PrincipalType.ServicePrincipal:
+                    principalTypeString = "serviceprincipal";
+                    break;
+            }
+
+            return principalTypeString;
         }
     }
 }

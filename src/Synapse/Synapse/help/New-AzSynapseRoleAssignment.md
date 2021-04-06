@@ -14,52 +14,52 @@ Creates a Synapse Analytics role assignment.
 
 ### NewByWorkspaceNameAndNameParameterSet (Default)
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndIdParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] 
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] 
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -SignInName <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -SignInName <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] 
+New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String> -ObjectId <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] 
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PrincipleType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ServicePrincipalName <String> [-ItemType <String>] [-Item <String>] [-PrincipalType <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -75,21 +75,21 @@ PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinit
 
 This command assigns ContosoRole to the user whose principal name is ContosoName.
 
-### Example 3
+### Example 2
 ```powershell
 PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
 ```
 
-This command assigns ContosoRole to the user whose principal name is ContosoName.
+This command assigns ContosoRole to the user whose principal name is ContosoName and item type is ContosoItemType, item is ContosoItem.
 
-### Example 4
+### Example 3
 ```powershell
-PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem -PrincipleType ContosoPrincipleType
+PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem -PrincipalType ContosoPrincipalType
 ```
 
-This command assigns ContosoRole to the user whose principal name is ContosoName and item type is ContosoItemType, item is ContosoItem, principle type is ContosoPrincipleType.
+This command assigns ContosoRole to the user whose principal name is ContosoName and item type is ContosoItemType, item is ContosoItem, principal type is ContosoPrincipalType.
 
-### Example 5
+### Example 4
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseRoleAssignment -RoleDefinitionName ContosoRole -SignInName ContosoName

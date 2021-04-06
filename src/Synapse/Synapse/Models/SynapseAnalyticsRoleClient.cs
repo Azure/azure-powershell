@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             return _roleAssignmentsClient.GetRoleAssignmentById(roleAssignmentId);
         }
 
-        public RoleAssignmentDetails CreateRoleAssignment(string roleAssignmentId, string roleDefinitionId, string objectId, string scope, string principleType)
+        public RoleAssignmentDetails CreateRoleAssignment(string roleAssignmentId, string roleDefinitionId, string objectId, string scope, string principalType)
         {
-            return _roleAssignmentsClient.CreateRoleAssignment(roleAssignmentId, new Guid(roleDefinitionId), new Guid(objectId), scope, principleType);
+            return _roleAssignmentsClient.CreateRoleAssignment(roleAssignmentId, new Guid(roleDefinitionId), new Guid(objectId), scope, principalType);
         }
 
         public void DeleteRoleAssignmentById(string roleAssignmentId)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                 string roleAssignmentId = roleAssignments[0].Id;
                 _roleAssignmentsClient.DeleteRoleAssignmentById(roleAssignmentId);
             }
-            else 
+            else
             {
                 throw new AzPSInvalidOperationException(String.Format(Resources.WorkspaceRoleAssignmentMoreThanOneFound, workspaceName, string.Join(", ", roleAssignments.Select(ra => ra.Id))));
             }

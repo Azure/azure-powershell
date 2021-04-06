@@ -104,7 +104,7 @@ This command gets a role assignment under workspace ContosoWorkspace with role n
 PS C:\> Get-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType
 ```
 
-This command gets role assignments under workspace ContosoWorkspace with role name ContosoRole,  user principal name ContosoName and under itemtype ContosoItemtype.
+This command gets role assignments under workspace ContosoWorkspace with role name ContosoRole, user principal name ContosoName and under itemtype ContosoItemtype.
 
 ### Example 5
 ```powershells
