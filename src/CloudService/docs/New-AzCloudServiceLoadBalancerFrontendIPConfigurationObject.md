@@ -21,7 +21,7 @@ New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-P
 ### PrivateIP
 ```
 New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject [-Name <String>] [-PrivateIPAddress <String>]
- [<CommonParameters>]
+ [-SubnetId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +77,21 @@ Resource Id.
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubnetId
+Subnet ID
+
+```yaml
+Type: System.String
+Parameter Sets: PrivateIP
 Aliases:
 
 Required: False

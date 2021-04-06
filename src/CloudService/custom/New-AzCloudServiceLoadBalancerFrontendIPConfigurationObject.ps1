@@ -37,7 +37,10 @@ function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
         $PublicIPAddressId,
         [Parameter(ParameterSetName="PrivateIP", HelpMessage="Private IP Address")]
         [string]
-        $PrivateIPAddress
+        $PrivateIPAddress,
+        [Parameter(ParameterSetName="PrivateIP", HelpMessage="Subnet ID")]
+        [string]
+        $SubnetId
     )
 
     process {
@@ -49,7 +52,9 @@ function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
         }
         if ($PSBoundParameters.ContainsKey("PrivateIPAddress")) {
             $Object.privateIPAddress = $PrivateIPAddress
+            $Object.SubnetId = $SubnetId
         }
+        
         return $Object
     }
 }

@@ -158,9 +158,10 @@ function New-AzCloudService {
         $Configuration = Get-Content -Path $ConfigurationFile | Out-String
 
         # do validation 
-        
-        validation $cscfg $csdef $PSBoundParameters
+        $passMemory = @{}
+        validation $cscfg $csdef $PSBoundParameters ([ref]$passMemory)
 
+        
         # if -storageaccount is given, upload to packageUrl to blob 
         if ($PSBoundParameters.ContainsKey("StorageAccount")) 
         {
@@ -180,7 +181,6 @@ function New-AzCloudService {
             $null = $PSBoundParameters.Remove("PackageFile")
             $null = $PSBoundParameters.Add("packageURL", $cspkgURL)
         }
-        
 
         # network profile
         if ( $null -eq $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP ){
@@ -207,7 +207,7 @@ function New-AzCloudService {
         
         If ( $null -ne $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.loadBalancer){
             $privateLB = $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.loadBalancer
-            $feIpConfig2 = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name ($privateLB.name + 'Fe') -privateIPAddress $privateLB.FrontendIPConfiguration.staticVirtualNetworkIPAddress
+            $feIpConfig2 = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name ($privateLB.name + 'Fe') -privateIPAddress $privateLB.FrontendIPConfiguration.staticVirtualNetworkIPAddress -subnetId $passMemory.theSubnet.Id
             $loadBalancerConfig2 = New-AzCloudServiceLoadBalancerConfigurationObject -Name $privateLB.name -FrontendIPConfiguration $feIpConfig2
             $networkProfile = @{loadBalancerConfiguration = @($loadBalancerConfig, $loadBalancerConfig2)}
         }
@@ -284,7 +284,10 @@ function validation
         ${csdef},
         [Parameter()]
         [Hashtable]
-        $params
+        $params,
+        [Parameter()]
+        [Hashtable]
+        [ref]$passMemory
     )
 
     # Network configuration missing in configuration
@@ -361,7 +364,8 @@ function validation
     # Internal load balancer private ip contained in subnet 
     If ( $null -ne $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.loadBalancer){
         $InternalLBFEConfig = $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.Loadbalancer.FrontendIPConfiguration 
-        $addressPrefix = ( $thevnet.Subnets | where-object {$_.Name.tolower() -eq $InternalLBFEConfig.subnet.tolower()}).AddressPrefix
+        $theSubnet = $thevnet.Subnets | where-object {$_.Name.tolower() -eq $InternalLBFEConfig.subnet.tolower()}
+        $addressPrefix = $theSubnet.AddressPrefix
 
         $maskNumber = $addressPrefix.split("/")[1]
 
@@ -379,6 +383,8 @@ function validation
             Write-Error("The internal load balancer subnet '" + $InternalLBFEConfig.subnet + "' does not contain the private IP " + $LBIP + ". Update the subnet within the Virtual Network to include the Private IP.")
             exit 1
         }
+
+        $passMemory.Add("theSubnet", $theSubnet)
     }
     
     if ( $null -ne $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP ){
