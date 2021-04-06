@@ -4627,7 +4627,7 @@ function Test-NewAzVMDefaultingSize
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "eastus";#Get-ComputeVMLocation;
+    $loc = Get-ComputeVMLocation;
 
     try
     {
