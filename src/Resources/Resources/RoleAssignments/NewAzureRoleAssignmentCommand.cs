@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
-        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("User", "Group", "Service Principal")]
         [Alias("PrincipalType")]
         public string ObjectType { get; set; } = null;
 
