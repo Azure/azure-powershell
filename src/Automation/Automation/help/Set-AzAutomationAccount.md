@@ -57,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -AutomationServicesEncryption
-Whether to set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
+Specify whether set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
