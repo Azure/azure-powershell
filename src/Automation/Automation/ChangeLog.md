@@ -19,11 +19,11 @@
 -->
 ## Upcoming Release
 * Added support for Customer Managed Key Encryption with System Assigned Identity
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
 
 ## Version 1.5.2
 * Fixed the issue for starting Python3 runbooks with parameters
 * Fixed time zone issue while creating an update deployment schedule.
-* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
 
 ## Version 1.5.1
 * Fixed te issue that complex object cannot be serialized correctly. [#14431]
