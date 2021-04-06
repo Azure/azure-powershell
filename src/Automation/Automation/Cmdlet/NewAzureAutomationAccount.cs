@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             HelpMessage = "Generate and assign a new System Identity for this automation account")]
         public SwitchParameter AssignSystemIdentity { get; set; }
 
-        [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.Automation or not.",
+        [Parameter(HelpMessage = "Specify whether set Automation Account KeySource to Microsoft.Automation or not.",
             Mandatory = false,
             ParameterSetName = AutomationServicesEncryptionParameterSet)]
         public SwitchParameter AutomationServicesEncryption { get; set; }
