@@ -64,8 +64,18 @@ namespace Microsoft.Azure.Commands.Automation.Model.UpdateManagement
         // Added temporarily to avoid breaking change
         public SoftareUpdateConfigurationRunTasks TaskConverter(SoftwareUpdateConfigurationRunTasks tasks1)
         {
-            SoftareUpdateConfigurationRunTasks tasks2 = new SoftareUpdateConfigurationRunTasks(tasks1.PreTask, tasks1.PostTask);
+            SoftareUpdateConfigurationRunTaskProperties preTask = TaskPropertiesConverter(tasks1.PreTask);
+            SoftareUpdateConfigurationRunTaskProperties postTask = TaskPropertiesConverter(tasks1.PostTask);
+            SoftareUpdateConfigurationRunTasks tasks2 = new SoftareUpdateConfigurationRunTasks(preTask, postTask);
             return tasks2;
+        }
+
+        // SoftwareUpdateConfigurationRunTaskProperties to SoftareUpdateConfigurationRunTaskProperties
+        // Added temporarily to avoid breaking change
+        public SoftareUpdateConfigurationRunTaskProperties TaskPropertiesConverter(SoftwareUpdateConfigurationRunTaskProperties prop1)
+        {
+            SoftareUpdateConfigurationRunTaskProperties prop2 = new SoftareUpdateConfigurationRunTaskProperties(prop1.Status, prop1.Source, prop1.JobId);
+            return prop2;
         }
     }
 }

@@ -6,14 +6,14 @@ namespace Microsoft.Azure.Management.Automation.Models
 {
 
     /// <summary>
-    /// Software update configuration run tasks model. 
+    /// Softare update configuration run tasks model. 
     /// Added temporarily to avoid breaking change
     /// </summary>
     public partial class SoftareUpdateConfigurationRunTasks
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// SoftwareUpdateConfigurationRunTasks class.
+        /// SoftareUpdateConfigurationRunTasks class.
         /// </summary>
         public SoftareUpdateConfigurationRunTasks()
         {
@@ -22,11 +22,11 @@ namespace Microsoft.Azure.Management.Automation.Models
 
         /// <summary>
         /// Initializes a new instance of the
-        /// SoftwareUpdateConfigurationRunTasks class.
+        /// SoftareUpdateConfigurationRunTasks class.
         /// </summary>
         /// <param name="preTask">Pre task properties.</param>
         /// <param name="postTask">Post task properties.</param>
-        public SoftareUpdateConfigurationRunTasks(SoftwareUpdateConfigurationRunTaskProperties preTask = default(SoftwareUpdateConfigurationRunTaskProperties), SoftwareUpdateConfigurationRunTaskProperties postTask = default(SoftwareUpdateConfigurationRunTaskProperties))
+        public SoftareUpdateConfigurationRunTasks(SoftareUpdateConfigurationRunTaskProperties preTask = default(SoftareUpdateConfigurationRunTaskProperties), SoftareUpdateConfigurationRunTaskProperties postTask = default(SoftareUpdateConfigurationRunTaskProperties))
         {
             PreTask = preTask;
             PostTask = postTask;
@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// <summary>
         /// Gets or sets pre task properties.
         /// </summary>
-        public SoftwareUpdateConfigurationRunTaskProperties PreTask { get; set; }
+        public SoftareUpdateConfigurationRunTaskProperties PreTask { get; set; }
 
         /// <summary>
         /// Gets or sets post task properties.
         /// </summary>
-        public SoftwareUpdateConfigurationRunTaskProperties PostTask { get; set; }
+        public SoftareUpdateConfigurationRunTaskProperties PostTask { get; set; }
 
     }
 }
