@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.RoleAssignmentId = roleAssignmentDetails.Id;
             this.RoleDefinitionId = roleAssignmentDetails.RoleDefinitionId?.ToString();
-            this.PrincipalId = roleAssignmentDetails.PrincipalId?.ToString();
+            this.ObjectId = roleAssignmentDetails.PrincipalId?.ToString();
             this.Scope = roleAssignmentDetails.Scope;
             this.principalType = roleAssignmentDetails.PrincipalType;
         }
@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public string RoleDefinitionId { get; set; }
 
-        public string PrincipalId { get; set; }
+        public string ObjectId { get; set; }
 
         public string Scope { get; set; }
 
