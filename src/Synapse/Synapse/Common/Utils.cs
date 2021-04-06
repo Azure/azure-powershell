@@ -227,13 +227,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             switch (principalType)
             {
                 case PrincipalType.User:
-                    principalTypeString = "user";
+                    principalTypeString = "User";
                     break;
                 case PrincipalType.Group:
-                    principalTypeString = "group";
+                    principalTypeString = "Group";
                     break;
                 case PrincipalType.ServicePrincipal:
-                    principalTypeString = "serviceprincipal";
+                    principalTypeString = "ServicePrincipal";
                     break;
             }
 

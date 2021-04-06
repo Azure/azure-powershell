@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Synapse
             string itemType = null;
             if (this.IsParameterBound(c => c.ItemType))
             {
-                itemType = this.ItemType.ToSdkObject();
+                itemType = this.ItemType.GetItemTypeString();
             }
 
             if (this.IsParameterBound(c => c.RoleAssignmentId))
