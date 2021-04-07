@@ -17,7 +17,18 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Upcoming Release
+## Version 2.18.0
+* Added cmdlet output breaking change warnings to the following: 
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
 
 ## Version 2.17.0
 * Added cmdlet `New-AzSqlServerTrustGroup`
