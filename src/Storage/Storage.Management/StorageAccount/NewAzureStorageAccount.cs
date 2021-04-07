@@ -449,6 +449,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowCrossTenantReplication = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default share permission for users using Kerberos authentication if RBAC role is not assigned.")]
+        [ValidateSet(DefaultSharePermissionType.None,
+            DefaultSharePermissionType.StorageFileDataSmbShareContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareReader,
+            DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
+            IgnoreCase = true)]
+        public string DefaultSharePermission { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Set the extended location name for EdgeZone. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location")]
         [ValidateNotNullOrEmpty]
         public string EdgeZone { get; set; }
@@ -557,6 +568,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 {
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                 }
+            }
+
+            if (this.DefaultSharePermission != null)
+            {
+                if (enableAzureActiveDirectoryDomainServicesForFile == null && enableActiveDirectoryDomainServicesForFile == null)
+                {
+                    throw new ArgumentException("'-DefaultSharePermission' need be specify together with '-EnableAzureActiveDirectoryDomainServicesForFile' or '-EnableActiveDirectoryDomainServicesForFile'.");
+                }
+                if (createParameters.AzureFilesIdentityBasedAuthentication == null)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                }
+                createParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
             }
             if (this.EnableLargeFileShare.IsPresent)
             {

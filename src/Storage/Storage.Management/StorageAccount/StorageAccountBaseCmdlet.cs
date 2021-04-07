@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
             File = 2
         }
 
+        protected struct DefaultSharePermissionType
+        {
+            internal const string None = "None";
+            internal const string StorageFileDataSmbShareReader = "StorageFileDataSmbShareReader";
+            internal const string StorageFileDataSmbShareContributor = "StorageFileDataSmbShareContributor";
+            internal const string StorageFileDataSmbShareElevatedContributor = "StorageFileDataSmbShareElevatedContributor";
+            internal const string StorageFileDataSmbShareOwner = "StorageFileDataSmbShareOwner";
+        }
+
         public IStorageManagementClient StorageClient
         {
             get
