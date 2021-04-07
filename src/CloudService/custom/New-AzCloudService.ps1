@@ -165,6 +165,7 @@ function New-AzCloudService {
         # if -storageaccount is given, upload to packageUrl to blob 
         if ($PSBoundParameters.ContainsKey("StorageAccount")) 
         {
+            Write-Host("Uploading the csdef to a blob in the Storage Account.")
             $storageAccountObj = Get-AzStorageAccount -resourceGroupName $ResourceGroupName -name $storageAccount
             $container = New-AzStorageContainer -Name ($name.tolower()+'-container') -Context $storageAccountObj.Context -Permission Blob 
             
@@ -174,8 +175,6 @@ function New-AzCloudService {
             $cspkgBlob = Set-AzStorageBlobContent -File $PackageFile -Container $container.name -Blob ($name + ".cspkg") -Context $storageAccountObj.Context 
             $cspkgToken = New-AzStorageBlobSASToken -Container $container.name -Blob $cspkgBlob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccountObj.Context 
             $cspkgUrl = $cspkgBlob.ICloudBlob.Uri.AbsoluteUri + $cspkgToken 
-
-            Write-Host($cspkgUrl)
             
             $null = $PSBoundParameters.Remove("StorageAccount")
             $null = $PSBoundParameters.Remove("PackageFile")
@@ -268,6 +267,7 @@ function New-AzCloudService {
         # Perform action
 
         # If these variants should call back to the original cmdlet, use splatting to pass the existing set of parameters
+        Write-Host("Creating the Cloud Service resource.")
         Az.CloudService\New-AzCloudService @PSBoundParameters
     }
 
@@ -290,6 +290,7 @@ function validation
         [ref]$passMemory
     )
 
+    Write-Host("Checking validations on the cscfg and csdef files.")
     # Network configuration missing in configuration
     If ( $null -eq $cscfg.ServiceConfiguration.NetworkConfiguration -or $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.count -eq 0 -or $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress.Subnets.count -eq 0)
     {

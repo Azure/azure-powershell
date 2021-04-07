@@ -43,4 +43,44 @@ Describe 'New-AzCloudService' {
                           -ExtensionProfile $extensionProfile
         $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
     }
+    It 'quickCreateParameterSetWithoutStorage' {
+        $CloudServiceName2 = $env.CloudServiceName + "2"
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
+        $cspkgFilePath = Join-Path $PSScriptRoot $env.CspkgFile
+        $csdefFilePath = Join-Path $PSScriptRoot $env.csdefFile
+        $cloudService2 = new-azcloudservice `
+                            -resourcegroupname $env.ResourceGroupName `
+                            -location $env.Location `
+                            -configurationFile $cscfgFilePath `
+                            -definitionFile $csdefFilePath `
+                            -packagefile $cspkgFilePath `
+                            -name $CloudServiceName2 `
+                            -StorageAccount $env.StorageName 
+        $cloudService2.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
+    }
+    It 'quickCreateParameterSetWithStorage' {
+        # getting Package URL
+
+        $tokenStartTime = Get-Date 
+        $tokenEndTime = $tokenStartTime.AddYears(1) 
+        $storacc = Get-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $env.StorageName
+        $cspkgblob = get-azstorageblob -Container $env.ContainerName -Blob $env.BlobName -Context $storacc.Context
+        $cspkgToken = New-AzStorageBlobSASToken -Container $env.ContainerName -Blob $env.BlobName -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storacc.Context
+        $cspkgUrl = $cspkgBlob.ICloudBlob.Uri.AbsoluteUri + $cspkgToken 
+
+        $CloudServiceName3 = $env.CloudServiceName + "3"
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile
+        $csdefFilePath = Join-Path $PSScriptRoot $env.csdefFile
+
+        # calling New-AzCloudService
+        $CloudServiceName3 = new-azcloudservice`
+                                 -resourcegroupname theo_cses `
+                                 -location eastus `
+                                 -configurationFile $cscfgFilePath `
+                                 -definitionFile $csdefFilePath `
+                                 -packageUrl $cspkgurl `
+                                 -name $CloudServiceName3
+
+        $cloudService3.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
+    }
 }
