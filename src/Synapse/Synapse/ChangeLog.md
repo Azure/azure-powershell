@@ -22,6 +22,10 @@
 * Added `Get-AzSynapseRoleScope` cmdlet
 * Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3
 
+## Upcoming Release
+* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
+* Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
+* Fixed the issue of retrieving Apache Spark pool information through management API
 
 ## Version 0.9.0
 * Added support for workspace key encryption management
