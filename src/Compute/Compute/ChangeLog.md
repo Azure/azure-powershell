@@ -21,6 +21,11 @@
 -->
 ## Upcoming Release
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
+* Added new cmdlets to support TrustedLaunch related cmdlets:
+    - `Set-AzVmSecurityProfile`
+    - `Set-AzVmUefi`
+    - `Set-AzVmssSecurityProfile`
+    - `Set-AzVmssUefi`
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
