@@ -5,7 +5,7 @@
       "VerbName": "Add",
       "NounName": "AzKustoClusterLanguageExtension",
       "Name": "Add-AzKustoClusterLanguageExtension",
-      "ClassName": null,
+      "ClassName": "Add-AzKustoClusterLanguageExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -23,7 +23,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1241,7 +1243,7 @@
       "VerbName": "Add",
       "NounName": "AzKustoDatabasePrincipal",
       "Name": "Add-AzKustoDatabasePrincipal",
-      "ClassName": null,
+      "ClassName": "Add-AzKustoDatabasePrincipal",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1267,7 +1269,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2257,7 +2261,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoAttachedDatabaseConfiguration",
       "Name": "Get-AzKustoAttachedDatabaseConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoAttachedDatabaseConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2282,7 +2286,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3434,7 +3440,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoCluster",
       "Name": "Get-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3484,7 +3490,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4770,7 +4778,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoClusterFollowerDatabase",
       "Name": "Get-AzKustoClusterFollowerDatabase",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoClusterFollowerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4792,7 +4800,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5236,7 +5246,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoClusterLanguageExtension",
       "Name": "Get-AzKustoClusterLanguageExtension",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoClusterLanguageExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5256,7 +5266,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5700,7 +5712,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoClusterPrincipalAssignment",
       "Name": "Get-AzKustoClusterPrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoClusterPrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5726,7 +5738,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6874,7 +6888,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoClusterSku",
       "Name": "Get-AzKustoClusterSku",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoClusterSku",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6899,7 +6913,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         },
         {
           "Type": {
@@ -6921,7 +6937,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7565,7 +7583,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoDatabase",
       "Name": "Get-AzKustoDatabase",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7586,7 +7604,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8738,7 +8758,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoDatabasePrincipal",
       "Name": "Get-AzKustoDatabasePrincipal",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoDatabasePrincipal",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8764,7 +8784,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9250,7 +9272,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoDatabasePrincipalAssignment",
       "Name": "Get-AzKustoDatabasePrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoDatabasePrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9276,7 +9298,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10490,7 +10514,7 @@
       "VerbName": "Get",
       "NounName": "AzKustoDataConnection",
       "Name": "Get-AzKustoDataConnection",
-      "ClassName": null,
+      "ClassName": "Get-AzKustoDataConnection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10511,7 +10535,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11729,7 +11755,7 @@
       "VerbName": "Invoke",
       "NounName": "AzKustoDataConnectionValidation",
       "Name": "Invoke-AzKustoDataConnectionValidation",
-      "ClassName": null,
+      "ClassName": "Invoke-AzKustoDataConnectionValidation",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11749,7 +11775,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17839,7 +17867,7 @@
       "VerbName": "Invoke",
       "NounName": "AzKustoDetachClusterFollowerDatabase",
       "Name": "Invoke-AzKustoDetachClusterFollowerDatabase",
-      "ClassName": null,
+      "ClassName": "Invoke-AzKustoDetachClusterFollowerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17857,7 +17885,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -19165,7 +19195,7 @@
       "VerbName": "Invoke",
       "NounName": "AzKustoDiagnoseClusterVirtualNetwork",
       "Name": "Invoke-AzKustoDiagnoseClusterVirtualNetwork",
-      "ClassName": null,
+      "ClassName": "Invoke-AzKustoDiagnoseClusterVirtualNetwork",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -19183,7 +19213,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20221,7 +20253,7 @@
       "VerbName": "New",
       "NounName": "AzKustoAttachedDatabaseConfiguration",
       "Name": "New-AzKustoAttachedDatabaseConfiguration",
-      "ClassName": null,
+      "ClassName": "New-AzKustoAttachedDatabaseConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20246,7 +20278,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -21112,7 +21146,7 @@
       "VerbName": "New",
       "NounName": "AzKustoCluster",
       "Name": "New-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "New-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -21162,7 +21196,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -23282,7 +23318,7 @@
       "VerbName": "New",
       "NounName": "AzKustoClusterPrincipalAssignment",
       "Name": "New-AzKustoClusterPrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "New-AzKustoClusterPrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -23308,7 +23344,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -24294,7 +24332,7 @@
       "VerbName": "New",
       "NounName": "AzKustoDatabase",
       "Name": "New-AzKustoDatabase",
-      "ClassName": null,
+      "ClassName": "New-AzKustoDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -24315,7 +24353,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -25181,7 +25221,7 @@
       "VerbName": "New",
       "NounName": "AzKustoDatabasePrincipalAssignment",
       "Name": "New-AzKustoDatabasePrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "New-AzKustoDatabasePrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -25207,7 +25247,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -26235,7 +26277,7 @@
       "VerbName": "New",
       "NounName": "AzKustoDataConnection",
       "Name": "New-AzKustoDataConnection",
-      "ClassName": null,
+      "ClassName": "New-AzKustoDataConnection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -26256,7 +26298,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -31184,7 +31228,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoAttachedDatabaseConfiguration",
       "Name": "Remove-AzKustoAttachedDatabaseConfiguration",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoAttachedDatabaseConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -31202,7 +31246,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -32376,7 +32422,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoCluster",
       "Name": "Remove-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -32394,7 +32440,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -33526,7 +33574,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoClusterLanguageExtension",
       "Name": "Remove-AzKustoClusterLanguageExtension",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoClusterLanguageExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -33544,7 +33592,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -34762,7 +34812,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoClusterPrincipalAssignment",
       "Name": "Remove-AzKustoClusterPrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoClusterPrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -34780,7 +34830,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -35950,7 +36002,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoDatabase",
       "Name": "Remove-AzKustoDatabase",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -35968,7 +36020,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -37142,7 +37196,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoDatabasePrincipal",
       "Name": "Remove-AzKustoDatabasePrincipal",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoDatabasePrincipal",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37168,7 +37222,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -38158,7 +38214,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoDatabasePrincipalAssignment",
       "Name": "Remove-AzKustoDatabasePrincipalAssignment",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoDatabasePrincipalAssignment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -38176,7 +38232,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -39388,7 +39446,7 @@
       "VerbName": "Remove",
       "NounName": "AzKustoDataConnection",
       "Name": "Remove-AzKustoDataConnection",
-      "ClassName": null,
+      "ClassName": "Remove-AzKustoDataConnection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -39406,7 +39464,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -40622,7 +40682,7 @@
       "VerbName": "Start",
       "NounName": "AzKustoCluster",
       "Name": "Start-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "Start-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -40640,7 +40700,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -41772,7 +41834,7 @@
       "VerbName": "Stop",
       "NounName": "AzKustoCluster",
       "Name": "Stop-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "Stop-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -41790,7 +41852,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -42922,7 +42986,7 @@
       "VerbName": "Test",
       "NounName": "AzKustoClusterNameAvailability",
       "Name": "Test-AzKustoClusterNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzKustoClusterNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -42945,7 +43009,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -44189,7 +44255,7 @@
       "VerbName": "Test",
       "NounName": "AzKustoClusterPrincipalAssignmentNameAvailability",
       "Name": "Test-AzKustoClusterPrincipalAssignmentNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzKustoClusterPrincipalAssignmentNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -44212,7 +44278,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -45498,7 +45566,7 @@
       "VerbName": "Test",
       "NounName": "AzKustoDatabaseNameAvailability",
       "Name": "Test-AzKustoDatabaseNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzKustoDatabaseNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -45521,7 +45589,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -46807,7 +46877,7 @@
       "VerbName": "Test",
       "NounName": "AzKustoDatabasePrincipalAssignmentNameAvailability",
       "Name": "Test-AzKustoDatabasePrincipalAssignmentNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzKustoDatabasePrincipalAssignmentNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -46830,7 +46900,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -48158,7 +48230,7 @@
       "VerbName": "Test",
       "NounName": "AzKustoDataConnectionNameAvailability",
       "Name": "Test-AzKustoDataConnectionNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzKustoDataConnectionNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -48181,7 +48253,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -49509,7 +49583,7 @@
       "VerbName": "Update",
       "NounName": "AzKustoCluster",
       "Name": "Update-AzKustoCluster",
-      "ClassName": null,
+      "ClassName": "Update-AzKustoCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -49559,7 +49633,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -53843,7 +53919,7 @@
       "VerbName": "Update",
       "NounName": "AzKustoDatabase",
       "Name": "Update-AzKustoDatabase",
-      "ClassName": null,
+      "ClassName": "Update-AzKustoDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -53864,7 +53940,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -55556,7 +55634,7 @@
       "VerbName": "Update",
       "NounName": "AzKustoDataConnection",
       "Name": "Update-AzKustoDataConnection",
-      "ClassName": null,
+      "ClassName": "Update-AzKustoDataConnection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -55577,7 +55655,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

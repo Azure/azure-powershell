@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzConfluentMarketplaceAgreement",
       "Name": "Get-AzConfluentMarketplaceAgreement",
-      "ClassName": null,
+      "ClassName": "Get-AzConfluentMarketplaceAgreement",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -35,7 +35,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -395,7 +397,7 @@
       "VerbName": "Get",
       "NounName": "AzConfluentOrganization",
       "Name": "Get-AzConfluentOrganization",
-      "ClassName": null,
+      "ClassName": "Get-AzConfluentOrganization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -432,7 +434,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1708,7 +1712,7 @@
       "VerbName": "New",
       "NounName": "AzConfluentMarketplaceAgreement",
       "Name": "New-AzConfluentMarketplaceAgreement",
-      "ClassName": null,
+      "ClassName": "New-AzConfluentMarketplaceAgreement",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1738,7 +1742,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2434,7 +2440,7 @@
       "VerbName": "New",
       "NounName": "AzConfluentOrganization",
       "Name": "New-AzConfluentOrganization",
-      "ClassName": null,
+      "ClassName": "New-AzConfluentOrganization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2471,7 +2477,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3589,7 +3597,7 @@
       "VerbName": "Remove",
       "NounName": "AzConfluentOrganization",
       "Name": "Remove-AzConfluentOrganization",
-      "ClassName": null,
+      "ClassName": "Remove-AzConfluentOrganization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3607,7 +3615,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4729,7 +4739,7 @@
       "VerbName": "Update",
       "NounName": "AzConfluentOrganization",
       "Name": "Update-AzConfluentOrganization",
-      "ClassName": null,
+      "ClassName": "Update-AzConfluentOrganization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4766,7 +4776,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

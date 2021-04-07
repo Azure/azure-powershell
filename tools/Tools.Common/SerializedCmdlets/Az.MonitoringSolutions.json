@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzMonitorLogAnalyticsSolution",
       "Name": "Get-AzMonitorLogAnalyticsSolution",
-      "ClassName": null,
+      "ClassName": "Get-AzMonitorLogAnalyticsSolution",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37,7 +37,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1323,7 +1325,7 @@
       "VerbName": "New",
       "NounName": "AzMonitorLogAnalyticsSolution",
       "Name": "New-AzMonitorLogAnalyticsSolution",
-      "ClassName": null,
+      "ClassName": "New-AzMonitorLogAnalyticsSolution",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1355,7 +1357,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1929,7 +1933,7 @@
       "VerbName": "Remove",
       "NounName": "AzMonitorLogAnalyticsSolution",
       "Name": "Remove-AzMonitorLogAnalyticsSolution",
-      "ClassName": null,
+      "ClassName": "Remove-AzMonitorLogAnalyticsSolution",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1947,7 +1951,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2899,7 +2905,7 @@
       "VerbName": "Update",
       "NounName": "AzMonitorLogAnalyticsSolution",
       "Name": "Update-AzMonitorLogAnalyticsSolution",
-      "ClassName": null,
+      "ClassName": "Update-AzMonitorLogAnalyticsSolution",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2931,7 +2937,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzKubernetesConfiguration",
       "Name": "Get-AzKubernetesConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzKubernetesConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -47,7 +47,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1327,7 +1329,7 @@
       "VerbName": "New",
       "NounName": "AzKubernetesConfiguration",
       "Name": "New-AzKubernetesConfiguration",
-      "ClassName": null,
+      "ClassName": "New-AzKubernetesConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1369,7 +1371,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2237,7 +2241,7 @@
       "VerbName": "Remove",
       "NounName": "AzKubernetesConfiguration",
       "Name": "Remove-AzKubernetesConfiguration",
-      "ClassName": null,
+      "ClassName": "Remove-AzKubernetesConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2255,7 +2259,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

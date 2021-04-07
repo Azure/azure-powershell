@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzCostManagementExport",
       "Name": "Get-AzCostManagementExport",
-      "ClassName": null,
+      "ClassName": "Get-AzCostManagementExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -40,7 +40,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1170,7 +1172,7 @@
       "VerbName": "Get",
       "NounName": "AzCostManagementExportExecutionHistory",
       "Name": "Get-AzCostManagementExportExecutionHistory",
-      "ClassName": null,
+      "ClassName": "Get-AzCostManagementExportExecutionHistory",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1210,7 +1212,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2022,7 +2026,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCostManagementExecuteExport",
       "Name": "Invoke-AzCostManagementExecuteExport",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCostManagementExecuteExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2040,7 +2044,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2942,7 +2948,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCostManagementQuery",
       "Name": "Invoke-AzCostManagementQuery",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCostManagementQuery",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2964,7 +2970,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5462,7 +5470,7 @@
       "VerbName": "New",
       "NounName": "AzCostManagementExport",
       "Name": "New-AzCostManagementExport",
-      "ClassName": null,
+      "ClassName": "New-AzCostManagementExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5497,7 +5505,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7235,7 +7245,7 @@
       "VerbName": "New",
       "NounName": "AzCostManagementQueryComparisonExpressionObject",
       "Name": "New-AzCostManagementQueryComparisonExpressionObject",
-      "ClassName": null,
+      "ClassName": "New-AzCostManagementQueryComparisonExpressionObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -7348,7 +7358,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7616,7 +7628,7 @@
       "VerbName": "New",
       "NounName": "AzCostManagementQueryFilterObject",
       "Name": "New-AzCostManagementQueryFilterObject",
-      "ClassName": null,
+      "ClassName": "New-AzCostManagementQueryFilterObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -7731,7 +7743,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7987,7 +8001,7 @@
       "VerbName": "Remove",
       "NounName": "AzCostManagementExport",
       "Name": "Remove-AzCostManagementExport",
-      "ClassName": null,
+      "ClassName": "Remove-AzCostManagementExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8005,7 +8019,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8911,7 +8927,7 @@
       "VerbName": "Update",
       "NounName": "AzCostManagementExport",
       "Name": "Update-AzCostManagementExport",
-      "ClassName": null,
+      "ClassName": "Update-AzCostManagementExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8946,7 +8962,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

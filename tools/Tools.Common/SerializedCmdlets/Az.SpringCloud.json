@@ -5,7 +5,7 @@
       "VerbName": "Deploy",
       "NounName": "AzSpringCloudApp",
       "Name": "Deploy-AzSpringCloudApp",
-      "ClassName": null,
+      "ClassName": "Deploy-AzSpringCloudApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -40,7 +40,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -656,7 +658,7 @@
       "VerbName": "Get",
       "NounName": "AzSpringCloud",
       "Name": "Get-AzSpringCloud",
-      "ClassName": null,
+      "ClassName": "Get-AzSpringCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -687,7 +689,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1975,7 +1979,7 @@
       "VerbName": "Get",
       "NounName": "AzSpringCloudApp",
       "Name": "Get-AzSpringCloudApp",
-      "ClassName": null,
+      "ClassName": "Get-AzSpringCloudApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2010,7 +2014,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3230,7 +3236,7 @@
       "VerbName": "Get",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Get-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Get-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3268,7 +3274,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4802,7 +4810,7 @@
       "VerbName": "New",
       "NounName": "AzSpringCloud",
       "Name": "New-AzSpringCloud",
-      "ClassName": null,
+      "ClassName": "New-AzSpringCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4833,7 +4841,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5659,7 +5669,7 @@
       "VerbName": "New",
       "NounName": "AzSpringCloudApp",
       "Name": "New-AzSpringCloudApp",
-      "ClassName": null,
+      "ClassName": "New-AzSpringCloudApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5694,7 +5704,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6646,7 +6658,7 @@
       "VerbName": "New",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "New-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "New-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6684,7 +6696,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7926,7 +7940,7 @@
       "VerbName": "Remove",
       "NounName": "AzSpringCloud",
       "Name": "Remove-AzSpringCloud",
-      "ClassName": null,
+      "ClassName": "Remove-AzSpringCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7944,7 +7958,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9078,7 +9094,7 @@
       "VerbName": "Remove",
       "NounName": "AzSpringCloudApp",
       "Name": "Remove-AzSpringCloudApp",
-      "ClassName": null,
+      "ClassName": "Remove-AzSpringCloudApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9096,7 +9112,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10272,7 +10290,7 @@
       "VerbName": "Remove",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Remove-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Remove-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10290,7 +10308,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11508,7 +11528,7 @@
       "VerbName": "Restart",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Restart-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Restart-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11526,7 +11546,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12744,7 +12766,7 @@
       "VerbName": "Start",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Start-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Start-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -12762,7 +12784,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13980,7 +14004,7 @@
       "VerbName": "Stop",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Stop-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Stop-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13998,7 +14022,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -15216,7 +15242,7 @@
       "VerbName": "Update",
       "NounName": "AzSpringCloud",
       "Name": "Update-AzSpringCloud",
-      "ClassName": null,
+      "ClassName": "Update-AzSpringCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -15247,7 +15273,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -16921,7 +16949,7 @@
       "VerbName": "Update",
       "NounName": "AzSpringCloudApp",
       "Name": "Update-AzSpringCloudApp",
-      "ClassName": null,
+      "ClassName": "Update-AzSpringCloudApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -16956,7 +16984,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -18852,7 +18882,7 @@
       "VerbName": "Update",
       "NounName": "AzSpringCloudAppDeployment",
       "Name": "Update-AzSpringCloudAppDeployment",
-      "ClassName": null,
+      "ClassName": "Update-AzSpringCloudAppDeployment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -18890,7 +18920,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

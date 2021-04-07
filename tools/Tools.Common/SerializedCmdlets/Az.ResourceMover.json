@@ -5,7 +5,7 @@
       "VerbName": "Add",
       "NounName": "AzResourceMoverMoveResource",
       "Name": "Add-AzResourceMoverMoveResource",
-      "ClassName": null,
+      "ClassName": "Add-AzResourceMoverMoveResource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -47,7 +47,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -797,7 +799,7 @@
       "VerbName": "Get",
       "NounName": "AzResourceMoverMoveCollection",
       "Name": "Get-AzResourceMoverMoveCollection",
-      "ClassName": null,
+      "ClassName": "Get-AzResourceMoverMoveCollection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -832,7 +834,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1704,7 +1708,7 @@
       "VerbName": "Get",
       "NounName": "AzResourceMoverMoveResource",
       "Name": "Get-AzResourceMoverMoveResource",
-      "ClassName": null,
+      "ClassName": "Get-AzResourceMoverMoveResource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1746,7 +1750,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2774,7 +2780,7 @@
       "VerbName": "Get",
       "NounName": "AzResourceMoverRequiredForResources",
       "Name": "Get-AzResourceMoverRequiredForResources",
-      "ClassName": null,
+      "ClassName": "Get-AzResourceMoverRequiredForResources",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2792,7 +2798,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3278,7 +3286,7 @@
       "VerbName": "Get",
       "NounName": "AzResourceMoverUnresolvedDependency",
       "Name": "Get-AzResourceMoverUnresolvedDependency",
-      "ClassName": null,
+      "ClassName": "Get-AzResourceMoverUnresolvedDependency",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3299,7 +3307,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3993,7 +4003,7 @@
       "VerbName": "Invoke",
       "NounName": "AzResourceMoverBulkRemove",
       "Name": "Invoke-AzResourceMoverBulkRemove",
-      "ClassName": null,
+      "ClassName": "Invoke-AzResourceMoverBulkRemove",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4022,7 +4032,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4800,7 +4812,7 @@
       "VerbName": "Invoke",
       "NounName": "AzResourceMoverCommit",
       "Name": "Invoke-AzResourceMoverCommit",
-      "ClassName": null,
+      "ClassName": "Invoke-AzResourceMoverCommit",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4829,7 +4841,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5607,7 +5621,7 @@
       "VerbName": "Invoke",
       "NounName": "AzResourceMoverDiscard",
       "Name": "Invoke-AzResourceMoverDiscard",
-      "ClassName": null,
+      "ClassName": "Invoke-AzResourceMoverDiscard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5636,7 +5650,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6418,7 +6434,7 @@
       "VerbName": "Invoke",
       "NounName": "AzResourceMoverInitiateMove",
       "Name": "Invoke-AzResourceMoverInitiateMove",
-      "ClassName": null,
+      "ClassName": "Invoke-AzResourceMoverInitiateMove",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6447,7 +6463,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7225,7 +7243,7 @@
       "VerbName": "Invoke",
       "NounName": "AzResourceMoverPrepare",
       "Name": "Invoke-AzResourceMoverPrepare",
-      "ClassName": null,
+      "ClassName": "Invoke-AzResourceMoverPrepare",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7254,7 +7272,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8032,7 +8052,7 @@
       "VerbName": "New",
       "NounName": "AzResourceMoverMoveCollection",
       "Name": "New-AzResourceMoverMoveCollection",
-      "ClassName": null,
+      "ClassName": "New-AzResourceMoverMoveCollection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8067,7 +8087,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8933,7 +8955,7 @@
       "VerbName": "Remove",
       "NounName": "AzResourceMoverMoveCollection",
       "Name": "Remove-AzResourceMoverMoveCollection",
-      "ClassName": null,
+      "ClassName": "Remove-AzResourceMoverMoveCollection",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8962,7 +8984,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9536,7 +9560,7 @@
       "VerbName": "Remove",
       "NounName": "AzResourceMoverMoveResource",
       "Name": "Remove-AzResourceMoverMoveResource",
-      "ClassName": null,
+      "ClassName": "Remove-AzResourceMoverMoveResource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9565,7 +9589,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10181,7 +10207,7 @@
       "VerbName": "Resolve",
       "NounName": "AzResourceMoverMoveCollectionDependency",
       "Name": "Resolve-AzResourceMoverMoveCollectionDependency",
-      "ClassName": null,
+      "ClassName": "Resolve-AzResourceMoverMoveCollectionDependency",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10210,7 +10236,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

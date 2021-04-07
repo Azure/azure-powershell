@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzVMwareAuthorization",
       "Name": "Get-AzVMwareAuthorization",
-      "ClassName": null,
+      "ClassName": "Get-AzVMwareAuthorization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -27,7 +27,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1177,7 +1179,7 @@
       "VerbName": "Get",
       "NounName": "AzVMwareCluster",
       "Name": "Get-AzVMwareCluster",
-      "ClassName": null,
+      "ClassName": "Get-AzVMwareCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1201,7 +1203,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2351,7 +2355,7 @@
       "VerbName": "Get",
       "NounName": "AzVMwarePrivateCloud",
       "Name": "Get-AzVMwarePrivateCloud",
-      "ClassName": null,
+      "ClassName": "Get-AzVMwarePrivateCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2393,7 +2397,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3677,7 +3683,7 @@
       "VerbName": "Get",
       "NounName": "AzVMwarePrivateCloudAdminCredentials",
       "Name": "Get-AzVMwarePrivateCloudAdminCredentials",
-      "ClassName": null,
+      "ClassName": "Get-AzVMwarePrivateCloudAdminCredentials",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3700,7 +3706,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4144,7 +4152,7 @@
       "VerbName": "New",
       "NounName": "AzVMwareAuthorization",
       "Name": "New-AzVMwareAuthorization",
-      "ClassName": null,
+      "ClassName": "New-AzVMwareAuthorization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4166,7 +4174,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4740,7 +4750,7 @@
       "VerbName": "New",
       "NounName": "AzVMwareCluster",
       "Name": "New-AzVMwareCluster",
-      "ClassName": null,
+      "ClassName": "New-AzVMwareCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4764,7 +4774,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5422,7 +5434,7 @@
       "VerbName": "New",
       "NounName": "AzVMwarePrivateCloud",
       "Name": "New-AzVMwarePrivateCloud",
-      "ClassName": null,
+      "ClassName": "New-AzVMwarePrivateCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5464,7 +5476,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6498,7 +6512,7 @@
       "VerbName": "Remove",
       "NounName": "AzVMwareAuthorization",
       "Name": "Remove-AzVMwareAuthorization",
-      "ClassName": null,
+      "ClassName": "Remove-AzVMwareAuthorization",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6516,7 +6530,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7688,7 +7704,7 @@
       "VerbName": "Remove",
       "NounName": "AzVMwareCluster",
       "Name": "Remove-AzVMwareCluster",
-      "ClassName": null,
+      "ClassName": "Remove-AzVMwareCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7706,7 +7722,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8878,7 +8896,7 @@
       "VerbName": "Remove",
       "NounName": "AzVMwarePrivateCloud",
       "Name": "Remove-AzVMwarePrivateCloud",
-      "ClassName": null,
+      "ClassName": "Remove-AzVMwarePrivateCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8896,7 +8914,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10026,7 +10046,7 @@
       "VerbName": "Test",
       "NounName": "AzVMwareLocationQuotaAvailability",
       "Name": "Test-AzVMwareLocationQuotaAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzVMwareLocationQuotaAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10047,7 +10067,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10861,7 +10883,7 @@
       "VerbName": "Test",
       "NounName": "AzVMwareLocationTrialAvailability",
       "Name": "Test-AzVMwareLocationTrialAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzVMwareLocationTrialAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10882,7 +10904,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11696,7 +11720,7 @@
       "VerbName": "Update",
       "NounName": "AzVMwareCluster",
       "Name": "Update-AzVMwareCluster",
-      "ClassName": null,
+      "ClassName": "Update-AzVMwareCluster",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11720,7 +11744,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12892,7 +12918,7 @@
       "VerbName": "Update",
       "NounName": "AzVMwarePrivateCloud",
       "Name": "Update-AzVMwarePrivateCloud",
-      "ClassName": null,
+      "ClassName": "Update-AzVMwarePrivateCloud",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -12934,7 +12960,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

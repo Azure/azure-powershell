@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlConfiguration",
       "Name": "Get-AzMySqlConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -30,7 +30,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1186,7 +1188,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlConnectionString",
       "Name": "Get-AzMySqlConnectionString",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlConnectionString",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1204,7 +1206,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2190,7 +2194,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFirewallRule",
       "Name": "Get-AzMySqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2211,7 +2215,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3367,7 +3373,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Get-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3420,7 +3426,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4710,7 +4718,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerConfiguration",
       "Name": "Get-AzMySqlFlexibleServerConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4738,7 +4746,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5894,7 +5904,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerConnectionString",
       "Name": "Get-AzMySqlFlexibleServerConnectionString",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerConnectionString",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5912,7 +5922,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6868,7 +6880,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerDatabase",
       "Name": "Get-AzMySqlFlexibleServerDatabase",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6889,7 +6901,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8045,7 +8059,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerFirewallRule",
       "Name": "Get-AzMySqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8066,7 +8080,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9222,7 +9238,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerLocationBasedCapability",
       "Name": "Get-AzMySqlFlexibleServerLocationBasedCapability",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerLocationBasedCapability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9243,7 +9259,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9645,7 +9663,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlFlexibleServerReplica",
       "Name": "Get-AzMySqlFlexibleServerReplica",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlFlexibleServerReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9698,7 +9716,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10142,7 +10162,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlReplica",
       "Name": "Get-AzMySqlReplica",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10187,7 +10207,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10631,7 +10653,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlServer",
       "Name": "Get-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10676,7 +10698,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11966,7 +11990,7 @@
       "VerbName": "Get",
       "NounName": "AzMySqlVirtualNetworkRule",
       "Name": "Get-AzMySqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Get-AzMySqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11988,7 +12012,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13258,7 +13284,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlFirewallRule",
       "Name": "New-AzMySqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13279,7 +13305,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -14987,7 +15015,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "New-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -15040,7 +15068,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -16368,7 +16398,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlFlexibleServerDatabase",
       "Name": "New-AzMySqlFlexibleServerDatabase",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlFlexibleServerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -16389,7 +16419,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17657,7 +17689,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlFlexibleServerFirewallRule",
       "Name": "New-AzMySqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17678,7 +17710,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -19386,7 +19420,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlFlexibleServerReplica",
       "Name": "New-AzMySqlFlexibleServerReplica",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlFlexibleServerReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -19439,7 +19473,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20089,7 +20125,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlReplica",
       "Name": "New-AzMySqlReplica",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20134,7 +20170,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20852,7 +20890,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlServer",
       "Name": "New-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20897,7 +20935,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -22553,7 +22593,7 @@
       "VerbName": "New",
       "NounName": "AzMySqlVirtualNetworkRule",
       "Name": "New-AzMySqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "New-AzMySqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -22575,7 +22615,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -23275,7 +23317,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlFirewallRule",
       "Name": "Remove-AzMySqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -23293,7 +23335,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -24471,7 +24515,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Remove-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -24489,7 +24533,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -25625,7 +25671,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlFlexibleServerDatabase",
       "Name": "Remove-AzMySqlFlexibleServerDatabase",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlFlexibleServerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -25643,7 +25689,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -26821,7 +26869,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlFlexibleServerFirewallRule",
       "Name": "Remove-AzMySqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -26839,7 +26887,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -28017,7 +28067,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlServer",
       "Name": "Remove-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -28035,7 +28085,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -29171,7 +29223,7 @@
       "VerbName": "Remove",
       "NounName": "AzMySqlVirtualNetworkRule",
       "Name": "Remove-AzMySqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzMySqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -29189,7 +29241,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -30367,7 +30421,7 @@
       "VerbName": "Restart",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Restart-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Restart-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -30385,7 +30439,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -31521,7 +31577,7 @@
       "VerbName": "Restart",
       "NounName": "AzMySqlServer",
       "Name": "Restart-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "Restart-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -31539,7 +31595,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -32675,7 +32733,7 @@
       "VerbName": "Restore",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Restore-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Restore-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -32728,7 +32786,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -33456,7 +33516,7 @@
       "VerbName": "Restore",
       "NounName": "AzMySqlServer",
       "Name": "Restore-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "Restore-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -33501,7 +33561,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -35223,7 +35285,7 @@
       "VerbName": "Start",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Start-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Start-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -35241,7 +35303,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -36377,7 +36441,7 @@
       "VerbName": "Stop",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Stop-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Stop-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -36395,7 +36459,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -37531,7 +37597,7 @@
       "VerbName": "Test",
       "NounName": "AzMySqlFlexibleServerConnect",
       "Name": "Test-AzMySqlFlexibleServerConnect",
-      "ClassName": null,
+      "ClassName": "Test-AzMySqlFlexibleServerConnect",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37549,7 +37615,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -39291,7 +39359,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlConfiguration",
       "Name": "Update-AzMySqlConfiguration",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -39316,7 +39384,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -40584,7 +40654,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlFirewallRule",
       "Name": "Update-AzMySqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -40605,7 +40675,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -42473,7 +42545,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlFlexibleServer",
       "Name": "Update-AzMySqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -42526,7 +42598,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -45554,7 +45628,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlFlexibleServerConfiguration",
       "Name": "Update-AzMySqlFlexibleServerConfiguration",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlFlexibleServerConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -45582,7 +45656,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -46850,7 +46926,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlFlexibleServerDatabase",
       "Name": "Update-AzMySqlFlexibleServerDatabase",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlFlexibleServerDatabase",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -46871,7 +46947,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -48139,7 +48217,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlFlexibleServerFirewallRule",
       "Name": "Update-AzMySqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -48160,7 +48238,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -50028,7 +50108,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlServer",
       "Name": "Update-AzMySqlServer",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -50073,7 +50153,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -53191,7 +53273,7 @@
       "VerbName": "Update",
       "NounName": "AzMySqlVirtualNetworkRule",
       "Name": "Update-AzMySqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Update-AzMySqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -53213,7 +53295,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

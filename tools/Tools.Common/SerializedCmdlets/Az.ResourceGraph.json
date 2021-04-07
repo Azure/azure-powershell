@@ -23,7 +23,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -493,7 +495,7 @@
       "VerbName": "Get",
       "NounName": "AzResourceGraphQuery",
       "Name": "Get-AzResourceGraphQuery",
-      "ClassName": null,
+      "ClassName": "Get-AzResourceGraphQuery",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -516,7 +518,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1588,7 +1592,7 @@
       "VerbName": "New",
       "NounName": "AzResourceGraphQuery",
       "Name": "New-AzResourceGraphQuery",
-      "ClassName": null,
+      "ClassName": "New-AzResourceGraphQuery",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1611,7 +1615,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2265,7 +2271,7 @@
       "VerbName": "Remove",
       "NounName": "AzResourceGraphQuery",
       "Name": "Remove-AzResourceGraphQuery",
-      "ClassName": null,
+      "ClassName": "Remove-AzResourceGraphQuery",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2283,7 +2289,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3221,7 +3229,7 @@
       "VerbName": "Update",
       "NounName": "AzResourceGraphQuery",
       "Name": "Update-AzResourceGraphQuery",
-      "ClassName": null,
+      "ClassName": "Update-AzResourceGraphQuery",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3244,7 +3252,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
