@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = schedule.LastModifiedTime.ToLocalTime();
             this.IsEnabled = schedule.IsEnabled ?? false;
             this.NextRun = AdjustOffset(schedule.NextRun, schedule.NextRunOffsetMinutes);
-            this.Interval = (byte?)schedule.Interval ?? this.Interval;
+            this.Interval = (byte?)(long?)schedule.Interval ?? this.Interval;
             this.Frequency = (ScheduleFrequency)Enum.Parse(typeof(ScheduleFrequency), schedule.Frequency, true);
             this.WeeklyScheduleOptions = this.CreateWeeklyScheduleOptions(schedule);
             this.MonthlyScheduleOptions = this.CreateMonthlyScheduleOptions(schedule);
