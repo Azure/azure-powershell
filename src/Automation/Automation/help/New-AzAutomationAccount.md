@@ -44,6 +44,35 @@ New-AzAutomationAccount -Location 'East US' -Name 'ContosoAutomationAccount' -Re
 
 ## PARAMETERS
 
+### -AssignSystemIdentity
+Generate and assign a new System Identity for this Automation Account for use with other services like Azure KeyVault.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AutomationServicesEncryption
+Whether to set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AutomationServicesEncryption
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
@@ -53,6 +82,62 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyName
+Automation Account encryption KeyVault KeyName
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultEncryption
+Whether to set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault weather this parameter is set or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: KeyVaultEncryption
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUri
+Automation Account encryption KeyVault KeyVaultUri
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVersion
+Automation Account encryption KeyVault KeyVersion
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

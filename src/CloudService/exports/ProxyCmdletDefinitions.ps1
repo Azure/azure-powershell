@@ -67,12 +67,12 @@ PS C:\>$cloudServiceInstanceView.ToJsonString()
 }
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceInstanceView
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView
 .Link
 https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceinstanceview
 #>
 function Get-AzCloudServiceInstanceView {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceInstanceView])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceInstanceView])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -154,6 +154,368 @@ begin {
             Get = 'Az.CloudService.private\Get-AzCloudServiceInstanceView_Get';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+.Description
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+.Example
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2'
+
+Name Label
+---- -----
+5    Windows Server 2016
+4    Windows Server 2012 R2
+6    Windows Server 2019
+3    Windows Server 2012
+2    Windows Server 2008 R2
+.Example
+PS C:\> Get-AzCloudServiceOSFamily -location 'westus2' -OSFamilyName 5
+
+Name Label
+---- -----
+5    Windows Server 2016
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+  [CloudServiceName <String>]: 
+  [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
+  [ResourceGroupName <String>]: 
+  [RoleInstanceName <String>]: Name of the role instance.
+  [RoleName <String>]: Name of the role.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
+.Link
+https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosfamily
+#>
+function Get-AzCloudServiceOSFamily {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSFamily])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [System.String]
+    # Name of the location that the OS family pertains to.
+    ${Location},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [System.String]
+    # Name of the OS family.
+    ${OSFamilyName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            Get = 'Az.CloudService.private\Get-AzCloudServiceOSFamily_Get';
+            GetViaIdentity = 'Az.CloudService.private\Get-AzCloudServiceOSFamily_GetViaIdentity';
+            List = 'Az.CloudService.private\Get-AzCloudServiceOSFamily_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        }
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        throw
+    }
+}
+
+end {
+    try {
+        $steppablePipeline.End()
+    } catch {
+        throw
+    }
+}
+}
+
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
+
+<#
+.Synopsis
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
+.Description
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
+.Example
+PS C:\> Get-AzCloudServiceOSVersion -location 'westus2'
+
+Name                        Label                                            IsDefault IsActive Family FamilyLabel
+----                        -----                                            --------- -------- ------ -----------
+WA-GUEST-OS-6.7_201905-01   Windows Azure Guest OS 6.7 (Release 201905-01)   False     False    6      Windows Server 2019
+WA-GUEST-OS-3.21_201411-01  Windows Azure Guest OS 3.21 (Release 201411-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-3.34_201512-01  Windows Azure Guest OS 3.34 (Release 201512-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-3.26_201504-01  Windows Azure Guest OS 3.26 (Release 201504-01)  False     False    3      Windows Server 2012
+WA-GUEST-OS-2.46_201512-01  Windows Azure Guest OS 2.46 (Release 201512-01)  False     False    2      Windows Server 2008 R2
+.Example
+PS C:\> Get-AzCloudServiceOSVersion -location 'westus2' -OSVersionName 'WA-GUEST-OS-6.7_201905-01'
+
+Name                      Label                                          IsDefault IsActive Family FamilyLabel
+----                      -----                                          --------- -------- ------ -----------
+WA-GUEST-OS-6.7_201905-01 Windows Azure Guest OS 6.7 (Release 201905-01) False     False    6      Windows Server 2019
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+  [CloudServiceName <String>]: 
+  [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
+  [ResourceGroupName <String>]: 
+  [RoleInstanceName <String>]: Name of the role instance.
+  [RoleName <String>]: Name of the role.
+  [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
+.Link
+https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceosversion
+#>
+function Get-AzCloudServiceOSVersion {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IOSVersion])]
+[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+param(
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='List', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [System.String]
+    # Name of the location that the OS version pertains to.
+    ${Location},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [System.String]
+    # Name of the OS version.
+    ${OSVersionName},
+
+    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String[]]
+    # Subscription credentials which uniquely identify Microsoft Azure subscription.
+    # The subscription ID forms part of the URI for every service call.
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+        $mapping = @{
+            Get = 'Az.CloudService.private\Get-AzCloudServiceOSVersion_Get';
+            GetViaIdentity = 'Az.CloudService.private\Get-AzCloudServiceOSVersion_GetViaIdentity';
+            List = 'Az.CloudService.private\Get-AzCloudServiceOSVersion_List';
+        }
+        if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -367,12 +729,12 @@ Statuses           PlatformFaultDomain PlatformUpdateDomain
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstanceView
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView
 .Link
 https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 #>
 function Get-AzCloudServiceRoleInstanceView {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstanceView])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstanceView])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -528,7 +890,7 @@ ContosoFrontEnd_IN_0    eastus2euap Standard_D1_v2 Standard
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstance
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -537,6 +899,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -546,7 +911,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
 #>
 function Get-AzCloudServiceRoleInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -740,7 +1105,7 @@ UpgradeMode       : Auto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -749,6 +1114,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -758,7 +1126,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 #>
 function Get-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -921,6 +1289,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -1110,6 +1481,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -1299,6 +1673,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -1484,6 +1861,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -1787,7 +2167,7 @@ $cloudService = New-AzCloudService                                              
                   -Tag $tag
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1808,14 +2188,15 @@ EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service exte
     [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
 
 NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud service.
-  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-    [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-      [Name <String>]: 
-      [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+    FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+      Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+      [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
       [PublicIPAddressId <String>]: Resource Id
       [SubnetId <String>]: Resource Id
-    [Name <String>]: Resource Name
-  [SwappableCloudService <ISubResource>]: 
+    Name <String>: The name of the Load balancer
+    [Id <String>]: Resource Id
+  [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     [Id <String>]: Resource Id
 
 OSPROFILE <ICloudServiceOSProfile>: Describes the OS profile for the cloud service.
@@ -1834,7 +2215,7 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
 https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -1866,6 +2247,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.The default value is `false`.
+    ${AllowModelOverride},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Specifies the XML service configuration (.cscfg) for the cloud service.
     ${Configuration},
@@ -1879,21 +2266,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile]
     # Describes a cloud service extension profile.
     # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
     ${ExtensionProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceNetworkProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile]
     # Network Profile for the cloud service.
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceOSProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile]
     # Describes the OS profile for the cloud service.
     # To construct, see NOTES section for OSPROFILE properties and create a hash table.
     ${OSProfile},
@@ -1907,7 +2294,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile]
     # Describes the role profile for the cloud service.
     # To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
     ${RoleProfile},
@@ -1923,7 +2310,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -2072,6 +2459,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -2258,6 +2648,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -2438,6 +2831,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -2626,6 +3022,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -2976,6 +3375,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -3158,6 +3560,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -3366,11 +3771,11 @@ PS C:\> $cloudService.Configuration = $configuration
 PS C:\> $cloudService | Update-AzCloudService
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3379,6 +3784,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
@@ -3387,6 +3795,7 @@ INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
 
 PARAMETER <ICloudService>: Describes the cloud service.
   Location <String>: Resource location.
+  [AllowModelOverride <Boolean?>]: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   [Configuration <String>]: Specifies the XML service configuration (.cscfg) for the cloud service.
   [ConfigurationUrl <String>]: Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.         This is a write-only property and is not returned in GET calls.
   [ExtensionProfile <ICloudServiceExtensionProfile>]: Describes a cloud service extension profile.
@@ -3403,14 +3812,15 @@ PARAMETER <ICloudService>: Describes the cloud service.
       [Type <String>]: Specifies the type of the extension.
       [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
   [NetworkProfile <ICloudServiceNetworkProfile>]: Network Profile for the cloud service.
-    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-      [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-        [Name <String>]: 
-        [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+      FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+        Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+        [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
         [PublicIPAddressId <String>]: Resource Id
         [SubnetId <String>]: Resource Id
-      [Name <String>]: Resource Name
-    [SwappableCloudService <ISubResource>]: 
+      Name <String>: The name of the Load balancer
+      [Id <String>]: Resource Id
+    [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       [Id <String>]: Resource Id
   [OSProfile <ICloudServiceOSProfile>]: Describes the OS profile for the cloud service.
     [Secret <ICloudServiceVaultSecretGroup[]>]: Specifies set of certificates that should be installed onto the role instances.
@@ -3432,7 +3842,7 @@ PARAMETER <ICloudService>: Describes the cloud service.
 https://docs.microsoft.com/powershell/module/az.cloudservice/update-azcloudservice
 #>
 function Update-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
@@ -3444,7 +3854,7 @@ param(
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService]
     # Describes the cloud service.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -3582,6 +3992,7 @@ To create the parameters described below, construct a hash table containing the 
 
 CLOUDSERVICE <CloudService>: CloudService instance.
   Location <String>: Resource location.
+  [AllowModelOverride <Boolean?>]: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   [Configuration <String>]: Specifies the XML service configuration (.cscfg) for the cloud service.
   [ConfigurationUrl <String>]: Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.         This is a write-only property and is not returned in GET calls.
   [ExtensionProfile <ICloudServiceExtensionProfile>]: Describes a cloud service extension profile.
@@ -3598,14 +4009,15 @@ CLOUDSERVICE <CloudService>: CloudService instance.
       [Type <String>]: Specifies the type of the extension.
       [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
   [NetworkProfile <ICloudServiceNetworkProfile>]: Network Profile for the cloud service.
-    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-      [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-        [Name <String>]: 
-        [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+      FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+        Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+        [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
         [PublicIPAddressId <String>]: Resource Id
         [SubnetId <String>]: Resource Id
-      [Name <String>]: Resource Name
-    [SwappableCloudService <ISubResource>]: 
+      Name <String>: The name of the Load balancer
+      [Id <String>]: Resource Id
+    [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       [Id <String>]: Resource Id
   [OSProfile <ICloudServiceOSProfile>]: Describes the OS profile for the cloud service.
     [Secret <ICloudServiceVaultSecretGroup[]>]: Specifies set of certificates that should be installed onto the role instances.
@@ -3638,7 +4050,7 @@ param(
 
     [Parameter(ParameterSetName='CloudService', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
     # CloudService instance.
     # To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
     ${CloudService},
@@ -3736,6 +4148,7 @@ To create the parameters described below, construct a hash table containing the 
 
 CLOUDSERVICE <CloudService>: CloudService instance.
   Location <String>: Resource location.
+  [AllowModelOverride <Boolean?>]: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   [Configuration <String>]: Specifies the XML service configuration (.cscfg) for the cloud service.
   [ConfigurationUrl <String>]: Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.         This is a write-only property and is not returned in GET calls.
   [ExtensionProfile <ICloudServiceExtensionProfile>]: Describes a cloud service extension profile.
@@ -3752,14 +4165,15 @@ CLOUDSERVICE <CloudService>: CloudService instance.
       [Type <String>]: Specifies the type of the extension.
       [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
   [NetworkProfile <ICloudServiceNetworkProfile>]: Network Profile for the cloud service.
-    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-      [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-        [Name <String>]: 
-        [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+      FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+        Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+        [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
         [PublicIPAddressId <String>]: Resource Id
         [SubnetId <String>]: Resource Id
-      [Name <String>]: Resource Name
-    [SwappableCloudService <ISubResource>]: 
+      Name <String>: The name of the Load balancer
+      [Id <String>]: Resource Id
+    [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       [Id <String>]: Resource Id
   [OSProfile <ICloudServiceOSProfile>]: Describes the OS profile for the cloud service.
     [Secret <ICloudServiceVaultSecretGroup[]>]: Specifies set of certificates that should be installed onto the role instances.
@@ -3804,7 +4218,7 @@ param(
 
     [Parameter(ParameterSetName='CloudService', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
     # CloudService instance.
     # To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
     ${CloudService}
@@ -3875,12 +4289,12 @@ PS C:\> $configFile = "<WAD configuration file path>"
 PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceDiagnosticsExtension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=1)]
@@ -4008,12 +4422,12 @@ Create a in-memory object for Extension
 PS C:\> $extension = New-AzCloudServiceExtensionObject -Name "GenevaExtension" -Publisher "Microsoft.Azure.Geneva" -Type "GenevaMonitoringPaaS" -TypeHandlerVersion "2.14.0.2"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceExtensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4126,27 +4540,27 @@ PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObjec
 PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 FRONTENDIPCONFIGURATION <ILoadBalancerFrontendIPConfiguration[]>: FrontendIPConfiguration.
-  [Name <String>]: 
-  [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+  Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+  [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
   [PublicIPAddressId <String>]: Resource Id
   [SubnetId <String>]: Resource Id
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceLoadBalancerConfigurationObject
 #>
 function New-AzCloudServiceLoadBalancerConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration[]]
     # FrontendIPConfiguration.
     # To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
     ${FrontendIPConfiguration},
@@ -4219,12 +4633,12 @@ PS C:\> $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObjec
 PS C:\> $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name 'ContosoLB' -FrontendIPConfiguration $feIpConfig
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceLoadBalancerFrontendIPConfigurationObject
 #>
 function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4301,12 +4715,12 @@ PS C:\> $expiration = (Get-Date).AddYears(1)
 PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
+https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceRemoteDesktopExtensionObject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=0, Mandatory)]
@@ -4405,12 +4819,12 @@ Create a in-memory object for CloudServiceRoleProfileProperties
 $role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'WebRole' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfileProperties
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceRoleProfilePropertiesObject
 #>
 function New-AzCloudServiceRoleProfilePropertiesObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceRoleProfileProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceRoleProfileProperties])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4499,12 +4913,12 @@ $certificate = Get-AzKeyVaultCertificate -VaultName 'ContosoKeyVault' -Name 'Con
 $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certificate.SecretId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultSecretGroup
 .Link
 https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceVaultSecretGroupObject
 #>
 function New-AzCloudServiceVaultSecretGroupObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudServiceVaultSecretGroup])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultSecretGroup])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -4592,6 +5006,7 @@ To create the parameters described below, construct a hash table containing the 
 
 CLOUDSERVICE <CloudService>: 
   Location <String>: Resource location.
+  [AllowModelOverride <Boolean?>]: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   [Configuration <String>]: Specifies the XML service configuration (.cscfg) for the cloud service.
   [ConfigurationUrl <String>]: Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL  can be Shared Access Signature (SAS) URI from any storage account.         This is a write-only property and is not returned in GET calls.
   [ExtensionProfile <ICloudServiceExtensionProfile>]: Describes a cloud service extension profile.
@@ -4608,14 +5023,15 @@ CLOUDSERVICE <CloudService>:
       [Type <String>]: Specifies the type of the extension.
       [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
   [NetworkProfile <ICloudServiceNetworkProfile>]: Network Profile for the cloud service.
-    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-      [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-        [Name <String>]: 
-        [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+    [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+      FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+        Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+        [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
         [PublicIPAddressId <String>]: Resource Id
         [SubnetId <String>]: Resource Id
-      [Name <String>]: Resource Name
-    [SwappableCloudService <ISubResource>]: 
+      Name <String>: The name of the Load balancer
+      [Id <String>]: Resource Id
+    [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
       [Id <String>]: Resource Id
   [OSProfile <ICloudServiceOSProfile>]: Describes the OS profile for the cloud service.
     [Secret <ICloudServiceVaultSecretGroup[]>]: Specifies set of certificates that should be installed onto the role instances.
@@ -4660,7 +5076,7 @@ param(
 
     [Parameter(ParameterSetName='CloudService', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.CloudService]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
     # To construct, see NOTES section for CLOUDSERVICE properties and create a hash table.
     ${CloudService},
 
