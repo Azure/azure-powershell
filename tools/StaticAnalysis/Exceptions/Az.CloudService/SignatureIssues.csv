@@ -49,4 +49,3 @@
 "Az.CloudService","Update-AzCloudService","Update-AzCloudService","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Update-AzCloudService does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.CloudService","Get-AzCloudServiceOSFamily","Get-AzCloudServiceOSFamily","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzCloudServiceOSFamily does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
 "Az.CloudService","Get-AzCloudServiceOSVersion","Get-AzCloudServiceOSVersion","1","8410","Parameter ProxyUseDefaultCredentials of cmdlet Get-AzCloudServiceOSVersion does not follow the enforced naming convention of using a singular noun for a parameter name.","Consider using a singular noun for the parameter name."
-
