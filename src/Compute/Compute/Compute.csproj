@@ -30,4 +30,9 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="InterceptSurvey.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="PromptSurvey.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

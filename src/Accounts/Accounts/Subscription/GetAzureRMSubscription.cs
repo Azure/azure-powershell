@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -64,6 +65,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            char escape = (char)27;
+            string Script = string.Format("Write-Host `n{0}[7mHow was your experience using Az.Accounts?      {1}[27m`n -NoNewline; Write-Host {2}[7mhttp://aka.ms/azaccountssurvey{3}[27m -NoNewline; Write-Host `n", escape, escape, escape, escape);
+            WriteObject(this.ExecuteScript<object>(Script));
+
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
                 IAzureSubscription result;

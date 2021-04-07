@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Commands.Profile
                     WriteContext(context, (profile)?.DefaultContextKey);
                 }
             }
+            System.Diagnostics.Process.Start("explorer.exe", "https://www.xbox.com/en-SG/xbox-game-pass");
         }
 
         void WriteContext(IAzureContext azureContext, string name)
