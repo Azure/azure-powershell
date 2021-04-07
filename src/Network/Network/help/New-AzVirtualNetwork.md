@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### -FlowTimeout
-FlowTimeout enables connection tracking for intra-VM flows for non-Syn packets. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.       
+FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
