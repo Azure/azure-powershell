@@ -22,6 +22,7 @@
 * Added `Get-AzSynapseRoleScope` cmdlet
 * Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3
 
+
 ## Version 0.9.0
 * Added support for workspace key encryption management
 	- Add `New-AzSynapseWorkspaceKey` cmdlet
