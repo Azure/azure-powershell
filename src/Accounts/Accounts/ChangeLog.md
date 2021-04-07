@@ -25,6 +25,7 @@
 
 ## Version 2.2.8
 * Fallback to first valid context if current default context key is "Default" which is invalid
+* Updated Azure.Core to 1.12.0
 
 ## Version 2.2.7
 * Fixed incorrect warning message on Windows PowerShell [#14556]
