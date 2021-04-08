@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that FrontendIPConfiguration is empty in `Get-AzCloudService`.[#14702]
 
 ## Version 0.2.0
 * Bumped API version to stable 2021-03-01

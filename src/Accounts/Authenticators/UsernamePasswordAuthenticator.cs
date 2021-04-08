@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             if (upParameters.Password != null)
             {
                 passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
+                TracingAdapter.Information($"{DateTime.Now:T} - [UsernamePasswordAuthenticator] Calling UsernamePasswordCredential.AuthenticateAsync - TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{authority}', UserId:'{upParameters.UserId}'");
                 var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
                 return MsalAccessToken.GetAccessTokenAsync(
                     authTask,
