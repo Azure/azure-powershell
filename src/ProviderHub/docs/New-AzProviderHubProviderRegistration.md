@@ -45,7 +45,7 @@ PS C:\> New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Cont
 
 Name                Type
 ----                ----
-Microsoft.Contoso
+Microsoft.Contoso   Microsoft.ProviderHub/providerRegistrations
 
 Create/Update a provider registration.
 
@@ -56,7 +56,7 @@ PS C:\> New-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Cont
 
 Name                Type
 ----                ----
-Microsoft.Contoso
+Microsoft.Contoso   Microsoft.ProviderHub/providerRegistrations
 
 Create/Update a provider registration.
 

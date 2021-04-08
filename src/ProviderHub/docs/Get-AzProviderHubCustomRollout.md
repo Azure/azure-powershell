@@ -42,7 +42,7 @@ PS C:\> Get-AzProviderHubCustomRollout -ProviderNamespace "Microsft.Contoso" -Ro
 
 Name                        Type
 ----                        ----
-customRollout1
+customRollout1              Microsoft.ProviderHub/providerRegistrations/customRollouts
 
 Get a custom rollout by rollout name.
 

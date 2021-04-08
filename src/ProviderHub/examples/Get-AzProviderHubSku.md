@@ -5,7 +5,7 @@ PS C:\> Get-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceTyp
 
 Name                        Type
 ----                        ----
-testResourceType
+testResourceType            Microsoft.ProviderHub/providerRegistrations/skus
 
 Get the resource SKU definition.
 

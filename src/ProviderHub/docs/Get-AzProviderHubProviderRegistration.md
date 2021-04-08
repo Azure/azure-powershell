@@ -40,8 +40,9 @@ Gets the provider registration details.
 PS C:\> Get-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
 
-Name Type
----- ----
+Name                Type
+----                ----
+Microsoft.Contoso   Microsoft.ProviderHub/providerRegistrations
 
 Get the provider registration.
 

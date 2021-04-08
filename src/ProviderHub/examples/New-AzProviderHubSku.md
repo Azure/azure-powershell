@@ -5,7 +5,7 @@ PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceTyp
 
 Name      Type
 ----      ----
-default
+default   Microsoft.ProviderHub/providerRegistrations/skus
 
 Create/Update a resource SKU definition.
 
@@ -16,6 +16,6 @@ PS C:\> New-AzProviderHubSku -ProviderNamespace "Microsoft.Contoso" -ResourceTyp
 
 Name      Type
 ----      ----
-default
+default   Microsoft.ProviderHub/providerRegistrations/skus
 
 Create/Update a resource SKU definition.

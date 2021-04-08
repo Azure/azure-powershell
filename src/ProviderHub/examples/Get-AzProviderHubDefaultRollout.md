@@ -3,10 +3,10 @@
 PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso"
 ```
 
-Name                Type
-----                ----
-defaultRollout2021w10
-defaultRollout2021w11
+Name                      Type
+----                      ----
+defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
+defaultRollout2021w11     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
 
 List all default rollouts under the resource provider.
 
@@ -15,9 +15,9 @@ List all default rollouts under the resource provider.
 PS C:\> Get-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10"
 ```
 
-Name                Type
-----                ----
-defaultRollout2021w10
+Name                      Type
+----                      ----
+defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
 
 Get a specific rollout by name.
 

@@ -42,8 +42,8 @@ PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.
 
 Name                        Type
 ----                        ----
-testResourceType1
-testResourceType2
+testResourceType1           Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
+testResourceType2           Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
 
 List all resource types under the resource provider namespace.
 
@@ -54,7 +54,7 @@ PS C:\> Get-AzProviderHubResourceTypeRegistration -ProviderNamespace "Microsoft.
 
 Name                        Type
 ----                        ----
-testResourceType1
+testResourceType1           Microsoft.ProviderHub/providerRegistrations/resourceTypeRegistrations
 
 Gets a resource type by name.
 

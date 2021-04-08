@@ -36,9 +36,9 @@ Creates or updates the rollout details.
 PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -CanarySkipRegion "brazilus" -NoWait
 ```
 
-Target
-------
-https://management.azure.com/providers/Microsoft.ProviderHub/operationStatuses/00000000-0000-0000-0000-000000000000?api-version=2019-10-01
+Name                      Type
+----                      ----
+defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
 
 Create/Update a resource provider default rollout.
 
