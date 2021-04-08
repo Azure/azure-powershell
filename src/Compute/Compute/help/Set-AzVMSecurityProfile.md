@@ -1,35 +1,35 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmsssecuritytype
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmsecurityprofile
 schema: 2.0.0
 ---
 
-# Set-AzVmssSecurityType
+# Set-AzVMSecurityProfile
 
 ## SYNOPSIS
-This cmdlet allows users to set the SecurityType enum for Virtual Machines scale sets.
+Sets the SecurityType enum for Virtual Machines.
 
 ## SYNTAX
 
 ```
-Set-AzVmssSecurityType [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SecurityType] <SecurityTypes>]
+Set-AzVMSecurityProfile [-VM] <PSVirtualMachine> [-SecurityType <SecurityTypes>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzVmssSecurityType** cmdlet sets the Security Type of the VMSS
+The **Set-AzVmSecurityProfile** cmdlet sets the Security Type of the VM
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $VMSS = Get-AzVmss -ResourceGroupName "ResourceGroup11" -VMScaleSetName "ContosoVM07"
-PS C:\> $VMSS = Set-AzVmssSecurityType -VirtualMachineScaleSet $VMSS -SecurityType "TrustedLaunch"
+PS C:\> $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
+PS C:\> $VM = Set-AzVmSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
 ```
 
-The first command gets the virtual machine scale set named ContosoVM07 by using **Get-AzVmss**.
-The command stores it in the $VMSS variable.
+The first command gets the virtual machine named ContosoVM07 by using **Get-AzVm**.
+The command stores it in the $VM variable.
 The second command sets the SecurityType enum to "TrustedLaunch"
 
 ## PARAMETERS
@@ -59,19 +59,19 @@ Aliases:
 Accepted values: TrustedLaunch
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualMachineScaleSet
-The virtual machine scale set profile.
+### -VM
+The virtual machine profile.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: PSVirtualMachine
 Parameter Sets: (All)
-Aliases:
+Aliases: VMProfile
 
 Required: True
 Position: 0
@@ -85,13 +85,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ### Microsoft.Azure.Management.Compute.Models.SecurityTypes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 
