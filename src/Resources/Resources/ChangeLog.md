@@ -19,13 +19,13 @@
 -->
 
 ## Upcoming Release
+* Added parameter `ObjectType` for `New-AzRoleAssignment`
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
   - `New-AzADApplication` 
   - `Update-AzADApplication`
   - `New-AzADServicePrincipal`
   - `Update-AzADServicePrincipal`
 * Ignored Bicep warning message in error stream if exitcode equals zero.
-* Add PrincialType to role assignment requests
 
 ## Version 3.4.0
 * Redirected bicep message to verbose stream
