@@ -333,7 +333,7 @@ Specifies the resource ID of the **KeyVault** to which the virtual machine encry
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
@@ -348,7 +348,7 @@ Specifies the **KeyVault** URL to which the virtual machine encryption keys shou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
