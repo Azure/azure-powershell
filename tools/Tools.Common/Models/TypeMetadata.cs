@@ -232,6 +232,9 @@ namespace Tools.Common.Models
             }
 
             var typesEqual = true;
+            string className = this.Name.Split('.').Last();
+            string otherClassName = other.Name.Split('.').Last();
+            typesEqual &= string.Equals(className, otherClassName, StringComparison.OrdinalIgnoreCase);
             typesEqual &= string.Equals(this.ElementType, other.ElementType, StringComparison.OrdinalIgnoreCase);
             this.GenericTypeArguments.ForEach(t => typesEqual &= other.GenericTypeArguments.Contains(t));
             typesEqual &= this.GenericTypeArguments.Count == other.GenericTypeArguments.Count;
