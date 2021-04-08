@@ -471,7 +471,7 @@ This must be the full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: False
@@ -487,7 +487,7 @@ This must be a full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: False

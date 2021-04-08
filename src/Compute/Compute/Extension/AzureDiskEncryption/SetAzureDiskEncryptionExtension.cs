@@ -128,6 +128,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
+            HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
+            HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
         public string KeyEncryptionKeyUrl { get; set; }
@@ -136,6 +149,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet,
+            HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientCertParameterSet,
+            HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
+        [Parameter(
+            Mandatory = false,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet,
             HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
         public string KeyEncryptionKeyVaultId { get; set; }
