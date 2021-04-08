@@ -17,7 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Version 2.18.0
+## Upcoming Release
 * Added cmdlet output breaking change warnings to the following: 
     - `New-AzSqlDatabase`
     - `Get-AzSqlDatabase`
