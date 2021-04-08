@@ -136,7 +136,8 @@
     {
       "patterns": [
         "tools/StaticAnalysis/*",
-        "tools/Tools.Common/*"
+        "tools/Tools.Common/*",
+        "tools/ModuleMetadata/*"
       ],
       "phases": [
         "build:all",
