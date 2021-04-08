@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzPortalDashboard",
       "Name": "Get-AzPortalDashboard",
-      "ClassName": null,
+      "ClassName": "Get-AzPortalDashboard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -31,7 +31,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1307,7 +1309,7 @@
       "VerbName": "New",
       "NounName": "AzPortalDashboard",
       "Name": "New-AzPortalDashboard",
-      "ClassName": null,
+      "ClassName": "New-AzPortalDashboard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1333,7 +1335,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2799,7 +2803,7 @@
       "VerbName": "Remove",
       "NounName": "AzPortalDashboard",
       "Name": "Remove-AzPortalDashboard",
-      "ClassName": null,
+      "ClassName": "Remove-AzPortalDashboard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2817,7 +2821,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3759,7 +3765,7 @@
       "VerbName": "Set",
       "NounName": "AzPortalDashboard",
       "Name": "Set-AzPortalDashboard",
-      "ClassName": null,
+      "ClassName": "Set-AzPortalDashboard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3785,7 +3791,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4275,7 +4283,7 @@
       "VerbName": "Update",
       "NounName": "AzPortalDashboard",
       "Name": "Update-AzPortalDashboard",
-      "ClassName": null,
+      "ClassName": "Update-AzPortalDashboard",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4301,7 +4309,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

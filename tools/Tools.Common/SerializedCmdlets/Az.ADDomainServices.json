@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzADDomainService",
       "Name": "Get-AzADDomainService",
-      "ClassName": null,
+      "ClassName": "Get-AzADDomainService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -55,7 +55,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1331,7 +1333,7 @@
       "VerbName": "New",
       "NounName": "AzADDomainService",
       "Name": "New-AzADDomainService",
-      "ClassName": null,
+      "ClassName": "New-AzADDomainService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1381,7 +1383,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2753,7 +2757,7 @@
       "VerbName": "New",
       "NounName": "AzADDomainServiceForestTrust",
       "Name": "New-AzADDomainServiceForestTrust",
-      "ClassName": null,
+      "ClassName": "New-AzADDomainServiceForestTrust",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -2868,7 +2872,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3096,7 +3102,7 @@
       "VerbName": "New",
       "NounName": "AzADDomainServiceReplicaSet",
       "Name": "New-AzADDomainServiceReplicaSet",
-      "ClassName": null,
+      "ClassName": "New-AzADDomainServiceReplicaSet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -3216,7 +3222,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3318,7 +3326,7 @@
       "VerbName": "Remove",
       "NounName": "AzADDomainService",
       "Name": "Remove-AzADDomainService",
-      "ClassName": null,
+      "ClassName": "Remove-AzADDomainService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3336,7 +3344,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4458,7 +4468,7 @@
       "VerbName": "Update",
       "NounName": "AzADDomainService",
       "Name": "Update-AzADDomainService",
-      "ClassName": null,
+      "ClassName": "Update-AzADDomainService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4508,7 +4518,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

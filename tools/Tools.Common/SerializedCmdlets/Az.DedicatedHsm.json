@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzDedicatedHsm",
       "Name": "Get-AzDedicatedHsm",
-      "ClassName": null,
+      "ClassName": "Get-AzDedicatedHsm",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -29,7 +29,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1367,7 +1369,7 @@
       "VerbName": "New",
       "NounName": "AzDedicatedHsm",
       "Name": "New-AzDedicatedHsm",
-      "ClassName": null,
+      "ClassName": "New-AzDedicatedHsm",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1391,7 +1393,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2213,7 +2217,7 @@
       "VerbName": "Remove",
       "NounName": "AzDedicatedHsm",
       "Name": "Remove-AzDedicatedHsm",
-      "ClassName": null,
+      "ClassName": "Remove-AzDedicatedHsm",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2231,7 +2235,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3349,7 +3355,7 @@
       "VerbName": "Update",
       "NounName": "AzDedicatedHsm",
       "Name": "Update-AzDedicatedHsm",
-      "ClassName": null,
+      "ClassName": "Update-AzDedicatedHsm",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3373,7 +3379,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

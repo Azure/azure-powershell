@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzCommunicationService",
       "Name": "Get-AzCommunicationService",
-      "ClassName": null,
+      "ClassName": "Get-AzCommunicationService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -31,7 +31,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1311,7 +1313,7 @@
       "VerbName": "Get",
       "NounName": "AzCommunicationServiceKey",
       "Name": "Get-AzCommunicationServiceKey",
-      "ClassName": null,
+      "ClassName": "Get-AzCommunicationServiceKey",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1334,7 +1336,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1778,7 +1782,7 @@
       "VerbName": "New",
       "NounName": "AzCommunicationService",
       "Name": "New-AzCommunicationService",
-      "ClassName": null,
+      "ClassName": "New-AzCommunicationService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1804,7 +1808,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2462,7 +2468,7 @@
       "VerbName": "New",
       "NounName": "AzCommunicationServiceKey",
       "Name": "New-AzCommunicationServiceKey",
-      "ClassName": null,
+      "ClassName": "New-AzCommunicationServiceKey",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2485,7 +2491,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4116,7 +4124,7 @@
       "VerbName": "Remove",
       "NounName": "AzCommunicationService",
       "Name": "Remove-AzCommunicationService",
-      "ClassName": null,
+      "ClassName": "Remove-AzCommunicationService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4134,7 +4142,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5260,7 +5270,7 @@
       "VerbName": "Set",
       "NounName": "AzCommunicationServiceNotificationHub",
       "Name": "Set-AzCommunicationServiceNotificationHub",
-      "ClassName": null,
+      "ClassName": "Set-AzCommunicationServiceNotificationHub",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5278,7 +5288,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6350,7 +6362,7 @@
       "VerbName": "Update",
       "NounName": "AzCommunicationService",
       "Name": "Update-AzCommunicationService",
-      "ClassName": null,
+      "ClassName": "Update-AzCommunicationService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6376,7 +6388,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

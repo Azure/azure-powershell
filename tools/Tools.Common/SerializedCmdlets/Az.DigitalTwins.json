@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzDigitalTwinsEndpoint",
       "Name": "Get-AzDigitalTwinsEndpoint",
-      "ClassName": null,
+      "ClassName": "Get-AzDigitalTwinsEndpoint",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -28,7 +28,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1170,7 +1172,7 @@
       "VerbName": "Get",
       "NounName": "AzDigitalTwinsInstance",
       "Name": "Get-AzDigitalTwinsInstance",
-      "ClassName": null,
+      "ClassName": "Get-AzDigitalTwinsInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1193,7 +1195,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2469,7 +2473,7 @@
       "VerbName": "New",
       "NounName": "AzDigitalTwinsCheckNameRequestObject",
       "Name": "New-AzDigitalTwinsCheckNameRequestObject",
-      "ClassName": null,
+      "ClassName": "New-AzDigitalTwinsCheckNameRequestObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -2581,7 +2585,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2641,7 +2647,7 @@
       "VerbName": "New",
       "NounName": "AzDigitalTwinsDigitalTwinsIdentityObject",
       "Name": "New-AzDigitalTwinsDigitalTwinsIdentityObject",
-      "ClassName": null,
+      "ClassName": "New-AzDigitalTwinsDigitalTwinsIdentityObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -2757,7 +2763,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3027,7 +3035,7 @@
       "VerbName": "New",
       "NounName": "AzDigitalTwinsEndpoint",
       "Name": "New-AzDigitalTwinsEndpoint",
-      "ClassName": null,
+      "ClassName": "New-AzDigitalTwinsEndpoint",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3050,7 +3058,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5467,7 +5477,7 @@
       "VerbName": "New",
       "NounName": "AzDigitalTwinsInstance",
       "Name": "New-AzDigitalTwinsInstance",
-      "ClassName": null,
+      "ClassName": "New-AzDigitalTwinsInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5490,7 +5500,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6746,7 +6758,7 @@
       "VerbName": "Remove",
       "NounName": "AzDigitalTwinsEndpoint",
       "Name": "Remove-AzDigitalTwinsEndpoint",
-      "ClassName": null,
+      "ClassName": "Remove-AzDigitalTwinsEndpoint",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6769,7 +6781,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7933,7 +7947,7 @@
       "VerbName": "Remove",
       "NounName": "AzDigitalTwinsInstance",
       "Name": "Remove-AzDigitalTwinsInstance",
-      "ClassName": null,
+      "ClassName": "Remove-AzDigitalTwinsInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7956,7 +7970,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9078,7 +9094,7 @@
       "VerbName": "Test",
       "NounName": "AzDigitalTwinsInstanceNameAvailability",
       "Name": "Test-AzDigitalTwinsInstanceNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzDigitalTwinsInstanceNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9100,7 +9116,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10482,7 +10500,7 @@
       "VerbName": "Update",
       "NounName": "AzDigitalTwinsInstance",
       "Name": "Update-AzDigitalTwinsInstance",
-      "ClassName": null,
+      "ClassName": "Update-AzDigitalTwinsInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10505,7 +10523,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

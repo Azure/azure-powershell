@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzAppConfigurationStore",
       "Name": "Get-AzAppConfigurationStore",
-      "ClassName": null,
+      "ClassName": "Get-AzAppConfigurationStore",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -36,7 +36,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1312,7 +1314,7 @@
       "VerbName": "Get",
       "NounName": "AzAppConfigurationStoreKey",
       "Name": "Get-AzAppConfigurationStoreKey",
-      "ClassName": null,
+      "ClassName": "Get-AzAppConfigurationStoreKey",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1337,7 +1339,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1781,7 +1785,7 @@
       "VerbName": "New",
       "NounName": "AzAppConfigurationStore",
       "Name": "New-AzAppConfigurationStore",
-      "ClassName": null,
+      "ClassName": "New-AzAppConfigurationStore",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1812,7 +1816,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2674,7 +2680,7 @@
       "VerbName": "New",
       "NounName": "AzAppConfigurationStoreKey",
       "Name": "New-AzAppConfigurationStoreKey",
-      "ClassName": null,
+      "ClassName": "New-AzAppConfigurationStoreKey",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2699,7 +2705,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3641,7 +3649,7 @@
       "VerbName": "Remove",
       "NounName": "AzAppConfigurationStore",
       "Name": "Remove-AzAppConfigurationStore",
-      "ClassName": null,
+      "ClassName": "Remove-AzAppConfigurationStore",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3659,7 +3667,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4781,7 +4791,7 @@
       "VerbName": "Test",
       "NounName": "AzAppConfigurationStoreNameAvailability",
       "Name": "Test-AzAppConfigurationStoreNameAvailability",
-      "ClassName": null,
+      "ClassName": "Test-AzAppConfigurationStoreNameAvailability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4803,7 +4813,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5205,7 +5217,7 @@
       "VerbName": "Update",
       "NounName": "AzAppConfigurationStore",
       "Name": "Update-AzAppConfigurationStore",
-      "ClassName": null,
+      "ClassName": "Update-AzAppConfigurationStore",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5236,7 +5248,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzDatabricksVNetPeering",
       "Name": "Get-AzDatabricksVNetPeering",
-      "ClassName": null,
+      "ClassName": "Get-AzDatabricksVNetPeering",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37,7 +37,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1243,7 +1245,7 @@
       "VerbName": "Get",
       "NounName": "AzDatabricksWorkspace",
       "Name": "Get-AzDatabricksWorkspace",
-      "ClassName": null,
+      "ClassName": "Get-AzDatabricksWorkspace",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1299,7 +1301,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2577,7 +2581,7 @@
       "VerbName": "New",
       "NounName": "AzDatabricksVNetPeering",
       "Name": "New-AzDatabricksVNetPeering",
-      "ClassName": null,
+      "ClassName": "New-AzDatabricksVNetPeering",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2609,7 +2613,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3515,7 +3521,7 @@
       "VerbName": "New",
       "NounName": "AzDatabricksWorkspace",
       "Name": "New-AzDatabricksWorkspace",
-      "ClassName": null,
+      "ClassName": "New-AzDatabricksWorkspace",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3571,7 +3577,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4523,7 +4531,7 @@
       "VerbName": "Remove",
       "NounName": "AzDatabricksVNetPeering",
       "Name": "Remove-AzDatabricksVNetPeering",
-      "ClassName": null,
+      "ClassName": "Remove-AzDatabricksVNetPeering",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4541,7 +4549,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5703,7 +5713,7 @@
       "VerbName": "Remove",
       "NounName": "AzDatabricksWorkspace",
       "Name": "Remove-AzDatabricksWorkspace",
-      "ClassName": null,
+      "ClassName": "Remove-AzDatabricksWorkspace",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5721,7 +5731,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6845,7 +6857,7 @@
       "VerbName": "Update",
       "NounName": "AzDatabricksVNetPeering",
       "Name": "Update-AzDatabricksVNetPeering",
-      "ClassName": null,
+      "ClassName": "Update-AzDatabricksVNetPeering",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6877,7 +6889,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8313,7 +8327,7 @@
       "VerbName": "Update",
       "NounName": "AzDatabricksWorkspace",
       "Name": "Update-AzDatabricksWorkspace",
-      "ClassName": null,
+      "ClassName": "Update-AzDatabricksWorkspace",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8369,7 +8383,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

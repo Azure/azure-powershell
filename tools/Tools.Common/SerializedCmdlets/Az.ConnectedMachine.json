@@ -5,7 +5,7 @@
       "VerbName": "Connect",
       "NounName": "AzConnectedMachine",
       "Name": "Connect-AzConnectedMachine",
-      "ClassName": null,
+      "ClassName": "Connect-AzConnectedMachine",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 0,
       "HasForceSwitch": true,
@@ -583,7 +583,7 @@
       "VerbName": "Get",
       "NounName": "AzConnectedMachine",
       "Name": "Get-AzConnectedMachine",
-      "ClassName": null,
+      "ClassName": "Get-AzConnectedMachine",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -627,7 +627,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1661,7 +1663,7 @@
       "VerbName": "Get",
       "NounName": "AzConnectedMachineExtension",
       "Name": "Get-AzConnectedMachineExtension",
-      "ClassName": null,
+      "ClassName": "Get-AzConnectedMachineExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1696,7 +1698,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2720,7 +2724,7 @@
       "VerbName": "New",
       "NounName": "AzConnectedMachineExtension",
       "Name": "New-AzConnectedMachineExtension",
-      "ClassName": null,
+      "ClassName": "New-AzConnectedMachineExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2755,7 +2759,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5124,7 +5130,7 @@
       "VerbName": "Remove",
       "NounName": "AzConnectedMachine",
       "Name": "Remove-AzConnectedMachine",
-      "ClassName": null,
+      "ClassName": "Remove-AzConnectedMachine",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5142,7 +5148,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6082,7 +6090,7 @@
       "VerbName": "Remove",
       "NounName": "AzConnectedMachineExtension",
       "Name": "Remove-AzConnectedMachineExtension",
-      "ClassName": null,
+      "ClassName": "Remove-AzConnectedMachineExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6100,7 +6108,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7262,7 +7272,7 @@
       "VerbName": "Set",
       "NounName": "AzConnectedMachineExtension",
       "Name": "Set-AzConnectedMachineExtension",
-      "ClassName": null,
+      "ClassName": "Set-AzConnectedMachineExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7297,7 +7307,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8969,7 +8981,7 @@
       "VerbName": "Update",
       "NounName": "AzConnectedMachineExtension",
       "Name": "Update-AzConnectedMachineExtension",
-      "ClassName": null,
+      "ClassName": "Update-AzConnectedMachineExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9004,7 +9016,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

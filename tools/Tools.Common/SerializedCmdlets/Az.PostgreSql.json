@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlConfiguration",
       "Name": "Get-AzPostgreSqlConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -30,7 +30,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1184,7 +1186,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlConnectionString",
       "Name": "Get-AzPostgreSqlConnectionString",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlConnectionString",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1202,7 +1204,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2188,7 +2192,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFirewallRule",
       "Name": "Get-AzPostgreSqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2209,7 +2213,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3363,7 +3369,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Get-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3410,7 +3416,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4698,7 +4706,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFlexibleServerConfiguration",
       "Name": "Get-AzPostgreSqlFlexibleServerConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFlexibleServerConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4723,7 +4731,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5877,7 +5887,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFlexibleServerConnectionString",
       "Name": "Get-AzPostgreSqlFlexibleServerConnectionString",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFlexibleServerConnectionString",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5895,7 +5905,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6885,7 +6897,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFlexibleServerFirewallRule",
       "Name": "Get-AzPostgreSqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6906,7 +6918,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8060,7 +8074,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlFlexibleServerLocationBasedCapability",
       "Name": "Get-AzPostgreSqlFlexibleServerLocationBasedCapability",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlFlexibleServerLocationBasedCapability",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8081,7 +8095,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8483,7 +8499,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlReplica",
       "Name": "Get-AzPostgreSqlReplica",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8528,7 +8544,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8972,7 +8990,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlServer",
       "Name": "Get-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9017,7 +9035,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10305,7 +10325,7 @@
       "VerbName": "Get",
       "NounName": "AzPostgreSqlVirtualNetworkRule",
       "Name": "Get-AzPostgreSqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Get-AzPostgreSqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10327,7 +10347,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11595,7 +11617,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlFirewallRule",
       "Name": "New-AzPostgreSqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11616,7 +11638,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13324,7 +13348,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "New-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13371,7 +13395,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -14657,7 +14683,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlFlexibleServerFirewallRule",
       "Name": "New-AzPostgreSqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -14678,7 +14704,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -16386,7 +16414,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlReplica",
       "Name": "New-AzPostgreSqlReplica",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -16431,7 +16459,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17149,7 +17179,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlServer",
       "Name": "New-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17194,7 +17224,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -18850,7 +18882,7 @@
       "VerbName": "New",
       "NounName": "AzPostgreSqlVirtualNetworkRule",
       "Name": "New-AzPostgreSqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "New-AzPostgreSqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -18872,7 +18904,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -19572,7 +19606,7 @@
       "VerbName": "Remove",
       "NounName": "AzPostgreSqlFirewallRule",
       "Name": "Remove-AzPostgreSqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzPostgreSqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -19590,7 +19624,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20766,7 +20802,7 @@
       "VerbName": "Remove",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Remove-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Remove-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20784,7 +20820,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -21918,7 +21956,7 @@
       "VerbName": "Remove",
       "NounName": "AzPostgreSqlFlexibleServerFirewallRule",
       "Name": "Remove-AzPostgreSqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzPostgreSqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -21936,7 +21974,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -23112,7 +23152,7 @@
       "VerbName": "Remove",
       "NounName": "AzPostgreSqlServer",
       "Name": "Remove-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "Remove-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -23130,7 +23170,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -24264,7 +24306,7 @@
       "VerbName": "Remove",
       "NounName": "AzPostgreSqlVirtualNetworkRule",
       "Name": "Remove-AzPostgreSqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzPostgreSqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -24282,7 +24324,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -25458,7 +25502,7 @@
       "VerbName": "Restart",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Restart-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Restart-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -25476,7 +25520,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -26610,7 +26656,7 @@
       "VerbName": "Restart",
       "NounName": "AzPostgreSqlServer",
       "Name": "Restart-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "Restart-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -26628,7 +26674,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -27762,7 +27810,7 @@
       "VerbName": "Restore",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Restore-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Restore-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -27809,7 +27857,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -28509,7 +28559,7 @@
       "VerbName": "Restore",
       "NounName": "AzPostgreSqlServer",
       "Name": "Restore-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "Restore-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -28554,7 +28604,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -30276,7 +30328,7 @@
       "VerbName": "Start",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Start-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Start-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -30294,7 +30346,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -31428,7 +31482,7 @@
       "VerbName": "Stop",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Stop-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Stop-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -31446,7 +31500,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -32580,7 +32636,7 @@
       "VerbName": "Test",
       "NounName": "AzPostgreSqlFlexibleServerConnect",
       "Name": "Test-AzPostgreSqlFlexibleServerConnect",
-      "ClassName": null,
+      "ClassName": "Test-AzPostgreSqlFlexibleServerConnect",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -32598,7 +32654,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -34337,7 +34395,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlConfiguration",
       "Name": "Update-AzPostgreSqlConfiguration",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -34362,7 +34420,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -35628,7 +35688,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlFirewallRule",
       "Name": "Update-AzPostgreSqlFirewallRule",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -35649,7 +35709,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -37514,7 +37576,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlFlexibleServer",
       "Name": "Update-AzPostgreSqlFlexibleServer",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlFlexibleServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37561,7 +37623,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -40587,7 +40651,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlFlexibleServerConfiguration",
       "Name": "Update-AzPostgreSqlFlexibleServerConfiguration",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlFlexibleServerConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -40612,7 +40676,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -41878,7 +41944,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlFlexibleServerFirewallRule",
       "Name": "Update-AzPostgreSqlFlexibleServerFirewallRule",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlFlexibleServerFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -41899,7 +41965,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -43764,7 +43832,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlServer",
       "Name": "Update-AzPostgreSqlServer",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -43809,7 +43877,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -46925,7 +46995,7 @@
       "VerbName": "Update",
       "NounName": "AzPostgreSqlVirtualNetworkRule",
       "Name": "Update-AzPostgreSqlVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Update-AzPostgreSqlVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -46947,7 +47017,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

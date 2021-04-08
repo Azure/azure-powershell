@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbConfiguration",
       "Name": "Get-AzMariaDbConfiguration",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -30,7 +30,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1184,7 +1186,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbConnectionString",
       "Name": "Get-AzMariaDbConnectionString",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbConnectionString",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1202,7 +1204,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2178,7 +2182,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbFirewallRule",
       "Name": "Get-AzMariaDbFirewallRule",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2199,7 +2203,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3353,7 +3359,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbReplica",
       "Name": "Get-AzMariaDbReplica",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3393,7 +3399,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3837,7 +3845,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbServer",
       "Name": "Get-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3877,7 +3885,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5165,7 +5175,7 @@
       "VerbName": "Get",
       "NounName": "AzMariaDbVirtualNetworkRule",
       "Name": "Get-AzMariaDbVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Get-AzMariaDbVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5187,7 +5197,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6455,7 +6467,7 @@
       "VerbName": "New",
       "NounName": "AzMariaDbFirewallRule",
       "Name": "New-AzMariaDbFirewallRule",
-      "ClassName": null,
+      "ClassName": "New-AzMariaDbFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6476,7 +6488,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -8184,7 +8198,7 @@
       "VerbName": "New",
       "NounName": "AzMariaDbReplica",
       "Name": "New-AzMariaDbReplica",
-      "ClassName": null,
+      "ClassName": "New-AzMariaDbReplica",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -8224,7 +8238,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9714,7 +9730,7 @@
       "VerbName": "New",
       "NounName": "AzMariaDbServer",
       "Name": "New-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "New-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9754,7 +9770,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11244,7 +11262,7 @@
       "VerbName": "New",
       "NounName": "AzMariaDbVirtualNetworkRule",
       "Name": "New-AzMariaDbVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "New-AzMariaDbVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11266,7 +11284,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11966,7 +11986,7 @@
       "VerbName": "Remove",
       "NounName": "AzMariaDbFirewallRule",
       "Name": "Remove-AzMariaDbFirewallRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzMariaDbFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11984,7 +12004,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13160,7 +13182,7 @@
       "VerbName": "Remove",
       "NounName": "AzMariaDbServer",
       "Name": "Remove-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "Remove-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13178,7 +13200,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -14312,7 +14336,7 @@
       "VerbName": "Remove",
       "NounName": "AzMariaDbVirtualNetworkRule",
       "Name": "Remove-AzMariaDbVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Remove-AzMariaDbVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -14330,7 +14354,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -15506,7 +15532,7 @@
       "VerbName": "Restart",
       "NounName": "AzMariaDbServer",
       "Name": "Restart-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "Restart-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -15524,7 +15550,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -16658,7 +16686,7 @@
       "VerbName": "Restore",
       "NounName": "AzMariaDbServer",
       "Name": "Restore-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "Restore-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -16698,7 +16726,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17480,7 +17510,7 @@
       "VerbName": "Update",
       "NounName": "AzMariaDbConfiguration",
       "Name": "Update-AzMariaDbConfiguration",
-      "ClassName": null,
+      "ClassName": "Update-AzMariaDbConfiguration",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17505,7 +17535,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -18771,7 +18803,7 @@
       "VerbName": "Update",
       "NounName": "AzMariaDbFirewallRule",
       "Name": "Update-AzMariaDbFirewallRule",
-      "ClassName": null,
+      "ClassName": "Update-AzMariaDbFirewallRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -18792,7 +18824,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20657,7 +20691,7 @@
       "VerbName": "Update",
       "NounName": "AzMariaDbServer",
       "Name": "Update-AzMariaDbServer",
-      "ClassName": null,
+      "ClassName": "Update-AzMariaDbServer",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20697,7 +20731,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -23295,7 +23331,7 @@
       "VerbName": "Update",
       "NounName": "AzMariaDbVirtualNetworkRule",
       "Name": "Update-AzMariaDbVirtualNetworkRule",
-      "ClassName": null,
+      "ClassName": "Update-AzMariaDbVirtualNetworkRule",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -23317,7 +23353,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

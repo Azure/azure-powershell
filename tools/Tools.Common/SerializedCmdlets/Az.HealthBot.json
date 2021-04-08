@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzHealthBot",
       "Name": "Get-AzHealthBot",
-      "ClassName": null,
+      "ClassName": "Get-AzHealthBot",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -27,7 +27,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1303,7 +1305,7 @@
       "VerbName": "New",
       "NounName": "AzHealthBot",
       "Name": "New-AzHealthBot",
-      "ClassName": null,
+      "ClassName": "New-AzHealthBot",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1325,7 +1327,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2107,7 +2111,7 @@
       "VerbName": "Remove",
       "NounName": "AzHealthBot",
       "Name": "Remove-AzHealthBot",
-      "ClassName": null,
+      "ClassName": "Remove-AzHealthBot",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2125,7 +2129,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3247,7 +3253,7 @@
       "VerbName": "Update",
       "NounName": "AzHealthBot",
       "Name": "Update-AzHealthBot",
-      "ClassName": null,
+      "ClassName": "Update-AzHealthBot",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3269,7 +3275,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

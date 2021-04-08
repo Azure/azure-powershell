@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzSapMonitor",
       "Name": "Get-AzSapMonitor",
-      "ClassName": null,
+      "ClassName": "Get-AzSapMonitor",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -32,7 +32,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1096,7 +1098,7 @@
       "VerbName": "Get",
       "NounName": "AzSapMonitorProviderInstance",
       "Name": "Get-AzSapMonitorProviderInstance",
-      "ClassName": null,
+      "ClassName": "Get-AzSapMonitorProviderInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1119,7 +1121,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2273,7 +2277,7 @@
       "VerbName": "New",
       "NounName": "AzSapMonitor",
       "Name": "New-AzSapMonitor",
-      "ClassName": null,
+      "ClassName": "New-AzSapMonitor",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2300,7 +2304,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3126,7 +3132,7 @@
       "VerbName": "New",
       "NounName": "AzSapMonitorProviderInstance",
       "Name": "New-AzSapMonitorProviderInstance",
-      "ClassName": null,
+      "ClassName": "New-AzSapMonitorProviderInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3149,7 +3155,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5383,7 +5391,7 @@
       "VerbName": "Remove",
       "NounName": "AzSapMonitor",
       "Name": "Remove-AzSapMonitor",
-      "ClassName": null,
+      "ClassName": "Remove-AzSapMonitor",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5401,7 +5409,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6535,7 +6545,7 @@
       "VerbName": "Remove",
       "NounName": "AzSapMonitorProviderInstance",
       "Name": "Remove-AzSapMonitorProviderInstance",
-      "ClassName": null,
+      "ClassName": "Remove-AzSapMonitorProviderInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6553,7 +6563,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7729,7 +7741,7 @@
       "VerbName": "Update",
       "NounName": "AzSapMonitor",
       "Name": "Update-AzSapMonitor",
-      "ClassName": null,
+      "ClassName": "Update-AzSapMonitor",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7756,7 +7768,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

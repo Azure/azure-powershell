@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzCustomProvider",
       "Name": "Get-AzCustomProvider",
-      "ClassName": null,
+      "ClassName": "Get-AzCustomProvider",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -28,7 +28,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1308,7 +1310,7 @@
       "VerbName": "Get",
       "NounName": "AzCustomProviderAssociation",
       "Name": "Get-AzCustomProviderAssociation",
-      "ClassName": null,
+      "ClassName": "Get-AzCustomProviderAssociation",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1332,7 +1334,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2346,7 +2350,7 @@
       "VerbName": "New",
       "NounName": "AzCustomProvider",
       "Name": "New-AzCustomProvider",
-      "ClassName": null,
+      "ClassName": "New-AzCustomProvider",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2369,7 +2373,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3111,7 +3117,7 @@
       "VerbName": "New",
       "NounName": "AzCustomProviderAssociation",
       "Name": "New-AzCustomProviderAssociation",
-      "ClassName": null,
+      "ClassName": "New-AzCustomProviderAssociation",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3135,7 +3141,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3667,7 +3675,7 @@
       "VerbName": "Remove",
       "NounName": "AzCustomProvider",
       "Name": "Remove-AzCustomProvider",
-      "ClassName": null,
+      "ClassName": "Remove-AzCustomProvider",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3685,7 +3693,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4811,7 +4821,7 @@
       "VerbName": "Remove",
       "NounName": "AzCustomProviderAssociation",
       "Name": "Remove-AzCustomProviderAssociation",
-      "ClassName": null,
+      "ClassName": "Remove-AzCustomProviderAssociation",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4829,7 +4839,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5913,7 +5925,7 @@
       "VerbName": "Update",
       "NounName": "AzCustomProvider",
       "Name": "Update-AzCustomProvider",
-      "ClassName": null,
+      "ClassName": "Update-AzCustomProvider",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5936,7 +5948,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

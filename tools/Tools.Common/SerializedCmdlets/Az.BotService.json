@@ -5,7 +5,7 @@
       "VerbName": "Export",
       "NounName": "AzBotServiceApp",
       "Name": "Export-AzBotServiceApp",
-      "ClassName": null,
+      "ClassName": "Export-AzBotServiceApp",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -37,7 +37,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -527,7 +529,7 @@
       "VerbName": "Get",
       "NounName": "AzBotService",
       "Name": "Get-AzBotService",
-      "ClassName": null,
+      "ClassName": "Get-AzBotService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -559,7 +561,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1839,7 +1843,7 @@
       "VerbName": "Initialize",
       "NounName": "AzBotServicePrepareDeploy",
       "Name": "Initialize-AzBotServicePrepareDeploy",
-      "ClassName": null,
+      "ClassName": "Initialize-AzBotServicePrepareDeploy",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1871,7 +1875,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2357,7 +2363,7 @@
       "VerbName": "New",
       "NounName": "AzBotService",
       "Name": "New-AzBotService",
-      "ClassName": null,
+      "ClassName": "New-AzBotService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2389,7 +2395,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4129,7 +4137,7 @@
       "VerbName": "Publish",
       "NounName": "AzBotServiceApp",
       "Name": "Publish-AzBotServiceApp",
-      "ClassName": null,
+      "ClassName": "Publish-AzBotServiceApp",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -4277,7 +4285,7 @@
       "VerbName": "Remove",
       "NounName": "AzBotService",
       "Name": "Remove-AzBotService",
-      "ClassName": null,
+      "ClassName": "Remove-AzBotService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4295,7 +4303,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5241,7 +5251,7 @@
       "VerbName": "Update",
       "NounName": "AzBotService",
       "Name": "Update-AzBotService",
-      "ClassName": null,
+      "ClassName": "Update-AzBotService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5273,7 +5283,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

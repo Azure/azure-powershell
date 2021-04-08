@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzTimeSeriesInsightsAccessPolicy",
       "Name": "Get-AzTimeSeriesInsightsAccessPolicy",
-      "ClassName": null,
+      "ClassName": "Get-AzTimeSeriesInsightsAccessPolicy",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -27,7 +27,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1175,7 +1177,7 @@
       "VerbName": "Get",
       "NounName": "AzTimeSeriesInsightsEnvironment",
       "Name": "Get-AzTimeSeriesInsightsEnvironment",
-      "ClassName": null,
+      "ClassName": "Get-AzTimeSeriesInsightsEnvironment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1197,7 +1199,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2545,7 +2549,7 @@
       "VerbName": "Get",
       "NounName": "AzTimeSeriesInsightsEventSource",
       "Name": "Get-AzTimeSeriesInsightsEventSource",
-      "ClassName": null,
+      "ClassName": "Get-AzTimeSeriesInsightsEventSource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2565,7 +2569,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3713,7 +3719,7 @@
       "VerbName": "Get",
       "NounName": "AzTimeSeriesInsightsReferenceDataSet",
       "Name": "Get-AzTimeSeriesInsightsReferenceDataSet",
-      "ClassName": null,
+      "ClassName": "Get-AzTimeSeriesInsightsReferenceDataSet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3734,7 +3740,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4882,7 +4890,7 @@
       "VerbName": "New",
       "NounName": "AzTimeSeriesInsightsAccessPolicy",
       "Name": "New-AzTimeSeriesInsightsAccessPolicy",
-      "ClassName": null,
+      "ClassName": "New-AzTimeSeriesInsightsAccessPolicy",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4904,7 +4912,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5520,7 +5530,7 @@
       "VerbName": "New",
       "NounName": "AzTimeSeriesInsightsEnvironment",
       "Name": "New-AzTimeSeriesInsightsEnvironment",
-      "ClassName": null,
+      "ClassName": "New-AzTimeSeriesInsightsEnvironment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5542,7 +5552,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7862,7 +7874,7 @@
       "VerbName": "New",
       "NounName": "AzTimeSeriesInsightsEventSource",
       "Name": "New-AzTimeSeriesInsightsEventSource",
-      "ClassName": null,
+      "ClassName": "New-AzTimeSeriesInsightsEventSource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7882,7 +7894,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10014,7 +10028,7 @@
       "VerbName": "New",
       "NounName": "AzTimeSeriesInsightsReferenceDataSet",
       "Name": "New-AzTimeSeriesInsightsReferenceDataSet",
-      "ClassName": null,
+      "ClassName": "New-AzTimeSeriesInsightsReferenceDataSet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10035,7 +10049,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10817,7 +10833,7 @@
       "VerbName": "Remove",
       "NounName": "AzTimeSeriesInsightsAccessPolicy",
       "Name": "Remove-AzTimeSeriesInsightsAccessPolicy",
-      "ClassName": null,
+      "ClassName": "Remove-AzTimeSeriesInsightsAccessPolicy",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10835,7 +10851,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11825,7 +11843,7 @@
       "VerbName": "Remove",
       "NounName": "AzTimeSeriesInsightsEnvironment",
       "Name": "Remove-AzTimeSeriesInsightsEnvironment",
-      "ClassName": null,
+      "ClassName": "Remove-AzTimeSeriesInsightsEnvironment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -11843,7 +11861,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12791,7 +12811,7 @@
       "VerbName": "Remove",
       "NounName": "AzTimeSeriesInsightsEventSource",
       "Name": "Remove-AzTimeSeriesInsightsEventSource",
-      "ClassName": null,
+      "ClassName": "Remove-AzTimeSeriesInsightsEventSource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -12809,7 +12829,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13799,7 +13821,7 @@
       "VerbName": "Remove",
       "NounName": "AzTimeSeriesInsightsReferenceDataSet",
       "Name": "Remove-AzTimeSeriesInsightsReferenceDataSet",
-      "ClassName": null,
+      "ClassName": "Remove-AzTimeSeriesInsightsReferenceDataSet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13817,7 +13839,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -14807,7 +14831,7 @@
       "VerbName": "Update",
       "NounName": "AzTimeSeriesInsightsAccessPolicy",
       "Name": "Update-AzTimeSeriesInsightsAccessPolicy",
-      "ClassName": null,
+      "ClassName": "Update-AzTimeSeriesInsightsAccessPolicy",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -14829,7 +14853,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -15909,7 +15935,7 @@
       "VerbName": "Update",
       "NounName": "AzTimeSeriesInsightsEnvironment",
       "Name": "Update-AzTimeSeriesInsightsEnvironment",
-      "ClassName": null,
+      "ClassName": "Update-AzTimeSeriesInsightsEnvironment",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -15931,7 +15957,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17059,7 +17087,7 @@
       "VerbName": "Update",
       "NounName": "AzTimeSeriesInsightsEventSource",
       "Name": "Update-AzTimeSeriesInsightsEventSource",
-      "ClassName": null,
+      "ClassName": "Update-AzTimeSeriesInsightsEventSource",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17079,7 +17107,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -18069,7 +18099,7 @@
       "VerbName": "Update",
       "NounName": "AzTimeSeriesInsightsReferenceDataSet",
       "Name": "Update-AzTimeSeriesInsightsReferenceDataSet",
-      "ClassName": null,
+      "ClassName": "Update-AzTimeSeriesInsightsReferenceDataSet",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -18090,7 +18120,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

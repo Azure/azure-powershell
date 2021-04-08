@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudService",
       "Name": "Get-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -41,7 +41,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1323,7 +1325,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServiceInstanceView",
       "Name": "Get-AzCloudServiceInstanceView",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServiceInstanceView",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1345,7 +1347,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1789,7 +1793,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServiceNetworkInterfaces",
       "Name": "Get-AzCloudServiceNetworkInterfaces",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServiceNetworkInterfaces",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 0,
       "HasForceSwitch": null,
@@ -2345,7 +2349,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServicePublicIPAddress",
       "Name": "Get-AzCloudServicePublicIPAddress",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServicePublicIPAddress",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 0,
       "HasForceSwitch": null,
@@ -2811,7 +2815,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServiceRoleInstance",
       "Name": "Get-AzCloudServiceRoleInstance",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServiceRoleInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2842,7 +2846,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4410,7 +4416,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServiceRoleInstanceRemoteDesktopFile",
       "Name": "Get-AzCloudServiceRoleInstanceRemoteDesktopFile",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServiceRoleInstanceRemoteDesktopFile",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -4428,7 +4434,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4998,7 +5006,7 @@
       "VerbName": "Get",
       "NounName": "AzCloudServiceRoleInstanceView",
       "Name": "Get-AzCloudServiceRoleInstanceView",
-      "ClassName": null,
+      "ClassName": "Get-AzCloudServiceRoleInstanceView",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5021,7 +5029,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5507,7 +5517,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCloudServiceRebuild",
       "Name": "Invoke-AzCloudServiceRebuild",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCloudServiceRebuild",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -5525,7 +5535,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6739,7 +6751,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCloudServiceReimage",
       "Name": "Invoke-AzCloudServiceReimage",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCloudServiceReimage",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6757,7 +6769,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7975,7 +7989,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCloudServiceRoleInstanceRebuild",
       "Name": "Invoke-AzCloudServiceRoleInstanceRebuild",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCloudServiceRoleInstanceRebuild",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7993,7 +8007,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -9159,7 +9175,7 @@
       "VerbName": "Invoke",
       "NounName": "AzCloudServiceRoleInstanceReimage",
       "Name": "Invoke-AzCloudServiceRoleInstanceReimage",
-      "ClassName": null,
+      "ClassName": "Invoke-AzCloudServiceRoleInstanceReimage",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -9177,7 +9193,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -10343,7 +10361,7 @@
       "VerbName": "New",
       "NounName": "AzCloudService",
       "Name": "New-AzCloudService",
-      "ClassName": null,
+      "ClassName": "New-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -10379,7 +10397,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -11515,7 +11535,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceDiagnosticsExtension",
       "Name": "New-AzCloudServiceDiagnosticsExtension",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceDiagnosticsExtension",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -11637,7 +11657,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12075,7 +12097,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceExtensionObject",
       "Name": "New-AzCloudServiceExtensionObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceExtensionObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -12197,7 +12219,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12551,7 +12575,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceLoadBalancerConfigurationObject",
       "Name": "New-AzCloudServiceLoadBalancerConfigurationObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceLoadBalancerConfigurationObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -12663,7 +12687,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12765,7 +12791,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceLoadBalancerFrontendIPConfigurationObject",
       "Name": "New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -12879,7 +12905,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -12981,7 +13009,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceRemoteDesktopExtensionObject",
       "Name": "New-AzCloudServiceRemoteDesktopExtensionObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceRemoteDesktopExtensionObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -13103,7 +13131,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13373,7 +13403,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceRoleProfilePropertiesObject",
       "Name": "New-AzCloudServiceRoleProfilePropertiesObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceRoleProfilePropertiesObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -13487,7 +13517,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13673,7 +13705,7 @@
       "VerbName": "New",
       "NounName": "AzCloudServiceVaultSecretGroupObject",
       "Name": "New-AzCloudServiceVaultSecretGroupObject",
-      "ClassName": null,
+      "ClassName": "New-AzCloudServiceVaultSecretGroupObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -13785,7 +13817,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -13887,7 +13921,7 @@
       "VerbName": "Remove",
       "NounName": "AzCloudService",
       "Name": "Remove-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Remove-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -13905,7 +13939,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -15033,7 +15069,7 @@
       "VerbName": "Remove",
       "NounName": "AzCloudServiceRoleInstance",
       "Name": "Remove-AzCloudServiceRoleInstance",
-      "ClassName": null,
+      "ClassName": "Remove-AzCloudServiceRoleInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -15051,7 +15087,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -16265,7 +16303,7 @@
       "VerbName": "Restart",
       "NounName": "AzCloudService",
       "Name": "Restart-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Restart-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -16283,7 +16321,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -17501,7 +17541,7 @@
       "VerbName": "Restart",
       "NounName": "AzCloudServiceRoleInstance",
       "Name": "Restart-AzCloudServiceRoleInstance",
-      "ClassName": null,
+      "ClassName": "Restart-AzCloudServiceRoleInstance",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -17519,7 +17559,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -18685,7 +18727,7 @@
       "VerbName": "Set",
       "NounName": "AzCloudServiceUpdateDomain",
       "Name": "Set-AzCloudServiceUpdateDomain",
-      "ClassName": null,
+      "ClassName": "Set-AzCloudServiceUpdateDomain",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -18703,7 +18745,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -19315,7 +19359,7 @@
       "VerbName": "Start",
       "NounName": "AzCloudService",
       "Name": "Start-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Start-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -19333,7 +19377,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -20461,7 +20507,7 @@
       "VerbName": "Stop",
       "NounName": "AzCloudService",
       "Name": "Stop-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Stop-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -20479,7 +20525,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -21607,7 +21655,7 @@
       "VerbName": "Switch",
       "NounName": "AzCloudService",
       "Name": "Switch-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Switch-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -21625,7 +21673,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -22459,7 +22509,7 @@
       "VerbName": "Update",
       "NounName": "AzCloudService",
       "Name": "Update-AzCloudService",
-      "ClassName": null,
+      "ClassName": "Update-AzCloudService",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -22495,7 +22545,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

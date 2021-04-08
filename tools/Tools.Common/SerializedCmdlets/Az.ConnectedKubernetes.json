@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzConnectedKubernetes",
       "Name": "Get-AzConnectedKubernetes",
-      "ClassName": null,
+      "ClassName": "Get-AzConnectedKubernetes",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -45,7 +45,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1321,7 +1323,7 @@
       "VerbName": "New",
       "NounName": "AzConnectedKubernetes",
       "Name": "New-AzConnectedKubernetes",
-      "ClassName": null,
+      "ClassName": "New-AzConnectedKubernetes",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1361,7 +1363,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1935,7 +1939,7 @@
       "VerbName": "Remove",
       "NounName": "AzConnectedKubernetes",
       "Name": "Remove-AzConnectedKubernetes",
-      "ClassName": null,
+      "ClassName": "Remove-AzConnectedKubernetes",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1953,7 +1957,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3255,7 +3261,7 @@
       "VerbName": "Update",
       "NounName": "AzConnectedKubernetes",
       "Name": "Update-AzConnectedKubernetes",
-      "ClassName": null,
+      "ClassName": "Update-AzConnectedKubernetes",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3295,7 +3301,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

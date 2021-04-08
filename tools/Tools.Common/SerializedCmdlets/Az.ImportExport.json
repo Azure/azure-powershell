@@ -5,7 +5,7 @@
       "VerbName": "Get",
       "NounName": "AzImportExport",
       "Name": "Get-AzImportExport",
-      "ClassName": null,
+      "ClassName": "Get-AzImportExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -70,7 +70,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1618,7 +1620,7 @@
       "VerbName": "Get",
       "NounName": "AzImportExportBitLockerKey",
       "Name": "Get-AzImportExportBitLockerKey",
-      "ClassName": null,
+      "ClassName": "Get-AzImportExportBitLockerKey",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -1639,7 +1641,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2125,7 +2129,7 @@
       "VerbName": "Get",
       "NounName": "AzImportExportLocation",
       "Name": "Get-AzImportExportLocation",
-      "ClassName": null,
+      "ClassName": "Get-AzImportExportLocation",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -2157,7 +2161,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3017,7 +3023,7 @@
       "VerbName": "New",
       "NounName": "AzImportExport",
       "Name": "New-AzImportExport",
-      "ClassName": null,
+      "ClassName": "New-AzImportExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -3082,7 +3088,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5420,7 +5428,7 @@
       "VerbName": "New",
       "NounName": "AzImportExportDriveListObject",
       "Name": "New-AzImportExportDriveListObject",
-      "ClassName": null,
+      "ClassName": "New-AzImportExportDriveListObject",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": null,
@@ -5451,7 +5459,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6097,7 +6107,7 @@
       "VerbName": "Remove",
       "NounName": "AzImportExport",
       "Name": "Remove-AzImportExport",
-      "ClassName": null,
+      "ClassName": "Remove-AzImportExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -6115,7 +6125,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -7149,7 +7161,7 @@
       "VerbName": "Update",
       "NounName": "AzImportExport",
       "Name": "Update-AzImportExport",
-      "ClassName": null,
+      "ClassName": "Update-AzImportExport",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "HasForceSwitch": true,
@@ -7214,7 +7226,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
