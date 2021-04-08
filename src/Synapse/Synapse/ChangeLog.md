@@ -37,6 +37,7 @@
     - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
     - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
 
+
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
 
