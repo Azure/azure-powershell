@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetDeletedVaultParameterSet,
-            Position = 0,
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ResourceNameCompleter("Microsoft.KeyVault/vaults", "ResourceGroupName")]
