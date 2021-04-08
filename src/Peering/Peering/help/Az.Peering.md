@@ -12,7 +12,7 @@ Microsoft Peering Service allows customers and Microsoft to connect to Azure and
 
 ## Az.Peering Cmdlets
 ### [Get-AzPeeringCdnPeeringPrefix](Get-AzPeeringCdnPeeringPrefix.md)
-Lists all of the advertised prefixes for the specified peering location
+Lists all of the advertised prefixes for cdn in the specified peering location
 
 ### [Get-AzLegacyPeering](Get-AzLegacyPeering.md)
 Used to Convert Legacy Peering resources to Azure Resource Management (ARM) Resources. 
