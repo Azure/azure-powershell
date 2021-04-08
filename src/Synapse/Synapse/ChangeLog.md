@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Add support for Synapse Role-based access control
    - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3
    - Updated `New-AzSynapseRoleAssignment` cmdlet

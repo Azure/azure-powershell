@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.11.0
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
 * Added new cmdlets to support TrustedLaunch related cmdlets:
     - `Set-AzVmSecurityProfile`

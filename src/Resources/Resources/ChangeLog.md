@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.4.1
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
   - `New-AzADApplication` 
   - `Update-AzADApplication`
