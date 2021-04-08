@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         #region Attributes
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdentities)]
         #endregion
-        public IDictionary<string,object> UserAssignedIdentities { get; set; }
+        public IDictionary<string,object> UserAssignedIdentity { get; set; }
 
         #region Attributes
         [Parameter(
@@ -475,14 +475,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 factoryIdentityType = this.IdentityType;
             }
 
-            if(this.UserAssignedIdentities != null && this.UserAssignedIdentities.Count > 0)
+            if(this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
             {
                 if (!factoryIdentityType.ToLower().Contains(FactoryIdentityType.UserAssigned.ToLower()))
                 {
                     factoryIdentityType = FactoryIdentityType.SystemAssignedUserAssigned;
                 }
             }
-            FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentities);
+            FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
 
             var parameters = new CreatePSDataFactoryParameters()
             {
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 if(InputObject.Identity != null)
                 {
                     this.IdentityType = InputObject.Identity.Type;
-                    this.UserAssignedIdentities = InputObject.Identity.UserAssignedIdentities;
+                    this.UserAssignedIdentity = InputObject.Identity.UserAssignedIdentities;
                 }
                 if (InputObject.RepoConfiguration != null)
                 {
