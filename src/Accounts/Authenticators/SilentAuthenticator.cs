@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -48,8 +50,16 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var cacheCredential = new SharedTokenCacheCredential(options);
             var requestContext = new TokenRequestContext(scopes);
-            var tokenTask = cacheCredential.GetTokenAsync(requestContext);
-            return MsalAccessToken.GetAccessTokenAsync(cacheCredential, requestContext, cancellationToken, silentParameters.TenantId, silentParameters.UserId, silentParameters.HomeAccountId);
+            var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
+            return MsalAccessToken.GetAccessTokenAsync(
+                nameof(SilentAuthenticator),
+                parametersLog,
+                cacheCredential,
+                requestContext,
+                cancellationToken,
+                silentParameters.TenantId,
+                silentParameters.UserId,
+                silentParameters.HomeAccountId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
