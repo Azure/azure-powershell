@@ -423,10 +423,10 @@ Initiates migration of the VM to latest Azure Disk Encryption extension version 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: MigrateADEVersionParameterSet
 Aliases:
 
-Required: False
+Required: true
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -438,10 +438,10 @@ Initiates migration recovery for failures during migration of ADE extension vers
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: MigrateADEVersionRecoveryParameterSet
 Aliases:
 
-Required: False
+Required: true
 Position: Named
 Default value: None
 Accept pipeline input: False

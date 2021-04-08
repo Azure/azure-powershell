@@ -231,14 +231,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public SwitchParameter EncryptFormatAll { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.migrateAdeVersionParameterSet,
             HelpMessage = "Migrate VM to newer version of ADE. Specify this parameter only to migrate from ADE with AAD credentials to ADE without AAD credentials.")]
         public SwitchParameter Migrate { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureDiskEncryptionExtensionConstants.migrateAdeVersionRecoveryParameterSet,
             HelpMessage = "MigrationRecovery flag in case of dual pass to single pass migration failures. Specify this parameter only if the migration to single pass was not successful.")]
