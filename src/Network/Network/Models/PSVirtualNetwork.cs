@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSDhcpOptions DhcpOptions { get; set; }
 
+        public int? FlowTimeoutInMinutes { get; set; }
+
         public List<PSSubnet> Subnets { get; set; }
 
         public PSVirtualNetworkBgpCommunities BgpCommunities { get; set; }
@@ -52,6 +54,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DhcpOptionsText
         {
             get { return JsonConvert.SerializeObject(DhcpOptions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FlowTimeoutInMinutesText
+        {
+            get { return JsonConvert.SerializeObject(FlowTimeoutInMinutes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
