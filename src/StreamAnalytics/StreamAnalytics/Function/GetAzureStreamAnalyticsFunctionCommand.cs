@@ -12,12 +12,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
+    [GenericBreakingChange("The parameters of Get-AzStreamAnalyticsFunction will be updated in an upcoming breaking change release.", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsFunction"), OutputType(typeof(PSFunction))]
     public class GetAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {

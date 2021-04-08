@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - `Remove-AzStorageAccount`
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 3.5.0
 * Fixed an issue that list account from resource group won't use nextlink

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -23,6 +24,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
+    [GenericBreakingChange("The parameters of Start-AzStreamAnalyticsJob will be updated in an upcoming breaking change release.", "2.0.0")]
     [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsJob"), OutputType(typeof(bool))]
     public class StartAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {

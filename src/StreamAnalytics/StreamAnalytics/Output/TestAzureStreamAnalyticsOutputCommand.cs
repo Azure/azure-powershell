@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Globalization;
 using System.Management.Automation;
@@ -22,6 +23,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
+    [GenericBreakingChange("The parameters of Test-AzStreamAnalyticsOutput will be updated in an upcoming breaking change release.", "2.0.0")]
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsOutput"), OutputType(typeof(bool))]
     public class TestAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
