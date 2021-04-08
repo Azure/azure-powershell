@@ -28,7 +28,6 @@
 * Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
 * Fixed the issue of retrieving Apache Spark pool information through management API
 
-
 ## Version 0.9.0
 * Added support for workspace key encryption management
 	- Add `New-AzSynapseWorkspaceKey` cmdlet
