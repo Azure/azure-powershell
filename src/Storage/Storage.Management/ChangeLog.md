@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.5.1
 * Fixed copy blob fail with source context as Oauth [#14662]
     -  `Start-AzStorageBlobCopy`
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.0
 * Added upcoming breaking change warning message to all cmdlets because of upcoming changes on parameters.
 
 ## Version 1.0.1
