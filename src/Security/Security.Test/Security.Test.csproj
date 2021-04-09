@@ -38,7 +38,11 @@
     <None Include="SqlInformationProtectionPolicies\SensitivityLabelsSharingSameId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SqlVulnerabilityAssessmentTestResources\SetUpVM.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="44.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
   </ItemGroup>
-  
 </Project>

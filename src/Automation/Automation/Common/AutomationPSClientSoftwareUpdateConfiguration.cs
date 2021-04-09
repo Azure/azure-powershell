@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 var sucParameters = new Sdk.SoftwareUpdateConfiguration()
                 {
-                    ScheduleInfo = new Sdk.ScheduleProperties()
+                    ScheduleInfo = new Sdk.SUCScheduleProperties()
                     {
-                        StartTime = configuration.ScheduleConfiguration.StartTime.ToUniversalTime(),
-                        ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime.ToUniversalTime(),
+                        StartTime = configuration.ScheduleConfiguration.StartTime,
+                        ExpiryTime = configuration.ScheduleConfiguration.ExpiryTime,
                         Frequency = configuration.ScheduleConfiguration.Frequency.ToString(),
                         Interval = configuration.ScheduleConfiguration.Interval,
                         IsEnabled = true,
