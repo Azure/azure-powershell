@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added SecurityOperators to ActiveDirectory
 * Volume list now gets all volumes instead of first over 100 volumes
 * Added SnapshotPolicyId to NewAzNetAppFilesVolume to set snapshot policy to volume

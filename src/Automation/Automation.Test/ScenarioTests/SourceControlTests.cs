@@ -36,7 +36,7 @@ namespace Commands.Automation.Test
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Temporarily skipping, using just GitHub")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateVsoGitSourceControlAndSync()
@@ -44,7 +44,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-CreateVsoGitSourceControlAndSync");
         }
 
-        [Fact]
+        [Fact(Skip = "Tfvc not commonly used.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateVsoTfvcSourceControlAndSync()
@@ -52,7 +52,7 @@ namespace Commands.Automation.Test
             TestRunner.RunTestScript("Test-CreateVsoTfvcSourceControlAndSync");
         }
 
-        [Fact]
+        [Fact(Skip = "Temporarily skipping, running locally, PAT getting revoked after commiting")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateGitHubSourceControlAndSync()
