@@ -15,18 +15,18 @@
 .SYNOPSIS
 GetLocationKindExchange 
 #>
-function Test-ConvertLegacyKindExchangeDallas {
+function Test-ConvertLegacyKindExchangeAshburn {
     try {
         #must be hard coded asn because they have legacy items.
         $peerAsn = makePeerAsn 42;
-        $name = getPeeringVariable "Name" "AS42_Dallas_Exchange"
+        $name = getPeeringVariable "Name" "AS42_Ashburn_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
-        $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Dallas 
+        $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Ashburn 
 		Assert-NotNull $peerAsn.Id
         Assert-NotNull $legacy
         Assert-True { $legacy.Count -ge 1 }
-        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name "AS42_Dallas_Exchange" -PeerAsnResourceId $peerAsn.Id -Tag @{ "tfs_813288" = "Approved" }
-        $peering = Get-AzPeering -ResourceGroupName $rg -Name "AS42_Dallas_Exchange"
+        $peering = $legacy | New-AzPeering -ResourceGroupName $rg -Name $name -PeerAsnResourceId $peerAsn.Id -Tag @{ "tfs_813288" = "Approved" }
+        $peering = Get-AzPeering -ResourceGroupName $rg -Name $name
         Assert-NotNull $peering
     }
     finally {
@@ -37,20 +37,20 @@ function Test-ConvertLegacyKindExchangeDallas {
 
 <#
 .SYNOPSIS
-Convert Legacy Kind Exchange Chicago With New Connection
+Convert Legacy Kind Exchange Amsterdam With New Connection
 #>
-function Test-ConvertLegacyKindExchangeChicagoWithNewConnection {
+function Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection {
     try {
         #must be hard coded asn because they have legacy items.
         $peerAsn = makePeerAsn 42
-        $name = getPeeringVariable "Name" "AS42_Chicago_Exchange"
+        $name = getPeeringVariable "Name" "AS42_Amsterdam_Exchange"
         $rg = getPeeringVariable "ResourceGroupName" "Building40"
-        $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Chicago 
+        $legacy = Get-AzLegacyPeering -Kind Exchange -PeeringLocation Amsterdam 
         Assert-NotNull $legacy
         Assert-True { $legacy.Count -ge 1 }
         #has to be hard coded becuase this ip address isnt used.
         #testing trim
-        $ipaddress = getPeeringVariable "ipaddress" " 206.41.110.42 "
+        $ipaddress = getPeeringVariable "ipaddress" " 80.249.211.62 "
         $facilityId = 26
         $maxv4 = maxAdvertisedIpv4
         $connection = New-AzPeeringExchangeConnectionObject -PeeringDbFacilityId $facilityId -MaxPrefixesAdvertisedIPv4 $maxv4 -PeerSessionIPv4Address $ipaddress
