@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15280-Global5322?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTI4MC1HbG9iYWw1MzIyP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61006-Global5885?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82MTAwNi1HbG9iYWw1ODg1P2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15280,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15280-Global2650\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 61006,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS61006-Global2264\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b1d15dc2-0285-4c11-8a0d-75b59403534e"
+          "79c9b896-8aa6-43d4-b422-81160c336470"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,16 +33,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "661a500b-af56-4a13-97fc-633794d2ca36"
+          "223a48b8-f55d-4ebc-89d3-9aa6b3855049"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
         ],
         "x-ms-correlation-request-id": [
-          "f38de9e5-3a43-4dc2-b14e-765bafff37d3"
+          "dddf911c-ab13-4f17-a7ce-e0a0ea73e74d"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T224237Z:f38de9e5-3a43-4dc2-b14e-765bafff37d3"
+          "NORTHEUROPE:20210409T073119Z:dddf911c-ab13-4f17-a7ce-e0a0ea73e74d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 22:42:37 GMT"
+          "Fri, 09 Apr 2021 07:31:19 GMT"
         ],
         "Content-Length": [
           "612"
@@ -63,17 +63,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15280,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15280-Global2650\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"15280-Global5322\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15280-Global5322\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 61006,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS61006-Global2264\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"61006-Global5885\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61006-Global5885\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15280-Global5322?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTI4MC1HbG9iYWw1MzIyP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61006-Global5885?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82MTAwNi1HbG9iYWw1ODg1P2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15280,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15280-Global2650\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 61006,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS61006-Global2264\",\r\n    \"validationState\": \"Approved\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7370403f-7f91-4ae8-a0c4-1a68e64c8cf0"
+          "05236f15-0e71-4007-9ec3-bca8193c092b"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,16 +99,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "71ebd0ea-d855-42ec-acbd-0741b26732cc"
+          "c524fff6-a769-4331-ba46-f7f1fb9c4290"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "58"
         ],
         "x-ms-correlation-request-id": [
-          "8a9e3682-c343-477f-8449-a5178b8dd41b"
+          "bb4480e0-63f2-451a-afc7-ccfed98c90ee"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T224239Z:8a9e3682-c343-477f-8449-a5178b8dd41b"
+          "NORTHEUROPE:20210409T073121Z:bb4480e0-63f2-451a-afc7-ccfed98c90ee"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +117,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 22:42:38 GMT"
+          "Fri, 09 Apr 2021 07:31:20 GMT"
         ],
         "Content-Length": [
           "612"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 15280,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS15280-Global2650.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS15280-Global2650\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"15280-Global5322\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15280-Global5322\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peerAsn\": 61006,\r\n    \"peerContactDetail\": [\r\n      {\r\n        \"role\": \"Noc\",\r\n        \"email\": \"Noc@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      },\r\n      {\r\n        \"role\": \"Policy\",\r\n        \"email\": \"Policy@AS61006-Global2264.com\",\r\n        \"phone\": \"+1(888)-889-8088\"\r\n      }\r\n    ],\r\n    \"peerName\": \"AS61006-Global2264\",\r\n    \"validationState\": \"Approved\"\r\n  },\r\n  \"name\": \"61006-Global5885\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61006-Global5885\",\r\n  \"type\": \"Microsoft.Peering/peerAsns\"\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,7 +139,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cb26901c-6803-4d14-b2fd-107aca18c0e1"
+          "d1c23b70-ca2a-445e-b7ac-6c97e2405f71"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,16 +159,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a591fdd5-fe9e-4ce0-8233-d14c538c8c1c"
+          "73d64471-2ac1-4bf0-87ce-1023e18ba63a"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
         ],
         "x-ms-correlation-request-id": [
-          "0a83dc55-72b1-419c-b731-6e7966557d23"
+          "d48b5857-da24-412b-89f1-02c64f16cc1c"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T224241Z:0a83dc55-72b1-419c-b731-6e7966557d23"
+          "NORTHEUROPE:20210409T073123Z:d48b5857-da24-412b-89f1-02c64f16cc1c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,7 +177,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 22:42:41 GMT"
+          "Fri, 09 Apr 2021 07:31:22 GMT"
         ],
         "Content-Length": [
           "94076"
@@ -193,13 +193,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/15280-Global5322?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy8xNTI4MC1HbG9iYWw1MzIyP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/providers/Microsoft.Peering/peerAsns/61006-Global5885?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Byb3ZpZGVycy9NaWNyb3NvZnQuUGVlcmluZy9wZWVyQXNucy82MTAwNi1HbG9iYWw1ODg1P2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6f7d038a-5801-40da-95c1-04058a627b7e"
+          "68569fb3-1f4f-4e64-a092-94eb77c2b391"
         ],
         "Accept-Language": [
           "en-US"
@@ -219,16 +219,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b11cd6e1-f8bc-4f0b-b67c-adc9b910f62c"
+          "06c5c1bf-b98a-4f89-abcf-1d47352b95cb"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "5d29a5b0-5ea0-4fd7-aa21-83627e138582"
+          "813599ef-e539-4f76-b58e-6e9f4fab5d7e"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T224243Z:5d29a5b0-5ea0-4fd7-aa21-83627e138582"
+          "NORTHEUROPE:20210409T073124Z:813599ef-e539-4f76-b58e-6e9f4fab5d7e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,7 +237,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 22:42:42 GMT"
+          "Fri, 09 Apr 2021 07:31:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -252,14 +252,14 @@
   ],
   "Names": {
     "Test-NewDirectConnectionHighBandwidth": [
-      "15280-Global5322",
-      "AS15280-Global2650"
+      "61006-Global5885",
+      "AS61006-Global2264"
     ]
   },
   "Variables": {
     "SubscriptionId": "3e919f9a-4e26-4736-aa8d-d596d9a49239",
-    "bandwidth": "70000",
-    "Hash": "fb9ff482cb06e025cbc23493423ed3b0",
-    "MaxPrefixV4": "7219"
+    "bandwidth": "80000",
+    "Hash": "d40a9c4c767e49eb62aac26ed7454be7",
+    "MaxPrefixV4": "1727"
   }
 }

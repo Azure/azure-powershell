@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c440b486-4e73-4c5c-98d3-a8e3e80ddb45"
+          "d080b185-1311-439d-9353-85b18177ce7c"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b53fc8b5-e95c-4e42-8e4d-c81258f0e8d7"
+          "5b810080-de0d-4f49-90c8-bc83c3d8171a"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
         ],
         "x-ms-correlation-request-id": [
-          "b400316c-21cc-4092-8cbd-bda514172414"
+          "33290656-bbe5-440c-9ba0-c7c440d60627"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T233654Z:b400316c-21cc-4092-8cbd-bda514172414"
+          "NORTHEUROPE:20210409T080553Z:33290656-bbe5-440c-9ba0-c7c440d60627"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +45,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 23:36:54 GMT"
+          "Fri, 09 Apr 2021 08:05:52 GMT"
         ],
         "Content-Length": [
           "191674"
@@ -67,7 +67,7 @@
       "RequestBody": "{\r\n  \"peeringServiceLocation\": \"Ile-de-France\",\r\n  \"peeringServiceProvider\": \"InterCloud\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c440b486-4e73-4c5c-98d3-a8e3e80ddb45"
+          "d080b185-1311-439d-9353-85b18177ce7c"
         ],
         "Accept-Language": [
           "en-US"
@@ -93,16 +93,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "49bfd871-0818-4d52-9db1-5c46b7285130"
+          "2a2c611a-9987-4f0c-afbd-4638ed1b0d09"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f754d992-49d1-4be3-8279-bacc992db6a6"
+          "4188b14d-a690-48e9-9a92-a285dccc8283"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T233656Z:f754d992-49d1-4be3-8279-bacc992db6a6"
+          "NORTHEUROPE:20210409T080554Z:4188b14d-a690-48e9-9a92-a285dccc8283"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 23:36:55 GMT"
+          "Fri, 09 Apr 2021 08:05:53 GMT"
         ],
         "Content-Length": [
           "11"
@@ -127,13 +127,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService8869?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlODg2OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService962?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlOTYyP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\"\r\n  },\r\n  \"location\": \"Central US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c440b486-4e73-4c5c-98d3-a8e3e80ddb45"
+          "d080b185-1311-439d-9353-85b18177ce7c"
         ],
         "Accept-Language": [
           "en-US"
@@ -159,16 +159,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "868bf47b-6b80-4502-bb48-2a693f2c6b48"
+          "7feeb3c0-0bf3-4f58-97e2-4aeec5b1fc11"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
         ],
         "x-ms-correlation-request-id": [
-          "a6044765-d669-4b8a-85c2-ced862ed0b49"
+          "f5a2a691-6f40-4d26-8f54-835557757d32"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T233700Z:a6044765-d669-4b8a-85c2-ced862ed0b49"
+          "NORTHEUROPE:20210409T080557Z:f5a2a691-6f40-4d26-8f54-835557757d32"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -177,10 +177,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 23:36:59 GMT"
+          "Fri, 09 Apr 2021 08:05:57 GMT"
         ],
         "Content-Length": [
-          "426"
+          "424"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -189,17 +189,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"name\": \"myPeeringService8869\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService8869\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"name\": \"myPeeringService962\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService962\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService8869?api-version=2020-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlODg2OT9hcGktdmVyc2lvbj0yMDIwLTEwLTAx",
+      "RequestUri": "/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService962?api-version=2020-10-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2U5MTlmOWEtNGUyNi00NzM2LWFhOGQtZDU5NmQ5YTQ5MjM5L3Jlc291cmNlR3JvdXBzL0J1aWxkaW5nNDAvcHJvdmlkZXJzL01pY3Jvc29mdC5QZWVyaW5nL3BlZXJpbmdTZXJ2aWNlcy9teVBlZXJpbmdTZXJ2aWNlOTYyP2FwaS12ZXJzaW9uPTIwMjAtMTAtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c440b486-4e73-4c5c-98d3-a8e3e80ddb45"
+          "d080b185-1311-439d-9353-85b18177ce7c"
         ],
         "Accept-Language": [
           "en-US"
@@ -219,16 +219,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4e6d5f21-402c-4298-ae31-13fd52e5bc23"
+          "b942caaf-a88b-4ac0-82d3-27d1b27e11d6"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
         ],
         "x-ms-correlation-request-id": [
-          "710c4c3a-984e-41be-9e4b-fd55b18da247"
+          "b211dba3-2e73-4f58-9393-d82029afa63b"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210408T233701Z:710c4c3a-984e-41be-9e4b-fd55b18da247"
+          "NORTHEUROPE:20210409T080558Z:b211dba3-2e73-4f58-9393-d82029afa63b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -237,10 +237,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 08 Apr 2021 23:37:01 GMT"
+          "Fri, 09 Apr 2021 08:05:57 GMT"
         ],
         "Content-Length": [
-          "426"
+          "424"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -249,13 +249,13 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"name\": \"myPeeringService8869\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService8869\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"peeringServiceLocation\": \"Ile-de-France\",\r\n    \"peeringServiceProvider\": \"InterCloud\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"name\": \"myPeeringService962\",\r\n  \"id\": \"/subscriptions/3e919f9a-4e26-4736-aa8d-d596d9a49239/resourceGroups/Building40/providers/Microsoft.Peering/peeringServices/myPeeringService962\",\r\n  \"type\": \"Microsoft.Peering/peeringServices\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {
     "Test-NewPeeringService": [
-      "myPeeringService8869"
+      "myPeeringService962"
     ]
   },
   "Variables": {
