@@ -491,8 +491,24 @@ function Save-PackageLocally {
             Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
             Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
             # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
-            # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
-            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            # If the module not found in psgallery, the following command would fail and hence publish to local repo process would fail as well
+            $PSGalleryRepository = Get-PSRepository | Where-Object {$_.Name -eq "PSGallery"}
+            if (!$PSGalleryRepository) {
+                $parameters = @{
+                    Name = "PSGallery"
+                    SourceLocation = "https://www.powershellgallery.com/api/v2"
+                    PublishLocation = "https://www.powershellgallery.com/api/v2"
+                    InstallationPolicy = 'Trusted'
+                }
+                Register-PSRepository @parameters
+            }
+            $module = Find-Module -Name $ModuleName -Repository PSGallery -AllVersions -AllowPrerelease
+                | Where-Object {$_.Version -like "${RequiredVersion}*"}
+            if ($module.Version -match "-preview")
+            {
+                $RequiredVersion = $module.Version
+            }
+            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 -AllowPrereleaseVersions | Out-Null
             Write-Output "Downloaded the package sucessfully"
         }
     }

@@ -54,18 +54,8 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.4'; },
-               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '3.3.0'; }, 
-               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
-               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
-               @{ModuleName = 'Az.IotHub'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.10.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.2'; }, 
-               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.10.0'; })
+               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

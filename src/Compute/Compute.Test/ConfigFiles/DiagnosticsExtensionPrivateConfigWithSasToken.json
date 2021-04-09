@@ -1,5 +1,0 @@
-﻿{
-  "storageAccountName": "[StorageAccountName]",
-  "storageAccountSasToken": "This-is-a-sas-token",
-  "storageAccountEndPoint":  "This-is-an-endpoint"
-}
