@@ -104,11 +104,14 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRuleBypassCache = "Sets the caching behavior to Bypass caching. This prevents requests that contain query strings from being cached.";
         public const string AfdRuleCacheDuration = "The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss";
         public const string AfdRuleCacheExpirationActionObject = "The cache expiration rule action object.";
+        public const string AfdRuleCacheKeyQueryStringActionObject = "Defines the cache-key query string action for the delivery rule.";
         public const string AfdRuleMatchProcessingBehavior = "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.";
         public const string AfdRuleName = "The Azure Front Door rule name.";
         public const string AfdRuleObject = "The Azure Front Door rule object.";
         public const string AfdRuleOverride = "Sets the caching behavior to Override.";
         public const string AfdRuleOrder = "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order.";
+        public const string AfdRuleQueryParameters = "Query parameters to include or exclude (comma separated).";
+        public const string AfdRuleQueryStringBehavior = "Defines the parameters for the cache-key query string action. Accepted values : Include, IncludeAll, Exclude, ExcludeAll";
         public const string AfdRuleSetIds = "The resource ids of the Azure Front Door rule sets.";
         public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
         public const string AfdRuleSetName = "The Azure Front Door rule set name.";

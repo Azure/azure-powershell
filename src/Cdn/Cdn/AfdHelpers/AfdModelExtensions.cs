@@ -185,6 +185,24 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 
         public static PSAfdSecret ToPSAfdSecret(this SdkAfdSecret sdkAfdSecret)
         {
+            if (sdkAfdSecret.Parameters.GetType() == typeof(CustomerCertificateParameters))
+            {
+                CustomerCertificateParameters customerCertificateParameters = (CustomerCertificateParameters)sdkAfdSecret.Parameters;
+
+                return new PSAfdSecret
+                {
+                    Id = sdkAfdSecret.Id,
+                    Name = sdkAfdSecret.Name,
+                    Type = sdkAfdSecret.Type,
+                    ProvisioningState = sdkAfdSecret.ProvisioningState,
+                    CertificateAuthority = customerCertificateParameters.CertificateAuthority,
+                    SecretSource = customerCertificateParameters.SecretSource?.Id,
+                    SecretVersion = customerCertificateParameters.SecretVersion,
+                    SubjectAlternativeNames = (List<string>)customerCertificateParameters.SubjectAlternativeNames,
+                    UseLatestVersion = customerCertificateParameters.UseLatestVersion
+                };
+            }
+
             return new PSAfdSecret
             {
                 Id = sdkAfdSecret.Id,

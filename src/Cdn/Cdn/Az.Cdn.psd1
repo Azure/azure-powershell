@@ -92,18 +92,19 @@ CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 'New-AzCdnProfil
                'New-AzCdnDeliveryRuleAction', 'New-AzCdnDeliveryPolicy', 
                'New-AzCdnOrigin', 'Remove-AzCdnOrigin', 'New-AzCdnOriginGroup', 
                'Get-AzCdnOriginGroup', 'Remove-AzCdnOriginGroup', 'Set-AzCdnOriginGroup',
-               'Get-AzAfdCustomDomain', 'Get-AzAfdEndpoint', 'Get-AzAfdOrigin',
-               'Get-AzAfdOriginGroup', 'Get-AzAfdProfile', 'Get-AzAfdRoute',
-               'Get-AzAfdRuleSet', 'Get-AzAfdRule', 'Get-AzAfdSecret', 'Get-AzAfdSecurityPolicy',
-               'New-AzAfdCustomDomain', 'New-AzAfdEndpoint', 'New-AzAfdOrigin',
-               'New-AzAfdOriginGroup', 'New-AzAfdProfile', 'New-AzAfdRoute',
-               'New-AzAfdRule', 'New-AzAfdRuleCacheExpirationAction', 'New-AzAfdRuleSet',
-               'New-AzAfdSecret', 'New-AzAfdSecurityPolicy',
-               'Remove-AzAfdCustomDomain','Remove-AzAfdEndpoint', 'Remove-AzAfdOriginGroup',
-               'Remove-AzAfdOrigin', 'Remove-AzAfdProfile', 'Remove-AzAfdRoute',
-               'Remove-AzAfdRule', 'Remove-AzAfdRuleSet', 'Remove-AzAfdSecret', 'Remove-AzAfdSecurityPolicy',
-               'Set-AzAfdCustomDomain','Set-AzAfdEndpoint', 'Set-AzAfdOriginGroup', 'Set-AzAfdOrigin',
-               'Set-AzAfdProfile', 'Set-AzAfdRoute', 'Set-AzAfdSecret', 'Set-AzAfdSecurityPolicy'
+
+               'Get-AzFrontDoorCdnCustomDomain', 'Get-AzFrontDoorCdnEndpoint', 'Get-AzFrontDoorCdnOrigin',
+               'Get-AzFrontDoorCdnOriginGroup', 'Get-AzFrontDoorCdnProfile', 'Get-AzFrontDoorCdnRoute',
+               'Get-AzFrontDoorCdnRuleSet', 'Get-AzFrontDoorCdnRule', 'Get-AzFrontDoorCdnSecret', 'Get-AzFrontDoorCdnSecurityPolicy',
+               'New-AzFrontDoorCdnCustomDomain', 'New-AzFrontDoorCdnEndpoint', 'New-AzFrontDoorCdnOrigin',
+               'New-AzFrontDoorCdnOriginGroup', 'New-AzFrontDoorCdnProfile', 'New-AzFrontDoorCdnRoute',
+               'New-AzFrontDoorCdnRule', 'New-AzFrontDoorCdnRuleCacheExpirationAction', 'New-AzFrontDoorCdnRuleCacheKeyQueryStringAction','New-AzFrontDoorCdnRuleSet',
+               'New-AzFrontDoorCdnSecret', 'New-AzFrontDoorCdnSecurityPolicy',
+               'Remove-AzFrontDoorCdnCustomDomain','Remove-AzFrontDoorCdnEndpoint', 'Remove-AzFrontDoorCdnOriginGroup',
+               'Remove-AzFrontDoorCdnOrigin', 'Remove-AzFrontDoorCdnProfile', 'Remove-AzFrontDoorCdnRoute',
+               'Remove-AzFrontDoorCdnRule', 'Remove-AzFrontDoorCdnRuleSet', 'Remove-AzFrontDoorCdnSecret', 'Remove-AzFrontDoorCdnSecurityPolicy',
+               'Set-AzFrontDoorCdnCustomDomain','Set-AzFrontDoorCdnEndpoint', 'Set-AzFrontDoorCdnOriginGroup', 'Set-AzFrontDoorCdnOrigin',
+               'Set-AzFrontDoorCdnProfile', 'Set-AzFrontDoorCdnRoute', 'Set-AzFrontDoorCdnSecret', 'Set-AzFrontDoorCdnSecurityPolicy'
               
 # Variables to export from this module
 # VariablesToExport = @()
