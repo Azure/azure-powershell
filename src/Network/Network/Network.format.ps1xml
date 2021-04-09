@@ -111,10 +111,6 @@
                 <PropertyName>DhcpOptionsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FlowTimeoutInMinutes</Label>
-                <PropertyName>FlowTimeoutInMinutesText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
