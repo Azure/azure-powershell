@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to acquire token for tenant &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Unable to acquire token for tenant &apos;{0}&apos; with error &apos;{1}&apos;.
         /// </summary>
         internal static string UnableToAqcuireToken {
             get {

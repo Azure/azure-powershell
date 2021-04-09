@@ -381,5 +381,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGZRSStorageAccountSupport");
         }
+        public void TestNewAzVMDefaultingSize()
+        {
+            TestRunner.RunTestScript("Test-NewAzVMDefaultingSize");
+        }
     }
 }
