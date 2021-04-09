@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             };
             var codeCredential = new DeviceCodeCredential(options);
 
+            TracingAdapter.Information($"{DateTime.Now:T} - [DeviceCodeAuthenticator] Calling DeviceCodeCredential.AuthenticateAsync - TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'");
             var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);
             return MsalAccessToken.GetAccessTokenAsync(
                 authTask,

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.10.0
 * Added Sql Vulnerability Assessment cmdlets for  IAAS: 
     `Get-AzSecuritySqlVulnerabilityAssessmentScanRecord`
     `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`

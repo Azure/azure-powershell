@@ -24,7 +24,7 @@ PS C:\> $extension = New-AzCloudServiceExtensionObject -Name "GenevaExtension" -
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceextensionobject
 #>
 function New-AzCloudServiceExtensionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
