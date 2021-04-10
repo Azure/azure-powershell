@@ -1257,7 +1257,7 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
     $vnetGatewayConfigName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = Get-ProviderLocation $resourceTypeParent 
     
     try 
      {
@@ -1305,10 +1305,8 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
       Assert-AreEqual "Succeeded" $updatedNatRule.ProvisioningState
 
       # Delete virtualNetworkGatewayNatRules
-      $job = Remove-AzVirtualNetworkGatewayNatRule -ResourceGroupName $rgname -ParentResourceName $rname -Name natRule1 -PassThru -Force -AsJob
-	  $job | Wait-Job
-	  $delete = $job | Receive-Job
-      Assert-AreEqual true $delete
+      $delete = Remove-AzVirtualNetworkGatewayNatRule -ResourceGroupName $rgname -ParentResourceName $rname -Name natRule1 -PassThru -Force
+      Assert-AreEqual $True $delete
 
       # Delete virtualNetworkGateway
       $job = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob

@@ -403,7 +403,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/connections"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
     try 
      {
       # Create the resource group
@@ -422,7 +422,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       $natRule1 = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
       $natRule2 = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -Type "Static" -Mode "EgressSnat" -InternalMapping @("20.0.0.0/16") -ExternalMapping @("50.0.0.0/16")
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -NaRule $natRule1,$natRule2
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -NatRule $natRule1,$natRule2
       $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $vnetGateway.Name $actual.Name
@@ -440,8 +440,8 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $localnetGateway.Location = $location
 
       # Get VirtualNetworkGatewayNatRules
-      $natRule1 = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -ResourceGroupName $rgname -ParentResourceName $rname
-      $natRule2 = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -ResourceGroupName $rgname -ParentResourceName $rname
+      $natRule1 = Get-AzVirtualNetworkGatewayNatRule -Name "natRule1" -ResourceGroupName $rgname -ParentResourceName $rname
+      $natRule2 = Get-AzVirtualNetworkGatewayNatRule -Name "natRule2" -ResourceGroupName $rgname -ParentResourceName $rname
 
       # Create & Get VirtualNetworkGatewayConnection
       $actual = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -ConnectionProtocol IKEv1 -ConnectionMode "Default" -IngressNatRule $natRule1 -EgressNatRule $natRule2
