@@ -225,5 +225,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccountAllowSharedKeyAccess");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
+        }        
     }
 }

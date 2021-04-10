@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
             this.EnableNfsV3 = storageAccount.EnableNfsV3;
+            this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
 
         }
@@ -140,6 +141,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? AllowSharedKeyAccess { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
@@ -206,5 +209,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new Sku(Name, Tier);
         }
+    }
+
+    public class PSExtendedLocation
+    {
+        public PSExtendedLocation()
+        { }
+
+        public PSExtendedLocation(ExtendedLocation extendedLocation)
+        {
+            this.Name = extendedLocation.Name;
+            this.Type = extendedLocation.Type;
+        }
+
+        public string Name { get; set; }
+        public string Type { get; set; }
     }
 }

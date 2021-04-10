@@ -374,6 +374,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? allowSharedKeyAccess = null;
 
+        [Parameter(Mandatory = false, HelpMessage = "Set the extended location name for EdgeZone. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -511,6 +515,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (allowSharedKeyAccess != null)
             {
                 createParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
+            }
+            if(this.EdgeZone != null)
+            {
+                createParameters.ExtendedLocation = new ExtendedLocation()
+                {
+                    Type = ExtendedLocationTypes.EdgeZone,
+                    Name = this.EdgeZone
+                };
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
