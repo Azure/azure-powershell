@@ -143,16 +143,30 @@ function New-AzCloudService {
 
         # extract csdef/cscfg 
 
+        if (((Get-azcloudservice -resourcegroupname $ResourceGroupName).name).contains($name)){
+            throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
+        }
+
         if (-not (Test-Path $ConfigurationFile))  
         {
-            Write-Error "Cannot find file $ConfigurationFile. Please make sure it exists!"
-            exit 1
+            throw "Cannot find file: " + $ConfigurationFile 
         }
         if (-not (Test-Path $DefinitionFile))
         {
-            Write-Error "Cannot find file $DefinitionFile. Please make sure it exists!"
-            exit 1
+            throw "Cannot find file: " + $DefinitionFile
         }
+        if ($PSBoundParameters.ContainsKey("PackageFile")){
+            if (-not (Test-Path $PackageFile))
+            {
+                throw "Cannot find file: " + $PackageFile
+            }
+            $extn = [IO.Path]::GetExtension($PackageFile)
+            if ($extn -ne ".cspkg" )
+            {
+                throw "The Definition File must have the file extension '.cspkg'"
+            }
+        }
+
         [xml]$csdef = Get-Content -Path $DefinitionFile
         [xml]$cscfg = Get-Content -Path $ConfigurationFile
         $Configuration = Get-Content -Path $ConfigurationFile | Out-String
@@ -161,13 +175,20 @@ function New-AzCloudService {
         $passMemory = @{}
         validation $cscfg $csdef $PSBoundParameters ([ref]$passMemory)
 
-        
         # if -storageaccount is given, upload to packageUrl to blob 
         if ($PSBoundParameters.ContainsKey("StorageAccount")) 
         {
             Write-Host("Uploading the csdef to a blob in the Storage Account.")
             $storageAccountObj = Get-AzStorageAccount -resourceGroupName $ResourceGroupName -name $storageAccount
-            $container = New-AzStorageContainer -Name ($name.tolower()+'-container') -Context $storageAccountObj.Context -Permission Blob 
+            $containerName = "cloudServiceContainer"
+            # check if container exists
+            if (((get-azstorageContainer -context $storageAccountObj.context).name).contains($containerName)){
+                # use existing
+                $container = Get-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context
+            }else{
+                # create new
+                $container = New-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context -Permission Blob  
+            }
             
             # Upload your Cloud Service package (cspkg) to the storage account.
             $tokenStartTime = Get-Date 
@@ -269,6 +290,7 @@ function New-AzCloudService {
         # If these variants should call back to the original cmdlet, use splatting to pass the existing set of parameters
         Write-Host("Creating the Cloud Service resource.")
         Az.CloudService\New-AzCloudService @PSBoundParameters
+        #>
     }
 
 }
@@ -290,29 +312,46 @@ function validation
         [ref]$passMemory
     )
 
-    Write-Host("Checking validations on the cscfg and csdef files.")
+    Write-Host("Checking validations on the .cscfg and .csdef files.")
     # Network configuration missing in configuration
     If ( $null -eq $cscfg.ServiceConfiguration.NetworkConfiguration -or $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.count -eq 0 -or $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress.Subnets.count -eq 0)
     {
-        Write-Error("The network configuration is missing from the configuration file. Please add the network configuration to the configuration file.")
-        exit 1
+        throw "The network configuration is missing from the configuration file. Please add the network configuration to the configuration file."
     }
 
     # CS definition and configuration match
-    If ($cscfg.ServiceConfiguration.Role[0].Name -ne $csdef.ServiceDefinition.($cscfg.ServiceConfiguration.Role[0].Name).name) 
-    {
-        Write-Error("The CSCFG did not match the CSDEF. More details: No role named '" + ($cscfg.ServiceConfiguration.Role[0].Name) + "' found in the service definition file. For more details please refer to : https://aka.ms/cses-cscfg-csdef")
-        exit 1
+    if ($cscfg.ServiceConfiguration.Role.Count -eq 1){
+        $csCfgRoleNames = @($cscfg.ServiceConfiguration.Role.name)
+    }else{
+        $csCfgRoleNames = $cscfg.ServiceConfiguration.Role.name
     }
-    If ($cscfg.ServiceConfiguration.Role.count -eq 2 -and $cscfg.ServiceConfiguration.Role[1].Name -ne $csdef.ServiceDefinition.($cscfg.ServiceConfiguration.Role[1].Name).name)
-    {
-        Write-Error("The CSCFG did not match the CSDEF. More details: No role named '" + ($cscfg.ServiceConfiguration.Role[1].Name) + "' found in the service definition file. For more details please refer to : https://aka.ms/cses-cscfg-csdef")
-        exit 1
+
+    $csDefRoleNames = @()
+    if ($csdef.ServiceDefinition.WebRole.Count -eq 1){
+        $csDefRoleNames = $csDefRoleNames + ($csdef.ServiceDefinition.WebRole.name)
+    }else{
+        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WebRole.name
+    }
+    if ($csdef.ServiceDefinition.WorkerRole.Count -eq 1){
+        $csDefRoleNames = $csDefRoleNames + ($csdef.ServiceDefinition.WorkerRole.name)
+    }else{
+        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.name
+    }
+
+    foreach ($aRoleName in $csCfgRoleNames){
+        if (-not $csDefRoleNames.contains($aRoleName)){
+            throw "The CSCFG did not match the CSDEF. More details: No role named '" + $aRoleName + "' found in the service definition file. For more details please refer to : https://aka.ms/cses-cscfg-csdef"
+        }
+    }
+    foreach ($aRoleName in $csDefRoleNames){
+        if (-not $csCfgRoleNames.contains($aRoleName)){
+            throw "The CSCFG did not match the CSDEF. More details: No role named '" + $aRoleName + "' found in the service configuration file. For more details please refer to : https://aka.ms/cses-cscfg-csdef"
+        }
     }
 
     $certList = @()
-    foreach ($role in $cscfg.ServiceConfiguration.Role){
-        $defCerts = ($csdef.ServiceDefinition.childnodes | where-object {$_.name.tolower() -eq $role.name.tolower()}).Certificates.Certificate
+    foreach ($cfgRoleName in $csCfgRoleNames){
+        $defCerts = ($csdef.ServiceDefinition.childnodes | where-object {$_.name.tolower() -eq $cfgRoleName.tolower()}).Certificates.Certificate
         If ( 1 -eq $defCerts.count ){
             $defCerts = @($defCerts)
         }
@@ -320,8 +359,7 @@ function validation
             if ( "Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" -ne $cert.Name){
                 # CS definition and configuration match
                 if ( -not $defCerts.name.tolower().Contains($cert.Name.tolower())){
-                    Write-Error("The service definition file does not provide a certificate definition for certificate '" + $cert.name + "' for role '"+ $role.name +"'. For more details please refer to : https://aka.ms/cses-cscfg-csdef")
-                    exit 1
+                    throw "The service definition file does not provide a certificate definition for certificate '" + $cert.name + "' for role '"+ $role.name +"'. For more details please refer to : https://aka.ms/cses-cscfg-csdef"
                 }
                 $certList = $certList + $cert
             }
@@ -331,8 +369,7 @@ function validation
     # Existing Virtual Network Location Mismatch
     $vnets = Get-AzVirtualNetwork -name $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name
     If (0 -eq $vnets.count){
-        Write-Error("Could not find the provided Virtual Network: '" + $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name +"'" )
-        exit 1
+        throw "Could not find the provided Virtual Network: '" + $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name +"'"
     }
 
     $vnetFound = $false
@@ -343,8 +380,7 @@ function validation
         }
     }
     if (-not $vnetFound){
-        Write-Error("The location of the Cloud Service needs to match the location of the virtual network.")
-        exit 1
+        throw "The location of the Cloud Service needs to match the location of the virtual network."
     }
 
     If (1 -eq $theVNet.subnets.count){
@@ -357,8 +393,7 @@ function validation
     # Existing Virtual Network Missing Subnets  
     foreach ($instaceAddress in $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress) {
         if (-not ($vnetSubnets.name.tolower()).contains($instaceAddress.subnets.subnet.Name.tolower())){
-            Write-Error("Subnet defined in the CSCFG file: '" + $instaceAddress.subnets.subnet.Name + "' could not be found in the Virtual Network: '" + $theVNet.name + "'. Please add the subnet to the virtual network.")
-            exit 1
+            throw "Subnet defined in the CSCFG file: '" + $instaceAddress.subnets.subnet.Name + "' could not be found in the Virtual Network: '" + $theVNet.name + "'. Please add the subnet to the virtual network."
         }
     }
 
@@ -381,8 +416,7 @@ function validation
         })
 
         If ($subnetBinary.substring(0,$maskNumber)  -ne $LBIPbinary.substring(0,$maskNumber)){
-            Write-Error("The internal load balancer subnet '" + $InternalLBFEConfig.subnet + "' does not contain the private IP " + $LBIP + ". Update the subnet within the Virtual Network to include the Private IP.")
-            exit 1
+            throw "The internal load balancer subnet '" + $InternalLBFEConfig.subnet + "' does not contain the private IP " + $LBIP + ". Update the subnet within the Virtual Network to include the Private IP."
         }
 
         $passMemory.Add("theSubnet", $theSubnet)
@@ -393,8 +427,7 @@ function validation
         $ipObjs = Get-AzPublicIpAddress -name $ipname 
 
         If (0 -eq $ipObjs.count){
-            Write-Error("Public IP: '" + $Ipname + "' was not found. Please check your CSCFG file and provide an existing Public IP.")
-            exit 1
+            throw "Public IP: '" + $Ipname + "' was not found. Please check your CSCFG file and provide an existing Public IP."
         }
         
         # Existing Reserved (Static) IP Location Mismatch
@@ -406,33 +439,28 @@ function validation
             }
         }
         if (-not $ipFound){
-            Write-Error("The location for the cloud service ("+ $location +") and public IP address ("+ $ipObjs[0].location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue.")
-            exit 1
+            throw "The location for the cloud service ("+ $location +") and public IP address ("+ $ipObjs[0].location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
         }
 
 
         # Existing Reserved (Static) IP In Use
         if ($null -ne $theIPObj.IPConfiguration){
-            Write-Error("The Public IP provided in the CSCFG: '" + $theIPObj.name + "' is currently in use by another resource.")
-            exit 1 
+            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' is currently in use by another resource."
         }
 
         # Existing Reserved (Static) IP Incorrect Sku
         if ("Basic" -ne $theIPObj.Sku.Name){
-            Write-Error("The Public IP provided in the CSCFG: '" + $theIPObj.name + "' must have a 'Basic' SKU.")
-            Exit 1
+            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' must have a 'Basic' SKU."
         }
 
         # Existing Reserved (Static) IP Incorrect Allocation
         if ("Static" -ne $theIPObj.PublicIPAllocationMethod){
-            Write-Error("The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed.")
-            exit 1
+            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed."
         }
 
         # Existing Reserved (Static) IP Address Incorrect Version
         if ("IPv4" -ne $theIPObj.PublicIPAddressVersion){
-            Write-Error("The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses IPv6 and an IPv4 public IP address is needed.")
-            exit 1
+            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses IPv6 and an IPv4 public IP address is needed."
         }
     }
 
@@ -447,14 +475,12 @@ function validation
             }
         }
         If (-not $keyvaultFound){
-            Write-Error("No KeyVault named '" + $keyvaultname + "' was found in " + $Location)
-            exit 1
+            throw "No KeyVault named '" + $keyvaultname + "' was found in " + $Location
         }
 
         # Keyvault has virtual machine deployment permission and user has list and get permissions
         If (-not $theKV.EnabledForDeployment){
-            Write-Error("The Key vault is not enabled for deployment. The Key Vault must have 'Azure Virtual Machines for deployment' access enabled. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname + " -ResourceGroupName " +$resourcegroupname +" -EnabledForDeployment")
-            exit 1
+            throw "The Key vault is not enabled for deployment. The Key Vault must have 'Azure Virtual Machines for deployment' access enabled. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname + " -ResourceGroupName " +$resourcegroupname +" -EnabledForDeployment"
         }
 
         $PolicyFound = $false
@@ -467,8 +493,7 @@ function validation
         }
 
         If (-not $PolicyFound){
-            Write-Error("The certificates must have 'Get' and 'List' permissions enabled on the Key Vault. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname +" -ResourceGroupName " + $resourcegroupname + " -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete ")
-            exit 1
+            throw "The certificates must have 'Get' and 'List' permissions enabled on the Key Vault. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname +" -ResourceGroupName " + $resourcegroupname + " -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete "
         }
 
         # All certificates are found in the keyvault
@@ -479,7 +504,7 @@ function validation
         }
         foreach ($cert in $certList){
             if (-not $certsThumbprints.Contains($cert.thumbprint)){
-                Write-Error("The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $cert.name + " " + $cert.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv")
+                throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $cert.name + " " + $cert.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
             }
         }
     }
