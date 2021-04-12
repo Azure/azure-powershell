@@ -24,16 +24,7 @@ Description for Gets the functions of a static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzStaticWebAppFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04
 
 {{ Add output here }}
 ```
@@ -111,7 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteFunctionOverviewArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 
 ## NOTES
 

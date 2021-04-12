@@ -19,20 +19,6 @@ Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-Subscrip
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Reset
-```
-Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String>
- -ResetPropertiesEnvelope <IStaticSiteResetPropertiesArmResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResetViaIdentity
-```
-Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity>
- -ResetPropertiesEnvelope <IStaticSiteResetPropertiesArmResource> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### ResetViaIdentityExpanded
 ```
 Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity> [-Kind <String>] [-RepositoryToken <String>]
@@ -46,7 +32,7 @@ Description for Resets the api key for an existing static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName lucas-rg-test -Name staticweb-portal01
 
 {{ Add output here }}
 ```
@@ -85,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: ResetViaIdentity, ResetViaIdentityExpanded
+Parameter Sets: ResetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -100,7 +86,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -115,7 +101,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -145,7 +131,7 @@ The token which proves admin privileges to the repository.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -155,28 +141,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResetPropertiesEnvelope
-Static Site Reset Properties ARM resource.
-To construct, see NOTES section for RESETPROPERTIESENVELOPE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteResetPropertiesArmResource
-Parameter Sets: Reset, ResetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: True
@@ -191,7 +161,7 @@ Determines whether the repository should be updated with the new properties.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ResetExpanded, ResetViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -208,7 +178,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset, ResetExpanded
+Parameter Sets: ResetExpanded
 Aliases:
 
 Required: False
@@ -254,8 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteResetPropertiesArmResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 
 ## OUTPUTS
@@ -273,19 +241,16 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
-
-RESETPROPERTIESENVELOPE <IStaticSiteResetPropertiesArmResource>: Static Site Reset Properties ARM resource.
-  - `[Kind <String>]`: Kind of resource.
-  - `[RepositoryToken <String>]`: The token which proves admin privileges to the repository.
-  - `[ShouldUpdateRepository <Boolean?>]`: Determines whether the repository should be updated with the new properties.
 
 ## RELATED LINKS
 

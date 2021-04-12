@@ -15,13 +15,14 @@ Description for Deletes a custom domain.
 ### Delete (Default)
 ```
 Remove-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +49,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -104,6 +120,21 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,11 +241,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.

@@ -228,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource
 
 ## NOTES
 
@@ -241,11 +241,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.

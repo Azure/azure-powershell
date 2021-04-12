@@ -14,17 +14,26 @@ Microsoft Azure PowerShell: Websites cmdlets
 ### [Get-AzStaticWebApp](Get-AzStaticWebApp.md)
 Description for Gets all static sites in the specified resource group.
 
+### [Get-AzStaticWebAppAppSetting](Get-AzStaticWebAppAppSetting.md)
+Description for Gets the application settings of a static site.
+
 ### [Get-AzStaticWebAppBuild](Get-AzStaticWebAppBuild.md)
 Description for Gets all static site builds for a particular static site.
+
+### [Get-AzStaticWebAppBuildAppSetting](Get-AzStaticWebAppBuildAppSetting.md)
+Description for Gets the application settings of a static site build.
 
 ### [Get-AzStaticWebAppBuildFunction](Get-AzStaticWebAppBuildFunction.md)
 Description for Gets the functions of a particular static site build.
 
 ### [Get-AzStaticWebAppBuildFunctionAppSetting](Get-AzStaticWebAppBuildFunctionAppSetting.md)
-Description for Gets the application settings of a static site.
+Description for Gets the application settings of a static site build.
+
+### [Get-AzStaticWebAppConfiguredRole](Get-AzStaticWebAppConfiguredRole.md)
+Description for Lists the roles configured for the static site.
 
 ### [Get-AzStaticWebAppCustomDomain](Get-AzStaticWebAppCustomDomain.md)
-Description for Gets all static site custom domains for a particular static site.
+Description for Gets an existing custom domain for a particular static site.
 
 ### [Get-AzStaticWebAppFunction](Get-AzStaticWebAppFunction.md)
 Description for Gets the functions of a static site.
@@ -38,8 +47,23 @@ Description for Lists the secrets for an existing static site.
 ### [Get-AzStaticWebAppUser](Get-AzStaticWebAppUser.md)
 Description for Gets the list of users of a static site.
 
+### [Get-AzStaticWebAppUserProvidedFunctionApp](Get-AzStaticWebAppUserProvidedFunctionApp.md)
+Description for Gets the details of the user provided function apps registered with a static site build
+
+### [Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite](Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite.md)
+Description for Detach the user provided function app from the static site
+
+### [Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild](Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild.md)
+Description for Detach the user provided function app from the static site build
+
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.
+
+### [New-AzStaticWebAppAppSetting](New-AzStaticWebAppAppSetting.md)
+Description for Creates or updates the app settings of a static site.
+
+### [New-AzStaticWebAppBuildAppSetting](New-AzStaticWebAppBuildAppSetting.md)
+Description for Creates or updates the app settings of a static site build.
 
 ### [New-AzStaticWebAppBuildFunctionAppSetting](New-AzStaticWebAppBuildFunctionAppSetting.md)
 Description for Creates or updates the function app settings of a static site build.
@@ -55,6 +79,12 @@ Description for Generates a preview workflow file for the static site
 
 ### [New-AzStaticWebAppUserRoleInvitationLink](New-AzStaticWebAppUserRoleInvitationLink.md)
 Description for Creates an invitation link for a user with the role
+
+### [New-AzStaticWebAppZipDeployment](New-AzStaticWebAppZipDeployment.md)
+Description for Deploys zipped content to a static site.
+
+### [Register-AzStaticWebAppUserProvidedFunctionApp](Register-AzStaticWebAppUserProvidedFunctionApp.md)
+Description for Register a user provided function app with a static site build
 
 ### [Remove-AzStaticWebApp](Remove-AzStaticWebApp.md)
 Description for Deletes a static site.

@@ -24,18 +24,11 @@ Description for Lists the secrets for an existing static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppSecret -ResourceGroupName lucas-rg-test -Name staticweb-portal04
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name    Type
+---- ----    ----
+     secrets Microsoft.Web/staticSites/secrets
 ```
 
 {{ Add description here }}
@@ -142,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 
 ## NOTES
 

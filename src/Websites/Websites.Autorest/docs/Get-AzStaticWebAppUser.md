@@ -24,18 +24,11 @@ Description for Gets the list of users of a static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppUser -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -Authprovider all
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name                             Type
+---- ----                             ----
+     c387198f0a7f44748184c9da92cbe241 Microsoft.Web/staticSites/users
 ```
 
 {{ Add description here }}
@@ -157,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserArmResource
 
 ## NOTES
 

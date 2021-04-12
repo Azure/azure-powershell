@@ -1,17 +1,15 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal01 -EnvironmentName '2'
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal01 -EnvironmentName '3' | Remove-AzStaticWebAppBuild
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

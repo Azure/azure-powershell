@@ -25,9 +25,11 @@ Description for Creates an invitation link for a user with the role
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebAppUserRoleInvitationLink -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -Domain 'blue-wave-0e445fe0f.azurestaticapps.net' -Provider 'github' -UserDetail 'LucasYao93' -Role 'reader' -NumHoursToExpiration 1
 
-{{ Add output here }}
+Kind Name                                 Type
+---- ----                                 ----
+     078284a9-ce47-4aa5-b54c-2e55a67dd53c Microsoft.Web/staticSites/invitations
 ```
 
 {{ Add description here }}
@@ -233,7 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteUserInvitationResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteUserInvitationResponseResource
 
 ## NOTES
 

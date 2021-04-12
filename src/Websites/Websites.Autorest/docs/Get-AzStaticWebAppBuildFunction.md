@@ -13,7 +13,7 @@ Description for Gets the functions of a particular static site build.
 ## SYNTAX
 
 ```
-Get-AzStaticWebAppBuildFunction -Name <String> -PrId <String> -ResourceGroupName <String>
+Get-AzStaticWebAppBuildFunction -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -24,18 +24,11 @@ Description for Gets the functions of a particular static site build.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name            Type
+---- ----            ----
+     WeatherForecast Microsoft.Web/staticSites/builds/functions
 ```
 
 {{ Add description here }}
@@ -57,8 +50,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the static site.
+### -EnvironmentName
+The stage site identifier.
 
 ```yaml
 Type: System.String
@@ -72,8 +65,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrId
-The stage site identifier.
+### -Name
+Name of the static site.
 
 ```yaml
 Type: System.String
@@ -126,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteFunctionOverviewArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteFunctionOverviewArmResource
 
 ## NOTES
 

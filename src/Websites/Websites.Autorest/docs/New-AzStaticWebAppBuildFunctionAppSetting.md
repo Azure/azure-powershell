@@ -13,7 +13,7 @@ Description for Creates or updates the function app settings of a static site bu
 ## SYNTAX
 
 ```
-New-AzStaticWebAppBuildFunctionAppSetting -Name <String> -PrId <String> -ResourceGroupName <String>
+New-AzStaticWebAppBuildFunctionAppSetting -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -25,18 +25,11 @@ Description for Creates or updates the function app settings of a static site bu
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default' -Property @{'functionapp01' = 'value01'; 'functionapp02' = 'value02' }
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/builds/config
 ```
 
 {{ Add description here }}
@@ -52,6 +45,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnvironmentName
+The stage site identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,21 +83,6 @@ Accept wildcard characters: False
 
 ### -Name
 Name of the static site.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrId
-The stage site identifier.
 
 ```yaml
 Type: System.String
@@ -188,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 
 ## NOTES
 

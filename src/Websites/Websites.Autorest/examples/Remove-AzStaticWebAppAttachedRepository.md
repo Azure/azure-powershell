@@ -1,8 +1,7 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStaticWebAppAttachedRepository -ResourceGroupName lucas-rg-test -Name staticweb-portal01
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

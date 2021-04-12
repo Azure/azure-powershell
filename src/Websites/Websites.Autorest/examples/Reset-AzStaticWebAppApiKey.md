@@ -1,17 +1,15 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName lucas-rg-test -Name staticweb-portal01
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

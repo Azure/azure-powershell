@@ -34,11 +34,6 @@ Get-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 Get-AzStaticWebApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity1
-```
-Get-AzStaticWebApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Description for Gets all static sites in the specified resource group.
 
@@ -46,14 +41,60 @@ Description for Gets all static sites in the specified resource group.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebApp
 
-{{ Add output here }}
+Kind Location   Name               Type
+---- --------   ----               ----
+     Central US staticweb-portal04 Microsoft.Web/staticSites
+     East US 2  staticweb-portal02 Microsoft.Web/staticSites
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
+```powershell
+PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test
+
+Kind Location   Name               Type
+---- --------   ----               ----
+     Central US staticweb-portal04 Microsoft.Web/staticSites
+     East US 2  staticweb-portal02 Microsoft.Web/staticSites
+```
+
+{{ Add description here }}
+
+### Example 3: {{ Add title here }}
+```powershell
+PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal04
+
+Kind Location   Name               Type
+---- --------   ----               ----
+     Central US staticweb-portal04 Microsoft.Web/staticSites
+```
+
+{{ Add description here }}
+
+{
+  "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal04",
+  "name": "staticweb-portal04",
+  "location": "Central US",
+  "type": "Microsoft.Web/staticSites",
+  "properties": {
+    "defaultHostname": "wonderful-desert-0d05b1d10.azurestaticapps.net",
+    "repositoryUrl": "https://github.com/LucasYao93/blazor-starter",
+    "branch": "lucas/dev",
+    "provider": "GitHub",
+    "customDomains": [ ],
+    "contentDistributionEndpoint": "https://content-dm1.infrastructure.azurestaticapps.net",
+    "keyVaultReferenceIdentity": "SystemAssigned"
+  },
+  "sku": {
+    "name": "Free",
+    "tier": "Free"
+  }
+}
+
+### Example 4: {{ Add title here }}
 ```powershell
 PS C:\> {{ Add code here }}
 
@@ -85,7 +126,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -151,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 
 ## NOTES
 
@@ -164,11 +205,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.

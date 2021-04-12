@@ -14,9 +14,11 @@ Description for Generates a preview workflow file for the static site
 
 ### PreviewExpanded (Default)
 ```
-New-AzStaticWebAppPreviewWorkflow -Location <String> [-SubscriptionId <String>] [-ApiLocation <String>]
- [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>] [-Kind <String>]
- [-RepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppPreviewWorkflow -Location <String> [-SubscriptionId <String>] [-ApiBuildCommand <String>]
+ [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>]
+ [-Branch <String>] [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### Preview
@@ -35,9 +37,11 @@ New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity>
 
 ### PreviewViaIdentityExpanded
 ```
-New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity> [-ApiLocation <String>]
- [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>] [-Kind <String>]
- [-RepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppPreviewWorkflow -InputObject <IWebsitesIdentity> [-ApiBuildCommand <String>]
+ [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>]
+ [-Branch <String>] [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +69,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ApiBuildCommand
+A custom command to run during deployment of the Azure Functions API application.
+
+```yaml
+Type: System.String
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApiLocation
 The path to the api code within the repository.
 
@@ -81,7 +100,22 @@ Accept wildcard characters: False
 ```
 
 ### -AppArtifactLocation
-The path of the app artifacts after building.
+Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
+
+```yaml
+Type: System.String
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppBuildCommand
+A custom command to run during deployment of the static content application.
 
 ```yaml
 Type: System.String
@@ -140,6 +174,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GithubActionSecretNameOverride
+Github Action secret name override.
+
+```yaml
+Type: System.String
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -186,6 +235,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputLocation
+The output path of the app after building.
+
+```yaml
+Type: System.String
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RepositoryUrl
 URL for the repository of the static site.
 
@@ -201,12 +265,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipGithubActionWorkflowGeneration
+Skip Github Action workflow generation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: PreviewExpanded, PreviewViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StaticSitesWorkflowPreviewRequest
 Request entity for previewing the Static Site workflow
 To construct, see NOTES section for STATICSITESWORKFLOWPREVIEWREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSitesWorkflowPreviewRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSitesWorkflowPreviewRequest
 Parameter Sets: Preview, PreviewViaIdentity
 Aliases:
 
@@ -270,13 +349,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSitesWorkflowPreviewRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSitesWorkflowPreviewRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSitesWorkflowPreview
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSitesWorkflowPreview
 
 ## NOTES
 
@@ -289,11 +368,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
@@ -301,9 +382,14 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
 STATICSITESWORKFLOWPREVIEWREQUEST <IStaticSitesWorkflowPreviewRequest>: Request entity for previewing the Static Site workflow
   - `[Kind <String>]`: Kind of resource.
   - `[Branch <String>]`: The target branch in the repository.
+  - `[BuildPropertyApiBuildCommand <String>]`: A custom command to run during deployment of the Azure Functions API application.
   - `[BuildPropertyApiLocation <String>]`: The path to the api code within the repository.
-  - `[BuildPropertyAppArtifactLocation <String>]`: The path of the app artifacts after building.
+  - `[BuildPropertyAppArtifactLocation <String>]`: Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
+  - `[BuildPropertyAppBuildCommand <String>]`: A custom command to run during deployment of the static content application.
   - `[BuildPropertyAppLocation <String>]`: The path to the app code within the repository.
+  - `[BuildPropertyGithubActionSecretNameOverride <String>]`: Github Action secret name override.
+  - `[BuildPropertyOutputLocation <String>]`: The output path of the app after building.
+  - `[BuildPropertySkipGithubActionWorkflowGeneration <Boolean?>]`: Skip Github Action workflow generation.
   - `[RepositoryUrl <String>]`: URL for the repository of the static site.
 
 ## RELATED LINKS

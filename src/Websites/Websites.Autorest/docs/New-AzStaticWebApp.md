@@ -14,12 +14,18 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ```
 New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>]
- [-Capacity <Int32>] [-Kind <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>]
- [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityMaximum <Int32>]
- [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>] [-SkuFamily <String>]
- [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
+ [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>] [-Capacity <Int32>]
+ [-GithubActionSecretNameOverride <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
+ [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityElasticMaximum <Int32>]
+ [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>]
+ [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
+ [-Tag <Hashtable>] [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate]
+ [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
+ [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,9 +35,11 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'
 
-{{ Add output here }}
+Kind Location  Name             Type
+---- --------  ----             ----
+     East US 2 staticweb-pwsh01 Microsoft.Web/staticSites
 ```
 
 {{ Add description here }}
@@ -46,6 +54,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -ApiBuildCommand
+A custom command to run during deployment of the Azure Functions API application.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApiLocation
 The path to the api code within the repository.
@@ -63,7 +86,22 @@ Accept wildcard characters: False
 ```
 
 ### -AppArtifactLocation
-The path of the app artifacts after building.
+Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppBuildCommand
+A custom command to run during deployment of the static content application.
 
 ```yaml
 Type: System.String
@@ -82,6 +120,21 @@ The path to the app code within the repository.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -137,6 +190,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GithubActionSecretNameOverride
+Github Action secret name override.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of managed service identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+The list of user assigned identities associated with the resource.
+The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Kind of resource.
 
@@ -176,6 +275,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputLocation
+The output path of the app after building.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -228,12 +357,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipGithubActionWorkflowGeneration
+Skip Github Action workflow generation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkuCapability
 Capabilities of the SKU, e.g., is traffic manager enabled
 To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.ICapability[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability[]
 Parameter Sets: (All)
 Aliases:
 
@@ -246,6 +390,21 @@ Accept wildcard characters: False
 
 ### -SkuCapacityDefault
 Default number of workers for this App Service plan SKU.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuCapacityElasticMaximum
+Maximum number of Elastic workers for this App Service plan SKU.
 
 ```yaml
 Type: System.Int32
@@ -411,6 +570,84 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TemplatePropertyDescription
+Description of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyIsPrivate
+Whether or not the newly generated repository is a private repository.
+Defaults to false (i.e.
+public).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyOwner
+Owner of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyRepositoryName
+Name of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyTemplateRepositoryUrl
+URL of the template repository.
+The newly generated repository will be based on this one.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -449,7 +686,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 
 ## NOTES
 

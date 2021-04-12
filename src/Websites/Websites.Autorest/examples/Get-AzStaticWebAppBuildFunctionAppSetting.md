@@ -1,8 +1,10 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
-{{ Add output here }}
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/builds/config/functionappsettings
 ```
 
 {{ Add description here }}

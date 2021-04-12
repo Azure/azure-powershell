@@ -1,0 +1,43 @@
+{
+  "Remove-AzStaticWebAppUser+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal01/authproviders/github/users/fa4eba85fa9f4a42b5300dc4c7bb45aa?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal01/authproviders/github/users/fa4eba85fa9f4a42b5300dc4c7bb45aa?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "571b1eaf-4b9e-4dd5-8544-f7c01134cadd" ],
+        "CommandName": [ "Remove-AzStaticWebAppUser" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppUser_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "943297db-36ed-454f-906a-e0f58f459856" ],
+        "x-ms-correlation-request-id": [ "943297db-36ed-454f-906a-e0f58f459856" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210412T084426Z:943297db-36ed-454f-906a-e0f58f459856" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 12 Apr 2021 08:44:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

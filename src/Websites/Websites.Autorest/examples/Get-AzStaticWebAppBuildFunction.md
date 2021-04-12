@@ -1,18 +1,12 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
-{{ Add output here }}
+Kind Name            Type
+---- ----            ----
+     WeatherForecast Microsoft.Web/staticSites/builds/functions
 ```
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

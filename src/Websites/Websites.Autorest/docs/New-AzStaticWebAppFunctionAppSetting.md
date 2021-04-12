@@ -25,18 +25,11 @@ Description for Creates or updates the function app settings of a static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebAppFunctionAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01  -Property @{'function01' = 'value01'; 'function02' = 'value02' }
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/config
 ```
 
 {{ Add description here }}
@@ -173,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStringDictionary
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 
 ## NOTES
 

@@ -20,16 +20,11 @@ Get-AzStaticWebAppBuild -Name <String> -ResourceGroupName <String> [-Subscriptio
 
 ### Get1
 ```
-Get-AzStaticWebAppBuild -Name <String> -PrId <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStaticWebAppBuild -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
-```
-Get-AzStaticWebAppBuild -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity1
 ```
 Get-AzStaticWebAppBuild -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -41,18 +36,43 @@ Description for Gets all static site builds for a particular static site.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal04
 
-{{ Add output here }}
+Kind Name    Type
+---- ----    ----
+     default Microsoft.Web/staticSites/builds
+```
+
+{{ Add description here }}
+
+{
+  "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal04/builds/default",
+  "name": "default",
+  "type": "Microsoft.Web/staticSites/builds",
+  "properties": {
+    "buildId": "default",
+    "sourceBranch": "lucas/dev",
+    "hostname": "wonderful-desert-0d05b1d10.azurestaticapps.net",
+    "createdTimeUtc": "2021-04-06T08:59:33.3694276",
+    "lastUpdatedOn": "2021-04-06T09:02:01.2965166",
+    "status": "Ready"
+  }
+}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+
+Kind Name    Type
+---- ----    ----
+     default Microsoft.Web/staticSites/builds
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> 
 ```
 
 {{ Add description here }}
@@ -74,13 +94,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentName
+The stage site identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: Get1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -96,21 +131,6 @@ Name of the static site.
 ```yaml
 Type: System.String
 Parameter Sets: Get, Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrId
-The stage site identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: Get1
 Aliases:
 
 Required: True
@@ -161,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteBuildArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteBuildArmResource
 
 ## NOTES
 
@@ -174,11 +194,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.

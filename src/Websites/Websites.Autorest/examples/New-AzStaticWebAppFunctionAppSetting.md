@@ -1,17 +1,10 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebAppFunctionAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01  -Property @{'function01' = 'value01'; 'function02' = 'value02' }
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/config
 ```
 
 {{ Add description here }}

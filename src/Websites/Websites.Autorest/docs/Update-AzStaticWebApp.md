@@ -15,16 +15,24 @@ Description for Creates a new static site in an existing resource group, or upda
 ### UpdateExpanded (Default)
 ```
 Update-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppLocation <String>] [-Branch <String>]
- [-Kind <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
+ [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>]
+ [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
+ [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
+ [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-ApiLocation <String>] [-AppArtifactLocation <String>]
- [-AppLocation <String>] [-Branch <String>] [-Kind <String>] [-RepositoryToken <String>]
- [-RepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-ApiBuildCommand <String>] [-ApiLocation <String>]
+ [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>]
+ [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
+ [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
+ [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
+ [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +60,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -ApiBuildCommand
+A custom command to run during deployment of the Azure Functions API application.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApiLocation
 The path to the api code within the repository.
 
@@ -68,7 +91,22 @@ Accept wildcard characters: False
 ```
 
 ### -AppArtifactLocation
-The path of the app artifacts after building.
+Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppBuildCommand
+A custom command to run during deployment of the static content application.
 
 ```yaml
 Type: System.String
@@ -127,6 +165,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GithubActionSecretNameOverride
+Github Action secret name override.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -167,6 +220,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputLocation
+The output path of the app after building.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -219,6 +287,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipGithubActionWorkflowGeneration
+Skip Github Action workflow generation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Your Azure subscription ID.
 This is a GUID-formatted string (e.g.
@@ -232,6 +315,84 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyDescription
+Description of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyIsPrivate
+Whether or not the newly generated repository is a private repository.
+Defaults to false (i.e.
+public).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyOwner
+Owner of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyRepositoryName
+Name of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TemplatePropertyTemplateRepositoryUrl
+URL of the template repository.
+The newly generated repository will be based on this one.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -276,7 +437,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource
 
 ## NOTES
 
@@ -289,11 +450,13 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
-  - `[DomainName <String>]`: The custom domain to create.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
-  - `[PrId <String>]`: The stage site identifier.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.

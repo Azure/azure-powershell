@@ -12,9 +12,25 @@ Description for Creates a new static site custom domain in an existing resource 
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Kind <String>] [-ValidationMethod <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
+ -StaticSiteCustomDomainRequestPropertiesEnvelope <IStaticSiteCustomDomainRequestPropertiesArmResource>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzStaticWebAppCustomDomain -InputObject <IWebsitesIdentity> [-Kind <String>] [-ValidationMethod <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +58,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -62,10 +93,41 @@ The custom domain to create.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Kind
+Kind of resource.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -77,10 +139,25 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -92,13 +169,29 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StaticSiteCustomDomainRequestPropertiesEnvelope
+Static Site Custom Domain Request Properties ARM resource.
+To construct, see NOTES section for STATICSITECUSTOMDOMAINREQUESTPROPERTIESENVELOPE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainRequestPropertiesArmResource
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,12 +202,27 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidationMethod
+Validation method for adding a custom domain
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,13 +263,39 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainRequestPropertiesArmResource
+
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20200601.IStaticSiteCustomDomainOverviewArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  - `[Authprovider <String>]`: The auth provider for the users.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Location where you plan to create the static site.
+  - `[Name <String>]`: Name of the static site.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[Userid <String>]`: The user id of the user.
+
+STATICSITECUSTOMDOMAINREQUESTPROPERTIESENVELOPE <IStaticSiteCustomDomainRequestPropertiesArmResource>: Static Site Custom Domain Request Properties ARM resource.
+  - `[Kind <String>]`: Kind of resource.
+  - `[ValidationMethod <String>]`: Validation method for adding a custom domain
 
 ## RELATED LINKS
 
