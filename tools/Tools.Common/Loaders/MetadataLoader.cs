@@ -32,6 +32,16 @@ namespace Tools.Common.Loaders
     {
         public static ModuleMetadata GetModuleMetadata(string moduleName)
         {
+            string rootPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
+            string modulePsd1Path = Directory.GetFiles(Path.Combine(rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories)[0];
+            if (modulePsd1Path == null)
+            {
+                Console.Error.WriteLine($"Cannot find {moduleName}.psd1 in {Path.Combine(rootPath, "artifacts")}!");
+            }
+            return GetModuleMetadata(moduleName, modulePsd1Path);
+        }
+        public static ModuleMetadata GetModuleMetadata(string moduleName, string modulePsd1Path)
+        {
             using (var powershell = PowerShell.Create(RunspaceMode.NewRunspace))
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

@@ -224,41 +224,47 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>(new TypeNameComparer());
 
             // Add each output in the new metadata to the dictionary
-            foreach (var newOutput in newCmdlet.OutputTypes)
+            if (newCmdlet.OutputTypes != null)
             {
-                if (!outputDictionary.ContainsKey(newOutput.Type.Name))
+                foreach (var newOutput in newCmdlet.OutputTypes)
                 {
-                    outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
+                    if (!outputDictionary.ContainsKey(newOutput.Type.Name))
+                    {
+                        outputDictionary.Add(newOutput.Type.Name, newOutput.Type);
+                    }
                 }
             }
 
             // For each output in the old metadata, see if it
             // exists in the new metadata
-            foreach (var oldOutput in oldCmdlet.OutputTypes)
+            if (oldCmdlet.OutputTypes != null)
             {
-                // If the output can be found, use the TypeMetadataHelper to
-                // check the type for any breaking changes
-                if (outputDictionary.ContainsKey(oldOutput.Type.Name))
+                foreach (var oldOutput in oldCmdlet.OutputTypes)
                 {
-                    var newOutputType = outputDictionary[oldOutput.Type.Name];
-
-                    _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
-                }
-                // If the output cannot be found by name, check if the old output can be mapped
-                // to any of the new output types
-                else
-                {
-                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
-                    if (!foundOutput)
+                    // If the output can be found, use the TypeMetadataHelper to
+                    // check the type for any breaking changes
+                    if (outputDictionary.ContainsKey(oldOutput.Type.Name))
                     {
-                        issueLogger?.LogBreakingChangeIssue(
-                            cmdlet: oldCmdlet,
-                            severity: 0,
-                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                            description: string.Format(Resources.ChangedOutputTypeDescription,
-                                oldCmdlet.Name, oldOutput.Type.Name),
-                            remediation: string.Format(Resources.ChangedOutputTypeRemediation,
-                                oldCmdlet.Name, oldOutput.Type.Name));
+                        var newOutputType = outputDictionary[oldOutput.Type.Name];
+
+                        _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
+                    }
+                    // If the output cannot be found by name, check if the old output can be mapped
+                    // to any of the new output types
+                    else
+                    {
+                        var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
+                        if (!foundOutput)
+                        {
+                            issueLogger?.LogBreakingChangeIssue(
+                                cmdlet: oldCmdlet,
+                                severity: 0,
+                                problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                                description: string.Format(Resources.ChangedOutputTypeDescription,
+                                    oldCmdlet.Name, oldOutput.Type.Name),
+                                remediation: string.Format(Resources.ChangedOutputTypeRemediation,
+                                    oldCmdlet.Name, oldOutput.Type.Name));
+                        }
                     }
                 }
             }
