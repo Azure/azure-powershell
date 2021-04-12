@@ -60,11 +60,6 @@ namespace Tools.Common.Loaders
                     Console.Error.WriteLine($"Cannot find Az.Accounts.psd1 in {Path.Combine(rootPath, "artifacts", "Accounts")}!");
                 }
                 powershell.AddScript($"Import-Module {accountsPsd1Path}");
-                string modulePsd1Path = Directory.GetFiles(Path.Combine(rootPath, "artifacts"), $"{moduleName}.psd1", SearchOption.AllDirectories)[0];
-                if (modulePsd1Path == null)
-                {
-                    Console.Error.WriteLine($"Cannot find {moduleName}.psd1 in {Path.Combine(rootPath, "artifacts")}!");
-                }
                 powershell.AddScript($"(Get-ModuleMetadata -Psd1Path {modulePsd1Path} -ModuleName {moduleName}).ToJsonString()");
 
                 Collection<PSObject> output = powershell.Invoke();
