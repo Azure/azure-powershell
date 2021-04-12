@@ -1257,7 +1257,7 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
     $vnetGatewayConfigName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent 
+    $location = Get-ProviderLocation $resourceTypeParent  
     
     try 
      {
@@ -1277,7 +1277,7 @@ function Test-VirtualNetworkGatewayNatRuleCRUD
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       $ipconfigurationId = $vnetIpConfig.id
       $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
-      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2 -NatRule $natRule -EnableBgpRouteTranslationForNatFlag -AsJob
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2 -NatRule $natRule -EnableBgpRouteTranslationForNat -AsJob
 	  $job | Wait-Job
 	  $actual = $job | Receive-Job
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname

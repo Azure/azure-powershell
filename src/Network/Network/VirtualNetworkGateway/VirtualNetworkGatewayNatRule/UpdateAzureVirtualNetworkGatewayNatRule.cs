@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet("Update",
-    ResourceManager.Common.AzureRMConstants.AzurePrefix + "VirtualNetworkGatewayNatRule",
-    DefaultParameterSetName = VirtualNetworkGatewayParameterSets.ByVirtualNetworkGatewayNatRuleName),
-    OutputType(typeof(PSVirtualNetworkGatewayNatRule))]
+        ResourceManager.Common.AzureRMConstants.AzurePrefix + "VirtualNetworkGatewayNatRule",
+        DefaultParameterSetName = VirtualNetworkGatewayParameterSets.ByVirtualNetworkGatewayNatRuleName,
+        SupportsShouldProcess = true),
+        OutputType(typeof(PSVirtualNetworkGatewayNatRule))]
     public class UpdateAzureVirtualNetworkGatewayNatRule : VirtualNetworkGatewayNatRuleBaseCmdlet
     {
         [Parameter(

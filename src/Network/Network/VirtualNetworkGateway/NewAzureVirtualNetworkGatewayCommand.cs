@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
-        public SwitchParameter EnableBgpRouteTranslationForNatFlag { get; set; }
+        public SwitchParameter EnableBgpRouteTranslationForNat { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Set the EnableBgpRouteTranslationForNat, if it is specified by customer.
-            vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNatFlag.IsPresent;
+            vnetGateway.EnableBgpRouteTranslationForNat = EnableBgpRouteTranslationForNat.IsPresent;
 
             // Map to the sdk object
             var vnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);

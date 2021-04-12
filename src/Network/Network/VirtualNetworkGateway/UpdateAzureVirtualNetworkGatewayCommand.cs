@@ -209,13 +209,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
-        public SwitchParameter EnableBgpRouteTranslationForNatFlag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
-        public SwitchParameter DisableBgpRouteTranslationForNatFlag { get; set; }
+            HelpMessage = "Flag to enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public bool? BgpRouteTranslationForNat { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -463,16 +458,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.NatRules = this.NatRule?.ToList();
             }
 
-            if (this.EnableBgpRouteTranslationForNatFlag.IsPresent)
+            if (this.BgpRouteTranslationForNat.HasValue)
             {
-                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = true;
+                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = this.BgpRouteTranslationForNat.Value;
             }
-
-            if (this.DisableBgpRouteTranslationForNatFlag.IsPresent)
-            {
-                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = false;
-            }
-
 
             // Map to the sdk object
             MNM.VirtualNetworkGateway sdkVirtualNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(this.VirtualNetworkGateway);

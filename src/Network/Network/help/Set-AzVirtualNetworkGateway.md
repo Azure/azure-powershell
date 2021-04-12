@@ -25,8 +25,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
- [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNatFlag]
- [-DisableBgpRouteTranslationForNatFlag] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,8 +42,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-EnablePrivateIpAddress <Boolean>] [-DisableActiveActiveFeature] [-RadiusServerAddress <String>]
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
- [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNatFlag]
- [-DisableBgpRouteTranslationForNatFlag] -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
+ -Tag <Hashtable> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -275,7 +275,7 @@ PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup0
 PS C:\>$vngNatRules = $Gateway.NatRules
 PS C:\>$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
 PS C:\>$vngNatRules.Add($natrule)
-PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -EnableBgpRouteTranslationForNatFlag
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -BgpRouteTranslationForNat $true
 
 Name                   : Gateway001
 ResourceGroupName      : ResourceGroup001
@@ -435,6 +435,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -BgpRouteTranslationForNat
+Flag to enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomRoute
 Custom routes AddressPool specified by customer
 
@@ -480,38 +495,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableBgpRouteTranslationForNatFlag
-Flag to disable BgpRouteTranslationForNat on this VirtualNetworkGateway.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EnableActiveActiveFeature
 Flag to enable Active Active feature on virtual network gateway
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableBgpRouteTranslationForNatFlag
-Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

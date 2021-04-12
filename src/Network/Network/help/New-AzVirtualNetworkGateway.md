@@ -23,7 +23,7 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-VpnClientRevokedCertificates <PSVpnClientRevokedCertificate[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>]
  [-IpConfigurationBgpPeeringAddresses <PSIpConfigurationBgpPeeringAddress[]>]
- [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNatFlag] [-Tag <Hashtable>]
+ [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>]
  [-Force] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
  [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>] [-AadAudienceId <String>]
  [-AadIssuerUri <String>] [-CustomRoute <String[]>] [-VpnGatewayGeneration <String>] [-AsJob]
@@ -172,7 +172,7 @@ $ngwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name ipconfig1 -SubnetId $su
 
 $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
 
-New-AzVirtualNetworkGateway -Name gateway1 -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw4" -VpnGatewayGeneration "Generation2" -NatRule $natRule -EnableBgpRouteTranslationForNatFlag
+New-AzVirtualNetworkGateway -Name gateway1 -ResourceGroupName vnet-gateway -Location "UK West" -IpConfigurations $ngwIpConfig -GatewayType "Vpn" -VpnType "RouteBased" -GatewaySku "VpnGw4" -VpnGatewayGeneration "Generation2" -NatRule $natRule -EnableBgpRouteTranslationForNat
 ```
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
@@ -319,7 +319,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableBgpRouteTranslationForNatFlag
+### -EnableBgpRouteTranslationForNat
 Flag to enable BgpRouteTranslationForNat on this VirtualNetworkGateway.
 
 ```yaml
