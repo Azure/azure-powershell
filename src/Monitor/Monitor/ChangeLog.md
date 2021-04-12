@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.5.0
 * Added cmdlet to get diagnostic setting categories for subscription
     - `Get-AzSubscriptionDiagnosticSettingCategory`
 * Supported subscription diagnostic setting operations with new parameter: SubscriptionId

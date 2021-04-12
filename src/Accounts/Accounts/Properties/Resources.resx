@@ -339,7 +339,7 @@
     <value>To create an access token credential, you must provide an access token account.</value>
   </data>
   <data name="UnableToAqcuireToken" xml:space="preserve">
-    <value>Unable to acquire token for tenant '{0}'</value>
+    <value>Unable to acquire token for tenant '{0}' with error '{1}'</value>
   </data>
   <data name="UnableToLogin" xml:space="preserve">
     <value>Could not authenticate user account '{0}' with tenant '{1}'. Subscriptions in this tenant will not be listed. Please login again using Connect-AzAccount to view the subscriptions in this tenant.</value>
