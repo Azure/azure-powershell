@@ -22,6 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
 
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Exceptions;
     using Microsoft.Azure.Commands.Peering.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Management.Peering;
@@ -318,9 +319,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSCdnPeeringPrefix>(cdnPrefix);
             }
-            catch (InvalidOperationException mapException)
+            catch (AzPSInvalidOperationException mapException)
             {
-                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+                throw new AzPSInvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
         }
 
@@ -339,10 +340,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
         {
             this.WriteVerbose($"validating bandwidth: {bandwidthInMbps}");
             if (bandwidthInMbps <= 0)
-                throw new PSArgumentException(string.Format(Resources.Error_BandwidthTooLow, bandwidthInMbps));
+                throw new AzPSArgumentException(string.Format(Resources.Error_BandwidthTooLow, bandwidthInMbps), "bandwidthInMbps");
             if (bandwidthInMbps % Constants.MinRange != 0)
-                throw new PSArgumentException(
-                    string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange));
+                throw new AzPSArgumentOutOfRangeException(
+                    string.Format(Resources.Error_BandwidthIncorrectFormat, bandwidthInMbps, Constants.MinRange), "bandwidthInMbps");
             return true;
         }
 
