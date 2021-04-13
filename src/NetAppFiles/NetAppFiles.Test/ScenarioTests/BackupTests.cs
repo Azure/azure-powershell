@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         }
 
         [Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupCrud()
         {
@@ -40,5 +41,14 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPipelines");
         }
+
+        [Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        //[Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeBackupStatusCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeBackupStatus");
+        }
+
     }
 }

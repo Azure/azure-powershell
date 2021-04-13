@@ -141,7 +141,7 @@ function Test-BackupCrud
         WaitForSucceeded 
 
          # volume update with backup policy
-        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
+        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
         SleepDuringRecord
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
@@ -285,6 +285,142 @@ function Test-BackupPipelines
         $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Get-AnfBackup
         Assert-AreEqual ($numVolumes-1) $retrievedBackup.Length 
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
+Test Volume Test-VolumeBackupStatusCrud operation
+#>
+function Test-VolumeBackupStatus
+{
+    $currentSub = (Get-AzureRmContext).Subscription	
+    $subsid = $currentSub.SubscriptionId
+
+    $resourceGroup = Get-ResourceGroupName
+    $accName = Get-ResourceName
+    $poolName = Get-ResourceName
+    $poolName2 = Get-ResourceName
+    $volName1 = Get-ResourceName
+    $backupPolicyName1 = Get-ResourceName
+    $backupName1 = Get-ResourceName
+    $gibibyte = 1024 * 1024 * 1024
+    $usageThreshold = 100 * $gibibyte    
+    #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
+    $resourceLocation = "westus2"
+    #$backupLocation = "southcentralusstage"
+    #$backupVNetLocation = "southcentralus"
+
+    $backupLocation = "eastus2euap"
+    $backupVNetLocation = "eastus2euap"
+
+    $subnetName = "default"
+    $poolSize = 4398046511104
+    $serviceLevel = "Premium"
+    $serviceLevelStandard = "Premium"
+    $vnetName = $resourceGroup + "-vnet"
+    $dailyBackupsToKeep = 4
+    $weeklyBackupsToKeep = 3
+    $monthlyBackupsToKeep = 2
+    $yearlyBackupsToKeep = 1
+
+    $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
+
+    $rule1 = @{
+        RuleIndex = 1
+        UnixReadOnly = $false
+        UnixReadWrite = $true
+        Cifs = $false
+        Nfsv3 = $true
+        Nfsv41 = $false
+        AllowedClients = '0.0.0.0/0'
+    }
+
+    
+    $exportPolicy = @{
+		Rules = (
+			$rule1
+		)
+	}
+       
+    # create the list of protocol types
+    $protocolTypes = New-Object string[] 1
+    $protocolTypes[0] = "NFSv3"
+
+    function SleepDuringRecord
+    {
+        if ($env:AZURE_TEST_MODE -eq "Record")
+        {
+            Write-Output "Sleep in record mode"
+            Start-Sleep -Seconds 30.0
+        }
+    }
+
+    try
+    {
+        # create the resource group
+        New-AzResourceGroup -Name $resourceGroup -Location $backupVNetLocation
+		
+        # create virtual network
+        $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $resourceGroup -Location $backupVNetLocation -Name $vnetName -AddressPrefix 10.0.0.0/16
+        $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.1.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+        $newTagName = "tag1"
+        $newTagValue = "tagValue1"
+        # create account
+        $retrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName 
+	    # create and check BackupPolicy
+        $retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+        Assert-NotNull $retrievedBackupPolicy.Id
+
+        # create pool
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -PoolSize $poolSize -ServiceLevel $serviceLevel
+                
+        # create  volume and check
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ExportPolicy $exportPolicy -ProtocolType $protocolTypes
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
+        Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
+        Assert-AreEqual "tagValue1" $retrievedVolume.Tags[$newTagName].ToString()
+        Assert-NotNull $retrievedVolume.ExportPolicy
+        Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
+
+        Assert-AreEqual $retrievedVolume.ProtocolTypes[0] 'NFSv3'
+        Assert-NotNull $retrievedVolume.MountTargets
+        Assert-Null $retrievedVolume.VolumeType
+        Assert-Null $retrievedVolume.DataProtection
+
+        # get and check the volume by name
+        $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
+        
+        # get check Vaults 
+        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
+        $backupObject = @{
+            VaultId = $retrievedVaultsList[0].Id
+            BackupEnabled = $true
+            PolicyEnforced = $true
+            BackupPolicyId = $retrievedBackupPolicy.Id
+        }
+        SleepDuringRecord        
+        # volume update with backup policy
+        $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
+        SleepDuringRecord
+        # create and check Backup
+        $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
+        Assert-AreEqual "$accName/$poolName/$volName1/$backupName1" $retrievedBackup.Name
+
+        # Get volume backup status
+        $retrievedBackupStatus = Get-AzNetAppFilesBackupStatus -ResourceGroupName $resourceLocation -AccountName $accName -PoolName $poolName -Name $volName1 
+        Assert-NotNull $retrievedBackupStatus
+        
+        # delete Backup retrieved by id 
+        Remove-AzNetAppFilesBackup -ResourceId $retrievedBackup.Id
     }
     finally
     {

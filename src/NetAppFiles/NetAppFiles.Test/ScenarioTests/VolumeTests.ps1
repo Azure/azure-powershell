@@ -33,7 +33,9 @@ function Test-VolumeCrud
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $resourceLocation = "eastus2euap"
+    #$resourceLocation = "eastus2euap"
+    $resourceLocation = "eastus"
+
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
