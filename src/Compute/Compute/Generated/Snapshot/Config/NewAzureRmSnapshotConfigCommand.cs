@@ -168,6 +168,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // Encryption
             Encryption vEncryption = null;
 
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
+
             if (this.IsParameterBound(c => c.SkuName))
             {
                 if (vSku == null)
@@ -289,6 +292,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryption.Type = this.EncryptionType;
             }
 
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -296,7 +304,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
                 Incremental = this.Incremental.IsPresent,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
-                ExtendedLocation = this.IsParameterBound(c => c.EdgeZone) ? new ExtendedLocation { Name = EdgeZone, Type = ExtendedLocationTypes.EdgeZone } : null,
+                ExtendedLocation = vExtendedLocation,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,

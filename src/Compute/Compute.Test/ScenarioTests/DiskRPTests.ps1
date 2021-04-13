@@ -1384,13 +1384,13 @@ function Test-EdgeZoneConfigurations
 
 	try
     {
-        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 		$diskconfig = New-AzDiskConfig -Location $loc -EdgeZone $edge -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
-        $diskname = "disk" + $rgname;
+		$diskname = "disk" + $rgname;
 		$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
 		Assert-AreEqual $disk.Location $loc;
-        Assert-AreEqual $disk.ExtendedLocation.Name $edge;
+		Assert-AreEqual $disk.ExtendedLocation.Name $edge;
 
 		$snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
 		$snapshotname = "snapshot" + $rgname
@@ -1403,7 +1403,7 @@ function Test-EdgeZoneConfigurations
 	}
     finally 
     {
-        # Cleanup
-        Clean-ResourceGroup $rgname
+		# Cleanup
+		Clean-ResourceGroup $rgname
 	}
 }

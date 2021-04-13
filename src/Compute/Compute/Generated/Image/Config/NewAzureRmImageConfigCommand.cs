@@ -102,6 +102,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // StorageProfile
             ImageStorageProfile vStorageProfile = null;
 
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
+
             if (this.IsParameterBound(c => c.SourceVirtualMachineId))
             {
                 if (vSourceVirtualMachine == null)
@@ -135,11 +138,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             vStorageProfile.ZoneResilient = this.ZoneResilient.IsPresent;
 
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+            }
+
             var vImage = new PSImage
             {
                 HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : "V1",
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
-                ExtendedLocation = this.IsParameterBound(c => c.EdgeZone) ? new ExtendedLocation { Name = EdgeZone, Type = ExtendedLocationTypes.EdgeZone } : null,
+                ExtendedLocation = vExtendedLocation,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,
                 StorageProfile = vStorageProfile,
