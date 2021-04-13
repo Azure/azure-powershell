@@ -1684,11 +1684,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Either -ItemType and -Item should appear together or neither of them should be..
+        /// </summary>
+        internal static string WorkspaceItemTypeAndItemNotAppearTogether {
+            get {
+                return ResourceManager.GetString("WorkspaceItemTypeAndItemNotAppearTogether", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A workspace key with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key..
         /// </summary>
         internal static string WorkspaceKeyExists {
             get {
                 return ResourceManager.GetString("WorkspaceKeyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find role assignment under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentNotFound", resourceCulture);
             }
         }
     }

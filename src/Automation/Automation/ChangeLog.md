@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
+* Added support for Customer Managed Key Encryption with System Assigned Identity
 * Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
 
 ## Version 1.5.2
