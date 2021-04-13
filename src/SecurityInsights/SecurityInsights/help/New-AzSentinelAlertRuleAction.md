@@ -31,6 +31,7 @@ $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "MyResourceGroup" -Name 
 $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "MyResourceGroup" -Name "Reset-AADPassword" -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
 $AlertRuleAction = New-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
+
 This example creates an AlertRuleAction for the specified Alert Rule using properties of the Logic App, and then stores it in the $AlertRuleAction variable.<br/>
 Then we use the New-AzSentinelAlertRuleAction cmdlet to add the Logic App as an action to a specifc AlertRule.
 
@@ -49,8 +50,9 @@ $LogicAppConnection = @{
 $LogicAppResourceId = Get-AzLogicApp @LogicAppConnection
 $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl @LogicAppConnection -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
 $AnalyticsRule = Get-AzSentinelAlertRule @SentinelConnection | Where-Object {$PSItem.DisplayName -eq "Mimikatz Detected"}
-$AlertRuleAction = New-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AnalyticsRule.Name -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value) 
+$AlertRuleAction = New-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AnalyticsRule.Name -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
+
 This example uses 2 connection objects to connect with Azure Sentinel and to get a specific Logic App. <br/>
 Then a specific Analytics Rule, based on the display name, is retrieved and being used in the final **New-AzSentinelAlertRuleAction** cmdlet to add the Logic App to the Analytics Rule.
 

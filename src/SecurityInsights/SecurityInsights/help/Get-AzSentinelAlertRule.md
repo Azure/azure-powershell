@@ -43,12 +43,14 @@ You can use the AlertRule object to update the AlertRule. For example you can en
 ```powershell
 PS C:\> $AlertRules = Get-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"
 ```
+
 This example gets all  the AlertRules in the specified workspace, and then stores it in the $AlertRules variable.
 
 ### Example 2
 ```powershell
 PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -AlertRuleId "myAlertRuleId"
 ```
+
 This example gets an AlertRule in the specified workspace, and then stores it in the $AlertRule variable.<br/>
 *Please note that **AlertRuleId** is in this format: 168d330b-219b-4191-a5b1-742c211adb05*
 
@@ -56,6 +58,7 @@ This example gets an AlertRule in the specified workspace, and then stores it in
 ```powershell
 Get-AzSentinelAlertRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName | Where-Object {$_.DisplayName -like "*Azure Security Center*"}
 ```
+
 This example gets an AlertRule with a displayname which contains "Azure Security Center"
 
 ## PARAMETERS

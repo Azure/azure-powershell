@@ -35,6 +35,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 ```powershell
 PS C:\> Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
 ```
+
 This command removes the Bookmark from the workspace.
 
 ### Example 2
@@ -46,6 +47,7 @@ $SentinelConnection = @{
 $Bookmark = Get-AzSentinelBookmark @SentinelConnection | Where-Object {$_.DisplayName -eq "My Bookmark"}
 Remove-AzSentinelBookmark @SentinelConnection -BookmarkId $Bookmark.Name
 ```
+
 This example uses a connection object to pass the resourceGroupName and workspaceName to get a Bookmark with a specific name. It then uses the BookmarkId to remove it.
 
 ## PARAMETERS

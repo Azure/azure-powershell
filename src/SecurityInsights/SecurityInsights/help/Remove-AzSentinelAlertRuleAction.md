@@ -36,6 +36,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 ```powershell
 PS C:\> Remove-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -ActionId "MyActionId"
 ```
+
 This command removes the Alert Rule from the workspace.
 
 ### Example 2
@@ -49,6 +50,7 @@ $AlertRule = Get-AzSentinelAlertRule @SentinelConnection | Where-Object {$_.Disp
 $AlertRuleAction = Get-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AlertRule.Name
 Remove-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AlertRule.Name -ActionId $AlertRuleAction.Name
 ```
+
 This example uses a connection object to pass the *resourceGroupName* and the *workspaceName*. It first gets the *AlertRule* with a specific *DisplayName*, then gets the *AlertRuleAction* and finally removes it from the AlertRule.
 
 ## PARAMETERS

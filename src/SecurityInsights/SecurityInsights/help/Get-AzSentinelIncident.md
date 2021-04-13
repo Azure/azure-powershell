@@ -38,8 +38,11 @@ You can use the **Incident** object to update the Incident. For example you can 
 *Note: An IncidentId is in the following format: c464bcd7-daee-47ff-ac58-1fbb73cf1d6b and is not the same as the Incident ID (number) as in the Azure Sentinel Incident view. The IncidentId can be found in the incident details view, in the "Incident link" field, represented in the last part of the https link.*
 
 ## EXAMPLES
+
 ### Example 1
 Get all Azure Sentinel Incidents using a connection object:
+
+
 ```powershell
 $SentinelConnection = @{
     ResourceGroupName = "myResourceGroupName"
@@ -47,18 +50,21 @@ $SentinelConnection = @{
 }
 Get-AzSentinelIncident @SentinelConnection
 ```
+
 This example gets all the the Incidents using a connection object
 
 ### Example 2
 ```powershell
 PS C:\> $Incidents = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"
 ```
+
 This example gets all of the Incidents in the specified workspace, and then stores it in the $Incidents variable.
 
 ### Example 3
 ```powershell
 PS C:\> $Incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId"
 ```
+
 This example gets a specific Incident in the specified workspace, and then stores it in the $Incident variable.<br/>
 *Please note that IncidentId is in this format: 168d330b-219b-4191-a5b1-742c211adb05*
 
@@ -66,6 +72,7 @@ This example gets a specific Incident in the specified workspace, and then store
 ```powershell
 Get-AzSentinelIncident @SentinelConnection | Where-Object {$_.Title -eq "Failed AzureAD logons but success logon to host"}
 ```
+
 This example uses a connection object and returns incidents with a specific title. <br/>
 Using a **Where-Object** condition you can retrieve incidents with a specific title, status, severity, owner, etc.
 

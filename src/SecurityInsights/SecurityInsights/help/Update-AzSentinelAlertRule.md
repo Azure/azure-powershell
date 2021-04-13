@@ -15,39 +15,38 @@ Updates an Analytic Rule (Alert Rule).
 ### AlertRuleId (Default)
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -AlertRuleId <String>
- [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled] [-DisplayName <String>]
- [-ProductFilter <String>] [-Description <String>]
- [-DisplayNamesExcludeFilter <System.Collections.Generic.IList`1[System.String]>]
+ [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled] [-DisplayName <String>] [-ProductFilter <String>]
+ [-Description <String>] [-DisplayNamesExcludeFilter <System.Collections.Generic.IList`1[System.String]>]
  [-DisplayNamesFilter <System.Collections.Generic.IList`1[System.String]>]
  [-SeveritiesFilter <System.Collections.Generic.IList`1[System.String]>] [-SuppressionDuration <TimeSpan>]
  [-SuppressionEnabled] [-SuppressionDisabled] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactics <System.Collections.Generic.IList`1[System.String]>]
+ [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactic <System.Collections.Generic.IList`1[System.String]>]
  [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Update-AzSentinelAlertRule [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled]
- [-DisplayName <String>] [-ProductFilter <String>] [-Description <String>]
+Update-AzSentinelAlertRule [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled] [-DisplayName <String>]
+ [-ProductFilter <String>] [-Description <String>]
  [-DisplayNamesExcludeFilter <System.Collections.Generic.IList`1[System.String]>]
  [-DisplayNamesFilter <System.Collections.Generic.IList`1[System.String]>]
  [-SeveritiesFilter <System.Collections.Generic.IList`1[System.String]>] [-SuppressionDuration <TimeSpan>]
  [-SuppressionEnabled] [-SuppressionDisabled] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactics <System.Collections.Generic.IList`1[System.String]>]
+ [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactic <System.Collections.Generic.IList`1[System.String]>]
  [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] -InputObject <PSSentinelAlertRule>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Update-AzSentinelAlertRule [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled]
- [-DisplayName <String>] [-ProductFilter <String>] [-Description <String>]
+Update-AzSentinelAlertRule [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled] [-DisplayName <String>]
+ [-ProductFilter <String>] [-Description <String>]
  [-DisplayNamesExcludeFilter <System.Collections.Generic.IList`1[System.String]>]
  [-DisplayNamesFilter <System.Collections.Generic.IList`1[System.String]>]
  [-SeveritiesFilter <System.Collections.Generic.IList`1[System.String]>] [-SuppressionDuration <TimeSpan>]
  [-SuppressionEnabled] [-SuppressionDisabled] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactics <System.Collections.Generic.IList`1[System.String]>]
+ [-QueryPeriod <TimeSpan>] [-Severity <String>] [-Tactic <System.Collections.Generic.IList`1[System.String]>]
  [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -57,13 +56,13 @@ The **Update-AzSentinelAlertRule** cmdlet updates an Analytic (Alert) Rule in th
 You can use an -InputObject or -ResourceId or -AlertId.  You can update 1 or more property parameters.
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
-
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> Update-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -Disabled -DisplayName "Disabled-AlertRuleDisplayName"
 ```
+
 This example updates an **AlertRule** setting it to *Disabled* and renames the AlertRule to *Disabled-AlertRuleDisplayName*.  All other properties will remain the same.
 
 ### Example 2
@@ -71,6 +70,7 @@ This example updates an **AlertRule** setting it to *Disabled* and renames the A
 PS C:\> $AlertRule = Get-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId"
 PS C:\> Update-AzSentinelAlertRule -InputObject $AlertRule -Disabled
 ```
+
 This example updates an **AlertRule** using an InputObject setting it to *Disabled*.  All other properties will remain the same.
 
 ### Example 3
@@ -82,6 +82,7 @@ $SentinelConnection = @{
 $ruleToDisable = Get-AzSentinelAlertRule @SentinelConnection | Where-Object {$_.DisplayName -eq "Mimikatz Detected"}
 Update-AzSentinelAlertRule @SentinelConnection -AlertRuleId $ruleToDisable.Name -Disabled
 ```
+
 This example uses a connection object to pass the resourceGroupName and workspaceName. It then gets a specific AlertRule based on the display name and disables the rule.
 
 ## PARAMETERS
@@ -90,7 +91,7 @@ This example uses a connection object to pass the resourceGroupName and workspac
 Alert Rule Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertRuleId
 Aliases:
 
@@ -105,7 +106,7 @@ Accept wildcard characters: False
 Alert Rule Template.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 Alert Rule Disabled.
 
 ```yaml
-Type: Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 Alert Rule Display Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +211,7 @@ Accept wildcard characters: False
 Alert Rule Enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 InputObject.
 
 ```yaml
-Type: PSSentinelAlertRule
+Type: Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule
 Parameter Sets: InputObject
 Aliases:
 
@@ -240,7 +241,7 @@ Accept wildcard characters: False
 Alert Rule Product Filter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Azure Active Directory Identity Protection, Azure Advanced Threat Protection, Azure Security Center, Azure Security Center for IoT, Microsoft Cloud App Security, Microsoft Defender Advanced Threat Protection, Office 365 Advanced Threat Protection
@@ -256,7 +257,7 @@ Accept wildcard characters: False
 Alert Rule Query.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -271,7 +272,7 @@ Accept wildcard characters: False
 Alert Rule Query Frequency.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -286,7 +287,7 @@ Accept wildcard characters: False
 Alert Rule Query Period.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -301,7 +302,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertRuleId
 Aliases:
 
@@ -316,7 +317,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -346,7 +347,7 @@ Accept wildcard characters: False
 Incident Severity.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -361,7 +362,7 @@ Accept wildcard characters: False
 Alert Rule Suppression Disabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -376,7 +377,7 @@ Accept wildcard characters: False
 Alert Rule Suppression Duration.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -391,7 +392,7 @@ Accept wildcard characters: False
 Alert Rule Suppression Enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +403,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tactics
+### -Tactic
 Alert Rule Tactics.
 
 ```yaml
@@ -421,7 +422,7 @@ Accept wildcard characters: False
 Alert Rule Trigger Operator.
 
 ```yaml
-Type: TriggerOperator
+Type: Microsoft.Azure.Management.SecurityInsights.Models.TriggerOperator
 Parameter Sets: (All)
 Aliases:
 Accepted values: GreaterThan, LessThan, Equal, NotEqual
@@ -437,7 +438,7 @@ Accept wildcard characters: False
 Alert Rule Trigger Threshold.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -452,7 +453,7 @@ Accept wildcard characters: False
 Workspace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AlertRuleId
 Aliases:
 
@@ -467,7 +468,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -483,7 +484,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

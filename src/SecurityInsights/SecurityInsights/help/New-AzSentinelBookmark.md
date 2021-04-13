@@ -15,7 +15,7 @@ Creates a Bookmark for a specific incident.<br/>
 ```
 New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-BookmarkId <String>]
  -DisplayName <String> [-IncidentInfo <PSSentinelBookmarkIncidentInfo>]
- [-Label <System.Collections.Generic.IList`1[System.String]>] [-Notes <String>] -Query <String>
+ [-Label <System.Collections.Generic.IList`1[System.String]>] [-Note <String>] -Query <String>
  [-QueryResult <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,6 +30,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ```powershell
 PS C:\> $Bookmark = New-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DisplayName "MyBookmark" -Query "SecurityAlert | take 1"
 ```
+
 This example creates a **Bookmark** in the specified workspace, and then stores it in the $Bookmark variable.
 
 ### Example 2
@@ -48,6 +49,7 @@ $DisplayName = "My Bookmark Query"
 $Notes = "This is a comment"
 New-AzSentinelBookmark @SentinelConnection -DisplayName $DisplayName -Query $BookmarkQuery -Note $Notes
 ```
+
 This example uses a connection object to provide the resourceGroupName and workspaceName, an object to pass the Bookmark query and also creates a comment (passed with the "-Note" parameter)
 
 ## PARAMETERS
@@ -127,7 +129,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Notes
+### -Note
 Bookmark Notes.
 
 ```yaml

@@ -35,6 +35,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 ```powershell
 PS C:\> Remove-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
 ```
+
 This command removes the DataConnector from the workspace.
 
 ### Example 2
@@ -46,8 +47,10 @@ $SentinelConnection = @{
 $DataConnector = Get-AzSentinelDataConnector @SentinelConnection | Where-Object {$_.Kind -eq "Office365"} 
 Remove-AzSentinelDataConnector @SentinelConnection -DataConnectorId $DataConnector.Name
 ```
+
 This example uses a connection object to pass the resourceGroupName and the workspaceName. Then it gets a specific connector, filtered by *Kind* which is being passed to remove the data connector.<br/><br/>
 *Note: the $DataConnector.Name is the DataConnectorId.*
+
 ## PARAMETERS
 
 ### -DataConnectorId

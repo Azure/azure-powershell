@@ -31,6 +31,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 ```powershell
 PS C:\> $Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Description "My Description" -Severity Low -Status New
 ```
+
 This example creates an **Incident** in the specified workspace, and then stores it in the $Incident variable.<br/><br/>
 
 *Please note that you currently cannot add entities to a new created incident through automation, which means that you cannot use the investigation feature for new created incidents through automation. <br/>

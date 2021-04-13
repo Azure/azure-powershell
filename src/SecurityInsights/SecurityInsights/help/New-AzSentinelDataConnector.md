@@ -57,8 +57,8 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### Office365
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> [-DataConnectorId <String>]
- [-Office365] -Exchange <String> -SharePoint <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Office365] -Exchange <String> -SharePoint <String> -Teams <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ThreatIntelligence
@@ -81,19 +81,20 @@ Please note that only the following data connectors have automation support thro
 * **OfficeDataConnector** - Represents office data connector
 * **TIDataConnector** - Represents threat intelligence data connector
 
-
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AzureSecurityCenter -Alerts Enabled -SubscriptionId ((Get-AzContext).Subscription.Id)
 ```
+
 This example creates a **DataConnector** for *Azure Security Center* in the specified workspace, and then stores it in the $DataConnector variable.
 
 ### Example 2
 ```powershell
 PS C:\> $DataConnector = New-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftCloudAppSecurity -Alerts Enabled -DiscoveryLogs Disabled
 ```
+
 This example creates a **DataConnector** for *Microsoft Cloud App Security* in the specified workspace, and then stores it in the $DataConnector variable.
 
 ### Examples 3
@@ -104,6 +105,7 @@ $SentinelConnection = @{
 }
 New-AzSentinelDataConnector @SentinelConnection -Office365 -Exchange Enabled -SharePoint Enabled -Teams Enabled
 ```
+
 This example uses a connection object to pass the resourceGroupName and workspaceName. It then configures the *Office 365* data connector to collect Exchange, SharePoint and Teams logs.
 
 ## PARAMETERS
@@ -376,6 +378,22 @@ Data connector Subscription Id
 Type: System.String
 Parameter Sets: AzureSecurityCenter
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Teams
+Data Connector Teams
+
+```yaml
+Type: System.String
+Parameter Sets: Office365
+Aliases:
+Accepted values: Enabled, Disabled
 
 Required: True
 Position: Named

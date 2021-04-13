@@ -18,7 +18,7 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> [-Sc
  [-AlertRuleId <String>] [-AlertRuleTemplateName <String>] [-Enabled] -DisplayName <String>
  [-Description <String>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] -Query <String>
  -QueryFrequency <TimeSpan> -QueryPeriod <TimeSpan> -Severity <String>
- [-Tactics <System.Collections.Generic.IList`1[System.String]>] [-TriggerOperator <TriggerOperator>]
+ [-Tactic <System.Collections.Generic.IList`1[System.String]>] [-TriggerOperator <TriggerOperator>]
  -TriggerThreshold <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -52,6 +52,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 PS C:\>$AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
 PS C:\>$AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 ```
+
 This example creates an **AlertRule** of the *Fusion* kind based on the Template for *Advanced Multistage Attack Detection*, and then stores it in the $AlertRule variable.<br/>
 Since you are using an AlertRuleTemplate, you only have to pass the parameter *-Enabled* to enable and activate this rule.
 
@@ -60,12 +61,14 @@ Since you are using an AlertRuleTemplate, you only have to pass the parameter *-
 PS C:\> $AlertRuleTemplateName = "a2e0eb51-1f11-461a-999b-cd0ebe5c7a72"
 PS C:\> $AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -MicrosoftSecurityIncidentCreation -Enabled -AlertRuleTemplateName $AlertRuleTemplateName -DisplayName "Create incidents based on Azure Security Center for IoT" -ProductFilter "Azure Security Center for IoT"
 ```
+
 This example creates a **AlertRule** of the *MicrosoftSecurityIncidentCreation* kind based on the template for *Create incidents based on Azure Security Center for IoT alerts*, and then stores it in the $AlertRule varaible.
 
 ### Example 3
 ```powershell
 PS C:\> $AlertRule = New-AzSentinelAlertRule -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Scheduled -Enabled -DisplayName "Powershell Exection Alert (Several Times per Hour)" -Severity Low -Query "SecurityEvent | where EventId == 4688" -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Hours 1) -TriggerThreshold 10
 ```
+
 This example creates a **DataConnector** of the *Scheduled* kind, and then stores it in the $AlertRule variable.<br/>
 *Please note that that query (parameter -Query) needs to be on a single line as as string.*
 
@@ -89,6 +92,7 @@ $NewRuleObject = @{
 }
 $NewRule= New-AzSentinelAlertRule @SentinelConnection @NewRuleObject
 ```
+
 This example use a connection object and an object to configure the alert rule logic, including the query.<br/>
 *Note: Notice the double quotes in the example. If you need to use a string in the query, you need to use double quotes as escape characters.*
 
@@ -408,7 +412,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tactics
+### -Tactic
 Alert Rule Tactics.
 
 ```yaml
