@@ -108,13 +108,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Made changes to registration script to register the GA version of On-Premises Azure Stack HCI with Azure.
-    - Supports registering with user provided certificate thumbprint.
-    - Supports On-Premises Azure Stack HCI OS changes to use independent certificate on cluster nodes.
-    - Cleans up resource group during unregistration.
-    - Improves registration output and logging.
-* [Breaking Change] Breaks the public preview registration of On-Premises Azure Stack HCI with Azure.
-    - To register public preview On-Premises Azure Stack HCi with Azure, use 0.3.1 version of Az.StackHCI.'
+        ReleaseNotes = '* Made changes to registration script to add retries for AAD operations and to add AzureChinaCloud support.
+    - Added retries for AAD operations for reliability.
+    - Supports registration in AzureChinaCloud.
+    - Supports Tag while resource creation.'
 
         # Prerelease string of this module
         # Prerelease = ''
