@@ -35,12 +35,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImageConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        private const string MainRegionParameterSet = "MainRegion";
+        private const string EdgeZoneParameterSet = "EdgeZone";
+
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/images")]
         public string Location { get; set; }
+
+        [Parameter(
+            ParameterSetName = EdgeZoneParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -72,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public ImageDataDisk[] DataDisk { get; set; }
 
         [Parameter(
+            ParameterSetName = MainRegionParameterSet,
             Mandatory = false)]
         public SwitchParameter ZoneResilient { get; set; }
 
@@ -128,6 +139,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : "V1",
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = this.IsParameterBound(c => c.EdgeZone) ? new ExtendedLocation { Name = EdgeZone, Type = ExtendedLocationTypes.EdgeZone } : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,
                 StorageProfile = vStorageProfile,

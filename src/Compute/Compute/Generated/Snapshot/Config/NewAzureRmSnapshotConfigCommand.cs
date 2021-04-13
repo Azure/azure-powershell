@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("V1", "V2")]
         public string HyperVGeneration { get; set; }
@@ -290,6 +296,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
                 Incremental = this.Incremental.IsPresent,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = this.IsParameterBound(c => c.EdgeZone) ? new ExtendedLocation { Name = EdgeZone, Type = ExtendedLocationTypes.EdgeZone } : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,

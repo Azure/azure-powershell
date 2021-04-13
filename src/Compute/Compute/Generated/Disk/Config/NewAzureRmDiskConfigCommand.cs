@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        private const string MainRegionParameterSet = "MainRegion";
+        private const string EdgeZoneParameterSet = "EdgeZone";
+
         [Parameter(
             Mandatory = false,
             Position = 0,
@@ -76,6 +79,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Location { get; set; }
 
         [Parameter(
+            ParameterSetName = EdgeZoneParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            ParameterSetName = MainRegionParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string[] Zone { get; set; }
@@ -375,6 +386,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskMBpsReadOnly = this.IsParameterBound(c => c.DiskMBpsReadOnly) ? this.DiskMBpsReadOnly : (long?)null,
                 MaxShares = this.IsParameterBound(c => c.MaxSharesCount) ? this.MaxSharesCount : (int?)null,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = this.IsParameterBound(c => c.EdgeZone) ? new ExtendedLocation { Name = EdgeZone, Type = ExtendedLocationTypes.EdgeZone } : null,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,
