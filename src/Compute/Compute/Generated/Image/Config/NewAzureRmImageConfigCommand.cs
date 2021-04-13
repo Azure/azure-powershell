@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImageConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        private const string MainRegionParameterSet = "MainRegion";
+        private const string DefaultParameterSet = "DefaultParameterSet";
         private const string EdgeZoneParameterSet = "EdgeZone";
 
         [Parameter(
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public ImageDataDisk[] DataDisk { get; set; }
 
         [Parameter(
-            ParameterSetName = MainRegionParameterSet,
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false)]
         public SwitchParameter ZoneResilient { get; set; }
 

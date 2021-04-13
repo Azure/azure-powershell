@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        private const string MainRegionParameterSet = "MainRegion";
+        private const string DefaultParameterSet = "DefaultParameterSet";
         private const string EdgeZoneParameterSet = "EdgeZone";
 
         [Parameter(
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string EdgeZone { get; set; }
 
         [Parameter(
-            ParameterSetName = MainRegionParameterSet,
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string[] Zone { get; set; }
