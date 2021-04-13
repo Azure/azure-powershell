@@ -54,7 +54,9 @@ namespace Microsoft.Azure.Commands.Compute
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
+        public const string EdgeZoneDefaultParameterSet = "EdgeZoneDefaultParameterSet";
         public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string EdgeZoneSimpleParameterSet = "EdgeZoneSimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
 
         [Parameter(
@@ -87,6 +89,23 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            ParameterSetName = EdgeZoneDefaultParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        [Parameter(
+            ParameterSetName = EdgeZoneSimpleParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
         [Alias("VMProfile")]
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -109,16 +128,27 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Disable BG Info Extension")]
+        [Parameter(
+            ParameterSetName = EdgeZoneDefaultParameterSet,
+            HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = EdgeZoneDefaultParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        [Parameter(
+            ParameterSetName = EdgeZoneDefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
@@ -134,46 +164,57 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AddressPrefix { get; set; } = "192.168.0.0/16";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SubnetName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string PublicIpAddressName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string DomainNameLabel { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         [ValidateSet("Static", "Dynamic")]
         public string AllocationMethod { get; set; } = "Static";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string SecurityGroupName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] OpenPorts { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [PSArgumentCompleter(
             "CentOS",
             "CoreOS",
@@ -198,18 +239,22 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter Linux { get; set; } = false;
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string Size { get; set; } = "Standard_DS1_v2";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AvailabilitySetName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
         public SwitchParameter SystemAssignedIdentity { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
         [ValidateNotNullOrEmpty]
         public string UserAssignedIdentity { get; set; }
@@ -218,27 +263,34 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public SwitchParameter EnableUltraSSD { get; set; }
 
         [Alias("ProximityPlacementGroup")]
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
         
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VmssId { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false,
             HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "The priority for the virtual machine. Only supported values are 'Regular', 'Spot' and 'Low'. 'Regular' is for regular virtual machine. 'Spot' is for spot virtual machine. 'Low' is also for spot virtual machine but is replaced by 'Spot'. Please use 'Spot' instead of 'Low'.")]
@@ -247,6 +299,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false,
+            HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.")]
         [PSArgumentCompleter("Deallocate", "Delete")]
@@ -254,17 +308,24 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The max price of the billing of a low priority virtual machine.")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false,
+            HelpMessage = "The max price of the billing of a low priority virtual machine.")])]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "The max price of the billing of a low priority virtual machine.")]
         public double MaxPrice { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false,
+            HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
         
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
+            HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = EdgeZoneSimpleParameterSet, Mandatory = false,
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
