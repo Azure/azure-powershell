@@ -20,5 +20,8 @@
 
 ## Upcoming Release
 
+## Version 1.0.0
+* GA Release
+
 ## Version 0.1.0
 * Initial Release
