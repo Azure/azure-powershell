@@ -474,9 +474,8 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors
         {
             return new OfficeDataConnectorDataTypes()
             {
-                Exchange = value.Exchange?.CreatePSType(),
-                SharePoint = value.SharePoint?.CreatePSType(),
-                Teams = value.Teams?.CreatePSType()
+                Exchange = value.Exchange.CreatePSType(),
+                SharePoint = value.SharePoint.CreatePSType()
 
             };
         }
