@@ -316,7 +316,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string EncryptionKeyTypeForQueue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
-        public SwitchParameter  RequireInfrastructureEncryption { get; set; }
+        public SwitchParameter RequireInfrastructureEncryption { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
+        public TimeSpan SasExpirationPeriod { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
+        public int KeyExpirationPeriodInDay
+        {
+            get
+            {
+                return keyExpirationPeriodInDay.Value;
+            }
+            set
+            {
+                keyExpirationPeriodInDay = value;
+            }
+        }
+        private int? keyExpirationPeriodInDay = null;
 
         [Parameter(
             Mandatory = false,
@@ -523,6 +540,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Type = ExtendedLocationTypes.EdgeZone,
                     Name = this.EdgeZone
                 };
+            }
+            if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+            {
+                createParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+            }
+            if (keyExpirationPeriodInDay != null)
+            {
+                createParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
