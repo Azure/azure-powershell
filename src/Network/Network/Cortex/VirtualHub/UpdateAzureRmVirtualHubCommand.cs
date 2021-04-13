@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Network
                 virtualHubToUpdate.Sku = this.Sku;
             }
 
-            if (string.IsNullOrWhiteSpace(this.PreferredRoutingGateway))
+            if (!string.IsNullOrWhiteSpace(this.PreferredRoutingGateway))
             {
                 virtualHubToUpdate.PreferredRoutingGateway = this.PreferredRoutingGateway;
             }

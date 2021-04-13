@@ -178,6 +178,10 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         virtualHub.PreferredRoutingGateway = "ExpressRoute";
                     }
+                    else
+                    {
+                        virtualHub.PreferredRoutingGateway = this.PreferredRoutingGateway;
+                    }
 
                     WriteObject(CreateOrUpdateVirtualHub(
                         this.ResourceGroupName,
