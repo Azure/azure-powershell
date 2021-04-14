@@ -436,7 +436,7 @@ Accept wildcard characters: False
 ```
 
 ### -BgpRouteTranslationForNat
-Flag to enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway
+This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

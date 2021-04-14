@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+            HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
         public bool? BgpRouteTranslationForNat { get; set; }
 
         [Parameter(
