@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.PrivateDns" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="323.1255.27827" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="413.1856.57282" />
   </ItemGroup>
 
   <ItemGroup>
