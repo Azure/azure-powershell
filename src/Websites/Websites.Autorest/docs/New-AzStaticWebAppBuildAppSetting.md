@@ -12,10 +12,17 @@ Description for Creates or updates the app settings of a static site build.
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
 New-AzStaticWebAppBuildAppSetting -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzStaticWebAppBuildAppSetting -InputObject <IWebsitesIdentity> [-Kind <String>] [-Property <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,13 +63,29 @@ The stage site identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -86,7 +109,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -116,7 +139,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -133,7 +156,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -179,6 +202,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
@@ -186,6 +211,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+  - `[Authprovider <String>]`: The auth provider for the users.
+  - `[DomainName <String>]`: The custom domain name.
+  - `[EnvironmentName <String>]`: The stage site identifier.
+  - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Location where you plan to create the static site.
+  - `[Name <String>]`: Name of the static site.
+  - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
+  - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
+  - `[Userid <String>]`: The user id of the user.
 
 ## RELATED LINKS
 

@@ -1,35 +1,41 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azstaticwebappappsetting
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/get-azstaticwebappsetting
 schema: 2.0.0
 ---
 
-# New-AzStaticWebAppAppSetting
+# Get-AzStaticWebAppSetting
 
 ## SYNOPSIS
-Description for Creates or updates the app settings of a static site.
+Description for Gets the application settings of a static site.
 
 ## SYNTAX
 
 ```
-New-AzStaticWebAppAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzStaticWebAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Creates or updates the app settings of a static site.
+Description for Gets the application settings of a static site.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzStaticWebAppAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Property @{'setting1' = 'someval'; 'setting2' = 'someval2' }
+PS C:\> {{ Add code here }}
 
-Kind Name        Type
----- ----        ----
-     appsettings Microsoft.Web/staticSites/config
+{{ Add output here }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
 {{ Add description here }}
@@ -51,21 +57,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-Kind of resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the static site.
 
@@ -75,21 +66,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Property
-Settings.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,7 +93,7 @@ This is a GUID-formatted string (e.g.
 00000000-0000-0000-0000-000000000000).
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzStaticWebApp
 
 ## SYNOPSIS
-Description for Gets all static sites in the specified resource group.
+Description for Gets the details of a static site.
 
 ## SYNTAX
 
@@ -19,12 +19,6 @@ Get-AzStaticWebApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<C
 
 ### Get
 ```
-Get-AzStaticWebApp -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get1
-```
 Get-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
@@ -34,8 +28,14 @@ Get-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 Get-AzStaticWebApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzStaticWebApp -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Description for Gets all static sites in the specified resource group.
+Description for Gets the details of a static site.
 
 ## EXAMPLES
 
@@ -141,7 +141,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -156,7 +156,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -173,7 +173,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False

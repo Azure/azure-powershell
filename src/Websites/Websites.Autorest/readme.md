@@ -43,7 +43,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
-  # Use "StaticWebApp" as subject prefix
+# Use "StaticWebApp" as subject prefix
   - where:
       subject-prefix: Websites
       subject: StaticSite(.*)
@@ -51,58 +51,113 @@ directive:
       subject-prefix: StaticWebApp
       subject: $1
 
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
-  - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
-      # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: ^(?!CustomDomain).*$
-    remove: true
-  - where:
-      variant: ^CreateViaIdentity$
-      subject: CustomDomain
-    remove: true
-  # Remove the set-* cmdlet
+# Remove the cmdlet
   - where:
       verb: Set
     remove: true
 
-  # Rename `Invoke-` cmdlets, using better verbs
   - where:
-      verb: Invoke
-      subject: Detach
-    set:
-      verb: Remove
-      subject: AttachedRepository
-      # alternatives:
-      # Remove-AzStaticWebAppAttachedRepository
-      # Remove-AzStaticWebAppAttachedRepo
-      # Remove-AzStaticWebAppRepository
+      subject: (.*)PrivateLink(.*)
+    remove: true
+
+  - where:
+      subject: (.*)PrivateEndpoint(.*)
+    remove: true
+
+  # swagger definiition incorrect.
+  - where:
+      subject: PreviewWorkflow
+    remove: true
+
+  # Server not implement.
+  - where:
+      subject: ZipDeployment
+    remove: true
+
+# Rename cmdlet
   - where:
       verb: Invoke
       subject: WorkflowPreview|PreviewWorkflow
     set:
       verb: New
       subject: PreviewWorkflow
-      # alternatives:
-      # New-AzStaticWebAppPreviewWorkflow
-      # New-AzStaticWebAppWorkflowPreview
+    # alternatives:
+    # New-AzStaticWebAppPreviewWorkflow
+    # New-AzStaticWebAppWorkflowPreview
+
   - where:
       subject: CustomDomainCanBeAddedToStaticSite
     set:
       subject: CustomDomain
-
-  # Rename some parameters
   - where:
-      parameter-name: BuildProperty(.*)
+      subject: ^AppSetting$
     set:
-      parameter-name: $1
+      subject: Setting
+
+# Remove variant
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
+
+    remove: true
+  - where:
+      verb: Test
+      variant: ^Validate$|^ValidateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: CustomDomain
+    remove: true
 
   - where:
-      verb: Get
-      variant: ^GetViaIdentity1$
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: BuildAppSetting
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: FunctionAppSetting
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: AppSetting
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: BuildFunctionAppSetting
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
+      # CreateExpanded variant, because the only parameters are all in URL rather than request body
+      subject: UserRoleInvitationLink
+    remove: true
+
+  - where:
+      verb: New
+      subject: ^$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
+  - where:
+      verb: Update
+      subjet: null
+      variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
   - where:
@@ -110,13 +165,29 @@ directive:
       subject: ApiKey
       variant: ^Reset$|^ResetViaIdentity$
     remove: true
-  # Remove cmdlet
-  - where:
-      subject: (.*)PrivateEndpoint(.*)
-    remove: true
 
-  # Remove cmdlet
   - where:
-      subject: (.*)PrivateLink(.*)
-    remove: true  
+      verb: Register
+      subject: UserProvidedFunctionApp
+      variant: ^Register$|^Register1$|^RegisterViaIdentity$|^RegisterViaIdentity1$|^RegisterViaIdentityExpanded$|^RegisterViaIdentityExpanded1$
+    remove: true
+# Rename cmdlet
+  # Rename `Invoke-` cmdlets, using better verbs
+  - where:
+      verb: Invoke
+      subject: Detach
+    set:
+      verb: Remove
+      subject: AttachedRepository
+    # alternatives:
+    # Remove-AzStaticWebAppAttachedRepository
+    # Remove-AzStaticWebAppAttachedRepo
+    # Remove-AzStaticWebAppRepository
+
+# Rename parameters
+  - where:
+      parameter-name: BuildProperty(.*)
+    set:
+      parameter-name: $1
+      
 ```

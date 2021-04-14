@@ -8,17 +8,17 @@ schema: 2.0.0
 # Get-AzStaticWebAppBuild
 
 ## SYNOPSIS
-Description for Gets all static site builds for a particular static site.
+Description for Gets the details of a static site build.
 
 ## SYNTAX
 
-### Get (Default)
+### List (Default)
 ```
 Get-AzStaticWebAppBuild -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Get1
+### Get
 ```
 Get-AzStaticWebAppBuild -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -30,7 +30,7 @@ Get-AzStaticWebAppBuild -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObj
 ```
 
 ## DESCRIPTION
-Description for Gets all static site builds for a particular static site.
+Description for Gets the details of a static site build.
 
 ## EXAMPLES
 
@@ -99,7 +99,7 @@ The stage site identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -130,7 +130,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -145,7 +145,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1
+Parameter Sets: Get, List
 Aliases:
 
 Required: False

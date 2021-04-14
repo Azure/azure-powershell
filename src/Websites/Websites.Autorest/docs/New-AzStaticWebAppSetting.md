@@ -1,52 +1,82 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/reset-azstaticwebappapikey
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azstaticwebappsetting
 schema: 2.0.0
 ---
 
-# Reset-AzStaticWebAppApiKey
+# New-AzStaticWebAppSetting
 
 ## SYNOPSIS
-Description for Resets the api key for an existing static site.
+Description for Creates or updates the app settings of a static site.
 
 ## SYNTAX
 
-### ResetExpanded (Default)
+### CreateExpanded (Default)
 ```
-Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Kind <String>] [-RepositoryToken <String>] [-ShouldUpdateRepository] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### ResetViaIdentityExpanded
+### Create
 ```
-Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity> [-Kind <String>] [-RepositoryToken <String>]
- [-ShouldUpdateRepository] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzStaticWebAppSetting -Name <String> -ResourceGroupName <String> -AppSetting <IStringDictionary>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzStaticWebAppSetting -InputObject <IWebsitesIdentity> -AppSetting <IStringDictionary>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzStaticWebAppSetting -InputObject <IWebsitesIdentity> [-Kind <String>] [-Property <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Resets the api key for an existing static site.
+Description for Creates or updates the app settings of a static site.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
+PS C:\> {{ Add code here }}
 
+{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AppSetting
+String dictionary resource.
+To construct, see NOTES section for APPSETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
+Parameter Sets: Create, CreateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -69,7 +99,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: ResetViaIdentityExpanded
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -84,7 +114,7 @@ Kind of resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -99,7 +129,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -109,27 +139,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -Property
+Settings.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RepositoryToken
-The token which proves admin privileges to the repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -144,25 +159,10 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ShouldUpdateRepository
-Determines whether the repository should be updated with the new properties.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +176,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: False
@@ -222,11 +222,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStringDictionary
 
 ## NOTES
 
@@ -236,6 +238,11 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+APPSETTING <IStringDictionary>: String dictionary resource.
+  - `[Kind <String>]`: Kind of resource.
+  - `[Property <IStringDictionaryProperties>]`: Settings.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.

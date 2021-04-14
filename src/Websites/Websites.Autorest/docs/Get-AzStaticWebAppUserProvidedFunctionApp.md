@@ -8,11 +8,11 @@ schema: 2.0.0
 # Get-AzStaticWebAppUserProvidedFunctionApp
 
 ## SYNOPSIS
-Description for Gets the details of the user provided function apps registered with a static site build
+Description for Gets the details of the user provided function app registered with a static site build
 
 ## SYNTAX
 
-### Get2 (Default)
+### List1 (Default)
 ```
 Get-AzStaticWebAppUserProvidedFunctionApp -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
@@ -20,20 +20,8 @@ Get-AzStaticWebAppUserProvidedFunctionApp -Name <String> -ResourceGroupName <Str
 
 ### Get
 ```
-Get-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
 Get-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get3
-```
-Get-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -42,20 +30,20 @@ Get-AzStaticWebAppUserProvidedFunctionApp -InputObject <IWebsitesIdentity> [-Def
  [<CommonParameters>]
 ```
 
-### GetViaIdentity2
+### List
 ```
-Get-AzStaticWebAppUserProvidedFunctionApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity3
+### List2
 ```
-Get-AzStaticWebAppUserProvidedFunctionApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Gets the details of the user provided function apps registered with a static site build
+Description for Gets the details of the user provided function app registered with a static site build
 
 ## EXAMPLES
 
@@ -99,7 +87,7 @@ The stage site identifier.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -114,7 +102,7 @@ Name of the function app registered with the static site build.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, Get3
+Parameter Sets: Get, List2
 Aliases:
 
 Required: True
@@ -130,7 +118,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IWebsitesIdentity
-Parameter Sets: GetViaIdentity, GetViaIdentity2, GetViaIdentity3
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -145,7 +133,7 @@ Name of the static site.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, Get2, Get3
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: True
@@ -160,7 +148,7 @@ Name of the resource group to which the resource belongs.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, Get2, Get3
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: True
@@ -177,7 +165,7 @@ This is a GUID-formatted string (e.g.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, Get2, Get3
+Parameter Sets: Get, List, List1, List2
 Aliases:
 
 Required: False
