@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
+            string edgeZone,
             string addressPrefix)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -43,7 +44,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     AddressSpace = new AddressSpace
                     {
                         AddressPrefixes = new[] { addressPrefix }
-                    }
+                    },
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
     }
 }

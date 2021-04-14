@@ -46,6 +46,8 @@ using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using SM = Microsoft.Azure.Management.Storage.Models;
+using NM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -86,6 +88,11 @@ namespace Microsoft.Azure.Commands.Compute
         [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
 
         [Alias("VMProfile")]
         [Parameter(
@@ -358,10 +365,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                    name: _cmdlet.VirtualNetworkName, addressPrefix: _cmdlet.AddressPrefix);
+                    name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
                 var subnet = virtualNetwork.CreateSubnet(_cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
@@ -377,7 +385,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
+                    _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
@@ -570,6 +578,13 @@ namespace Microsoft.Azure.Commands.Compute
                     };
                 }
             }
+
+            CM.ExtendedLocation ExtendedLocation = null;
+            if (this.VM.EdgeZone != null || this.EdgeZone != null)
+            {
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone ?? this.VM.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+            }
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -585,6 +600,7 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
+                        ExtendedLocation = ExtendedLocation,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
                         Zones = this.Zone ?? this.VM.Zones,
@@ -856,9 +872,16 @@ namespace Microsoft.Azure.Commands.Compute
             }
             while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
+            SM.ExtendedLocation extendedLocation = null;
+            if (this.EdgeZone != null || this.VM.EdgeZone != null)
+            {
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone ?? this.VM.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+            }
+
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
                 Location = this.Location ?? this.VM.Location,
+                ExtendedLocation = extendedLocation
             };
             storaeAccountParameter.SetAsStandardGRS();
 
