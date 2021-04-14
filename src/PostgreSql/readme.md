@@ -102,7 +102,7 @@ directive:
     set:
       verb: Update
   - where:
-      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^ConfigurationsList$
+      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^ConfigurationsList$|^RecoverableServers$|^ServerBasedPerformanceTier$
     hide: true
   - where:
       verb: New$|Update$
@@ -122,7 +122,7 @@ directive:
       variant: ^(?!.*?Expanded)
     hide: true
   - where:
-      subject: ^ConfigurationsList$
+      subject: ^ConfigurationsList$|^RecoverableServer$
     remove: true
   - where:
       parameter-name: VirtualNetworkSubnetId
