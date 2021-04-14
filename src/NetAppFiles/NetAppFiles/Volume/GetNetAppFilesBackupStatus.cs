@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string PoolName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF volume")]
         [ValidateNotNullOrEmpty]
