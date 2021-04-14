@@ -416,7 +416,7 @@ function Test-VolumeBackupStatus
         Assert-AreEqual "$accName/$poolName/$volName1/$backupName1" $retrievedBackup.Name
 
         # Get volume backup status
-        $retrievedBackupStatus = Get-AzNetAppFilesBackupStatus -ResourceGroupName $resourceLocation -AccountName $accName -PoolName $poolName -Name $volName1 
+        $retrievedBackupStatus = Get-NetAppFilesVolumeBackupStatus -ResourceGroupName $resourceLocation -AccountName $accName -PoolName $poolName -Name $volName1 
         Assert-NotNull $retrievedBackupStatus
         
         # delete Backup retrieved by id 

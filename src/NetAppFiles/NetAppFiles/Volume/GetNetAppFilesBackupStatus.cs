@@ -22,14 +22,15 @@ using Microsoft.Azure.Management.NetApp;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupStatus",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeBackupStatus",
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeBackupStatus))]
-    [Alias("Get-AnfBackupStatus")]
+    [Alias("Get-AnfVolumeBackupStatus")]
     public class GetAzureRmNetAppFilesBackupStatus : AzureNetAppFilesCmdletBase
     {
         [Parameter(
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (existingVolume == null)
             {
-                throw new Exception(string.Format("A Volume with name '{0}' in resource group '{1}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A Volume with name '{this.Name}' in resource group '{this.ResourceGroupName}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.");
             }
             if (Name != null)
             {
