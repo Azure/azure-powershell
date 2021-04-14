@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added support for ADE version migration
 
 ## Version 4.11.0
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
