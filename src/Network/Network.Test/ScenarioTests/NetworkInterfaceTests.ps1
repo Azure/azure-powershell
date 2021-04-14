@@ -1101,4 +1101,15 @@ function Test-NetworkInterfaceEdgeZone
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
     $location = Get-ProviderLocation $resourceTypeParent
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }
