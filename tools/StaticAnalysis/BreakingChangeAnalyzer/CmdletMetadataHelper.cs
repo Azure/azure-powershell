@@ -224,7 +224,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Dictionary<string, TypeMetadata> outputDictionary = new Dictionary<string, TypeMetadata>(new TypeNameComparer());
 
             // Add each output in the new metadata to the dictionary
-            if (newCmdlet.OutputTypes != null)
+            if (newCmdlet != null && newCmdlet.OutputTypes != null)
             {
                 foreach (var newOutput in newCmdlet.OutputTypes)
                 {

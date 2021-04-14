@@ -356,14 +356,21 @@ namespace VersionController.Models
             }
 
             galleryRequiredModules.Add(galleryModuleVersionDirectory);
-            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++");
-            foreach (var dir in galleryRequiredModules)
-            {
-                Console.WriteLine(dir);
-            }
-            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++");
+            var galleryModulePsd1Path = Directory.EnumerateFiles(Path.Combine(outputModuleDirectory, $"{moduleName}"), "*.psd1", SearchOption.AllDirectories).FirstOrDefault();
             var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
-            var oldModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+            
+            var serializedCmdletName = $"{moduleName}.json";
+            var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+            if (serializedCmdletFile == null)
+            {
+                var currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Warning: {moduleName} does not have a previously serialized cmdlet for comparison.");
+                Console.ForegroundColor = currentColor;
+                var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
+                SerializeCmdlets(newCmdletFile, newModuleMetadata);
+            }
+            var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
             CmdletLoader.ModuleMetadata = oldModuleMetadata;
             issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
             CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);

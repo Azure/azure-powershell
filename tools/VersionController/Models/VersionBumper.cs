@@ -149,6 +149,7 @@ namespace VersionController.Models
             }
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
+            Console.WriteLine($"{bumpedVersion} in GetBumpedVersion {versionBump} {_oldVersion}");
 
             List<AzurePSVersion> galleryVersion = GetGalleryVersion();
 
