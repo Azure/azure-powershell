@@ -102,7 +102,7 @@ directive:
     set:
       verb: Update
   - where:
-      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^ConfigurationsList$|^RecoverableServers$|^ServerBasedPerformanceTier$
+      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^ServerBasedPerformanceTier$
     hide: true
   - where:
       verb: New$|Update$
