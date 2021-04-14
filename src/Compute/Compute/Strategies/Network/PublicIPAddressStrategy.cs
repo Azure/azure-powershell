@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
+            string edgeZone,
             string domainNameLabel,
             string allocationMethod,
             Sku sku,
@@ -61,6 +62,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                         Name = sku.ToString(),
                     },
                     Zones = zones,
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
 
         public static async Task<string> UpdateDomainNameLabelAsync(
