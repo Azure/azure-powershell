@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fix typo in printing SQL vulnerability assessment scan results
+
 ## Version 0.10.0
 * Added Sql Vulnerability Assessment cmdlets for  IAAS: 
     `Get-AzSecuritySqlVulnerabilityAssessmentScanRecord`
