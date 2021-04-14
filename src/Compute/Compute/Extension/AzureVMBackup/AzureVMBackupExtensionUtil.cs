@@ -33,7 +33,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {

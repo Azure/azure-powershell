@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
