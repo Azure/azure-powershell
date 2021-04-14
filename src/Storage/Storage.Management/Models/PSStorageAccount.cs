@@ -238,18 +238,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSKeyCreationTime()
         { }
 
-        public PSKeyCreationTime(IDictionary<string, DateTime?> keyCreationTime)
+        public PSKeyCreationTime(KeyCreationTime keyCreationTime)
         {
-            if (keyCreationTime != null && keyCreationTime.Count > 0)
+            if (keyCreationTime != null)
             {
-                if (keyCreationTime.Keys.Contains("key1"))
-                {
-                    Key1 = keyCreationTime["key1"];
-                }
-                if (keyCreationTime.Keys.Contains("key2"))
-                {
-                    Key2 = keyCreationTime["key2"];
-                }
+                this.Key1 = keyCreationTime.Key1;
+                this.Key2 = keyCreationTime.Key2;
             }
         }
         public System.DateTime? Key1 { get; set; }
