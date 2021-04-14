@@ -136,6 +136,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceEdgeZone()
         {
+            TestRunner.RunTestScript("Test-NetworkInterfaceEdgeZone");
         }
     }
 }

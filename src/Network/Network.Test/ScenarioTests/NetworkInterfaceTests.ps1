@@ -1088,3 +1088,8 @@ function Test-NetworkInterfaceVmss
         Clean-ResourceGroup $rgname;
     }
 }
+
+function Test-NetworkInterfaceEdgeZone
+{
+
+}
