@@ -16,7 +16,7 @@ Creates an Azure VirtualHub resource.
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
