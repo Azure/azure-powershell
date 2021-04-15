@@ -1241,3 +1241,85 @@ function Test-DisconnectVNGVpnConnection
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Virtual network gateway NatRule tests
+#>
+function Test-VirtualNetworkGatewayNatRuleCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent  
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create the Virtual Network
+      $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create & Get virtualnetworkgateway with NatRules
+      $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $ipconfigurationId = $vnetIpConfig.id
+      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+      $job = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw2 -NatRule $natRule -EnableBgpRouteTranslationForNat -AsJob
+	  $job | Wait-Job
+	  $actual = $job | Receive-Job
+      $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual "Vpn" $expected.GatewayType
+      Assert-AreEqual "RouteBased" $expected.VpnType
+      Assert-AreEqual 1 @($expected.NatRules).Count
+
+      # Updates & Get virtualnetworkgateway with NatRules
+      $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+      $vngNatRules = $gateway.NatRules
+      $natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule2" -Type "Static" -Mode "EgressSnat" -InternalMapping @("20.0.0.0/16") -ExternalMapping @("50.0.0.0/16")
+      $vngNatRules.Add($natrule)
+      $updatedGateway = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -NatRule $vngNatRules
+      Assert-AreEqual 2 @($updatedGateway.NatRules).Count
+
+	  # List virtualNetworkGateways NatRules
+      $list = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $rgname -ParentResourceName $rname
+      Assert-AreEqual 2 @($list).Count
+
+      # update virtualNetworkGateways NatRule
+      $natrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName $rgname -ParentResourceName $rname -Name "natRule2"
+      $updatedNatRule = Update-AzVirtualNetworkGatewayNatRule -InputObject $natrule -ExternalMapping @("40.0.0.0/16")
+      Assert-AreEqual "Succeeded" $updatedNatRule.ProvisioningState
+
+      # Delete virtualNetworkGatewayNatRules
+      $delete = Remove-AzVirtualNetworkGatewayNatRule -ResourceGroupName $rgname -ParentResourceName $rname -Name natRule1 -PassThru -Force
+      Assert-AreEqual $True $delete
+
+      # Delete virtualNetworkGateway
+      $job = Remove-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force -AsJob
+	  $job | Wait-Job
+	  $delete = $job | Receive-Job
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzVirtualNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
+}

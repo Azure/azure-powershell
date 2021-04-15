@@ -22,11 +22,21 @@
 * Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
-
+* Updated cmdlets to add NatRules in VirtualNetworkGateway and BgpRouteTranslationForNat.
+    - `New-AzVirtualNetworkGateway`
+    - `Set-AzVirtualNetworkGateway`
+* Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+* Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
+    - `New-AzVirtualNetworkGatewayNatRule`
+    - `Update-AzVirtualNetworkGatewayNatRule`
+    - `Get-AzVirtualNetworkGatewayNatRule`
+    - `Remove-AzVirtualNetworkGatewayNatRule`
 * Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
-	
+
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `Get-AzRouteServerPeerAdvertisedRoute`
