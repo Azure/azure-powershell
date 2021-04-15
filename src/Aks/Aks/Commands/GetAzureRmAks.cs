@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [CmdletDeprecation(ReplacementCmdletName = "Get-AzAksCluster")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCluster", DefaultParameterSetName = ResourceGroupParameterSet)]
-    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
+    //[Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Aks")]
     [OutputType(typeof(PSKubernetesCluster))]
     public class GetAzureRmAks : KubeCmdletBase
     {
