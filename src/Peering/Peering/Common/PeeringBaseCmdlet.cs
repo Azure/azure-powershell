@@ -319,9 +319,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             {
                 return PeeringResourceManagerProfile.Mapper.Map<PSCdnPeeringPrefix>(cdnPrefix);
             }
-            catch (AzPSInvalidOperationException mapException)
+            catch (InvalidOperationException mapException)
             {
-                throw new AzPSInvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
         }
 
