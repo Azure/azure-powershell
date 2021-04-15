@@ -152,6 +152,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMImageEdgeZoneCmdletOutputFormat()
+        {
+            TestRunner.RunTestScript("Test-VMImageEdgeZoneCmdletOutputFormat");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetVMSizeFromAllLocations()
         {
             TestRunner.RunTestScript("Test-GetVMSizeFromAllLocations");

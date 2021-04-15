@@ -25,5 +25,13 @@ namespace Microsoft.Azure.Commands.Compute
                 return ComputeClient.ComputeManagementClient.VirtualMachineImages;
             }
         }
+
+        public IVirtualMachineImagesEdgeZoneOperations VirtualMachineImagesEdgeZoneClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineImagesEdgeZone;
+            }
+        }
     }
 }
