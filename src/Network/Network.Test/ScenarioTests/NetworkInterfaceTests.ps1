@@ -1106,19 +1106,27 @@ function Test-NetworkInterfaceEdgeZone
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+        $resourceGroupRetrieved = Get-AzResourceGroup -ResourceGroupName $rgname
+        Assert-NotNull $resourceGroupRetrieved
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $retrievedVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-NotNull $retrievedVnet
+        $retrievedSubnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+        Assert-NotNull $retrievedSubnet
 
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicIpRetrieved = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgname
+        Assert-NotNull $publicIpRetrieved
 
         # Create NetworkInterface
         $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
         $job | Wait-Job
         
-        #$expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Delete NetworkInterface
         $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
