@@ -133,7 +133,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Added Teams to Office Data Connector, Bug Fixes and updated documentation.'
+        ReleaseNotes = '* Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''
