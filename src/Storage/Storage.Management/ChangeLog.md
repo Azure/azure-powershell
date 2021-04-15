@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 * Supported EdgeZone in create storage account
     - `New-AzStorageAccount`
 * Fixed an issue that delete immutable blob will prompt incorrect message.
