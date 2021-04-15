@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -133,7 +133,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'GA'
+        ReleaseNotes = 'Added Teams to Office Data Connector, Bug Fixes and updated documentation.'
 
         # Prerelease string of this module
         # Prerelease = ''
