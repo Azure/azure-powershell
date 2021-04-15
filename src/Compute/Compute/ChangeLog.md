@@ -37,6 +37,10 @@
     - `Set-AzVmssSecurityProfile`
     - `Set-AzVmssUefi`
 * Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
+* Added optional parameter `-EdgeZone` to the following VM image cmdlets
+    - `Get-AzVmImage`
+    - `Get-AzVmImageOffer`
+    - `Get-AzVmImageSku`
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
