@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -73,7 +73,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -262,7 +264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HPCCache",
             "Name": "Microsoft.Azure.Commands.HPCCache.PSSku",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HPCCache.PSSku, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HPCCache.PSSku, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Capabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StorageCache.Models.ResourceSkuCapabilities]",
               "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.StorageCache.Models.Restriction]",
@@ -312,7 +314,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -413,7 +417,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Clfs": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget",
               "Nfs3": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target",
@@ -470,7 +474,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -534,7 +540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -847,7 +853,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -1017,7 +1023,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.HPCCache",
             "Name": "Microsoft.Azure.Commands.HPCCache.PSHpcCacheUsageModels",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HPCCache.PSHpcCacheUsageModels, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.HPCCache.PSHpcCacheUsageModels, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "TargetType": "System.String",
@@ -1065,7 +1071,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1166,7 +1174,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -1223,7 +1231,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1664,7 +1674,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Clfs": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget",
               "Nfs3": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target",
@@ -1721,7 +1731,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2651,7 +2663,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2973,7 +2987,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3330,7 +3346,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -3387,7 +3403,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3453,7 +3471,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -3720,7 +3738,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -3938,7 +3956,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcStorageTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Clfs": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget",
               "Nfs3": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target",
@@ -3995,7 +4013,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4799,7 +4819,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4865,7 +4887,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -5332,7 +5354,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -5653,7 +5675,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -5719,7 +5743,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -6120,7 +6144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -6393,7 +6417,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -6495,7 +6521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
               "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -7392,7 +7418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHPCCache, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Health": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
                     "Sku": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
@@ -7770,7 +7796,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheHealth, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -7827,7 +7853,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheSku, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String"
       },
@@ -7876,7 +7902,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheUpgradeStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheUpgradeStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheUpgradeStatus, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcCacheUpgradeStatus, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "FirmwareUpdateDeadline": "System.Nullable`1[System.DateTime]",
         "LastFirmwareUpdate": "System.Nullable`1[System.DateTime]",
@@ -8311,7 +8337,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcClfsTarget, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.String"
       },
@@ -8360,7 +8386,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSHpcNfs3Target, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.String",
         "UsageModel": "System.String"
@@ -8410,7 +8436,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -8422,7 +8448,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HPCCache.Models.PSNamespaceJunction, Microsoft.Azure.PowerShell.Cmdlets.HPCCache, Version=0.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "NameSpacePath": "System.String",
         "TargetPath": "System.String",

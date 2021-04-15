@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
             "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo",
               "VM": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo",
@@ -73,7 +73,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -656,7 +658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
             "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Configuration": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo",
               "VM": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo",
@@ -712,7 +714,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1313,7 +1317,7 @@
     "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo": {
       "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
       "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyData+ConfigurationInfo, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Version": "System.String"
@@ -1368,7 +1372,7 @@
     "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo": {
       "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
       "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+VMInfo, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Uuid": "System.String",
         "ResourceId": "System.String"
@@ -1413,7 +1417,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1425,7 +1429,7 @@
     "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails": {
       "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
       "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatusDetailed+ComplianceReasonDetails, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Reasons": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode]",
         "Policy": "System.String",
@@ -1472,7 +1476,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1484,7 +1488,7 @@
     "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode": {
       "Namespace": "Microsoft.Azure.Commands.GuestConfiguration.Models",
       "Name": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.GuestConfiguration.Models.PolicyStatus+ReasonAndCode, Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration, Version=0.10.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

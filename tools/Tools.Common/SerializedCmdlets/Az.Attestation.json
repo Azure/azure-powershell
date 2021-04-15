@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -66,7 +66,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -471,7 +473,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "Id": "System.String",
@@ -525,7 +527,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -968,7 +972,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicy, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TextLength": "System.Int32",
               "JwtLength": "System.Int32",
@@ -1018,7 +1022,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -1575,7 +1581,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -1625,7 +1631,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2068,7 +2076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "Id": "System.String",
@@ -2122,7 +2130,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2448,7 +2458,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -2494,7 +2506,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "Id": "System.String",
@@ -2842,7 +2854,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
                   "Name": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSAttestation, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Hashtable",
                     "Id": "System.String",
@@ -3057,7 +3069,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Attestation.Models",
             "Name": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Attestation.Models.PSPolicySigners, Microsoft.Azure.PowerShell.Cmdlets.Attestation, Version=0.1.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CertificateCount": "System.Int32",
               "Jwt": "System.String",
@@ -3107,7 +3119,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -3519,7 +3533,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -4111,7 +4127,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

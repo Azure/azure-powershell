@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -66,7 +66,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -209,7 +211,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -259,7 +261,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -409,7 +413,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -594,7 +600,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner, Version=0.7.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PartnerId": "System.String",
               "PartnerName": "System.String",
@@ -644,7 +650,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [

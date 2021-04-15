@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models",
             "Name": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -70,7 +70,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -299,7 +301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models",
             "Name": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -353,7 +355,9 @@
               }
             ]
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -671,7 +675,9 @@
             "Methods": [],
             "Constructors": []
           },
-          "ParameterSets": null
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
         }
       ],
       "Parameters": [
@@ -719,7 +725,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models",
             "Name": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "ResourceGroupName": "System.String",
@@ -1019,7 +1025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models",
                   "Name": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity, Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "ResourceGroupName": "System.String",
