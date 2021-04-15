@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 0.2.0
 * Added support for Teams in Office Connector
 * Bug Fixes
 * Updated Documentations
