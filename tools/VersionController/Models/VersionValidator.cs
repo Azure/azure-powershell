@@ -28,6 +28,7 @@ namespace VersionController.Models
         public void ValidateAllVersionBumps()
         {
             var moduleName = _fileHelper.ModuleName;
+            var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             try
             {
                 Console.WriteLine("Validating version bump for " + moduleName + "...");
@@ -400,7 +401,6 @@ namespace VersionController.Models
             Console.WriteLine("Saving " + moduleName + " from the PowerShell Gallery. This will take a few seconds.");
             using (PowerShell powershell = PowerShell.Create())
             {
-                Console.WriteLine($"{outputModuleDirectory}");
                 powershell.AddScript("Save-Module -Name " + moduleName + " -Repository PSGallery -Path " + outputModuleDirectory);
                 var cmdletResult = powershell.Invoke();
             }
