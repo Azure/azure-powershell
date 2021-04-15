@@ -871,6 +871,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSGatewayRoute, MNM.GatewayRoute>();
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
                 cfg.CreateMap<CNM.PSIpConfigurationBgpPeeringAddress, MNM.IPConfigurationBgpPeeringAddress>();
+                cfg.CreateMap<CNM.PSVirtualNetworkGatewayNatRule, MNM.VirtualNetworkGatewayNatRule>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -892,6 +893,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.GatewayRoute, CNM.PSGatewayRoute>();
                 cfg.CreateMap<MNM.VpnClientConnectionHealthDetail, CNM.PSVpnClientConnectionHealthDetail>();
                 cfg.CreateMap<MNM.IPConfigurationBgpPeeringAddress, CNM.PSIpConfigurationBgpPeeringAddress>();
+                cfg.CreateMap<MNM.VirtualNetworkGatewayNatRule, CNM.PSVirtualNetworkGatewayNatRule>();
 
                 // Application Gateways
                 // CNM to MNM
