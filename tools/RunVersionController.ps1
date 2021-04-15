@@ -212,7 +212,7 @@ switch ($PSCmdlet.ParameterSetName)
                 $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
                 if ($Psd1Object.ModuleVersion -ge "1.0.0")
                 {
-                    $ExpectJsonHashSet.Add("Az.{ModuleName}.json", $true)
+                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
                 }
             }
         }
