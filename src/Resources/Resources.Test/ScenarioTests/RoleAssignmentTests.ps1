@@ -223,6 +223,8 @@ function Test-RaByResourceGroup
     Assert-AreEqual $definitionName $newAssignment.RoleDefinitionName
     Assert-AreEqual $users[0].DisplayName $newAssignment.DisplayName
 
+    #Start-Sleep -Seconds 300
+
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
@@ -356,6 +358,8 @@ function Test-RaByServicePrincipal
     Assert-AreEqual $definitionName $newAssignment2.RoleDefinitionName
     Assert-AreEqual $scope $newAssignment2.Scope
     Assert-AreEqual $servicePrincipals[0].DisplayName $newAssignment2.DisplayName
+    
+    #Start-Sleep -Seconds 300
 
     VerifyRoleAssignmentDeleted $newAssignment1
     VerifyRoleAssignmentDeleted $newAssignment2
