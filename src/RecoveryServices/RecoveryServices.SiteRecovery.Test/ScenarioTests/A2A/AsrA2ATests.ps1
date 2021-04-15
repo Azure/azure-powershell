@@ -796,8 +796,12 @@ function Test-VMNicConfig {
     #Update VM Nic properties
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     $nicId = $pe.NicDetailsList[0].NicId
+    $ipConfigName = $pe.NicDetailsList[0].IpConfigs[0].Name
     $recNicName = getRecoveryNicName
-    $nicConfig = New-AzRecoveryServicesAsrVMNicConfig -NicId $nicId -ReplicationProtectedItem $pe -RecoveryNicName $recNicName -RecoveryNicResourceGroupName $recRgName -ReuseExistingNic
+
+    $ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName $ipConfigName -RecoverySubnetName ""
+    $ipConfigs = @($ipConfig)
+    $nicConfig = New-AzRecoveryServicesAsrVMNicConfig -NicId $nicId -ReplicationProtectedItem $pe -RecoveryVMNetworkId $RecoveryAzureNetworkId -RecoveryNicName $recNicName -RecoveryNicResourceGroupName $recRgName -ReuseExistingNic -IPConfig $ipConfigs
 
     $updateDRjob = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $pe -ASRVMNicConfiguration $nicConfig
     WaitForJobCompletion -JobId $updateDRjob.Name

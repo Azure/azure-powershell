@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = false,
             HelpMessage = "Specifies test failover/failover settings of NIC IP configs.")]
         [ValidateNotNull]
-        public IPConfigInputDetails[] IPConfig { get; set; }
+        public PSIPConfigInputDetails[] IPConfig { get; set; }
 
         #endregion Parameters
 
@@ -253,6 +253,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             vmNic.EnableAcceleratedNetworkingOnTfo ?? false;
                     }
 
+                    List<PSIPConfigInputDetails> ipConfigList = null;
+                    if (this.IPConfig == null || this.IPConfig.ToList().Count == 0)
+                    {
+                        ipConfigList = vmNic.IpConfigs?.Select(ip => ConvertToPSIPConfig(ip)).ToList() ?? null;
+                    }
+                    else if (vmNic.IpConfigs != null)
+                    {
+                        ipConfigList = this.IPConfig.ToList();
+                        var inputIPConfigNames = this.IPConfig.Select(ip => ip.IPConfigName).ToList();
+
+                        foreach (IPConfigDetails ipConfig in vmNic.IpConfigs)
+                        {
+                            if (inputIPConfigNames.Contains(ipConfig.Name))
+                            {
+                                continue;
+                            }
+
+                            // Defaulting logic for IP configs whose input is not 
+                            ipConfigList.Add(ConvertToPSIPConfig(ipConfig));
+                        }
+                    }
+
                     nicConfig = new ASRVMNicConfig
                     {
                         NicId = this.NicId,
@@ -263,7 +285,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryNetworkSecurityGroupId = this.RecoveryNetworkSecurityGroupId,
                         EnableAcceleratedNetworkingOnRecovery =
                             this.EnableAcceleratedNetworkingOnRecovery,
-                        IPConfigs = this.IPConfig?.ToList(),
+                        IPConfigs = ipConfigList,
                         TfoVMNetworkId = this.TfoVMNetworkId,
                         TfoNicName = this.TfoNicName,
                         TfoNicResourceGroupName = this.TfoNicResourceGroupName,
@@ -297,17 +319,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     isRecoveryNetworkRequired = true;
                 }
 
-                var vmNicIPConfig = vmNic.IpConfigs.FirstOrDefault(
+                IPConfigDetails vmNicIPConfig = vmNic.IpConfigs.FirstOrDefault(
                     ip => ip.Name.Equals(
-                        ipConfig.IpConfigName, StringComparison.OrdinalIgnoreCase));
+                        ipConfig.IPConfigName, StringComparison.OrdinalIgnoreCase));
 
                 if (vmNicIPConfig == null)
                 {
-                    this.WriteWarning(string.Format(Resources.IPConfigNotFoundInVMNic, ipConfig.IpConfigName, vmNic.NicId));
+                    this.WriteWarning(
+                        string.Format(Resources.IPConfigNotFoundInVMNic,
+                        ipConfig.IPConfigName, vmNic.NicId));
                     return false;
                 }
 
-                ipConfig.IsPrimary = vmNicIPConfig.IsPrimary;
+                ipConfig.IsPrimary = (bool)vmNicIPConfig.IsPrimary;
                 if (string.IsNullOrEmpty(ipConfig.RecoverySubnetName))
                 {
                     ipConfig.RecoverySubnetName = vmNicIPConfig.RecoverySubnetName;
@@ -362,6 +386,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
 
             return true;
+        }
+
+        PSIPConfigInputDetails ConvertToPSIPConfig(IPConfigDetails ipConfig)
+        {
+            return new PSIPConfigInputDetails()
+            {
+                IPConfigName = ipConfig.Name,
+                IsPrimary = (bool)ipConfig.IsPrimary,
+                IsSeletedForFailover = (bool)ipConfig.IsSeletedForFailover,
+                RecoverySubnetName = ipConfig.RecoverySubnetName,
+                RecoveryStaticIPAddress = ipConfig.RecoveryStaticIPAddress,
+                RecoveryPublicIPAddressId = ipConfig.RecoveryPublicIPAddressId,
+                RecoveryLBBackendAddressPoolIds = ipConfig.RecoveryLBBackendAddressPoolIds,
+                TfoSubnetName = ipConfig.TfoSubnetName,
+                TfoStaticIPAddress = ipConfig.TfoStaticIPAddress,
+                TfoPublicIPAddressId = ipConfig.TfoPublicIPAddressId,
+                TfoLBBackendAddressPoolIds = ipConfig.TfoLBBackendAddressPoolIds
+            };
         }
     }
 }

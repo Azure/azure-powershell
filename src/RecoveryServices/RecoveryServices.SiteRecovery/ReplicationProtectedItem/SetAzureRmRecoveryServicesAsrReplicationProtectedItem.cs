@@ -869,7 +869,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             nic.EnableAcceleratedNetworkingOnRecovery;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
                             nic.RecoveryNetworkSecurityGroupId;
-                        vMNicInputDetails.IpConfigs = nic.IPConfigs;
+                        vMNicInputDetails.IpConfigs = nic.IPConfigs?.Select(ip =>
+                            new IPConfigInputDetails()
+                            {
+                                IpConfigName = ip.IPConfigName,
+                                IsPrimary = ip.IsPrimary,
+                                IsSeletedForFailover = ip.IsSeletedForFailover,
+                                RecoverySubnetName = ip.RecoverySubnetName,
+                                RecoveryStaticIPAddress = ip.RecoveryStaticIPAddress,
+                                RecoveryPublicIPAddressId = ip.RecoveryPublicIPAddressId,
+                                RecoveryLBBackendAddressPoolIds = ip.RecoveryLBBackendAddressPoolIds,
+                                TfoSubnetName = ip.TfoSubnetName,
+                                TfoStaticIPAddress = ip.TfoStaticIPAddress,
+                                TfoPublicIPAddressId = ip.TfoPublicIPAddressId,
+                                TfoLBBackendAddressPoolIds = ip.TfoLBBackendAddressPoolIds
+                            }).ToList() ?? null;
                         vMNicInputDetails.TfoNicName = nic.TfoNicName;
                         vMNicInputDetails.TfoNicResourceGroupName = nic.TfoNicResourceGroupName;
                         vMNicInputDetails.TfoReuseExistingNic = nic.TfoReuseExistingNic;
@@ -895,8 +909,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         && string.Compare(nDetails.NicId, this.UpdateNic, StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         vMNicInputDetails.NicId = this.UpdateNic;
+
+                        var dbIpConfig = nDetails.IpConfigs?[0];
                         var ipConfig = new IPConfigInputDetails()
                         {
+                            IpConfigName = dbIpConfig?.Name,
+                            IsPrimary = dbIpConfig?.IsPrimary ?? true,
+                            IsSeletedForFailover = true,
                             RecoverySubnetName = this.RecoveryNicSubnetName,
                             RecoveryStaticIPAddress = this.RecoveryNicStaticIPAddress,
                             RecoveryPublicIPAddressId = this.RecoveryPublicIPAddressId,

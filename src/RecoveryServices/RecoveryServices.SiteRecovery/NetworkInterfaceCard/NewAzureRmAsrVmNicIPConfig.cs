@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVMNicIPConfig", DefaultParameterSetName = ASRParameterSets.AzureToAzure, SupportsShouldProcess = true)]
     [Alias("New-ASRVMNicIPConfig")]
-    [OutputType(typeof(IPConfigInputDetails))]
+    [OutputType(typeof(PSIPConfigInputDetails))]
     public class NewAzureRmAsrVmNicIPConfig : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
-            IPConfigInputDetails ipConfig = null;
+            PSIPConfigInputDetails ipConfig = null;
 
             if (string.IsNullOrEmpty(this.RecoverySubnetName) &&
                 !string.IsNullOrEmpty(this.RecoveryStaticIPAddress))
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 case ASRParameterSets.AzureToAzure:
 
-                    ipConfig = new IPConfigInputDetails
+                    ipConfig = new PSIPConfigInputDetails
                     {
-                        IpConfigName = this.IpConfigName,
+                        IPConfigName = this.IpConfigName,
                         IsSeletedForFailover = this.IsSelectedForFailover,
                         RecoverySubnetName = this.RecoverySubnetName,
                         RecoveryStaticIPAddress = this.RecoveryStaticIPAddress,

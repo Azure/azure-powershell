@@ -2348,7 +2348,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the IP configuration details for the recovery NIC.
         /// </summary>
         [DataMember]
-        public List<IPConfigInputDetails> IPConfigs { get; set; }
+        public List<PSIPConfigInputDetails> IPConfigs { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the recovery NIC has accelerated networking enabled.
@@ -2391,6 +2391,81 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [DataMember]
         public bool EnableAcceleratedNetworkingOnTfo { get; set; }
+    }
+
+    /// <summary>
+    ///     IP config details of a NIC.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class PSIPConfigInputDetails
+    {
+        /// <summary>
+        ///     Gets or sets name of the IP config.
+        /// </summary>
+        [DataMember]
+        public string IPConfigName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value indicating if IP config is primary..
+        /// </summary>
+        [DataMember]
+        public bool IsPrimary { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value indicating if IP config is selected for failover..
+        /// </summary>
+        [DataMember]
+        public bool IsSeletedForFailover { get; set; }
+
+        /// <summary>
+        ///     Gets or sets recovery subnet name.
+        /// </summary>
+        [DataMember]
+        public string RecoverySubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets recovery static IP address.
+        /// </summary>
+        [DataMember]
+        public string RecoveryStaticIPAddress { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the recovery public IP address resource associated 
+        ///     with the IP config.
+        /// </summary>
+        [DataMember]
+        public string RecoveryPublicIPAddressId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the recovery backend address pools for the IP config.
+        /// </summary>
+        [DataMember]
+        public IList<string> RecoveryLBBackendAddressPoolIds { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the subnet to be used by IP config during test failover.
+        /// </summary>
+        [DataMember]
+        public string TfoSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets tfo static IP address.
+        /// </summary>
+        [DataMember]
+        public string TfoStaticIPAddress { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the id of the public IP address resource associated with the 
+        ///     tfo IP config.
+        /// </summary>
+        [DataMember]
+        public string TfoPublicIPAddressId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the tfo backend address pools for the IP config.
+        /// </summary>
+        [DataMember]
+        public IList<string> TfoLBBackendAddressPoolIds { get; set; }
     }
 
     /// <summary>
