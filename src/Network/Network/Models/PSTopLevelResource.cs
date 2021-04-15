@@ -29,9 +29,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public ExtendedLocation ExtendedLocation { get; set; }
 
-        // Not sure that is right
-        public string ExtendedLocationType { get; set; }
-
         public string ResourceGuid { get; set; }
 
         public string Type { get; set; }
