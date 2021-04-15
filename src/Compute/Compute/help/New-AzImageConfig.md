@@ -13,7 +13,7 @@ Creates a configurable image object.
 ## SYNTAX
 
 ```
-New-AzImageConfig [[-Location] <String>] [[-EdgeZone] <String>] [[-Tag] <Hashtable>] [[-SourceVirtualMachineId] <String>]
+New-AzImageConfig [[-Location] <String>] [-EdgeZone <String>] [[-Tag] <Hashtable>] [[-SourceVirtualMachineId] <String>]
  [[-OsDisk] <ImageOSDisk>] [-HyperVGeneration <String>] [-DataDisk <ImageDataDisk[]>] [-ZoneResilient]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
