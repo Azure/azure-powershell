@@ -4296,6 +4296,10 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PreferredRoutingGateway</Label>
+                <PropertyName>PreferredRoutingGateway</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
