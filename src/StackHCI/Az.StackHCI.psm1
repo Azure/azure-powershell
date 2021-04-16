@@ -112,7 +112,7 @@ $AuthorityAzurePPE = "https://login.windows-ppe.net"
 $BillingServiceApiScopeAzurePPE = "https://azurestackhci-usage-df.azurewebsites.net/.default"
 $GraphServiceApiScopeAzurePPE = "https://graph.ppe.windows.net/.default"
 
-$ServiceEndpointAzureChinaCloud = "https://sha-azurestackhci-dp-mc.chinacloudsites.cn"
+$ServiceEndpointAzureChinaCloud = "https://dp.stackhci.azure.cn"
 $AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
 $BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
 $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
