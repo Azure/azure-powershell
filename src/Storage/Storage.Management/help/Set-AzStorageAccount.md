@@ -21,8 +21,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -33,8 +34,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
  [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -47,7 +49,8 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -208,6 +211,19 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 ```
 
 This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
+
+### Example 14: Update a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+```powershell
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
+
+PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+5
+
+PS C:\> $$account.SasPolicy.SasExpirationPeriod
+1.12:05:06
+```
+
+This command updates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the updated account related properties.
 
 ## PARAMETERS
 
@@ -490,6 +506,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyExpirationPeriodInDay
+The Key expiration period of this account, it is accurate to days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 If using -KeyvaultEncryption to enable encryption with Key Vault, specify the Keyname property with this option.
 
@@ -650,6 +681,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: MicrosoftRouting, InternetRouting
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SasExpirationPeriod
+The SAS expiration period of this account, it is a timespan and accurate to seconds.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
