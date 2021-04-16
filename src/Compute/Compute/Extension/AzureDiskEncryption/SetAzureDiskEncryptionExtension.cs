@@ -861,8 +861,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 && (this.Force.IsPresent || ((this.Migrate.IsPresent || this.MigrationRecovery.IsPresent) ? this.ShouldContinue(Properties.Resources.MigrateAzureDiskEncryptionConfirmation, Properties.Resources.MigrateAzureDiskEncryptionCaption)
                                     : this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))))
                 {
-                    this.WriteWarning("********THIS CMDLET IS GENERATED FROM A LOCAL PS BUILD. ********");
-
                     VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                         this.ResourceGroupName, VMName).Body;
 
