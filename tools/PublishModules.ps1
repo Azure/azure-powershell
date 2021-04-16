@@ -492,7 +492,17 @@ function Save-PackageLocally {
             Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
             # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
             # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
-            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            $PSGalleryRepository = Get-PSRepository | Where-Object {$_.Name -eq "PSGallery"}
+            if (!$PSGalleryRepository) {
+                Register-PSRepository -Default
+            }
+            $module = Find-Module -Name $ModuleName -Repository PSGallery -AllVersions -AllowPrerelease
+                | Where-Object {$_.Version -like "${RequiredVersion}*"}
+            if ($module.Version -match "-preview")
+            {
+                $RequiredVersion = $module.Version
+            }   
+            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 -AllowPrereleaseVersions | Out-Null
             Write-Output "Downloaded the package sucessfully"
         }
     }
