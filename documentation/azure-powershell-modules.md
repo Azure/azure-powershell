@@ -46,6 +46,7 @@ Data Factory                          | `Az.DataFactory`                        
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
 Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
+Data Protection                       | `Az.DataProtection`                     | [![DataProtection]][DataProtectionGallery]
 Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
 Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery]
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
@@ -169,6 +170,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalytics]:          https://img.shields.io/powershellgallery/v/Az.DataLakeAnalytics.svg?style=flat-square&label=Az.DataLakeAnalytics
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
 [DataMigration]:              https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration
+[DataProtection]:             https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
 [DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
@@ -290,6 +292,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalyticsGallery]:          https://www.powershellgallery.com/packages/Az.DataLakeAnalytics/
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/
 [DataMigrationGallery]:              https://www.powershellgallery.com/packages/Az.DataMigration/
+[DataProtectionGallery]:             https://www.powershellgallery.com/packages/Az.DataProtection/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
 [DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/

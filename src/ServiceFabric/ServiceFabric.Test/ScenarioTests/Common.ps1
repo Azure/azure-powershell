@@ -68,30 +68,30 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprint
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/4e680cd578ba4e57b650d9f89cd20835"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCert2/b4bfdec635514591bc1ee087b9b61772"
 }
 
 function Get-InitialThumbprint
 {
-    return "3545EEBFA6F5EA7A1D436F5D6C708AD6A7110D6B"
+    return "ED1647D7E58F9F69E473B4700A0CCED50F7F65B0"
 }
 
 function Get-Thumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprint
-    return "9ED6D1B225C63DC653CB0D9E16CFD7F799785FAC"
+    return "D1DC34B88497F50FB0C0F019DA74E4DA5FADD56D"
 }
 
 function Get-CertAppSecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/599d307311bf4508b7511ed482fa746f"
+    return "https://azurermsfkvtest.vault.azure.net:443/secrets/AzureRMSFTestCertApp/f052a9de0e9249cc8e84f9951a96afe4"
 }
 
 function Get-CertAppThumbprint
 {
     # Change the thumbprint in the TestServiceFabric.cs file as well in ServiceFabricCmdletBase.TestThumbprintAppCert
-    return "3B892D25432FDA538F54B1EADD0B28BA82C488CC"
+    return "50EA76B5EC4B588CC25CB4C38CC13666A0CA0BB3"
 }
 
 function Get-CACertCommonName
@@ -106,12 +106,12 @@ function Get-CACertIssuerThumbprint
 
 function Get-CACertSecretUrl
 {
-	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/219a6d1803c34447b686db16ecd6285a"
+	return "https://azurermsfkvtest.vault.azure.net:443/secrets/azurermsfcntest/c0770e09071f41b38cbb49204dd2f820"
 }
 
 function Get-CertWUSecretUrl
 {
-	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/5236086354ac470e8efa4e0426b6144d"
+	return "https://azurermsfkvtestwu.vault.azure.net:443/secrets/AzureRMSFTestCertWU/4159eda1fcea468e9bf40a361021f18d"
 }
 
 function Get-DurabilityLevel
@@ -122,6 +122,11 @@ function Get-DurabilityLevel
 function Get-ReliabilityLevel
 {
 	return "Bronze"
+}
+
+function Get-VmImage
+{
+	return "Windows"
 }
 
 function Get-NewNodeTypeName
@@ -187,6 +192,37 @@ function WaitForClusterReadyState($clusterName, $resourceGroupName, $timeoutInSe
     return $false
 }
 
+function WaitForManagedClusterReadyStateIfRecord($clusterName, $resourceGroupName)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		# Wait for Ready cluster state before updating otherwise update is going to fail
+		if (-not (WaitForManagedClusterReadyState $clusterName $resourceGroupName))
+		{
+			Assert-True $false 'Cluster is not in Ready state. Can not continue with test.'
+		}
+	}
+}
+
+function WaitForManagedClusterReadyState($clusterName, $resourceGroupName, $timeoutInSeconds = 1200)
+{
+    $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
+    while (-not $clusterReady -and (Get-Date) -lt $timeoutTime) {
+        $cluster = (Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName)[0]
+        if ($cluster.ClusterState -eq "Ready")
+        {
+            return $true
+            break
+        }
+
+        Write-Host "Cluster state: $($cluster.ClusterState). Waiting for Ready state before continuing."
+        Start-Sleep -Seconds 15
+    }
+
+    Write-Error "WaitForClusterReadyState timed out"
+    return $false
+}
+
 function WaitForAllJob($timeoutInSeconds = 1200)
 {
     $timeoutTime = (Get-Date).AddSeconds($timeoutInSeconds)
@@ -212,6 +248,53 @@ function WaitForAllJob($timeoutInSeconds = 1200)
 
     Write-Error "WaitForJob timed out"
     return $false
+}
+
+<#
+.SYNOPSIS
+Asserts if two hashtables with simple key and value types are equal
+#>
+function Assert-HashtableEqual($h1, $h2)
+{
+  if($h1.count -ne $h2.count)
+  {
+    throw "Hashtable size not equal. Hashtable1: " + $h1.count + " Hashtable2: " + $h2.count
+  }
+
+  foreach($key in $h1.Keys)
+  {
+    if($h1[$key] -ne $h2[$key])
+    {
+      throw "Tag content not equal. Key:$key Tags1:" +  $h1[$key] + " Tags2:" + $h2[$key]
+    }
+  }
+}
+
+###################
+#
+# Verify that the actual string ends with the expected suffix
+#
+#    param [string] $expectedSuffix : The expected suffix
+#    param [string] $actual         : The actual string
+#    param [string] $message        : The message to return if the actual string does not end with the suffix
+####################
+function Assert-EndsWith
+{
+    param([string] $expectedSuffix, [string] $actual, [string] $message)
+
+  Assert-NotNull $actual
+
+  if (!$message)
+  {
+      $message = "Assertion failed because actual '$actual' does not end with '$expectedSuffix'"
+  }
+
+  if (-not $actual.EndsWith($expectedSuffix))
+  {
+      throw $message
+  }
+
+  return $true
 }
 
 # Application functions
@@ -244,4 +327,41 @@ function Get-AppPackageV2
 function Get-ServiceTypeName
 {
     return "CalcServiceType"
+}
+
+# Managed Application functions
+
+function Get-ManagedAppTypeName
+{
+    return "VotingType"
+}
+
+function Get-ManagedAppTypeV1Name
+{
+    return "1.0.0"
+}
+
+function Get-ManagedAppTypeV2Name
+{
+    return "2.0.0"
+}
+
+function Get-ManagedAppPackageV1
+{
+    return "https://sfmconeboxst.blob.core.windows.net/managed-application-deployment/Voting.sfpkg"
+}
+
+function Get-ManagedAppPackageV2
+{
+    return "https://sfmconeboxst.blob.core.windows.net/managed-application-deployment/Voting.2.0.0.sfpkg"
+}
+
+function Get-ManagedStatelessServiceTypeName
+{
+    return "VotingWebType"
+}
+
+function Get-ManagedStatefulServiceTypeName
+{
+    return "VotingDataType"
 }

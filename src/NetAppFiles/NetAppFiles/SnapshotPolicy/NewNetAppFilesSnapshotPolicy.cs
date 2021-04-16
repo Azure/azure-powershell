@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
@@ -124,7 +125,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
                 var NameParts = AccountObject.Name.Split('/');
                 AccountName = NameParts[0];
             }
-                
+            Management.NetApp.Models.SnapshotPolicy existingSnapshotPolicy = null;
+            try
+            {
+                existingSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Get(ResourceGroupName, AccountName, Name);
+            }
+            catch
+            {
+                existingSnapshotPolicy = null;
+            }
+            if (existingSnapshotPolicy != null)
+            {
+                throw new Exception(string.Format("A Snapshot Policy with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesSnapshotPolicy to update an existing Snapshot Policy.", this.Name, this.ResourceGroupName));
+            }
+
             var snapshotPolicyBody = new Management.NetApp.Models.SnapshotPolicy()
             {
                 Location = Location,
