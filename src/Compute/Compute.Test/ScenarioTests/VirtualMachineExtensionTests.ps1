@@ -1934,6 +1934,97 @@ function Test-AzureDiskEncryptionExtension
 
 <#
 .SYNOPSIS
+Test the Set-AzVMDiskEncryptionExtension dual pass to single pass migration scenario
+#>
+function Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration
+{
+    # This test should be run in Live mode only not in Playback mode
+    # pre-requisites to be filled in before running this test. The AAD app should belong to the directory as the user running the test.
+    $resourceGroupName = Get-ComputeTestResourceName
+    try
+    {
+        #Check if AAD app was already created
+        $aadAppName = "detestapp"
+        $SvcPrincipals = Get-AzADServicePrincipal -SearchString $aadAppName;
+        if(-not $SvcPrincipals)
+        {
+            # Create a new AD application if not created before
+            $identifierUri = [string]::Format("http://localhost:8080/{0}", $rgname);
+            $defaultHomePage = 'http://contoso.com';
+            $now = [System.DateTime]::Now;
+            $oneYearFromNow = $now.AddYears(1);
+            $aadClientSecret = Get-ResourceName;
+            $ADApp = New-AzADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+            Assert-NotNull $ADApp;
+            $servicePrincipal = New-AzADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+            $SvcPrincipals = (Get-AzADServicePrincipal -SearchString $aadAppName);
+            # Was AAD app created?
+            Assert-NotNull $SvcPrincipals;
+            $aadClientID = $servicePrincipal.ApplicationId;
+        }
+        else
+        {
+            # Was AAD app already created?
+            Assert-NotNull $aadClientSecret;
+            $aadClientID = $SvcPrincipals[0].ApplicationId;
+			Write-Verbose "Got SPN client ID.."
+        }
+
+		# create virtual machine and key vault prerequisites
+        $vm = Create-VirtualMachine $resourceGroupName
+
+        # Create new KeyVault
+        $vaultName = "detestvault";
+        $keyVault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $loc -Sku standard;
+        $keyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+        #set enabledForDiskEncryption
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption;
+        #set permissions to AAD app to write secrets and keys
+        Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ServicePrincipalName $aadClientID -PermissionsToKeys all -PermissionsToSecrets all
+        $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
+        $keyVaultResourceId = $keyVault.ResourceId;
+
+        #Enable encryption on the VM
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -Force;
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $keyVaultResourceId
+
+        # migrate VM to single pass
+        Write-Verbose "Migrate VM to 1pass"
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Migrate -Force;
+        Write-Verbose "Migration complete"
+
+        # verify encryption state
+        $status = Get-AzVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+        Assert-NotNull $status
+        Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+
+        # verify encryption settings
+        $settings = $status.OsVolumeEncryptionSettings
+        Assert-NotNull $settings
+        Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+        Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $keyVaultResourceId
+
+        #verify VM Model is null after Migration
+        $vmModel = Get-AzVM  -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
+        Assert-Null $vmModel.StorageProfile.OSDisk.EncryptionSettings
+    }
+    finally
+    {
+       Clean-ResourceGroup($resourceGroupName)
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine BGInfo Extensions
 #>
 function Test-VirtualMachineBginfoExtension
