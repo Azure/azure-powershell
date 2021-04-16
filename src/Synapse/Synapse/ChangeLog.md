@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove principaltype in Synapse Role-based access control
 
 ## Version 0.10.0
 * Add support for Synapse Role-based access control
