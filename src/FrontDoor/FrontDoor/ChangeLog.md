@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
 
 ## Version 1.7.0
 * Added FrontDoorId to properties
