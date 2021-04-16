@@ -17,6 +17,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Theory]
         [InlineData("git status")]
         [InlineData("New-Item")]
-        [InlineData(@"$a='ResourceGroup01'")]
+        [InlineData(@"$a=ls 'ResourceGroup01'")]
         public async Task VerifyStartEarlyProessingForOneUnsupportedCommandHistory(string inputData)
         {
             var expectedTelemetryCount = 2;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             await telemetryClient.RequestPredictionTaskCompletionSource.Task;
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
@@ -264,6 +265,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
+            // Should use the placeholder for the assignment like \"$a='ResourceGroup01'\" where there is no command name at the right side.
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
@@ -331,7 +333,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             // Don't need to await on telemetryClient.RequestPredictioinTask, because "git" isn't a supported command and RequestPredictionsAsync isn't called.
@@ -342,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
             var secondHistoryData = telemetryClient.HistoryData;
 
@@ -372,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
             // There is no new request prediction. The correlation id isn't changed.
             AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -477,7 +479,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(maskedCommands[0], telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history[1]), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             await telemetryClient.RequestPredictionTaskCompletionSource.Task;
@@ -782,6 +784,34 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private static void EnsureSameSessionId(ITelemetryData expected, ITelemetryData actual)
         {
             Assert.Equal(expected.SessionId, actual.SessionId);
+        }
+
+        /// <summary>
+        /// Gets the command name offrom the user input.
+        /// </summary>
+        /// <remarks>
+        /// It only needs to be able to get the commands name from the user input in the test cases. It's not intended to be
+        /// comprehensive and fine tuned.
+        /// </remarks>
+        private static string GetCommandName(string commandInput)
+        {
+            // If there is a '=' in it, treat as assignment and parse the right side.
+            var inputSegments = commandInput.Split('=');
+
+            if (inputSegments.Count() == 1)
+            {
+                return commandInput.Split(' ')[0];
+            }
+
+            var rightSide = inputSegments.Last().Trim();
+
+            if ((('a' <= rightSide[0]) && (rightSide[0] <= 'z')) || (('A' <= rightSide[0]) && (rightSide[0] <= 'Z')))
+            {
+                return GetCommandName(rightSide);
+            }
+
+            return AzPredictorConstants.CommandPlaceholder;
+
         }
     }
 }
