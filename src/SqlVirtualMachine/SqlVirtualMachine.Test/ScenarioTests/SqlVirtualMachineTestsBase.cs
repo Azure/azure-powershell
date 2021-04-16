@@ -14,7 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest;
-using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
+//using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
+using CommonStorage = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.SqlVirtualMachine;
 using Microsoft.Azure.ServiceManagement.Common.Models;
