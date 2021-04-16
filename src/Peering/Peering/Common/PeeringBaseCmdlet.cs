@@ -321,7 +321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
             }
             catch (InvalidOperationException mapException)
             {
-                throw new InvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
+                throw new AzPSInvalidOperationException(String.Format(Resources.Error_Mapping, mapException));
             }
         }
 
