@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-Remove an Automated Response from an Analytic.
+Removes an Automated Response from an Analytic Rule.
 
 ## SYNTAX
 
@@ -38,6 +38,20 @@ PS C:\> Remove-AzSentinelAlertRuleAction -ResourceGroupName "MyResourceGroup" -W
 ```
 
 This command removes the Alert Rule from the workspace.
+
+### Example 2
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+
+$AlertRule = Get-AzSentinelAlertRule @SentinelConnection | Where-Object {$_.DisplayName -eq "My VIP has logged in"}
+$AlertRuleAction = Get-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AlertRule.Name
+Remove-AzSentinelAlertRuleAction @SentinelConnection -AlertRuleId $AlertRule.Name -ActionId $AlertRuleAction.Name
+```
+
+This example uses a connection object to pass the *resourceGroupName* and the *workspaceName*. It first gets the *AlertRule* with a specific *DisplayName*, then gets the *AlertRuleAction* and finally removes it from the AlertRule.
 
 ## PARAMETERS
 
