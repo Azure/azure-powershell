@@ -18,8 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - `Remove-AzStorageAccount`
+
+## Version 3.5.1
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  `Start-AzStorageBlobCopy`
+
+## Version 3.5.0
 * Fixed an issue that list account from resource group won't use nextlink
     - `Get-AzStorageAccount`
+* Supported ChangeFeedRetentionInDays when Enable ChangeFeed on Blob service
+    - `Update-AzStorageBlobServiceProperty`
 
 ## Version 3.4.0
 * Upgraded to Microsoft.Azure.Management.Storage 19.0.0, to support new API version 2021-01-01.

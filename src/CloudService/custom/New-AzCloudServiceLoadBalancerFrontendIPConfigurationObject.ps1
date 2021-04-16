@@ -18,14 +18,9 @@
 Create a in-memory object for LoadBalancerFrontendIPConfiguration
 .Description
 Create a in-memory object for LoadBalancerFrontendIPConfiguration
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration
-.Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceLoadBalancerFrontendIPConfigurationObject
 #>
 function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +33,7 @@ function New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration]::New()
 
         $Object.Name = $Name
         $Object.PublicIPAddressId = $PublicIPAddressId

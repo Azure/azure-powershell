@@ -44,6 +44,9 @@ Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
 
+### [Initialize-AzNetAppFilesReplication](Initialize-AzNetAppFilesReplication.md)
+Re-Initializes the replication connection on the destination volume
+
 ### [New-AzNetAppFilesAccount](New-AzNetAppFilesAccount.md)
 Creates a new Azure NetApp Files (ANF) account.
 
@@ -103,6 +106,15 @@ Resume/Resync the connection on the destination volume. If the operation is ran 
 
 ### [Set-AzNetAppFilesAccount](Set-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account with the new data set. Useful for deletion of associated active directories.
+
+### [Set-AzNetAppFilesBackupPolicy](Set-AzNetAppFilesBackupPolicy.md)
+Updates an Azure NetApp Files (ANF) Backup Policy with the new data set. 
+
+### [Set-AzNetAppFilesPool](Set-AzNetAppFilesPool.md)
+Updates an Azure NetApp Files (ANF) Capacity Pool with the new data set. 
+
+### [Set-AzNetAppFilesSnapshotPolicy](Set-AzNetAppFilesSnapshotPolicy.md)
+Updates an Azure NetApp Files (ANF) Snapshot Policy with the new data set. 
 
 ### [Set-AzNetAppFilesVolumePool](Set-AzNetAppFilesVolumePool.md)
 Change pool for an Azure NetApp Files (ANF) volume.

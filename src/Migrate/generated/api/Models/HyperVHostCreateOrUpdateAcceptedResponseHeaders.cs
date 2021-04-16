@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models
         /// <param name="headers"></param>
         void Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
         {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader))
+            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVHostCreateOrUpdateAcceptedResponseHeadersInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader) is string __headerAzureAsyncOperationHeader ? __headerAzureAsyncOperationHeader : (string)null;
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IHyperVHostCreateOrUpdateAcceptedResponseHeadersInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
             }
         }
     }

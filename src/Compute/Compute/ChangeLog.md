@@ -22,6 +22,15 @@
 ## Upcoming Release
 * Updated Tools binaries to have Compute cmdlets support `Standard_GZRS` and `RAGZRS` storage accounts.
 
+## Version 4.11.0
+* Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
+* Added new cmdlets to support TrustedLaunch related cmdlets:
+    - `Set-AzVmSecurityProfile`
+    - `Set-AzVmUefi`
+    - `Set-AzVmssSecurityProfile`
+    - `Set-AzVmssUefi`
+* Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
+
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
 * Added parameter `-PatchMode` to the Linux parameter sets in the cmdlet `Set-AzVMOperatingSystem`. 

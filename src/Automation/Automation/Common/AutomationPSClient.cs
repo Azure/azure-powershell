@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string location, string plan, IDictionary tags)
+            string location, string plan, IDictionary tags, bool addSystemId, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
@@ -165,13 +165,29 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Tags = accountTags
             };
 
+            if (addSystemId == true)
+            {
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if (enableAMK == true)
+            {
+                accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                    new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                    EncryptionKeySourceType.MicrosoftKeyvault
+                    );
+            }
+
             var account = this.automationManagementClient.AutomationAccount.CreateOrUpdate(resourceGroupName, automationAccountName, accountCreateOrUpdateParameters);
 
             return new AutomationAccount(resourceGroupName, account);
         }
 
         public AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string plan, IDictionary tags)
+            string plan, IDictionary tags, bool addSystemId, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -200,6 +216,22 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 },
                 Tags = accountTags,
             };
+
+            if (addSystemId == true)
+            {
+                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if (enableAMK == true)
+            {
+                accountUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                accountUpdateParameters.Encryption = new EncryptionProperties(
+                    new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                    EncryptionKeySourceType.MicrosoftKeyvault
+                    );
+            }
 
             var account = this.automationManagementClient.AutomationAccount.Update(resourceGroupName, automationAccountName, accountUpdateParameters);
 

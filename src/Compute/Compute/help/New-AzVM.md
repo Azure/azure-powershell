@@ -21,8 +21,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
  [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
  [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>]
- [-HostId <String>] [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HostId <String>] [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>]
+ [-EncryptionAtHost] [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -334,6 +335,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionAtHost
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
+This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EvictionPolicy
 The eviction policy for the Azure Spot virtual machine.  Supported values are 'Deallocate' and 'Delete'.
 
@@ -472,24 +490,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
-Default: The Encryption at host will be disabled unless this property is set to true for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleParameterSet, DiskParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
 ### -Name
 The name of the VM resource.
 
@@ -611,7 +611,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
+The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String
@@ -620,7 +620,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_DS1_v2
+Default value: Standard_D2s_v3
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -741,6 +741,7 @@ The ID of Virtual Machine Scale Set that this VM will be associated with
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
+
 Required: False
 Position: Named
 Default value: None

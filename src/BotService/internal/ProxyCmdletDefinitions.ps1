@@ -40,7 +40,7 @@ PARAMETER <ICheckNameAvailabilityRequestBody>: The request body for a request to
   [Name <String>]: the name of the bot for which availability needs to be checked.
   [Type <String>]: the type of the bot for which availability needs to be checked
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azbotchecknameavailability
+https://docs.microsoft.com/powershell/module/az.botservice/get-azbotchecknameavailability
 #>
 function Get-AzBotCheckNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody])]
@@ -181,7 +181,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azoperation
+https://docs.microsoft.com/powershell/module/az.botservice/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity])]
@@ -308,7 +308,7 @@ Etag                                   Kind Location Name            SkuName Sku
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/new-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

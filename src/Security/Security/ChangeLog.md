@@ -20,14 +20,23 @@
 
 ## Upcoming Release
 
+## Version 0.10.0
+* Added Sql Vulnerability Assessment cmdlets for  IAAS: 
+    `Get-AzSecuritySqlVulnerabilityAssessmentScanRecord`
+    `Get-AzSecuritySqlVulnerabilityAssessmentScanResult`
+    `Add-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Remove-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Get-AzSecuritySqlVulnerabilityAssessmentBaseline`
+    `Set-AzSecuritySqlVulnerabilityAssessmentBaseline`
+
 ## Version 0.9.0
 * Added breaking change notification in AzSecurityAlert:
-                    `Get-AzSecurityAlert`
-                    `Set-AzSecurityAlert`
+    `Get-AzSecurityAlert`
+    `Set-AzSecurityAlert`
 * Added new cmdlets: 
-                    `Get-AzSecuritySecureScore`
-                    `Get-AzSecuritySecureScoreControl`
-                    `Get-AzSecuritySecureScoreControlDefinition`
+    `Get-AzSecuritySecureScore`
+    `Get-AzSecuritySecureScoreControl`
+    `Get-AzSecuritySecureScoreControlDefinition`
 
 ## Version 0.8.0
 * Added new cmdlet: `Get-AzSecurityAdaptiveApplicationControl` and `Get-AzSecurityAdaptiveApplicationControlGroup`
@@ -38,23 +47,25 @@
 * Added new cmdlet: `Get-AzSecurityTopology`
 
 ## Version 0.7.9
-* Add new cmdlets: `Get-AzSecurityAssessment`,
-                   `Set-AzSecurityAssessment`,
-                   `Remove-AzSecurityAssessment`,
-                   `Get-AzSecurityAssessmentMetadata`,
-                   `Set-AzSecurityAssessmentMetadata`,
-                   `Remove-AzSecurityAssessmentMetadata`,
-                   `Get-AzSecuritySubAssessment`
+* Add new cmdlets: 
+    `Get-AzSecurityAssessment`,
+    `Set-AzSecurityAssessment`,
+    `Remove-AzSecurityAssessment`,
+    `Get-AzSecurityAssessmentMetadata`,
+    `Set-AzSecurityAssessmentMetadata`,
+    `Remove-AzSecurityAssessmentMetadata`,
+    `Get-AzSecuritySubAssessment`
 
 ## Version 0.7.9
 * Added new cmdlets: 
-	- `Get-AzSecuritySetting`
-	- `Set-AzSecuritySetting`
+    - `Get-AzSecuritySetting`
+    - `Set-AzSecuritySetting`
 
 ## Version 0.7.8
-* Add new cmdlets: `Get-AzRegulatoryComplianceStandard`, 
-					`Get-AzRegulatoryComplianceControl`, 
-					`Get-AzRegulatoryComplainceAssessment`
+* Add new cmdlets:
+    `Get-AzRegulatoryComplianceStandard`, 
+    `Get-AzRegulatoryComplianceControl`, 
+    `Get-AzRegulatoryComplainceAssessment`
 * Add new API for IoTSecuritySolution, IoTSecuritySolutionAnalytics and DeviceSecurityGroups services
 * Support management of SQL Information Protection Policy.
 

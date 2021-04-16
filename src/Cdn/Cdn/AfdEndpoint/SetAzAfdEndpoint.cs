@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSeconds { get; set; }
+        public int OriginResponseTimeoutSecond { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.TagsDescription, ParameterSetName = FieldsParameterSet)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,12 +70,13 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             {
                 AFDEndpointUpdateParameters afdEndpointParameters = new AFDEndpointUpdateParameters();
                
-                if (this.OriginResponseTimeoutSeconds >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin)
+                if (this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin)
                 {
-                    afdEndpointParameters.OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSeconds;
+                    afdEndpointParameters.OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond;
                 }
 
-                Dictionary<string, string> afdEndpointTags = TagsConversionHelper.CreateTagDictionary(this.Tags, true);
+                Dictionary<string, string> afdEndpointTags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+
                 afdEndpointParameters.Tags = afdEndpointTags;
 
                 PSAfdEndpoint psAfdEndpoint = this.CdnManagementClient.AFDEndpoints.Update(this.ResourceGroupName, this.ProfileName, this.EndpointName, afdEndpointParameters).ToPSAfdEndpoint();
@@ -95,11 +96,12 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             this.EndpointName = parsedAfdEndpointResourceId.ResourceName;
             this.ProfileName = parsedAfdEndpointResourceId.GetResourceName("profiles");
             this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
-            this.Tags = this.Endpoint.Tags;
+            
+            this.Tag = this.Endpoint.Tags;
 
             if (this.Endpoint.OriginResponseTimeoutSeconds != null)
             {
-                this.OriginResponseTimeoutSeconds = (int)this.Endpoint.OriginResponseTimeoutSeconds;
+                this.OriginResponseTimeoutSecond = (int)this.Endpoint.OriginResponseTimeoutSeconds;
             }
         }
     }

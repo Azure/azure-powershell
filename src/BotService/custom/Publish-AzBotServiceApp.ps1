@@ -19,7 +19,7 @@ Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/publish-azbotserviceapp
+https://docs.microsoft.com/powershell/module/az.botservice/publish-azbotserviceapp
 #>
 function Publish-AzBotServiceApp {
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]

@@ -185,7 +185,7 @@ PS C:\> New-AzDeployment -Location "West US" -TemplateUri "https://example.com/e
 ```
 
 This command creates a new deployment using the template in TemplateUri which is not public and requires a token parameter to access which would be provided using the QueryString parameter.
-Running this command effectively accesses the template using the url https://example.com/example.json?foo.
+Running this command effectively accesses the template using the url `https://example.com/example.json?foo`.
 This can be used if you want to use a template in a storage account by providing the SAS token as the QueryString
 
 ### Example 3: Use a custom template object and parameter file to create a deployment
