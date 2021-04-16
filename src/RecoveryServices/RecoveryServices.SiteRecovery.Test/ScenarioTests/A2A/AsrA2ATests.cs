@@ -117,5 +117,12 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RecoveryPlanReplication");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AVMSSReplication()
+        {
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMSSReplication");
+        }
     }
 }

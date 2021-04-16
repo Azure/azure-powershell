@@ -18,9 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for SqlServerLicenseType for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability set for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for TargetVmSize for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for ResourceTagging for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Virtual Machine Scale Set for Azure to Azure provider.
 
 ## Version 3.5.0
-* Added Cross Zonal Restore for managed virtual machines. 
+* Added Cross Zonal Restore for managed virtual machines.
 
 ## Version 3.4.1
 * Added null check for target storage account in FileShare restore.

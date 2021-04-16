@@ -934,41 +934,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ReplicaNicId = vMNicDetails.ReplicaNicId;
             this.SourceNicArmId = vMNicDetails.SourceNicArmId;
             this.VMNetworkName = vMNicDetails.VMNetworkName;
-            this.VMSubnetName = vMNicDetails.VMSubnetName;
             this.RecoveryVMNetworkId = vMNicDetails.RecoveryVMNetworkId;
             this.RecoveryNicName = vMNicDetails.RecoveryNicName;
             this.RecoveryNicResourceGroupName = vMNicDetails.RecoveryNicResourceGroupName;
             this.ReuseExistingNic = vMNicDetails.ReuseExistingNic;
-            this.RecoveryVMSubnetName = vMNicDetails.RecoveryVMSubnetName;
-            this.ReplicaNicStaticIPAddress = vMNicDetails.ReplicaNicStaticIPAddress;
-            this.IpAddressType = vMNicDetails.IpAddressType;
             this.SelectionType = vMNicDetails.SelectionType;
-            this.PrimaryNicStaticIPAddress = vMNicDetails.PrimaryNicStaticIPAddress;
-            this.RecoveryNicIpAddressType = vMNicDetails.RecoveryNicIpAddressType;
             this.EnableAcceleratedNetworkingOnRecovery = vMNicDetails.EnableAcceleratedNetworkingOnRecovery;
-            this.RecoveryPublicIPAddressId = vMNicDetails.RecoveryPublicIpAddressId;
             this.RecoveryNetworkSecurityGroupId = vMNicDetails.RecoveryNetworkSecurityGroupId;
-            this.RecoveryLBBackendAddressPoolId =
-                vMNicDetails.RecoveryLBBackendAddressPoolIds?.ToList() ?? new List<string>();
+            this.IpConfigs = vMNicDetails.IpConfigs;
             this.TfoVMNetworkId = vMNicDetails.TfoVMNetworkId;
             this.TfoNicName = vMNicDetails.TfoRecoveryNicName;
             this.TfoNicResourceGroupName = vMNicDetails.TfoRecoveryNicResourceGroupName;
             this.TfoReuseExistingNic = vMNicDetails.TfoReuseExistingNic;
-            this.TfoVMSubnetName = vMNicDetails.TfoVMSubnetName;
             this.TfoNetworkSecurityGroupId = vMNicDetails.TfoNetworkSecurityGroupId;
-            this.TfoIPConfigs = vMNicDetails.TfoIPConfigs?.ToList() ?? new List<IPConfig>();
             this.EnableAcceleratedNetworkingOnTfo = vMNicDetails.EnableAcceleratedNetworkingOnTfo;
         }
-
-        //
-        // Summary:
-        //     Gets or sets primary nic static IP address.
-        public string PrimaryNicStaticIPAddress { get; set; }
-
-        //
-        // Summary:
-        //     Gets or sets IP allocation type for recovery VM.
-        public string RecoveryNicIpAddressType { get; set; }
 
         //
         // Summary:
@@ -984,11 +964,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         // Summary:
         //     Gets or sets the source nic ARM Id.
         public string SourceNicArmId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets ipv4 address type.
-        /// </summary>
-        public string IpAddressType { get; set; }
 
         /// <summary>
         ///     Gets or sets the nic Id.
@@ -1016,16 +991,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryVMNetworkId { get; set; }
 
         /// <summary>
-        ///     Gets or sets recovery VM subnet name.
-        /// </summary>
-        public string RecoveryVMSubnetName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets replica nic static IP address.
-        /// </summary>
-        public string ReplicaNicStaticIPAddress { get; set; }
-
-        /// <summary>
         ///     Gets or sets selection type for failover.
         /// </summary>
         public string SelectionType { get; set; }
@@ -1036,24 +1001,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string VMNetworkName { get; set; }
 
         /// <summary>
-        ///     Gets or sets VM subnet name.
-        /// </summary>
-        public string VMSubnetName { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the id of the public IP address resource associated with the NIC.
-        /// </summary>
-        public string RecoveryPublicIPAddressId { get; set; }
-
-        /// <summary>
         ///     Gets or sets the id of the NSG associated with the NIC.
         /// </summary>
         public string RecoveryNetworkSecurityGroupId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the target backend address pools for the NIC.
-        /// </summary>
-        public List<string> RecoveryLBBackendAddressPoolId { get; set; }
 
         /// <summary>
         ///     Gets or sets test failover network Id.
@@ -1076,20 +1026,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public bool? TfoReuseExistingNic { get; set; }
 
         /// <summary>
-        ///     Gets or sets test failover subnet name.
-        /// </summary>
-        public string TfoVMSubnetName { get; set; }
-
-        /// <summary>
         ///     Gets or sets the id of the NSG associated with the test failover NIC.
         /// </summary>
         public string TfoNetworkSecurityGroupId { get; set; }
 
         /// <summary>
-        ///     Gets or sets the IP configuration details for test failover NIC.
+        ///     Gets or sets the IP configuration details of a NIC.
         /// </summary>
-        public List<IPConfig> TfoIPConfigs { get; set; }
-
+        public IList<IPConfigDetails> IpConfigs { get; set; }
         //
         // Summary:
         //     Gets or sets whether accelerated networking is enabled on test failover NIC.
@@ -2395,12 +2339,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public bool ReuseExistingNic { get; set; }
 
         /// <summary>
-        ///     Gets or sets the name of the recovery VM subnet.
-        /// </summary>
-        [DataMember]
-        public string RecoveryVMSubnetName { get; set; }
-
-        /// <summary>
         ///     Gets or sets the id of the NSG associated with the recovery NIC.
         /// </summary>
         [DataMember]
@@ -2410,7 +2348,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the IP configuration details for the recovery NIC.
         /// </summary>
         [DataMember]
-        public List<IPConfig> RecoveryIPConfigs { get; set; }
+        public List<IPConfigInputDetails> IPConfigs { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the recovery NIC has accelerated networking enabled.
@@ -2443,22 +2381,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public bool TfoReuseExistingNic { get; set; }
 
         /// <summary>
-        ///     Gets or sets the name of the test failover VM subnet.
-        /// </summary>
-        [DataMember]
-        public string TfoVMSubnetName { get; set; }
-
-        /// <summary>
         ///     Gets or sets the id of the NSG associated with the test failover NIC.
         /// </summary>
         [DataMember]
         public string TfoNetworkSecurityGroupId { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the IP configuration details for the test failover NIC.
-        /// </summary>
-        [DataMember]
-        public List<IPConfig> TfoIPConfigs { get; set; }
 
         /// <summary>
         ///     Gets or sets whether the test failover NIC has accelerated networking enabled.
