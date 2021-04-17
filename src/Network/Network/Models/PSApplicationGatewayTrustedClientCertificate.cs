@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSApplicationGatewayTrustedClientCertificate : PSChildResource
     {
         public string Data { get; set; }
-	public string ValidatedCertData { get; set; }
+        public string ValidatedCertData { get; set; }
         public string ClientCertIssuerDN { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
