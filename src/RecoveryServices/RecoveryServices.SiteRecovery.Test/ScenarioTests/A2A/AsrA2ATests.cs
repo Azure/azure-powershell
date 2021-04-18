@@ -61,22 +61,22 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
-#else
+//#if NETSTANDARD
+//        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+//#else
         [Fact]
-#endif
+//#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ANewAsrFabric()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewAsrFabric");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
-#else
+//#if NETSTANDARD
+//        [Fact(Skip = "Needs investigation, TestManagementClientHelper class wasn't initialized with the ResourceManagementClient client.")]
+//#else
         [Fact]
-#endif
+//#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ATestNewContainer()
         {

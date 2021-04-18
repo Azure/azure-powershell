@@ -27,21 +27,21 @@ function getVaultRg{
 
 
 function getVaultRgLocation{
-    return "eastus"
+    return "WestCentralUS"
 }
 
 function getVaultLocation{
-     return "eastus"
+     return "WestCentralUS"
 }
 
 function getPrimaryLocation
 {
-    return "westus"
+    return "EastUS"
 }
 
 function getPrimaryZoneLocation
 {
-    return "southeastasia"
+    return "EastUS"
 }
 
 function getPrimaryZone
