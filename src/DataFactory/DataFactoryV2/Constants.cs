@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIdentityType = "The identity type for the factory. It can be 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'";
 
-        public const string HelpUserAssignedIdentities = "Dictionary of user assigned identities to use. { \"<UAMI Id>\" : {} }";
+        public const string HelpUserAssignedIdenty = "Dictionary of user assigned identities to use. { \"<UAMI Id>\" : {} }";
 
         public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
 

@@ -288,7 +288,7 @@ function Test-CreateDataFactoryV2WithUserAssignedIdentity
 
     try
     {
-        $actual = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -UserAssignedIdentities $userAssignedIdentities
+        $actual = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -UserAssignedIdentity $userAssignedIdentities
         $expected = Get-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
 		ValidateFactoryProperties $expected $actual

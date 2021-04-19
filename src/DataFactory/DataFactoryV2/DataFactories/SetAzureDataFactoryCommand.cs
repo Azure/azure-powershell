@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string IdentityType { get; set; }
 
         #region Attributes
-        [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdentities)]
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
         #endregion
         public IDictionary<string,object> UserAssignedIdentity { get; set; }
 
