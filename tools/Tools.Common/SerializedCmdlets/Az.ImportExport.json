@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DriveList": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags",
@@ -138,7 +138,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "JobName": "System.String",
@@ -255,7 +255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -273,7 +273,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -500,7 +500,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -524,7 +524,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -796,7 +796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -820,7 +820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1068,7 +1068,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1092,7 +1092,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1193,7 +1193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "JobName": "System.String",
@@ -1298,7 +1298,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1322,7 +1322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1498,7 +1498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1522,7 +1522,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1631,7 +1631,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveBitLockerKey, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BitLockerKey": "System.String",
               "DriveId": "System.String"
@@ -1764,7 +1764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1782,7 +1782,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2007,7 +2007,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2031,7 +2031,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2140,7 +2140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ILocation",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ILocation, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ILocation, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "City": "System.String",
               "CountryOrRegion": "System.String",
@@ -2193,7 +2193,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "JobName": "System.String",
@@ -2274,7 +2274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2292,7 +2292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2471,7 +2471,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2495,7 +2495,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2596,7 +2596,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "JobName": "System.String",
@@ -2701,7 +2701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2725,7 +2725,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2901,7 +2901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2925,7 +2925,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3034,7 +3034,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DriveList": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags",
@@ -3354,7 +3354,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
             "GenericTypeArguments": [],
@@ -3948,7 +3948,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4005,7 +4005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4023,7 +4023,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4439,7 +4439,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
                   "GenericTypeArguments": [],
@@ -5231,7 +5231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5306,7 +5306,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5330,7 +5330,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5439,7 +5439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]",
               "PercentComplete": "System.Nullable`1[System.Int32]",
@@ -5651,7 +5651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5995,7 +5995,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6193,7 +6193,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "JobName": "System.String",
@@ -6274,7 +6274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6292,7 +6292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6537,7 +6537,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6561,7 +6561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6686,7 +6686,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "JobName": "System.String",
@@ -6791,7 +6791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6815,7 +6815,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7015,7 +7015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7039,7 +7039,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7172,7 +7172,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DriveList": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags",
@@ -7294,7 +7294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "JobName": "System.String",
@@ -7444,7 +7444,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
             "GenericTypeArguments": [],
@@ -7696,7 +7696,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7753,7 +7753,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7771,7 +7771,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8091,7 +8091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
                   "GenericTypeArguments": [],
@@ -8427,7 +8427,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8502,7 +8502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8526,7 +8526,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8627,7 +8627,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IImportExportIdentity, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "JobName": "System.String",
@@ -8825,7 +8825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
                   "GenericTypeArguments": [],
@@ -9161,7 +9161,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9236,7 +9236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9260,7 +9260,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9529,7 +9529,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
                   "GenericTypeArguments": [],
@@ -9865,7 +9865,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IUpdateJobParametersTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9940,7 +9940,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9964,7 +9964,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10203,7 +10203,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[], Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
       "GenericTypeArguments": [],
@@ -10213,7 +10213,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]",
         "PercentComplete": "System.Nullable`1[System.Int32]",
@@ -10236,7 +10236,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10248,7 +10248,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10376,7 +10376,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponseTags, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10408,7 +10408,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.SendAsyncStep, Az.ImportExport.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

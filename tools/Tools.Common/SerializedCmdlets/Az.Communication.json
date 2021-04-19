@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState]",
               "AzureAsyncOperation": "System.String",
@@ -99,7 +99,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommunicationServiceName": "System.String",
               "Id": "System.String",
@@ -163,7 +163,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -181,7 +181,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -384,7 +384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -408,7 +408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -608,7 +608,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -632,7 +632,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -808,7 +808,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -832,7 +832,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -933,7 +933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CommunicationServiceName": "System.String",
                     "Id": "System.String",
@@ -1015,7 +1015,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1039,7 +1039,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1191,7 +1191,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1215,7 +1215,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1324,7 +1324,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "PrimaryKey": "System.String",
@@ -1441,7 +1441,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1459,7 +1459,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1660,7 +1660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1684,7 +1684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1793,7 +1793,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState]",
               "AzureAsyncOperation": "System.String",
@@ -1987,7 +1987,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2005,7 +2005,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2322,7 +2322,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2346,7 +2346,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2479,7 +2479,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryConnectionString": "System.String",
               "PrimaryKey": "System.String",
@@ -2557,7 +2557,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommunicationServiceName": "System.String",
               "Id": "System.String",
@@ -2582,7 +2582,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]"
             },
@@ -2602,7 +2602,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2721,7 +2721,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2739,7 +2739,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2889,7 +2889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3026,7 +3026,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3050,7 +3050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3223,7 +3223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "KeyType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]"
                   },
@@ -3300,7 +3300,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3324,7 +3324,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3425,7 +3425,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CommunicationServiceName": "System.String",
                     "Id": "System.String",
@@ -3456,7 +3456,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3593,7 +3593,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3617,7 +3617,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3718,7 +3718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CommunicationServiceName": "System.String",
                     "Id": "System.String",
@@ -3749,7 +3749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "KeyType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]"
                   },
@@ -3826,7 +3826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3850,7 +3850,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4002,7 +4002,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4026,7 +4026,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4210,7 +4210,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommunicationServiceName": "System.String",
               "Id": "System.String",
@@ -4292,7 +4292,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4310,7 +4310,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4573,7 +4573,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4597,7 +4597,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4746,7 +4746,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CommunicationServiceName": "System.String",
                     "Id": "System.String",
@@ -4852,7 +4852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4876,7 +4876,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5100,7 +5100,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5124,7 +5124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5354,7 +5354,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ConnectionString": "System.String",
               "ResourceId": "System.String"
@@ -5450,7 +5450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5468,7 +5468,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5669,7 +5669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5693,7 +5693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5794,7 +5794,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ConnectionString": "System.String",
                     "ResourceId": "System.String"
@@ -5944,7 +5944,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5968,7 +5968,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6240,7 +6240,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6264,7 +6264,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6373,7 +6373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState]",
               "AzureAsyncOperation": "System.String",
@@ -6456,7 +6456,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CommunicationServiceName": "System.String",
               "Id": "System.String",
@@ -6538,7 +6538,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6556,7 +6556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6783,7 +6783,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6807,7 +6807,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6908,7 +6908,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CommunicationServiceName": "System.String",
                     "Id": "System.String",
@@ -7014,7 +7014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7038,7 +7038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7214,7 +7214,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7238,7 +7238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep[], Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7477,7 +7477,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -7489,7 +7489,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.ProvisioningState, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -7593,7 +7593,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.SendAsyncStep, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -7817,7 +7817,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -7829,7 +7829,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Communication.Support.KeyType, Az.Communication.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

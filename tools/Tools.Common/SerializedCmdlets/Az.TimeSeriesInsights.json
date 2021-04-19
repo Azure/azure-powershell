@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Role": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
               "PrincipalObjectId": "System.String",
@@ -113,7 +113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -178,7 +178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -196,7 +196,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -397,7 +397,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -421,7 +421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -671,7 +671,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -695,7 +695,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -796,7 +796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -879,7 +879,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -903,7 +903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1055,7 +1055,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1079,7 +1079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1188,7 +1188,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
               "SkuCapacity": "System.Int32",
@@ -1267,7 +1267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -1350,7 +1350,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1368,7 +1368,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1595,7 +1595,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1619,7 +1619,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1819,7 +1819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1843,7 +1843,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2019,7 +2019,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2043,7 +2043,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2144,7 +2144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -2251,7 +2251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2275,7 +2275,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2427,7 +2427,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2451,7 +2451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2560,7 +2560,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Kind": "System.String"
             },
@@ -2655,7 +2655,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -2720,7 +2720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2738,7 +2738,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2939,7 +2939,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2963,7 +2963,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3213,7 +3213,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3237,7 +3237,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3338,7 +3338,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -3421,7 +3421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3445,7 +3445,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3597,7 +3597,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3621,7 +3621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3730,7 +3730,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyProperty": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
               "DataStringComparisonBehavior": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior]"
@@ -3826,7 +3826,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -3891,7 +3891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3909,7 +3909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4110,7 +4110,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4134,7 +4134,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4384,7 +4384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4408,7 +4408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4509,7 +4509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -4592,7 +4592,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4616,7 +4616,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4768,7 +4768,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4792,7 +4792,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4901,7 +4901,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Role": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
               "PrincipalObjectId": "System.String",
@@ -5034,7 +5034,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
             "GenericTypeArguments": [],
@@ -5091,7 +5091,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5109,7 +5109,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5333,7 +5333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
                   "GenericTypeArguments": [],
@@ -5408,7 +5408,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5432,7 +5432,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5541,7 +5541,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
               "SkuCapacity": "System.Int32",
@@ -5620,7 +5620,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5718,7 +5718,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5834,7 +5834,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty",
             "GenericTypeArguments": [],
@@ -5888,7 +5888,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty",
             "GenericTypeArguments": [],
@@ -6017,7 +6017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6035,7 +6035,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6205,7 +6205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6315,7 +6315,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6500,7 +6500,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6524,7 +6524,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6697,7 +6697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty",
                   "GenericTypeArguments": [],
@@ -6819,7 +6819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6929,7 +6929,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7114,7 +7114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7138,7 +7138,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7263,7 +7263,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty",
                   "GenericTypeArguments": [],
@@ -7433,7 +7433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7543,7 +7543,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7728,7 +7728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7752,7 +7752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7885,7 +7885,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Kind": "System.String"
             },
@@ -7980,7 +7980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8279,7 +8279,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8297,7 +8297,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8473,7 +8473,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8778,7 +8778,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8802,7 +8802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9049,7 +9049,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9354,7 +9354,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9378,7 +9378,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9601,7 +9601,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9906,7 +9906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9930,7 +9930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10039,7 +10039,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyProperty": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
               "DataStringComparisonBehavior": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior]"
@@ -10135,7 +10135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty",
             "GenericTypeArguments": [],
@@ -10171,7 +10171,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10308,7 +10308,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10326,7 +10326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10502,7 +10502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty",
                   "GenericTypeArguments": [],
@@ -10550,7 +10550,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10711,7 +10711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10735,7 +10735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10937,7 +10937,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -11002,7 +11002,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11020,7 +11020,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11265,7 +11265,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11289,7 +11289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11414,7 +11414,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -11497,7 +11497,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11521,7 +11521,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11697,7 +11697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11721,7 +11721,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11929,7 +11929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -11994,7 +11994,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12012,7 +12012,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12233,7 +12233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12257,7 +12257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12382,7 +12382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -12465,7 +12465,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12489,7 +12489,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12665,7 +12665,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12689,7 +12689,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12915,7 +12915,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -12980,7 +12980,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12998,7 +12998,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13243,7 +13243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13267,7 +13267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13392,7 +13392,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -13475,7 +13475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13499,7 +13499,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13675,7 +13675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13699,7 +13699,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13925,7 +13925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -13990,7 +13990,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14008,7 +14008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14253,7 +14253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14277,7 +14277,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14402,7 +14402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -14485,7 +14485,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14509,7 +14509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14685,7 +14685,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14709,7 +14709,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14842,7 +14842,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Role": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
               "PrincipalObjectId": "System.String",
@@ -14939,7 +14939,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -14983,7 +14983,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
             "GenericTypeArguments": [],
@@ -15040,7 +15040,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15058,7 +15058,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15258,7 +15258,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
                   "GenericTypeArguments": [],
@@ -15333,7 +15333,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15357,7 +15357,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15458,7 +15458,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -15514,7 +15514,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
                   "GenericTypeArguments": [],
@@ -15589,7 +15589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15613,7 +15613,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15738,7 +15738,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
                   "GenericTypeArguments": [],
@@ -15813,7 +15813,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15837,7 +15837,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15946,7 +15946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
               "SkuCapacity": "System.Int32",
@@ -16025,7 +16025,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -16126,7 +16126,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -16144,7 +16144,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -16413,7 +16413,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16437,7 +16437,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16562,7 +16562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -16693,7 +16693,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16717,7 +16717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16941,7 +16941,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16965,7 +16965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17098,7 +17098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Kind": "System.String"
             },
@@ -17193,7 +17193,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -17276,7 +17276,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17294,7 +17294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17545,7 +17545,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17569,7 +17569,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17670,7 +17670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -17777,7 +17777,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17801,7 +17801,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17977,7 +17977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18001,7 +18001,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18110,7 +18110,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyProperty": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
               "DataStringComparisonBehavior": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior]"
@@ -18206,7 +18206,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AccessPolicyName": "System.String",
               "EnvironmentName": "System.String",
@@ -18289,7 +18289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -18307,7 +18307,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -18558,7 +18558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18582,7 +18582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18683,7 +18683,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesInsightsIdentity, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AccessPolicyName": "System.String",
                     "EnvironmentName": "System.String",
@@ -18790,7 +18790,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18814,7 +18814,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18990,7 +18990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19014,7 +19014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19253,7 +19253,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
       "GenericTypeArguments": [],
@@ -19263,7 +19263,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.AccessPolicyRole, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19367,7 +19367,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.SendAsyncStep, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -19591,7 +19591,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19663,7 +19663,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty[], Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty",
       "GenericTypeArguments": [],
@@ -19673,7 +19673,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetKeyProperty, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType]",
         "Name": "System.String"
@@ -19686,7 +19686,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19698,7 +19698,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.ReferenceDataKeyPropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19770,7 +19770,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19782,7 +19782,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.DataStringComparisonBehavior, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -19854,7 +19854,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType]",
         "Name": "System.String"
@@ -19867,7 +19867,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -19879,7 +19879,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.PropertyType, Az.TimeSeriesInsights.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

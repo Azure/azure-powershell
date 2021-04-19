@@ -166,7 +166,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -184,7 +184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -471,7 +471,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -495,7 +495,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -654,7 +654,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[]",
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
@@ -778,7 +778,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -796,7 +796,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -949,7 +949,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -973,7 +973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1199,7 +1199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1223,7 +1223,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1423,7 +1423,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1447,7 +1447,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1556,7 +1556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
@@ -1682,7 +1682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1700,7 +1700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1903,7 +1903,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1927,7 +1927,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2036,7 +2036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -2153,7 +2153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2171,7 +2171,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2374,7 +2374,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2398,7 +2398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2510,7 +2510,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IOperationStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IOperationStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[]",
@@ -2633,7 +2633,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2651,7 +2651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2852,7 +2852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2876,7 +2876,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3135,7 +3135,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3153,7 +3153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3440,7 +3440,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3464,7 +3464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3623,7 +3623,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[]",
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
@@ -3728,7 +3728,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3828,7 +3828,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3944,7 +3944,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
             "GenericTypeArguments": [],
@@ -3962,7 +3962,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4060,7 +4060,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4140,7 +4140,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4238,7 +4238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4336,7 +4336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4473,7 +4473,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4491,7 +4491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4705,7 +4705,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4817,7 +4817,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5026,7 +5026,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5050,7 +5050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5175,7 +5175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
                   "GenericTypeArguments": [],
@@ -5199,7 +5199,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5309,7 +5309,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5395,7 +5395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5505,7 +5505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5615,7 +5615,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5801,7 +5801,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5913,7 +5913,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6122,7 +6122,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6146,7 +6146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6395,7 +6395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6507,7 +6507,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6716,7 +6716,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6740,7 +6740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6873,7 +6873,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
@@ -6960,7 +6960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
             "GenericTypeArguments": [],
@@ -6978,7 +6978,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7076,7 +7076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7156,7 +7156,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7254,7 +7254,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7352,7 +7352,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7489,7 +7489,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7507,7 +7507,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7677,7 +7677,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
                   "GenericTypeArguments": [],
@@ -7701,7 +7701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7811,7 +7811,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7897,7 +7897,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8007,7 +8007,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8117,7 +8117,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8278,7 +8278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8302,7 +8302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8435,7 +8435,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IAccessKeys, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -8513,7 +8513,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8650,7 +8650,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8668,7 +8668,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8838,7 +8838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8999,7 +8999,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9023,7 +9023,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9234,7 +9234,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ClusterName": "System.String",
               "DatabaseName": "System.String",
@@ -9318,7 +9318,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9336,7 +9336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9599,7 +9599,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9623,7 +9623,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9772,7 +9772,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ClusterName": "System.String",
                     "DatabaseName": "System.String",
@@ -9880,7 +9880,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9904,7 +9904,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10128,7 +10128,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10152,7 +10152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10384,7 +10384,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ClusterName": "System.String",
               "DatabaseName": "System.String",
@@ -10468,7 +10468,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10486,7 +10486,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10749,7 +10749,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10773,7 +10773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10922,7 +10922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ClusterName": "System.String",
                     "DatabaseName": "System.String",
@@ -11030,7 +11030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11054,7 +11054,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11278,7 +11278,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11302,7 +11302,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11459,7 +11459,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "PrivateEndpointConnection": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[]",
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
@@ -11544,7 +11544,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ClusterName": "System.String",
               "DatabaseName": "System.String",
@@ -11591,7 +11591,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11673,7 +11673,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11828,7 +11828,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11846,7 +11846,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12042,7 +12042,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12130,7 +12130,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12315,7 +12315,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12339,7 +12339,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12464,7 +12464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ClusterName": "System.String",
                     "DatabaseName": "System.String",
@@ -12523,7 +12523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12611,7 +12611,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12796,7 +12796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12820,7 +12820,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12971,7 +12971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13059,7 +13059,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13244,7 +13244,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13268,7 +13268,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13401,7 +13401,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Module": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
               "PersistenceAofFrequency": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
@@ -13488,7 +13488,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ClusterName": "System.String",
               "DatabaseName": "System.String",
@@ -13515,7 +13515,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13595,7 +13595,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13693,7 +13693,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13791,7 +13791,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13928,7 +13928,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13946,7 +13946,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14116,7 +14116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14202,7 +14202,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14312,7 +14312,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14422,7 +14422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14583,7 +14583,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14607,7 +14607,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14732,7 +14732,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ClusterName": "System.String",
                     "DatabaseName": "System.String",
@@ -14765,7 +14765,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14851,7 +14851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14961,7 +14961,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15071,7 +15071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15232,7 +15232,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15256,7 +15256,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15381,7 +15381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15467,7 +15467,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15577,7 +15577,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15687,7 +15687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -15848,7 +15848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15872,7 +15872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16135,7 +16135,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.SendAsyncStep, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -16369,7 +16369,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection",
       "GenericTypeArguments": [],
@@ -16379,7 +16379,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api10.IPrivateEndpointConnection, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState]",
         "PrivateLinkServiceConnectionStateStatus": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus]",
@@ -16395,7 +16395,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16407,7 +16407,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointConnectionProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16501,7 +16501,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16513,7 +16513,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.PrivateEndpointServiceConnectionStatus, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16585,7 +16585,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16657,7 +16657,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16669,7 +16669,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ProvisioningState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16741,7 +16741,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16753,7 +16753,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ResourceState, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16825,7 +16825,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16837,7 +16837,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -16931,7 +16931,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
       "GenericTypeArguments": [],
@@ -16941,7 +16941,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Arg": "System.String",
         "Name": "System.String",
@@ -16955,7 +16955,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16967,7 +16967,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17039,7 +17039,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17051,7 +17051,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17123,7 +17123,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17135,7 +17135,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17207,7 +17207,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17219,7 +17219,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17291,7 +17291,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17303,7 +17303,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17387,7 +17387,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo",
       "GenericTypeArguments": [],
@@ -17397,7 +17397,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Info": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAny",
         "Type": "System.String"
@@ -17410,7 +17410,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAny": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAny",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAny, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IAny, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17420,7 +17420,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[], Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail",
       "GenericTypeArguments": [],
@@ -17430,7 +17430,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail, Az.RedisEnterpriseCache.private, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorAdditionalInfo[]",
         "Detail": "Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20.IErrorDetail[]",

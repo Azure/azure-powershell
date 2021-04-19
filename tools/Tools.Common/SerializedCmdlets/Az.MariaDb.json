@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AllowedValue": "System.String",
               "DataType": "System.String",
@@ -116,7 +116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -184,7 +184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -202,7 +202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -429,7 +429,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -453,7 +453,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -677,7 +677,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -701,7 +701,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -802,7 +802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -888,7 +888,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -912,7 +912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1064,7 +1064,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1088,7 +1088,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1290,7 +1290,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -1369,7 +1369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1387,7 +1387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1540,7 +1540,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1564,7 +1564,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1814,7 +1814,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1838,7 +1838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1939,7 +1939,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
                     "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -2060,7 +2060,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2084,7 +2084,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2193,7 +2193,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndIPAddress": "System.String",
               "StartIPAddress": "System.String"
@@ -2289,7 +2289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -2357,7 +2357,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2375,7 +2375,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2602,7 +2602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2626,7 +2626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2850,7 +2850,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2874,7 +2874,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2975,7 +2975,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -3061,7 +3061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3085,7 +3085,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3237,7 +3237,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3261,7 +3261,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3370,7 +3370,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -3504,7 +3504,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3522,7 +3522,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3723,7 +3723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3747,7 +3747,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3856,7 +3856,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -3953,7 +3953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -4021,7 +4021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4039,7 +4039,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4242,7 +4242,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4266,7 +4266,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4466,7 +4466,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4490,7 +4490,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4666,7 +4666,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4690,7 +4690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4791,7 +4791,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -4877,7 +4877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4901,7 +4901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5053,7 +5053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5077,7 +5077,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5186,7 +5186,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState]",
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
@@ -5283,7 +5283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -5351,7 +5351,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5369,7 +5369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5614,7 +5614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5638,7 +5638,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5886,7 +5886,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5910,7 +5910,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6035,7 +6035,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -6121,7 +6121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6145,7 +6145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6321,7 +6321,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6345,7 +6345,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6478,7 +6478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndIPAddress": "System.String",
               "StartIPAddress": "System.String"
@@ -6703,7 +6703,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6721,7 +6721,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6990,7 +6990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7014,7 +7014,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7360,7 +7360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7384,7 +7384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7706,7 +7706,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7730,7 +7730,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8052,7 +8052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8076,7 +8076,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8209,7 +8209,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -8329,7 +8329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -8480,7 +8480,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8498,7 +8498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8792,7 +8792,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8816,7 +8816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9189,7 +9189,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9213,7 +9213,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9340,7 +9340,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
                     "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -9584,7 +9584,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9608,7 +9608,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9741,7 +9741,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -9910,7 +9910,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10008,7 +10008,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10088,7 +10088,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10204,7 +10204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -10341,7 +10341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10359,7 +10359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10625,7 +10625,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10735,7 +10735,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10821,7 +10821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10955,7 +10955,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11116,7 +11116,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11140,7 +11140,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11273,7 +11273,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState]",
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
@@ -11463,7 +11463,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11481,7 +11481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11816,7 +11816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11840,7 +11840,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12090,7 +12090,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -12176,7 +12176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12194,7 +12194,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12481,7 +12481,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12505,7 +12505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12654,7 +12654,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -12764,7 +12764,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12788,7 +12788,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13012,7 +13012,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13036,7 +13036,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13268,7 +13268,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -13354,7 +13354,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13372,7 +13372,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13635,7 +13635,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13659,7 +13659,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13808,7 +13808,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -13918,7 +13918,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13942,7 +13942,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14166,7 +14166,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14190,7 +14190,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14440,7 +14440,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -14526,7 +14526,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14544,7 +14544,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14831,7 +14831,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14855,7 +14855,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15004,7 +15004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -15114,7 +15114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15138,7 +15138,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15362,7 +15362,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15386,7 +15386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15618,7 +15618,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -15704,7 +15704,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15722,7 +15722,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15985,7 +15985,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16009,7 +16009,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16158,7 +16158,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -16268,7 +16268,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16292,7 +16292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16516,7 +16516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16540,7 +16540,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16697,7 +16697,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -16774,7 +16774,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -16961,7 +16961,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -16979,7 +16979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17123,7 +17123,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
                     "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -17364,7 +17364,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17388,7 +17388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17521,7 +17521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AllowedValue": "System.String",
               "DataType": "System.String",
@@ -17621,7 +17621,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -17743,7 +17743,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17761,7 +17761,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -18078,7 +18078,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18102,7 +18102,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18227,7 +18227,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -18385,7 +18385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18409,7 +18409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18657,7 +18657,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18681,7 +18681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18814,7 +18814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EndIPAddress": "System.String",
               "StartIPAddress": "System.String"
@@ -18910,7 +18910,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -19050,7 +19050,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -19068,7 +19068,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -19361,7 +19361,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19385,7 +19385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19731,7 +19731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19755,7 +19755,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -19880,7 +19880,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -20038,7 +20038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20062,7 +20062,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20187,7 +20187,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -20321,7 +20321,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20345,7 +20345,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20545,7 +20545,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20569,7 +20569,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20702,7 +20702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StorageProfileGeoRedundantBackup": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
@@ -20799,7 +20799,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -20864,7 +20864,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -20962,7 +20962,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21042,7 +21042,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -21233,7 +21233,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -21251,7 +21251,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -21469,7 +21469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21579,7 +21579,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21665,7 +21665,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21898,7 +21898,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -21922,7 +21922,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -22047,7 +22047,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -22130,7 +22130,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22240,7 +22240,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22326,7 +22326,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22559,7 +22559,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -22583,7 +22583,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -22756,7 +22756,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22866,7 +22866,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -22952,7 +22952,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -23185,7 +23185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -23209,7 +23209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -23342,7 +23342,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "State": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState]",
               "IgnoreMissingVnetServiceEndpoint": "System.Nullable`1[System.Boolean]",
@@ -23439,7 +23439,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
               "ConfigurationName": "System.String",
@@ -23561,7 +23561,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -23579,7 +23579,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -23914,7 +23914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -23938,7 +23938,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -24087,7 +24087,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "SecurityAlertPolicyName": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
                     "ConfigurationName": "System.String",
@@ -24245,7 +24245,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -24269,7 +24269,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -24541,7 +24541,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -24565,7 +24565,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep[], Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -24852,7 +24852,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -24864,7 +24864,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -24968,7 +24968,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.SendAsyncStep, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -25192,7 +25192,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25204,7 +25204,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25276,7 +25276,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25288,7 +25288,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.IdentityType, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25360,7 +25360,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25372,7 +25372,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25444,7 +25444,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25456,7 +25456,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25528,7 +25528,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25540,7 +25540,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SkuTier, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25612,7 +25612,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25624,7 +25624,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25696,7 +25696,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25708,7 +25708,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25814,7 +25814,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25826,7 +25826,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.VirtualNetworkRuleState, Az.MariaDb.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DependsOn": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[]",
               "DependsOnOverride": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]",
@@ -133,7 +133,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride",
             "GenericTypeArguments": [],
@@ -169,7 +169,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ResourceType": "System.String",
               "TargetResourceName": "System.String"
@@ -265,7 +265,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -283,7 +283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -477,7 +477,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride",
                   "GenericTypeArguments": [],
@@ -525,7 +525,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ResourceType": "System.String",
                     "TargetResourceName": "System.String"
@@ -651,7 +651,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -675,7 +675,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -810,7 +810,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[]",
@@ -941,7 +941,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -959,7 +959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1162,7 +1162,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1186,7 +1186,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1386,7 +1386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1410,7 +1410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1586,7 +1586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1610,7 +1610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1719,7 +1719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DependsOn": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[]",
               "DependsOnOverride": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]",
@@ -1893,7 +1893,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1911,7 +1911,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2112,7 +2112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2136,7 +2136,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2386,7 +2386,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2410,7 +2410,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2658,7 +2658,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2682,7 +2682,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2921,7 +2921,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2939,7 +2939,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3164,7 +3164,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3188,7 +3188,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3297,7 +3297,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Count": "System.Nullable`1[System.Int32]",
               "Id": "System.String"
@@ -3373,7 +3373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3528,7 +3528,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3546,7 +3546,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3696,7 +3696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3881,7 +3881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3905,7 +3905,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4014,7 +4014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -4116,7 +4116,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4271,7 +4271,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4289,7 +4289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4481,7 +4481,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4666,7 +4666,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4690,7 +4690,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4823,7 +4823,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -4925,7 +4925,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5080,7 +5080,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5098,7 +5098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5290,7 +5290,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5475,7 +5475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5499,7 +5499,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5632,7 +5632,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -5736,7 +5736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5891,7 +5891,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5909,7 +5909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6103,7 +6103,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6288,7 +6288,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6312,7 +6312,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6445,7 +6445,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -6547,7 +6547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6702,7 +6702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6720,7 +6720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6912,7 +6912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7097,7 +7097,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7121,7 +7121,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7254,7 +7254,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -7356,7 +7356,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7511,7 +7511,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7529,7 +7529,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7721,7 +7721,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveResourceInputType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7906,7 +7906,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7930,7 +7930,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8063,7 +8063,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[]",
@@ -8191,7 +8191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8382,7 +8382,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8400,7 +8400,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8600,7 +8600,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -8833,7 +8833,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8857,7 +8857,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8966,7 +8966,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -9109,7 +9109,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9127,7 +9127,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9390,7 +9390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9414,7 +9414,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9571,7 +9571,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -9732,7 +9732,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9750,7 +9750,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10037,7 +10037,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10061,7 +10061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10218,7 +10218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatus, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
               "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -10359,7 +10359,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10377,7 +10377,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10620,7 +10620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10644,7 +10644,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10907,7 +10907,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency",
       "GenericTypeArguments": [],
@@ -10917,7 +10917,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependency, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DependencyType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType]",
         "ResolutionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType]",
@@ -10935,7 +10935,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10947,7 +10947,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11051,7 +11051,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11063,7 +11063,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResolutionType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11135,7 +11135,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride",
       "GenericTypeArguments": [],
@@ -11145,7 +11145,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "TargetId": "System.String"
@@ -11158,7 +11158,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody",
       "GenericTypeArguments": [],
@@ -11168,7 +11168,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceErrorBody[]",
         "Code": "System.String",
@@ -11183,7 +11183,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ResourceType": "System.String",
         "TargetResourceName": "System.String"
@@ -11196,7 +11196,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11208,7 +11208,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.JobName, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11280,7 +11280,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11292,7 +11292,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.MoveState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11364,7 +11364,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11376,7 +11376,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ProvisioningState, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11460,7 +11460,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.SendAsyncStep, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -11684,7 +11684,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollectionTags, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11694,7 +11694,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -11706,7 +11706,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -11790,7 +11790,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo",
       "GenericTypeArguments": [],
@@ -11800,7 +11800,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "InfoMoveResource": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[]",
         "Type": "System.String"
@@ -11813,7 +11813,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource",
       "GenericTypeArguments": [],
@@ -11823,7 +11823,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "MoveResource": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IAffectedMoveResource[]",
         "Id": "System.String",
@@ -11837,7 +11837,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[], Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError",
       "GenericTypeArguments": [],
@@ -11847,7 +11847,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalInfo": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationErrorAdditionalInfo[]",
         "Detail": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IOperationStatusError[]",
@@ -11862,7 +11862,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IAny": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IAny",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IAny, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IAny, Az.ResourceMover.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]",
               "Key": "System.String",
@@ -113,7 +113,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -179,7 +179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -197,7 +197,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -424,7 +424,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -448,7 +448,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -672,7 +672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -696,7 +696,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -797,7 +797,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -881,7 +881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -905,7 +905,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1057,7 +1057,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1081,7 +1081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1190,7 +1190,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -1289,7 +1289,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -1355,7 +1355,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1373,7 +1373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1600,7 +1600,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1624,7 +1624,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1848,7 +1848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1872,7 +1872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1973,7 +1973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -2057,7 +2057,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2081,7 +2081,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2233,7 +2233,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2257,7 +2257,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2366,7 +2366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
@@ -2465,7 +2465,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -2531,7 +2531,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2549,7 +2549,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2752,7 +2752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2776,7 +2776,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2976,7 +2976,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3000,7 +3000,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3176,7 +3176,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3200,7 +3200,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3301,7 +3301,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -3385,7 +3385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3409,7 +3409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3561,7 +3561,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3585,7 +3585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3694,7 +3694,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IAdminCredentials",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IAdminCredentials, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IAdminCredentials, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NsxtPassword": "System.String",
               "NsxtUsername": "System.String",
@@ -3811,7 +3811,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3829,7 +3829,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4030,7 +4030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4054,7 +4054,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4163,7 +4163,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IExpressRouteAuthorization, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]",
               "Key": "System.String",
@@ -4317,7 +4317,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4335,7 +4335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4604,7 +4604,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4628,7 +4628,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4761,7 +4761,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -4953,7 +4953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4971,7 +4971,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5288,7 +5288,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5312,7 +5312,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5445,7 +5445,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
@@ -5616,7 +5616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5825,7 +5825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5843,7 +5843,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6109,7 +6109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6366,7 +6366,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6390,7 +6390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6616,7 +6616,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -6700,7 +6700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6718,7 +6718,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7005,7 +7005,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7029,7 +7029,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7178,7 +7178,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -7286,7 +7286,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7310,7 +7310,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7534,7 +7534,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7558,7 +7558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7808,7 +7808,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -7892,7 +7892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7910,7 +7910,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8197,7 +8197,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8221,7 +8221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8370,7 +8370,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -8478,7 +8478,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8502,7 +8502,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8726,7 +8726,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8750,7 +8750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8982,7 +8982,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -9066,7 +9066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9084,7 +9084,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9347,7 +9347,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9371,7 +9371,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9520,7 +9520,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -9628,7 +9628,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9652,7 +9652,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9876,7 +9876,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9900,7 +9900,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10057,7 +10057,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuota, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HostsRemaining": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining",
               "Enabled": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled]"
@@ -10115,7 +10115,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -10181,7 +10181,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10199,7 +10199,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10376,7 +10376,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10400,7 +10400,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10501,7 +10501,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -10585,7 +10585,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10609,7 +10609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10761,7 +10761,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10785,7 +10785,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10894,7 +10894,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ITrial, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus]",
               "AvailableHost": "System.Nullable`1[System.Int32]"
@@ -10952,7 +10952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -11018,7 +11018,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11036,7 +11036,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11213,7 +11213,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11237,7 +11237,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11338,7 +11338,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -11422,7 +11422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11446,7 +11446,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11598,7 +11598,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11622,7 +11622,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11731,7 +11731,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.ICluster, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
               "ClusterId": "System.Nullable`1[System.Int32]",
@@ -11830,7 +11830,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -11932,7 +11932,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11950,7 +11950,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12243,7 +12243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12267,7 +12267,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12392,7 +12392,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -12524,7 +12524,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12548,7 +12548,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12772,7 +12772,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12796,7 +12796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12929,7 +12929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IPrivateCloud, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IdentitySource": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
               "ManagementClusterProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
@@ -13028,7 +13028,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AuthorizationName": "System.String",
               "ClusterName": "System.String",
@@ -13055,7 +13055,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
             "GenericTypeArguments": [],
@@ -13073,7 +13073,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13246,7 +13246,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13264,7 +13264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13434,7 +13434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
                   "GenericTypeArguments": [],
@@ -13458,7 +13458,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -13667,7 +13667,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13691,7 +13691,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13816,7 +13816,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AuthorizationName": "System.String",
                     "ClusterName": "System.String",
@@ -13849,7 +13849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
                   "GenericTypeArguments": [],
@@ -13873,7 +13873,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14082,7 +14082,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14106,7 +14106,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14231,7 +14231,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
                   "GenericTypeArguments": [],
@@ -14255,7 +14255,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -14464,7 +14464,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14488,7 +14488,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14751,7 +14751,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14763,7 +14763,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ExpressRouteAuthorizationProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14867,7 +14867,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SendAsyncStep, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -15091,7 +15091,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15103,7 +15103,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.ClusterProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15197,7 +15197,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource[], Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
       "GenericTypeArguments": [],
@@ -15207,7 +15207,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IIdentitySource, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ssl": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum]",
         "Alias": "System.String",
@@ -15228,7 +15228,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15240,7 +15240,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SslEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15312,7 +15312,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15324,7 +15324,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15396,7 +15396,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15408,7 +15408,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PrivateCloudProvisioningState, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15480,7 +15480,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20200320.IQuotaHostsRemaining, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15490,7 +15490,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15502,7 +15502,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.QuotaEnabled, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -15574,7 +15574,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -15586,7 +15586,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.TrialStatus, Az.VMware.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

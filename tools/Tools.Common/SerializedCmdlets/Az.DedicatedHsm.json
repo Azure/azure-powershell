@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkProfileNetworkInterface": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType]",
@@ -95,7 +95,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -175,7 +175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -193,7 +193,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -394,7 +394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -418,7 +418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -642,7 +642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -666,7 +666,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -866,7 +866,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -890,7 +890,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -991,7 +991,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -1071,7 +1071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1095,7 +1095,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1247,7 +1247,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1271,7 +1271,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1380,7 +1380,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkProfileNetworkInterface": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType]",
@@ -1477,7 +1477,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface",
             "GenericTypeArguments": [],
@@ -1642,7 +1642,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1660,7 +1660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1852,7 +1852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface",
                   "GenericTypeArguments": [],
@@ -2071,7 +2071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2095,7 +2095,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2301,7 +2301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -2381,7 +2381,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2399,7 +2399,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2660,7 +2660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2684,7 +2684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2833,7 +2833,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -2937,7 +2937,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2961,7 +2961,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3185,7 +3185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3209,7 +3209,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3366,7 +3366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkProfileNetworkInterface": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType]",
@@ -3445,7 +3445,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -3543,7 +3543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3561,7 +3561,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3828,7 +3828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3852,7 +3852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3977,7 +3977,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsmIdentity, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -4105,7 +4105,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4129,7 +4129,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4353,7 +4353,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4377,7 +4377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4640,7 +4640,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[], Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface",
       "GenericTypeArguments": [],
@@ -4650,7 +4650,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "PrivateIPAddress": "System.String"
@@ -4663,7 +4663,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4675,7 +4675,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.JsonWebKeyType, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4779,7 +4779,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.SendAsyncStep, Az.DedicatedHsm.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

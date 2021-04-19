@@ -1,4 +1,5 @@
 {
+  "ProcessedTypes": {},
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -6,7 +7,8 @@
       "Name": "Get-AzManagedServicesAssignment",
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.GetAzureRmManagedServicesAssignment",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 0,
+      "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "Default",
       "OutputTypes": [
@@ -25,6 +27,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -34,7 +41,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -43,23 +50,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationAssignment",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -75,7 +77,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -93,7 +95,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -111,7 +113,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -168,7 +170,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -192,7 +194,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -260,7 +262,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -284,7 +286,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -308,7 +310,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -419,7 +421,8 @@
       "Name": "Get-AzManagedServicesDefinition",
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.GetAzureRmManagedServicesDefinition",
       "SupportsShouldProcess": false,
-      "ConfirmImpact": 0,
+      "ConfirmImpact": 2,
+      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
       "OutputTypes": [
@@ -439,6 +442,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -448,7 +456,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -457,23 +465,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationDefinition",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -489,7 +492,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -507,7 +510,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -564,7 +567,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -632,7 +635,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -656,7 +659,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -768,6 +771,7 @@
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.NewAzureRmManagedServicesAssignment",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "Default",
       "OutputTypes": [
@@ -786,6 +790,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -795,7 +804,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -804,23 +813,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationAssignment",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -836,7 +840,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -854,7 +858,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -884,6 +888,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -893,7 +902,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -902,23 +911,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationDefinition",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -933,7 +937,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -951,7 +955,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1008,7 +1012,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1032,7 +1036,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1056,7 +1060,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1080,7 +1084,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1148,7 +1152,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1172,7 +1176,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1208,6 +1212,11 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -1217,7 +1226,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -1226,23 +1235,18 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "registrationDefinition",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -1263,7 +1267,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1331,7 +1335,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1399,6 +1403,7 @@
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.NewAzureRmManagedServicesDefinition",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "Default",
       "OutputTypes": [
@@ -1418,6 +1423,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -1427,7 +1437,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -1436,23 +1446,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationDefinition",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -1468,7 +1473,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1486,7 +1491,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1504,7 +1509,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1522,7 +1527,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1540,7 +1545,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1558,7 +1563,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1594,7 +1599,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1612,7 +1617,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1630,7 +1635,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1648,7 +1653,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1666,7 +1671,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1723,7 +1728,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1747,7 +1752,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1771,7 +1776,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1795,7 +1800,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1819,7 +1824,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1843,7 +1848,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1867,7 +1872,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1935,7 +1940,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1959,7 +1964,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1983,7 +1988,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2007,7 +2012,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2055,7 +2060,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2079,7 +2084,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2103,7 +2108,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2127,7 +2132,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2151,7 +2156,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2219,7 +2224,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2243,7 +2248,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2267,7 +2272,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2291,7 +2296,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2339,7 +2344,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2407,7 +2412,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2475,6 +2480,7 @@
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.RemoveAzureRmManagedServcicesAssignment",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "Default",
       "OutputTypes": [
@@ -2482,7 +2488,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Boolean",
-            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2501,7 +2507,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2519,7 +2525,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2548,6 +2554,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -2557,7 +2568,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -2566,23 +2577,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationAssignment",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -2597,7 +2603,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2615,7 +2621,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2672,7 +2678,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2696,7 +2702,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2720,7 +2726,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2744,7 +2750,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2823,6 +2829,11 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -2832,7 +2843,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -2841,23 +2852,18 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "registrationAssignment",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -2878,7 +2884,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2902,7 +2908,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2970,7 +2976,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2994,7 +3000,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3062,6 +3068,7 @@
       "ClassName": "Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Commands.RemoveAzureRmManagedServicesDefinition",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "Default",
       "OutputTypes": [
@@ -3069,7 +3076,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Boolean",
-            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3088,7 +3095,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3106,7 +3113,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3136,6 +3143,11 @@
             "GenericTypeArguments": [],
             "Methods": [
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -3145,7 +3157,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -3154,23 +3166,18 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "registrationDefinition",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -3185,7 +3192,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3242,7 +3249,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3266,7 +3273,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3290,7 +3297,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3370,6 +3377,11 @@
                   "GenericTypeArguments": [],
                   "Methods": [
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -3379,7 +3391,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -3388,23 +3400,18 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "registrationDefinition",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -3425,7 +3432,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3493,7 +3500,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3709,6 +3716,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -3718,7 +3730,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -3727,23 +3739,18 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "registrationAssignmentProperties",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -3762,6 +3769,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -3771,7 +3783,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -3780,23 +3792,18 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "registrationDefinition",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -3819,6 +3826,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -3828,7 +3840,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -3837,22 +3849,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "name",
@@ -3870,14 +3876,15 @@
               "Name": "version",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -3887,7 +3894,7 @@
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -3911,6 +3918,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -3920,7 +3932,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -3929,30 +3941,25 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "properties",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSAuthorization]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSAuthorization]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSAuthorization, Microsoft.Azure.PowerShell.Cmdlets.ManagedServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.PSAuthorization, Microsoft.Azure.PowerShell.Cmdlets.ManagedServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -3973,6 +3980,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -3982,7 +3994,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -3991,23 +4003,18 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "authorization",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -4046,7 +4053,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4093,7 +4100,7 @@
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4149,7 +4156,7 @@
     "System.Byte[]": {
       "Namespace": "System",
       "Name": "System.Byte[]",
-      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": "System.Byte",
       "GenericTypeArguments": [],
@@ -4159,7 +4166,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4171,7 +4178,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4183,7 +4190,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4206,6 +4213,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -4215,7 +4227,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -4224,23 +4236,18 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "plan",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -4260,6 +4267,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -4269,7 +4281,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -4278,23 +4290,18 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "registrationDefinitionProperties",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -4315,6 +4322,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -4324,7 +4336,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -4333,22 +4345,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "principalId",
@@ -4358,7 +4364,8 @@
               "Name": "roleDefinitionId",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     }

@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]",
@@ -201,7 +201,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -219,7 +219,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -512,7 +512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -536,7 +536,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -669,7 +669,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState]",
               "SkuCapacity": "System.Nullable`1[System.Int32]",
@@ -757,7 +757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -825,7 +825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -843,7 +843,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1020,7 +1020,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1044,7 +1044,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1270,7 +1270,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1294,7 +1294,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1470,7 +1470,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1494,7 +1494,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1595,7 +1595,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -1681,7 +1681,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1705,7 +1705,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1857,7 +1857,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1881,7 +1881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1990,7 +1990,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]",
@@ -2100,7 +2100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -2186,7 +2186,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2204,7 +2204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2455,7 +2455,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2479,7 +2479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2703,7 +2703,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2727,7 +2727,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2828,7 +2828,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -2938,7 +2938,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2962,7 +2962,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3114,7 +3114,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3138,7 +3138,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3247,7 +3247,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Instance": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[]",
               "DeploymentSettingEnvironmentVariable": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables",
@@ -3378,7 +3378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -3464,7 +3464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3482,7 +3482,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3731,7 +3731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3755,7 +3755,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4029,7 +4029,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4053,7 +4053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4301,7 +4301,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4325,7 +4325,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4426,7 +4426,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -4512,7 +4512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4536,7 +4536,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4688,7 +4688,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4712,7 +4712,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4821,7 +4821,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState]",
               "SkuCapacity": "System.Nullable`1[System.Int32]",
@@ -5092,7 +5092,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5110,7 +5110,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5523,7 +5523,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5547,7 +5547,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5680,7 +5680,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]",
@@ -6009,7 +6009,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6027,7 +6027,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6512,7 +6512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6536,7 +6536,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6669,7 +6669,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Instance": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[]",
               "DeploymentSettingEnvironmentVariable": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables",
@@ -6872,7 +6872,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6988,7 +6988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7143,7 +7143,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7161,7 +7161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7475,7 +7475,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7609,7 +7609,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7794,7 +7794,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7818,7 +7818,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8026,7 +8026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -8112,7 +8112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8130,7 +8130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8393,7 +8393,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8417,7 +8417,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8566,7 +8566,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -8676,7 +8676,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8700,7 +8700,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8924,7 +8924,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8948,7 +8948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9198,7 +9198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -9284,7 +9284,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9302,7 +9302,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9589,7 +9589,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9613,7 +9613,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9762,7 +9762,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -9872,7 +9872,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9896,7 +9896,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10120,7 +10120,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10144,7 +10144,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10412,7 +10412,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -10498,7 +10498,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10516,7 +10516,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -10827,7 +10827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10851,7 +10851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11000,7 +11000,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -11110,7 +11110,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11134,7 +11134,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11358,7 +11358,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11382,7 +11382,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11650,7 +11650,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -11736,7 +11736,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -11754,7 +11754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12065,7 +12065,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12089,7 +12089,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12238,7 +12238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -12348,7 +12348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12372,7 +12372,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12596,7 +12596,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12620,7 +12620,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12888,7 +12888,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -12974,7 +12974,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -12992,7 +12992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -13303,7 +13303,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13327,7 +13327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13476,7 +13476,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -13586,7 +13586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13610,7 +13610,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13834,7 +13834,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -13858,7 +13858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14126,7 +14126,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -14212,7 +14212,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14230,7 +14230,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -14541,7 +14541,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14565,7 +14565,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14714,7 +14714,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -14824,7 +14824,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -14848,7 +14848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15072,7 +15072,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15096,7 +15096,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -15253,7 +15253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IServiceResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState]",
               "SkuCapacity": "System.Nullable`1[System.Int32]",
@@ -15341,7 +15341,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -15553,7 +15553,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15571,7 +15571,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -15984,7 +15984,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16008,7 +16008,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16133,7 +16133,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -16411,7 +16411,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16435,7 +16435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16803,7 +16803,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16827,7 +16827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -16960,7 +16960,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IAppResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]",
               "IdentityType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]",
@@ -17070,7 +17070,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -17318,7 +17318,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17336,7 +17336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -17821,7 +17821,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17845,7 +17845,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -17970,7 +17970,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -18296,7 +18296,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18320,7 +18320,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18736,7 +18736,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18760,7 +18760,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -18893,7 +18893,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Instance": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[]",
               "DeploymentSettingEnvironmentVariable": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables",
@@ -19024,7 +19024,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AppName": "System.String",
               "BindingName": "System.String",
@@ -19125,7 +19125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19241,7 +19241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -19396,7 +19396,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -19414,7 +19414,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -19728,7 +19728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -19862,7 +19862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20047,7 +20047,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20071,7 +20071,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20196,7 +20196,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AppName": "System.String",
                     "BindingName": "System.String",
@@ -20327,7 +20327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20461,7 +20461,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -20646,7 +20646,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20670,7 +20670,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -20891,7 +20891,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21025,7 +21025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21210,7 +21210,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -21234,7 +21234,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -21497,7 +21497,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21509,7 +21509,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.AppResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21613,7 +21613,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21625,7 +21625,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ManagedIdentityType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -21743,7 +21743,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SendAsyncStep, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -21967,7 +21967,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -21979,7 +21979,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22061,7 +22061,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance[], Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance",
       "GenericTypeArguments": [],
@@ -22071,7 +22071,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentInstance, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DiscoveryStatus": "System.String",
         "Name": "System.String",
@@ -22087,7 +22087,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentSettingsEnvironmentVariables, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22097,7 +22097,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22109,7 +22109,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceProvisioningState, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22181,7 +22181,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22193,7 +22193,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.DeploymentResourceStatus, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22265,7 +22265,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22277,7 +22277,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.RuntimeVersion, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -22349,7 +22349,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22361,7 +22361,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.UserSourceType, Az.SpringCloud.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

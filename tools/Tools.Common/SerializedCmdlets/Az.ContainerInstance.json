@@ -1,4 +1,5 @@
 {
+  "ProcessedTypes": {},
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -7,6 +8,7 @@
       "ClassName": "Microsoft.Azure.Commands.ContainerInstance.GetAzureContainerGroupCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
+      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ListContainerGroupParamSet",
       "OutputTypes": [
@@ -14,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -44,10 +46,15 @@
                 "Parameters": [
                   {
                     "Name": "containerGroup",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                   }
                 ],
                 "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
@@ -59,7 +66,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -68,18 +75,13 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               }
             ]
           },
@@ -95,7 +97,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -113,7 +115,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -131,7 +133,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -188,7 +190,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -212,7 +214,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -280,7 +282,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -348,7 +350,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -460,6 +462,7 @@
       "ClassName": "Microsoft.Azure.Commands.ContainerInstance.GetAzureContainerInstanceLogCommand",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
+      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "GetContainerInstanceLogByNamesParamSet",
       "OutputTypes": [
@@ -467,7 +470,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -486,7 +489,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -504,7 +507,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -522,7 +525,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -552,10 +555,15 @@
                 "Parameters": [
                   {
                     "Name": "containerGroup",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                   }
                 ],
                 "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
@@ -567,7 +575,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -576,18 +584,13 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               }
             ]
           },
@@ -602,7 +605,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -620,7 +623,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -638,7 +641,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
-            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -697,7 +700,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -721,7 +724,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -745,7 +748,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -769,7 +772,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -839,7 +842,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -869,10 +872,15 @@
                       "Parameters": [
                         {
                           "Name": "containerGroup",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                         }
                       ],
                       "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
                     },
                     {
                       "Name": "ToString",
@@ -884,7 +892,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -893,18 +901,13 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -925,7 +928,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -949,7 +952,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1019,7 +1022,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1043,7 +1046,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1067,7 +1070,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1137,7 +1140,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1161,7 +1164,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1231,6 +1234,7 @@
       "ClassName": "Microsoft.Azure.Commands.ContainerInstance.NewAzureContainerGroupCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "CreateContainerGroupBaseParamSet",
       "OutputTypes": [
@@ -1238,7 +1242,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1268,10 +1272,15 @@
                 "Parameters": [
                   {
                     "Name": "containerGroup",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                   }
                 ],
                 "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
@@ -1283,7 +1292,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -1292,18 +1301,13 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               }
             ]
           },
@@ -1319,7 +1323,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1337,7 +1341,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1355,7 +1359,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1373,7 +1377,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1391,7 +1395,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1409,7 +1413,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.PSCredential",
-            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1427,7 +1431,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1445,7 +1449,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1473,7 +1477,17 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "HasFlag",
+                "Parameters": [
+                  {
+                    "Name": "flag",
+                    "Type": "System.Enum"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -1489,25 +1503,11 @@
                 "ReturnType": "System.String"
               },
               {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
                 "Name": "CompareTo",
                 "Parameters": [
                   {
                     "Name": "target",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Int32"
@@ -1517,7 +1517,21 @@
                 "Parameters": [
                   {
                     "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.String"
+                  },
+                  {
+                    "Name": "provider",
+                    "Type": "System.IFormatProvider"
+                  }
+                ],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [
+                  {
+                    "Name": "format",
+                    "Type": "System.String"
                   }
                 ],
                 "ReturnType": "System.String"
@@ -1527,20 +1541,10 @@
                 "Parameters": [
                   {
                     "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.IFormatProvider"
                   }
                 ],
                 "ReturnType": "System.String"
-              },
-              {
-                "Name": "HasFlag",
-                "Parameters": [
-                  {
-                    "Name": "flag",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
               },
               {
                 "Name": "GetTypeCode",
@@ -1566,7 +1570,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String[]",
-            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": "System.String",
             "GenericTypeArguments": [],
@@ -1584,7 +1588,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1602,7 +1606,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1623,7 +1627,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1645,7 +1649,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Int32]",
-            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1667,7 +1671,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[System.Double]",
-            "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1687,7 +1691,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1707,7 +1711,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1725,7 +1729,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Int32[]",
-            "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": "System.Int32",
             "GenericTypeArguments": [],
@@ -1743,7 +1747,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1761,7 +1765,7 @@
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1781,7 +1785,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1799,7 +1803,7 @@
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1856,7 +1860,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1880,7 +1884,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1904,7 +1908,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1928,7 +1932,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1952,7 +1956,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1976,7 +1980,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2003,7 +2007,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2031,7 +2035,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2059,7 +2063,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Double]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2085,7 +2089,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2111,7 +2115,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2135,7 +2139,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32[]",
-                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.Int32",
                   "GenericTypeArguments": [],
@@ -2159,7 +2163,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2183,7 +2187,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2209,7 +2213,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2233,7 +2237,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2301,7 +2305,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2325,7 +2329,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2349,7 +2353,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2373,7 +2377,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2397,7 +2401,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2421,7 +2425,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2445,7 +2449,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2469,7 +2473,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2493,7 +2497,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2517,7 +2521,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2544,7 +2548,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2572,7 +2576,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2600,7 +2604,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Double]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2626,7 +2630,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2652,7 +2656,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2676,7 +2680,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32[]",
-                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.Int32",
                   "GenericTypeArguments": [],
@@ -2700,7 +2704,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2724,7 +2728,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2750,7 +2754,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2774,7 +2778,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2842,7 +2846,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2866,7 +2870,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2890,7 +2894,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2924,7 +2928,17 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "HasFlag",
+                      "Parameters": [
+                        {
+                          "Name": "flag",
+                          "Type": "System.Enum"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -2940,25 +2954,11 @@
                       "ReturnType": "System.String"
                     },
                     {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "CompareTo",
                       "Parameters": [
                         {
                           "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Int32"
@@ -2968,7 +2968,21 @@
                       "Parameters": [
                         {
                           "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.String"
+                        },
+                        {
+                          "Name": "provider",
+                          "Type": "System.IFormatProvider"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.String"
                         }
                       ],
                       "ReturnType": "System.String"
@@ -2978,20 +2992,10 @@
                       "Parameters": [
                         {
                           "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.IFormatProvider"
                         }
                       ],
                       "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
                     },
                     {
                       "Name": "GetTypeCode",
@@ -3023,7 +3027,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.String",
                   "GenericTypeArguments": [],
@@ -3047,7 +3051,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3071,7 +3075,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3095,7 +3099,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3119,7 +3123,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3143,7 +3147,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3167,7 +3171,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3194,7 +3198,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3222,7 +3226,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3250,7 +3254,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Double]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3276,7 +3280,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3302,7 +3306,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3326,7 +3330,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32[]",
-                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.Int32",
                   "GenericTypeArguments": [],
@@ -3350,7 +3354,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3374,7 +3378,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3400,7 +3404,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3424,7 +3428,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3502,7 +3506,17 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "HasFlag",
+                      "Parameters": [
+                        {
+                          "Name": "flag",
+                          "Type": "System.Enum"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -3518,25 +3532,11 @@
                       "ReturnType": "System.String"
                     },
                     {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
                       "Name": "CompareTo",
                       "Parameters": [
                         {
                           "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Int32"
@@ -3546,7 +3546,21 @@
                       "Parameters": [
                         {
                           "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.String"
+                        },
+                        {
+                          "Name": "provider",
+                          "Type": "System.IFormatProvider"
+                        }
+                      ],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [
+                        {
+                          "Name": "format",
+                          "Type": "System.String"
                         }
                       ],
                       "ReturnType": "System.String"
@@ -3556,20 +3570,10 @@
                       "Parameters": [
                         {
                           "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.IFormatProvider"
                         }
                       ],
                       "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
                     },
                     {
                       "Name": "GetTypeCode",
@@ -3601,7 +3605,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.String",
                   "GenericTypeArguments": [],
@@ -3625,7 +3629,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3649,7 +3653,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3673,7 +3677,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3697,7 +3701,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3721,7 +3725,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3745,7 +3749,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3772,7 +3776,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3800,7 +3804,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3828,7 +3832,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Double]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -3854,7 +3858,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3880,7 +3884,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3904,7 +3908,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32[]",
-                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.Int32",
                   "GenericTypeArguments": [],
@@ -3928,7 +3932,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3952,7 +3956,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3978,7 +3982,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4002,7 +4006,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4070,7 +4074,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4094,7 +4098,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4118,7 +4122,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4142,7 +4146,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4166,7 +4170,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4190,7 +4194,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4214,7 +4218,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4241,7 +4245,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4269,7 +4273,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Int32]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -4297,7 +4301,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[System.Double]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -4323,7 +4327,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4349,7 +4353,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4373,7 +4377,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Int32[]",
-                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Int32[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": "System.Int32",
                   "GenericTypeArguments": [],
@@ -4397,7 +4401,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4421,7 +4425,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4447,7 +4451,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4471,7 +4475,7 @@
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Runtime.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4539,6 +4543,7 @@
       "ClassName": "Microsoft.Azure.Commands.ContainerInstance.RemoveAzureContainerGroupCommand",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "RemoveContainerGroupByResourceGroupAndNameParamSet",
       "OutputTypes": [
@@ -4546,7 +4551,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4576,10 +4581,15 @@
                 "Parameters": [
                   {
                     "Name": "containerGroup",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                   }
                 ],
                 "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
@@ -4591,7 +4601,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -4600,18 +4610,13 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               }
             ]
           },
@@ -4627,7 +4632,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4645,7 +4650,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4663,7 +4668,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
             "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4693,10 +4698,15 @@
                 "Parameters": [
                   {
                     "Name": "containerGroup",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                   }
                 ],
                 "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
               },
               {
                 "Name": "ToString",
@@ -4708,7 +4718,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -4717,18 +4727,13 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               }
             ]
           },
@@ -4743,7 +4748,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4761,7 +4766,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4818,7 +4823,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4842,7 +4847,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4866,7 +4871,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4934,7 +4939,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4964,10 +4969,15 @@
                       "Parameters": [
                         {
                           "Name": "containerGroup",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
                         }
                       ],
                       "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
                     },
                     {
                       "Name": "ToString",
@@ -4979,7 +4989,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -4988,18 +4998,13 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -5020,7 +5025,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5088,7 +5093,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5112,7 +5117,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5180,7 +5185,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5397,6 +5402,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -5406,7 +5416,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5415,22 +5425,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "principalId",
@@ -5448,14 +5452,15 @@
               "Name": "userAssignedIdentities",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentityUserAssignedIdentitiesValue]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentityUserAssignedIdentitiesValue]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentityUserAssignedIdentitiesValue, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5477,6 +5482,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -5486,7 +5496,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5495,22 +5505,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "principalId",
@@ -5520,14 +5524,15 @@
               "Name": "clientId",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -5537,7 +5542,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.ContainerInstance.Models.ResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.ContainerInstance.Models.ResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ContainerInstance.Models.ResourceIdentityType, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.ContainerInstance.Models.ResourceIdentityType, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5559,7 +5564,17 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Enum"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5575,25 +5590,11 @@
           "ReturnType": "System.String"
         },
         {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
           "Name": "CompareTo",
           "Parameters": [
             {
               "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Int32"
@@ -5603,7 +5604,21 @@
           "Parameters": [
             {
               "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.String"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.IFormatProvider"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.String"
             }
           ],
           "ReturnType": "System.String"
@@ -5613,20 +5628,10 @@
           "Parameters": [
             {
               "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.IFormatProvider"
             }
           ],
           "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
         },
         {
           "Name": "GetTypeCode",
@@ -5644,7 +5649,7 @@
     "System.TypeCode": {
       "Namespace": "System",
       "Name": "System.TypeCode",
-      "AssemblyQualifiedName": "System.TypeCode, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.TypeCode, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -5654,7 +5659,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5667,7 +5672,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5679,7 +5684,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CurrentState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
         "PreviousState": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
@@ -5704,10 +5709,15 @@
           "Parameters": [
             {
               "Name": "container",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "Microsoft.Azure.Management.ContainerInstance.Models.Container"
             }
           ],
           "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainer"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
         },
         {
           "Name": "ToString",
@@ -5719,7 +5729,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5728,25 +5738,20 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         }
       ]
     },
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerState, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "StartTime": "System.Nullable`1[System.DateTime]",
         "FinishTime": "System.Nullable`1[System.DateTime]",
@@ -5763,11 +5768,16 @@
           "ReturnType": "System.String"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "Equals",
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5776,25 +5786,20 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         }
       ]
     },
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5806,7 +5811,7 @@
     "System.DateTime": {
       "Namespace": "System",
       "Name": "System.DateTime",
-      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -5816,7 +5821,7 @@
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5828,7 +5833,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5840,7 +5845,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "FirstTimestamp": "System.Nullable`1[System.DateTime]",
         "LastTimestamp": "System.Nullable`1[System.DateTime]",
@@ -5858,11 +5863,16 @@
           "ReturnType": "System.String"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "Equals",
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5871,25 +5881,20 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         }
       ]
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.VolumeMount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.VolumeMount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.VolumeMount, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.VolumeMount, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5916,6 +5921,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -5925,7 +5935,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -5934,22 +5944,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "name",
@@ -5963,14 +5967,15 @@
               "Name": "readOnlyProperty",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Boolean]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -5982,7 +5987,7 @@
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -5992,7 +5997,7 @@
     "System.Collections.Generic.IList`1[System.Int32]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6004,7 +6009,7 @@
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6016,7 +6021,7 @@
     "System.Nullable`1[System.Double]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Double]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6028,7 +6033,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6040,7 +6045,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSPort, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PortProperty": "System.Int32",
         "Protocol": "System.String"
@@ -6059,11 +6064,16 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "Equals",
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6072,25 +6082,20 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         }
       ]
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.ImageRegistryCredential, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6117,6 +6122,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -6126,7 +6136,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6135,22 +6145,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "server",
@@ -6164,14 +6168,15 @@
               "Name": "password",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerInstance.Models.Volume]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.Volume, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerInstance.Models.Volume, Microsoft.Azure.Management.ContainerInstance, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6200,6 +6205,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -6209,7 +6219,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6218,22 +6228,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "name",
@@ -6255,7 +6259,8 @@
               "Name": "gitRepo",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -6278,6 +6283,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -6287,7 +6297,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6296,22 +6306,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "shareName",
@@ -6329,7 +6333,8 @@
               "Name": "storageAccountKey",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
@@ -6351,6 +6356,11 @@
           "ReturnType": "System.Void"
         },
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -6360,7 +6370,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6369,22 +6379,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "repository",
@@ -6398,14 +6402,15 @@
               "Name": "revision",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Object": {
       "Namespace": "System",
       "Name": "System.Object",
-      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Object, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -6415,7 +6420,7 @@
     "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup": {
       "Namespace": "Microsoft.Azure.Commands.ContainerInstance.Models",
       "Name": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Identity": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroupIdentity",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6445,10 +6450,15 @@
           "Parameters": [
             {
               "Name": "containerGroup",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "Microsoft.Azure.Management.ContainerInstance.Models.ContainerGroup"
             }
           ],
           "ReturnType": "Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
         },
         {
           "Name": "ToString",
@@ -6460,7 +6470,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -6469,18 +6479,13 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         }
       ]
     },
@@ -6523,6 +6528,8 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -6532,7 +6539,6 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
-        "StorageEndpointSuffix": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -6541,8 +6547,8 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
-        "AdTenant": "System.String",
-        "Name": "System.String"
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -6596,7 +6602,7 @@
     "System.Byte[]": {
       "Namespace": "System",
       "Name": "System.Byte[]",
-      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": "System.Byte",
       "GenericTypeArguments": [],
@@ -6606,7 +6612,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6618,7 +6624,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -6630,7 +6636,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [

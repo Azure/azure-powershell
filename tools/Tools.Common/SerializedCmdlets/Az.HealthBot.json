@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
               "ProvisioningState": "System.String",
@@ -95,7 +95,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BotName": "System.String",
               "Id": "System.String",
@@ -157,7 +157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -175,7 +175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -378,7 +378,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -402,7 +402,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -602,7 +602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -626,7 +626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -802,7 +802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -826,7 +826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -927,7 +927,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BotName": "System.String",
                     "Id": "System.String",
@@ -1007,7 +1007,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1031,7 +1031,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1183,7 +1183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1207,7 +1207,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1316,7 +1316,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
               "ProvisioningState": "System.String",
@@ -1413,7 +1413,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1568,7 +1568,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1586,7 +1586,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1780,7 +1780,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1965,7 +1965,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1989,7 +1989,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2197,7 +2197,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BotName": "System.String",
               "Id": "System.String",
@@ -2277,7 +2277,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2295,7 +2295,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2558,7 +2558,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2582,7 +2582,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2731,7 +2731,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BotName": "System.String",
                     "Id": "System.String",
@@ -2835,7 +2835,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2859,7 +2859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3083,7 +3083,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3107,7 +3107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3264,7 +3264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SkuName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
               "ProvisioningState": "System.String",
@@ -3343,7 +3343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "BotName": "System.String",
               "Id": "System.String",
@@ -3366,7 +3366,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3503,7 +3503,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3521,7 +3521,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3673,7 +3673,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3834,7 +3834,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3858,7 +3858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3959,7 +3959,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBotIdentity, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "BotName": "System.String",
                     "Id": "System.String",
@@ -3988,7 +3988,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4149,7 +4149,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4173,7 +4173,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4274,7 +4274,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4435,7 +4435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4459,7 +4459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep[], Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4698,7 +4698,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Support.SkuName, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4802,7 +4802,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.SendAsyncStep, Az.HealthBot.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

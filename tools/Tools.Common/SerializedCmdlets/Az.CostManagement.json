@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RunHistoryValue": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
               "DefinitionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]",
@@ -90,7 +90,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
               "AlertId": "System.String",
@@ -173,7 +173,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -191,7 +191,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -394,7 +394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -418,7 +418,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -618,7 +618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -642,7 +642,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -743,7 +743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
                     "AlertId": "System.String",
@@ -850,7 +850,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -874,7 +874,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1050,7 +1050,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1074,7 +1074,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1183,7 +1183,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RunHistoryValue": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
               "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus]",
@@ -1260,7 +1260,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
               "AlertId": "System.String",
@@ -1325,7 +1325,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1343,7 +1343,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1520,7 +1520,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1544,7 +1544,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1645,7 +1645,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
                     "AlertId": "System.String",
@@ -1728,7 +1728,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1752,7 +1752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1904,7 +1904,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1928,7 +1928,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2092,7 +2092,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
               "AlertId": "System.String",
@@ -2157,7 +2157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2175,7 +2175,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2370,7 +2370,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2394,7 +2394,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2519,7 +2519,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
                     "AlertId": "System.String",
@@ -2602,7 +2602,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2626,7 +2626,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2802,7 +2802,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2826,7 +2826,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2959,7 +2959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryResult, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Column": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn[]",
               "NextLink": "System.String",
@@ -3018,7 +3018,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3098,7 +3098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3178,7 +3178,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3294,7 +3294,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -3318,7 +3318,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3398,7 +3398,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping",
             "GenericTypeArguments": [],
@@ -3491,7 +3491,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3509,7 +3509,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3611,7 +3611,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3697,7 +3697,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3831,7 +3831,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -3861,7 +3861,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3947,7 +3947,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping",
                   "GenericTypeArguments": [],
@@ -4070,7 +4070,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4094,7 +4094,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4219,7 +4219,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4305,7 +4305,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4391,7 +4391,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4525,7 +4525,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -4555,7 +4555,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4641,7 +4641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping",
                   "GenericTypeArguments": [],
@@ -4764,7 +4764,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4788,7 +4788,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4889,7 +4889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4975,7 +4975,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5109,7 +5109,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -5139,7 +5139,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5225,7 +5225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping",
                   "GenericTypeArguments": [],
@@ -5348,7 +5348,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5372,7 +5372,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5481,7 +5481,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RunHistoryValue": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
               "DefinitionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]",
@@ -5573,7 +5573,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5653,7 +5653,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5733,7 +5733,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5867,7 +5867,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5983,7 +5983,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6063,7 +6063,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6218,7 +6218,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6236,7 +6236,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6388,7 +6388,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6474,7 +6474,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6560,7 +6560,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6718,7 +6718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6852,7 +6852,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6938,7 +6938,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7123,7 +7123,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7147,7 +7147,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7256,7 +7256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Operator": "System.String",
@@ -7388,7 +7388,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7516,7 +7516,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7639,7 +7639,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -7755,7 +7755,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
             "GenericTypeArguments": [],
@@ -7773,7 +7773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Operator": "System.String",
@@ -7795,7 +7795,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
               "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -7819,7 +7819,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
             "GenericTypeArguments": [],
@@ -7837,7 +7837,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Operator": "System.String",
@@ -7865,7 +7865,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
                   "GenericTypeArguments": [],
@@ -7889,7 +7889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Name": "System.String",
                     "Operator": "System.String",
@@ -7917,7 +7917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
                     "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -7947,7 +7947,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
                   "GenericTypeArguments": [],
@@ -7971,7 +7971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Name": "System.String",
                     "Operator": "System.String",
@@ -8069,7 +8069,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
               "AlertId": "System.String",
@@ -8134,7 +8134,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8152,7 +8152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8349,7 +8349,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8373,7 +8373,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8498,7 +8498,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
                     "AlertId": "System.String",
@@ -8581,7 +8581,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8605,7 +8605,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8781,7 +8781,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8805,7 +8805,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8938,7 +8938,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExport, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "RunHistoryValue": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
               "DefinitionType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]",
@@ -9012,7 +9012,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
               "AlertId": "System.String",
@@ -9056,7 +9056,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9136,7 +9136,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9216,7 +9216,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9368,7 +9368,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9484,7 +9484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9564,7 +9564,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9719,7 +9719,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9737,7 +9737,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -9889,7 +9889,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9975,7 +9975,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10061,7 +10061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10243,7 +10243,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10377,7 +10377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10463,7 +10463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10648,7 +10648,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10672,7 +10672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10773,7 +10773,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ExternalCloudProviderType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
                     "AlertId": "System.String",
@@ -10829,7 +10829,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10915,7 +10915,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11001,7 +11001,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11183,7 +11183,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11317,7 +11317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11403,7 +11403,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11588,7 +11588,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11612,7 +11612,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -11737,7 +11737,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11823,7 +11823,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -11909,7 +11909,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12091,7 +12091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12225,7 +12225,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12311,7 +12311,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -12496,7 +12496,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12520,7 +12520,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -12759,7 +12759,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution",
       "GenericTypeArguments": [],
@@ -12769,7 +12769,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "RunHistoryValue": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IExportExecution[]",
         "Status": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus]",
@@ -12801,7 +12801,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12813,7 +12813,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionStatus, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -12917,7 +12917,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -12929,7 +12929,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExecutionType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13001,7 +13001,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13013,7 +13013,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13085,7 +13085,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13097,7 +13097,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13169,7 +13169,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13181,7 +13181,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13253,7 +13253,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13265,7 +13265,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13369,7 +13369,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13381,7 +13381,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13453,7 +13453,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13465,7 +13465,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13537,7 +13537,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13549,7 +13549,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13621,7 +13621,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.SendAsyncStep, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -13845,7 +13845,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn",
       "GenericTypeArguments": [],
@@ -13855,7 +13855,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryColumn, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Type": "System.String"
@@ -13878,7 +13878,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Operator": "System.String",
@@ -13892,7 +13892,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Dimensions": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
         "Tag": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryComparisonExpression",
@@ -13908,7 +13908,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter[], Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryFilter",
       "GenericTypeArguments": [],
@@ -13918,7 +13918,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.IQueryGrouping, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnType",
         "Name": "System.String"
@@ -13931,7 +13931,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.QueryColumnType, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14003,7 +14003,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode, Az.CostManagement.private, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Item": "Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Json.JsonNode"
       },

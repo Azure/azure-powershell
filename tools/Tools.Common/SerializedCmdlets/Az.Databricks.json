@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -121,7 +121,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -184,7 +184,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -202,7 +202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -469,7 +469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -493,7 +493,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -717,7 +717,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -741,7 +741,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -842,7 +842,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -947,7 +947,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -971,7 +971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1123,7 +1123,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1147,7 +1147,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1256,7 +1256,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]",
               "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
@@ -1369,7 +1369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -1432,7 +1432,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1450,7 +1450,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1653,7 +1653,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1677,7 +1677,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1877,7 +1877,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1901,7 +1901,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2077,7 +2077,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2101,7 +2101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2202,7 +2202,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -2283,7 +2283,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2307,7 +2307,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2459,7 +2459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2483,7 +2483,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2592,7 +2592,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -2898,7 +2898,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2916,7 +2916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3375,7 +3375,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3399,7 +3399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3532,7 +3532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]",
               "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
@@ -3882,7 +3882,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3900,7 +3900,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4385,7 +4385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4409,7 +4409,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4633,7 +4633,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -4714,7 +4714,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -4732,7 +4732,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5017,7 +5017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5041,7 +5041,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5190,7 +5190,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -5295,7 +5295,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5319,7 +5319,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5543,7 +5543,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5567,7 +5567,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -5799,7 +5799,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -5880,7 +5880,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -5898,7 +5898,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -6161,7 +6161,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6185,7 +6185,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6334,7 +6334,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -6439,7 +6439,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6463,7 +6463,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6687,7 +6687,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6711,7 +6711,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -6868,7 +6868,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IVirtualNetworkPeering, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ProvisioningState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
               "PeeringState": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
@@ -6975,7 +6975,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -7128,7 +7128,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7146,7 +7146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -7511,7 +7511,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7535,7 +7535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7660,7 +7660,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -7861,7 +7861,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -7885,7 +7885,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8181,7 +8181,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8205,7 +8205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -8338,7 +8338,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspace, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Authorization": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]",
               "AmlWorkspaceIdType": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
@@ -8451,7 +8451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "PeeringName": "System.String",
@@ -8493,7 +8493,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8702,7 +8702,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8720,7 +8720,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -8914,7 +8914,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9171,7 +9171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9195,7 +9195,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9320,7 +9320,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "PeeringName": "System.String",
@@ -9374,7 +9374,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -9631,7 +9631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9655,7 +9655,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -9804,7 +9804,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10061,7 +10061,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10085,7 +10085,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -10348,7 +10348,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10360,7 +10360,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10464,7 +10464,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10476,7 +10476,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PeeringState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10570,7 +10570,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.SendAsyncStep, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"
@@ -10794,7 +10794,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization[], Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization",
       "GenericTypeArguments": [],
@@ -10804,7 +10804,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20180401.IWorkspaceProviderAuthorization, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.String",
         "RoleDefinitionId": "System.String"
@@ -10817,7 +10817,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10829,7 +10829,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.CustomParameterType, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10901,7 +10901,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10913,7 +10913,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -10985,7 +10985,7 @@
     "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -10997,7 +10997,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.ProvisioningState, Az.Databricks.private, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

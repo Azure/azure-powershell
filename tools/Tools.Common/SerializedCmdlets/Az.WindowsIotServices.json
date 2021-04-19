@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDate": "System.Nullable`1[System.DateTime]",
               "Quantity": "System.Nullable`1[System.Int64]",
@@ -96,7 +96,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String",
               "Id": "System.String",
@@ -158,7 +158,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -176,7 +176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -377,7 +377,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -401,7 +401,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -601,7 +601,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -625,7 +625,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -801,7 +801,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -825,7 +825,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -926,7 +926,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeviceName": "System.String",
                     "Id": "System.String",
@@ -1006,7 +1006,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1030,7 +1030,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1182,7 +1182,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1206,7 +1206,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -1315,7 +1315,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDate": "System.Nullable`1[System.DateTime]",
               "Quantity": "System.Nullable`1[System.Int64]",
@@ -1578,7 +1578,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1596,7 +1596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -1989,7 +1989,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2013,7 +2013,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2122,7 +2122,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDate": "System.Nullable`1[System.DateTime]",
               "Quantity": "System.Nullable`1[System.Int64]",
@@ -2202,7 +2202,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String",
               "Id": "System.String",
@@ -2264,7 +2264,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2282,7 +2282,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -2483,7 +2483,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2507,7 +2507,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2608,7 +2608,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeviceName": "System.String",
                     "Id": "System.String",
@@ -2688,7 +2688,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2712,7 +2712,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2864,7 +2864,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2888,7 +2888,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -2997,7 +2997,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDate": "System.Nullable`1[System.DateTime]",
               "Quantity": "System.Nullable`1[System.Int64]",
@@ -3077,7 +3077,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "DeviceName": "System.String",
               "Id": "System.String",
@@ -3283,7 +3283,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3301,7 +3301,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
             "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
             "GenericTypeArguments": [],
@@ -3694,7 +3694,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3718,7 +3718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -3819,7 +3819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IWindowsIotServicesIdentity, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "DeviceName": "System.String",
                     "Id": "System.String",
@@ -4091,7 +4091,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4115,7 +4115,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4459,7 +4459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4483,7 +4483,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
                   "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep[], Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
                   "GenericTypeArguments": [],
@@ -4756,7 +4756,7 @@
     "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep": {
       "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime",
       "Name": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep",
-      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Runtime.SendAsyncStep, Az.WindowsIotServices.private, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Target": "System.Object",
         "Method": "System.Reflection.MethodInfo"

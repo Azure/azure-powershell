@@ -1,4 +1,5 @@
 {
+  "ProcessedTypes": {},
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -7,6 +8,7 @@
       "ClassName": "Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements.GetAzureRmMarketplaceTerms",
       "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
+      "HasForceSwitch": null,
       "SupportsPaging": false,
       "DefaultParameterSetName": "AgreementAcceptParameterSet",
       "OutputTypes": [
@@ -14,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -34,6 +36,11 @@
                 "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
               },
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -43,7 +50,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -52,28 +59,23 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               },
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "agreementTerms",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -89,7 +91,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -107,7 +109,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -125,7 +127,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -182,7 +184,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -206,7 +208,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -230,7 +232,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -342,6 +344,7 @@
       "ClassName": "Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements.SetAzureRmMarketplaceTerms",
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
+      "HasForceSwitch": true,
       "SupportsPaging": false,
       "DefaultParameterSetName": "AgreementAcceptParameterSet",
       "OutputTypes": [
@@ -349,7 +352,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -369,6 +372,11 @@
                 "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
               },
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -378,7 +386,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -387,28 +395,23 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               },
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "agreementTerms",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -424,7 +427,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -442,7 +445,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -460,7 +463,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -478,7 +481,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -496,7 +499,7 @@
           "Type": {
             "Namespace": "System.Management.Automation",
             "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -514,7 +517,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -534,6 +537,11 @@
                 "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
               },
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -543,7 +551,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -552,28 +560,23 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               },
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "agreementTerms",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -588,7 +591,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -608,6 +611,11 @@
                 "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
               },
               {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
                 "Name": "ToString",
                 "Parameters": [],
                 "ReturnType": "System.String"
@@ -617,7 +625,7 @@
                 "Parameters": [
                   {
                     "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
+                    "Type": "System.Object"
                   }
                 ],
                 "ReturnType": "System.Boolean"
@@ -626,28 +634,23 @@
                 "Name": "GetHashCode",
                 "Parameters": [],
                 "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
               }
             ],
             "Constructors": [
               {
                 "Name": "",
-                "ReturnType": null,
-                "Parameters": []
+                "Parameters": [],
+                "ReturnType": null
               },
               {
                 "Name": "",
-                "ReturnType": null,
                 "Parameters": [
                   {
                     "Name": "agreementTerms",
                     "Type": "System.Reflection.RuntimeParameterInfo"
                   }
-                ]
+                ],
+                "ReturnType": null
               }
             ]
           },
@@ -701,7 +704,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -725,7 +728,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -749,7 +752,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -773,7 +776,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -797,7 +800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -817,6 +820,11 @@
                       "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
                     },
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -826,7 +834,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -835,28 +843,23 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     },
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "agreementTerms",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -921,7 +924,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -945,7 +948,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -969,7 +972,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -993,7 +996,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1017,7 +1020,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -1037,6 +1040,11 @@
                       "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
                     },
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -1046,7 +1054,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -1055,28 +1063,23 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     },
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "agreementTerms",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -1141,7 +1144,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1165,7 +1168,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -1185,6 +1188,11 @@
                       "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
                     },
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -1194,7 +1202,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -1203,28 +1211,23 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     },
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "agreementTerms",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -1289,7 +1292,7 @@
                 "Type": {
                   "Namespace": "System.Management.Automation",
                   "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1313,7 +1316,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -1333,6 +1336,11 @@
                       "ReturnType": "Microsoft.Azure.Management.MarketplaceOrdering.Models.AgreementTerms"
                     },
                     {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
                       "Name": "ToString",
                       "Parameters": [],
                       "ReturnType": "System.String"
@@ -1342,7 +1350,7 @@
                       "Parameters": [
                         {
                           "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
+                          "Type": "System.Object"
                         }
                       ],
                       "ReturnType": "System.Boolean"
@@ -1351,28 +1359,23 @@
                       "Name": "GetHashCode",
                       "Parameters": [],
                       "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
                     }
                   ],
                   "Constructors": [
                     {
                       "Name": "",
-                      "ReturnType": null,
-                      "Parameters": []
+                      "Parameters": [],
+                      "ReturnType": null
                     },
                     {
                       "Name": "",
-                      "ReturnType": null,
                       "Parameters": [
                         {
                           "Name": "agreementTerms",
                           "Type": "System.Reflection.RuntimeParameterInfo"
                         }
-                      ]
+                      ],
+                      "ReturnType": null
                     }
                   ]
                 },
@@ -1619,7 +1622,7 @@
     "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.Boolean]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1631,7 +1634,7 @@
     "System.Nullable`1[System.DateTime]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTime]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1643,7 +1646,7 @@
     "System.DateTime": {
       "Namespace": "System",
       "Name": "System.DateTime",
-      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -1671,6 +1674,11 @@
       "GenericTypeArguments": [],
       "Methods": [
         {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        },
+        {
           "Name": "ToString",
           "Parameters": [],
           "ReturnType": "System.String"
@@ -1680,7 +1688,7 @@
           "Parameters": [
             {
               "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
+              "Type": "System.Object"
             }
           ],
           "ReturnType": "System.Boolean"
@@ -1689,22 +1697,16 @@
           "Name": "GetHashCode",
           "Parameters": [],
           "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
         }
       ],
       "Constructors": [
         {
           "Name": "",
-          "ReturnType": null,
-          "Parameters": []
+          "Parameters": [],
+          "ReturnType": null
         },
         {
           "Name": "",
-          "ReturnType": null,
           "Parameters": [
             {
               "Name": "id",
@@ -1750,14 +1752,15 @@
               "Name": "accepted",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
-          ]
+          ],
+          "ReturnType": null
         }
       ]
     },
     "System.Type": {
       "Namespace": "System",
       "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Type, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -1799,7 +1802,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1816,6 +1819,8 @@
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
+        "Name": "System.String",
+        "AdTenant": "System.String",
         "AzureDataLakeStoreFileSystemEndpointSuffix": "System.String",
         "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix": "System.String",
         "BatchEndpointResourceId": "System.String",
@@ -1825,7 +1830,6 @@
         "AzureKeyVaultDnsSuffix": "System.String",
         "TrafficManagerDnsSuffix": "System.String",
         "SqlDatabaseDnsSuffix": "System.String",
-        "StorageEndpointSuffix": "System.String",
         "ActiveDirectoryServiceEndpointResourceId": "System.String",
         "GraphUrl": "System.String",
         "GalleryUrl": "System.String",
@@ -1834,8 +1838,8 @@
         "ManagementPortalUrl": "System.String",
         "ResourceManagerUrl": "System.String",
         "ServiceManagementUrl": "System.String",
-        "AdTenant": "System.String",
-        "Name": "System.String"
+        "StorageEndpointSuffix": "System.String",
+        "ContainerRegistryEndpointSuffix": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -1845,7 +1849,7 @@
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[System.String]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1901,7 +1905,7 @@
     "System.Byte[]": {
       "Namespace": "System",
       "Name": "System.Byte[]",
-      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Byte[], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": "System.Byte",
       "GenericTypeArguments": [],
@@ -1911,7 +1915,7 @@
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Void, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -1921,7 +1925,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1933,7 +1937,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -1945,7 +1949,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [

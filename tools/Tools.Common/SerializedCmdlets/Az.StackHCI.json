@@ -68,6 +68,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "Tag",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Collections",
+            "Name": "System.Collections.Hashtable",
+            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "TenantId",
           "AliasList": [],
           "Type": {
@@ -344,12 +362,12 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "TenantId",
+                "Name": "Tag",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -368,7 +386,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ResourceGroupName",
+                "Name": "TenantId",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -392,7 +410,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ArmAccessToken",
+                "Name": "ResourceGroupName",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -416,7 +434,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "GraphAccessToken",
+                "Name": "ArmAccessToken",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -440,7 +458,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AccountId",
+                "Name": "GraphAccessToken",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -464,7 +482,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "EnvironmentName",
+                "Name": "AccountId",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -488,7 +506,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "ComputerName",
+                "Name": "EnvironmentName",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -512,7 +530,7 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "CertificateThumbprint",
+                "Name": "ComputerName",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -531,6 +549,30 @@
               },
               "Mandatory": false,
               "Position": 10,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "CertificateThumbprint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": 11,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             },
@@ -602,7 +644,7 @@
                 "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
-              "Position": 11,
+              "Position": 12,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
             }
