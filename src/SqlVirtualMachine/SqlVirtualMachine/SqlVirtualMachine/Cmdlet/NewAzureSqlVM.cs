@@ -75,11 +75,10 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// License type of new sql virtual machine
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = NameParameterList,
             Position = 2,
             HelpMessage = HelpMessages.LicenseTypeSqlVM)]
-        [ValidateNotNullOrEmpty]
         [LicenseTypeCompleter]
         public string LicenseType { get; set; }
 
