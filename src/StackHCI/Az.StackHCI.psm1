@@ -616,7 +616,15 @@ param(
     }
     catch
     {
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         Install-Module -Name Az.Resources -Force -AllowClobber
         Import-Module -Name Az.Resources
     }
@@ -1082,7 +1090,15 @@ param(
         $registrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
 
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
         $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
 
