@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not delete &apos;acrpull&apos; role assignment, please make sure you have right permission..
+        /// </summary>
+        internal static string CouldNotDeleteAcrRoleAssignment {
+            get {
+                return ResourceManager.GetString("CouldNotDeleteAcrRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission..
         /// </summary>
         internal static string CouldNotFindObjectIdForServicePrincipal {
@@ -255,6 +264,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string CouldNotFindSshPublicKeyInError {
             get {
                 return ResourceManager.GetString("CouldNotFindSshPublicKeyInError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get &apos;acrpull&apos; role assignment, please make sure you have right permission..
+        /// </summary>
+        internal static string CouldNotGetAcrRoleAssignment {
+            get {
+                return ResourceManager.GetString("CouldNotGetAcrRoleAssignment", resourceCulture);
             }
         }
         

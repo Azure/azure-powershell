@@ -96,9 +96,6 @@ namespace Microsoft.Azure.Commands.Aks
         //[Parameter(Mandatory = false, HelpMessage = "Profile of managed cluster add-on.")]
         //public ManagedClusterAddonProfile AddOnProfile { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
-        public string AcrNameToAttach { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Whether to enable Kubernetes Role-Based Access")]
         public SwitchParameter EnableRbac { get; set; }
 

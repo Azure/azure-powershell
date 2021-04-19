@@ -116,6 +116,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("SshKeyPath")]
         public string SshKeyValue { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Grant the 'acrpull' role of the specified ACR to AKS Service Principal, e.g. myacr")]
+        public string AcrNameToAttach { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -336,7 +339,7 @@ namespace Microsoft.Azure.Commands.Aks
 
             var roleId = GetRoleId("acrpull", acrResourceId);
             var spObjectId = acsServicePrincipal.ObjectId;
-            if(spObjectId == null)
+            if (spObjectId == null)
             {
                 try
                 {

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
+* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
 
 ## Version 2.0.2
 * Refined error messages of cmdlet failure.
