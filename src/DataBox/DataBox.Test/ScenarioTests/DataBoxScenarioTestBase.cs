@@ -24,7 +24,7 @@ using System.IO;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
+using StorageManagementClient = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.StorageManagementClient;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataBox.Test
