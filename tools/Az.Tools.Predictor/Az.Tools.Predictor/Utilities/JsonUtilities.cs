@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities.Converters;
-using System;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -29,16 +28,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// The default serialization options:
         /// 1. Use camel case in the naming.
         /// 2. Use string instead of number for enums.
+        /// 3. Use the string values (camel case) for enum.
+        /// 4. Use the string values for the type <see cref="System.Version"/> in the properties and <see cref="System.Collections.Generic.IDictionary&lt;TKey, TValue>"/> keys.
+        /// 3. Skip the property if the value is null.
         /// </summary>
         public static readonly JsonSerializerOptions DefaultSerializerOptions = new JsonSerializerOptions()
         {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             Converters =
             {
                 new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
                 new VersionConverter(),
                 new DictionaryTKeyVersionTValueConverter()
             },
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         };
 
         /// <summary>
