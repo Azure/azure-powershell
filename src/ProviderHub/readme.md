@@ -59,6 +59,20 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document
+    where: $.definitions.Error.properties
+    transform: delete $.innerError
+  - from: swagger-document
+    where: $
+    transform: $ = $.replace(/"authorizations"/, '"fakefields"');
+  - from: swagger-document
+    where: $.definitions.FeaturesRule.properties
+    transform: >-
+      return {
+        "requiredFeaturesPolicy": {
+          "type": "string"
+        }
+      }
   - no-inline:
     - Error
   - where:
@@ -83,4 +97,10 @@ directive:
       verb: New
       subject: ProviderRegistrationOperation
     hide: true
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/fakefield/g, 'authorization');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/Fakefield/g, 'Authorization');
 ```
