@@ -1596,3 +1596,60 @@ function Test-NewAzureStorageAccountEdgeZone
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-AzureStorageAccountKeySASPolicy
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageAccountKeySASPolicy
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+		$keyExpirationPeriodInDay = 5
+		$sasExpirationPeriod = "1.12:05:06"
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+		# new account
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -KeyExpirationPeriodInDay $keyExpirationPeriodInDay -SasExpirationPeriod $sasExpirationPeriod
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $keyExpirationPeriodInDay $sto.KeyPolicy.KeyExpirationPeriodInDays;
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-NotNull $sto.KeyCreationTime.Key1
+        Assert-NotNull $sto.KeyCreationTime.Key2
+
+		# update account		
+		$keyExpirationPeriodInDay = 3
+		$sasExpirationPeriod = "50.00:00:00"
+        Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -KeyExpirationPeriodInDay $keyExpirationPeriodInDay -SasExpirationPeriod $sasExpirationPeriod -EnableHttpsTrafficOnly $true
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $keyExpirationPeriodInDay $sto.KeyPolicy.KeyExpirationPeriodInDays;
+        Assert-AreEqual $sasExpirationPeriod $sto.SasPolicy.SasExpirationPeriod;
+        Assert-NotNull $sto.KeyCreationTime.Key1
+        Assert-NotNull $sto.KeyCreationTime.Key2
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

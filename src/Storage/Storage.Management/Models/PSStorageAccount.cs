@@ -63,8 +63,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableNfsV3 = storageAccount.EnableNfsV3;
             this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
+            this.KeyCreationTime = storageAccount.KeyCreationTime is null? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
+            this.KeyPolicy = storageAccount.KeyPolicy;
+            this.SasPolicy = storageAccount.SasPolicy;
 
         }
+
+        public PSKeyCreationTime KeyCreationTime { get; set; }
+        public KeyPolicy KeyPolicy { get; }
+        public SasPolicy SasPolicy { get; }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
@@ -224,5 +231,22 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string Name { get; set; }
         public string Type { get; set; }
+    }
+
+    public class PSKeyCreationTime
+    {
+        public PSKeyCreationTime()
+        { }
+
+        public PSKeyCreationTime(KeyCreationTime keyCreationTime)
+        {
+            if (keyCreationTime != null)
+            {
+                this.Key1 = keyCreationTime.Key1;
+                this.Key2 = keyCreationTime.Key2;
+            }
+        }
+        public System.DateTime? Key1 { get; set; }
+        public System.DateTime? Key2 { get; set; }
     }
 }

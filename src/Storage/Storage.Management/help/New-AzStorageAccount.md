@@ -21,8 +21,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-EnableHierarchicalNamespace <Boolean>] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>]
  [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EdgeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -36,8 +37,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EdgeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,6 +186,19 @@ microsoftlosangeles1 EdgeZone
 ```
 
 This command creates a Storage account with EdgeZone as "microsoftlosangeles1", then show the created account ExtendedLocation properties.
+
+### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+```powershell
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location eastus -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06"
+
+PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+5
+
+PS C:\> $$account.SasPolicy.SasExpirationPeriod
+1.12:05:06
+```
+
+This command creates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the created account related properties.
 
 ## PARAMETERS
 
@@ -517,6 +532,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -KeyExpirationPeriodInDay
+The Key expiration period of this account, it is accurate to days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Kind
 Specifies the kind of Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
@@ -669,6 +699,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: MicrosoftRouting, InternetRouting
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SasExpirationPeriod
+The SAS expiration period of this account, it is a timespan and accurate to seconds.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
