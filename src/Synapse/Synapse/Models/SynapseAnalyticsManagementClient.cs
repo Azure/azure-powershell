@@ -11,7 +11,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using Microsoft.Azure.Management.Synapse;
 using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.Rest;
