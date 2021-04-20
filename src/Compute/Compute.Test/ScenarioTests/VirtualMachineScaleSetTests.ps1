@@ -374,6 +374,47 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
     }
 }
 
+function Test-VirtualMachineScaleSetInEdgeZone
+{
+    $ResourceGroup = Get-ComputeTestResourceName
+    $Location = "westus";
+    $EdgeZone = "microsoftlosangeles1";
+    $ScaleSetName = "scalesetinedgezone";
+    try
+    {
+        $config = New-AzVmssConfig -Location $Location -EdgeZone $EdgeZone;
+        Assert-AreEqual $config.ExtendedLocation.Name $EdgeZone
+         
+        New-AzResourceGroup -ResourceGroupName $rgname -Location $Location;
+        
+        $VMLocalAdminUser = "LocalAdminUser";
+        $VMLocalAdminSecurePassword = ConvertTo-SecureString $PLACEHOLDER -AsPlainText -Force;
+
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+        
+        New-AzVmss `
+          -ResourceGroupName $ResourceGroup `
+          -Location $Location `
+          -EdgeZone $EdgeZone `
+          -VMScaleSetName $ScaleSetName `
+          -VirtualNetworkName "myVnet" `
+          -SubnetName "mySubnet" `
+          -PublicIpAddressName "myPublicIPAddress" `
+          -LoadBalancerName "myLoadBalancer" `
+          -UpgradePolicyMode "Automatic" `
+          -Credential $Credential
+
+          $vmss = Get-AzVmss -ResourceGroupName $ResourceGroup -VMScaleSetName $ScaleSetName
+
+          Assert-AreEqual $vmss.ExtendedLocation.Name $EdgeZone
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup
+    }
+}
+
 <#
 .SYNOPSIS
 Test Virtual Machine Scale Set Upgrade

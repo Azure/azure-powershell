@@ -580,9 +580,9 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             CM.ExtendedLocation ExtendedLocation = null;
-            if (this.VM.EdgeZone != null || this.EdgeZone != null)
+            if (this.EdgeZone != null)
             {
-                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone ?? this.VM.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            IEnumerable<StorageAccount> storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
             if (storageAccountList == null || storageAccountList.Count() == 0)
             {
                 storageAccountList = client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
@@ -873,9 +873,9 @@ namespace Microsoft.Azure.Commands.Compute
             while (i < 10 && (bool)!client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             SM.ExtendedLocation extendedLocation = null;
-            if (this.EdgeZone != null || this.VM.EdgeZone != null)
+            if (this.EdgeZone != null)
             {
-                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone ?? this.VM.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                extendedLocation = new SM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
             var storaeAccountParameter = new StorageAccountCreateParameters
