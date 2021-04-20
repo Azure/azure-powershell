@@ -3347,11 +3347,8 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		Assert-AreEqual $sslProfiles.TrustedClientCertificates[0].Id $trustedClient01.Id
 
 		# verify client cert properties
-		$trustedClient01 = Get-AzApplicationGatewayTrustedClientCertificate -Name $getgw.TrustedClientCertificates[0].Name -ApplicationGateway $getgw
-		Assert-AreEqual $trustedClient01.validatedCertData.Count 1
-		Assert-AreEqual $trustedClient01.clientCertIssuerDN.Count 1
-		Assert-AreEqual $getgw.TrustedClientCertificates[0].validatedCertData $trustedClient01.validatedCertData
-		Assert-AreEqual $getgw.TrustedClientCertificates[0].clientCertIssuerDN $trustedClient01.clientCertIssuerDN
+		Assert-AreEqual $getgw.TrustedClientCertificates[0].validatedCertData.Count 1
+		Assert-AreEqual $getgw.TrustedClientCertificates[0].clientCertIssuerDN.Count 1
 
 		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
 		Assert-AreEqual $trustedClients.Count 1
