@@ -167,10 +167,10 @@ namespace Microsoft.Azure.Commands.Network
 
                     if (this.EgressNatRule != null)
                     {
-                        this.VirtualNetworkGatewayConnection.IngressNatRules = new List<PSResourceId>();
-                        foreach (var resource in this.IngressNatRule)
+                        this.VirtualNetworkGatewayConnection.EgressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.EgressNatRule)
                         {
-                            this.VirtualNetworkGatewayConnection.IngressNatRules.Add(
+                            this.VirtualNetworkGatewayConnection.EgressNatRules.Add(
                                 new PSResourceId()
                                 {
                                     Id = resource.Id
