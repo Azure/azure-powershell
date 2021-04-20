@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for getting a single private link resource.
 * Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
