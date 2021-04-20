@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByIpConfigurationResourceId",
@@ -270,6 +275,10 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
 
             networkInterface.Location = this.Location;
+            if (this.EdgeZone != null)
+            {
+                networkInterface.ExtendedLocation = new MNM.ExtendedLocation { Name = this.EdgeZone };
+            }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
             networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;

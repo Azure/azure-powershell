@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Location { get; set; }
 
         // Gets or sets the property of 'EdgeZone'
-        public string EdgeZone { get; set; }
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         // Gets or sets the license type
         public string LicenseType { get; set; }

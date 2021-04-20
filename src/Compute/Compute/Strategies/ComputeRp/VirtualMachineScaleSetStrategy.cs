@@ -20,7 +20,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
-using SubResource = Microsoft.Azure.Management.Compute.Models.SubResource;
+using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -54,15 +54,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<int> dataDisks,
             IList<string> zones,
             bool ultraSSDEnabled,
-            Func<IEngine, SubResource> proximityPlacementGroup,
-            Func<IEngine, SubResource> hostGroup,
+            Func<IEngine, CM.SubResource> proximityPlacementGroup,
+            Func<IEngine, CM.SubResource> hostGroup,
             string priority,
             string evictionPolicy,
             double? maxPrice,
             string[] scaleInPolicy,
             bool doNotRunExtensionsOnOverprovisionedVMs,
             bool encryptionAtHost,
-            int? platformFaultDomainCount
+            int? platformFaultDomainCount,
+            string edgeZone
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
+                    ExtendedLocation = new CM.ExtendedLocation { Name = edgeZone, Type = CM.ExtendedLocationTypes.EdgeZone },
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual
