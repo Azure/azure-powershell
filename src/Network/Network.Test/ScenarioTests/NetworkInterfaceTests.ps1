@@ -1122,17 +1122,25 @@ function Test-NetworkInterfaceEdgeZone
         $publicIpRetrieved = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgname
         Assert-NotNull $publicIpRetrieved
 
-        # Create NetworkInterface
-        $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
-        $job | Wait-Job
+        try
+        {
+            # Create NetworkInterface
+            $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob -EdgeZone "EdgeZone0"
+            $job | Wait-Job
         
-        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+            $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
-        # Delete NetworkInterface
-        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
-        $job | Wait-Job
-        $delete = $job | Receive-Job
-        Assert-AreEqual true $delete
+            # Delete NetworkInterface
+            $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
+            $job | Wait-Job
+            $delete = $job | Receive-Job
+            Assert-AreEqual true $delete
+        }
+        catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+        {
+            Assert-NotNull $_.Exception.Message
+        }
+
 
         $list = Get-AzNetworkInterface -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
