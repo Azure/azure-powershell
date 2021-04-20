@@ -45,14 +45,11 @@
     - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
     - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
 
-<<<<<<< HEAD
-=======
 ## Version 0.8.0
 * Added support for operation of getting droppedsqlpool and geobackup
     - Add `Get-AzSynapseDroppedSqlPool` cmdlet
     - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
 * Switched to Azure PowerShell official exception types
->>>>>>> 1fec5a2722759e0c7c0b863928fb58bacb21676a
 
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet
