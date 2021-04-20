@@ -36,6 +36,8 @@
 * Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
+* Updated cmdlets to expose two read-only properties of client certificate.
+    - `Get-AzApplicationGatewayTrustedClientCertificate`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
