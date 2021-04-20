@@ -1139,6 +1139,7 @@ function Test-NetworkInterfaceEdgeZone
         catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
         {
             Assert-NotNull $_.Exception.Message
+            Assert-NotNull { $_.Exception.Message -like "*edge*" }
         }
 
 
