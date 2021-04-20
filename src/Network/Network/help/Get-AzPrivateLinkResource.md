@@ -14,13 +14,13 @@ Gets a private link resource.
 
 ### ByPrivateLinkResourceId (Default)
 ```
-Get-AzPrivateLinkResource -PrivateLinkResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzPrivateLinkResource -PrivateLinkResourceId <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Get-AzPrivateLinkResource -ResourceGroupName <String> -ServiceName <String>
+Get-AzPrivateLinkResource -ResourceGroupName <String> -ServiceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>] [<CommonParameters>]
 ```
 
@@ -53,13 +53,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The private link resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GroupName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -PrivateLinkResourceId
 The Azure resource manager id of the private link resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: ByPrivateLinkResourceId
-Aliases:
+Aliases: PrivateLinkServiceId
 
 Required: True
 Position: Named
@@ -75,7 +90,7 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values:
+Accepted values: Microsoft.AppConfiguration/configurationStores, Microsoft.Automation/automationAccounts, Microsoft.Batch/batchAccounts, Microsoft.Cache/redisEnterprise, Microsoft.CognitiveServices/accounts, Microsoft.Compute/diskAccesses, Microsoft.ContainerRegistry/registries, Microsoft.DBforMariaDB/servers, Microsoft.DBforMySQL/servers, Microsoft.DBforPostgreSQL/servers, Microsoft.Devices/IotHubs, Microsoft.DocumentDB/databaseAccounts, Microsoft.EventGrid/topics, Microsoft.EventGrid/domains, Microsoft.EventHub/namespaces, Microsoft.HealthcareApis/services, Microsoft.Insights/privateLinkScopes, Microsoft.KeyVault/vaults, Microsoft.Media/mediaservices, Microsoft.Migrate/assessmentProjects, Microsoft.Migrate/migrateProjects, Microsoft.Network/applicationgateways, Microsoft.OffAzure/masterSites, Microsoft.Purview/accounts, Microsoft.Search/searchServices, Microsoft.ServiceBus/namespaces, Microsoft.SignalRService/signalr, Microsoft.Sql/servers, Microsoft.Storage/storageAccounts, Microsoft.StorageSync/storageSyncServices, Microsoft.Synapse/workspaces, Microsoft.Web/sites, Microsoft.Web/hostingEnvironments
 
 Required: False
 Position: Named
