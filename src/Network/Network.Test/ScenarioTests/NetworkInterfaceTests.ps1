@@ -1138,7 +1138,7 @@ function Test-NetworkInterfaceEdgeZone
         }
         catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
         {
-            Assert-NotNull { $_.Exception.Message -match '.*does not support edge zone.*' }
+            Assert-NotNull { $_.Exception.Message -match 'Resource type .*does not support edge zone.*' }
         }
 
 
