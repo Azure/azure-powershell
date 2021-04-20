@@ -261,11 +261,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     else if (vmNic.IpConfigs != null)
                     {
                         ipConfigList = this.IPConfig.ToList();
-                        var inputIPConfigNames = this.IPConfig.Select(ip => ip.IPConfigName).ToList();
+                        // NIC IP config names in lowercase.
+                        var inputIPConfigNames = this.IPConfig.Select(ip => ip.IPConfigName.ToLower());
 
                         foreach (IPConfigDetails ipConfig in vmNic.IpConfigs)
                         {
-                            if (inputIPConfigNames.Contains(ipConfig.Name))
+                            if (inputIPConfigNames.Contains(ipConfig.Name.ToLower()))
                             {
                                 continue;
                             }
