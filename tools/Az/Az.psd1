@@ -54,18 +54,18 @@ DotNetFrameworkVersion = '4.7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; RequiredVersion = '2.2.8'; },
-               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'Az.Compute'; RequiredVersion = '3.3.0'; }, 
                @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
-               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
-               @{ModuleName = 'Az.IotHub'; RequiredVersion = '0.10.0'; }, 
-               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'Az.IotHub'; RequiredVersion = '0.11.0'; }, 
+               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
                @{ModuleName = 'Az.Network'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.Resources'; RequiredVersion = '1.10.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.2'; }, 
-               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.10.0'; })
+               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -121,9 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '0.11.0 - September 2020
-* Support Azure Stack 2020-09-01 hybrid profile
-        '
+        ReleaseNotes = '* Support Azure Stack 2020-09-01 hybrid profile'
 
         # Prerelease string of this module
         # Prerelease = 'preview'
