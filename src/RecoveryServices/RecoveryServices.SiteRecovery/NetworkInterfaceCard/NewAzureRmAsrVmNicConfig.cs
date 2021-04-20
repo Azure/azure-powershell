@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     List<PSIPConfigInputDetails> ipConfigList = null;
                     if (this.IPConfig == null || this.IPConfig.ToList().Count == 0)
                     {
-                        ipConfigList = vmNic.IpConfigs?.Select(ip => ConvertToPSIPConfig(ip)).ToList() ?? null;
+                        ipConfigList = vmNic.IpConfigs?.Select(ip => ConvertToPSIPConfig(ip))?.ToList() ?? null;
                     }
                     else if (vmNic.IpConfigs != null)
                     {
