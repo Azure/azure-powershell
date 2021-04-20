@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -438,7 +437,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {
-                networkInterface.ExtendedLocation = new PSExtendedLocation(new ExtendedLocation(this.EdgeZone));
+                networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);

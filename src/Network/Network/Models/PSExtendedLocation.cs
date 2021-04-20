@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Azure.Management.Network.Models;
+﻿using Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -10,8 +7,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSExtendedLocation()
         { }
 
-        public PSExtendedLocation(ExtendedLocation extendedLocation)
+        public PSExtendedLocation(string EdgeZone)
         {
+            var extendedLocation = new ExtendedLocation(EdgeZone);
             this.Name = extendedLocation.Name;
             this.Type = ExtendedLocation.Type;
         }
