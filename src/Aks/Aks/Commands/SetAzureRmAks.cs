@@ -274,23 +274,23 @@ namespace Microsoft.Azure.Commands.Aks
                     string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
 
-            var roleAssignmentId = acrResourceId;
-            RoleAssignment roleAssignment;
+            var roleAssignmentId = GetRoleId("acrpull", acrResourceId);
+            RoleAssignment roleAssignment = null;
             var success = RetryAction(() =>
             {
                 roleAssignment = AuthClient.RoleAssignments.List(acrResourceId).FirstOrDefault();
-                if (roleAssignment == null)
-                {
-                    throw new AzPSInvalidOperationException(
-                        Resources.CouldNotDeleteAcrRoleAssignment,
-                        desensitizedMessage: Resources.CouldNotDeleteAcrRoleAssignment);
-                }
             });
             if (!success)
             {
                 throw new AzPSInvalidOperationException(
                     Resources.CouldNotGetAcrRoleAssignment,
                     desensitizedMessage: Resources.CouldNotGetAcrRoleAssignment);
+            }
+            if (roleAssignment == null)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotDeleteAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotDeleteAcrRoleAssignment);
             }
 
             var deleteResult = RetryAction(() => AuthClient.RoleAssignments.DeleteById(roleAssignment.Id));

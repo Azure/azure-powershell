@@ -274,17 +274,15 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     clientSecret = RandomBase64String(16);
                 }
-                var salt = RandomBase64String(3);
-                var url = $"http://{salt}.{DnsNamePrefix}.{Location}.cloudapp.azure.com";
 
-                acsServicePrincipal = BuildServicePrincipal(Name, url, clientSecret);
+                acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
                 StoreServicePrincipal(acsServicePrincipal);
             }
             return acsServicePrincipal;
         }
 
-        private AcsServicePrincipal BuildServicePrincipal(string name, string url, string clientSecret)
+        private AcsServicePrincipal BuildServicePrincipal(string name, string clientSecret)
         {
             var pwCreds = new PasswordCredential(
                 value: clientSecret,
@@ -294,8 +292,8 @@ namespace Microsoft.Azure.Commands.Aks
             var app = GraphClient.Applications.Create(new ApplicationCreateParameters(
                 false,
                 name,
-                new List<string> { url },
-                url,
+                new List<string> { },
+                null,
                 passwordCredentials: new List<PasswordCredential> { pwCreds }));
 
             ServicePrincipal sp = null;
