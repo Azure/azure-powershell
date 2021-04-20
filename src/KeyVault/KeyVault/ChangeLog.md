@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.2
 * Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
 
 ## Version 3.4.1

@@ -271,3 +271,31 @@ function Test-CreateDataFactoryV2WithGitHubRepoConfig
     }
 }
 
+<#
+.SYNOPSIS
+Creates a data factory with VSTS repo config and then does a Get to verify that both are identical.
+#>
+function Test-CreateDataFactoryV2WithUserAssignedIdentity
+{
+    $dfname = Get-DataFactoryName
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+    $userAssignedIdentities = New-Object 'system.collections.generic.dictionary[string,object]'
+    $userAssignedIdentities.add("/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/ADF/providers/Microsoft.ManagedIdentity/userAssignedIdentities/PacoTestUAMI2", @{})
+    
+    New-AzResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        $actual = Set-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -UserAssignedIdentity $userAssignedIdentities
+        $expected = Get-AzDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+		ValidateFactoryProperties $expected $actual
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+

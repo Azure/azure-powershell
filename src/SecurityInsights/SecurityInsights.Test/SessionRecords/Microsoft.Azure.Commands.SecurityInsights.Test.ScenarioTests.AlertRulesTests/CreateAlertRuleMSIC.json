@@ -7,16 +7,16 @@
       "RequestBody": "{\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a11bbc4a-5368-4799-b9d4-03649dabdf76"
+          "26abae05-1e1c-4212-b7f6-3dc343bb9262"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -32,23 +32,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "api-supported-versions": [
-          "2019-01-01-preview"
-        ],
         "Server": [
           "Kestrel"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
         "x-ms-request-id": [
-          "c84accd1-6c56-47e7-80d4-835719229e53"
+          "ce85d0f5-2197-4a65-b6c4-2c7f885e28a5"
         ],
         "x-ms-correlation-request-id": [
-          "c84accd1-6c56-47e7-80d4-835719229e53"
+          "ce85d0f5-2197-4a65-b6c4-2c7f885e28a5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201210T212029Z:c84accd1-6c56-47e7-80d4-835719229e53"
+          "WESTUS2:20210413T222727Z:ce85d0f5-2197-4a65-b6c4-2c7f885e28a5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,7 +54,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Dec 2020 21:20:29 GMT"
+          "Tue, 13 Apr 2021 22:27:26 GMT"
         ],
         "Content-Length": [
           "757"
@@ -69,8 +66,8 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"name\": \"b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"etag\": \"\\\"c20049e0-0000-0100-0000-5fd2911d0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"severitiesFilter\": null,\r\n    \"displayNamesFilter\": null,\r\n    \"displayNamesExcludeFilter\": null,\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"lastModifiedUtc\": \"2020-12-10T21:20:29.6469805Z\"\r\n  }\r\n}",
-      "StatusCode": 201
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"name\": \"b3ccc517-c3ba-4134-abd1-43256d0d9f4e\",\r\n  \"etag\": \"\\\"7f03a024-0000-0100-0000-60761ace0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/alertRules\",\r\n  \"kind\": \"MicrosoftSecurityIncidentCreation\",\r\n  \"properties\": {\r\n    \"productFilter\": \"Azure Security Center for IoT\",\r\n    \"severitiesFilter\": null,\r\n    \"displayNamesFilter\": null,\r\n    \"displayNamesExcludeFilter\": null,\r\n    \"displayName\": \"MSICposhTest\",\r\n    \"enabled\": true,\r\n    \"description\": null,\r\n    \"tactics\": null,\r\n    \"alertRuleTemplateName\": \"a2e0eb51-1f11-461a-999b-cd0ebe5c7a72\",\r\n    \"lastModifiedUtc\": \"2021-04-13T22:27:26.9487122Z\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/alertRules/b3ccc517-c3ba-4134-abd1-43256d0d9f4e?api-version=2020-01-01",
@@ -79,16 +76,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5e76a682-4ca5-48ae-887a-afcad59cd62c"
+          "be761736-f0f3-40b8-ab69-383599fe3d19"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -98,23 +95,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
-        ],
-        "api-supported-versions": [
-          "2019-01-01-preview"
-        ],
         "Server": [
           "Kestrel"
         ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
         "x-ms-request-id": [
-          "e5acae25-57ec-4a94-b924-daa3f3d5c799"
+          "203d744a-3880-4b70-a7b2-89ee1e37c498"
         ],
         "x-ms-correlation-request-id": [
-          "e5acae25-57ec-4a94-b924-daa3f3d5c799"
+          "203d744a-3880-4b70-a7b2-89ee1e37c498"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201210T212029Z:e5acae25-57ec-4a94-b924-daa3f3d5c799"
+          "WESTUS2:20210413T222727Z:203d744a-3880-4b70-a7b2-89ee1e37c498"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -123,7 +117,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Dec 2020 21:20:29 GMT"
+          "Tue, 13 Apr 2021 22:27:26 GMT"
         ],
         "Content-Length": [
           "2"

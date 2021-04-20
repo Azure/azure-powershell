@@ -129,9 +129,6 @@
   <data name="Error_BandwidthIncorrectFormat" xml:space="preserve">
     <value>Bandwidth {0} must have a multiple of {1}.</value>
   </data>
-  <data name="Error_BandwidthTooHigh" xml:space="preserve">
-    <value>Bandwidth:{0} is greater than {1}.</value>
-  </data>
   <data name="Error_BandwidthTooLow" xml:space="preserve">
     <value>Bandwidth {0} must be greater than 0</value>
   </data>

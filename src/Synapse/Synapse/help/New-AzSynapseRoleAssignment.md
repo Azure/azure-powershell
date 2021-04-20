@@ -14,52 +14,58 @@ Creates a Synapse Analytics role assignment.
 
 ### NewByWorkspaceNameAndNameParameterSet (Default)
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String> [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -SignInName <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndIdParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String> [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ObjectId <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet
 ```
-New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String> [-AsJob]
+New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionId <String> -ObjectId <String>
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceNameAndServicePrincipalNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceName <String> -RoleDefinitionName <String> -ServicePrincipalName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -SignInName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SignInName <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ObjectId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ObjectId <String> [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionId <String> -ObjectId <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ItemType <WorkspaceItemType>] [-Item <String>] [-PrincipalType <PrincipalType>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByWorkspaceObjectAndServicePrincipalNameParameterSet
 ```
 New-AzSynapseRoleAssignment -WorkspaceObject <PSSynapseWorkspace> -RoleDefinitionName <String>
- -ServicePrincipalName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ServicePrincipalName <String> [-ItemType <WorkspaceItemType>] [-Item <String>]
+ [-PrincipalType <PrincipalType>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -76,6 +82,20 @@ PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinit
 This command assigns ContosoRole to the user whose principal name is ContosoName.
 
 ### Example 2
+```powershell
+PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
+```
+
+This command assigns ContosoRole to the user whose principal name is ContosoName and item type is ContosoItemType, item is ContosoItem.
+
+### Example 3
+```powershell
+PS C:\> New-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem -PrincipalType ContosoPrincipalType
+```
+
+This command assigns ContosoRole to the user whose principal name is ContosoName and item type is ContosoItemType, item is ContosoItem, principal type is ContosoPrincipalType.
+
+### Example 4
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
 PS C:\> $ws | New-AzSynapseRoleAssignment -RoleDefinitionName ContosoRole -SignInName ContosoName
@@ -115,6 +135,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Item
+The workspace item.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ItemType
+The workspace item type.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+WorkspaceItemType
+Parameter Sets: (All)
+Aliases:
+Accepted values: ApacheSparkPool, IntegrationRuntime, LinkedService, Credential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The Azure AD ObjectId of the User, Group or Service Principal.
 
@@ -124,6 +175,22 @@ Parameter Sets: NewByWorkspaceNameAndIdParameterSet, NewByWorkspaceNameAndRoleDe
 Aliases: Id, PrincipalId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrincipalType
+The workspace principal type.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PrincipalType
+Parameter Sets: (All)
+Aliases:
+Accepted values: User, Group, ServicePrincipal
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
