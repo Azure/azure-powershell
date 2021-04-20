@@ -217,7 +217,7 @@ PrivateData = @{
 * This module version is meant only for the usage in Azure Stack environments with Update 2011 +'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
