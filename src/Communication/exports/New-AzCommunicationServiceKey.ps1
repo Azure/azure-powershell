@@ -34,11 +34,11 @@ SecondaryConnectionString               SecondaryKey
 endpoint=<example-secondary-endpoint>   <example-secondarykey>
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,8 +49,8 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
   [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
@@ -58,7 +58,7 @@ PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regene
 https://docs.microsoft.com/en-us/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
@@ -72,8 +72,8 @@ param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Regenerate')]
@@ -81,8 +81,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -96,7 +95,7 @@ param(
     [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters]
     # Parameters describes the request to regenerate access keys
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

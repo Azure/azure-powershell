@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Support
         /// <param name="value">the value to convert to an instance of <see cref="Status" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Status(System.Convert.ToString(value));
+            return new Status(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Status</summary>

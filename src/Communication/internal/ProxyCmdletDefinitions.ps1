@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/get-azcommunicationoperation
 #>
 function Get-AzCommunicationOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

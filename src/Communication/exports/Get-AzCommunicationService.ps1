@@ -37,7 +37,7 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,13 +48,13 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/get-azcommunicationservice
 #>
 function Get-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -68,8 +68,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -78,8 +78,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]

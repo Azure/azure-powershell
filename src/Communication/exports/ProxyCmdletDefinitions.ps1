@@ -26,12 +26,12 @@ PrimaryConnectionString              PrimaryKey            SecondaryConnectionSt
 endpoint=<example-primary-endpoint>  <example-primarykey>  endpoint=<example-secondary-endpoint>   <example-secondarykey>
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/get-azcommunicationservicekey
 #>
 function Get-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -43,16 +43,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]
@@ -180,7 +179,7 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -191,13 +190,13 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/get-azcommunicationservice
 #>
 function Get-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -211,8 +210,8 @@ param(
     [Parameter(ParameterSetName='List1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
@@ -221,8 +220,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
@@ -357,11 +355,11 @@ SecondaryConnectionString               SecondaryKey
 endpoint=<example-secondary-endpoint>   <example-secondarykey>
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -372,8 +370,8 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 
 PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regenerate access keys
   [KeyType <KeyType?>]: The keyType to regenerate. Must be either 'primary' or 'secondary'(case-insensitive).
@@ -381,7 +379,7 @@ PARAMETER <IRegenerateKeyParameters>: Parameters describes the request to regene
 https://docs.microsoft.com/en-us/powershell/module/az.communication/new-azcommunicationservicekey
 #>
 function New-AzCommunicationServiceKey {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceKeys])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceKeys])]
 [CmdletBinding(DefaultParameterSetName='RegenerateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Regenerate', Mandatory)]
@@ -395,8 +393,8 @@ param(
     [Parameter(ParameterSetName='RegenerateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Regenerate')]
@@ -404,8 +402,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
@@ -419,7 +416,7 @@ param(
     [Parameter(ParameterSetName='Regenerate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='RegenerateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.IRegenerateKeyParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.IRegenerateKeyParameters]
     # Parameters describes the request to regenerate access keys
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -550,12 +547,12 @@ Location Name           Type                                          AzureAsync
 Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/new-azcommunicationservice
 #>
 function New-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -568,16 +565,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter()]
@@ -594,7 +590,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ITaggedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},
@@ -734,8 +730,8 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/remove-azcommunicationservice
 #>
@@ -753,16 +749,15 @@ param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Delete')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='DeleteViaIdentity', Mandatory, ValueFromPipeline)]
@@ -894,70 +889,86 @@ end {
 
 <#
 .Synopsis
-Links an Azure Notification Hub to this communication service.
+Checks that the CommunicationService name is valid and is not already in use.
 .Description
-Links an Azure Notification Hub to this communication service.
+Checks that the CommunicationService name is valid and is not already in use.
 .Example
-PS C:\> Set-AzCommunicationServiceNotificationHub -CommunicationServiceName ContosoAcsResource2 -ResourceGroupName ContosoResourceProvider1 -ConnectionString "<notificationhub-connectionstring>" -NotificationHubResourceId "<notificationhub-resourceid>"
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-System.String
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LINKNOTIFICATIONHUBPARAMETER <ILinkNotificationHubParameters>: Description of an Azure Notification Hub to link to the communication service
-  ConnectionString <String>: Connection string for the notification hub
-  ResourceId <String>: The resource ID of the notification hub
+INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
+  [CommunicationServiceName <String>]: The name of the CommunicationService resource.
+  [Id <String>]: Resource identity path
+  [Location <String>]: The Azure region
+  [OperationId <String>]: The ID of an ongoing async operation
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
+
+NAMEAVAILABILITYPARAMETER <INameAvailabilityParameters>: Data POST-ed to the nameAvailability action
+  Name <String>: The CommunicationService name to validate. e.g."my-CommunicationService-name-here"
+  Type <String>: The resource type. Should be always "Microsoft.Communication/CommunicationServices".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.communication/set-azcommunicationservicenotificationhub
+https://docs.microsoft.com/en-us/powershell/module/az.communication/test-azcommunicationservicenameavailability
 #>
-function Set-AzCommunicationServiceNotificationHub {
-[OutputType([System.String])]
-[CmdletBinding(DefaultParameterSetName='LinkExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Test-AzCommunicationServiceNameAvailability {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability])]
+[CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
-    [System.String]
-    # The name of the CommunicationService resource.
-    ${CommunicationServiceName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
-    [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
-    ${ResourceGroupName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='Check')]
+    [Parameter(ParameterSetName='CheckExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='Link', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ILinkNotificationHubParameters]
-    # Description of an Azure Notification Hub to link to the communication service
-    # To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
-    ${LinkNotificationHubParameter},
+    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Check', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CheckViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters]
+    # Data POST-ed to the nameAvailability action
+    # To construct, see NOTES section for NAMEAVAILABILITYPARAMETER properties and create a hash table.
+    ${NameAvailabilityParameter},
+
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
-    # Connection string for the notification hub
-    ${ConnectionString},
+    # The CommunicationService name to validate.
+    # e.g."my-CommunicationService-name-here"
+    ${Name},
 
-    [Parameter(ParameterSetName='LinkExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CheckViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
     [System.String]
-    # The resource ID of the notification hub
-    ${NotificationHubResourceId},
+    # The resource type.
+    # Should be always "Microsoft.Communication/CommunicationServices".
+    ${Type},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -1015,10 +1026,12 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            Link = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_Link';
-            LinkExpanded = 'Az.Communication.private\Set-AzCommunicationServiceNotificationHub_LinkExpanded';
+            Check = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_Check';
+            CheckExpanded = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckExpanded';
+            CheckViaIdentity = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckViaIdentity';
+            CheckViaIdentityExpanded = 'Az.Communication.private\Test-AzCommunicationServiceNameAvailability_CheckViaIdentityExpanded';
         }
-        if (('Link', 'LinkExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Check', 'CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -1076,7 +1089,7 @@ Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource
+Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1087,13 +1100,13 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
   [Location <String>]: The Azure region
   [OperationId <String>]: The ID of an ongoing async operation
-  [ResourceGroupName <String>]: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  [SubscriptionId <String>]: Gets subscription ID which uniquely identifies the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [SubscriptionId <String>]: The ID of the target subscription.
 .Link
 https://docs.microsoft.com/en-us/powershell/module/az.communication/update-azcommunicationservice
 #>
 function Update-AzCommunicationService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ICommunicationServiceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -1106,16 +1119,15 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [System.String]
-    # The name of the resource group that contains the resource.
-    # You can obtain this value from the Azure Resource Manager API or the portal.
+    # The name of the resource group.
+    # The name is case insensitive.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
-    # Gets subscription ID which uniquely identifies the Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
+    # The ID of the target subscription.
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
@@ -1127,7 +1139,19 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820Preview.ITaggedResourceTags]))]
+    [System.String]
+    # The location where the communication service stores its data at rest.
+    ${DataLocation},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [System.String]
+    # The Azure location where the CommunicationService is running.
+    ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ITaggedResourceTags]))]
     [System.Collections.Hashtable]
     # Tags of the service which is a list of key value pairs that describe the resource.
     ${Tag},

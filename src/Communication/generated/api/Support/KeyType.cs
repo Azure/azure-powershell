@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Support
         /// <param name="value">the value to convert to an instance of <see cref="KeyType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new KeyType(System.Convert.ToString(value));
+            return new KeyType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type KeyType</summary>

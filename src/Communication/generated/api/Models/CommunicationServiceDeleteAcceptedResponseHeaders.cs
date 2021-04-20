@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Communication.Models
         /// <param name="headers"></param>
         void Microsoft.Azure.PowerShell.Cmdlets.Communication.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
         {
-            if (headers.TryGetValues("location", out var __locationHeader))
+            if (headers.TryGetValues("location", out var __locationHeader0))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader) is string __headerLocationHeader ? __headerLocationHeader : (string)null;
+                ((Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationServiceDeleteAcceptedResponseHeadersInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
             }
         }
     }
