@@ -2216,7 +2216,7 @@ function Test-GatewayLoadBalancer-ProviderOnePool
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "eastus2euap"
 
     try 
     {
@@ -2290,7 +2290,7 @@ function Test-GatewayLoadBalancer-ProviderTwoPool
     $lbruleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "eastus2euap"
 
     try 
     {
