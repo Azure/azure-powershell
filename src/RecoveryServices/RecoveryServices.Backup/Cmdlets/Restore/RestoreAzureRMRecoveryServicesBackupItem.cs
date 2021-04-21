@@ -249,9 +249,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Switch param to restore a backed up unmanaged vm as managed disks.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AzureVMRestoreUnmanagedAsManaged, HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsManagedDisks)]
+        [Parameter(Mandatory = true, ParameterSetName = AzureVMRestoreUnmanagedAsManaged, HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsManagedDisk)]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter RestoreAsManagedDisks { get; set; }
+        public SwitchParameter RestoreAsManagedDisk { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
                 providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent);
-                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsManagedDisks, RestoreAsManagedDisks.IsPresent);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsManagedDisk, RestoreAsManagedDisk.IsPresent);
 
                 if (DiskEncryptionSetId != null)
                 {

@@ -423,7 +423,7 @@ function Test-AzureUnmanagedVMFullRestore
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName `
-			-RestoreAsManagedDisks -TargetResourceGroupName $resourceGroupName
+			-RestoreAsManagedDisk -TargetResourceGroupName $resourceGroupName
 	}
 	finally
 	{

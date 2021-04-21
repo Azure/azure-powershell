@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion]: null;
             IList<string> targetZones = ProviderData.ContainsKey(RecoveryPointParams.TargetZone) ?
                 new List<string>(new string[]{(ProviderData[RecoveryPointParams.TargetZone].ToString())}) : null;
-            bool restoreWithManagedDisks = (bool)ProviderData[RestoreVMBackupItemParams.RestoreAsManagedDisks];
+            bool restoreWithManagedDisks = (bool)ProviderData[RestoreVMBackupItemParams.RestoreAsManagedDisk];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
