@@ -58,7 +58,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public SwitchParameter Primary { get; set; }
         
         [Parameter(Mandatory = false, HelpMessage = "Disk size for each vm in the node type in GBs. Default 100.")]
+        [Alias("DataDiskSize")]
         public int DiskSize { get; set; } = 100;
+
+        [Parameter(Mandatory = false, HelpMessage = "Managed data disk type. IOPS and throughput are given by the disk size, to see more information go to https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types. Default StandardSSD_LRS")]
+        [Alias("DataDiskType")]
+        public PSDiskType DiskType { get; set; } = PSDiskType.StandardSSD_LRS;
 
         [Parameter(Mandatory = false, HelpMessage = "Application start port of a range of ports.")]
         public int? ApplicationStartPort { get; set; }
@@ -92,6 +97,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets")]
+        public string[] VmUserAssignedIdentities { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if the node type can only host Stateless workloads.")]
+        public SwitchParameter IsStateless { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Indicates if scale set associated with the node type can be composed of multiple placement groups.")]
+        public SwitchParameter MultiplePlacementGroups { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
@@ -131,17 +145,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private NodeType GetNewNodeTypeParameters()
         {
-
             var newNodeType = new NodeType(
                 isPrimary: this.Primary.IsPresent,
                 vmInstanceCount: this.InstanceCount,
                 dataDiskSizeGB: this.DiskSize,
+                dataDiskType: this.DiskType.ToString(),
                 name: this.Name,
                 vmSize: this.VmSize,
                 vmImagePublisher: this.VmImagePublisher,
                 vmImageOffer: this.VmImageOffer,
                 vmImageSku: this.VmImageSku,
-                vmImageVersion: this.VmImageVersion
+                vmImageVersion: this.VmImageVersion,
+                isStateless: this.IsStateless.IsPresent,
+                multiplePlacementGroups: this.MultiplePlacementGroups.IsPresent
             );
 
             if (this.ApplicationStartPort.HasValue && this.ApplicationEndPort.HasValue)
@@ -162,6 +178,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.PlacementProperty != null)
             {
                 newNodeType.PlacementProperties = this.PlacementProperty.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
+            }
+
+            if (this.VmUserAssignedIdentities != null && this.VmUserAssignedIdentities.Length > 0)
+            {
+                newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentities);
             }
 
             return newNodeType;
