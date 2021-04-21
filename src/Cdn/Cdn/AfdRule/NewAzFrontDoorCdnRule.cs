@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FrontDoorCdnRule", SupportsShouldProcess = true), OutputType(typeof(PSAfdRule))]
     public class NewAzFrontDoorCdnRule : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdRuleCacheExpirationActionObject)]
-        public PSAfdRuleCacheExpirationAction CacheExpirationAction { get; set; }
+        [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleActions)]
+        public List<PSAfdRuleAction> Action { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdRuleCacheKeyQueryStringActionObject)]
-        public PSAfdRuleCacheKeyQueryStringAction CacheKeyQueryStringAction { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdRuleConditions)]
+        public List<PSAfdRuleCondition> Condition { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName)]
         [ValidateNotNullOrEmpty]
@@ -66,40 +66,16 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
         {
             try
             {
-                Rule afdRule = new Rule();
-                afdRule.Order = this.Order;
-                afdRule.Actions = new List<DeliveryRuleAction>();
-                afdRule.Conditions = new List<DeliveryRuleCondition>();
+                Rule afdRule = new Rule
+                {
+                    Order = this.Order,
+                    Actions = this.CreateAfdRuleActions(),
+                    Conditions = this.CreateAfdRuleConditions()
+                };
                 
                 if (MyInvocation.BoundParameters.ContainsKey("MatchProcessingBehavior"))
                 {
                     afdRule.MatchProcessingBehavior = this.MatchProcessingBehavior;
-                }
-
-                if (this.MyInvocation.BoundParameters.ContainsKey("CacheExpirationAction"))
-                {
-                    DeliveryRuleCacheExpirationAction cacheExpirationAction = new DeliveryRuleCacheExpirationAction
-                    {
-                        Parameters = new CacheExpirationActionParameters()
-                    };
-
-                    cacheExpirationAction.Parameters.CacheBehavior = this.CacheExpirationAction.CacheBehavior;
-                    cacheExpirationAction.Parameters.CacheDuration = this.CacheExpirationAction.CacheDuration;
-                    
-                    afdRule.Actions.Add(cacheExpirationAction);
-                }
-
-                if (this.MyInvocation.BoundParameters.ContainsKey("CacheKeyQueryStringAction"))
-                {
-                    DeliveryRuleCacheKeyQueryStringAction cacheKeyQueryStringAction = new DeliveryRuleCacheKeyQueryStringAction
-                    {
-                        Parameters = new CacheKeyQueryStringActionParameters()
-                    };
-
-                    cacheKeyQueryStringAction.Parameters.QueryStringBehavior = this.CacheKeyQueryStringAction.QueryStringBehavior;
-                    cacheKeyQueryStringAction.Parameters.QueryParameters = this.CacheKeyQueryStringAction.QueryParameters;
-
-                    afdRule.Actions.Add(cacheKeyQueryStringAction);
                 }
 
                 PSAfdRule psAfdRule = this.CdnManagementClient.Rules.Create(this.ResourceGroupName, this.ProfileName, this.RuleSetName, this.RuleName, afdRule).ToPSAfdRule();
@@ -110,6 +86,339 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
             {
                 throw new PSArgumentException(errorResponse.Response.Content);
             }
+        }
+    
+        private List<DeliveryRuleAction> CreateAfdRuleActions()
+        {
+            List<DeliveryRuleAction> afdRuleActions = new List<DeliveryRuleAction>();
+
+            foreach (PSAfdRuleAction afdAction in this.Action)
+            {
+                if (afdAction is PSAfdRuleCacheExpirationAction)
+                {
+                    PSAfdRuleCacheExpirationAction psCacheExpirationAction = (PSAfdRuleCacheExpirationAction)afdAction;
+
+                    DeliveryRuleCacheExpirationAction cacheExpirationAction = new DeliveryRuleCacheExpirationAction
+                    {
+                        Parameters = new CacheExpirationActionParameters
+                        {
+                            CacheBehavior = psCacheExpirationAction.CacheBehavior,
+                            CacheDuration = psCacheExpirationAction.CacheDuration
+                        }
+                    };
+
+                    afdRuleActions.Add(cacheExpirationAction);
+                }
+
+                if (afdAction is PSAfdRuleHeaderAction)
+                {
+                    PSAfdRuleHeaderAction psHeaderAction = (PSAfdRuleHeaderAction)afdAction;
+
+                    if (psHeaderAction.HeaderType == "ModifyRequestHeader")
+                    {
+                        DeliveryRuleRequestHeaderAction requestHeaderAction = new DeliveryRuleRequestHeaderAction
+                        {
+                            Parameters = new HeaderActionParameters
+                            {
+                                HeaderAction = psHeaderAction.HeaderAction,
+                                HeaderName = psHeaderAction.HeaderName,
+                                Value = psHeaderAction.HeaderValue
+                            }
+                        };
+
+                        afdRuleActions.Add(requestHeaderAction);
+                    }
+                    else if (psHeaderAction.HeaderType == "ModifyResponeHeader")
+                    {
+                        DeliveryRuleResponseHeaderAction responseHeaderAction = new DeliveryRuleResponseHeaderAction
+                        {
+                            Parameters = new HeaderActionParameters
+                            {
+                                HeaderAction = psHeaderAction.HeaderAction,
+                                HeaderName = psHeaderAction.HeaderName,
+                                Value = psHeaderAction.HeaderValue
+                            }
+                        };
+
+                        afdRuleActions.Add(responseHeaderAction);
+                    }
+                }
+
+                if (afdAction is PSAfdRuleCacheKeyQueryStringAction)
+                {
+                    PSAfdRuleCacheKeyQueryStringAction psCacheKeyQueryString = (PSAfdRuleCacheKeyQueryStringAction)afdAction;
+
+                    DeliveryRuleCacheKeyQueryStringAction cacheKeyQueryStringAction = new DeliveryRuleCacheKeyQueryStringAction
+                    {
+                        Parameters = new CacheKeyQueryStringActionParameters
+                        {
+                            QueryParameters = psCacheKeyQueryString.QueryParameters,
+                            QueryStringBehavior = psCacheKeyQueryString.QueryStringBehavior
+                        }
+                    };
+
+                    afdRuleActions.Add(cacheKeyQueryStringAction);
+                }
+
+                if (afdAction is PSAfdRuleUrlRedirectAction)
+                {
+                    PSAfdRuleUrlRedirectAction psUrlRedirectAction = (PSAfdRuleUrlRedirectAction)afdAction;
+
+                    UrlRedirectAction urlRedirectAction = new UrlRedirectAction
+                    {
+                        Parameters = new UrlRedirectActionParameters
+                        {
+                            CustomFragment = psUrlRedirectAction.CustomFragment,
+                            CustomHostname = psUrlRedirectAction.CustomHostname,
+                            CustomPath = psUrlRedirectAction.CustomPath,
+                            CustomQueryString = psUrlRedirectAction.CustomQueryString,
+                            DestinationProtocol = psUrlRedirectAction.DestinationProtocol,
+                            RedirectType = psUrlRedirectAction.RedirectType
+                        }
+                    };
+
+                    afdRuleActions.Add(urlRedirectAction);
+                }
+
+                if (afdAction is PSAfdRuleUrlRewriteAction)
+                {
+                    PSAfdRuleUrlRewriteAction psUrlRewriteAction = (PSAfdRuleUrlRewriteAction)afdAction;
+
+                    UrlRewriteAction urlRewriteAction = new UrlRewriteAction
+                    { 
+                        Parameters = new UrlRewriteActionParameters
+                        {
+                            SourcePattern = psUrlRewriteAction.SourcePattern,
+                            Destination = psUrlRewriteAction.Destination,
+                            PreserveUnmatchedPath = psUrlRewriteAction.PreservePath
+                        }
+                    };
+
+                    afdRuleActions.Add(urlRewriteAction);
+                }
+                
+                if (afdAction is PSAfdRuleOriginGroupOverrideAction)
+                {
+                    PSAfdRuleOriginGroupOverrideAction psOriginGroupOverrideAction = (PSAfdRuleOriginGroupOverrideAction)afdAction;
+
+                    OriginGroupOverrideAction originGroupOverrideAction = new OriginGroupOverrideAction
+                    {
+                        Parameters = new OriginGroupOverrideActionParameters
+                        {
+                            OriginGroup = new ResourceReference(psOriginGroupOverrideAction.OriginGroup)
+                        }
+                    };
+
+                    afdRuleActions.Add(originGroupOverrideAction);
+                }
+            }
+
+            return afdRuleActions;
+        }
+
+        private List<DeliveryRuleCondition> CreateAfdRuleConditions()
+        {
+            List<DeliveryRuleCondition> afdRuleConditions = new List<DeliveryRuleCondition>();
+
+            foreach (PSAfdRuleCondition afdRuleCondition in this.Condition)
+            {
+                switch (afdRuleCondition.MatchVariable)
+                {
+                    case "Cookies":
+                        DeliveryRuleCookiesCondition cookieCondition = new DeliveryRuleCookiesCondition
+                        {
+                            Parameters = new CookiesMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Selector = afdRuleCondition.Selector,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(cookieCondition);
+                        break;
+
+                    case "RemoteAddress":
+                        DeliveryRuleRemoteAddressCondition remoteAddressCondition = new DeliveryRuleRemoteAddressCondition
+                        {
+                            Parameters = new RemoteAddressMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(remoteAddressCondition);
+                        break;
+
+                    case "RequestMethod":
+                        DeliveryRuleRequestMethodCondition requestMethodCondition = new DeliveryRuleRequestMethodCondition
+                        {
+                            Parameters = new RequestMethodMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition
+                            }
+                        };
+                        afdRuleConditions.Add(requestMethodCondition);
+                        break;
+
+                    case "QueryString":
+                        DeliveryRuleQueryStringCondition queryStringCondition = new DeliveryRuleQueryStringCondition
+                        {
+                            Parameters = new QueryStringMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(queryStringCondition);
+                        break;
+
+                    case "PostArgs":
+                        DeliveryRulePostArgsCondition postArgsCondition = new DeliveryRulePostArgsCondition
+                        { 
+                            Parameters = new PostArgsMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Selector = afdRuleCondition.Selector,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(postArgsCondition);
+                        break;
+
+                    case "RequestUri":
+                        DeliveryRuleRequestUriCondition requestUriCondition = new DeliveryRuleRequestUriCondition
+                        {
+                            Parameters = new RequestUriMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(requestUriCondition);
+                        break;
+
+                    case "RequestHeader":
+                        DeliveryRuleRequestHeaderCondition requestHeaderCondition = new DeliveryRuleRequestHeaderCondition
+                        {
+                            Parameters = new RequestHeaderMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Selector = afdRuleCondition.Selector,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(requestHeaderCondition);
+                        break;
+
+                    case "RequestBody":
+                        DeliveryRuleRequestBodyCondition requestBodyCondition = new DeliveryRuleRequestBodyCondition
+                        {
+                            Parameters = new RequestBodyMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(requestBodyCondition);
+                        break;
+
+                    case "RequestScheme":
+                        DeliveryRuleRequestSchemeCondition requestSchemeCondition = new DeliveryRuleRequestSchemeCondition
+                        {
+                            Parameters = new RequestSchemeMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition
+                            }
+                        };
+                        afdRuleConditions.Add(requestSchemeCondition);
+                        break;
+
+                    case "UrlPath":
+                        DeliveryRuleUrlPathCondition urlPathCondition = new DeliveryRuleUrlPathCondition
+                        {
+                            Parameters = new UrlPathMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(urlPathCondition);
+                        break;
+
+                    case "UrlFileExtension":
+                        DeliveryRuleUrlFileExtensionCondition urlFileExtensionCondition = new DeliveryRuleUrlFileExtensionCondition
+                        {
+                            Parameters = new UrlFileExtensionMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(urlFileExtensionCondition);
+                        break;
+
+                    case "UrlFilename":
+                        DeliveryRuleUrlFileNameCondition urlFileNameCondition = new DeliveryRuleUrlFileNameCondition
+                        {
+                            Parameters = new UrlFileNameMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                OperatorProperty = afdRuleCondition.Operator,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(urlFileNameCondition);
+                        break;
+
+                    case "HttpVersion":
+                        DeliveryRuleHttpVersionCondition httpVersionCondition = new DeliveryRuleHttpVersionCondition
+                        { 
+                            Parameters = new HttpVersionMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                            }
+                        };
+                        afdRuleConditions.Add(httpVersionCondition);
+                        break;
+
+                    case "IsDevice":
+                        DeliveryRuleIsDeviceCondition isDeviceCondition = new DeliveryRuleIsDeviceCondition
+                        {
+                            Parameters = new IsDeviceMatchConditionParameters
+                            {
+                                MatchValues = afdRuleCondition.MatchValue,
+                                NegateCondition = afdRuleCondition.NegateCondition,
+                                Transforms = afdRuleCondition.Transforms
+                            }
+                        };
+                        afdRuleConditions.Add(isDeviceCondition);
+                        break;
+                }
+            }
+
+            return afdRuleConditions;
         }
     }
 }

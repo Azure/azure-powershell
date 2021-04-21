@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
                 Location = sdkAfdEndpoint.Location,
                 Tags = TagsConversionHelper.CreateTagHashtable(sdkAfdEndpoint.Tags),
                 HostName = sdkAfdEndpoint.HostName,
-                OriginResponseTimeoutSeconds = sdkAfdEndpoint.OriginResponseTimeoutSeconds,
                 EnabledState = sdkAfdEndpoint.EnabledState
             };
         }

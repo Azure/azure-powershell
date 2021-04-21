@@ -36,10 +36,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessageConstants.AfdEndpointOriginResponseTimeoutSeconds, ParameterSetName = FieldsParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public int OriginResponseTimeoutSecond { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdProfileName, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
@@ -70,11 +66,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             {
                 AFDEndpointUpdateParameters afdEndpointParameters = new AFDEndpointUpdateParameters();
                
-                if (this.OriginResponseTimeoutSecond >= AfdResourceConstants.AfdEndpointOriginResponseTimeoutSecondsMin)
-                {
-                    afdEndpointParameters.OriginResponseTimeoutSeconds = this.OriginResponseTimeoutSecond;
-                }
-
                 Dictionary<string, string> afdEndpointTags = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
 
                 afdEndpointParameters.Tags = afdEndpointTags;
@@ -98,11 +89,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdEndpoint
             this.ResourceGroupName = parsedAfdEndpointResourceId.ResourceGroupName;
             
             this.Tag = this.Endpoint.Tags;
-
-            if (this.Endpoint.OriginResponseTimeoutSeconds != null)
-            {
-                this.OriginResponseTimeoutSecond = (int)this.Endpoint.OriginResponseTimeoutSeconds;
-            }
         }
     }
 }

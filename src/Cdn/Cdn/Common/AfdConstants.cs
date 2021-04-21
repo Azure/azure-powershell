@@ -15,7 +15,6 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 {
     public static class AfdResourceConstants
     {
-        public const int AfdEndpointOriginResponseTimeoutSecondsMin = 16;
         public const string AfdResourceLocation = "Global";
     }
 
@@ -67,7 +66,6 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdCustomDomainObject = "The Azure Front Door custom domain object.";
         public const string AfdCustomDomainSecretId = "The resource reference to the secret.";
         public const string AfdEndpointObject = "The Azure Front Door endpoint object.";
-        public const string AfdEndpointOriginResponseTimeoutSeconds = "The send and receive timeout on forwarding request to origin.";
         public const string AfdEndpointName = "The Azure Front Door endpoint name.";
         public const string AfdOriginGroupAdditionalLatencyInMilliseconds = "The additional latency in milliseconds for probes to fall into the lowest latency bucket.";
         public const string AfdOriginHostHeader = "The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value.";
@@ -101,21 +99,39 @@ namespace Microsoft.Azure.Commands.Cdn.Common
         public const string AfdRouteOriginPath = "A directory path on the origin that Azure Front Door can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.";
         public const string AfdRouteQueryStringCachingBehavior = "Defines how Azure Front Door caches requests that include query strings.";
         public const string AfdRouteSupportedProtocols = "List of supported protocols for this route.";
-        public const string AfdRuleBypassCache = "Sets the caching behavior to Bypass caching. This prevents requests that contain query strings from being cached.";
+        public const string AfdRuleActions = "The set of actions for the delivery rule.";
+        public const string AfdRuleCachingBehavior = "Caching behavior for the action.";
         public const string AfdRuleCacheDuration = "The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss";
-        public const string AfdRuleCacheExpirationActionObject = "The cache expiration rule action object.";
-        public const string AfdRuleCacheKeyQueryStringActionObject = "Defines the cache-key query string action for the delivery rule.";
+        public const string AfdRuleConditions = "The set of conditions for the delivery rule.";
+        public const string AfdRuleCustomFragment = "Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.";
+        public const string AfdRuleCustomHostname = "Host to redirect. Leave empty to use the incoming host as the destination host.";
+        public const string AfdRuleCustomPath = "The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.";
+        public const string AfdRuleCustomQueryString = "The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. ? and & will be added automatically so do not include them.";
+        public const string AfdRuleDestination = "Define the relative URL to which the above requests will be rewritten by.";
+        public const string AfdRuleDestinationProtocol = "Protocol to use for the redirect. The default value is MatchRequest.";
+        public const string AfdRuleHeaderAction = "Action to perform.";
+        public const string AfdRuleHeaderName = "Name of the header to modify.";
+        public const string AfdRuleHeaderType = "Whether to modify request header or response header.";
+        public const string AfdRuleHeaderValue = "Value for the specified action.";
         public const string AfdRuleMatchProcessingBehavior = "If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.";
+        public const string AfdRuleMatchValue = "Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.";
+        public const string AfdRuleMatchVariable = "A list of conditions that must be matched for the actions to be executed.";
         public const string AfdRuleName = "The Azure Front Door rule name.";
+        public const string AfdRuleNegateCondition = "Describes if the result of this condition should be negated.";
         public const string AfdRuleObject = "The Azure Front Door rule object.";
-        public const string AfdRuleOverride = "Sets the caching behavior to Override.";
+        public const string AfdRuleOperator = "Describes operator to be matched.";
         public const string AfdRuleOrder = "The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order.";
+        public const string AfdRuleOriginGroupOverride = "Defines the origin group override action for the delivery rule.";
+        public const string AfdRulePreservePath = "Whether to preserve unmatched path.";
         public const string AfdRuleQueryParameters = "Query parameters to include or exclude (comma separated).";
         public const string AfdRuleQueryStringBehavior = "Defines the parameters for the cache-key query string action. Accepted values : Include, IncludeAll, Exclude, ExcludeAll";
+        public const string AfdRuleRedirectType = "The redirect type the rule will use when redirecting traffic.";
+        public const string AfdRuleSelector = "Name of Selector to be matched.";
         public const string AfdRuleSetIds = "The resource ids of the Azure Front Door rule sets.";
-        public const string AfdRuleSetIfMissing = "Sets the caching behavior to SetIfMissing.";
         public const string AfdRuleSetName = "The Azure Front Door rule set name.";
         public const string AfdRuleSetObject = "The Azure Front Door rule set object.";
+        public const string AfdRuleSourcePattern = "Define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.";
+        public const string AfdRuleTransform = "Transform to apply before matching. Possible values are Lowercase and Uppercase.";
         public const string AfdSecretCertificateAuthority = "The certificate issuing authority.";
         public const string AfdSecretName = "The Azure Front Door secret name.";
         public const string AfdSecretObject = "The Azure Front Door secret object.";
@@ -135,10 +151,13 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
     public static class AfdParameterSet 
     {
-        public const string AfdRuleBypassCache = "AfdRuleBypassCache";
-        public const string AfdRuleOverride = "AfdRuleOverride";
-        public const string AfdRuleSetIfMissing = "AfdRuleSetIfMissing";
-        public const string SharedPrivateLinkResource = "SharedPrivateLinkResource";
+        public const string AfdRuleCacheExpirationAction = "AfdRuleCacheExpirationAction";
+        public const string AfdRuleCacheKeyQueryStringAction = "AfdRuleCacheKeyQueryStringAction";
+        public const string AfdRuleHeaderTypeAction = "AfdRuleHeaderTypeAction";
+        public const string AfdRuleOriginGroupOverrideAction = "AfdRuleOriginGroupOverrideAction";
+        public const string AfdRuleUrlRedirectAction = "AfdRuleUrlRedirectAction";
+        public const string AfdRuleUrlRewriteAction = "AfdRuleUrlRewriteAction";
         public const string AfdCustomDomainCustomerCertificate = "AfdCustomDomainCustomerCertificate";
+        public const string SharedPrivateLinkResource = "SharedPrivateLinkResource";
     }
 }

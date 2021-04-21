@@ -13,10 +13,18 @@
 
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdRuleCacheExpirationAction : PSAfdRuleAction
+    public class PSAfdRuleUrlRedirectAction : PSAfdRuleAction
     {
-        public string CacheBehavior { get; set; }
+        public string RedirectType { get; set; }
 
-        public string CacheDuration { get; set; }
+        public string DestinationProtocol { get; set; }
+
+        public string CustomQueryString { get; set; }
+
+        public string CustomPath { get; set; }
+
+        public string CustomHostname { get; set; }
+
+        public string CustomFragment { get; set; }
     }
 }

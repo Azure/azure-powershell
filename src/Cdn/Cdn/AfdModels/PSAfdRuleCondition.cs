@@ -11,12 +11,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdRuleCacheExpirationAction : PSAfdRuleAction
+    public class PSAfdRuleCondition
     {
-        public string CacheBehavior { get; set; }
+        public string MatchVariable { get; set; }
 
-        public string CacheDuration { get; set; }
+        public string Operator { get; set; }
+
+        public string Selector { get; set; }
+
+        public List<string> MatchValue { get; set; }
+
+        public bool? NegateCondition { get; set; }
+
+        public List<string> Transforms { get; set; }
     }
 }

@@ -13,7 +13,7 @@
 
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdRuleCacheKeyQueryStringAction
+    public class PSAfdRuleCacheKeyQueryStringAction : PSAfdRuleAction
     {
         public string QueryStringBehavior { get; set; }
 
