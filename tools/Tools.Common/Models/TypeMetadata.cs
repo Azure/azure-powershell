@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Tools.Common.Loaders;
+using System.Text.RegularExpressions;
 
 namespace Tools.Common.Models
 {
@@ -217,6 +218,16 @@ namespace Tools.Common.Models
 
         public List<MethodSignature> Constructors { get { return _constructors; } }
 
+        private string GetClassNameWithoutApiVersion(string className)
+        {
+            var matcher = Regex.Match(className, "([^\"]+)\\.Api[^\"]+\\.([^\"]+)");
+            if (!matcher.Success || matcher.Groups.Count < 3)
+            {
+                return className;
+            }
+            return string.Format("{0}.{1}", matcher.Groups[1].Value, matcher.Groups[2].Value);
+        }
+
         /// <summary>
         /// Checks if two TypeMetadata objects are equal by comparing
         /// each of the properties, methods, and constructors.
@@ -232,8 +243,8 @@ namespace Tools.Common.Models
             }
 
             var typesEqual = true;
-            string className = this.Name.Split('.').Last();
-            string otherClassName = other.Name.Split('.').Last();
+            string className = GetClassNameWithoutApiVersion(this.Name);
+            string otherClassName = GetClassNameWithoutApiVersion(other.Name);
             typesEqual &= string.Equals(className, otherClassName, StringComparison.OrdinalIgnoreCase);
             typesEqual &= string.Equals(this.ElementType, other.ElementType, StringComparison.OrdinalIgnoreCase);
             this.GenericTypeArguments.ForEach(t => typesEqual &= other.GenericTypeArguments.Contains(t));

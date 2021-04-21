@@ -55,7 +55,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]+)\",\"([^\"]*)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
+            var matcher = "\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\",\"([^\"]+)\"";
             var match = Regex.Match(line, matcher);
             if (!match.Success || match.Groups.Count < 8)
             {
