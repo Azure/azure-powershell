@@ -25,6 +25,8 @@
     - `New-AzStorageAccount`
 * Fixed an issue that delete immutable blob will prompt incorrect message.
     - `Remove-AzStorageAccount`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Remove-AzRmStorageShare`
 
 ## Version 3.5.1
 * Fixed copy blob fail with source context as Oauth [#14662]
