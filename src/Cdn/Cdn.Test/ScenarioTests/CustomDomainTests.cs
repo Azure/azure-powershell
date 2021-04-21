@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainEnableDisableWithRunningEndpoint");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithRunningEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithRunningEndpoint");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithStoppedEndpoint()
         {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-VerizonCustomDomainEnableHttpsWithRunningEndpoint");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is flaky due to creation of custom domain issue which prolongs response time. Will enable once RP issue is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAkamaiCustomDomainHttpsWithRunningEndpoint()
         {
