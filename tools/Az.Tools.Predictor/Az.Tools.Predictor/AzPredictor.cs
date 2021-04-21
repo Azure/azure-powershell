@@ -120,9 +120,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
                         var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
-                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.MaskedValue);
+                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedValue : AzPredictorConstants.CommandPlaceholder);
 
-                        if (!string.Equals(AzPredictorConstants.CommandPlaceholder, secondToLastCommand.MaskedValue, StringComparison.Ordinal))
+                        if (secondToLastCommand.IsSupported)
                         {
                             _service.RecordHistory(secondToLastCommand.Ast);
                         }
@@ -162,9 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId,
-                            lastCommand.IsSupported ? lastCommand.MaskedValue:
-                                (lastCommand.Ast?.GetCommandName() ?? lastCommand.MaskedValue)));
+                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.MaskedValue ?? AzPredictorConstants.CommandPlaceholder));
 
                 if (isLastTwoCommandsChanged)
                 {
@@ -209,15 +207,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 var asts = Parser.ParseInput(commandLine, out _, out _);
                 var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
                 var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
-                string maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
 
                 var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
                 bool isSupported = _service.IsSupportedCommand(commandName);
-
-                if (isSupported)
-                {
-                    maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
-                }
+                string maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
 
                 return (commandAst, maskedCommandLine, isSupported);
             }
