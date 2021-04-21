@@ -24,6 +24,7 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
@@ -117,14 +118,14 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "SetByResourceId",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
-        public string BackendAddressPoolId { get; set; }
+        public string[] BackendAddressPoolId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResource",
             HelpMessage = "A reference to a pool of DIPs. Inbound traffic is randomly load balanced across IPs in the backend IPs.",
             ValueFromPipelineByPropertyName = true)]
-        public PSBackendAddressPool BackendAddressPool { get; set; }
+        public PSBackendAddressPool[] BackendAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -150,10 +151,16 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
                 }
-                if (this.BackendAddressPool != null)
+
+                if (this.BackendAddressPool != null && this.BackendAddressPool.Length > 0)
                 {
-                    this.BackendAddressPoolId = this.BackendAddressPool.Id;
+                    this.BackendAddressPoolId = new string[this.BackendAddressPool.Length];
+                    for (int i = 0; i < this.BackendAddressPool.Length; i++)
+                    {
+                        this.BackendAddressPoolId[i] = this.BackendAddressPool[i].Id;
+                    }
                 }
+
                 if (this.Probe != null)
                 {
                     this.ProbeId = this.Probe.Id;
@@ -170,7 +177,7 @@ namespace Microsoft.Azure.Commands.Network
             vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
             vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;
             vLoadBalancingRules.Name = this.Name;
-            if(!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
+            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 // FrontendIPConfiguration
                 if (vLoadBalancingRules.FrontendIPConfiguration == null)
@@ -179,16 +186,39 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vLoadBalancingRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
             }
-            if(!string.IsNullOrEmpty(this.BackendAddressPoolId))
+
+            if (this.BackendAddressPoolId != null && this.BackendAddressPoolId.Length > 0)
             {
-                // BackendAddressPool
-                if (vLoadBalancingRules.BackendAddressPool == null)
+                if (this.BackendAddressPoolId.Length == 1)
                 {
-                    vLoadBalancingRules.BackendAddressPool = new PSResourceId();
+                    // BackendAddressPool
+                    if (vLoadBalancingRules.BackendAddressPool == null)
+                    {
+                        vLoadBalancingRules.BackendAddressPool = new PSResourceId();
+                    }
+
+                    vLoadBalancingRules.BackendAddressPool.Id = this.BackendAddressPoolId[0];
                 }
-                vLoadBalancingRules.BackendAddressPool.Id = this.BackendAddressPoolId;
+                else if (this.BackendAddressPoolId.Length == 2)
+                {
+                    // BackendAddressPools
+                    if (vLoadBalancingRules.BackendAddressPools == null)
+                    {
+                        vLoadBalancingRules.BackendAddressPools = new List<PSResourceId>();
+                    }
+
+                    foreach (string backendAddressPoolId in this.BackendAddressPoolId)
+                    {
+                        vLoadBalancingRules.BackendAddressPools.Add(new PSResourceId() { Id = backendAddressPoolId });
+                    }
+                }
+                else
+                {
+                    throw new AzPSArgumentException("BackendAddressPool cannot be more than 2", "BackendAddressPool");
+                }
             }
-            if(!string.IsNullOrEmpty(this.ProbeId))
+
+            if (!string.IsNullOrEmpty(this.ProbeId))
             {
                 // Probe
                 if (vLoadBalancingRules.Probe == null)
@@ -197,6 +227,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vLoadBalancingRules.Probe.Id = this.ProbeId;
             }
+
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
