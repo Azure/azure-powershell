@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.
 * Azure Site Recovery support for SqlServerLicenseType for VMware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for Availability set for VMware to Azure and HyperV to Azure providers.
 * Azure Site Recovery support for TargetVmSize for VMware to Azure and HyperV to Azure providers.
