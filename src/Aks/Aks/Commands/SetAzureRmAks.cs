@@ -274,18 +274,8 @@ namespace Microsoft.Azure.Commands.Aks
                     string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
             }
 
-            var roleAssignmentId = GetRoleId("acrpull", acrResourceId);
-            RoleAssignment roleAssignment = null;
-            var success = RetryAction(() =>
-            {
-                roleAssignment = AuthClient.RoleAssignments.List(acrResourceId).FirstOrDefault();
-            });
-            if (!success)
-            {
-                throw new AzPSInvalidOperationException(
-                    Resources.CouldNotGetAcrRoleAssignment,
-                    desensitizedMessage: Resources.CouldNotGetAcrRoleAssignment);
-            }
+            var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId);
             if (roleAssignment == null)
             {
                 throw new AzPSInvalidOperationException(

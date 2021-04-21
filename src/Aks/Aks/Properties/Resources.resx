@@ -417,4 +417,7 @@
   <data name="CouldNotGetAcrRoleAssignment" xml:space="preserve">
     <value>Could not get 'acrpull' role assignment, please make sure you have right permission.</value>
   </data>
+  <data name="AcrRoleAssignmentIsAlreadyExist" xml:space="preserve">
+    <value>Acr role assignment {0} is already exist.</value>
+  </data>
 </root>

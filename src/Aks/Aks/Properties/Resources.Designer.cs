@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acr role assignment {0} is already exist..
+        /// </summary>
+        internal static string AcrRoleAssignmentIsAlreadyExist {
+            get {
+                return ResourceManager.GetString("AcrRoleAssignmentIsAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please add {0} to your search PATH so the {1} can be found..
         /// </summary>
         internal static string AddDirectoryToPath {

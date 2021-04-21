@@ -317,6 +317,22 @@ namespace Microsoft.Azure.Commands.Aks
             return new AcsServicePrincipal { SpId = app.AppId, ClientSecret = clientSecret, ObjectId = app.ObjectId };
         }
 
+        protected RoleAssignment GetRoleAssignmentWithRoleDefinitionId(string roleDefinitionId)
+        {
+            RoleAssignment roleAssignment = null;
+            var actionSuccess = RetryAction(() =>
+            {
+                roleAssignment = AuthClient.RoleAssignments.List().Where(x => x.Properties.RoleDefinitionId == roleDefinitionId).FirstOrDefault();
+            });
+            if (!actionSuccess)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotGetAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotGetAcrRoleAssignment);
+            }
+            return roleAssignment;
+        }
+
         protected void AddAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
         {
             string acrResourceId = null;
@@ -336,6 +352,12 @@ namespace Microsoft.Azure.Commands.Aks
             }
 
             var roleId = GetRoleId("acrpull", acrResourceId);
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleId);
+            if (roleAssignment != null)
+            {
+                WriteWarning(string.Format(Resources.AcrRoleAssignmentIsAlreadyExist, acrResourceId));
+                return;
+            }
             var spObjectId = acsServicePrincipal.ObjectId;
             if (spObjectId == null)
             {
