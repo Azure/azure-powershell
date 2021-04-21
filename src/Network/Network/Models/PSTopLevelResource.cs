@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
-        public PSExtendedLocation ExtendedLocation { get; set; }
-
         public string ResourceGuid { get; set; }
 
         public string Type { get; set; }

@@ -86,6 +86,8 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PrivateEndpoint, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
