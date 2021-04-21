@@ -15,14 +15,14 @@ Updates the backend pool on a loadbalancer
 ### SetByNameParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -Name <String> -LoadBalancer <PSLoadBalancer>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool> [-Force
 ### SetByResourceIdParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
- -ResourceId <String> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -70,13 +70,6 @@ PS C:\> $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $
 PS C:\> Set-AzLoadBalancerBackendAddressPool -ResourceId b2.Id -LoadBalancerBackendAddress $b2.LoadBalancerBackendAddresses
 ```
 
-### Example 4
-```powershell
-###Set by name with TunnelInterface
-PS C:\> $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol 'Vxlan' -Type 'Internal' -Port 2000 -Identifier 800
-PS C:\> $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol 'Vxlan' -Type 'External' -Port 2001 -Identifier 801
-PS C:\> $lb | Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress $ips -Name $backendPool1 -TunnelInterface $tunnelInterface1, $tunnelInterface2
-```
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -181,21 +174,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TunnelInterface
-The configuration of Gateway LoadBalancer Provider.
-
-```yaml
-Type: PSTunnelInterface[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

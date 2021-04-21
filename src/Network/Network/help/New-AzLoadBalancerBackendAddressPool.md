@@ -15,14 +15,14 @@ Creates a backend address pool on a loadbalancer.
 ### CreateByNameParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-TunnelInterface <PSTunnelInterface[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzLoadBalancerBackendAddressPool -LoadBalancer <PSLoadBalancer> -Name <String>
- [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-TunnelInterface <PSTunnelInterface[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,13 +60,6 @@ PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -
 PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -LoadBalancerBackendAddress $ips
 ```
 
-### Example 5
-```powershell
-## create with Gateway LoadBalancer TunnelInterface configuration
-PS C:\> $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol 'Vxlan' -Type 'Internal' -Port 2000 -Identifier 800
-PS C:\> $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol 'Vxlan' -Type 'External' -Port 2001 -Identifier 801
-PS C:\> New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPool3 -TunnelInterface $tunnelInterface1, $tunnelInterface2
-```
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -141,21 +134,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TunnelInterface
-The configuration of Gateway LoadBalancer Provider.
-
-```yaml
-Type: PSTunnelInterface[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
