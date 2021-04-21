@@ -32,7 +32,7 @@ function Test-NewDirectPeering
 	Write-Debug "Random Number $randNum";
 	$peerAsn = makePeerAsn $randNum
 	$asn = Get-AzPeerAsn -Name $peerAsn.Name
-	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	$facilityId = 104
 	#create Connection
 	$bandwidth = getBandwidth
 	$directConnection = NewDirectConnectionV4V6 $facilityId $bandwidth
@@ -203,7 +203,7 @@ function Test-NewDirectPeeringPremiumDirectUnlimited
 	$resourceName = getAssetName "DirectOneConnection";
 	Write-Debug "Setting $resourceName"
     $peeringLocation = getPeeringLocation $kind $loc;
-	$facilityId = $peeringLocation[0].PeeringDBFacilityId
+	$facilityId = 1236
 	#create Connection
 	$bandwidth = getBandwidth
 	$bandwidth2 = getBandwidth
