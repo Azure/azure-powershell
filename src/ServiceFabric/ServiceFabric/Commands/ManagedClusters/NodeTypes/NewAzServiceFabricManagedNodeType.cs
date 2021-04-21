@@ -156,8 +156,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 vmImageOffer: this.VmImageOffer,
                 vmImageSku: this.VmImageSku,
                 vmImageVersion: this.VmImageVersion,
-                isStateless: this.IsStateless.IsPresent,
-                multiplePlacementGroups: this.MultiplePlacementGroups.IsPresent
+                isStateless: this.IsStateless.IsPresent
             );
 
             if (this.ApplicationStartPort.HasValue && this.ApplicationEndPort.HasValue)
@@ -183,6 +182,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.VmUserAssignedIdentities != null && this.VmUserAssignedIdentities.Length > 0)
             {
                 newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentities);
+            }
+
+            if (this.MultiplePlacementGroups.IsPresent)
+            {
+                newNodeType.MultiplePlacementGroups = this.MultiplePlacementGroups.IsPresent;
             }
 
             return newNodeType;

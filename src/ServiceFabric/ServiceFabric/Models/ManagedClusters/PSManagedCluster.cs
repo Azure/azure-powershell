@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    clusterId: cluster.ClusterId,
                    addonFeatures: cluster.AddonFeatures,
                    clusterUpgradeCadence: cluster.ClusterUpgradeCadence,
+                   clusterUpgradeMode: cluster.ClusterUpgradeMode,
                    clusterCodeVersion: cluster.ClusterCodeVersion,
                    provisioningState: cluster.ProvisioningState,
                    fabricSettings: cluster.FabricSettings,
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    fqdn: cluster.Fqdn,
                    dnsName: cluster.DnsName,
                    applicationTypeVersionsCleanupPolicy: cluster.ApplicationTypeVersionsCleanupPolicy,
-                   sku: cluster.Sku)
+                   sku: cluster.Sku,
+                   zonalResiliency: cluster.ZonalResiliency)
         {
         }
     }
