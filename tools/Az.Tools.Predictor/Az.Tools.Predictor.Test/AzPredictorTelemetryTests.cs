@@ -53,7 +53,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProessingForOneUnsupportedCommandHistory(string inputData)
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             IReadOnlyList<string> history = new List<string>()
             {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForOneSupportedCommandWithoutParameter()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var testCaseClientId = "TestCase";
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForOneSupportedCommandWithParameter()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var testCaseClientId = "TestCase";
 
             // There is only one command with parameter.
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForTwoSupportedCommandHistory()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             IReadOnlyList<string> history = new List<string>()
             {
                 "Get-AzContext",
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForTwoUnsupportedCommandInHistory()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             IReadOnlyList<string> history = new List<string>()
             {
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForUnsupportedCommandAfterSupportedOnes()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var history = new List<string>()
             {
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 1;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add("git status");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 1;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add(@"$a='NewResourceName'");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 2;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add("Get-AzResourceGroup -Name:ResourceGroup01");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForUnsupportedAndSupportedCommands()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "git status",
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForSupportedAndUnsupportedCommands()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "New-AzVM -Name hello -Location WestUS",
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingException()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "New-AzVM -Name hello -Location WestUS",
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private void VerifySameSuggestionSessionId()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var displayCountOrIndex = 3;
 
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, displayCountOrIndex);
 
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var acceptedSuggestion = "SuggestionAccepted";
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             azPredictor.OnSuggestionAccepted(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, acceptedSuggestion);
 
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestionSessionIdChanged()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var firstSuggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyListViewInSuggestionDisplayed()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 2;
             var suggestionCountOrIndex = 4;
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyInlineViewInSuggestionDisplayedAtEdge()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 40;
             var suggestionCountOrIndex = 0;
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyInlineViewInSuggestionDisplayed()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 14;
             var suggestionCountOrIndex = -1;
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyExceptionInGetSuggestion()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyCommandIds()
         {
             var expectedTelemetryCount = 3;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var history = new List<string>()
             {
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             expectedTelemetryCount = 2;
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history = new List<string>()
             {
@@ -787,7 +787,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             expectedTelemetryCount = 2;
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
             suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             expectedTelemetryCount = 2;
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             predictionContext = PredictionContext.Create("New-AzVM -Name 'VM01' -Location 'Central US'");
             suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -862,15 +862,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <summary>
         /// Verifies that the number of telemetry events to be sent is equal to <paramref name="expectedCount"/>.
         /// </summary>
-        /// <remarks>
-        /// It requires to set up the <paramref name="telemetryClient"/> with the <see cref="MockAzPredictorTelemetryClient.ExceptedTelemetryRecordCount"/> one more than <paramref name="expectedCount"/>.
-        /// That means the expectedTelemetryEvent in <see cref="CreateTestObjects"/> should be one plus
-        /// <paramref name="expectedCount"/>.
-        /// Internally, it'll check that the task in <see cref="MockAzPredictorTelemetryClient.SendTelemetryTaskCompletionSource"/> times out because it's waiting for one more telemetry event and that telemetry event never comes.
-        /// </remarks>
         private void VerifyTelemetryRecordCount(int expectedCount, MockAzPredictorTelemetryClient telemetryClient)
         {
-            Assert.False(telemetryClient.SendTelemetryTaskCompletionSource.Task.Wait(TimeSpan.FromMilliseconds(500)));
+            Assert.True(telemetryClient.SendTelemetryTaskCompletionSource.Task.Wait(TimeSpan.FromMilliseconds(500)));
             Assert.Equal(expectedCount, telemetryClient.RecordedTelemetry.Count);
         }
 
