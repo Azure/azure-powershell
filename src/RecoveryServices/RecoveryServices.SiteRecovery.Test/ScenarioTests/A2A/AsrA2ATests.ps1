@@ -797,9 +797,10 @@ function Test-VMNicConfig {
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
     $nicId = $pe.NicDetailsList[0].NicId
     $ipConfigName = $pe.NicDetailsList[0].IpConfigs[0].Name
+    $recSubnetName = $pe.NicDetailsList[0].IpConfigs[0].RecoverySubnetName
     $recNicName = getRecoveryNicName
 
-    $ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName $ipConfigName -RecoverySubnetName ""
+    $ipConfig = New-AzRecoveryServicesAsrVMNicIPConfig -IpConfigName $ipConfigName -RecoverySubnetName $recSubnetName -RecoveryStaticIPAddress ""
     $ipConfigs = @($ipConfig)
     $nicConfig = New-AzRecoveryServicesAsrVMNicConfig -NicId $nicId -ReplicationProtectedItem $pe -RecoveryVMNetworkId $RecoveryAzureNetworkId -RecoveryNicName $recNicName -RecoveryNicResourceGroupName $recRgName -ReuseExistingNic -IPConfig $ipConfigs
 
