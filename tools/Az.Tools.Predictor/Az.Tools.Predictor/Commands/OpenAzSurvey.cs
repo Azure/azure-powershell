@@ -25,12 +25,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
     /// <para type="synopsis">Cmdlet to open a survey link in the default browser</para>
-    /// <para type="description">Use this cmdlet to open a survey link in the default browser</para>
+    /// <para type="description">This cmdlet will open a survey link in the default browser. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information </para>
     /// </summary>
-    [Cmdlet("Open", "AzSurveyLink"), OutputType(typeof(bool))]
-    public sealed class OpenAzSurveyLink : PSCmdlet
+    [Cmdlet("Open", "AzSurvey"), OutputType(typeof(bool))]
+    public sealed class OpenAzSurvey : PSCmdlet
     {
-        private const string _SurveyLinkFormat = "https://aka.ms/azpredictorisurvey?SessionId={0}&from=cmdlet";
+        private const string _SurveyLinkFormat = "https://aka.ms/azpredictorisurvey?SessionId={0}&Q_CHL=cmdlet";
         /// <summary>
         /// <para type="description">Indicates whether the user would like to receive output. </para>
         /// </summary>

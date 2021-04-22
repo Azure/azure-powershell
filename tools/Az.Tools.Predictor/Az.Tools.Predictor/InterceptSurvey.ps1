@@ -218,7 +218,11 @@ if ($shouldIntercept) {
         }
     }
 
-    $escape = $([char]27)
-    Write-Host "`n$escape[7mHow was your experience using Az predictor?      $escape[27m`n" -NoNewline; Write-Host "$escape[7mhttp://aka.ms/azpredictorisurvey?SessionId=$surveyId$escape[27m" -NoNewline
-    Write-Host "`n"
+    Write-Host "---------------------------------------------------"; 
+    Write-Host "Survey:" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; 
+    Write-Host " How was your experience using Az predictor?"; 
+    Write-Host ""; 
+    Write-Host "Run " -NoNewline; Write-Host "Open-AzSurvey" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host " to give us your feedback."; 
+    Write-Host "---------------------------------------------------";
+    
 }
