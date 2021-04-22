@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, HelpMessage = "Placement tags applied to nodes in the node type as key/value pairs, which can be used to indicate where certain services (workload) should run. Updating this will override the current values.")]
         public Hashtable PlacementProperty { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The list of user assigend identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets")]
-        public string[] VmUserAssignedIdentities { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The list of user assigned identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. Follow steps to create the identity and add the role assignment with Service Fabric Resource Provider beforehand here: https://docs.microsoft.com/en-us/azure/service-fabric/how-to-managed-identity-managed-cluster-virtual-machine-scale-sets")]
+        public string[] VmUserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates if the node type can only host Stateless workloads.")]
         public SwitchParameter IsStateless { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Indicates if scale set associated with the node type can be composed of multiple placement groups.")]
-        public SwitchParameter MultiplePlacementGroups { get; set; }
+        public SwitchParameter MultiplePlacementGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
@@ -179,14 +179,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 newNodeType.PlacementProperties = this.PlacementProperty.Cast<DictionaryEntry>().ToDictionary(d => d.Key as string, d => d.Value as string);
             }
 
-            if (this.VmUserAssignedIdentities != null && this.VmUserAssignedIdentities.Length > 0)
+            if (this.VmUserAssignedIdentity != null && this.VmUserAssignedIdentity.Length > 0)
             {
-                newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentities);
+                newNodeType.VmManagedIdentity = new VmManagedIdentity(userAssignedIdentities: this.VmUserAssignedIdentity);
             }
 
-            if (this.MultiplePlacementGroups.IsPresent)
+            if (this.MultiplePlacementGroup.IsPresent)
             {
-                newNodeType.MultiplePlacementGroups = this.MultiplePlacementGroups.IsPresent;
+                newNodeType.MultiplePlacementGroups = this.MultiplePlacementGroup.IsPresent;
             }
 
             return newNodeType;
