@@ -14,8 +14,8 @@ Creates a new sql virtual machine.
 
 ### NameParamaterList (Default)
 ```
-New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> [-LicenseType] <String> -Location <String> [-AsJob]
- [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>] [-Tag <Hashtable>]
+New-AzSqlVM [-ResourceGroupName] <String> [-Name] <String> -Location <String> [-AsJob]
+ [-LicenseType <String>] [-Offer <String>] [-Sku <String>] [-SqlManagementType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,7 +80,7 @@ Type: System.String
 Parameter Sets: NameParamaterList
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
