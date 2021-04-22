@@ -25,6 +25,8 @@
     - `New-AzStorageAccount`
 * Fixed an issue that delete immutable blob will prompt incorrect message.
     - `Remove-AzStorageAccount`
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - `Set-AzStorageAccount`
 * Added breaking change warning message for upcoming cmdlet breaking change
     - `Remove-AzRmStorageShare`
 
