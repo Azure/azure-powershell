@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion",
         Mandatory = false,
         ParameterSetName = KeyvaultEncryptionParameterSet)]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string KeyVersion { get; set; }
 
         [Parameter(HelpMessage = "Storage Account encryption keySource KeyVault KeyVaultUri",
