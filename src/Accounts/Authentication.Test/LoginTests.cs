@@ -17,22 +17,13 @@ using Common.Authentication.Test.Cmdlets;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Identity.Client;
-using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Security;
 using Xunit;
 
 namespace Common.Authentication.Test
@@ -94,7 +85,7 @@ namespace Common.Authentication.Test
         public void LoginWithServicePrincipal()
         {
             // REQUIRED:
-            // _tenantId --> Id of the tenant that the service principal is registered to
+            // _tenantId --> Id of the tenant that the service princinpal is registered to
             // _userName --> Application id of the service principal
             // _password --> Secret of the service principal
             _account = new AzureAccount() { Type = AzureAccount.AccountType.ServicePrincipal };
@@ -141,7 +132,6 @@ namespace Common.Authentication.Test
             session.ARMContextSaveMode = ContextSaveMode.CurrentUser;
             try
             {
-                // TODO: enable auto save with the client factory
                 if (writeAutoSaveFile)
                 {
                     try

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -23,12 +22,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public Action<string> PromptAction { get; set; }
 
         public InteractiveParameters(
-            AuthenticationClientFactory authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
-            Action<string> promptAction) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
+            string userId,
+            string homeAccountId,
+            Action<string> promptAction) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId, userId, homeAccountId)
         {
             PromptAction = promptAction;
         }

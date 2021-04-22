@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.IO;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -72,19 +71,21 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     client.TryRemoveContext(context);
                 }
 
-                AuthenticationClientFactory authenticationClientFactory;
-                if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+                PowerShellTokenCacheProvider tokenCacheProvider;
+                if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
                 {
                     WriteWarning(Resources.ClientFactoryNotRegisteredClear);
                 }
                 else
                 {
-                    authenticationClientFactory.ClearCache();
+                    tokenCacheProvider.ClearCache();
                     var defaultContext = new AzureContext();
                     profile.TrySetDefaultContext(defaultContext);
                     result = true;
                 }
             }
+
+            AzureSession.Instance.RaiseContextClearedEvent();
 
             if (PassThru.IsPresent)
             {

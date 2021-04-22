@@ -15,11 +15,15 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -27,29 +31,43 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
-            var authenticationClientFactory = parameters.AuthenticationClientFactory;
+            var deviceCodeParameters = parameters as DeviceCodeParameters;
+            var tokenCacheProvider = parameters.TokenCacheProvider;
             var onPremise = parameters.Environment.OnPremise;
+            //null instead of "organizations" should be passed to Azure.Identity to support MSA account
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = parameters.Environment.GetEndpoint(parameters.ResourceId) ?? parameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = onPremise ?
-                                parameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-            TracingAdapter.Information(string.Format("[DeviceCodeAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
-            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
-            TracingAdapter.Information(string.Format("[DeviceCodeAuthenticator] Calling AcquireTokenWithDeviceCode - Scopes: '{0}'", string.Join(",", scopes)));
-            var response = GetResponseAsync(publicClient, scopes, cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-            return AuthenticationResultToken.GetAccessTokenAsync(response);
+            var authority = parameters.Environment.ActiveDirectoryAuthority;
+
+            var requestContext = new TokenRequestContext(scopes);
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
+
+            DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
+            {
+                DeviceCodeCallback = DeviceCodeFunc,
+                AuthorityHost = new Uri(authority),
+                ClientId = clientId,
+                TenantId = tenantId,
+                TokenCache = tokenCache.TokenCache,
+            };
+            var codeCredential = new DeviceCodeCredential(options);
+
+            TracingAdapter.Information($"{DateTime.Now:T} - [DeviceCodeAuthenticator] Calling DeviceCodeCredential.AuthenticateAsync - TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'");
+            var authTask = codeCredential.AuthenticateAsync(requestContext, cancellationToken);
+            return MsalAccessToken.GetAccessTokenAsync(
+                authTask,
+                codeCredential,
+                requestContext,
+                cancellationToken);
         }
 
-        public async Task<AuthenticationResult> GetResponseAsync(IPublicClientApplication client, string[] scopes, CancellationToken cancellationToken)
+        private Task DeviceCodeFunc(DeviceCodeInfo info, CancellationToken cancellation)
         {
-            return await client.AcquireTokenWithDeviceCode(scopes, deviceCodeResult =>
-            {
-                WriteWarning(deviceCodeResult?.Message);
-                return Task.FromResult(0);
-            }).ExecuteAsync(cancellationToken);
+            WriteWarning(info.Message);
+            return Task.CompletedTask;
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
@@ -60,7 +78,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         private void WriteWarning(string message)
         {
             EventHandler<StreamEventArgs> writeWarningEvent;
-            if (AzureSession.Instance.TryGetComponent("WriteWarning", out writeWarningEvent))
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.WriteWarningKey, out writeWarningEvent))
             {
                 writeWarningEvent(this, new StreamEventArgs() { Message = message });
             }

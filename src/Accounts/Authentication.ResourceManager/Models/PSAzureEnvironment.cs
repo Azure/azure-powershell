@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public PSAzureEnvironment(IAzureEnvironment environment)
         {
             this.CopyFrom(environment);
+            if(environment is AzureEnvironment source)
+            {
+                this.Type = source.Type;
+            }
         }
 
         /// <summary>
@@ -108,12 +112,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
             SqlDatabaseDnsSuffix = other.GetProperty<string>(nameof(SqlDatabaseDnsSuffix));
             StorageEndpointSuffix = other.GetProperty<string>(nameof(StorageEndpointSuffix));
             TrafficManagerDnsSuffix = other.GetProperty<string>(nameof(TrafficManagerDnsSuffix));
+            ContainerRegistryEndpointSuffix = other.GetProperty<string>(nameof(ContainerRegistryEndpointSuffix));
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
             AzureAttestationServiceEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureAttestationServiceEndpointResourceId));
             AzureAttestationServiceEndpointSuffix = other.GetProperty<string>(nameof(AzureAttestationServiceEndpointSuffix));
+            AzureSynapseAnalyticsEndpointResourceId =
+                other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointResourceId));
+            AzureSynapseAnalyticsEndpointSuffix = other.GetProperty<string>(nameof(AzureSynapseAnalyticsEndpointSuffix));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -123,6 +131,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Type of environment
+        /// </summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether ADFS authentication should be allowed . 
@@ -235,6 +248,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
         /// <summary>
+        /// The domain name suffix for Azure Container Registry
+        /// </summary>
+        public string ContainerRegistryEndpointSuffix { get; set; }
+
+        /// <summary>
         /// The token audience required for communicating with the Azure Log Analytics query service in this environment
         /// </summary>
         public string AzureOperationalInsightsEndpointResourceId
@@ -324,6 +342,36 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        /// <summary>
+        /// The domain name suffix for Azure Synapse Analyticss
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix, value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Synapse Analyticss endpoint
+        /// </summary>
+        public string AzureSynapseAnalyticsEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointResourceId, value);
+            }
+        }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -365,7 +413,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
                        && AzureAttestationServiceEndpointResourceId == other.AzureAttestationServiceEndpointResourceId
-                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix;
+                       && AzureAttestationServiceEndpointSuffix == other.AzureAttestationServiceEndpointSuffix
+                       && ContainerRegistryEndpointSuffix == other.ContainerRegistryEndpointSuffix;
             }
 
             return false;

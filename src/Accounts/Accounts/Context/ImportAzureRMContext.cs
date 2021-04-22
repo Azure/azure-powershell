@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
-using System;
-using System.Linq;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -80,10 +79,10 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
                 if (AzureSession.Instance.TryGetComponent(
-                    AuthenticationClientFactory.AuthenticationClientFactoryKey,
-                    out AuthenticationClientFactory authenticationClientFactory))
+                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                    out PowerShellTokenCacheProvider tokenCacheProvider))
                 {
-                    authenticationClientFactory.FlushTokenData();
+                    tokenCacheProvider.FlushTokenData();
                 }
             }
             catch

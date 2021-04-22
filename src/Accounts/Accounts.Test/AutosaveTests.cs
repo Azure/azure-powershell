@@ -25,7 +25,6 @@ using System;
 using Microsoft.Azure.Commands.Profile.Context;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -52,6 +51,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.ARMContextSaveMode = ContextSaveMode.Process;
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "false");
+            PowerShellTokenCacheProvider tokenProvider = new InMemoryTokenCacheProvider();
+            AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenProvider);
+            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenProvider.GetTokenCache());
         }
 
         [Fact]
@@ -123,8 +125,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
-                Assert.True(AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out AuthenticationClientFactory factory));
-                Assert.Equal(typeof(InMemoryTokenCacheClientFactory), factory.GetType());
+                Assert.True(AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out PowerShellTokenCacheProvider factory));
+                Assert.Equal(typeof(InMemoryTokenCacheProvider), factory.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
             }
             finally
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DisableAutoSaveWhenDisabled()
+        public void DisableAutoSsaveWhenDisabled()
         {
             ResetState();
             try
@@ -147,8 +149,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 cmdlet.ExecuteCmdlet();
                 cmdlet.InvokeEndProcessing();
                 Assert.Equal(ContextSaveMode.Process, AzureSession.Instance.ARMContextSaveMode);
-                Assert.True(AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out AuthenticationClientFactory factory));
-                Assert.Equal(typeof(InMemoryTokenCacheClientFactory), factory.GetType());
+                Assert.True(AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out PowerShellTokenCacheProvider factory));
+                Assert.Equal(typeof(InMemoryTokenCacheProvider), factory.GetType());
                 Assert.Equal(typeof(ResourceManagerProfileProvider), AzureRmProfileProvider.Instance.GetType());
             }
             finally

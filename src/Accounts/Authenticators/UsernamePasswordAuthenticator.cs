@@ -13,14 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Identity.Client;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -29,23 +33,49 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     /// </summary>
     public class UsernamePasswordAuthenticator : DelegatingAuthenticator
     {
+        private bool EnablePersistenceCache { get; set; }
+
+        public UsernamePasswordAuthenticator(bool enablePersistentCache = true)
+        {
+            EnablePersistenceCache = enablePersistentCache;
+        }
+
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var upParameters = parameters as UsernamePasswordParameters;
             var onPremise = upParameters.Environment.OnPremise;
-            var authenticationClientFactory = upParameters.AuthenticationClientFactory;
+            var tenantId = onPremise ? AdfsTenant : upParameters.TenantId; //Is user name + password valid in Adfs env?
+            var tokenCacheProvider = upParameters.TokenCacheProvider;
             var resource = upParameters.Environment.GetEndpoint(upParameters.ResourceId) ?? upParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = onPremise ?
-                                upParameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
-            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
-            TracingAdapter.Information(string.Format("[UsernamePasswordAuthenticator] Calling AcquireTokenByUsernamePassword - Scopes: '{0}', UserId: '{1}'", string.Join(",", scopes), upParameters.UserId));
-            var response = publicClient.AcquireTokenByUsernamePassword(scopes, upParameters.UserId, upParameters.Password).ExecuteAsync(cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-            return AuthenticationResultToken.GetAccessTokenAsync(response);
+            var authority = upParameters.Environment.ActiveDirectoryAuthority;
+
+            var requestContext = new TokenRequestContext(scopes);
+            UsernamePasswordCredential passwordCredential;
+
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
+
+            var credentialOptions = new UsernamePasswordCredentialOptions()
+            {
+                AuthorityHost = new Uri(authority),
+                TokenCache = tokenCache.TokenCache
+            };
+            if (upParameters.Password != null)
+            {
+                passwordCredential = new UsernamePasswordCredential(upParameters.UserId, upParameters.Password.ConvertToString(), tenantId, clientId, credentialOptions);
+                TracingAdapter.Information($"{DateTime.Now:T} - [UsernamePasswordAuthenticator] Calling UsernamePasswordCredential.AuthenticateAsync - TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{authority}', UserId:'{upParameters.UserId}'");
+                var authTask = passwordCredential.AuthenticateAsync(requestContext, cancellationToken);
+                return MsalAccessToken.GetAccessTokenAsync(
+                    authTask,
+                    passwordCredential,
+                    requestContext,
+                    cancellationToken);
+            }
+            else
+            {
+                throw new InvalidOperationException(Resources.MissingPasswordAndNoCache);
+            }
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 using System.Security;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -24,17 +24,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public SecureString Password { get; set; }
 
+        public string HomeAccountId { get; set; }
+
         public UsernamePasswordParameters(
-            AuthenticationClientFactory authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
             IAzureTokenCache tokenCache,
             string tenantId,
             string resourceId,
             string userId,
-            SecureString password) : base(authenticationClientFactory, environment, tokenCache, tenantId, resourceId)
+            SecureString password,
+            string homeAccountId) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             UserId = userId;
             Password = password;
+            HomeAccountId = homeAccountId;
         }
     }
 }

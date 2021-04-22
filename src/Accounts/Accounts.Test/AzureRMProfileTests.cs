@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClient()
+                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
@@ -89,7 +90,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClient()
+                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
@@ -142,6 +144,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null,
                 false,
                 null);
+            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
 
         [Fact]
@@ -161,13 +164,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            getAsyncResponses.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
-            MockSubscriptionClientFactory.SetGetAsyncResponses(getAsyncResponses);
-
+            
             Assert.Throws<PSInvalidOperationException>(() => client.Login(
                Context.Account,
                Context.Environment,
@@ -177,6 +179,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                null,
                false,
                null));
+            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
         }
 
         [Fact]
@@ -227,12 +230,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var getAsyncResponses = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            getAsyncResponses.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
-            MockSubscriptionClientFactory.SetGetAsyncResponses(getAsyncResponses);
 
             var azureRmProfile = client.Login(
                 Context.Account,
@@ -264,8 +266,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            var listAsyncResponses = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
-            listAsyncResponses.Enqueue(() =>
+            MockSubscriptionClientFactory.SubListQueueVer2019 = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
+            MockSubscriptionClientFactory.SubListQueueVer2019.Enqueue(() =>
             {
                 var sub1 = new Subscription(
                     id: DefaultSubscription.ToString(),
@@ -288,7 +290,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     Body = new MockPage<Subscription>(new List<Subscription> { sub1, sub2 })
                 };
             });
-            MockSubscriptionClientFactory.SetListAsyncResponses(listAsyncResponses);
 
             var azureRmProfile = client.Login(
                 Context.Account,
@@ -495,6 +496,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetContextPreservesTokenCache()
+        {
+            AzureRmProfile profile = null;
+            AzureContext context = new AzureContext(null, null, null, null);
+            Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(context));
+            profile = new AzureRmProfile();
+            Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
+            profile.SetContextWithCache(context);
+            Assert.Equal(AzureSession.Instance.TokenCache.CacheData, profile.DefaultContext.TokenCache.CacheData);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzurePSComletMessageQueue()
         {
             ConcurrentQueue<string> queue = new ConcurrentQueue<string>();
@@ -530,15 +544,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlet = new GetAzureRMSubscriptionCommand();
+            var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlet.DefaultProfile = profile;
-            cmdlet.CommandRuntime = commandRuntimeMock;
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
-            cmdlet.InvokeBeginProcessing();
-            cmdlet.ExecuteCmdlet();
-            cmdlet.InvokeEndProcessing();
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
 
             var subscriptionName = MockSubscriptionClientFactory.GetSubscriptionNameFromId(secondList[0]);
 
@@ -576,16 +590,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlet = new GetAzureRMSubscriptionCommand();
+            var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlet.DefaultProfile = profile;
-            cmdlet.CommandRuntime = commandRuntimeMock;
-            cmdlet.SubscriptionId = secondTenantSubscriptions[2];
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SubscriptionId = secondTenantSubscriptions[2];
 
             // Act
-            cmdlet.InvokeBeginProcessing();
-            cmdlet.ExecuteCmdlet();
-            cmdlet.InvokeEndProcessing();
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
@@ -626,16 +640,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var profile = new AzureRmProfile();
             profile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
             profile.DefaultContext = Context;
-            var cmdlet = new GetAzureRMSubscriptionCommand();
+            var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlet.DefaultProfile = profile;
-            cmdlet.CommandRuntime = commandRuntimeMock;
-            cmdlet.SubscriptionName = subscriptionName;
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.SubscriptionName = subscriptionName;
 
             // Act
-            cmdlet.InvokeBeginProcessing();
-            cmdlet.ExecuteCmdlet();
-            cmdlet.InvokeEndProcessing();
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
 
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
 
@@ -679,16 +693,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
 
             profile.DefaultContext.Account.Type = "User";
-            var cmdlet = new GetAzureRMSubscriptionCommand();
+            var cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlet.DefaultProfile = profile;
-            cmdlet.CommandRuntime = commandRuntimeMock;
-            Assert.Null(cmdlet.TenantId);
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlt.TenantId);
             // Act
-            cmdlet.InvokeBeginProcessing();
-            cmdlet.ExecuteCmdlet();
-            cmdlet.InvokeEndProcessing();
-            Assert.Null(cmdlet.TenantId);
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            Assert.Null(cmdlt.TenantId);
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 8);
 
             // TEST WITH MANAGEDSERVICE
@@ -705,16 +719,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.Tenant.Id = DefaultTenant.ToString();
 
             profile.DefaultContext.Account.Type = "ManagedService";
-            cmdlet = new GetAzureRMSubscriptionCommand();
+            cmdlt = new GetAzureRMSubscriptionCommand();
             // Setup
-            cmdlet.DefaultProfile = profile;
-            cmdlet.CommandRuntime = commandRuntimeMock;
-            Assert.Null(cmdlet.TenantId);
+            cmdlt.DefaultProfile = profile;
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            Assert.Null(cmdlt.TenantId);
             // Act
-            cmdlet.InvokeBeginProcessing();
-            cmdlet.ExecuteCmdlet();
-            cmdlet.InvokeEndProcessing();
-            Assert.NotNull(cmdlet.TenantId);
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+            Assert.NotNull(cmdlt.TenantId);
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 4);
         }
 
@@ -761,7 +775,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             currentProfile.DefaultContext = new AzureContext(sub, account, environment, tenant);
             currentProfile.EnvironmentTable[environment.Name] = environment;
-            currentProfile.DefaultContext.TokenCache = null;
+            currentProfile.DefaultContext.TokenCache = new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } };
 
             AzureRmProfile deserializedProfile;
             // Round-trip the exception: Serialize and de-serialize with a BinaryFormatter
@@ -883,7 +897,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         }
       },
       ""VersionProfile"": null,
-      ""TokenCache"": null,
+      ""TokenCache"": {
+        ""CacheData"": ""AgAAAAAAAAA=""
+      },
       ""ExtendedProperties"": {}
     }
   },
@@ -926,6 +942,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             };
             profile.DefaultContext = new AzureContext(sub, account, environment, tenant);
             profile.EnvironmentTable[environment.Name] = environment;
+            //profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
             string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
 #if NETSTANDARD
@@ -952,7 +969,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   },
   ""Context"": {
-    ""TokenCache"": null,
+    ""TokenCache"": ""AgAAAAAAAAA="",
     ""Account"": {
       ""Id"": ""me@contoso.com"",
       ""Type"": 1,
@@ -982,6 +999,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   }
 }";
+            var expectedArray = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 };
+#if NETSTANDARD
+            contents = contents.Replace("AgAAAAAAAAA=", "AwAAAAAAAAA=");
+            expectedArray = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 };
+#endif
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -1054,7 +1076,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(keyVaultToken2, account.GetProperty(AzureAccount.Property.KeyVaultAccessToken));
             var factory = new ClientFactory();
             var rmClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            var rmCred = rmClient.Credentials as TokenCredentials;
+            var rmCred = rmClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(rmCred);
             var message = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
             rmCred.ProcessHttpRequestAsync(message, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -1062,7 +1084,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(message.Headers.Authorization.Parameter);
             Assert.Contains(accessToken2, message.Headers.Authorization.Parameter);
             var graphClient = factory.CreateArmClient<MockServiceClient>(profile.DefaultContext, AzureEnvironment.Endpoint.Graph);
-            var graphCred = graphClient.Credentials as TokenCredentials;
+            var graphCred = graphClient.Credentials as RenewingTokenCredential;
             Assert.NotNull(graphCred);
             var graphMessage = new HttpRequestMessage(HttpMethod.Get, rmClient.BaseUri.ToString());
             graphCred.ProcessHttpRequestAsync(graphMessage, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
@@ -1070,7 +1092,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.NotNull(graphMessage.Headers.Authorization.Parameter);
             Assert.Contains(graphToken2, graphMessage.Headers.Authorization.Parameter);
         }
-
 
         private class MockPage<T> : IPage<T>
         {

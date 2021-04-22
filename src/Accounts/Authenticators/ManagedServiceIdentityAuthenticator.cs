@@ -13,11 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -28,14 +35,30 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token",
             DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
 
+        private static Regex SystemMsiNameRegex = new Regex(Constants.DefaultMsiAccountIdPrefix + @"\d+");
+
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var msiParameters = parameters as ManagedServiceIdentityParameters;
-            return Task.Run(() => GetManagedServiceToken(msiParameters.Account,
-                                                         msiParameters.Environment,
-                                                         msiParameters.TenantId,
-                                                         msiParameters.ResourceId),
-                                                         cancellationToken);
+
+            var scopes = new[] { GetResourceId(msiParameters.ResourceId, msiParameters.Environment) };
+            var requestContext = new TokenRequestContext(scopes);
+            var userAccountId = SystemMsiNameRegex.IsMatch(msiParameters.Account.Id) ? null : msiParameters.Account.Id;
+
+            AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
+            AzureSession.Instance.TryGetComponent(nameof(MsalAccessTokenAcquirerFactory), out MsalAccessTokenAcquirerFactory msalAccessTokenAcquirerFactory);
+
+            var identityCredential = azureCredentialFactory.CreateManagedIdentityCredential(userAccountId);
+            var msalAccessTokenAcquirer = msalAccessTokenAcquirerFactory.CreateMsalAccessTokenAcquirer();
+            var parametersLog = $"- TenantId:'{msiParameters.TenantId}', Scopes:'{string.Join(",", scopes)}', UserId:'{userAccountId}'";
+            return msalAccessTokenAcquirer.GetAccessTokenAsync(
+                                nameof(ManagedServiceIdentityAuthenticator),
+                                parametersLog,
+                                identityCredential,
+                                requestContext,
+                                cancellationToken,
+                                msiParameters.TenantId,
+                                msiParameters.Account.Id);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
@@ -43,54 +66,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             return (parameters as ManagedServiceIdentityParameters) != null;
         }
 
-        private IAccessToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)
-        {
-            if (environment == null)
-            {
-                throw new InvalidOperationException("Environment is required for MSI Login");
-            }
-
-            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
-            {
-                account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
-            }
-
-            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUriBackup))
-            {
-                account.SetProperty(AzureAccount.Property.MSILoginUriBackup, DefaultBackupMSILoginUri);
-            }
-
-            if (string.IsNullOrWhiteSpace(tenant))
-            {
-                tenant = environment.AdTenant ?? CommonAdTenant;
-            }
-
-            if (account.IsPropertySet(AppServiceManagedIdentityFlag))
-            {
-                TracingAdapter.Information(string.Format("[ManagedServiceIdentityAuthenticator] Creating App Service managed service token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
-                return new ManagedServiceAppServiceAccessToken(account, environment, GetFunctionsResourceId(resourceId, environment), tenant);
-            }
-
-            TracingAdapter.Information(string.Format("[ManagedServiceIdentityAuthenticator] Creating managed service token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
-            return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
-        }
-
         private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)
         {
             return environment.GetEndpoint(resourceIdorEndpointName) ?? resourceIdorEndpointName;
-        }
-
-        private string GetFunctionsResourceId(string resourceIdOrEndpointName, IAzureEnvironment environment)
-        {
-            var resourceId = environment.GetEndpoint(resourceIdOrEndpointName) ?? resourceIdOrEndpointName;
-            if (string.Equals(
-                environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId),
-                resourceId, StringComparison.OrdinalIgnoreCase))
-            {
-                resourceId = environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
-            }
-
-            return resourceId;
         }
     }
 }

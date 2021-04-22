@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Identity.Client;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -30,22 +32,34 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var silentParameters = parameters as SilentParameters;
             var onPremise = silentParameters.Environment.OnPremise;
-            var authenticationClientFactory = silentParameters.AuthenticationClientFactory;
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = silentParameters.Environment.GetEndpoint(silentParameters.ResourceId) ?? silentParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
-            var clientId = AuthenticationHelpers.PowerShellClientId;
-            var authority = onPremise ?
-                                silentParameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(silentParameters.Environment, silentParameters.TenantId);
-            TracingAdapter.Information(string.Format("[SilentAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', UseAdfs: '{2}'", clientId, authority, onPremise));
-            var publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, useAdfs: onPremise);
-            TracingAdapter.Information(string.Format("[SilentAuthenticator] Calling GetAccountsAsync"));
-            var accounts = publicClient.GetAccountsAsync()
-                .ConfigureAwait(false).GetAwaiter().GetResult();
-            TracingAdapter.Information(string.Format("[SilentAuthenticator] Calling AcquireTokenSilent - Scopes: '{0}', UserId: '{1}', Number of accounts: '{2}'", string.Join(",", scopes), silentParameters.UserId, accounts.Count()));
-            var response = publicClient.AcquireTokenSilent(scopes, accounts.FirstOrDefault(a => a.Username == silentParameters.UserId)).ExecuteAsync(cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-            return AuthenticationResultToken.GetAccessTokenAsync(response);
+            var authority = silentParameters.Environment.ActiveDirectoryAuthority;
+
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
+            var options = new SharedTokenCacheCredentialOptions(tokenCache.TokenCache)
+            {
+                EnableGuestTenantAuthentication = true,
+                ClientId = AuthenticationHelpers.PowerShellClientId,
+                Username = silentParameters.UserId,
+                AuthorityHost = new Uri(authority),
+                TenantId = tenantId,
+            };
+
+            var cacheCredential = new SharedTokenCacheCredential(options);
+            var requestContext = new TokenRequestContext(scopes);
+            var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
+            return MsalAccessToken.GetAccessTokenAsync(
+                nameof(SilentAuthenticator),
+                parametersLog,
+                cacheCredential,
+                requestContext,
+                cancellationToken,
+                silentParameters.TenantId,
+                silentParameters.UserId,
+                silentParameters.HomeAccountId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)
