@@ -29,6 +29,7 @@ function Test-CreateBasicCluster
 
 	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
 	Assert-AreEqual 5 $pnt.VmInstanceCount
+	Assert-AreEqual "Standard_LRS" $pnt.DataDiskType
 
 	# shouldn't be allowed to remove the only primary node type in the cluster
 	Assert-ThrowsContains { $pnt | Remove-AzServiceFabricManagedNodeType } "InvalidParameter"
@@ -69,12 +70,12 @@ function Test-NodeTypeOperations
 	WaitForAllJob
 
 	$pnt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt
-	Assert-AreEqual "Standard_LRS" $pnt.DataDiskType
-	Assert-False $snt.IsStateless
+	Assert-AreEqual "Premium_LRS" $pnt.DataDiskType
+	Assert-False { $pnt.IsStateless }
 
 	$snt = Get-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt
 	Assert-AreEqual "StandardSSD_LRS" $snt.DataDiskType
-	Assert-True $snt.IsStateless
+	Assert-True { $snt.IsStateless }
 
 	$restart = Restart-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name snt -NodeName snt_0, snt_1 -PassThru
 	Assert-True { $restart }
