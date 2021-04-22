@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "InputObject",
+            ChangeDescription = "The type PSManagedService will change removing the property Properties. And new child resource types PSManagedStatefulService and PSManagedStatelessService will be added with the correct properties.")]
         [Parameter(Mandatory = true, ParameterSetName = StatelessByInputObject, ValueFromPipeline = true, HelpMessage = "The managed service resource.")]
         [Parameter(Mandatory = true, ParameterSetName = StatefulByInputObject, ValueFromPipeline = true, HelpMessage = "The managed service resource.")]
         public PSManagedService InputObject { get; set; }
