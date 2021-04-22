@@ -2214,7 +2214,7 @@ function Test-GatewayLoadBalancer-ProviderOnePool
     $backendAddressPoolName = Get-ResourceName
     $probeName = Get-ResourceName
     $lbruleName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = "eastus2euap"
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = "eastus2euap"
 
@@ -2224,8 +2224,8 @@ function Test-GatewayLoadBalancer-ProviderOnePool
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
 
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
@@ -2288,7 +2288,7 @@ function Test-GatewayLoadBalancer-ProviderTwoPool
     $backendAddressPoolName2 = Get-ResourceName
     $probeName = Get-ResourceName
     $lbruleName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = "eastus2euap"
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = "eastus2euap"
 
@@ -2298,8 +2298,8 @@ function Test-GatewayLoadBalancer-ProviderTwoPool
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
 
         # Create the Virtual Network
-        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
 
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
@@ -2308,9 +2308,9 @@ function Test-GatewayLoadBalancer-ProviderTwoPool
         $backendAddressPool1 = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName1 -TunnelInterface $tunnelInterface1
         $backendAddressPool2 = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName2 -TunnelInterface $tunnelInterface2
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool1,$backendAddressPool1 -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool1,$backendAddressPool2 -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
 
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway -BackendAddressPool $backendAddressPool1,$backendAddressPool1
 
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
