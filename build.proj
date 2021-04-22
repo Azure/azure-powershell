@@ -222,28 +222,28 @@
   <!-- Everything except Publish -->
   <Target Name="Full" DependsOnTargets="Clean;Build;OnPremChecks;GenerateHelp;StaticAnalysis;Test" />
 
-  <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="FilterBuild">
+  <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for breaking change..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers breaking-change -u -m '%(FilterTaskResult.breaking-change)'" />
   </Target>
 
-  <Target Name="StaticAnalysisDependency" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="FilterBuild">
+  <Target Name="StaticAnalysisDependency" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for dependency..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers dependency -u -m '%(FilterTaskResult.breaking-change)'" />
   </Target>
   
-  <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="FilterBuild">
+  <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for signature..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.breaking-change)'" />
   </Target>
   
-  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="FilterBuild">
+  <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for help..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
     

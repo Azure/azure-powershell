@@ -237,34 +237,31 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
             // For each output in the old metadata, see if it
             // exists in the new metadata
-            if (oldCmdlet.OutputTypes != null)
+            foreach (var oldOutput in oldCmdlet.OutputTypes)
             {
-                foreach (var oldOutput in oldCmdlet.OutputTypes)
+                // If the output can be found, use the TypeMetadataHelper to
+                // check the type for any breaking changes
+                if (outputDictionary.ContainsKey(oldOutput.Type.Name))
                 {
-                    // If the output can be found, use the TypeMetadataHelper to
-                    // check the type for any breaking changes
-                    if (outputDictionary.ContainsKey(oldOutput.Type.Name))
-                    {
-                        var newOutputType = outputDictionary[oldOutput.Type.Name];
+                    var newOutputType = outputDictionary[oldOutput.Type.Name];
 
-                        _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
-                    }
-                    // If the output cannot be found by name, check if the old output can be mapped
-                    // to any of the new output types
-                    else
+                    _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
+                }
+                // If the output cannot be found by name, check if the old output can be mapped
+                // to any of the new output types
+                else
+                {
+                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
+                    if (!foundOutput)
                     {
-                        var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
-                        if (!foundOutput)
-                        {
-                            issueLogger?.LogBreakingChangeIssue(
-                                cmdlet: oldCmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                                description: string.Format(Resources.ChangedOutputTypeDescription,
-                                    oldCmdlet.Name, oldOutput.Type.Name),
-                                remediation: string.Format(Resources.ChangedOutputTypeRemediation,
-                                    oldCmdlet.Name, oldOutput.Type.Name));
-                        }
+                        issueLogger?.LogBreakingChangeIssue(
+                            cmdlet: oldCmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                            description: string.Format(Resources.ChangedOutputTypeDescription,
+                                oldCmdlet.Name, oldOutput.Type.Name),
+                            remediation: string.Format(Resources.ChangedOutputTypeRemediation,
+                                oldCmdlet.Name, oldOutput.Type.Name));
                     }
                 }
             }

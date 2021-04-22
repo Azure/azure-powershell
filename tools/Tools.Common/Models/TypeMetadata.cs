@@ -220,12 +220,12 @@ namespace Tools.Common.Models
 
         private string GetClassNameWithoutApiVersion(string className)
         {
-            var matcher = Regex.Match(className, "([^\"]+)\\.Api[^\"]+\\.([^\"]+)");
+            var matcher = Regex.Match(className, @"Microsoft\.Azure\.PowerShell\.Cmdlets\.([\w\.]+)\.Api[\w\d]+\.([\w\.]+)");
             if (!matcher.Success || matcher.Groups.Count < 3)
             {
                 return className;
             }
-            return string.Format("{0}.{1}", matcher.Groups[1].Value, matcher.Groups[2].Value);
+            return string.Format("Microsoft.Azure.PowerShell.Cmdlets.{0}.{1}", matcher.Groups[1].Value, matcher.Groups[2].Value);
         }
 
         /// <summary>

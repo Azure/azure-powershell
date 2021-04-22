@@ -149,8 +149,7 @@ namespace VersionController.Models
             }
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
-            Console.WriteLine($"{bumpedVersion} in GetBumpedVersion {versionBump} {_oldVersion}");
-
+            
             List<AzurePSVersion> galleryVersion = GetGalleryVersion();
 
             AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
@@ -170,6 +169,7 @@ namespace VersionController.Models
             {
                 string errorMsg = $"The GA version of {moduleName} in gallery ({maxGalleryGAVersion}) is greater or equal to the bumped version({bumpedVersion}).";
                 _logger.LogError(errorMsg);
+                throw new Exception(errorMsg);
             }
             else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
             {
@@ -376,8 +376,6 @@ namespace VersionController.Models
             var pattern = @"RootModule(\s*)=(\s*)(['\""])" + moduleName + @"(\.)psm1(['\""])";
             tempModuleContent = tempModuleContent.Select(l => Regex.Replace(l, pattern, @"# RootModule = ''")).ToArray();
             File.WriteAllLines(projectModuleManifestPath, tempModuleContent);
-            var artifactsPath = tempModuleManifestPath.Replace("-temp", "");
-            File.WriteAllLines(artifactsPath, tempModuleContent);
             File.Delete(tempModuleManifestPath);
         }
 

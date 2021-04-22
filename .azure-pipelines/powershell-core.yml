@@ -22,7 +22,7 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
+      macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
@@ -48,7 +48,7 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
+      macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
@@ -73,7 +73,7 @@ jobs:
       linux:
         OSName: ${{ variables.LinuxName }}
         ImageName: ${{ variables.LinuxImage }}
-      macOS:
+      macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
   pool:
