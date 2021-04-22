@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Modified New-AzSqlVm to accept null SqlServerLicenseType
 
 ## Version 1.1.0
 * Added cmdlets for Availability Group Listener
