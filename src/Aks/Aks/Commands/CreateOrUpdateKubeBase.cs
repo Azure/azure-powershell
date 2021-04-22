@@ -125,55 +125,6 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false)]
         public Hashtable Tag { get; set; }
 
-        protected virtual ManagedCluster BuildNewCluster()
-        {
-            BeforeBuildNewCluster();
-
-            var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
-                name: NodeName ?? "default",
-                count: NodeCount,
-                vmSize: NodeVmSize,
-                osDiskSizeGB: NodeOsDiskSize);
-
-            if (this.IsParameterBound(c => c.NodeMinCount))
-            {
-                defaultAgentPoolProfile.MinCount = NodeMinCount;
-            }
-            if (this.IsParameterBound(c => c.NodeMaxCount))
-            {
-                defaultAgentPoolProfile.MaxCount = NodeMaxCount;
-            }
-            if (EnableNodeAutoScaling.IsPresent)
-            {
-                defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
-            }
-
-            var pubKey =
-                new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
-
-            var linuxProfile =
-                new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
-                    new ContainerServiceSshConfiguration(pubKey));
-
-            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
-
-            var spProfile = new ManagedClusterServicePrincipalProfile(
-                acsServicePrincipal.SpId,
-                acsServicePrincipal.ClientSecret);
-
-            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
-            var managedCluster = new ManagedCluster(
-                Location,
-                name: Name,
-                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
-                dnsPrefix: DnsNamePrefix,
-                kubernetesVersion: KubernetesVersion,
-                agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
-                linuxProfile: linuxProfile,
-                servicePrincipalProfile: spProfile);
-            return managedCluster;
-        }
-
         protected void BeforeBuildNewCluster()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
@@ -322,7 +273,7 @@ namespace Microsoft.Azure.Commands.Aks
             RoleAssignment roleAssignment = null;
             var actionSuccess = RetryAction(() =>
             {
-                roleAssignment = AuthClient.RoleAssignments.List().Where(x => x.Properties.RoleDefinitionId == roleDefinitionId).FirstOrDefault();
+                roleAssignment = AuthClient.RoleAssignments.List().Where(x => x.Properties.RoleDefinitionId == roleDefinitionId && x.Name == Name).FirstOrDefault();
             });
             if (!actionSuccess)
             {

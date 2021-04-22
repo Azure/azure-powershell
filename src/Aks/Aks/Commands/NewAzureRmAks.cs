@@ -109,6 +109,8 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "Generate ssh key file to folder {HOME}/.ssh/ using pre-installed ssh-keygen.")]
         public SwitchParameter GenerateSshKey { get; set; }
 
+        private AcsServicePrincipal acsServicePrincipal;
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -123,6 +125,11 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     var cluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
                     var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+
+                    if (this.IsParameterBound(c => c.AcrNameToAttach))
+                    {
+                        AddAcrRoleAssignment(AcrNameToAttach, nameof(AcrNameToAttach), acsServicePrincipal);
+                    }
                     WriteObject(psObj);
                 }
                 catch (ValidationException e)
@@ -254,7 +261,7 @@ namespace Microsoft.Azure.Commands.Aks
                 SshKeyValue = GenerateSshKeyValue();
             }
         }
-        protected override ManagedCluster BuildNewCluster()
+        private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
 
@@ -265,7 +272,7 @@ namespace Microsoft.Azure.Commands.Aks
                 new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
                     new ContainerServiceSshConfiguration(pubKey));
 
-            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+            acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
 
             var spProfile = new ManagedClusterServicePrincipalProfile(
                 acsServicePrincipal.SpId,
@@ -305,11 +312,6 @@ namespace Microsoft.Azure.Commands.Aks
             //{
             //    managedCluster.EnablePodSecurityPolicy = EnablePodSecurityPolicy;
             //}
-
-            if (this.IsParameterBound(c => c.AcrNameToAttach))
-            {
-                AddAcrRoleAssignment(AcrNameToAttach, nameof(AcrNameToAttach), acsServicePrincipal);
-            }
 
             return managedCluster;
         }

@@ -73,6 +73,55 @@ namespace Microsoft.Azure.Commands.Aks
         [Alias("ResourceId")]
         public string Id { get; set; }
 
+        private ManagedCluster BuildNewCluster()
+        {
+            BeforeBuildNewCluster();
+
+            var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
+                name: NodeName ?? "default",
+                count: NodeCount,
+                vmSize: NodeVmSize,
+                osDiskSizeGB: NodeOsDiskSize);
+
+            if (this.IsParameterBound(c => c.NodeMinCount))
+            {
+                defaultAgentPoolProfile.MinCount = NodeMinCount;
+            }
+            if (this.IsParameterBound(c => c.NodeMaxCount))
+            {
+                defaultAgentPoolProfile.MaxCount = NodeMaxCount;
+            }
+            if (EnableNodeAutoScaling.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
+            }
+
+            var pubKey =
+                new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
+
+            var linuxProfile =
+                new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
+                    new ContainerServiceSshConfiguration(pubKey));
+
+            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+
+            var spProfile = new ManagedClusterServicePrincipalProfile(
+                acsServicePrincipal.SpId,
+                acsServicePrincipal.ClientSecret);
+
+            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
+            var managedCluster = new ManagedCluster(
+                Location,
+                name: Name,
+                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
+                dnsPrefix: DnsNamePrefix,
+                kubernetesVersion: KubernetesVersion,
+                agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
+                linuxProfile: linuxProfile,
+                servicePrincipalProfile: spProfile);
+            return managedCluster;
+        }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

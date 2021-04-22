@@ -14,12 +14,17 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.ContainerRegistry;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
     public class TestController
     {
         private readonly EnvironmentSetupHelper _helper;
+
+        public ContainerRegistryManagementClient ContainerRegistryManagementClient { get; private set; }
 
         public ContainerServiceClient ContainerServiceClient { get; private set; }
 
@@ -29,6 +34,12 @@ namespace Commands.Aks.Test.ScenarioTests
         }
 
         public static TestController NewInstance => new TestController();
+
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
+        public string UserDomain { get; private set; }
+        public GraphRbacManagementClient InternalGraphRbacManagementClient { get; private set; }
 
         public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
@@ -44,6 +55,7 @@ namespace Commands.Aks.Test.ScenarioTests
 
             var d = new Dictionary<string, string>
             {
+                {"Microsoft.Resources", null},
                 {"Microsoft.Features", null},
                 {"Microsoft.Authorization", null}
             };
@@ -64,6 +76,7 @@ namespace Commands.Aks.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.ContainerRegistry.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -106,14 +119,70 @@ namespace Commands.Aks.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
+            ContainerRegistryManagementClient = GetContainerRegistryManagementClient(context);
             ContainerServiceClient = GetContainerServiceClient(context);
             InternalResourceManagementClient = GetInternalResourceManagementClient(context);
-            _helper.SetupManagementClients(ContainerServiceClient, InternalResourceManagementClient);
+            InternalAuthorizationManagementClient = GetAuthorizationManagementClient(context);
+            InternalGraphRbacManagementClient = GetGraphRbacManagementClient(context);
+            _helper.SetupManagementClients(ContainerRegistryManagementClient,
+                ContainerServiceClient,
+                InternalResourceManagementClient,
+                InternalAuthorizationManagementClient,
+                InternalGraphRbacManagementClient);
         }
 
         private static ContainerServiceClient GetContainerServiceClient(MockContext context)
         {
             return context.GetServiceClient<ContainerServiceClient>();
+        }
+        private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
+        {
+            //var environment = TestEnvironmentFactory.GetTestEnvironment();
+            //string tenantId = null;
+
+            //if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            //{
+            //    tenantId = environment.Tenant;
+            //    UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+
+            //    HttpMockServer.Variables[TenantIdKey] = tenantId;
+            //    HttpMockServer.Variables[DomainKey] = UserDomain;
+            //}
+            //else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            //{
+            //    if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+            //    {
+            //        tenantId = HttpMockServer.Variables[TenantIdKey];
+            //    }
+            //    if (HttpMockServer.Variables.ContainsKey(DomainKey))
+            //    {
+            //        UserDomain = HttpMockServer.Variables[DomainKey];
+            //    }
+            //    if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+            //    {
+            //        AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
+            //    }
+            //}
+
+            //var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            //client.TenantID = tenantId;
+            //if (AzureRmProfileProvider.Instance != null &&
+            //    AzureRmProfileProvider.Instance.Profile != null &&
+            //    AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
+            //    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
+            //{
+            //    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
+            //}
+            //return client;
+            return context.GetServiceClient<GraphRbacManagementClient>();
+        }
+        private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<AuthorizationManagementClient>();
+        }
+        private static ContainerRegistryManagementClient GetContainerRegistryManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ContainerRegistryManagementClient>();
         }
         private static ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
         {

@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <PackageReference Include="YamlDotNet.Signed" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.ContainerRegistry" Version="1.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerService" Version="1.1.0" />
   </ItemGroup>
 
