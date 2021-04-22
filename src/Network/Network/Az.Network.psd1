@@ -358,7 +358,7 @@ PrivateData = @{
         ReleaseNotes = '* Release for Azure Stack 2020-09-01-hybrid profile.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
