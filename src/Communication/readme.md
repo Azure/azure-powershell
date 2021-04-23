@@ -35,13 +35,13 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/be39f5abd3dc4cf6db384f688e0dd18dd907d04b/specification/communication/resource-manager/Microsoft.Communication/preview/2020-08-20-preview/CommunicationService.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/aab1fb9011c5829fc7a4825fa0831899f6da970d/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/CommunicationService.json
 
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
-# For new RP, the version is 0.1.0
-module-version: 0.1.0
+# For new RP, the version is 1.0.0
+module-version: 1.0.0
 # Normally, title is the service name
 title: Communication
 subject-prefix: $(service-name)
