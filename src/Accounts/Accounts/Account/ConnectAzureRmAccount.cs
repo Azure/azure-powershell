@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
-        private const string AuthScopeHelpMessage = "Optional OAuth scope for login, supported values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse.";
+        private const string AuthScopeHelpMessage = "Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.";
 
         [Alias("AuthScopeTypeName")]
         [Parameter(ParameterSetName = UserParameterSet,
@@ -499,12 +499,14 @@ namespace Microsoft.Azure.Commands.Profile
 
         private string PreProcessAuthScope()
         {
+            string mappedScope = AuthScope;
             if (!string.IsNullOrEmpty(AuthScope) &&
                 SupportedResourceNames.DataPlaneResourceNameMap.ContainsKey(AuthScope))
             {
-                return SupportedResourceNames.DataPlaneResourceNameMap[AuthScope];
+                mappedScope = SupportedResourceNames.DataPlaneResourceNameMap[AuthScope];
+                WriteDebug($"Map AuthScope from {AuthScope} to {mappedScope}.");
             }
-            return null;
+            return mappedScope;
         }
 
         private bool IsUsingInteractiveAuthentication()

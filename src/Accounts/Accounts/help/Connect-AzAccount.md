@@ -284,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthScope
-Optional OAuth scope used to login, supported values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse.
+Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.
 
 ```yaml
 Type: System.String
