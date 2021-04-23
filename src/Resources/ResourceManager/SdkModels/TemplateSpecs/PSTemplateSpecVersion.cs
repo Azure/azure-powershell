@@ -95,12 +95,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
                 MainTemplate = ((JToken)templateSpecVersion.MainTemplate).ToString()
             };
 
-            if (templateSpecVersion.Artifacts?.Any() == true) {
-                foreach (TemplateSpecArtifact artifact in templateSpecVersion.Artifacts)
+            if (templateSpecVersion.LinkedTemplates?.Any() == true) {
+                foreach (LinkedTemplateArtifact artifact in templateSpecVersion.LinkedTemplates)
                 {
                     switch (artifact)
                     {
-                        case TemplateSpecTemplateArtifact templateArtifact:
+                        case LinkedTemplateArtifact templateArtifact:
                             psTemplateSpecVersion.Artifacts.Add(
                                 PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(templateArtifact)
                             );

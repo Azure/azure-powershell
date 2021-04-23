@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 Location = templateSpecModel.Location,
                 MainTemplate = packagedTemplate.RootTemplate,
-                Artifacts = packagedTemplate.Artifacts?.ToList(),
+                LinkedTemplates = packagedTemplate.Artifacts?.ToList(),
                 Description = versionDescription ?? existingTemplateSpecVersion?.Description,
                 UiFormDefinition = UIFormDefinition
         };

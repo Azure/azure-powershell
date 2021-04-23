@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         packagedTemplate = new PackagedTemplate
                         {
                             RootTemplate = parsedTemplate,
-                            Artifacts = new TemplateSpecArtifact[0]
+                            Artifacts = new LinkedTemplateArtifact[0]
                         };
                         break;
                     default:
