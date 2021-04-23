@@ -177,6 +177,28 @@ namespace Microsoft.Azure.Commands.Management.Storage
         HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set resource ids for the the new Storage Account user assignedd Identity, the identity will be used with key management services like Azure KeyVault.")]
+        [ValidateNotNull]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set resource id for user assigned Identity used to access Azure KeyVault of Storage Account Encryption, the id must in the storage account's UserAssignIdentityId.")]
+        [ValidateNotNull]
+        public string KeyVaultUserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+        [ValidateSet(AccountIdentityType.systemAssigned,
+            AccountIdentityType.userAssigned,
+            AccountIdentityType.systemAssignedUserAssigned,
+            AccountIdentityType.none,
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
         [Parameter(HelpMessage = "Storage Account NetworkRule",
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
@@ -436,19 +458,50 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
                     }
 
-                    if (AssignIdentity.IsPresent)
+                    if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
                     {
-                        updateParameters.Identity = new Identity() { Type = IdentityType.SystemAssigned };
+                        updateParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                        if (this.IdentityType != null)
+                        {
+                            updateParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
+                        }
+                        if (this.UserAssignedIdentityId != null)
+                        {
+                            if (updateParameters.Identity.Type != StorageModels.IdentityType.UserAssigned && updateParameters.Identity.Type != StorageModels.IdentityType.SystemAssignedUserAssigned)
+                            {
+                                throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
+                            }
+                            updateParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+                            updateParameters.Identity.UserAssignedIdentities.Add(this.UserAssignedIdentityId, new UserAssignedIdentity());
+
+                            var accountProperties = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                            if (accountProperties.Identity != null && accountProperties.Identity.UserAssignedIdentities != null && accountProperties.Identity.UserAssignedIdentities.Count > 0)
+                            {
+                                foreach (var uid in accountProperties.Identity.UserAssignedIdentities)
+                                {
+                                    if (!uid.Key.Equals(this.UserAssignedIdentityId, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        updateParameters.Identity.UserAssignedIdentities.Add(uid.Key, null);
+                                    }
+                                }
+                            }
+                        }
                     }
 
-                    if (StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null)
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
                         updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+                        if (this.KeyVaultUserAssignedIdentityId != null)
+                        {
+                            updateParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
+                            updateParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                        }
                     }
+                      
                     if (NetworkRuleSet != null)
                     {
                         updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
