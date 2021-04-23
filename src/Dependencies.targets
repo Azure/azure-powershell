@@ -8,7 +8,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
+     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.23" />
  </ItemGroup>
   <ItemGroup Condition="'$(IncludeHyak)' == 'true'">
     <PackageReference Include="Microsoft.Azure.Common" Version="2.2.1" />

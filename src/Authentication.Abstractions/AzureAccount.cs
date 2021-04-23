@@ -148,7 +148,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Secret that may be used with service principal login
         /// </summary>
-        ServicePrincipalSecret = "ServicePrincipalSecret";
+        ServicePrincipalSecret = "ServicePrincipalSecret",
+
+
+        /// <summary>
+        /// The path of certficate file in pem or pkcs#12 format
+        /// </summary>
+        CertificatePath = "CertificatePath",
+
+        /// <summary>
+        /// The password required to access the pkcs#12 certificate file
+        /// </summary>
+        CertificatePassword = "CertificatePassword",
+
+
+        /// <summary>
+        /// Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD
+        /// </summary>
+        SendCertificateChain = "SendCertificateChain";
         }
     }
 }
