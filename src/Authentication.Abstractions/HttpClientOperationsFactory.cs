@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
             public async Task<HttpResponseMessage> GetAsync(string requestUri)
             {
-                return await _client.GetAsync(requestUri);
+                return await _client.GetAsync(requestUri).ConfigureAwait(false);
             }
         }
     }

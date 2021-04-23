@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             {
                 httpOperations = HttpClientOperationsFactory.Create().GetHttpOperations();
             }
-            var armResponseMessage = await httpOperations.GetAsync(armMetadataRequestUri);
+            var armResponseMessage = await httpOperations.GetAsync(armMetadataRequestUri).ConfigureAwait(false);
             if (armResponseMessage?.StatusCode != HttpStatusCode.OK)
             {
                 throw new Exception($"Failed to load cloud metadata from the url {armMetadataRequestUri}.");
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
             if (armResponseMessage.Content != null)
             {
-                armMetadataContent = await armResponseMessage.Content.ReadAsStringAsync();
+                armMetadataContent = await armResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
             if (string.IsNullOrEmpty(armMetadataContent))
             {
