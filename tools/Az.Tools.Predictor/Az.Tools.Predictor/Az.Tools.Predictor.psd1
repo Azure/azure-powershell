@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -43,11 +43,11 @@ PowerShellVersion = '7.2'
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta2"})
 
-NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
+# NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
 ScriptsToProcess = @("PromptSurvey.ps1")
 
-CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor")
+CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzSurvey")
 
 # Format files (.ps1xml) to be loaded when importing this module
 
@@ -69,7 +69,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* second preview release
+        ReleaseNotes = '* Add a cmdlet to open survey page and update message
+* Second preview release
 * Add Enable-AzPredictor and Disable-AzPredictor cmdlet to simplify configuration
 * Use PSReadline new API'
 
