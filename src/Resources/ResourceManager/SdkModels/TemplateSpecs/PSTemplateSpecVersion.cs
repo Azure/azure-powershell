@@ -98,18 +98,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             if (templateSpecVersion.LinkedTemplates?.Any() == true) {
                 foreach (LinkedTemplateArtifact artifact in templateSpecVersion.LinkedTemplates)
                 {
-                    switch (artifact)
-                    {
-                        case LinkedTemplateArtifact templateArtifact:
-                            psTemplateSpecVersion.Artifacts.Add(
-                                PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(templateArtifact)
-                            );
-                            break;
-                        default:
-                            throw new PSNotSupportedException(
-                                $"Template spec artifact type '${artifact.GetType().Name}' not supported by cmdlets."
-                            );
-                    }
+                    psTemplateSpecVersion.Artifacts.Add(
+                        PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(artifact));
                 }
             }
 
