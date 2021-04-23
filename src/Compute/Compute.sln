@@ -26,8 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compute.Helper", "Compute.Helper\Compute.Helper.csproj", "{C11312BB-6189-4592-9B4E-B4319441E57F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,10 +76,6 @@ Global
 		{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F6FD098-3A06-4D8F-9807-7E941FBCFEE4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C11312BB-6189-4592-9B4E-B4319441E57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C11312BB-6189-4592-9B4E-B4319441E57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C11312BB-6189-4592-9B4E-B4319441E57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C11312BB-6189-4592-9B4E-B4319441E57F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
