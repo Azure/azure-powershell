@@ -43,11 +43,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var profileSettings = Settings.GetProfileSettings();
             var surveyId = profileSettings?.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? "000000";
 
-            var link = string.Format(OpenAzSurveyLink._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);
+            var link = string.Format(OpenAzSurvey._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);
 
-            Console.WriteLine($"Opening survey {link}");
+            Console.WriteLine($"Opening the default browser to {link}");
 
-            // TODO [mahuang] Ouput the link for user to copy/paste in case it's not open in the default browser.
             var processStartInfo = new ProcessStartInfo();
             processStartInfo.FileName = link;
             processStartInfo.UseShellExecute = true;

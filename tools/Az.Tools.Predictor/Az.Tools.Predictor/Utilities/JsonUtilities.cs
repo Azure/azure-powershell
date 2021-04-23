@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// 2. Use string instead of number for enums.
         /// 3. Use the string values (camel case) for enum.
         /// 4. Use the string values for the type <see cref="System.Version"/> in the properties and <see cref="System.Collections.Generic.IDictionary&lt;TKey, TValue>"/> keys.
-        /// 3. Skip the property if the value is null.
+        /// 5. Skip the property if the value is null.
         /// </summary>
         public static readonly JsonSerializerOptions DefaultSerializerOptions = new JsonSerializerOptions()
         {

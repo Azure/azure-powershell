@@ -43,7 +43,7 @@ PowerShellVersion = '7.2'
 # Modules that must be imported into the global environment prior to importing this module
 # RequiredModules = @(@{ModuleName="PSReadLine"; ModuleVersion="2.2.0-beta2"})
 
-# NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
+NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
 ScriptsToProcess = @("PromptSurvey.ps1")
 
