@@ -26,11 +26,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 
-namespace Microsoft.Azure.Commands.Aks.Commands
+namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCredential", SupportsShouldProcess = true, DefaultParameterSetName = ResetServicePrincipalWithGroupNameParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AksClusterCredential", SupportsShouldProcess = true, DefaultParameterSetName = ResetServicePrincipalWithGroupNameParameterSet)]
     [OutputType(typeof(bool))]
-    class SetAzureRmAksCredential : KubeCmdletBase
+    public class SetAzureRmAksCredential : KubeCmdletBase
     {
         private const string ResetServicePrincipalWithIdParameterSet = "ResetServicePrincipalWithIdParameterSet";
         private const string ResetServicePrincipalWithGroupNameParameterSet = "ResetServicePrincipalWithGroupNameParameterSet";
@@ -98,55 +98,55 @@ namespace Microsoft.Azure.Commands.Aks.Commands
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithGroupNameParameterSet,
-            HelpMessage = "The client app id associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithGroupNameParameterSet,
+            HelpMessage = "The client app id associated with the AAD profile.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithInputObjectParameterSet,
-            HelpMessage = "The client app id associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithInputObjectParameterSet,
+            HelpMessage = "The client app id associated with the AAD profile.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithIdParameterSet,
-            HelpMessage = "The client app id associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithIdParameterSet,
+            HelpMessage = "The client app id associated with the AAD profile.")]
         [ValidateNotNullOrEmpty]
         public string ClientAppID { get; set; }
 
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithGroupNameParameterSet,
-            HelpMessage = "The tenant id with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithGroupNameParameterSet,
+            HelpMessage = "The tenant id with the AAD profile.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithInputObjectParameterSet,
-            HelpMessage = "The tenant id with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithInputObjectParameterSet,
+            HelpMessage = "The tenant id with the AAD profile.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithIdParameterSet,
-            HelpMessage = "The tenant id with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithIdParameterSet,
+            HelpMessage = "The tenant id with the AAD profile.")]
         [ValidateNotNullOrEmpty]
         public string TenantID { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithGroupNameParameterSet,
-            HelpMessage = "The server app id and server secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithGroupNameParameterSet,
+            HelpMessage = "The server app id and server secret associated with the AAD profile.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithInputObjectParameterSet,
-            HelpMessage = "The server app id and server secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithInputObjectParameterSet,
+            HelpMessage = "The server app id and server secret associated with the AAD profile.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetServicePrincipalWithIdParameterSet,
-            HelpMessage = "The server app id and server secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetAadWithIdParameterSet,
+            HelpMessage = "The server app id and server secret associated with the AAD profile.")]
         public PSCredential ServerAppIdAndSecret { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetAadWithGroupNameParameterSet,
-            HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetServicePrincipalWithInputObjectParameterSet,
+            HelpMessage = "The client id and client secret associated with the service principal.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetAadWithInputObjectParameterSet,
-            HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetServicePrincipalWithGroupNameParameterSet,
+            HelpMessage = "The client id and client secret associated with the service principal.")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = ResetAadWithIdParameterSet,
-            HelpMessage = "The client id and client secret associated with the AAD application / service principal.")]
+            ParameterSetName = ResetServicePrincipalWithIdParameterSet,
+            HelpMessage = "The client id and client secret associated with the service principal.")]
         public PSCredential ServicePrincipalIdAndSecret { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -185,22 +185,27 @@ namespace Microsoft.Azure.Commands.Aks.Commands
             var msg = $"{Name} in {ResourceGroupName}";
 
             ConfirmAction(Force.IsPresent,
-                Resources.DoYouWantToDeleteTheManagedKubernetesCluster,
-                Resources.RemovingTheManagedKubernetesCluster,
+                Resources.ResetTheCredentialOfAksCluster,
+                Resources.ResetingTheCredentialOfAksCluster,
                 msg,
                 () =>
                 {
                     RunCmdLet(() =>
                     {
-                        if (ParameterSetName.Equals(ResetServicePrincipalWithInputObjectParameterSet)
-                         || ParameterSetName.Equals(ResetServicePrincipalWithGroupNameParameterSet)
-                         || ParameterSetName.Equals(ResetServicePrincipalWithIdParameterSet))
+                        switch (ParameterSetName)
                         {
-                            ResetServicePrincipalProfile();
-                        }
-                        else
-                        {
-                            ResetAADProfile();
+                            case ResetServicePrincipalWithInputObjectParameterSet:
+                            case ResetServicePrincipalWithGroupNameParameterSet:
+                            case ResetServicePrincipalWithIdParameterSet:
+                            {
+                                ResetServicePrincipalProfile();
+                                break;
+                            }
+                            default:
+                            {
+                                ResetAADProfile();
+                                break;
+                            }
                         }
                         if (PassThru)
                         {

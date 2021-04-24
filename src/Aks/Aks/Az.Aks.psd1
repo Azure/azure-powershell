@@ -76,11 +76,11 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster', 
-               'Import-AzAksCredential', 'Start-AzAksDashboard', 'Update-AzAksCredential',
+               'Import-AzAksCredential', 'Start-AzAksDashboard',
                'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool', 
                'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool', 
                'Install-AzAksKubectl', 'Get-AzAksVersion', 'Enable-AzAksAddOn', 
-               'Disable-AzAksAddOn'
+               'Disable-AzAksAddOn', 'Set-AzAksClusterCredential'
 
 # Variables to export from this module
 # VariablesToExport = @()
