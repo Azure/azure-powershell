@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleQueryParameters, ParameterSetName = AfdParameterSet.AfdRuleCacheKeyQueryStringAction)]
         [ValidateNotNullOrEmpty]
-        public string QueryParameters { get; set; }
+        public string QueryParameter { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = HelpMessageConstants.AfdRuleRedirectType, ParameterSetName = AfdParameterSet.AfdRuleUrlRedirectAction)]
         [PSArgumentCompleter("Moved", "Found", "TemporaryRedirect", "PermanentRedirect")]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Cdn.AfdRule
             {
                 afdRuleAction = new PSAfdRuleCacheKeyQueryStringAction
                 {
-                    QueryParameters = this.QueryParameters,
+                    QueryParameters = this.QueryParameter,
                     QueryStringBehavior = this.QueryStringBehavior
                 };
             }
