@@ -143,8 +143,17 @@ function New-AzCloudService {
 
         # extract csdef/cscfg 
 
-        if (((Get-azcloudservice -resourcegroupname $ResourceGroupName).name).contains($name)){
-            throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
+        try {
+            $ErrorActionPreference = "Stop"
+            $getCS = Get-azcloudservice -resourcegroupname $ResourceGroupName -name $name
+            if ($null -ne $getCS){
+                throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
+            }
+        }
+        catch {
+            # CloudService does not exist in that name/resource group
+        }finally{
+            $ErrorActionPreference = "Continue"
         }
 
         if (-not (Test-Path $ConfigurationFile))  
@@ -175,19 +184,55 @@ function New-AzCloudService {
         $passMemory = @{}
         validation $cscfg $csdef $PSBoundParameters ([ref]$passMemory)
 
+        # create resources
+        If ($passMemory.ipFound -eq $false){
+            $null = New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $passMemory.ipName -location $location -Sku Basic -AllocationMethod Static -WarningAction SilentlyContinue 
+        }
+        If ($passMemory.vNetFound -eq $False){
+            # create subnets first 
+            $subnetsList = @()
+            $subnetCount = 0
+            If ($True -eq $passMemory.CreateInternalLoadBalancer){
+                $aSubnet = New-AzVirtualNetworkSubnetConfig -Name $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.Loadbalancer.FrontendIPConfiguration.subnet -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
+                $subnetsList = $subnetsList + @($aSubnet)
+                $subnetCount = $subnetCount + 1
+                $passMemory.Add("theSubnet", $aSubnet)
+            }
+
+            foreach ($instaceAddress in $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress) {
+                if ( ($subnetsList.count -eq 0) -or (-not ($subnetsList.name.tolower()).contains($instaceAddress.subnets.subnet.Name.tolower())) ){
+                    $addressPrefix = "10.0." + $subnetCount + ".0/24"
+                    $aSubnet = New-AzVirtualNetworkSubnetConfig -Name $instaceAddress.subnets.subnet.Name -AddressPrefix $addressPrefix -WarningAction SilentlyContinue 
+                    $subnetsList = $subnetsList + @($aSubnet)
+                    $subnetCount = $subnetCount + 1
+                }
+            }
+
+            # vnet
+            $null = New-AzVirtualNetwork -name $passMemory.vnetName -resourcegroupname $resourcegroupname -location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnetsList 
+        }
+
         # if -storageaccount is given, upload to packageUrl to blob 
         if ($PSBoundParameters.ContainsKey("StorageAccount")) 
         {
             Write-Host("Uploading the csdef to a blob in the Storage Account.")
-            $storageAccountObj = Get-AzStorageAccount -resourceGroupName $ResourceGroupName -name $storageAccount
-            $containerName = "cloudServiceContainer"
+            $storageAccountObjs = Get-AzStorageAccount
+            foreach ($storageAccountObj in $storageAccountObjs) {
+                if ($storageAccountObj.StorageAccountName.tolower() -eq $storageAccount.tolower()){
+                    break
+                }
+            }
+            $containerName = "cloudservicecontainer"
             # check if container exists
-            if (((get-azstorageContainer -context $storageAccountObj.context).name).contains($containerName)){
-                # use existing
-                $container = Get-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context
-            }else{
-                # create new
-                $container = New-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context -Permission Blob  
+            try {
+                $ErrorActionPreference = "Stop"
+                $container = get-azstorageContainer -context $storageAccountObj.context -name $containerName
+            }
+            catch {
+                # does not exist
+                $container = New-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context -Permission Blob
+            }finally{
+                $ErrorActionPreference = "Continue"
             }
             
             # Upload your Cloud Service package (cspkg) to the storage account.
@@ -208,11 +253,11 @@ function New-AzCloudService {
             $publicIpName = $name + "Ip"
             if ($PSBoundParameters.ContainsKey("DnsName")) 
             {
-                $publicIp = New-AzPublicIpAddress -Name $publicIPName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel $DnsName -Sku Basic
+                $publicIp = New-AzPublicIpAddress -Name $publicIPName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Dynamic -IpAddressVersion IPv4 -DomainNameLabel $DnsName -Sku Basic -WarningAction SilentlyContinue 
                 $null = $PSBoundParameters.Remove("DnsName")
             }
             else {
-                $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Dynamic -IpAddressVersion IPv4 -Sku Basic
+                $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $ResourceGroupName -Location $Location -AllocationMethod Dynamic -IpAddressVersion IPv4 -Sku Basic -WarningAction SilentlyContinue 
             } 
         }
         else {
@@ -258,24 +303,33 @@ function New-AzCloudService {
         }
 
         # Role Profile 
+        $roleProfileList = @()
 
-        $cfg_role1 = $cscfg.ServiceConfiguration.Role[0]
-        $def_role1 = $csdef.ServiceDefinition.($cfg_role1.name)
-        $role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name $def_role1.Name -SkuName $def_role1.vmsize -SkuTier 'Standard' -SkuCapacity $cfg_role1.Instances.count 
-        
-        if ( $cscfg.ServiceConfiguration.Role.count -eq 2 )   
-        {
-            $cfg_role2 = $cscfg.ServiceConfiguration.Role[1]
-            $def_role2 = $csdef.ServiceDefinition.($cfg_role2.name)
-            $role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name $def_role2.Name -SkuName $def_role2.vmsize -SkuTier 'Standard' -SkuCapacity $cfg_role2.Instances.count 
+        foreach ($role in $cscfg.ServiceConfiguration.Role) {
+            # find in csdef
+            $RoleFoundinCsDef = $false
+            foreach ($webRole in $csdef.ServiceDefinition.WebRole) {
+                if ($role.name -eq $webRole.name){
+                    $RoleFoundinCsDef = $true
+                    $defRole = $webRole
+                    break
+                }
+            }
+            if (-not $RoleFoundinCsDef){
+                foreach ($workerRole in $csdef.ServiceDefinition.WorkerRole) {
+                    if($role.name -eq $workerRole.name){
+                        $RoleFoundinCsDef = $true
+                        $defRole = $workerRole
+                        break
+                    }
+                }
+            }
 
-            $roleProfile = @{role = @($role1, $role2)} 
+            $newRole = New-AzCloudServiceRoleProfilePropertiesObject -Name $defRole.Name -SkuName $defRole.vmsize -SkuTier 'Standard' -SkuCapacity $role.Instances.count 
+            $roleProfileList = $roleProfileList + @($newRole)
         }
-        else
-        {
-            $roleProfile = @{role = @($role1)} 
-        }
 
+        $roleProfile = @{role = $roleProfileList} 
         $null = $PSBoundParameters.Add("roleProfile", $RoleProfile)
 
         
@@ -286,11 +340,8 @@ function New-AzCloudService {
         
 
         # Perform action
-
-        # If these variants should call back to the original cmdlet, use splatting to pass the existing set of parameters
         Write-Host("Creating the Cloud Service resource.")
         Az.CloudService\New-AzCloudService @PSBoundParameters
-        #>
     }
 
 }
@@ -313,6 +364,7 @@ function validation
     )
 
     Write-Host("Checking validations on the .cscfg and .csdef files.")
+
     # Network configuration missing in configuration
     If ( $null -eq $cscfg.ServiceConfiguration.NetworkConfiguration -or $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.count -eq 0 -or $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress.Subnets.count -eq 0)
     {
@@ -328,13 +380,13 @@ function validation
 
     $csDefRoleNames = @()
     if ($csdef.ServiceDefinition.WebRole.Count -eq 1){
-        $csDefRoleNames = $csDefRoleNames + ($csdef.ServiceDefinition.WebRole.name)
-    }else{
-        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WebRole.name
+        $csDefRoleNames = @($csdef.ServiceDefinition.WebRole.name)
+    }elseif ($csdef.ServiceDefinition.WebRole.Count -gt 1) {
+        $csDefRoleNames = $csdef.ServiceDefinition.WebRole.name
     }
     if ($csdef.ServiceDefinition.WorkerRole.Count -eq 1){
-        $csDefRoleNames = $csDefRoleNames + ($csdef.ServiceDefinition.WorkerRole.name)
-    }else{
+        $csDefRoleNames = $csDefRoleNames + @($csdef.ServiceDefinition.WorkerRole.name)
+    }elseif ($csdef.ServiceDefinition.WorkerRole.Count -gt 1) {
         $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.name
     }
 
@@ -367,41 +419,86 @@ function validation
     }
 
     # Existing Virtual Network Location Mismatch
-    $vnets = Get-AzVirtualNetwork -name $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name
-    If (0 -eq $vnets.count){
-        throw "Could not find the provided Virtual Network: '" + $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name +"'"
+    # check if vnet exists
+    $vnetNameSplitCount = ($cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name).split().count
+    if (3 -eq $vnetNameSplitCount){
+        
+        $vnetNameFormat = ($cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name).split()
+        if ("group" -ne $vnetNameFormat[0].tolower()){
+            throw "VirtualNetworkSite name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
+        }
+        
+        $passMemory.Add("vnetName", $vnetNameFormat[2])
+
+        # look for the vnet
+        try {
+            $ErrorActionPreference = "Stop"
+            $thevnet = Get-AzVirtualNetwork -ResourceGroupName $vnetNameFormat[1] -Name $vnetNameFormat[2]
+            if ($thevnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
+                $vnetFound = $true
+            }else {
+                $vnetLocationMatch = $false
+            }
+        }
+        catch {
+            $vnetFound = $false
+        }finally{
+            $ErrorActionPreference = "Continue"
+        }
+
+        If($false -eq $vnetLocationMatch){
+            throw "The location of the Cloud Service needs to match the location of the virtual network."
+        }
+
+    }elseif (1 -eq $vnetNameSplitCount) {
+        $vnets = Get-AzVirtualNetwork -name $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name
+        $passMemory.Add("vnetName", $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name)
+        $vnetFound = $false
+        foreach ($vnet in $vnets) {
+            if ($vnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
+                $vnetFound = $true
+                $theVNet = $vnet
+            }
+        }
+
+    }else {
+        throw "VirtualNetworkSite name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
     }
 
-    $vnetFound = $false
-    foreach ($vnet in $vnets) {
-        if ($vnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
-            $vnetFound = $true
-            $theVNet = $vnet
+    $passMemory.Add("vnetFound", $vnetFound)
+
+    If ($vnetFound){
+        If (1 -eq $theVNet.subnets.count){
+            $vnetSubnets = @($theVnet.Subnets)
+        }
+        else {
+            $vnetSubnets = $theVnet.subnets
+        }
+    
+        # Existing Virtual Network Missing Subnets  
+        foreach ($instaceAddress in $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress) {
+            if (-not ($vnetSubnets.name.tolower()).contains($instaceAddress.subnets.subnet.Name.tolower())){
+                throw "Subnet defined in the CSCFG file: '" + $instaceAddress.subnets.subnet.Name + "' could not be found in the Virtual Network: '" + $theVNet.name + "'. Please add the subnet to the virtual network."
+            }
         }
     }
-    if (-not $vnetFound){
-        throw "The location of the Cloud Service needs to match the location of the virtual network."
-    }
 
-    If (1 -eq $theVNet.subnets.count){
-        $vnetSubnets = @($theVnet.Subnets)
-    }
-    else {
-        $vnetSubnets = $theVnet.subnets
-    }
-
-    # Existing Virtual Network Missing Subnets  
-    foreach ($instaceAddress in $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress) {
-        if (-not ($vnetSubnets.name.tolower()).contains($instaceAddress.subnets.subnet.Name.tolower())){
-            throw "Subnet defined in the CSCFG file: '" + $instaceAddress.subnets.subnet.Name + "' could not be found in the Virtual Network: '" + $theVNet.name + "'. Please add the subnet to the virtual network."
-        }
-    }
 
     # Internal load balancer private ip contained in subnet 
     If ( $null -ne $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.loadBalancer){
         $InternalLBFEConfig = $cscfg.ServiceConfiguration.NetworkConfiguration.loadBalancers.Loadbalancer.FrontendIPConfiguration 
-        $theSubnet = $thevnet.Subnets | where-object {$_.Name.tolower() -eq $InternalLBFEConfig.subnet.tolower()}
-        $addressPrefix = $theSubnet.AddressPrefix
+        If ($vnetFound){
+            $theSubnet = $thevnet.Subnets | where-object {$_.Name.tolower() -eq $InternalLBFEConfig.subnet.tolower()}
+            If ($null -eq $theSubnet){
+                throw "Subnet defined in the CSCFG file: '" + $InternalLBFEConfig.subnet + "' could not be found in the Virtual Network: '" + $theVNet.name + "'. Please add the subnet to the virtual network."
+            }
+            $passMemory.Add("theSubnet", $theSubnet)
+            $addressPrefix = $theSubnet.AddressPrefix
+        }
+        else{
+            $passMemory.Add("CreateInternalLoadBalancer", $true)
+            $addressPrefix = "10.0.0.0/24" 
+        }
 
         $maskNumber = $addressPrefix.split("/")[1]
 
@@ -416,51 +513,83 @@ function validation
         })
 
         If ($subnetBinary.substring(0,$maskNumber)  -ne $LBIPbinary.substring(0,$maskNumber)){
-            throw "The internal load balancer subnet '" + $InternalLBFEConfig.subnet + "' does not contain the private IP " + $LBIP + ". Update the subnet within the Virtual Network to include the Private IP."
+            If ($vnetFound){
+                throw "The internal load balancer subnet '" + $InternalLBFEConfig.subnet + "' does not contain the private IP " + $LBIP + ". Update the subnet within the Virtual Network to include the Private IP."
+            }else{
+                throw "The default internal load balancer subnet which will be created: '"+ $addressPrefix +"' does not contain the private IP " + $LBIP + ". Either update private IP or provided an already created virtual network and subnet."
+            }
         }
-
-        $passMemory.Add("theSubnet", $theSubnet)
     }
     
     if ( $null -ne $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP ){
-        $IpName = $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name
-        $ipObjs = Get-AzPublicIpAddress -name $ipname 
+        
+        $IpNameSplitCount = ($cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name).split().count
+        if (3 -eq $IpNameSplitCount){
+            
+            $IpNameFormat = ($cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name).split()
+            if ("group" -ne $IpNameFormat[0].tolower()){
+                throw "ReservedIP name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
+            }
+            $passMemory.Add("ipName", $IpNameFormat[2])
 
-        If (0 -eq $ipObjs.count){
-            throw "Public IP: '" + $Ipname + "' was not found. Please check your CSCFG file and provide an existing Public IP."
+            # look for the Ip
+            try {
+                $ErrorActionPreference = "Stop"
+                $theIpObj = Get-AzPublicIpAddress -ResourceGroupName $IpNameFormat[1] -Name $IpNameFormat[2]
+                if ($theIpObj.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
+                    $ipFound = $true
+                }else {
+                    $ipLocationMatch = $false
+                }
+            }
+            catch {
+                $ipFound = $false
+            }finally{
+                $ErrorActionPreference = "Continue"
+            }
+
+            if ($false -eq $IpLocationMatch){
+                throw "The location for the cloud service ("+ $location +") and public IP address ("+ $theIp.location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
+            }
+
+        }elseif (1 -eq $IpNameSplitCount) {
+            $ipObjs = Get-AzPublicIpAddress -name $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name
+            $passMemory.Add("ipName", $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name)
+
+            # Existing Reserved (Static) IP Location Mismatch
+            $ipFound = $false
+            foreach ($ipObj in $IpObjs) {
+                if ($ipObj.Location.replace(" ","").tolower() -eq $location.replace(" ","").tolower()){
+                    $ipFound = $true
+                    $theIPObj = $ipobj
+                }
+            }
+        }else {
+            throw "ReservedIP name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
         }
         
-        # Existing Reserved (Static) IP Location Mismatch
-        $ipFound = $false
-        foreach ($ipObj in $IpObjs) {
-            if ($ipObj.Location.replace(" ","").tolower() -eq $location.replace(" ","").tolower()){
-                $ipFound = $true
-                $theIPObj = $ipobj
+        $passMemory.Add("ipFound", $ipFound)
+
+        If ($ipFound){
+            # Existing Reserved (Static) IP In Use
+            if ($null -ne $theIPObj.IPConfiguration){
+                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' is currently in use by another resource."
             }
-        }
-        if (-not $ipFound){
-            throw "The location for the cloud service ("+ $location +") and public IP address ("+ $ipObjs[0].location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
-        }
 
+            # Existing Reserved (Static) IP Incorrect Sku
+            if ("Basic" -ne $theIPObj.Sku.Name){
+                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' must have a 'Basic' SKU."
+            }
 
-        # Existing Reserved (Static) IP In Use
-        if ($null -ne $theIPObj.IPConfiguration){
-            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' is currently in use by another resource."
-        }
+            # Existing Reserved (Static) IP Incorrect Allocation
+            if ("Static" -ne $theIPObj.PublicIPAllocationMethod){
+                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed."
+            }
 
-        # Existing Reserved (Static) IP Incorrect Sku
-        if ("Basic" -ne $theIPObj.Sku.Name){
-            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' must have a 'Basic' SKU."
-        }
-
-        # Existing Reserved (Static) IP Incorrect Allocation
-        if ("Static" -ne $theIPObj.PublicIPAllocationMethod){
-            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed."
-        }
-
-        # Existing Reserved (Static) IP Address Incorrect Version
-        if ("IPv4" -ne $theIPObj.PublicIPAddressVersion){
-            throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses IPv6 and an IPv4 public IP address is needed."
+            # Existing Reserved (Static) IP Address Incorrect Version
+            if ("IPv4" -ne $theIPObj.PublicIPAddressVersion){
+                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses IPv6 and an IPv4 public IP address is needed."
+            }
         }
     }
 
@@ -506,6 +635,13 @@ function validation
             if (-not $certsThumbprints.Contains($cert.thumbprint)){
                 throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $cert.name + " " + $cert.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
             }
+        }
+    }
+
+    if ($params.ContainsKey("StorageAccount")) {
+        $storAccs = Get-AzStorageAccount
+        if (-not ($storAccs.StorageAccountName.tolower()).contains($storageAccount.tolower())){
+            throw "The provided Storage Account: '" + $storageAccount + "' does not exist."
         }
     }
 }
