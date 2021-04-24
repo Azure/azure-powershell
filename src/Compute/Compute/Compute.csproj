@@ -30,4 +30,8 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>

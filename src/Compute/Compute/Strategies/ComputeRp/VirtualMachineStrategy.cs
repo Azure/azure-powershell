@@ -14,8 +14,9 @@
 
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Network;
+using Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
 using System;
@@ -74,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         AdminPassword = adminPassword,
                     },
                     Identity = identity,
-                    NetworkProfile = new NetworkProfile
+                    NetworkProfile = new Azure.Management.Compute.Models.NetworkProfile
                     {
                         NetworkInterfaces = new[]
                         {
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 name: name,
                 createModel: engine => new VirtualMachine
                 {
-                    NetworkProfile = new NetworkProfile
+                    NetworkProfile = new Microsoft.Azure.Management.Compute.Models.NetworkProfile
                     {
                         NetworkInterfaces = new[]
                         {

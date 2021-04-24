@@ -15,7 +15,7 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
 using System.Linq;
 using System.Collections.Generic;
 using System;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
-                    ExtendedLocation = new CM.ExtendedLocation { Name = edgeZone, Type = CM.ExtendedLocationTypes.EdgeZone },
+                    ExtendedLocation = new CM.ExtendedLocation(edgeZone),
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual

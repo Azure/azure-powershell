@@ -36,18 +36,18 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Commands.Compute.Helpers.Network;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Storage;
+using Microsoft.Azure.Commands.Compute.Helpers.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using CM = Microsoft.Azure.Management.Compute.Models;
-using SM = Microsoft.Azure.Management.Storage.Models;
-using NM = Microsoft.Azure.Management.Network.Models;
+using SM = Microsoft.Azure.Commands.Compute.Helpers.Storage.Models;
+using NM = Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -497,7 +497,11 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                     {
+<<<<<<< HEAD
                         Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
+=======
+                        Sku = new Microsoft.Azure.Commands.Compute.Helpers.Storage.Models.Sku
+>>>>>>> ba5add1c3c... removed SDK dependency by pulling in SDK network and storage dependencies in as a compute.helper project
                         {
                             Name = SkuName.PremiumLRS
                         },
