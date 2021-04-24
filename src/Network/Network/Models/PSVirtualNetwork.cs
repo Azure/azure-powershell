@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualNetwork : PSTopLevelResource, IResourceReference, IVirtualNetwork
     {
-        public ExtendedLocation ExtendedLocation { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
         public PSAddressSpace AddressSpace { get; set; }
 
         public PSDhcpOptions DhcpOptions { get; set; }

@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Network;
+using Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network

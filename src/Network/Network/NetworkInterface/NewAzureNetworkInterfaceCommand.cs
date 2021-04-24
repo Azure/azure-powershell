@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Location = this.Location;
             if (this.EdgeZone != null)
             {
-                networkInterface.ExtendedLocation = new MNM.ExtendedLocation { Name = this.EdgeZone };
+                networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;

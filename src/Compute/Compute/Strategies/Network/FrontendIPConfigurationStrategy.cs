@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {

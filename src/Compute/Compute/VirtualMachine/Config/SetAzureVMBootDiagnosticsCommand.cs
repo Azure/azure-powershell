@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Commands.Compute.Helpers.Storage;
 
 namespace Microsoft.Azure.Commands.Compute
 {

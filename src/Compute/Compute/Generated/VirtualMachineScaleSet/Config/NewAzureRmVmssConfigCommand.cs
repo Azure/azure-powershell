@@ -30,6 +30,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using CM = Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -289,7 +290,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             VirtualMachineScaleSetIdentity vIdentity = null;
 
             // ExtendedLocation
-            ExtendedLocation vExtendedLocation = null;
+            CM.PSExtendedLocation vExtendedLocation = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -629,7 +630,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.IsParameterBound(c => c.EdgeZone))
             {
-                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+                vExtendedLocation = new CM.PSExtendedLocation(this.EdgeZone);
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet

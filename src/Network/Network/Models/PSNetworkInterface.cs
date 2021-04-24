@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSResourceId VirtualMachine { get; set; }
 
-        public ExtendedLocation ExtendedLocation { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
         public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }

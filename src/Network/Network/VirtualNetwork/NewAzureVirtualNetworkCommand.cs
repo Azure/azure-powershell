@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location,
-                ExtendedLocation = new MNM.ExtendedLocation { Name = EdgeZone },
+                ExtendedLocation = new PSExtendedLocation(EdgeZone),
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
