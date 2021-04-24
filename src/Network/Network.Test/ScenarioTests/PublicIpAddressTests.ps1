@@ -816,35 +816,3 @@ function Test-PublicIpAddressCRUD-IdleTimeout
         Clean-ResourceGroup $rgname
     }
 }
-
-<#
-.SYNOPSIS
-Tests creating new simple publicIpAddress.
-#>
-function Test-PublicIpAddressInEdgeZone
-{
-    # Setup
-    $rname = Get-ResourceName
-	$domainNameLabel = Get-ResourceName
-    $ResourceGroupName = Get-ResourceGroupName;
-    $LocationName = "westus";
-    $EdgeZone = "microsoftlosangeles1";
-    $VMName = "MyVM";
-   
-    try 
-     {
-      # Create the resource group
-      New-AzResourceGroup -Name $ResourceGroupName -Location $LocationName -Tags @{ testtag = "testval" } 
-      
-      # Create publicIpAddres
-      New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $rname -Location $LocationName -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-
-	  # $publicIP = Get-AzPublicIpAddress -Name $rname -ResourceGroupName $ResourceGroupName
-	  # Assert-AreEqual $publicIP.ExtendedLocation.Name $EdgeZone
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $ResourceGroupName
-    }
-}

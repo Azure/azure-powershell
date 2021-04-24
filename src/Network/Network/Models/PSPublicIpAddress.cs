@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAllocationMethod { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public PSPublicIpAddressSku Sku { get; set; }
 
         public PSIPConfiguration IpConfiguration { get; set; }
