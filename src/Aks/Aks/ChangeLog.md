@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add `Set-AzAksClusterCredential` to reset the ServicePrincipal or reset AAD profile of a existing aks cluster.
+* Add `Set-AzAksClusterCredential` to reset the ServicePrincipal of a existing aks cluster.
 
 ## Version 2.0.2
 * Refined error messages of cmdlet failure.

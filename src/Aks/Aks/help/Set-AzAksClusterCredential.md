@@ -8,53 +8,32 @@ schema: 2.0.0
 # Set-AzAksClusterCredential
 
 ## SYNOPSIS
-Reset the ServicePrincipal or reset AAD profile of a existing aks cluster.
+Reset the ServicePrincipal of a existing aks cluster.
 
 ## SYNTAX
 
-### ResetServicePrincipalWithGroupNameParameterSet (Default)
+### GroupNameParameterSet (Default)
 ```
 Set-AzAksClusterCredential [-ResourceGroupName] <String> [-Name] <String>
  -ServicePrincipalIdAndSecret <PSCredential> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResetServicePrincipalWithInputObjectParameterSet
+### InputObjectParameterSet
 ```
 Set-AzAksClusterCredential -InputObject <PSKubernetesCluster> -ServicePrincipalIdAndSecret <PSCredential>
  [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### ResetAadWithInputObjectParameterSet
-```
-Set-AzAksClusterCredential -InputObject <PSKubernetesCluster> -ClientAppID <String> -TenantID <String>
- -ServerAppIdAndSecret <PSCredential> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResetAadWithIdParameterSet
-```
-Set-AzAksClusterCredential [-Id] <String> -ClientAppID <String> -TenantID <String>
- -ServerAppIdAndSecret <PSCredential> [-PassThru] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResetServicePrincipalWithIdParameterSet
+### IdParameterSet
 ```
 Set-AzAksClusterCredential [-Id] <String> -ServicePrincipalIdAndSecret <PSCredential> [-PassThru] [-AsJob]
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResetAadWithGroupNameParameterSet
-```
-Set-AzAksClusterCredential [-ResourceGroupName] <String> [-Name] <String> -ClientAppID <String>
- -TenantID <String> -ServerAppIdAndSecret <PSCredential> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Reset the ServicePrincipal or reset AAD profile of a existing aks cluster.
+Reset the ServicePrincipal of a existing aks cluster.
 
 ## EXAMPLES
 
@@ -78,21 +57,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientAppID
-The client app id associated with the AAD profile.
-
-```yaml
-Type: System.String
-Parameter Sets: ResetAadWithInputObjectParameterSet, ResetAadWithIdParameterSet, ResetAadWithGroupNameParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,7 +98,7 @@ Id of a managed Kubernetes cluster
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetAadWithIdParameterSet, ResetServicePrincipalWithIdParameterSet
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -149,7 +113,7 @@ A PSKubernetesCluster object, normally passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-Parameter Sets: ResetServicePrincipalWithInputObjectParameterSet, ResetAadWithInputObjectParameterSet
+Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
@@ -164,7 +128,7 @@ Name of your managed Kubernetes cluster
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetServicePrincipalWithGroupNameParameterSet, ResetAadWithGroupNameParameterSet
+Parameter Sets: GroupNameParameterSet
 Aliases:
 
 Required: True
@@ -194,26 +158,11 @@ Resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ResetServicePrincipalWithGroupNameParameterSet, ResetAadWithGroupNameParameterSet
+Parameter Sets: GroupNameParameterSet
 Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerAppIdAndSecret
-The server app id and server secret associated with the AAD profile.
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: ResetAadWithInputObjectParameterSet, ResetAadWithIdParameterSet, ResetAadWithGroupNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -224,22 +173,7 @@ The client id and client secret associated with the service principal.
 
 ```yaml
 Type: System.Management.Automation.PSCredential
-Parameter Sets: ResetServicePrincipalWithGroupNameParameterSet, ResetServicePrincipalWithInputObjectParameterSet, ResetServicePrincipalWithIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantID
-The tenant id with the AAD profile.
-
-```yaml
-Type: System.String
-Parameter Sets: ResetAadWithInputObjectParameterSet, ResetAadWithIdParameterSet, ResetAadWithGroupNameParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
