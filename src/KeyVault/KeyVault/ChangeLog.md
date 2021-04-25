@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug for `Get-AzKeyVaultSecret -IncludeVersions` when current version is disabled [#14740]
 
 ## Version 3.4.2
 * Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
