@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Output has changed to a PSResourceGraphResponse class. Previous output is now under Data property.
+* Changed output of `Search-AzGraph` to PSResourceGraphResponse which wrapped previous output under Data property.
 
 ## Version 0.9.0
 * Added support for the new api version with the ability to query with management group scopes using -ManagementGroup param.
