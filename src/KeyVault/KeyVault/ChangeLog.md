@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Displayed error code and message when updating purged secret [#14800]
 
 ## Version 3.4.2
 * Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
