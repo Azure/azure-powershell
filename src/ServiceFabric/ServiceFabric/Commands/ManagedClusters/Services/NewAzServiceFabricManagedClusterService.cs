@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -160,6 +161,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateRange(0, 100)]
         public int MinInstancePercentage { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "InstanceCloseDelayDuration",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. InstanceCloseDelayDuration is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessSingleton,
             HelpMessage = "Specify the instance close delay duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessUniformInt64,
@@ -208,6 +212,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the target replica set size for the managed service")]
         public SwitchParameter HasPersistedState { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "DropSourceReplicaOnMove",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. DropSourceReplicaOnMove is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
             HelpMessage = "Specify the drop source replica on move property for the managed service")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
@@ -313,6 +320,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
         public PSServiceCorrelation[] Correlation { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "ServiceDnsName",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. ServiceDnsName is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessSingleton,
             HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessUniformInt64,
@@ -492,10 +502,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     statelessProperties.InstanceCount = this.InstanceCount;
 
                     // Optional
-                    if (this.IsParameterBound(c => c.InstanceCloseDelayDuration))
-                    {
-                        statelessProperties.InstanceCloseDelayDuration = this.InstanceCloseDelayDuration.ToString();
-                    }
                     if (this.IsParameterBound(c => c.MinInstancePercentage))
                     {
                         statelessProperties.MinInstancePercentage = this.MinInstancePercentage;
@@ -526,10 +532,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     if (this.IsParameterBound(c => c.ReplicaRestartWaitDuration))
                     {
                         statefulProperties.ReplicaRestartWaitDuration = this.ReplicaRestartWaitDuration.ToString();
-                    }
-                    if (this.IsParameterBound(c => c.DropSourceReplicaOnMove))
-                    {
-                        statefulProperties.DropSourceReplicaOnMove = this.DropSourceReplicaOnMove.ToBool();
                     }
                     if (this.IsParameterBound(c => c.HasPersistedState))
                     {
@@ -580,10 +582,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.IsParameterBound(c => c.Correlation))
             {
                 properties.CorrelationScheme = this.Correlation;
-            }
-            if (this.IsParameterBound(c => c.ServiceDnsName))
-            {
-                properties.ServiceDnsName = this.ServiceDnsName;
             }
         }
 
