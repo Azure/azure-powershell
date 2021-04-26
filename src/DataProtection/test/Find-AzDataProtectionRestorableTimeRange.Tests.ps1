@@ -22,7 +22,7 @@ Describe 'Find-AzDataProtectionRestorableTimeRange' {
         Write-Debug  -Message $rgName
         Write-Debug  -Message $vaultName
 
-        $instances  = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $sub -DatasourceType AzureBlob -ResourceGroup $rgName -Vault $vaultName  -ProtectionStatus ProtectionConfigured
+        $instances  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.Storage/storageAccounts/blobServices") -and ($_.Property.CurrentProtectionState -eq "ProtectionConfigured")}
         
         if($instances.Count -gt 0){
             
