@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for getting a single private link resource.
 * Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
 * Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
     - `New-AzFirewallPolicy`
