@@ -96,13 +96,10 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
         continue
     }
 
-    if ([System.String]::IsNullOrEmpty($account))
+    # Skip if commit author exists in skipContributors list.
+    if ([System.String]::IsNullOrEmpty($account) -and $skipContributors.Contains($name))
     {
-      # Skip if commit author exists in skipContributors list.
-      if ($skipContributors.Contains($name))
-      {
-          continue
-      }
+        continue
     }
     
     # Check whether the contributor belongs to the Azure organization.
