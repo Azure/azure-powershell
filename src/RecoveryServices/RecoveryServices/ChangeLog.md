@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for restoring unmanaged disks vm as managed disks.
 
 ## Version 3.5.0
 * Added Cross Zonal Restore for managed virtual machines. 

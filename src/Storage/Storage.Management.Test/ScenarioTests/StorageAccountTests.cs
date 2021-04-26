@@ -231,6 +231,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestNewAzureStorageAccountEdgeZone()
         {
             TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountKeySASPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountKeySASPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountUserAssignedIdentity");
         }        
     }
 }

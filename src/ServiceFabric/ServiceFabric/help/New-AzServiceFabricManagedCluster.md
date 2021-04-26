@@ -15,21 +15,22 @@ Create new managed cluster.
 ### ClientCertByTp (Default)
 ```
 New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> -Location <String>
- [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-ClientCertIsAdmin]
- -ClientCertThumbprint <String> -AdminPassword <SecureString> [-AdminUserName <String>]
+ [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-UpgradeCadence <PSClusterUpgradeCadence>]
+ [-ClientCertIsAdmin] -ClientCertThumbprint <String> -AdminPassword <SecureString> [-AdminUserName <String>]
  [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>] [-DnsName <String>]
- [-ReverseProxyEndpointPort <Int32>] [-Sku <ManagedClusterSku>] [-UseTestExtension] [-AsJob]
+ [-ReverseProxyEndpointPort <Int32>] [-Sku <ManagedClusterSku>] [-UseTestExtension] [-ZonalResiliency] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientCertByCn
 ```
 New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String> -Location <String>
- [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-ClientCertIsAdmin]
- -ClientCertCommonName <String> [-ClientCertIssuerThumbprint <String[]>] -AdminPassword <SecureString>
- [-AdminUserName <String>] [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>]
- [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>] [-Sku <ManagedClusterSku>] [-UseTestExtension]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-UpgradeCadence <PSClusterUpgradeCadence>]
+ [-ClientCertIsAdmin] -ClientCertCommonName <String> [-ClientCertIssuerThumbprint <String[]>]
+ -AdminPassword <SecureString> [-AdminUserName <String>] [-HttpGatewayConnectionPort <Int32>]
+ [-ClientConnectionPort <Int32>] [-DnsName <String>] [-ReverseProxyEndpointPort <Int32>]
+ [-Sku <ManagedClusterSku>] [-UseTestExtension] [-ZonalResiliency] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +57,26 @@ New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centralus
 ```
 
 This command creates a cluster resource in centraluseuap with an initial admin client certificate and standard sku.
+
+### Example 3
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$password = ConvertTo-SecureString -AsPlainText -Force "testpass1234!@#$"
+New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Sku Standard -UpgradeMode Automatic -UpgradeCadence Wave1 -ZonalResiliency -Verbose
+```
+
+This command creates a cluster with upgrade cadence in wave1 and zonal resiliency enabled.
+
+### Example 4
+```powershell
+$rgName = "testRG"
+$clusterName = "testCluster"
+$password = ConvertTo-SecureString -AsPlainText -Force "testpass1234!@#$"
+New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Sku Standard -UpgradeMode Manual -CodeVersion 7.2.477.9590 -Verbose
+```
+
+This command creates a cluster with manual upgrade mode and 7.2.477.9590 code version.
 
 ## PARAMETERS
 
@@ -189,7 +210,7 @@ Only use if upgrade mode is Manual.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ClusterCodeVersion
 
 Required: False
 Position: Named
@@ -320,6 +341,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -UpgradeCadence
+Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0.
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSClusterUpgradeCadence
+Parameter Sets: (All)
+Aliases: ClusterUpgradeCadence
+Accepted values: Wave0, Wave1, Wave2
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpgradeMode
 Cluster service fabric code version upgrade mode.
 Automatic or Manual.
@@ -327,7 +364,7 @@ Automatic or Manual.
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode
 Parameter Sets: (All)
-Aliases:
+Aliases: ClusterUpgradeMode
 Accepted values: Automatic, Manual
 
 Required: False
@@ -339,6 +376,21 @@ Accept wildcard characters: False
 
 ### -UseTestExtension
 If Specify The cluster will be crated with service test vmss extension.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ZonalResiliency
+Indicates if the cluster has zone resiliency.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

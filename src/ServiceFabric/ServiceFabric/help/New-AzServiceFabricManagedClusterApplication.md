@@ -16,7 +16,7 @@ Create new service fabric managed application under the specified resource group
 ```
 New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ApplicationParameter <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-Clu
 ```
 New-AzServiceFabricManagedClusterApplication [-ResourceGroupName] <String> [-ClusterName] <String>
  [-ApplicationTypeName] <String> [-ApplicationTypeVersion] <String> -Name <String>
- [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ApplicationParameter <Hashtable>] -PackageUrl <String> [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specify the tags as key/value pairs.
 
 ```yaml

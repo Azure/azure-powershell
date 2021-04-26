@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    isPrimary: nodeType.IsPrimary,
                    vmInstanceCount: nodeType.VmInstanceCount,
                    dataDiskSizeGB: nodeType.DataDiskSizeGB,
+                   dataDiskType: nodeType.DataDiskType,
                    provisioningState: nodeType.ProvisioningState,
                    placementProperties: nodeType.PlacementProperties,
                    capacities: nodeType.Capacities,
@@ -38,7 +39,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    vmImageVersion: nodeType.VmImageVersion,
                    vmSecrets: nodeType.VmSecrets,
                    vmExtensions: nodeType.VmExtensions,
-                   vmManagedIdentity: nodeType.VmManagedIdentity)
+                   vmManagedIdentity: nodeType.VmManagedIdentity,
+                   isStateless: nodeType.IsStateless,
+                   multiplePlacementGroups: nodeType.MultiplePlacementGroups)
         {
         }
     }

@@ -17,6 +17,7 @@ using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation.Subsystem;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,11 +49,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [Theory]
         [InlineData("git status")]
         [InlineData("New-Item")]
-        [InlineData(@"$a='ResourceGroup01'")]
+        [InlineData(@"$a=ls 'ResourceGroup01'")]
         public async Task VerifyStartEarlyProessingForOneUnsupportedCommandHistory(string inputData)
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             IReadOnlyList<string> history = new List<string>()
             {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             await telemetryClient.RequestPredictionTaskCompletionSource.Task;
@@ -72,14 +73,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{AzPredictorConstants.CommandPlaceholder}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForOneSupportedCommandWithoutParameter()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var testCaseClientId = "TestCase";
 
@@ -126,8 +127,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(testCaseClientId, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{history[0]}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForOneSupportedCommandWithParameter()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var testCaseClientId = "TestCase";
 
             // There is only one command with parameter.
@@ -173,8 +174,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(testCaseClientId, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{maskedCommand}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -192,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForTwoSupportedCommandHistory()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             IReadOnlyList<string> history = new List<string>()
             {
                 "Get-AzContext",
@@ -224,8 +225,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal(string.Join("\n", maskedCommands), telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -243,7 +244,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForTwoUnsupportedCommandInHistory()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             IReadOnlyList<string> history = new List<string>()
             {
@@ -264,13 +265,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
+            // Should use the placeholder for the assignment like \"$a='ResourceGroup01'\" where there is no command name at the right side.
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{AzPredictorConstants.CommandPlaceholder}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -288,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForUnsupportedCommandAfterSupportedOnes()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var history = new List<string>()
             {
@@ -325,37 +327,35 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 1;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add("git status");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             // Don't need to await on telemetryClient.RequestPredictioinTask, because "git" isn't a supported command and RequestPredictionsAsync isn't called.
-            // The commands to request predictions are the same as previous request.
-            Assert.Equal(new List<string>() { "New-AzResourceGroup -Name:***", "New-AzVM -Location *** -Name ***" }, telemetryClient.RequestPredictionData.Commands);
-            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RequestPredictionData.ClientId);
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+            Assert.Null(telemetryClient.RequestPredictionData);
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
             var secondHistoryData = telemetryClient.HistoryData;
 
             // Make sure that the RequestPrediction event can be correlated to the right History event.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(firstHistoryData, firstRequestPredictionData);
-            AzPredictorTelemetryTests.EnsureSameCorrelationId(firstRequestPredictionData, secondHistoryData);
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(firstHistoryData, firstRequestPredictionData);
+            AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, secondHistoryData);
 
             AzPredictorTelemetryTests.EnsureSameSessionId(firstHistoryData, firstRequestPredictionData);
             AzPredictorTelemetryTests.EnsureSameSessionId(firstRequestPredictionData, secondHistoryData);
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 1;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add(@"$a='NewResourceName'");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
@@ -365,24 +365,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             // Don't need to await on telemetryClient.RequestPredictioinTask, because assignment isn't a supported command and RequestPredictionsAsync isn't called.
-            // The commands to request predictions are the same as previous request.
-            Assert.Equal(new List<string>() { "New-AzResourceGroup -Name:***", "New-AzVM -Location *** -Name ***" }, telemetryClient.RequestPredictionData.Commands);
-            Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RequestPredictionData.ClientId);
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+            Assert.Null(telemetryClient.RequestPredictionData);
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
 
-            // There is no new request prediction. The correlation id isn't changed.
-            AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // There is no new request prediction. The request id isn't changed.
+            AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
-            AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            AzPredictorTelemetryTests.EnsureSameSessionId(firstRequestPredictionData, telemetryClient.HistoryData);
 
             telemetryClient.ResetWaitingTasks();
             expectedTelemetryCount = 2;
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             history.Add("Get-AzResourceGroup -Name:ResourceGroup01");
             azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
@@ -409,8 +407,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal(string.Join("\n", maskedCommands), telemetryClient.RecordedTelemetry[1].Properties["Command"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -423,7 +421,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForUnsupportedAndSupportedCommands()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "git status",
@@ -445,8 +443,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             await telemetryClient.RequestPredictionTaskCompletionSource.Task;
             Assert.Equal(maskedCommands, telemetryClient.RequestPredictionData.Commands);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RequestPredictionData.ClientId);
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -461,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingForSupportedAndUnsupportedCommands()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "New-AzVM -Name hello -Location WestUS",
@@ -477,14 +475,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
-            Assert.Equal(maskedCommands[0], telemetryClient.HistoryData.Command);
+            Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history[1]), telemetryClient.HistoryData.Command);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.HistoryData.ClientId);
 
             await telemetryClient.RequestPredictionTaskCompletionSource.Task;
             Assert.Equal(maskedCommands, telemetryClient.RequestPredictionData.Commands);
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RequestPredictionData.ClientId);
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -499,8 +497,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public async Task VerifyStartEarlyProcessingException()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount + 1);
-
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
             var history = new List<string>()
             {
                 "New-AzVM -Name hello -Location WestUS",
@@ -529,8 +526,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{maskedCommand}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
             Assert.StartsWith($"Type: {typeof(MockTestException)}\nStack Trace: ", telemetryClient.RecordedTelemetry[1].Properties["Exception"]);
 
-            // The correlation id are changed in OnHistory.
-            AzPredictorTelemetryTests.EnsureDifferentCorrelationId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
+            // The request id are changed in OnRequestPrediction.
+            AzPredictorTelemetryTests.EnsureDifferentRequestId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
 
             // SetssionId is not changed.
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.RequestPredictionData, telemetryClient.HistoryData);
@@ -543,7 +540,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private void VerifySameSuggestionSessionId()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -564,7 +561,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var displayCountOrIndex = 3;
 
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             azPredictor.OnSuggestionDisplayed(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, displayCountOrIndex);
 
@@ -579,7 +576,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             var acceptedSuggestion = "SuggestionAccepted";
             telemetryClient.ResetWaitingTasks();
-            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount + 1;
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
 
             azPredictor.OnSuggestionAccepted(AzPredictorTelemetryTests.AzPredictorClient, suggestionPackage.Session.Value, acceptedSuggestion);
 
@@ -596,8 +593,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(suggestionPackage.Session.Value, telemetryClient.SuggestionAcceptedData.SuggestionSessionId);
             Assert.Equal(acceptedSuggestion, telemetryClient.SuggestionAcceptedData.Suggestion);
 
-            AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
-            AzPredictorTelemetryTests.EnsureSameCorrelationId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
+            AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
+            AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
             AzPredictorTelemetryTests.EnsureSameSessionId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionAcceptedData);
 
@@ -612,7 +609,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestionSessionIdChanged()
         {
             var expectedTelemetryCount = 2;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var firstSuggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -622,7 +619,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var secondGetSuggestionData = telemetryClient.GetSuggestionData;
 
             Assert.NotEqual(secondSuggestionPackage.Session, firstSuggestionPackage.Session);
-            AzPredictorTelemetryTests.EnsureSameCorrelationId(secondGetSuggestionData, firstGetSuggestionData);
+            AzPredictorTelemetryTests.EnsureSameRequestId(secondGetSuggestionData, firstGetSuggestionData);
             AzPredictorTelemetryTests.EnsureSameSessionId(secondGetSuggestionData, firstGetSuggestionData);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
@@ -635,7 +632,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyListViewInSuggestionDisplayed()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 2;
             var suggestionCountOrIndex = 4;
@@ -663,7 +660,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyInlineViewInSuggestionDisplayedAtEdge()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 40;
             var suggestionCountOrIndex = 0;
@@ -691,7 +688,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyInlineViewInSuggestionDisplayed()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
 
             uint suggestionSessionId = 14;
             var suggestionCountOrIndex = -1;
@@ -719,7 +716,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifyExceptionInGetSuggestion()
         {
             var expectedTelemetryCount = 1;
-            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount + 1);
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: true, expectedTelemetryCount);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US' -WhatIf");
             var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
@@ -733,6 +730,114 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(AzPredictorTelemetryTests.AzPredictorClient, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal("New-AzResourceGroup -Location *** -Name *** -WhatIf ***", telemetryClient.RecordedTelemetry[0].Properties["UserInput"]);
             Assert.StartsWith($"Type: {typeof(MockTestException)}\nStack Trace: ", telemetryClient.RecordedTelemetry[0].Properties["Exception"]);
+        }
+
+        /// <summary>
+        /// Verify that the command id is matched.
+        /// </summary>
+        [Fact]
+        public void VerifyCommandIds()
+        {
+            var expectedTelemetryCount = 3;
+            var (azPredictor, telemetryClient) = CreateTestObjects(throwException: false, expectedTelemetryCount);
+
+            var history = new List<string>()
+            {
+                "New-AzVM -Name hello -Location WestUS",
+            };
+
+            azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
+
+            var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
+            var suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
+
+            VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+
+            var originalHistoryData = telemetryClient.HistoryData;
+            var firstRequestPredictionData = telemetryClient.RequestPredictionData;
+            var firstGetSuggestionData = telemetryClient.GetSuggestionData;
+
+            expectedTelemetryCount = 2;
+            telemetryClient.ResetWaitingTasks();
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
+
+            history = new List<string>()
+            {
+                "Get-AzSqlServer",
+            };
+
+            azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
+
+            VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+
+            var firstHistoryData = telemetryClient.HistoryData;
+            var secondRequestPredictionData = telemetryClient.RequestPredictionData;
+
+            EnsureSameRequestId(firstRequestPredictionData, firstGetSuggestionData);
+            EnsureSameRequestId(firstRequestPredictionData, firstHistoryData);
+            EnsureSameCommandId(firstHistoryData, firstRequestPredictionData);
+            EnsureSameCommandId(firstHistoryData, firstGetSuggestionData);
+
+            // TODO should verify the RecordedTelemetry
+
+            EnsureDifferentComamandId(firstHistoryData, originalHistoryData);
+            EnsureDifferentRequestId(firstRequestPredictionData, secondRequestPredictionData);
+
+            // Now add a "git" command. It doesn't change the request id, but change the command id.
+
+            expectedTelemetryCount = 2;
+            telemetryClient.ResetWaitingTasks();
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
+
+            predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
+            suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
+
+            history =new List<string>()
+            {
+                "git status",
+            };
+
+            azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
+
+            VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+
+            var secondGetSuggestionData = telemetryClient.GetSuggestionData;
+            var secondHistoryData = telemetryClient.HistoryData;
+            var thirdRequestPredictionData = telemetryClient.RequestPredictionData;
+
+            expectedTelemetryCount = 2;
+            telemetryClient.ResetWaitingTasks();
+            telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryCount;
+
+            predictionContext = PredictionContext.Create("New-AzVM -Name 'VM01' -Location 'Central US'");
+            suggestionPackage = azPredictor.GetSuggestion(AzPredictorTelemetryTests.AzPredictorClient, predictionContext, CancellationToken.None);
+
+            history =new List<string>()
+            {
+                "git commit",
+            };
+
+            azPredictor.StartEarlyProcessing(AzPredictorTelemetryTests.AzPredictorClient, history);
+
+            VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
+
+            var thirdGetSuggestionData = telemetryClient.GetSuggestionData;
+            var thirdHistoryData = telemetryClient.HistoryData;
+            var fourthRequestPredictionData = telemetryClient.RequestPredictionData;
+
+            Assert.Null(thirdRequestPredictionData); // Since it's "git", we don't send the request.
+            Assert.Null(fourthRequestPredictionData); // Since it's "git", we don't send the request.
+
+            EnsureSameRequestId(secondRequestPredictionData, secondGetSuggestionData);
+            EnsureSameRequestId(secondRequestPredictionData, secondHistoryData);
+            EnsureSameRequestId(secondRequestPredictionData, thirdGetSuggestionData);
+            EnsureSameRequestId(secondRequestPredictionData, thirdHistoryData);
+
+            EnsureDifferentComamandId(secondHistoryData, firstHistoryData);
+            EnsureSameCommandId(secondHistoryData, secondGetSuggestionData);
+
+            EnsureDifferentComamandId(thirdHistoryData, secondHistoryData);
+            EnsureSameCommandId(thirdHistoryData, thirdGetSuggestionData);
         }
 
         private (AzPredictor, MockAzPredictorTelemetryClient) CreateTestObjects(bool throwException, int expectedTelemetryEvent)
@@ -757,31 +862,63 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// <summary>
         /// Verifies that the number of telemetry events to be sent is equal to <paramref name="expectedCount"/>.
         /// </summary>
-        /// <remarks>
-        /// It requires to set up the <paramref name="telemetryClient"/> with the <see cref="MockAzPredictorTelemetryClient.ExceptedTelemetryRecordCount"/> one more than <paramref name="expectedCount"/>.
-        /// That means the expectedTelemetryEvent in <see cref="CreateTestObjects"/> should be one plus
-        /// <paramref name="expectedCount"/>.
-        /// Internally, it'll check that the task in <see cref="MockAzPredictorTelemetryClient.SendTelemetryTaskCompletionSource"/> times out because it's waiting for one more telemetry event and that telemetry event never comes.
-        /// </remarks>
         private void VerifyTelemetryRecordCount(int expectedCount, MockAzPredictorTelemetryClient telemetryClient)
         {
-            Assert.False(telemetryClient.SendTelemetryTaskCompletionSource.Task.Wait(TimeSpan.FromMilliseconds(200)));
+            Assert.True(telemetryClient.SendTelemetryTaskCompletionSource.Task.Wait(TimeSpan.FromMilliseconds(500)));
             Assert.Equal(expectedCount, telemetryClient.RecordedTelemetry.Count);
         }
 
-        private static void EnsureDifferentCorrelationId(ITelemetryData expected, ITelemetryData actual)
+        private static void EnsureDifferentComamandId(ITelemetryData expected, ITelemetryData actual)
         {
-            Assert.NotEqual(expected.CorrelationId, actual.CorrelationId);
+            Assert.NotEqual(expected.CommandId, actual.CommandId);
         }
 
-        private static void EnsureSameCorrelationId(ITelemetryData expected, ITelemetryData actual)
+        private static void EnsureSameCommandId(ITelemetryData expected, ITelemetryData actual)
         {
-            Assert.Equal(expected.CorrelationId, actual.CorrelationId);
+            Assert.Equal(expected.CommandId, actual.CommandId);
+        }
+
+        private static void EnsureDifferentRequestId(ITelemetryData expected, ITelemetryData actual)
+        {
+            Assert.NotEqual(expected.RequestId, actual.RequestId);
+        }
+
+        private static void EnsureSameRequestId(ITelemetryData expected, ITelemetryData actual)
+        {
+            Assert.Equal(expected.RequestId, actual.RequestId);
         }
 
         private static void EnsureSameSessionId(ITelemetryData expected, ITelemetryData actual)
         {
             Assert.Equal(expected.SessionId, actual.SessionId);
+        }
+
+        /// <summary>
+        /// Gets the command name offrom the user input.
+        /// </summary>
+        /// <remarks>
+        /// It only needs to be able to get the commands name from the user input in the test cases. It's not intended to be
+        /// comprehensive and fine tuned.
+        /// </remarks>
+        private static string GetCommandName(string commandInput)
+        {
+            // If there is a '=' in it, treat as assignment and parse the right side.
+            var inputSegments = commandInput.Split('=');
+
+            if (inputSegments.Count() == 1)
+            {
+                return commandInput.Split(' ')[0];
+            }
+
+            var rightSide = inputSegments.Last().Trim();
+
+            if ((('a' <= rightSide[0]) && (rightSide[0] <= 'z')) || (('A' <= rightSide[0]) && (rightSide[0] <= 'Z')))
+            {
+                return GetCommandName(rightSide);
+            }
+
+            return AzPredictorConstants.CommandPlaceholder;
+
         }
     }
 }

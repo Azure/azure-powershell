@@ -21,6 +21,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -148,9 +149,49 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool? enableHttpsTrafficOnly = null;
 
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.")]
+            Mandatory = false,
+            HelpMessage = "Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault. If specify this paramter without \"-IdentityType\", will use system assigned identity.")]
         public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set resource ids for the the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
+        [ValidateSet(AccountIdentityType.systemAssigned,
+            AccountIdentityType.userAssigned,
+            AccountIdentityType.systemAssignedUserAssigned,
+            AccountIdentityType.none,
+            IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set resource id for user assigned Identity used to access Azure KeyVault of Storage Account Encryption, the id must in UserAssignIdentityId.")]
+        [ValidateNotNull]
+        public string KeyVaultUserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account encryption keySource KeyVault KeyName")]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account encryption keySource KeyVault KeyVersion")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Storage Account encryption keySource KeyVault KeyVaultUri")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
 
         [Parameter(HelpMessage = "Storage Account NetworkRule",
             Mandatory = false)]
@@ -316,7 +357,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string EncryptionKeyTypeForQueue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The service will apply a secondary layer of encryption with platform managed keys for data at rest.")]
-        public SwitchParameter  RequireInfrastructureEncryption { get; set; }
+        public SwitchParameter RequireInfrastructureEncryption { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
+        public TimeSpan SasExpirationPeriod { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
+        public int KeyExpirationPeriodInDay
+        {
+            get
+            {
+                return keyExpirationPeriodInDay.Value;
+            }
+            set
+            {
+                keyExpirationPeriodInDay = value;
+            }
+        }
+        private int? keyExpirationPeriodInDay = null;
 
         [Parameter(
             Mandatory = false,
@@ -422,9 +480,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.EnableHttpsTrafficOnly = enableHttpsTrafficOnly;
             }
 
-            if (AssignIdentity.IsPresent)
+            if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
             {
-                createParameters.Identity = new Identity() {  Type = IdentityType.SystemAssigned };
+                createParameters.Identity = new Identity() { Type = StorageModels.IdentityType.SystemAssigned };
+                if (this.IdentityType != null)
+                {
+                    createParameters.Identity.Type = GetIdentityTypeString(this.IdentityType);
+                }
+                if (this.UserAssignedIdentityId != null)
+                {
+                    if (createParameters.Identity.Type != StorageModels.IdentityType.UserAssigned && createParameters.Identity.Type != StorageModels.IdentityType.SystemAssignedUserAssigned)
+                    {
+                        throw new ArgumentException("UserAssignIdentityId should only be specified when AssignIdentityType is UserAssigned or SystemAssignedUserAssigned.", "UserAssignIdentityId");
+                    }
+                    createParameters.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+                    createParameters.Identity.UserAssignedIdentities.Add(this.UserAssignedIdentityId, new UserAssignedIdentity());
+                }
             }
             if (NetworkRuleSet != null)
             {
@@ -500,6 +571,47 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
             }
+            if (this.KeyVaultUri !=null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null)
+            {
+                if ((this.KeyVaultUri != null && this.KeyName == null) || (this.KeyVaultUri == null && this.KeyName != null))
+                {
+                    throw new ArgumentException("KeyVaultUri and KeyName must be specify together"); 
+                }
+
+                if (this.KeyVersion != null && (this.KeyVaultUri == null || this.KeyName == null))
+                {
+                    throw new ArgumentException("KeyVersion can only be specified when specify KeyVaultUri and KeyName together.", "KeyVersion"); 
+                }
+
+                if (this.KeyVaultUserAssignedIdentityId != null && (this.KeyVaultUri == null || this.KeyName == null))
+                {
+                    throw new ArgumentException("KeyVaultUserAssignedIdentityId can only be specified when specify KeyVaultUri and KeyName together.", "KeyVaultUserAssignedIdentityId");
+                }
+
+                if (createParameters.Encryption == null)
+                {
+                    createParameters.Encryption = new Encryption();
+                    createParameters.Encryption.KeySource = KeySource.MicrosoftStorage;
+                }
+
+                if (createParameters.Encryption.Services is null)
+                {
+                    createParameters.Encryption.Services = new EncryptionServices();
+                    createParameters.Encryption.Services.Blob = new EncryptionService();
+                }
+
+                if (this.KeyVaultUri != null || this.KeyName != null || this.KeyVersion != null)
+                {
+                    createParameters.Encryption.KeySource = KeySource.MicrosoftKeyvault;
+                    createParameters.Encryption.KeyVaultProperties = new KeyVaultProperties(this.KeyName, this.KeyVersion, this.KeyVaultUri);
+                }
+
+                if (this.KeyVaultUserAssignedIdentityId != null)
+                {
+                    createParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
+                    createParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                }
+            }
             if (this.minimumTlsVersion != null)
             {
                 createParameters.MinimumTlsVersion = this.minimumTlsVersion;
@@ -523,6 +635,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Type = ExtendedLocationTypes.EdgeZone,
                     Name = this.EdgeZone
                 };
+            }
+            if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+            {
+                createParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+            }
+            if (keyExpirationPeriodInDay != null)
+            {
+                createParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(
