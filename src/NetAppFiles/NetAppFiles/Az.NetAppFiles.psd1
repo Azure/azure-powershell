@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.NetApp.dll'
@@ -97,7 +97,8 @@ CmdletsToExport = 'Get-AzNetAppFilesAccount', 'New-AzNetAppFilesAccount',
                'Set-AzNetAppFilesBackupPolicy', 'Update-AzNetAppFilesBackupPolicy', 
                'Remove-AzNetAppFilesBackupPolicy', 'New-AzNetAppFilesBackup', 
                'Get-AzNetAppFilesBackup', 'Update-AzNetAppFilesBackup', 
-               'Remove-AzNetAppFilesBackup', 'Get-AzNetAppFilesVault', 
+               'Remove-AzNetAppFilesBackup', 'Get-AzNetAppFilesVolumeBackupStatus',
+               'Get-AzNetAppFilesVault', 
                'New-AzNetAppFilesActiveDirectory', 
                'Get-AzNetAppFilesActiveDirectory', 
                'Update-AzNetAppFilesActiveDirectory', 
@@ -122,6 +123,7 @@ AliasesToExport = 'Get-AnfAccount', 'New-AnfAccount', 'Remove-AnfAccount',
                'New-AnfBackupPolicy', 'Set-AnfBackupPolicy', 
                'Remove-AnfBackupPolicy', 'Update-AnfBackupPolicy', 'Get-AnfBackup', 
                'New-AnfBackup', 'Remove-AnfBackup', 'Update-AnfBackup', 
+               'Get-AnfVolumeBackupStatus',
                'Get-AnfActiveDirectory', 'New-AnfActiveDirectory', 
                'Remove-AnfActiveDirectory', 'Update-AnfActiveDirectory'
 

@@ -337,7 +337,7 @@ function Test-VolumeReplication
         # create virtual network destination
         $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $destResourceGroup -Location $destResourceLocation -Name $destVnetName -AddressPrefix 10.0.0.0/16
         $delegation = New-AzDelegation -Name "netAppVolumes" -ServiceName "Microsoft.Netapp/volumes"
-        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+        Add-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $virtualNetwork -AddressPrefix "10.0.3.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 
         # create accounts for source and destination
         $srcRetrievedAcc = New-AzNetAppFilesAccount -ResourceGroupName $srcResourceGroup -Location $srcResourceLocation -AccountName $srcAccName

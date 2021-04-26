@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
-{
+{    
     [Cmdlet(
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackup",
@@ -33,10 +33,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
     [Alias("Remove-AnfBackup")]
     public class RemoveAzureRmNetAppFilesBackup : AzureNetAppFilesCmdletBase
     {
+        protected const string AccountBackupFieldsParameterSet = "ByAccountBackupFieldsParameterSet";
+
         [Parameter(
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The resource group of the ANF account")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = AccountBackupFieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
@@ -45,6 +51,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             Mandatory = false,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF account")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = AccountBackupFieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccount",
@@ -94,6 +104,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = AccountBackupFieldsParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the ANF backup",
+            ParameterSetName = ParentObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter(
+            "Microsoft.NetApp/netAppAccounts/backups",
+            nameof(ResourceGroupName),
+            nameof(AccountName))]
+        public string AccountBackupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "The resource id of the ANF Backup")]
@@ -124,38 +149,77 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public override void ExecuteCmdlet()
         {
             bool success = false;
-
+            bool accountBackup = false;
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 var parentResources = resourceIdentifier.ParentResource.Split('/');
                 AccountName = parentResources[1];
-                PoolName = parentResources[3];
-                VolumeName = parentResources[5];
+                if (parentResources.Length > 1)
+                {
+                    PoolName = parentResources[3];
+                    VolumeName = parentResources[5];
+                }
                 Name = resourceIdentifier.ResourceName;
+                
+                try
+                {
+                    var existingVolume = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, PoolName, VolumeName);
+                    if (existingVolume == null)
+                    {
+                        accountBackup = true;
+                    }
+                }
+                catch
+                {
+                    accountBackup = true;
+                }
             }
             else if (ParameterSetName == ObjectParameterSet)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 var NameParts = InputObject.Name.Split('/');
                 AccountName = NameParts[0];
-                PoolName = NameParts[1];
-                VolumeName = NameParts[2];
-                Name = NameParts[3];
+                if (NameParts.Length == 2)
+                {
+                    Name = NameParts[1];
+                    accountBackup = true;
+                }
+                else if (NameParts.Length > 2)
+                {
+                    PoolName = NameParts[1];
+                    VolumeName = NameParts[2];
+                    Name = NameParts[3];
+                }
             }
             else if (ParameterSetName == ParentObjectParameterSet)
             {
                 ResourceGroupName = VolumeObject.ResourceGroupName;
                 var NameParts = VolumeObject.Name.Split('/');
                 AccountName = NameParts[0];
-                PoolName = NameParts[1];
-                VolumeName = NameParts[2];
+                if (NameParts.Length > 1)
+                {
+                    PoolName = NameParts[1];
+                    VolumeName = NameParts[2];
+                }
+            }
+            else if (ParameterSetName == AccountBackupFieldsParameterSet)
+            {
+                accountBackup = true;
+                Name = AccountBackupName;
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
-            {
-                AzureNetAppFilesManagementClient.Backups.Delete(ResourceGroupName, AccountName, backupName: Name, poolName: PoolName, volumeName: VolumeName);
+            {                
+                if (accountBackup)
+                {
+                    AzureNetAppFilesManagementClient.AccountBackups.Delete(ResourceGroupName, AccountName, backupName: Name);
+                }
+                else
+                {
+                    AzureNetAppFilesManagementClient.Backups.Delete(ResourceGroupName, AccountName, poolName: PoolName, volumeName: VolumeName, backupName: Name);
+                }
                 success = true;
             }
             if (PassThru)

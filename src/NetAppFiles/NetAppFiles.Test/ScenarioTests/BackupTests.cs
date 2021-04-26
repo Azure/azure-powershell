@@ -27,23 +27,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
-        //[Fact]
+        //[Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupCrud()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupCrud");
         }
 
-        [Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        //[Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupPipelines()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPipelines");
         }
 
-        [Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
-        //[Fact]
+        //[Fact(Skip = "Backup service side bug causes this to fail, re-enable when fixed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumeBackupStatusCrud()
         {

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeBackupStatus",
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeBackupStatus))]
     [Alias("Get-AnfVolumeBackupStatus")]
-    public class GetAzureRmNetAppFilesBackupStatus : AzureNetAppFilesCmdletBase
+    public class GetAzureRmNetAppFilesVolumeBackupStatus : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
