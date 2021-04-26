@@ -700,7 +700,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 PolicySettings = new sdkPolicySetting()
                 {
                     EnabledState = psPolicy.PolicyEnabledState.ToString(),
-                    Mode = psPolicy.PolicyMode
+                    Mode = psPolicy.PolicyMode,
+                    CustomBlockResponseBody = psPolicy.CustomBlockResponseBody,
+                    CustomBlockResponseStatusCode = psPolicy.CustomBlockResponseStatusCode,
+                    RedirectUrl = psPolicy.RedirectUrl,
+                    RequestBodyCheck = psPolicy.RequestBodyCheck?.ToString()
                 },
                 CustomRules = new SdkCustomRuleList()
                 {
