@@ -144,16 +144,13 @@ function New-AzCloudService {
         # extract csdef/cscfg 
 
         try {
-            $ErrorActionPreference = "Stop"
-            $getCS = Get-azcloudservice -resourcegroupname $ResourceGroupName -name $name
+            $getCS = Get-azcloudservice -resourcegroupname $ResourceGroupName -name $name -ErrorAction Stop
             if ($null -ne $getCS){
                 throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
             }
         }
         catch {
             # CloudService does not exist in that name/resource group
-        }finally{
-            $ErrorActionPreference = "Continue"
         }
 
         if (-not (Test-Path $ConfigurationFile))  
@@ -225,14 +222,11 @@ function New-AzCloudService {
             $containerName = "cloudservicecontainer"
             # check if container exists
             try {
-                $ErrorActionPreference = "Stop"
-                $container = get-azstorageContainer -context $storageAccountObj.context -name $containerName
+                $container = get-azstorageContainer -context $storageAccountObj.context -name $containerName -ErrorAction Stop
             }
             catch {
                 # does not exist
                 $container = New-AzStorageContainer -Name $containerName -Context $storageAccountObj.Context -Permission Blob
-            }finally{
-                $ErrorActionPreference = "Continue"
             }
             
             # Upload your Cloud Service package (cspkg) to the storage account.
@@ -373,21 +367,21 @@ function validation
 
     # CS definition and configuration match
     if ($cscfg.ServiceConfiguration.Role.Count -eq 1){
-        $csCfgRoleNames = @($cscfg.ServiceConfiguration.Role.name)
+        $csCfgRoleNames = @($cscfg.ServiceConfiguration.Role.name.tolower())
     }else{
-        $csCfgRoleNames = $cscfg.ServiceConfiguration.Role.name
+        $csCfgRoleNames = $cscfg.ServiceConfiguration.Role.name.tolower()
     }
 
     $csDefRoleNames = @()
     if ($csdef.ServiceDefinition.WebRole.Count -eq 1){
-        $csDefRoleNames = @($csdef.ServiceDefinition.WebRole.name)
+        $csDefRoleNames = @($csdef.ServiceDefinition.WebRole.name.tolower())
     }elseif ($csdef.ServiceDefinition.WebRole.Count -gt 1) {
-        $csDefRoleNames = $csdef.ServiceDefinition.WebRole.name
+        $csDefRoleNames = $csdef.ServiceDefinition.WebRole.name.tolower()
     }
     if ($csdef.ServiceDefinition.WorkerRole.Count -eq 1){
-        $csDefRoleNames = $csDefRoleNames + @($csdef.ServiceDefinition.WorkerRole.name)
+        $csDefRoleNames = $csDefRoleNames + @($csdef.ServiceDefinition.WorkerRole.name.tolower())
     }elseif ($csdef.ServiceDefinition.WorkerRole.Count -gt 1) {
-        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.name
+        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.nameto.tolower()
     }
 
     foreach ($aRoleName in $csCfgRoleNames){
@@ -432,8 +426,7 @@ function validation
 
         # look for the vnet
         try {
-            $ErrorActionPreference = "Stop"
-            $thevnet = Get-AzVirtualNetwork -ResourceGroupName $vnetNameFormat[1] -Name $vnetNameFormat[2]
+            $thevnet = Get-AzVirtualNetwork -ResourceGroupName $vnetNameFormat[1] -Name $vnetNameFormat[2] -ErrorAction Stop
             if ($thevnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
                 $vnetFound = $true
             }else {
@@ -442,8 +435,6 @@ function validation
         }
         catch {
             $vnetFound = $false
-        }finally{
-            $ErrorActionPreference = "Continue"
         }
 
         If($false -eq $vnetLocationMatch){
@@ -534,8 +525,7 @@ function validation
 
             # look for the Ip
             try {
-                $ErrorActionPreference = "Stop"
-                $theIpObj = Get-AzPublicIpAddress -ResourceGroupName $IpNameFormat[1] -Name $IpNameFormat[2]
+                $theIpObj = Get-AzPublicIpAddress -ResourceGroupName $IpNameFormat[1] -Name $IpNameFormat[2] -ErrorAction Stop
                 if ($theIpObj.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
                     $ipFound = $true
                 }else {
@@ -544,8 +534,6 @@ function validation
             }
             catch {
                 $ipFound = $false
-            }finally{
-                $ErrorActionPreference = "Continue"
             }
 
             if ($false -eq $IpLocationMatch){
