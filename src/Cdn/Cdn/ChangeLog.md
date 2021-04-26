@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.7.0
 * Added cmdlets to support new AFD Premium / Standard SKUs
   
 ## Version 1.6.0

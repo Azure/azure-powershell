@@ -420,4 +420,10 @@
   <data name="AcrRoleAssignmentIsAlreadyExist" xml:space="preserve">
     <value>Acr role assignment {0} is already exist.</value>
   </data>
+  <data name="ResetingTheCredentialOfAksCluster" xml:space="preserve">
+    <value>Reseting the credential of the aks cluster.</value>
+  </data>
+  <data name="ResetTheCredentialOfAksCluster" xml:space="preserve">
+    <value>Do you want to reset the credential of the aks cluster?</value>
+  </data>
 </root>

@@ -4,16 +4,16 @@
       "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"query\": \"project id\",\r\n  \"options\": {\r\n    \"$top\": 3,\r\n    \"$skip\": 2,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"82506e98-9fdb-41f5-ab67-031005041a26\"\r\n  ],\r\n  \"query\": \"project id\",\r\n  \"options\": {\r\n    \"$top\": 3,\r\n    \"$skip\": 2,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "81bf2ad8-16bd-4a25-9f8b-0d4548118971"
+          "796c9af2-3dc1-49ae-8087-ef071fb47553"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.6.29916.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
@@ -22,7 +22,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "153"
+          "225"
         ]
       },
       "ResponseHeaders": {
@@ -31,6 +31,9 @@
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -47,26 +50,23 @@
         "Server": [
           "Kestrel"
         ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14990"
-        ],
         "x-ms-request-id": [
-          "6b247104-a1d3-4eaa-9e8d-4631cae56423"
+          "a6b66435-26b7-4164-bef6-a723596037a0"
         ],
         "x-ms-correlation-request-id": [
-          "6b247104-a1d3-4eaa-9e8d-4631cae56423"
+          "a6b66435-26b7-4164-bef6-a723596037a0"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20210325T114509Z:6b247104-a1d3-4eaa-9e8d-4631cae56423"
+          "WESTUS:20210420T113224Z:a6b66435-26b7-4164-bef6-a723596037a0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 11:45:09 GMT"
+          "Tue, 20 Apr 2021 11:32:24 GMT"
         ],
         "Content-Length": [
-          "688"
+          "797"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,12 +75,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"totalRecords\": 71,\r\n  \"count\": 3,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/eaab1166-1e13-4370-a951-6ed345a48c15/resourceGroups/lakshmia-test/providers/Providers.Test/statefulResources/0JH-JSRBLS\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/eaab1166-1e13-4370-a951-6ed345a48c15/resourceGroups/lakshmia-test/providers/Providers.Test/statefulResources/0JH-SRPariv\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/eaab1166-1e13-4370-a951-6ed345a48c15/resourceGroups/lakshmia-test/providers/Providers.Test/statefulResources/0JH-SRParivar\"\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\",\r\n  \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNSwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FybXRvcG9sb2d5Lmt1c3RvLndpbmRvd3MubmV0Ig0KfQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"totalRecords\": 244,\r\n  \"count\": 3,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/networkSecurityGroups/nsgSubnet-0\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/publicIPAddresses/LBIP-gov-art-df-nt-a\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/virtualNetworks/VNet-gov-art-df-nt-a\"\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\",\r\n  \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNSwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1uZXUtb25lLXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ==\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "eaab1166-1e13-4370-a951-6ed345a48c15"
+    "SubscriptionId": "82506e98-9fdb-41f5-ab67-031005041a26"
   }
 }

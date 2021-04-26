@@ -112,7 +112,7 @@ $AuthorityAzurePPE = "https://login.windows-ppe.net"
 $BillingServiceApiScopeAzurePPE = "https://azurestackhci-usage-df.azurewebsites.net/.default"
 $GraphServiceApiScopeAzurePPE = "https://graph.ppe.windows.net/.default"
 
-$ServiceEndpointAzureChinaCloud = "https://sha-azurestackhci-dp-mc.chinacloudsites.cn"
+$ServiceEndpointAzureChinaCloud = "https://dp.stackhci.azure.cn"
 $AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
 $BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
 $GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
@@ -616,7 +616,15 @@ param(
     }
     catch
     {
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         Install-Module -Name Az.Resources -Force -AllowClobber
         Import-Module -Name Az.Resources
     }
@@ -825,7 +833,7 @@ param(
 
         # Check if all nodes have required OS version
         $nodeUBR = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
-        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").CurrentBuildNumber }
+        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
 
         if(($nodeBuildNumber -lt $GAOSBuildNumber) -or (($nodeBuildNumber -eq $GAOSBuildNumber) -and ($nodeUBR -lt $GAOSUBR)))
         {
@@ -1082,7 +1090,15 @@ param(
         $registrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
 
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
         $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
 
