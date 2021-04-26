@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAksClusterCredential
 
 ## SYNOPSIS
-Reset the ServicePrincipal of a existing aks cluster.
+Reset the ServicePrincipal of an existing AKS cluster.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Set-AzAksClusterCredential [-Id] <String> -ServicePrincipalIdAndSecret <PSCreden
 ```
 
 ## DESCRIPTION
-Reset the ServicePrincipal of a existing aks cluster.
+Reset the ServicePrincipal of an existing AKS cluster.
 
 ## EXAMPLES
 
