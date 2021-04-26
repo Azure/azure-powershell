@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a bug for `Get-AzKeyVaultSecret -IncludeVersions` when current version is disabled [#14740]
 * Displayed error code and message when updating purged secret [#14800]
 
 ## Version 3.4.2
