@@ -48,7 +48,6 @@ function Test-NewAzAksWithAcr
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
         
         
-        $credObject = $(createTestCredential "6f277dd3-e481-4518-8aab-35c31662bad9" "PT3Q~Cj~a.1J86e_r7CvS1~iyid63-Pw.1")
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn

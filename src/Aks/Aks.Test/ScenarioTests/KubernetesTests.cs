@@ -45,7 +45,7 @@ namespace Commands.Aks.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksAddons");
         }
 
-        [Fact]
+        [Fact(Skip = "Please make sure you have graph directory.read permission which is required for grant acrpull permission.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzAksWithAcr()
         {
