@@ -36,7 +36,7 @@ This file contains the configuration for generating My API from the OpenAPI spec
 # it's the same options as command line options, just drop the double-dash!
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file: https://github.com/Azure/azure-rest-api-specs/blob/26128b7117bb4d2df4937bed3e366b7841fe5aed/specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2021-02-01-preview/dataprotection.json
+input-file: https://github.com/Azure/azure-rest-api-specs/blob/cc2f99be5f9e0ff3ae6fdba3069df5a138a3622b/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2021-01-01/dataprotection.json
 title: DataProtection
 directive:
   - from: swagger-document
@@ -94,7 +94,20 @@ directive:
     hide: true
   - where:
       verb: Invoke
+      variant: ^Post$|^PostViaIdentity$|^PostViaIdentityExpanded$
     remove: true
+  - where:
+      verb: Invoke
+      subject: FindRestorableTimeRange
+      parameter-name: BackupInstance
+    set:
+      parameter-name: BackupInstanceName
+  - where:
+      verb: Invoke
+      subject: FindRestorableTimeRange
+    set:
+      verb: Find
+      subject: RestorableTimeRange
   - where:
       verb: Test
     hide: true
@@ -112,20 +125,21 @@ directive:
     - InnerError
     - BackupInstance
     - RestoreTargetInfo
+    - ItemLevelRestoreTargetInfo
     - PolicyParameters
     - SystemData
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101.IAzureBackupRecoveryPoint Property');
 ```
 
 ## Alternate settings
