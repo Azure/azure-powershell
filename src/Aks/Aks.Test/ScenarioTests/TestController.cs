@@ -35,9 +35,6 @@ namespace Commands.Aks.Test.ScenarioTests
 
         public static TestController NewInstance => new TestController();
 
-        private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
-        private const string SubscriptionIdKey = "SubscriptionId";
         public string UserDomain { get; private set; }
         public GraphRbacManagementClient InternalGraphRbacManagementClient { get; private set; }
 
@@ -137,43 +134,6 @@ namespace Commands.Aks.Test.ScenarioTests
         }
         private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
         {
-            //var environment = TestEnvironmentFactory.GetTestEnvironment();
-            //string tenantId = null;
-
-            //if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            //{
-            //    tenantId = environment.Tenant;
-            //    UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
-
-            //    HttpMockServer.Variables[TenantIdKey] = tenantId;
-            //    HttpMockServer.Variables[DomainKey] = UserDomain;
-            //}
-            //else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            //{
-            //    if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
-            //    {
-            //        tenantId = HttpMockServer.Variables[TenantIdKey];
-            //    }
-            //    if (HttpMockServer.Variables.ContainsKey(DomainKey))
-            //    {
-            //        UserDomain = HttpMockServer.Variables[DomainKey];
-            //    }
-            //    if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
-            //    {
-            //        AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
-            //    }
-            //}
-
-            //var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
-            //client.TenantID = tenantId;
-            //if (AzureRmProfileProvider.Instance != null &&
-            //    AzureRmProfileProvider.Instance.Profile != null &&
-            //    AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-            //    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
-            //{
-            //    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
-            //}
-            //return client;
             return context.GetServiceClient<GraphRbacManagementClient>();
         }
         private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)

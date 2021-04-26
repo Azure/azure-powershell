@@ -38,7 +38,7 @@ function Test-NewAzAksWithAcr
     $resourceGroupName = Get-RandomResourceGroupName
     $kubeClusterName = Get-RandomClusterName
     $acrName = Get-RandomRegistryName
-    $location = 'eastus'
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
     $nodeVmSize = "Standard_D2_v2"
 
     try
@@ -47,8 +47,9 @@ function Test-NewAzAksWithAcr
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
         
-        
-        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -AcrNameToAttach $acrName
+        $cred = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
+
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
         $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
         Assert-NotNull $cluster.Fqdn
         Assert-NotNull $cluster.DnsPrefix
