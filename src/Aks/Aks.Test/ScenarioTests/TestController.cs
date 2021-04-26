@@ -14,7 +14,6 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -23,8 +22,6 @@ namespace Commands.Aks.Test.ScenarioTests
     public class TestController
     {
         private readonly EnvironmentSetupHelper _helper;
-
-        public ContainerRegistryManagementClient ContainerRegistryManagementClient { get; private set; }
 
         public ContainerServiceClient ContainerServiceClient { get; private set; }
 
@@ -73,7 +70,6 @@ namespace Commands.Aks.Test.ScenarioTests
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.Aks.psd1"),
-                    _helper.GetRMModulePath(@"AzureRM.ContainerRegistry.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
@@ -116,13 +112,11 @@ namespace Commands.Aks.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ContainerRegistryManagementClient = GetContainerRegistryManagementClient(context);
             ContainerServiceClient = GetContainerServiceClient(context);
             InternalResourceManagementClient = GetInternalResourceManagementClient(context);
             InternalAuthorizationManagementClient = GetAuthorizationManagementClient(context);
             InternalGraphRbacManagementClient = GetGraphRbacManagementClient(context);
-            _helper.SetupManagementClients(ContainerRegistryManagementClient,
-                ContainerServiceClient,
+            _helper.SetupManagementClients(ContainerServiceClient,
                 InternalResourceManagementClient,
                 InternalAuthorizationManagementClient,
                 InternalGraphRbacManagementClient);
@@ -139,10 +133,6 @@ namespace Commands.Aks.Test.ScenarioTests
         private static AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
             return context.GetServiceClient<AuthorizationManagementClient>();
-        }
-        private static ContainerRegistryManagementClient GetContainerRegistryManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ContainerRegistryManagementClient>();
         }
         private static ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
         {
