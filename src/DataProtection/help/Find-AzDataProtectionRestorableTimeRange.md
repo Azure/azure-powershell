@@ -8,7 +8,7 @@ schema: 2.0.0
 # Find-AzDataProtectionRestorableTimeRange
 
 ## SYNOPSIS
-
+Find restorable time ranges
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Find-AzDataProtectionRestorableTimeRange -BackupInstanceName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-
+Find restorable time ranges
 
 ## EXAMPLES
 
