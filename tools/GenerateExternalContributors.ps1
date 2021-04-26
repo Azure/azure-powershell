@@ -80,8 +80,8 @@ foreach ($members in $teamMembers) {
   $skipContributors += $members.login
 }
 
-# Output exteneral contributors infomation.
-Write-Debug 'Output exteneral contributors infomation.'
+# Output external contributors information.
+Write-Debug 'Output external contributors information.'
 '### Thanks to our community contributors' | Out-File -FilePath $contributorsMDFile -Force
 Write-Host '### Thanks to our community contributors'
 
