@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "type": "Stream",
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8"
+      }
+    },
+    "compression": {
+      "type": "None"
+    },
+    "datasource": {
+      "type": "Microsoft.EventHub/EventHub",
+      "properties": {
+        "serviceBusNamespace": "eventhubt01",
+        "sharedAccessPolicyName": "sajob-01-pwsh_input-01_policy",
+        "sharedAccessPolicyKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "authenticationMode": "ConnectionString",
+        "eventHubName": "eventhub01",
+        "consumerGroupName": "sajob-01-pwsh_input-01_consumer_group"
+      }
+    }
+  }
+}
