@@ -51,7 +51,8 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\/subscriptions\/\{subscriptionId\}\/resourcegroups\/\{resourceGroupName\}/g, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}")
-# Deleted etag of the properties, because the etag exist in the response header.
+
+  # Deleted etag of the properties, because the etag exist in the response header.
   - from: swagger-document
     where: $.definitions.FunctionProperties.properties
     transform: delete $.etag
@@ -101,10 +102,35 @@ directive:
           "description": "The function type."
         }
       }
+  # Fix the issue that remove operation finally result is that StatusCode is 404 and staus is deleteing.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StreamAnalytics/clusters/{clusterName}"].delete.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "The cluster was successfully deleted."
+          },
+          "202": {
+            "description": "The delete request was successfully initiated."
+          },
+          "204": {
+            "description": "The cluster does not exist."
+          },
+          "404": {
+            "description": "The cluster does not found."
+          },
+          "default": {
+            "description": "Error.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/ec2cba2ff0953d431b88a9fd4922de76157119e0/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/common/v1/definitions.json#/definitions/Error"
+            }
+          }
+        }
+
   # Changed csharp code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace(/case "canceled":/g, 'case "canceled":\ncase "testsucceeded":')
+    transform: $ = $.replace(/case "canceled":/g, 'case "canceled":\ncase "testsucceeded":\ncase "deleting":')
 
 # Remove cmdlets
   - where:

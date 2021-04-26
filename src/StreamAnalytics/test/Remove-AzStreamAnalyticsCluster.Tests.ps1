@@ -12,15 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStreamAnalyticsCluster' {
-    # Issue: The cmdlet is long time operation. The exception thrown after the resource has been successfully deleted. 
-    # becasue the status was deleting when status code equal 200. 
-    It 'Delete' -Skip {
+    It 'Delete' {
         Remove-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster01
         $clusterList = Get-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup
         $clusterList.Name | Should -Not -Contain $env.cluster01
     }
 
-    It 'DeleteViaIdentity' -Skip {
+    It 'DeleteViaIdentity' {
       $cluster = Get-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster03 
       Remove-AzStreamAnalyticsCluster -InputObject $cluster
       $clusterList = Get-AzStreamAnalyticsCluster -ResourceGroupName $env.resourceGroup
