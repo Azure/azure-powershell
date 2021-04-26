@@ -26,7 +26,7 @@ Describe 'Initialize-AzDataProtectionRestoreRequest' {
         
         if($instances.Count -gt 0){
             
-            $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstance $instances[0].BackupInstanceName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -SourceDataStoreType OperationalStore -StartTime (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z") -EndTime (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+            $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName $instances[0].BackupInstanceName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -SourceDataStoreType OperationalStore -StartTime (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z") -EndTime (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
             $vault = Get-AzDataProtectionBackupVault -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
             $BlobResReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore OperationalStore -RestoreLocation $vault.Location -RestoreType OriginalLocation -BackupInstance $instances[0] -PointInTime (Get-Date -Date $pointInTimeRange.RestorableTimeRange.EndTime)
 

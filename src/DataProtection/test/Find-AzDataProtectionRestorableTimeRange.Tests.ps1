@@ -26,7 +26,7 @@ Describe 'Find-AzDataProtectionRestorableTimeRange' {
         
         if($instances.Count -gt 0){
             
-            $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstance $instances[0].BackupInstanceName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -SourceDataStoreType OperationalStore -StartTime (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z") -EndTime (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
+            $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName $instances[0].BackupInstanceName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -SourceDataStoreType OperationalStore -StartTime (Get-Date).AddDays(-30).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z") -EndTime (Get-Date).AddDays(0).ToString("yyyy-MM-ddTHH:mm:ss.0000000Z")
 
             $assert = $pointInTimeRange.RestorableTimeRange.Count -gt 0
             $assert | Should be $true
