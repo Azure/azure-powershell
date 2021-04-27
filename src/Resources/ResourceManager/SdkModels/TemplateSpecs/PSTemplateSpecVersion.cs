@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Gets or sets the artifacts within the template spec version
+        /// Gets or sets the linked template artifacts within the template spec version
         /// </summary>
-        public IList<PSTemplateSpecArtifact> Artifacts { get; set; } = 
-            new List<PSTemplateSpecArtifact>();
+        public IList<PSTemplateSpecTemplateArtifact> LinkedTemplates { get; set; } = 
+            new List<PSTemplateSpecTemplateArtifact>();
 
         /// <summary>
         /// Gets or sets the Azure Resource Manager template (JSON).
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             if (templateSpecVersion.LinkedTemplates?.Any() == true) {
                 foreach (LinkedTemplateArtifact artifact in templateSpecVersion.LinkedTemplates)
                 {
-                    psTemplateSpecVersion.Artifacts.Add(
+                    psTemplateSpecVersion.LinkedTemplates.Add(
                         PSTemplateSpecTemplateArtifact.FromAzureSDKTemplateSpecTemplateArtifact(artifact));
                 }
             }
