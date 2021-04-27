@@ -25,6 +25,9 @@ New-AzRecoveryServicesAsrVMNicConfig -NicId <String> -ReplicationProtectedItem <
 ## DESCRIPTION
 The **New-AzRecoveryServicesAsrVMNicConfig** cmdlet creates an ASR NIC config object that contains the failover and test failover related details. In case any information is not passed, the corresponding values are picked from the replication protected item to avoid these values being updated to null.
 
+> [!IMPORTANT]
+> We have deprecated the parameters corresponding to IP Configs from the cmdlet, and encapsulated them into a new cmdlet object. Please create a new object using the cmdlet **New-AzRecoveryServicesAsrVMNicIPConfig** and pass that as a parameter. Please refer to the examples below for more clarity.
+
 ## EXAMPLES
 
 ### Example 1
@@ -38,7 +41,7 @@ PS C:\> $nicConfig = New-AzRecoveryServicesAsrVMNicConfig -NicId $AsrNicGuid -Re
     -TfoVMNetworkId $tfoNetworkId -IPConfig $ipConfigs
 ```
 
-Creates an ASRVmNicConfig object with the failover and test faiover networking settings configured for the NIC. Any property that's not passed above is fetched from the protected item passed.
+Creates an ASRVmNicConfig object with the failover and test failover networking settings configured for the NIC. Any property that's not passed above is fetched from the protected item passed.
 
 ### Example 2
 ```powershell
