@@ -106,10 +106,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             Mandatory = true,
             HelpMessage = "The name of the ANF backup",
             ParameterSetName = AccountBackupFieldsParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the ANF backup",
-            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter(
             "Microsoft.NetApp/netAppAccounts/backups",
