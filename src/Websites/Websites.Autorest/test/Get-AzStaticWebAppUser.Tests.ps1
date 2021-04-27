@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebAppUser' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -Authprovider all } | Should -Not -Throw
     }
 }

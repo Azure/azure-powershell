@@ -16,15 +16,7 @@ Describe 'Reset-AzStaticWebAppApiKey' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Reset' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'ResetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ResetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -12,7 +12,20 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebAppCustomDomain' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    # NOTE:Before test. Need create domain zone for static web.
+    It 'List'  {
+      $domianList = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $domianList.Count | Should -BeGreaterOrEqual 1
+    }
+
+    It 'Get' {
+      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
+      $domian.Name | Should -Be 'www01.azpstest.net'
+    }
+
+    It 'GetViaIdentity' {
+      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
+      $domian = Get-AzStaticWebAppCustomDomain -InputObject $domian
+      $domian.Name | Should -Be 'www01.azpstest.net'
     }
 }

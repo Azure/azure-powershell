@@ -35,9 +35,11 @@ Description for Register a user provided function app with a static site build
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName funcapp-portal01-test -FunctionAppResourceId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/funcapp-portal01-test' -FunctionAppRegion 'Central US'
 
-{{ Add output here }}
+Kind Name                  Type
+---- ----                  ----
+     funcapp-portal01-test Microsoft.Web/staticSites/userProvidedFunctionApps
 ```
 
 {{ Add description here }}

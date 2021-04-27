@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStaticWebApp' {
-    It 'Delete' {
-      Remove-AzStaticWebApp -ResourceGroupName 'lucas-rg-test' -Name 'staticweb-portal02'
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

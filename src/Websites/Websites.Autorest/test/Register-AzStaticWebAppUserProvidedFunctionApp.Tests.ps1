@@ -19,28 +19,4 @@ Describe 'Register-AzStaticWebAppUserProvidedFunctionApp' {
     It 'RegisterExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'Register' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Register1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegisterViaIdentityExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegisterViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegisterViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegisterViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

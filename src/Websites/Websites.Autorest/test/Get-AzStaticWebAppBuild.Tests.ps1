@@ -12,19 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebAppBuild' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+      $buildList = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $buildList | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+      $build = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'
+      $build.Name | Should -Be 'default'
     }
 
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity'  {
+      $build = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' | Get-AzStaticWebAppBuild
+      $build.Name | Should -Be 'default'
     }
 }

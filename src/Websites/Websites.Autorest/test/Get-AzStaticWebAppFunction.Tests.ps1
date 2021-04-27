@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebAppFunction' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        # NOTE: This API is not allowed when using user provided functions.
+        $funcList = Get-AzStaticWebAppFunction -ResourceGroupName $env.resourceGroup -Name $env.staticweb01
+        $funcList.Count | Should -BeGreaterOrEqual 1
     }
 }

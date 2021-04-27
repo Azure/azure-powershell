@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebAppSecret' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+      $secretList = Get-AzStaticWebAppSecret -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $secretList.Count | Should -BeGreaterOrEqual 1
     }
 }

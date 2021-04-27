@@ -12,23 +12,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzStaticWebApp' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+      $webList = Get-AzStaticWebApp
+      $webList.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'Get1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+      $webList = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup
+      $webList.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $web.Name | Should -Be $env.staticweb00
     }
 
-    It 'GetViaIdentity1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 | Get-AzStaticWebApp
+      $web.Name | Should -Be $env.staticweb00
     }
 }
