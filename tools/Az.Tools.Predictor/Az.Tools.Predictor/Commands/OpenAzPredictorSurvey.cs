@@ -27,8 +27,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <para type="synopsis">Cmdlet to open a survey link in the default browser</para>
     /// <para type="description">This cmdlet will open a survey link in the default browser. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information </para>
     /// </summary>
-    [Cmdlet("Open", "AzSurvey"), OutputType(typeof(bool))]
-    public sealed class OpenAzSurvey : PSCmdlet
+    [Cmdlet("Open", "AzPredictorSurvey"), OutputType(typeof(bool))]
+    public sealed class OpenAzPredictorSurvey : PSCmdlet
     {
         private const string _SurveyLinkFormat = "https://aka.ms/azpredictorisurvey?SessionId={0}&Q_CHL=cmdlet";
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var profileSettings = Settings.GetProfileSettings();
             var surveyId = profileSettings?.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? "000000";
 
-            var link = string.Format(OpenAzSurvey._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);
+            var link = string.Format(OpenAzPredictorSurvey._SurveyLinkFormat, surveyId, CultureInfo.InvariantCulture);
 
             Console.WriteLine($"Opening the default browser to {link}");
 
