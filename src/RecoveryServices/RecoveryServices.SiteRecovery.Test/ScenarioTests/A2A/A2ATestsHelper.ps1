@@ -21,6 +21,7 @@ function getVaultName{
     return "A2APowershellTest" + $seed;
 }
 
+# vault resource group.
 function getVaultRg{
     return "A2APowershellTestRg" + $seed;
 }

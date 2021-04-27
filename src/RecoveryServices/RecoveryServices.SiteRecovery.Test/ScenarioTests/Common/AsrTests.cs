@@ -54,7 +54,11 @@ namespace RecoveryServices.SiteRecovery.Test
                 "\"");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Linux date encoding issue: https://github.com/Azure/azure-powershell/issues/7506")]
+#else
         [Fact]
+#endif
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]

@@ -398,6 +398,11 @@ function Test-AzureUnmanagedVMFullRestore
 		$saName = Create-SA $resourceGroupName $location
 		$vm = Create-UnmanagedVM $resourceGroupName $location $saName
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+		$VaultProperty = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+		Assert-True { $VaultProperty.SoftDeleteFeatureState -eq "Disabled" }
+
 		$item = Enable-Protection $vault $vm $resourceGroupName
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
@@ -411,6 +416,14 @@ function Test-AzureUnmanagedVMFullRestore
 			-UseOriginalStorageAccount | Wait-AzRecoveryServicesBackupJob -VaultId $vault.ID
 		
 		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		$restoreJob2 = Restore-AzRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-RestoreAsManagedDisk -TargetResourceGroupName $resourceGroupName
 	}
 	finally
 	{

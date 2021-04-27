@@ -220,24 +220,5 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
             return itemTypeString;
         }
-
-        public static string GetPrincipalTypeString(this PrincipalType principalType)
-        {
-            string principalTypeString = null;
-            switch (principalType)
-            {
-                case PrincipalType.User:
-                    principalTypeString = "User";
-                    break;
-                case PrincipalType.Group:
-                    principalTypeString = "Group";
-                    break;
-                case PrincipalType.ServicePrincipal:
-                    principalTypeString = "ServicePrincipal";
-                    break;
-            }
-
-            return principalTypeString;
-        }
     }
 }

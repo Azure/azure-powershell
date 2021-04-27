@@ -41,7 +41,8 @@ if ($env:Azure_PS_Intercept_Survey -eq "false") {
 $mutexName = "AzModulesInterceptSurvey"
 $mutexTiimeout = 1000
 $interceptDays = 30
-$interceptLoadTimes = 3
+$interceptIntervals = ( 3, 2, 5 )
+$interceptMaxTimes = 3 # Show intercept this many times in total.
 $today = Get-Date
 $mutexTimeout = 500
 
@@ -54,10 +55,10 @@ function ConvertTo-String {
     return $date.ToString("yyyy-MM-dd")
 }
 
-function Init-InterceptFile {
-    $interceptContent = @{
+function Init-InterceptObject {
+    return @{
         "lastInterceptCheckDate"=ConvertTo-String($today);
-        "interceptTriggered"=$false;
+        "interceptTriggered"=0;
         "modules"=@(@{
             "name"=$moduleName;
             "majorVersion"=$majorVersion;
@@ -65,6 +66,10 @@ function Init-InterceptFile {
             "lastActiveDate"=ConvertTo-String($today);
         })
     }
+}
+
+function Init-InterceptFile {
+    $interceptContent = Init-InterceptObject
 
     ConvertTo-Json -InputObject $interceptContent | Out-File -FilePath $interceptFilePath -Encoding utf8
 }
@@ -106,12 +111,12 @@ function Update-InterceptObject {
     if ($recordedMajorVersion -ne $majorVersion) {
         $thisModule.activeDays = 1
         $thisModule.lastActiveDate = ConvertTo-String($today)
-        $interceptObject.interceptTriggered = $false
+        $interceptObject.interceptTriggered = 0
 
         return $false
     }
 
-    if ($interceptObject.interceptTriggered) {
+    if ($interceptObject.interceptTriggered -ge $interceptMaxTimes) {
         return $false
     }
 
@@ -133,10 +138,10 @@ function Update-InterceptObject {
         $newActiveDays++
     }
 
-    if ($newActiveDays -ge $interceptLoadTimes) {
+    if ($newActiveDays -ge $interceptIntervals[$interceptObject.interceptTriggered]) {
         $thisModule.activeDays = 0
         $thisModule.lastActiveDate = ConvertTo-String($today)
-        $interceptObject.interceptTriggered = $true
+        $interceptObject.interceptTriggered++
         return $true
     }
 
@@ -166,15 +171,21 @@ try
         try {
             $fileContent = Get-Content $interceptFilePath | Out-String
             $interceptObject = ConvertFrom-Json $fileContent
+
+            if ($interceptObject.interceptTriggered.GetType() -eq $true.GetType()) {
+                # HACK change the use of interceptTriggered from a boolean to an integer. It's to count how many times the intercept is tirggered.
+                $interceptObject.interceptTriggered = 0
+            }
         } catch {
-            Init-InterceptFile
         }
 
-        if (-not ($interceptObject -eq $null)) {
-            $shouldIntercept = Update-InterceptObject($interceptObject)
-
-            ConvertTo-Json -InputObject $interceptObject | Out-File $interceptFilePath -Encoding utf8
+        if ($null -eq $interceptObject) {
+            $interceptObject = Init-InterceptObject
         }
+
+        $shouldIntercept = Update-InterceptObject($interceptObject)
+
+        ConvertTo-Json -InputObject $interceptObject | Out-File $interceptFilePath -Encoding utf8
     }
 } catch {
 }
@@ -207,7 +218,10 @@ if ($shouldIntercept) {
         }
     }
 
-    $escape = $([char]27)
-    Write-Host "`n$escape[7mHow was your experience using Az predictor?      $escape[27m`n" -NoNewline; Write-Host "$escape[7mhttp://aka.ms/azpredictorisurvey?SessionId=$surveyId$escape[27m" -NoNewline
-    Write-Host "`n"
+    Write-Host "---------------------------------------------------";
+    Write-Host "Survey:" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline;
+    Write-Host " How was your experience using the Az Predictor module?";
+    Write-Host "";
+    Write-Host "Run " -NoNewline; Write-Host "Open-AzSurvey" -ForegroundColor $Host.PrivateData.VerboseBackgroundColor -BackgroundColor $host.PrivateData.VerboseForegroundColor -NoNewline; Write-Host " to give us your feedback.";
+    Write-Host "---------------------------------------------------";
 }
