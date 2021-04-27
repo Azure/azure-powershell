@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
@@ -47,6 +48,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         public void TestManagedRuleSetDefinitions()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ManagedRuleSetDefinition");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyAction()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-PolicyAction");
         }
     }
 }
