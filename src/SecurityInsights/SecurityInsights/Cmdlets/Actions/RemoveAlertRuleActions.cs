@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.Actions
 
             if (ShouldProcess(name, VerbsCommon.Remove))
             {
-                var result = SecurityInsightsClient.AlertRules.DeleteActionWithHttpMessagesAsync(resourcegroup, workspacename, alertrule, name).Result;
+                var result = SecurityInsightsClient.Actions.DeleteWithHttpMessagesAsync(resourcegroup, workspacename, alertrule, name).Result;
                 if (result.Response.StatusCode == (System.Net.HttpStatusCode)200)
                 {
                     System.Console.WriteLine("success");

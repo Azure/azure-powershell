@@ -21,6 +21,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
@@ -66,6 +68,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         }
 
         internal static async Task<IAccessToken> GetAccessTokenAsync(
+            string callerClassName,
+            string parametersLog,
             TokenCredential tokenCredential,
             TokenRequestContext requestContext,
             CancellationToken cancellationToken,
@@ -73,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             string userId = null,
             string homeAccountId = "")
         {
+            TracingAdapter.Information($"{DateTime.Now:T} - [{callerClassName}] Calling {tokenCredential.GetType().Name}.GetTokenAsync {parametersLog}");
             var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, tenantId, userId, homeAccountId);
         }
@@ -86,6 +91,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var record = await authTask.ConfigureAwait(false);
             cancellationToken.ThrowIfCancellationRequested();
+            TracingAdapter.Information($"{DateTime.Now:T} - [MsalAccessToken] Calling {tokenCredential.GetType().Name}.GetTokenAsync - Scopes:'{string.Join(",", requestContext.Scopes)}'");
             var token = await tokenCredential.GetTokenAsync(requestContext, cancellationToken).ConfigureAwait(false);
 
             return new MsalAccessToken(tokenCredential, requestContext, token.Token, token.ExpiresOn, record.TenantId, record.Username, record.HomeAccountId);

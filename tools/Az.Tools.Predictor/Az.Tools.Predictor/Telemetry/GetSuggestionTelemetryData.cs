@@ -23,10 +23,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class GetSuggestionTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        string ITelemetryData.RequestId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
         /// Gets the id of the client that makes the calls.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelAlertRuleAction
 
 ## SYNOPSIS
-Update an Automated Response (Alert Rule Action).
+Updates an Automated Response (Alert Rule Action).
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ PS C:\>$LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName
 PS C:\> Update-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleId "MyAlertRuleId" -ActionId "MyActionId" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
 
-This example updates an **AlertRuleAction** replacing an existing *Action* with new properties.
+This example updates an AlertRuleAction replacing an existing *Action* with new properties.
 
 ### Example 2
 ```powershell
@@ -54,7 +54,7 @@ PS C:\> $AlertRuleAction = Get-AzSentinelAlertRuleAction -ResourceGroupName "MyR
 PS C:\> Update-AzSentinelAlertRuleAction -InputObject $AlertRuleAction -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value)
 ```
 
-This example updates an **AlertRuleAction** using an InputObject replacing an existing *Action* with new properties.
+This example updates an AlertRuleAction using an InputObject replacing an existing *Action* with new properties.
 
 ## PARAMETERS
 
