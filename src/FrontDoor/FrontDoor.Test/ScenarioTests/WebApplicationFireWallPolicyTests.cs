@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
