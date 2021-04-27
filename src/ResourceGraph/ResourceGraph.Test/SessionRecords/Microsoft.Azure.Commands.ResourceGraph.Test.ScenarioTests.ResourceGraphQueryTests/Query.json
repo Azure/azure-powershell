@@ -4,16 +4,16 @@
       "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"query\": \"project id, tags, properties | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"82506e98-9fdb-41f5-ab67-031005041a26\"\r\n  ],\r\n  \"query\": \"Resources | where tags != \\\"\\\" | project id, tags, properties | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "47602c51-aa93-433d-92b8-2e89b7c6878a"
+          "d30d2e76-c7fa-4169-b348-f01b023fde13"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.6.29916.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
@@ -22,7 +22,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "183"
+          "288"
         ]
       },
       "ResponseHeaders": {
@@ -36,10 +36,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "10"
+          "14"
         ],
         "x-ms-user-quota-remaining": [
-          "10"
+          "14"
         ],
         "x-ms-user-quota-resets-after": [
           "00:00:05"
@@ -48,25 +48,25 @@
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14994"
+          "11997"
         ],
         "x-ms-request-id": [
-          "427a1d7f-3e50-4a97-87a8-9b84b98b91bf"
+          "2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "x-ms-correlation-request-id": [
-          "427a1d7f-3e50-4a97-87a8-9b84b98b91bf"
+          "2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210325T114533Z:427a1d7f-3e50-4a97-87a8-9b84b98b91bf"
+          "WESTCENTRALUS:20210420T113301Z:2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 11:45:33 GMT"
+          "Tue, 20 Apr 2021 11:33:00 GMT"
         ],
         "Content-Length": [
-          "740"
+          "1083"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -75,12 +75,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/eaab1166-1e13-4370-a951-6ed345a48c15/resourceGroups/lakshmia-test/providers/Providers.Test/statefulResources/0JH-JSRBLS\",\r\n      \"tags\": {\r\n        \"makharchsdktest\": \"makharchsdk\"\r\n      },\r\n      \"properties\": {\r\n        \"prop1\": \"val1\",\r\n        \"prop2\": {\r\n          \"prop2.key1\": \"val2\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/eaab1166-1e13-4370-a951-6ed345a48c15/resourceGroups/zarttestrgDelete200/providers/Microsoft.DataFactory/factories/zarttest201904260844a356\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"createTime\": \"2019-04-26T08:45:33.127Z\",\r\n        \"version\": \"2018-06-01\",\r\n        \"factoryStatistics\": {\r\n          \"totalResourceCount\": 0,\r\n          \"maxAllowedResourceCount\": 0,\r\n          \"factorySizeInGbUnits\": 0,\r\n          \"maxAllowedFactorySizeInGbUnits\": 0\r\n        }\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
+      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesTopologyDfStorage/providers/Microsoft.ServiceBus/namespaces/twofsnservicebusdf\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"zoneRedundant\": true,\r\n        \"serviceBusEndpoint\": \"https://twofsnservicebusdf.servicebus.windows.net:443/\",\r\n        \"createdAt\": \"2021-03-12T21:20:01.667Z\",\r\n        \"updatedAt\": \"2021-04-20T10:55:34.69Z\",\r\n        \"metricId\": \"82506e98-9fdb-41f5-ab67-031005041a26:twofsnservicebusdf\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesTopologyDfStorage/providers/Microsoft.ServiceBus/namespaces/threemponeservicebusdf\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"zoneRedundant\": true,\r\n        \"serviceBusEndpoint\": \"https://threemponeservicebusdf.servicebus.windows.net:443/\",\r\n        \"createdAt\": \"2020-12-23T02:50:43.14Z\",\r\n        \"updatedAt\": \"2021-04-20T06:32:36.617Z\",\r\n        \"metricId\": \"82506e98-9fdb-41f5-ab67-031005041a26:threemponeservicebusdf\"\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "eaab1166-1e13-4370-a951-6ed345a48c15"
+    "SubscriptionId": "82506e98-9fdb-41f5-ab67-031005041a26"
   }
 }

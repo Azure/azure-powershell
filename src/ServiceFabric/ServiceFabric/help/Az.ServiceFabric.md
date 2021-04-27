@@ -182,11 +182,12 @@ Update a service fabric application. This allows to update the application param
 ### [Update-AzServiceFabricDurability](Update-AzServiceFabricDurability.md)
 Update the durability tier or VmSku of a node type in the cluster.
 
-### [Update-AzServiceFabricReliability](Update-AzServiceFabricReliability.md)
-Update the reliability tier of the primary node type in a cluster.
-
 ### [Update-AzServiceFabricNodeType](Update-AzServiceFabricNodeType.md)
 Update a node type within the cluster.
 
+### [Update-AzServiceFabricReliability](Update-AzServiceFabricReliability.md)
+Update the reliability tier of the primary node type in a cluster.
+
 ### [Update-AzServiceFabricVmImage](Update-AzServiceFabricVmImage.md)
 Update the cluster resource vmImage setting which maps the appropriate runtime package to be delivered based on the target operating system.
+

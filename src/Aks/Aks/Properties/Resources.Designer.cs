@@ -610,6 +610,24 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reseting the credential of the aks cluster..
+        /// </summary>
+        internal static string ResetingTheCredentialOfAksCluster {
+            get {
+                return ResourceManager.GetString("ResetingTheCredentialOfAksCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to reset the credential of the aks cluster?.
+        /// </summary>
+        internal static string ResetTheCredentialOfAksCluster {
+            get {
+                return ResourceManager.GetString("ResetTheCredentialOfAksCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retry {0} for {1} after error: {2}.
         /// </summary>
         internal static string RetryAfterActionError {
