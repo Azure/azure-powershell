@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Add `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
 
 ## Version 2.0.2
 * Refined error messages of cmdlet failure.

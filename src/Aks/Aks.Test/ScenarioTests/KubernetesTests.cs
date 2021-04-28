@@ -44,5 +44,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewAzAksAddons");
         }
+
+        [Fact(Skip = "Updating service principal profile is not allowed on MSI cluster.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResetAzureKubernetesServicePrincipal()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ResetAzureKubernetesServicePrincipal");
+        }
     }
 }

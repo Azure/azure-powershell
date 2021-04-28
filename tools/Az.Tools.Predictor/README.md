@@ -38,6 +38,23 @@ Required configuration for Az Predictor:
 
 > Note: You can switch between the modes with the "F2" key/
 
+## Uninstallation
+
+Once installed and enabled, Az Predictor is loaded in the PowerShell profile.
+To uninstall the Az.Tools.Predictor module:
+
+1. Close **all** PowerShell session (do not forget VSCode).
+
+2. Launch a PowerShell session with no profile 
+
+    `pwsh -noprofile`
+
+3. Execute
+
+    `Uninstall-Module -Name Az.Tools.Predictor -Force`
+
+4. Close PowerShell
+
 ## Privacy and data collection
 
 ### Privacy
