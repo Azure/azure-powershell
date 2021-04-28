@@ -289,11 +289,14 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
             // Get the metadata for the old default parameter set
             ParameterSetMetadata oldDefaultParameterSet = oldCmdlet.ParameterSets
-                .First(p => p.Name.Equals(oldCmdlet.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(p => p.Name.Equals(oldCmdlet.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
             // Get the metadata for the new default parameter set
             ParameterSetMetadata newDefaultParameterSet = newCmdlet.ParameterSets
-                .First(p => p.Name.Equals(newCmdlet.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
-
+                .FirstOrDefault(p => p.Name.Equals(newCmdlet.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
+            if (oldDefaultParameterSet == null || newDefaultParameterSet == null)
+            {
+                return;
+            }
             // This dictionary will map a parameter name and aliases to the corresponding Parameter object
             Dictionary<string, Parameter> parameterDictionary = new Dictionary<string, Parameter>();
 
