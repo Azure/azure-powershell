@@ -39,11 +39,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.Initialize();
         }
 
-#if !NETSTANDARD
-        [Fact(Skip = "Needs investigation.")]
-#else
-        [Fact]
-#endif
+        [Fact(Skip = "Needs investigation for linux.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AvCenterTest()
         {
