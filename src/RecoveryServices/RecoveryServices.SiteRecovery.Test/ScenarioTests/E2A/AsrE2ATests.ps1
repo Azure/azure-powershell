@@ -18,22 +18,22 @@ $JobQueryWaitTimeInSeconds = 0
 $ResourceGroupName = "E2ERg"
 $VaultName = "E2ETest"
 $FabricNameToBeCreated = "ReleaseFabric"
-$PrimaryFabricName = "IDCLAB-A137.ntdev.corp.microsoft.com"
+$PrimaryFabricName = "IDCLAB-A495.fareast.corp.microsoft.com"
 $RecoveryFabricName = "IDCLAB-A147.ntdev.corp.microsoft.com"
 $PolicyName = "E2APolicy1"
-$PrimaryProtectionContainerName = "primary"
+$PrimaryProtectionContainerName = "PrimaryForPowershellE2A"
 $RecoveryProtectionContainerName = "recovery"
-$ProtectionContainerMappingName = "E2AClP26mapping"
+$ProtectionContainerMappingName = "ed849f27-f9ff-41f4-ae13-67170cb14507"
 $PrimaryNetworkFriendlyName = "corp"
 $RecoveryNetworkFriendlyName = "corp"
 $NetworkMappingName = "corp96map"
-$VMName = "Vm1"
+$VMName = "ForE2APowershell1"
 $RecoveryPlanName = "RPSwag96"
-$VmList = "Vm1,Vm3"
+$VmList = "ForE2APowershell1,ForE2APowershell2"
 
-$RecoveryAzureStorageAccountId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.Storage/storageAccounts/ev2teststorage" 
-$RecoveryResourceGroupId  = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute" 
-$AzureVmNetworkId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/canaryexproute/providers/Microsoft.Network/virtualNetworks/e2anetworksea"
+$RecoveryAzureStorageAccountId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.Storage/storageAccounts/sah2atest" 
+$RecoveryResourceGroupId  = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/prakccyrg" 
+$AzureVmNetworkId = "/subscriptions/b364ed8d-4279-4bf8-8fd1-56f8fa0ae05c/resourceGroups/Arpita-air/providers/Microsoft.Network/virtualNetworks/vnh2atest"
 
 <#
 .SYNOPSIS
@@ -264,7 +264,7 @@ function Test-SiteRecoveryEnableDR
 		# EnableDR
 		$Job = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId -RecoveryResourceGroupId $RecoveryResourceGroupId
 		WaitForJobCompletion -JobId $Job.Name
-		WaitForIRCompletion -VM $VM 
+		#WaitForIRCompletion -VM $VM 
 	}
 }
 
@@ -378,7 +378,7 @@ function Test-Reprotect
 	$PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
 	$rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
-	$currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
+	$currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
     WaitForJobCompletion -JobId $currentJob.Name 
 }
 

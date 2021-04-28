@@ -241,6 +241,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string LicenseTypeWindowsServer = "WindowsServer";
 
         /// <summary>
+        ///     No license type for SQL https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string NoLicenseTypeSql = "NoLicenseType";
+
+        /// <summary>
+        ///     The SQL server license type for 
+        ///     PAYG https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string LicenseTypePAYG = "PAYG";
+
+        /// <summary>
+        ///     The SQL server license type for 
+        ///     AHUB https://azure.microsoft.com/en-in/blog/azure-hybrid-benefit-for-sql-server-on-azure-virtual-machines/
+        /// </summary>
+        public const string LicenseTypeAHUB = "AHUB";
+
+        /// <summary>
         ///     Represents NetworkType string value.
         /// </summary>
         public const string NetworkType = "NetworkType";
