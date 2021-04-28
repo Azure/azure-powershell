@@ -16,12 +16,16 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    [CmdletOutputBreakingChange(typeof(PSTemplateSpec),
+        DeprecatedOutputProperties = new String[] { "Versions[*].Template", "Versions[*].Artifacts" },
+        NewOutputProperties = new String[] { "Versions[*].MainTemplate", "Versions.LinkedTemplates" })]
     [Cmdlet(
         VerbsCommon.Get,
         AzureRMConstants.AzureRMPrefix + "TemplateSpec",
