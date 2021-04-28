@@ -411,6 +411,15 @@
   <data name="CouldNotAssignServicePrincipalWithSubsContributorPermission" xml:space="preserve">
     <value>Could not assign subscription contributor permission to service principal just created. Please make sure you have permission to assign subscription contributor role, or you could use parameter -ClientIdAndSecret to specify one existing service principal id and secret.</value>
   </data>
+  <data name="CouldNotDeleteAcrRoleAssignment" xml:space="preserve">
+    <value>Could not delete 'acrpull' role assignment, please make sure you have right permission.</value>
+  </data>
+  <data name="CouldNotGetAcrRoleAssignment" xml:space="preserve">
+    <value>Could not get 'acrpull' role assignment, please make sure you have right permission.</value>
+  </data>
+  <data name="AcrRoleAssignmentIsAlreadyExist" xml:space="preserve">
+    <value>Acr role assignment {0} is already exist.</value>
+  </data>
   <data name="ResetingTheCredentialOfAksCluster" xml:space="preserve">
     <value>Reseting the credential of the aks cluster.</value>
   </data>
