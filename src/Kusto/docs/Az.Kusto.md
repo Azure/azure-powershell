@@ -71,6 +71,9 @@ Create or update a Kusto cluster.
 ### [New-AzKustoClusterPrincipalAssignment](New-AzKustoClusterPrincipalAssignment.md)
 Create a Kusto cluster principalAssignment.
 
+### [New-AzKustoDatabase](New-AzKustoDatabase.md)
+Creates or updates a database.
+
 ### [New-AzKustoDatabasePrincipalAssignment](New-AzKustoDatabasePrincipalAssignment.md)
 Creates a Kusto cluster database principalAssignment.
 

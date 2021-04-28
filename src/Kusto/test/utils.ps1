@@ -13,7 +13,8 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     # Generate some random strings for use in the test.
-    $rstr1 = RandomString -allChars $false -len 6
+    #$rstr1 = RandomString -allChars $false -len 6
+	$rstr1 = "dvma1g"	
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     # Follow random strings will be used in the test directly, so add it to $env
@@ -32,7 +33,7 @@ function setupEnv() {
     $resourceGroupName = "testgroup" + $rstr1
     Write-Host "Start to create test resource group" $resourceGroupName
     $null = $env.Add("resourceGroupName", $resourceGroupName)
-    New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    #New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
 
     # Create Storage Account
@@ -42,7 +43,7 @@ function setupEnv() {
     $storageParams = Get-Content .\test\deployment-templates\storage-account\parameters.json | ConvertFrom-Json
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
+    #New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
 
     # Deploy cluster + database 
     $SubscriptionId = $env.SubscriptionId
@@ -54,11 +55,11 @@ function setupEnv() {
     $null = $env.Add("databaseName", $databaseName)
     $null = $env.Add("databaseName1", $databaseName1)
     $null = $env.Add("dataConnectionName", $dataConnectionName)
-    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+    #New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
     Write-Host "Start to create a database" $databaseName
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
-    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated -Subscription $SubscriptionId
 
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
