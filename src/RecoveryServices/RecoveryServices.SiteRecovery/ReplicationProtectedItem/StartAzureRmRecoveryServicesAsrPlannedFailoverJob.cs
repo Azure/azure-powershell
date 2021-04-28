@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var plannedFailoverInputProperties = new PlannedFailoverInputProperties
             {
                 FailoverDirection = this.Direction,
-                ProviderSpecificDetails = new ProviderSpecificFailoverInput()
+                ProviderSpecificDetails = new PlannedFailoverProviderSpecificFailoverInput()
             };
 
             var input = new PlannedFailoverInput { Properties = plannedFailoverInputProperties };
@@ -175,11 +175,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    var failoverInput = new HyperVReplicaAzureFailoverProviderInput
+                    var failoverInput = new HyperVReplicaAzurePlannedFailoverProviderInput
                     {
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                        VaultLocation = "dummy"
+                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
@@ -284,8 +283,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanHyperVReplicaAzureFailoverInput
                             {
                                 PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                                VaultLocation = "dummy"
+                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                             };
                         recoveryPlanPlannedFailoverInputProperties.ProviderSpecificDetails.Add(
                             recoveryPlanHyperVReplicaAzureFailoverInput);
