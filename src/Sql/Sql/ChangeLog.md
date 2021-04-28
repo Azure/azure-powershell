@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline documentation to include example of define array of array with one inner array.
 
 ## Version 2.17.1
 * Added cmdlet output breaking change warnings to the following: 
