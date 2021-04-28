@@ -16,24 +16,22 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
+using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using Microsoft.Azure.Management.NetApp.Models;
+using System.Linq;
+using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
-    /// <summary>
-    ///  Moves volume to another pool    
-    /// </summary>
     [Cmdlet(
-        "Set",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumePool",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Set-AnfVolumePool")]
-    public class SetAzureRmNetAppFilesVolumePool : AzureNetAppFilesCmdletBase
+        "Get",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeBackupStatus",
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesVolumeBackupStatus))]
+    [Alias("Get-AnfVolumeBackupStatus")]
+    public class GetAzureRmNetAppFilesVolumeBackupStatus : AzureNetAppFilesCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -66,12 +64,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the ANF volume",
-            ParameterSetName = FieldsParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the ANF volume",
-            ParameterSetName = ParentObjectParameterSet)]
+            ParameterSetName = FieldsParameterSet,
+            HelpMessage = "The name of the ANF volume")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
@@ -82,13 +76,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string Name { get; set; }
 
         [Parameter(
-            ParameterSetName = FieldsParameterSet,
-            Mandatory = false,
-            HelpMessage = "ResourceId of the capacity pool to move to. UUID v4 used to identify the pool")]
-        [ValidateNotNullOrEmpty]
-        public string NewPoolResourceId { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
@@ -97,10 +84,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string ResourceId { get; set; }
 
         [Parameter(
-            ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The pool object containing the volume")]
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The pool object containing the volume to return")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesPool PoolObject { get; set; }
 
@@ -108,12 +95,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The volume object to move")]
+            HelpMessage = "The volume object to get backup status for")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesVolume InputObject { get; set; }
 
         public override void ExecuteCmdlet()
-        {            
+        {
             if (ParameterSetName == ResourceIdParameterSet)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
@@ -140,7 +127,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
 
             Management.NetApp.Models.Volume existingVolume = null;
-
             try
             {
                 existingVolume = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, PoolName, Name);
@@ -153,15 +139,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             {
                 throw new AzPSResourceNotFoundCloudException($"A Volume with name '{this.Name}' in resource group '{this.ResourceGroupName}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.");
             }
-
-
-            if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.PoolChangeMessage, this.Name)))
+            if (Name != null)
             {
-                var poolChangeBody = new PoolChangeRequest() { NewPoolResourceId = NewPoolResourceId};
-                var newPoolResourceIdentifier = new ResourceIdentifier(NewPoolResourceId);
-                AzureNetAppFilesManagementClient.Volumes.PoolChange(ResourceGroupName, AccountName, PoolName, Name, poolChangeBody);
-                var anfVolumes = AzureNetAppFilesManagementClient.Volumes.Get(ResourceGroupName, AccountName, newPoolResourceIdentifier.ResourceName, Name);
-                WriteObject(anfVolumes, true);                
+                var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.VolumeBackupStatus.Get(ResourceGroupName, AccountName, PoolName, Name);
+                WriteObject(anfVolumeBackupStatus.ConvertToPs());
             }
         }
     }

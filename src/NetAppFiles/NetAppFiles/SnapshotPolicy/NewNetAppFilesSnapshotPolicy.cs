@@ -23,6 +23,7 @@ using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
             }
             if (existingSnapshotPolicy != null)
             {
-                throw new Exception(string.Format("A Snapshot Policy with name '{0}' in resource group '{1}' already exists. Please use Set/Update-AzNetAppFilesSnapshotPolicy to update an existing Snapshot Policy.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A Snapshot Policy with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesSnapshotPolicy to update an existing Snapshot Policy.");
             }
 
             var snapshotPolicyBody = new Management.NetApp.Models.SnapshotPolicy()
