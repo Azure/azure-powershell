@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Commands.Compute
             var parameters = new Parameters(this, client, resourceClient);
 
             // Information message if the default Size value is used. 
-            if (String.IsNullOrEmpty(this.Size))
+            if (!this.IsParameterBound(c => c.Size))
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
