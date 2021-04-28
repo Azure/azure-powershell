@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
+* Added breaking change attribute to Get-AzTemplateSpec
 
 ## Version 3.4.1
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
