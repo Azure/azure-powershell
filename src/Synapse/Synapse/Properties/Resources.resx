@@ -657,8 +657,17 @@ Are you sure you want to continue?</value>
   <data name="UpdatingWorkspaceKey" xml:space="preserve">
     <value>Updating workspace key '{0}' in resource group '{1}' under Workspace '{2}'.</value>
   </data>
+  <data name="WorkspaceItemTypeAndItemNotAppearTogether" xml:space="preserve">
+    <value>Either -ItemType and -Item should appear together or neither of them should be.</value>
+  </data>
   <data name="WorkspaceKeyExists" xml:space="preserve">
     <value>A workspace key with name '{0}' in resource group '{1}' under workspace '{2}' already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key.</value>
+  </data>
+  <data name="WorkspaceRoleAssignmentMoreThanOneFound" xml:space="preserve">
+    <value>More than one role assignment under workspace '{0}' was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;</value>
+  </data>
+  <data name="WorkspaceRoleAssignmentNotFound" xml:space="preserve">
+    <value>Cannot find role assignment under workspace '{0}'.</value>
   </data>
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>

@@ -97,15 +97,6 @@ namespace Microsoft.Azure.Commands.Peering.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bandwidth:{0} is greater than {1}..
-        /// </summary>
-        internal static string Error_BandwidthTooHigh {
-            get {
-                return ResourceManager.GetString("Error_BandwidthTooHigh", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bandwidth {0} must be greater than 0.
         /// </summary>
         internal static string Error_BandwidthTooLow {

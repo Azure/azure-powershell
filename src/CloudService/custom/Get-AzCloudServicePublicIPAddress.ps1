@@ -18,8 +18,6 @@
 Get the public IP address of a cloud service.
 .Description
 Get the public IP address of a cloud service.
-.Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/get-AzCloudServicePublicIPAddress
 #>
 function Get-AzCloudServicePublicIPAddress {
     param(

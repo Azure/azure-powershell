@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed principaltype in Synapse Role-based access control
+
+## Version 0.10.0
+* Add support for Synapse Role-based access control
+   - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3
+   - Updated `New-AzSynapseRoleAssignment` cmdlet
+   - Updated `Get-AzSynapseRoleAssignment` cmdlet
+   - Updated `Remove-AzSynapseRoleAssignment` cmdlet
+   - Added `Get-AzSynapseRoleScope` cmdlet
 * Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
 * Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
 * Fixed the issue of retrieving Apache Spark pool information through management API

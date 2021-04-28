@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.DataFactory","Microsoft.Azure.Commands.DataFactoryV2.SetAzureDataFactoryDataFlowCommand","Set-AzDataFactoryV2DataFlow","0","1010","The cmdlet 'Set-AzDataFactoryV2DataFlow' no longer supports the alias 'New-AzDataFactoryV2DataFlow'.","Add the alias 'New-AzDataFactoryV2DataFlow back to the cmdlet 'Set-AzDataFactoryV2DataFlow'."

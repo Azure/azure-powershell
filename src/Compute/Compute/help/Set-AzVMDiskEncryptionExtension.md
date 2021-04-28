@@ -46,6 +46,16 @@ Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
  [-Confirm] [<CommonParameters>]
 ```
 
+### MigrateADEVersionParameterSet
+```
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-Migrate]
+```
+
+### MigrateADEVersionRecoveryParameterSet
+```
+Set-AzVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-MigrationRecovery]
+```
+
 ## DESCRIPTION
 The **Set-AzVMDiskEncryptionExtension** cmdlet enables encryption on a running infrastructure as a service (IaaS) virtual machine in Azure.  It enables encryption by installing the disk encryption extension on the virtual machine. 
 
@@ -323,7 +333,7 @@ Specifies the resource ID of the **KeyVault** to which the virtual machine encry
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
@@ -338,7 +348,7 @@ Specifies the **KeyVault** URL to which the virtual machine encryption keys shou
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: True
@@ -408,6 +418,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Migrate
+Initiates migration of the VM to latest Azure Disk Encryption extension version (ADE without AAD credentials).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: MigrateADEVersionParameterSet
+Aliases:
+
+Required: true
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MigrationRecovery
+Initiates migration recovery for failures during migration of ADE extension version with AAD to ADE extension version without AAD.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: MigrateADEVersionRecoveryParameterSet
+Aliases:
+
+Required: true
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyEncryptionAlgorithm
 Specifies the algorithm that is used to wrap and unwrap the key encryption key of the virtual machine.
 The default value is RSA-OAEP.
@@ -431,7 +471,7 @@ This must be the full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: False
@@ -447,7 +487,7 @@ This must be a full versioned URL.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet, SinglePassParameterSet
 Aliases:
 
 Required: False

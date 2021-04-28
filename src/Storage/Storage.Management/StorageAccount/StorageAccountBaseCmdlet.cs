@@ -70,6 +70,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Delete = "Delete";
         }
 
+        protected struct AccountIdentityType
+        {
+            internal const string systemAssigned = "SystemAssigned";
+            internal const string userAssigned = "UserAssigned";
+            internal const string systemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string none = "None";
+        }
+
         [Flags]
         public enum EncryptionSupportServiceEnum
         {
@@ -139,6 +147,33 @@ namespace Microsoft.Azure.Commands.Management.Storage
             List<PSStorageAccount> output = new List<PSStorageAccount>();
             storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
             WriteObject(output, true);
+        }
+
+        public static string GetIdentityTypeString(string inputIdentityType)
+        {
+            if (inputIdentityType == null)
+            {
+                return null;
+            }
+
+            // The parameter validate set make sure the value must be systemAssigned or userAssigned or systemAssignedUserAssigned or None
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssigned.ToLower())
+            {
+                return IdentityType.SystemAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.userAssigned.ToLower())
+            {
+                return IdentityType.UserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssignedUserAssigned.ToLower())
+            {
+                return IdentityType.SystemAssignedUserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.none.ToLower())
+            {
+                return IdentityType.None;
+            }
+            throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
         }
     }
 }
