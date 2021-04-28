@@ -1,18 +1,10 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
 
-{{ Add output here }}
+Kind Name               Type
+---- ----               ----
+     www01.azpstest.net Microsoft.Web/staticSites/customDomains
 ```
 
 {{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

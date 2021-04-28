@@ -18,7 +18,7 @@ function setupEnv() {
     $env.location = 'Central US'
     # For any resources you created for test, you should add it to $env here.
     # Important security
-    $env.githubAccessToken = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+    $env.githubAccessToken = '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'
     $env.repositoryUrl = 'https://github.com/LucasYao93/blazor-starter'
     $env.branch00 = 'lucas/dev'
     $env.branch01 = 'lucas/dev01'
@@ -27,7 +27,8 @@ function setupEnv() {
     # Generate some random strings for use in the test.
     $env.staticweb00 = "staticweb-" + (RandomString -allChars $false -len 6)
     $env.staticweb01 = "staticweb-" + (RandomString -allChars $false -len 6)
-    
+    $env.staticweb02 = "staticweb-" + (RandomString -allChars $false -len 6)
+    $env.staticweb03 = "staticweb-" + (RandomString -allChars $false -len 6)
     # Create the test group
     Write-Host -ForegroundColor Green "start to create test group"
     $env.resourceGroup = 'staticweb-rg-' + (RandomString -allChars $false -len 6)

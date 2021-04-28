@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild' {
-    It 'Detach' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Detach' {
+      Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location -IsForced
+      Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'
+      $functionList.Name | Should -Not -Contain $env.functionAppName01
     }
 
-    It 'DetachViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DetachViaIdentity' {
+      Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location -IsForced | Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'
+      $functionList.Name | Should -Not -Contain $env.functionAppName01    
     }
 }

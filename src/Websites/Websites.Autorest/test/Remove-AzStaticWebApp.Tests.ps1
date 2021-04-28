@@ -12,11 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStaticWebApp' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Delete' {
+      Remove-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02
+      $webList = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup
+      $webList.Name | Should -Not -Contain $env.staticweb02
+    } 
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+      $web = New-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 -Location $env.location `
+                        -RepositoryUrl $env.repositoryUrl -RepositoryToken $env.githubAccessToken -Branch $env.branch02 `
+                        -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+      Remove-AzStaticWebApp -InputObject $web
+      $webList = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup
+      $webList.Name | Should -Not -Contain $env.staticweb02
     }
 }

@@ -12,11 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzStaticWebAppUserRoleInvitationLink' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $link = New-AzStaticWebAppUserRoleInvitationLink -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -Domain $web.DefaultHostname -Provider 'github' -UserDetail 'LucasYao93' -Role 'reader' -NumHoursToExpiration 1
+      $link.InvitationUrl | Should -Not -BeNullOrEmpty
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityExpanded' {
+      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $link = New-AzStaticWebAppUserRoleInvitationLink -InputObject $web -Domain $web.DefaultHostname -Provider 'github' -UserDetail 'LucasYao93' -Role 'admin,contributor' -NumHoursToExpiration 1
+      $link.InvitationUrl | Should -Not -BeNullOrEmpty
     }
 }

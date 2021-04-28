@@ -12,11 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Test-AzStaticWebAppCustomDomain' {
-    It 'ValidateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ValidateExpanded' {
+        { Test-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' } | Should -Not -Throw
     }
 
-    It 'ValidateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ValidateViaIdentityExpanded' {
+        { Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' | Get-AzStaticWebAppCustomDomain } | Should -Not -Throw
     }
 }

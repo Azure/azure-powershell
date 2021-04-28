@@ -12,11 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStaticWebAppAttachedRepository' {
-    It 'Detach' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Detach' {
+      New-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 -Location $env.location `
+                        -RepositoryUrl $env.repositoryUrl -RepositoryToken $env.githubAccessToken -Branch $env.branch02 `
+                        -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+      { Remove-AzStaticWebAppAttachedRepository -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 } | Should -Not -Throw
+
     }
 
-    It 'DetachViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DetachViaIdentity' {
+      $web = New-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb03 -Location $env.location `
+                        -RepositoryUrl $env.repositoryUrl -RepositoryToken $env.githubAccessToken -Branch $env.branch02 `
+                        -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+      { Remove-AzStaticWebAppAttachedRepository -InputObject $web} | Should -Not -Throw
     }
 }

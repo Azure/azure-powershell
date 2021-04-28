@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite' {
-    It 'Detach' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Detach' {
+      Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $functionList.Name | Should -Not -Contain $env.functionAppName01
     }
 
-    It 'DetachViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DetachViaIdentity' {
+      $function = Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location -IsForced
+      Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite -InputObject $function 
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $functionList.Name | Should -Not -Contain $env.functionAppName01
     }
 }

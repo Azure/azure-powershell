@@ -12,11 +12,15 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Register-AzStaticWebAppUserProvidedFunctionApp' {
-    It 'RegisterExpanded1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegisterExpanded1' {
+      Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location -IsForced
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $functionList.Name | Should -Not -Contain $env.functionAppName01
     }
 
-    It 'RegisterExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegisterExpanded' {
+      Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01 -FunctionAppResourceId $env.functionAppId01 -FunctionAppRegion $env.location -IsForced
+      $functionList = Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'
+      $functionList.Name | Should -Not -Contain $env.functionAppName01   
     }
 }

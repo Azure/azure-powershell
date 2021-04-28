@@ -9,3 +9,14 @@ Kind Name        Type
 
 {{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -EnvironmentName 'default' | New-AzStaticWebAppBuildFunctionAppSetting  -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/builds/config
+```
+
+{{ Add description here }}
+

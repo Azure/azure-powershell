@@ -12,11 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Reset-AzStaticWebAppApiKey' {
-    It 'ResetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ResetExpanded' {
+        { Reset-AzStaticWebAppApiKey -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 } | Should -Not -Throw
     }
 
-    It 'ResetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ResetViaIdentityExpanded' {
+        { Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 | Reset-AzStaticWebAppApiKey } | Should -Not -Throw
     }
 }

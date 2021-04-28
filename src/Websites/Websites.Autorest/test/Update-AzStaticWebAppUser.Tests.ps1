@@ -12,11 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzStaticWebAppUser' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
+      { Update-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 $userList[0].Provider -Userid $userList[0].UserId -Role 'contributor' } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
+      { Update-AzStaticWebAppUser -InputObject $userList -Role 'contributor' } | Should -Not -Throw
     }
 }

@@ -89,6 +89,7 @@ directive:
       subject: CustomDomainCanBeAddedToStaticSite
     set:
       subject: CustomDomain
+
   - where:
       subject: ^AppSetting$
     set:
@@ -99,7 +100,7 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^CreateViaIdentityExpanded$|^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
       subject: CustomDomain
@@ -131,7 +132,7 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
       # We got to keep the Create variant of CustomDomain because it's special that it doesn't have a
       # CreateExpanded variant, because the only parameters are all in URL rather than request body
-      subject: AppSetting
+      subject: Setting
     remove: true
 
   - where:

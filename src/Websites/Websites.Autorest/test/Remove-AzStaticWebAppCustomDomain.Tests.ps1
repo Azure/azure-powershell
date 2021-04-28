@@ -12,11 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStaticWebAppCustomDomain' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    # NOTE:Before test. Need create domain zone for static web.
+    It 'Delete' {
+      $domainName = 'www02.azpstest.net'
+      Remove-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
+      $domianList = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $domianList.Name | Should -Contain $domainName
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+      $domainName = 'www03.azpstest.net'
+      $domian = New-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
+      Remove-AzStaticWebAppCustomDomain -InputObject $domian
+      $domianList = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $domianList.Name | Should -Contain $domainName
     }
 }

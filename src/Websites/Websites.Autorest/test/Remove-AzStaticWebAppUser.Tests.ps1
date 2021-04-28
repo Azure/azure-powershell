@@ -12,11 +12,19 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzStaticWebAppUser' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    # NOTE:Before test. Invite user join the static web domian.
+    It 'Delete' {
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
+      $removeUserId = $userList[0].UserId
+      Remove-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider $userList[0].Provider -Userid $userList[0].UserId
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
+      $userList.UserId | Should -Not -Contain $removeUserId
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all    
+      Remove-AzStaticWebAppUser -InputObject $userList
+      $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
+      $userList.UserId | Should -Not -Contain $removeUserId
     }
 }

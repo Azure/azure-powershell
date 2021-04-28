@@ -12,19 +12,11 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzStaticWebAppSetting' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { New-AzStaticWebAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Property @{'function01' = 'value01'; 'function02' = 'value02' } } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityExpanded' {
+        { Get-AzStaticWebAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 | New-AzStaticWebAppSetting -Property @{'function01' = 'value01'; 'function02' = 'value02' } } | Should -Not -Throw
     }
 }
