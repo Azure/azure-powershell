@@ -381,8 +381,25 @@ function validation
     if ($csdef.ServiceDefinition.WorkerRole.Count -eq 1){
         $csDefRoleNames = $csDefRoleNames + @($csdef.ServiceDefinition.WorkerRole.name.tolower())
     }elseif ($csdef.ServiceDefinition.WorkerRole.Count -gt 1) {
-        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.nameto.tolower()
+        $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.name.tolower()
     }
+
+    Write-Host("CScfg:")
+    Write-Host($cscfg.outerxml)
+    Write-Host($cscfg.ServiceConfiguration.Role | out-string)
+    Write-Host("`r`n CSDef")
+    Write-Host($CSdef.outerxml)
+    Write-Host($CSdef.ServiceDefinition.WorkerRole | out-string)
+    Write-Host($CSdef.ServiceDefinition.WebRole | out-string)
+
+
+    Write-Host("`r`n")
+    Write-Host("Roles in cscfg")
+    Write-Host($csCfgRoleNames)
+    Write-Host($csCfgRoleNames.count)
+    Write-Host("Roles in csdef")
+    Write-Host($csdefRoleNames) 
+    Write-Host($csdefRoleNames.count) 
 
     foreach ($aRoleName in $csCfgRoleNames){
         if (-not $csDefRoleNames.contains($aRoleName)){
