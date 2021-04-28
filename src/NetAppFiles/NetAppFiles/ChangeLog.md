@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added AllowLocalNfsUsersWithLdap to ActiveDirectory
+* Added VolumeName to Backup
+* Added LdapEnabled to Volume
+* Added Get-AzNetAppFilesVolumeBackupStatus to get the status of the backup for a volume
 
 ## Version 0.4.0
 * Added SecurityOperators to ActiveDirectory
