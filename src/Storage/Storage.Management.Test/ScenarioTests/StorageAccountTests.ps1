@@ -1653,3 +1653,70 @@ function Test-AzureStorageAccountKeySASPolicy
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-NewAzureStorageAccountUserAssignedIdentity
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageAccountUserAssignedIdentity
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+
+		# create keyvault and user assigned idenity
+        $keyvaultName = "weiestestcanary"
+        $keyvaultUri = "https://$($keyvaultName).vault.azure.net:443"
+        $keyname = "wrappingKey"
+        $useridentity= "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ManagedIdentity/userAssignedIdentities/weitestid1"
+		$useridentity2= "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ManagedIdentity/userAssignedIdentities/weitestid2"
+
+        # $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $rgname -Location $loc -EnablePurgeProtection
+        # Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $rgname -ObjectId $servicePricipleObjectId -PermissionsToKeys backup,create,delete,get,import,get,list,update,restore 
+        # $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'    
+
+        # $userId = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $rgname+"userid"
+        # Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $rgname -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+        # $useridentity= $userId.Id
+		
+		# new account with keyvault encryption + UserAssignedIdentity
+		$account = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -SkuName $stotype -Location $loc `
+					-UserAssignedIdentityId $useridentity  -IdentityType SystemAssignedUserAssigned  `
+					-KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId $useridentity
+
+		Assert-AreEqual "SystemAssigned,UserAssigned" $account.Identity.Type 
+		Assert-AreEqual Microsoft.Keyvault $account.Encryption.KeySource
+		Assert-AreEqual  $useridentity $account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity 
+		Assert-AreEqual  $keyvaultUri $account.Encryption.KeyVaultProperties.KeyVaultUri 
+		Assert-AreEqual  $keyname $account.Encryption.KeyVaultProperties.KeyName 
+
+		# update UserAssignedIdentity to another
+		$account = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname `
+					-IdentityType UserAssigned -UserAssignedIdentityId $useridentity2 `
+					-KeyVaultUserAssignedIdentityId $useridentity2  -KeyName $keyname -KeyVaultUri $keyvaultUri
+
+		Assert-AreEqual "UserAssigned" $account.Identity.Type 
+		Assert-AreEqual Microsoft.Keyvault $account.Encryption.KeySource
+		Assert-AreEqual  $useridentity2 $account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity 
+		Assert-AreEqual  $keyvaultUri $account.Encryption.KeyVaultProperties.KeyVaultUri 
+		Assert-AreEqual  $keyname $account.Encryption.KeyVaultProperties.KeyName 
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

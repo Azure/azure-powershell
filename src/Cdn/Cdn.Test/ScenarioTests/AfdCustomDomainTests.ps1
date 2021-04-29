@@ -23,13 +23,13 @@ function Test-CreateAfdCustomDomain
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $customDomainName = getAssetName
 
     $hostName = "$customDomainName.azfdtests.xyz"
 
-    $customDomain = New-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
+    $customDomain = New-AzFrontDoorCdnCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
 
     Assert-AreEqual $customDomain.Name $customDomainName
     Assert-AreEqual $customDomain.HostName $hostName
@@ -48,15 +48,15 @@ function Test-GetAfdCustomDomain
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $customDomainName = getAssetName
 
     $hostName = "$customDomainName.azfdtests.xyz"
 
-    New-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
+    New-AzFrontDoorCdnCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
 
-    $customDomain = Get-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName
+    $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName
 
     Assert-AreEqual $customDomain.Name $customDomainName
     Assert-AreEqual $customDomain.HostName $hostName

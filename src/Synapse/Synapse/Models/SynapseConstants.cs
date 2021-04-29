@@ -235,12 +235,5 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             LinkedService,
             Credential
         }
-
-        public enum PrincipalType
-        {
-            User,
-            Group,
-            ServicePrincipal
-        }
     }
 }

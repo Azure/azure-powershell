@@ -156,5 +156,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// </value>
         public bool? LdapOverTLS { get; set; }
 
+        /// <summary>
+        /// Gets or sets AllowLocalNfsUsersWithLdap
+        /// </summary>
+        /// <value>If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
+        /// </value>
+        public bool? AllowLocalNfsUsersWithLdap { get; set; }
+
     }
 }
