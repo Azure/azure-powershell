@@ -12,10 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Identity.Client;
-using System;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -32,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         public string TenantId { get; }
 
         public string LoginType => "User";
+
+        public string HomeAccountId { get; set; }
+
+        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
 
         public AuthenticationResultToken(AuthenticationResult result)
         {

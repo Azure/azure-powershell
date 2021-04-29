@@ -11,20 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Newtonsoft.Json.10.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Buffers.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Net.Http.WinHttpHandler.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Private.ServiceModel.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Reflection.DispatchProxy.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.AccessControl.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Cryptography.ProtectedData.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Permissions.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.Security.Principal.Windows.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\System.ServiceModel.Primitives.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetFx\Microsoft.Identity.Client.dll" />
-    <PreLoadAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client.Extensions.Msal\NetFx\Microsoft.Identity.Client.Extensions.Msal.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client\NetCore\Microsoft.Identity.Client.dll" />
-    <NetCoreAssemblies Include="$(RepoSrc)lib\Microsoft.Identity.Client.Extensions.Msal\NetCore\Microsoft.Identity.Client.Extensions.Msal.dll" />
+    <PreLoadAssemblies Include="$(RepoSrc)lib\NetFxPreloadAssemblies\*.dll" />
+    <NetCoreAssemblies Include="$(RepoSrc)lib\NetCorePreloadAssemblies\*.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.dll" />
     <StorageDependencies Include="$(RepoSrc)lib\WindowsAzure.Storage\9.3.0\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
@@ -37,10 +25,15 @@
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
     <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+    <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
+      Executable: pwsh
+      Application arguments: -NoExit -Command "Import-Module C:\AME\azure-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1"-->
+    <!--<Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)" />-->
   </Target>
 
   <ItemGroup>
     <None Update="StartupScripts\AzError.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="StartupScripts\InitializeAssemblyResolver.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PostImportScripts\LoadAuthenticators.ps1" CopyToOutputDirectory="PreserveNewest" />
@@ -49,13 +42,13 @@
   <ItemGroup>
     <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
   </ItemGroup>
-
+   
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
-    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />
+    <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
   </ItemGroup>
-
+   
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -63,22 +56,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
+   
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

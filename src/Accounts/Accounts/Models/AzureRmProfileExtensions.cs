@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
             }
-            
+
             var rmProfile = profile as AzureRmProfile;
             if (rmProfile != null)
             {

@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
+using System.Management.Automation;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
+
 using Newtonsoft.Json;
-using System.IO;
-using System.Management.Automation;
-using Microsoft.Identity.Client;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
@@ -74,18 +73,58 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
             FileUtilities.DataStore = session.DataStore;
             session.ARMContextSaveMode = ContextSaveMode.Process;
-            
-            AuthenticationClientFactory authenticationClientFactory = new InMemoryTokenCacheClientFactory();
+
+            PowerShellTokenCacheProvider cacheProvider;
+            MemoryStream memoryStream = null;
             if (AzureSession.Instance.TryGetComponent(
-                    AuthenticationClientFactory.AuthenticationClientFactoryKey,
-                    out AuthenticationClientFactory OriginalAuthenticationClientFactory))
+                    PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                    out PowerShellTokenCacheProvider originalTokenCacheProvider))
             {
-                var token = OriginalAuthenticationClientFactory.ReadTokenData();
-                authenticationClientFactory.UpdateTokenDataWithoutFlush(token);
-                authenticationClientFactory.FlushTokenData();
+                if(originalTokenCacheProvider is SharedTokenCacheProvider)
+                {
+                    cacheProvider = new InMemoryTokenCacheProvider();
+                    var token = originalTokenCacheProvider.ReadTokenData();
+                    if (token != null && token.Length > 0)
+                    {
+                        memoryStream = new MemoryStream(token);
+                    }
+                    cacheProvider.UpdateTokenDataWithoutFlush(token);
+                    cacheProvider.FlushTokenData();
+                    AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => cacheProvider, true);
+                }
+                else
+                {
+                    cacheProvider = originalTokenCacheProvider;
+                }
             }
-            AzureSession.Instance.UnregisterComponent<AuthenticationClientFactory>(AuthenticationClientFactory.AuthenticationClientFactoryKey);
-            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => authenticationClientFactory);
+            else
+            {
+                cacheProvider = new InMemoryTokenCacheProvider();
+            }
+
+            PowerShellTokenCache newTokenCache = null;
+            if(AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
+            {
+                if(!tokenCache.IsPersistentCache)
+                {
+                    newTokenCache = tokenCache;
+                }
+                else
+                {
+                    newTokenCache = memoryStream == null ? null : PowerShellTokenCache.Deserialize(memoryStream);
+                }
+            }
+
+            if(newTokenCache == null)
+            {
+                newTokenCache = cacheProvider.GetTokenCache();
+            }
+            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => newTokenCache, true);
+            if(AzureSession.Instance.TryGetComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, out IAuthenticatorBuilder builder))
+            {
+                builder.Reset();
+            }
+
             if (writeAutoSaveFile)
             {
                 FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);

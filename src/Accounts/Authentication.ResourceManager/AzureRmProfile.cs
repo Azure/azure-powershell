@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-#if NETSTANDARD
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-#endif
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Xml.Serialization;
-using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
-using System.Collections.Concurrent;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using System.Management.Automation;
+using System.Xml.Serialization;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Properties;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Serialization;
+
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                //TODO: remove calling RefreshContextsFromCache
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
@@ -73,10 +71,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 }
 
                 IAzureContext result = null;
-                if (DefaultContextKey == "Default" && Contexts.Any(c => c.Key != "Default"))
+                if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
-                    // If the default context is "Default", but there are other contexts set, remove the "Default" context to throw the below exception
-                    TryCacheRemoveContext("Default");
+                    // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
+                    EnqueueDebugMessage($"Incorrect default context key '{DefaultContextKey}' found. Trying to remove it and falling back to the first available context.");
+                    TryRemoveContext(Constants.DefaultValue);
                 }
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
@@ -177,7 +176,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             bool success = false;
             try
             {
-                result = converter == null? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
+                result = converter == null ? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
                 success = true;
             }
             catch (JsonException)
@@ -294,6 +293,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
             try
             {
+                TryRemoveContext(Constants.DefaultValue);
                 string contents = ToString(serializeCache);
                 string diskContents = string.Empty;
                 diskContents = provider.CreateReader().ReadToEnd();
@@ -423,7 +423,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (context != null)
             {
 
-                if (context.Subscription != null && context.Account != null)
+                if (null != context.Tenant && context.Subscription != null && null != context.Account)
+                {
+                    name = string.Format("{0} ({1}) - {2} - {3}", context.Subscription.Name, context.Subscription.Id, context.Tenant.Id, context.Account.Id);
+                    result = true;
+                }
+                else if (context.Subscription != null && context.Account != null)
                 {
                     name = string.Format("{0} ({1}) - {2}", context.Subscription.Name, context.Subscription.Id, context.Account.Id);
                     result = true;
@@ -486,7 +491,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public bool TrySetContext(string name, IAzureContext context)
         {
             bool result = false;
-            if (Contexts!= null)
+            if (Contexts != null)
             {
                 Contexts[name] = context;
                 result = true;
@@ -567,7 +572,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 if (EnvironmentTable.ContainsKey(environment.Name))
                 {
-                    mergedEnvironment = mergedEnvironment.Merge( EnvironmentTable[environment.Name]);
+                    mergedEnvironment = mergedEnvironment.Merge(EnvironmentTable[environment.Name]);
                 }
 
                 EnvironmentTable[environment.Name] = mergedEnvironment;
@@ -641,7 +646,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             return this;
         }
 
-        protected virtual void Dispose( bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             // do nothing
         }
@@ -658,7 +663,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 int i = text.IndexOf('{');
 
-                if ( i >= 0 && i < text.Length)
+                if (i >= 0 && i < text.Length)
                 {
                     result = text.Substring(i);
                 }
@@ -679,7 +684,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void EnqueueDebugMessage(string message)
         {
             EventHandler<StreamEventArgs> enqueueDebugEvent;
-            if(AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
+            if (AzureSession.Instance.TryGetComponent(AzureRMCmdlet.EnqueueDebugKey, out enqueueDebugEvent))
             {
                 enqueueDebugEvent(this, new StreamEventArgs() { Message = message });
             }
@@ -689,15 +694,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             // Authentication factory is already registered in `OnImport()`
             AzureSession.Instance.TryGetComponent(
-                AuthenticationClientFactory.AuthenticationClientFactoryKey,
-                out AuthenticationClientFactory authenticationClientFactory);
+                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                out PowerShellTokenCacheProvider tokenCacheProvider);
 
             string authority = null;
             if (TryGetEnvironment(AzureSession.Instance.GetProperty(AzureSession.Property.Environment), out IAzureEnvironment sessionEnvironment))
             {
                 authority = $"{sessionEnvironment.ActiveDirectoryAuthority}organizations";
             }
-            var accounts = authenticationClientFactory.ListAccounts(authority);
+            var accounts = tokenCacheProvider.ListAccounts(authority);
             if (!accounts.Any())
             {
                 if (!Contexts.Any(c => c.Key != "Default" && c.Value.Account.Type == AzureAccount.AccountType.User))
@@ -774,9 +779,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     List<IAccessToken> tokens = null;
                     try
                     {
-                        tokens = authenticationClientFactory.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
+                        tokens = tokenCacheProvider.GetTenantTokensForAccount(account, environment, WriteWarningMessage);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         //In SSO scenario, if the account from token cache has multiple tenants, e.g. MSA account, MSAL randomly picks up
                         //one tenant to ask for token, MSAL will throw exception if MSA home tenant is chosen. The exception is swallowed here as short term fix.
@@ -789,7 +794,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     {
                         var azureTenant = new AzureTenant() { Id = token.TenantId };
                         azureAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, token.TenantId);
-                        var subscriptions = authenticationClientFactory.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
+                        var subscriptions = tokenCacheProvider.GetSubscriptionsFromTenantToken(account, environment, token, WriteWarningMessage);
                         if (!subscriptions.Any())
                         {
                             subscriptions.Add(null);

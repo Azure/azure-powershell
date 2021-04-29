@@ -106,7 +106,6 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertFullContext()
         {
-            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             ConvertAndTestProfile(context, (profile) =>
             {
@@ -119,7 +118,6 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertContextNullComponent()
         {
-            AzureSessionInitializer.InitializeAzureSession();
             var context = GetDefaultContext();
             context.Subscription = null;
             ConvertAndTestProfile(context, (profile) =>
@@ -133,7 +131,6 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanConvertMinimalContext()
         {
-            AzureSessionInitializer.InitializeAzureSession();
             IAzureContext context = new AzureContext(new AzureSubscription(), new AzureAccount(), new AzureEnvironment(), new AzureTenant(), new byte[0]);
             ConvertAndTestProfile(new PSAzureContext(context), (profile) =>
             {

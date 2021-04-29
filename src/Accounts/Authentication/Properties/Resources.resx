@@ -126,8 +126,20 @@
   <data name="CertificateNotFoundInStore" xml:space="preserve">
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
   </data>
+  <data name="ChangingDefaultEnvironmentNotSupported" xml:space="preserve">
+    <value>Changing built-in or discovered environment is not supported.</value>
+  </data>
   <data name="CredentialOrganizationIdMessage" xml:space="preserve">
     <value>-Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account.</value>
+  </data>
+  <data name="EnvironmentNameNeedsToBeSpecified" xml:space="preserve">
+    <value>Environment name needs to be specified</value>
+  </data>
+  <data name="EnvironmentNeedsToBeSpecified" xml:space="preserve">
+    <value>Environment needs to be specified</value>
+  </data>
+  <data name="EnvironmentNotFound" xml:space="preserve">
+    <value>The environment name '{0}' is not found.</value>
   </data>
   <data name="ExpiredRefreshToken" xml:space="preserve">
     <value>Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzAccount.</value>
@@ -176,6 +188,9 @@
   </data>
   <data name="PublishSettingsFileRealmFormat" xml:space="preserve">
     <value>&amp;whr={0}</value>
+  </data>
+  <data name="RemovingDefaultEnvironmentsNotSupported" xml:space="preserve">
+    <value>Removing built-in or discovered environment is not supported.</value>
   </data>
   <data name="ServiceKeyNotFound" xml:space="preserve">
     <value>Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzAccount.</value>
@@ -337,10 +352,13 @@
   <data name="UnableToLaunchBrowser" xml:space="preserve">
     <value>Unable to launch a browser for authorization code login. Reverting to device code login.</value>
   </data>
-  <data name="EnvironmentNotFound" xml:space="preserve">
-    <value>The environment name '{0}' is not found.</value>
-  </data>
   <data name="AutosaveNotSupportedWithSuggestion" xml:space="preserve">
     <value>Context autosave is not supported on current environment. Please disable it using 'Disable-AzContextSave'.</value>
+  </data>
+  <data name="MissingPasswordAndNoCache" xml:space="preserve">
+    <value>Password is missing and no cache found for the current user.</value>
+  </data>
+  <data name="FailedToMigrateAdal2Msal" xml:space="preserve">
+    <value>INITIALIZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
   </data>
 </root>

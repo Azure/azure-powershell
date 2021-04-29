@@ -11,8 +11,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -20,6 +20,12 @@ namespace Microsoft.Azure.PowerShell.Authenticators
     {
         public DefaultAuthenticatorBuilder()
         {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            Authenticator = null;
             AppendAuthenticator(() => { return new InteractiveUserAuthenticator(); });
             AppendAuthenticator(() => { return new DeviceCodeAuthenticator(); });
             AppendAuthenticator(() => { return new UsernamePasswordAuthenticator(); });

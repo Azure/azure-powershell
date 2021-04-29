@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Identity.Client;
-using Microsoft.Rest;
 using System;
 using System.Linq;
 using System.Security;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-using System.Security.Authentication;
+
+using Hyak.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Identity.Client;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -57,8 +59,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 return builder;
             };
-
-            TokenProvider = new MsalTokenProvider(_getKeyStore);
         }
 
         private Func<IServicePrincipalKeyStore> _getKeyStore;
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private Func<IAuthenticatorBuilder> _getAuthenticator;
         internal IAuthenticatorBuilder Builder => _getAuthenticator();
-
+       
         public ITokenProvider TokenProvider { get; set; }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             IAccessToken token = null;
 
-            AuthenticationClientFactory authenticationClientFactory;
-            if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+            PowerShellTokenCacheProvider tokenCacheProvider;
+            if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
             {
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
@@ -122,13 +122,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 try
                 {
-                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(authenticationClientFactory, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
+                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
                     {
-                        token = authToken?.ConfigureAwait(true).GetAwaiter().GetResult();
+                        token = authToken?.ConfigureAwait(false).GetAwaiter().GetResult();
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment
                             account.Id = token.UserId ?? account.Id;
+                            if (!string.IsNullOrEmpty(token.HomeAccountId))
+                            {
+                                account.SetProperty(AzureAccount.Property.HomeAccountId, token.HomeAccountId);
+                            }
                             break;
                         }
 
@@ -137,9 +141,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 }
                 catch (Exception e)
                 {
-                    if (retries == 0)
+                    if (!IsTransientException(e) || retries == 0)
                     {
-                        throw e;
+                        throw;
                     }
 
                     TracingAdapter.Information(string.Format("[AuthenticationFactory] Exception caught when calling TryAuthenticate, retrying authentication - Exception message: '{0}'", e.Message));
@@ -150,6 +154,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return token;
+        }
+
+        private static bool IsTransientException(Exception e)
+        {
+            var msalException = e.InnerException as MsalServiceException;
+            if(msalException != null)
+            {
+                return msalException.ErrorCode == MsalError.RequestTimeout ||
+                    msalException.ErrorCode == MsalError.ServiceNotAvailable;
+            }
+            return false;
         }
 
         public IAccessToken Authenticate(
@@ -241,7 +256,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                                 null,
                                 null,
                                 context.Environment.GetTokenAudience(targetEndpoint));
-                
+
                 TracingAdapter.Information(
                     Resources.UPNAuthenticationTokenTrace,
                     token.LoginType,
@@ -271,14 +286,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             if (context.Account == null)
             {
-                throw new ArgumentException(Resources.ArmAccountNotFound);
+                throw new AzPSArgumentException(Resources.ArmAccountNotFound, "context.Account", ErrorKind.UserError);
             }
             switch (context.Account.Type)
             {
                 case AzureAccount.AccountType.Certificate:
                     throw new NotSupportedException(AzureAccount.AccountType.Certificate.ToString());
                 case AzureAccount.AccountType.AccessToken:
-                    return new TokenCredentials(GetEndpointToken(context.Account, targetEndpoint));
+                    return new RenewingTokenCredential(new ExternalAccessToken (GetEndpointToken(context.Account, targetEndpoint), () => GetEndpointToken(context.Account, targetEndpoint)));
             }
 
 
@@ -305,15 +320,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 TracingAdapter.Information(Resources.UPNAuthenticationTrace,
                     context.Account.Id, context.Environment.Name, tenant);
-                
+
                 IAccessToken token = null;
                 switch (context.Account.Type)
                 {
                     case AzureAccount.AccountType.ManagedService:
                         token = GetManagedServiceToken(
-                            context.Account,
-                            context.Environment,
-                            tenant,
+                                context.Account,
+                                context.Environment,
+                                tenant,
                             context.Environment.GetTokenAudience(targetEndpoint));
                         break;
                     case AzureAccount.AccountType.User:
@@ -333,6 +348,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 TracingAdapter.Information(Resources.AdalAuthException, ex.Message);
                 throw new ArgumentException(Resources.InvalidArmContext, ex);
             }
+        }
+
+        public ServiceClientCredentials GetServiceClientCredentials(string accessToken, Func<string> renew = null)
+        {
+            return new RenewingTokenCredential(new ExternalAccessToken(accessToken, renew));
         }
 
         /// <summary>
@@ -421,69 +441,34 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return resourceId;
         }
 
-        private AdalConfiguration GetAdalConfiguration(IAzureEnvironment environment, string tenantId,
-            string resourceId, TokenCache tokenCache)
-        {
-            if (environment == null)
-            {
-                throw new ArgumentNullException("environment");
-            }
-
-            var adEndpoint = environment.ActiveDirectoryAuthority;
-            if (null == adEndpoint)
-            {
-                throw new ArgumentOutOfRangeException(
-                    "environment",
-                    string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
-            }
-
-            var audience = environment.GetEndpoint(resourceId) ?? resourceId;
-            if (string.IsNullOrWhiteSpace(audience))
-            {
-                string message = Resources.InvalidManagementTokenAudience;
-                if (resourceId == AzureEnvironment.Endpoint.GraphEndpointResourceId)
-                {
-                    message = Resources.InvalidGraphTokenAudience;
-                }
-
-                throw new ArgumentOutOfRangeException("environment", string.Format(message, environment.Name));
-            }
-
-            return new AdalConfiguration
-            {
-                AdEndpoint = adEndpoint.ToString(),
-                ResourceClientUri = audience,
-                AdDomain = tenantId,
-                ValidateAuthority = !environment.OnPremise,
-                TokenCache = tokenCache
-            };
-        }
-
         private string GetEndpointToken(IAzureAccount account, string targetEndpoint)
         {
             string tokenKey = AzureAccount.Property.AccessToken;
-            if (targetEndpoint == AzureEnvironment.Endpoint.Graph)
+            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.Graph, StringComparison.OrdinalIgnoreCase))
             {
                 tokenKey = AzureAccount.Property.GraphAccessToken;
             }
-
+            if (string.Equals(targetEndpoint, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                tokenKey = AzureAccount.Property.KeyVaultAccessToken;
+            }
             return account.GetProperty(tokenKey);
         }
 
         private void RemoveFromTokenCache(IAzureAccount account)
         {
-            AuthenticationClientFactory authenticationClientFactory;
-            if (!AzureSession.Instance.TryGetComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, out authenticationClientFactory))
+            PowerShellTokenCacheProvider tokenCacheProvider;
+            if (!AzureSession.Instance.TryGetComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, out tokenCacheProvider))
             {
                 throw new NullReferenceException(Resources.AuthenticationClientFactoryNotRegistered);
             }
 
-            var publicClient = authenticationClientFactory.CreatePublicClient();
-            var tokenAccounts = publicClient.GetAccountsAsync()
-                            .ConfigureAwait(false).GetAwaiter().GetResult()
-                            .Where(a => MatchCacheItem(account, a));
+            var publicClient = tokenCacheProvider.CreatePublicClient();
+            var accounts = publicClient.GetAccountsAsync()
+                            .ConfigureAwait(false).GetAwaiter().GetResult();
+            var tokenAccounts = accounts.Where(a => MatchCacheItem(account, a));
             foreach (var tokenAccount in tokenAccounts)
-            {
+                {
                 publicClient.RemoveAsync(tokenAccount)
                                 .ConfigureAwait(false).GetAwaiter().GetResult();
             }
@@ -512,7 +497,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         }
 
         private AuthenticationParameters GetAuthenticationParameters(
-            AuthenticationClientFactory authenticationClientFactory,
+            PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -527,27 +512,34 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.User:
                     if (password == null)
                     {
+                        var homeAccountId = account.GetProperty(AzureAccount.Property.HomeAccountId) ?? "";
+
                         if (!string.IsNullOrEmpty(account.Id))
                         {
-                            return new SilentParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id);
-                        }
-                        else if (account.IsPropertySet("UseDeviceAuth"))
-                        {
-                            return new DeviceCodeParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId);
+                            return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
                         }
 
-                        return new InteractiveParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, promptAction);
+                        if (account.IsPropertySet("UseDeviceAuth"))
+                        {
+                            return new DeviceCodeParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
+                        }
+                        else if(account.IsPropertySet(AzureAccount.Property.UsePasswordAuth))
+                        {
+                            return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, homeAccountId);
+                        }
+
+                        return new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId, promptAction);
                     }
 
-                    return new UsernamePasswordParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, password);
+                    return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
                 case AzureAccount.AccountType.Certificate:
                 case AzureAccount.AccountType.ServicePrincipal:
                     password = password ?? ConvertToSecureString(account.GetProperty(AzureAccount.Property.ServicePrincipalSecret));
-                    return new ServicePrincipalParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
+                    return new ServicePrincipalParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
                 case AzureAccount.AccountType.ManagedService:
-                    return new ManagedServiceIdentityParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account);
+                    return new ManagedServiceIdentityParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case AzureAccount.AccountType.AccessToken:
-                    return new AccessTokenParameters(authenticationClientFactory, environment, tokenCache, tenant, resourceId, account);
+                    return new AccessTokenParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 default:
                     return null;
             }
