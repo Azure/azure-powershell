@@ -35,7 +35,6 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.Azure.PowerShell.Authentication.Test.Mocks;
 using Azure.Identity;
 using Moq;
-using System.ServiceModel.Channels;
 using Azure.Core;
 
 namespace Common.Authentication.Test
