@@ -15,7 +15,7 @@ Creates a network interface.
 
 ### SetByIpConfigurationResource (Default)
 ```
-New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
  [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -23,7 +23,7 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
 
 ### SetByIpConfigurationResourceId
 ```
-New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-NetworkSecurityGroupId <String>]
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
  [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
@@ -32,7 +32,7 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
 
 ### SetByResourceId
 ```
-New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -SubnetId <String> [-PublicIpAddressId <String>] [-NetworkSecurityGroupId <String>]
  [-LoadBalancerBackendAddressPoolId <String[]>] [-LoadBalancerInboundNatRuleId <String[]>]
  [-ApplicationGatewayBackendAddressPoolId <String[]>] [-ApplicationSecurityGroupId <String[]>]
@@ -43,7 +43,7 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
 
 ### SetByResource
 ```
-New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
+New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String>
  -Subnet <PSSubnet> [-PublicIpAddress <PSPublicIpAddress>] [-NetworkSecurityGroup <PSNetworkSecurityGroup>]
  [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
@@ -191,21 +191,6 @@ Specifies the DNS server for the network interface.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EdgeZone
-{{ Fill EdgeZone Description }}
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

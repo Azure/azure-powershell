@@ -130,12 +130,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceVmss");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkInterfaceInEdgeZone()
-        {
-            TestRunner.RunTestScript("Test-NetworkInterfaceInEdgeZone");
-        }
     }
 }

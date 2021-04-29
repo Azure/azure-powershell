@@ -145,12 +145,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpointPolicies");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualNetworkInEdgeZone()
-        {
-            TestRunner.RunTestScript("Test-VirtualNetworkInEdgeZone");
-        }
     }
 }
