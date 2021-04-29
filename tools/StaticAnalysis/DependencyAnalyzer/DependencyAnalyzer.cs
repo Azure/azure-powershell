@@ -166,6 +166,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Configuration",
             "System.Net.WebClient",
             "System.Memory",
+            "System.Memory.Data",
             "System.Text.Encoding.CodePages",
             "System.Private.Xml",
             "System.Reflection.DispatchProxy",
