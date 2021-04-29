@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
