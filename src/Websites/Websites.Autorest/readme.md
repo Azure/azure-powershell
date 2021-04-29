@@ -289,7 +289,7 @@ directive:
       parameter-name: AppSetting
   # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
   - where:
-      verb: New|Update
+      verb: New
       subject: ^$
     hide: true
 ```

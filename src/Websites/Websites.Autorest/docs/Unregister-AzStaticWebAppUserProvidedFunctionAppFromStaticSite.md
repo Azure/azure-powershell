@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionappfromstaticsite
+online version: https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionappfromstaticsite
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/new-azstaticwebapp
+online version: https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 schema: 2.0.0
 ---
 
@@ -19,10 +19,7 @@ New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String>
  [-GithubActionSecretNameOverride <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-OutputLocation <String>]
  [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityElasticMaximum <Int32>]
- [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>]
- [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>]
+ [-SkuName <String>] [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>]
  [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
  [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -33,14 +30,23 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Kind Location  Name             Type
----- --------  ----             ----
-     East US 2 staticweb-pwsh01 Microsoft.Web/staticSites
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -376,128 +382,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuCapability
-Capabilities of the SKU, e.g., is traffic manager enabled
-To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacityDefault
-Default number of workers for this App Service plan SKU.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacityElasticMaximum
-Maximum number of Elastic workers for this App Service plan SKU.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacityMaximum
-Maximum number of workers for this App Service plan SKU.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacityMinimum
-Minimum number of workers for this App Service plan SKU.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacityScaleType
-Available scale configurations for an App Service plan.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuFamily
-Family code of the resource SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuLocation
-Locations of the SKU.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SkuName
+[Parameter()]
+[Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+[System.String[]]
+# Locations of the SKU.
+${SkuLocation},
 Name of the resource SKU.
 
 ```yaml
@@ -512,37 +402,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuSize
-Size specifier of the resource SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-Service tier of the resource SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -StagingEnvironmentPolicy
+[Parameter()]
+[Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
+[System.String]
+# Service tier of the resource SKU.
+${SkuTier},
 State indicating whether staging environments are allowed or not allowed for a static web app.
 
 ```yaml
@@ -710,16 +575,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager enabled
-  - `[Name <String>]`: Name of the SKU capability.
-  - `[Reason <String>]`: Reason of the SKU capability.
-  - `[Value <String>]`: Value of the SKU capability.
 
 ## RELATED LINKS
 

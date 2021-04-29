@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/update-azstaticwebapp
+online version: https://docs.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
 schema: 2.0.0
 ---
 
@@ -42,23 +42,23 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: {{ Add title here }}
 ```powershell
-Update-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Kind Location   Name               Type
----- --------   ----               ----
-     Central US staticweb-portal01 Microsoft.Web/staticSites
+{{ Add description here }}
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Update-AzStaticWebApp
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-Kind Location   Name               Type
----- --------   ----               ----
-     Central US staticweb-portal01 Microsoft.Web/staticSites
+{{ Add description here }}
 
 ## PARAMETERS
 
