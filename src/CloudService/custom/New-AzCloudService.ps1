@@ -145,12 +145,14 @@ function New-AzCloudService {
 
         try {
             $getCS = Get-azcloudservice -resourcegroupname $ResourceGroupName -name $name -ErrorAction Stop
-            if ($null -ne $getCS){
-                throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
-            }
         }
         catch {
             # CloudService does not exist in that name/resource group
+        }
+        finally {
+            if ($null -ne $getCS){
+                throw "A Cloud Service resource with name: '" +$name + "' already exists in Resource Group: '" + $ResourceGroupName + "'. Please try another name."
+            }
         }
 
         if (-not (Test-Path $ConfigurationFile))  
@@ -373,33 +375,16 @@ function validation
     }
 
     $csDefRoleNames = @()
-    if ($csdef.ServiceDefinition.WebRole.Count -eq 1){
+    if (($csdef.ServiceDefinition.WebRole | Measure-Object | select-object -expandproperty count) -eq 1){
         $csDefRoleNames = @($csdef.ServiceDefinition.WebRole.name.tolower())
-    }elseif ($csdef.ServiceDefinition.WebRole.Count -gt 1) {
+    }elseif (($csdef.ServiceDefinition.WebRole | Measure-Object | select-object -expandproperty count) -gt 1) {
         $csDefRoleNames = $csdef.ServiceDefinition.WebRole.name.tolower()
     }
-    if ($csdef.ServiceDefinition.WorkerRole.Count -eq 1){
+    if (($csdef.ServiceDefinition.WorkerRole | Measure-Object | select-object -expandproperty count) -eq 1){
         $csDefRoleNames = $csDefRoleNames + @($csdef.ServiceDefinition.WorkerRole.name.tolower())
-    }elseif ($csdef.ServiceDefinition.WorkerRole.Count -gt 1) {
+    }elseif (($csdef.ServiceDefinition.WorkerRole | Measure-Object | select-object -expandproperty count) -gt 1) {
         $csDefRoleNames = $csDefRoleNames + $csdef.ServiceDefinition.WorkerRole.name.tolower()
     }
-
-    Write-Host("CScfg:")
-    Write-Host($cscfg.outerxml)
-    Write-Host($cscfg.ServiceConfiguration.Role | out-string)
-    Write-Host("`r`n CSDef")
-    Write-Host($CSdef.outerxml)
-    Write-Host($CSdef.ServiceDefinition.WorkerRole | out-string)
-    Write-Host($CSdef.ServiceDefinition.WebRole | out-string)
-
-
-    Write-Host("`r`n")
-    Write-Host("Roles in cscfg")
-    Write-Host($csCfgRoleNames)
-    Write-Host($csCfgRoleNames.count)
-    Write-Host("Roles in csdef")
-    Write-Host($csdefRoleNames) 
-    Write-Host($csdefRoleNames.count) 
 
     foreach ($aRoleName in $csCfgRoleNames){
         if (-not $csDefRoleNames.contains($aRoleName)){
