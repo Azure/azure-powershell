@@ -74,31 +74,14 @@ Kind Location   Name               Type
 
 {{ Add description here }}
 
-{
-  "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal04",
-  "name": "staticweb-portal04",
-  "location": "Central US",
-  "type": "Microsoft.Web/staticSites",
-  "properties": {
-    "defaultHostname": "wonderful-desert-0d05b1d10.azurestaticapps.net",
-    "repositoryUrl": "https://github.com/LucasYao93/blazor-starter",
-    "branch": "lucas/dev",
-    "provider": "GitHub",
-    "customDomains": [ ],
-    "contentDistributionEndpoint": "https://content-dm1.infrastructure.azurestaticapps.net",
-    "keyVaultReferenceIdentity": "SystemAssigned"
-  },
-  "sku": {
-    "name": "Free",
-    "tier": "Free"
-  }
-}
-
 ### Example 4: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $web = New-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'
+PS C:\> Get-AzStaticWebApp -InputObejct $web 
 
-{{ Add output here }}
+Kind Location   Name               Type
+---- --------   ----               ----
+     Central US staticweb-portal04 Microsoft.Web/staticSites
 ```
 
 {{ Add description here }}

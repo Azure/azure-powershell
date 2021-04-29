@@ -13,7 +13,7 @@ Description for Gets the list of users of a static site.
 ## SYNTAX
 
 ```
-Get-AzStaticWebAppUser -Authprovider <String> -Name <String> -ResourceGroupName <String>
+Get-AzStaticWebAppUser -AuthProvider <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Kind Name                             Type
 
 ## PARAMETERS
 
-### -Authprovider
+### -AuthProvider
 The auth provider for the users.
 
 ```yaml

@@ -70,13 +70,6 @@ Kind Name    Type
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> 
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -15,7 +15,7 @@ Description for Register a user provided function app with a static site build
 ### RegisterExpanded1 (Default)
 ```
 Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-IsForced] [-FunctionAppRegion <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Forced] [-FunctionAppRegion <String>]
  [-FunctionAppResourceId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -23,9 +23,9 @@ Register-AzStaticWebAppUserProvidedFunctionApp -FunctionAppName <String> -Name <
 ### RegisterExpanded
 ```
 Register-AzStaticWebAppUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
- -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IsForced]
- [-FunctionAppRegion <String>] [-FunctionAppResourceId <String>] [-Kind <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Forced] [-FunctionAppRegion <String>]
+ [-FunctionAppResourceId <String>] [-Kind <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +46,11 @@ Kind Name                  Type
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5
 
-{{ Add output here }}
+Kind Name                 Type
+---- ----                 ----
+     functionapp-portal02 Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
 {{ Add description here }}
@@ -100,6 +102,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Forced
+Specify \<code\>true\</code\> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app.
+The default is \<code\>false\</code\>.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FunctionAppName
 Name of the function app to register with the static site build.
 
@@ -135,22 +153,6 @@ The resource id of the function app registered with the static site
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IsForced
-Specify \<code\>true\</code\> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app.
-The default is \<code\>false\</code\>.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

@@ -1,21 +1,17 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+PS C:\> {{ Add code here }}
 
-Kind Location   Name               Type
----- --------   ----               ----
-     Central US staticweb-portal01 Microsoft.Web/staticSites
+{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Update-AzStaticWebApp
+PS C:\> {{ Add code here }}
 
-Kind Location   Name               Type
----- --------   ----               ----
-     Central US staticweb-portal01 Microsoft.Web/staticSites
+{{ Add output here }}
 ```
 
 {{ Add description here }}

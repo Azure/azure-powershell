@@ -30,12 +30,12 @@ For information on how to develop for `Az.Websites`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-# branch: 63274f791befe4fc3de823d18d9a26d3204a38ea
+branch: 7a2cc29033fe4027ef421267f1684efbd0d40a93
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  #- $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
-  - D:\azure-rest-api\azure-rest-api-specs\specification\web\resource-manager\Microsoft.Web\stable\2020-12-01\StaticSites.json
+  - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
+  #- D:\azure-rest-api\azure-rest-api-specs\specification\web\resource-manager\Microsoft.Web\stable\2020-12-01\StaticSites.json
 
 title: Websites
 module-version: 0.1.0
@@ -43,6 +43,70 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  #Modify operationId
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites"].get.operationId
+    transform: return "StaticSites_ListStaticSitesByResourceGroup"
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds"].get.operationId
+    transform: return "StaticSites_ListStaticSiteBuilds"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds"].get.operationId
+    transform: return "StaticSites_ListStaticSiteBuilds"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/builds/{environmentName}/userProvidedFunctionApps"].get.operationId
+    transform: return "StaticSites_ListUserProvidedFunctionAppsByBuild"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps"].get.operationId
+    transform: return "StaticSites_ListUserProvidedFunctionAppsByStaticSite"
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/userProvidedFunctionApps/{functionAppName}"].get.operationId
+    transform: return "StaticSites_ListUserProvidedFunctionAppByFunctionName" 
+
+  # Add 204 status code of response.
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}"].delete.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "OK."
+          },
+          "204": {
+            "description": "OK."
+          },
+          "202": {
+            "description": "Asynchronous operation in progress."
+          },
+          "default": {
+            "description": "App Service error response.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+            }
+          }
+        }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}"].delete.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "OK."
+          },
+          "204": {
+            "description": "OK."
+          },
+          "default": {
+            "description": "App Service error response.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+            }
+          }
+        }
+
 # Use "StaticWebApp" as subject prefix
   - where:
       subject-prefix: Websites
@@ -94,6 +158,30 @@ directive:
       subject: ^AppSetting$
     set:
       subject: Setting
+
+  # Rename `Invoke-` cmdlets, using better verbs
+  - where:
+      verb: Invoke
+      subject: Detach
+    set:
+      verb: Remove
+      subject: AttachedRepository
+    # alternatives:
+    # Remove-AzStaticWebAppAttachedRepository
+    # Remove-AzStaticWebAppAttachedRepo
+    # Remove-AzStaticWebAppRepository
+  - where:
+      verb: Invoke
+      subject: DetachUserProvidedFunctionAppFromStaticSite
+    set:
+      verb: Unregister
+      subject: UserProvidedFunctionAppFromStaticSite
+  - where:
+      verb: Invoke
+      subject: DetachUserProvidedFunctionAppFromStaticSiteBuild
+    set:
+      verb: Unregister
+      subject: UserProvidedFunctionAppFromStaticSiteBuild
 
 # Remove variant
   # Following is two common directive which are normally required in all the RPs
@@ -172,23 +260,36 @@ directive:
       subject: UserProvidedFunctionApp
       variant: ^Register$|^Register1$|^RegisterViaIdentity$|^RegisterViaIdentity1$|^RegisterViaIdentityExpanded$|^RegisterViaIdentityExpanded1$
     remove: true
-# Rename cmdlet
-  # Rename `Invoke-` cmdlets, using better verbs
-  - where:
-      verb: Invoke
-      subject: Detach
-    set:
-      verb: Remove
-      subject: AttachedRepository
-    # alternatives:
-    # Remove-AzStaticWebAppAttachedRepository
-    # Remove-AzStaticWebAppAttachedRepo
-    # Remove-AzStaticWebAppRepository
 
 # Rename parameters
   - where:
       parameter-name: BuildProperty(.*)
     set:
       parameter-name: $1
-      
+
+  - where:
+      parameter-name: Authprovider
+    set:
+      parameter-name: AuthProvider
+
+  - where:
+      parameter-name: IsForced
+    set:
+      parameter-name: Forced
+
+  - where:
+      parameter-name: Userid
+    set:
+      parameter-name: UserId
+
+  - where:
+      subject: .*Setting
+      parameter-name: Property
+    set:
+      parameter-name: AppSetting
+  # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
+  - where:
+      verb: New|Update
+      subject: ^$
+    hide: true
 ```

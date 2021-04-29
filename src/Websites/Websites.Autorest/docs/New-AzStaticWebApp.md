@@ -14,7 +14,7 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ```
 New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
+ [-AllowConfigFileUpdate] [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
  [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>] [-Capacity <Int32>]
  [-GithubActionSecretNameOverride <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-OutputLocation <String>]
@@ -22,10 +22,10 @@ New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String>
  [-SkuCapability <ICapability[]>] [-SkuCapacityDefault <Int32>] [-SkuCapacityElasticMaximum <Int32>]
  [-SkuCapacityMaximum <Int32>] [-SkuCapacityMinimum <Int32>] [-SkuCapacityScaleType <String>]
  [-SkuFamily <String>] [-SkuLocation <String[]>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate]
- [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
- [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>]
+ [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
+ [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,27 +33,31 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> New-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'
+New-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'
+```
 
 Kind Location  Name             Type
 ---- --------  ----             ----
      East US 2 staticweb-pwsh01 Microsoft.Web/staticSites
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
+
+### -AllowConfigFileUpdate
+\<code\>false\</code\> if config file is locked for this static web app; otherwise, \<code\>true\</code\>.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApiBuildCommand
 A custom command to run during deployment of the Azure Functions API application.
@@ -528,6 +532,21 @@ Service tier of the resource SKU.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingEnvironmentPolicy
+State indicating whether staging environments are allowed or not allowed for a static web app.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy
 Parameter Sets: (All)
 Aliases:
 

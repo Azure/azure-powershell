@@ -15,13 +15,13 @@ Description for Creates or updates the app settings of a static site build.
 ### CreateExpanded (Default)
 ```
 New-AzStaticWebAppBuildAppSetting -EnvironmentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Kind <String>] [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-SubscriptionId <String>] [-AppSetting <Hashtable>] [-Kind <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzStaticWebAppBuildAppSetting -InputObject <IWebsitesIdentity> [-Kind <String>] [-Property <Hashtable>]
+New-AzStaticWebAppBuildAppSetting -InputObject <IWebsitesIdentity> [-AppSetting <Hashtable>] [-Kind <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -41,7 +41,33 @@ Kind Name        Type
 
 {{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> Get-AzStaticWebAppBuildAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/builds/config
+```
+
+{{ Add description here }}
+
 ## PARAMETERS
+
+### -AppSetting
+Settings.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -113,21 +139,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Property
-Settings.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

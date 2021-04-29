@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/invoke-azstaticwebappdetachuserprovidedfunctionappfromstaticsitebuild
+online version: https://docs.microsoft.com/en-us/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionappfromstaticsite
 schema: 2.0.0
 ---
 
-# Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild
+# Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite
 
 ## SYNOPSIS
-Description for Detach the user provided function app from the static site build
+Description for Detach the user provided function app from the static site
 
 ## SYNTAX
 
 ### Detach (Default)
 ```
-Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild -EnvironmentName <String>
- -FunctionAppName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite -FunctionAppName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### DetachViaIdentity
 ```
-Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild -InputObject <IWebsitesIdentity>
+Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite -InputObject <IWebsitesIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Detach the user provided function app from the static site build
+Description for Detach the user provided function app from the static site
 
 ## EXAMPLES
 
@@ -65,23 +65,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnvironmentName
-The stage site identifier.
-
-```yaml
-Type: System.String
-Parameter Sets: Detach
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -FunctionAppName
-Name of the function app registered with the static site build.
+Name of the function app registered with the static site.
 
 ```yaml
 Type: System.String

@@ -32,18 +32,16 @@ Description for Validates a particular custom domain can be added to a static si
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Test-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' | Get-AzStaticWebAppCustomDomain
 
-{{ Add output here }}
 ```
 
 {{ Add description here }}

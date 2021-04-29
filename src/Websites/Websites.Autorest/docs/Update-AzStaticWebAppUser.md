@@ -14,7 +14,7 @@ Description for Updates a user entry with the listed roles
 
 ### UpdateExpanded (Default)
 ```
-Update-AzStaticWebAppUser -Authprovider <String> -Name <String> -ResourceGroupName <String> -Userid <String>
+Update-AzStaticWebAppUser -AuthProvider <String> -Name <String> -ResourceGroupName <String> -UserId <String>
  [-SubscriptionId <String>] [-Kind <String>] [-Role <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ Kind Name                             Type
 
 ## PARAMETERS
 
-### -Authprovider
+### -AuthProvider
 The auth provider for this user.
 
 ```yaml
@@ -178,7 +178,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Userid
+### -UserId
 The user id of the user.
 
 ```yaml

@@ -15,24 +15,26 @@ Description for Creates a new static site in an existing resource group, or upda
 ### UpdateExpanded (Default)
 ```
 Update-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
+ [-AllowConfigFileUpdate] [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
  [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>]
  [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
  [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
- [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-TemplatePropertyDescription <String>]
+ [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
+ [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-ApiBuildCommand <String>] [-ApiLocation <String>]
- [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>]
- [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
+Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-AllowConfigFileUpdate] [-ApiBuildCommand <String>]
+ [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>]
+ [-Branch <String>] [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
  [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
- [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-TemplatePropertyDescription <String>]
+ [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
+ [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,29 +42,40 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> Update-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+Update-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+```
 
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal01 Microsoft.Web/staticSites
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Update-AzStaticWebApp
+Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Update-AzStaticWebApp
+```
 
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal01 Microsoft.Web/staticSites
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
+
+### -AllowConfigFileUpdate
+\<code\>false\</code\> if config file is locked for this static web app; otherwise, \<code\>true\</code\>.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApiBuildCommand
 A custom command to run during deployment of the Azure Functions API application.
@@ -296,6 +309,21 @@ Skip Github Action workflow generation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StagingEnvironmentPolicy
+State indicating whether staging environments are allowed or not allowed for a static web app.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy
 Parameter Sets: (All)
 Aliases:
 

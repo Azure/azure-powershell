@@ -50,12 +50,6 @@ Description for Gets the list of users of a static site.
 ### [Get-AzStaticWebAppUserProvidedFunctionApp](Get-AzStaticWebAppUserProvidedFunctionApp.md)
 Description for Gets the details of the user provided function app registered with a static site build
 
-### [Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite](Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSite.md)
-Description for Detach the user provided function app from the static site
-
-### [Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild](Invoke-AzStaticWebAppDetachUserProvidedFunctionAppFromStaticSiteBuild.md)
-Description for Detach the user provided function app from the static site build
-
 ### [New-AzStaticWebApp](New-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.
 
@@ -100,6 +94,12 @@ Description for Resets the api key for an existing static site.
 
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.
+
+### [Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite](Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite.md)
+Description for Detach the user provided function app from the static site
+
+### [Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSiteBuild](Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSiteBuild.md)
+Description for Detach the user provided function app from the static site build
 
 ### [Update-AzStaticWebApp](Update-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.

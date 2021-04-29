@@ -14,7 +14,7 @@ Description for Deletes the user entry from the static site.
 
 ### Delete (Default)
 ```
-Remove-AzStaticWebAppUser -Authprovider <String> -Name <String> -ResourceGroupName <String> -Userid <String>
+Remove-AzStaticWebAppUser -AuthProvider <String> -Name <String> -ResourceGroupName <String> -UserId <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Authprovider
+### -AuthProvider
 The auth provider for this user.
 
 ```yaml
@@ -157,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Userid
+### -UserId
 The user id of the user.
 
 ```yaml
