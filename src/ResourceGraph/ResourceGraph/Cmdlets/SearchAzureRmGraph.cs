@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceGraph.Models;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
     using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse))]
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
             }
 
-            var results = new List<PSObject>();
+            var psResourceGraphResponse = new PSResourceGraphResponse();
             QueryResponse response = null;
 
             var resultTruncated = false;
@@ -209,10 +210,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
 
                 var requestResults = response.Data.ToPsObjects();
-                results.AddRange(requestResults);
+                psResourceGraphResponse.Data = requestResults;
+                psResourceGraphResponse.SkipToken = response.SkipToken;
                 this.WriteVerbose($"Received results: {requestResults.Count}");
 
-                if (resultTruncated && results.Count < first)
+                if (resultTruncated && psResourceGraphResponse.Data.Count < first)
                 {
                     this.WriteWarning("Unable to paginate the results of the query. " +
                         "Some resources may be missing from the results. " +
@@ -245,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return;
             }
 
-            this.WriteObject(results, true);
+            this.WriteObject(psResourceGraphResponse);
         }
 
         /// <summary>

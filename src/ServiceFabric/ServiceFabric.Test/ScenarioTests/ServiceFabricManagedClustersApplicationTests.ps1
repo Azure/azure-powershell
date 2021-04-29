@@ -248,14 +248,12 @@ function Test-ManagedService
 	Assert-AreEqual $standByReplicaKeepDuration $statefulService.Properties.StandByReplicaKeepDuration
 	Assert-AreEqual $servicePlacementTimeLimit $statefulService.Properties.ServicePlacementTimeLimit
 
-	$instanceCloseDelayDuration = "00:11:00"
 	$minInstancePercentage = 20
 	$minInstanceCount = 2
 
-	$statelessService = $statelessServiceFromGet | Set-AzServiceFabricManagedClusterService -Stateless -InstanceCloseDelayDuration $instanceCloseDelayDuration -MinInstancePercentage $minInstancePercentage `
+	$statelessService = $statelessServiceFromGet | Set-AzServiceFabricManagedClusterService -Stateless -MinInstancePercentage $minInstancePercentage `
 		-MinInstanceCount $minInstanceCount -Verbose
 	Assert-AreEqual "Succeeded" $statelessService.Properties.ProvisioningState
-	Assert-AreEqual $instanceCloseDelayDuration $statelessService.Properties.InstanceCloseDelayDuration
 	Assert-AreEqual $minInstancePercentage $statelessService.Properties.MinInstancePercentage
 	Assert-AreEqual $minInstanceCount $statelessService.Properties.MinInstanceCount
 

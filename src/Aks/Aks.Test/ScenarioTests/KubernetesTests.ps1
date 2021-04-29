@@ -39,14 +39,14 @@ function Test-NewAzAksWithAcr
     $kubeClusterName = Get-RandomClusterName
     $acrName = Get-RandomRegistryName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $nodeVmSize = "Standard_A2"
+    $nodeVmSize = "Standard_D2_v2"
 
     try
     {
         New-AzResourceGroup -Name $resourceGroupName -Location $location
 
         New-AzContainerRegistry -ResourceGroupName $resourceGroupName -Name $acrName -Sku Standard
-        
+                
         $cred = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "V8-S-y6Er8jXy-.aM_WT95BF89N~X23lqb")
 
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $cred -AcrNameToAttach $acrName
@@ -59,6 +59,14 @@ function Test-NewAzAksWithAcr
         Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
         $cluster | Import-AzAksCredential -Force
         $cluster | Remove-AzAksCluster -Force
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-NotNull $roleAssignment
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AcrNameToDetach $acrName
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-Null $roleAssignment
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AcrNameToAttach $acrName
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-NotNull $roleAssignment
     }
     finally
     {
@@ -181,6 +189,35 @@ function Test-NewAzAksAddons
         $cluster = $cluster | Enable-AzAksAddon -Name HttpApplicationRouting
         Assert-AreEqual $true $cluster.AddonProfiles['httpapplicationrouting'].Enabled
         $cluster | Remove-AzAksCluster -Force
+    }
+    finally
+    {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Kubernetes stuff
+#>
+function Test-ResetAzureKubernetesServicePrincipal
+{
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
+    $nodeVmSize = "Standard_D2_v2"
+
+    try
+    {
+        New-AzResourceGroup -Name $resourceGroupName -Location 'eastus'
+
+        $credObject = $(createTestCredential "e65d50b0-0853-48a9-82d3-77d800f4a9bc" "75_4.yHJFjkKaRUUb535aH2d.ty4RG~uax")
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -ServicePrincipalIdAndSecret $credObject
+        
+        $newCred = $(createTestCredential "6f277dd3-e481-4518-8aab-35c31662bad9" "XITofmnbbyU34uR_Yqx_4TI13OJ9--0C3m")
+        Set-AzAksClusterCredential -ResourceGroupName $resourceGroupName -Name $kubeClusterName -ServicePrincipalIdAndSecret $newCred -force
     }
     finally
     {

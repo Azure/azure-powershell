@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added User Assigned Identities to Data Factory.
-* Updated ADF .Net SDK version to 4.17.1
+* Updated ADF .Net SDK version to 4.18.0
 
 ## Version 1.11.5
 * Updated ADF .Net SDK version to 4.15.0
