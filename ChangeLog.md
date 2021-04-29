@@ -63,6 +63,23 @@
 * Added breaking change warning message for upcoming cmdlet breaking change
     - 'Remove-AzRmStorageShare'
 
+### Thanks to our community contributors
+* Thomas Lee (@doctordns), Update Get-AzEnvironment.md (#14704)
+* Fabian (@FullByte), Example with wrong parameter (typo) (#14743)
+* @gradinDotCom, Update Get-AzNetworkWatcherNextHop.md (#14813)
+* Dr Greg Low (@greglow-sdu), Update Get-AzSqlServerDnsAlias.md (#14737)
+* Prateek Singh (@PrateekKumarSingh)
+  * fixing a typo (#14779)
+  * fixing typo (#14773)
+* Remco Eissing (@remcoeissing)
+  * Fixed typos in Restore-AzApiManagement (#14770)
+  * Example 2 to use New-AzPolicyExemption (#14716)
+* @sharma224
+  * User identity changes (#14803)
+  * Supporting Customer managed key  (#14680)
+* Yannick Dils (@yannickdils), Update Location explanation (#14719)
+
+
 ## 5.8.0 - April 2021
 #### Az.Accounts
 * Fallback to first valid context if current default context key is 'Default' which is invalid
@@ -134,22 +151,6 @@
 ### Thanks to our community contributors
 * Andrei Zhukouski (@BurgerZ), Fix typo (#14575)
 * Mark Allison (@markallisongit), Update Invoke-AzSqlInstanceFailover.md (#14603)
-
-### Thanks to our community contributors
-* Thomas Lee (@doctordns), Update Get-AzEnvironment.md (#14704)
-* Fabian (@FullByte), Example with wrong parameter (typo) (#14743)
-* @gradinDotCom, Update Get-AzNetworkWatcherNextHop.md (#14813)
-* Dr Greg Low (@greglow-sdu), Update Get-AzSqlServerDnsAlias.md (#14737)
-* Prateek Singh (@PrateekKumarSingh)
-  * fixing a typo (#14779)
-  * fixing typo (#14773)
-* Remco Eissing (@remcoeissing)
-  * Fixed typos in Restore-AzApiManagement (#14770)
-  * Example 2 to use New-AzPolicyExemption (#14716)
-* @sharma224
-  * User identity changes (#14803)
-  * Supporting Customer managed key  (#14680)
-* Yannick Dils (@yannickdils), Update Location explanation (#14719)
 
 
 ## 5.7.0 - March 2021
