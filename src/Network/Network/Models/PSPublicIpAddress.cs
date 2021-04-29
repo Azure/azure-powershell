@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSPublicIpAddress : PSTopLevelResource
     {
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [Ps1Xml(Target = ViewControl.Table)]
         public string PublicIpAllocationMethod { get; set; }
 

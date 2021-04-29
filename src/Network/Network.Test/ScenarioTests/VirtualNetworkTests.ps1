@@ -1313,7 +1313,7 @@ function Test-VirtualNetworkInEdgeZone
         # Create the resource group
         New-AzResourceGroup -Name $ResourceGroup -Location $LocationName -Force;
 
-        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+		$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
         New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
 
 		$Vnet = Get-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup
