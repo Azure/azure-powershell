@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.WebSites
 ms.assetid: 297071E5-FC06-4493-BCC2-37D4929E4025
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/restart-Azwebapp
+online version: https://docs.microsoft.com/powershell/module/Az.websites/restart-Azwebapp
 schema: 2.0.0
 ---
 

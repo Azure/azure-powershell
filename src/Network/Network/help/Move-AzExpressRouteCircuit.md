@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F845ED42-A7C1-4CCC-9AD8-E9A91C3EEC7A
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/move-azexpressroutecircuit
+online version: https://docs.microsoft.com/powershell/module/az.network/move-azexpressroutecircuit
 schema: 2.0.0
 ---
 

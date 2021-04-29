@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D1D51DEF-05DE-45C4-9013-A02A5B248EAC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworksubnetconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 

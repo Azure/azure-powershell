@@ -46,7 +46,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
 - Install the latest [**.NET Core SDK** and **.NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/download) or greater
 - Install [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest)
-- Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
+- Set the PowerShell [execution policy](https://technet.microsoft.com/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
   - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
   - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
   - `C:\Program Files\PowerShell\{{version}}\pwsh.exe`
@@ -237,7 +237,7 @@ For complete documentation, see [`help-generation.md`](help-generation.md) in th
 
 # Adding Tests
 
-_Note_: As mentioned in the prerequisites section, set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
+_Note_: As mentioned in the prerequisites section, set the PowerShell [execution policy](https://technet.microsoft.com/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
 
 - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
 - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -287,7 +287,7 @@ CI in DevOps will happens under `Debug` folder. So you need to make sure that th
 
 > **Important!**
 > 1. Be sure that you have set the `ExecutionPolicy` to `Unrestricted` on both 32-bit and 64-bit PowerShell environments, as mentioned in the [prerequisites](#prerequisites) at the top
-> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+> 2. When recording tests, if you are using a Prod environment, use ServicePrincipalName (SPN) and ServicePrincipalSecret. For more information on creating an SPN, click [here](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 ### AD Scenario Tests
 

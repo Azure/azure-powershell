@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
+online version: https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval
 schema: 2.0.0
 ---
 

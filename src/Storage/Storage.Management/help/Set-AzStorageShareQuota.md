@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 176294FA-BB08-4A63-AD45-1E6C6D67A5D8
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/set-azstoragesharequota
+online version: https://docs.microsoft.com/powershell/module/az.storage/set-azstoragesharequota
 schema: 2.0.0
 ---
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 ### -Quota
 Specifies the quota value in gigabytes (GB).
-See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
+See the quota limitation in https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-files-limits. 
 
 ```yaml
 Type: System.Int32

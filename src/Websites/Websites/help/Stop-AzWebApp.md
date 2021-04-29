@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.WebSites
 ms.assetid: A12FFDB1-9849-4150-9716-068BE6EFC681
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/stop-Azwebapp
+online version: https://docs.microsoft.com/powershell/module/Az.websites/stop-Azwebapp
 schema: 2.0.0
 ---
 

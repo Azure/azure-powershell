@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/en-us/powershell/module/az.storage/update-azstorageserviceproperty
+online version: https://docs.microsoft.com/powershell/module/az.storage/update-azstorageserviceproperty
 schema: 2.0.0
 ---
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ### -DefaultServiceVersion
 DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions. 
-See more details in https://docs.microsoft.com/en-us/rest/api/storageservices/versioning-for-the-az-storage-services
+See more details in https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-az-storage-services
 
 ```yaml
 Type: System.String

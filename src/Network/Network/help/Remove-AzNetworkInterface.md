@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C83A0465-45EF-4FCC-B706-D5DF819664F0
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterface
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkinterface
 schema: 2.0.0
 ---
 

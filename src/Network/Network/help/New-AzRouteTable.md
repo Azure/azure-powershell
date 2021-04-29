@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6A278F91-C078-4DD4-82D0-2E4FA549A089
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azroutetable
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azroutetable
 schema: 2.0.0
 ---
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the Azure region in which this cmdlet creates a route table.
-For more information, see [Azure Regions](http://azure.microsoft.com/en-us/regions/).
+For more information, see [Azure Regions](http://azure.microsoft.com/regions/).
 
 ```yaml
 Type: String

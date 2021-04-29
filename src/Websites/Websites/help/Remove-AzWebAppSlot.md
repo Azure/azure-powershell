@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.WebSites
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/remove-Azwebappslot
+online version: https://docs.microsoft.com/powershell/module/Az.websites/remove-Azwebappslot
 schema: 2.0.0
 ---
 
