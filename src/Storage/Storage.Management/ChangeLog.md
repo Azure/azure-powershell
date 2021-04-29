@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed move Datalake Gen2 item fail with SAS token
+    - `Move-AzDataLakeGen2Item`
+
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

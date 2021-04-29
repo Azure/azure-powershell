@@ -139,7 +139,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                     if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", GetDataLakeItemUriWithoutSas(destBlobDir)), ""))
                     {
-                        destBlobDir = srcBlobDir.Rename(this.DestPath, this.DestFileSystem).Value;
+                        destBlobDir = srcBlobDir.Rename(
+                            Channel.StorageContext.StorageAccount.Credentials.IsSAS ? this.DestPath + Channel.StorageContext.StorageAccount.Credentials.SASToken : this.DestPath,
+                            this.DestFileSystem).Value;
                         WriteDataLakeGen2Item(localChannel, destBlobDir);
                     }
                 }
@@ -163,7 +165,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                     if (this.Force || !destExist || ShouldContinue(string.Format("Overwrite destination {0}", GetDataLakeItemUriWithoutSas(destFile)), ""))
                     {
-                        destFile = srcBlob.Rename(this.DestPath, this.DestFileSystem).Value;
+                        destFile = srcBlob.Rename(
+                            Channel.StorageContext.StorageAccount.Credentials.IsSAS ? this.DestPath + Channel.StorageContext.StorageAccount.Credentials.SASToken : this.DestPath,
+                            this.DestFileSystem).Value;
                         WriteDataLakeGen2Item(localChannel, destFile);
                     }
                 }
