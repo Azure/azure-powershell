@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.0
 * Added support for User Assigned Identities and PublicNetworkAccess flag
 
 ## Version 1.6.0
