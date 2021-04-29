@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdusersession
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdusersession
 schema: 2.0.0
 ---
 

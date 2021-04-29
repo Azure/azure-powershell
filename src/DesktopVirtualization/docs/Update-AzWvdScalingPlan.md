@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/update-azwvdscalingplan
 schema: 2.0.0
 ---
 
@@ -16,7 +16,7 @@ Update a scaling plan.
 ```
 Update-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Description <String>] [-ExclusionTag <String>] [-FriendlyName <String>]
- [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>]
+ [-HostPoolReference <IScalingHostPoolReference[]>] [-HostPoolType <HostPoolType>] [-Ring <Int32>]
  [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,8 +25,8 @@ Update-AzWvdScalingPlan -Name <String> -ResourceGroupName <String> [-Subscriptio
 ```
 Update-AzWvdScalingPlan -InputObject <IDesktopVirtualizationIdentity> [-Description <String>]
  [-ExclusionTag <String>] [-FriendlyName <String>] [-HostPoolReference <IScalingHostPoolReference[]>]
- [-HostPoolType <HostPoolType>] [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>] [-TimeZone <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-HostPoolType <HostPoolType>] [-Ring <Int32>] [-Schedule <IScalingSchedule[]>] [-Tag <Hashtable>]
+ [-TimeZone <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,7 +151,7 @@ List of ScalingHostPoolReference definitions.
 To construct, see NOTES section for HOSTPOOLREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingHostPoolReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingHostPoolReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostPoolType
-HostPool type for scaling plan.
+HostPool type for desktop.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType
@@ -224,12 +224,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Ring
+The ring number of scaling plan.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Schedule
 List of ScalingSchedule definitions.
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -325,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingPlan
 
 ## NOTES
 

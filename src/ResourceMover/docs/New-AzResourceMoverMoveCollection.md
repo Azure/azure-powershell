@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.ResourceMover
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/new-azresourcemovermovecollection
+online version: https://docs.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 schema: 2.0.0
 ---
 
 # New-AzResourceMoverMoveCollection
 
 ## SYNOPSIS
-Create a new Move collection.
+Creates or updates a move collection.
 
 ## SYNTAX
 
@@ -20,20 +20,20 @@ New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-S
 ```
 
 ## DESCRIPTION
-Create a new Move collection within a subscription.
+Creates or updates a move collection.
 
 ## EXAMPLES
 
 ### Example 1: Create a new Move collection.
 ```powershell
-PS C:\> New-AzResourceMoverMoveCollection -Name PS-centralus-westcentralus-demoRM  -ResourceGroupName RG-MoveCollection-demoRM -SourceRegion centralus -TargetRegion westcentralus -Location eastus2
+PS C:\> New-AzResourceMoverMoveCollection -Name "PS-centralus-westcentralus-demoRMS"  -ResourceGroupName "RG-MoveCollection-demoRMS" -SourceRegion "centralus" -TargetRegion "westcentralus" -Location "centraluseuap" -IdentityType "SystemAssigned"
 
-Location Name                               Type
--------- ----                               ----
-eastus2  PS-centralus-westcentralus-demoRM  Microsoft.Migrate/moveCollections
+Etag                                   Location      Name                               Type                             
+----                                   --------      ----                               ----                             
+"0200d92f-0000-3300-0000-6021e9ec0000" centraluseuap PS-centralus-westcentralus-demoRMs Microsoft.Migrate/moveCollections
 ```
 
-Create a new Move collection within a subscription.
+Create a new Move Collection.
 
 ## PARAMETERS
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The type of identity used for the region move service.
+The type of identity used for the resource mover service.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.ResourceIdentityType
@@ -240,7 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection
 
 ## NOTES
 

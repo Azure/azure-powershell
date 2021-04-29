@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.CloudService
-online version: https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
+online version: https://docs.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstance
 schema: 2.0.0
 ---
 
@@ -181,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.IRoleInstance
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.IRoleInstance
 
 ## NOTES
 
@@ -195,6 +195,9 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: 
   - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[OSFamilyName <String>]`: Name of the OS family.
+  - `[OSVersionName <String>]`: Name of the OS version.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

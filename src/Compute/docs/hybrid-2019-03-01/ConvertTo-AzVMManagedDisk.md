@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/convertto-azvmmanageddisk
+online version: https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk
 schema: 2.0.0
 ---
 

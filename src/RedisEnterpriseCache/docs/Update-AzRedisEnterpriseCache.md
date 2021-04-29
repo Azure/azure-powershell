@@ -1,45 +1,47 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/en-us/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/update-azredisenterprisecache
 schema: 2.0.0
 ---
 
 # Update-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Updates an existing RedisEnterprise cluster
+Updates an existing Redis Enterprise cluster
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>]
+ [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
- [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an existing RedisEnterprise cluster
+Updates an existing Redis Enterprise cluster
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: Update Redis Enterprise cache
 ```powershell
-PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag" = "value"}
+PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag1" = "value1"}
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
+
+This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -59,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Capacity
-The size of the RedisEnterprise cluster.
+The size of the Redis Enterprise cluster.
 Defaults to 2 or 3 depending on SKU.
 Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
 
@@ -76,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the RedisEnterprise cluster.
+The name of the Redis Enterprise cluster.
 
 ```yaml
 Type: System.String
@@ -126,7 +128,7 @@ The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -154,6 +156,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -168,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The type of RedisEnterprise cluster to deploy.
+The type of Redis Enterprise cluster to deploy.
 Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
 
 ```yaml
@@ -184,8 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -254,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
 
 ## NOTES
 
@@ -266,14 +268,14 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
+  - `[ClusterName <String>]`: The name of the Redis Enterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The region the operation is in.
   - `[OperationId <String>]`: The operation's unique identifier.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

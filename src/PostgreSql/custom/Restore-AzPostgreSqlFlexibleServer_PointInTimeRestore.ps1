@@ -46,7 +46,12 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
         [System.DateTime]
         ${RestorePointInTime},
 
-        [Parameter(Mandatory, HelpMessage = 'The location the resource resides in.')]
+        [Parameter(HelpMessage = 'Availability zone into which to provision the resource.')]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
+        [System.String]
+        ${Zone},
+
+        [Parameter(HelpMessage = 'The location the resource resides in.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
         [System.String]
         ${Location},
@@ -116,11 +121,22 @@ function Restore-AzPostgreSqlFlexibleServer_PointInTimeRestore {
         try {
             $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::PointInTimeRestore
 
+            $server = Get-AzPostgreSqlFlexibleServer  -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SourceServerName
+
             $PSBoundParameters.PointInTimeUTC = $PSBoundParameters["RestorePointInTime"]
             $null = $PSBoundParameters.Remove('RestorePointInTime')
 
+            $PSBoundParameters.SourceSubscriptionId = $PSBoundParameters.SubscriptionId
+            $PSBoundParameters.SourceResourceGroupName = $PSBoundParameters.ResourceGroupName
+            $LocationParts = ForEach($part in $server.Location.Split(" ")){$part.ToLower()}
+            $PSBoundParameters.Location = $LocationParts -Join ""
 
-            Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServer @PSBoundParameters
+            if ($PSBoundParameters.ContainsKey('Zone')) {
+                $PSBoundParameters.AvailabilityZone = $PSBoundParameters.Zone
+                $null = $PSBoundParameters.Remove('Zone')
+            }
+            Write-Host $PSBoundParameters.Location
+            # Az.PostgreSql.internal\New-AzPostgreSqlFlexibleServer @PSBoundParameters
         } catch {
             throw
         }

@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
+https://docs.microsoft.com/powershell/module/az.SpringCloud/new-azSpringCloudappdeployment
 #>
 function New-AzSpringCloudAppDeployment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20200701.IDeploymentResource])]

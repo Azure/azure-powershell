@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplan
 schema: 2.0.0
 ---
 
@@ -172,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201110Preview.IScalingPlan
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IScalingPlan
 
 ## NOTES
 

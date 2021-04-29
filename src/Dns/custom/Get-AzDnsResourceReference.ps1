@@ -4,11 +4,11 @@ Returns the DNS records specified by the referencing targetResourceIds.
 .Description
 Returns the DNS records specified by the referencing targetResourceIds.
 .Example
-To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsresourcereference
+To view examples, please use the -Online parameter with Get-Help or navigate to: https://docs.microsoft.com/powershell/module/az.dns/get-azdnsresourcereference
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceResultProperties
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.dns/get-azdnsresourcereference
+https://docs.microsoft.com/powershell/module/az.dns/get-azdnsresourcereference
 #>
 function Get-AzDnsResourceReference {
 [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Dns.Models.Api20180501.IDnsResourceReferenceResultProperties')]

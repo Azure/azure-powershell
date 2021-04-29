@@ -22,7 +22,7 @@ Create a in-memory object for QueryComparisonExpression
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
+https://docs.microsoft.com/powershell/module/az.CostManagement/new-AzCostManagementQueryComparisonExpressionObject
 #>
 function New-AzCostManagementQueryComparisonExpressionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20200601.QueryComparisonExpression')]

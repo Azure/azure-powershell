@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azvmsize
+online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize
 schema: 2.0.0
 ---
 
@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 This API is deprecated.
-Use [Resources Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+Use [Resources Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzVMSize -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <P
 
 ## DESCRIPTION
 This API is deprecated.
-Use [Resources Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)
+Use [Resources Skus](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
 
 ## EXAMPLES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ConnectedKubernetes
-online version: https://docs.microsoft.com/en-us/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
+online version: https://docs.microsoft.com/powershell/module/az.connectedkubernetes/remove-azconnectedkubernetes
 schema: 2.0.0
 ---
 
