@@ -54,6 +54,11 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
@@ -133,6 +138,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location,
+                ExtendedLocation = new PSExtendedLocation(EdgeZone),
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
