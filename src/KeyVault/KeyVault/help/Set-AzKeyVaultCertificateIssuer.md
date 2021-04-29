@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 4C2C77F7-ECE4-4106-8AF1-256A496A977B
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/set-AzKeyvaultcertificateissuer
+online version: https://docs.microsoft.com/powershell/module/Az.keyvault/set-AzKeyvaultcertificateissuer
 schema: 2.0.0
 ---
 

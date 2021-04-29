@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-azapplicationgatewayprobeconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayprobeconfig
 schema: 2.0.0
 ---
 
@@ -244,7 +244,7 @@ Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from
 
 ## RELATED LINKS
 
-[Add a probe to an existing application gateway](https://azure.microsoft.com/en-us/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
+[Add a probe to an existing application gateway](https://azure.microsoft.com/documentation/articles/application-gateway-create-probe-ps/#add-a-probe-to-an-existing-application-gateway)
 
 [Get-AzApplicationGatewayProbeConfig]()
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.WebSites
 ms.assetid: 258A4EA9-B82C-4664-8DCE-30D47A623868
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/switch-Azwebappslot
+online version: https://docs.microsoft.com/powershell/module/Az.websites/switch-Azwebappslot
 schema: 2.0.0
 ---
 

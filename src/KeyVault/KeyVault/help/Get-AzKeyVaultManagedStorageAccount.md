@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/get-AzKeyvaultmanagedstorageaccount
+online version: https://docs.microsoft.com/powershell/module/Az.keyvault/get-AzKeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -107,5 +107,5 @@ Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
 
 ## RELATED LINKS
 
-[https://msdn.microsoft.com/en-us/library/dn868052.aspx](https://msdn.microsoft.com/en-us/library/dn868052.aspx)
+[https://msdn.microsoft.com/library/dn868052.aspx](https://msdn.microsoft.com/library/dn868052.aspx)
 

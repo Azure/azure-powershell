@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/update-Azaduser
+online version: https://docs.microsoft.com/powershell/module/az.resources/update-Azaduser
 schema: 2.0.0
 ---
 
@@ -42,7 +42,7 @@ Update-AzADUser -InputObject <PSADUser> [-DisplayName <String>] [-EnableAccount 
 
 ## DESCRIPTION
 Updates an existing active directory user (work/school account also popularly known as org-id).
-For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#UpdateUser
+For more information: https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#UpdateUser
 
 ## EXAMPLES
 

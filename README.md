@@ -135,7 +135,7 @@ For detailed instructions on using Azure PowerShell, please refer to the [gettin
 
 If you find any bugs when using the Azure PowerShell modules, please file an issue in our [GitHub issues][GitHubIssues] page. Please fill out the provided template with the appropriate information.
 
-Alternatively, be sure to check out the [Azure Community Support](https://azure.microsoft.com/en-us/support/community/) if you have issues with the cmdlets or Azure services.
+Alternatively, be sure to check out the [Azure Community Support](https://azure.microsoft.com/support/community/) if you have issues with the cmdlets or Azure services.
 
 ### Feedback
 
@@ -183,15 +183,15 @@ _This project has adopted the [Microsoft Open Source Code of Conduct][CodeOfCond
 [OpenCodeEmail]: mailto:opencode@microsoft.com
 
 <!-- Docs -->
-[MicrosoftAzureDocs]: https://docs.microsoft.com/en-us/azure/
-[PowerShellDocs]: https://docs.microsoft.com/en-us/powershell/
+[MicrosoftAzureDocs]: https://docs.microsoft.com/azure/
+[PowerShellDocs]: https://docs.microsoft.com/powershell/
 
-[InstallationGuide]: https://docs.microsoft.com/en-us/powershell/azure/install-az-ps
-[GettingStartedGuide]: https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps
-[PersistedCredentialsGuide]: https://docs.microsoft.com/en-us/powershell/azure/context-persistence
+[InstallationGuide]: https://docs.microsoft.com/powershell/azure/install-az-ps
+[GettingStartedGuide]: https://docs.microsoft.com/powershell/azure/get-started-azureps
+[PersistedCredentialsGuide]: https://docs.microsoft.com/powershell/azure/context-persistence
 
-[ConnectAzAccount]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/connect-azaccount
-[GetAzContext]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azcontext
-[GetAzSubscription]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/get-azsubscription
-[SetAzContext]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/set-azcontext
-[SendFeedback]: https://docs.microsoft.com/en-us/powershell/module/az.accounts/send-feedback
+[ConnectAzAccount]: https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount
+[GetAzContext]: https://docs.microsoft.com/powershell/module/az.accounts/get-azcontext
+[GetAzSubscription]: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
+[SetAzContext]: https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext
+[SendFeedback]: https://docs.microsoft.com/powershell/module/az.accounts/send-feedback

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 6E967F9C-949E-4485-9B57-FC4F523D5DC9
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azrouteconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/set-azrouteconfig
 schema: 2.0.0
 ---
 

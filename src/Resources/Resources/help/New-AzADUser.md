@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
-online version: https://docs.microsoft.com/en-us/powershell/module/az.resources/new-Azaduser
+online version: https://docs.microsoft.com/powershell/module/az.resources/new-Azaduser
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ New-AzADUser -DisplayName <String> -UserPrincipalName <String> -Password <Secure
 
 ## DESCRIPTION
 Creates a new active directory user (work/school account also popularly known as org-id).
-For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/users-operations#CreateUser
+For more information: https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateUser
 
 ## EXAMPLES
 
