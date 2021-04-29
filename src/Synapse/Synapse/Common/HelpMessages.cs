@@ -267,7 +267,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
@@ -416,6 +416,10 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
+
+        public const string WorkspaceItemType = "The workspace item type.";
+
+        public const string WorkspaceItem = "The workspace item.";
 
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 

@@ -4,16 +4,16 @@
       "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
       "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"query\": \"where where\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"82506e98-9fdb-41f5-ab67-031005041a26\"\r\n  ],\r\n  \"query\": \"where where\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ec427211-392d-42f3-bfa2-1a953ff4c4e1"
+          "094db9b4-1c57-4864-aceb-45d14a21b21d"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.6.29916.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
@@ -22,7 +22,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "156"
+          "228"
         ]
       },
       "ResponseHeaders": {
@@ -36,10 +36,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "12"
+          "13"
         ],
         "x-ms-user-quota-remaining": [
-          "12"
+          "13"
         ],
         "x-ms-user-quota-resets-after": [
           "00:00:05"
@@ -48,22 +48,22 @@
           "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14997"
+          "11999"
         ],
         "x-ms-request-id": [
-          "30ce3d66-fd76-408f-9f26-2022e931c3d5"
+          "10bb6673-0db9-4d4e-ba67-0360354f6422"
         ],
         "x-ms-correlation-request-id": [
-          "30ce3d66-fd76-408f-9f26-2022e931c3d5"
+          "10bb6673-0db9-4d4e-ba67-0360354f6422"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20210325T114512Z:30ce3d66-fd76-408f-9f26-2022e931c3d5"
+          "WESTUS:20210420T113225Z:10bb6673-0db9-4d4e-ba67-0360354f6422"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 25 Mar 2021 11:45:12 GMT"
+          "Tue, 20 Apr 2021 11:32:24 GMT"
         ],
         "Content-Length": [
           "488"
@@ -75,12 +75,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Please provide below info when asking for support: timestamp = 2021-03-25T11:45:12.9331797Z, correlationId = 30ce3d66-fd76-408f-9f26-2022e931c3d5.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"InvalidQuery\",\r\n        \"message\": \"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying.\"\r\n      },\r\n      {\r\n        \"code\": \"ParserFailure\",\r\n        \"message\": \"ParserFailure\",\r\n        \"line\": 1,\r\n        \"characterPositionInLine\": 11,\r\n        \"token\": \"<EOF>\",\r\n        \"expectedToken\": \"Ǐ\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"BadRequest\",\r\n    \"message\": \"Please provide below info when asking for support: timestamp = 2021-04-20T11:32:25.4089191Z, correlationId = 10bb6673-0db9-4d4e-ba67-0360354f6422.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"InvalidQuery\",\r\n        \"message\": \"Query is invalid. Please refer to the documentation for the Azure Resource Graph service and fix the error before retrying.\"\r\n      },\r\n      {\r\n        \"code\": \"ParserFailure\",\r\n        \"message\": \"ParserFailure\",\r\n        \"line\": 1,\r\n        \"characterPositionInLine\": 11,\r\n        \"token\": \"<EOF>\",\r\n        \"expectedToken\": \"Ǐ\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "StatusCode": 400
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "eaab1166-1e13-4370-a951-6ed345a48c15"
+    "SubscriptionId": "82506e98-9fdb-41f5-ab67-031005041a26"
   }
 }

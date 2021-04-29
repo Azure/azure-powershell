@@ -40,7 +40,7 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ```
 PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
 PS C:\> $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
+PS C:\> New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.

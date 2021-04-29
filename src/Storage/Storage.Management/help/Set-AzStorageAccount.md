@@ -17,12 +17,13 @@ Modifies a Storage account.
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
- [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -30,24 +31,28 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
  [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> [-KeyVersion <String>]
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2]
- [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
+ -KeyVaultUri <String> [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-UpgradeToStorageV2] [-EnableAzureActiveDirectoryDomainServicesForFile <Boolean>] [-EnableLargeFileShare]
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
 ```
 Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
  [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
  [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
  [-PublishInternetEndpoint <Boolean>] -EnableActiveDirectoryDomainServicesForFile <Boolean>
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
- [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AsJob]
+ [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
+ [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,10 +99,15 @@ PS C:\>$keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "My
 PS C:\>$key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
 PS C:\>Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
 
+# In case to enable key auto rotation, don't set KeyVersion
 PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+
+# In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
 This command set Encryption KeySource with a new created Keyvault.
+If want to enable key auto rotation, don't set keyversion when set Keyvault properties for the first time, or clean up it by set keyvault properties again with keyversion as empty.
 
 ### Example 6: Set Encryption KeySource to "Microsoft.Storage"
 ```
@@ -208,6 +218,87 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 ```
 
 This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
+
+### Example 14: Update a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+```powershell
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
+
+PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+5
+
+PS C:\> $$account.SasPolicy.SasExpirationPeriod
+1.12:05:06
+```
+
+This command updates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the updated account related properties.
+
+### Example 15: Update a Storage account to Keyvault encryption, and access Keyvault with user assigned identity
+```powershell
+# Create KeyVault (no need if using exist keyvault)
+PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
+PS C:\> $key = Add-AzKeyVaultKey -VaultName $keyvaultName -Name $keyname -Destination 'Software'
+
+# create user assigned identity and grant access to keyvault (no need if using exist user assigned identity)
+PS C:\> $userId = New-AzUserAssignedIdentity -ResourceGroupName $resourceGroupName -Name $userIdName
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $userId.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+PS C:\> $useridentityId= $userId.Id
+
+# Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
+PS C:\> $account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
+                -IdentityType UserAssigned  -UserAssignedIdentityId $useridentityId  `
+                -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
+
+PS C:\> $account.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity
+/subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myuserid
+
+PS C:\> $account.Encryption.KeyVaultProperties
+
+KeyName                       : wrappingKey
+KeyVersion                    : 
+KeyVaultUri                   : https://mykeyvault.vault.azure.net:443
+CurrentVersionedKeyIdentifier : https://mykeyvault.vault.azure.net/keys/wrappingKey/8e74036e0d534e58b3bd84b319e31d8f
+LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
+```
+
+This command first creates a keyvault and a user assigned identity, then updates a storage account with keyvault encryption, the storage access access keyvault with the user assigned identity.
+
+### Example 16: Update a Keyvault encrypted Storage account, from access Keyvault with user assigned identity, to access Keyvault with system assigned identity
+```powershell
+# Assign System identity to the account, and give the system assigned identity acces to the keyvault
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
+PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -ObjectId $account.Identity.PrincipalId -PermissionsToKeys get,wrapkey,unwrapkey -BypassObjectIdValidation
+
+# Update account from access Keyvault with user assigned identity to access Keyvault with system assigned identity
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -KeyName $keyname -KeyVaultUri $keyvaultUri -KeyVaultUserAssignedIdentityId ""
+
+# EncryptionUserAssignedIdentity is empty, so the account access keyvault with system assigned identity
+PS C:\> $account.Encryption.EncryptionIdentity
+
+EncryptionUserAssignedIdentity                                                                                                                 
+------------------------------ 
+
+PS C:\> $account.Encryption.KeyVaultProperties
+
+KeyName                       : wrappingKey
+KeyVersion                    : 
+KeyVaultUri                   : https://mykeyvault.vault.azure.net:443
+CurrentVersionedKeyIdentifier : https://mykeyvault.vault.azure.net/keys/wrappingKey/8e74036e0d534e58b3bd84b319e31d8f
+LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
+```
+
+This command first assigns System identity to the account, and give the system assigned identity access to the keyvault; then updates the Storage account to access Keyvault with system assigned identity.
+
+### Example 17: Update both Keyvault and the user assigned identity to access keyvault
+```powershell
+# Update to another user assigned identity
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentityId $useridentity2 -KeyVaultUserAssignedIdentityId $useridentity2
+
+# Update to encrypt with another keyvault
+$account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -KeyVaultUri $keyvaultUri2 -KeyName $keyname2 -KeyVersion $keyversion2
+```
+
+This command first update the user assigned identity to access keyvault, then update the keyvault for encryption.
+To update both both Keyvault and the user assigned identity, we need update with the above 2 steps. 
 
 ## PARAMETERS
 
@@ -490,6 +581,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IdentityType
+Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyExpirationPeriodInDay
+The Key expiration period of this account, it is accurate to days.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 If using -KeyvaultEncryption to enable encryption with Key Vault, specify the Keyname property with this option.
 
@@ -530,6 +652,21 @@ Parameter Sets: KeyvaultEncryption
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultUserAssignedIdentityId
+Set resource id for user assigned Identity used to access Azure KeyVault of Storage Account Encryption, the id must in the storage account's UserAssignIdentityId.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -658,6 +795,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SasExpirationPeriod
+The SAS expiration period of this account, it is a timespan and accurate to seconds.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkuName
 Specifies the SKU name of the Storage account.
 The acceptable values for this parameter are:
@@ -720,6 +872,21 @@ Upgrade Storage account Kind from  Storage or BlobStorage to StorageV2.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+Set resource ids for the the new Storage Account user assignedd Identity, the identity will be used with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

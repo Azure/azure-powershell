@@ -660,5 +660,9 @@
   {
     "regex": "DataProtection",
     "alias": "Data Protection"
+  },
+  {
+    "alias": "ProviderHub",
+    "regex": "ProviderHub"
   }
 ]

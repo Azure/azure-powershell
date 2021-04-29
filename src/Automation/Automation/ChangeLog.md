@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for User Assigned Identities and PublicNetworkAccess flag
+
+## Version 1.6.0
 * Added support for Customer Managed Key Encryption with System Assigned Identity
 * Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
 

@@ -72,6 +72,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string RoleDefinition = nameof(RoleDefinition);
 
+        public const string RoleScope = nameof(RoleScope);
+
         public const string SparkDotNetJarFile = "local:///usr/hdp/current/spark2-client/jars/microsoft-spark.jar";
 
         public const string SparkDotNetClassName = "org.apache.spark.deploy.dotnet.DotnetRunner";
@@ -224,6 +226,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string Data_Exfiltration = "Data_Exfiltration";
             public const string Unsafe_Action = "Unsafe_Action";
             public const string None = "None";
+        }
+
+        public enum WorkspaceItemType
+        {
+            ApacheSparkPool,
+            IntegrationRuntime,
+            LinkedService,
+            Credential
         }
     }
 }

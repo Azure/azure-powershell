@@ -61,9 +61,17 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RoutingPreference = PSRoutingPreference.ParsePSRoutingPreference(storageAccount.RoutingPreference);
             this.BlobRestoreStatus = storageAccount.BlobRestoreStatus is null ? null : new PSBlobRestoreStatus(storageAccount.BlobRestoreStatus);
             this.EnableNfsV3 = storageAccount.EnableNfsV3;
+            this.ExtendedLocation = storageAccount.ExtendedLocation is null ? null : new PSExtendedLocation(storageAccount.ExtendedLocation);
             this.AllowSharedKeyAccess = storageAccount.AllowSharedKeyAccess;
+            this.KeyCreationTime = storageAccount.KeyCreationTime is null? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
+            this.KeyPolicy = storageAccount.KeyPolicy;
+            this.SasPolicy = storageAccount.SasPolicy;
 
         }
+
+        public PSKeyCreationTime KeyCreationTime { get; set; }
+        public KeyPolicy KeyPolicy { get; }
+        public SasPolicy SasPolicy { get; }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
@@ -140,6 +148,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public bool? AllowSharedKeyAccess { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
         {
             var result = new PSStorageAccount(storageAccount);
@@ -206,5 +216,37 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new Sku(Name, Tier);
         }
+    }
+
+    public class PSExtendedLocation
+    {
+        public PSExtendedLocation()
+        { }
+
+        public PSExtendedLocation(ExtendedLocation extendedLocation)
+        {
+            this.Name = extendedLocation.Name;
+            this.Type = extendedLocation.Type;
+        }
+
+        public string Name { get; set; }
+        public string Type { get; set; }
+    }
+
+    public class PSKeyCreationTime
+    {
+        public PSKeyCreationTime()
+        { }
+
+        public PSKeyCreationTime(KeyCreationTime keyCreationTime)
+        {
+            if (keyCreationTime != null)
+            {
+                this.Key1 = keyCreationTime.Key1;
+                this.Key2 = keyCreationTime.Key2;
+            }
+        }
+        public System.DateTime? Key1 { get; set; }
+        public System.DateTime? Key2 { get; set; }
     }
 }

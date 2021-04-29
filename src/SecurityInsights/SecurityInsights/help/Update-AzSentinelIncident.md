@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelIncident
 
 ## SYNOPSIS
-Update an Incident.
+Updates an Incident
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ Update-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -I
  [-Classification <String>] [-ClassificationComment <String>] [-ClassificationReason <String>]
  [-Description <String>]
  [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
- [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+ [-Owner <PSSentinelIncidentOwner>] [-Severity <String>] [-Status <String>] [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Update-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -I
 Update-AzSentinelIncident -InputObject <PSSentinelIncident> [-Classification <String>]
  [-ClassificationComment <String>] [-ClassificationReason <String>] [-Description <String>]
  [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
- [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+ [-Owner <PSSentinelIncidentOwner>] [-Severity <String>] [-Status <String>] [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzSentinelIncident -InputObject <PSSentinelIncident> [-Classification <St
 Update-AzSentinelIncident -ResourceId <String> [-Classification <String>] [-ClassificationComment <String>]
  [-ClassificationReason <String>] [-Description <String>]
  [-Label <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]>]
- [-Owner <PSSentinelIncidentOwner>] -Severity <String> -Status <String> -Title <String>
+ [-Owner <PSSentinelIncidentOwner>] [-Severity <String>] [-Status <String>] [-Title <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,10 +49,36 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId" -Severity High
+PS C:\> Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Severity High
 ```
 
-The command gets the Incident by *IncidentId* and sets the *Severity* property to *High*.  All other properties remain the same.
+This example gets the Incident by *IncidentId* and sets the *Severity* property to *High*.  All other properties remain unchanged.
+
+### Example 2
+```powershell
+$ownerObject = @{"AssignedTo" = "John Doe"; "Email" = "johndoe@contoso.com"; "ObjectId" = "f4e959b4-feda-4345-a1e7-16b4af2fc226";"UserPrincipalName" = "johndoe@contoso.com"}
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"  -IncidentId a4b586c8-97d8-4cc5-9154-b723c62d26d8 -Owner $ownerObject
+```
+
+This example first creates an "*owner object*" which contains the owner information, then the **Update-AzSentinelIncident** cmdlet is used to pass the ownerObject to update the incident. <br/><br/>
+
+*Note: The owner ObjectId can be found under the user details view under Azure Active Directory. If you want to automate the retrieval of the ObjectId through scripting you can leverage the Azure Active Directory PowerShell module, like this: Get-AzureADUser -ObjectId "johndoe@contoso.com".*
+
+### Example 3
+```powershell
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName"  -IncidentID "561c5184-f8da-4d8b-8544-c89e422bbf6f" -Classification FalsePositive -Status "Closed"
+```
+
+This example closes a specific incident with the **Classification** of "False Positive" <br/>
+*Note: providing a Classification upon closing is mandatory*
+
+### Example 4
+```powershell
+Update-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" 
+-IncidentID "561c5184-f8da-4d8b-8544-c89e422bbf6f" -Classification FalsePositive  -ClassificationComment "my comment" -ClassificationReason InaccurateData -Status "Closed"
+```
+
+This example closes a specific incident and provides a classification comment and reason
 
 ## PARAMETERS
 
@@ -60,7 +86,7 @@ The command gets the Incident by *IncidentId* and sets the *Severity* property t
 Incident Classificaiton.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: BenignPositive, FalsePositive, TruePositive, Undetermined
@@ -76,7 +102,7 @@ Accept wildcard characters: False
 Incident Classificaiton Comment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +117,7 @@ Accept wildcard characters: False
 Incident Classificaiton Reason.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: InaccurateData, IncorrectAlertLogic, SuspiciousActivity, SuspiciousButExpected
@@ -107,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -122,7 +148,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,8 +163,8 @@ Accept wildcard characters: False
 Incident Id.
 
 ```yaml
-Type: String
-Parameter Sets: IncidentId, ParentObject
+Type: System.String
+Parameter Sets: IncidentId
 Aliases:
 
 Required: True
@@ -152,7 +178,7 @@ Accept wildcard characters: False
 InputObject.
 
 ```yaml
-Type: PSSentinelIncident
+Type: Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident
 Parameter Sets: InputObject
 Aliases:
 
@@ -182,7 +208,7 @@ Accept wildcard characters: False
 Incident Owner.
 
 ```yaml
-Type: PSSentinelIncidentOwner
+Type: Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +223,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IncidentId
 Aliases:
 
@@ -212,7 +238,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -227,12 +253,12 @@ Accept wildcard characters: False
 Incident Severity.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: High, Informational, Low, Medium
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,12 +269,12 @@ Accept wildcard characters: False
 Incident Status.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Active, Closed, New
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,11 +285,11 @@ Accept wildcard characters: False
 Incident Title.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -274,7 +300,7 @@ Accept wildcard characters: False
 Workspace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IncidentId
 Aliases:
 
@@ -289,7 +315,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -305,7 +331,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
