@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Internal.Network.Common;
-    using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
     using WindowsAzure.Commands.Common.Attributes;
 
