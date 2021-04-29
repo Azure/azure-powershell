@@ -213,10 +213,10 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Copy of the module az.storage version 2.6.0.
 * Updated only for the New-AzStorageAcount cmdlet Kind Parameter default value changed from StorageV2 to Storage
-* This module version is meant only for the usage in Azure Stack environments with Update 2011 +'
+* This module version is meant only for the usage in Azure Stack environments with Update 2102+, 2020-09-01-hybrid profile'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

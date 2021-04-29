@@ -131,7 +131,7 @@ PrivateData = @{
         ReleaseNotes = '* Fix for issue 10634 : Fix the null Object reference for remove eventhubnamespace'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
