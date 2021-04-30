@@ -362,15 +362,15 @@ function validation
     Write-Host("Checking validations on the .cscfg and .csdef files.")
 
     # Network configuration missing in configuration
-    If ( $null -eq $cscfg.ServiceConfiguration.NetworkConfiguration -or $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.count -eq 0 -or $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress.Subnets.count -eq 0)
+    If ( ($null -eq $cscfg.ServiceConfiguration.NetworkConfiguration) -or (($cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite | Measure-Object | Select-Object -expandproperty count) -eq 0) -or (($cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.InstanceAddress.Subnets | Measure-Object | Select-Object -ExpandProperty count) -eq 0) )
     {
         throw "The network configuration is missing from the configuration file. Please add the network configuration to the configuration file."
     }
 
     # CS definition and configuration match
-    if ($cscfg.ServiceConfiguration.Role.Count -eq 1){
+    if (($cscfg.ServiceConfiguration.Role | Measure-Object | Select-Object -ExpandProperty count) -eq 1){
         $csCfgRoleNames = @($cscfg.ServiceConfiguration.Role.name.tolower())
-    }else{
+    }elseif(($cscfg.ServiceConfiguration.Role | Measure-Object | Select-Object -ExpandProperty count) -gt 1){
         $csCfgRoleNames = $cscfg.ServiceConfiguration.Role.name.tolower()
     }
 
