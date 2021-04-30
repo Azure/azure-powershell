@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acr role assignment {0} is already exist..
+        /// </summary>
+        internal static string AcrRoleAssignmentIsAlreadyExist {
+            get {
+                return ResourceManager.GetString("AcrRoleAssignmentIsAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please add {0} to your search PATH so the {1} can be found..
         /// </summary>
         internal static string AddDirectoryToPath {
@@ -232,6 +241,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not delete &apos;acrpull&apos; role assignment, please make sure you have right permission..
+        /// </summary>
+        internal static string CouldNotDeleteAcrRoleAssignment {
+            get {
+                return ResourceManager.GetString("CouldNotDeleteAcrRoleAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find object id of service principal : {0}, please make sure you have graph directory.read permission which is required for grant acrpull permission..
         /// </summary>
         internal static string CouldNotFindObjectIdForServicePrincipal {
@@ -255,6 +273,15 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string CouldNotFindSshPublicKeyInError {
             get {
                 return ResourceManager.GetString("CouldNotFindSshPublicKeyInError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get &apos;acrpull&apos; role assignment, please make sure you have right permission..
+        /// </summary>
+        internal static string CouldNotGetAcrRoleAssignment {
+            get {
+                return ResourceManager.GetString("CouldNotGetAcrRoleAssignment", resourceCulture);
             }
         }
         
@@ -606,6 +633,24 @@ namespace Microsoft.Azure.Commands.Aks.Properties {
         internal static string RemovingTheManagedKubernetesCluster {
             get {
                 return ResourceManager.GetString("RemovingTheManagedKubernetesCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reseting the credential of the aks cluster..
+        /// </summary>
+        internal static string ResetingTheCredentialOfAksCluster {
+            get {
+                return ResourceManager.GetString("ResetingTheCredentialOfAksCluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to reset the credential of the aks cluster?.
+        /// </summary>
+        internal static string ResetTheCredentialOfAksCluster {
+            get {
+                return ResourceManager.GetString("ResetTheCredentialOfAksCluster", resourceCulture);
             }
         }
         

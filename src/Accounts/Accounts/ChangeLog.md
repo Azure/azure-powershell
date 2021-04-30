@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.2.8
 * Fallback to first valid context if current default context key is "Default" which is invalid
 
 ## Version 2.2.7

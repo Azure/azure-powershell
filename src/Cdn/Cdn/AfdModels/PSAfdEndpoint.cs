@@ -17,8 +17,6 @@ namespace Microsoft.Azure.Commands.Cdn.AfdModels
     {
         public string HostName { get; set; }
 
-        public int? OriginResponseTimeoutSeconds { get; set; }
-
         public string EnabledState { get; set; }
     }
 }

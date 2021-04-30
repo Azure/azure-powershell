@@ -24,7 +24,7 @@ Get the specific Azure SQL Server DNS Alias or lists all Server DNS Aliases for 
 
 ### Example 1
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -36,7 +36,7 @@ Lists all Server DNS Aliases for the specific server
 
 ### Example 2
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -DnsAliasName dnsaliasname -ServerName servername -ResourceGroupName rgname
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
@@ -47,7 +47,7 @@ Gets Server DNS Alias specified by server and alias name
 
 ### Example 3
 ```
-PS C:\> $serverDNSAliases = Get-AzSqlServerDNSAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
+PS C:\> $serverDNSAliases = Get-AzSqlServerDnsAlias -ServerName servername -ResourceGroupName rgname -DnsAliasName "dnsaliasname*"
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------

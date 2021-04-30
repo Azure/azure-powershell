@@ -100,6 +100,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Name { get; set; }
 
         #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpIdentityType)]
+        #endregion
+        public string IdentityType { get; set; }
+
+        #region Attributes
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpUserAssignedIdenty)]
+        #endregion
+        public IDictionary<string,object> UserAssignedIdentity { get; set; }
+
+        #region Attributes
         [Parameter(
             ParameterSetName = ParameterSetNames.ByInputObject,
             Mandatory = true,
@@ -459,11 +469,27 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 repoConfiguration.RepositoryName = this.RepositoryName;
             }
 
+            string factoryIdentityType = FactoryIdentityType.SystemAssigned;
+            if (!string.IsNullOrWhiteSpace(this.IdentityType))
+            {
+                factoryIdentityType = this.IdentityType;
+            }
+
+            if(this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
+            {
+                if (!factoryIdentityType.ToLower().Contains(FactoryIdentityType.UserAssigned.ToLower()))
+                {
+                    factoryIdentityType = FactoryIdentityType.SystemAssignedUserAssigned;
+                }
+            }
+            FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
+
             var parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
+                FactoryIdentity = factoryIdentity,
                 Tags = Tag,
                 Force = Force.IsPresent,
                 RepoConfiguration = repoConfiguration,
@@ -482,6 +508,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 this.Name = InputObject.DataFactoryName;
                 this.Location = this.Location ?? InputObject.Location;
                 this.Tag = this.Tag ?? new Hashtable((IDictionary)InputObject.Tags);
+
+                if(InputObject.Identity != null)
+                {
+                    this.IdentityType = InputObject.Identity.Type;
+                    this.UserAssignedIdentity = InputObject.Identity.UserAssignedIdentities;
+                }
                 if (InputObject.RepoConfiguration != null)
                 {
                     this.AccountName = this.AccountName ?? InputObject.RepoConfiguration.AccountName;
