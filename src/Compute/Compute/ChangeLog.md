@@ -23,6 +23,7 @@
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
     - Added a switch parameter `-Migrate` to trigger migration workflow.
     - Added a switch parameter `-MigrationRecovery` to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
+* Updated `New-AzVM` cmdlet so the message stating the `Size` parameter is defaulting so it shows to the user only when they do not provide a `Size` value.
 
 ## Version 4.11.0
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
