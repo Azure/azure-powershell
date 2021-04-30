@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours).")]
+            HelpMessage = "Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT2H (2 hours).")]
         public string MaximumDuration { get; set; }
 
         [Parameter(
@@ -244,6 +244,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
+
                     string resourceGroupName;
                     string vmName;
                     
@@ -252,11 +253,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         resourceGroupName = GetResourceGroupName(this.ResourceId);
                         vmName = GetResourceName(this.ResourceId, "Microsoft.Compute/virtualmachines");
+
+                        if (resourceGroupName == null || vmName == null)
+                        {
+                            WriteError(new ErrorRecord(new Exception("Virtual Machine with provided Resource ID: '" + this.ResourceId + "' was not found."), "Error", ErrorCategory.NotSpecified, null));
+                        }
                     }
                     else if(this.ParameterSetName == WindowsInputObjectParameterSet || this.ParameterSetName == LinuxInputObjectParameterSet)
                     {
                         resourceGroupName = GetResourceGroupName(this.VM.Id);
                         vmName = GetResourceName(this.VM.Id, "Microsoft.Compute/virtualmachines");
+                        if (resourceGroupName == null || vmName == null)
+                        {
+                            WriteError(new ErrorRecord(new Exception("Invalid PSVirtualMachine object was provided for '-VM' parameter."), "Error", ErrorCategory.NotSpecified, null));
+                        }
                     }
                     else
                     {
@@ -271,75 +281,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     // divde linux and windows 
                     if (this.Windows.IsPresent)
                     {
+                        vmInstallPatchesParameters.WindowsParameters = new WindowsParameters();
                         if (this.IsParameterBound(c => c.ClassificationToIncludeForWindows))
                         {
-                            if (vmInstallPatchesParameters.WindowsParameters == null)
-                            {
-                                vmInstallPatchesParameters.WindowsParameters = new WindowsParameters();
-                            }
-
                             vmInstallPatchesParameters.WindowsParameters.ClassificationsToInclude = this.ClassificationToIncludeForWindows;
                         }
 
                         if (this.IsParameterBound(c => c.KBNumberToInclude))
                         {
-                            if (vmInstallPatchesParameters.WindowsParameters == null)
-                            {
-                                vmInstallPatchesParameters.WindowsParameters = new WindowsParameters();
-                            }
-
                             vmInstallPatchesParameters.WindowsParameters.KbNumbersToInclude = this.KBNumberToInclude;
                         }
 
                         if (this.IsParameterBound(c => c.KBNumberToExclude))
                         {
-                            if (vmInstallPatchesParameters.WindowsParameters == null)
-                            {
-                                vmInstallPatchesParameters.WindowsParameters = new WindowsParameters();
-                            }
-
                             vmInstallPatchesParameters.WindowsParameters.KbNumbersToExclude = this.KBNumberToExclude;
                         }
 
                         if (this.ExcludeKBsRequiringReboot.IsPresent)
                         {
-                            if (vmInstallPatchesParameters.WindowsParameters == null)
-                            {
-                                vmInstallPatchesParameters.WindowsParameters = new WindowsParameters();
-                            }
-
                             vmInstallPatchesParameters.WindowsParameters.ExcludeKbsRequiringReboot = true;
                         }
                     }
                     else if (this.Linux.IsPresent)
                     {
+                        vmInstallPatchesParameters.LinuxParameters = new LinuxParameters();
                         if (this.IsParameterBound(c => c.ClassificationToIncludeForLinux))
                         {
-                            if (vmInstallPatchesParameters.LinuxParameters == null)
-                            {
-                                vmInstallPatchesParameters.LinuxParameters = new LinuxParameters();
-                            }
-
                             vmInstallPatchesParameters.LinuxParameters.ClassificationsToInclude = this.ClassificationToIncludeForLinux;
                         }
 
                         if (this.IsParameterBound(c => c.PackageNameMaskToInclude))
                         {
-                            if (vmInstallPatchesParameters.LinuxParameters == null)
-                            {
-                                vmInstallPatchesParameters.LinuxParameters = new LinuxParameters();
-                            }
-
                             vmInstallPatchesParameters.LinuxParameters.PackageNameMasksToInclude = this.PackageNameMaskToInclude;
                         }
 
                         if (this.IsParameterBound(c => c.PackageNameMaskToExclude))
                         {
-                            if (vmInstallPatchesParameters.LinuxParameters == null)
-                            {
-                                vmInstallPatchesParameters.LinuxParameters = new LinuxParameters();
-                            }
-
                             vmInstallPatchesParameters.LinuxParameters.PackageNameMasksToExclude = this.PackageNameMaskToExclude;
                         }
                     }
