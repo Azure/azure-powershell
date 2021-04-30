@@ -138,9 +138,13 @@ namespace Microsoft.Azure.Commands.Network
                 Name = Name,
                 ResourceGroupName = ResourceGroupName,
                 Location = Location,
-                ExtendedLocation = new PSExtendedLocation(EdgeZone),
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
+
+            if (this.EdgeZone != null)
+            {
+                vnet.ExtendedLocation = new PSExtendedLocation(EdgeZone);
+            }
 
             if (DnsServer != null)
             {
