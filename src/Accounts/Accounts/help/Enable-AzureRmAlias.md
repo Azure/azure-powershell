@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/en-us/powershell/module/az.accounts/enable-azurermalias
+online version: https://docs.microsoft.com/powershell/module/az.accounts/enable-azurermalias
 schema: 2.0.0
 ---
 
@@ -23,14 +23,14 @@ Enables AzureRm prefix aliases for Az modules. If -Module is specified, only mod
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Enable-AzureRmAlias
 ```
 
 Enables all AzureRm prefixes for the current PowerShell session.
 
-### Example 1
-```
+### Example 2
+```powershell
 PS C:\> Enable-AzureRmAlias -Module Az.Accounts -Scope CurrentUser
 ```
 

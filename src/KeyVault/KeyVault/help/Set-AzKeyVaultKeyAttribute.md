@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/set-AzKeyvaultkeyattribute
+online version: https://docs.microsoft.com/powershell/module/Az.keyvault/set-AzKeyvaultkeyattribute
 schema: 2.0.0
 ---
 

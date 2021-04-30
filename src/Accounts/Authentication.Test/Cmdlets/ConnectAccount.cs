@@ -15,12 +15,13 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Internal.Subscriptions.Models;
+using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Utilities;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -35,6 +36,7 @@ namespace Common.Authentication.Test.Cmdlets
     [Cmdlet(VerbsCommunications.Connect, "AzAccount")]
     public class ConnectAccount : AzureRMCmdlet
     {
+        private IAzureTokenCache _cache;
         private IAzureEnvironment _environment;
         private IProfileOperations _profile;
         private PSCredential _credential;
@@ -70,6 +72,12 @@ namespace Common.Authentication.Test.Cmdlets
                 ProtectedFileProvider.CreateFileProvider(
                     Path.Combine(AzureSession.Instance.ARMProfileDirectory, AzureSession.Instance.ARMProfileFile),
                     FileProtection.ExclusiveWrite));
+            var context = _profile.DefaultContext;
+            _cache = AzureSession.Instance.TokenCache;
+            if (_profile != null && context != null && context.TokenCache != null)
+            {
+                _cache = context.TokenCache;
+            }
 
             _environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
@@ -275,16 +283,18 @@ namespace Common.Authentication.Test.Cmdlets
                 }
             }
 
+            _profile.DefaultContext.TokenCache = _cache;
             var defaultContext = _profile.DefaultContext;
             var subscriptions = ListSubscriptions(tenantId).Take(25);
             foreach (var subscription in subscriptions)
             {
                 IAzureTenant tempTenant = new AzureTenant()
                 {
-                    Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
+                    Id = subscription.GetTenant()
                 };
 
                 var tempContext = new AzureContext(subscription, account, environment, tempTenant);
+                tempContext.TokenCache = _cache;
                 string tempName = null;
                 if (!_profile.TryGetContextName(tempContext, out tempName))
                 {
@@ -312,7 +322,7 @@ namespace Common.Authentication.Test.Cmdlets
             Action<string> promptAction)
         {
             List<AzureTenant> result = new List<AzureTenant>();
-            var commonTenant = GetCommonTenant(account);
+            var commonTenant = account.GetCommonTenant();
             try
             {
                 var commonTenantToken = AcquireAccessToken(
@@ -388,7 +398,7 @@ namespace Common.Authentication.Test.Cmdlets
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
-                tenantId = tenantId ?? GetCommonTenant(account);
+                tenantId = tenantId ?? account.GetCommonTenant();
                 return new SimpleAccessToken(account, tenantId);
             }
 
@@ -399,7 +409,7 @@ namespace Common.Authentication.Test.Cmdlets
                 password,
                 promptBehavior,
                 promptAction,
-                null);
+                _cache);
         }
 
         private IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
@@ -449,9 +459,9 @@ namespace Common.Authentication.Test.Cmdlets
                     AzureSession.Instance.ClientFactory.GetCustomHandlers());
 
             AzureContext context = new AzureContext(_profile.DefaultContext.Subscription, account, environment,
-                                        CreateTenantFromString(tenantId, accessToken.TenantId));
+                CreateTenantFromString(tenantId, accessToken.TenantId));
 
-            return subscriptionClient.ListAllSubscriptions().Select(s => ToAzureSubscription(s, context));
+            return subscriptionClient.ListAllSubscriptions().Select(s => s.ToAzureSubscription(context.Account, context.Environment, accessToken.TenantId));
         }
 
         private static AzureTenant CreateTenantFromString(string tenantOrDomain, string accessTokenTenantId)
@@ -498,21 +508,6 @@ namespace Common.Authentication.Test.Cmdlets
                 tenant.Directory = tenantIdOrDomain;
             }
             return tenant;
-        }
-
-        private string GetCommonTenant(IAzureAccount account)
-        {
-            string result = AuthenticationFactory.CommonAdTenant;
-            if (account.IsPropertySet(AzureAccount.Property.Tenants))
-            {
-                var candidate = account.GetTenants().FirstOrDefault();
-                if (!string.IsNullOrWhiteSpace(candidate))
-                {
-                    result = candidate;
-                }
-            }
-
-            return result;
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,
@@ -649,6 +644,10 @@ namespace Common.Authentication.Test.Cmdlets
             public string TenantId { get; private set; }
             public string UserId { get; private set; }
 
+            public string HomeAccountId => throw new NotImplementedException();
+
+            public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
+
             public SimpleAccessToken(IAzureAccount account, string tenantId, string tokenType = _defaultTokenType)
             {
                 if (account == null)
@@ -674,19 +673,6 @@ namespace Common.Authentication.Test.Cmdlets
             {
                 authTokenSetter(_tokenType, AccessToken);
             }
-        }
-
-        private AzureSubscription ToAzureSubscription(Subscription other, IAzureContext context)
-        {
-            var subscription = new AzureSubscription();
-            subscription.SetAccount(context.Account != null ? context.Account.Id : null);
-            subscription.SetEnvironment(context.Environment != null ? context.Environment.Name : EnvironmentName.AzureCloud);
-            subscription.Id = other.SubscriptionId;
-            subscription.Name = other.DisplayName;
-            subscription.State = other.State.ToString();
-            subscription.SetProperty(AzureSubscription.Property.Tenants,
-                context.Tenant.Id.ToString());
-            return subscription;
         }
     }
 }

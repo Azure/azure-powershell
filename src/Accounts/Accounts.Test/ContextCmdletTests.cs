@@ -34,7 +34,7 @@ using Microsoft.Azure.Commands.Profile.Context;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
+        private MockPowerShellTokenCacheProvider tokenCacheProviderMock;
         const string guid1 = "a0cc8bd7-2c6a-47e9-a4c4-3f6ed136e240";
         const string guid2 = "eab635c0-a35a-4f70-9e46-e5351c7b5c8b";
         const string guid3 = "52f66548-2550-417b-941e-9d6e04f3ac8d";
@@ -53,6 +54,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory();
+            tokenCacheProviderMock = new MockPowerShellTokenCacheProvider();
+            AzureSession.Instance.RegisterComponent<PowerShellTokenCacheProvider>(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenCacheProviderMock);
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "True");
         }
 
@@ -197,7 +200,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var profile = CreateMultipleContextProfile();
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
-            cmdlet.MyInvocation.BoundParameters.Add("ListAvailable", true);
+            cmdlet.ListAvailable = true;
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -219,8 +222,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearContextSetsDefaultContextName()
         {
-            AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
-            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
             var getCmdlet = new GetAzureRMContextCommand();
             var profile = CreateMultipleContextProfile();
             var defaultContextName = profile.DefaultContextKey;
@@ -265,8 +266,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
             cmdlet.Force = true;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", profile.DefaultContextKey);
-            cmdlet.MyInvocation.BoundParameters.Add("PassThru", true);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -292,8 +293,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var defaultContextKey = profile.DefaultContextKey;
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
+            cmdlet.PassThru = true;
             cmdlet.MyInvocation.BoundParameters.Add("Name", removedContextKey);
-            cmdlet.MyInvocation.BoundParameters.Add("PassThru", true);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -613,8 +614,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearMultipleContexts()
         {
-            AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
-            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
             var cmdlet = new ClearAzureRmContext();
             var profile = CreateMultipleContextProfile();
             var defaultContext = profile.DefaultContext;
@@ -634,14 +633,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
+            Assert.NotNull(profile.DefaultContext.TokenCache);
+            Assert.Equal(AzureSession.Instance.TokenCache.GetType(), profile.DefaultContext.TokenCache.GetType());
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearContextNoLogin()
         {
-            AuthenticationClientFactory factory = new InMemoryTokenCacheClientFactory();
-            AzureSession.Instance.RegisterComponent(AuthenticationClientFactory.AuthenticationClientFactoryKey, () => factory);
             var cmdlet = new ClearAzureRmContext();
             var profile = new AzureRmProfile();
             cmdlet.CommandRuntime = commandRuntimeMock;

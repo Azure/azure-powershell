@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/add-azvmsecret
+online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret
 schema: 2.0.0
 ---
 
@@ -22,7 +22,7 @@ Add-AzVMSecret [-VM] <PSVirtualMachine> [[-SourceVaultId] <String>] [[-Certifica
 The **Add-AzVMSecret** cmdlet adds a secret to a virtual machine.
 This value lets you add a certificate to the virtual machine.
 The secret must be stored in a Key Vault.
-For more information about Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
+For more information about Key Vault, see [What is Azure Key Vault?](https://azure.microsoft.com/documentation/articles/key-vault-whatis/).
 For more information about the cmdlets, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) cmdlet.
 
 ## EXAMPLES

@@ -12,52 +12,79 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
     public class ServicePrincipalAuthenticator : DelegatingAuthenticator
     {
-        private const string _authenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
+        private const string AuthenticationFailedMessage = "No certificate thumbprint or secret provided for the given service principal '{0}'.";
 
+        //MSAL doesn't cache Service Principal into msal.cache
         public override Task<IAccessToken> Authenticate(AuthenticationParameters parameters, CancellationToken cancellationToken)
         {
             var spParameters = parameters as ServicePrincipalParameters;
             var onPremise = spParameters.Environment.OnPremise;
-            var authenticationClientFactory = spParameters.AuthenticationClientFactory;
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
             var resource = spParameters.Environment.GetEndpoint(spParameters.ResourceId) ?? spParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var clientId = spParameters.ApplicationId;
-            var authority = onPremise ?
-                                spParameters.Environment.ActiveDirectoryAuthority :
-                                AuthenticationHelpers.GetAuthority(spParameters.Environment, spParameters.TenantId);
-            var redirectUri = spParameters.Environment.ActiveDirectoryServiceEndpointResourceId;
-            IConfidentialClientApplication confidentialClient = null;
+            var authority = spParameters.Environment.ActiveDirectoryAuthority;
+
+            var requestContext = new TokenRequestContext(scopes);
+
+            var options = new ClientCertificateCredentialOptions()
+            {
+                AuthorityHost = new Uri(authority)
+            };
+
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
+                //Service Principal with Certificate
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
-                TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Creating IConfidentialClientApplication with certificate - ClientId: '{0}', Authority: '{1}', RedirectUri: '{2}', Thumbprint: '{3}', UseAdfs: '{4}'", clientId, authority, redirectUri, spParameters.Thumbprint, onPremise));
-                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, certificate: certificate, useAdfs: onPremise);
+                ClientCertificateCredential certCredential = new ClientCertificateCredential(tenantId, spParameters.ApplicationId, certificate, options);
+                var parametersLog = $"- Thumbprint:'{spParameters.Thumbprint}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+                return MsalAccessToken.GetAccessTokenAsync(
+                    nameof(ServicePrincipalAuthenticator),
+                    parametersLog,
+                    certCredential,
+                    requestContext,
+                    cancellationToken,
+                    spParameters.TenantId,
+                    spParameters.ApplicationId);
             }
             else if (spParameters.Secret != null)
             {
-                TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Creating IConfidentialClientApplication with secret - ClientId: '{0}', Authority: '{1}', RedirectUri: '{2}', UseAdfs: '{3}'", clientId, authority, redirectUri, onPremise));
-                confidentialClient = authenticationClientFactory.CreateConfidentialClient(clientId: clientId, authority: authority, redirectUri: redirectUri, clientSecret: spParameters.Secret, useAdfs: onPremise);
+                // service principal with secret
+                var secretCredential = new ClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret.ConvertToString(), options);
+                var parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+                return MsalAccessToken.GetAccessTokenAsync(
+                    nameof(ServicePrincipalAuthenticator),
+                    parametersLog,
+                    secretCredential,
+                    requestContext,
+                    cancellationToken,
+                    spParameters.TenantId,
+                    spParameters.ApplicationId);
             }
             else
             {
-                throw new MsalException(MsalError.AuthenticationFailed, string.Format(_authenticationFailedMessage, clientId));
+                throw new MsalException(MsalError.AuthenticationFailed, string.Format(AuthenticationFailedMessage, clientId));
             }
-
-            TracingAdapter.Information(string.Format("[ServicePrincipalAuthenticator] Calling AcquireTokenForClient - Scopes: '{0}'", string.Join(",", scopes)));
-            var response = confidentialClient.AcquireTokenForClient(scopes).ExecuteAsync(cancellationToken);
-            cancellationToken.ThrowIfCancellationRequested();
-            return AuthenticationResultToken.GetAccessTokenAsync(response, userId: clientId, tenantId: spParameters.TenantId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

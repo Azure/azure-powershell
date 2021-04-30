@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/undo-AzKeyvaultcertificateremoval
+online version: https://docs.microsoft.com/powershell/module/Az.keyvault/undo-AzKeyvaultcertificateremoval
 schema: 2.0.0
 ---
 

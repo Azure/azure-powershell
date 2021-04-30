@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Identity.Client;
 using System;
-using System.IO;
 using System.Diagnostics;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Newtonsoft.Json;
-using TraceLevel = System.Diagnostics.TraceLevel;
+using System.IO;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Identity.Client.Extensions.Msal;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
+
+using Hyak.Common;
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication.TokenCache;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+
+using Newtonsoft.Json;
+
+using TraceLevel = System.Diagnostics.TraceLevel;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -98,71 +99,47 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return false;
         }
 
-        static void MigrateAdalCache(AzureSession session, IDataStore store, string adalCachePath, string msalCachePath)
+        public static void MigrateAdalCache(IAzureSession session, Func<IAzureContextContainer> getContextContainer, Action<string> writeWarning)
         {
-            if (session.ARMContextSaveMode == ContextSaveMode.Process)
-            {
-                // Don't attempt to migrate if context autosave is disabled
-                return;
-            }
-
-            if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
-            {
-                // Return if
-                // (1) The ADAL cache doesn't exist (nothing to migrate), or
-                // (2) The MSAL cache does exist (don't override existing cache)
-                return;
-            }
-
-            byte[] adalData;
             try
             {
-                adalData = File.ReadAllBytes(adalCachePath);
-            }
-            catch
-            {
-                // Return if there was an error converting the ADAL data safely
-                return;
-            }
-
-            SharedTokenCacheClientFactory authenticationClientFactory;
-            try
-            {
-                authenticationClientFactory = new SharedTokenCacheClientFactory(new CacheMigrationSettings
+                if (session.ARMContextSaveMode == ContextSaveMode.Process)
                 {
-                    CacheData = adalData,
-                    CacheFormat = CacheFormat.AdalV3
-                });
-            }
-            catch (MsalCachePersistenceException)
-            {
-                throw new PlatformNotSupportedException(Resources.AutosaveNotSupportedWithSuggestion);
-            }
-            var client = authenticationClientFactory.CreatePublicClient();
+                    // Don't attempt to migrate if context autosave is disabled
+                    return;
+                }
 
-            var accounts = client.GetAccountsAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            foreach (var account in accounts)
-            {
+                var adalCachePath = Path.Combine(session.ProfileDirectory, "TokenCache.dat");
+                var msalCachePath = Path.Combine(session.TokenCacheDirectory, "msal.cache");
+                var store = session.DataStore;
+                if (!store.FileExists(adalCachePath) || store.FileExists(msalCachePath))
+                {
+                    // Return if
+                    // (1) The ADAL cache doesn't exist (nothing to migrate), or
+                    // (2) The MSAL cache does exist (don't override existing cache)
+                    return;
+                }
+
+                byte[] adalData;
                 try
                 {
-                    var accountEnvironment = string.Format("https://{0}/", account.Environment);
-                    var environment = AzureEnvironment.PublicEnvironments.Values.Where(e => e.ActiveDirectoryAuthority == accountEnvironment).FirstOrDefault();
-                    if (environment == null)
-                    {
-                        // We cannot map the previous environment to one of the public environments
-                        continue;
-                    }
-
-                    var scopes = new string[] { string.Format("{0}{1}", environment.ActiveDirectoryServiceEndpointResourceId, ".default") };
-                    var token = client.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                    adalData = File.ReadAllBytes(adalCachePath);
                 }
                 catch
                 {
-                    // Continue if we're unable to get the token for the current account
-                    continue;
+                    // Return if there was an error converting the ADAL data safely
+                    return;
+                }
+
+                if (adalData != null && adalData.Length > 0)
+                {
+                    new AdalTokenMigrator(adalData, getContextContainer).MigrateFromAdalToMsal();
                 }
             }
-
+            catch(Exception e)
+            {
+                writeWarning(Resources.FailedToMigrateAdal2Msal.FormatInvariant(e.Message));
+            }
         }
 
         static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile, bool migrated = false)
@@ -212,10 +189,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 // ignore exceptions in reading settings from disk
                 result.Mode = ContextSaveMode.Process;
+                TracingAdapter.Information("[AzureSessionInitializer]: Cannot read settings from disk. Falling back to 'Process' mode.");
+                TracingAdapter.Information($"[AzureSessionInitializer]: Message: {ex.Message}; Stacktrace: {ex.StackTrace}");
             }
 
             return result;
@@ -264,9 +243,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-            MigrateAdalCache(session, dataStore, oldCachePath, Path.Combine(cachePath, "msal.cache"));
+
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
+            session.TokenCache = session.TokenCache ?? new AzureTokenCache();
             return session;
         }
 
@@ -289,7 +269,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #else
             public AdalSession()
             {
-
+                AdalLogger = new AdalLogger(WriteToTraceListeners);
+                //LoggerCallbackHandler.UseDefaultLogging = false;
             }
 
             public override TraceLevel AuthenticationLegacyTraceLevel
@@ -307,15 +288,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             /// <summary>
+            /// Adal Logger for Adal 3.x +
+            /// </summary>
+            public AdalLogger AdalLogger { get; private set; }
+
+            /// <summary>
             /// Write messages to the existing trace listeners when log messages occur
             /// </summary>
             /// <param name="message"></param>
             private void WriteToTraceListeners(string message)
             {
-                foreach (var listener in AuthenticationTraceListeners)
+                for (var i = 0; i < AuthenticationTraceListeners.Count; ++i) // don't use foreach, enumerator is not thread safe
                 {
-                    var trace = listener as TraceListener;
-                    trace.WriteLine(message);
+                    try
+                    {
+                        AuthenticationTraceListeners[i].WriteLine(message);
+                    }
+                    catch
+                    {
+                        // ignroe any exception
+                    }
                 }
             }
 #endif

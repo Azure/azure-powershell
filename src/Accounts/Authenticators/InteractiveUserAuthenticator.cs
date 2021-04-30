@@ -13,17 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Azure.Core;
+using Azure.Identity;
+
 using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.Extensibility;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -44,42 +46,43 @@ namespace Microsoft.Azure.PowerShell.Authenticators
         {
             var interactiveParameters = parameters as InteractiveParameters;
             var onPremise = interactiveParameters.Environment.OnPremise;
-            var authenticationClientFactory = interactiveParameters.AuthenticationClientFactory;
-            IPublicClientApplication publicClient = null;
+            //null instead of "organizations" should be passed to Azure.Identity to support MSA account 
+            var tenantId = onPremise ? AdfsTenant :
+                (string.Equals(parameters.TenantId, OrganizationsTenant, StringComparison.OrdinalIgnoreCase) ? null : parameters.TenantId);
+            var tokenCacheProvider = interactiveParameters.TokenCacheProvider;
             var resource = interactiveParameters.Environment.GetEndpoint(interactiveParameters.ResourceId) ?? interactiveParameters.ResourceId;
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
+            var clientId = AuthenticationHelpers.PowerShellClientId;
 
-            try
+            var requestContext = new TokenRequestContext(scopes);
+            var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
+
+            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
+
+            var options = new InteractiveBrowserCredentialOptions()
             {
-                var replyUrl = GetReplyUrl(onPremise, interactiveParameters);
+                ClientId = clientId,
+                TenantId = tenantId,
+                TokenCache = tokenCache.TokenCache,
+                AuthorityHost = new Uri(authority),
+                RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
+            };
+            var browserCredential = new InteractiveBrowserCredential(options);
 
-                if (!string.IsNullOrEmpty(replyUrl))
-                {
-                    var clientId = AuthenticationHelpers.PowerShellClientId;
-                    var authority = onPremise ?
-                                        interactiveParameters.Environment.ActiveDirectoryAuthority :
-                                        AuthenticationHelpers.GetAuthority(parameters.Environment, parameters.TenantId);
-                    TracingAdapter.Information(string.Format("[InteractiveUserAuthenticator] Creating IPublicClientApplication - ClientId: '{0}', Authority: '{1}', ReplyUrl: '{2}' UseAdfs: '{3}'", clientId, authority, replyUrl, onPremise));
-                    publicClient = authenticationClientFactory.CreatePublicClient(clientId: clientId, authority: authority, redirectUri: replyUrl, useAdfs: onPremise);
-                    TracingAdapter.Information(string.Format("[InteractiveUserAuthenticator] Calling AcquireTokenInteractive - Scopes: '{0}'", string.Join(",", scopes)));
-                    var interactiveResponse = publicClient.AcquireTokenInteractive(scopes)
-                        .WithCustomWebUi(new CustomWebUi())
-                        .ExecuteAsync(cancellationToken);
-                    cancellationToken.ThrowIfCancellationRequested();
-                    return AuthenticationResultToken.GetAccessTokenAsync(interactiveResponse);
-                }
-            }
-            catch
-            {
-                interactiveParameters.PromptAction("Unable to authenticate using interactive login. Defaulting back to device code flow.");
-            }
+            TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveUserAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");
+            var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
 
-            return null;
+            return MsalAccessToken.GetAccessTokenAsync(
+                authTask,
+                browserCredential,
+                requestContext,
+                cancellationToken);
         }
 
-        private string GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
+        private Uri GetReplyUrl(bool onPremise, InteractiveParameters interactiveParameters)
         {
-            return string.Format("http://localhost:{0}", GetReplyUrlPort(onPremise, interactiveParameters));
+            var port = GetReplyUrlPort(onPremise, interactiveParameters);
+            return new Uri($"http://localhost:{port}");
         }
 
         private int GetReplyUrlPort(bool onPremise, InteractiveParameters interactiveParameters)

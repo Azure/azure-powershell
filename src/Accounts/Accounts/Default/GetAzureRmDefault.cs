@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Default
 
         public override void ExecuteCmdlet()
         {
-            IAzureContext context = AzureRmProfileProvider.Instance.Profile.DefaultContext;
+            IAzureContext context = DefaultContext;
             IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
                                     context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
                                     AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),

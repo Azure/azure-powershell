@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-            if (!SharedTokenCacheClientFactory.SupportCachePersistence(out string message))
+            if (!SharedTokenCacheProvider.SupportCachePersistence(out string message))
             {
-                WriteDebug(Resources.AutosaveNotSupported);
+                WriteDebug(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                 WriteDebug(message);
             }
 

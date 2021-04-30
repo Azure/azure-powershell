@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azpublicipaddress
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress
 schema: 2.0.0
 ---
 

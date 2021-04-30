@@ -12,16 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.Common
 {
     public static class AzureProfileConstants
     {
         public const string AzureAutosaveVariable = "Azure_Profile_Autosave";
+
+        public const string AzureSurveyUrl = "https://aka.ms/azpssurvey?Q_CHL=FEEDBACK";
+
+        public const string AzureSurveyUrlForError = "https://aka.ms/azpssurvey?Q_CHL=ERROR";
+
+        public static readonly string AzurePowerShellFeedbackMessage = string.Format(Resources.AzurePowerShellFeedback, AzureProfileConstants.AzureSurveyUrlForError);
+
+        public static readonly string AzurePowerShellFeedbackQuestion = string.Format(Resources.SendFeedbackOpenLinkAutomatically, AzureProfileConstants.AzureSurveyUrl);
+
+        public static readonly string AzurePowerShellFeedbackManually = string.Format(Resources.SendFeedbackOpenLinkManually, AzureProfileConstants.AzureSurveyUrl);
+
+        public static readonly string AzurePowerShellFeedbackWarning = string.Format(Resources.DefaultBrowserOpenFailure, AzureProfileConstants.AzureSurveyUrl);
     }
 }

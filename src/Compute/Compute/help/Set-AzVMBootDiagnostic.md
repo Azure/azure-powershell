@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help-Help.xml
 Module Name: Az.Compute
 ms.assetid: 9A6F140C-9F1C-4701-9603-FC6107FCAF92
-online version: https://docs.microsoft.com/en-us/powershell/module/az.compute/set-azvmbootdiagnostics
+online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics
 schema: 2.0.0
 ---
 

@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Authentication.Clients;
-using System;
-using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 

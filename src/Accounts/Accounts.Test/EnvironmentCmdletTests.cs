@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
-using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlet = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                Name = "Katal",
+                Name = "Katal"
             };
             var dict =new Dictionary<string, object>
             {
@@ -74,6 +73,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             };
 
             cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("Name");
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -189,6 +189,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict["PublishSettingsFileUrl"] = "http://microsoft.com";
             dict["EnableAdfsAuthentication"] = true;
             cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("Name");
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -211,6 +212,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict.Clear();
             dict["EnableAdfsAuthentication"] = true;
             cmdlet2.SetBoundParameters(dict);
+            cmdlet2.SetParameterSet("Name");
 
             cmdlet2.InvokeBeginProcessing();
             cmdlet2.ExecuteCmdlet();
@@ -229,6 +231,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             };
             dict.Clear();
             cmdlet3.SetBoundParameters(dict);
+            cmdlet3.SetParameterSet("Name");
 
             cmdlet3.InvokeBeginProcessing();
             cmdlet3.ExecuteCmdlet();
@@ -257,6 +260,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict["EnableAdfsAuthentication"] = true;
             dict["PublishSettingsFileUrl"] = "http://microsoft.com";
             cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("Name");
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -337,6 +341,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 StorageEndpoint = "core.windows.net",
             };
 
+            cmdlet.SetParameterSet("Name");
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -382,6 +387,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
                 AzureAttestationServiceEndpointResourceId = "AzureAttestationServiceEndpointResourceId",
                 AzureAttestationServiceEndpointSuffix = "https://AzureAttestationService",
+                AzureSynapseAnalyticsEndpointResourceId = "AzureSynapseAnalyticsEndpointResourceId",
+                AzureSynapseAnalyticsEndpointSuffix = "https://AzureSynapseAnalytics",
             };
 
             var dict = new Dictionary<string, object>();
@@ -407,7 +414,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
             dict["AzureAttestationServiceEndpointResourceId"] = "AzureAttestationServiceEndpointResourceId";
             dict["AzureAttestationServiceEndpointSuffix"] = "https://AzureAttestationService";
+            dict["AzureSynapseAnalyticsEndpointResourceId"] = "AzureSynapseAnalyticsEndpointResourceId";
+            dict["AzureSynapseAnalyticsEndpointSuffix"] = "https://AzureSynapseAnalytics";
             cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("Name");
 
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
@@ -436,6 +446,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
             Assert.Equal(cmdlet.AzureAttestationServiceEndpointResourceId, actual.AzureAttestationServiceEndpointResourceId);
             Assert.Equal(cmdlet.AzureAttestationServiceEndpointSuffix, actual.AzureAttestationServiceEndpointSuffix);
+            Assert.Equal(cmdlet.AzureSynapseAnalyticsEndpointResourceId, actual.AzureSynapseAnalyticsEndpointResourceId);
+            Assert.Equal(cmdlet.AzureSynapseAnalyticsEndpointSuffix, actual.AzureSynapseAnalyticsEndpointSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
@@ -481,6 +493,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var dict = new Dictionary<string, object>();
             dict["ActiveDirectoryEndpoint"] = "https://ActiveDirectoryEndpoint/";
             cmdlet.SetBoundParameters(dict);
+            cmdlet.SetParameterSet("Name");
+
             SetupConfirmation(commandRuntimeMock);
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();

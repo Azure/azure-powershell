@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.WebSites
 ms.assetid: 645E74D2-640D-494F-9798-4375FE6A0AF2
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.websites/restart-Azwebappslot
+online version: https://docs.microsoft.com/powershell/module/Az.websites/restart-Azwebappslot
 schema: 2.0.0
 ---
 

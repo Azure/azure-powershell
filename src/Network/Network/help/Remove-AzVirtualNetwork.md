@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C48E204D-D7EC-4EFD-ADC5-C6F593313B9B
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azvirtualnetwork
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork
 schema: 2.0.0
 ---
 

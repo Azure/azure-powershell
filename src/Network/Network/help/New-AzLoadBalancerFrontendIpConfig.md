@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D639E4F5-5AAD-4F13-9B48-70E90D2DFFCA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azloadbalancerfrontendipconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 

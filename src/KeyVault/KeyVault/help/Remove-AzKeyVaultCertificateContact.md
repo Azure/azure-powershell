@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
 ms.assetid: 35FAA57F-B2BD-4E43-8238-12F7A8269E4D
-online version: https://docs.microsoft.com/en-us/powershell/module/Az.keyvault/remove-AzKeyvaultcertificatecontact
+online version: https://docs.microsoft.com/powershell/module/Az.keyvault/remove-AzKeyvaultcertificatecontact
 schema: 2.0.0
 ---
 
