@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
     {
+        public const string OfflineDataTransferDeprecationMessage = "The offline data transfer feature is being deprecated. Please use server authoritative upload instead.";
+
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
@@ -166,6 +168,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the cloud seeded data.
         /// </summary>
         /// <value>The cloud seeded data.</value>
+        [CmdletParameterBreakingChange("OfflineDataTransfer", ChangeDescription = OfflineDataTransferDeprecationMessage)]
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
@@ -186,6 +189,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         /// Gets or sets the cloud seeded data file share URI.
         /// </summary>
         /// <value>The cloud seeded data file share URI.</value>
+        [CmdletParameterBreakingChange("OfflineDataTransferShareName", ChangeDescription = OfflineDataTransferDeprecationMessage)]
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = false,
