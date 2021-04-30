@@ -18,30 +18,32 @@ Run simple query
 #>
 function Search-AzureRmGraph-Query
 {
-	$queryResult = Search-AzGraph "project id, tags, properties | limit 2"
+	$queryResult = Search-AzGraph 'Resources | where tags != "" | project id, tags, properties | limit 2'
 
-	Assert-IsInstance Object[] $queryResult
-	Assert-AreEqual 2 $queryResult.Count
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResult
+	Assert-Null $queryResult.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResult.Data
+	Assert-AreEqual 2 $queryResult.Data.Count
 
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0]
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1]
-	Assert-PropertiesCount 4 $queryResult[0]
-	Assert-PropertiesCount 4 $queryResult[1]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1]
+	Assert-PropertiesCount 4 $queryResult.Data[0]
+	Assert-PropertiesCount 4 $queryResult.Data[1]
 
-	Assert-IsInstance String $queryResult[0].id
-	Assert-IsInstance String $queryResult[1].id
-	Assert-IsInstance String $queryResult[0].ResourceId
-	Assert-IsInstance String $queryResult[1].ResourceId
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0].tags
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1].tags
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0].properties
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1].properties
+	Assert-IsInstance String $queryResult.Data[0].id
+	Assert-IsInstance String $queryResult.Data[1].id
+	Assert-IsInstance String $queryResult.Data[0].ResourceId
+	Assert-IsInstance String $queryResult.Data[1].ResourceId
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0].tags
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1].tags
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0].properties
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1].properties
 	
-	Assert-AreEqual $queryResult[0].id $queryResult[0].ResourceId
-	Assert-AreEqual $queryResult[1].id $queryResult[1].ResourceId
+	Assert-AreEqual $queryResult.Data[0].id $queryResult.Data[0].ResourceId
+	Assert-AreEqual $queryResult.Data[1].id $queryResult.Data[1].ResourceId
 
-	Assert-PropertiesCount 2 $queryResult[0].properties
-	Assert-PropertiesCount 4 $queryResult[1].properties
+	Assert-PropertiesCount 7 $queryResult.Data[0].properties
+	Assert-PropertiesCount 7 $queryResult.Data[1].properties
 }
 
 <#
@@ -52,29 +54,31 @@ function Search-AzureRmGraph-PagedQuery
 {
 	# Page size was artificially set to 2 rows
 	$queryResult = Search-AzGraph "project id" -First 3 -Skip 2
-
-	Assert-IsInstance Object[] $queryResult
-	Assert-AreEqual 3 $queryResult.Count
 	
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0]
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1]
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[2]
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResult
+	Assert-IsInstance System.String $queryResult.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResult.Data
+	Assert-AreEqual 3 $queryResult.Data.Count
 	
-	Assert-PropertiesCount 2 $queryResult[0]
-	Assert-PropertiesCount 2 $queryResult[1]
-	Assert-PropertiesCount 2 $queryResult[2]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[2]
 	
-	Assert-IsInstance String $queryResult[0].id
-	Assert-IsInstance String $queryResult[1].id
-	Assert-IsInstance String $queryResult[2].id
+	Assert-PropertiesCount 2 $queryResult.Data[0]
+	Assert-PropertiesCount 2 $queryResult.Data[1]
+	Assert-PropertiesCount 2 $queryResult.Data[2]
+	
+	Assert-IsInstance String $queryResult.Data[0].id
+	Assert-IsInstance String $queryResult.Data[1].id
+	Assert-IsInstance String $queryResult.Data[2].id
 
-	Assert-IsInstance String $queryResult[0].ResourceId
-	Assert-IsInstance String $queryResult[1].ResourceId
-	Assert-IsInstance String $queryResult[2].ResourceId
+	Assert-IsInstance String $queryResult.Data[0].ResourceId
+	Assert-IsInstance String $queryResult.Data[1].ResourceId
+	Assert-IsInstance String $queryResult.Data[2].ResourceId
 
-	Assert-True { $queryResult[0].id.Length -gt 0 }
-	Assert-True { $queryResult[1].id.Length -gt 0 }
-	Assert-True { $queryResult[2].id.Length -gt 0 }
+	Assert-True { $queryResult.Data[0].id.Length -gt 0 }
+	Assert-True { $queryResult.Data[1].id.Length -gt 0 }
+	Assert-True { $queryResult.Data[2].id.Length -gt 0 }
 }
 
 <#
@@ -83,22 +87,28 @@ Run query with subscriptions explicitly passed
 #>
 function Search-AzureRmGraph-Subscriptions
 {
-	$testSubId = "eaab1166-1e13-4370-a951-6ed345a48c15"
+	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
 	$nonExsitentTestSubId = "000b1166-1e13-4370-a951-6ed345a48c16"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
-	$queryResultTenant = Search-AzGraph $query
+	$queryResultSubsFromContext = Search-AzGraph $query
 	$queryResultOneSub = Search-AzGraph $query -Subscription $testSubId
 	$queryResultMultipleSubs = Search-AzGraph $query -Subscription @($testSubId, $nonExsitentTestSubId)
-
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultTenant
-	Assert-AreEqual $testSubId $queryResultTenant.subscriptionId
 	
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultOneSub
-	Assert-AreEqual $testSubId $queryResultOneSub.subscriptionId
-
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultMultipleSubs
-	Assert-AreEqual $testSubId $queryResultMultipleSubs.subscriptionId
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultSubsFromContext
+	Assert-Null $queryResultSubsFromContext.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultSubsFromContext.Data
+	Assert-AreEqual $testSubId $queryResultSubsFromContext.Data.subscriptionId
+	
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultOneSub
+	Assert-Null $queryResultOneSub.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultOneSub.Data
+	Assert-AreEqual $testSubId $queryResultOneSub.Data.subscriptionId
+	
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultMultipleSubs
+	Assert-Null $queryResultMultipleSubs.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultMultipleSubs.Data
+	Assert-AreEqual $testSubId $queryResultMultipleSubs.Data.subscriptionId
 }
 
 <#
@@ -107,24 +117,24 @@ Run query with management groups explicitly passed
 #>
 function Search-AzureRmGraph-ManagementGroups
 {
-	$testSubId = "eaab1166-1e13-4370-a951-6ed345a48c15"
-	$testMgId1 = "f686d426-8d16-42db-81b7-ab578e110ccd"
+	$testSubId = "82506e98-9fdb-41f5-ab67-031005041a26"
+	$testMgId1 = "72f988bf-86f1-41af-91ab-2d7cd011db47"
 	$testMgId2 = "makharchMg"
 	$nonExistentTestMgId = "nonExistentMg"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
-	$queryResultTenant = Search-AzGraph $query
 	$queryResultOneMg = Search-AzGraph $query -ManagementGroup $testMgId1
 	$queryResultMultipleMgs = Search-AzGraph $query -ManagementGroup @($testMgId1, $testMgId2, $nonExistentTestMgId) -AllowPartialScope
 	
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultTenant
-	Assert-AreEqual $testSubId $queryResultTenant.subscriptionId
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultOneMg	
+	Assert-Null $queryResultOneMg.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultOneMg.Data
+	Assert-AreEqual $testSubId $queryResultOneMg.Data.subscriptionId
 	
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultOneMg
-	Assert-AreEqual $testSubId $queryResultOneMg.subscriptionId
-
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResultMultipleMgs
-	Assert-AreEqual $testSubId $queryResultMultipleMgs.subscriptionId
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResultMultipleMgs
+	Assert-Null $queryResultMultipleMgs.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResultMultipleMgs.Data
+	Assert-AreEqual $testSubId $queryResultMultipleMgs.Data.subscriptionId
 }
 
 <#
@@ -133,28 +143,30 @@ Run simple query with the skip token
 #>
 function Search-AzureRmGraph-SkipTokenQuery
 {
-	$queryResult = Search-AzGraph "project id, properties" -SkipToken "ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNiwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FybXRvcG9sb2d5Lmt1c3RvLndpbmRvd3MubmV0Ig0KfQ=="
-
-	Assert-IsInstance Object[] $queryResult
-	Assert-AreEqual 3 $queryResult.Count
-
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0]
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1]
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[2]
-
-	Assert-IsInstance String $queryResult[0].id
-	Assert-IsInstance String $queryResult[1].id
-	Assert-IsInstance String $queryResult[2].id
-	Assert-IsInstance String $queryResult[0].ResourceId
-	Assert-IsInstance String $queryResult[1].ResourceId
-	Assert-IsInstance String $queryResult[2].ResourceId
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[0].properties
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[1].properties
-	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult[2].properties
+	$queryResult = Search-AzGraph "project id, properties" -SkipToken "ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogMywNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1ldXMtc2l4LXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ=="
 	
-	Assert-AreEqual $queryResult[0].id $queryResult[0].ResourceId
-	Assert-AreEqual $queryResult[1].id $queryResult[1].ResourceId
-	Assert-AreEqual $queryResult[2].id $queryResult[2].ResourceId
+	Assert-IsInstance Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse $queryResult
+	Assert-IsInstance System.String $queryResult.SkipToken
+	Assert-IsInstance System.Collections.Generic.List[PSObject] $queryResult.Data
+	Assert-AreEqual 3 $queryResult.Data.Count
+
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1]
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[2]
+
+	Assert-IsInstance String $queryResult.Data[0].id
+	Assert-IsInstance String $queryResult.Data[1].id
+	Assert-IsInstance String $queryResult.Data[2].id
+	Assert-IsInstance String $queryResult.Data[0].ResourceId
+	Assert-IsInstance String $queryResult.Data[1].ResourceId
+	Assert-IsInstance String $queryResult.Data[2].ResourceId
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[0].properties
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[1].properties
+	Assert-IsInstance System.Management.Automation.PSCustomObject $queryResult.Data[2].properties
+	
+	Assert-AreEqual $queryResult.Data[0].id $queryResult.Data[0].ResourceId
+	Assert-AreEqual $queryResult.Data[1].id $queryResult.Data[1].ResourceId
+	Assert-AreEqual $queryResult.Data[2].id $queryResult.Data[2].ResourceId
 }
 
 <#

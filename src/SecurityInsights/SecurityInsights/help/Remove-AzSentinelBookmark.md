@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelBookmark
 
 ## SYNOPSIS
-Delete a Bookmark.
+Deletes a Bookmark.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzSentinelBookmark -InputObject <PSSentinelBookmark> [-PassThru]
 
 ## DESCRIPTION
 The **Remove-AzSentinelBookmark** cmdlet permanently deletes a Bookmark from a specified workspace.
-You can pass an **Bookmark** object by using the pipeline operator, or alternatively you can specify the required parameters.
+You can pass an Bookmark object by using the pipeline operator, or alternatively you can specify the required parameters.
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
 
 ## EXAMPLES
@@ -37,6 +37,18 @@ PS C:\> Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -Workspac
 ```
 
 This command removes the Bookmark from the workspace.
+
+### Example 2
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+$Bookmark = Get-AzSentinelBookmark @SentinelConnection | Where-Object {$_.DisplayName -eq "My Bookmark"}
+Remove-AzSentinelBookmark @SentinelConnection -BookmarkId $Bookmark.Name
+```
+
+This example uses a connection object to pass the resourceGroupName and workspaceName to get a Bookmark with a specific name. It then uses the BookmarkId to remove it.
 
 ## PARAMETERS
 

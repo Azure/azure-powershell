@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'YamlDotNet.dll', 'AutoMapper.dll', 
@@ -76,11 +76,11 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster', 
-               'Import-AzAksCredential', 'Start-AzAksDashboard', 
+               'Import-AzAksCredential', 'Start-AzAksDashboard',
                'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool', 
                'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool', 
                'Install-AzAksKubectl', 'Get-AzAksVersion', 'Enable-AzAksAddOn', 
-               'Disable-AzAksAddOn'
+               'Disable-AzAksAddOn', 'Set-AzAksClusterCredential'
 
 # Variables to export from this module
 # VariablesToExport = @()

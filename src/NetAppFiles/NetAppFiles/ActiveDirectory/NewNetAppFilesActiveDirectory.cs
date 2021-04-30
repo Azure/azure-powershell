@@ -149,7 +149,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
             HelpMessage = "When LDAP over SSL/TLS is enabled, specifies whether or not the LDAP traffic needs to be secured via TLS.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter LdapOverTLS { get; set; }
-        
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AllowLocalNfsUsersWithLdap { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -192,7 +197,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                     SecurityOperators = SecurityOperator,
                     AesEncryption = AesEncryption,
                     LdapSigning = LdapSigning,
-                    LdapOverTLS = LdapOverTLS
+                    LdapOverTLS = LdapOverTLS,
+                    AllowLocalNfsUsersWithLdap = AllowLocalNfsUsersWithLdap
                 };
                 if (anfAccount.ActiveDirectories == null)
                 {

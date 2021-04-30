@@ -53,31 +53,32 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
             if (ProfileName == null && ResourceGroupName == null)
             {
                 // List by subscription.
-                var profiles = CdnManagementClient.Profiles.List().Select(p => p.ToPsProfile());
+                var profiles = CdnManagementClient.Profiles.List()
+                               .Where(profile => (profile.Sku.Name != "Premium_AzureFrontDoor") && (profile.Sku.Name != "Standard_AzureFrontDoor"))
+                               .Select(profile => profile.ToPsProfile());
+
                 WriteVerbose(Resources.Success);
                 WriteObject(profiles, true);
             }
             else if (ProfileName == null && ResourceGroupName != null)
             {
                 // List by Resource Group name.
-                var profiles =
-                    CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName).Select(p => p.ToPsProfile());
+                var profiles = CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName)
+                               .Where(profile => (profile.Sku.Name != "Premium_AzureFrontDoor") && (profile.Sku.Name != "Standard_AzureFrontDoor"))
+                               .Select(profile => profile.ToPsProfile());
+
                 WriteVerbose(Resources.Success);
                 WriteObject(profiles.ToArray(), true);
             }
             else if (ProfileName != null && ResourceGroupName == null)
             {
-                // Let's return all profiles that match that name, or a single profile if there's just one.
-                var profiles = CdnManagementClient.Profiles.List().Select(p => p.ToPsProfile()).Where(p => p.Name == ProfileName);
+                var profiles = CdnManagementClient.Profiles.List()
+                               .Where(profile => (profile.Sku.Name != "Premium_AzureFrontDoor") && (profile.Sku.Name != "Standard_AzureFrontDoor"))
+                               .Where(profile => profile.Name == this.ProfileName)
+                               .Select(profile => profile.ToPsProfile());
+
                 WriteVerbose(Resources.Success);
-                if(profiles.Count() == 1)
-                {
-                    WriteObject(profiles.First());
-                }
-                else
-                {
-                    WriteObject(profiles, true);
-                }
+                WriteObject(profiles);
             }
             else
             {
@@ -85,8 +86,11 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 {
                     // Get by both Profile Name and Resource Group Name.
                     var profile = CdnManagementClient.Profiles.Get(ResourceGroupName, ProfileName);
-                    WriteVerbose(Resources.Success);
-                    WriteObject(profile.ToPsProfile());
+                    if ((profile.Sku.Name != "Premium_AzureFrontDoor") && (profile.Sku.Name != "Standard_AzureFrontDoor"))
+                    {
+                        WriteVerbose(Resources.Success);
+                        WriteObject(profile.ToPsProfile());
+                    }
                 }
                 catch(ErrorResponseException ex)
                 {

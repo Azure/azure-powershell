@@ -204,6 +204,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies whether LDAP is enabled or not for a given NFS volume.")]
+        public SwitchParameter LdapEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -270,7 +275,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 ThroughputMibps = ThroughputMibps,
                 KerberosEnabled = KerberosEnabled.IsPresent,
                 SmbEncryption = SmbEncryption,
-                SmbContinuouslyAvailable = SmbContinuouslyAvailable
+                SmbContinuouslyAvailable = SmbContinuouslyAvailable,
+                LdapEnabled = LdapEnabled
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

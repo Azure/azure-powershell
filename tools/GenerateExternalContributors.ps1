@@ -17,7 +17,6 @@ param(
     [int]
     $DaysBack = 28
 )
-
 $SinceDate = (Get-Date).AddDays((0-$DaysBack))
 $SinceDateStr =  $SinceDate.ToString('yyyy-MM-ddTHH:mm:ssZ')
 $Branch = git branch --show-current # The Git 2.22 and above support.
@@ -74,12 +73,35 @@ $sortPRs = $validPRs | Sort-Object -Property @{Expression = {$_.author.login}; D
 
 $skipContributors = @('aladdindoc')
 
-$contributorsMDHeaderFlag = $True
+# Get team members of the azure-powershell-team.
+$teamMembers = (Invoke-WebRequest -Uri "https://api.github.com/orgs/Azure/teams/azure-powershell-team/members" -Authentication Bearer -Token $token).Content | ConvertFrom-Json
+
+foreach ($members in $teamMembers) {
+  $skipContributors += $members.login
+}
+
+# Output external contributors information.
+Write-Debug 'Output external contributors information.'
+'### Thanks to our community contributors' | Out-File -FilePath $contributorsMDFile -Force
+Write-Host '### Thanks to our community contributors'
+
 for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
-    if ($skipContributors.Contains($sortPRs[$PR].author.login))
+
+    $account = $sortPRs[$PR].author.login
+    $name = $sortPRs[$PR].commit.author.name
+    $index = $sortPRs[$PR].commit.message.IndexOf("`n`n")
+
+    if ($skipContributors.Contains($account))
     {
         continue
     }
+
+    # Skip if commit author exists in skipContributors list.
+    if ([System.String]::IsNullOrEmpty($account) -and $skipContributors.Contains($name))
+    {
+        continue
+    }
+    
     # Check whether the contributor belongs to the Azure organization.
     Invoke-RestMethod -Uri "https://api.github.com/orgs/Azure/members/$($sortPRs[$PR].author.login)" -Authentication Bearer -Token $token -ResponseHeadersVariable 'ResponseHeaders' -StatusCodeVariable 'StatusCode' -SkipHttpErrorCheck > $null
     if ($StatusCode -eq '204') {
@@ -87,15 +109,7 @@ for ($PR = 0; $PR -lt $sortPRs.Length; $PR++) {
         $skipContributors += $sortPRs[$PR].author.login
         continue
     }
-    if ($contributorsMDHeaderFlag) {
-        Write-Debug 'Output exteneral contributors infomation.'
-        '### Thanks to our community contributors' | Out-File -FilePath $contributorsMDFile -Force
-        Write-Host '### Thanks to our community contributors'
-        $contributorsMDHeaderFlag = $False
-    }
-    $account = $sortPRs[$PR].author.login
-    $name = $sortPRs[$PR].commit.author.name
-    $index = $sortPRs[$PR].commit.message.IndexOf("`n`n")
+
     if ($index -lt 0) {
         $commitMessage = $sortPRs[$PR].commit.message
     } else {

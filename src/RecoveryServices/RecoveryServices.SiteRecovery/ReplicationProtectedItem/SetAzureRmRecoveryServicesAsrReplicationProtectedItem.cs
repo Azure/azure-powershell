@@ -130,6 +130,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter]
         public string RecoveryAvailabilitySet { get; set; }
 
+        /// <summary>
+        /// Gets or sets the SQL Server license type to the machine to in the event of a failover.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.NoLicenseTypeSql,
+            Constants.LicenseTypePAYG,
+            Constants.LicenseTypeAHUB)]
+        public string SqlServerLicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets target VM tags.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public IDictionary<string, string> RecoveryVmTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the disks.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public IDictionary<string, string> DiskTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNull]
+        public IDictionary<string, string> RecoveryNicTag { get; set; }
+
         // <summary>
         ///     Gets or sets the resource ID of the availability zone to failover this virtual machine to.
         /// </summary>
@@ -141,6 +173,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter]
         public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the virtual machine scale set Id for replication protected item after failover.
+        /// </summary>
+        [Parameter]
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
 
         /// <summary>
         ///     Gets or sets the availability set for replication protected item after failover.
@@ -285,6 +323,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.IsParameterBound(c => c.RecoveryAvailabilitySet) &&
                     this.IsParameterBound(c => c.RecoveryAvailabilityZone) &&
                     this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId) &&
+                    this.IsParameterBound(c => c.RecoveryVirtualMachineScaleSetId) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType) &&
@@ -339,9 +378,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var useManagedDisk = this.UseManagedDisk;
                 var availabilitySetId = this.RecoveryAvailabilitySet;
                 var proximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
+                var virtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId;
                 var availabilityZone = this.RecoveryAvailabilityZone;
                 var primaryNic = this.PrimaryNic;
                 var diskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap;
+                var sqlServerLicenseType = this.SqlServerLicenseType;
+                var recoveryVmTag = this.RecoveryVmTag;
+                var recoveryNicTag = this.RecoveryNicTag;
+                var diskTag = this.DiskTag;
                 var tfoNetworkId = string.Empty;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
                 var providerSpecificInput = new UpdateReplicationProtectedItemProviderInput();
@@ -371,6 +415,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     if (string.IsNullOrEmpty(this.LicenseType))
                     {
                         licenseType = providerSpecificDetails.LicenseType;
+                    }
+
+                    if (string.IsNullOrEmpty(this.SqlServerLicenseType))
+                    {
+                        sqlServerLicenseType = providerSpecificDetails.SqlServerLicenseType;
                     }
 
                     availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
@@ -409,6 +458,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             ToDictionary(x => x.DiskId, x => x.DiskEncryptionSetId);
                     }
 
+                    if (this.RecoveryVmTag == null)
+                    {
+                        recoveryVmTag = providerSpecificDetails.TargetVmTags;
+                    }
+
+                    if (this.RecoveryNicTag == null)
+                    {
+                        recoveryNicTag = providerSpecificDetails.TargetNicTags;
+                    }
+
+                    if (this.DiskTag == null)
+                    {
+                        diskTag = providerSpecificDetails.TargetManagedDiskTags;
+                    }
+                    else if (useManagedDisk == Constants.False)
+                    {
+                        throw new PSArgumentException(
+                                  string.Format(
+                                      Resources.DiskTagCannotBeSet,
+                                      diskTag,
+                                      useManagedDisk));
+                    }
+
                     var deploymentType = Utilities.GetValueFromArmId(
                         providerSpecificDetails.RecoveryAzureStorageAccount,
                         ARMResourceTypeConstants.Providers);
@@ -432,7 +504,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 UseManagedDisks = useManagedDisk,
                                 DiskIdToDiskEncryptionMap = this.DiskIdToDiskEncryptionSetMap,
                                 TargetAvailabilityZone = availabilityZone,
-                                TargetProximityPlacementGroupId = proximityPlacementGroupId
+                                TargetProximityPlacementGroupId = proximityPlacementGroupId,
+                                SqlServerLicenseType = sqlServerLicenseType,
+                                TargetVmTags = recoveryVmTag,
+                                TargetManagedDiskTags = diskTag,
+                                TargetNicTags = recoveryNicTag
                             };
                     }
 
@@ -463,6 +539,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         licenseType = providerSpecificDetails.LicenseType;
                     }
 
+                    if (string.IsNullOrEmpty(this.SqlServerLicenseType))
+                    {
+                        sqlServerLicenseType = providerSpecificDetails.SqlServerLicenseType;
+                    }
+
                     availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
                         ? this.RecoveryAvailabilitySet : providerSpecificDetails.RecoveryAvailabilitySetId;
 
@@ -488,6 +569,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         primaryNic = providerSpecificDetails.SelectedSourceNicId;
                     }
 
+                    if (this.RecoveryVmTag == null)
+                    {
+                        recoveryVmTag = providerSpecificDetails.TargetVmTags;
+                    }
+
+                    if (this.RecoveryNicTag == null)
+                    {
+                        recoveryNicTag = providerSpecificDetails.TargetNicTags;
+                    }
+
+                    if (this.DiskTag == null)
+                    {
+                        diskTag = providerSpecificDetails.TargetManagedDiskTags;
+                    }
+                    else if (useManagedDisk == Constants.False)
+                    {
+                        throw new PSArgumentException(
+                                  string.Format(
+                                      Resources.DiskTagCannotBeSet,
+                                      diskTag,
+                                      useManagedDisk));
+                    }
+
                     var deploymentType = Utilities.GetValueFromArmId(
                         providerSpecificDetails.TargetVmId,
                         ARMResourceTypeConstants.Providers);
@@ -510,7 +614,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId,
                                 UseManagedDisks = useManagedDisk,
                                 TargetAvailabilityZone = availabilityZone,
-                                TargetProximityPlacementGroupId = proximityPlacementGroupId
+                                TargetProximityPlacementGroupId = proximityPlacementGroupId,
+                                SqlServerLicenseType = sqlServerLicenseType,
+                                TargetVmTags = recoveryVmTag,
+                                TargetNicTags = recoveryNicTag,
+                                TargetManagedDiskTags = diskTag
                             };
                     }
                     vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
@@ -539,6 +647,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     proximityPlacementGroupId = this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId)
                        ? this.RecoveryProximityPlacementGroupId
                        : providerSpecificDetails.RecoveryProximityPlacementGroupId;
+
+                    virtualMachineScaleSetId = this.IsParameterBound(c => c.RecoveryVirtualMachineScaleSetId)
+                        ? this.RecoveryVirtualMachineScaleSetId
+                        : providerSpecificDetails.RecoveryVirtualMachineScaleSetId;
 
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
@@ -607,6 +719,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                         RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                         RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
+                        RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
                         RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                         ManagedDiskUpdateDetails = managedDiskUpdateDetails,
                         TfoAzureVMName = this.TfoAzureVMName,
@@ -752,27 +865,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vMNicInputDetails.RecoveryNicName = nic.RecoveryNicName;
                         vMNicInputDetails.RecoveryNicResourceGroupName = nic.RecoveryNicResourceGroupName;
                         vMNicInputDetails.ReuseExistingNic = nic.ReuseExistingNic;
-                        vMNicInputDetails.RecoveryVMSubnetName = nic.RecoveryVMSubnetName;
                         vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery =
                             nic.EnableAcceleratedNetworkingOnRecovery;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
                             nic.RecoveryNetworkSecurityGroupId;
-                        vMNicInputDetails.ReplicaNicStaticIPAddress =
-                            nic.RecoveryIPConfigs?.FirstOrDefault()?.StaticIPAddress;
-                        vMNicInputDetails.RecoveryPublicIpAddressId =
-                            nic.RecoveryIPConfigs?.FirstOrDefault()?.PublicIpAddressId;
-                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
-                            nic.RecoveryIPConfigs?.FirstOrDefault()?.LBBackendAddressPoolIds;
-
+                        vMNicInputDetails.IpConfigs = nic.IPConfigs?.Select(ip =>
+                            new IPConfigInputDetails()
+                            {
+                                IpConfigName = ip.IPConfigName,
+                                IsPrimary = ip.IsPrimary,
+                                IsSeletedForFailover = ip.IsSeletedForFailover,
+                                RecoverySubnetName = ip.RecoverySubnetName,
+                                RecoveryStaticIPAddress = ip.RecoveryStaticIPAddress,
+                                RecoveryPublicIPAddressId = ip.RecoveryPublicIPAddressId,
+                                RecoveryLBBackendAddressPoolIds = ip.RecoveryLBBackendAddressPoolIds,
+                                TfoSubnetName = ip.TfoSubnetName,
+                                TfoStaticIPAddress = ip.TfoStaticIPAddress,
+                                TfoPublicIPAddressId = ip.TfoPublicIPAddressId,
+                                TfoLBBackendAddressPoolIds = ip.TfoLBBackendAddressPoolIds
+                            }).ToList() ?? null;
                         vMNicInputDetails.TfoNicName = nic.TfoNicName;
                         vMNicInputDetails.TfoNicResourceGroupName = nic.TfoNicResourceGroupName;
                         vMNicInputDetails.TfoReuseExistingNic = nic.TfoReuseExistingNic;
-                        vMNicInputDetails.TfoVMSubnetName = nic.TfoVMSubnetName;
                         vMNicInputDetails.EnableAcceleratedNetworkingOnTfo =
                             nic.EnableAcceleratedNetworkingOnTfo;
                         vMNicInputDetails.TfoNetworkSecurityGroupId =
                             nic.TfoNetworkSecurityGroupId;
-                        vMNicInputDetails.TfoIPConfigs = nic.TfoIPConfigs;
 
                         vMNicInputDetails.SelectionType =
                             string.IsNullOrEmpty(this.NicSelectionType)
@@ -791,16 +909,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         && string.Compare(nDetails.NicId, this.UpdateNic, StringComparison.OrdinalIgnoreCase) == 0)
                     {
                         vMNicInputDetails.NicId = this.UpdateNic;
-                        vMNicInputDetails.RecoveryVMSubnetName = this.RecoveryNicSubnetName;
-                        vMNicInputDetails.ReplicaNicStaticIPAddress =
-                            this.RecoveryNicStaticIPAddress;
+
+                        var dbIpConfig = nDetails.IpConfigs?[0];
+                        var ipConfig = new IPConfigInputDetails()
+                        {
+                            IpConfigName = dbIpConfig?.Name,
+                            IsPrimary = dbIpConfig?.IsPrimary ?? true,
+                            IsSeletedForFailover = true,
+                            RecoverySubnetName = this.RecoveryNicSubnetName,
+                            RecoveryStaticIPAddress = this.RecoveryNicStaticIPAddress,
+                            RecoveryPublicIPAddressId = this.RecoveryPublicIPAddressId,
+                            RecoveryLBBackendAddressPoolIds = this.RecoveryLBBackendAddressPoolId?.ToList()
+                        };
+                        vMNicInputDetails.IpConfigs = new List<IPConfigInputDetails>() { ipConfig };
                         vMNicInputDetails.SelectionType =
                             string.IsNullOrEmpty(this.NicSelectionType)
                                 ? Constants.SelectedByUser : this.NicSelectionType;
-                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
-                            this.RecoveryLBBackendAddressPoolId?.ToList();
-                        vMNicInputDetails.RecoveryPublicIpAddressId =
-                            this.RecoveryPublicIPAddressId;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
                             this.RecoveryNetworkSecurityGroupId;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
@@ -820,18 +944,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     else
                     {
                         vMNicInputDetails.NicId = nDetails.NicId;
-                        vMNicInputDetails.RecoveryVMSubnetName = nDetails.RecoveryVMSubnetName;
-                        vMNicInputDetails.ReplicaNicStaticIPAddress =
-                            nDetails.ReplicaNicStaticIPAddress;
                         vMNicInputDetails.SelectionType = nDetails.SelectionType;
-                        vMNicInputDetailsList.Add(vMNicInputDetails);
+                        vMNicInputDetails.IpConfigs = nDetails.IpConfigs?.Select(ip =>
+                            new IPConfigInputDetails()
+                            {
+                                IpConfigName = ip.Name,
+                                IsPrimary = ip.IsPrimary,
+                                IsSeletedForFailover = ip.IsSeletedForFailover,
+                                RecoverySubnetName = ip.RecoverySubnetName,
+                                RecoveryStaticIPAddress = ip.RecoveryStaticIPAddress,
+                                RecoveryPublicIPAddressId = ip.RecoveryPublicIPAddressId,
+                                RecoveryLBBackendAddressPoolIds = ip.RecoveryLBBackendAddressPoolIds
+                            })?.ToList();
                         vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery = nDetails.EnableAcceleratedNetworkingOnRecovery;
-                        vMNicInputDetails.RecoveryLBBackendAddressPoolIds =
-                            nDetails.RecoveryLBBackendAddressPoolIds;
-                        vMNicInputDetails.RecoveryPublicIpAddressId =
-                            nDetails.RecoveryPublicIpAddressId;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
                             nDetails.RecoveryNetworkSecurityGroupId;
+                        vMNicInputDetailsList.Add(vMNicInputDetails);
                     }
                 }
             }

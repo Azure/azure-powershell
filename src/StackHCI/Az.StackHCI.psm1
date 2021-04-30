@@ -106,31 +106,26 @@ $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
 $AuthorityAzureCloud = "https://login.microsoftonline.com"
 $BillingServiceApiScopeAzureCloud = "https://azurestackhci-usage.trafficmanager.net/.default"
 $GraphServiceApiScopeAzureCloud = "https://graph.microsoft.com/.default"
-$GraphEndpointResourceIdAzureCloud = "https://graph.windows.net/"
 
 $ServiceEndpointAzurePPE = "https://azurestackhci-df.azurefd.net"
 $AuthorityAzurePPE = "https://login.windows-ppe.net"
 $BillingServiceApiScopeAzurePPE = "https://azurestackhci-usage-df.azurewebsites.net/.default"
 $GraphServiceApiScopeAzurePPE = "https://graph.ppe.windows.net/.default"
-$GraphEndpointResourceIdAzurePPE = "https://graph.ppe.windows.net/"
 
-$ServiceEndpointAzureChinaCloud = "https://azurestackhci-usage.trafficmanager.cn"
-$AuthorityAzureChinaCloud = "https://login.chinacloudapi.cn"
-$BillingServiceApiScopeAzureChinaCloud = "https://azurestackhci-usage.azurewebsites.cn/.default"
-$GraphServiceApiScopeAzureChinaCloud = "https://graph.chinacloudapi.cn/.default"
-$GraphEndpointResourceIdAzureChinaCloud = "https://graph.chinacloudapi.cn/"
+$ServiceEndpointAzureChinaCloud = "https://dp.stackhci.azure.cn"
+$AuthorityAzureChinaCloud = "https://login.partner.microsoftonline.cn"
+$BillingServiceApiScopeAzureChinaCloud = "$UsageServiceFirstPartyAppId/.default"
+$GraphServiceApiScopeAzureChinaCloud = "https://microsoftgraph.chinacloudapi.cn/.default"
 
 $ServiceEndpointAzureUSGovernment = "https://azurestackhci-usage.trafficmanager.us"
 $AuthorityAzureUSGovernment = "https://login.microsoftonline.us"
 $BillingServiceApiScopeAzureUSGovernment = "https://azurestackhci-usage.azurewebsites.us/.default"
 $GraphServiceApiScopeAzureUSGovernment = "https://graph.windows.net/.default"
-$GraphEndpointResourceIdAzureUSGovernment = "https://graph.windows.net/"
 
 $ServiceEndpointAzureGermanCloud = "https://azurestackhci-usage.trafficmanager.de"
 $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
-$GraphEndpointResourceIdAzureGermancloud = "https://graph.cloudapi.de/"
 
 $RPAPIVersion = "2020-10-01"
 
@@ -187,6 +182,86 @@ param(
     Start-Transcript -LiteralPath $LogFileName -Append | out-null
 }
 
+function Retry-Command {
+    param (
+        [parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [scriptblock] $ScriptBlock,
+        [int]  $Attempts                   = 8,
+        [int]  $MinWaitTimeInSeconds       = 5,
+        [int]  $MaxWaitTimeInSeconds       = 60,
+        [int]  $BaseBackoffTimeInSeconds   = 2,
+        [bool] $RetryIfNullOutput          = $true
+        )
+
+    $attempt = 0
+    $completed = $false
+    $result = $null
+
+    if($MaxWaitTimeInSeconds -lt $MinWaitTimeInSeconds)
+    {
+        throw "MaxWaitTimeInSeconds($MaxWaitTimeInSeconds) is less than MinWaitTimeInSeconds($MinWaitTimeInSeconds)"
+    }
+
+    while (-not $completed) {
+        try
+        {
+            $attempt = $attempt + 1
+            $result = Invoke-Command -ScriptBlock $ScriptBlock
+
+            if($RetryIfNullOutput)
+            {
+                if($result -ne $null)
+                {
+                    Write-Verbose ("Command [{0}] succeeded. Non null result received." -f $ScriptBlock)
+                    $completed = $true
+                }
+                else
+                {
+                    throw "Null result received."
+                }
+            }
+            else
+            {
+                Write-Verbose ("Command [{0}] succeeded." -f $ScriptBlock)
+                $completed = $true
+            }
+        }
+        catch
+        {
+            $exception = $_.Exception
+
+            if([int]$exception.ErrorCode -eq [int][system.net.httpstatuscode]::Forbidden)
+            {
+                Write-Verbose ("Command [{0}] failed Authorization. Attempt {1}. Exception: {2}" -f $ScriptBlock, $attempt,$exception.Message)
+                throw
+            }
+            else
+            {
+                if ($attempt -ge $Attempts)
+                {
+                    Write-Verbose ("Command [{0}] failed the maximum number of {1} attempts. Exception: {2}" -f $ScriptBlock, $attempt,$exception.Message)
+                    throw
+                }
+                else
+                {
+                    $secondsDelay = $MinWaitTimeInSeconds + [int]([Math]::Pow($BaseBackoffTimeInSeconds,($attempt-1)))
+
+                    if($secondsDelay -gt $MaxWaitTimeInSeconds)
+                    {
+                        $secondsDelay = $MaxWaitTimeInSeconds
+                    }
+
+                    Write-Verbose ("Command [{0}] failed. Retrying in {1} seconds. Exception: {2}" -f $ScriptBlock, $secondsDelay,$exception.Message)
+                    Start-Sleep $secondsDelay
+                }
+            }
+        }
+    }
+
+    return $result
+}
+
 function Get-PortalDomain{
 param(
     [string] $TenantId,
@@ -228,26 +303,7 @@ param(
     # Below commands ensure there is graph access token in cache
     Get-AzADApplication -DisplayName SomeApp1 -ErrorAction Ignore | Out-Null
 
-    if($EnvironmentName -eq $AzureCloud)
-    {
-        $graphTokenItemResource = $GraphEndpointResourceIdAzureCloud
-    }
-    elseif($EnvironmentName -eq $AzureChinaCloud)
-    {
-        $graphTokenItemResource = $GraphEndpointResourceIdAzureChinaCloud
-    }
-    elseif($EnvironmentName -eq $AzureUSGovernment)
-    {
-        $graphTokenItemResource = $GraphEndpointResourceIdAzureUSGovernment
-    }
-    elseif($EnvironmentName -eq $AzureGermanCloud)
-    {
-        $graphTokenItemResource = $GraphEndpointResourceIdAzureGermancloud
-    }
-    elseif($EnvironmentName -eq $AzurePPE)
-    {
-        $graphTokenItemResource = $GraphEndpointResourceIdAzurePPE
-    }
+    $graphTokenItemResource = (Get-AzContext).Environment.GraphUrl
 
     $authFactory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory
     $azContext = Get-AzContext
@@ -363,9 +419,7 @@ param(
     )
 
     Write-Verbose "Adding the required permissions to AAD Application $AppId if not already added"
-    $usagesp = Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"
-
-    $app = Get-AzureADApplication -Filter "AppId eq '$AppId'"
+    $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$AppId'"}
     $shouldAddRequiredPerms = $false
 
     if($app.RequiredResourceAccess -eq $Null)
@@ -410,7 +464,7 @@ param(
     if($shouldAddRequiredPerms -eq $true)
     {
         $requiredResourcesAccess = Get-RequiredResourceAccess
-        Set-AzureADApplication -ObjectId $app.ObjectId -RequiredResourceAccess $requiredResourcesAccess | Out-Null
+        Retry-Command -ScriptBlock { Set-AzureADApplication -ObjectId $app.ObjectId -RequiredResourceAccess $requiredResourcesAccess | Out-Null} -RetryIfNullOutput $false
     }
 }
 
@@ -420,41 +474,16 @@ param(
     )
 
     Write-Verbose "Checking admin consent status for AAD Application $AppId"
-    $usagesp = Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"
 
-    $appSP = Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"
-    $assignedPerms = Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId
+    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
+
+    # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
+    $assignedPerms = Retry-Command -ScriptBlock { (Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId) + (Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId)} -RetryIfNullOutput $false
 
     $clusterRead = $assignedPerms | where { ($_.Id -eq $ClusterReadPermission) }
     $clusterReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterReadWritePermission) }
     $clusterNodeRead = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadPermission) }
     $clusterNodeReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadWritePermission) }
-
-    if($clusterRead -eq $Null -or $clusterReadWrite -eq $Null -or $clusterNodeRead -eq $Null -or $clusterNodeReadWrite -eq $Null)
-    {
-        # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
-        $assignedPerms = Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId
-    }
-
-    if($clusterRead -eq $Null)
-    {
-        $clusterRead = $assignedPerms | where { ($_.Id -eq $ClusterReadPermission) }
-    }
-
-    if($clusterReadWrite -eq $Null)
-    {
-        $clusterReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterReadWritePermission) }
-    }
-
-    if($clusterNodeRead -eq $Null)
-    {
-        $clusterNodeRead = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadPermission) }
-    }
-
-    if($clusterNodeReadWrite -eq $Null)
-    {
-        $clusterNodeReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterNodeReadWritePermission) }
-    }
 
     $assignedPermsList = New-Object System.Collections.Generic.List[Microsoft.Open.AzureAD.Model.DirectoryObject]
     $assignedPermsList.Add($clusterRead)
@@ -485,39 +514,14 @@ param(
 
     Write-Verbose "Creating AAD Application $AppName"
     # If the subscription is just registered to have HCI resources, sometimes it may take a while for the billing service principal to propogate
-    $usagesp = ''
-    $Stoploop = $false
-    [int]$Retrycount = "0"
- 
-    do {
-        $usagesp = Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"
-        if ($usagesp -eq $Null)
-        {
-            if ($Retrycount -gt 5)
-            {
-                Write-Error "Could not get service principal of Billing Service."
-                $Stoploop = $true
-            }
-            else
-            {
-                $Stoploop = $false
-                Write-Verbose "Could not get service principal of Billing Service. Retrying in 10 seconds..."
-                Start-Sleep -Seconds 10
-                $Retrycount = $Retrycount + 1
-            }
-        }
-        else
-        {
-            $Stoploop = $true
-        }
-    }
-    While ($Stoploop -eq $false)
+
+    $usagesp = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"}
 
     $requiredResourcesAccess = Get-RequiredResourceAccess
 
     # Create application
-    $app = New-AzureADApplication -DisplayName $AppName -RequiredResourceAccess $requiredResourcesAccess
-    $sp = New-AzureADServicePrincipal -AppId $app.AppId
+    $app = Retry-Command -ScriptBlock { New-AzureADApplication -DisplayName $AppName -RequiredResourceAccess $requiredResourcesAccess }
+    $sp = Retry-Command -ScriptBlock { New-AzureADServicePrincipal -AppId $app.AppId }
 
     Write-Verbose "Created new AAD Application $app.AppId"
 
@@ -530,15 +534,15 @@ param(
     )
 
     Write-Verbose "Granting admin consent for AAD Application Id $AppId"
-    $usagesp = Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"
-    $appSP = Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"
+    $usagesp = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$UsageServiceFirstPartyAppId'"}
+    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
 
     try 
     {
-        New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadPermission
-        New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadWritePermission
-        New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadPermission
-        New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadWritePermission
+        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadPermission} -RetryIfNullOutput $false
+        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterReadWritePermission} -RetryIfNullOutput $false
+        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadPermission} -RetryIfNullOutput $false
+        Retry-Command -ScriptBlock { New-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -PrincipalId $appSP.ObjectId -ResourceId $usagesp.ObjectId -Id $ClusterNodeReadWritePermission} -RetryIfNullOutput $false
     }
     catch 
     {
@@ -557,10 +561,10 @@ param(
     )
 
     Write-Verbose "Removing old scopes on AAD Application with Id $AppId"
-    $appSP = Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"
+    $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
 
     # Remove AzureStackHCI.Billing.Sync and AzureStackHCI.Census.Sync permissions if present as we dont need them
-    $assignedPerms = Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId
+    $assignedPerms = Retry-Command -ScriptBlock { Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId} -RetryIfNullOutput $false
 
     $billingSync = $assignedPerms | where { ($_.Id -eq $BillingSyncPermission) }
     $censusSync = $assignedPerms | where { ($_.Id -eq $CensusSyncPermission) }
@@ -568,7 +572,7 @@ param(
     if($billingSync -eq $Null -or $censusSync -eq $Null)
     {
         # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
-        $assignedPerms = Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId
+        $assignedPerms = Retry-Command -ScriptBlock { Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId} -RetryIfNullOutput $false
     }
 
     if($billingSync -eq $Null)
@@ -583,12 +587,12 @@ param(
 
     if($billingSync -ne $Null)
     {
-        Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $billingSync.ObjectId | Out-Null
+        Retry-Command -ScriptBlock { Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $billingSync.ObjectId | Out-Null} -RetryIfNullOutput $false
     }
 
     if($censusSync -ne $Null)
     {
-        Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $censusSync.ObjectId | Out-Null
+        Retry-Command -ScriptBlock { Remove-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId -AppRoleAssignmentId $censusSync.ObjectId | Out-Null} -RetryIfNullOutput $false
     }
 }
 
@@ -612,7 +616,15 @@ param(
     }
     catch
     {
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         Install-Module -Name Az.Resources -Force -AllowClobber
         Import-Module -Name Az.Resources
     }
@@ -821,7 +833,7 @@ param(
 
         # Check if all nodes have required OS version
         $nodeUBR = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
-        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").CurrentBuildNumber }
+        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
 
         if(($nodeBuildNumber -lt $GAOSBuildNumber) -or (($nodeBuildNumber -eq $GAOSBuildNumber) -and ($nodeUBR -lt $GAOSUBR)))
         {
@@ -883,9 +895,12 @@ param(
             $AddAppCredentialMessageProgress = $AddAppCredentialMessage -f $ResourceName
             Write-Progress -activity $RegisterProgressActivityName -status $AddAppCredentialMessageProgress -percentcomplete 80
             $now = [System.DateTime]::UtcNow
-            $appCredential = New-AzureADApplicationKeyCredential -ObjectId $ObjectId -Type AsymmetricX509Cert -Usage Verify -Value $CertBase64 -StartDate $now -EndDate $Cert.NotAfter
+            $appCredential = Retry-Command -ScriptBlock { New-AzureADApplicationKeyCredential -ObjectId $ObjectId -Type AsymmetricX509Cert -Usage Verify -Value $CertBase64 -StartDate $now -EndDate $Cert.NotAfter}
             $CertificatesToBeMaintained.Add($appCredential.KeyId, $true)
             $userProvidedCertAddedToAAD = $true
+
+            # Wait till the credential added is returned in Get to avoid the rush in using this new certificate. Gives more time for AAD replication before using certificate.
+            $credReturned = Retry-Command -ScriptBlock { Get-AzureADApplicationKeyCredential -ObjectId $ObjectId | where {($_.KeyId -eq $appCredential.KeyId)} }
         }
 
         # Set the certificate - Certificate will be set after testing the certificate by calling cloud service API
@@ -945,6 +960,9 @@ enum ConnectionTestResult
     .PARAMETER ResourceName
     Specifies the resource name of the resource created in Azure. If not specified, on-premises cluster name is used.
 
+    .PARAMETER Tag
+    Specifies the resource tags for the resource in Azure in the form of key-value pairs in a hash table. For example: @{key0="value0";key1=$null;key2="value2"}
+
     .PARAMETER TenantId
     Specifies the Azure TenantId.
 
@@ -961,7 +979,7 @@ enum ConnectionTestResult
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE, AzureChinaCloud
 
     .PARAMETER ComputerName
     Specifies the cluster name or one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -1029,6 +1047,9 @@ param(
     [string] $ResourceName,
 
     [Parameter(Mandatory = $false)]
+    [System.Collections.Hashtable] $Tag,
+
+    [Parameter(Mandatory = $false)]
     [string] $TenantId,
 
     [Parameter(Mandatory = $false)]
@@ -1069,7 +1090,15 @@ param(
         $registrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
 
-        Install-PackageProvider NuGet -Force | Out-Null
+        try
+        {
+            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+        }
+        catch
+        {
+            Install-PackageProvider NuGet -Force | Out-Null
+        }
+		
         $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
         $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
 
@@ -1322,7 +1351,7 @@ param(
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
                 $properties = @{"aadClientId"="$appId";"aadTenantId"="$TenantId"}
-                $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Force
+                $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
 
                 # Try Granting admin consent for requested permissions
 
@@ -1373,9 +1402,9 @@ param(
 
                 $appId = $resource.Properties.aadClientId
                 $cloudId = $resource.Properties.cloudId 
-                $app = Get-AzureADApplication -Filter "AppId eq '$appId'"
+                $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$appId'"}
                 $objectId = $app.ObjectId
-                $appSP = Get-AzureADServicePrincipal -Filter "AppId eq '$appId'"
+                $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$appId'"}
                 $spObjectId = $appSP.ObjectId
 
                 # Add certificate
@@ -1453,7 +1482,8 @@ param(
                 # Delete all certificates except certificates which we created in this current registration flow.
                 if(($RepairRegistration -eq $true) -or (-Not ([string]::IsNullOrEmpty($CertificateThumbprint))) )
                 {
-                    Foreach ($keyCred in (Get-AzureADApplicationKeyCredential -ObjectId $objectId))
+                    $aadAppKeyCreds = Retry-Command -ScriptBlock {Get-AzureADApplicationKeyCredential -ObjectId $objectId}
+                    Foreach ($keyCred in $aadAppKeyCreds)
                     {
                         if($CertificatesToBeMaintained[$keyCred.KeyId] -eq $true)
                         {
@@ -1463,7 +1493,7 @@ param(
                         else
                         {
                             Write-Verbose ($DeletingCertificateFromAADApp -f $keyCred.KeyId)
-                            Remove-AzureADApplicationKeyCredential -ObjectId $objectId -KeyId $keyCred.KeyId
+                            Retry-Command -ScriptBlock { Remove-AzureADApplicationKeyCredential -ObjectId $objectId -KeyId $keyCred.KeyId} -RetryIfNullOutput $false
                         }
                     }
                 }
@@ -1536,7 +1566,7 @@ param(
     Specifies the ARM access token. Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE, AzureChinaCloud
 
     .PARAMETER ComputerName
     Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
@@ -1748,13 +1778,13 @@ param(
             if($resource -ne $Null)
             {
                 $appId = $resource.Properties.aadClientId
-                $app = Get-AzureADApplication -Filter "AppId eq '$appId'"
+                $app = Retry-Command -ScriptBlock { Get-AzureADApplication -Filter "AppId eq '$appId'"} -RetryIfNullOutput $false
                 
                 if($app -ne $Null)
                 {
                     $DeletingAADApplicationMessageProgress = $DeletingAADApplicationMessage -f $ResourceName
                     Write-Progress -activity $UnregisterProgressActivityName -status $DeletingAADApplicationMessageProgress -percentcomplete 60
-                    Remove-AzureADApplication -ObjectId $app.ObjectId
+                    Retry-Command -ScriptBlock { Remove-AzureADApplication -ObjectId $app.ObjectId} -RetryIfNullOutput $false
                 }
 
                 $DeletingCloudResourceMessageProgress = $DeletingCloudResourceMessage -f $ResourceName
@@ -1824,7 +1854,7 @@ param(
     Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
 
     .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE
+    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzurePPE, AzureChinaCloud
 
     .PARAMETER Region
     Specifies the Region to connect to. Not used unless it is Canary region.
