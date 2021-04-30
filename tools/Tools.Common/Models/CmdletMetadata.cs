@@ -322,7 +322,24 @@ namespace Tools.Common.Models
                             this.SupportsPaging == other.SupportsPaging;
             var thisDefaultSet = _parameterSets.Find(p => string.Equals(p.Name, this.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
             var otherDefaultSet = _parameterSets.Find(p => string.Equals(p.Name, other.DefaultParameterSetName, StringComparison.OrdinalIgnoreCase));
-            cmdletsEqual &= thisDefaultSet.Equals(otherDefaultSet);
+            if (thisDefaultSet == null)
+            {
+                if (otherDefaultSet != null)
+                {
+                    cmdletsEqual = false;
+                }
+            }
+            else
+            {
+                if (otherDefaultSet == null)
+                {
+                    cmdletsEqual = false;
+                }
+                else
+                {
+                    cmdletsEqual &= thisDefaultSet.Equals(otherDefaultSet);
+                }
+            }
             foreach (var thisParameterSet in this.ParameterSets)
             {
                 var otherParameterSet = other.ParameterSets.Find(p => string.Equals(p.Name, thisParameterSet.Name, StringComparison.OrdinalIgnoreCase));

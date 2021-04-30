@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Storage","Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet.NewAzureStorageContainerCommand","New-AzStorageContainer","0","1050","The parameter set 'ContainerName' for cmdlet 'New-AzStorageContainer' has been removed.","Add parameter set 'ContainerName' back to cmdlet 'New-AzStorageContainer'."
