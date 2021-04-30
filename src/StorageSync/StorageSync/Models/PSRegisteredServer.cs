@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     /// <summary>
@@ -41,6 +43,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The agent version.</value>
         public string AgentVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent version status.
+        /// </summary>
+        /// <value>The agent version status.</value>
+        public string AgentVersionStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent version expiration date.
+        /// </summary>
+        /// <value>The agent version expiration date.</value>
+        public DateTime? AgentVersionExpirationDate { get; set; }
+
         /// <summary>
         /// Gets or sets the server os version.
         /// </summary>
@@ -55,7 +70,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last heart beat.
         /// </summary>
         /// <value>The last heart beat.</value>
-        public string LastHeartBeat { get; set; }
+        public DateTime? LastHeartBeat { get; set; }
         /// <summary>
         /// Gets or sets the state of the provisioning.
         /// </summary>

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
     public class PSPrivateLinkServiceConnectionState
@@ -32,6 +34,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets the action required.
         /// </summary>
         /// <value></value>
+        [Obsolete]
         public string ActionRequired { get; internal set; }
+
+        /// <summary>
+        /// Gets the action required.
+        /// </summary>
+        /// <value></value>
+        public string ActionsRequired { get; internal set; }
     }
 }

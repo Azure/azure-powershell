@@ -122,5 +122,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The local cache mode.</value>
         public string LocalCacheMode { get; set; }
+
+        // <summary>
+        /// Gets or sets a value indicating the policy to use for the initial upload sync.
+        /// </summary>
+        /// <value>The initial upload policy.</value>
+        public string InitialUploadPolicy { get; set; }
     }
 }
