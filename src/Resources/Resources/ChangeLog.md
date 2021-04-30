@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.5.0
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
 
 ## Version 3.4.1
