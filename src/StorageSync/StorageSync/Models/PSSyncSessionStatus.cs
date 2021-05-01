@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
@@ -41,5 +42,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The last sync per item error count.</value>
         public long? LastSyncPerItemErrorCount { get; set; }
+
+        public long? PersistentFilesNotSyncingCount { get; }
+
+        public long? TransientFilesNotSyncingCount { get; }
+
+        public IList<PSServerEndpointFilesNotSyncingError> FilesNotSyncingErrors { get; }
+
+        public string LastSyncMode { get; }
+    }
+
+    public class PSServerEndpointFilesNotSyncingError
+    {
+        public int? ErrorCode { get; }
+
+        public long? PersistentCount { get; }
+
+        public long? TransientCount { get; }
+
     }
 }

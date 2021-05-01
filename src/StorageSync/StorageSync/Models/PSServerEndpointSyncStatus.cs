@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
     /// <summary>
     /// Class PSServerEndpointHealth.
     /// </summary>
-    public class PSServerEndpointHealth
+    public class PSServerEndpointSyncStatus
     {
         /// <summary>
         /// Gets or sets the download health.
@@ -71,5 +71,21 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// </summary>
         /// <value>The offline data transfer status.</value>
         public string OfflineDataTransferStatus { get; set; }
+
+        public long? TotalPersistentFilesNotSyncingCount { get; }
+
+        public PSBackgroundDataDownloadActivity BackgroundDataDownloadActivity { get; }
+    }
+
+    public class PSBackgroundDataDownloadActivity
+    {
+        public DateTime? Timestamp { get; }
+
+        public DateTime? StartedTimestamp { get; }
+
+        public int? PercentProgress { get; }
+
+        public long? DownloadedBytes { get; }
     }
 }
+

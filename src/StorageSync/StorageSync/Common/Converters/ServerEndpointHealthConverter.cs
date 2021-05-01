@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
     /// </summary>
     /// <seealso cref="Converters.ConverterBase{PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointHealth}" />
-    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointHealth, StorageSyncModels.ServerEndpointSyncStatus>
+    public class ServerEndpointHealthConverter : ConverterBase<PSServerEndpointSyncStatus, StorageSyncModels.ServerEndpointSyncStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointHealth source) => new StorageSyncModels.ServerEndpointSyncStatus(
+        protected override StorageSyncModels.ServerEndpointSyncStatus Transform(PSServerEndpointSyncStatus source) => new StorageSyncModels.ServerEndpointSyncStatus(
             source.DownloadHealth,
             source.UploadHealth,
             source.CombinedHealth,
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>PSServerEndpointHealth.</returns>
-        protected override PSServerEndpointHealth Transform(StorageSyncModels.ServerEndpointSyncStatus source)
+        protected override PSServerEndpointSyncStatus Transform(StorageSyncModels.ServerEndpointSyncStatus source)
         {
-            return new PSServerEndpointHealth()
+            return new PSServerEndpointSyncStatus()
             {
                 DownloadHealth = source.DownloadHealth,
                 UploadHealth = source.UploadHealth,

@@ -12,48 +12,49 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.Azure.Commands.StorageSync.Models
 {
+    using System;
+
     /// <summary>
-    /// Class PSSyncProgressStatus.
+    /// Class PSCloudTieringSpaceSavings.
     /// </summary>
-    public class PSSyncActivityStatus
+    public class PSCloudTieringSpaceSavings
     {
         /// <summary>
-        /// Gets or sets the timestamp.
+        /// Gets or sets the last updated timestamp.
         /// </summary>
-        /// <value>The progress timestamp.</value>
-        public DateTime? Timestamp { get; set; }
-        /// <summary>
-        /// Gets or sets the per item error count.
-        /// </summary>
-        /// <value>The per item error count.</value>
-        public long? PerItemErrorCount { get; set; }
-        /// <summary>
-        /// Gets or sets the applied item count.
-        /// </summary>
-        /// <value>The applied item count.</value>
-        public long? AppliedItemCount { get; set; }
-        /// <summary>
-        /// Gets or sets the total item count.
-        /// </summary>
-        /// <value>The total item count.</value>
-        public long? TotalItemCount { get; set; }
-        /// <summary>
-        /// Gets or sets the applied bytes.
-        /// </summary>
-        /// <value>The applied bytes.</value>
-        public long? AppliedBytes { get; set; }
-        /// <summary>
-        /// Gets or sets the total bytes.
-        /// </summary>
-        /// <value>The total bytes.</value>
-        public long? TotalBytes { get; set; }
+        /// <value>The last updated timestamp.</value>
+        public DateTime? LastUpdatedTimestamp { get; }
 
-        public string SyncMode { get; }
+        /// <summary>
+        /// Gets or sets the volume size.
+        /// </summary>
+        /// <value>The volume size.</value>
+        public long? VolumeSizeBytes { get; }
 
-        public int? SessionMinutesRemaining { get; }
+        /// <summary>
+        /// Gets or sets the estimated file share size.
+        /// </summary>
+        /// <value>The estimated file share size.</value>
+        public long? TotalSizeCloudBytes { get; }
+
+        /// <summary>
+        /// Gets or sets the local cache size.
+        /// </summary>
+        /// <value>The local cache size.</value>
+        public long? CachedSizeBytes { get; }
+
+        /// <summary>
+        /// Gets or sets the space savings percentage.
+        /// </summary>
+        /// <value>The space savings percentage.</value>
+        public int? SpaceSavingsPercent { get; }
+
+        /// <summary>
+        /// Gets or sets the space savings in bytes.
+        /// </summary>
+        /// <value>The space savings in bytes.</value>
+        public long? SpaceSavingsBytes { get; }
     }
 }
