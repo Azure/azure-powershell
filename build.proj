@@ -102,7 +102,11 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(MSBuildThisFileDirectory) -Recurse -Include 'bin','obj','TestResults' | Remove-Item -Recurse -Force -ErrorAction Ignore&quot;" IgnoreExitCode="true" />
   </Target>
 
-  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''">
+  <Target Name="BuildTools">
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+  </Target>
+
+  <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''" DependsOnTargets="BuildTools">
     <Message Importance="high" Text="Filtering projects and modules..." />
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
@@ -246,8 +250,6 @@
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp">
-    <!-- <Target Name="StaticAnalysis"> -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
