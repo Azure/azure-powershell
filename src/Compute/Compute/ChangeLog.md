@@ -24,6 +24,7 @@
     - Added a switch parameter `-Migrate` to trigger migration workflow.
     - Added a switch parameter `-MigrationRecovery` to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
 * Updated `New-AzVM` cmdlet so the message stating the `Size` parameter is defaulting shows to the user only when they do not provide a `Size` value.
+* Added `Win2019Datacenter` in the argument completer list for `Image` parameter in the `New-AzVM` cmdlet.
 
 ## Version 4.11.0
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
