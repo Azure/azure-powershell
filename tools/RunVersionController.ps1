@@ -212,25 +212,16 @@ switch ($PSCmdlet.ParameterSetName)
                 $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
                 if ($Psd1Object.ModuleVersion -ge "1.0.0")
                 {
-                    foreach ($NestedModule in $Psd1Object.NestedModules)
-                    {
-                        $JsonFile = $NestedModule.Replace(".\", "") + ".json"
-                        $ExpectJsonHashSet.Add($JsonFile, $true)
-                    }
-                    if($null -eq $Psd1Object.NestedModules)
-                    {
-                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
-                    }
+                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
                 }
             }
         }
         foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
         {
-            $ModuleName = $JsonFile.Replace('Microsoft.Azure.PowerShell.Cmdlets.', '').Replace('.dll.json', '')
+            $ModuleName = $JsonFile.Replace('.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
                 Write-Warning "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
-                # rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
             }
         }
         try
