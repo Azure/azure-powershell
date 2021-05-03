@@ -70,7 +70,7 @@ Installs patches on the VM
 PS C:\> Invoke-AzVmInstallPatch -ResourceGroupName 'MyRG' -VmName 'MyVM' -Windows -RebootSetting 'never' -MaximumDuration PT2H -ClassificationToIncludeForWindows Critical
 ```
 
-This example installs crital patches on the VM. 
+This example installs critical patches on the VM. 
 
 ### Example 2
 ```powershell
