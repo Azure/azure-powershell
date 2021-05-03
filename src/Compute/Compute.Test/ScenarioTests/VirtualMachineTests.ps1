@@ -4383,7 +4383,7 @@ function Test-VirtualMachineImageListTopOrderExpand
 
     try
     {
-        $pubNames = "MicrosoftWindowsServer";``
+        $pubNames = "MicrosoftWindowsServer";
         $pubNameFilter = '*Windows*';
         $offer = "windowsserver";
         $sku = "2012-R2-Datacenter";
