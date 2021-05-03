@@ -22,6 +22,10 @@
 
 ## Version 3.5.0
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
+* Updated to use SDK version 3.13-preview
+* Template Spec Versions: Renamed artifacts to linkedTemplates
+* Template Spec Versions: Renamed "template" to "mainTemplate"
+* Added support for UIFormDefinition for New-AzTemplateSpec and Set-AzTemplateSpec
 
 ## Version 3.4.1
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.

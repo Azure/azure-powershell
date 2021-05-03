@@ -448,11 +448,11 @@
                 <ScriptBlock>$_.Description</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Artifacts</Label>
+                <Label>LinkedTemplates</Label>
                 <ItemSelectionCondition>
-                  <ScriptBlock>$_.Artifacts -ne $null -and $_.Artifacts.Count -gt 0</ScriptBlock>
+                  <ScriptBlock>$_.LinkedTemplates -ne $null -and $_.LinkedTemplates.Count -gt 0</ScriptBlock>
                 </ItemSelectionCondition>
-                <ScriptBlock>$artifactPaths=@(); foreach ($artifact in $_.Artifacts){$artifactPaths+="'$($artifact.Path)'"}; $artifactPaths</ScriptBlock>
+                <ScriptBlock>$linkedTemplateArtifactPaths=@(); foreach ($linkedTemplateArtifact in $_.LinkedTemplates){$linkedTemplateArtifactPaths+="'$($linkedTemplateArtifact.Path)'"}; $linkedTemplateArtifactPaths</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CreationTime(UTC)</Label>
