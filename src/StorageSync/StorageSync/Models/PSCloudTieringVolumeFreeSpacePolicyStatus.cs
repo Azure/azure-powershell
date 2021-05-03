@@ -25,18 +25,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the effective volume free space policy.
         /// </summary>
         /// <value>The effective volume free space policy.</value>
-        public int? EffectiveVolumeFreeSpacePolicy { get; }
+        public int? EffectiveVolumeFreeSpacePolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the current volume free space percent.
         /// </summary>
         /// <value>The current volume free space percent.</value>
-        public int? CurrentVolumeFreeSpacePercent { get; }
+        public int? CurrentVolumeFreeSpacePercent { get; set; }
     }
 }

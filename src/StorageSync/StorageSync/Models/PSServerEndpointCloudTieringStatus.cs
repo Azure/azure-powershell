@@ -25,54 +25,54 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the health state.
         /// </summary>
         /// <value>The health state.</value>
-        public string Health { get; }
+        public string Health { get; set; }
 
         /// <summary>
         /// Gets or sets the health last updated timestamp.
         /// </summary>
         /// <value>The health last updated timestamp.</value>
-        public DateTime? HealthLastUpdatedTimestamp { get; }
+        public DateTime? HealthLastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the last cloud tiering result.
         /// </summary>
         /// <value>The last cloud tiering result.</value>
-        public int? LastCloudTieringResult { get; }
+        public int? LastCloudTieringResult { get; set; }
 
         /// <summary>
         /// Gets or sets the last cloud tiering success timestamp.
         /// </summary>
         /// <value>The last cloud tiering success timestamp.</value>
-        public DateTime? LastSuccessTimestamp { get; }
+        public DateTime? LastSuccessTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the space savings details.
         /// </summary>
         /// <value>The space savings details.</value>
-        public PSCloudTieringSpaceSavings SpaceSavings { get; }
+        public PSCloudTieringSpaceSavings SpaceSavings { get; set; }
 
         /// <summary>
         /// Gets or sets the cache performance details.
         /// </summary>
         /// <value>The cache performance details.</value>
-        public PSCloudTieringCachePerformance CachePerformance { get; }
+        public PSCloudTieringCachePerformance CachePerformance { get; set; }
 
         /// <summary>
         /// Gets or sets the files not tiering errors.
         /// </summary>
         /// <value>The files not tiering errors.</value>
-        public PSCloudTieringFilesNotTiering FilesNotTiering { get; }
+        public PSCloudTieringFilesNotTiering FilesNotTiering { get; set; }
 
         /// <summary>
         /// Gets or sets the volume free space policy status.
         /// </summary>
         /// <value>The volume free space policy status.</value>
-        public PSCloudTieringVolumeFreeSpacePolicyStatus VolumeFreeSpacePolicyStatus { get; }
+        public PSCloudTieringVolumeFreeSpacePolicyStatus VolumeFreeSpacePolicyStatus { get; set; }
     }
 }

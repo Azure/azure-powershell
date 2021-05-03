@@ -23,11 +23,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the error code.
         /// </summary>
         /// <value>The error code.</value>
-        public int? ErrorCode { get; }
+        public int? ErrorCode { get; set; }
 
         /// <summary>
         /// Gets or sets the file count.
         /// </summary>
         /// <value>The count of files hitting the error.</value>
-        public long? FileCount { get; }
+        public long? FileCount { get; set; }
     }
+}

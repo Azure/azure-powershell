@@ -19,7 +19,6 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
-
     /// <summary>
     /// Class ServerEndpointConverter.
     /// Implements the <see cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
@@ -27,14 +26,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <seealso cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
     public class ServerEndpointConverter : ConverterBase<PSServerEndpoint, StorageSyncModels.ServerEndpoint>
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServerEndpointConverter" /> class.
-        /// </summary>
-        public ServerEndpointConverter()
-        {
-        }
-
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
@@ -42,23 +33,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>StorageSyncModels.ServerEndpoint.</returns>
         protected override StorageSyncModels.ServerEndpoint Transform(PSServerEndpoint source)
         {
-            return new StorageSyncModels.ServerEndpoint(source.ResourceId,
-                source.ServerEndpointName,
-                source.Type,
-                source.ServerLocalPath,
-                source.CloudTiering,
-                source.VolumeFreeSpacePercent,
-                source.TierFilesOlderThanDays,
-                source.FriendlyName,
-                source.ServerResourceId,
-                source.ProvisioningState,
-                source.LastWorkflowId,
-                source.LastOperationName,
-                new ServerEndpointHealthConverter().Convert(source.SyncStatus),
-                source.OfflineDataTransfer,
-                source.OfflineDataTransferStorageAccountResourceId,
-                source.OfflineDataTransferStorageAccountTenantId,
-                source.OfflineDataTransferShareName,
+            return new StorageSyncModels.ServerEndpoint(
+                id: source.ResourceId,
+                name: source.ServerEndpointName,
+                type: source.Type,
+                serverLocalPath: source.ServerLocalPath,
+                cloudTiering: source.CloudTiering,
+                volumeFreeSpacePercent: source.VolumeFreeSpacePercent,
+                tierFilesOlderThanDays: source.TierFilesOlderThanDays,
+                friendlyName: source.FriendlyName,
+                serverResourceId: source.ServerResourceId,
                 initialDownloadPolicy: source.InitialDownloadPolicy,
                 localCacheMode: source.LocalCacheMode,
                 initialUploadPolicy: source.InitialUploadPolicy);
@@ -71,6 +55,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>PSServerEndpoint.</returns>
         protected override PSServerEndpoint Transform(StorageSyncModels.ServerEndpoint source)
         {
+            PSServerEndpointSyncStatus syncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null;
+            PSServerEndpointCloudTieringStatus cloudTieringStatus = source.CloudTieringStatus != null ? new ServerEndpointCloudTieringStatusConverter().Convert(source.CloudTieringStatus) : null;
+            PSServerEndpointRecallStatus recallStatus = source.RecallStatus != null ? new ServerEndpointRecallStatusConverter().Convert(source.RecallStatus) : null;
+
             var resourceIdentifier = new ResourceIdentifier(source.Id);
             return new PSServerEndpoint()
             {
@@ -83,7 +71,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 ServerLocalPath = source.ServerLocalPath,
                 ServerResourceId = source.ServerResourceId,
                 ProvisioningState = source.ProvisioningState,
-                SyncStatus = source.SyncStatus != null ? new ServerEndpointHealthConverter().Convert(source.SyncStatus) : null,
+                SyncStatus = syncStatus,
                 FriendlyName = source.FriendlyName,
                 LastOperationName = source.LastOperationName,
                 LastWorkflowId = source.LastWorkflowId,
@@ -96,7 +84,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId,
                 InitialDownloadPolicy = source.InitialDownloadPolicy,
                 LocalCacheMode = source.LocalCacheMode,
-                InitialUploadPolicy = source.InitialUploadPolicy
+                InitialUploadPolicy = source.InitialUploadPolicy,
+                CloudTieringStatus = cloudTieringStatus,
+                RecallStatus = recallStatus,
+                ServerName = source.ServerName
             };
         }
     }

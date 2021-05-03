@@ -31,7 +31,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// </summary>
         /// <param name="source">The source.</param>
         /// <returns>StorageSyncModels.CloudEndpoint.</returns>
-        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(source.ResourceId, source.CloudEndpointName, source.Type, source.StorageAccountResourceId, source.AzureFileShareName, source.StorageAccountTenantId, friendlyName: source.FriendlyName);
+        protected override StorageSyncModels.CloudEndpoint Transform(PSCloudEndpoint source) => new StorageSyncModels.CloudEndpoint(
+            id: source.ResourceId,
+            name: source.CloudEndpointName,
+            type: source.Type,
+            storageAccountResourceId: source.StorageAccountResourceId,
+            azureFileShareName: source.AzureFileShareName,
+            storageAccountTenantId: source.StorageAccountTenantId,
+            friendlyName: source.FriendlyName);
 
         /// <summary>
         /// Transforms the specified source.

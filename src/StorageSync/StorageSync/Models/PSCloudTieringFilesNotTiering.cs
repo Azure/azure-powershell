@@ -26,18 +26,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the total file count.
         /// </summary>
         /// <value>The total count of files not tiering.</value>
-        public long? TotalFileCount { get; }
+        public long? TotalFileCount { get; set; }
 
         /// <summary>
         /// Gets or sets the list of errors.
         /// </summary>
         /// <value>The list of errors.</value>
-        public IList<PSFilesNotTieringError> Errors { get; }
+        public IList<PSFilesNotTieringError> Errors { get; set; }
     }
 }

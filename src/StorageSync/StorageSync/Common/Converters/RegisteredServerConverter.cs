@@ -28,14 +28,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.Converters.ConverterBase{Microsoft.Azure.Commands.StorageSync.Models.PSRegisteredServer, Microsoft.Azure.Management.StorageSync.Models.RegisteredServer}" />
     public class RegisteredServerConverter : ConverterBase<PSRegisteredServer, StorageSyncModels.RegisteredServer>
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RegisteredServerConverter" /> class.
-        /// </summary>
-        public RegisteredServerConverter()
-        {
-        }
-
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
@@ -43,32 +35,19 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// <returns>StorageSyncModels.RegisteredServer.</returns>
         protected override StorageSyncModels.RegisteredServer Transform(PSRegisteredServer source)
         {
+            // Convert only properties that are not read-only
             return new StorageSyncModels.RegisteredServer(
-                source.ResourceId,
-                source.ServerName,
-                StorageSyncConstants.RegisteredServerType,
-                source.ServerCertificate,
-                source.AgentVersion,
-                source.AgentVersionStatus,
-                source.AgentVersionExpirationDate,
-                source.ServerOSVersion,
-                source.ServerManagementErrorCode,
-                source.LastHeartBeat,
-                source.ProvisioningState,
-                source.ServerRole,
-                source.ClusterId,
-                source.ClusterName,
-                source.ServerId,
-                source.StorageSyncServiceUid,
-                source.LastWorkflowId,
-                source.LastOperationName,
-                source.DiscoveryEndpointUri,
-                source.ResourceLocation,
-                source.ServiceLocation,
-                source.FriendlyName,
-                source.ManagementEndpointUri,
-                source.MonitoringEndpointUri,
-                source.MonitoringConfiguration);
+                id: source.ResourceId,
+                name: source.ServerId,
+                type: StorageSyncConstants.RegisteredServerType,
+                serverCertificate: source.ServerCertificate,
+                agentVersion: source.AgentVersion,
+                serverOSVersion: source.ServerOSVersion,
+                serverRole: source.ServerRole,
+                clusterId: source.ClusterId,
+                clusterName: source.ClusterName,
+                serverId: source.ServerId,
+                friendlyName: source.FriendlyName);
         }
 
         /// <summary>
@@ -83,7 +62,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
             {
                 ResourceId = source.Id,
                 StorageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 0),
-                ServerName = source.Name,
+                ServerId = source.ServerId,
                 ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 Type = resourceIdentifier.ResourceType ?? StorageSyncConstants.RegisteredServerType,
                 AgentVersion = source.AgentVersion,
@@ -99,13 +78,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 MonitoringEndpointUri = source.MonitoringEndpointUri,
                 ResourceLocation = source.ResourceLocation,
                 ServerCertificate = source.ServerCertificate,
-                ServerId = source.ServerId,
                 ServerManagementErrorCode = source.ServerManagementErrorCode,
                 ServerOSVersion = source.ServerOSVersion,
                 ServerRole = source.ServerRole,
                 ServiceLocation = source.ServiceLocation,
                 StorageSyncServiceUid = source.StorageSyncServiceUid,
-                MonitoringConfiguration = source.MonitoringConfiguration
+                MonitoringConfiguration = source.MonitoringConfiguration,
+                ServerName = source.ServerName
             };
         }
     }

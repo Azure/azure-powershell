@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
@@ -24,7 +23,6 @@ using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
-using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -37,7 +35,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServerEndpoint))]
     public class NewServerEndpointCommand : StorageSyncClientCmdletBase
     {
-        public const string OfflineDataTransferDeprecationMessage = "The offline data transfer feature is being deprecated. Please use server authoritative upload instead.";
+        // Using a string constant here because value provided to attribute must be constant.
+        public const string OfflineDataTransferDeprecationMessage = "The offline data transfer feature is deprecated. Please use server authoritative upload instead.";
 
         /// <summary>
         /// Gets or sets the name of the resource group.
@@ -165,17 +164,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public int? VolumeFreeSpacePercent { get; set; }
 
         /// <summary>
-        /// Gets or sets the cloud seeded data.
-        /// </summary>
-        /// <value>The cloud seeded data.</value>
-        [CmdletParameterBreakingChange("OfflineDataTransfer", ChangeDescription = OfflineDataTransferDeprecationMessage)]
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
-        public SwitchParameter OfflineDataTransfer { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier files older than days.
         /// </summary>
         /// <value>The tier files older than days.</value>
@@ -184,17 +172,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
-
-        /// <summary>
-        /// Gets or sets the cloud seeded data file share URI.
-        /// </summary>
-        /// <value>The cloud seeded data file share URI.</value>
-        [CmdletParameterBreakingChange("OfflineDataTransferShareName", ChangeDescription = OfflineDataTransferDeprecationMessage)]
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
-        public string OfflineDataTransferShareName { get; set; }
 
         // <summary>
         /// Gets or sets a value indicating the policy to use for the initial download sync.
@@ -281,9 +258,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
                     ServerResourceId = ServerResourceId,
-                    TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
-                    OfflineDataTransferShareName = OfflineDataTransferShareName
+                    TierFilesOlderThanDays = TierFilesOlderThanDays
                 };
 
                 if (this.IsParameterBound(c => c.InitialDownloadPolicy))

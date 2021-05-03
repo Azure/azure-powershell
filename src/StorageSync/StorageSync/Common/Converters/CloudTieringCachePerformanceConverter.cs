@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class CloudTieringCachePerformanceConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance}" />
+    public class CloudTieringCachePerformanceConverter : ConverterBase<PSCloudTieringCachePerformance, StorageSyncModels.CloudTieringCachePerformance>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.CloudTieringCachePerformance.</returns>
+        protected override StorageSyncModels.CloudTieringCachePerformance Transform(PSCloudTieringCachePerformance source)
         {
-            // Sync activity properties are read-only from the RP
+            // Cloud tiering status properties are readonly from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSCloudTieringCachePerformance.</returns>
+        protected override PSCloudTieringCachePerformance Transform(StorageSyncModels.CloudTieringCachePerformance source)
         {
-            return new PSSyncSessionStatus()
+            return new PSCloudTieringCachePerformance()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                LastUpdatedTimestamp = source.LastUpdatedTimestamp,
+                CacheHitBytes = source.CacheHitBytes,
+                CacheHitBytesPercent = source.CacheHitBytesPercent,
+                CacheMissBytes = source.CacheMissBytes
             };
         }
     }
-
 }

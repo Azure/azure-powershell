@@ -26,18 +26,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the total count of recall errors.
         /// </summary>
         /// <value>The total count of recall errors.</value>
-        public long? TotalRecallErrorsCount { get; }
+        public long? TotalRecallErrorsCount { get; set; }
 
         /// <summary>
         /// Gets or sets the list of recall errors.
         /// </summary>
         /// <value>The list of recall errors.</value>
-        public IList<PSServerEndpointRecallError> RecallErrors { get; }
+        public IList<PSServerEndpointRecallError> RecallErrors { get; set; }
     }
 }

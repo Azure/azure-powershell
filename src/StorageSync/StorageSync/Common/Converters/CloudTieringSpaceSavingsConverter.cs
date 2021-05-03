@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class CloudTieringSpaceSavingsConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings}" />
+    public class CloudTieringSpaceSavingsConverter : ConverterBase<PSCloudTieringSpaceSavings, StorageSyncModels.CloudTieringSpaceSavings>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.CloudTieringSpaceSavings.</returns>
+        protected override StorageSyncModels.CloudTieringSpaceSavings Transform(PSCloudTieringSpaceSavings source)
         {
-            // Sync activity properties are read-only from the RP
+            // Cloud tiering status properties are readonly from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,18 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSCloudTieringSpaceSavings.</returns>
+        protected override PSCloudTieringSpaceSavings Transform(StorageSyncModels.CloudTieringSpaceSavings source)
         {
-            return new PSSyncSessionStatus()
+            return new PSCloudTieringSpaceSavings()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                LastUpdatedTimestamp = source.LastUpdatedTimestamp,
+                CachedSizeBytes = source.CachedSizeBytes,
+                SpaceSavingsBytes = source.SpaceSavingsBytes,
+                SpaceSavingsPercent = source.SpaceSavingsPercent,
+                TotalSizeCloudBytes = source.TotalSizeCloudBytes,
+                VolumeSizeBytes = source.VolumeSizeBytes
             };
         }
     }
-
 }

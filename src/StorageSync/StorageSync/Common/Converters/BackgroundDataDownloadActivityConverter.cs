@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class BackgroundDataDownloadActivityConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSBackgroundDataDownloadActivity, StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSBackgroundDataDownloadActivity, StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity}" />
+    public class BackgroundDataDownloadActivityConverter : ConverterBase<PSBackgroundDataDownloadActivity, StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity.</returns>
+        protected override StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity Transform(PSBackgroundDataDownloadActivity source)
         {
-            // Sync activity properties are read-only from the RP
+            // Background data download properties are read-only from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSBackgroundDataDownloadActivity.</returns>
+        protected override PSBackgroundDataDownloadActivity Transform(StorageSyncModels.ServerEndpointBackgroundDataDownloadActivity source)
         {
-            return new PSSyncSessionStatus()
+            return new PSBackgroundDataDownloadActivity()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                Timestamp = source.Timestamp,
+                StartedTimestamp = source.StartedTimestamp,
+                DownloadedBytes = source.DownloadedBytes,
+                PercentProgress = source.PercentProgress
             };
         }
     }
-
 }

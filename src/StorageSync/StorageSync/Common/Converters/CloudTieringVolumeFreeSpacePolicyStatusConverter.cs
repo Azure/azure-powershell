@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class CloudTieringVolumeFreeSpacePolicyStatusConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus}" />
+    public class CloudTieringVolumeFreeSpacePolicyStatusConverter : ConverterBase<PSCloudTieringVolumeFreeSpacePolicyStatus, StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus.</returns>
+        protected override StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus Transform(PSCloudTieringVolumeFreeSpacePolicyStatus source)
         {
-            // Sync activity properties are read-only from the RP
+            // Cloud tiering status properties are readonly from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSCloudTieringVolumeFreeSpacePolicyStatus.</returns>
+        protected override PSCloudTieringVolumeFreeSpacePolicyStatus Transform(StorageSyncModels.CloudTieringVolumeFreeSpacePolicyStatus source)
         {
-            return new PSSyncSessionStatus()
+            return new PSCloudTieringVolumeFreeSpacePolicyStatus()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                LastUpdatedTimestamp = source.LastUpdatedTimestamp,
+                CurrentVolumeFreeSpacePercent = source.CurrentVolumeFreeSpacePercent,
+                EffectiveVolumeFreeSpacePolicy = source.EffectiveVolumeFreeSpacePolicy
             };
         }
     }
-
 }

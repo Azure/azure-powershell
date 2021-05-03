@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class ServerEndpointRecallErrorConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError}" />
+    public class ServerEndpointRecallErrorConverter : ConverterBase<PSServerEndpointRecallError, StorageSyncModels.ServerEndpointRecallError>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.ServerEndpointRecallError.</returns>
+        protected override StorageSyncModels.ServerEndpointRecallError Transform(PSServerEndpointRecallError source)
         {
-            // Sync activity properties are read-only from the RP
+            // Recall status properties are readonly from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSServerEndpointRecallError.</returns>
+        protected override PSServerEndpointRecallError Transform(StorageSyncModels.ServerEndpointRecallError source)
         {
-            return new PSSyncSessionStatus()
+            return new PSServerEndpointRecallError()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                ErrorCode = source.ErrorCode,
+                Count = source.Count
             };
         }
     }
-
 }

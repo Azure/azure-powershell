@@ -25,24 +25,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The name of the sync group.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the count of bytes served locally from the cache.
         /// </summary>
         /// <value>The count of bytes served locally from the cache.</value>
-        public long? CacheHitBytes { get; }
+        public long? CacheHitBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the count of bytes served from recall.
         /// </summary>
         /// <value>The count of bytes served from recall.</value>
-        public long? CacheMissBytes { get; }
+        public long? CacheMissBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the cache hit percentage.
         /// </summary>
         /// <value>The cache hit percentage.</value>
-        public int? CacheHitBytesPercent { get; }
+        public int? CacheHitBytesPercent { get; set; }
     }
 }

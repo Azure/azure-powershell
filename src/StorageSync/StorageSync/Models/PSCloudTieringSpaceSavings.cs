@@ -25,36 +25,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Models
         /// Gets or sets the last updated timestamp.
         /// </summary>
         /// <value>The last updated timestamp.</value>
-        public DateTime? LastUpdatedTimestamp { get; }
+        public DateTime? LastUpdatedTimestamp { get; set; }
 
         /// <summary>
         /// Gets or sets the volume size.
         /// </summary>
         /// <value>The volume size.</value>
-        public long? VolumeSizeBytes { get; }
+        public long? VolumeSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the estimated file share size.
         /// </summary>
         /// <value>The estimated file share size.</value>
-        public long? TotalSizeCloudBytes { get; }
+        public long? TotalSizeCloudBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the local cache size.
         /// </summary>
         /// <value>The local cache size.</value>
-        public long? CachedSizeBytes { get; }
+        public long? CachedSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the space savings percentage.
         /// </summary>
         /// <value>The space savings percentage.</value>
-        public int? SpaceSavingsPercent { get; }
+        public int? SpaceSavingsPercent { get; set; }
 
         /// <summary>
         /// Gets or sets the space savings in bytes.
         /// </summary>
         /// <value>The space savings in bytes.</value>
-        public long? SpaceSavingsBytes { get; }
+        public long? SpaceSavingsBytes { get; set; }
     }
 }

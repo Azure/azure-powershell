@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
     using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
     /// <summary>
-    /// Class SyncSessionStatusConvertor.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
+    /// Class CloudTieringCachePerformanceConverter.
+    /// Implements the <see cref="Converters.ConverterBase{PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncSessionStatus, StorageSyncModels.SyncSessionStatus}" />
-    public class SyncSessionStatusConvertor : ConverterBase<PSSyncSessionStatus, StorageSyncModels.ServerEndpointSyncSessionStatus>
+    /// <seealso cref="Converters.ConverterBase{PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError}" />
+    public class FilesNotTieringErrorConverter : ConverterBase<PSFilesNotTieringError, StorageSyncModels.FilesNotTieringError>
     {
         /// <summary>
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>StorageSyncModels.ServerEndpointSyncSessionStatus.</returns>
-        protected override StorageSyncModels.ServerEndpointSyncSessionStatus Transform(PSSyncSessionStatus source)
+        /// <returns>StorageSyncModels.ServerEndpointHealth.</returns>
+        protected override StorageSyncModels.FilesNotTieringError Transform(PSFilesNotTieringError source)
         {
-            // Sync activity properties are read-only from the RP
+            // Cloud tiering status properties are readonly from the RP
             throw new NotSupportedException();
         }
 
@@ -40,17 +40,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
         /// Transforms the specified source.
         /// </summary>
         /// <param name="source">The source.</param>
-        /// <returns>PSSyncSessionStatus.</returns>
-        protected override PSSyncSessionStatus Transform(StorageSyncModels.ServerEndpointSyncSessionStatus source)
+        /// <returns>PSServerEndpointHealth.</returns>
+        protected override PSFilesNotTieringError Transform(StorageSyncModels.FilesNotTieringError source)
         {
-            return new PSSyncSessionStatus()
+            return new PSFilesNotTieringError()
             {
-                LastSyncResult = source.LastSyncResult,
-                LastSyncTimestamp = source.LastSyncTimestamp,
-                LastSyncSuccessTimestamp = source.LastSyncSuccessTimestamp,
-                LastSyncPerItemErrorCount = source.LastSyncPerItemErrorCount
+                FileCount = source.FileCount,
+                ErrorCode = source.ErrorCode
             };
         }
     }
-
 }
