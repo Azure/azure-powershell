@@ -39,7 +39,7 @@ function Test-NewAzAksWithAcr
     $kubeClusterName = Get-RandomClusterName
     $acrName = Get-RandomRegistryName
     $location = Get-ProviderLocation "Microsoft.ContainerService/managedClusters"
-    $nodeVmSize = "Standard_A2"
+    $nodeVmSize = "Standard_D2_v2"
 
     try
     {
@@ -59,6 +59,14 @@ function Test-NewAzAksWithAcr
         Assert-AreEqual 2 $cluster.AgentPoolProfiles[0].Count;
         $cluster | Import-AzAksCredential -Force
         $cluster | Remove-AzAksCluster -Force
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-NotNull $roleAssignment
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AcrNameToDetach $acrName
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-Null $roleAssignment
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -AcrNameToAttach $acrName
+        $roleAssignment = Get-AzRoleAssignment -ResourceGroupName $resourceGroupName | Where-Object { ($_.RoleDefinitionName -eq 'AcrPull') -and ($_.DisplayName -eq $acrName) }
+        Assert-NotNull $roleAssignment
     }
     finally
     {

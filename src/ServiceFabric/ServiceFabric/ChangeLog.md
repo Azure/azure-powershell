@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.4.0
 * Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
 * `New-AzServiceFabricManagedCluster` add parameters UpgradeCadence and ZonalResiliency.
 * `New-AzServiceFabricManagedNodeType` add parameters DiskType, VmUserAssignedIdentity, IsStateless and MultiplePlacementGroup.

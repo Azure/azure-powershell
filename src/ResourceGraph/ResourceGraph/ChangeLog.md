@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.10.0
 * Changed output of `Search-AzGraph` to PSResourceGraphResponse which wrapped previous output under Data property.
 
 ## Version 0.9.0

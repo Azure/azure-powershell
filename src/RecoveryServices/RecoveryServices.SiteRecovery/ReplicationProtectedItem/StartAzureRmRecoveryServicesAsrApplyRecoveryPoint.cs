@@ -124,8 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     new HyperVReplicaAzureApplyRecoveryPointInput
                     {
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                        VaultLocation = "dummy"
+                        SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                     };
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;

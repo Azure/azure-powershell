@@ -403,6 +403,40 @@
             "Constructors": [
               {
                 "Name": "",
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        },
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+            "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "Properties": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "PropertiesTable": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+=======
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
                 "Parameters": [
                   {
                     "Name": "controller",
@@ -839,9 +873,15 @@
           "Name": "InputObject",
           "AliasList": [],
           "Type": {
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+            "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+            "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
             "Namespace": "Microsoft.Azure.Commands.DevSpaces.Models",
             "Name": "Microsoft.Azure.Commands.DevSpaces.Models.PSController",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevSpaces.Models.PSController, Microsoft.Azure.PowerShell.Cmdlets.DevSpaces, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
             "Properties": {
               "Name": "System.String",
               "ResourceGroupName": "System.String",
@@ -1488,9 +1528,15 @@
       "OutputTypes": [
         {
           "Type": {
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+            "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+            "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagResource, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
             "Namespace": "Microsoft.Azure.Commands.DevSpaces.Models",
             "Name": "Microsoft.Azure.Commands.DevSpaces.Models.PSController",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.DevSpaces.Models.PSController, Microsoft.Azure.PowerShell.Cmdlets.DevSpaces, Version=0.7.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
             "Properties": {
               "Name": "System.String",
               "ResourceGroupName": "System.String",
@@ -1585,9 +1631,15 @@
           "Name": "ResourceId",
           "AliasList": [],
           "Type": {
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+            "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+            "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+=======
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1888,6 +1940,12 @@
                   "AzureCredential"
                 ],
                 "Type": {
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+                  "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+                  "Name": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.TagPatchOperation, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+=======
                   "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
                   "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
                   "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
@@ -1897,6 +1955,7 @@
                     "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
                   "ElementType": null,
                   "GenericTypeArguments": [],
                   "Methods": [
@@ -2467,6 +2526,68 @@
       ],
       "Methods": [],
       "Constructors": []
+<<<<<<< HEAD:tools/Tools.Common/SerializedCmdlets/Microsoft.Azure.PowerShell.Cmdlets.Tags.dll.json
+    },
+    "Microsoft.Azure.Commands.Tags.Model.PSTagsObject": {
+      "Namespace": "Microsoft.Azure.Commands.Tags.Model",
+      "Name": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Tags.Model.PSTagsObject, Microsoft.Azure.PowerShell.Cmdlets.Tags, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "TagsProperty": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "tagsProperty",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.TypeCode": {
+      "Namespace": "System",
+      "Name": "System.TypeCode",
+      "AssemblyQualifiedName": "System.TypeCode, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+=======
+>>>>>>> origin/master:tools/Tools.Common/SerializedCmdlets/Az.DevSpaces.json
     }
   }
 }
