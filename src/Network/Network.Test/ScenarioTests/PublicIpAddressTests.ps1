@@ -824,7 +824,7 @@ Tests creating new simple publicIpAddress.
 function Test-PublicIpAddressInEdgeZone
 {
     # Setup
-    $rname = Get-ResourceName
+    $ResourceName = Get-ResourceName
 	$domainNameLabel = Get-ResourceName
     $ResourceGroupName = Get-ResourceGroupName;
     $LocationName = "westus";
@@ -834,12 +834,12 @@ function Test-PublicIpAddressInEdgeZone
     try 
      {
       # Create the resource group
-      New-AzResourceGroup -Name $ResourceGroupName -Location $LocationName -Tags @{ testtag = "testval" } 
+      New-AzResourceGroup -Name $ResourceGroupName -Location $LocationName
       
       # Create publicIpAddres
-      New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $rname -Location $LocationName -EdgeZone $EdgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $ResourceName -Location $LocationName -EdgeZone $EdgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
-	  $publicIP = Get-AzPublicIpAddress -Name $rname -ResourceGroupName $ResourceGroupName
+	  $publicIP = Get-AzPublicIpAddress -Name $ResourceName -ResourceGroupName $ResourceGroupName
 	  Assert-AreEqual $publicIP.ExtendedLocation.Name $EdgeZone
     }
     finally
