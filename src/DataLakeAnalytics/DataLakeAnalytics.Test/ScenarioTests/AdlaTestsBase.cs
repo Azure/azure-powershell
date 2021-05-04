@@ -24,14 +24,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
-using StorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
+using StorageManagementClient = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.StorageManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using Sku = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku;
-using SkuName = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName;
-using StorageAccountCreateParameters = Microsoft.Azure.Management.Storage.Version2017_10_01.Models.StorageAccountCreateParameters;
+using Sku = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.Sku;
+using SkuName = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName;
+using StorageAccountCreateParameters = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.StorageAccountCreateParameters;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {

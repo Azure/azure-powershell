@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -31,12 +30,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         public static bool IsPremiumLrs(this StorageAccount account)
         {
-            return account.Sku.Name == Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName.PremiumLRS;
+            return account.Sku.Name == Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName.PremiumLRS;
         }
 
         public static void SetAsStandardGRS(this StorageAccountCreateParameters createParams)
         {
-            createParams.Sku = new Sku(Microsoft.Azure.Management.Storage.Version2017_10_01.Models.SkuName.StandardGRS);
+            createParams.Sku = new Sku(Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models.SkuName.StandardGRS);
         }
 
         public static string GetFirstAvailableKey(this StorageAccountListKeysResult listKeyResult)

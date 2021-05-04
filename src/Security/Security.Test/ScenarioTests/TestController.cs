@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Security;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

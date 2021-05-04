@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Tools binaries to have Compute cmdlets support `Standard_GZRS` and `RAGZRS` storage accounts.
 
 ## Version 4.12.0
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).

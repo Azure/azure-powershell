@@ -20,7 +20,7 @@ using System;
 using System.IO;
 using System.Linq;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Azure.ServiceManagement.Common.Models;

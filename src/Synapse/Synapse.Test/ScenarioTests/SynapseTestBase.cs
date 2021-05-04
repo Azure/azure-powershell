@@ -29,8 +29,9 @@ using Microsoft.Azure.Synapse;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
-using NewStorageManagementClient = Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient;
-using Microsoft.Azure.Management.Storage;
+using NewStorageManagementClient = Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.StorageManagementClient;
+//using Microsoft.Azure.Management.Storage;//unsure about this?
+using Microsoft.Azure.Management.Profiles.Storage;
 
 namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 {
