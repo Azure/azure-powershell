@@ -378,7 +378,9 @@ function Test-VirtualMachineInEdgeZone
 
         $vm = Get-AzVm -ResourceGroupName $ResourceGroup -Name $VMName
 
-        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone
+        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+
+        Update-AzVM -VM $vm -ResourceGroupName $ResourceGroup; # validate that extendedlocation is propagated through this cmdlet
     }
     finally
     {
