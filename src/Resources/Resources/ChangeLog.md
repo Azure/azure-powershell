@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
+* Fix version checking bug in `Set-AzRoleAssignment`
 * Updated to use SDK version 3.13-preview
 * Template Spec Versions: Renamed artifacts to linkedTemplates
 * Template Spec Versions: Renamed "template" to "mainTemplate"
