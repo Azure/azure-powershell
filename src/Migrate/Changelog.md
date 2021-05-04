@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Addded UserId parameter to Initialize-AzMigrateReplicationInfrastructure to enable passing a specific User Object ID to the cmdlet.
+* Addded `UserId` parameter to `Initialize-AzMigrateReplicationInfrastructure` to enable passing a specific User Object ID to the cmdlet.
 
 ## Version 1.0.1
 * Nullref Bug fixed in get discovered server and initialize replication infrastructure commandlets.
