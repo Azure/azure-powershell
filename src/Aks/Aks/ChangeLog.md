@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Add `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
+
+## Version 2.1.0
+* Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
+* Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
+* Added `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.
 
 ## Version 2.0.2
 * Refined error messages of cmdlet failure.

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.FrontDoor.Common;
 using Microsoft.Azure.Commands.FrontDoor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -41,6 +42,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         public string Version { get; set; }
 
         /// <summary>
+        /// Rule Set Action. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Rule Set Action. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'.")]
+        [PSArgumentCompleter("Allow", "Block", "Log", "Redirect")]
+        public string Action { get; set; }
+
+        /// <summary>
         /// List of azure managed provider override configuration
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "List of azure managed provider override configuration")]
@@ -59,7 +67,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                 RuleSetType = Type,
                 RuleSetVersion = Version,
                 RuleGroupOverrides = RuleGroupOverride?.ToList(),
-                Exclusions = Exclusion?.ToList()
+                Exclusions = Exclusion?.ToList(),
+                RuleSetAction = this.IsParameterBound(c => c.Action) ? Action : null
             };
             WriteObject(rule);
         }

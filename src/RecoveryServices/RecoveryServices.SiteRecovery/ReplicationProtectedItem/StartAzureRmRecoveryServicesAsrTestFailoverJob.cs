@@ -233,8 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 FailoverDirection = this.Direction,
                 NetworkId = this.networkId,
                 NetworkType = this.networkType,
-                ProviderSpecificDetails = new ProviderSpecificFailoverInput(),
-                SkipTestFailoverCleanup = bool.TrueString
+                ProviderSpecificDetails = new TestFailoverProviderSpecificInput()
             };
 
             var input = new TestFailoverInput { Properties = testFailoverInputProperties };
@@ -247,7 +246,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    var failoverInput = new HyperVReplicaAzureFailoverProviderInput
+                    var failoverInput = new HyperVReplicaAzureTestFailoverInput
                     {
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx
@@ -299,7 +298,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
                     // Set the InMageAzureV2 Provider specific input in the Test Failover Input.
-                    var failoverInput = new InMageAzureV2FailoverProviderInput
+                    var failoverInput = new InMageAzureV2TestFailoverInput
                     {
                         RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null
                     };
@@ -327,14 +326,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
               this.ReplicationProtectedItem.ReplicationProvider,
                StringComparison.OrdinalIgnoreCase))
             {
-                var failoverInput = new A2AFailoverProviderInput()
+                var failoverInput = new A2ATestFailoverInput()
                 {
                     RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null,
                     CloudServiceCreationOption = this.CloudServiceCreationOption
                 };
 
                 input.Properties.ProviderSpecificDetails = failoverInput;
-                input.Properties.SkipTestFailoverCleanup = true.ToString();
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
@@ -367,8 +365,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             : PossibleOperationsDirections.RecoveryToPrimary,
                     NetworkId = this.networkId,
                     NetworkType = this.networkType,
-                    ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>(),
-                    SkipTestFailoverCleanup = bool.TrueString
+                    ProviderSpecificDetails = new List<RecoveryPlanProviderSpecificFailoverInput>()
                 };
 
             foreach (var replicationProvider in rp.Properties.ReplicationProviders)
@@ -385,8 +382,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanHyperVReplicaAzureFailoverInput
                             {
                                 PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                                VaultLocation = "dummy"
+                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                             };
                         recoveryPlanTestFailoverInputProperties.ProviderSpecificDetails.Add(
                             recoveryPlanHyperVReplicaAzureFailoverInput);
@@ -420,8 +416,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var recoveryPlanInMageAzureV2FailoverInput =
                             new RecoveryPlanInMageAzureV2FailoverInput
                             {
-                                RecoveryPointType = recoveryPointType,
-                                VaultLocation = "dummy"
+                                RecoveryPointType = recoveryPointType
                             };
 
                         // Add the InMageAzureV2 Provider specific input in the Test Failover Input.
