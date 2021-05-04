@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         protected const string GetParameterSet = "GetParameterSet";
         protected const string ByManifestParameterSet = "ByManifestParameterSet";
         protected const string ByTagParameterSet = "ByTagParameterSet";
+        protected const string WithoutNameAndPasswordParameterSet = "WithoutNameAndPasswordParameterSet";
+        protected const string WithNameAndPasswordParameterSet = "WithNameAndPasswordParameterSet";
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure Container Registry Name."),]
         [ValidateNotNullOrEmpty]

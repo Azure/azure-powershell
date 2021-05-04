@@ -12,25 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ContainerRegistry.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", DefaultParameterSetName = WithoutNameAndPasswordParameterSet)]
     [OutputType(typeof(bool))]
-    public class ConnectAzureContainerRegistry : ContainerRegistryCmdletBase
+    public class ConnectAzureContainerRegistry : ContainerRegistryDataPlaneCmdletBase
     {
-        protected const string WithoutNameAndPasswordParameterSet = "WithoutNameAndPasswordParameterSet";
-        protected const string WithNameAndPasswordParameterSet = "WithNameAndPasswordParameterSet";
-
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithoutNameAndPasswordParameterSet)]
         [Parameter(Mandatory = true, HelpMessage = "Azure Container Registry Name.", ParameterSetName = WithNameAndPasswordParameterSet)]
-        [Alias("RegistryName")]
+        [Alias("Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        new public string RegistryName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "User Name For Azure Container Registry.", ParameterSetName = WithNameAndPasswordParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -40,22 +37,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNullOrEmpty]
         public string Password { get; set; }
 
-        protected override void InitDebuggingFilter()
-        {
-            AddDebuggingFilter(new Regex("(\\s*access_token\\s*=\\s*)[^\"]+"));
-            AddDebuggingFilter(new Regex("(\\s*refresh_token\\s*=\\s*)[^\"]+"));
-            AddDebuggingFilter(new Regex("(\\s*\"refresh_token\"\\s*:\\s*)\"[^\"]+\""));
-            base.InitDebuggingFilter();
-        }
-
         public override void ExecuteCmdlet() {
 
-            this.RegistryDataPlaneClient.SetEndPoint(this.Name);
+            this.RegistryDataPlaneClient.SetEndPoint(this.RegistryName);
 
             if (ParameterSetName.Equals(WithoutNameAndPasswordParameterSet))
             {
                 this.UserName = new Guid().ToString();
-                this.Password = this.RegistryDataPlaneClient.GetRefreshToken();
+                this.Password = this.RegistryDataPlaneClient.GetToken(DataPlaneConstants.RefreshTokenKey);
             }
 
             string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
