@@ -33,7 +33,10 @@ This command can be used to manually initiate the detection of namespaces change
 Checks for potential compatibility issues between your system and Azure File Sync.
 
 ### [Invoke-AzStorageSyncFileRecall](Invoke-AzStorageSyncFileRecall.md)
-This command is deprecated. Please use run Invoke-StorageSyncFile Recall using the PowerShell module that ships with the Azure File Sync agent.
+This command recalls all tiered files back to local disk.
+
+> [!IMPORTANT]
+> `Invoke-AzStorageSyncFileRecall` is deprecated. Please use [Invoke-StorageSyncFileRecall](/azure/storage/files/storage-sync-how-to-manage-tiered-files#how-to-recall-a-tiered-file-to-disk).
 
 ### [New-AzStorageSyncCloudEndpoint](New-AzStorageSyncCloudEndpoint.md)
 This command creates an Azure File Sync cloud endpoint in a sync group.
