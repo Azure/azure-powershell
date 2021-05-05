@@ -4,30 +4,31 @@
       "Method": "PATCH",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_D12_v2\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "77" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["77"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "fc0273d8-4cab-4394-8cb2-7793bd7649b1" ],
-        "x-ms-correlation-request-id": [ "fc0273d8-4cab-4394-8cb2-7793bd7649b1" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162850Z:fc0273d8-4cab-4394-8cb2-7793bd7649b1" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:49 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["fc0273d8-4cab-4394-8cb2-7793bd7649b1"],
+        "x-ms-correlation-request-id": ["fc0273d8-4cab-4394-8cb2-7793bd7649b1"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162850Z:fc0273d8-4cab-4394-8cb2-7793bd7649b1"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:49 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -38,36 +39,37 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "62" ],
-        "x-ms-client-request-id": [ "9fdf0e96-d800-4cea-9d3a-410179acd1dc" ],
-        "CommandName": [ "Get-AzKustoCluster" ],
-        "FullCommandName": [ "Get-AzKustoCluster_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["62"],
+        "x-ms-client-request-id": ["9fdf0e96-d800-4cea-9d3a-410179acd1dc"],
+        "CommandName": ["Get-AzKustoCluster"],
+        "FullCommandName": ["Get-AzKustoCluster_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2021-04-28T16:51:17.4218742Z\"" ],
-        "x-ms-request-id": [ "d8203d32-0df3-47b7-a109-e4dbb1055d53" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "290" ],
-        "x-ms-correlation-request-id": [ "44148d1e-9818-420b-9f67-22bbd85dfc04" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162850Z:44148d1e-9818-420b-9f67-22bbd85dfc04" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:50 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "ETag": ["\"2021-04-28T16:51:17.4218742Z\""],
+        "x-ms-request-id": ["d8203d32-0df3-47b7-a109-e4dbb1055d53"],
+        "Server": ["Microsoft-HTTPAPI/2.0"],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": ["290"],
+        "x-ms-correlation-request-id": ["44148d1e-9818-420b-9f67-22bbd85dfc04"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162850Z:44148d1e-9818-420b-9f67-22bbd85dfc04"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:50 GMT"]
       },
       "ContentHeaders": {
-        "Content-Length": [ "949" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": ["949"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
       },
       "Content": "{\"id\":\"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g\",\"name\":\"testclusterdvma1g\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-04-28T16:51:17.4218742Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Stopped\",\"stateReason\":\"The cluster\u0027s subscription has been marked in state: Suspended. Suspended on: 4/28/2021 4:45:26 PM\",\"uri\":\"https://testclusterdvma1g.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterdvma1g.eastus.kusto.windows.net\",\"trustedExternalTenants\":[{\"value\":\"*\"}],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
     }
@@ -77,30 +79,31 @@
       "Method": "PATCH",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01",
       "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_D11_v2\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "77" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["77"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "81d894c4-1ef6-4299-93ca-19a1743788c2" ],
-        "x-ms-correlation-request-id": [ "81d894c4-1ef6-4299-93ca-19a1743788c2" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162850Z:81d894c4-1ef6-4299-93ca-19a1743788c2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:50 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["81d894c4-1ef6-4299-93ca-19a1743788c2"],
+        "x-ms-correlation-request-id": ["81d894c4-1ef6-4299-93ca-19a1743788c2"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162850Z:81d894c4-1ef6-4299-93ca-19a1743788c2"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:50 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }

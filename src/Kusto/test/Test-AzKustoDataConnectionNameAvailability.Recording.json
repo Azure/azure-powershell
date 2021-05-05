@@ -5,34 +5,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "f200f362-624f-46df-aa6e-df977148b82e" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["60"],
+        "x-ms-client-request-id": ["f200f362-624f-46df-aa6e-df977148b82e"],
+        "CommandName": ["Get-AzKustoDatabase"],
+        "FullCommandName": ["Get-AzKustoDatabase_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "51e178f0-a696-47b4-9da1-70db3b7da7c4" ],
-        "x-ms-correlation-request-id": [ "51e178f0-a696-47b4-9da1-70db3b7da7c4" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162848Z:51e178f0-a696-47b4-9da1-70db3b7da7c4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:48 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["51e178f0-a696-47b4-9da1-70db3b7da7c4"],
+        "x-ms-correlation-request-id": ["51e178f0-a696-47b4-9da1-70db3b7da7c4"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162848Z:51e178f0-a696-47b4-9da1-70db3b7da7c4"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:48 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }

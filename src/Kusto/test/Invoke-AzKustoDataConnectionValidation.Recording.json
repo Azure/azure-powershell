@@ -4,30 +4,31 @@
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"kind\": \"EventHub\",\r\n    \"location\": \"Australia Central\",\r\n    \"properties\": {\r\n      \"compression\": \"None\",\r\n      \"consumerGroup\": \"$Default\",\r\n      \"eventHubResourceId\": \"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseh\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectiondvma1g3smrgq\"\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "436" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["436"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "300ad3ac-4fef-412e-8d0a-56201bedb17a" ],
-        "x-ms-correlation-request-id": [ "300ad3ac-4fef-412e-8d0a-56201bedb17a" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162757Z:300ad3ac-4fef-412e-8d0a-56201bedb17a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:57 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["300ad3ac-4fef-412e-8d0a-56201bedb17a"],
+        "x-ms-correlation-request-id": ["300ad3ac-4fef-412e-8d0a-56201bedb17a"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162757Z:300ad3ac-4fef-412e-8d0a-56201bedb17a"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:57 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -37,30 +38,31 @@
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"kind\": \"EventGrid\",\r\n    \"location\": \"Australia Central\",\r\n    \"properties\": {\r\n      \"consumerGroup\": \"$Default\",\r\n      \"eventHubResourceId\": \"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourcegroups/test-clients-rg/providers/Microsoft.EventHub/namespaces/testclientsns/eventhubs/testclientseg\",\r\n      \"storageAccountResourceId\": \"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourcegroups/test-clients-rg/providers/Microsoft.Storage/storageAccounts/testclients\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectiondvma1ghnkelp\"\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "584" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["584"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "3e717721-190e-487f-816d-23f92fb4ac87" ],
-        "x-ms-correlation-request-id": [ "3e717721-190e-487f-816d-23f92fb4ac87" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162758Z:3e717721-190e-487f-816d-23f92fb4ac87" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:57 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["3e717721-190e-487f-816d-23f92fb4ac87"],
+        "x-ms-correlation-request-id": ["3e717721-190e-487f-816d-23f92fb4ac87"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162758Z:3e717721-190e-487f-816d-23f92fb4ac87"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:57 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -70,30 +72,31 @@
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnectionValidation?api-version=2021-01-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"kind\": \"IotHub\",\r\n    \"location\": \"Australia Central\",\r\n    \"properties\": {\r\n      \"consumerGroup\": \"$Default\",\r\n      \"iotHubResourceId\": \"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourcegroups/test-clients-rg/providers/Microsoft.Devices/IotHubs/test-clients-iot\",\r\n      \"sharedAccessPolicyName\": \"registryRead\"\r\n    }\r\n  },\r\n  \"dataConnectionName\": \"testdataconnectiondvma1gnpkucj\"\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "426" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["426"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "d9c6631d-5dca-429b-a016-ad256df2952d" ],
-        "x-ms-correlation-request-id": [ "d9c6631d-5dca-429b-a016-ad256df2952d" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162758Z:d9c6631d-5dca-429b-a016-ad256df2952d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:58 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["d9c6631d-5dca-429b-a016-ad256df2952d"],
+        "x-ms-correlation-request-id": ["d9c6631d-5dca-429b-a016-ad256df2952d"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162758Z:d9c6631d-5dca-429b-a016-ad256df2952d"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:58 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -104,34 +107,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "c6324eb3-663d-46d6-b1db-47ddf5316a80" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["27"],
+        "x-ms-client-request-id": ["c6324eb3-663d-46d6-b1db-47ddf5316a80"],
+        "CommandName": ["Get-AzKustoDatabase"],
+        "FullCommandName": ["Get-AzKustoDatabase_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "550ae710-a9a0-4f99-a2db-a6d4aafd2bc5" ],
-        "x-ms-correlation-request-id": [ "550ae710-a9a0-4f99-a2db-a6d4aafd2bc5" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162759Z:550ae710-a9a0-4f99-a2db-a6d4aafd2bc5" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:58 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["550ae710-a9a0-4f99-a2db-a6d4aafd2bc5"],
+        "x-ms-correlation-request-id": ["550ae710-a9a0-4f99-a2db-a6d4aafd2bc5"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162759Z:550ae710-a9a0-4f99-a2db-a6d4aafd2bc5"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:58 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }
@@ -142,34 +146,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "c0e2e36e-1c17-4f2a-b8d9-d9e367afa591" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["28"],
+        "x-ms-client-request-id": ["c0e2e36e-1c17-4f2a-b8d9-d9e367afa591"],
+        "CommandName": ["Get-AzKustoDatabase"],
+        "FullCommandName": ["Get-AzKustoDatabase_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "0930961c-2ab1-45c5-af8c-f310fc7c22d7" ],
-        "x-ms-correlation-request-id": [ "0930961c-2ab1-45c5-af8c-f310fc7c22d7" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162759Z:0930961c-2ab1-45c5-af8c-f310fc7c22d7" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:58 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["0930961c-2ab1-45c5-af8c-f310fc7c22d7"],
+        "x-ms-correlation-request-id": ["0930961c-2ab1-45c5-af8c-f310fc7c22d7"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162759Z:0930961c-2ab1-45c5-af8c-f310fc7c22d7"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:58 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }
@@ -180,34 +185,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "3c405c16-105c-4549-b250-544edaa87dee" ],
-        "CommandName": [ "Get-AzKustoDatabase" ],
-        "FullCommandName": [ "Get-AzKustoDatabase_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["29"],
+        "x-ms-client-request-id": ["3c405c16-105c-4549-b250-544edaa87dee"],
+        "CommandName": ["Get-AzKustoDatabase"],
+        "FullCommandName": ["Get-AzKustoDatabase_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "dfe13d04-5702-488a-9752-08ae6f841ef4" ],
-        "x-ms-correlation-request-id": [ "dfe13d04-5702-488a-9752-08ae6f841ef4" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162759Z:dfe13d04-5702-488a-9752-08ae6f841ef4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:59 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["dfe13d04-5702-488a-9752-08ae6f841ef4"],
+        "x-ms-correlation-request-id": ["dfe13d04-5702-488a-9752-08ae6f841ef4"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162759Z:dfe13d04-5702-488a-9752-08ae6f841ef4"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:59 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }

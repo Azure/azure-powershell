@@ -5,34 +5,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testcluster7a54mr/stop?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "ed30747e-375e-4e36-a181-8d5cb5904901" ],
-        "CommandName": [ "Stop-AzKustoCluster" ],
-        "FullCommandName": [ "Stop-AzKustoCluster_Stop" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["52"],
+        "x-ms-client-request-id": ["ed30747e-375e-4e36-a181-8d5cb5904901"],
+        "CommandName": ["Stop-AzKustoCluster"],
+        "FullCommandName": ["Stop-AzKustoCluster_Stop"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "9073aad0-9fa0-4300-983f-8b576fcab335" ],
-        "x-ms-correlation-request-id": [ "9073aad0-9fa0-4300-983f-8b576fcab335" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162841Z:9073aad0-9fa0-4300-983f-8b576fcab335" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:41 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["9073aad0-9fa0-4300-983f-8b576fcab335"],
+        "x-ms-correlation-request-id": ["9073aad0-9fa0-4300-983f-8b576fcab335"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162841Z:9073aad0-9fa0-4300-983f-8b576fcab335"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:41 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -43,34 +44,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testcluster7a54mr?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "0336b988-ccfa-4c8f-b842-3723e727c179" ],
-        "CommandName": [ "Get-AzKustoCluster" ],
-        "FullCommandName": [ "Get-AzKustoCluster_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["53"],
+        "x-ms-client-request-id": ["0336b988-ccfa-4c8f-b842-3723e727c179"],
+        "CommandName": ["Get-AzKustoCluster"],
+        "FullCommandName": ["Get-AzKustoCluster_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "ef1a6c55-709a-4441-b87b-57731cd840d9" ],
-        "x-ms-correlation-request-id": [ "ef1a6c55-709a-4441-b87b-57731cd840d9" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162843Z:ef1a6c55-709a-4441-b87b-57731cd840d9" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:42 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["ef1a6c55-709a-4441-b87b-57731cd840d9"],
+        "x-ms-correlation-request-id": ["ef1a6c55-709a-4441-b87b-57731cd840d9"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162843Z:ef1a6c55-709a-4441-b87b-57731cd840d9"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:42 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "229" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["229"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.Kusto/clusters/testcluster7a54mr\u0027 under resource group \u0027testgroupdvma1g\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}"
     }

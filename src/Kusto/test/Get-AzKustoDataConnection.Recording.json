@@ -5,34 +5,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/dataConnections?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "c1d37b9c-1e90-4f46-9521-4bfb1513c300" ],
-        "CommandName": [ "Get-AzKustoDataConnection" ],
-        "FullCommandName": [ "Get-AzKustoDataConnection_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["22"],
+        "x-ms-client-request-id": ["c1d37b9c-1e90-4f46-9521-4bfb1513c300"],
+        "CommandName": ["Get-AzKustoDataConnection"],
+        "FullCommandName": ["Get-AzKustoDataConnection_List"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "02ec61a7-dd83-4268-9268-595463af65af" ],
-        "x-ms-correlation-request-id": [ "02ec61a7-dd83-4268-9268-595463af65af" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162755Z:02ec61a7-dd83-4268-9268-595463af65af" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:55 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["02ec61a7-dd83-4268-9268-595463af65af"],
+        "x-ms-correlation-request-id": ["02ec61a7-dd83-4268-9268-595463af65af"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162755Z:02ec61a7-dd83-4268-9268-595463af65af"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:55 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }
@@ -43,34 +44,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/test-clients-rg/providers/Microsoft.Kusto/Clusters/eventgridclienttest/Databases/databasetest/DataConnections/testdataconnectiondvma1g?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "0fd712d7-d03b-483b-af52-756ff29faa09" ],
-        "CommandName": [ "Get-AzKustoDataConnection" ],
-        "FullCommandName": [ "Get-AzKustoDataConnection_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["23"],
+        "x-ms-client-request-id": ["0fd712d7-d03b-483b-af52-756ff29faa09"],
+        "CommandName": ["Get-AzKustoDataConnection"],
+        "FullCommandName": ["Get-AzKustoDataConnection_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "60f292ac-56b6-46ee-8d92-2bbd8f7ba12a" ],
-        "x-ms-correlation-request-id": [ "60f292ac-56b6-46ee-8d92-2bbd8f7ba12a" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162755Z:60f292ac-56b6-46ee-8d92-2bbd8f7ba12a" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:55 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["60f292ac-56b6-46ee-8d92-2bbd8f7ba12a"],
+        "x-ms-correlation-request-id": ["60f292ac-56b6-46ee-8d92-2bbd8f7ba12a"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162755Z:60f292ac-56b6-46ee-8d92-2bbd8f7ba12a"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:55 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["107"]
       },
       "Content": "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group \u0027test-clients-rg\u0027 could not be found.\"}}"
     }

@@ -4,30 +4,31 @@
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/Databases/testdatabase3smrgq?api-version=2021-01-01",
       "Content": "{\r\n  \"kind\": \"ReadWrite\",\r\n  \"location\": \"East US\"\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "53" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["53"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "6d49ad57-d2b3-4fe4-844b-d0284f3337a8" ],
-        "x-ms-correlation-request-id": [ "6d49ad57-d2b3-4fe4-844b-d0284f3337a8" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162805Z:6d49ad57-d2b3-4fe4-844b-d0284f3337a8" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:04 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["6d49ad57-d2b3-4fe4-844b-d0284f3337a8"],
+        "x-ms-correlation-request-id": ["6d49ad57-d2b3-4fe4-844b-d0284f3337a8"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162805Z:6d49ad57-d2b3-4fe4-844b-d0284f3337a8"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:04 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }
@@ -37,30 +38,31 @@
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/Databases/testdatabasehnkelp?api-version=2021-01-01",
       "Content": "{\r\n  \"kind\": \"ReadWrite\",\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"hotCachePeriod\": \"P2D\"\r\n  }\r\n}",
-      "Headers": {
-      },
+      "Headers": {},
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "107" ]
+        "Content-Type": ["application/json"],
+        "Content-Length": ["107"]
       }
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "5cf88393-78df-4f10-96f9-a8780fd54f8e" ],
-        "x-ms-correlation-request-id": [ "5cf88393-78df-4f10-96f9-a8780fd54f8e" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162805Z:5cf88393-78df-4f10-96f9-a8780fd54f8e" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:28:05 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["5cf88393-78df-4f10-96f9-a8780fd54f8e"],
+        "x-ms-correlation-request-id": ["5cf88393-78df-4f10-96f9-a8780fd54f8e"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162805Z:5cf88393-78df-4f10-96f9-a8780fd54f8e"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:28:05 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }

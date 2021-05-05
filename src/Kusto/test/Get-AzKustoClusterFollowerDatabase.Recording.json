@@ -5,34 +5,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/listFollowerDatabases?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "11" ],
-        "x-ms-client-request-id": [ "c4f708ed-38f2-4278-8713-5de164c8458d" ],
-        "CommandName": [ "Get-AzKustoClusterFollowerDatabase" ],
-        "FullCommandName": [ "Get-AzKustoClusterFollowerDatabase_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["11"],
+        "x-ms-client-request-id": ["c4f708ed-38f2-4278-8713-5de164c8458d"],
+        "CommandName": ["Get-AzKustoClusterFollowerDatabase"],
+        "FullCommandName": ["Get-AzKustoClusterFollowerDatabase_List"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 409,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "2e459af4-ed2b-4275-b763-d474b80c5cb6" ],
-        "x-ms-correlation-request-id": [ "2e459af4-ed2b-4275-b763-d474b80c5cb6" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162747Z:2e459af4-ed2b-4275-b763-d474b80c5cb6" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:46 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["2e459af4-ed2b-4275-b763-d474b80c5cb6"],
+        "x-ms-correlation-request-id": ["2e459af4-ed2b-4275-b763-d474b80c5cb6"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162747Z:2e459af4-ed2b-4275-b763-d474b80c5cb6"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:46 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "246" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["246"]
       },
       "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
     }

@@ -5,34 +5,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testfclustervfb2mt/attachedDatabaseConfigurations?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "7" ],
-        "x-ms-client-request-id": [ "ed397c2a-67c6-4150-a908-abe20a2e55b6" ],
-        "CommandName": [ "Get-AzKustoAttachedDatabaseConfiguration" ],
-        "FullCommandName": [ "Get-AzKustoAttachedDatabaseConfiguration_List" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["7"],
+        "x-ms-client-request-id": ["ed397c2a-67c6-4150-a908-abe20a2e55b6"],
+        "CommandName": ["Get-AzKustoAttachedDatabaseConfiguration"],
+        "FullCommandName": ["Get-AzKustoAttachedDatabaseConfiguration_List"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "17e02d2f-ef40-4f1d-8b77-7433c91448cf" ],
-        "x-ms-correlation-request-id": [ "17e02d2f-ef40-4f1d-8b77-7433c91448cf" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162744Z:17e02d2f-ef40-4f1d-8b77-7433c91448cf" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:44 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["17e02d2f-ef40-4f1d-8b77-7433c91448cf"],
+        "x-ms-correlation-request-id": ["17e02d2f-ef40-4f1d-8b77-7433c91448cf"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162744Z:17e02d2f-ef40-4f1d-8b77-7433c91448cf"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:44 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "159" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["159"]
       },
       "Content": "{\"error\":{\"code\":\"ParentResourceNotFound\",\"message\":\"Can not perform requested operation on nested resource. Parent resource \u0027testfclustervfb2mt\u0027 not found.\"}}"
     }
@@ -43,34 +44,35 @@
       "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testfclustervfb2mt/AttachedDatabaseConfigurations/testdbconfvfb2mt?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "464be693-96c0-4e1b-927d-21d989fe91ee" ],
-        "CommandName": [ "Get-AzKustoAttachedDatabaseConfiguration" ],
-        "FullCommandName": [ "Get-AzKustoAttachedDatabaseConfiguration_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
-        "Authorization": [ "[Filtered]" ]
+        "x-ms-unique-id": ["8"],
+        "x-ms-client-request-id": ["464be693-96c0-4e1b-927d-21d989fe91ee"],
+        "CommandName": ["Get-AzKustoAttachedDatabaseConfiguration"],
+        "FullCommandName": ["Get-AzKustoAttachedDatabaseConfiguration_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
       },
-      "ContentHeaders": {
-      }
+      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 404,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "c05fe68b-bcae-4c9d-9212-ae07f25dfc22" ],
-        "x-ms-correlation-request-id": [ "c05fe68b-bcae-4c9d-9212-ae07f25dfc22" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210504T162745Z:c05fe68b-bcae-4c9d-9212-ae07f25dfc22" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 04 May 2021 16:27:44 GMT" ]
+        "Cache-Control": ["no-cache"],
+        "Pragma": ["no-cache"],
+        "x-ms-failure-cause": ["gateway"],
+        "x-ms-request-id": ["c05fe68b-bcae-4c9d-9212-ae07f25dfc22"],
+        "x-ms-correlation-request-id": ["c05fe68b-bcae-4c9d-9212-ae07f25dfc22"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210504T162745Z:c05fe68b-bcae-4c9d-9212-ae07f25dfc22"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Date": ["Tue, 04 May 2021 16:27:44 GMT"]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "159" ]
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"],
+        "Content-Length": ["159"]
       },
       "Content": "{\"error\":{\"code\":\"ParentResourceNotFound\",\"message\":\"Can not perform requested operation on nested resource. Parent resource \u0027testfclustervfb2mt\u0027 not found.\"}}"
     }

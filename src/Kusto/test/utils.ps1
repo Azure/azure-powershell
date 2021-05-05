@@ -30,20 +30,20 @@ function setupEnv() {
     $constants.psobject.Properties | ForEach-Object { $env[$_.Name] = $_.Value }
 
     # Create the test group
-    $resourceGroupName = "testgroup" + $rstr1
+    $resourceGroupName = "testclients" #"testgroup" + $rstr1
     Write-Host "Start to create test resource group" $resourceGroupName
     $null = $env.Add("resourceGroupName", $resourceGroupName)
-    New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    #New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
 
     # Create Storage Account
-    $storageName = "storage" + $rstr1
+    $storageName = "testclientsstorage" #"storage" + $rstr1
     Write-Host "Start to create Storage Account" $storageName
     $null = $env.Add("storageName", $storageName)
     $storageParams = Get-Content .\test\deployment-templates\storage-account\parameters.json | ConvertFrom-Json
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
+    #New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
 
     # Deploy cluster + database 
     $SubscriptionId = $env.SubscriptionId
