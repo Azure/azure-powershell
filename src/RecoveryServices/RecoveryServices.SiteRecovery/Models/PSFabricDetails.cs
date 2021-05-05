@@ -87,6 +87,87 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     Fabric specific details for InMageRcm.
+    /// </summary>
+    public class ASRInMageRcmFabricSpecificDetails : ASRFabricSpecificDetails
+    {
+        /// <summary>
+        ///     Gets or sets the ARM Id of the VMware site.
+        /// </summary>
+        public string VmwareSiteId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the physical site.
+        /// </summary>
+        public string PhysicalSiteId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the service endpoint.
+        /// </summary>
+        public string ServiceEndpoint { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the service resource Id.
+        /// </summary>
+        public string ServiceResourceId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the service container Id.
+        /// </summary>
+        public string ServiceContainerId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the data plane Uri.
+        /// </summary>
+        public string DataPlaneUri { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the control plane Uri.
+        /// </summary>
+        public string ControlPlaneUri { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of process servers.
+        /// </summary>
+        public List<ASRProcessServerDetails> ProcessServers { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of RCM proxies.
+        /// </summary>
+        public List<ASRRcmProxyDetails> RcmProxies { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of push installers.
+        /// </summary>
+        public List<ASRPushInstallerDetails> PushInstallers { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of replication agents.
+        /// </summary>
+        public List<ASRReplicationAgentDetails> ReplicationAgents { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of reprotect agents.
+        /// </summary>
+        public List<ASRReprotectAgentDetails> ReprotectAgents { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of Mars agents.
+        /// </summary>
+        public List<ASRMarsAgentDetails> MarsAgents { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of DRAs.
+        /// </summary>
+        public List<ASRDraDetails> Dras { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of agent details.
+        /// </summary>
+        public List<ASRAgentDetails> AgentDetails { get; set; }
+    }
+
+    /// <summary>
     ///     Details of the Process Server.
     /// </summary>
     public class ASRProcessServer
@@ -507,6 +588,668 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     Process server details.
+    /// </summary>
+    public class ASRProcessServerDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRProcessServerDetails" /> class.
+        /// </summary>
+        public ASRProcessServerDetails(ProcessServerDetails psDetails)
+        {
+            this.Id = psDetails.Id;
+            this.Name = psDetails.Name;
+            this.Version = psDetails.Version;
+            this.FabricObjectId = psDetails.FabricObjectId;
+            this.BiosId = psDetails.BiosId;
+            this.Fqdn = psDetails.Fqdn;
+            this.LastHeartbeatUtc = psDetails.LastHeartbeatUtc;
+            this.TotalMemoryInBytes = psDetails.TotalMemoryInBytes;
+            this.AvailableMemoryInBytes = psDetails.AvailableMemoryInBytes;
+            this.UsedMemoryInBytes = psDetails.UsedMemoryInBytes;
+            this.MemoryUsagePercentage = psDetails.MemoryUsagePercentage;
+            this.TotalSpaceInBytes = psDetails.TotalSpaceInBytes;
+            this.AvailableSpaceInBytes = psDetails.AvailableSpaceInBytes;
+            this.UsedSpaceInBytes = psDetails.UsedSpaceInBytes;
+            this.FreeSpacePercentage = psDetails.FreeSpacePercentage;
+            this.ThroughputUploadPendingDataInBytes = psDetails.ThroughputUploadPendingDataInBytes;
+            this.ThroughputInBytes = psDetails.ThroughputInBytes;
+            this.ProcessorUsagePercentage = psDetails.ProcessorUsagePercentage;
+            this.ProcessorUsageStatus = psDetails.ProcessorUsageStatus;
+            this.MemoryUsageStatus = psDetails.MemoryUsageStatus;
+            this.DiskUsageStatus = psDetails.DiskUsageStatus;
+            this.SystemLoadStatus = psDetails.SystemLoadStatus;
+            this.SystemLoad = psDetails.SystemLoad;
+            this.ThroughputStatus = psDetails.ThroughputStatus;
+            this.Health = psDetails.Health;
+            this.HistoricHealth = psDetails.HistoricHealth;
+            this.HealthErrors = psDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the process server Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the process server.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the total memory.
+        /// </summary>
+        public long? TotalMemoryInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the available memory.
+        /// </summary>
+        public long? AvailableMemoryInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the used memory.
+        /// </summary>
+        public long? UsedMemoryInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the memory usage percentage.
+        /// </summary>
+        public double? MemoryUsagePercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the total disk space.
+        /// </summary>
+        public long? TotalSpaceInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the available disk space.
+        /// </summary>
+        public long? AvailableSpaceInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the used disk space.
+        /// </summary>
+        public long? UsedSpaceInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the free disk space percentage.
+        /// </summary>
+        public double? FreeSpacePercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the uploading pending data in bytes.
+        /// </summary>
+        public long? ThroughputUploadPendingDataInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput in bytes.
+        /// </summary>
+        public long? ThroughputInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the processor usage percentage.
+        /// </summary>
+        public double? ProcessorUsagePercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the processor usage status.
+        ///     Possible values include: 'Normal', 'Warning', 'Error', 'Unknown'
+        /// </summary>
+        public string ProcessorUsageStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the memory usage status.
+        ///     Possible values include: 'Normal', 'Warning', 'Error', 'Unknown'
+        /// </summary>
+        public string MemoryUsageStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the disk usage status.
+        ///     Possible values include: 'Normal', 'Warning', 'Error', 'Unknown'
+        /// </summary>
+        public string DiskUsageStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the system load status.
+        ///     Possible values include: 'Normal', 'Warning', 'Error', 'Unknown'
+        /// </summary>
+        public string SystemLoadStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the system load.
+        /// </summary>
+        public long? SystemLoad { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the throughput status.
+        ///     Possible values include: 'Normal', 'Warning', 'Error', 'Unknown'
+        /// </summary>
+        public string ThroughputStatus { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the process server.
+        ///     Possible values include: 'None', 'Normal', 'Warning', 'Critical'.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the historic health of the process server based on the health in last 24 hours.
+        ///     Possible values include: 'None', 'Normal', 'Warning', 'Critical'.
+        /// </summary>
+        public string HistoricHealth { get; set; }
+    }
+
+    /// <summary>
+    ///     Rcm proxy details.
+    /// </summary>
+    public class ASRRcmProxyDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRRcmProxyDetails" /> class.
+        /// </summary>
+        public ASRRcmProxyDetails(RcmProxyDetails rcmProxyDetails)
+        {
+            this.Id = rcmProxyDetails.Id;
+            this.Name = rcmProxyDetails.Name;
+            this.FabricObjectId = rcmProxyDetails.FabricObjectId;
+            this.BiosId = rcmProxyDetails.BiosId;
+            this.Fqdn = rcmProxyDetails.Fqdn;
+            this.Version = rcmProxyDetails.Version;
+            this.LastHeartbeatUtc = rcmProxyDetails.LastHeartbeatUtc;
+            this.Health = rcmProxyDetails.Health;
+            this.HealthErrors = rcmProxyDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the RCM proxy Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the RCM proxy name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the RCM proxy bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the RCM proxy fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the RCM proxy.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the RCM proxy.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Push installer details.
+    /// </summary>
+    public class ASRPushInstallerDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRPushInstallerDetails" /> class.
+        /// </summary>
+        public ASRPushInstallerDetails(PushInstallerDetails piDetails)
+        {
+            this.Id = piDetails.Id;
+            this.Name = piDetails.Name;
+            this.FabricObjectId = piDetails.FabricObjectId;
+            this.Version = piDetails.Version;
+            this.BiosId = piDetails.BiosId;
+            this.Fqdn = piDetails.Fqdn;
+            this.LastHeartbeatUtc = piDetails.LastHeartbeatUtc;
+            this.Health = piDetails.Health;
+            this.HealthErrors = piDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the push installer Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the push installer name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the push installer bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the push installer fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the push installer.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the push installer.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Replication agent details.
+    /// </summary>
+    public class ASRReplicationAgentDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRReplicationAgentDetails" /> class.
+        /// </summary>
+        public ASRReplicationAgentDetails(ReplicationAgentDetails replicationAgentDetails)
+        {
+            this.Id = replicationAgentDetails.Id;
+            this.Name = replicationAgentDetails.Name;
+            this.FabricObjectId = replicationAgentDetails.FabricObjectId;
+            this.BiosId = replicationAgentDetails.BiosId;
+            this.Fqdn = replicationAgentDetails.Fqdn;
+            this.Version = replicationAgentDetails.Version;
+            this.LastHeartbeatUtc = replicationAgentDetails.LastHeartbeatUtc;
+            this.Health = replicationAgentDetails.Health;
+            this.HealthErrors = replicationAgentDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the replication agent Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the replication agent name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the replication agent bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the replication agent fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the replication agent.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the replication agent.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Reprotect agent details.
+    /// </summary>
+    public class ASRReprotectAgentDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRReprotectAgentDetails" /> class.
+        /// </summary>
+        public ASRReprotectAgentDetails(ReprotectAgentDetails reprotectAgentDetails)
+        {
+            this.Id = reprotectAgentDetails.Id;
+            this.Name = reprotectAgentDetails.Name;
+            this.FabricObjectId = reprotectAgentDetails.FabricObjectId;
+            this.BiosId = reprotectAgentDetails.BiosId;
+            this.Fqdn = reprotectAgentDetails.Fqdn;
+            this.Version = reprotectAgentDetails.Version;
+            this.LastHeartbeatUtc = reprotectAgentDetails.LastHeartbeatUtc;
+            this.Health = reprotectAgentDetails.Health;
+            this.HealthErrors = reprotectAgentDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the reprotect agent.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the reprotect agent.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Mars agent details.
+    /// </summary>
+    public class ASRMarsAgentDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRMarsAgentDetails" /> class.
+        /// </summary>
+        public ASRMarsAgentDetails(MarsAgentDetails marsAgentDetails)
+        {
+            this.Id = marsAgentDetails.Id;
+            this.Name = marsAgentDetails.Name;
+            this.FabricObjectId = marsAgentDetails.FabricObjectId;
+            this.BiosId = marsAgentDetails.BiosId;
+            this.Fqdn = marsAgentDetails.Fqdn;
+            this.Version = marsAgentDetails.Version;
+            this.LastHeartbeatUtc = marsAgentDetails.LastHeartbeatUtc;
+            this.Health = marsAgentDetails.Health;
+            this.HealthErrors = marsAgentDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the Mars agent Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Mars agent name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the fabric object Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Mars agent bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Mars agent fqdn.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the Mars agent.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the Mars agent.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Dra details.
+    /// </summary>
+    public class ASRDraDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRDraDetails" /> class.
+        /// </summary>
+        public ASRDraDetails(DraDetails draDetails)
+        {
+            this.Id = draDetails.Id;
+            this.Name = draDetails.Name;
+            this.BiosId = draDetails.BiosId;
+            this.Version = draDetails.Version;
+            this.LastHeartbeatUtc = draDetails.LastHeartbeatUtc;
+            this.Health = draDetails.Health;
+            this.HealthErrors = draDetails.HealthErrors;
+        }
+
+        /// <summary>
+        ///     Gets or sets the DRA Id.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the DRA name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the DRA bios Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the version.
+        /// </summary>
+        public string Version { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last heartbeat received from the DRA.
+        /// </summary>
+        public DateTime? LastHeartbeatUtc { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health of the DRA.
+        /// </summary>
+        public string Health { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the health errors.
+        /// </summary>
+        public IList<HealthError> HealthErrors { get; set; }
+    }
+
+    /// <summary>
+    ///     Agent details.
+    /// </summary>
+    public class ASRAgentDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRAgentDetails" /> class.
+        /// </summary>
+        public ASRAgentDetails(AgentDetails agentDetails)
+        {
+            this.AgentId = agentDetails.AgentId;
+            this.MachineId = agentDetails.MachineId;
+            this.BiosId = agentDetails.BiosId;
+            this.Fqdn = agentDetails.Fqdn;
+            if (agentDetails.Disks != null && agentDetails.Disks.Any())
+            {
+                this.Disks = agentDetails.Disks
+                    .ToList()
+                    .ConvertAll(disk => new ASRAgentDiskDetails(disk));
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the Id of the agent running on the server.
+        /// </summary>
+        public string AgentId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Id of the machine to which the agent is registered.
+        /// </summary>
+        public string MachineId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the machine BIOS Id.
+        /// </summary>
+        public string BiosId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the machine FQDN.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the disks.
+        /// </summary>
+        public List<ASRAgentDiskDetails> Disks { get; set; }
+    }
+
+    /// <summary>
+    ///     Agent disk details.
+    /// </summary>
+    public class ASRAgentDiskDetails
+    {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ASRAgentDiskDetails" /> class.
+        /// </summary>
+        public ASRAgentDiskDetails(AgentDiskDetails details)
+        {
+            this.DiskId = details.DiskId;
+            this.DiskName = details.DiskName;
+            this.IsOSDisk = details.IsOSDisk;
+            this.CapacityInBytes = details.CapacityInBytes;
+            this.LunId = details.LunId;
+        }
+
+        /// <summary>
+        ///     Gets or sets the disk Id.
+        /// </summary>
+        public string DiskId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the disk name.
+        /// </summary>
+        public string DiskName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether the disk is the OS disk.
+        /// </summary>
+        public string IsOSDisk { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the disk capacity in bytes.
+        /// </summary>
+        public long? CapacityInBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the lun of disk.
+        /// </summary>
+        public int? LunId { get; set; }
+    }
+
     /// <summary>
     ///     Fabric Specific Virtual Machine Details for VMWare.
     /// </summary>
@@ -1537,6 +2280,514 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         // check do we need to expoxed these 2 (TODO)
         // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
         // public string managementId;
+    }
+
+    /// <summary>
+    ///     InMageRcm specific replication protected item details.
+    /// </summary>
+    public class ASRInMageRcmSpecificRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        /// <summary>
+        /// Initializes a new instance of the<see cref="ASRInMageRcmSpecificRPIDetails" /> class.
+        /// </summary>
+        public ASRInMageRcmSpecificRPIDetails(InMageRcmReplicationDetails details)
+        {
+            this.InternalIdentifier = details.InternalIdentifier;
+            this.FabricDiscoveryMachineId = details.FabricDiscoveryMachineId;
+            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.DiscoveryType = details.DiscoveryType;
+            this.ProcessServerId = details.ProcessServerId;
+            this.ProcessServerName = details.ProcessServerName;
+            this.ProcessorCoreCount = details.ProcessorCoreCount;
+            this.AllocatedMemoryInMB = details.AllocatedMemoryInMB;
+            this.RunAsAccountId = details.RunAsAccountId;
+            this.OsType = details.OsType;
+            this.FirmwareType = details.FirmwareType;
+            this.PrimaryNicIpAddress = details.PrimaryNicIpAddress;
+            this.TargetGeneration = details.TargetGeneration;
+            this.LicenseType = details.LicenseType;
+            this.TargetVmName = details.TargetVmName;
+            this.TargetVmSize = details.TargetVmSize;
+            this.TargetResourceGroupId = details.TargetResourceGroupId;
+            this.TargetLocation = details.TargetLocation;
+            this.TargetAvailabilitySetId = details.TargetAvailabilitySetId;
+            this.TargetAvailabilityZone = details.TargetAvailabilityZone;
+            this.TargetProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
+            this.TargetBootDiagnosticsStorageAccountId = details.TargetBootDiagnosticsStorageAccountId;
+            this.TargetNetworkId = details.TargetNetworkId;
+            this.TestNetworkId = details.TestNetworkId;
+            this.FailoverRecoveryPointId = details.FailoverRecoveryPointId;
+            this.LastRecoveryPointReceived = details.LastRecoveryPointReceived;
+            this.LastRpoInSeconds = details.LastRpoInSeconds;
+            this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
+            this.LastRecoveryPointId = details.LastRecoveryPointId;
+            this.InitialReplicationProgressPercentage = details.InitialReplicationProgressPercentage;
+            this.InitialReplicationProcessedBytes = details.InitialReplicationProcessedBytes;
+            this.InitialReplicationTransferredBytes = details.InitialReplicationTransferredBytes;
+            this.ResyncProgressPercentage = details.ResyncProgressPercentage;
+            this.ResyncProcessedBytes = details.ResyncProcessedBytes;
+            this.ResyncTransferredBytes = details.ResyncTransferredBytes;
+            this.InitialReplicationProgressHealth = details.InitialReplicationProgressHealth;
+            this.ResyncProgressHealth = details.ResyncProgressHealth;
+            this.ResyncState = details.ResyncState;
+            this.AgentUpgradeState = details.AgentUpgradeState;
+            this.LastAgentUpgradeType = details.LastAgentUpgradeType;
+            this.AgentUpgradeJobId = details.AgentUpgradeJobId;
+            this.AgentUpgradeAttemptToVersion = details.AgentUpgradeAttemptToVersion;
+            this.ResyncRequired = details.ResyncRequired;
+            this.IsLastUpgradeSuccessful = details.IsLastUpgradeSuccessful;
+            this.MobilityAgentDetails =
+                details.MobilityAgentDetails != null ?
+                    new ASRInMageRcmMobilityAgentDetails(details.MobilityAgentDetails) :
+                    null;
+
+            if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
+            {
+                this.ProtectedDisks = details.ProtectedDisks.ToList()
+                   .ConvertAll(disk => new ASRInMageRcmProtectedDiskDetails(disk));
+            }
+
+            if (details.VmNics != null && details.VmNics.Any())
+            {
+                this.VmNics = details.VmNics.ToList()
+                    .ConvertAll(nic => new ASRInMageRcmNicDetails(nic));
+            }
+
+            if (details.LastAgentUpgradeErrorDetails != null && details.LastAgentUpgradeErrorDetails.Any())
+            {
+                this.LastAgentUpgradeErrorDetails = details.LastAgentUpgradeErrorDetails.ToList()
+                   .ConvertAll(e => new ASRInMageRcmLastAgentUpgradeErrorDetails(e));
+            }
+
+            if (details.AgentUpgradeBlockingErrorDetails != null && details.AgentUpgradeBlockingErrorDetails.Any())
+            {
+                this.AgentUpgradeBlockingErrorDetails = details.AgentUpgradeBlockingErrorDetails.ToList()
+                   .ConvertAll(e => new ASRInMageRcmAgentUpgradeBlockingErrorDetails(e));
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the virtual machine Id.
+        /// </summary>
+        public string InternalIdentifier { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the discovered VM.
+        /// </summary>
+        public string FabricDiscoveryMachineId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the multi VM group name.
+        /// </summary>
+        public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the type of the discovered VM.
+        /// </summary>
+        public string DiscoveryType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server Id.
+        /// </summary>
+        public string ProcessServerId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the process server name.
+        /// </summary>
+        public string ProcessServerName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the processor core count.
+        /// </summary>
+        public int? ProcessorCoreCount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the allocated memory in MB.
+        /// </summary>
+        public double? AllocatedMemoryInMB { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the run-as account Id.
+        /// </summary>
+        public string RunAsAccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the type of the OS on the VM.
+        /// </summary>
+        public string OsType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the firmware type.
+        /// </summary>
+        public string FirmwareType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the IP address of the primary network interface.
+        /// </summary>
+        public string PrimaryNicIpAddress { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target generation.
+        /// </summary>
+        public string TargetGeneration { get; set; }
+
+        /// <summary>
+        ///     Gets or sets License Type of the VM to be used.
+        /// </summary>
+        public string LicenseType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets target VM name.
+        /// </summary>
+        public string TargetVmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target VM size.
+        /// </summary>
+        public string TargetVmSize { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target resource group Id.
+        /// </summary>
+        public string TargetResourceGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target location.
+        /// </summary>
+        public string TargetLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target availability set Id.
+        /// </summary>
+        public string TargetAvailabilitySetId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target availability zone.
+        /// </summary>
+        public string TargetAvailabilityZone { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target proximity placement group Id.
+        /// </summary>
+        public string TargetProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target boot diagnostics storage account ARM Id.
+        /// </summary>
+        public string TargetBootDiagnosticsStorageAccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target network Id.
+        /// </summary>
+        public string TargetNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the test network Id.
+        /// </summary>
+        public string TestNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the recovery point Id to which the VM was failed over.
+        /// </summary>
+        public string FailoverRecoveryPointId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last recovery point received time.
+        /// </summary>
+        public DateTime? LastRecoveryPointReceived { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last recovery point objective value.
+        /// </summary>
+        public long? LastRpoInSeconds { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last recovery point objective calculated time.
+        /// </summary>
+        public DateTime? LastRpoCalculatedTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last recovery point Id.
+        /// </summary>
+        public string LastRecoveryPointId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication progress percentage.
+        /// </summary>
+        public int? InitialReplicationProgressPercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication processed bytes. This includes sum of total bytes
+        ///     transferred and matched bytes on all selected disks in source VM.
+        /// </summary>
+        public long? InitialReplicationProcessedBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication transferred bytes from source VM to azure for
+        ///     all selected disks on source VM.
+        /// </summary>
+        public long? InitialReplicationTransferredBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication progress health.
+        /// </summary>
+        public string InitialReplicationProgressHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync progress percentage.
+        /// </summary>
+        public int? ResyncProgressPercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync progress health.
+        /// </summary>
+        public string ResyncProgressHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync state.
+        /// </summary>
+        public string ResyncState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the agent auto upgrade state.
+        /// </summary>
+        public string AgentUpgradeState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last agent upgrade type.
+        /// </summary>
+        public string LastAgentUpgradeType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether resync is required.
+        /// </summary>
+        public string ResyncRequired { get; set; }
+
+
+        /// <summary>
+        ///     Gets or sets the resync processed bytes. This includes sum of total bytes transferred
+        ///     and matched bytes on all selected disks in source VM.
+        /// </summary>
+        public long? ResyncProcessedBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync transferred bytes from source VM to azure for all
+        ///     selected disks on source VM.
+        /// </summary>
+        public long? ResyncTransferredBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the agent upgrade job Id.
+        /// </summary>
+        public string AgentUpgradeJobId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the agent version to which last agent upgrade was attempted.
+        /// </summary>
+        public string AgentUpgradeAttemptToVersion { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether last agent upgrade was successful or not.
+        /// </summary>
+        public string IsLastUpgradeSuccessful { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of protected disks.
+        /// </summary>
+        public List<ASRInMageRcmProtectedDiskDetails> ProtectedDisks { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the mobility agent information.
+        /// </summary>
+        public ASRInMageRcmMobilityAgentDetails MobilityAgentDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last agent upgrade error information.
+        /// </summary>
+        public List<ASRInMageRcmLastAgentUpgradeErrorDetails> LastAgentUpgradeErrorDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the network details.
+        /// </summary>
+        public List<ASRInMageRcmNicDetails> VmNics { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the agent upgrade blocking error information.
+        /// </summary>
+        public List<ASRInMageRcmAgentUpgradeBlockingErrorDetails> AgentUpgradeBlockingErrorDetails { get; set; }
+    }
+
+    /// <summary>
+    ///     InMageRcmFailback specific replication protected item details.
+    /// </summary>
+    public class ASRInMageRcmFailbackSpecificRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        /// <summary>
+        /// Initializes a new instance of the<see cref="ASRInMageRcmFailbackSpecificRPIDetails " /> class.
+        /// </summary>
+        public ASRInMageRcmFailbackSpecificRPIDetails(InMageRcmFailbackReplicationDetails details)
+        {
+            this.InternalIdentifier = details.InternalIdentifier;
+            this.AzureVirtualMachineId = details.AzureVirtualMachineId;
+            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.ReprotectAgentId = details.ReprotectAgentId;
+            this.ReprotectAgentName = details.ReprotectAgentName;
+            this.OsType = details.OsType;
+            this.LogStorageAccountId = details.LogStorageAccountId;
+            this.TargetvCenterId = details.TargetvCenterId;
+            this.TargetVmName = details.TargetVmName;
+            this.TargetDataStoreName = details.TargetDataStoreName;
+            this.InitialReplicationProgressPercentage = details.InitialReplicationProgressPercentage;
+            this.InitialReplicationProcessedBytes = details.InitialReplicationProcessedBytes;
+            this.InitialReplicationTransferredBytes = details.InitialReplicationTransferredBytes;
+            this.ResyncProgressPercentage = details.ResyncProgressPercentage;
+            this.ResyncProcessedBytes = details.ResyncProcessedBytes;
+            this.ResyncTransferredBytes = details.ResyncTransferredBytes;
+            this.ResyncState = details.ResyncState;
+            this.ResyncRequired = details.ResyncRequired;
+            this.InitialReplicationProgressHealth = details.InitialReplicationProgressHealth;
+            this.ResyncProgressHealth = details.ResyncProgressHealth;
+            this.MobilityAgentDetails =
+                details.MobilityAgentDetails != null ?
+                    new ASRInMageRcmFailbackMobilityAgentDetails(details.MobilityAgentDetails) :
+                    null;
+
+            if (details.ProtectedDisks != null && details.ProtectedDisks.Any())
+            {
+                this.ProtectedDisks = details.ProtectedDisks.ToList()
+                   .ConvertAll(disk => new ASRInMageRcmFailbackProtectedDiskDetails(disk));
+            }
+
+            if (details.VmNics != null && details.VmNics.Any())
+            {
+                this.VmNics = details.VmNics.ToList()
+                    .ConvertAll(nic => new ASRInMageRcmFailbackNicDetails(nic));
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the virtual machine internal identifier.
+        /// </summary>
+        public string InternalIdentifier { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM Id of the azure VM.
+        /// </summary>
+        public string AzureVirtualMachineId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the multi VM group name.
+        /// </summary>
+        public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent Id.
+        /// </summary>
+        public string ReprotectAgentId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reprotect agent name.
+        /// </summary>
+        public string ReprotectAgentName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the type of the OS on the VM.
+        /// </summary>
+        public string OsType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the log storage account ARM Id.
+        /// </summary>
+        public string LogStorageAccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target vCenter Id.
+        /// </summary>
+        public string TargetvCenterId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target datastore name.
+        /// </summary>
+        public string TargetDataStoreName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target VM name.
+        /// </summary>
+        public string TargetVmName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the last sync time.
+        /// </summary>
+        public DateTime? LastSyncTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication progress percentage.
+        /// </summary>
+        public int? InitialReplicationProgressPercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication processed bytes. This includes sum of total bytes
+        ///     transferred and matched bytes on all selected disks in source VM.
+        /// </summary>
+        public long? InitialReplicationProcessedBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication transferred bytes from source VM to target for
+        ///     all selected disks on source VM.
+        /// </summary>
+        public long? InitialReplicationTransferredBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the initial replication progress health.
+        /// </summary>
+        public string InitialReplicationProgressHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync progress percentage.
+        /// </summary>
+        public int? ResyncProgressPercentage { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync processed bytes. This includes sum of total bytes transferred
+        ///     and matched bytes on all selected disks in source VM.
+        /// </summary>
+        public long? ResyncProcessedBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync transferred bytes from source VM to target for all
+        ///     selected disks on source VM.
+        /// </summary>
+        public long? ResyncTransferredBytes { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync progress health.
+        /// </summary>
+        public string ResyncProgressHealth { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether resync is required.
+        /// </summary>
+        public string ResyncRequired { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the resync state.
+        /// </summary>
+        public string ResyncState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list of protected disks.
+        /// </summary>
+        public List<ASRInMageRcmFailbackProtectedDiskDetails> ProtectedDisks { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the mobility agent information.
+        /// </summary>
+        public ASRInMageRcmFailbackMobilityAgentDetails MobilityAgentDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the network details.
+        /// </summary>
+        public List<ASRInMageRcmFailbackNicDetails> VmNics { get; set; }
     }
 
     //

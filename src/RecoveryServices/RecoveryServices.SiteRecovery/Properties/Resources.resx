@@ -403,6 +403,12 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="UnsupportedReplicationProtectionActionForCommit" xml:space="preserve">
     <value>Unsupported replication protection action for virtual machine in replication group for commit for replication provider {0}. Use recovery plan action for the same purpose.</value>
   </data>
+  <data name="UnsupportedReplicationProtectionActionForCancelFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for cancel failover for replication provider {0}.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForUnplannedFailover" xml:space="preserve">
+    <value>Unsupported replication protection action for virtual machine in replication group for Unplanned failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
+  </data>
   <data name="UnsupportedReplicationProtectionActionForTestFailover" xml:space="preserve">
     <value>Unsupported replication protection action for virtual machine in replication group for test failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
   </data>
@@ -515,5 +521,23 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="DiskTagCannotBeSet" xml:space="preserve">
     <value>Disk Tag(s) "{0}" cannot be set if UseManagedDisk is "{1}".</value>
+  </data>
+  <data name="SiteNotValid" xml:space="preserve">
+    <value>Site Id {0} is not valid. Please try again with the correct site details.</value>
+  </data>
+  <data name="RunAsAccountNotFound" xml:space="preserve">
+    <value>Credentials to access source machine: {0} not found in the Site {1}.</value>
+  </data>
+  <data name="NoProtectableMachinesInSite" xml:space="preserve">
+    <value>No protectable machine found in the Site {1}.</value>
+  </data>
+  <data name="ProtectableMachineNotFound" xml:space="preserve">
+    <value>Protectable machine {0} not found in the Site {1}.</value>
+  </data>
+  <data name="UnsupportedReplicationProviderForProtectableItem" xml:space="preserve">
+    <value>Unsupported replication provider for protectable item. Supported replication provider: {1}.</value>
+  </data>
+  <data name="ApplianceNotFound" xml:space="preserve">
+    <value>No appliance found with the name {0}.</value>
   </data>
 </root>

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
@@ -110,6 +111,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Constants.RecoveryTagLatestAvailableApplicationConsistent,
             Constants.RecoveryTagLatestAvailableCrashConsistent)]
         public string RecoveryTag { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether multi VM sync enabled VMs should use
+        ///     multi VM sync points for failover.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByRPObject,
+            Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [DefaultValue(Constants.Disable)]
+        [ValidateSet(Constants.Enable, Constants.Disable)]
+        public string MultiVmSyncPoint { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -213,6 +226,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 };
 
                 input.Properties.ProviderSpecificDetails = failoverInput;
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageRcm,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                this.InMageRcmUnplannedFailover(input);
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageRcmFailback,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForUnplannedFailover,
+                        this.ReplicationProtectedItem.ReplicationProvider));
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
@@ -320,6 +352,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 // TODO
                 // RecoveryToPrimary Direction is Invalid for InMageAzureV2.
+                new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
+            }
+        }
+
+        /// <summary>
+        ///     InMageRcm unplanned failover.
+        /// </summary>
+        private void InMageRcmUnplannedFailover(UnplannedFailoverInput input)
+        {
+            // Validate the direction as PrimaryToRecovery.
+            if (this.Direction == Constants.PrimaryToRecovery)
+            {
+                // Set the InMageRcm provider specific input in the unplanned failover input.
+                var failoverInput = new InMageRcmUnplannedFailoverInput
+                {
+                    PerformShutdown = this.PerformSourceSideAction ?
+                        Constants.True :
+                        Constants.False,
+                    RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null
+                };
+                input.Properties.ProviderSpecificDetails = failoverInput;
+            }
+            else
+            {
+                // RecoveryToPrimary direction is invalid for InMageRcm.
                 new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
             }
         }
@@ -465,6 +522,56 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         RecoveryPointType = recoveryPointType
                     };
                     recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanA2AFailoverInput);
+                }
+                else if (string.Compare(
+                        replicationProvider,
+                        Constants.InMageRcm,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    var recoveryPointType =
+                        this.RecoveryTag == Constants.RecoveryTagLatestAvailableApplicationConsistent
+                            ? RecoveryPlanPointType.LatestApplicationConsistent
+                            : this.RecoveryTag == Constants.RecoveryTagLatest
+                                ? RecoveryPlanPointType.Latest
+                                 : this.RecoveryTag == Constants.RecoveryTagLatestAvailableCrashConsistent
+                                     ? RecoveryPlanPointType.LatestCrashConsistent
+                                      : RecoveryPlanPointType.LatestProcessed;
+                    this.MultiVmSyncPoint =
+                        this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.MultiVmSyncPoint))
+                            ? this.MultiVmSyncPoint
+                            : Constants.Disable;
+
+                    // Check if the direction is PrimaryToRecovery.
+                    if (this.Direction == Constants.PrimaryToRecovery)
+                    {
+                        // Create the InMageRcm provider specific input.
+                        var recoveryPlanInMageRcmFailoverInput =
+                            new RecoveryPlanInMageRcmFailoverInput
+                            {
+                                RecoveryPointType = recoveryPointType,
+                                UseMultiVmSyncPoint =
+                                    this.MultiVmSyncPoint == Constants.Enable ?
+                                        Constants.True :
+                                        Constants.False
+                            };
+
+                        // Add the InMagRcm provider specific input in the unplanned failover input.
+                        recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(
+                            recoveryPlanInMageRcmFailoverInput);
+                    }
+                }
+                else if (string.Compare(
+                        this.ReplicationProtectedItem.ReplicationProvider,
+                        Constants.InMageRcmFailback,
+                        StringComparison.OrdinalIgnoreCase) ==
+                    0)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources.UnsupportedReplicationProviderForUnplannedFailover,
+                            this.ReplicationProtectedItem.ReplicationProvider));
                 }
             }
 
