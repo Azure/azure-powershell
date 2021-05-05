@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supporting cross subscription DS Move.
 * Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
 
 ## Version 3.6.0

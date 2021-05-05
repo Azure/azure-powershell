@@ -240,7 +240,8 @@ Deletes a Recovery Services vault.
 Restarts an Azure Site Recovery job.
 
 ### [Restore-AzRecoveryServicesBackupItem](Restore-AzRecoveryServicesBackupItem.md)
-Restores the data and configuration for a Backup item to a recovery point.
+Restores the data and configuration for a Backup item to the specified recovery point. The required parameters vary with the backup item type.
+The same command is used to restore Azure Virtual machines, databases running within Azure Virtual machines and Azure file shares as well.
 
 ### [Resume-AzRecoveryServicesAsrJob](Resume-AzRecoveryServicesAsrJob.md)
 Resumes a suspended Azure Site Recovery job.
@@ -331,6 +332,9 @@ Refreshes (Refresh server) the information received from the Azure Site Recovery
 
 ### [Update-AzRecoveryServicesAsrvCenter](Update-AzRecoveryServicesAsrvCenter.md)
 Update discovery details for a registered vCenter.
+
+### [Update-AzRecoveryServicesVault](Update-AzRecoveryServicesVault.md)
+Updates MSI to the recovery services vault.
 
 ### [Wait-AzRecoveryServicesBackupJob](Wait-AzRecoveryServicesBackupJob.md)
 Waits for a Backup job to finish.
