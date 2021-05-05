@@ -14,17 +14,10 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
-
-using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.StorageSync;
-using Microsoft.Azure.Management.StorageSync.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
-using StorageSyncModels = Microsoft.Azure.Management.StorageSync.Models;
 
 namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
 {
@@ -33,6 +26,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
+    [CmdletDeprecation(ReplacementCmdletName = "Invoke-StorageSyncFileRecall (local server cmdlet shipped with AFS agent)")]
     [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncFileRecall,
         DefaultParameterSetName = StorageSyncParameterSets.StringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class InvokeStorageSyncFileRecallCommand : StorageSyncClientCmdletBase
@@ -172,59 +166,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ExecuteClientAction(() =>
-            {
-                var resourceName = default(string);
-                var resourceGroupName = default(string);
-                var storageSyncServiceName = default(string);
-                var parentResourceName = default(string);
-
-                if (this.IsParameterBound(c => c.ResourceId))
-                {
-                    var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                    resourceName = resourceIdentifier.ResourceName;
-                    resourceGroupName = resourceIdentifier.ResourceGroupName;
-                    parentResourceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.SyncGroupTypeName, 0);
-                    storageSyncServiceName = resourceIdentifier.GetParentResourceName(StorageSyncConstants.StorageSyncServiceTypeName, 1);
-                }
-                else if (this.IsParameterBound(c => c.InputObject))
-                {
-                    resourceName = InputObject.ServerEndpointName;
-                    resourceGroupName = InputObject.ResourceGroupName;
-                    parentResourceName = InputObject.SyncGroupName;
-                    storageSyncServiceName = InputObject.StorageSyncServiceName;
-                }
-                else
-                {
-                    resourceName = Name;
-                    resourceGroupName = ResourceGroupName;
-                    parentResourceName = SyncGroupName;
-                    storageSyncServiceName = StorageSyncServiceName;
-                }
-
-                var recallActionParameters = new RecallActionParameters()
-                {
-                    Pattern = Pattern,
-                    RecallPath = RecallPath
-                };
-
-                Target = string.Join("/", resourceGroupName, storageSyncServiceName, parentResourceName, resourceName);
-                if (ShouldProcess(Target, ActionMessage))
-                {
-                    StorageSyncClientWrapper.StorageSyncManagementClient.ServerEndpoints.RecallAction(
-                        resourceGroupName,
-                        storageSyncServiceName,
-                        parentResourceName,
-                        resourceName,
-                        recallActionParameters);
-                }
-
-            });
-
-            if (PassThru.IsPresent)
-            {
-                WriteObject(true);
-            }
+            WriteErrorWithTimestamp(StorageSyncResources.InvokeAzStorageSyncFileRecallDeprecationMessage);
         }
     }
 }
