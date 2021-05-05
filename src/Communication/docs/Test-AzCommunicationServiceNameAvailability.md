@@ -1,63 +1,66 @@
 ---
 external help file:
 Module Name: Az.Communication
-online version: https://docs.microsoft.com/powershell/module/az.communication/update-azcommunicationservice
+online version: https://docs.microsoft.com/powershell/module/az.communication/test-azcommunicationservicenameavailability
 schema: 2.0.0
 ---
 
-# Update-AzCommunicationService
+# Test-AzCommunicationServiceNameAvailability
 
 ## SYNOPSIS
-Operation to update an existing CommunicationService.
+Checks that the CommunicationService name is valid and is not already in use.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CheckExpanded (Default)
 ```
-Update-AzCommunicationService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DataLocation <String>] [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzCommunicationServiceNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### Check
 ```
-Update-AzCommunicationService -InputObject <ICommunicationIdentity> [-DataLocation <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Test-AzCommunicationServiceNameAvailability -NameAvailabilityParameter <INameAvailabilityParameters>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity>
+ -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### CheckViaIdentityExpanded
+```
+Test-AzCommunicationServiceNameAvailability -InputObject <ICommunicationIdentity> -Name <String>
+ -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Operation to update an existing CommunicationService.
+Checks that the CommunicationService name is valid and is not already in use.
 
 ## EXAMPLES
 
-### Example 1: Update an existing ACS resource to have tags
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzCommunicationService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1"}
+PS C:\> {{ Add code here }}
 
-Location Name           Type                                          AzureAsyncOperation
--------- ----           ----                                          -------------------
-Global   ContosoAcsResource1 Microsoft.Communication/communicationServices
+{{ Add output here }}
 ```
 
-Attaches the given tags to the specified ACS resource.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -DataLocation
-The location where the communication service stores its data at rest.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -80,7 +83,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -90,28 +93,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The Azure location where the CommunicationService is running.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-The name of the CommunicationService resource.
+The CommunicationService name to validate.
+e.g."my-CommunicationService-name-here"
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: CommunicationServiceName
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -120,19 +109,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -NameAvailabilityParameter
+Data POST-ed to the nameAvailability action
+To construct, see NOTES section for NAMEAVAILABILITYPARAMETER properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters
+Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -141,7 +130,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Check, CheckExpanded
 Aliases:
 
 Required: False
@@ -151,15 +140,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Tags of the service which is a list of key value pairs that describe the resource.
+### -Type
+The resource type.
+Should be always "Microsoft.Communication/CommunicationServices".
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,11 +192,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailabilityParameters
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ICommunicationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ICommunicationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
 
 ## NOTES
 
@@ -224,6 +216,10 @@ INPUTOBJECT <ICommunicationIdentity>: Identity Parameter
   - `[OperationId <String>]`: The ID of an ongoing async operation
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+NAMEAVAILABILITYPARAMETER <INameAvailabilityParameters>: Data POST-ed to the nameAvailability action
+  - `Name <String>`: The CommunicationService name to validate. e.g."my-CommunicationService-name-here"
+  - `Type <String>`: The resource type. Should be always "Microsoft.Communication/CommunicationServices".
 
 ## RELATED LINKS
 

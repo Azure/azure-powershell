@@ -1,7 +1,7 @@
 @{
   GUID = '32c4dede-9b85-43d4-83ab-447e2938c400'
   RootModule = './Az.Communication.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Communication.private.dll'
   FormatsToProcess = './Az.Communication.format.ps1xml'
-  FunctionsToExport = 'Get-AzCommunicationService', 'Get-AzCommunicationServiceKey', 'New-AzCommunicationService', 'New-AzCommunicationServiceKey', 'Remove-AzCommunicationService', 'Set-AzCommunicationServiceNotificationHub', 'Update-AzCommunicationService', '*'
+  FunctionsToExport = 'Get-AzCommunicationService', 'Get-AzCommunicationServiceKey', 'New-AzCommunicationService', 'New-AzCommunicationServiceKey', 'Remove-AzCommunicationService', 'Set-AzCommunicationServiceNotificationHub', 'Test-AzCommunicationServiceNameAvailability', 'Update-AzCommunicationService', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
