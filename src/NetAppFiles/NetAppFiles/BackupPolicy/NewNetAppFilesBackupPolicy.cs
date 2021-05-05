@@ -23,6 +23,8 @@ using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Monitor.Version2018_09_01.Models;
 using System.Collections.Generic;
+using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
 {
@@ -135,6 +137,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
                 {
                     tagPairs.Add(key, Tag[key].ToString());
                 }
+            }
+
+            Management.NetApp.Models.BackupPolicy existingBackupPolicy = null;
+
+            try
+            {
+                existingBackupPolicy = AzureNetAppFilesManagementClient.BackupPolicies.Get(ResourceGroupName, AccountName, Name);
+            }
+            catch
+            {
+                existingBackupPolicy = null;
+            }
+            if (existingBackupPolicy != null)
+            {
+                throw new AzPSResourceNotFoundCloudException($"A Backup Policy with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesBackupPolicy to update an existing Backup Policy.");
             }
 
             var backupPolicyBody = new Management.NetApp.Models.BackupPolicy()

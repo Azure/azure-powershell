@@ -20,6 +20,29 @@
 
 ## Upcoming Release
 
+## Version 3.5.0
+* Added parameter `ObjectType` for `New-AzRoleAssignment`
+* Fix version checking bug in `Set-AzRoleAssignment`
+* Updated to use SDK version 3.13-preview
+* Template Spec Versions: Renamed artifacts to linkedTemplates
+* Template Spec Versions: Renamed "template" to "mainTemplate"
+* Added support for UIFormDefinition for New-AzTemplateSpec and Set-AzTemplateSpec
+
+## Version 3.4.1
+* Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
+  - `New-AzADApplication` 
+  - `Update-AzADApplication`
+  - `New-AzADServicePrincipal`
+  - `Update-AzADServicePrincipal`
+* Ignored Bicep warning message in error stream if exitcode equals zero.
+
+## Version 3.4.0
+* Redirected bicep message to verbose stream
+* Removed the logic of copying Bicep template file to temp folder.
+* Added support of policy exemption resource type
+* Fixed what-if functionality when using `-QueryString` parameter.
+* Normalized `-QueryString` starting with "?" for scenarios involving dynamic parameters.
+
 ## Version 3.3.0
 * Added support for Azure resources deployment in Bicep language
 * Fixed issues with TemplateSpec deployments in `New-AzTenantDeployment` and `New-AzManagementGroupDeployment`

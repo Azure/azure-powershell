@@ -252,7 +252,7 @@ Creates the test environment needed to perform the tests
 function Create-SqlPoolBackupTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlPoolBackupTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params $params.location
+	Create-SqlTestEnvironmentWithParams $params $params.location
 }
 
 <#

@@ -16,7 +16,8 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     # Create Public IP
     Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"
-    
+    $env.PublicIpId = $publicIp.Id
+
     # Create Network Profile
     $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $publicIp.Id
     $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
@@ -67,12 +68,12 @@ function setupEnv() {
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
     $env.Location = "EastUS2EUAP"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
-    
+
     $env.CscfgFile = "test-artifacts\CSCmdletTest.cscfg"
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
     $env.RoleInstanceName = "WebRole_IN_0"
     
-    $env.RDPOutputFile = Join-Path $PSScriptRoot ((RandomString $false 8) + ".rdp")
+    $env.RDPOutputFile = Join-Path $PSScriptRoot "test-artifacts\desktopdowntest.rdp"
     
     $cspkgFilePath = Join-Path $PSScriptRoot $env.CspkgFile
     
@@ -104,6 +105,12 @@ function setupEnv() {
 
     CreateCloudService "cscmdlettestip" $env.CloudServiceName
 
+    # Get and OS version/family to validate
+    $osVersions = Get-AzCloudServiceOSVersion -Location $env.Location
+    $osFamilies = Get-AzCloudServiceOSFamily -Location $env.Location
+    $env.OSVersionName = $osVersions[0].Name
+    $env.OSFamilyName = $osFamilies[0].Name
+
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 
@@ -111,6 +118,5 @@ function cleanupEnv() {
     # Clean resources you create for testing
     Write-Host -ForegroundColor Yellow "Removing ResourceGroup" $env.ResourceGroupName
     Remove-AzResourceGroup -ResourceGroupName $env.ResourceGroupName
-    RemoveFile $env.RDPOutputFile
 }
 

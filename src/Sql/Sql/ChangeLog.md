@@ -18,10 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
+
+## Version 2.17.1
+* Added cmdlet output breaking change warnings to the following: 
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
+
+## Version 2.17.0
+* Added cmdlet `New-AzSqlServerTrustGroup`
+* Added cmdlet `Remove-AzSqlServerTrustGroup`
+* Added cmdlet `Get-AzSqlServerTrustGroup`
 
 ## Version 2.16.0
 * Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'
 * Fixed regression in 'Set-AzSqlServerAudit' when PredicateExpression argument is provided
+
 
 ## Version 2.15.0
 * Made `Start-AzSqlInstanceDatabaseLogReplay` cmdlet synchronous, added -AsJob flag

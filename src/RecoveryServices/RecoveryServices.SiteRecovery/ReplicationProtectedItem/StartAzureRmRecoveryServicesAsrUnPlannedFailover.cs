@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 FailoverDirection = this.Direction,
                 SourceSiteOperations = this.PerformSourceSideAction ? "Required" : "NotRequired",
-                ProviderSpecificDetails = new ProviderSpecificFailoverInput()
+                ProviderSpecificDetails = new UnplannedFailoverProviderSpecificInput()
             };
 
             var input =
@@ -177,11 +177,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 if (this.Direction == Constants.PrimaryToRecovery)
                 {
-                    var failoverInput = new HyperVReplicaAzureFailoverProviderInput
+                    var failoverInput = new HyperVReplicaAzureUnplannedFailoverInput
                     {
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                        VaultLocation = "dummy",
                         RecoveryPointId = this.RecoveryPoint == null ? null : this.RecoveryPoint.ID
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
@@ -208,7 +207,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                Constants.A2A,
                StringComparison.OrdinalIgnoreCase))
             {
-                var failoverInput = new A2AFailoverProviderInput()
+                var failoverInput = new A2AUnplannedFailoverInput()
                 {
                     RecoveryPointId = this.RecoveryPoint == null ? null : this.RecoveryPoint.ID
                 };
@@ -266,7 +265,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         : RecoveryPointType.LatestTime;
 
                 // Set the InMage Provider specific input in the Unplanned Failover Input.
-                var failoverInput = new InMageFailoverProviderInput
+                var failoverInput = new InMageUnplannedFailoverInput
                 {
                     RecoveryPointType = recoveryPointType
                 };
@@ -274,6 +273,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             else
             {
+                // TODO
                 // RecoveryToPrimary Direction is Invalid for InMage.
                 new ArgumentException(Resources.InvalidDirectionForAzureToVMWare);
             }
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             if (this.Direction == Constants.PrimaryToRecovery)
             {
                 // Set the InMageAzureV2 Provider specific input in the Unplanned Failover Input.
-                var failoverInput = new InMageAzureV2FailoverProviderInput
+                var failoverInput = new InMageAzureV2UnplannedFailoverInput
                 {
                     RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null
                 };
@@ -318,6 +318,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
             else
             {
+                // TODO
                 // RecoveryToPrimary Direction is Invalid for InMageAzureV2.
                 new ArgumentException(Resources.InvalidDirectionForVMWareToAzure);
             }
@@ -359,8 +360,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             new RecoveryPlanHyperVReplicaAzureFailoverInput
                             {
                                 PrimaryKekCertificatePfx = this.primaryKekCertpfx,
-                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
-                                VaultLocation = "dummy"
+                                SecondaryKekCertificatePfx = this.secondaryKekCertpfx
                             };
                         if (this.RecoveryTag != null)
                         {
@@ -402,8 +402,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         var recoveryPlanInMageAzureV2FailoverInput =
                             new RecoveryPlanInMageAzureV2FailoverInput
                             {
-                                RecoveryPointType = recoveryPointType,
-                                VaultLocation = "dummy"
+                                RecoveryPointType = recoveryPointType
                             };
 
                         // Add the InMageAzureV2 Provider specific input in the Planned Failover Input.

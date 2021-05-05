@@ -75,7 +75,7 @@ Disables Azure AD only authentication for a specific SQL Managed Instance.
 Disables Advanced Data Security on a managed instance.
 
 ### [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](Disable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
-Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
 
 ### [Disable-AzSqlServerActiveDirectoryOnlyAuthentication](Disable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Disables Azure AD only authentication for a specific SQL Server.
@@ -96,7 +96,7 @@ Enables Azure AD only authentication for a specific SQL Managed Instance.
 Enables Advanced Data Security on a managed instance.
 
 ### [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](Enable-AzSqlInstanceDatabaseSensitivityRecommendation.md)
-Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL managed instance database.
+Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the Azure SQL Managed Instance database.
 
 ### [Enable-AzSqlServerActiveDirectoryOnlyAuthentication](Enable-AzSqlServerActiveDirectoryOnlyAuthentication.md)
 Enables Azure AD only authentication for a specific SQL Server.
@@ -273,10 +273,10 @@ Gets the Log Replay service status.
 Gets long term retention backup(s).
 
 ### [Get-AzSqlInstanceDatabaseSensitivityClassification](Get-AzSqlInstanceDatabaseSensitivityClassification.md)
-Gets the current information types and sensitivity labels of columns in the Azure SQL managed instance database.
+Gets the current information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ### [Get-AzSqlInstanceDatabaseSensitivityRecommendation](Get-AzSqlInstanceDatabaseSensitivityRecommendation.md)
-Gets the recommended information types and sensitivity labels of columns in the Azure SQL managed instance database.
+Gets the recommended information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ### [Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Gets the vulnerability assessment rule baseline.
@@ -355,6 +355,9 @@ Gets service objectives for an Azure SQL Database server.
 
 ### [Get-AzSqlServerTransparentDataEncryptionProtector](Get-AzSqlServerTransparentDataEncryptionProtector.md)
 Gets the Transparent Data Encryption (TDE) protector
+
+### [Get-AzSqlServerTrustGroup](Get-AzSqlServerTrustGroup.md)
+Gets information about Server Trust Group.
 
 ### [Get-AzSqlServerUpgradeHint](Get-AzSqlServerUpgradeHint.md)
 Gets pricing tier hints for upgrading an Azure SQL Database server.
@@ -461,6 +464,9 @@ This command creates a new Azure SQL Server DNS Alias.
 ### [New-AzSqlServerFirewallRule](New-AzSqlServerFirewallRule.md)
 Creates a firewall rule for a SQL Database server.
 
+### [New-AzSqlServerTrustGroup](New-AzSqlServerTrustGroup.md)
+Creates a new Server Trust Group.
+
 ### [New-AzSqlServerVirtualNetworkRule](New-AzSqlServerVirtualNetworkRule.md)
 Creates an Azure SQL Server Virtual Network Rule. 
 
@@ -540,7 +546,7 @@ Removes an Azure SQL Managed Instance database.
 Deletes a long term retention backup.
 
 ### [Remove-AzSqlInstanceDatabaseSensitivityClassification](Remove-AzSqlInstanceDatabaseSensitivityClassification.md)
-Removes the information types and sensitivity labels of columns in the Azure SQL managed instance database.
+Removes the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ### [Remove-AzSqlInstanceKeyVaultKey](Remove-AzSqlInstanceKeyVaultKey.md)
 Removes a Key Vault key from a SQL managed instance
@@ -574,6 +580,9 @@ Removes a Key Vault key from a SQL server.
 
 ### [Remove-AzSqlServerMSSupportAudit](Remove-AzSqlServerMSSupportAudit.md)
 Removes the Microsoft support operations auditing settings of an Azure SQL server.
+
+### [Remove-AzSqlServerTrustGroup](Remove-AzSqlServerTrustGroup.md)
+Deletes a Server Trust Group.
 
 ### [Remove-AzSqlServerVirtualNetworkRule](Remove-AzSqlServerVirtualNetworkRule.md)
 Deletes an Azure SQL Server Virtual Network Rule.
@@ -678,7 +687,7 @@ The **Set-AzSqlInstanceDatabaseLongTermRetentionBackup** cmdlet sets a managed d
 Sets a backup short term retention policy.
 
 ### [Set-AzSqlInstanceDatabaseSensitivityClassification](Set-AzSqlInstanceDatabaseSensitivityClassification.md)
-Sets the information types and sensitivity labels of columns in the Azure SQL managed instance database.
+Sets the information types and sensitivity labels of columns in the Azure SQL Managed Instance database.
 
 ### [Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzSqlInstanceDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.

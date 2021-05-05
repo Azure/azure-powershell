@@ -18,8 +18,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// <para type="synopsis"> Cmdlet to disable Az Predictor and stop recieving suggestions</para>
-    /// <para type="description"> Use this cmdlet to disable Az Predictor and stop recieving suggestions</para>
+    /// <para type="synopsis">Cmdlet to disable Az Predictor and stop receiving suggestions</para>
+    /// <para type="description">Use this cmdlet to disable Az Predictor and stop receiving suggestions</para>
     /// </summary>
     [Cmdlet("Disable", "AzPredictor")]
     public sealed class DisableAzPredictor : PSCmdlet
@@ -29,13 +29,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         };
 
         /// <summary>
-        /// <para type="description"> Disable Az Predictor for the curent and future PowerShell sessions.</para>
+        /// <para type="description">Disable Az Predictor for the current and future PowerShell sessions.</para>
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter AllSession { get; set; }
 
         /// <summary>
-        /// <para type="description"> Indicates whether the user would like to receive output. </para>
+        /// <para type="description">Indicates whether the user would like to receive output.</para>
         /// </summary>
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

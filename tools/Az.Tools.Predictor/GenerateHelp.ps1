@@ -4,11 +4,11 @@ Param(
     [Parameter()]
     [string]$ArtifactFolder,
     [Parameter()]
+    [string]$HelpFolder,
+    [Parameter()]
     [string]$ModuleName
 )
 
 $ModuleFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName
-$TempDocFolder = Join-Path -Path $ArtifactFolder -ChildPath $ModuleName'.Doc'
 Import-Module $ModuleFolder
-New-MarkdownHelp -Module $ModuleName -OutputFolder $TempDocFolder
-New-ExternalHelp –Path $TempDocFolder -OutputPath $ModuleFolder
+New-ExternalHelp –Path $HelpFolder -OutputPath $ModuleFolder -Force -Debug

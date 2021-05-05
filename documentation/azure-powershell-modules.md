@@ -46,6 +46,7 @@ Data Factory                          | `Az.DataFactory`                        
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
 Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
+Data Protection                       | `Az.DataProtection`                     | [![DataProtection]][DataProtectionGallery]
 Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
 Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery]
 Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
@@ -98,6 +99,7 @@ Portal                                | `Az.Portal`                             
 Database for PostgreSQL               | `Az.PostgreSql`                         | [![PostgreSql]][PostgreSqlGallery]
 Power BI Embedded                     | `Az.PowerBIEmbedded`                    | [![PowerBIEmbedded]][PowerBIEmbeddedGallery]
 Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
+Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery]
 Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
 Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
 Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
@@ -169,6 +171,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalytics]:          https://img.shields.io/powershellgallery/v/Az.DataLakeAnalytics.svg?style=flat-square&label=Az.DataLakeAnalytics
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
 [DataMigration]:              https://img.shields.io/powershellgallery/v/Az.DataMigration.svg?style=flat-square&label=Az.DataMigration
+[DataProtection]:             https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection
 [DataShare]:                  https://img.shields.io/powershellgallery/v/Az.DataShare.svg?style=flat-square&label=Az.DataShare
 [DedicatedHsm]:               https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm
 [DeploymentManager]:          https://img.shields.io/powershellgallery/v/Az.DeploymentManager.svg?style=flat-square&label=Az.DeploymentManager
@@ -221,6 +224,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PostgreSql]:                 https://img.shields.io/powershellgallery/v/Az.PostgreSql.svg?style=flat-square&label=Az.PostgreSql
 [PowerBIEmbedded]:            https://img.shields.io/powershellgallery/v/Az.PowerBIEmbedded.svg?style=flat-square&label=Az.PowerBIEmbedded
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
+[ProviderHub]:                https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
 [RedisEnterpriseCache]:       https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache
@@ -290,6 +294,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataLakeAnalyticsGallery]:          https://www.powershellgallery.com/packages/Az.DataLakeAnalytics/
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/
 [DataMigrationGallery]:              https://www.powershellgallery.com/packages/Az.DataMigration/
+[DataProtectionGallery]:             https://www.powershellgallery.com/packages/Az.DataProtection/
 [DataShareGallery]:                  https://www.powershellgallery.com/packages/Az.DataShare/
 [DedicatedHsmGallery]:               https://www.powershellgallery.com/packages/Az.DedicatedHsm/
 [DeploymentManagerGallery]:          https://www.powershellgallery.com/packages/Az.DeploymentManager/
@@ -342,6 +347,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PostgreSqlGallery]:                 https://www.powershellgallery.com/packages/Az.PostgreSql/
 [PowerBIEmbeddedGallery]:            https://www.powershellgallery.com/packages/Az.PowerBIEmbedded/
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
+[ProviderHubGallery]:                https://www.powershellgallery.com/packages/Az.ProviderHub/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
 [RedisEnterpriseCacheGallery]:       https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/

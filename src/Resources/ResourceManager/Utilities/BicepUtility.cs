@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
@@ -26,58 +27,90 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
     {
         public static bool IsBicepExecutable { get; private set; } = false;
 
+        public static string MinimalVersionRequirement { get; private set; } = "0.3.1";
+
         public static bool IsBicepFile(string templateFilePath)
         {
             return ".bicep".Equals(Path.GetExtension(templateFilePath), System.StringComparison.OrdinalIgnoreCase);
         }
 
-        public delegate List<T> ScriptExecutor<T>(string script);
-
-        public static bool CheckBicepExecutable<T>(ScriptExecutor<T> executeScript)
+        public static bool CheckBicepExecutable()
         {
-            try
-            {
-                executeScript("get-command bicep");
-            }
-            catch
-            {
-                IsBicepExecutable = false;
-                return IsBicepExecutable;
-            }
-            IsBicepExecutable = true;
+            System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
+            powershell.AddScript("Get-Command bicep");
+            powershell.Invoke();
+            IsBicepExecutable = powershell.HadErrors ? false : true;
             return IsBicepExecutable;
         }
 
-        public static string BuildFile<T>(ScriptExecutor<T> executeScript, string bicepTemplateFilePath)
+        private static string CheckMinimalVersionRequirement(string minimalVersionRequirement)
         {
-            if (!IsBicepExecutable && !CheckBicepExecutable(executeScript))
+            string currentBicepVersion = GetBicepVesion();
+            if (Version.Parse(minimalVersionRequirement).CompareTo(Version.Parse(currentBicepVersion)) > 0)
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.BicepVersionRequirement, minimalVersionRequirement));
+            };
+            return currentBicepVersion;
+        }
+
+        public static string GetBicepVesion()
+        {
+            System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
+            powershell.AddScript("bicep -v");
+            var result = powershell.Invoke()[0].ToString();
+            Regex pattern = new Regex("\\d+(\\.\\d+)+");
+            string bicepVersion = pattern.Match(result)?.Value;
+            return bicepVersion;
+        }
+
+        public delegate void OutputMethod(string msg);
+
+        public static string BuildFile(string bicepTemplateFilePath, OutputMethod outputMethod = null)
+        {
+            if (!IsBicepExecutable && !CheckBicepExecutable())
             {
                 throw new AzPSApplicationException(Properties.Resources.BicepNotFound);
             }
-            
-            string tempPath = Path.Combine(Path.GetTempPath(), Path.GetFileName(bicepTemplateFilePath));
 
-            try{
-                if (Uri.IsWellFormedUriString(bicepTemplateFilePath, UriKind.Absolute))
-                {
-                    FileUtilities.DataStore.WriteFile(tempPath, GeneralUtilities.DownloadFile(bicepTemplateFilePath));
-                }
-                else if (FileUtilities.DataStore.FileExists(bicepTemplateFilePath))
-                {
-                    File.Copy(bicepTemplateFilePath, tempPath, true);
-                }
-                else
-                {
-                    throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePathOrUri, "TemplateFile");
-                }
-                executeScript($"bicep build '{tempPath}'");
-                return tempPath.Replace(".bicep", ".json");
-            }
-            finally
+            string currentBicepVersion = CheckMinimalVersionRequirement(MinimalVersionRequirement);
+
+            string tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirectory);
+
+            if (FileUtilities.DataStore.FileExists(bicepTemplateFilePath))
             {
-                File.Delete(tempPath);
+                System.Management.Automation.PowerShell powershell = System.Management.Automation.PowerShell.Create();
+                powershell.AddScript($"bicep build '{bicepTemplateFilePath}' --outdir '{tempDirectory}'");
+                var result = powershell.Invoke();
+                if (outputMethod != null)
+                {
+                    outputMethod(string.Format("Using Bicep v{0}", currentBicepVersion));
+                    result.ForEach(r => outputMethod(r.ToString()));
+                }
+
+                string errorMsg = string.Empty;
+                if (powershell.HadErrors)
+                {
+                    powershell.Streams.Error.ForEach(e => { errorMsg += (e + Environment.NewLine); });
+                    errorMsg = errorMsg.Substring(0, errorMsg.Length- Environment.NewLine.Length);
+                    outputMethod(errorMsg);
+                }
+
+                powershell.AddScript("$LASTEXITCODE");
+                result = powershell.Invoke();
+                int.TryParse(result.ToString(), out int exitcode);
+                
+                if (exitcode != 0)
+                {
+                    throw new AzPSApplicationException(errorMsg);
+                }
             }
-            
+            else
+            {
+                throw new AzPSArgumentException(Properties.Resources.InvalidBicepFilePath, "TemplateFile");
+            }
+
+            return Path.Combine(tempDirectory, Path.GetFileName(bicepTemplateFilePath)).Replace(".bicep", ".json");
         }
     }
 }

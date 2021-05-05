@@ -64,12 +64,12 @@ The acceptable values for this parameter are:
 - VpnGw1
 - VpnGw2
 - VpnGw3
-- VpnGw1AZ 
-- VpnGw2AZ 
-- VpnGw3AZ 
-- ErGw1AZ 
-- ErGw2AZ 
-- ErGw3AZ 
+- VpnGw1AZ
+- VpnGw2AZ
+- VpnGw3AZ
+- ErGw1AZ
+- ErGw2AZ
+- ErGw3AZ
 
 ```yaml
 Type: System.String
@@ -129,5 +129,3 @@ You cannot resize from Basic/Standard/HighPerformance SKUs to the new VpnGw1/Vpn
 [Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)
 
 [Get-AzVpnClientPackage](./Get-AzVpnClientPackage.md)
-
-[Set-AzVirtualNetworkGatewayVpnClientConfig](./Set-AzVirtualNetworkGatewayVpnClientConfig.md)

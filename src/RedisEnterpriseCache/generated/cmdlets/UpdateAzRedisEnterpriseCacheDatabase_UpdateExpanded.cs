@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzRedisEnterpriseCacheDatabase_UpdateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Description(@"Updates a database")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Generated]
     public partial class UpdateAzRedisEnterpriseCacheDatabase_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -32,6 +32,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>Sets whether AOF is enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Sets whether AOF is enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Sets whether AOF is enabled.",
+        SerializedName = @"aofEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter AofPersistenceEnabled { get => ParametersBody.PersistenceAofEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.PersistenceAofEnabled = value; }
+
+        /// <summary>Sets the frequency at which data is written to disk.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Sets the frequency at which data is written to disk.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Sets the frequency at which data is written to disk.",
+        SerializedName = @"aofFrequency",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency))]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency AofPersistenceFrequency { get => ParametersBody.PersistenceAofFrequency ?? ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency)""); set => ParametersBody.PersistenceAofFrequency = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -141,8 +164,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         ReadOnly = false,
         Description = @"Optional set of redis modules to enable in this database - modules can only be added at creation time.",
         SerializedName = @"modules",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IModule[] Module { get => ParametersBody.Module ?? null /* arrayOf */; set => ParametersBody.Module = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[] Module { get => ParametersBody.Module ?? null /* arrayOf */; set => ParametersBody.Module = value; }
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
@@ -168,10 +191,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabaseUpdate _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.DatabaseUpdate();
+        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabaseUpdate _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.DatabaseUpdate();
 
         /// <summary>A partial update to the RedisEnterprise database</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabaseUpdate ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabaseUpdate ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.HttpPipeline" /> that the remote call will use.
@@ -207,15 +230,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Sets whether RDB is enabled.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Sets whether RDB is enabled.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Sets whether RDB is enabled.",
+        SerializedName = @"rdbEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter RdbPersistenceEnabled { get => ParametersBody.PersistenceRdbEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.PersistenceRdbEnabled = value; }
+
+        /// <summary>Sets the frequency at which a snapshot of the database is created.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Sets the frequency at which a snapshot of the database is created.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Sets the frequency at which a snapshot of the database is created.",
+        SerializedName = @"rdbFrequency",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency))]
+        public Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency RdbPersistenceFrequency { get => ParametersBody.PersistenceRdbFrequency ?? ((Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency)""); set => ParametersBody.PersistenceRdbFrequency = value; }
+
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
 
-        /// <summary>The name of the resource group.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group.")]
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The name of the resource group.",
+        Description = @"The name of the resource group. The name is case insensitive.",
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category(global::Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ParameterCategory.Path)]
@@ -224,15 +270,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
-        /// <summary>
-        /// Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part
-        /// of the URI for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.DefaultInfo(
@@ -259,12 +302,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -531,12 +574,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase> response)
         {
             using( NoSynchronizationContext )
             {
@@ -548,7 +591,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.IDatabase
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
                 WriteObject((await response));
             }
         }

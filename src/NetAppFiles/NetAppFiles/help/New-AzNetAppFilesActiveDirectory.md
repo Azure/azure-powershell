@@ -17,8 +17,9 @@ Creates a new Azure NetApp Files (ANF) active directory configuration.
 New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <String> [-Dns <String[]>]
  -Domain <String> [-Site <String>] -SmbServerName <String> [-Username <String>] [-Password <SecureString>]
  [-OrganizationalUnit <String>] [-KdcIP <String>] [-BackupOperator <String[]>]
- [-ServerRootCACertificate <String>] [-AdName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerRootCACertificate <String>] [-AdName <String>] [-SecurityOperator <String[]>] [-AesEncryption]
+ [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -26,6 +27,7 @@ New-AzNetAppFilesActiveDirectory -ResourceGroupName <String> -AccountName <Strin
 New-AzNetAppFilesActiveDirectory [-Dns <String[]>] -Domain <String> [-Site <String>] -SmbServerName <String>
  [-Username <String>] [-Password <SecureString>] [-OrganizationalUnit <String>] [-KdcIP <String>]
  [-BackupOperator <String[]>] [-ServerRootCACertificate <String>] [-AdName <String>]
+ [-SecurityOperator <String[]>] [-AesEncryption] [-LdapSigning] [-LdapOverTLS] [-AllowLocalNfsUsersWithLdap]
  -AccountObject <PSNetAppFilesAccount> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -81,6 +83,36 @@ This optional parameter is used only while creating kerberos volume
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AesEncryption
+When AES is enabled, set if AES encryption will be enabled for SMB communication.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowLocalNfsUsersWithLdap
+If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -168,6 +200,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LdapOverTLS
+When LDAP over SSL/TLS is enabled, specifies whether or not the LDAP traffic needs to be secured via TLS.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LdapSigning
+When LDAP over SSL/TLS is enabled, Specifies whether or not the LDAP traffic needs to be signed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OrganizationalUnit
 The Organizational Unit (OU) within the Windows Active Directory
 
@@ -207,6 +269,21 @@ Parameter Sets: ByFieldsParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityOperator
+Domain Users in the Active directory to be given Security Privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

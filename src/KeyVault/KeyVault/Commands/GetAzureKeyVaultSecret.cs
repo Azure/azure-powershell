@@ -222,12 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             else if (IncludeVersions)
             {
-                secret = DataServiceClient.GetSecret(VaultName, Name, string.Empty);
-                if (secret != null)
-                {
-                    WriteObject(new PSKeyVaultSecretIdentityItem(secret));
-                    GetAndWriteSecretVersions(VaultName, Name, secret.Version);
-                }
+                GetAndWriteSecretVersions(VaultName, Name);
             }
             else if (InRemovedState)
             {
@@ -271,20 +266,20 @@ namespace Microsoft.Azure.Commands.KeyVault
                 },
                 (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetSecrets(options)));
 
-        private void GetAndWriteSecretVersions(string vaultName, string name, string currentSecretVersion) =>
+        private void GetAndWriteSecretVersions(string vaultName, string name) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
                 {
                     VaultName = vaultName,
                     Name = name,
                     NextLink = null
                 },
-                (options) => DataServiceClient.GetSecretVersions(options).Where(s => s.Version != currentSecretVersion));
+                (options) => DataServiceClient.GetSecretVersions(options));
 
         private void WriteSecret(PSKeyVaultSecret secret)
         {
             if (AsPlainText)
             {
-                WriteObject(ConvertFromSecureString(secret.SecretValue));
+                WriteObject(ConvertFromSecureString(secret?.SecretValue));
             }
             else
             {
@@ -294,6 +289,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private string ConvertFromSecureString(SecureString secretValue)
         {
+            if(secretValue == null)
+            {
+                return null;
+            }
             var ssPtr = Marshal.SecureStringToBSTR(secretValue);
             try
             {

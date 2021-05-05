@@ -22,7 +22,7 @@ Create or update a cloud service.
 Please note some properties can be set only during cloud service creation.
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -47,7 +47,7 @@ $cloudService = New-AzCloudService                                              
                   -NetworkProfile $networkProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -79,7 +79,7 @@ $cloudService = New-AzCloudService                                              
                   -ExtensionProfile $extensionProfile
 .Example
 # Create role profile object
-PS C:\> $role = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -111,8 +111,8 @@ $cloudService = New-AzCloudService                                              
                   -OSProfile $osProfile
 .Example
 # Create role profile object
-PS C:\> $role1 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-PS C:\> $role2 = New-AzCloudServiceCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+PS C:\> $role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 PS C:\> $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object
@@ -151,7 +151,7 @@ $cloudService = New-AzCloudService                                              
                   -Tag $tag
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -172,14 +172,15 @@ EXTENSIONPROFILE <ICloudServiceExtensionProfile>: Describes a cloud service exte
     [TypeHandlerVersion <String>]: Specifies the version of the extension. Specifies the version of the extension. If this element is not specified or an asterisk (*) is used as the value, the latest version of the extension is used. If the value is specified with a major version number and an asterisk as the minor version number (X.), the latest minor version of the specified major version is selected. If a major version number and a minor version number are specified (X.Y), the specific extension version is selected. If a version is specified, an auto-upgrade is performed on the role instance.
 
 NETWORKPROFILE <ICloudServiceNetworkProfile>: Network Profile for the cloud service.
-  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: The list of load balancer configurations for the cloud service.
-    [FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>]: List of IP
-      [Name <String>]: 
-      [PrivateIPAddress <String>]: The private IP address referenced by the cloud service.
+  [LoadBalancerConfiguration <ILoadBalancerConfiguration[]>]: List of Load balancer configurations. Cloud service can have up to two load balancer configurations, corresponding to a Public Load Balancer and an Internal Load Balancer.
+    FrontendIPConfiguration <ILoadBalancerFrontendIPConfiguration[]>: Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
+      Name <String>: The name of the resource that is unique within the set of frontend IP configurations used by the load balancer. This name can be used to access the resource.
+      [PrivateIPAddress <String>]: The virtual network private IP address of the IP configuration.
       [PublicIPAddressId <String>]: Resource Id
       [SubnetId <String>]: Resource Id
-    [Name <String>]: Resource Name
-  [SwappableCloudService <ISubResource>]: 
+    Name <String>: The name of the Load balancer
+    [Id <String>]: Resource Id
+  [SwappableCloudService <ISubResource>]: The id reference of the cloud service containing the target IP with which the subject cloud service can perform a swap. This property cannot be updated once it is set. The swappable cloud service referred by this id must be present otherwise an error will be thrown.
     [Id <String>]: Resource Id
 
 OSPROFILE <ICloudServiceOSProfile>: Describes the OS profile for the cloud service.
@@ -195,10 +196,10 @@ ROLEPROFILE <ICloudServiceRoleProfile>: Describes the role profile for the cloud
     [SkuName <String>]: The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
     [SkuTier <String>]: Specifies the tier of the cloud service. Possible Values are <br /><br /> **Standard** <br /><br /> **Basic**
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/new-azcloudservice
+https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 function New-AzCloudService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -230,6 +231,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.The default value is `false`.
+    ${AllowModelOverride},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String]
     # Specifies the XML service configuration (.cscfg) for the cloud service.
     ${Configuration},
@@ -243,21 +250,21 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceExtensionProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile]
     # Describes a cloud service extension profile.
     # To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
     ${ExtensionProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceNetworkProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile]
     # Network Profile for the cloud service.
     # To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
     ${NetworkProfile},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceOSProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile]
     # Describes the OS profile for the cloud service.
     # To construct, see NOTES section for OSPROFILE properties and create a hash table.
     ${OSProfile},
@@ -271,7 +278,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceRoleProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile]
     # Describes the role profile for the cloud service.
     # To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
     ${RoleProfile},
@@ -287,7 +294,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ICloudServiceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

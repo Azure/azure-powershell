@@ -760,6 +760,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     .ConvertAll(disk => new ASRHyperVReplicaAzureVmDiskDetails(disk));
             }
             this.LicenseType = details.LicenseType;
+            this.SqlServerLicenseType = details.SqlServerLicenseType;
+            this.RecoveryVmTag = details.TargetVmTags;
+            this.RecoveryNicTag = details.TargetNicTags;
+            this.DiskTag = details.TargetManagedDiskTags;
         }
 
         /// <summary>
@@ -864,6 +868,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public string RecoveryProximityPlacementGroupId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the SQL Server license type of the machine in the event of a failover.
+        /// </summary>
+        public string SqlServerLicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets target VM tags.
+        /// </summary>
+        public IDictionary<string, string> RecoveryVmTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the disks.
+        /// </summary>
+        public IDictionary<string, string> DiskTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>S
+        public IDictionary<string, string> RecoveryNicTag { get; set; }
     }
 
     /// <summary>
@@ -876,7 +899,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         public ASRInMageAzureV2SpecificRPIDetails(InMageAzureV2ReplicationDetails details)
         {
-            this.LastHeartbeat = this.LastHeartbeat;
             this.RecoveryAvailabilitySetId = details.RecoveryAvailabilitySetId;
             this.AgentVersion = details.AgentVersion;
             this.DiscoveryType = details.DiscoveryType;
@@ -919,6 +941,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.VmProtectionStateDescription = details.VmProtectionStateDescription;
             this.RecoveryAvailabilityZone = details.TargetAvailabilityZone;
             this.RecoveryProximityPlacementGroupId = details.TargetProximityPlacementGroupId;
+            this.SqlServerLicenseType = details.SqlServerLicenseType;
+            this.RecoveryVmTag = details.TargetVmTags;
+            this.RecoveryNicTag = details.TargetNicTags;
+            this.DiskTag = details.TargetManagedDiskTags;
             if (details.ProtectedDisks != null)
             {
                 this.ProtectedDiskDetails = new List<AsrVirtualHardDisk>();
@@ -1183,6 +1209,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets the proximity placement group Id for replication protected item after failover.
         /// </summary>
         public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SQL Server license type of the machine in the event of a failover.
+        /// </summary>
+        public string SqlServerLicenseType { get; set; }
+
+        /// <summary>
+        /// Gets or sets target VM tags.
+        /// </summary>
+        public IDictionary<string, string> RecoveryVmTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the disks.
+        /// </summary>
+        public IDictionary<string, string> DiskTag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags for the target NICs.
+        /// </summary>
+        public IDictionary<string, string> RecoveryNicTag { get; set; }
     }
 
     /// <summary>
@@ -1282,6 +1328,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecoveryFabricLocation = details.RecoveryFabricLocation;
             this.RecoveryAvailabilitySet = details.RecoveryAvailabilitySet;
             this.RecoveryProximityPlacementGroupId = details.RecoveryProximityPlacementGroupId;
+            this.RecoveryVirtualMachineScaleSetId = details.RecoveryVirtualMachineScaleSetId;
             this.TestFailoverRecoveryFabricObjectId = details.TestFailoverRecoveryFabricObjectId;
             this.MonitoringJobType = details.MonitoringJobType;
             this.MonitoringPercentageCompletion = details.MonitoringPercentageCompletion;
@@ -1393,6 +1440,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Recovery proximity placement group Id.
         /// </summary>
         public string RecoveryProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Recovery virtual machine scale set Id.
+        /// </summary>
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
 
         /// <summary>
         /// Synced configuration details of the virtual machine.
