@@ -465,15 +465,15 @@ function Test-VirtualNetworkGatewayConnectionWithZeroSaData
       Assert-AreEqual $connection2.IpsecPolicies[0].SADataSizeKilobytes 0
 
       # Delete VirtualNetworkGatewayConnections
-      #$delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
-      #Assert-AreEqual true $delete
-	  #$delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
-      #Assert-AreEqual true $delete
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection1.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
+      Assert-AreEqual true $delete
+	  $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection2.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
+      Assert-AreEqual true $delete
      }
      finally
      {
-      # Cleanup
-      #  Clean-ResourceGroup $rgname
+         # Cleanup
+         Clean-ResourceGroup $rgname
      }
 }
 
