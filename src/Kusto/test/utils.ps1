@@ -33,7 +33,7 @@ function setupEnv() {
     $resourceGroupName = "testgroup" + $rstr1
     Write-Host "Start to create test resource group" $resourceGroupName
     $null = $env.Add("resourceGroupName", $resourceGroupName)
-    #New-AzResourceGroup -Name $resourceGroupName -Location $env.location
+    New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
 
     # Create Storage Account
@@ -43,7 +43,7 @@ function setupEnv() {
     $storageParams = Get-Content .\test\deployment-templates\storage-account\parameters.json | ConvertFrom-Json
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
-    #New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
+    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
 
     # Deploy cluster + database 
     $SubscriptionId = $env.SubscriptionId
@@ -55,7 +55,7 @@ function setupEnv() {
     $null = $env.Add("databaseName", $databaseName)
     $null = $env.Add("databaseName1", $databaseName1)
     $null = $env.Add("dataConnectionName", $dataConnectionName)
-    #New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
     Write-Host "Start to create a database" $databaseName
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
