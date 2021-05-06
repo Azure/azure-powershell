@@ -19,7 +19,7 @@ Set-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>] [-DefaultMoveCost <MoveCostEnum>]
  [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>] [-Correlation <PSServiceCorrelation[]>]
  [-ServiceDnsName <String>] [-ServicePackageActivationMode <ServicePackageActivationModeEnum>]
- [-Tags <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Set-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Set-AzServiceFabricManagedClusterService -ResourceId <String> [-Stateless] [-Ins
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Set-AzServiceFabricManagedClusterService -ResourceId <String> [-Stateful] [-Targ
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ Set-AzServiceFabricManagedClusterService -InputObject <PSManagedService> [-State
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -76,7 +76,7 @@ Set-AzServiceFabricManagedClusterService -InputObject <PSManagedService> [-State
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -553,7 +553,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specify the tags as key/value pairs.
 
 ```yaml

@@ -8,7 +8,9 @@ schema: 2.0.0
 # Get-AzSentinelBookmark
 
 ## SYNOPSIS
-Get a Bookmark.
+Gets a Bookmark. <br/>
+A Bookmark is used to preserve queries, comments and tags for a specific incident.<br/>
+You create the Bookmark first and then add it to an incident.
 
 ## SYNTAX
 
@@ -31,9 +33,9 @@ Get-AzSentinelBookmark -ResourceId <String> [-DefaultProfile <IAzureContextConta
 
 ## DESCRIPTION
 The **Get-AzSentinelBookmark** cmdlet gets a Bookmark from the specified workspace.
-If you specify the *BookmarkId* parameter, a single **Bookmark** object is returned.
+If you specify the *BookmarkId* parameter, a single Bookmark object is returned.
 If you do not specify the *BookmarkId* parameter, an array containing all of the Bookmarks in the specified workspace are returned.
-You can use the **Bookmark** object to update the Bookmark, for example you can add Notes the **Bookmark**.
+You can use the Bookmark object to update the Bookmark, for example you can add Tags and Notes the **Bookmark**.
 
 ## EXAMPLES
 
@@ -42,14 +44,14 @@ You can use the **Bookmark** object to update the Bookmark, for example you can 
 PS C:\> $Bookmarks = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
-This example gets all of the **Bookmarks** in the specified workspace, and then stores it in the $Bookmarks variable.
+This example gets all of the Bookmarks in the specified workspace, and then stores it in the $Bookmarks variable.
 
 ### Example 2
 ```powershell
 PS C:\> $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
 ```
 
-This example gets an **Bookmark** in the specified workspace, and then stores it in the $Bookmark variable.
+This example gets an Bookmark in the specified workspace, and then stores it in the $Bookmark variable.
 
 ## PARAMETERS
 

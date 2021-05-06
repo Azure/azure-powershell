@@ -4643,3 +4643,39 @@ function Test-VirtualMachinePatchAPI
         Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Create VM using New-AzVM non-Default parameter set to test the hardcoded default VM size Standard_D2s_v3. 
+#>
+function Test-NewAzVMDefaultingSize
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus";#Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'v' + $rgname;
+        $defaultSize = "Standard_D2s_v3";
+        $domainNameLabel = "d1" + $rgname;
+
+        # Creating a VM using simple parameter set
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        
+        Assert-NotNull $vm;
+        Assert-AreEqual $vm.HardwareProfile.Vmsize $defaultSize;
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+	}
+}

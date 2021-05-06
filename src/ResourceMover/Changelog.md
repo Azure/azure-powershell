@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of 'Az.ResourceMover' module
 
 ## Version 0.2.0
 * Added new cmdlets `Invoke-AzResourceMoverBulkRemove`, `Get-AzResourceMoverRequiredForResources`

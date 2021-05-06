@@ -46,7 +46,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                  resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId)))
                  && account.IsPropertySet(AzureAccount.Property.KeyVaultAccessToken))
             {
-                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating KeyVault access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
+                TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating KeyVault access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.KeyVaultAccessToken);
             }
             else if ((resourceId.EqualsInsensitively(environment.GraphEndpointResourceId) ||
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                       resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.GraphEndpointResourceId)))
                       && account.IsPropertySet(AzureAccount.Property.GraphAccessToken))
             {
-                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating Graph access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
+                TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating Graph access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
                 rawToken.AccessToken = account.GetProperty(AzureAccount.Property.GraphAccessToken);
             }
             else if ((resourceId.EqualsInsensitively(environment.ActiveDirectoryServiceEndpointResourceId) ||
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                       resourceId.EqualsInsensitively(environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)))
                       && account.IsPropertySet(AzureAccount.Property.AccessToken))
             {
-                TracingAdapter.Information(string.Format("[AccessTokenAuthenticator] Creating access token - Tenant: '{0}', ResourceId: '{1}', UserId: '{2}'", tenant, resourceId, account.Id));
+                TracingAdapter.Information($"{DateTime.Now:T} - [AccessTokenAuthenticator] Creating access token - Tenant: '{tenant}', ResourceId: '{resourceId}', UserId: '{account.Id}'");
                 rawToken.AccessToken = account.GetAccessToken();
             }
             else

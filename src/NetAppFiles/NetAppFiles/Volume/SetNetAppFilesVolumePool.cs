@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (existingVolume == null)
             {
-                throw new Exception(string.Format("A Volume with name '{0}' in resource group '{1}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A Volume with name '{this.Name}' in resource group '{this.ResourceGroupName}' does not exists. Please use New-AzNetAppFilesVolume to create a new Volume.");
             }
 
 

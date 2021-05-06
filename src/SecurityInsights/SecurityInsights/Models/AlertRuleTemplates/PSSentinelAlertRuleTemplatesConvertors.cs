@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates
                 Status = value.Status,
                 CreatedDateUtc = value.CreatedDateUTC,
                 ProductFilter = value.ProductFilter,
-                RequiredDataConnectors = value.RequiredDataConnectors.ConvertToPSType()
+                RequiredDataConnectors = value.RequiredDataConnectors?.ConvertToPSType()
             };
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates
                 Tactics = value.Tactics,
                 TriggerOperator = value.TriggerOperator,
                 TriggerThreshold = value.TriggerThreshold,
-                RequiredDataConnectors = value.RequiredDataConnectors.ConvertToPSType()
+                RequiredDataConnectors = value.RequiredDataConnectors?.ConvertToPSType()
                 
             };
         }
