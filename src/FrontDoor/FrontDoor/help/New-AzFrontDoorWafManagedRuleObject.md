@@ -13,7 +13,7 @@ Create ManagedRule Object for WAF policy creation
 ## SYNTAX
 
 ```
-New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String>
+New-AzFrontDoorWafManagedRuleObject -Type <String> -Version <String> [-Action <String>]
  [-RuleGroupOverride <PSAzureRuleGroupOverride[]>] [-Exclusion <PSManagedRuleExclusion[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -42,6 +42,21 @@ RuleGroupOverrides RuleSetType    RuleSetVersion
 Create a ManagedRule Object
 
 ## PARAMETERS
+
+### -Action
+Rule Set Action. Possible values include: 'Allow', 'Block', 'Log', 'Redirect'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

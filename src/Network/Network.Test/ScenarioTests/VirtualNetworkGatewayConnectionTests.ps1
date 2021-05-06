@@ -389,6 +389,97 @@ function Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway
      }
 }
 
+<#
+.SYNOPSIS
+Virtual network gateway connection test with Active-Active feature enabled virtual network gateway
+#>
+function Test-VirtualNetworkGatewayConnectionWithZeroSaData
+{
+    # Setup
+    $rgname = Get-ResourceName
+    $rname1 = Get-ResourceName
+	$rname2 = Get-ResourceName
+    $domainNameLabel11 = Get-ResourceName
+	$domainNameLabel12 = Get-ResourceName
+	$domainNameLabel2 = Get-ResourceName
+    $vnetName1 = Get-ResourceName
+	$vnetName2 = Get-ResourceName
+    $vnetConnectionName1 = Get-ResourceName
+	$vnetConnectionName2 = Get-ResourceName
+    $publicIpName11 = Get-ResourceName
+	$publicIpName12 = Get-ResourceName
+	$publicIpName2 = Get-ResourceName
+    $vnetGatewayConfigName11 = Get-ResourceName
+	$vnetGatewayConfigName12 = Get-ResourceName
+	$vnetGatewayConfigName2 = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+        # Create the Virtual Network1
+      $subnet1 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet1 = New-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1
+      $vnet1 = Get-AzVirtualNetwork -Name $vnetName1 -ResourceGroupName $rgname
+      $subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet1
+	  	            
+	  # Create Active-Active feature enabled virtualnetworkgateway1 & Get virtualnetworkgateway1
+      $publicip11 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName11 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel11  
+      $vnetIpConfig11 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName11 -PublicIpAddress $publicip11 -Subnet $subnet1
+
+      $publicip12 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName12 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel12
+      $vnetIpConfig12 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName12 -PublicIpAddress $publicip12 -Subnet $subnet1
+
+      $vnetGateway1 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1 -Location $location -IpConfigurations $vnetIpConfig11,$vnetIpConfig12 -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku HighPerformance -EnableActiveActiveFeature
+      $vnetGateway1 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname1
+
+      # Create IpsecPolicy and test SADataSizeKilobytes when passed 0
+      $ipsecPolicy = New-AzIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 0 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+      Assert-AreEqual $ipsecPolicy.SADataSizeKilobytes 0
+
+	  # Create the Virtual Network2
+      $subnet2 = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 192.168.200.0/26
+      $vnet2 = New-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname -Location $location -AddressPrefix 192.168.0.0/16 -Subnet $subnet2
+      $vnet2 = Get-AzVirtualNetwork -Name $vnetName2 -ResourceGroupName $rgname
+      $subnet2 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet2
+
+      # Create the publicip2
+      $publicip2 = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName2 -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2
+
+      # Create VirtualNetworkGateway2
+      $vnetIpConfig2 = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName2 -PublicIpAddress $publicip2 -Subnet $subnet2
+
+      $vnetGateway2 = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2 -location $location -IpConfigurations $vnetIpConfig2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+      $vnetGateway2 = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname2
+
+      # Create & Get VirtualNetworkGatewayConnection1, VirtualNetworkGatewayConnection2
+      $connection1 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1 -location $location -VirtualNetworkGateway1 $vnetGateway1 -VirtualNetworkGateway2 $vnetGateway2 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc -IpsecPolicies $ipsecPolicy
+	  $connection2 = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2 -location $location -VirtualNetworkGateway1 $vnetGateway2 -VirtualNetworkGateway2 $vnetGateway1 -ConnectionType Vnet2Vnet -RoutingWeight 3 -SharedKey abc -IpsecPolicies $ipsecPolicy
+      
+      $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName1
+      $connection2 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName2
+
+	  Assert-AreEqual $connection1.IpsecPolicies[0].SADataSizeKilobytes $connection2.IpsecPolicies[0].SADataSizeKilobytes
+	  Assert-AreEqual $connection1.IpsecPolicies[0].SADataSizeKilobytes 0
+      Assert-AreEqual $connection2.IpsecPolicies[0].SADataSizeKilobytes 0
+
+      # Delete VirtualNetworkGatewayConnections
+      $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection1.ResourceGroupName -name $vnetConnectionName1 -PassThru -Force
+      Assert-AreEqual true $delete
+	  $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $connection2.ResourceGroupName -name $vnetConnectionName2 -PassThru -Force
+      Assert-AreEqual true $delete
+     }
+     finally
+     {
+         # Cleanup
+         Clean-ResourceGroup $rgname
+     }
+}
+
 function Test-VirtualNetworkGatewayConnectionCRUD
 {
     # Setup
