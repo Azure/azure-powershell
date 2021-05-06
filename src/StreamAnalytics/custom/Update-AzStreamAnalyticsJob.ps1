@@ -137,8 +137,6 @@ STREAMINGJOB <IStreamingJob>: A streaming job object, containing all information
   [StorageAccountName <String>]: The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   [StreamingUnit <Int32?>]: Specifies the number of streaming units that the streaming job uses.
   [TransformationETag <String>]: 
-.Link
-https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 #>
 function Update-AzStreamAnalyticsJob {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
