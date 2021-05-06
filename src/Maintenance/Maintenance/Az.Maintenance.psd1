@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.0'
+ModuleVersion = '1.2.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -116,8 +116,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added optional schedule related fields to ''New-AzMaintenanceConfiguration''
-* Added new cmdlet for ''Get-AzMaintenancePublicConfiguration'''
+        ReleaseNotes = '* Publishing release version of Maintenance cmdlets for GA.'
 
         # Prerelease string of this module
         # Prerelease = ''
