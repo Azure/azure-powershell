@@ -103,6 +103,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Edge zone of Network Interface.")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -165,6 +172,11 @@ namespace Microsoft.Azure.Commands.Network
                     var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
                     vnetModel.IpAllocations.Add(ipAllocationReference);
                 }
+            }
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             // Execute the Create VirtualNetwork call

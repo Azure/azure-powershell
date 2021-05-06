@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSResourceId> IpAllocations { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         [JsonIgnore]
         public string AddressSpaceText
         {
