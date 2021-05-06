@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session
 
 ## Version 2.2.2
 * Fixed bug in `Get-AzContainerRegistryManifest` showing incorrect image name 
