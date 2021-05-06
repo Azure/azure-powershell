@@ -45,7 +45,7 @@ Get access token of AAD graph endpoint for current account
 
 ### Example 3 Get raw access token for AAD graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -Resource "https://graph.windows.net/"
+PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.windows.net/"
 ```
 
 Get access token of AAD graph endpoint for current account

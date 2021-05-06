@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -176,7 +176,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -472,7 +472,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -745,7 +745,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -941,7 +941,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1401,7 +1401,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -1654,7 +1654,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2157,7 +2157,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -2249,7 +2249,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2535,7 +2535,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -2900,7 +2900,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorVersionProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Upgrades": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]",
               "DefaultProperty": "System.Nullable`1[System.Boolean]",
@@ -3109,7 +3109,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -3399,7 +3399,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4532,7 +4532,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -4650,42 +4650,6 @@
         }
       ],
       "Parameters": [
-        {
-          "Name": "Force",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "GenerateSshKey",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.SwitchParameter",
-            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
         {
           "Name": "NodeVmSetType",
           "AliasList": [],
@@ -4849,24 +4813,6 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "AcrNameToAttach",
-          "AliasList": [],
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ValidateSet": [],
-          "ValidateRangeMin": null,
-          "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
-        },
-        {
           "Name": "EnableRbac",
           "AliasList": [],
           "Type": {
@@ -4945,6 +4891,42 @@
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "GenerateSshKey",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5231,6 +5213,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AcrNameToAttach",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "AsJob",
           "AliasList": [],
           "Type": {
@@ -5304,54 +5304,6 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Force",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "GenerateSshKey",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
             {
               "ParameterMetadata": {
                 "Name": "NodeVmSetType",
@@ -5570,30 +5522,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AcrNameToAttach",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "EnableRbac",
                 "AliasList": [],
                 "Type": {
@@ -5696,6 +5624,54 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GenerateSshKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5984,6 +5960,30 @@
                 "AliasList": [
                   "SshKeyPath"
                 ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -6170,54 +6170,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "Force",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "GenerateSshKey",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "NodeVmSetType",
                 "AliasList": [],
                 "Type": {
@@ -6434,30 +6386,6 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "AcrNameToAttach",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
                 "Name": "EnableRbac",
                 "AliasList": [],
                 "Type": {
@@ -6560,6 +6488,54 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "GenerateSshKey",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6870,6 +6846,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
@@ -6977,7 +6977,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -7103,7 +7103,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -7993,7 +7993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -8909,7 +8909,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -9181,7 +9181,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -9877,7 +9877,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -10022,7 +10022,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -10238,7 +10238,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -10785,7 +10785,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11154,7 +11154,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11278,7 +11278,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11397,6 +11397,24 @@
         },
         {
           "Name": "NodePoolMode",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AcrNameToDetach",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -11708,6 +11726,24 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "AcrNameToAttach",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "AsJob",
           "AliasList": [],
           "Type": {
@@ -11788,7 +11824,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -11936,6 +11972,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToDetach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "AliasList": [],
                 "Type": {
@@ -12206,6 +12266,30 @@
                 "AliasList": [
                   "SshKeyPath"
                 ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -12344,6 +12428,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToDetach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "AliasList": [],
                 "Type": {
@@ -12614,6 +12722,30 @@
                 "AliasList": [
                   "SshKeyPath"
                 ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -12778,6 +12910,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToDetach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "AliasList": [],
                 "Type": {
@@ -13048,6 +13204,30 @@
                 "AliasList": [
                   "SshKeyPath"
                 ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
@@ -13258,6 +13438,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToDetach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Location",
                 "AliasList": [],
                 "Type": {
@@ -13550,6 +13754,30 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "AcrNameToAttach",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "AsJob",
                 "AliasList": [],
                 "Type": {
@@ -13643,6 +13871,1062 @@
       ]
     },
     {
+      "VerbName": "Set",
+      "NounName": "AzAksClusterCredential",
+      "Name": "Set-AzAksClusterCredential",
+      "ClassName": "Microsoft.Azure.Commands.Aks.SetAzureRmAksCredential",
+      "SupportsShouldProcess": true,
+      "ConfirmImpact": 2,
+      "HasForceSwitch": true,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "GroupNameParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Aks.Models",
+            "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
+              "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
+              "ServicePrincipalProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
+              "AadProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
+              "ApiServerAccessProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
+              "Identity": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
+              "WindowsProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
+              "AddonProfiles": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AgentPoolProfiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
+              "EnablePodSecurityPolicy": "System.Nullable`1[System.Boolean]",
+              "EnableRBAC": "System.Nullable`1[System.Boolean]",
+              "MaxAgentPools": "System.Nullable`1[System.Int32]",
+              "Location": "System.String",
+              "NodeResourceGroup": "System.String",
+              "PrivateFQDN": "System.String",
+              "Fqdn": "System.String",
+              "DnsPrefix": "System.String",
+              "KubernetesVersion": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ProvisioningState": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Object"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "provisioningState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dnsPrefix",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "fqdn",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kubernetesVersion",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "agentPoolProfiles",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "linuxProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "servicePrincipalProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": null
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Id",
+          "AliasList": [
+            "ResourceId"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ServicePrincipalIdAndSecret",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Force",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzContext",
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Aks.Models",
+                  "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
+                    "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
+                    "ServicePrincipalProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
+                    "AadProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
+                    "ApiServerAccessProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
+                    "Identity": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
+                    "WindowsProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
+                    "AddonProfiles": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "AgentPoolProfiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
+                    "EnablePodSecurityPolicy": "System.Nullable`1[System.Boolean]",
+                    "EnableRBAC": "System.Nullable`1[System.Boolean]",
+                    "MaxAgentPools": "System.Nullable`1[System.Int32]",
+                    "Location": "System.String",
+                    "NodeResourceGroup": "System.String",
+                    "PrivateFQDN": "System.String",
+                    "Fqdn": "System.String",
+                    "DnsPrefix": "System.String",
+                    "KubernetesVersion": "System.String",
+                    "Id": "System.String",
+                    "Name": "System.String",
+                    "Type": "System.String",
+                    "ProvisioningState": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Object"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "Parameters": [
+                        {
+                          "Name": "location",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "id",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "name",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "type",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "tags",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "provisioningState",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "dnsPrefix",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "fqdn",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "kubernetesVersion",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "agentPoolProfiles",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "linuxProfile",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "servicePrincipalProfile",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": null
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalIdAndSecret",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "IdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Id",
+                "AliasList": [
+                  "ResourceId"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalIdAndSecret",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "GroupNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ServicePrincipalIdAndSecret",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzContext",
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer, Microsoft.Azure.PowerShell.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
       "VerbName": "Start",
       "NounName": "AzAksDashboard",
       "Name": "Start-AzAksDashboard",
@@ -13657,7 +14941,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks",
             "Name": "Microsoft.Azure.Commands.Aks.KubeTunnelJob",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.KubeTunnelJob, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "HasMoreData": "System.Boolean",
               "ChildJobs": "System.Collections.Generic.IList`1[System.Management.Automation.Job]",
@@ -13869,7 +15153,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14141,7 +15425,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -14968,7 +16252,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -15094,7 +16378,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
               "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -15217,7 +16501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Aks.Models",
             "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
               "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -15739,7 +17023,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
                     "NetworkProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
@@ -16056,7 +17340,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Aks.Models",
                   "Name": "Microsoft.Azure.Commands.Aks.Models.PSNodePool",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSNodePool, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
                     "AvailabilityZones": "System.Collections.Generic.IList`1[System.String]",
@@ -16861,7 +18145,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ssh": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
         "AdminUsername": "System.String"
@@ -16920,7 +18204,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshConfiguration, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicKeys": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]"
       },
@@ -16974,7 +18258,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -16986,7 +18270,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceSshPublicKey, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyData": "System.String"
       },
@@ -17050,7 +18334,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LoadBalancerProfile": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
         "NetworkPlugin": "System.String",
@@ -17101,7 +18385,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ManagedOutboundIPs": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
         "OutboundIPPrefixes": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
@@ -17148,7 +18432,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileManagedOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Count": "System.Nullable`1[System.Int32]"
       },
@@ -17214,7 +18498,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPPrefixes, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPPrefixes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -17258,7 +18542,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17270,7 +18554,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceReference": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceReference, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String"
       },
@@ -17314,7 +18598,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterLoadBalancerProfileOutboundIPs, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PublicIPs": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSResourceReference]"
       },
@@ -17358,7 +18642,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyVaultSecretRef": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef",
         "Secret": "System.String",
@@ -17422,7 +18706,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKeyVaultSecretRef, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "VaultID": "System.String",
         "SecretName": "System.String",
@@ -17486,7 +18770,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAadProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ClientAppID": "System.String",
         "ServerAppID": "System.String",
@@ -17533,7 +18817,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAPIServerAccessProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AuthorizedIPRanges": "System.Collections.Generic.IList`1[System.String]",
         "EnablePrivateCluster": "System.Nullable`1[System.Boolean]"
@@ -17602,7 +18886,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterIdentity, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Type": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
         "TenantId": "System.String",
@@ -17648,7 +18932,7 @@
     "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17660,7 +18944,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSResourceIdentityType, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -17765,7 +19049,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdminUsername": "System.String",
         "AdminPassword": "System.String"
@@ -17810,7 +19094,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17823,7 +19107,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSManagedClusterAddonProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Enabled": "System.Boolean",
         "Config": "System.Collections.Generic.IDictionary`2[System.String,System.String]"
@@ -17881,7 +19165,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -17893,7 +19177,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Ports": "System.Collections.Generic.IList`1[System.Nullable`1[System.Int32]]",
         "NodeTaints": "System.Collections.Generic.IList`1[System.String]",
@@ -18137,7 +19421,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -18149,7 +19433,7 @@
     "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile": {
       "Namespace": "Microsoft.Azure.Commands.Aks.Models",
       "Name": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSOrchestratorProfile, Microsoft.Azure.PowerShell.Cmdlets.Aks, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IsPreview": "System.Nullable`1[System.Boolean]",
         "OrchestratorVersion": "System.String",

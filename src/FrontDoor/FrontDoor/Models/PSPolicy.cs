@@ -37,5 +37,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string Etag { get; set; }
 
         public string ProvisioningState { get; set; }
+
+        public string Sku { get; set; }
     }
 }
