@@ -950,6 +950,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Size
+Specify the recovery virtual machine size.
+
+```yaml
+Type: System.String
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlServerLicenseType
+Specify the SQL Server license type of the VM.
+
+```yaml
+Type: System.String
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure
+Aliases:
+Accepted values: NoLicenseType, PAYG, AHUB
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UseManagedDisk
 Specifies if the Azure virtual machine that is created on failover should use managed disks. It Accepts either True or False.
 

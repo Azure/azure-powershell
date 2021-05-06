@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "InputObject",
+            ChangeDescription = "The type PSManagedService will change removing the property Properties. And new child resource types PSManagedStatefulService and PSManagedStatelessService will be added with the correct properties.")]
         [Parameter(Mandatory = true, ParameterSetName = StatelessByInputObject, ValueFromPipeline = true, HelpMessage = "The managed service resource.")]
         [Parameter(Mandatory = true, ParameterSetName = StatefulByInputObject, ValueFromPipeline = true, HelpMessage = "The managed service resource.")]
         public PSManagedService InputObject { get; set; }
@@ -166,6 +169,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the target replica set size for the managed service")]
         public SwitchParameter HasPersistedState { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "DropSourceReplicaOnMove",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. DropSourceReplicaOnMove is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
             HelpMessage = "Specify the replica restart wait duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,
@@ -263,6 +269,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
         public PSServiceCorrelation[] Correlation { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "ServiceDnsName",
+            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. ServiceDnsName is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
             HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,

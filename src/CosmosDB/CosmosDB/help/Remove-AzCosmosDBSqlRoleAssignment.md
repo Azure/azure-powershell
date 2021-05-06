@@ -30,6 +30,12 @@ Remove-AzCosmosDBSqlRoleAssignment -InputObject <PSSqlRoleAssignmentGetResults> 
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByObjectParameterSet
+```
+Get-AzNetAppFilesVolumeBackupStatus -InputObject <PSNetAppFilesVolume>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Remove-AzCosmosDBSqlRoleAssignment cmdlet deletes the CosmosDB Sql Role Assignment corresponding to the given ResourceGroupName, AccountName and Id.
 Id can be either fully qualified or just the Guid.
@@ -85,7 +91,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -165,16 +171,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -ResourceId
+The resource id of the ANF volume
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: False
 Accept pipeline input: False

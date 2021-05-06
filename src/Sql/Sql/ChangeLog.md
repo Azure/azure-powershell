@@ -38,6 +38,19 @@
     - `New-AzSqlDatabaseCopy`
     - `Set-AzSqlDatabaseSecondary`
 
+## Version 2.17.1
+* Added cmdlet output breaking change warnings to the following: 
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
+
 ## Version 2.17.0
 * Added cmdlet `New-AzSqlServerTrustGroup`
 * Added cmdlet `Remove-AzSqlServerTrustGroup`

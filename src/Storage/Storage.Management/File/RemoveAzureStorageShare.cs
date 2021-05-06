@@ -24,6 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
+    [GenericBreakingChange("Currently if the share has snapshots, snapshots will be removed together with the share. In a future release, snapshots will not be removed by default, need specify a new parameter to remove snapshots together.")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageShareNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStorageShareCommand : StorageFileBaseCmdlet
     {

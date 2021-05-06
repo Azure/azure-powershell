@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* General availability of 'Az.ResourceMover' module
 
 ## Version 1.0.0
 * General availability of 'Az.ResourceMover' module

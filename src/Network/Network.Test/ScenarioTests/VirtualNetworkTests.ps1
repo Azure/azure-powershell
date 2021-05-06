@@ -1292,3 +1292,36 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests whether virtual network put to an edge zone is successful.
+#>
+function Test-VirtualNetworkInEdgeZone
+{
+    # Setup
+	$ResourceGroup = Get-ResourceGroupName;
+    $LocationName = "westus";
+    $EdgeZone = "microsoftlosangeles1";
+
+	$NetworkName = "MyNet";
+    $SubnetName = "MySubnet";
+    $SubnetAddressPrefix = "10.0.0.0/24";
+    $VnetAddressPrefix = "10.0.0.0/16";
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $ResourceGroup -Location $LocationName -Force;
+
+		$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
+
+		$Vnet = Get-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup
+		Assert-AreEqual $Vnet.ExtendedLocation.Name $EdgeZone
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup
+    }
+}

@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ID { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Type of Management entity – VMM, V-Center.
+        ///     Gets or sets the Type of Management entity ï¿½ VMM, V-Center.
         /// </summary>
         public string Type { get; set; }
 
@@ -2620,6 +2620,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [DataMember]
         public string IPConfigName { get; set; }
 
+    /// <summary>
+    ///     IP config details of a NIC.
+    /// </summary>
+    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
+    public class PSIPConfigInputDetails
+    {
         /// <summary>
         ///     Gets or sets the value indicating if IP config is primary..
         /// </summary>
