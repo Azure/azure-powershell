@@ -167,14 +167,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string CloudTieringParameter = "Cloud Tiering Parameter.";
         /// <summary>
-        /// The cloud seeded data parameter
-        /// </summary>
-        public const string OfflineDataTransferParameter = "Cloud Seeded Data Parameter.";
-        /// <summary>
-        /// The cloud seeded data file share URI parameter
-        /// </summary>
-        public const string OfflineDataTransferShareNameParameter = "Cloud Seeded Data File Share Uri Parameter.";
-        /// <summary>
         /// The initial download policy parameter.
         /// </summary>
         public const string InitialDownloadPolicyParameter = "Initial Download Policy Parameter.";
