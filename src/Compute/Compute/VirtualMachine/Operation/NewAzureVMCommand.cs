@@ -497,11 +497,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                     {
-<<<<<<< HEAD
-                        Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
-=======
                         Sku = new Microsoft.Azure.Commands.Compute.Helpers.Storage.Models.Sku
->>>>>>> ba5add1c3c... removed SDK dependency by pulling in SDK network and storage dependencies in as a compute.helper project
                         {
                             Name = SkuName.PremiumLRS
                         },
