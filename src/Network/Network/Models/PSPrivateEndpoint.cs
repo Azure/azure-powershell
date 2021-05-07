@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSPrivateLinkServiceConnection> PrivateLinkServiceConnections { get; set; }
         public List<PSPrivateLinkServiceConnection> ManualPrivateLinkServiceConnections { get; set; }
         public List<PSPrivateEndpointCustomDnsConfig> CustomDnsConfigs { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
 
         [JsonIgnore]
         public string SubnetText

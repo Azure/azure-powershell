@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Edge zone of Network Interface.")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -103,7 +110,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnection.ToList();
             }
-            
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                psPrivateEndpoint.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
             peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
