@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSPrivateEndpointConnection> PrivateEndpointConnections { get; set; }
         public PSPrivateLinkServiceResourceSet Visibility { get; set; }
         public PSPrivateLinkServiceResourceSet AutoApproval { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
 
         public string[] Fqdns { get; set; }
 

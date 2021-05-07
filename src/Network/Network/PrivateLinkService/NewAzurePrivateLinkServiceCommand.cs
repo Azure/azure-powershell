@@ -85,6 +85,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Edge zone of Network Interface.")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -123,6 +130,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             psPrivateLinkService.EnableProxyProtocol = this.EnableProxyProtocol.IsPresent;
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                psPrivateLinkService.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
 
             var plsModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateLinkService>(psPrivateLinkService);
             plsModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
