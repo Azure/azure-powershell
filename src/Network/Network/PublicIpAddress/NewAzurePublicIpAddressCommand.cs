@@ -140,6 +140,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Edge zone of Network Interface.")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -209,6 +216,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.IpTag != null && this.IpTag.Length > 0)
             {
                 publicIp.IpTags = this.IpTag?.ToList();
+            }
+            
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                publicIp.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
