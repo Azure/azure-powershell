@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
             else
             {
-                ListSharesExpand? listSharesExpand = null;
+                string listSharesExpand = null;
                 if (this.IncludeDeleted.IsPresent)
                 {
                     listSharesExpand = ListSharesExpand.Deleted;

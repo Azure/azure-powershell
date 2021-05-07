@@ -99,6 +99,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         public List<IPSMultiMetricCriteria> Condition { get; set; }
 
         /// <summary>
+        /// Gets or sets the AutoMitigate  parameter
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The flag that indicates whether the alert should be auto resolved or not")]
+        public Boolean AutoMitigate { get; set; } = true;
+
+        /// <summary>
         /// Gets or sets the ActionGroup parameter
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Action Group for rule")]
@@ -198,6 +204,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                         evaluationFrequency: this.Frequency,
                         windowSize: this.WindowSize,
                         criteria: criteria,
+                        autoMitigate: this.AutoMitigate,
                         actions: actions,
                         tags: tags
                     );
@@ -240,6 +247,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     evaluationFrequency: this.Frequency,
                     windowSize: this.WindowSize,
                     criteria: metricCriteria,
+                    autoMitigate: this.AutoMitigate,
                     actions: actions
                 );
                 if (ShouldProcess(

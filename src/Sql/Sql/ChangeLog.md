@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
+
+## Version 2.17.1
+* Added cmdlet output breaking change warnings to the following: 
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
 
 ## Version 3.0.0-preview
 * Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`

@@ -64,12 +64,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version upgrade mode. Automatic or Manual.")]
-        public Models.ClusterUpgradeMode UpgradeMode { get; set; }
+        [Alias("ClusterUpgradeMode")]
+        public Models.ClusterUpgradeMode UpgradeMode { get; set; } = Models.ClusterUpgradeMode.Automatic;
 
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster service fabric code version. Only use if upgrade mode is Manual.")]
         [ValidateNotNullOrEmpty()]
+        [Alias("ClusterCodeVersion")]
         public string CodeVersion { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0.")]
+        [ValidateNotNullOrEmpty()]
+        [Alias("ClusterUpgradeCadence")]
+        public PSClusterUpgradeCadence UpgradeCadence { get; set; } = PSClusterUpgradeCadence.Wave0;
 
         #region Client cert params
 
@@ -131,6 +139,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "If Specify The cluster will be crated with service test vmss extension.")]
         public SwitchParameter UseTestExtension { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Indicates if the cluster has zone resiliency.")]
+        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Indicates if the cluster has zone resiliency.")]
+        public SwitchParameter ZonalResiliency { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 
@@ -177,9 +189,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private ManagedCluster GetNewManagedClusterParameters()
         {
-            if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual)
+            if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual && string.IsNullOrEmpty(this.CodeVersion))
             {
-                throw new PSArgumentException("Currently only upgrade mode Automatic is supported. Support for Manual mode will be added latter on.", "UpgradeMode");
+                throw new PSArgumentException("UpgradeMode is set to manual but CodeVersion is not set. Please specify CodeVersion.", "CodeVersion");
             }
 
             if (this.UpgradeMode == Models.ClusterUpgradeMode.Automatic && !string.IsNullOrEmpty(this.CodeVersion))
@@ -211,7 +223,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 this.DnsName = this.Name;
             }
 
-            // TODO alsantam: add new values
             var newCluster = new ManagedCluster(
                 location: this.Location,
                 dnsName: this.DnsName,
@@ -220,8 +231,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 adminPassword: this.AdminPassword.ConvertToString(),
                 httpGatewayConnectionPort: this.HttpGatewayConnectionPort,
                 clientConnectionPort: this.ClientConnectionPort,
-                sku: new Sku(name: this.Sku.ToString())
+                sku: new Sku(name: this.Sku.ToString()),
+                clusterUpgradeMode: this.UpgradeMode.ToString(),
+                clusterUpgradeCadence: this.UpgradeCadence.ToString(),
+                zonalResiliency: this.ZonalResiliency.IsPresent
             );
+
+            if (this.UpgradeMode == Models.ClusterUpgradeMode.Manual)
+            {
+                newCluster.ClusterCodeVersion = this.CodeVersion;
+            }
 
             return newCluster;
         }

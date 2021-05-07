@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
+* `New-AzServiceFabricManagedCluster` add parameters UpgradeCadence and ZonalResiliency.
+* `New-AzServiceFabricManagedNodeType` add parameters DiskType, VmUserAssignedIdentity, IsStateless and MultiplePlacementGroup.
+* `New-AzServiceFabricManagedClusterService` and `Set-AzServiceFabricManagedClusterService` mark parameters for deprecation: InstanceCloseDelayDuration, DropSourceReplicaOnMove and ServiceDnsName. They are not supported.
+
 ## Version 2.3.0
 * Added parameters `VMImagePublisher`, `VMImageOffer`, `VMImageSku`, `VMImageVersion` to `Add-AzServiceFabricNodeType` to facilitate easy alternate OS image creation for new node type.
 * Added parameter `IsPrimaryNodeType` to `Add-AzServiceFabricNodeType` to be able to create an additional primary node type, for the purpose of transitioning the primary node type to another one in the case of OS migration.

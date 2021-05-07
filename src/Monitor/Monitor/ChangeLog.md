@@ -19,12 +19,15 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.5.0
 * Added cmdlet to get diagnostic setting categories for subscription
     - `Get-AzSubscriptionDiagnosticSettingCategory`
 * Supported subscription diagnostic setting operations with new parameter: SubscriptionId
     - 'Get-AzDiagnosticSetting'
     - 'New-AzDiagnosticSetting'
     - 'Remove-AzDiagnosticSetting'
+* Supported `AutoMitigate` parameter in metric alert rule properties. The flag indicates whether the alert should be auto resolved or not.
 
 ## Version 2.4.0
 * Added cmdlets for data collection rules: 

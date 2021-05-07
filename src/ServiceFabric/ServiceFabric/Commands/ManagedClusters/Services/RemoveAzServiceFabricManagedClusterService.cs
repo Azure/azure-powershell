@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -57,6 +58,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange(
+            "InputObject",
+            ChangeDescription = "The type PSManagedService will change removing the property Properties. And new child resource types PSManagedStatefulService and PSManagedStatelessService will be added with the correct properties.")]
         [Parameter(Mandatory = true, ParameterSetName = ByInputObject, ValueFromPipeline = true, HelpMessage = "The managed service resource.")]
         public PSManagedService InputObject { get; set; }
 

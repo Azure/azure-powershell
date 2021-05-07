@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The application id for which service principal is created.")]
         public Guid ApplicationId { get; set; }
 
+        [CmdletParameterBreakingChange("DisplayName", ChangeDescription = "DisplayName is used as the IdentifierUri of created application. The value will be considered valid only if it exists as a verified domain in a tenant.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithoutCredential,
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,

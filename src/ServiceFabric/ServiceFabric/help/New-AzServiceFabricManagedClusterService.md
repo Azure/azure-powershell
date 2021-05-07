@@ -19,7 +19,7 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -43,8 +43,8 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-MinInstanceCount <Int32>] [-MinInstancePercentage <Int32>] [-InstanceCloseDelayDuration <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeNamed] -PartitionNames <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeSingleton] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -71,7 +71,7 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-PartitionSchemeUniformInt64] -PartitionCount <Int32> -LowKey <Int64> -HighKey <Int64>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -85,8 +85,8 @@ New-AzServiceFabricManagedClusterService [-ResourceGroupName] <String> [-Cluster
  [-StandByReplicaKeepDuration <TimeSpan>] [-ServicePlacementTimeLimit <TimeSpan>]
  [-DefaultMoveCost <MoveCostEnum>] [-PlacementConstraint <String>] [-Metric <PSServiceMetric[]>]
  [-Correlation <PSServiceCorrelation[]>] [-ServiceDnsName <String>]
- [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tags <Hashtable>] [-Force] [-AsJob]
- [-PartitionSchemeNamed] -PartitionNames <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-ServicePackageActivationMode <ServicePackageActivationModeEnum>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-PartitionSchemeNamed] -PartitionName <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -429,10 +429,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartitionNames
-Indicates that the service uses the named partition scheme.
-Services using this model usually have data that can be bucketed, within a bounded set.
-Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
+### -PartitionName
+Indicates that the service uses the named partition scheme. Services using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
 
 ```yaml
 Type: System.String[]
@@ -651,7 +649,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specify the tags as key/value pairs.
 
 ```yaml

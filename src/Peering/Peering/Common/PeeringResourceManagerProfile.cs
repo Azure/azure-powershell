@@ -92,6 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<MNM.PeeringServiceSku, CNM.PSPeeringServiceSku>();
                         cfg.CreateMap<MNM.PeeringReceivedRoute, CNM.PSPeeringReceivedRoute>();
                         cfg.CreateMap<MNM.ErrorDetail, CNM.PSErrorDetail>();
+                        cfg.CreateMap<MNM.CdnPeeringPrefix, CNM.PSCdnPeeringPrefix>();
                         // CNM to MNM
                         cfg.CreateMap<CNM.PSBgpSession, MNM.BgpSession>();
                         cfg.CreateMap<CNM.PSDirectConnection, MNM.DirectConnection>();
@@ -121,6 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Common
                         cfg.CreateMap<CNM.PSPeeringServiceSku, MNM.PeeringServiceSku>();
                         cfg.CreateMap<CNM.PSPeeringReceivedRoute, MNM.PeeringReceivedRoute>();
                         cfg.CreateMap<CNM.PSErrorDetail, MNM.ErrorDetail>();
+                        cfg.CreateMap<CNM.PSCdnPeeringPrefix, MNM.CdnPeeringPrefix>();
                         //View Models
                         cfg.CreateMap<CNM.PSPeering, CNM.PSDirectPeeringModelView>();
                         cfg.CreateMap<CNM.PSPeering, CNM.PSExchangePeeringModelView>();

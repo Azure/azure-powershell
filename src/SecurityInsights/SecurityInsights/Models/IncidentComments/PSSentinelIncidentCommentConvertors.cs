@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments
                 Id = value.Id,
                 Name = value.Name,
                 Type = value.Type,
-                Author = value.Author.ConvertToPSType(),
+                Author = value.Author?.ConvertToPSType(),
                 CreatedTimeUtc = value.CreatedTimeUtc,
                 Message = value.Message
             };

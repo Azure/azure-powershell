@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Made changes to registration script to add retries for AAD operations and to add AzureChinaCloud support.
+    - Added retries for AAD operations for reliability.
+    - Supports registration in AzureChinaCloud.
+    - Supports Tag while resource creation.
+
 ## Version 0.4.1
 * Fixed an issue blocking user to use cmdlets in Az.StackHCI v0.4.0.
 
