@@ -142,16 +142,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public int? VolumeFreeSpacePercent { get; set; }
 
         /// <summary>
-        /// Gets or sets the cloud seeded data.
-        /// </summary>
-        /// <value>The cloud seeded data.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
-        public SwitchParameter OfflineDataTransfer { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier files older than days.
         /// </summary>
         /// <value>The tier files older than days.</value>
@@ -222,7 +212,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     updateParameters.CloudTiering = InputObject.CloudTiering;
                     updateParameters.VolumeFreeSpacePercent = InputObject.VolumeFreeSpacePercent;
                     updateParameters.TierFilesOlderThanDays = InputObject.TierFilesOlderThanDays;
-                    updateParameters.OfflineDataTransfer = InputObject.OfflineDataTransfer;
                 }
                 else
                 {
@@ -254,10 +243,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                 if (this.IsParameterBound(c => c.TierFilesOlderThanDays))
                 {
                     updateParameters.TierFilesOlderThanDays = TierFilesOlderThanDays;
-                }
-                if (this.IsParameterBound(c => c.OfflineDataTransfer))
-                {
-                    updateParameters.OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff;
                 }
 
                 StorageSyncModels.LocalCacheMode localCacheMode;

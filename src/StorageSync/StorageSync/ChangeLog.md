@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove offline data transfer feature.
 
 ## Version 1.4.0
 * Added Sync tiering policy feature with download policy and local cache mode
