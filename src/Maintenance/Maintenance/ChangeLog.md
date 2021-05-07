@@ -19,9 +19,7 @@
 -->
 
 ## Upcoming Release
-
-## Version 1.2.0
-* Publishing release version of Maintenance cmdlets for GA.
+* Bumped API version to stable 2021-05-01.
 
 ## Version 1.1.0
 * Added optional schedule related fields to `New-AzMaintenanceConfiguration`

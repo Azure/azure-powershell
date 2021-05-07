@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.2.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -116,7 +116,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Publishing release version of Maintenance cmdlets for GA.'
+        ReleaseNotes = '* Bumped API version to stable 2021-05-01.'
 
         # Prerelease string of this module
         # Prerelease = ''
