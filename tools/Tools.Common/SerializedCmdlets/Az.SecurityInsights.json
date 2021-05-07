@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -512,7 +512,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -988,7 +988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates.PSSentinelAlertRuleTemplate",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates.PSSentinelAlertRuleTemplate, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRuleTemplates.PSSentinelAlertRuleTemplate, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -1483,7 +1483,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -1988,7 +1988,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -2484,7 +2484,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -2995,7 +2995,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Author": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor",
               "CreatedTimeUtc": "System.Nullable`1[System.DateTime]",
@@ -3558,7 +3558,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -5326,7 +5326,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -5770,7 +5770,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -5908,7 +5908,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentId": "System.String",
               "RelationName": "System.String",
@@ -6172,7 +6172,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentId": "System.String",
                     "RelationName": "System.String",
@@ -6427,7 +6427,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -6798,6 +6798,27 @@
         },
         {
           "Name": "SharePoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Enabled",
+            "Disabled"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Teams",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -8105,6 +8126,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Teams",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzContext",
@@ -8373,7 +8421,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -8581,7 +8629,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -8601,7 +8649,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "AssignedTo": "System.String",
@@ -8936,7 +8984,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -8962,7 +9010,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ObjectId": "System.Nullable`1[System.Guid]",
                     "AssignedTo": "System.String",
@@ -9200,7 +9248,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentComment, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Author": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor",
               "CreatedTimeUtc": "System.Nullable`1[System.DateTime]",
@@ -9603,7 +9651,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -9978,7 +10026,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -10089,7 +10137,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -10342,7 +10390,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -10548,7 +10596,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -10677,7 +10725,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -10954,7 +11002,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -11160,7 +11208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -11280,7 +11328,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -11542,7 +11590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
                     "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -11757,7 +11805,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -11868,7 +11916,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -12121,7 +12169,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -12400,7 +12448,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -12668,7 +12716,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
                     "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -12889,7 +12937,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -13449,7 +13497,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -14848,7 +14896,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.AlertRules.PSSentinelAlertRule, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -16156,7 +16204,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -16321,7 +16369,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -16670,7 +16718,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Actions.PSSentinelActionResponse, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -16944,7 +16992,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -17064,7 +17112,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
               "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -17165,7 +17213,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IncidentId": "System.String",
               "RelationName": "System.String",
@@ -17429,7 +17477,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentId": "System.String",
                     "RelationName": "System.String",
@@ -17632,7 +17680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmark, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentInfo": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
                     "CreatedBy": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
@@ -17727,7 +17775,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentId": "System.String",
                     "RelationName": "System.String",
@@ -17978,7 +18026,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentId": "System.String",
                     "RelationName": "System.String",
@@ -18205,7 +18253,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IncidentId": "System.String",
                     "RelationName": "System.String",
@@ -18416,7 +18464,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -18527,7 +18575,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -18717,6 +18765,27 @@
         },
         {
           "Name": "SharePoint",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [
+            "Enabled",
+            "Disabled"
+          ],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Teams",
           "AliasList": [],
           "Type": {
             "Namespace": "System",
@@ -19052,6 +19121,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Teams",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Indicators",
                 "AliasList": [],
                 "Type": {
@@ -19128,7 +19224,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Id": "System.String",
                     "Name": "System.String",
@@ -19342,6 +19438,33 @@
             {
               "ParameterMetadata": {
                 "Name": "SharePoint",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Teams",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -19646,6 +19769,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Teams",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Indicators",
                 "AliasList": [],
                 "Type": {
@@ -19900,6 +20050,33 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "Teams",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [
+                  "Enabled",
+                  "Disabled"
+                ],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Indicators",
                 "AliasList": [],
                 "Type": {
@@ -19984,7 +20161,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -20110,7 +20287,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
               "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -20281,7 +20458,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -20301,7 +20478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
             "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ObjectId": "System.Nullable`1[System.Guid]",
               "AssignedTo": "System.String",
@@ -20636,7 +20813,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -20662,7 +20839,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ObjectId": "System.Nullable`1[System.Guid]",
                     "AssignedTo": "System.String",
@@ -20848,7 +21025,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncident, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "AdditonalData": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
                     "Owner": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
@@ -21031,7 +21208,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -21057,7 +21234,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ObjectId": "System.Nullable`1[System.Guid]",
                     "AssignedTo": "System.String",
@@ -21373,7 +21550,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -21399,7 +21576,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ObjectId": "System.Nullable`1[System.Guid]",
                     "AssignedTo": "System.String",
@@ -21691,7 +21868,7 @@
                 "Type": {
                   "Namespace": "System.Collections.Generic",
                   "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -21717,7 +21894,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
                   "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "ObjectId": "System.Nullable`1[System.Guid]",
                     "AssignedTo": "System.String",
@@ -22242,7 +22419,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkIncidentInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IncidentId": "System.String",
         "RelationName": "System.String",
@@ -22289,7 +22466,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks.PSSentinelBookmarkUserInfo, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ObjectId": "System.Nullable`1[System.Guid]",
         "Email": "System.String",
@@ -22379,7 +22556,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentAdditionalData, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AlertProductNames": "System.Collections.Generic.IList`1[System.String]",
         "Tactics": "System.Collections.Generic.IList`1[System.String]",
@@ -22439,7 +22616,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentOwner, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ObjectId": "System.Nullable`1[System.Guid]",
         "AssignedTo": "System.String",
@@ -22486,7 +22663,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -22498,7 +22675,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.Incidents.PSSentinelIncidentLabel, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LabelName": "System.String",
         "LabelType": "System.String"
@@ -22543,7 +22720,7 @@
     "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor": {
       "Namespace": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments",
       "Name": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.SecurityInsights.Models.IncidentComments.PSSentinelIncidentCommentAuthor, Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights, Version=0.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ObjectId": "System.Nullable`1[System.Guid]",
         "Email": "System.String",
