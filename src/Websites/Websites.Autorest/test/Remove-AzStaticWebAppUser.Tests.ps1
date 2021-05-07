@@ -25,6 +25,6 @@ Describe 'Remove-AzStaticWebAppUser' {
       $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all    
       Remove-AzStaticWebAppUser -InputObject $userList
       $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
-      $userList.UserId | Should -Not -Contain $removeUserId
+      $userList | Should -BeNullOrEmpty
     }
 }

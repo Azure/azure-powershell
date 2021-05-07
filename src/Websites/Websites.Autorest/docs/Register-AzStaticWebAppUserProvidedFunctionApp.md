@@ -33,27 +33,29 @@ Description for Register a user provided function app with a static site build
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Register a user provided function app with a static site
 ```powershell
-PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName funcapp-portal01-test -FunctionAppResourceId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/funcapp-portal01-test' -FunctionAppRegion 'Central US'
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh02 -FunctionAppName funcapp-portal01-test -FunctionAppResourceId '/subscriptions/xxxxxxxxxxxxx/resourcegroups/azure-rg-test/providers/Microsoft.Web/sites/funcapp-portal01-test' -FunctionAppRegion 'Central US'
 
 Kind Name                  Type
 ---- ----                  ----
      funcapp-portal01-test Microsoft.Web/staticSites/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command registers a user provided function app with a static site.
+The -FunctionAppRegion is region of the function app.
 
-### Example 2: {{ Add title here }}
+### Example 2: Register a user provided function app with a static site build
 ```powershell
-PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxxxxx/resourcegroups/azure-rg-test/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5
 
 Kind Name                 Type
 ---- ----                 ----
      functionapp-portal02 Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command registers a user provided function app with a static site build.
+The -FunctionAppRegion is region of the function app.
 
 ## PARAMETERS
 

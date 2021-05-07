@@ -22,16 +22,16 @@ Description for Gets the application settings of a static site build.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get app setting of build under a static web app
 ```powershell
-PS C:\>  Get-AzStaticWebAppBuildAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+PS C:\>  Get-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/builds/config
 ```
 
-{{ Add description here }}
+This command gets app setting of build under a static web app.
 
 ## PARAMETERS
 

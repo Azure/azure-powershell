@@ -18,7 +18,7 @@ function setupEnv() {
     $env.location = 'Central US'
     # For any resources you created for test, you should add it to $env here.
     # Important security
-    $env.githubAccessToken = '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'
+    $env.githubAccessToken = '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'
     $env.repositoryUrl = 'https://github.com/LucasYao93/blazor-starter'
     $env.branch00 = 'lucas/dev'
     $env.branch01 = 'lucas/dev01'
@@ -95,6 +95,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

@@ -19,9 +19,10 @@ Describe 'Remove-AzStaticWebApp' {
     } 
 
     It 'DeleteViaIdentity' {
-      $web = New-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 -Location $env.location `
+      New-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 -Location $env.location `
                         -RepositoryUrl $env.repositoryUrl -RepositoryToken $env.githubAccessToken -Branch $env.branch02 `
                         -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+      $web =  Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02
       Remove-AzStaticWebApp -InputObject $web
       $webList = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup
       $webList.Name | Should -Not -Contain $env.staticweb02

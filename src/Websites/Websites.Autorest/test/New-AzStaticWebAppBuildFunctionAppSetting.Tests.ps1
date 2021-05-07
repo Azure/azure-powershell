@@ -13,10 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'New-AzStaticWebAppBuildFunctionAppSetting' {
     It 'CreateExpanded' {
-        { New-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'  -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' } } | Should -Not -Throw
+        { New-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'  -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' } } | Should -Not -Throw
     }
 
     It 'CreateViaIdentityExpanded' {
-        { Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -EnvironmentName 'default' | New-AzStaticWebAppBuildFunctionAppSetting  -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' } } | Should -Not -Throw
+        { 
+          $setting = Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -EnvironmentName 'default' 
+          New-AzStaticWebAppBuildFunctionAppSetting -InputObject $setting -AppSetting @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' } 
+        } | Should -Not -Throw
     }
 }

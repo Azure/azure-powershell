@@ -34,41 +34,39 @@ Description for Gets the details of a static site build.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all builds under a static web app
 ```powershell
-PS C:\>  Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal04
-
-Kind Name    Type
----- ----    ----
-     default Microsoft.Web/staticSites/builds
-```
-get
-{{ Add description here }}
-
-{
-  "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-rg-test/providers/Microsoft.Web/staticSites/staticweb-portal04/builds/default",
-  "name": "default",
-  "type": "Microsoft.Web/staticSites/builds",
-  "properties": {
-    "buildId": "default",
-    "sourceBranch": "lucas/dev",
-    "hostname": "wonderful-desert-0d05b1d10.azurestaticapps.net",
-    "createdTimeUtc": "2021-04-06T08:59:33.3694276",
-    "lastUpdatedOn": "2021-04-06T09:02:01.2965166",
-    "status": "Ready"
-  }
-}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+PS C:\>  Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal04
 
 Kind Name    Type
 ---- ----    ----
      default Microsoft.Web/staticSites/builds
 ```
 
-{{ Add description here }}
+This command list all builds under a static web app.
+Automaticall create a new build in static web app When creating a new pull request for branch.
+
+### Example 2: Get a buld by name
+```powershell
+PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
+
+Kind Name    Type
+---- ----    ----
+     default Microsoft.Web/staticSites/builds
+```
+
+This command gets a buld by name.
+
+### Example 3: Get a buld by pipeline
+```powershell
+PS C:\> Get-AzStaticWebAppBuild  -ResourceGroupName azure-rg-test -Name staticweb-portal04 | Get-AzStaticWebAppBuild
+
+Kind Name    Type
+---- ----    ----
+     default Microsoft.Web/staticSites/builds
+```
+
+This command gets a buld by pipeline.
 
 ## PARAMETERS
 

@@ -14,10 +14,10 @@ while(-not $mockingPath) {
 Describe 'Update-AzStaticWebAppUser' {
     It 'UpdateExpanded' {
       $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
-      { Update-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 $userList[0].Provider -Userid $userList[0].UserId -Role 'contributor' } | Should -Not -Throw
+      { Update-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider $userList[0].Provider -Userid $userList[0].UserId -Role 'contributor' } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
+    It 'UpdateViaIdentityExpanded' {
       $userList = Get-AzStaticWebAppUser -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -Authprovider all
       { Update-AzStaticWebAppUser -InputObject $userList -Role 'contributor' } | Should -Not -Throw
     }

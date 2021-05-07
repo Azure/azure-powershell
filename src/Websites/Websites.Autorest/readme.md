@@ -90,14 +90,17 @@ directive:
         }
 
   - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}"].delete.responses
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/customDomains/{domainName}"].delete.responses
     transform: >-
       return {
           "200": {
             "description": "OK."
           },
           "204": {
-            "description": "OK."
+            "description": "The domain does not exist."
+          },
+          "202": {
+            "description": "Asynchronous operation in progress."
           },
           "default": {
             "description": "App Service error response.",
@@ -107,6 +110,23 @@ directive:
           }
         }
 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/staticSites/{name}/authproviders/{authprovider}/users/{userid}"].delete.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "OK."
+          },
+          "204": {
+            "description": "The user does not exist."
+          },
+          "default": {
+            "description": "App Service error response.",
+            "schema": {
+              "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/7a2cc29033fe4027ef421267f1684efbd0d40a93/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
+            }
+          }
+        }
 # Use "StaticWebApp" as subject prefix
   - where:
       subject-prefix: Websites

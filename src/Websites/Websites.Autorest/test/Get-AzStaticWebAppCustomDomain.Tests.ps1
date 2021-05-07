@@ -19,13 +19,15 @@ Describe 'Get-AzStaticWebAppCustomDomain' {
     }
 
     It 'Get' {
-      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
-      $domian.Name | Should -Be 'www01.azpstest.net'
+      $domainName = 'www01.azpstest.net'
+      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
+      $domian.Name | Should -Be $domainName
     }
 
     It 'GetViaIdentity' {
-      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
+      $domainName = 'www01.azpstest.net'
+      $domian = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
       $domian = Get-AzStaticWebAppCustomDomain -InputObject $domian
-      $domian.Name | Should -Be 'www01.azpstest.net'
+      $domian.Name | Should -Be $domainName
     }
 }

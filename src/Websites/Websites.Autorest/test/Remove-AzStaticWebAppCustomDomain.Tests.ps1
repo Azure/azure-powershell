@@ -17,7 +17,7 @@ Describe 'Remove-AzStaticWebAppCustomDomain' {
       $domainName = 'www02.azpstest.net'
       Remove-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
       $domianList = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
-      $domianList.Name | Should -Contain $domainName
+      $domianList.Name | Should -Not -Contain $domainName
     }
 
     It 'DeleteViaIdentity' {
@@ -25,6 +25,6 @@ Describe 'Remove-AzStaticWebAppCustomDomain' {
       $domian = New-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName $domainName
       Remove-AzStaticWebAppCustomDomain -InputObject $domian
       $domianList = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
-      $domianList.Name | Should -Contain $domainName
+      $domianList.Name | Should -Not -Contain $domainName
     }
 }

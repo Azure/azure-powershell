@@ -30,23 +30,21 @@ Description for Deletes a custom domain.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a custom domain
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a custom domain.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a custom domain by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName domainName | Remove-AzStaticWebAppCustomDomain
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a custom domain by pipeline.
 
 ## PARAMETERS
 

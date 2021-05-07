@@ -14,7 +14,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzStaticWebAppBuild' {
     It 'List' {
       $buildList = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
-      $buildList | Should -BeGreaterOrEqual 1
+      $buildList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
@@ -23,7 +23,8 @@ Describe 'Get-AzStaticWebAppBuild' {
     }
 
     It 'GetViaIdentity'  {
-      $build = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' | Get-AzStaticWebAppBuild
+      $build = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' 
+      $build = Get-AzStaticWebAppBuild -InputObject $build
       $build.Name | Should -Be 'default'
     }
 }

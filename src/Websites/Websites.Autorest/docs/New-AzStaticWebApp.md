@@ -30,23 +30,16 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new static site in an existing resource group, or updates an existing static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 
-{{ Add output here }}
+Kind Location   Name             Type
+---- --------   ----             ----
+     Central US staticweb-45asde Microsoft.Web/staticSites
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a new static site in an existing resource group, or updates an existing static site.
 
 ## PARAMETERS
 

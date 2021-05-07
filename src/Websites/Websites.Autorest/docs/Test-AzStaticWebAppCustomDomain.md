@@ -30,21 +30,21 @@ Description for Validates a particular custom domain can be added to a static si
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Validates a particular custom domain can be added to a static site
 ```powershell
-PS C:\> Test-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net'
+PS C:\> Test-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName 'www01.azpstest.net'
 
 ```
 
-{{ Add description here }}
+This commnad validates a particular custom domain can be added to a static site
 
-### Example 2: {{ Add title here }}
+### Example 2: Validates a particular custom domain can be added to a static site by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' | Get-AzStaticWebAppCustomDomain
+PS C:\> Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName 'www01.azpstest.net' | Get-AzStaticWebAppCustomDomain
 
 ```
 
-{{ Add description here }}
+This commnad validates a particular custom domain can be added to a static site by pipeline.
 
 ## PARAMETERS
 

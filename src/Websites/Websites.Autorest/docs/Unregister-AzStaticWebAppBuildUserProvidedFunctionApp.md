@@ -30,23 +30,21 @@ Description for Detach the user provided function app from the static site build
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Unregister the user provided function app from the static site build
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command unregisters the user provided function app from the static site build.
 
-### Example 2: {{ Add title here }}
+### Example 2: Unregister the user provided function app from the static site build by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -IsForced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command unregisters the user provided function app from the static site build by pipeline.
 
 ## PARAMETERS
 

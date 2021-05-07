@@ -17,6 +17,9 @@ Describe 'Reset-AzStaticWebAppApiKey' {
     }
 
     It 'ResetViaIdentityExpanded' {
-        { Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 | Reset-AzStaticWebAppApiKey } | Should -Not -Throw
+        { 
+          $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb02 
+          Reset-AzStaticWebAppApiKey -InputObject $web
+        } | Should -Not -Throw
     }
 }

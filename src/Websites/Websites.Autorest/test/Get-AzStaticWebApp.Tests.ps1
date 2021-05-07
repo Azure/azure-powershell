@@ -28,7 +28,8 @@ Describe 'Get-AzStaticWebApp' {
     }
 
     It 'GetViaIdentity' {
-      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 | Get-AzStaticWebApp
+      $web = Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+      $web = Get-AzStaticWebApp -InputObject $web
       $web.Name | Should -Be $env.staticweb00
     }
 }

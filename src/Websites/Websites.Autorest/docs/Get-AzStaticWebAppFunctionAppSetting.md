@@ -22,16 +22,16 @@ Description for Gets the application settings of a static site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the application settings of a static site 
 ```powershell
-PS C:\> Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-portal04
+PS C:\> Get-AzStaticWebAppFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-portal04
 
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/config/functionappsettings
 ```
 
-{{ Add description here }}
+This command gets the application settings of a static site.
 
 ## PARAMETERS
 

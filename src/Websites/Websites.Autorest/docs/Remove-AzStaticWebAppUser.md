@@ -29,23 +29,22 @@ Description for Deletes the user entry from the static site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a user entry from the static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider 'all' -UseId 'xxxxxxxx'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes the user entry from the static site.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes all users from the static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $userList = Get-AzStaticWebAppUser -ResourceGroupName resourceGroup -Name staticweb01 -Authprovider all    
+PS C:\> Remove-AzStaticWebAppUser -InputObject $userList
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes all users from the static site.
 
 ## PARAMETERS
 

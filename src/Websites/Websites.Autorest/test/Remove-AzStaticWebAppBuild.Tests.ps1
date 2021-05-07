@@ -13,12 +13,15 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzStaticWebAppBuild' {
     It 'Delete' {
-      $environmentName = '2'
+      $environmentName = '8'
       { Remove-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -EnvironmentName $environmentName } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-      $environmentName = '2'
-      { Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal01 -EnvironmentName $environmentName | Remove-AzStaticWebAppBuild } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+      $environmentName = '10'
+      { 
+        $build = Get-AzStaticWebAppBuild -ResourceGroupName $env.resourceGroup -Name $env.staticweb01 -EnvironmentName $environmentName
+        Remove-AzStaticWebAppBuild -InputObject $build
+      } | Should -Not -Throw
     }
 }

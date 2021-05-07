@@ -42,23 +42,27 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates a static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00'
 
-{{ Add output here }}
+Kind Location   Name             Type
+---- --------   ----             ----
+     Central US staticweb00 Microsoft.Web/staticSites
 ```
 
-{{ Add description here }}
+This command updates a static site.
 
-### Example 2: {{ Add title here }}
+### Example 2: Updates a static site by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' | Update-AzStaticWebApp
 
-{{ Add output here }}
+Kind Location   Name             Type
+---- --------   ----             ----
+     Central US staticweb00 Microsoft.Web/staticSites
 ```
 
-{{ Add description here }}
+This command updates a static site by pipeline.
 
 ## PARAMETERS
 

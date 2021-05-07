@@ -22,19 +22,19 @@ Description for Lists the roles configured for the static site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List configured roles of the static web app
 ```powershell
 
 ```
 
 ```powershell
-PS C:\\> Get-AzStaticWebAppConfiguredRole -ResourceGroupName lucas-rg-test -Name staticweb-portal04
+PS C:\\> Get-AzStaticWebAppConfiguredRole -ResourceGroupName azure-rg-test -Name staticweb-portal04
 
 Kind Name            Type                                      Property
 ---- ----            ----                                      --------
      configuredRoles Microsoft.Web/staticSites/configuredRoles {anonymous, authenticated}
 
-{{ Add description here }}
+This command lists configured roles of the static web app.
 
 ## PARAMETERS
 

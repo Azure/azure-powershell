@@ -22,7 +22,7 @@ Description for Gets the functions of a particular static site build.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all build functions under a static web
 ```powershell
 PS C:\> Get-AzStaticWebAppBuildFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
@@ -31,7 +31,7 @@ Kind Name            Type
      WeatherForecast Microsoft.Web/staticSites/builds/functions
 ```
 
-{{ Add description here }}
+This command lists all build functions under a static web.
 
 ## PARAMETERS
 

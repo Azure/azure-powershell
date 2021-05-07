@@ -17,6 +17,9 @@ Describe 'Test-AzStaticWebAppCustomDomain' {
     }
 
     It 'ValidateViaIdentityExpanded' {
-        { Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' | Get-AzStaticWebAppCustomDomain } | Should -Not -Throw
+        { 
+          $domain = Get-AzStaticWebAppCustomDomain -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -DomainName 'www01.azpstest.net' 
+          Test-AzStaticWebAppCustomDomain -InputObject $domain
+        } | Should -Not -Throw
     }
 }

@@ -29,22 +29,21 @@ Description for Detaches a static site.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove repository of static site
 ```powershell
-PS C:\> Remove-AzStaticWebAppAttachedRepository -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+PS C:\> Remove-AzStaticWebAppAttachedRepository -ResourceGroupName azure-rg-test -Name staticweb-portal01
 
 ```
 
-{{ Add description here }}
+This command removes repository of static site.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove repository of static site by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppAttachedRepository -ResourceGroupName azure-rg-test -Name staticweb-portal01 | Remove-AzStaticWebAppAttachedRepository
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes repository of static site by pipeline.
 
 ## PARAMETERS
 
