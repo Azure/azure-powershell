@@ -116,7 +116,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Bumped API version to stable 2021-05-01.'
+        ReleaseNotes = '* Added optional schedule related fields to ''New-AzMaintenanceConfiguration''
+* Added new cmdlet for ''Get-AzMaintenancePublicConfiguration'''
 
         # Prerelease string of this module
         # Prerelease = ''
