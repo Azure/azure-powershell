@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the application settings of a static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
 
-{{ Add output here }}
+Kind Name        Type
+---- ----        ----
+     appsettings Microsoft.Web/staticSites/config
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets the application settings of a static site.
 

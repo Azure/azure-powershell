@@ -175,13 +175,13 @@ directive:
       subject: DetachUserProvidedFunctionAppFromStaticSite
     set:
       verb: Unregister
-      subject: UserProvidedFunctionAppFromStaticSite
+      subject: UserProvidedFunctionApp
   - where:
       verb: Invoke
       subject: DetachUserProvidedFunctionAppFromStaticSiteBuild
     set:
       verb: Unregister
-      subject: UserProvidedFunctionAppFromStaticSiteBuild
+      subject: BuildUserProvidedFunctionApp
 
 # Remove variant
   # Following is two common directive which are normally required in all the RPs

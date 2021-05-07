@@ -17,6 +17,6 @@ Describe 'Update-AzStaticWebApp' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        { Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 | Update-AzStaticWebApp] } | Should -Not -Throw
+        { Get-AzStaticWebApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 | Update-AzStaticWebApp } | Should -Not -Throw
     }
 }

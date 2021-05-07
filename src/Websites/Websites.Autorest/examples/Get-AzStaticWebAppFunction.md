@@ -1,8 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the functions of a static site
 ```powershell
-PS C:\>  Get-AzStaticWebAppFunction -ResourceGroupName lucas-rg-test -Name staticweb-portal04
+PS C:\>  Get-AzStaticWebAppFunction -ResourceGroupName azure-rg-test -Name staticweb-portal04
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command get the functions of a static site.

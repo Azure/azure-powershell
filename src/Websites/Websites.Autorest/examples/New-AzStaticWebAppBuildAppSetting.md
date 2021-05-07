@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates the app settings of a static site build
 ```powershell
-PS C:\> New-AzStaticWebAppBuildAppSetting -ResourceGroupName lucas-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default'  -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+PS C:\> New-AzStaticWebAppBuildAppSetting -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -EnvironmentName 'default'  -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/builds/config
 ```
 
-{{ Add description here }}
+This command creates or updates the app settings of a static site build.
 
-### Example 2: {{ Add title here }}
+### Example 2: Creates or updates the app settings of a static site build by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppBuildAppSetting -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
+PS C:\> Get-AzStaticWebAppBuildAppSetting -ResourceGroupName resourceGroup -Name taticweb00 -EnvironmentName 'default' | New-AzStaticWebAppBuildAppSetting -Property @{'buildsetting1' = 'someval'; 'buildsetting2' = 'someval2' }
 
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/builds/config
 ```
 
-{{ Add description here }}
+This command creates or updates the app settings of a static site by pipeline build.
 

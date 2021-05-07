@@ -1,11 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the secrets for an existing static site
 ```powershell
-PS C:\> Get-AzStaticWebAppSecret -ResourceGroupName lucas-rg-test -Name staticweb-portal04
+PS C:\> Get-AzStaticWebAppSecret -ResourceGroupName resourceGroup -Name staticweb-portal04
 
 Kind Name    Type
 ---- ----    ----
      secrets Microsoft.Web/staticSites/secrets
 ```
 
-{{ Add description here }}
+This command lists the secrets for an existing static site.
 

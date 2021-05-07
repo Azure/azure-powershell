@@ -1,16 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Resets the api key for an existing static site.
 ```powershell
-PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName lucas-rg-test -Name staticweb-portal01
+PS C:\> Reset-AzStaticWebAppApiKey -ResourceGroupName azure-rg-test -Name staticweb-portal01
 
 ```
 
-{{ Add description here }}
+This command resets the api key for an existing static site.
 
-### Example 2: {{ Add title here }}
+### Example 2: Resets the api key for an existing static site by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName lucas-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
+PS C:\> Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal01 | Reset-AzStaticWebAppApiKey
 
 ```
 
-{{ Add description here }}
+This command resets the api key for an existing static site by pipeline.
 

@@ -95,11 +95,11 @@ Description for Resets the api key for an existing static site.
 ### [Test-AzStaticWebAppCustomDomain](Test-AzStaticWebAppCustomDomain.md)
 Description for Validates a particular custom domain can be added to a static site.
 
-### [Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite](Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite.md)
-Description for Detach the user provided function app from the static site
-
-### [Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSiteBuild](Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSiteBuild.md)
+### [Unregister-AzStaticWebAppBuildUserProvidedFunctionApp](Unregister-AzStaticWebAppBuildUserProvidedFunctionApp.md)
 Description for Detach the user provided function app from the static site build
+
+### [Unregister-AzStaticWebAppUserProvidedFunctionApp](Unregister-AzStaticWebAppUserProvidedFunctionApp.md)
+Description for Detach the user provided function app from the static site
 
 ### [Update-AzStaticWebApp](Update-AzStaticWebApp.md)
 Description for Creates a new static site in an existing resource group, or updates an existing static site.

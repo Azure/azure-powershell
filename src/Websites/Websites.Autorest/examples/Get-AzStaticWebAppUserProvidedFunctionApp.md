@@ -1,55 +1,54 @@
-### Example 1: {{ Add title here }}
+### Example 1: List the details of the user provided function apps registered with a static site
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00
+PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00
 
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command lists the details of the user provided function apps registered with a static site
 
-### Example 2: {{ Add title here }}
+### Example 2: List the details of the user provided function apps registered with a static site build
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default'
+PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
 
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command lists the details of the user provided function apps registered with a static site build.
 
-### Example 3: {{ Add title here }}
+### Example 3: List the details of the user provided function apps registered
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -FunctionAppName $env.functionAppName01
+PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -FunctionAppName $env.functionAppName01
 
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command lists the details of the user provided function apps registered.
 
-### Example 4: {{ Add title here }}
+### Example 4: Get the details of the user provided function app registered with a static site build
 ```powershell
-PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName $env.resourceGroup -Name $env.staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
+PS C:\> Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
 
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
+This command gets the details of the user provided function app registered with a static site build.
 
-### Example 5: {{ Add title here }}
+### Example 5: Get the details of the user provided function apps registered with a static site build by pipeline
 ```powershell
-PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lucas-rg-test/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
+PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxx-xx-xxx-xxxx-xxxxx/resourcegroups/xxx-xx-xxxx/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
 
 Kind Name               Type
 ---- ----               ----
      functionApp-5enjko Microsoft.Web/staticSites/builds/userProvidedFunctionApps
 ```
 
-{{ Add description here }}
-
+This command gets the details of the user provided function app registered with a static site build by pipeline.

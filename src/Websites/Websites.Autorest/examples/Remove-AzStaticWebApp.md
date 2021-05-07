@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a static site
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb01
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a static site.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a static site by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb02 | Remove-AzStaticWebApp
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a static site by pipeline.
 

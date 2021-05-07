@@ -1,16 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a static site build
 ```powershell
-PS C:\> Remove-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal01 -EnvironmentName '2'
+PS C:\> Remove-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal01 -EnvironmentName '2'
 
 ```
 
-{{ Add description here }}
+This command deletes a static site build.
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a static site build by pipeline
 ```powershell
-PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName lucas-rg-test -Name staticweb-portal01 -EnvironmentName '3' | Remove-AzStaticWebAppBuild
+PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal01 -EnvironmentName '3' | Remove-AzStaticWebAppBuild
 
 ```
 
-{{ Add description here }}
+This command deletes a static site build by pipeline.
 

@@ -1,32 +1,32 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappuserprovidedfunctionappfromstaticsite
+online version: https://docs.microsoft.com/powershell/module/az.websites/unregister-azstaticwebappbuilduserprovidedfunctionapp
 schema: 2.0.0
 ---
 
-# Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite
+# Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
 
 ## SYNOPSIS
-Description for Detach the user provided function app from the static site
+Description for Detach the user provided function app from the static site build
 
 ## SYNTAX
 
 ### Detach (Default)
 ```
-Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite -FunctionAppName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -EnvironmentName <String> -FunctionAppName <String>
+ -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DetachViaIdentity
 ```
-Unregister-AzStaticWebAppUserProvidedFunctionAppFromStaticSite -InputObject <IWebsitesIdentity>
+Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -InputObject <IWebsitesIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Description for Detach the user provided function app from the static site
+Description for Detach the user provided function app from the static site build
 
 ## EXAMPLES
 
@@ -65,8 +65,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnvironmentName
+The stage site identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: Detach
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FunctionAppName
-Name of the function app registered with the static site.
+Name of the function app registered with the static site build.
 
 ```yaml
 Type: System.String

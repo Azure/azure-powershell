@@ -42,7 +42,7 @@ Kind Name    Type
 ---- ----    ----
      default Microsoft.Web/staticSites/builds
 ```
-
+get
 {{ Add description here }}
 
 {
