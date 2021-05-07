@@ -83,7 +83,7 @@ CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
                'New-AzStorageSyncServerEndpoint', 
                'Get-AzStorageSyncServerEndpoint', 
                'Remove-AzStorageSyncServerEndpoint', 
-               'Set-AzStorageSyncServerEndpoint', 'Invoke-AzStorageSyncFileRecall', 
+               'Set-AzStorageSyncServerEndpoint', 
                'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer', 
                'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate', 
                'Invoke-AzStorageSyncChangeDetection'
