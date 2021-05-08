@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Remove offline data transfer feature.
+* Removed offline data transfer feature in `New-AzStorageSyncServerEndpoint` and `Set-AzStorageSyncServerEndpoint`.
 
 ## Version 1.4.0
 * Added Sync tiering policy feature with download policy and local cache mode
