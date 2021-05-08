@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.2.8'
+ModuleVersion = '2.2.9'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -146,7 +146,7 @@ PrivateData = @{
         ReleaseNotes = '* Fallback to first valid context if current default context key is ''Default'' which is invalid'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
