@@ -35,7 +35,6 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/web/resource-manager/Microsoft.Web/stable/2020-12-01/StaticSites.json
-  #- D:\azure-rest-api\azure-rest-api-specs\specification\web\resource-manager\Microsoft.Web\stable\2020-12-01\StaticSites.json
 
 title: Websites
 module-version: 0.1.0

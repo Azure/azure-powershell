@@ -7,10 +7,10 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 $env = @{}
 function setupEnv() {
-    #Note:Need manually steps.
-    # 1. create the domain for use in the test before runing test.
+    # NOTE:Need manually steps.
+    # 1. create the domain for use in the test before runing test. Help link:https://docs.microsoft.com/en-us/azure/static-web-apps/custom-domain#configure-dns-provider
     # 2. Invite user join static web domian.
-    Write-Warning "Please manually create the domain for use in the test before runing test."
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
