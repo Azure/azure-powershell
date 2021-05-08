@@ -13,22 +13,14 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzStreamAnalyticsFunction' {
     It 'Delete' {
-<<<<<<< HEAD
       New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01 -File (Join-Path $PSScriptRoot 'template-json\Function_JavascriptUdf.json')
-=======
-      New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01 -File .\test\template-json\Function_JavascriptUdf.json
->>>>>>> upstream/generation
       Remove-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function01
       $result = Get-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02
       $result.Name | Should -Not -Contain $env.function01
     }
 
     It 'DeleteViaIdentity' {
-<<<<<<< HEAD
       New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function02 -File (Join-Path $PSScriptRoot 'template-json\Function_JavascriptUdf.json')
-=======
-      New-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function02 -File .\test\template-json\Function_JavascriptUdf.json
->>>>>>> upstream/generation
       $result = Get-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02 -Name $env.function02
       Remove-AzStreamAnalyticsFunction -InputObject $result
       $result = Get-AzStreamAnalyticsFunction -ResourceGroupName $env.resourceGroup -JobName $env.job02
