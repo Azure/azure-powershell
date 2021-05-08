@@ -14,8 +14,15 @@ while(-not $mockingPath) {
 Describe 'Update-AzCloudService' {
 
     It 'Update cloud service via identity' {
+        # Create Network Profile
+        $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $env.PublicIpId
+        $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
+        $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig}
+
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
         $cloudService.ExtensionProfile.Extension = @()
+        # Keep the network profile that the cloud service was originally created with
+        $cloudService.NetworkProfile = $networkProfile
         Update-AzCloudService -InputObject $cloudService -Parameter $cloudService
         $cloudService = Get-AzCloudService -ResourceGroupName $env.ResourceGroupName -CloudServiceName $env.CloudServiceName
         $cloudService.ExtensionProfile.Extension.Count | Should be 0

@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 82831834a7ce4b999d6fec363c0391da80ac2674
+branch: 542cfcc19172c7edec5d22b3af0ff7379b26ba12
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -68,6 +68,9 @@ directive:
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^LocationBasedCapabilities_Execute$/g, "LocationBasedCapabilities_Get")
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^ServerParameters_ListUpdateConfigurations$/g, "ConfigurationsList_Update")
   - from: Microsoft.DBforPostgreSQL/stable/2017-12-01/postgresql.json
     where: $.definitions.VirtualNetworkRule
     transform: $['required'] = ['properties']
@@ -99,7 +102,7 @@ directive:
     set:
       verb: Update
   - where:
-      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$
+      subject: ^Database$|^ServerSecurityAlertPolicy$|^ServerAdministrator$|^LocationBasedPerformanceTier$|^LogFile$|^NameAvailability$|^FlexibleServerKey$|^FlexibleServerVirtualNetworkSubnetUsage$|^ServerBasedPerformanceTier$
     hide: true
   - where:
       verb: New$|Update$
@@ -118,6 +121,9 @@ directive:
       verb: New$|Update$
       variant: ^(?!.*?Expanded)
     hide: true
+  - where:
+      subject: ^ConfigurationsList$|^RecoverableServer$
+    remove: true
   - where:
       parameter-name: VirtualNetworkSubnetId
       subject: VirtualNetworkRule

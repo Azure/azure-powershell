@@ -1,0 +1,73 @@
+{
+  "AzProviderHubCustomRollout-CRUD+[NoContext]+Create and get a CustomRollout+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/customRollouts/psCustomRollout?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/customRollouts/psCustomRollout?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"specification\": {\r\n      \"canary\": {\r\n        \"regions\": [ \"eastus2euap\" ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "125" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "6cc02cd2-0b7f-4b91-986d-ab55922fc7d8" ],
+        "x-ms-correlation-request-id": [ "6d869493-b161-415b-bd27-ea7823d141f6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050507Z:6d869493-b161-415b-bd27-ea7823d141f6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:05:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "202" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"specification\":{\"canary\":{\"regions\":[\"eastus2euap\"]}},\"status\":{\"completedRegions\":[\"eastus2euap\"],\"failedOrSkippedRegions\":{}}},\"name\":\"psCustomRollout\"}"
+    }
+  },
+  "AzProviderHubCustomRollout-CRUD+[NoContext]+Create and get a CustomRollout+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/customRollouts/psCustomRollout?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/customRollouts/psCustomRollout?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "0bb1f13c-4465-47af-bffc-bb70c7ae5fd3" ],
+        "CommandName": [ "Get-AzProviderHubCustomRollout" ],
+        "FullCommandName": [ "Get-AzProviderHubCustomRollout_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "c18eb0dd-f37b-4b5f-ab2e-e6d8ae8219c7" ],
+        "x-ms-correlation-request-id": [ "148cd923-7376-4f6c-9da1-236e5908427c" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050507Z:148cd923-7376-4f6c-9da1-236e5908427c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:05:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "202" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"specification\":{\"canary\":{\"regions\":[\"eastus2euap\"]}},\"status\":{\"completedRegions\":[\"eastus2euap\"],\"failedOrSkippedRegions\":{}}},\"name\":\"psCustomRollout\"}"
+    }
+  }
+}
