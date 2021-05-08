@@ -19,37 +19,57 @@ using Azure.Identity;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class PowerShellTokenCache
-    {
-        public TokenCache TokenCache { get; private set; }
+    //public class PowerShellTokenCache
+    //{
+    //    public TokenCachePersistenceOptions TokenCache { get; private set; }
 
-        public PowerShellTokenCache(TokenCache tokenCache)
-        {
-            TokenCache = tokenCache;
-        }
+    //    public PowerShellTokenCache(TokenCachePersistenceOptions tokenCache)
+    //    {
+    //        TokenCache = tokenCache;
+    //    }
 
-        public PowerShellTokenCache(Stream stream)
-        {
-            TokenCache = TokenCache.Deserialize(stream);
-        }
+    //    public PowerShellTokenCache(Stream stream)
+    //    {
+    //        TokenCache = InMemoryTokenCacheOptions.Deserialize(stream);
+    //    }
 
-        public static PowerShellTokenCache Deserialize(Stream stream, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            var cache = TokenCache.Deserialize(stream);
-            return new PowerShellTokenCache(cache);
-        }
+    //    public static PowerShellTokenCache Deserialize(Stream stream, CancellationToken cancellationToken = default(CancellationToken))
+    //    {
+    //        var cache = InMemoryTokenCacheOptions.Deserialize(stream);
+    //        return new PowerShellTokenCache(cache);
+    //    }
 
-        public void Serialize(Stream stream)
-        {
-            TokenCache.Serialize(stream);
-        }
+    //    public void Serialize(Stream stream)
+    //    {
+    //        if(TokenCache is InMemoryTokenCacheOptions inMemoryTokenCacheOptions)
+    //        {
+    //            if(inMemoryTokenCacheOptions._cachedToken != null)
+    //            {
+    //                stream.Write(inMemoryTokenCacheOptions._cachedToken, 0, inMemoryTokenCacheOptions._cachedToken.Length);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
+    //            {
+    //                if (tokenCache.IsPersistentCache)
+    //                {
+    //                    if (AzureSession.Instance.TryGetComponent(
+    //                        PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+    //                        out PowerShellTokenCacheProvider tokenCacheProvider))
+    //                    {
+    //                        cacheData = tokenCacheProvider.ReadTokenData();
+    //                    }
+    //                }
+    //        }
+    //    }
 
-        public bool IsPersistentCache
-        {
-            get
-            {
-                return TokenCache is PersistentTokenCache;
-            }
-        }
-    }
+    //    public bool IsPersistentCache
+    //    {
+    //        get
+    //        {
+    //            return !(TokenCache is InMemoryTokenCacheOptions);
+    //        }
+    //    }
+    //}
 }

@@ -14,9 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-
-using Azure.Identity;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -79,26 +76,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             else if (objectType == typeof(IAzureTokenCache) || objectType == typeof(AzureTokenCache))
             {
                 var tempResult = serializer.Deserialize<CacheBuffer>(reader);
-                if (_serializeCache && tempResult != null && tempResult.CacheData != null && tempResult.CacheData.Length > 0)
+                if (_serializeCache && tempResult?.CacheData?.Length > 0)
                 {
-                    if(AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache oldTokenCache))
+                    if (AzureSession.Instance.TryGetComponent(
+                        PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                        out PowerShellTokenCacheProvider tokenCacheProvider))
                     {
-                        if(!oldTokenCache.IsPersistentCache)
-                        {
-                            var stream = new MemoryStream(tempResult.CacheData);
-                            var tokenCache = new PowerShellTokenCache(stream);
-                            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
-                        }
-                        else
-                        {
-                            if (AzureSession.Instance.TryGetComponent(
-                                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                                out PowerShellTokenCacheProvider tokenCacheProvider))
-                            {
-                                tokenCacheProvider.UpdateTokenDataWithoutFlush(tempResult.CacheData);
-                            }
-                        }
+                        tokenCacheProvider.UpdateTokenDataWithoutFlush(tempResult.CacheData);
                     }
+                    
+                    //if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache oldTokenCache))
+                    //{
+                    //    if(!oldTokenCache.IsPersistentCache)
+                    //    {
+                    //        var stream = new MemoryStream(tempResult.CacheData);
+                    //        var tokenCache = new PowerShellTokenCache(stream);
+                    //        AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache, true);
+                    //    }
+                    //    else
+                    //    {
+                    //        if (AzureSession.Instance.TryGetComponent(
+                    //            PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                    //            out PowerShellTokenCacheProvider tokenCacheProvider))
+                    //        {
+                    //            tokenCacheProvider.UpdateTokenDataWithoutFlush(tempResult.CacheData);
+                    //        }
+                    //    }
+                    //}
                 }
                 // cache data is not for direct use, so we do not return anything
                 return new AzureTokenCache();
@@ -138,27 +142,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     byte[] cacheData = null;
 
-
-                    if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
+                    if (AzureSession.Instance.TryGetComponent(
+                            PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                            out PowerShellTokenCacheProvider tokenCacheProvider))
                     {
-                        if (tokenCache.IsPersistentCache)
-                        {
-                            if (AzureSession.Instance.TryGetComponent(
-                                PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
-                                out PowerShellTokenCacheProvider tokenCacheProvider))
-                            {
-                                cacheData = tokenCacheProvider.ReadTokenData();
-                            }
-                        }
-                        else
-                        {
-                            using (var stream = new MemoryStream())
-                            {
-                                tokenCache.Serialize(stream);
-                                cacheData = stream.ToArray();
-                            }
-                        }
+                        cacheData = tokenCacheProvider.ReadTokenData();
                     }
+
+                    //if (AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache))
+                    //{
+                    //    if (tokenCache.IsPersistentCache)
+                    //    {
+                    //        if (AzureSession.Instance.TryGetComponent(
+                    //            PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey,
+                    //            out PowerShellTokenCacheProvider tokenCacheProvider))
+                    //        {
+                    //            cacheData = tokenCacheProvider.ReadTokenData();
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        using (var stream = new MemoryStream())
+                    //        {
+                    //            tokenCache.Serialize(stream);
+                    //            cacheData = stream.ToArray();
+                    //        }
+                    //    }
+                    //}
 
                     value = new CacheBuffer { CacheData = cacheData };
                 }
