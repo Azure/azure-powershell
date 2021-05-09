@@ -30,7 +30,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
@@ -54,7 +53,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
@@ -68,12 +66,12 @@ Location   Name                 Type
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IHostPool
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/new-azwvdhostpool
+https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 #>
 function New-AzWvdHostPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IHostPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -203,12 +201,6 @@ param(
     [System.String]
     # Path to Azure KeyVault storing the secret used for communication to ADFS.
     ${SsoClientSecretKeyVaultPath},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Body')]
-    [System.String]
-    # Path to keyvault containing ssoContext secret.
-    ${SsoContext},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType])]

@@ -22,7 +22,7 @@ Remove the Windows virtual desktop registration info.
 PS C:\> Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
+https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdregistrationinfo
 #>
 function Remove-AzWvdRegistrationInfo {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
