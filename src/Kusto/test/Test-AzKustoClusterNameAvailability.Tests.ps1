@@ -15,9 +15,8 @@ Describe 'Test-AzKustoClusterNameAvailability' {
     It 'CheckExpanded' {
         $clusterName = $env.clusterName
         $location = $env.location
-        $resourceType = $env.resourceType
 
-        $testResult = Test-AzKustoClusterNameAvailability -Name $clusterName -Location $location -Type $resourceType
+        $testResult = Test-AzKustoClusterNameAvailability -Name $clusterName -Location $location
         $testResult.Message | Should -Be "Name '$clusterName' with type Engine is already taken. Please specify a different name"
     }
 }

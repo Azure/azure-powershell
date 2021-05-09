@@ -1,12 +1,12 @@
 {
-  "Get-AzKustoClusterLanguageExtension+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/listLanguageExtensions?api-version=2021-01-01+1": {
+  "Get-AzKustoClusterLanguageExtension+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/listLanguageExtensions?api-version=2021-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/listLanguageExtensions?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/listLanguageExtensions?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": [ "163" ],
-        "x-ms-client-request-id": [ "fff2e4f6-03d4-4fe7-9a28-5ec05c507649" ],
+        "x-ms-unique-id": [ "166" ],
+        "x-ms-client-request-id": [ "104b1930-6b71-4b19-b79d-309bdab4d17e" ],
         "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
         "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,14 +21,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6f4e58aa-c144-489d-9123-ba90de31f35f" ],
+        "x-ms-request-id": [ "dfd3549a-1003-476d-abfb-ed15495dbc5a" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "e07b1903-aab7-49ac-8b6f-61ad30f34c33" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T073635Z:e07b1903-aab7-49ac-8b6f-61ad30f34c33" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "cabeaeec-38bd-4b4c-9c76-b3d1f86c119e" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210509T100817Z:cabeaeec-38bd-4b4c-9c76-b3d1f86c119e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 06 May 2021 07:36:35 GMT" ]
+        "Date": [ "Sun, 09 May 2021 10:08:17 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "76" ],

@@ -10,6 +10,7 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
+	Write-Host "sub id = " $env.SubscriptionId
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     # Generate some random strings for use in the test.
@@ -42,9 +43,11 @@ function setupEnv() {
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
-
+	
+	$SubscriptionId = $env.SubscriptionId
+	Write-Host "sub id = " $SubscriptionId
     # Deploy cluster + database 
-    Write-Host "sub id = " $SubscriptionId
+    
     $clusterName = "testcluster" + $rstr1
     $databaseName = "testdatabase" + $rstr1
     $dataConnectionName = "testdataconnection" + $rstr1

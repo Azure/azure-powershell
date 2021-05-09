@@ -19,8 +19,8 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
         $databaseResourceType = $env.databaseType
 
         $availability = Test-AzKustoDatabaseNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Type $databaseResourceType
-        $availability.NameAvailable | Should Be $false
-        $availability.Name | Should Be $databaseName
+        $availability.NameAvailable | Should -Be $false
+        $availability.Name | Should -Be $databaseName
     }
 
     It 'CheckViaIdentityExpanded' {
@@ -31,7 +31,7 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $availability = Test-AzKustoDatabaseNameAvailability -InputObject $cluster -Name $databaseName -Type $databaseResourceType
-        $availability.NameAvailable | Should Be $true
-        $availability.Name | Should Be $databaseName
+        $availability.NameAvailable | Should -Be $true
+        $availability.Name | Should -Be $databaseName
     }
 }

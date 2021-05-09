@@ -17,10 +17,9 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $clusterName = $env.clusterNamefordc
         $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName
-        $dataConnectionResourceType = $env.dataConnectionResourceType
 
-        $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName -Type $dataConnectionResourceType
-        $availability.NameAvailable | Should Be $false
+        $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
+        $availability.NameAvailable | Should -Be $false
     }
 
     It 'CheckViaIdentityExpanded' {
@@ -28,10 +27,9 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $clusterName = $env.clusterNamefordc
         $databaseName = $env.databaseNamefordc
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
-        $dataConnectionResourceType = $env.dataConnectionResourceType
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        $availability = Test-AzKustoDataConnectionNameAvailability -InputObject $database -Name $dataConnectionName -Type $dataConnectionResourceType
-        $availability.NameAvailable | Should Be $true
+        $availability = Test-AzKustoDataConnectionNameAvailability -InputObject $database -Name $dataConnectionName
+        $availability.NameAvailable | Should -Be $true
     }
 }
