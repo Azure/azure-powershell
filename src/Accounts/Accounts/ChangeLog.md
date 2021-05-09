@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Set retry times by environment variable [#14748]
 
 ## Version 2.2.8
 * Fallback to first valid context if current default context key is "Default" which is invalid
