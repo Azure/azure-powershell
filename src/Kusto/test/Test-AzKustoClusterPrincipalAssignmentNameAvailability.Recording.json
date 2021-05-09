@@ -1,43 +1,42 @@
 {
-  "Test-AzKustoClusterPrincipalAssignmentNameAvailability+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01+1": {
+  "Test-AzKustoClusterPrincipalAssignmentNameAvailability+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123?api-version=2021-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": ["54"],
-        "x-ms-client-request-id": ["1bedf4ba-8c25-49cc-99e3-8f20beeaa76d"],
-        "CommandName": ["Get-AzKustoCluster"],
-        "FullCommandName": ["Get-AzKustoCluster_Get"],
-        "ParameterSetName": ["__AllParameterSets"],
-        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
-        "Authorization": ["[Filtered]"]
+        "x-ms-unique-id": [ "559" ],
+        "x-ms-client-request-id": [ "ad6b86d7-bff7-40dc-9f66-2a89f1274f4c" ],
+        "CommandName": [ "Get-AzKustoCluster" ],
+        "FullCommandName": [ "Get-AzKustoCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
       },
-      "ContentHeaders": {}
+      "ContentHeaders": {
+      }
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": ["no-cache"],
-        "Pragma": ["no-cache"],
-        "ETag": ["\"2021-04-28T16:51:17.4218742Z\""],
-        "x-ms-request-id": ["49b21b17-c1dd-4f5a-a90c-a2d5077915f0"],
-        "Server": ["Microsoft-HTTPAPI/2.0"],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": ["292"],
-        "x-ms-correlation-request-id": ["d612a6e3-cc19-46fb-82fb-341e17dc7772"],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20210504T162844Z:d612a6e3-cc19-46fb-82fb-341e17dc7772"
-        ],
-        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
-        "X-Content-Type-Options": ["nosniff"],
-        "Date": ["Tue, 04 May 2021 16:28:44 GMT"]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2021-05-06T08:52:27.0839233Z\"" ],
+        "x-ms-request-id": [ "1253e32f-a12d-427d-bc5e-c94a86d59ede" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
+        "x-ms-correlation-request-id": [ "b6e8cddf-9bce-45d4-9a11-ec8a747a6e21" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T102158Z:b6e8cddf-9bce-45d4-9a11-ec8a747a6e21" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 May 2021 10:21:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": ["949"],
-        "Content-Type": ["application/json; charset=utf-8"],
-        "Expires": ["-1"]
+        "Content-Length": [ "812" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g\",\"name\":\"testclusterdvma1g\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-04-28T16:51:17.4218742Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Stopped\",\"stateReason\":\"The cluster\u0027s subscription has been marked in state: Suspended. Suspended on: 4/28/2021 4:45:26 PM\",\"uri\":\"https://testclusterdvma1g.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterdvma1g.eastus.kusto.windows.net\",\"trustedExternalTenants\":[{\"value\":\"*\"}],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123\",\"name\":\"blablab123\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-05-06T08:52:27.0839233Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://blablab123.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-blablab123.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
     }
   }
 }

@@ -1,41 +1,41 @@
 {
-  "Get-AzKustoClusterLanguageExtension+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/listLanguageExtensions?api-version=2021-01-01+1": {
+  "Get-AzKustoClusterLanguageExtension+[NoContext]+List+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/listLanguageExtensions?api-version=2021-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/listLanguageExtensions?api-version=2021-01-01",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/listLanguageExtensions?api-version=2021-01-01",
       "Content": null,
       "Headers": {
-        "x-ms-unique-id": ["12"],
-        "x-ms-client-request-id": ["5d2fddb6-ff8d-4ef3-91d0-c4515286abe7"],
-        "CommandName": ["Get-AzKustoClusterLanguageExtension"],
-        "FullCommandName": ["Get-AzKustoClusterLanguageExtension_List"],
-        "ParameterSetName": ["__AllParameterSets"],
-        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
-        "Authorization": ["[Filtered]"]
-      },
-      "ContentHeaders": {}
-    },
-    "Response": {
-      "StatusCode": 409,
-      "Headers": {
-        "Cache-Control": ["no-cache"],
-        "Pragma": ["no-cache"],
-        "x-ms-failure-cause": ["gateway"],
-        "x-ms-request-id": ["2b90ad57-62c7-4016-a49a-6840a72307ca"],
-        "x-ms-correlation-request-id": ["2b90ad57-62c7-4016-a49a-6840a72307ca"],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20210504T162748Z:2b90ad57-62c7-4016-a49a-6840a72307ca"
-        ],
-        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
-        "X-Content-Type-Options": ["nosniff"],
-        "Date": ["Tue, 04 May 2021 16:27:47 GMT"]
+        "x-ms-unique-id": [ "163" ],
+        "x-ms-client-request-id": [ "fff2e4f6-03d4-4fe7-9a28-5ec05c507649" ],
+        "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
+        "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
-        "Content-Type": ["application/json; charset=utf-8"],
-        "Expires": ["-1"],
-        "Content-Length": ["246"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "6f4e58aa-c144-489d-9123-ba90de31f35f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "e07b1903-aab7-49ac-8b6f-61ad30f34c33" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T073635Z:e07b1903-aab7-49ac-8b6f-61ad30f34c33" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 May 2021 07:36:35 GMT" ]
       },
-      "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
+      "ContentHeaders": {
+        "Content-Length": [ "76" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]}"
     }
   }
 }

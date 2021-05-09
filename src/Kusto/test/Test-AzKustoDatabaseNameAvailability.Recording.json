@@ -1,111 +1,110 @@
 {
-  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/checkNameAvailability?api-version=2021-01-01+1": {
+  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/checkNameAvailability?api-version=2021-01-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/checkNameAvailability?api-version=2021-01-01",
-      "Content": "{\r\n  \"name\": \"testdatabasedvma1g\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/Databases\"\r\n}",
-      "Headers": {},
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/checkNameAvailability?api-version=2021-01-01",
+      "Content": "{\r\n  \"name\": \"testdatabaseyefkpv\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/Databases\"\r\n}",
+      "Headers": {
+      },
       "ContentHeaders": {
-        "Content-Type": ["application/json"],
-        "Content-Length": ["85"]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "85" ]
       }
-    },
-    "Response": {
-      "StatusCode": 409,
-      "Headers": {
-        "Cache-Control": ["no-cache"],
-        "Pragma": ["no-cache"],
-        "x-ms-failure-cause": ["gateway"],
-        "x-ms-request-id": ["bc790535-93de-4ae8-94c6-e779bae024de"],
-        "x-ms-correlation-request-id": ["bc790535-93de-4ae8-94c6-e779bae024de"],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20210504T162845Z:bc790535-93de-4ae8-94c6-e779bae024de"
-        ],
-        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
-        "X-Content-Type-Options": ["nosniff"],
-        "Date": ["Tue, 04 May 2021 16:28:45 GMT"]
-      },
-      "ContentHeaders": {
-        "Content-Type": ["application/json; charset=utf-8"],
-        "Expires": ["-1"],
-        "Content-Length": ["246"]
-      },
-      "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
-    }
-  },
-  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g?api-version=2021-01-01",
-      "Content": null,
-      "Headers": {
-        "x-ms-unique-id": ["56"],
-        "x-ms-client-request-id": ["cf1fbf73-1d32-4a57-82c7-1503310d4475"],
-        "CommandName": ["Get-AzKustoCluster"],
-        "FullCommandName": ["Get-AzKustoCluster_Get"],
-        "ParameterSetName": ["__AllParameterSets"],
-        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
-        "Authorization": ["[Filtered]"]
-      },
-      "ContentHeaders": {}
     },
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": ["no-cache"],
-        "Pragma": ["no-cache"],
-        "ETag": ["\"2021-04-28T16:51:17.4218742Z\""],
-        "x-ms-request-id": ["08d49e62-4108-4885-b273-8f41ac02c231"],
-        "Server": ["Microsoft-HTTPAPI/2.0"],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": ["291"],
-        "x-ms-correlation-request-id": ["e68c7728-0919-4fee-978e-4b5cd4715632"],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20210504T162845Z:e68c7728-0919-4fee-978e-4b5cd4715632"
-        ],
-        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
-        "X-Content-Type-Options": ["nosniff"],
-        "Date": ["Tue, 04 May 2021 16:28:45 GMT"]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "5859c8d1-2577-4350-9520-6762c746b764" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "4af1d00c-9b1e-41c9-bc01-9c4da5a392c9" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T102200Z:4af1d00c-9b1e-41c9-bc01-9c4da5a392c9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 May 2021 10:21:59 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": ["949"],
-        "Content-Type": ["application/json; charset=utf-8"],
-        "Expires": ["-1"]
+        "Content-Length": [ "170" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g\",\"name\":\"testclusterdvma1g\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-04-28T16:51:17.4218742Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Stopped\",\"stateReason\":\"The cluster\u0027s subscription has been marked in state: Suspended. Suspended on: 4/28/2021 4:45:26 PM\",\"uri\":\"https://testclusterdvma1g.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterdvma1g.eastus.kusto.windows.net\",\"trustedExternalTenants\":[{\"value\":\"*\"}],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"name\":\"testdatabaseyefkpv\",\"nameAvailable\":false,\"message\":\"Database testdatabaseyefkpv already exists in cluster blablab123. Please select a different database name.\"}"
     }
   },
-  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/checkNameAvailability?api-version=2021-01-01+2": {
+  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123?api-version=2021-01-01+1": {
     "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/9012ad7e-f906-4683-8f8a-ca02a62e5614/resourceGroups/testgroupdvma1g/providers/Microsoft.Kusto/Clusters/testclusterdvma1g/checkNameAvailability?api-version=2021-01-01",
-      "Content": "{\r\n  \"name\": \"testdatabasedvma1gnpkucj\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/Databases\"\r\n}",
-      "Headers": {},
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123?api-version=2021-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "561" ],
+        "x-ms-client-request-id": [ "08de6d9f-d9f2-4990-91fa-2120183c8958" ],
+        "CommandName": [ "Get-AzKustoCluster" ],
+        "FullCommandName": [ "Get-AzKustoCluster_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
       "ContentHeaders": {
-        "Content-Type": ["application/json"],
-        "Content-Length": ["91"]
       }
     },
     "Response": {
-      "StatusCode": 409,
+      "StatusCode": 200,
       "Headers": {
-        "Cache-Control": ["no-cache"],
-        "Pragma": ["no-cache"],
-        "x-ms-failure-cause": ["gateway"],
-        "x-ms-request-id": ["77214cee-13a3-412a-a55e-b406d9696b29"],
-        "x-ms-correlation-request-id": ["77214cee-13a3-412a-a55e-b406d9696b29"],
-        "x-ms-routing-request-id": [
-          "UAECENTRAL:20210504T162845Z:77214cee-13a3-412a-a55e-b406d9696b29"
-        ],
-        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
-        "X-Content-Type-Options": ["nosniff"],
-        "Date": ["Tue, 04 May 2021 16:28:45 GMT"]
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"2021-05-06T08:52:27.0839233Z\"" ],
+        "x-ms-request-id": [ "b37d6cff-8ba8-4ed5-b980-238da52eec22" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
+        "x-ms-correlation-request-id": [ "5cdce4b5-34cc-4c03-b64a-6187fc5f3900" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T102200Z:5cdce4b5-34cc-4c03-b64a-6187fc5f3900" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 May 2021 10:22:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Type": ["application/json; charset=utf-8"],
-        "Expires": ["-1"],
-        "Content-Length": ["246"]
+        "Content-Length": [ "812" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ReadOnlyDisabledSubscription\",\"message\":\"The subscription \u00279012ad7e-f906-4683-8f8a-ca02a62e5614\u0027 is disabled and therefore marked as read only. You cannot perform any write actions on this subscription until it is re-enabled.\"}}"
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123\",\"name\":\"blablab123\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-05-06T08:52:27.0839233Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://blablab123.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-blablab123.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "Test-AzKustoDatabaseNameAvailability+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/checkNameAvailability?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupyefkpv/providers/Microsoft.Kusto/Clusters/blablab123/checkNameAvailability?api-version=2021-01-01",
+      "Content": "{\r\n  \"name\": \"testdatabaseyefkpv7ndo4g\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/Databases\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "3fc04257-e1c0-40c8-b10a-a42b62e26cb0" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-correlation-request-id": [ "94717875-a242-46ad-83a2-a886dbfc4d19" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20210506T102201Z:94717875-a242-46ad-83a2-a886dbfc4d19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 06 May 2021 10:22:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "69" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"testdatabaseyefkpv7ndo4g\",\"nameAvailable\":true,\"message\":\"\"}"
     }
   }
 }
