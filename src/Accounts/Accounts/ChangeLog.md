@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
 * Add optional parameter `AuthScope` to Connect-AzAccount to support enhanced authentication of data plane
 
 ## Version 2.2.8

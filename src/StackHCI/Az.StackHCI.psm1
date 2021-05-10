@@ -478,7 +478,7 @@ param(
     $appSP = Retry-Command -ScriptBlock { Get-AzureADServicePrincipal -Filter "AppId eq '$AppId'"}
 
     # Try Get-AzureADServiceAppRoleAssignment as well to get app role assignments. WAC token falls under this case.
-    $assignedPerms = Retry-Command -ScriptBlock { (Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId) + (Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId)} -RetryIfNullOutput $false
+    $assignedPerms = Retry-Command -ScriptBlock { @(Get-AzureADServiceAppRoleAssignedTo -ObjectId $appSP.ObjectId) + @(Get-AzureADServiceAppRoleAssignment -ObjectId $appSP.ObjectId)} -RetryIfNullOutput $false
 
     $clusterRead = $assignedPerms | where { ($_.Id -eq $ClusterReadPermission) }
     $clusterReadWrite = $assignedPerms | where { ($_.Id -eq $ClusterReadWritePermission) }
@@ -833,7 +833,7 @@ param(
 
         # Check if all nodes have required OS version
         $nodeUBR = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").UBR }
-        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").CurrentBuildNumber }
+        $nodeBuildNumber = Invoke-Command -Session $nodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
 
         if(($nodeBuildNumber -lt $GAOSBuildNumber) -or (($nodeBuildNumber -eq $GAOSBuildNumber) -and ($nodeUBR -lt $GAOSUBR)))
         {

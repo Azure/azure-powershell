@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.0
+* Removed principaltype in Synapse Role-based access control
+
 ## Version 0.10.0
 * Add support for Synapse Role-based access control
    - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3

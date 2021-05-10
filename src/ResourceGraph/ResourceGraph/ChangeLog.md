@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.0
+* Changed output of `Search-AzGraph` to PSResourceGraphResponse which wrapped previous output under Data property.
+
 ## Version 0.9.0
 * Added support for the new api version with the ability to query with management group scopes using -ManagementGroup param.
 * Deprecated parameter -Include.

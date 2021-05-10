@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 0.11.0
 * Fix typo in printing SQL vulnerability assessment scan results
 
 ## Version 0.10.0

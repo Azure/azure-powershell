@@ -1,3 +1,85 @@
+## 5.9.0 - May 2021
+#### Az.Aks
+* Added support 'AcrNameToAttach' in 'Set-AzAksCluster'. [#14692]
+* Added support 'AcrNameToDetach' in 'Set-AzAksCluster'. [#14693] 
+* Added 'Set-AzAksClusterCredential' to reset the ServicePrincipal of an existing AKS cluster.
+
+#### Az.Automation
+* Added support for User Assigned Identities and PublicNetworkAccess flag
+
+#### Az.Cdn
+* Added cmdlets to support new AFD Premium / Standard SKUs
+
+#### Az.Compute
+* Updated the 'Set-AzVMDiskEncryptionExtension' cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
+    - Added a switch parameter '-Migrate' to trigger migration workflow.
+    - Added a switch parameter '-MigrationRecovery' to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
+
+#### Az.DataFactory
+* Added User Assigned Identities to Data Factory.
+* Updated ADF .Net SDK version to 4.18.0
+
+#### Az.FrontDoor
+* Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
+
+#### Az.KeyVault
+* Fixed a bug for 'Get-AzKeyVaultSecret -IncludeVersions' when current version is disabled [#14740]
+* Displayed error code and message when updating purged secret [#14800]
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.
+* Azure Site Recovery support for SqlServerLicenseType for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability set for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for TargetVmSize for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for ResourceTagging for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Virtual Machine Scale Set for Azure to Azure provider.
+* Added support for restoring unmanaged disks vm as managed disks.
+
+#### Az.Resources
+* Added parameter 'ObjectType' for 'New-AzRoleAssignment'
+
+#### Az.ServiceFabric
+* Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
+* 'New-AzServiceFabricManagedCluster' add parameters UpgradeCadence and ZonalResiliency.
+* 'New-AzServiceFabricManagedNodeType' add parameters DiskType, VmUserAssignedIdentity, IsStateless and MultiplePlacementGroup.
+* 'New-AzServiceFabricManagedClusterService' and 'Set-AzServiceFabricManagedClusterService' mark parameters for deprecation: InstanceCloseDelayDuration, DropSourceReplicaOnMove and ServiceDnsName. They are not supported.
+
+#### Az.ResourceMover
+* General availability of 'Az.ResourceMover' module
+
+#### Az.Storage
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported create/update storage account with keyvault encryption and access keyvault with user assigned identity
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported EdgeZone in create storage account
+    - 'New-AzStorageAccount'
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - 'Remove-AzStorageAccount'
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - 'Set-AzStorageAccount'
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - 'Remove-AzRmStorageShare'
+
+### Thanks to our community contributors
+* Thomas Lee (@doctordns), Update Get-AzEnvironment.md (#14704)
+* Fabian (@FullByte), Example with wrong parameter (typo) (#14743)
+* @gradinDotCom, Update Get-AzNetworkWatcherNextHop.md (#14813)
+* Dr Greg Low (@greglow-sdu), Update Get-AzSqlServerDnsAlias.md (#14737)
+* Prateek Singh (@PrateekKumarSingh)
+  * fixing a typo (#14779)
+  * fixing typo (#14773)
+* Remco Eissing (@remcoeissing)
+  * Fixed typos in Restore-AzApiManagement (#14770)
+  * Example 2 to use New-AzPolicyExemption (#14716)
+* @sharma224
+  * User identity changes (#14803)
+  * Supporting Customer managed key  (#14680)
+* Yannick Dils (@yannickdils), Update Location explanation (#14719)
+
+
 ## 5.8.0 - April 2021
 #### Az.Accounts
 * Fallback to first valid context if current default context key is 'Default' which is invalid

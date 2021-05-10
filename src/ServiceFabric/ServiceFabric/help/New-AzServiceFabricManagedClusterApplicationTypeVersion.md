@@ -14,7 +14,7 @@ Create new managed application type version under the specified resource group a
 
 ```
 New-AzServiceFabricManagedClusterApplicationTypeVersion [-ResourceGroupName] <String> [-ClusterName] <String>
- [-Name] <String> [-Version] <String> -PackageUrl <String> [-Tags <Hashtable>] [-Force] [-AsJob]
+ [-Name] <String> [-Version] <String> -PackageUrl <String> [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -142,7 +142,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Specify the tags as key/value pairs.
 
 ```yaml

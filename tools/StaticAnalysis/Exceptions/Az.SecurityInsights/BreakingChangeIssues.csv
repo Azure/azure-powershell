@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.SecurityInsights","Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors.NewDataConnectors","New-AzSentinelDataConnector","0","1050","The parameter set 'Office365' for cmdlet 'New-AzSentinelDataConnector' has been removed.","Add parameter set 'Office365' back to cmdlet 'New-AzSentinelDataConnector'."

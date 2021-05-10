@@ -1,0 +1,81 @@
+{
+  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "764edb35-c661-43ca-b0a7-cc98459bb70b" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "1ff9b844-8612-4a0e-85e3-09f106ad9b8b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210426T104229Z:1ff9b844-8612-4a0e-85e3-09f106ad9b8b" ],
+        "Date": [ "Mon, 26 Apr 2021 10:42:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4936" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-828ee34c-9ffc-4365-9b13-609f89cb200b\",\"name\":\"jececyblobstorage-jececyblobstorage-828ee34c-9ffc-4365-9b13-609f89cb200b\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"Microsoft.Storage/storageAccounts\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.Storage/storageAccounts/jececyblobstorage\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.Storage/storageAccounts/jececyblobstorage\",\"datasourceType\":\"Microsoft.Storage/storageAccounts/blobServices\",\"resourceName\":\"jececyblobstorage\",\"resourceType\":\"Microsoft.Storage/storageAccounts\",\"resourceLocation\":\"eastus2euap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupPolicies/retention60days\"},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/ecystorageaccount-ecystorageaccount-6cf6c912-e433-4614-ba78-f26a653d4085\",\"name\":\"ecystorageaccount-ecystorageaccount-6cf6c912-e433-4614-ba78-f26a653d4085\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"ecystorageaccount\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.Storage/storageAccounts/ecystorageaccount\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.Storage/storageAccounts/ecystorageaccount\",\"datasourceType\":\"Microsoft.Storage/storageAccounts/blobServices\",\"resourceName\":\"ecystorageaccount\",\"resourceType\":\"Microsoft.Storage/storageAccounts\",\"resourceLocation\":\"eastus2euap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupPolicies/hiagaBlobsPolicy1\"},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/afsbackupsa1-afsbackupsa1-d321dc1a-8ad3-4835-b5a9-696a5e044b1f\",\"name\":\"afsbackupsa1-afsbackupsa1-d321dc1a-8ad3-4835-b5a9-696a5e044b1f\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"afsbackupsa1\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/afstests/providers/Microsoft.Storage/storageAccounts/afsbackupsa1\",\"resourceUri\":\"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/afstests/providers/Microsoft.Storage/storageAccounts/afsbackupsa1\",\"datasourceType\":\"Microsoft.Storage/storageAccounts/blobServices\",\"resourceName\":\"afsbackupsa1\",\"resourceType\":\"Microsoft.Storage/storageAccounts\",\"resourceLocation\":\"eastus2euap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupPolicies/adkayethpolicy\"},\"protectionStatus\":{\"status\":\"ProtectionError\",\"errorDetails\":{\"message\":\"Appropriate permissions to perform the operation is missing.\",\"recommendedAction\":[\"Grant appropriate permissions to perform this operation as mentioned at https://aka.ms/UserErrorMissingRequiredPermissions and retry the operation.\"],\"code\":\"UserErrorMissingRequiredPermissions\",\"target\":\"\",\"isRetryable\":false,\"isUserError\":false,\"properties\":{\"ActivityId\":\"bfdc9e2c-e0ea-4b4e-913e-aef3c59eaf1c\"}}},\"currentProtectionState\":\"ProtectionError\",\"protectionErrorDetails\":{\"message\":\"Appropriate permissions to perform the operation is missing.\",\"recommendedAction\":[\"Grant appropriate permissions to perform this operation as mentioned at https://aka.ms/UserErrorMissingRequiredPermissions and retry the operation.\"],\"code\":\"UserErrorMissingRequiredPermissions\",\"target\":\"\",\"isRetryable\":false,\"isUserError\":false,\"properties\":{\"ActivityId\":\"bfdc9e2c-e0ea-4b4e-913e-aef3c59eaf1c\"}},\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Find-AzDataProtectionRestorableTimeRange+[NoContext]+PostExpanded+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-828ee34c-9ffc-4365-9b13-609f89cb200b/findRestorableTimeRanges?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/BlobBackup-BugBash/providers/Microsoft.DataProtection/backupVaults/jecECYBlobVault/backupInstances/jececyblobstorage-jececyblobstorage-828ee34c-9ffc-4365-9b13-609f89cb200b/findRestorableTimeRanges?api-version=2021-01-01",
+      "Content": "{\r\n  \"sourceDataStoreType\": \"OperationalStore\",\r\n  \"startTime\": \"2021-03-27T16:12:29.0000000Z\",\r\n  \"endTime\": \"2021-04-26T16:12:29.0000000Z\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "143" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "e128ed3c-bf7a-4185-ad47-1c50878c57ac" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210426T104231Z:e128ed3c-bf7a-4185-ad47-1c50878c57ac" ],
+        "Date": [ "Mon, 26 Apr 2021 10:42:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "389" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"jececyblobstorage-jececyblobstorage-828ee34c-9ffc-4365-9b13-609f89cb200b\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges\",\"properties\":{\"restorableTimeRanges\":[{\"startTime\":\"2021-04-06T00:15:46.5556444Z\",\"endTime\":\"2021-04-26T10:42:31.2430158Z\",\"objectType\":\"RestorableTimeRange\"}],\"objectType\":\"AzureBackupFindRestorableTimeRangesResponse\"}}",
+      "isContentBase64": false
+    }
+  }
+}

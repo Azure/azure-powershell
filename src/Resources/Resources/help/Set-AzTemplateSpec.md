@@ -14,47 +14,55 @@ Modifies a Template Spec.
 
 ### FromJsonStringParameterSet (Default)
 ```
-Set-AzTemplateSpec [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Set-AzTemplateSpec [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
+ [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateByIdParameterSet
 ```
-Set-AzTemplateSpec -ResourceId <String> [-Description <String>] [-DisplayName <String>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzTemplateSpec [-ResourceId] <String> [[-Description] <String>] [[-DisplayName] <String>]
+ [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonFileParameterSet
 ```
-Set-AzTemplateSpec -ResourceId <String> -Version <String> [-Description <String>] [-DisplayName <String>]
- [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String> [-VersionDescription <String>]
+Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
+ [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
+ [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateVersionByIdFromJsonParameterSet
 ```
-Set-AzTemplateSpec -ResourceId <String> -Version <String> [-Description <String>] [-DisplayName <String>]
- [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String> [-VersionDescription <String>]
+Set-AzTemplateSpec [-ResourceId] <String> [-Version] <String> [[-Description] <String>]
+ [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
+ [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByNameParameterSet
 ```
-Set-AzTemplateSpec -ResourceGroupName <String> -Name <String> [-Description <String>] [-DisplayName <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [[-Description] <String>]
+ [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] [-UIFormDefinitionFile <String>]
+ [-UIFormDefinitionString <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateVersionByNameFromJsonFileParameterSet
 ```
-Set-AzTemplateSpec -ResourceGroupName <String> -Name <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String> [-VersionDescription <String>]
+Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
+ [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
+ [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateVersionByNameFromJsonParameterSet
 ```
-Set-AzTemplateSpec -ResourceGroupName <String> -Name <String> -Version <String> [-Description <String>]
- [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String> [-VersionDescription <String>]
+Set-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> [-Version] <String> [[-Description] <String>]
+ [[-DisplayName] <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
+ [-VersionDescription <String>] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -138,7 +146,7 @@ Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSe
 Aliases:
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -153,7 +161,7 @@ Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSe
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -184,7 +192,7 @@ Parameter Sets: UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParamet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -199,7 +207,7 @@ Parameter Sets: UpdateByNameParameterSet, UpdateVersionByNameFromJsonFileParamet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -215,7 +223,7 @@ Parameter Sets: UpdateByIdParameterSet, UpdateVersionByIdFromJsonFileParameterSe
 Aliases: Id
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -266,6 +274,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -UIFormDefinitionFile
+UIForm for the templatespec resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UIFormDefinitionString
+UIForm for the templatespec resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Version
 The version of the template spec.
 
@@ -275,7 +313,7 @@ Parameter Sets: UpdateVersionByIdFromJsonFileParameterSet, UpdateVersionByIdFrom
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

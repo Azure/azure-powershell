@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.ContainerRegistry;
 using Microsoft.Rest;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -67,8 +67,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             return _accessToken;
         }
 
-        private string GetToken(string key)
+        private string GetToken(string scope)
         {
+            string key = string.Format("{0}:{1}", GetEndPoint(), scope);
+
             AcrTokenCache cache;
             if (!AzureSession.Instance.TryGetComponent<AcrTokenCache>(_acrTokenCacheKey, out cache))
             {
@@ -79,14 +81,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             AcrToken value;
             if (!cache.TryGetToken(key, out value) || value.IsExpired(_minutesBeforeExpiration))
             {
-                string token = key.Equals(_refreshTokenKey) ? GetRefreshToken() : GetAccessToken(key);
+                string token = scope.Equals(_refreshTokenKey) ? GetRefreshToken() : GetAccessToken(scope);
                 try
                 {
                     value = new AcrToken(token);
                 }
                 catch
                 {
-                    throw new InvalidOperationException(string.Format("Invalud token for {0}", key));
+                    throw new AzPSInvalidOperationException(string.Format("Invalud token for {0}", scope));
                 }
 
                 cache.Set(key, value);

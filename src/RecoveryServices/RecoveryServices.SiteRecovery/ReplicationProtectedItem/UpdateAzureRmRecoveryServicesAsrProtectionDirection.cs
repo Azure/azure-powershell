@@ -262,6 +262,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryProximityPlacementGroupId { get; set; }
 
         /// <summary>
+        /// Gets or sets virtual machine scale set Id for protected Vm.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryVirtualMachineScaleSetId { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
@@ -592,7 +600,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryCloudServiceId = this.RecoveryCloudServiceId,
                     RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
                     RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
-                    RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId
+                    RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
+                    RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId
                 };
 
                 // Fetch the latest Protected item objects
