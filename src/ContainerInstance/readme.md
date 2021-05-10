@@ -41,7 +41,7 @@ input-file:
 # - (this-folder)/relative-path-to-your-swagger 
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.0
+module-version: 1.0.3
 # Normally, title is the service name
 title: ContainerInstance
 subject-prefix: $(service-name)
@@ -90,6 +90,9 @@ directive:
   - where:
       verb: Invoke
       subject: Command
+    hide: true
+  - where:
+      verb: Restart
     hide: true
   - from: swagger-document
     where: $

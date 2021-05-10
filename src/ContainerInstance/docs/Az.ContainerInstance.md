@@ -64,10 +64,6 @@ Create a in-memory object for VolumeMount
 Delete the specified container group in the specified subscription and resource group.
 The operation does not delete other resources provided by the user, such as volumes.
 
-### [Restart-AzContainerGroup](Restart-AzContainerGroup.md)
-Restarts all containers in a container group in place.
-If container image has updates, new image will be downloaded.
-
 ### [Start-AzContainerGroup](Start-AzContainerGroup.md)
 Starts all containers in a container group.
 Compute resources will be allocated and billing will start.
