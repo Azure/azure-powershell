@@ -133,7 +133,10 @@ Accept wildcard characters: False
 ```
 
 ### -Include
-Valid values are: snapshots, leased-snapshots, none. The default value is none. For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased - snapshots, the deletion fails.For 'leased-snapshots', the file share is deleted included all of its file share snapshots(leased / unleased). For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.
+Valid values are: snapshots, leased-snapshots, none. The default value is none. 
+For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.
+For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased snapshots, the deletion fails.
+For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased / unleased). 
 
 ```yaml
 Type: System.String

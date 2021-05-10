@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Search" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="21.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="22.0.0" />
   </ItemGroup>
 
 </Project>

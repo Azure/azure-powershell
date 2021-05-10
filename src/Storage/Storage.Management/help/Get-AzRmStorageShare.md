@@ -102,8 +102,7 @@ This command gets a Storage file share with Storage account name and share name,
 
 ### Example 5: List all Storage file shares of a Storage account, include the deleted shares, include the share snapshots
 ```
-```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot 
+PS C:\> Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -IncludeDeleted -IncludeSnapshot 
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -118,7 +117,7 @@ This command lists all Storage file shares include the deleted shares and share 
 
 ### Example 6: Get a single share snapshot
 ```
-PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "testshare1" -SnapshotTime "2021-05-10T08:04:08Z"
+PS C:\> Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "testshare1" -SnapshotTime "2021-05-10T08:04:08Z"
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
