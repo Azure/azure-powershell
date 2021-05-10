@@ -57,15 +57,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     MailNickname = user.MailNickname,
                     Surname = user.Surname,
                     UsageLocation = user.UsageLocation,
-                    Type = user.UserType
+                    Type = "User"
                 };
             }
             else if(obj is ADGroup group)
             {
                 return new PSADGroup()
                 {
-                    Id = group.ObjectId,
                     DisplayName = group.DisplayName,
+                    Id = group.ObjectId,
+                    Type = "Group",
                     DeletionTimestamp = group.DeletionTimestamp,
                     SecurityEnabled = group.SecurityEnabled,
                     MailEnabled = group.MailEnabled,
@@ -81,6 +82,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = sp.DisplayName,
                     Id = sp.ObjectId,
+                    Type = "ServicePrincipal",
                     ServicePrincipalNames = sp.ServicePrincipalNames.ToArray()
                 };
             }
