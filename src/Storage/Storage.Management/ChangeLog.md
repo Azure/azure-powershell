@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.6.0
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

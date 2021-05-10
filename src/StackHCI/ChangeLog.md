@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.0
 * Made changes to registration script to add retries for AAD operations and to add AzureChinaCloud support.
     - Added retries for AAD operations for reliability.
     - Supports registration in AzureChinaCloud.
