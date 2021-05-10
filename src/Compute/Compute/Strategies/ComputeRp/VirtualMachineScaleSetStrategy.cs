@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
-                    ExtendedLocation = new CM.ExtendedLocation(edgeZone),
+                    ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual

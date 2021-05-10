@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     },
                     ExtendedLocation = edgeZone == null
                         ? null
-                        : new ExtendedLocation { Name = edgeZone }
+                        : new ExtendedLocation(edgeZone)
                 });
     }
 }
