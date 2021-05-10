@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
+* Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
 
 ## Version 3.4.1
