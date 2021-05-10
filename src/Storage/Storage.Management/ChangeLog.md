@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported file share snapshot
+	- `New-AzRmStorageShare`
+	- `Get-AzRmStorageShare`
+	- `Remove-AzRmStorageShare`
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+- `Remove-AzRmStorageShare`
 
 ## Version 3.6.0
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
