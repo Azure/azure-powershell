@@ -1,0 +1,113 @@
+{
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/checkPrincipalAssignmentNameAvailability?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/checkPrincipalAssignmentNameAvailability?api-version=2021-01-01",
+      "Content": "{\r\n  \"name\": \"KustoClientsScenarioTest\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/principalAssignments\"\r\n}",
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["102"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": ["no-cache"],
+        "x-ms-request-id": ["7252f873-8f82-4492-8c8d-978a06e65a02"],
+        "x-ms-ratelimit-remaining-subscription-writes": ["1199"],
+        "x-ms-correlation-request-id": ["fa7861da-37fa-4fee-af1a-dc72b0b4c4e4"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210510T083249Z:fa7861da-37fa-4fee-af1a-dc72b0b4c4e4"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Cache-Control": ["no-cache"],
+        "Date": ["Mon, 10 May 2021 08:32:49 GMT"],
+        "Server": ["Microsoft-HTTPAPI/2.0"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["221"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"name\":\"KustoClientsScenarioTest\",\"nameAvailable\":false,\"message\":\"Cluster principal assignment KustoClientsScenarioTest already exists in cluster testclusterkqvp2f. Please select a different principal assignment name.\"}"
+    }
+  },
+  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f?api-version=2021-01-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": ["1504", "1505", "1506", "1507"],
+        "x-ms-client-request-id": ["57cb4cf7-51f0-4ea2-8bc1-8f15e1d2cb40"],
+        "CommandName": ["Get-AzKustoCluster"],
+        "FullCommandName": ["Get-AzKustoCluster_Get"],
+        "ParameterSetName": ["__AllParameterSets"],
+        "User-Agent": ["AzurePowershell/Az4.0.0-preview"],
+        "Authorization": ["[Filtered]"]
+      },
+      "ContentHeaders": {}
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": ["no-cache"],
+        "x-ms-request-id": ["3a768795-8ea9-472e-9e02-f00d9baa2260"],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": ["299"],
+        "x-ms-correlation-request-id": ["8f0c6b30-fcb6-41d6-b93c-dc515b2b0b2a"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210510T083250Z:8f0c6b30-fcb6-41d6-b93c-dc515b2b0b2a"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Cache-Control": ["no-cache"],
+        "Date": ["Mon, 10 May 2021 08:32:50 GMT"],
+        "ETag": ["\"2021-05-10T07:28:16.9920150Z\""],
+        "Server": ["Microsoft-HTTPAPI/2.0"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["840"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"id\":\"/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f\",\"name\":\"testclusterkqvp2f\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2021-05-10T07:28:16.9920150Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D12_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testclusterkqvp2f.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterkqvp2f.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"provisioningState\":\"Succeeded\"}}"
+    }
+  },
+  "[NoDescription]+[NoContext]+CheckViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/checkPrincipalAssignmentNameAvailability?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupkqvp2f/providers/Microsoft.Kusto/Clusters/testclusterkqvp2f/checkPrincipalAssignmentNameAvailability?api-version=2021-01-01",
+      "Content": "{\r\n  \"name\": \"principalassignment1\",\r\n  \"type\": \"Microsoft.Kusto/Clusters/principalAssignments\"\r\n}",
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["98"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": ["no-cache"],
+        "x-ms-request-id": ["fce7bc2a-1db1-4c9d-8d95-14d15c0268cd"],
+        "x-ms-ratelimit-remaining-subscription-writes": ["1198"],
+        "x-ms-correlation-request-id": ["6d28142e-eeec-4704-91ca-f1fde5d16374"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210510T083251Z:6d28142e-eeec-4704-91ca-f1fde5d16374"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Cache-Control": ["no-cache"],
+        "Date": ["Mon, 10 May 2021 08:32:51 GMT"],
+        "Server": ["Microsoft-HTTPAPI/2.0"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["65"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"name\":\"principalassignment1\",\"nameAvailable\":true,\"message\":\"\"}"
+    }
+  }
+}

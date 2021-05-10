@@ -1,0 +1,37 @@
+{
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2021-01-01",
+      "Content": "{\r\n  \"name\": \"testclusterkqvp2f\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "Headers": {},
+      "ContentHeaders": {
+        "Content-Type": ["application/json"],
+        "Content-Length": ["74"]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Pragma": ["no-cache"],
+        "x-ms-request-id": ["7e4a7257-b10f-4f0b-be91-9d9d00769a63"],
+        "x-ms-ratelimit-remaining-subscription-writes": ["1191"],
+        "x-ms-correlation-request-id": ["75b45f25-3b43-40ab-8604-2f5eb5ac715e"],
+        "x-ms-routing-request-id": [
+          "UAECENTRAL:20210510T081054Z:75b45f25-3b43-40ab-8604-2f5eb5ac715e"
+        ],
+        "Strict-Transport-Security": ["max-age=31536000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Cache-Control": ["no-cache"],
+        "Date": ["Mon, 10 May 2021 08:10:54 GMT"],
+        "Server": ["Microsoft-HTTPAPI/2.0"]
+      },
+      "ContentHeaders": {
+        "Content-Length": ["154"],
+        "Content-Type": ["application/json; charset=utf-8"],
+        "Expires": ["-1"]
+      },
+      "Content": "{\"name\":\"testclusterkqvp2f\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterkqvp2f\u0027 with type Engine is already taken. Please specify a different name\"}"
+    }
+  }
+}
