@@ -146,6 +146,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 Id = servicePrincipal.ObjectId,
                 DeletionTimestamp = servicePrincipal.DeletionTimestamp,
                 ApplicationId = Guid.Parse(servicePrincipal.AppId),
+                Type = "ServicePrincipal",
                 ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray()
             };
         }
