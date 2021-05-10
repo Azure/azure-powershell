@@ -37,7 +37,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = psActiveDirectory.BackupOperators,
                 KdcIP = psActiveDirectory.KdcIP,
                 AdName = psActiveDirectory.AdName,
-                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate
+                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate,
+                AesEncryption = psActiveDirectory.AesEncryption,
+                LdapSigning = psActiveDirectory.LdapSigning,
+                SecurityOperators = psActiveDirectory.SecurityOperators,                
+                LdapOverTLS = psActiveDirectory.LdapOverTLS,                
+                AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap
 
             }).ToList();
         }
@@ -67,7 +72,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 KdcIP = activeDirectory.KdcIP,
                 AdName = activeDirectory.AdName,
                 ServerRootCACertificate = activeDirectory.ServerRootCACertificate,
-                SecurityOperators = activeDirectory.SecurityOperators
+                AesEncryption = activeDirectory.AesEncryption,
+                LdapSigning = activeDirectory.LdapSigning,
+                SecurityOperators = activeDirectory.SecurityOperators,
+                LdapOverTLS = activeDirectory.LdapOverTLS,
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap
             };
             return psActiveDirectory;
         }

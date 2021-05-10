@@ -126,9 +126,6 @@ namespace RecoveryServices.SiteRecovery.Test
             Category.CheckIn)]
         public void TestUpdateRPIWithDES()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "CMKInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
@@ -141,15 +138,12 @@ namespace RecoveryServices.SiteRecovery.Test
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
-        public void TestCreateRPIWithPPG()
+        public void TestCreateRPIWithAdditionalProperties()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
-                "Test-CreateRPIWithProximityPlacementGroup -vaultSettingsFilePath \"" +
+                "Test-CreateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }
@@ -158,15 +152,12 @@ namespace RecoveryServices.SiteRecovery.Test
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
-        public void TestUpdateRPIWithPPG()
+        public void TestUpdateRPIWithAdditionalProperties()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
-                "Test-UpdateRPIWithProximityPlacementGroup -vaultSettingsFilePath \"" +
+                "Test-UpdateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }
@@ -177,9 +168,6 @@ namespace RecoveryServices.SiteRecovery.Test
             Category.CheckIn)]
         public void TestCreateRPIWithAvZone()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
@@ -194,30 +182,10 @@ namespace RecoveryServices.SiteRecovery.Test
             Category.CheckIn)]
         public void TestUpdateRPIWithAvZone()
         {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
             this.RunPowerShellTest(
                 _logger,
                 Constants.NewModel,
                 "Test-UpdateRPIWithAvailabilityZone -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
-        }
-
-        [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
-        public void TestCreateRPIWithManagedDisk()
-        {
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2AInput", "B2A.VaultCredentials");
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-CreateRPIWithManagedDisk -vaultSettingsFilePath \"" +
                 this.VaultSettingsFilePath +
                 "\"");
         }
