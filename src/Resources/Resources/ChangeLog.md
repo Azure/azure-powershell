@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
 
 ## Version 3.5.0
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
