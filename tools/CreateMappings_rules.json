@@ -664,5 +664,9 @@
   {
     "alias": "ProviderHub",
     "regex": "ProviderHub"
+  },
+  {
+    "alias": "SecurityInsights",
+    "regex": "Security Insights"
   }
 ]
