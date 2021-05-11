@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RecoveryServices.Backup.Models\RecoveryServices.Backup.Models.csproj" />
-    <ProjectReference Include="..\..\Compute\Compute.Helpers\Compute.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
