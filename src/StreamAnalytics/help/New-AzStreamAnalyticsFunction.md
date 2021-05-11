@@ -36,7 +36,7 @@ function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910
 This command creates a function from the file Function_JavascriptUdf.json.
 
 (below is an example for "Function_JavascriptUdf.json")
-```json
+```javascript
 {
   "properties": {
     "type": "Scalar",
