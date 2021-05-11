@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
+* Removed default DisplayName of ADServicePrincipal when it is not specified
 * Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
 * Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
 
