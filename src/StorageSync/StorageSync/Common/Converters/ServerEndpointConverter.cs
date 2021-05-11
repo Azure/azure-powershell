@@ -89,6 +89,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
                 CloudTiering = source.CloudTiering,
                 VolumeFreeSpacePercent = source.VolumeFreeSpacePercent,
                 TierFilesOlderThanDays = source.TierFilesOlderThanDays,
+                OfflineDataTransfer = source.OfflineDataTransfer,
+                OfflineDataTransferShareName = source.OfflineDataTransferShareName,
+                OfflineDataTransferStorageAccountResourceId = source.OfflineDataTransferStorageAccountResourceId,
+                OfflineDataTransferStorageAccountTenantId = source.OfflineDataTransferStorageAccountTenantId,
                 InitialDownloadPolicy= source.InitialDownloadPolicy.HasValue ? source.InitialDownloadPolicy.Value.ToString() : null,
                 LocalCacheMode=source.LocalCacheMode.HasValue ? source.LocalCacheMode.Value.ToString() : null
             };
