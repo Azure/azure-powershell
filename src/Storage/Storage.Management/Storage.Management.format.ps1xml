@@ -428,6 +428,10 @@
             <Alignment>Left</Alignment>
             <Label>ShareUsageBytes</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>snapshotTime</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -459,6 +463,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ShareUsageBytes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.snapshotTime.ToUniversalTime().ToString("s")+"Z"</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

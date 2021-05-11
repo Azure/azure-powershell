@@ -254,3 +254,108 @@ function Test-ShareSoftDelete
 }
 
 
+<#
+.SYNOPSIS
+Test Storage File Share Snapshot
+.DESCRIPTION
+SmokeTest
+#>
+function Test-ShareSnapshot
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+		$shareName1 = "share1"+ $rgname
+		$shareName2 = "share2"+ $rgname
+
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+
+		# Enable Share Soft delete
+		Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -EnableShareDeleteRetentionPolicy $true -ShareRetentionDays 5 
+		$servicePropertie = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 
+		Assert-AreEqual $true $servicePropertie.ShareDeleteRetentionPolicy.Enabled
+		Assert-AreEqual 5 $servicePropertie.ShareDeleteRetentionPolicy.Days
+
+		#create Shares
+		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1
+		$share = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName1 $share.Name
+		New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2
+		
+		# Create Share Snapshot
+		$shareSnapshot11 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Snapshot
+		Assert-AreEqual $shareName1 $shareSnapshot11.Name
+		# Assert-AreEqual 0 $share.ShareUsageBytes
+		#Assert-AreEqual $null $share.Deleted
+		# Assert-AreNotEqual $null $share.SnapshotTime
+		$shareSnapshot12 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Snapshot
+		$shareSnapshot21 = New-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName2 -Snapshot
+
+		# list Shares with IncludeSnapshot
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 6 $shares.Count
+
+		# Get single share snapshot
+		$sharesp1 = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name  $shareName1 -SnapshotTime $shareSnapshot11.SnapshotTime
+		Assert-AreEqual $shareName1 $sharesp1.Name
+        # Assert-AreEqual $shareSnapshot11.SnapshotTime $shareName1.SnapshotTime
+		
+		#delete single share snapshot
+		Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -SnapshotTime $shareSnapshot11.SnapshotTime -Force
+
+		# list Shares
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 5 $shares.Count
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot -IncludeDeleted 
+        # Assert-AreEqual 6 $shares.Count
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeDeleted 
+        # Assert-AreEqual 2 $shares.Count
+		
+		# Delete share Default Include (None)
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Force -ErrorAction SilentlyContinue
+		# Assert-AreEqual 1 $Error.Count 
+        # Assert-AreEqual 409 $Error[0].Exception.Response.StatusCode
+
+		# Delete share Include None
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include None -Force -ErrorAction SilentlyContinue
+		# Assert-AreEqual 1 $Error.Count 
+        # Assert-AreEqual 409 $Error[0].Exception.Response.StatusCode
+
+		# Delete share Include Snapshots
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include Snapshots -Force
+
+		# Delete share Include Leased-Snapshots
+		$Error.Clear()
+        Remove-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName1 -Include Leased-Snapshots -Force
+		
+		# list Shares after delete
+		$shares = Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -IncludeSnapshot 
+        # Assert-AreEqual 0 $shares.Count
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+

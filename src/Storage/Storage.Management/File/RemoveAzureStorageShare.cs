@@ -24,7 +24,6 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [GenericBreakingChange("Currently if the share has snapshots, snapshots will be removed together with the share. In a future release, snapshots will not be removed by default, need specify a new parameter to remove snapshots together.")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageShareNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStorageShareCommand : StorageFileBaseCmdlet
     {
@@ -37,6 +36,15 @@ namespace Microsoft.Azure.Commands.Management.Storage
         /// Account object parameter set 
         /// </summary>
         private const string AccountObjectParameterSet = "AccountObject";
+        /// <summary>
+        /// AccountName Parameter Set
+        /// </summary>
+        private const string AccountNameSnapshotParameterSet = "AccountNameSnapshot";
+
+        /// <summary>
+        /// Account object parameter set 
+        /// </summary>
+        private const string AccountObjectSnapshotParameterSet = "AccountObjectSnapshot";
 
         /// <summary>
         /// ShareObject Parameter Set
@@ -53,6 +61,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Resource Group Name.",
             ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = "Resource Group Name.",
+            ParameterSetName = AccountNameSnapshotParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -61,6 +74,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Storage Account Name.",
             ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = "Storage Account Name.",
+            ParameterSetName = AccountNameSnapshotParameterSet)]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -73,12 +91,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             HelpMessage = "Share Name",
             ParameterSetName = AccountNameParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Share Name",
+            ParameterSetName = AccountNameSnapshotParameterSet)]
+        [Parameter(Position = 2,
+            Mandatory = true,
+            HelpMessage = "Share Name",
+            ParameterSetName = AccountObjectSnapshotParameterSet)]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true,
             HelpMessage = "Storage account object",
             ValueFromPipeline = true,
             ParameterSetName = AccountObjectParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Storage account object",
+            ValueFromPipeline = true,
+            ParameterSetName = AccountObjectSnapshotParameterSet)]
         [ValidateNotNullOrEmpty]
         public PSStorageAccount StorageAccount { get; set; }
 
@@ -99,8 +128,63 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSShare InputObject { get; set; }
 
+        [Parameter(HelpMessage = "Share SnapshotTime",
+            Mandatory = true,
+            ParameterSetName = AccountNameSnapshotParameterSet)]
+        [Parameter(HelpMessage = "Share SnapshotTime",
+            Mandatory = true,
+            ParameterSetName = AccountObjectSnapshotParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public DateTime? SnapshotTime { get; set; }
+
         [Parameter(HelpMessage = "Force to remove the Share and all content in it")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Valid values are: snapshots, leased-snapshots, none. The default value is none. " +
+                            "For 'snapshots', the file share is deleted including all of its file share snapshots. " +
+                            "If the file share contains leased - snapshots, the deletion fails.For 'leased-snapshots', the file share is deleted included all of its file share snapshots(leased / unleased). " +
+                            "For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.",
+            ParameterSetName = AccountObjectParameterSet)]
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Valid values are: snapshots, leased-snapshots, none. The default value is none. " +
+                            "For 'snapshots', the file share is deleted including all of its file share snapshots. " +
+                            "If the file share contains leased - snapshots, the deletion fails.For 'leased-snapshots', the file share is deleted included all of its file share snapshots(leased / unleased). " +
+                            "For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.",
+            ParameterSetName = AccountNameParameterSet)]
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Valid values are: snapshots, leased-snapshots, none. The default value is none. " +
+                            "For 'snapshots', the file share is deleted including all of its file share snapshots. " +
+                            "If the file share contains leased - snapshots, the deletion fails.For 'leased-snapshots', the file share is deleted included all of its file share snapshots(leased / unleased). " +
+                            "For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.",
+            ParameterSetName = ShareResourceIdParameterSet)]
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Valid values are: snapshots, leased-snapshots, none. The default value is none. " +
+                            "For 'snapshots', the file share is deleted including all of its file share snapshots. " +
+                            "If the file share contains leased - snapshots, the deletion fails.For 'leased-snapshots', the file share is deleted included all of its file share snapshots(leased / unleased). " +
+                            "For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.",
+            ParameterSetName = ShareObjectParameterSet)]
+        [ValidateSet(ShareRemoveInclude.None,
+            ShareRemoveInclude.Snapshots,
+            ShareRemoveInclude.LeasedSnapshots,
+           IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string Include
+        {
+            get
+            {
+                return include;
+            }
+            set
+            {
+                include = value;
+            }
+        }
+        private string include = ShareRemoveInclude.None;
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -118,6 +202,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.Name = InputObject.Name;
                         break;
                     case AccountObjectParameterSet:
+                    case AccountObjectSnapshotParameterSet:
                         this.ResourceGroupName = StorageAccount.ResourceGroupName;
                         this.StorageAccountName = StorageAccount.StorageAccountName;
                         break;
@@ -135,7 +220,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     this.StorageClient.FileShares.Delete(
                        this.ResourceGroupName,
                        this.StorageAccountName,
-                       this.Name);
+                       this.Name,
+                       xMsSnapshot: this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o"),
+                       include: include.ToLower());
 
                     if (PassThru.IsPresent)
                     {
