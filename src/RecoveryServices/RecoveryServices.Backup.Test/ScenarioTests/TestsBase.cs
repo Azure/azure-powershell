@@ -29,7 +29,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.RecoveryServices;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Commands.Compute.Helpers.Storage;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
