@@ -59,17 +59,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNull]
         [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
         [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
-        public List<string> DataActions { get; set; }
+        public List<string> DataAction { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
         [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
-        public List<PSPermission> Permissions { get; set; }
+        public List<PSPermission> Permission { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = false, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.AssignableScopesHelpMessage)]
         [Parameter(Mandatory = false, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AssignableScopesHelpMessage)]
-        public List<string> AssignableScopes { get; set; }
+        public List<string> AssignableScope { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RoleName = InputObject.RoleName;
                 Type = InputObject.Type;
-                AssignableScopes = new List<String>(InputObject.AssignableScopes);
+                AssignableScope = new List<String>(InputObject.AssignableScopes);
                 Id = InputObject.Id;
                 permissions = new List<Permission>(InputObject.Permissions);
 
@@ -101,24 +101,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 AccountName = resourceIdentifier.GetDatabaseAccountName();
             }
 
-            if (DataActions != null && Permissions != null)
+            if (DataAction != null && Permission != null)
             {
-                throw new ArgumentException($"Cannot specify both [{nameof(DataActions)}] and [{nameof(Permissions)}]");
+                throw new ArgumentException($"Cannot specify both [{nameof(DataAction)}] and [{nameof(Permission)}]");
             }
 
-            if (DataActions != null)
+            if (DataAction != null)
             {
                 permissions = new List<Permission>
                 {
                     new Permission
                     {
-                        DataActions = DataActions
+                        DataActions = DataAction
                     }
                 };
             }
-            else if (Permissions != null)
+            else if (Permission != null)
             {
-                permissions = new List<Permission>(Permissions.Select(p => new Permission(p.DataActions)));
+                permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
             }
 
             Id = RoleHelper.ParseToRoleDefinitionId(Id);
@@ -140,14 +140,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
             }
 
-            AssignableScopes = AssignableScopes ?? new List<string>(readSqlRoleDefinitionGetResults.AssignableScopes);
-            AssignableScopes = new List<string>(AssignableScopes.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
+            AssignableScope = AssignableScope ?? new List<string>(readSqlRoleDefinitionGetResults.AssignableScopes);
+            AssignableScope = new List<string>(AssignableScope.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
 
             SqlRoleDefinitionCreateUpdateParameters sqlRoleDefinitionCreateUpdateParameters = new SqlRoleDefinitionCreateUpdateParameters
             {
                 RoleName = RoleName ?? readSqlRoleDefinitionGetResults.RoleName,
                 Type = (RoleDefinitionType)Enum.Parse(typeof(RoleDefinitionType), Type ?? readSqlRoleDefinitionGetResults.Type),
-                AssignableScopes = AssignableScopes,
+                AssignableScopes = AssignableScope,
                 Permissions = permissions ?? readSqlRoleDefinitionGetResults.Permissions,
             };
 

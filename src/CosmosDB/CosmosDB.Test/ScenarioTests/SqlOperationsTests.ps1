@@ -673,8 +673,8 @@ function Test-SqlRoleCmdlets
       $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
 
       # create a new role definition - using parent object and permission
-      $Permissions = New-AzCosmosDBPermission -DataActions $DataActionRead
-      $NewRoleDefinitionFromParentObject = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName -Permissions $Permissions -AssignableScopes $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      $Permissions = New-AzCosmosDBPermission -DataAction $DataActionRead
+      $NewRoleDefinitionFromParentObject = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName -Permission $Permissions -AssignableScope $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
       Assert-AreEqual $NewRoleDefinitionFromParentObject.RoleName $RoleName
       Assert-AreEqual $NewRoleDefinitionFromParentObject.Type "CustomRole"
       Assert-AreEqual $NewRoleDefinitionFromParentObject.Id $FullyQualifiedRoleDefinitionId
@@ -682,7 +682,7 @@ function Test-SqlRoleCmdlets
       Assert-NotNull $NewRoleDefinitionFromParentObject.Permissions
 
       # create a new role definition - using fields and data actions
-      $NewRoleDefinitionFromFields = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName2 -DataActions $DataActionCreate -AssignableScopes $Scope2 -Id $FullyQualifiedRoleDefinitionId2 -AccountName $AccountName -ResourceGroupName $rgName
+      $NewRoleDefinitionFromFields = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName2 -DataAction $DataActionCreate -AssignableScope $Scope2 -Id $FullyQualifiedRoleDefinitionId2 -AccountName $AccountName -ResourceGroupName $rgName
       Assert-AreEqual $NewRoleDefinitionFromFields.RoleName $RoleName2
       Assert-AreEqual $NewRoleDefinitionFromFields.Type "CustomRole"
       Assert-AreEqual $NewRoleDefinitionFromFields.Id $FullyQualifiedRoleDefinitionId2
@@ -712,7 +712,7 @@ function Test-SqlRoleCmdlets
 
       # update non-existing role definition, role assignment
       Try {
-          $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName "RoleName3" -DataActions $DataActionCreate -AssignableScopes $Scope2 -Id "00000000-0000-0000-0000-000000000000" -AccountName $AccountName -ResourceGroupName $rgName
+          $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName "RoleName3" -DataAction $DataActionCreate -AssignableScope $Scope2 -Id "00000000-0000-0000-0000-000000000000" -AccountName $AccountName -ResourceGroupName $rgName
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Role Definition with Id [00000000-0000-0000-0000-000000000000] does not exist.")
@@ -739,7 +739,7 @@ function Test-SqlRoleCmdlets
       Assert-AreEqual $RoleAssignment.Id $FullyQualifiedRoleAssignmentId
 
       # update role definition by parent object and data actions
-      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName3 -DataActions $DataActionReplace -AssignableScopes $Scope2 -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName3 -DataAction $DataActionReplace -AssignableScope $Scope2 -Id $RoleDefinitionId -ParentObject $DatabaseAccount
       Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName3
       Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
@@ -754,7 +754,7 @@ function Test-SqlRoleCmdlets
       Assert-NotNull $UpdatedRoleDefinition.Permissions
 
       # update role definition by fields and permissions
-      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName5 -Permissions $Permissions -AssignableScopes $Scope -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
+      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName5 -Permission $Permissions -AssignableScope $Scope -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
       Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName5
       Assert-NotNull $UpdatedRoleDefinition.AssignableScopes

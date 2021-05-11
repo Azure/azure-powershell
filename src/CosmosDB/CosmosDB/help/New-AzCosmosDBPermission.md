@@ -13,7 +13,7 @@ Creates a new CosmosDB Permission object to be used to create or update a Role D
 ## SYNTAX
 
 ```
-New-AzCosmosDBPermission -DataActions <System.Collections.Generic.List`1[System.String]>
+New-AzCosmosDBPermission -DataAction <System.Collections.Generic.List`1[System.String]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Creates a new CosmosDB Permission object to be used to create or update a Role D
 
 ### Example 1
 ```
-PS C:\> New-AzCosmosDBPermission -DataActions "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+PS C:\> New-AzCosmosDBPermission -DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
 DataActions
 -----------
 {Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create}
@@ -32,7 +32,7 @@ DataActions
 
 ## PARAMETERS
 
-### -DataActions
+### -DataAction
 Set of data actions granted through the Role Definition. List of allowed actions can be found at: https://aka.ms/cosmos-native-rbac
 
 ```yaml

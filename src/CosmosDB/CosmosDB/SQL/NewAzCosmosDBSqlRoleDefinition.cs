@@ -57,17 +57,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [ValidateNotNull]
         [Parameter(Mandatory = true, HelpMessage = Constants.AssignableScopesHelpMessage)]
-        public List<string> AssignableScopes { get; set; }
+        public List<string> AssignableScope { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = true, ParameterSetName = FieldsDataActionsParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectDataActionsParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
-        public List<string> DataActions { get; set; }
+        public List<string> DataAction { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = true, ParameterSetName = FieldsPermissionsParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectPermissionsParameterSet, HelpMessage = Constants.PermissionsHelpMessage)]
-        public List<PSPermission> Permissions { get; set; }
+        public List<PSPermission> Permission { get; set; }
 
         [ValidateNotNull]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectDataActionsParameterSet, HelpMessage = Constants.AccountObjectHelpMessage)]
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     new Permission
                     {
-                        DataActions = DataActions
+                        DataActions = DataAction
                     }
                 };
             }
             else
             {
-                permissions = new List<Permission>(Permissions.Select(p => new Permission(p.DataActions)));
+                permissions = new List<Permission>(Permission.Select(p => new Permission(p.DataActions)));
             }
 
             Id = string.IsNullOrWhiteSpace(Id) ? Guid.NewGuid().ToString() : RoleHelper.ParseToRoleDefinitionId(Id);
@@ -121,13 +121,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ConflictingResourceException(message: string.Format(ExceptionMessage.ConflictSqlRoleResourceId, "Definition", Id));
             }
 
-            AssignableScopes = new List<string>(AssignableScopes.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
+            AssignableScope = new List<string>(AssignableScope.Select(s => RoleHelper.ParseToFullyQualifiedScope(s, DefaultProfile.DefaultContext.Subscription.Id, ResourceGroupName, AccountName)));
 
             SqlRoleDefinitionCreateUpdateParameters sqlRoleDefinitionCreateUpdateParameters = new SqlRoleDefinitionCreateUpdateParameters
             {
                 RoleName = RoleName,
                 Type = (RoleDefinitionType)Enum.Parse(typeof(RoleDefinitionType), Type),
-                AssignableScopes = AssignableScopes,
+                AssignableScopes = AssignableScope,
                 Permissions = permissions
             };
 

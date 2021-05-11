@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = Constants.DataActionsHelpMessage)]
-        public List<string> DataActions { get; set; }
+        public List<string> DataAction { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(new PSPermission(DataActions));
+            WriteObject(new PSPermission(DataAction));
 
             return;
         }

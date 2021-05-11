@@ -15,18 +15,18 @@ Updates an existing CosmosDB Sql Role Definition.
 ### ByFieldsParameterSet (Default)
 ```
 Update-AzCosmosDBSqlRoleDefinition -ResourceGroupName <String> -AccountName <String> -Id <String>
- [-Type <String>] [-RoleName <String>] [-DataActions <System.Collections.Generic.List`1[System.String]>]
- [-Permissions <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
- [-AssignableScopes <System.Collections.Generic.List`1[System.String]>]
+ [-Type <String>] [-RoleName <String>] [-DataAction <System.Collections.Generic.List`1[System.String]>]
+ [-Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
+ [-AssignableScope <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzCosmosDBSqlRoleDefinition -Id <String> [-Type <String>] [-RoleName <String>]
- [-DataActions <System.Collections.Generic.List`1[System.String]>]
- [-Permissions <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
- [-AssignableScopes <System.Collections.Generic.List`1[System.String]>]
+ [-DataAction <System.Collections.Generic.List`1[System.String]>]
+ [-Permission <System.Collections.Generic.List`1[Microsoft.Azure.Commands.CosmosDB.Models.PSPermission]>]
+ [-AssignableScope <System.Collections.Generic.List`1[System.String]>]
  -ParentObject <PSDatabaseAccountGetResults> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -55,8 +55,8 @@ PS C:\> Update-AzCosmosDBSqlRoleDefinition
 	-Id id
 	-Type CustomRole
 	-RoleName roleName
-	-DataActions "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
-	-AssignableScopes "/"
+	-DataAction "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+	-AssignableScope "/"
 
 RoleName         : roleName
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/id
@@ -73,8 +73,8 @@ PS C:\> Update-AzCosmosDBSqlRoleDefinition
 	-Type CustomRole
 	-Id id
 	-RoleName roleName
-	-Permissions $Permission
-	-AssignableScopes "/"
+	-Permission $Permission
+	-AssignableScope "/"
 	-ParentObject $DatabaseAccount
 
 RoleName         : roleName
@@ -101,7 +101,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AssignableScopes
+### -AssignableScope
 Set of resource paths below which a Role Assignment can be attached to the Role Definition. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.
 
 ```yaml
@@ -116,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataActions
+### -DataAction
 Set of data actions granted through the Role Definition. List of allowed actions can be found at: https://aka.ms/cosmos-native-rbac
 
 ```yaml
@@ -191,7 +191,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Permissions
+### -Permission
 Permission is a collection of data actions.
 
 ```yaml
