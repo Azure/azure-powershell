@@ -131,15 +131,6 @@ function Test-ServerEndpoint2
         Assert-AreEqual $serverLocalPath $serverEndpoint2.ServerLocalPath
         Assert-AreEqual $volumeFreeSpacePercent2 $serverEndpoint2.VolumeFreeSpacePercent
 
-        Write-Verbose "Recall ServerEndpoint by Name"
-        Invoke-AzStorageSyncFileRecall -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName  $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
-
-        Write-Verbose "Recall ServerEndpoint by InputObject"
-        Invoke-AzStorageSyncFileRecall -InputObject $serverEndpoint -AsJob | Wait-Job
-
-        Write-Verbose "Recall ServerEndpoint by ResourceId"
-        Invoke-AzStorageSyncFileRecall -ResourceId $serverEndpoint.ResourceId -AsJob | Wait-Job
-
         Write-Verbose "Removing ServerEndpoint: $serverEndpointName"
         Remove-AzStorageSyncServerEndpoint -Force -ResourceGroupName $resourceGroupName -StorageSyncServiceName $storageSyncServiceName -SyncGroupName $syncGroupName -Name $serverEndpointName -AsJob | Wait-Job
 
