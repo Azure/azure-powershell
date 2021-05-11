@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 string expand = null;
                 if (this.Snapshot)
                 {
-                    expand = "snapshots";
+                    expand = ShareCreateExpand.Snapshots;
                 }
 
                 var share =
