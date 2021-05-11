@@ -33,6 +33,7 @@ Provide the updated role definition as an input to the command as a JSON file or
 The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
 NotActions, DataActions, NotDataActions are optional.
 Following is a sample updated role definition json for Set-AzRoleDefinition
+
 ```javascript
 {
         "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
