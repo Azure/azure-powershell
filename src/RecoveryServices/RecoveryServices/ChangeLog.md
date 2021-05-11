@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
 
 ## Version 3.6.0
 * Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.
