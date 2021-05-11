@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
             HelpMessage = "The URIs that identify the application.")]
         [ValidateNotNullOrEmpty]
-        public string[] IdentifierUris { get; set; }
+        [Alias("IdentifierUris")]
+        public string[] IdentifierUri { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
             HelpMessage = "The URL to the applicationâ€™s homepage.")]
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = DisplayName,
                 HomePage = HomePage,
-                IdentifierUris = (IdentifierUris == null) ? new string[] { } : IdentifierUris,
+                IdentifierUris = (IdentifierUri == null) ? new string[] { } : IdentifierUri,
                 ReplyUrls = ReplyUrls,
                 AvailableToOtherTenants = AvailableToOtherTenants
             };

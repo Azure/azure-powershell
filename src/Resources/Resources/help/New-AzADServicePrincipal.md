@@ -252,7 +252,7 @@ $sp = New-AzAdServicePrincipal -DisplayName ServicePrincipalName -PasswordCreden
 ```
 
 ```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000c
 ObjectType            : ServicePrincipal
 DisplayName           : ServicePrincipalName
@@ -272,7 +272,7 @@ $sp = New-AzADServicePrincipal -DisplayName ServicePrincipalName -CertValue $cer
 ```
 
 ```Output
-ServicePrincipalNames : {00000000-0000-0000-0000-000000000000, http://ServicePrincipalName}
+ServicePrincipalNames : {00000000-0000-0000-0000-000000000000}
 ApplicationId         : 00000000-0000-0000-0000-000000000000
 ObjectType            : ServicePrincipal
 DisplayName           : ServicePrincipalName

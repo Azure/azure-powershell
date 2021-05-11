@@ -200,8 +200,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     if(this.IsParameterBound(c => c.DisplayName) && !string.IsNullOrEmpty(DisplayName))
                     {
                         string uri = "http://" + HttpUtility.UrlEncode(DisplayName.Trim());
-                        appParameters.IdentifierUris = new[] { uri };
-                        appParameters.HomePage = uri;
+                        appParameters.IdentifierUris = new string[] { };
                         appParameters.DisplayName = DisplayName;
                     }
 
