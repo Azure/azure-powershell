@@ -50,7 +50,6 @@ input-01 Microsoft.StreamAnalytics/streamingjobs/inputs 6c9f5122-44b9-45bf-81c9-
 This command creates an input from the file IotHub.json.
 
 (below is an example for "IotHub.json")
-```json
 {
   "properties": {
     "type": "Stream",
@@ -76,4 +75,3 @@ This command creates an input from the file IotHub.json.
     }
   }
 }
-```
