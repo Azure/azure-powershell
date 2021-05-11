@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using System.Security;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -74,6 +75,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Custom Key Identifier")]
+        public String CustomKeyIdentifier { get; set; }
+
         public Guid KeyId { get; set; } = default(Guid);
 
         public NewAzureADAppCredentialCommand()
@@ -86,7 +90,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (this.EndDate == null)
+                
+                if (!this.IsParameterBound(c => c.EndDate))
                 {
                     WriteVerbose(Resources.Properties.Resources.DefaultEndDateUsed);
                     EndDate = StartDate.AddYears(1);
@@ -116,6 +121,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = decodedPassword
                     };
+                    if(!String.IsNullOrEmpty(CustomKeyIdentifier))
+                    {
+                        passwordCredential.CustomKeyIdentifier = Encoding.UTF8.GetBytes(CustomKeyIdentifier);
+                    }
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
@@ -131,7 +140,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = KeyId == default(Guid) ? Guid.NewGuid().ToString() : KeyId.ToString(),
                         Value = CertValue,
                         Type = "AsymmetricX509Cert",
-                        Usage = "Verify"
+                        Usage = "Verify",
+                        CustomKeyIdentifier = CustomKeyIdentifier
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {

@@ -75,6 +75,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter VmmToVmm { get; set; }
 
         /// <summary>
+        ///    Switch parameter specifying that the replication policy being created will be used 
+        ///    to replicate VMware virtual machines and/or physical servers to Azure using RCM.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure,
+            Position = 0,
+            Mandatory = true)]
+        public SwitchParameter ReplicateVMwareToAzure { get; set; }
+
+        /// <summary>
         ///     Gets or sets the name of the ASR replication policy.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -140,6 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.VMwareToAzure, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [DefaultValue(0)]
         public int RecoveryPointRetentionInHours { get; set; }
@@ -217,6 +228,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.VMwareToAzure)]
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.AzureToVMware)]
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.AzureToAzure)]
+        [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         [ValidateNotNullOrEmpty]
         [DefaultValue(Constants.Enable)]
         [ValidateSet(SetMultiVmSyncStatus.Enable, SetMultiVmSyncStatus.Disable)]
@@ -258,6 +270,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     case ASRParameterSets.AzureToAzure:
                         this.ReplicationProvider = Constants.A2A;
                         this.CreateA2APolicy();
+                        break;
+                    case ASRParameterSets.ReplicateVMwareToAzure:
+                        this.ReplicationProvider = Constants.InMageRcm;
+                        this.CreateInMageRcmPolicy();
                         break;
                 }
             }
@@ -557,6 +573,58 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             string jobId = PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location);
 
+            var jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(jobId);
+
+            WriteObject(new ASRJob(jobResponse));
+        }
+
+        /// <summary>
+        ///     Creates an InMageRcm policy.
+        /// </summary>
+        private void CreateInMageRcmPolicy()
+        {
+            if (string.Compare(
+                    this.ReplicationProvider,
+                    Constants.InMageRcm,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.IncorrectReplicationProvider,
+                        this.ReplicationProvider));
+            }
+
+            this.MultiVmSyncStatus =
+                this.MyInvocation.BoundParameters.ContainsKey(
+                    Utilities.GetMemberName(() => this.MultiVmSyncStatus)) ?
+                        this.MultiVmSyncStatus :
+                        Constants.Enable;
+            var crashConsistentFrequencyInMinutes = 5;
+
+            var createPolicyInput = new CreatePolicyInput()
+            {
+                Properties = new CreatePolicyInputProperties()
+                {
+                    ProviderSpecificInput = new InMageRcmPolicyCreationInput()
+                    {
+                        RecoveryPointHistoryInMinutes = this.RecoveryPointRetentionInHours * 60,
+                        CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes,
+                        AppConsistentFrequencyInMinutes =
+                            this.ApplicationConsistentSnapshotFrequencyInHours * 60,
+                        EnableMultiVmSync = this.MultiVmSyncStatus.Equals(Constants.Enable) ?
+                            Constants.True :
+                            Constants.False
+                    }
+                }
+            };
+
+            var response =
+                RecoveryServicesClient.CreatePolicy(this.Name, createPolicyInput);
+
+            string jobId = PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location);
             var jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(jobId);
