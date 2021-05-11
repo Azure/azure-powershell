@@ -17,6 +17,7 @@ Describe 'Update-AzContainerGroup' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName | Update-AzContainerGroup -Tag @{"test"="value"}
+        $update = Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName
+        Update-AzContainerGroup -InputObject $update -Tag @{"test"="value"}
     }
 }

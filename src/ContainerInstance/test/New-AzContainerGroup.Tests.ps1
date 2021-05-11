@@ -16,9 +16,10 @@ Describe 'New-AzContainerGroup' {
         $port1 = New-AzContainerInstancePortObject -Port $env.port1 -Protocol TCP
         $port2 = New-AzContainerInstancePortObject -Port $env.port2 -Protocol TCP
         $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image $env.image -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
-        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName -Location $env.location -Container $container -OsType $env.osType -RestartPolicy $env.restartPolicy -IpAddressType Public
-        $containerGroup.ResourceGroupName | Should -BeExactly $env.resourceGroupName
-        $containerGroup.Name | Should -Be $env.containerGroupName
+        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName1 -Location $env.location -Container $container -OsType $env.osType -RestartPolicy $env.restartPolicy -IpAddressType Public
+
+        $containerGroup | Should -Not -Be $null
+        $containerGroup.Name | Should -Be $env.containerGroupName1
         $containerGroup.Location | Should -Be $env.location
         
         $containerGroup.Container | Should -Not -Be $null
@@ -33,7 +34,7 @@ Describe 'New-AzContainerGroup' {
         $containerGroup.IPAddressType | Should -Be "Public"
     }
 
-    It 'Creates a container group and runs a custom script inside the container.' {
+    It 'Creates a container group and runs a custom script inside the container.' -skip {
         $env1 = New-AzContainerInstanceEnvironmentVariableObject -Name "env1" -Value "value1"
         $env2 = New-AzContainerInstanceEnvironmentVariableObject -Name "env2" -SecureValue (ConvertTo-SecureString -String "value2" -AsPlainText -Force)
         $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image alpine -RequestCpu 1 -RequestMemoryInGb 1.5 -Command "echo hello" -EnvironmentVariable @($env1, $env2)

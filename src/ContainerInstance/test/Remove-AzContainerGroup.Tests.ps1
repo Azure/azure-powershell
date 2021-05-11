@@ -13,10 +13,11 @@ while(-not $mockingPath) {
 
 Describe 'Remove-AzContainerGroup' {
     It 'Delete' {
-        Remove-AzContainerGroup -Name $env.containerGroupName -ResourceGroupName $env.resourceGroupName
+        Remove-AzContainerGroup -Name "$($env.containerGroupName)-remove1" -ResourceGroupName $env.resourceGroupName
     }
 
     It 'DeleteViaIdentity' {
-        Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName | Remove-AzContainerGroup
+        $remove = Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.containerGroupName)-remove2"
+        Remove-AzContainerGroup -InputObject $remove
     }
 }

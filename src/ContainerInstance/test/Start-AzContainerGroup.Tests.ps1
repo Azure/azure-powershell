@@ -17,6 +17,7 @@ Describe 'Start-AzContainerGroup' {
     }
 
     It 'StartViaIdentity' {
-        Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName | Start-AzContainerGroup
+        $start = Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName
+        Start-AzContainerGroup -InputObject $start
     }
 }

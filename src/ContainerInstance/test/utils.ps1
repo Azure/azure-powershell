@@ -13,12 +13,14 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.resourceGroupName = "test-rg" + (RandomString -allChars $false -len 5)
     $env.location = "eastus"
-    $env.containerGroupName = "test-cg" + (RandomString -allChars $false -len 5)
+    $env.containerGroupName = "bez-test-cg"
+    $env.containerGroupName1 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName2 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName3 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName4 = "test-cg" + (RandomString -allChars $false -len 5)
     $env.containerGroupName5 = "test-cg" + (RandomString -allChars $false -len 5)
-    $env.containerInstanceName = "test-ci" + (RandomString -allChars $false -len 5)
+
+    $env.containerInstanceName = "bez-test-ci"
     $env.image = "nginx"
     $env.osType = "Linux"
     $env.restartPolicy = "Never"
@@ -28,7 +30,15 @@ function setupEnv() {
     # Create some resource for test.
     Write-Debug "Create resource group for test"
     New-AzResourceGroup -Name $env.resourceGroupName -Location $env.location
-    
+
+    Write-Debug "Create container group for test"
+    $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image $env.image
+    $container1 = New-AzContainerInstanceObject -Name "${env.containerInstanceName}1" -Image $env.image
+    $container2 = New-AzContainerInstanceObject -Name "${env.containerInstanceName}2" -Image $env.image
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName -Location $env.location -Container $container
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.containerGroupName)-remove1" -Location $env.location -Container $container1
+    New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name "$($env.containerGroupName)-remove2" -Location $env.location -Container $container2
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

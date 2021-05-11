@@ -17,6 +17,7 @@ Describe 'Stop-AzContainerGroup' {
     }
 
     It 'StopViaIdentity' {
-        Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName | Stop-AzContainerGroup
+        $stop = Get-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName 
+        Stop-AzContainerGroup -InputObject $stop
     }
 }
