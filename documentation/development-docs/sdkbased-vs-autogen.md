@@ -10,6 +10,16 @@ The document is for those, who are familiar with SDK-based modules and want to g
 ## Auto-gen Module
 ![image](images/autogen.PNG)
 
+# Cmdlet Parameters
+
+Highlight parameters differences in auto-gen modules as below.
+
+- No Set-* cmdlets, Set-* is replaced by New-* and Update-*
+- Add *[-SubscriptionId <String[]>]* parameter for get-* cmdlets and add for *[-SubscriptionId <String>]* parameter for the others
+- Do not support breaking change warning yet
+- Pipeline
+    - Do not support to pipe in parent resource
+    - Unify two types (through *-InputObject and -ResourceId*) of pipeline into one *-InputObject,* Users could either pipe in the resourceId or resource object
 # Implementation
 
 ## Process
@@ -17,8 +27,8 @@ The document is for those, who are familiar with SDK-based modules and want to g
 ### SDK-based Module
 
 - Design review
-- Get a released dotnet SDK
-- Implement cmdlets based on the SDK in C#
+- Get a released management SDK for Dotnet
+- Implement cmdlets in C# based on management SDK for Dotnet
 - Implement testcases
 - Generate docs, and populate them with examples
 - Create a PR in master branch for code review
@@ -34,7 +44,7 @@ The document is for those, who are familiar with SDK-based modules and want to g
 - customization
 - Implement testcases
 - Generate docs and populate them with examples
-- Create a PR in generation branch for code review
+- Create a PR in **generation** branch for code review
 - Azure team members will help merge code from generation branch to master branch
 
 ## Customization
@@ -84,19 +94,8 @@ Tests are written in C# code.
 
 Tests are written in PowerShell script. And we will leverage PowerShell test framework [Pester](https://github.com/pester/Pester).
 
-# Cmdlet Parameters
-
-Highlight parameters differences in auto-gen modules as below.
-
-- No Set-* cmdlets, Set-* is replaced by New-* and Update-*
-- Add *[-SubscriptionId <String[]>]* parameter for get-* cmdlets and add for *[-SubscriptionId <String>]* parameter for the others
-- Do not support breaking change warning yet
-- Pipeline
-    - Do not support to pipe in parent resource
-    - Unify two types (through *-InputObject and -ResourceId*) of pipeline into one *-InputObject,* Users could either pipe in the resourceId or resource object
-
 # Others
 
 ## Data plane support
 
-Auto-gen support for data plane has not been ready yet.
+We are still working on bringing data plane to auto-gen.
