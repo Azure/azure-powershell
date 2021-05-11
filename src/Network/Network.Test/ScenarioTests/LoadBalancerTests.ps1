@@ -2310,7 +2310,7 @@ function Test-GatewayLoadBalancer-ProviderTwoPool
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool1,$backendAddressPool2 -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
 
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway -BackendAddressPool $backendAddressPool1,$backendAddressPool1
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway -BackendAddressPool $backendAddressPool1,$backendAddressPool2
 
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
