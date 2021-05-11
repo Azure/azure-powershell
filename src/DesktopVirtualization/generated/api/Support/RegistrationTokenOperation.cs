@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="RegistrationTokenOperation" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new RegistrationTokenOperation(System.Convert.ToString(value));
+            return new RegistrationTokenOperation(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type RegistrationTokenOperation</summary>
