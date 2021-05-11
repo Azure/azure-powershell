@@ -23,47 +23,63 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class NewAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true,
-            HelpMessage = "The resource group name.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true,
-            HelpMessage = "The cluster name.")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The cluster name.")]
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true,
-            HelpMessage = "The geographic region that the cluster will be deployed.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The geographic region that the cluster will be deployed.")]
         [LocationCompleter("Microsoft.OperationalInsights/clusters")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
+        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
         [ValidateSet("SystemAssigned", "None")]
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Sku Name, now can be 'CapacityReservation' only")]
+        [Parameter(Mandatory = false, HelpMessage = "Sku Name, now can be 'CapacityReservation' only")]
         [ValidateSet("CapacityReservation")]
         [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
 
-        [Parameter(Mandatory = true,
-            HelpMessage = "Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.")]
+        [Parameter(Mandatory = true,  HelpMessage = "Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.")]
         [ValidateNotNullOrEmpty]
         public long SkuCapacity { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Tags of the cluster")]
+        [Parameter(Mandatory = false, HelpMessage = "Tags of the cluster")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Key Vault Uri")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Key Name")]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Key Version")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Flag for availability Zones,can be set to true only in supported regions")]
+        public bool? IsAvailabilityZonesEnabled { get; private set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Flag for Double Encryption, can be set to true only in supported regions")]
+        public bool? IsDoubleEncryptionEnabled { get; private set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Billing type can be set as 'Cluster' or 'Workspaces'")]
+        [ValidateSet("Cluster", "Workspaces")]
+        [ValidateNotNullOrEmpty]
+        public string BillingType { get; private set; }
 
         public override void ExecuteCmdlet()
         {
@@ -73,7 +89,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 Location = this.Location,
                 Identity = new PSIdentity(this.IdentityType),
                 Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
-                Tags = this.Tag
+                Tags = this.Tag,
+                IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
+                IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,
+                BillingType = this.BillingType,
+                KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
             };
 
             if (ShouldProcess(this.ClusterName,

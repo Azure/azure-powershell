@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (ETag != null && ETag != "")
                 {
-                    properties.ETag = ETag;
+                    properties.Etag = ETag;
                 }
                 Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();
                 status = result.Response.StatusCode;
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 if (ETag != null && ETag != "")
                 {
-                    properties.ETag = ETag;
+                    properties.Etag = ETag;
                 }
                 properties.FunctionParameters = ExistingSearch.Properties.FunctionParameters;
                 Rest.Azure.AzureOperationResponse<SavedSearch> result = OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, workspaceName, savedSearchId, properties).GetAwaiter().GetResult();

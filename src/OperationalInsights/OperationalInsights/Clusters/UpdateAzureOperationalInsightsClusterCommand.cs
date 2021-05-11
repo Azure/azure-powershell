@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
+        [ValidateSet("SystemAssigned", "None")]
+        [ValidateNotNullOrEmpty]
+        public string IdentityType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -74,7 +79,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             {
                 KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
                 Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
-                Tags = this.Tag
+                Tags = this.Tag,
+                Identity = new PSIdentity(IdentityType)
             };
 
             if (ShouldProcess(this.ClusterName,

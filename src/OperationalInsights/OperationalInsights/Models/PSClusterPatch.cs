@@ -22,11 +22,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterPatch
     {
-        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable))
+        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity))
         {
             KeyVaultProperties = keyVaultProperties;
             Sku = sku;
             Tags = tags;
+            Identity = identity;
         }
 
         public PSClusterPatch(ClusterPatch patch)
@@ -44,7 +45,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             if (patch.Tags != null)
             {
                 this.Tags = new Hashtable((IDictionary)patch.Tags);
-            }        
+            }
+
+            if (patch.Identity != null)
+            {
+                this.Identity = new PSIdentity(patch.Identity);
+            }
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
@@ -53,6 +59,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public Hashtable Tags { get; set; }
 
+        public PSIdentity Identity { get; set; }
+
         private IDictionary<string, string> getTags()
         {
             return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
@@ -60,7 +68,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public ClusterPatch GetClusterPatch()
         {
-            return new ClusterPatch(this.KeyVaultProperties?.GetKeyVaultProperties(), this.Sku?.geteClusterSku(), this.getTags());
+            return new ClusterPatch(this.KeyVaultProperties?.GetKeyVaultProperties(), identity: Identity.getIdentity(), this.Sku?.geteClusterSku(), this.getTags());
         }
     }
 }
