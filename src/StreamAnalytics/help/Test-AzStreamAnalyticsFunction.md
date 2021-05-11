@@ -13,7 +13,7 @@ This can range from testing the connection to the underlying web service behind 
 
 ## SYNTAX
 
-```
+```Test
 Test-AzStreamAnalyticsFunction -JobName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```

@@ -12,7 +12,7 @@ Creates a function or replaces an already existing function under an existing st
 
 ## SYNTAX
 
-```
+```New
 New-AzStreamAnalyticsFunction -File <String> -JobName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]

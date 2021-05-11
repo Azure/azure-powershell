@@ -12,7 +12,7 @@ Creates a streaming job or replaces an already existing streaming job.
 
 ## SYNTAX
 
-```
+```New
 New-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> -Location <String>
  -SkuName <StreamingJobSkuName> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
  [-ClusterId <String>] [-CompatibilityLevel <CompatibilityLevel>] [-DataLocale <String>]
