@@ -111,7 +111,11 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; },
                @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.5.0'; }, 
                @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '2.4.0'; }, 
                @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.2.0'; }, 
+<<<<<<< HEAD
                @{ModuleName = 'Az.Sql'; RequiredVersion = '2.17.1'; }, 
+=======
+               # @{ModuleName = 'Az.Sql'; RequiredVersion = '2.17.0'; }, 
+>>>>>>> Az.Sql-preview
                @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.Storage'; RequiredVersion = '3.6.0'; }, 
                @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.4.0'; }, 

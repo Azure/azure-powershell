@@ -12,7 +12,11 @@
 # RootModule = ''
 
 # Version number of this module.
+<<<<<<< HEAD
 ModuleVersion = '2.17.1'
+=======
+ModuleVersion = '3.0.0'
+>>>>>>> Az.Sql-preview
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -121,6 +125,8 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Get-AzSqlDatabaseBackupLongTermRetentionPolicy', 
                'Set-AzSqlDatabaseBackupLongTermRetentionPolicy', 
                'Get-AzSqlDatabaseLongTermRetentionBackup', 
+               'Update-AzSqlDatabaseLongTermRetentionBackup', 
+               'Copy-AzSqlDatabaseLongTermRetentionBackup', 
                'Remove-AzSqlDatabaseLongTermRetentionBackup', 
                'Get-AzSqlDeletedDatabaseBackup', 'Get-AzSqlDatabaseGeoBackup', 
                'Restore-AzSqlDatabase', 'Get-AzSqlDatabaseRestorePoint', 
@@ -340,7 +346,7 @@ PrivateData = @{
     - ''Set-AzSqlDatabaseSecondary'''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
