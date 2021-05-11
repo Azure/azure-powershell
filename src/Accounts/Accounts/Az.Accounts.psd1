@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.2.8'
+ModuleVersion = '2.2.77'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -143,7 +143,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fallback to first valid context if current default context key is ''Default'' which is invalid'
+        ReleaseNotes = '* Set retry times by environment variable [#14748]'
 
         # Prerelease string of this module
         # Prerelease = ''
