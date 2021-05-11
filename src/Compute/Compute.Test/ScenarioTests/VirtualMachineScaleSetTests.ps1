@@ -402,7 +402,8 @@ function Test-VirtualMachineScaleSetInEdgeZone
           -PublicIpAddressName "myPublicIPAddress" `
           -LoadBalancerName "myLoadBalancer" `
           -UpgradePolicyMode "Automatic" `
-          -Credential $Credential
+          -Credential $Credential `
+          -DomainNameLabel "scalesetinedgezone-70f698"
 
         $vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $ScaleSetName
 

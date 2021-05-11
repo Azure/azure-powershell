@@ -374,13 +374,14 @@ function Test-VirtualMachineInEdgeZone
         $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
         $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2016-DataCenter' -Version 'latest';
 
-        New-AzVM -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -VM $VirtualMachine -Verbose;
+        New-AzVM -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -VM $VirtualMachine;
 
         $vm = Get-AzVm -ResourceGroupName $ResourceGroup -Name $VMName
 
         Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
 
-        Update-AzVM -VM $vm -ResourceGroupName $ResourceGroup; # validate that extendedlocation is propagated through this cmdlet
+         # validate that extendedlocation is propagated correctly in this cmdlet
+        Update-AzVM -VM $vm -ResourceGroupName $ResourceGroup;
     }
     finally
     {

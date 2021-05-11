@@ -349,6 +349,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             public BlobUri DestinationUri;
 
+            public string StorageAccountId;
+
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
             {
                 if (_cmdlet.DiskFile == null)
@@ -497,6 +499,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                     {
+                        Kind = "StorageV2",
                         Sku = new Microsoft.Azure.Commands.Compute.Helpers.Storage.Models.Sku
                         {
                             Name = SkuName.PremiumLRS
@@ -515,6 +518,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
                 var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
+                parameters.StorageAccountId = storageAccount.Id;
                 // BlobUri destinationUri = null;
                 BlobUri.TryParseUri(
                     new Uri(string.Format(

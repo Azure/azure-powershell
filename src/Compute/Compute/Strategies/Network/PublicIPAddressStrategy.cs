@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     Zones = zones,
                     ExtendedLocation = edgeZone == null
                         ? null
-                        : new ExtendedLocation(edgeZone)
+                        : new ExtendedLocation { Name = edgeZone }
                 });
 
         public static async Task<string> UpdateDomainNameLabelAsync(
