@@ -66,6 +66,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Edge zone of load balancer.")]
+        [ValidateNotNullOrEmpty]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -99,7 +106,12 @@ namespace Microsoft.Azure.Commands.Network
                 Cidr = this.Cidr,
                 Zones = this.Zone?.ToList()
             };
-            
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                psModel.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
 
             sdkModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

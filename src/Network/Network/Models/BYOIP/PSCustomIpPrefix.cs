@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> Zones { get; set; }
 
+        public PSExtendedLocation ExtendedLocation { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
