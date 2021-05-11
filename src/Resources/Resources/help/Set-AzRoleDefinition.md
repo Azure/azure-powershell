@@ -56,7 +56,7 @@ Following is a sample updated role definition json for Set-AzRoleDefinition
         [
             "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
         ],
-        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\
+        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
 }
 ```
 
