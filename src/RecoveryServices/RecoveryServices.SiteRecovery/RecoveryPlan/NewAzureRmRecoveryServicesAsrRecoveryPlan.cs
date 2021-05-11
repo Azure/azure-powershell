@@ -323,6 +323,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             Management.RecoveryServices.SiteRecovery.Models.FailoverDeploymentModel.ResourceManager;
                     }
                 }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
+                        .GetType() ==
+                    typeof(InMageRcmReplicationDetails))
+                {
+                    VmId = ((InMageRcmReplicationDetails)replicationProtectedItemResponse
+                        .Properties.ProviderSpecificDetails).InternalIdentifier;
+                    createRecoveryPlanInputProperties.FailoverDeploymentModel =
+                            Management.RecoveryServices.SiteRecovery.Models.FailoverDeploymentModel.ResourceManager;
+                }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails
+                        .GetType() ==
+                    typeof(InMageRcmFailbackReplicationDetails))
+                {
+                    VmId = ((InMageRcmFailbackReplicationDetails)replicationProtectedItemResponse
+                        .Properties.ProviderSpecificDetails).InternalIdentifier;
+                    createRecoveryPlanInputProperties.FailoverDeploymentModel =
+                            Management.RecoveryServices.SiteRecovery.Models.FailoverDeploymentModel.ResourceManager;
+                }
 
                 var recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
                 recoveryPlanProtectedItem.Id = replicationProtectedItemResponse.Id;
