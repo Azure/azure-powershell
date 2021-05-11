@@ -30,7 +30,7 @@ Description for Deletes a static site build.
 
 ## EXAMPLES
 
-### Example 1: Deletes a static site build
+### Example 1: Delete a static site build
 ```powershell
 PS C:\> Remove-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal01 -EnvironmentName '2'
 
@@ -38,7 +38,7 @@ PS C:\> Remove-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name static
 
 This command deletes a static site build.
 
-### Example 2: Deletes a static site build by pipeline
+### Example 2: Delete a static site build by pipeline
 ```powershell
 PS C:\> Get-AzStaticWebAppBuild -ResourceGroupName azure-rg-test -Name staticweb-portal01 -EnvironmentName '3' | Remove-AzStaticWebAppBuild
 

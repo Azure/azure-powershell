@@ -1,4 +1,4 @@
-### Example 1: List function app setting of build
+### Example 1: List all application settings of a static site build
 ```powershell
 PS C:\> Get-AzStaticWebAppBuildFunctionAppSetting -ResourceGroupName azure-rg-test -Name staticweb-portal04 -EnvironmentName 'default'
 
@@ -7,4 +7,4 @@ Kind Name        Type
      appsettings Microsoft.Web/staticSites/builds/config/functionappsettings
 ```
 
-This command lists function app setting of build.
+This command lists all application settings of a static site build.

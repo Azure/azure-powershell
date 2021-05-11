@@ -22,7 +22,7 @@ Description for Lists the roles configured for the static site.
 
 ## EXAMPLES
 
-### Example 1: List configured roles of the static web app
+### Example 1: Lists the roles configured for the static site
 ```powershell
 
 ```
@@ -34,7 +34,7 @@ Kind Name            Type                                      Property
 ---- ----            ----                                      --------
      configuredRoles Microsoft.Web/staticSites/configuredRoles {anonymous, authenticated}
 
-This command lists configured roles of the static web app.
+This command lists the roles configured for the static site.
 
 ## PARAMETERS
 
