@@ -12,11 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-<<<<<<< HEAD
 ModuleVersion = '2.17.1'
-=======
-ModuleVersion = '3.0.0'
->>>>>>> Az.Sql-preview
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
