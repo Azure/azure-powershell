@@ -16,9 +16,10 @@ Describe 'New-AzContainerGroup' {
         $port1 = New-AzContainerInstancePortObject -Port $env.port1 -Protocol TCP
         $port2 = New-AzContainerInstancePortObject -Port $env.port2 -Protocol TCP
         $container = New-AzContainerInstanceObject -Name $env.containerInstanceName -Image $env.image -RequestCpu 1 -RequestMemoryInGb 1.5 -Port @($port1, $port2)
-        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName -Location $env.location -Container $container -OsType $env.osType -RestartPolicy $env.restartPolicy -IpAddressType Public
-        $containerGroup.ResourceGroupName | Should -BeExactly $env.resourceGroupName
-        $containerGroup.Name | Should -Be $env.containerGroupName
+        $containerGroup = New-AzContainerGroup -ResourceGroupName $env.resourceGroupName -Name $env.containerGroupName1 -Location $env.location -Container $container -OsType $env.osType -RestartPolicy $env.restartPolicy -IpAddressType Public
+
+        $containerGroup | Should -Not -Be $null
+        $containerGroup.Name | Should -Be $env.containerGroupName1
         $containerGroup.Location | Should -Be $env.location
         
         $containerGroup.Container | Should -Not -Be $null

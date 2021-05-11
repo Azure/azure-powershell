@@ -13,10 +13,10 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzContainerInstanceLog' {
     It 'List' {
-        Get-AzContainerInstanceLog -ContainerGroupName $env.containerGroupName -ContainerName $env.containerInstanceName -ResourceGroupName -ResourceGroupName $env.resourceGroupName
+        Get-AzContainerInstanceLog -ContainerGroupName $env.containerGroupName -ContainerName $env.containerInstanceName -ResourceGroupName $env.resourceGroupName
     }
 
     It 'Get the tail 2 lines of log of a container instance' {
-        Get-AzContainerInstanceLog -ContainerGroupName $env.containerGroupName -ContainerName $env.containerInstanceName -ResourceGroupName -ResourceGroupName $env.resourceGroupName -Tail 2
+        Get-AzContainerInstanceLog -ContainerGroupName $env.containerGroupName -ContainerName $env.containerInstanceName -ResourceGroupName $env.resourceGroupName -Tail 2
     }
 }

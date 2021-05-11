@@ -27,6 +27,6 @@ Describe 'Get-AzContainerGroup' {
     }
 
     It 'GetViaIdentity' {
-        Update-AzContainerGroup -Name $env.containerGroupName -ResourceGroupName $env.resourceGroupName -Tag @{"test"="value"} | Get-AzContainerGroup
+        Update-AzContainerGroup -Name $env.containerGroupName -ResourceGroupName $env.resourceGroupName -Tag @{"key"="value"} | Get-AzContainerGroup
     }
 }
