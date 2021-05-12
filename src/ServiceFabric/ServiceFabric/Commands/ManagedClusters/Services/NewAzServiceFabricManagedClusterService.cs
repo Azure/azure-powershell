@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     else
                     {
                         var service = CreateService(cluster.Location);
-                        WriteObject(new PSManagedService(service), false);
+                        WriteObject(PSManagedService.GetInstance(service), false);
                     }
                 }
                 catch (Exception ex)

@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     var managedService = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedService(managedService), false);
+                    WriteObject(PSManagedService.GetInstance(managedService), false);
                 }
             }
             catch (Exception ex)
