@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
@@ -31,6 +30,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
@@ -155,6 +155,33 @@ namespace Microsoft.Azure.Commands.Profile
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
+
+        private const string AuthScopeHelpMessage = "Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.";
+
+        [Alias("AuthScopeTypeName")]
+        [Parameter(ParameterSetName = UserParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = UserWithCredentialParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [Parameter(ParameterSetName = ManagedServiceParameterSet,
+            Mandatory = false, HelpMessage = AuthScopeHelpMessage)]
+        [PSArgumentCompleter(
+            SupportedResourceNames.AadGraph,
+            SupportedResourceNames.AnalysisServices,
+            SupportedResourceNames.Attestation,
+            SupportedResourceNames.Batch,
+            SupportedResourceNames.DataLake,
+            SupportedResourceNames.KeyVault,
+            SupportedResourceNames.ManagedHsm,
+            SupportedResourceNames.OperationalInsights,
+            SupportedResourceNames.Storage,
+            SupportedResourceNames.Synapse
+            )]
+        public string AuthScope { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the default context from this login")]
         [ValidateNotNullOrEmpty]
@@ -390,6 +417,8 @@ namespace Microsoft.Azure.Commands.Profile
                 }
             }
 
+            var resourceId = PreProcessAuthScope();
+
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
@@ -429,7 +458,8 @@ namespace Microsoft.Azure.Commands.Profile
                         WriteWarningEvent, //Could not use WriteWarning directly because it may be in worker thread
                         name,
                         shouldPopulateContextList,
-                        MaxContextPopulation));
+                        MaxContextPopulation,
+                        resourceId));
                    task.Start();
                    while (!task.IsCompleted)
                    {
@@ -465,6 +495,18 @@ namespace Microsoft.Azure.Commands.Profile
                    }
                });
             }
+        }
+
+        private string PreProcessAuthScope()
+        {
+            string mappedScope = AuthScope;
+            if (!string.IsNullOrEmpty(AuthScope) &&
+                SupportedResourceNames.DataPlaneResourceNameMap.ContainsKey(AuthScope))
+            {
+                mappedScope = SupportedResourceNames.DataPlaneResourceNameMap[AuthScope];
+                WriteDebug($"Map AuthScope from {AuthScope} to {mappedScope}.");
+            }
+            return mappedScope;
         }
 
         private bool IsUsingInteractiveAuthentication()
