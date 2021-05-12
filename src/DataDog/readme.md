@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DataDog service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,15 +30,44 @@ For information on how to develop for `Az.DataDog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-# branch: 28f4229b1e3b983450fd15ee8b2ec72c0b8be3ee
+branch: 3d039aede6de1e63023177d0aceaae1820b12cf2
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - D:\azure-rest-api\azure-rest-api-specs-pr-RPSaaSMaster\specification\datadog\resource-manager\Microsoft.Datadog\preview\2020-02-01-preview\swagger.json
-  # - https://github.com/Azure/azure-rest-api-specs-pr/blob/RPSaaSMaster/specification/datadog/resource-manager/Microsoft.Datadog/preview/2020-02-01-preview/swagger.json 
-  # - $(repo)/specification/resourcegraph/resource-manager/Microsoft.Datadog/preview/2020-02-01-preview/swagger.json
-
+input-file: 
+  - $(repo)/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/datadog.json
+  
 title: DataDog
 module-version: 0.1.0
 subject-prefix: $(service-name)
+
+directive:
+  # Remove cmdlet.
+  - where:
+      verb: Set
+    remove: true
+
+  # Remove variant
+  - where:
+      variant: ^Create$|^CreateViaIdentity$
+      subject: MarketplaceAgreement
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: Monitor
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$
+      subject: SingleSignOnConfiguration
+    remove: true
+
+  - where:
+      variant: ^Create$|^CreateViaIdentity$
+      subject: TagRule
+    remove: true
+
+  # For memory object that generate cmdlet.
+  - model-cmdlet:
+    - FilteringTag
 ```

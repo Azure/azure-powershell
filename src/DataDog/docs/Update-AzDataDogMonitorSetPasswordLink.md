@@ -1,31 +1,31 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/get-azdatadogapikeydefaultkey
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/update-azdatadogmonitorsetpasswordlink
 schema: 2.0.0
 ---
 
-# Get-AzDataDogApiKeyDefaultKey
+# Update-AzDataDogMonitorSetPasswordLink
 
 ## SYNOPSIS
-Get the default api key.
+Refresh the set password link and return a latest one.
 
 ## SYNTAX
 
-### Get (Default)
+### Refresh (Default)
 ```
-Get-AzDataDogApiKeyDefaultKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataDogMonitorSetPasswordLink -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### RefreshViaIdentity
 ```
-Get-AzDataDogApiKeyDefaultKey -InputObject <IDataDogIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+Update-AzDataDogMonitorSetPasswordLink -InputObject <IDataDogIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the default api key.
+Refresh the set password link and return a latest one.
 
 ## EXAMPLES
 
@@ -70,7 +70,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: RefreshViaIdentity
 Aliases:
 
 Required: True
@@ -85,7 +85,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Refresh
 Aliases:
 
 Required: True
@@ -96,11 +96,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Refresh
 Aliases:
 
 Required: True
@@ -111,11 +112,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Refresh
 Aliases:
 
 Required: False
@@ -165,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogApiKey
+### System.String
 
 ## NOTES
 
@@ -177,12 +178,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
+  - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Datadog resource belongs.
-  - `[RuleSetName <String>]`: 
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

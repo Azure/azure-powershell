@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/update-azdatadogmonitor
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/update-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -17,19 +17,6 @@ Update a monitor resource.
 Update-AzDataDogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MonitoringStatus <MonitoringStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzDataDogMonitor -Name <String> -ResourceGroupName <String>
- -Body <IDatadogMonitorResourceUpdateParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzDataDogMonitor -InputObject <IDataDogIdentity> -Body <IDatadogMonitorResourceUpdateParameters>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -63,22 +50,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Body
-The parameters for a PATCH request to a monitor resource.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogMonitorResourceUpdateParameters
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -100,7 +71,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -115,7 +86,7 @@ Flag specifying if the resource monitoring is enabled or disabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Support.MonitoringStatus
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -130,7 +101,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: MonitorName
 
 Required: True
@@ -141,11 +112,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,11 +128,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -175,7 +147,7 @@ The new tags of the monitor resource.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -221,13 +193,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogMonitorResourceUpdateParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogMonitorResource
 
 ## NOTES
 
@@ -238,18 +208,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IDatadogMonitorResourceUpdateParameters>: The parameters for a PATCH request to a monitor resource.
-  - `[MonitoringStatus <MonitoringStatus?>]`: Flag specifying if the resource monitoring is enabled or disabled.
-  - `[Tag <IDatadogMonitorResourceUpdateParametersTags>]`: The new tags of the monitor resource.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
+  - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Datadog resource belongs.
-  - `[RuleSetName <String>]`: 
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

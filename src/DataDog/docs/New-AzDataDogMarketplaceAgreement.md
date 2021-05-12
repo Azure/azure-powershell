@@ -1,34 +1,35 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/set-azdatadogsinglesignonconfiguration
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/new-azdatadogmarketplaceagreement
 schema: 2.0.0
 ---
 
-# Set-AzDataDogSingleSignOnConfiguration
+# New-AzDataDogMarketplaceAgreement
 
 ## SYNOPSIS
-Configures single-sign-on for this resource.
+Create Datadog marketplace agreement in the subscription.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Set-AzDataDogSingleSignOnConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataDogMarketplaceAgreement [-SubscriptionId <String>] [-Accepted] [-LicenseTextLink <String>]
+ [-Plan <String>] [-PrivacyPolicyLink <String>] [-Product <String>] [-Publisher <String>]
+ [-RetrieveDatetime <DateTime>] [-Signature <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### Update
+### CreateViaIdentityExpanded
 ```
-Set-AzDataDogSingleSignOnConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> -Body <IDatadogSingleSignOnResource> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDataDogMarketplaceAgreement -InputObject <IDataDogIdentity> [-Accepted] [-LicenseTextLink <String>]
+ [-Plan <String>] [-PrivacyPolicyLink <String>] [-Product <String>] [-Publisher <String>]
+ [-RetrieveDatetime <DateTime>] [-Signature <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Configures single-sign-on for this resource.
+Create Datadog marketplace agreement in the subscription.
 
 ## EXAMPLES
 
@@ -52,8 +53,8 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -Accepted
+If any version of the terms have been accepted, otherwise false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -61,37 +62,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogSingleSignOnResource
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ConfigurationName
-.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -113,41 +83,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnterpriseAppId
-The Id of the Enterprise App used for Single sign-on.
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MonitorName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -LicenseTextLink
+Link to HTML with Microsoft and Publisher terms.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,27 +114,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+### -Plan
+Plan identifier string.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SingleSignOnState
-Various states of the SSO resource
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Support.SingleSignOnStates
-Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -188,12 +129,73 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SingleSignOnUrl
-The login URL specific to this Datadog Organization.
+### -PrivacyPolicyLink
+Link to the privacy policy of the publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Product
+Product identifier string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Publisher
+Publisher identifier string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RetrieveDatetime
+Date and time in UTC of when the terms were accepted.
+This is empty if Accepted is false.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Signature
+Terms signature.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -204,11 +206,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -254,11 +256,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogSingleSignOnResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogSingleSignOnResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogAgreementResource
 
 ## NOTES
 
@@ -269,10 +271,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IDatadogSingleSignOnResource>: .
-  - `[EnterpriseAppId <String>]`: The Id of the Enterprise App used for Single sign-on.
-  - `[SingleSignOnState <SingleSignOnStates?>]`: Various states of the SSO resource
-  - `[SingleSignOnUrl <String>]`: The login URL specific to this Datadog Organization.
+INPUTOBJECT <IDataDogIdentity>: Identity Parameter
+  - `[ConfigurationName <String>]`: Configuration name
+  - `[Id <String>]`: Resource identity path
+  - `[MonitorName <String>]`: Monitor resource name
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

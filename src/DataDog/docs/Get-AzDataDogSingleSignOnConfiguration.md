@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/get-azdatadogsinglesignonconfiguration
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogsinglesignonconfiguration
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ PS C:\> {{ Add code here }}
 ## PARAMETERS
 
 ### -ConfigurationName
-.
+Configuration name
 
 ```yaml
 Type: System.String
@@ -117,7 +117,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -155,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogSingleSignOnResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogSingleSignOnResource
 
 ## NOTES
 
@@ -167,12 +168,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
+  - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Datadog resource belongs.
-  - `[RuleSetName <String>]`: 
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

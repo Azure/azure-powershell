@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/new-azdatadogtagrule
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/new-azdatadogtagrule
 schema: 2.0.0
 ---
 
@@ -18,19 +18,6 @@ New-AzDataDogTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetN
  [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
  [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzDataDogTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
- -Body <IMonitoringTagRules> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzDataDogTagRule -InputObject <IDataDogIdentity> -Body <IMonitoringTagRules> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -66,22 +53,6 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Body
-Capture logs and metrics of Azure resources based on ARM tags.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IMonitoringTagRules
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -103,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -114,12 +85,16 @@ Accept wildcard characters: False
 ```
 
 ### -LogRuleFilteringTag
-List of filtering tags to be used for capturing logs.This only takes effect if SendResourceLogs flag is enabled.If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.If Include actions are specified, the rules will only include resources with the associated tags.
+List of filtering tags to be used for capturing logs.
+This only takes effect if SendResourceLogs flag is enabled.
+If empty, all resources will be captured.
+If only Exclude action is specified, the rules will apply to the list of all available resources.
+If Include actions are specified, the rules will only include resources with the associated tags.
 To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IFilteringTag[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,7 +109,7 @@ Flag specifying if AAD logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +124,7 @@ Flag specifying if Azure resource logs should be sent for the Monitor resource.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -164,7 +139,7 @@ Flag specifying if Azure subscription logs should be sent for the Monitor resour
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,12 +150,15 @@ Accept wildcard characters: False
 ```
 
 ### -MetricRuleFilteringTag
-List of filtering tags to be used for capturing metrics.If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.If Include actions are specified, the rules will only include resources with the associated tags.
+List of filtering tags to be used for capturing metrics.
+If empty, all resources will be captured.
+If only Exclude action is specified, the rules will apply to the list of all available resources.
+If Include actions are specified, the rules will only include resources with the associated tags.
 To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IFilteringTag[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IFilteringTag[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +173,7 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -206,11 +184,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -221,11 +200,11 @@ Accept wildcard characters: False
 ```
 
 ### -RuleSetName
-.
+Rule set name
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -236,11 +215,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -286,13 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IMonitoringTagRules
-
 ### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IMonitoringTagRules
 
 ## NOTES
 
@@ -303,30 +280,20 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IMonitoringTagRules>: Capture logs and metrics of Azure resources based on ARM tags.
-  - `[LogRuleFilteringTag <IFilteringTag[]>]`: List of filtering tags to be used for capturing logs.         This only takes effect if SendResourceLogs flag is enabled.         If empty, all resources will be captured.         If only Exclude action is specified, the rules will apply to the list of all available resources.         If Include actions are specified, the rules will only include resources with the associated tags.
-    - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
-    - `[Name <String>]`: The name (also known as the key) of the tag.
-    - `[Value <String>]`: The value of the tag.
-  - `[LogRuleSendAadLog <Boolean?>]`: Flag specifying if AAD logs should be sent for the Monitor resource.
-  - `[LogRuleSendResourceLog <Boolean?>]`: Flag specifying if Azure resource logs should be sent for the Monitor resource.
-  - `[LogRuleSendSubscriptionLog <Boolean?>]`: Flag specifying if Azure subscription logs should be sent for the Monitor resource.
-  - `[MetricRuleFilteringTag <IFilteringTag[]>]`: List of filtering tags to be used for capturing metrics.         If empty, all resources will be captured.         If only Exclude action is specified, the rules will apply to the list of all available resources.         If Include actions are specified, the rules will only include resources with the associated tags.
-
 INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
+  - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Datadog resource belongs.
-  - `[RuleSetName <String>]`: 
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs.This only takes effect if SendResourceLogs flag is enabled.If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.If Include actions are specified, the rules will only include resources with the associated tags.
+LOGRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
   - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   - `[Name <String>]`: The name (also known as the key) of the tag.
   - `[Value <String>]`: The value of the tag.
 
-METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics.If empty, all resources will be captured.If only Exclude action is specified, the rules will apply to the list of all available resources.If Include actions are specified, the rules will only include resources with the associated tags.
+METRICRULEFILTERINGTAG <IFilteringTag[]>: List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
   - `[Action <TagAction?>]`: Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   - `[Name <String>]`: The name (also known as the key) of the tag.
   - `[Value <String>]`: The value of the tag.

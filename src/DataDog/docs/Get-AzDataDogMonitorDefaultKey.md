@@ -1,31 +1,31 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/get-azdatadogrefreshsetpassword
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 
-# Get-AzDataDogRefreshSetPassword
+# Get-AzDataDogMonitorDefaultKey
 
 ## SYNOPSIS
-Refresh the setpassword link and return a latest one.
+Get the default api key.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzDataDogRefreshSetPassword -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDataDogRefreshSetPassword -InputObject <IDataDogIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+Get-AzDataDogMonitorDefaultKey -InputObject <IDataDogIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Refresh the setpassword link and return a latest one.
+Get the default api key.
 
 ## EXAMPLES
 
@@ -96,7 +96,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -165,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
 
 ## NOTES
 
@@ -177,12 +178,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: 
+  - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group to which the Datadog resource belongs.
-  - `[RuleSetName <String>]`: 
-  - `[SubscriptionId <String>]`: The Microsoft Azure subscription ID.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleSetName <String>]`: Rule set name
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

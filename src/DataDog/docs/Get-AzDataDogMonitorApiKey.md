@@ -1,24 +1,24 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/get-azdatadoghost
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitorapikey
 schema: 2.0.0
 ---
 
-# Get-AzDataDogHost
+# Get-AzDataDogMonitorApiKey
 
 ## SYNOPSIS
-List the hosts for a given monitor resource.
+List the api keys for a given monitor resource.
 
 ## SYNTAX
 
 ```
-Get-AzDataDogHost -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataDogMonitorApiKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-List the hosts for a given monitor resource.
+List the api keys for a given monitor resource.
 
 ## EXAMPLES
 
@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -140,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.IDatadogHost
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
 
 ## NOTES
 

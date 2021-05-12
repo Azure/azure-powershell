@@ -1,11 +1,11 @@
 ---
 external help file:
-Module Name: Az.DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/az.datadog/get-azdatadoglinkedresource
+Module Name: DataDog
+online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitorlinkedresource
 schema: 2.0.0
 ---
 
-# Get-AzDataDogLinkedResource
+# Get-AzDataDogMonitorLinkedResource
 
 ## SYNOPSIS
 List all Azure resources associated to the same Datadog organization as the target resource.
@@ -13,8 +13,8 @@ List all Azure resources associated to the same Datadog organization as the targ
 ## SYNTAX
 
 ```
-Get-AzDataDogLinkedResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataDogMonitorLinkedResource -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +73,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group to which the Datadog resource belongs.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The Microsoft Azure subscription ID.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
@@ -140,7 +141,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20200201Preview.ILinkedResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.ILinkedResource
 
 ## NOTES
 
