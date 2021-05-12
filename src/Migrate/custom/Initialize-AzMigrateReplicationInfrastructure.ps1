@@ -180,7 +180,7 @@ public static int hashForArtifact(String artifact)
 "@
 
         # Get all appliances and sites in the project
-        $solution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Migration-ServerMigration"
+        $solution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Discovery-ServerDiscovery"
         $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
 
         $appMap = @{}
@@ -203,7 +203,7 @@ public static int hashForArtifact(String artifact)
 
         if ($null -eq $solution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
              $null -eq $solution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
-            throw "Server Migration Solution missing Appliance Details. Invalid Solution."           
+            throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 
         foreach ($eachApp in $appMap.GetEnumerator()) {
