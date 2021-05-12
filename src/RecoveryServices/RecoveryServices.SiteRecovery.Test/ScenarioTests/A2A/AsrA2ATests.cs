@@ -41,21 +41,21 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestNewA2ADiskReplicationConfig()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2ADiskReplicationConfiguration");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestNewA2AManagedDiskReplicationConfig()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestNewA2AManagedDiskReplicationConfigWithCmk()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfigurationWithCmk");
@@ -84,42 +84,42 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2ARemoveReplicationProtectedItemDisk()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RemoveReplicationProtectedItemDisk");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2AReplicateProximityPlacementGroupVm()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ReplicateProximityPlacementGroupVm");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2AVMNicConfig()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMNicConfig");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2AZoneToZoneRecoveryPlanReplication()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ZoneToZoneRecoveryPlanReplication");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2ARecoveryPlanReplication()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-RecoveryPlanReplication");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void A2AVMSSReplication()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-VMSSReplication");
