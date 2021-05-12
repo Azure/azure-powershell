@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Profile
         public const string MSISecretVariable = "MSI_SECRET";
         public const int DefaultMaxContextPopulation = 25;
         public const string DefaultMaxContextPopulationString = "25";
+        private const int DefaultManagedServicePort = 50342;
 
         private IAzureEnvironment _environment;
 
@@ -126,19 +127,6 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
         [Alias("MSI", "ManagedService")]
         public SwitchParameter Identity { get; set; }
-
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Port number for managed service login.")]
-        [PSDefaultValue(Help = "50342", Value = 50342)]
-        public int ManagedServicePort { get; set; } = 50342;
-
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. \"http://localhost:50342/oauth2/token\". Host name for managed service login.")]
-        [PSDefaultValue(Help = "localhost", Value = "localhost")]
-        public string ManagedServiceHostName { get; set; } = "localhost";
-
-        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Secret, used for some kinds of managed service login.")]
-        [ValidateNotNullOrEmpty]
-        public SecureString ManagedServiceSecret { get; set; }
-
 
         [Alias("SubscriptionName", "SubscriptionId")]
         [Parameter(ParameterSetName = UserParameterSet,
@@ -291,55 +279,7 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
-                    var builder = new UriBuilder
-                    {
-                        Scheme = "http",
-                        Host = ManagedServiceHostName,
-                        Port = ManagedServicePort,
-                        Path = "/oauth2/token"
-                    };
-
-                    //ManagedServiceHostName/ManagedServicePort/ManagedServiceSecret are obsolete, should be removed in next major release
-                    if (this.IsBound(nameof(ManagedServiceHostName)) || this.IsBound(nameof(ManagedServicePort)) || this.IsBound(nameof(ManagedServiceSecret)))
-                    {
-                        WriteWarning(Resources.ObsoleteManagedServiceParameters);
-                    }
-
-                    var envSecret = System.Environment.GetEnvironmentVariable(MSISecretVariable);
-
-                    var msiSecret = this.IsBound(nameof(ManagedServiceSecret))
-                        ? ManagedServiceSecret.ConvertToString()
-                        : envSecret;
-
-                    var envUri = System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
-
-                    var suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
-                        ? builder.Uri.ToString()
-                        : envUri;
-
-                    if (!this.IsBound(nameof(ManagedServiceHostName)) && !string.IsNullOrWhiteSpace(envUri) 
-                        && !this.IsBound(nameof(ManagedServiceSecret)) && !string.IsNullOrWhiteSpace(envSecret))
-                    {
-                        // set flag indicating this is AppService Managed Identity ad hoc mode
-                        azureAccount.SetProperty(AuthenticationFactory.AppServiceManagedIdentityFlag, "the value not used");
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(msiSecret))
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginSecret, msiSecret);
-                    }
-
-                    if (!string.IsNullOrWhiteSpace(suppliedUri))
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, suppliedUri);
-                    }
-                    else
-                    {
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUriBackup, builder.Uri.ToString());
-                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
-                    }
-
-                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format(Constants.DefaultMsiAccountIdPrefix + "{0}", ManagedServicePort);
+                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : $"{Constants.DefaultMsiAccountIdPrefix}{DefaultManagedServicePort}";
                     break;
                 default:
                     //Support username + password for both Windows PowerShell and PowerShell 6+

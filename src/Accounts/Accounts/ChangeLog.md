@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
 * Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
 
 ## Version 2.2.8
