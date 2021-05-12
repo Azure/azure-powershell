@@ -14,33 +14,33 @@ Connect to Azure with an authenticated account for use with cmdlets from the Az 
 
 ### UserWithSubscriptionId (Default)
 ```
-Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-Subscription <String>] [-AuthScope <String>]
+ [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-UseDeviceAuthentication]
+ [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-ServicePrincipal] -Tenant <String>
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UserWithCredential
 ```
 Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <String>]
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation]
- [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
+ [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,9 +57,9 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
  [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
- [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-MaxContextPopulation <Int32>]
- [-Force] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
+ [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,6 +202,18 @@ TenantId         : 4cd76576-b611-43d0-8f2b-adcb139531bf
 Environment      : AzureCloud
 ```
 
+### Example 8: Connect with AuthScope
+AuthScope is used to support scenario that data plane resources have enhanced authentication than ARM resources, e.g. storage needs MFA but ARM does not.
+Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first login with storage scope https://storage.azure.com/, then silently require token for ARM.
+
+```powershell
+Connect-AzAccount -AuthScope Storage
+```
+```Output
+Account                SubscriptionName TenantId                Environment
+-------                ---------------- --------                -----------
+yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
+```
 ## PARAMETERS
 
 ### -AccessToken
@@ -265,6 +277,21 @@ Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthScope
+Optional OAuth scope for login, supported pre-defined values: AadGraph, AnalysisServices, Attestation, Batch, DataLake, KeyVault, OperationalInsights, Storage, Synapse. It also supports resource id like 'https://storage.azure.com/'.
+
+```yaml
+Type: System.String
+Parameter Sets: UserWithSubscriptionId, ServicePrincipalWithSubscriptionId, UserWithCredential, ServicePrincipalCertificateWithSubscriptionId, ManagedServiceLogin
+Aliases: AuthScopeTypeName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

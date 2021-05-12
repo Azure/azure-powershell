@@ -121,7 +121,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             Action<string> promptAction,
             string name = null,
             bool shouldPopulateContextList = true,
-            int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation)
+            int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
+            string authScope = null)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -133,6 +134,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 ? ShowDialog.Always : ShowDialog.Never;
 
             SubscritpionClientCandidates.Reset();
+
+            bool needDataPlanAuthFirst = !string.IsNullOrEmpty(authScope);
+            if(needDataPlanAuthFirst)
+            {
+                var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior, promptAction, authScope);
+                promptBehavior = ShowDialog.Never;
+            }
 
             if (skipValidation)
             {
@@ -535,7 +543,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string tenantId,
             SecureString password,
             string promptBehavior,
-            Action<string> promptAction)
+            Action<string> promptAction,
+            string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Type == AzureAccount.AccountType.AccessToken)
             {
@@ -550,7 +559,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 password,
                 promptBehavior,
                 promptAction,
-                _cache);
+                _cache,
+                resourceId);
         }
 
         private bool TryGetTenantSubscription(IAccessToken accessToken,
