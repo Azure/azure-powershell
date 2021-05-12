@@ -48,12 +48,16 @@ Describe 'New-AzWvdHostPool' {
                             -Description 'des' `
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
-                            -VMTemplate $null `
-                            -SsoContext $null `
+                            -VMTemplate '{option1}' `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
@@ -63,18 +67,22 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des'
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
-            $hostPool.VMTemplate | Should -Be $null
-            $hostPool.SsoContext | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option1}'
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1'
+                        -ResourceGroupName $env.ResourceGroup `
+                        -Name 'HostPoolPowershellContained1'
             $hostPool.Name | Should -Be 'HostPoolPowershellContained1'
             $hostPool.Location | Should -Be $env.Location
             $hostPool.HostPoolType | Should -Be 'Pooled'              
@@ -83,16 +91,20 @@ Describe 'New-AzWvdHostPool' {
             $hostPool.Description | Should -Be 'des'
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
-            $hostPool.VMTemplate | Should -Be $null
-            $hostPool.SsoContext | Should -Be $null
+            $hostPool.VMTemplate | Should -Be '{option1}'
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPool.StartVMOnConnect | Should -Be $false
 
-        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -Name 'HostPoolPowershellContained1'
     }

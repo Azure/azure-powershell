@@ -25,11 +25,15 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
         $hostPool = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -43,13 +47,17 @@ Describe 'Get-AzWvdHostPool' {
             $hostPool.FriendlyName | Should -Be 'fri'
             $hostPool.MaxSessionLimit | Should -Be 5
             $hostPool.VMTemplate | Should -Be $null
-            $hostPool.SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPool.CustomRdpProperty | Should -Be ""
             $hostPool.Ring | Should -Be $null
             # @todo need to check this
             # $hostPool.ValidationEnvironment | Should -Be $false
             $hostPool.PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPool.SsoClientId | Should -Be 'https://domain/name'
+            $hostPool.SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPool.SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPool.SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPool.StartVMOnConnect | Should -Be $false
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -69,11 +77,15 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -87,11 +99,15 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -106,13 +122,17 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].FriendlyName | Should -Be 'fri'
             $hostPools[0].MaxSessionLimit | Should -Be 5
             $hostPools[0].VMTemplate | Should -Be $null
-            $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
             $hostPools[0].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[0].ValidationEnvironment | Should -Be $false
             $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPools[0].SsoClientId | Should -Be 'https://domain/name'
+            $hostPools[0].SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPools[0].SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPools[0].SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPools[0].StartVMOnConnect | Should -Be $false
 
             $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
             $hostPools[1].Location | Should -Be $env.Location
@@ -123,13 +143,17 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].FriendlyName | Should -Be 'fri'
             $hostPools[1].MaxSessionLimit | Should -Be 5
             $hostPools[1].VMTemplate | Should -Be $null
-            $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
             $hostPools[1].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[1].ValidationEnvironment | Should -Be $false
             $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPools[1].SsoClientId | Should -Be 'https://domain/name'
+            $hostPools[1].SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPools[1].SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPools[1].SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPools[1].StartVMOnConnect | Should -Be $false
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -153,11 +177,15 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
@@ -171,11 +199,15 @@ Describe 'Get-AzWvdHostPool' {
                             -FriendlyName 'fri' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
                             -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
+                            -PreferredAppGroupType 'Desktop' `
+                            -SsoClientId 'https://domain/name' `
+                            -SsoClientSecretKeyVaultPath 'https://domain/certificates/cert' `
+                            -SsoadfsAuthority 'https://msft.sts.microsoft.com/adfs' `
+                            -SsoSecretType 'SharedKeyInKeyVault' `
+                            -StartVMOnConnect:$false
 
         $hostPools = Get-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             | Where-Object -Property Name -Match 'HostPoolPowershellContained*' `
@@ -189,13 +221,17 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[0].FriendlyName | Should -Be 'fri'
             $hostPools[0].MaxSessionLimit | Should -Be 5
             $hostPools[0].VMTemplate | Should -Be $null
-            $hostPools[0].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[0].CustomRdpProperty | Should -Be ""
             $hostPools[0].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[0].ValidationEnvironment | Should -Be $false
             $hostPools[0].PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPools[0].SsoClientId | Should -Be 'https://domain/name'
+            $hostPools[0].SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPools[0].SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPools[0].SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPools[0].StartVMOnConnect | Should -Be $false
 
             $hostPools[1].Name | Should -Be 'HostPoolPowershellContained2'
             $hostPools[1].Location | Should -Be $env.Location
@@ -206,13 +242,17 @@ Describe 'Get-AzWvdHostPool' {
             $hostPools[1].FriendlyName | Should -Be 'fri'
             $hostPools[1].MaxSessionLimit | Should -Be 5
             $hostPools[1].VMTemplate | Should -Be $null
-            $hostPools[1].SsoContext | Should -Be $null
             # @todo not corrct since it should be null need to look into it
             # $hostPools[1].CustomRdpProperty | Should -Be ""
             $hostPools[1].Ring | Should -Be $null
             # @todo need to check this
             # $hostPools[1].ValidationEnvironment | Should -Be $false
             $hostPools[1].PreferredAppGroupType | Should -Be 'Desktop'
+            $hostPools[1].SsoClientId | Should -Be 'https://domain/name'
+            $hostPools[1].SsoClientSecretKeyVaultPath | Should -Be 'https://domain/certificates/cert'
+            $hostPools[1].SsoadfsAuthority | Should -Be 'https://msft.sts.microsoft.com/adfs'
+            $hostPools[1].SsoSecretType | Should -Be 'SharedKeyInKeyVault'
+            $hostPools[1].StartVMOnConnect | Should -Be $false
 
         $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `

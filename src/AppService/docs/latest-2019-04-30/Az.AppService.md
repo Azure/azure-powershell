@@ -1,7 +1,7 @@
 ---
 Module Name: Az.AppService
 Module Guid: 0bbe4321-2044-4a3e-a2e6-4739d2b3ba60
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.appservice
+Download Help Link: https://docs.microsoft.com/powershell/module/az.appservice
 Help Version: 1.0.0.0
 Locale: en-US
 ---

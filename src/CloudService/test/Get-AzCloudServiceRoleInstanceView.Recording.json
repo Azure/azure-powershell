@@ -1,0 +1,44 @@
+{
+  "Get-AzCloudServiceRoleInstanceView+[NoContext]+Get cloud service role instance InstanceView+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/instanceView?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/instanceView?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "9513ef52-b601-489f-8366-4517f3d67218" ],
+        "CommandName": [ "Get-AzCloudServiceRoleInstanceView" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstanceView_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "1c74ae4c-c48a-4dd6-892c-a91908bf45af" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;381,Microsoft.Compute/GetCloudService30Min;2578" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11923" ],
+        "x-ms-correlation-request-id": [ "b9317268-26cb-4c58-9a5e-1b862a019d34" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010721Z:b9317268-26cb-4c58-9a5e-1b862a019d34" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 26 Mar 2021 01:07:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "289" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"platformUpdateDomain\": 0,\r\n  \"platformFaultDomain\": 0,\r\n  \"privateId\": \"c1893e78-9ae2-4f24-9f46-c403e4ab2d1c\",\r\n  \"statuses\": [\r\n    {\r\n      \"code\": \"RoleState/RoleStateStarted\",\r\n      \"level\": \"Info\",\r\n      \"displayStatus\": \"RoleStateStarted\",\r\n      \"message\": \"\"\r\n    }\r\n  ]\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

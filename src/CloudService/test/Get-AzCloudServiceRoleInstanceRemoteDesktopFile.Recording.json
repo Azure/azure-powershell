@@ -1,0 +1,45 @@
+{
+  "Get-AzCloudServiceRoleInstanceRemoteDesktopFile+[NoContext]+Get remote desktop file+$GET+https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/1c1df74e-7a1a-4d81-afaa-40c4902f98a9/resourceGroups/cscmdlettestn8rmh5qx/providers/Microsoft.Compute/cloudServices/cscmdlettestoe6r0n2k/roleInstances/WebRole_IN_0/remoteDesktopFile?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "209de16d-e43a-4e46-b8ac-34714c5b1c00" ],
+        "CommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile" ],
+        "FullCommandName": [ "Get-AzCloudServiceRoleInstanceRemoteDesktopFile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "39f0061b-e750-446c-96bb-6352459eb995" ],
+        "x-ms-ratelimit-remaining-resource": [ "Microsoft.Compute/GetCloudService3Min;382,Microsoft.Compute/GetCloudService30Min;2579" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11924" ],
+        "x-ms-correlation-request-id": [ "ddbb5074-cd3a-44b6-a214-813dd330ddad" ],
+        "x-ms-routing-request-id": [ "BRAZILUS:20210326T010720Z:ddbb5074-cd3a-44b6-a214-813dd330ddad" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 26 Mar 2021 01:07:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "109" ],
+        "Content-Type": [ "application/x-rdp" ],
+        "Expires": [ "-1" ],
+        "Content-Disposition": [ "attachment; filename=cscmdlettestoe6r0n2k-WebRole_IN_0.rdp" ]
+      },
+      "Content": "full address:s:52.225.152.33\r\nusername:s:userazure\r\nLoadBalanceInfo:s:Cookie: mstshash=WebRole#WebRole_IN_0\r\n",
+      "isContentBase64": false
+    }
+  }
+}

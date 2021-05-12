@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Monitor
 Module Guid: 364b2dcf-3b5b-4752-b9e9-a267e94981d7
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.monitor
+Download Help Link: https://docs.microsoft.com/powershell/module/az.monitor
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.DesktopVirtualization
-Module Guid: 8c805a66-b0df-4309-9c7a-2f103389f17b
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization
+Module Guid: c78eb738-b339-4296-8c9f-13ef28817c3c
+Download Help Link: https://docs.microsoft.com/powershell/module/az.desktopvirtualization
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -13,6 +13,9 @@ Microsoft Azure PowerShell: DesktopVirtualization cmdlets
 ## Az.DesktopVirtualization Cmdlets
 ### [Disconnect-AzWvdUserSession](Disconnect-AzWvdUserSession.md)
 Disconnect a userSession.
+
+### [Expand-AzWvdMsixImage](Expand-AzWvdMsixImage.md)
+Expands and Lists MSIX packages in an Image, given the Image Path.
 
 ### [Get-AzWvdApplication](Get-AzWvdApplication.md)
 Get an application.
@@ -26,8 +29,17 @@ Get a desktop.
 ### [Get-AzWvdHostPool](Get-AzWvdHostPool.md)
 Get a host pool.
 
+### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
+Registration token of the host pool.
+
+### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
+Get a msixpackage.
+
 ### [Get-AzWvdRegistrationInfo](Get-AzWvdRegistrationInfo.md)
 Get the Windows virtual desktop registration info.
+
+### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
+Get a scaling plan.
 
 ### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
 Get a session host.
@@ -50,8 +62,14 @@ Create or update an applicationGroup.
 ### [New-AzWvdHostPool](New-AzWvdHostPool.md)
 Create or update a host pool.
 
+### [New-AzWvdMsixPackage](New-AzWvdMsixPackage.md)
+Create or update a MSIX package.
+
 ### [New-AzWvdRegistrationInfo](New-AzWvdRegistrationInfo.md)
 Create Windows virtual desktop registration info.
+
+### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
+Create or update a scaling plan.
 
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create or update a workspace.
@@ -68,8 +86,14 @@ Remove an applicationGroup.
 ### [Remove-AzWvdHostPool](Remove-AzWvdHostPool.md)
 Remove a host pool.
 
+### [Remove-AzWvdMsixPackage](Remove-AzWvdMsixPackage.md)
+Remove an MSIX Package.
+
 ### [Remove-AzWvdRegistrationInfo](Remove-AzWvdRegistrationInfo.md)
 Remove the Windows virtual desktop registration info.
+
+### [Remove-AzWvdScalingPlan](Remove-AzWvdScalingPlan.md)
+Remove a scaling plan.
 
 ### [Remove-AzWvdSessionHost](Remove-AzWvdSessionHost.md)
 Remove a SessionHost.
@@ -97,6 +121,12 @@ Update a desktop.
 
 ### [Update-AzWvdHostPool](Update-AzWvdHostPool.md)
 Update a host pool.
+
+### [Update-AzWvdMsixPackage](Update-AzWvdMsixPackage.md)
+Update an  MSIX Package.
+
+### [Update-AzWvdScalingPlan](Update-AzWvdScalingPlan.md)
+Update a scaling plan.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
 Update a session host.

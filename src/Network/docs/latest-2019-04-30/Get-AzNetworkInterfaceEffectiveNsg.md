@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworkinterfaceeffectivensg
+online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterfaceeffectivensg
 schema: 2.0.0
 ---
 

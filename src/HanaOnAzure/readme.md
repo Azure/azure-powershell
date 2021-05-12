@@ -47,9 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 5df8962
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/hanaonazure/resource-manager/readme.md
+input-file:
+  - $(repo)/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -120,9 +122,9 @@ directive:
       format-table:
         properties:
           - Name
-          - ProviderType
+          - Type
         labels:
-          ProviderType: Provider Type
+          Type: Provider Type
   - where:
       model-name: SapMonitor
     set:
