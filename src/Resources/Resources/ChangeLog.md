@@ -24,6 +24,7 @@
 * Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
 * Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
 * Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
+* Changed `MainTemplate` to be shown by the default formatter for Template Spec Versions
 
 ## Version 3.5.0
 * Added parameter `ObjectType` for `New-AzRoleAssignment`
