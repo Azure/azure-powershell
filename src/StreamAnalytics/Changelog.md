@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2017-04-01-preview
+* Added StreamAnalytics Cluster support
+## Version 1.1.0
+* Added upcoming breaking change warning message to all cmdlets because of upcoming changes on parameters.
 
-## Version 0.1.0
-* First preview release for module Az.StreamAnalytics
+## Version 1.0.1
+* Update references in .psd1 to use relative path
 
+## Version 1.0.0
+* General availability of `Az.StreamAnalytics` module
