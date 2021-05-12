@@ -306,6 +306,28 @@ directive:
       parameter-name: Property
     set:
       parameter-name: AppSetting
+
+  - where:
+      verb: New|Update
+      subject: $
+      parameter-name: TemplatePropertyTemplateRepositoryUrl
+    set:
+      parameter-name: TemplateRepositoryUrl
+ 
+  - where:
+      verb: New|Update
+      subject: $
+      parameter-name: TemplatePropertyRepositoryName
+    set:
+      parameter-name: ForkRepositoryName
+
+  - where:
+      verb: New|Update
+      subject: $
+      parameter-name: TemplateProperty(.*)
+    set:
+      parameter-name: ForkRepository$1
+
   # Hide New/Updaete-AzStaticWebApp for remove no-require sku parameters.
   - where:
       verb: New

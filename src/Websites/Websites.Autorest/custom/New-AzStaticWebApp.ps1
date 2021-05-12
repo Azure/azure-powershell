@@ -172,72 +172,11 @@ param(
     # Skip Github Action workflow generation.
     ${SkipGithubActionWorkflowGeneration},
 
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability[]]
-    # # Capabilities of the SKU, e.g., is traffic manager enabled
-    # # To construct, see NOTES section for SKUCAPABILITY properties and create a hash table.
-    # ${SkuCapability},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.Int32]
-    # # Default number of workers for this App Service plan SKU.
-    # ${SkuCapacityDefault},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.Int32]
-    # # Maximum number of Elastic workers for this App Service plan SKU.
-    # ${SkuCapacityElasticMaximum},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.Int32]
-    # # Maximum number of workers for this App Service plan SKU.
-    # ${SkuCapacityMaximum},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.Int32]
-    # # Minimum number of workers for this App Service plan SKU.
-    # ${SkuCapacityMinimum},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.String]
-    # # Available scale configurations for an App Service plan.
-    # ${SkuCapacityScaleType},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.String]
-    # # Family code of the resource SKU.
-    # ${SkuFamily},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.String[]]
-    # # Locations of the SKU.
-    # ${SkuLocation},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Name of the resource SKU.
     ${SkuName},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.String]
-    # # Size specifier of the resource SKU.
-    # ${SkuSize},
-
-    # [Parameter()]
-    # [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-    # [System.String]
-    # # Service tier of the resource SKU.
-    # ${SkuTier},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy])]
@@ -257,7 +196,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Description of the newly generated repository.
-    ${TemplatePropertyDescription},
+    ${ForkRepositoryDescription},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
@@ -265,26 +204,26 @@ param(
     # Whether or not the newly generated repository is a private repository.
     # Defaults to false (i.e.
     # public).
-    ${TemplatePropertyIsPrivate},
+    ${ForkRepositoryIsPrivate},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Owner of the newly generated repository.
-    ${TemplatePropertyOwner},
+    ${ForkRepositoryOwner},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # Name of the newly generated repository.
-    ${TemplatePropertyRepositoryName},
+    ${ForkRepositoryName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
     [System.String]
     # URL of the template repository.
     # The newly generated repository will be based on this one.
-    ${TemplatePropertyTemplateRepositoryUrl},
+    ${TemplateRepositoryUrl},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

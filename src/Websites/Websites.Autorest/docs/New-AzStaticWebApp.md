@@ -16,12 +16,12 @@ Description for Creates a new static site in an existing resource group, or upda
 New-AzStaticWebApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-AllowConfigFileUpdate] [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
  [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>] [-Capacity <Int32>]
- [-GithubActionSecretNameOverride <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>] [-OutputLocation <String>]
- [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-SkuName <String>] [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>]
- [-TemplatePropertyDescription <String>] [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>]
- [-TemplatePropertyRepositoryName <String>] [-TemplatePropertyTemplateRepositoryUrl <String>]
+ [-ForkRepositoryDescription <String>] [-ForkRepositoryIsPrivate] [-ForkRepositoryName <String>]
+ [-ForkRepositoryOwner <String>] [-GithubActionSecretNameOverride <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Kind <String>]
+ [-OutputLocation <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>]
+ [-SkipGithubActionWorkflowGeneration] [-SkuName <String>]
+ [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-Tag <Hashtable>] [-TemplateRepositoryUrl <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Description for Creates a new static site in an existing resource group, or upda
 
 ### Example 1: Create a new static site in an existing resource group, or updates an existing static site
 ```powershell
-PS C:\>New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+PS C:\> New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name 'staticweb-45asde' -Location 'Central US' -RepositoryUrl 'https://github.com/LucasYao93/blazor-starter' -RepositoryToken 'githubAccessToken' -Branch 'branch02' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
 
 Kind Location   Name             Type
 ---- --------   ----             ----
@@ -40,6 +40,17 @@ Kind Location   Name             Type
 ```
 
 This command creates a new static site in an existing resource group, or updates an existing static site.
+
+### Example 2: Create a new static site in an existing resource group through specified template repository
+```powershell
+PS C:\> New-AzStaticWebApp -ResourceGroupName 'azure-rg-test' -Name staticweb-pwsh01 -Location "Central US" -RepositoryToken  'xxxxxxxxxxxxxxxxx' -TemplateRepositoryUrl 'https://github.com/staticwebdev/blazor-starter' -ForkRepositoryDescription "Test template repository function of the azure static web." -ForkRepositoryName "test-blazor-starter" -ForkRepositoryOwner 'LucasYao93' -Branch 'main' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'Standard'
+
+Kind Location   Name             Type
+---- --------   ----             ----
+     Central US staticweb-pwsh01 Microsoft.Web/staticSites
+```
+
+This command creates a new static site in an existing resource group, or updates an existing static site through specified template repository.
 
 ## PARAMETERS
 
@@ -185,6 +196,68 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryDescription
+Description of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryIsPrivate
+Whether or not the newly generated repository is a private repository.
+Defaults to false (i.e.
+public).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryName
+Name of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryOwner
+Owner of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -376,11 +449,6 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-[Parameter()]
-[Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-[System.String[]]
-# Locations of the SKU.
-${SkuLocation},
 Name of the resource SKU.
 
 ```yaml
@@ -396,11 +464,6 @@ Accept wildcard characters: False
 ```
 
 ### -StagingEnvironmentPolicy
-[Parameter()]
-[Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Body')]
-[System.String]
-# Service tier of the resource SKU.
-${SkuTier},
 State indicating whether staging environments are allowed or not allowed for a static web app.
 
 ```yaml
@@ -447,69 +510,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TemplatePropertyDescription
-Description of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyIsPrivate
-Whether or not the newly generated repository is a private repository.
-Defaults to false (i.e.
-public).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyOwner
-Owner of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyRepositoryName
-Name of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyTemplateRepositoryUrl
+### -TemplateRepositoryUrl
 URL of the template repository.
 The newly generated repository will be based on this one.
 

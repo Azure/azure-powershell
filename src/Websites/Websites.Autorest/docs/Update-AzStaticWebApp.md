@@ -16,25 +16,23 @@ Description for Creates a new static site in an existing resource group, or upda
 ```
 Update-AzStaticWebApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllowConfigFileUpdate] [-ApiBuildCommand <String>] [-ApiLocation <String>] [-AppArtifactLocation <String>]
- [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>]
+ [-AppBuildCommand <String>] [-AppLocation <String>] [-Branch <String>] [-ForkRepositoryDescription <String>]
+ [-ForkRepositoryIsPrivate] [-ForkRepositoryName <String>] [-ForkRepositoryOwner <String>]
  [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
  [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-TemplatePropertyDescription <String>]
- [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
- [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-TemplateRepositoryUrl <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStaticWebApp -InputObject <IWebsitesIdentity> [-AllowConfigFileUpdate] [-ApiBuildCommand <String>]
  [-ApiLocation <String>] [-AppArtifactLocation <String>] [-AppBuildCommand <String>] [-AppLocation <String>]
- [-Branch <String>] [-GithubActionSecretNameOverride <String>] [-Kind <String>] [-OutputLocation <String>]
- [-RepositoryToken <String>] [-RepositoryUrl <String>] [-SkipGithubActionWorkflowGeneration]
- [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>] [-TemplatePropertyDescription <String>]
- [-TemplatePropertyIsPrivate] [-TemplatePropertyOwner <String>] [-TemplatePropertyRepositoryName <String>]
- [-TemplatePropertyTemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Branch <String>] [-ForkRepositoryDescription <String>] [-ForkRepositoryIsPrivate]
+ [-ForkRepositoryName <String>] [-ForkRepositoryOwner <String>] [-GithubActionSecretNameOverride <String>]
+ [-Kind <String>] [-OutputLocation <String>] [-RepositoryToken <String>] [-RepositoryUrl <String>]
+ [-SkipGithubActionWorkflowGeneration] [-StagingEnvironmentPolicy <StagingEnvironmentPolicy>]
+ [-TemplateRepositoryUrl <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -178,6 +176,68 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryDescription
+Description of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryIsPrivate
+Whether or not the newly generated repository is a private repository.
+Defaults to false (i.e.
+public).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryName
+Name of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForkRepositoryOwner
+Owner of the newly generated repository.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -355,69 +415,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TemplatePropertyDescription
-Description of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyIsPrivate
-Whether or not the newly generated repository is a private repository.
-Defaults to false (i.e.
-public).
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyOwner
-Owner of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyRepositoryName
-Name of the newly generated repository.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TemplatePropertyTemplateRepositoryUrl
+### -TemplateRepositoryUrl
 URL of the template repository.
 The newly generated repository will be based on this one.
 
