@@ -166,8 +166,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the target replica set size for the managed service")]
         public SwitchParameter HasPersistedState { get; set; }
 
-        public SwitchParameter DropSourceReplicaOnMove { get; set; }
-
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
             HelpMessage = "Specify the replica restart wait duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,
