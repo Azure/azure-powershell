@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RecoveryServices.SiteRecovery\RecoveryServices.SiteRecovery.csproj" />
     <ProjectReference Include="..\RecoveryServices\RecoveryServices.csproj" />
+    <ProjectReference Include="..\..\Compute\Compute.Helpers\Compute.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>

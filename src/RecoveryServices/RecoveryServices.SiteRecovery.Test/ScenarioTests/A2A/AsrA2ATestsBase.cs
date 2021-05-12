@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using InternalNetwork = Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Commands.Compute.Helpers.Storage;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Test.HttpRecorder;

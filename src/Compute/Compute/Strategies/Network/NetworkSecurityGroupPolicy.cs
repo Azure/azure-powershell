@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Linq;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
+using Microsoft.Azure.Commands.Compute.Helpers.Network;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
