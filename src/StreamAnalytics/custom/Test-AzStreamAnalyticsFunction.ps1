@@ -106,22 +106,6 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    # [Parameter(ParameterSetName='TestViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction]
-    # # Identity Parameter
-    # # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    # ${InputObject},
-
-    # [Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
-    # [Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction]
-    # # A function object, containing all information associated with the named function.
-    # # All functions are contained under a streaming job.
-    # # To construct, see NOTES section for FUNCTION properties and create a hash table.
-    # ${Function},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -175,7 +159,6 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
 )
-
 
   process {
 

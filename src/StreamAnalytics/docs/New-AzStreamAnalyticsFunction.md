@@ -36,7 +36,6 @@ function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910
 This command creates a function from the file Function_JavascriptUdf.json.
 
 (below is an example for "Function_JavascriptUdf.json")
-```json
 {
   "properties": {
     "type": "Scalar",
@@ -61,7 +60,6 @@ This command creates a function from the file Function_JavascriptUdf.json.
     }
   }
 }
-```
 
 ### Example 2: Create a Stream Analytics function
 ```powershell
@@ -75,7 +73,6 @@ function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910
 This command creates a function from the file MachineLearningServices.json.
 
 (below is an example for "MachineLearningServices.json")
-```json
 {
   "properties": {
     "type": "Scalar",
@@ -113,7 +110,6 @@ This command creates a function from the file MachineLearningServices.json.
     }
   }
 }
-```
 
 ## PARAMETERS
 

@@ -53,14 +53,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-[Parameter(ParameterSetName='Test', Mandatory, ValueFromPipeline)]
-[Parameter(ParameterSetName='TestViaIdentity', Mandatory, ValueFromPipeline)]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Body')]
-[Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction]
-# A function object, containing all information associated with the named function.
-# All functions are contained under a streaming job.
-# To construct, see NOTES section for FUNCTION properties and create a hash table.
-${Function},
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
