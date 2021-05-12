@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added 'Invoke-AzVmInstallPatch' to support patch installation in VMs using PowerShell.
+* Update Compute module to use the latest .Net SDK version 46.0.0. 
 
 ## Version 4.12.0
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
