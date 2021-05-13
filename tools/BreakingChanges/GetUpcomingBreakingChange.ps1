@@ -1,4 +1,11 @@
-function GetAttributeSpecificMessage
+# To get upcoming breaking change info, you need to build the debug version of az first
+# ```powershell
+# dotnet msbuild build.proj /t:build /p:configuration=debug
+# Import-Module tools/BreakingChanges/GetUpcomingBreakingChange.ps1
+# Export-BreakingChangeMsg, this will create UpcommingBreakingChanges.md under current path
+# ```
+
+function Get-AttributeSpecificMessage
 {
     [CmdletBinding()]
     param (
@@ -10,12 +17,15 @@ function GetAttributeSpecificMessage
     {
         return $attribute.ChangeDescription
     }
-    $Method = $attribute.GetType().GetMethod('GetAttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
+    # GenericBreakingChangeAttribute is the base class of the BreakingChangeAttribute classes and have a protected method named as Get-AttributeSpecificMessage.
+    # We can use this to get the specific message to show on document.
+    $Method = $attribute.GetType().GetMethod('Get-AttributeSpecificMessage', [System.Reflection.BindingFlags]::NonPublic -bor [System.Reflection.BindingFlags]::Instance)
 
     return $Method.Invoke($attribute, @())
 }
 
-function DetectParameterBreakingChange
+# Get the breaking change info of the cmdlet parameter.
+function Find-ParameterBreakingChange
 {
     [CmdletBinding()]
     param (
@@ -28,14 +38,15 @@ function DetectParameterBreakingChange
     {
         if ($attribute.TypeId.BaseType.Name -eq 'GenericBreakingChangeAttribute')
         {
-            return GetAttributeSpecificMessage($attribute)
+            return Get-AttributeSpecificMessage($attribute)
         }
     }
 
     return $null
 }
 
-function DetectCmdletBreakingChange
+# Get the breaking change info of the cmdlet.
+function Find-CmdletBreakingChange
 {
     [CmdletBinding()]
     param (
@@ -49,14 +60,14 @@ function DetectCmdletBreakingChange
     {
         if ($customAttribute.TypeId.BaseType.Name -eq 'GenericBreakingChangeAttribute')
         {
-            $tmp = GetAttributeSpecificMessage($customAttribute)
+            $tmp = Get-AttributeSpecificMessage($customAttribute)
             $result.Add($customAttribute.TypeId.Name, $tmp)
         }
     }
     $ParameterBreakingChanges = @{}
     foreach ($parameterInfo in $CmdletInfo.Parameters.values)
     {
-        $ParameterBreakingChange = DetectParameterBreakingChange($parameterInfo)
+        $ParameterBreakingChange = Find-ParameterBreakingChange($parameterInfo)
         if ($ParameterBreakingChange -ne $null)
         {
             $ParameterBreakingChanges.Add($parameterInfo.Name, $ParameterBreakingChange)
@@ -70,6 +81,7 @@ function DetectCmdletBreakingChange
     return $Result
 }
 
+# Get the upcoming breaking change document of the module.
 function Get-ModuleBreakingChangeMsg
 {
     [CmdletBinding()]
@@ -84,7 +96,7 @@ function Get-ModuleBreakingChangeMsg
     $Result = @{}
     foreach ($cmdletInfo in $ModuleInfo.ExportedCmdlets.Values)
     {
-        $cmdletBreakingChangeInfo = DetectCmdletBreakingChange($cmdletInfo)
+        $cmdletBreakingChangeInfo = Find-CmdletBreakingChange($cmdletInfo)
         if ($cmdletBreakingChangeInfo.Count -ne 0)
         {
             $Result.Add($cmdletInfo.Name, $cmdletBreakingChangeInfo)
