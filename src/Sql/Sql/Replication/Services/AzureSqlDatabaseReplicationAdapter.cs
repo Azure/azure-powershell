@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.CopyLocation = database.Location;
             model.CreationDate = database.CreationDate.Value;
             model.LicenseType = database.LicenseType;
-            model.RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
+            model.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.CurrentBackupStorageRedundancy);
 
             return model;
         }
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
                 SecondaryType = model.SecondaryType,
                 HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
             });
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
             model.AllowConnections = allowConnections;
-            model.Location = resp.Location;
+            model.Location = GetServerLocation(resourceGroupName, serverName);
             model.PartnerLocation = resp.Properties.PartnerLocation;
             model.PercentComplete = resp.Properties.PercentComplete;
             model.ReplicationState = resp.Properties.ReplicationState;
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.ServerName = serverName;
             model.DatabaseName = databaseName;
             model.AllowConnections = allowConnections;
-            model.Location = resp.Location;
+            model.Location = GetServerLocation(resourceGroupName, serverName);
             model.PartnerLocation = resp.PartnerLocation;
             model.PercentComplete = resp.PercentComplete.ToString();
             model.ReplicationState = resp.ReplicationState;

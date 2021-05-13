@@ -253,8 +253,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             var policy = new Management.Sql.Models.ServerSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
-                    ? SecurityAlertPolicyState.Enabled
-                    : SecurityAlertPolicyState.Disabled,
+                    ? SecurityAlertsPolicyState.Enabled
+                    : SecurityAlertsPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),
                 EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
                 EmailAccountAdmins = model.EmailAdmins,
@@ -285,15 +285,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             var policy = new Management.Sql.Models.ManagedServerSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
-                    ? SecurityAlertPolicyState.Enabled
-                    : SecurityAlertPolicyState.Disabled,
+                    ? SecurityAlertsPolicyState.Enabled
+                    : SecurityAlertsPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),
                 EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
                 EmailAccountAdmins = model.EmailAdmins,
                 RetentionDays = Convert.ToInt32(model.RetentionInDays),
             };
 
-            if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
+            if (policy.State == SecurityAlertsPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
             {
                 // For new TD policy, make sure EmailAccountAdmins is true
                 policy.EmailAccountAdmins = true;

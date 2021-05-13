@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ledger property for the database
+        /// </summary>
+        public bool? EnableLedger { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -263,6 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             RequestedBackupStorageRedundancy = null;
             SecondaryType = null;
             MaintenanceConfigurationId = null;
+            EnableLedger = false;
         }
 
         /// <summary>
@@ -314,10 +320,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
             HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
-            CurrentBackupStorageRedundancy = database.CurrentBackupStorageRedundancy;
-            RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
+            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.CurrentBackupStorageRedundancy);
             SecondaryType = database.SecondaryType;
             MaintenanceConfigurationId = database.MaintenanceConfigurationId;
+            EnableLedger = database.IsLedgerOn;
         }
 
         /// <summary>
