@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -30,11 +30,11 @@ function Test-ListDatabaseRestorePoints
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 
 		$databaseName = Get-DatabaseName
 		$standarddb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition Standard -RequestedServiceObjectiveName S0
+			-Edition Standard -RequestedServiceObjectiveName S0 -Force
 
 		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
@@ -79,7 +79,7 @@ function Test-RestoreGeoBackup
 function Test-RestoreDeletedDatabaseBackup
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0"
 	$rg = Create-ResourceGroupForTest
 	$restoredDbName = "powershell_db_deleted"
@@ -136,7 +136,7 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "West Central US"
+	$location = "southeast asia"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
 	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
@@ -147,10 +147,10 @@ function Test-RestoreLongTermRetentionBackup
 		-ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
 
-function Test-LongTermRetentionV2Policy($location = "westcentralus")
+function Test-LongTermRetentionV2Policy($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -183,10 +183,10 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 	}
 }
 
-function Test-LongTermRetentionV2Backup($location = "westcentralus")
+function Test-LongTermRetentionV2Backup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -210,10 +210,10 @@ function Test-LongTermRetentionV2Backup($location = "westcentralus")
 	}
 }
 
-function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "westcentralus")
+function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -399,7 +399,7 @@ function Test-NewDatabaseRestorePoint
 function Test-RemoveDatabaseRestorePoint
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest
@@ -411,7 +411,7 @@ function Test-RemoveDatabaseRestorePoint
 		# Create data warehouse database with all parameters.
 		$databaseName = Get-DatabaseName
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100 -Force
 			
 		New-AzSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
@@ -494,4 +494,61 @@ function Test-ShortTermRetentionPolicy
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+function Test-CopyLongTermRetentionBackup
+{
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseName -ResourceGroupName $resourceGroup
+	$sourceResourceGroupName = "testrg"
+	$targetResourceGroupName = "testrg"
+	$sourceLocationName = "eastasia"
+	$sourceServerName = "ayang-eas"
+	$targetLocationName = "southeastasia"
+	$targetServerName= "ayang-stage-seas"
+	$targetDatabaseName = "tgt-ltr1"
+
+	# Retrieve a backup to copy
+	$sourceBackups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName 
+	Assert-AreNotEqual $sourceBackups.Count 0
+	$sourceBackup = $sourceBackups[0]
+
+	# Copy backup
+	$copyBackupResults = Copy-AzSqlDatabaseLongTermRetentionBackup -Location $sourceLocationName -ServerName $sourceBackup.ServerName -DatabaseName $sourceBackup.DatabaseName -BackupName $sourceBackup.BackupName -ResourceGroupName $sourceResourceGroupName -TargetDatabaseName $targetDatabaseName -TargetServerName $TargetServerName -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName $targetResourceGroupName
+	$targetBackup = Get-AzSqlDatabaseLongTermRetentionBackup -Location $copyBackupResults.TargetLocation -ResourceGroup $copyBackupResults.TargetResourceGroupName -ServerName $copyBackupResults.TargetServerName -DatabaseName $copyBackupResults.TargetDatabaseName -BackupName $copyBackupResults.TargetBackupName
+	Assert-AreEqual $targetDatabaseName $targetBackup.DatabaseName 
+	Assert-AreEqual $targetServerName $targetBackup.ServerName
+}
+
+function Test-UpdateLongTermRetentionBackup
+{
+	# MANUAL INSTRUCTIONS
+	# Create a server and database and fill in the appropriate information below
+	# Set the weekly retention on the database so that the first backup gets picked up, for example:
+	# Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseName -WeeklyRetention P1W
+	# Wait about 18 hours until it gets properly copied and you see the backup when run get backups, for example:
+	# Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaeName $databaseName -ResourceGroupName $resourceGroup
+	$resourceGroupName = "testrg"
+	$locationName = "eastasia"
+	$serverName = "ayang-eas"
+	$databaseName = "ltr1"
+
+	# Fetch a backup
+	$backups = Get-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName
+	$backup = $backups[0]
+
+	# Change backup storage redundancy of database, so LTR backup's backup storage redundancy can be changed 
+	# LTR backup's backup storage redundancy must match database's backup storage redundancy
+	# Use a backup storage redundancy different from the CurrentBackupStorageRedundancy value in Get-AzSqlDatabase
+	Set-AzSqlDatabase -DatabaseName $databaseName -ServerName $serverName -ResourceGroupName $resourceGroupName -BackupStorageRedundancy Local
+
+	# Change backup's backup storage redundancy 
+	$backupAfterSet = Update-AzSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $backup.ServerName -DatabaseName $backup.DatabaseName -BackupName $backup.BackupName -ResourceGroupName $backup.ResourceGroupName -BackupStorageRedundancy Local
+
+	# Update-AzSqlDatabaseLongTermRetentionBackup returns after target BSR is set
+	Assert-AreEqual "Local" $backupAfterSet.BackupStorageRedundancy 
 }
