@@ -15,9 +15,10 @@ Create a new Kubernetes Source Control Configuration.
 ```
 New-AzKubernetesConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
  -RepositoryUrl <String> [-ClusterType <String>] [-SubscriptionId <String>] [-ClusterScoped]
- [-EnableHelmOperator] [-HelmOperatorChartValues <String>] [-HelmOperatorChartVersion <String>]
- [-OperatorInstanceName <String>] [-OperatorNamespace <String>] [-OperatorParameters <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValues <String>]
+ [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
+ [-OperatorParameters <String>] [-SshKnownHosts <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ k8sconfig-t01 12/21/2020 5:26:17 AM                                             
 
 This command creates a configuration for kubernetes cluster.
 
-### Example 1: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
+### Example 2: Create a configuration for kubernetes cluster with specify paramter OperatorNamespace
 ```powershell
 PS C:\> New-AzKubernetesConfiguration -ResourceGroupName azure-rg-test -ClusterName k8scluster-t01 -Name k8sconfig-t02 -RepositoryUrl http://github.com/xxxx -OperatorNamespace namespace-t01
 
@@ -85,6 +86,21 @@ The Kubernetes cluster resource name - either managedClusters (for AKS clusters)
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigurationProtectedSetting
+Name-value pairs of protected configuration settings for the configuration
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -240,6 +256,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SshKnownHosts
+If passed set the scope of the Configuration to Cluster (default is nameSpace).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
