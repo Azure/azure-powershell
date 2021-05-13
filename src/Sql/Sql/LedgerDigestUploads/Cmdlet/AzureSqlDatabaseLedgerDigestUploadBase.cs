@@ -12,64 +12,111 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services;
 using Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
 {
-    public abstract class AzureSqlDatabaseLedgerDigestUploadBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel>, AzureSqlDatabaseLedgerDigestUploadAdapter>
+    public class AzureSqlDatabaseLedgerDigestUploadBase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseLedgerDigestUploadModel, AzureSqlDatabaseLedgerDigestUploadAdapter>
     {
+        /// <summary>
+        /// Parameter set name for named resources
+        /// </summary>
+        private const string DatabaseSet = "DatabaseParameterSet";
+
+        /// <summary>
+        /// Parameter set name for database object
+        /// </summary>
+        private const string InputObjectSet = "InputObjectParameterSet";
+
+        /// <summary>
+        /// Parameter set name for resource ID
+        /// </summary>
+        private const string ResourceIdSet = "ResourceIdParameterSet";
+
+        [Parameter(
+            ParameterSetName = DatabaseSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the Azure Sql server to use
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(
+            ParameterSetName = DatabaseSet,
+            Mandatory = true,
             Position = 1,
-            HelpMessage = "The Azure Sql Server name.")]
+            HelpMessage = "SQL server name.")]
         [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
+        public override string ServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(
+            ParameterSetName = DatabaseSet,
+            Mandatory = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database.")]
+            HelpMessage = "SQL Database name.")]
         [ResourceNameCompleter("Microsoft.Sql/servers/databases", "ResourceGroupName", "ServerName")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public override string DatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the ledger digest upload configuration for
         /// </summary>
         [Parameter(
-            ParameterSetName = "DatabaseObjectParameterSet",
+            ParameterSetName = InputObjectSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The database object to manage its ledger digest upload configuration.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("AzureSqlDatabase")]
-        public AzureSqlDatabaseModel AzureSqlDatabaseObject { get; set; }
+            HelpMessage = "The database object to disable digest uploads for.")]
+        [ValidateNotNull]
+        public AzureSqlDatabaseModel InputObject { get; set; }
 
         /// <summary>
-        /// Gets or sets the Database Resource ID to get backups for
+        /// Gets or sets the Database Resource ID to get the ledger digest upload configuration for
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(
+            ParameterSetName = ResourceIdSet,
+            Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The database Resource ID to get backups for.")]
+            HelpMessage = "The resource id of the database to disable digest uploads for.")]
+        [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        protected override AzureSqlDatabaseLedgerDigestUploadModel GetEntity()
+        {
+            if (ParameterSetName == ResourceIdSet)
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                DatabaseName = identifier.ResourceName;
+                ResourceGroupName = identifier.ResourceGroupName;
+                ServerName = identifier.ParentResource;
+            }
+            else if (ParameterSetName == InputObjectSet)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+            }
+
+            AzureSqlDatabaseLedgerDigestUploadModel model = ModelAdapter.GetLedgerDigestUpload(ResourceGroupName, ServerName, DatabaseName);
+
+            return model;
+        }
 
         /// <summary>
         /// Intializes the model adapter
