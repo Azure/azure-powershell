@@ -146,12 +146,15 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
-### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication.
+### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true PS
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
 
-PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
-AADDS
+PS C:\> $account.AzureFilesIdentityBasedAuth
+
+DirectoryServiceOptions ActiveDirectoryProperties                                                      DefaultSharePermission      
+----------------------- -------------------------                                                      ----------------------      
+AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSActiveDirectoryProperties StorageFileDataSmbShareOwner
 ```
 
 The command update a Storage account by enable Azure Files AAD DS Authentication.
@@ -302,6 +305,16 @@ $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $sto
 
 This command first update the user assigned identity to access keyvault, then update the keyvault for encryption.
 To update both both Keyvault and the user assigned identity, we need update with the above 2 steps. 
+
+### Example 18: Update a Storage account with AllowCrossTenantReplication
+```powershell
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
+
+PS C:\> $account.AllowCrossTenantReplication
+False
+```
+
+This command updates a Storage account by set AllowCrossTenantReplication to false, then show the updated account related properties.
 
 ## PARAMETERS
 
