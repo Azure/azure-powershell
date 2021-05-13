@@ -102,27 +102,6 @@
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
-                    },
-                    {
-                        "displayVersion": "10",
-                        "runtimeVersion": "Node|10",
-                        "supportedFunctionsExtensionVersions": [
-                            "~2",
-                            "~3"
-                        ],
-                        "isDefault": true,
-                        "minorVersions": [],
-                        "applicationInsights": true,
-                        "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "node"
-                        },
-                        "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
-                            "linuxFxVersion": "Node|10"
-                        },
-                        "isPreview": false,
-                        "isDeprecated": false,
-                        "isHidden": false
                     }
                 ],
                 "frameworks": [],
@@ -138,27 +117,6 @@
                 "display": "Python",
                 "dependency": null,
                 "majorVersions": [
-                    {
-                        "displayVersion": "3.6",
-                        "runtimeVersion": "Python|3.6",
-                        "supportedFunctionsExtensionVersions": [
-                            "~2",
-                            "~3"
-                        ],
-                        "isDefault": false,
-                        "minorVersions": [],
-                        "applicationInsights": true,
-                        "appSettingsDictionary": {
-                            "FUNCTIONS_WORKER_RUNTIME": "python"
-                        },
-                        "siteConfigPropertiesDictionary": {
-                            "use32BitWorkerProcess": false,
-                            "linuxFxVersion": "Python|3.6"
-                        },
-                        "isPreview": false,
-                        "isDeprecated": false,
-                        "isHidden": false
-                    },
                     {
                         "displayVersion": "3.7",
                         "runtimeVersion": "Python|3.7",
