@@ -29,6 +29,7 @@ Please follow instructions here to add/remove cluster certificates: https://docs
     - ServiceDnsName
     - InstanceCloseDelayDuration
     - DropSourceReplicaOnMove
+* Fix Update-AzServiceFabricReliability to update correctly the vm instance count of the primary node type on the cluster resource.
 
 ## Version 2.4.0
 * Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
