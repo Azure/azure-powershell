@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
             };
 
             if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
