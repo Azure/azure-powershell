@@ -35,8 +35,11 @@
     - `Update-AzVirtualNetworkGatewayNatRule`
     - `Get-AzVirtualNetworkGatewayNatRule`
     - `Remove-AzVirtualNetworkGatewayNatRule`
-* Added cmdlet for Sync on VirtualNetworkPeering
+* Added a new cmdlet for Sync on VirtualNetworkPeering
     - `Sync-AzVirtualNetworkPeering`
+* Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
+    - `Add-AzVirtualNetworkPeering`
+    - `Get-AzVirtualNetworkPeering`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
