@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> GetEntity()
+        protected override AzureSqlDatabaseLedgerDigestUploadModel GetEntity()
         {
-            if (AzureSqlDatabaseObject != null)
+            if (InputObject != null)
             {
-                ServerName = AzureSqlDatabaseObject.ServerName;
-                DatabaseName = AzureSqlDatabaseObject.DatabaseName;
-                ResourceGroupName = AzureSqlDatabaseObject.ResourceGroupName;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
@@ -46,15 +46,10 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
                 ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
             }
 
-            ICollection<AzureSqlDatabaseLedgerDigestUploadModel> results = new List<AzureSqlDatabaseLedgerDigestUploadModel>()
-            {
-                ModelAdapter.GetLedgerDigestUpload(
+            return ModelAdapter.GetLedgerDigestUpload(
                     this.ResourceGroupName,
                     this.ServerName,
-                    this.DatabaseName)
-            };
-
-            return results;
+                    this.DatabaseName);
         }
 
         /// <summary>
@@ -62,8 +57,8 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> ApplyUserInputToModel(
-            IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> model)
+        protected override AzureSqlDatabaseLedgerDigestUploadModel ApplyUserInputToModel(
+            AzureSqlDatabaseLedgerDigestUploadModel model)
         {
             return model;
         }
@@ -73,8 +68,8 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> PersistChanges(
-            IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> entity)
+        protected override AzureSqlDatabaseLedgerDigestUploadModel PersistChanges(
+            AzureSqlDatabaseLedgerDigestUploadModel entity)
         {
             return entity;
         }

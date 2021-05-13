@@ -13,18 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Model;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
 {
