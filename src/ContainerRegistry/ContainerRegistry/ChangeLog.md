@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Swapped the position of username and password in PSImportSourceCredentials [#14971]
+* Fixed username and password issue in `Import-AzContainerRegistryImage` [#14971]
 * Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session [#14849]
 
 ## Version 2.2.2
