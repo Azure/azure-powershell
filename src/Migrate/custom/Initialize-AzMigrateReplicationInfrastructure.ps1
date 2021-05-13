@@ -179,7 +179,7 @@ public static int hashForArtifact(String artifact)
 }
 "@
 
-		#Get vault name from SMS solution.
+	#Get vault name from SMS solution.
         $smsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Migration-ServerMigration"
         $VaultName = $smsSolution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
 
