@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [CmdletOutputBreakingChange(typeof(PSManagedService), DeprecatedOutputProperties = new String[] { "Properties" })]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterService", DefaultParameterSetName = ByResourceGroupAndCluster), OutputType(typeof(PSManagedService))]
     public class GetAzServiceFabricManagedClusterService : ManagedApplicationCmdletBase
     {
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         var managedServiceList = this.ReturnListByPageResponse(
                             this.SfrpMcClient.Services.ListByApplications(this.ResourceGroupName, this.ClusterName, this.ApplicationName),
                             this.SfrpMcClient.Services.ListByApplicationsNext);
-                        WriteObject(managedServiceList.Select(service => new PSManagedService(service)), true);
+                        WriteObject(managedServiceList.Select(service => PSManagedService.GetInstance(service)), true);
                         break;
                     case ByName:
                         GetByName();
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         private void GetByName()
         {
             var managedService = this.SfrpMcClient.Services.Get(this.ResourceGroupName, this.ClusterName, this.ApplicationName, this.Name);
-            WriteObject(new PSManagedService(managedService), false);
+            WriteObject(PSManagedService.GetInstance(managedService), false);
         }
 
         private void SetParametersByResourceId(string resourceId)
