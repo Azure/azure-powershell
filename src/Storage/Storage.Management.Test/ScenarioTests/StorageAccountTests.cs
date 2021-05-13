@@ -245,6 +245,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestAzureStorageAccountUserAssignedIdentity()
         {
             TestRunner.RunTestScript("Test-AzureStorageAccountUserAssignedIdentity");
-        }        
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobInventory()
+        {
+            TestRunner.RunTestScript("Test-StorageBlobInventory");
+        }
     }
 }
