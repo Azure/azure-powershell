@@ -445,54 +445,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedServiceHostName
-
-Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token". Host name for the managed service.
-
-```yaml
-Type: System.String
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: localhost
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedServicePort
-
-Obsolete. To use customized MSI endpoint, please set environment variable MSI_ENDPOINT, e.g. "http://localhost:50342/oauth2/token".Port number for the managed service.
-
-```yaml
-Type: System.Int32
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: 50342
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedServiceSecret
-
-Obsolete. To use customized MSI secret, please set environment variable MSI_SECRET. Token for the managed service login.
-
-```yaml
-Type: System.Security.SecureString
-Parameter Sets: ManagedServiceLogin
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MaxContextPopulation
 
 Max subscription number to populate contexts after login. Default is 25. To populate all subscriptions to contexts, set to -1.
