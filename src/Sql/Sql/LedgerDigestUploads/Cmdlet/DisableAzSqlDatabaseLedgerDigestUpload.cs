@@ -30,53 +30,20 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
     public class DisableAzSqlDatabaseLedgerDigestUpload : AzureSqlDatabaseLedgerDigestUploadBase
     {
         /// <summary>
-        /// Get the entities from the service
-        /// </summary>
-        /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> GetEntity()
-        {
-            if (AzureSqlDatabaseObject != null)
-            {
-                ServerName = AzureSqlDatabaseObject.ServerName;
-                DatabaseName = AzureSqlDatabaseObject.DatabaseName;
-                ResourceGroupName = AzureSqlDatabaseObject.ResourceGroupName;
-            }
-            else if (!string.IsNullOrWhiteSpace(ResourceId))
-            {
-                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                DatabaseName = identifier.ResourceName;
-                ResourceGroupName = identifier.ResourceGroupName;
-                ServerName = identifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
-            }
-
-            ICollection<AzureSqlDatabaseLedgerDigestUploadModel> results = new List<AzureSqlDatabaseLedgerDigestUploadModel>()
-            {
-                ModelAdapter.GetLedgerDigestUpload(
-                    this.ResourceGroupName,
-                    this.ServerName,
-                    this.DatabaseName)
-            };
-
-            return results;
-        }
-
-        /// <summary>
         /// Create the model from user input
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> model)
+        protected override AzureSqlDatabaseLedgerDigestUploadModel ApplyUserInputToModel(AzureSqlDatabaseLedgerDigestUploadModel model)
         {
-            return new List<AzureSqlDatabaseLedgerDigestUploadModel>()
-            {
-                new AzureSqlDatabaseLedgerDigestUploadModel(
+            return new AzureSqlDatabaseLedgerDigestUploadModel(
                     ResourceGroupName,
                     ServerName,
                     DatabaseName,
-                    new Management.Sql.Models.LedgerDigestUploads{
+                    new Management.Sql.Models.LedgerDigestUploads
+                    {
                         DigestStorageEndpoint = null
-                    })
-            };
+                    });
         }
 
         /// <summary>
@@ -84,13 +51,11 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> PersistChanges(IEnumerable<AzureSqlDatabaseLedgerDigestUploadModel> entity)
+        protected override AzureSqlDatabaseLedgerDigestUploadModel PersistChanges(AzureSqlDatabaseLedgerDigestUploadModel entity)
         {
             if (!ShouldProcess(DatabaseName)) return null;
 
-            return new List<AzureSqlDatabaseLedgerDigestUploadModel>() {
-                ModelAdapter.SetLedgerDigestUpload(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
-            };
+            return ModelAdapter.DisableLedgerDigestUpload(this.ResourceGroupName, this.ServerName, this.DatabaseName);
         }
     }
 }

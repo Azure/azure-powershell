@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the ledger option to assign to the Azure SQL Database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The enable ledger option for the Azure Sql Database")]
+            HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
         public SwitchParameter EnableLedger { get; set; }
 
         /// <summary>
