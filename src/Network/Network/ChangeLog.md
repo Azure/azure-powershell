@@ -28,11 +28,15 @@
 * Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
+* Updated cmdlet to enable setting of FlowTimeout in VirtualNetwork.
+    - `New-AzVirtualNetwork`
 * Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
     - `New-AzVirtualNetworkGatewayNatRule`
     - `Update-AzVirtualNetworkGatewayNatRule`
     - `Get-AzVirtualNetworkGatewayNatRule`
     - `Remove-AzVirtualNetworkGatewayNatRule`
+* Added cmdlet for Sync on VirtualNetworkPeering
+    - `Sync-AzVirtualNetworkPeering`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.

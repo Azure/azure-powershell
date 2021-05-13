@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
@@ -25,10 +26,14 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
     public class SyncAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
+        private const string FieldsParameterSetName = "Fields";
+        private const string ObjectParameterSetName = "Object";
+
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The virtual network name.")]
+             HelpMessage = "The virtual network name.",
+             ParameterSetName = FieldsParameterSetName)]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
@@ -36,36 +41,45 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = FieldsParameterSetName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual network peering name.")]
+            HelpMessage = "The virtual network peering name.",
+            ParameterSetName = FieldsParameterSetName)]
         [ResourceNameCompleter("Microsoft.Network/virtualNetworks/virtualNetworkPeerings", "ResourceGroupName", "VirtualNetworkName")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network peering")]
+            HelpMessage = "The virtual network peering",
+            ParameterSetName = ObjectParameterSetName)]
         public PSVirtualNetworkPeering VirtualNetworkPeering { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            var existingPeering = this.VirtualNetworkPeering;
-            
-            if(existingPeering == null)
+
+            PSVirtualNetworkPeering existingPeering = null;
+
+            if (this.ParameterSetName == FieldsParameterSetName)
             {
                 existingPeering = this.GetVirtualNetworkPeering(this.ResourceGroupName, this.VirtualNetworkName, this.Name);
             }
-            
+            else
+            {
+                // Piping scenario
+                existingPeering = this.VirtualNetworkPeering;
+            }
+
             var updatedPeering = UpdateVirtualNetworkPeering(existingPeering);
             WriteObject(updatedPeering);
         }
@@ -74,13 +88,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (!this.IsVirtualNetworkPeeringPresent(existingPeering.ResourceGroupName, existingPeering.VirtualNetworkName, existingPeering.Name))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new AzPSArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, nameof(existingPeering.Name));
             }
 
             // Map to the sdk object
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(existingPeering);
 
-            //Get the remote VNet Id nad ge then get th etoke for the resource Id if tis in a different tenant
+            //Get the remote VNet Id and then get the token for the resource Id if tis in a different tenant
             var remoteVirtualNetworkId = existingPeering.RemoteVirtualNetwork.Id;
             Dictionary<string, List<string>> auxAuthHeader = null;
             if (remoteVirtualNetworkId != null)
@@ -94,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            // Create/Update call with 'sync' param set tot true
+            // Create/Update call with 'sync' param set to true
             this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(existingPeering.ResourceGroupName, existingPeering.VirtualNetworkName, existingPeering.Name, vnetPeeringModel, true.ToString(), auxAuthHeader).GetAwaiter().GetResult();
 
             var getVirtualNetworkPeering = this.GetVirtualNetworkPeering(existingPeering.ResourceGroupName, existingPeering.VirtualNetworkName, existingPeering.Name);

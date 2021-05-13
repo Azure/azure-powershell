@@ -153,5 +153,14 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkCRUD-FlowTimeout");
         }
+
+        // [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkPeeringSyncCRUD()
+        {
+            TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
+        }
     }
 }
