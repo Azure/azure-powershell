@@ -17,18 +17,21 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
-    static class ServiceClientExtension
+    internal static class ServiceClientExtension
     {
-        class HttpRetryTimes
+        private class HttpRetryTimes
         {
-            static public int? AZURE_PS_HTTP_MAX_RETRIES
+            private const string maxRetriesVariableName = "AZURE_PS_HTTP_MAX_RETRIES";
+            private const string maxRetriesFor429VariableName = "AZURE_PS_HTTP_MAX_RETRIES_FOR_429";
+
+            public static int? AzurePsHttpMaxRetries
             {
                 get
                 {
                     return TryGetAzurePsHttpMaxRetries();
                 }
             }
-            static public int? AZURE_PS_HTTP_MAX_RETRIES_FOR_429
+            public static int? AzurePsHttpMaxRetriesFor429
             {
                 get
                 {
@@ -36,31 +39,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 }
             }
 
-            private delegate string GetEnvironmentVariable();
-
-            static private int? TryGetValue(GetEnvironmentVariable GetEnvVariable)
+            private static int? TryGetValue(string environmentVariable)
             {
                 int? retries = null;
-                var value = GetEnvVariable();
+                var value = Environment.GetEnvironmentVariable(environmentVariable);
                 if (value != null)
                 {
-                    int _;
-                    if (int.TryParse(value, out _))
+                    int valueParsed = int.MinValue;
+                    if (int.TryParse(value, out valueParsed))
                     {
-                        retries = _;
+                        retries = valueParsed;
                     }
                 }
                 return retries;
             }
 
-            static private int? TryGetAzurePsHttpMaxRetries()
+            private static int? TryGetAzurePsHttpMaxRetries()
             {
-                return TryGetValue(() => Environment.GetEnvironmentVariable(nameof(AZURE_PS_HTTP_MAX_RETRIES)));
+                return TryGetValue(maxRetriesVariableName);
             }
 
-            static private int? TryGetAzurePsHttpMaxRetriesFor429()
+            private static int? TryGetAzurePsHttpMaxRetriesFor429()
             {
-                return TryGetValue(() => Environment.GetEnvironmentVariable(nameof(AZURE_PS_HTTP_MAX_RETRIES_FOR_429)));
+                return TryGetValue(maxRetriesFor429VariableName);
             }
         }
 
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>Whether succeed to set max retry times or not</returns>
         public static bool TrySetMaxTimesForRetryAfterHandler<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
-            int? maxretriesfor429 = HttpRetryTimes.AZURE_PS_HTTP_MAX_RETRIES_FOR_429;
+            int? maxretriesfor429 = HttpRetryTimes.AzurePsHttpMaxRetriesFor429;
             if (maxretriesfor429 != null && maxretriesfor429 >= 0)
             {
                 return serviceClient.SetMaxTimesForRetryAfterHandler(Convert.ToUInt32(maxretriesfor429));
@@ -100,17 +101,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>Whether succeed to set retry count or not</returns>
         public static bool TrySetRetryCountofRetryPolicy<TClient>(this Microsoft.Rest.ServiceClient<TClient> serviceClient) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
-            int? maxretries = ServiceClientExtension.HttpRetryTimes.AZURE_PS_HTTP_MAX_RETRIES;
+            int? maxretries = ServiceClientExtension.HttpRetryTimes.AzurePsHttpMaxRetries;
             if (maxretries != null && maxretries >= 0)
             {
-                TimeSpan DefaultBackoffDelta = new TimeSpan(0, 0, 10);
-                TimeSpan DefaultMaxBackoff = new TimeSpan(0, 0, 10);
-                TimeSpan DefaultMinBackoff = new TimeSpan(0, 0, 1);
+                TimeSpan defaultBackoffDelta = new TimeSpan(0, 0, 10);
+                TimeSpan defaultMaxBackoff = new TimeSpan(0, 0, 10);
+                TimeSpan defaultMinBackoff = new TimeSpan(0, 0, 1);
                 var retryStrategy = new ExponentialBackoffRetryStrategy(
                     (int)maxretries,
-                    DefaultMinBackoff,
-                    DefaultMaxBackoff,
-                    DefaultBackoffDelta);
+                    defaultBackoffDelta,
+                    defaultMaxBackoff,
+                    defaultMinBackoff);
                 var retryPolicy = new RetryPolicy<HttpStatusCodeErrorDetectionStrategy>(retryStrategy);
                 serviceClient.SetRetryPolicy(retryPolicy);
                 return true;
