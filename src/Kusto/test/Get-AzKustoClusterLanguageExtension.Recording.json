@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "437" ],
-        "x-ms-client-request-id": [ "579ce69c-f7e3-4c79-a0a4-c7a7eacfece5" ],
+        "x-ms-unique-id": [ "441" ],
+        "x-ms-client-request-id": [ "fbdc4781-dae4-4669-80c6-e0391953acfe" ],
         "CommandName": [ "Get-AzKustoClusterLanguageExtension" ],
         "FullCommandName": [ "Get-AzKustoClusterLanguageExtension_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,22 +21,22 @@
       "StatusCode": 200,
       "Headers": {
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5f8313e0-8f9f-413b-ac16-b2b31c19262e" ],
+        "x-ms-request-id": [ "689128f2-11ec-4117-98b9-ea351eb4d2b1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "2ae903b9-85a2-428f-a61c-fccad4e6bbc5" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T152650Z:2ae903b9-85a2-428f-a61c-fccad4e6bbc5" ],
+        "x-ms-correlation-request-id": [ "29d2489b-7b16-4ef3-81e1-78d028962992" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T160010Z:29d2489b-7b16-4ef3-81e1-78d028962992" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 15:26:50 GMT" ],
+        "Date": [ "Thu, 13 May 2021 16:00:10 GMT" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "12" ],
+        "Content-Length": [ "76" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[]}",
+      "Content": "{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]}",
       "isContentBase64": false
     }
   }
