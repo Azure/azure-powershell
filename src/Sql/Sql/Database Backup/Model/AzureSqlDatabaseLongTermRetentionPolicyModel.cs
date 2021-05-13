@@ -36,6 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the long term retention policy of the database
         /// </summary>
-        public BackupLongTermRetentionPolicy Policy { get; set; }
+        public LongTermRetentionPolicy Policy { get; set; }
     }
 }

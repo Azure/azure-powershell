@@ -161,9 +161,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
                 HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
+                IsLedgerOn = model.Database.EnableLedger,
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// <summary>
         /// Gets or sets the identity of the managed instance.
         /// </summary>
-        public Management.Sql.Models.ResourceIdentity Identity { get; set; }
+        public Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities Identity { get; set; }
 
         /// <summary>
         /// Gets or sets the Sku of the managed instance

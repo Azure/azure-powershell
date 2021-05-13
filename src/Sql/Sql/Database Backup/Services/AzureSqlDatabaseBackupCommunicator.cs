@@ -224,12 +224,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The resource group name.</param>
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
         }
 
         /// <summary>
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="policy">The Long Term Retention policy to apply.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName,
-            Management.Sql.Models.BackupLongTermRetentionPolicy policy)
+            Management.Sql.Models.LongTermRetentionPolicy policy)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
         }
 
         /// <summary>
