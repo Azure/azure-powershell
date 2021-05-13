@@ -79,9 +79,9 @@
                             "use32BitWorkerProcess": false,
                             "linuxFxVersion": "Node|14"
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     },
                     {
                         "displayVersion": "12",
@@ -153,6 +153,26 @@
                         "siteConfigPropertiesDictionary": {
                             "use32BitWorkerProcess": false,
                             "linuxFxVersion": "Python|3.8"
+                        },
+                        "isPreview": false,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "3.9",
+                        "runtimeVersion": "Python|3.9",
+                        "supportedFunctionsExtensionVersions": [
+                            "~3"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "python"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "Python|3.9"
                         },
                         "isPreview": false,
                         "isDeprecated": false,

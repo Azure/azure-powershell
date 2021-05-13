@@ -77,9 +77,9 @@
                         "siteConfigPropertiesDictionary": {
                             "use32BitWorkerProcess": true
                         },
-                        "isPreview": true,
+                        "isPreview": false,
                         "isDeprecated": false,
-                        "isHidden": true
+                        "isHidden": false
                     },
                     {
                         "displayVersion": "12",
