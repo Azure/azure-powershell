@@ -7,6 +7,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
 {
     internal static class JwkHelper
     {
+        internal static RSACryptoServiceProvider ConvertToRSAKey(JsonWebKey jwk)
+        {
+            if (jwk == null || !jwk.Kty.Equals("RSA"))
+            {
+                return null;
+            }
+            var csp = new RSACryptoServiceProvider();
+            csp.ImportParameters(new RSAParameters()
+            {
+                Exponent = jwk.E,
+                Modulus = jwk.N
+            });
+            return csp;
+        }
+
         /// <summary>
         /// Export the public key of a JsonWebKey to PEM format.
         /// </summary>
