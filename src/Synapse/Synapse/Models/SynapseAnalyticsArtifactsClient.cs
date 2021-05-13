@@ -5,7 +5,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
-using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +22,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
+        private readonly SqlScriptClient _sqlScriptClient;
+        private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -42,6 +43,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
+            _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
+            _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -264,6 +267,72 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public BigDataPoolResourceInfo GetBigDataPool(string bigDataPoolName)
         {
             return _bigDataPoolsClient.Get(bigDataPoolName);
+        }
+
+        #endregion
+
+        #region SQL Script
+
+        public SqlScriptResource CreateOrUpdateSqlScript(string sqlScriptName, string rawJsonContent)
+        {
+            SqlScriptResource sqlScript = JsonConvert.DeserializeObject<SqlScriptResource>(rawJsonContent);
+            return _sqlScriptClient.CreateOrUpdateSqlScript(sqlScriptName, sqlScript);
+        }
+
+        public SqlScriptResource GetSqlScript(string sqlScriptName)
+        {
+            return _sqlScriptClient.GetSqlScript(sqlScriptName).Value;
+        }
+
+        public Pageable<SqlScriptResource> GetSqlScriptsByWorkspace()
+        {
+            return _sqlScriptClient.GetSqlScriptsByWorkspace();
+        }
+
+        public void DeleteSqlScript(string sqlScriptName)
+        {
+            _sqlScriptClient.DeleteSqlScript(sqlScriptName);
+        }
+
+        public void RenameSqlScript(string sqlScriptName, string newName)
+        {
+            _sqlScriptClient.StartRenameSqlScript(sqlScriptName, new ArtifactRenameRequest
+            {
+                NewName = newName
+            }).Poll();
+        }
+
+        #endregion
+
+        #region Spark Job Definition
+
+        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
+        {
+            SparkJobDefinitionResource SparkJobDefinition = JsonConvert.DeserializeObject<SparkJobDefinitionResource>(rawJsonContent);
+            return _sparkJobDefinitionClient.CreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition);
+        }
+
+        public SparkJobDefinitionResource GetSparkJobDefinition(string SparkJobDefinitionName)
+        {
+            return _sparkJobDefinitionClient.GetSparkJobDefinition(SparkJobDefinitionName).Value;
+        }
+
+        public Pageable<SparkJobDefinitionResource> GetSparkJobDefinitionsByWorkspace()
+        {
+            return _sparkJobDefinitionClient.GetSparkJobDefinitionsByWorkspace();
+        }
+
+        public void DeleteSparkJobDefinition(string SparkJobDefinitionName)
+        {
+            _sparkJobDefinitionClient.DeleteSparkJobDefinition(SparkJobDefinitionName);
+        }
+
+        public void RenameSparkJobDefinition(string SparkJobDefinitionName, string newName)
+        {
+            _sparkJobDefinitionClient.StartRenameSparkJobDefinition(SparkJobDefinitionName, new ArtifactRenameRequest
+            {
+                NewName = newName
+            }).Poll();
         }
 
         #endregion

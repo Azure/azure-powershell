@@ -2,16 +2,16 @@
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.Pipeline,
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJobDefinition,
         DefaultParameterSetName = RemoveByName, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureSynapsePipeline : SynapseArtifactsCmdletBase
+    public class RemoveAzureSynapseSparkJobDefinition : SynapseArtifactsCmdletBase
     {
         private const string RemoveByName = "RemoveByName";
         private const string RemoveByObject = "RemoveByObject";
@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.PipelineName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
         [ValidateNotNullOrEmpty]
-        [Alias("PipelineName")]
+        [Alias("SparkJobDefinitionName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = RemoveByInputObject,
-            Mandatory = true, HelpMessage = HelpMessages.PipelineObject)]
+            Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionObject)]
         [ValidateNotNull]
-        public PSPipelineResource InputObject { get; set; }
+        public PSSparkJobDefinitionResource InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -56,18 +56,20 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.InputObject))
             {
-                this.WorkspaceName = this.InputObject.WorkspaceName;
-                this.Name = this.InputObject.Name;
+                var resourceIdentifier = new ResourceIdentifier(this.InputObject.Id);
+                this.WorkspaceName = resourceIdentifier.ParentResource;
+                this.WorkspaceName = this.WorkspaceName.Substring(this.WorkspaceName.LastIndexOf('/') + 1);
+                this.Name = resourceIdentifier.ResourceName;
             }
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveSynapsePipeline, Name),
-                string.Format(Resources.RemovingSynapsePipeline, this.Name, this.WorkspaceName),
+                string.Format(Resources.RemoveSynapseSparkJobDefinition, Name),
+                string.Format(Resources.RemovingSynapseSparkJobDefinition, this.Name, this.WorkspaceName),
                 Name,
                 () =>
                 {
-                    SynapseAnalyticsClient.DeletePipeline(this.Name);
+                    SynapseAnalyticsClient.DeleteSparkJobDefinition(this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);
