@@ -26,8 +26,14 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Model
         /// </summary>
         public string Endpoint { get; set; }
 
+        /// <summary>
+        /// Gets or sets the last digest block id for this location
+        /// </summary>
         public Int64 LastDigestBlockId { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether this is the current location
+        /// </summary>
         public bool IsCurrent { get; set; }
     }
 }
