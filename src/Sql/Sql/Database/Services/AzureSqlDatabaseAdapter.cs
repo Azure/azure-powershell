@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 AutoPauseDelay = model.Database.AutoPauseDelayInMinutes,
                 MinCapacity = model.Database.MinimumCapacity,
                 HighAvailabilityReplicaCount = model.Database.HighAvailabilityReplicaCount,
-                RequestedBackupStorageRedundancy = MapExternalBackupStorageRedundancyToInternal(model.Database.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = model.Database.RequestedBackupStorageRedundancy,
                 SecondaryType = model.Database.SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.Database.MaintenanceConfigurationId, _subscription.Id),
                 IsLedgerOn = model.Database.EnableLedger,
