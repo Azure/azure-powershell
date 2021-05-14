@@ -311,7 +311,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
-                EnableLedger = MyInvocation.BoundParameters.ContainsKey("EnableLedger") ? (bool?)EnableLedger.ToBool() : null,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
