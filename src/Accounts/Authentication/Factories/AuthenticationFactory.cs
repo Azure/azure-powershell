@@ -325,12 +325,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 switch (context.Account.Type)
                 {
                     case AzureAccount.AccountType.ManagedService:
-                        token = GetManagedServiceToken(
-                                context.Account,
-                                context.Environment,
-                                tenant,
-                            context.Environment.GetTokenAudience(targetEndpoint));
-                        break;
                     case AzureAccount.AccountType.User:
                     case AzureAccount.AccountType.ServicePrincipal:
                         token = Authenticate(context.Account, context.Environment, tenant, null, ShowDialog.Never, null, context.Environment.GetTokenAudience(targetEndpoint));
@@ -391,36 +385,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                         break;
                 }
             }
-        }
-
-        private IAccessToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)
-        {
-            if (environment == null)
-            {
-                throw new InvalidOperationException("Environment is required for MSI Login");
-            }
-
-            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
-            {
-                account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
-            }
-
-            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUriBackup))
-            {
-                account.SetProperty(AzureAccount.Property.MSILoginUriBackup, DefaultBackupMSILoginUri);
-            }
-
-            if (string.IsNullOrWhiteSpace(tenant))
-            {
-                tenant = environment.AdTenant ?? CommonAdTenant;
-            }
-
-            if (account.IsPropertySet(AuthenticationFactory.AppServiceManagedIdentityFlag))
-            {
-                return new ManagedServiceAppServiceAccessToken(account, environment, GetFunctionsResourceId(resourceId, environment), tenant);
-            }
-
-            return new ManagedServiceAccessToken(account, environment, GetResourceId(resourceId, environment), tenant);
         }
 
         private string GetResourceId(string resourceIdorEndpointName, IAzureEnvironment environment)

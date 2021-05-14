@@ -180,6 +180,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ByObjectWithName = "ByObjectWithName";
 
         /// <summary>
+        ///     When Object and Site ID are passed to the command.
+        /// </summary>
+        internal const string ByObjectWithSiteId = "ByObjectWithSiteId";
+
+        /// <summary>
+        ///     When Object, Site ID and FriendlyName are passed to the command.
+        /// </summary>
+        internal const string ByObjectWithSiteIdAndFriendlyName = "ByObjectWithSiteIdAndFriendlyName";
+
+        /// <summary>
         ///     When Object and Name are passed to the command Legacy.
         /// </summary>
         internal const string ByObjectWithNameLegacy = "ByObjectWithNameLegacy";
@@ -368,6 +378,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only RP Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPObjectWithVMNetworkAndRecoveryTag = "ByRPObjectWithVMNetworkAndRecoveryTag";
+        
         /// <summary>
         ///     When only RP Object is passed along with VM network ID to the command.
         /// </summary>
@@ -507,6 +518,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Remove replication protected items from RP
         /// </summary>
         internal const string RemoveReplicationProtectedItems = "RemoveReplicationProtectedItems";
+
+        /// <summary>
+        /// Mapping for Azure to VMware using RCM.
+        /// </summary>
+        internal const string ReplicateAzureToVMware = "ReplicateAzureToVMware";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure using RCM.
+        /// </summary>
+        internal const string ReplicateVMwareToAzure = "ReplicateVMwareToAzure";
+
+        /// <summary>
+        ///     Mapping for VMware to Azure using RCM with disk input.
+        /// </summary>
+        internal const string ReplicateVMwareToAzureWithDiskInput = "ReplicateVMwareToAzureWithDiskInput";
 
         /// <summary>
         ///     Set alerts to send to owners.

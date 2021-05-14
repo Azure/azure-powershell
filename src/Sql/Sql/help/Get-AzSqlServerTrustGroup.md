@@ -12,6 +12,12 @@ Gets information about Server Trust Group.
 
 ## SYNTAX
 
+### ListByLocationSet (Default)
+```
+Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GetByName
 ```
 Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
@@ -21,12 +27,6 @@ Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String> [-N
 ### ListByInstanceSet
 ```
 Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-InstanceName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListByLocationSet
-```
-Get-AzSqlServerTrustGroup [-ResourceGroupName] <String> [-Location] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ The location of the Server Trust Group to retrieve.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByLocationSet
+Parameter Sets: ListByLocationSet, GetByName
 Aliases:
 
 Required: True
@@ -136,7 +136,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByName, ListByInstanceSet, ListByLocationSet
+Parameter Sets: ListByLocationSet, GetByName, ListByInstanceSet
 Aliases:
 
 Required: True

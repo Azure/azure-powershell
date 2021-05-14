@@ -11,8 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.10.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.5.0" />
+=======
+    <PackageReference Include="Microsoft.Azure.Management.NetApp" Version="1.11.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="20.3.0" />
+>>>>>>> master
   </ItemGroup>
 
 </Project>

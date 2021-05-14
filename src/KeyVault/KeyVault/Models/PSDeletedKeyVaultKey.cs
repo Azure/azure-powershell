@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Security.KeyVault.Keys;
+
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.WebKey;
+
 using System;
 using System.Linq;
-using Azure.Security.KeyVault.Keys;
+
 using JsonWebKey = Microsoft.Azure.KeyVault.WebKey.JsonWebKey;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -38,6 +41,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, deletedKeyBundle.KeyIdentifier);
 
             Key = deletedKeyBundle.Key;
+
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
+
             Attributes = new PSKeyVaultKeyAttributes(
                 deletedKeyBundle.Attributes.Enabled,
                 deletedKeyBundle.Attributes.Expires,
@@ -100,5 +106,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyAttributes Attributes { get; set; }
 
         public JsonWebKey Key { get; set; }
+
+        public string KeyType
+        {
+            get { return Key.Kty; }
+        }
+
+        public int? KeySize;
     }
 }

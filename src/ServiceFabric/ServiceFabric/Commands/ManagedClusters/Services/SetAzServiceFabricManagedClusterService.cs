@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
@@ -125,14 +126,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateRange(0, 100)]
         public int MinInstancePercentage { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByResourceGroup,
-            HelpMessage = "Specify the instance close delay duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByResourceId,
-            HelpMessage = "Specify the instance close delay duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByInputObject,
-            HelpMessage = "Specify the instance close delay duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
-        [ValidateNotNullOrEmpty]
-        public TimeSpan InstanceCloseDelayDuration { get; set; }
         #endregion
 
         #region Stateful params
@@ -172,14 +165,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = StatefulByInputObject,
             HelpMessage = "Specify the target replica set size for the managed service")]
         public SwitchParameter HasPersistedState { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
-            HelpMessage = "Specify the drop source replica on move property for the managed service")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,
-            HelpMessage = "Specify the drop source replica on move property for the managed service")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByInputObject,
-            HelpMessage = "Specify the drop source replica on move property for the managed service")]
-        public SwitchParameter DropSourceReplicaOnMove { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
             HelpMessage = "Specify the replica restart wait duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
@@ -279,21 +264,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public PSServiceCorrelation[] Correlation { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByInputObject,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByResourceGroup,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByResourceId,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [Parameter(Mandatory = false, ParameterSetName = StatelessByInputObject,
-            HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
-        [ValidateNotNullOrEmpty]
-        public string ServiceDnsName { get; set; }
-
-        [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceGroup,
             HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulByResourceId,
             HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
@@ -349,7 +319,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     var managedService = this.PollLongRunningOperation(beginRequestResponse);
 
-                    WriteObject(new PSManagedService(managedService), false);
+                    WriteObject(PSManagedService.GetInstance(managedService), false);
                 }
             }
             catch (Exception ex)
@@ -359,7 +329,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        private ServiceResource GetUpdatedServiceParams(ServiceResource inputObject = null)
+        private ServiceResource GetUpdatedServiceParams(PSManagedService inputObject = null)
         {
             ServiceResource currentService;
             if (inputObject == null)
@@ -381,7 +351,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
             else
             {
-                currentService = inputObject;
+                currentService = inputObject.ToServiceResource();
             }
 
             WriteVerbose($"Updating managed service '{this.Name}.'");
@@ -401,10 +371,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     statelessProperties.InstanceCount = this.InstanceCount;
                 }
 
-                if (this.IsParameterBound(c => c.InstanceCloseDelayDuration))
-                {
-                    statelessProperties.InstanceCloseDelayDuration = this.InstanceCloseDelayDuration.ToString();
-                }
                 if (this.IsParameterBound(c => c.MinInstancePercentage))
                 {
                     statelessProperties.MinInstancePercentage = this.MinInstancePercentage;
@@ -432,10 +398,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 if (this.IsParameterBound(c => c.ReplicaRestartWaitDuration))
                 {
                     statefulProperties.ReplicaRestartWaitDuration = this.ReplicaRestartWaitDuration.ToString();
-                }
-                if (this.IsParameterBound(c => c.DropSourceReplicaOnMove))
-                {
-                    statefulProperties.DropSourceReplicaOnMove = this.DropSourceReplicaOnMove.ToBool();
                 }
                 if (this.IsParameterBound(c => c.HasPersistedState))
                 {
@@ -476,10 +438,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (this.IsParameterBound(c => c.Correlation))
             {
                 properties.CorrelationScheme = this.Correlation;
-            }
-            if (this.IsParameterBound(c => c.ServiceDnsName))
-            {
-                properties.ServiceDnsName = this.ServiceDnsName;
             }
         }
 

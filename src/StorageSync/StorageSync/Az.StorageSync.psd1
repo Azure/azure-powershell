@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.7'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.StorageSync.dll', 
@@ -83,7 +83,7 @@ CmdletsToExport = 'Invoke-AzStorageSyncCompatibilityCheck',
                'New-AzStorageSyncServerEndpoint', 
                'Get-AzStorageSyncServerEndpoint', 
                'Remove-AzStorageSyncServerEndpoint', 
-               'Set-AzStorageSyncServerEndpoint', 'Invoke-AzStorageSyncFileRecall', 
+               'Set-AzStorageSyncServerEndpoint', 
                'Register-AzStorageSyncServer', 'Unregister-AzStorageSyncServer', 
                'Get-AzStorageSyncServer', 'Reset-AzStorageSyncServerCertificate', 
                'Invoke-AzStorageSyncChangeDetection'

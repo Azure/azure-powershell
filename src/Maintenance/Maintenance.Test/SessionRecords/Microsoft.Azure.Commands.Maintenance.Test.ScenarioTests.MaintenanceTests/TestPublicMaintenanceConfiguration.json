@@ -67,8 +67,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps1601/providers/Microsoft.Maintenance/maintenanceConfigurations/ps8982?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzMTYwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4OTgyP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps1601/providers/Microsoft.Maintenance/maintenanceConfigurations/ps8982?api-version=2021-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzMTYwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4OTgyP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"extensionProperties\": {\r\n      \"publicMaintenanceConfigurationId\": \"ps8982\",\r\n      \"isAvailable\": \"true\"\r\n    },\r\n    \"maintenanceScope\": \"SQLDB\",\r\n    \"maintenanceWindow\": {\r\n      \"startDateTime\": \"2020-09-01 12:30\",\r\n      \"duration\": \"00:00\",\r\n      \"timeZone\": \"Pacific Standard Time\",\r\n      \"recurEvery\": \"Day\"\r\n    },\r\n    \"visibility\": \"Public\"\r\n  }\r\n}",
       "RequestHeaders": {
@@ -133,8 +133,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/ps8982?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvcHVibGljTWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucy9wczg5ODI/YXBpLXZlcnNpb249MjAyMC0wNy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/ps8982?api-version=2021-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvcHVibGljTWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucy9wczg5ODI/YXBpLXZlcnNpb249MjAyMS0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -193,8 +193,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/publicMaintenanceConfigurations?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvcHVibGljTWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDIwLTA3LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/providers/Microsoft.Maintenance/publicMaintenanceConfigurations?api-version=2021-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFpbnRlbmFuY2UvcHVibGljTWFpbnRlbmFuY2VDb25maWd1cmF0aW9ucz9hcGktdmVyc2lvbj0yMDIxLTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -253,8 +253,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps1601/providers/Microsoft.Maintenance/maintenanceConfigurations/ps8982?api-version=2020-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzMTYwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4OTgyP2FwaS12ZXJzaW9uPTIwMjAtMDctMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/ps1601/providers/Microsoft.Maintenance/maintenanceConfigurations/ps8982?api-version=2021-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZWVlMmNlZjQtYmM0Ny00Mjc4LWI0ZjgtY2ZjNjVmMjVkZmQ4L3Jlc291cmNlZ3JvdXBzL3BzMTYwMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk1haW50ZW5hbmNlL21haW50ZW5hbmNlQ29uZmlndXJhdGlvbnMvcHM4OTgyP2FwaS12ZXJzaW9uPTIwMjEtMDUtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

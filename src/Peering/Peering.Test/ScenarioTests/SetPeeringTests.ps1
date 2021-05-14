@@ -24,7 +24,7 @@ function Test-SetNewIP {
         $peering = CreateExchangePeering $resourceGroup $peerAsn.Name
         $peer = Get-AzPeering -ResourceId $peering.Id
         $peerIpAddress = $peer.Connections[0].BgpSession.PeerSessionIPv4Address
-        $offset = getPeeringVariable "offSet" (Get-Random -Maximum 100 -Minimum 1 | % { $_ * 2 } )
+        $offset = getPeeringVariable "offSet" (Get-Random -Maximum 10 -Minimum 1 | % { $_ * 2 } )
         $newIpAddress = getPeeringVariable "newIpAddress" (changeIp "$peerIpAddress/32" $false $offset $false )
         $peer.Connections[0] = $peer.Connections[0] | Set-AzPeeringExchangeConnectionObject -PeerSessionIPv4Address $newIpAddress
         Assert-ThrowsContains { $peer | Update-AzPeering } "OperationNotSupported"

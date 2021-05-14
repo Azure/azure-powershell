@@ -26,7 +26,7 @@ Get-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -ExpandResource 
 ```
 
 ## DESCRIPTION
-The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks n a resource group.
+The **Get-AzVirtualNetwork** cmdlet gets one or more virtual networks in a resource group.
 
 ## EXAMPLES
 

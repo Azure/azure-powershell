@@ -89,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Direct
              HelpMessage = Constants.BandwidthHelp,
              ParameterSetName = Constants.ParameterSetNameIPv4Prefix + Constants.ParameterSetNameIPv6Prefix)]
         [PSArgumentCompleter("10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000")]
-        [ValidateRange(Constants.MinRange, Constants.MaxRange), ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty, ValidateRange(Constants.MinRange, int.MaxValue)]
         public int? BandwidthInMbps { get; set; }
 
         /// <summary>

@@ -1,3 +1,158 @@
+## 5.9.0 - May 2021
+#### Az.Aks
+* Added support 'AcrNameToAttach' in 'Set-AzAksCluster'. [#14692]
+* Added support 'AcrNameToDetach' in 'Set-AzAksCluster'. [#14693] 
+* Added 'Set-AzAksClusterCredential' to reset the ServicePrincipal of an existing AKS cluster.
+
+#### Az.Automation
+* Added support for User Assigned Identities and PublicNetworkAccess flag
+
+#### Az.Cdn
+* Added cmdlets to support new AFD Premium / Standard SKUs
+
+#### Az.Compute
+* Updated the 'Set-AzVMDiskEncryptionExtension' cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
+    - Added a switch parameter '-Migrate' to trigger migration workflow.
+    - Added a switch parameter '-MigrationRecovery' to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
+
+#### Az.DataFactory
+* Added User Assigned Identities to Data Factory.
+* Updated ADF .Net SDK version to 4.18.0
+
+#### Az.FrontDoor
+* Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
+
+#### Az.KeyVault
+* Fixed a bug for 'Get-AzKeyVaultSecret -IncludeVersions' when current version is disabled [#14740]
+* Displayed error code and message when updating purged secret [#14800]
+
+#### Az.RecoveryServices
+* Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.
+* Azure Site Recovery support for SqlServerLicenseType for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability set for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for TargetVmSize for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for ResourceTagging for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Virtual Machine Scale Set for Azure to Azure provider.
+* Added support for restoring unmanaged disks vm as managed disks.
+
+#### Az.Resources
+* Added parameter 'ObjectType' for 'New-AzRoleAssignment'
+
+#### Az.ServiceFabric
+* Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
+* 'New-AzServiceFabricManagedCluster' add parameters UpgradeCadence and ZonalResiliency.
+* 'New-AzServiceFabricManagedNodeType' add parameters DiskType, VmUserAssignedIdentity, IsStateless and MultiplePlacementGroup.
+* 'New-AzServiceFabricManagedClusterService' and 'Set-AzServiceFabricManagedClusterService' mark parameters for deprecation: InstanceCloseDelayDuration, DropSourceReplicaOnMove and ServiceDnsName. They are not supported.
+
+#### Az.ResourceMover
+* General availability of 'Az.ResourceMover' module
+
+#### Az.Storage
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported create/update storage account with keyvault encryption and access keyvault with user assigned identity
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported EdgeZone in create storage account
+    - 'New-AzStorageAccount'
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - 'Remove-AzStorageAccount'
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - 'Set-AzStorageAccount'
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - 'Remove-AzRmStorageShare'
+
+### Thanks to our community contributors
+* Thomas Lee (@doctordns), Update Get-AzEnvironment.md (#14704)
+* Fabian (@FullByte), Example with wrong parameter (typo) (#14743)
+* @gradinDotCom, Update Get-AzNetworkWatcherNextHop.md (#14813)
+* Dr Greg Low (@greglow-sdu), Update Get-AzSqlServerDnsAlias.md (#14737)
+* Prateek Singh (@PrateekKumarSingh)
+  * fixing a typo (#14779)
+  * fixing typo (#14773)
+* Remco Eissing (@remcoeissing)
+  * Fixed typos in Restore-AzApiManagement (#14770)
+  * Example 2 to use New-AzPolicyExemption (#14716)
+* @sharma224
+  * User identity changes (#14803)
+  * Supporting Customer managed key  (#14680)
+* Yannick Dils (@yannickdils), Update Location explanation (#14719)
+
+
+## 5.8.0 - April 2021
+#### Az.Accounts
+* Fallback to first valid context if current default context key is 'Default' which is invalid
+
+#### Az.Automation
+* Added support for Customer Managed Key Encryption with System Assigned Identity
+* Fixed issue that disables the schedule for update deployment if schedule was re-created with same name
+
+#### Az.Compute
+* Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
+* Added new cmdlets to support TrustedLaunch related cmdlets:
+    - 'Set-AzVmSecurityProfile'
+    - 'Set-AzVmUefi'
+    - 'Set-AzVmssSecurityProfile'
+    - 'Set-AzVmssUefi'
+* Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
+
+#### Az.ContainerRegistry
+* Fixed bug in 'Get-AzContainerRegistryManifest' showing incorrect image name 
+
+#### Az.HDInsight
+* Supported getting default vmsize from backend if customer does not provide the related parameters: '-WorkerNodeSize', '-HeadNodeSize', '-ZookeeperNodeSize', '-EdgeNodeSize', '-KafkaManagementNodeSize'.
+
+#### Az.HealthcareApis
+* Added support for Acr LoginServers
+
+#### Az.KeyVault
+* Fixed a bug for 'Get-AzKeyVaultSecret -AsPlainText' if the secret is not found [#14645]
+
+#### Az.Migrate
+* Nullref Bug fixed in get discovered server and initialize replication infrastructure commandlets.
+
+#### Az.Monitor
+* Added cmdlet to get diagnostic setting categories for subscription
+    - 'Get-AzSubscriptionDiagnosticSettingCategory'
+* Supported subscription diagnostic setting operations with new parameter: SubscriptionId
+    - 'Get-AzDiagnosticSetting'
+    - 'New-AzDiagnosticSetting'
+    - 'Remove-AzDiagnosticSetting'
+* Supported 'AutoMitigate' parameter in metric alert rule properties. The flag indicates whether the alert should be auto resolved or not.
+
+#### Az.Resources
+* Added upcoming breaking change warnings on below cmdlets, because the value of 'IdentifierUris' parameter will need verified domain.
+  - 'New-AzADApplication' 
+  - 'Update-AzADApplication'
+  - 'New-AzADServicePrincipal'
+  - 'Update-AzADServicePrincipal'
+* Ignored Bicep warning message in error stream if exitcode equals zero.
+
+#### Az.Sql
+* Added cmdlet output breaking change warnings to the following: 
+    - 'New-AzSqlDatabase'
+    - 'Get-AzSqlDatabase'
+    - 'Set-AzSqlDatabase'
+    - 'Remove-AzSqlDatabase'
+    - 'New-AzSqlDatabaseSecondary'
+    - 'Remove-AzSqlDatabaseSecondary'
+    - 'Get-AzSqlDatabaseReplicationLink'
+    - 'New-AzSqlDatabaseCopy'
+    - 'Set-AzSqlDatabaseSecondary'
+
+#### Az.Storage
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  'Start-AzStorageBlobCopy'
+
+#### Az.StreamAnalytics
+* Added upcoming breaking change warning message to all cmdlets because of upcoming changes on parameters.
+
+### Thanks to our community contributors
+* Andrei Zhukouski (@BurgerZ), Fix typo (#14575)
+* Mark Allison (@markallisongit), Update Invoke-AzSqlInstanceFailover.md (#14603)
+
+
 ## 5.7.0 - March 2021
 #### Az.Accounts
 * Fixed incorrect warning message on Windows PowerShell [#14556]
@@ -138,11 +293,6 @@
     - 'Remove-AzContainerService'
     - 'Remove-AzContainerServiceAgentPoolProfile'
     - 'Update-AzContainerService'
-* Added new cmdlet `Set-AzVmUefi`
-* Added new cmdlet `Set-AzVmSecurityType`
-* Added new cmdlet `Set-AzVmssUefi`
-* Added new cmdlet `Set-AzVmssSecurityType`
-
 
 #### Az.ContainerRegistry
 * Fixed authentication for `Connect-AzContainerRegistry`

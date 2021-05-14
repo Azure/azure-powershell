@@ -17,7 +17,15 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
+* Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
+* Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
+* Set retry times by environment variable [#14748]
+
+## Version 2.2.8
+* Fallback to first valid context if current default context key is "Default" which is invalid
 
 ## Version 2.2.7
 * Fixed incorrect warning message on Windows PowerShell [#14556]

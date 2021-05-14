@@ -269,6 +269,7 @@ The third command assigns the address list into addresslist1.
 The fourth command created a PSIpConfigurationBgpPeeringAddress object.
 The fifth command set this new created PSIpConfigurationBgpPeeringAddress to IpConfigurationBgpPeeringAddresses and update the gateway.
 
+<<<<<<< HEAD
 ### Example 6: Add/Update NatRules to an existing virtual network gateway
 ```
 PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
@@ -357,6 +358,29 @@ The second command assigns the existing natrules into variable vngNatRules.
 The third command assigns the value newly created PSVirtualNeyworkGatewayNatRule object natrule into variable natRule.
 The fourth command add this PSVirtualNeyworkGatewayNatRule object into vngNatRules list.
 The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.
+=======
+### Example 6: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
+```
+PS C:\>$Gateway=Get-Azvirtualnetworkgateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+
+PS C:\>$rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
+
+PS C:\>$rootCerts.Count
+PS C:\>$rootCerts[0]
+PS C:\>$rootCerts[1]
+PS C:\>$rootCerts.Remove($rootCerts[1])
+
+PS C:\>$Gateway1 = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates $rootCerts
+
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command gets all the root certificates on VirtualNetworkGateway and save it to another variable $rootCerts
+The third command shows total existing root certs on VirtualNetworkGateway. 
+The forth & fifth commands print root certificates at those corresponding indices for customer to see which ones they want to delete.
+The sixth command removes expired root certificate by using that index e.g. here 1. Repeat same steps to remove multiple expired certificates from variable: $rootCerts
+The seventh command updates VirtualNetworkGateway to set valid root certificates i.e. certificates that exists in variable: $rootCerts
+>>>>>>> master
 
 ## PARAMETERS
 
