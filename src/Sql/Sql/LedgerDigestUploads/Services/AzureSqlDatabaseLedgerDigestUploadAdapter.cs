@@ -61,7 +61,10 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
             string serverName,
             string databaseName)
         {
-            var configuration = Communicator.GetLedgerDigestUpload(resourceGroup, serverName, databaseName);
+            Management.Sql.Models.LedgerDigestUploads configuration = Communicator.GetLedgerDigestUpload(
+                resourceGroup, 
+                serverName, 
+                databaseName);
 
             return new AzureSqlDatabaseLedgerDigestUploadModel(resourceGroup, serverName, databaseName, configuration);
         }
@@ -74,22 +77,20 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <param name="model">AzureSqlDatabaseLedgerDigestUploadModel model</param>
         /// <returns>A ledger digest upload</returns>
-        internal AzureSqlDatabaseLedgerDigestUploadModel SetLedgerDigestUpload(
-            string resourceGroup,
-            string serverName,
-            string databaseName,
-            AzureSqlDatabaseLedgerDigestUploadModel model)
+        internal AzureSqlDatabaseLedgerDigestUploadModel SetLedgerDigestUpload(AzureSqlDatabaseLedgerDigestUploadModel model)
         {
-            var configuration = Communicator.SetLedgerDigestUpload(
+            Management.Sql.Models.LedgerDigestUploads config = new Management.Sql.Models.LedgerDigestUploads()
+            {
+                DigestStorageEndpoint = model.Endpoint
+            };
+
+            Communicator.SetLedgerDigestUpload(
                 model.ResourceGroupName, 
                 model.ServerName, 
-                model.DatabaseName, 
-                new Management.Sql.Models.LedgerDigestUploads()
-                {
-                    DigestStorageEndpoint = model.Endpoint
-                });
+                model.DatabaseName,
+                config);
 
-            return new AzureSqlDatabaseLedgerDigestUploadModel(resourceGroup, serverName, databaseName, configuration);
+            return new AzureSqlDatabaseLedgerDigestUploadModel(model.ResourceGroupName, model.ServerName, model.DatabaseName, config);
         }
 
         /// <summary>
@@ -99,27 +100,19 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A ledger digest upload</returns>
-        internal AzureSqlDatabaseLedgerDigestUploadModel DisableLedgerDigestUpload(
-            string resourceGroup,
-            string serverName,
-            string databaseName)
+        internal AzureSqlDatabaseLedgerDigestUploadModel DisableLedgerDigestUpload(AzureSqlDatabaseLedgerDigestUploadModel model)
         {
-            var configuration = Communicator.DisableLedgerDigestUpload(
-                resourceGroup,
-                serverName,
-                databaseName);
-
-            return new AzureSqlDatabaseLedgerDigestUploadModel(resourceGroup, serverName, databaseName, configuration);
-        }
-
-
-        private string GetResourceGroupNameFromResourceId(string resourceId)
-        {
-            if (resourceId.Contains("/resourceGroups/"))
+            Management.Sql.Models.LedgerDigestUploads config = new Management.Sql.Models.LedgerDigestUploads()
             {
-                return resourceId.Split('/')[4];
-            }
-            return null;
+                DigestStorageEndpoint = null
+            };
+
+            Communicator.DisableLedgerDigestUpload(
+                model.ResourceGroupName,
+                model.ServerName,
+                model.DatabaseName);
+
+            return new AzureSqlDatabaseLedgerDigestUploadModel(model.ResourceGroupName, model.ServerName, model.DatabaseName, config);
         }
     }
 }
