@@ -412,6 +412,34 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? keyExpirationPeriodInDay = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowCrossTenantReplication
+        {
+            get
+            {
+                return allowCrossTenantReplication.Value;
+            }
+            set
+            {
+                allowCrossTenantReplication = value;
+            }
+        }
+        private bool? allowCrossTenantReplication = null;
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default share permission for users using Kerberos authentication if RBAC role is not assigned.")]
+        [ValidateSet(DefaultSharePermissionType.None,
+            DefaultSharePermissionType.StorageFileDataSmbShareContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareReader,
+            DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
+            IgnoreCase = true)]
+        public string DefaultSharePermission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -605,6 +633,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                         }
                     }
+                    if (this.DefaultSharePermission != null)
+                    {
+                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        }
+                        updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
+                    }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -632,6 +668,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (keyExpirationPeriodInDay != null)
                     {
                         updateParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
+                    }
+                    if (allowCrossTenantReplication != null)
+                    {
+                        updateParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
