@@ -2048,7 +2048,7 @@ VOLUME <IVolume[]>: The list of volumes that can be mounted by containers in thi
   [Secret <ISecretVolume>]: The secret volume.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/containerinstance/new-azcontainergroup
+https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>
 function New-AzContainerGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IContainerGroup])]
@@ -2386,7 +2386,7 @@ Password          Server       Username
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ImageRegistryCredential])]
@@ -2476,7 +2476,7 @@ Port1 Protocol
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Port
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerGroupPortObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupPortObject
 #>
 function New-AzContainerGroupPortObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Port])]
@@ -2563,7 +2563,7 @@ myvolume
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerGroupVolumeObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume])]
@@ -2694,7 +2694,7 @@ env2 ******
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EnvironmentVariable
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EnvironmentVariable])]
@@ -2798,7 +2798,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the init container.
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceInitDefinitionObject
 #>
 function New-AzContainerInstanceInitDefinitionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.InitContainerDefinition])]
@@ -2924,7 +2924,7 @@ VOLUMEMOUNT <IVolumeMount[]>: The volume mounts available to the container insta
   Name <String>: The name of the volume mount.
   [ReadOnly <Boolean?>]: The flag indicating whether the volume mount is read-only.
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Container])]
@@ -3219,7 +3219,7 @@ Port Protocol
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstancePortObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 #>
 function New-AzContainerInstancePortObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort])]
@@ -3305,7 +3305,7 @@ MountPath   Name ReadOnly
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.VolumeMount
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceVolumeMountObject
 #>
 function New-AzContainerInstanceVolumeMountObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.VolumeMount])]

@@ -22,7 +22,7 @@ Create a in-memory object for Volume
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerGroupVolumeObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 #>
 function New-AzContainerGroupVolumeObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume')]

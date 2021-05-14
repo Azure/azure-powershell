@@ -22,7 +22,7 @@ Create a in-memory object for ContainerPort
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstancePortObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstancePortObject
 #>
 function New-AzContainerInstancePortObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ContainerPort')]

@@ -22,7 +22,7 @@ Create a in-memory object for EnvironmentVariable
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EnvironmentVariable
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 #>
 function New-AzContainerInstanceEnvironmentVariableObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EnvironmentVariable')]
