@@ -19,7 +19,6 @@
 --->
 
 ## Upcoming Release
-<<<<<<< HEAD
 * Added support for getting a single private link resource.
 * Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
 * Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
@@ -39,10 +38,8 @@
 * Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`
-=======
-* Updated validation to allow passing zero value for saDataSizeKilobytes parameter
-    - `New-AzureRmIpsecPolicy`
->>>>>>> master
+* Updated cmdlets to expose two read-only properties of client certificate.
+    - `Get-AzApplicationGatewayTrustedClientCertificate`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
