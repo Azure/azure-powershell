@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
                 DatabaseName = identifier.ResourceName;
                 ResourceGroupName = identifier.ResourceGroupName;
-                ServerName = identifier.ParentResource;
+                ServerName = identifier.ParentResource.Split('/')[1];
             }
             else if (ParameterSetName == InputObjectSet)
             {
