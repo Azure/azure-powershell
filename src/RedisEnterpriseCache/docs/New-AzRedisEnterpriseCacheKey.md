@@ -199,9 +199,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-### New-AzRedisEnterpriseCacheDatabaseKey
+New-AzRedisEnterpriseCacheDatabaseKey
 
-### New-AzRedisEnterpriseCacheAccessKey
+New-AzRedisEnterpriseCacheAccessKey
 
 ## RELATED LINKS
 
