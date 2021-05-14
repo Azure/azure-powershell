@@ -258,13 +258,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
-        /// Gets or sets the ledger option to assign to the Azure SQL Database
-        /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The enable ledger option for the Azure Sql Database")]
-        public SwitchParameter EnableLedger { get; set; }
-
-        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
