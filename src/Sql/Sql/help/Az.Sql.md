@@ -66,7 +66,10 @@ Converts a vulnerability assessment scan results to Excel format.
 Converts a vulnerability assessment scan results to Excel format.
 
 ### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
-Copies a long term retention backup to a target database.  
+Copies a long term retention backup to a target database. 
+
+### [Disable-AzSqlDatabaseLedgerDigestUpload](Disable-AzSqlDatabaseLedgerDigestUpload.md)
+Disables uploading ledger digests to Azure Blob storage or to Azure Confidential Ledger.
 
 ### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the database.
@@ -86,6 +89,9 @@ Disables Azure AD only authentication for a specific SQL Server.
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
 
+### [Enable-AzSqlDatabaseLedgerDigestUpload](Enable-AzSqlDatabaseLedgerDigestUpload.md)
+Enables uploading ledger digests to an Azure Storage account or to Azure Confidential Ledger.
+
 ### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
 
@@ -103,6 +109,9 @@ Enables Azure AD only authentication for a specific SQL Server.
 
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
+
+### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
+Enables Advanced Threat Protection on a server.
 
 ### [Get-AzSqlCapability](Get-AzSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
@@ -154,6 +163,9 @@ Gets the recommended index operations for a server or database.
 
 ### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
 Gets or lists Instance Failover Groups.
+
+### [Get-AzSqlDatabaseLedgerDigestUpload](Get-AzSqlDatabaseLedgerDigestUpload.md)
+Gets the ledger digest upload settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
