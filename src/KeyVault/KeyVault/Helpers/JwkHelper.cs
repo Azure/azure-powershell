@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
     {
         internal static RSACryptoServiceProvider ConvertToRSAKey(JsonWebKey jwk)
         {
-            if (jwk == null || !jwk.Kty.Equals("RSA"))
+            if (!"RSA".Equals(jwk?.Kty))
             {
                 return null;
             }
