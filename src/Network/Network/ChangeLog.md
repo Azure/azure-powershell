@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added support for getting a single private link resource.
+* Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
 * Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
@@ -40,6 +42,9 @@
 * Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
     - `Add-AzVirtualNetworkPeering`
     - `Get-AzVirtualNetworkPeering`
+* Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
