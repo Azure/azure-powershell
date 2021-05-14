@@ -45,9 +45,14 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override AzureSqlDatabaseLedgerDigestUploadModel ApplyUserInputToModel(AzureSqlDatabaseLedgerDigestUploadModel model)
         {
-            model.Endpoint = Endpoint;
-            
-            return model;
+            return new AzureSqlDatabaseLedgerDigestUploadModel(
+                model.ResourceGroupName, 
+                model.ServerName, 
+                model.DatabaseName, 
+                new Management.Sql.Models.LedgerDigestUploads
+                {
+                   DigestStorageEndpoint = Endpoint
+                });
         }
 
         /// <summary>
@@ -60,6 +65,11 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
             if (!ShouldProcess(DatabaseName)) return null;
 
             return ModelAdapter.SetLedgerDigestUpload(entity);
+        }
+
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.LedgerEnableConfirmActionProcessMessage;
         }
     }
 }
