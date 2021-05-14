@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
-using N = Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
+using N = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {

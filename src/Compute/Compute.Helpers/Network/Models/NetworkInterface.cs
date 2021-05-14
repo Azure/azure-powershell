@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -70,9 +70,16 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// network interface resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="nicType">Type of Network Interface resource. Possible
+        /// values include: 'Standard', 'Elastic'</param>
+        /// <param name="privateLinkService">Privatelinkservice of the network
+        /// interface resource.</param>
+        /// <param name="migrationPhase">Migration phase of Network Interface
+        /// resource. Possible values include: 'None', 'Prepare', 'Commit',
+        /// 'Abort', 'Committed'</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(IList<NetworkInterfaceIPConfiguration>), IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string))
+        public NetworkInterface(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), SubResource virtualMachine = default(SubResource), NetworkSecurityGroup networkSecurityGroup = default(NetworkSecurityGroup), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), IList<NetworkInterfaceIPConfiguration> ipConfigurations = default(IList<NetworkInterfaceIPConfiguration>), IList<NetworkInterfaceTapConfiguration> tapConfigurations = default(IList<NetworkInterfaceTapConfiguration>), NetworkInterfaceDnsSettings dnsSettings = default(NetworkInterfaceDnsSettings), string macAddress = default(string), bool? primary = default(bool?), bool? enableAcceleratedNetworking = default(bool?), bool? enableIPForwarding = default(bool?), IList<string> hostedWorkloads = default(IList<string>), SubResource dscpConfiguration = default(SubResource), string resourceGuid = default(string), string provisioningState = default(string), string nicType = default(string), PrivateLinkService privateLinkService = default(PrivateLinkService), string migrationPhase = default(string), string etag = default(string))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -90,6 +97,9 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
             DscpConfiguration = dscpConfiguration;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            NicType = nicType;
+            PrivateLinkService = privateLinkService;
+            MigrationPhase = migrationPhase;
             Etag = etag;
             CustomInit();
         }
@@ -197,6 +207,27 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets type of Network Interface resource. Possible values
+        /// include: 'Standard', 'Elastic'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.nicType")]
+        public string NicType { get; set; }
+
+        /// <summary>
+        /// Gets or sets privatelinkservice of the network interface resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.privateLinkService")]
+        public PrivateLinkService PrivateLinkService { get; set; }
+
+        /// <summary>
+        /// Gets or sets migration phase of Network Interface resource.
+        /// Possible values include: 'None', 'Prepare', 'Commit', 'Abort',
+        /// 'Committed'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.migrationPhase")]
+        public string MigrationPhase { get; set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
@@ -238,6 +269,10 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
                         element1.Validate();
                     }
                 }
+            }
+            if (PrivateLinkService != null)
+            {
+                PrivateLinkService.Validate();
             }
         }
     }

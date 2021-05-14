@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Storage
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -70,99 +70,9 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Storage
 
 
         /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the ISkusOperations.
-        /// </summary>
-        ISkusOperations Skus { get; }
-
-        /// <summary>
         /// Gets the IStorageAccountsOperations.
         /// </summary>
         IStorageAccountsOperations StorageAccounts { get; }
-
-        /// <summary>
-        /// Gets the IDeletedAccountsOperations.
-        /// </summary>
-        IDeletedAccountsOperations DeletedAccounts { get; }
-
-        /// <summary>
-        /// Gets the IUsagesOperations.
-        /// </summary>
-        IUsagesOperations Usages { get; }
-
-        /// <summary>
-        /// Gets the IManagementPoliciesOperations.
-        /// </summary>
-        IManagementPoliciesOperations ManagementPolicies { get; }
-
-        /// <summary>
-        /// Gets the IBlobInventoryPoliciesOperations.
-        /// </summary>
-        IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointConnectionsOperations.
-        /// </summary>
-        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkResourcesOperations.
-        /// </summary>
-        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IObjectReplicationPoliciesOperations.
-        /// </summary>
-        IObjectReplicationPoliciesOperations ObjectReplicationPolicies { get; }
-
-        /// <summary>
-        /// Gets the IEncryptionScopesOperations.
-        /// </summary>
-        IEncryptionScopesOperations EncryptionScopes { get; }
-
-        /// <summary>
-        /// Gets the IBlobServicesOperations.
-        /// </summary>
-        IBlobServicesOperations BlobServices { get; }
-
-        /// <summary>
-        /// Gets the IBlobContainersOperations.
-        /// </summary>
-        IBlobContainersOperations BlobContainers { get; }
-
-        /// <summary>
-        /// Gets the IFileServicesOperations.
-        /// </summary>
-        IFileServicesOperations FileServices { get; }
-
-        /// <summary>
-        /// Gets the IFileSharesOperations.
-        /// </summary>
-        IFileSharesOperations FileShares { get; }
-
-        /// <summary>
-        /// Gets the IQueueServicesOperations.
-        /// </summary>
-        IQueueServicesOperations QueueServices { get; }
-
-        /// <summary>
-        /// Gets the IQueueOperations.
-        /// </summary>
-        IQueueOperations Queue { get; }
-
-        /// <summary>
-        /// Gets the ITableServicesOperations.
-        /// </summary>
-        ITableServicesOperations TableServices { get; }
-
-        /// <summary>
-        /// Gets the ITableOperations.
-        /// </summary>
-        ITableOperations Table { get; }
 
     }
 }

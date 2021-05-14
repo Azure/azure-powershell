@@ -5,7 +5,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Storage
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage
 {
   using System;
   using System.Collections.Generic;
@@ -19,25 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Storage
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Storage", "BlobContainers", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "BlobInventoryPolicies", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "BlobServices", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "DeletedAccounts", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "EncryptionScopes", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "FileServices", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "FileShares", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "ManagementPolicies", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "ObjectReplicationPolicies", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "Operations", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "PrivateEndpointConnections", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "PrivateLinkResources", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "Queue", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "QueueServices", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "Skus", "2021-02-01"),
                 new Tuple<string, string, string>("Storage", "StorageAccounts", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "Table", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "TableServices", "2021-02-01"),
-                new Tuple<string, string, string>("Storage", "Usages", "2021-02-01"),
               }.AsEnumerable();
           }
       }

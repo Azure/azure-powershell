@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -66,11 +66,20 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// public IP address resource. Possible values include: 'Succeeded',
         /// 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="servicePublicIPAddress">The service public IP address
+        /// of the public IP address resource.</param>
+        /// <param name="natGateway">The NatGateway for the Public IP
+        /// address.</param>
+        /// <param name="migrationPhase">Migration phase of Public IP Address.
+        /// Possible values include: 'None', 'Prepare', 'Commit', 'Abort',
+        /// 'Committed'</param>
+        /// <param name="linkedPublicIPAddress">The linked public IP address of
+        /// the public IP address resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
         /// <param name="zones">A list of availability zones denoting the IP
         /// allocated for the resource needs to come from.</param>
-        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), string etag = default(string), IList<string> zones = default(IList<string>))
+        public PublicIPAddress(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), ExtendedLocation extendedLocation = default(ExtendedLocation), PublicIPAddressSku sku = default(PublicIPAddressSku), string publicIPAllocationMethod = default(string), string publicIPAddressVersion = default(string), IPConfiguration ipConfiguration = default(IPConfiguration), PublicIPAddressDnsSettings dnsSettings = default(PublicIPAddressDnsSettings), DdosSettings ddosSettings = default(DdosSettings), IList<IpTag> ipTags = default(IList<IpTag>), string ipAddress = default(string), SubResource publicIPPrefix = default(SubResource), int? idleTimeoutInMinutes = default(int?), string resourceGuid = default(string), string provisioningState = default(string), PublicIPAddress servicePublicIPAddress = default(PublicIPAddress), NatGateway natGateway = default(NatGateway), string migrationPhase = default(string), PublicIPAddress linkedPublicIPAddress = default(PublicIPAddress), string etag = default(string), IList<string> zones = default(IList<string>))
             : base(id, name, type, location, tags)
         {
             ExtendedLocation = extendedLocation;
@@ -86,6 +95,10 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
             IdleTimeoutInMinutes = idleTimeoutInMinutes;
             ResourceGuid = resourceGuid;
             ProvisioningState = provisioningState;
+            ServicePublicIPAddress = servicePublicIPAddress;
+            NatGateway = natGateway;
+            MigrationPhase = migrationPhase;
+            LinkedPublicIPAddress = linkedPublicIPAddress;
             Etag = etag;
             Zones = zones;
             CustomInit();
@@ -184,6 +197,33 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets the service public IP address of the public IP address
+        /// resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.servicePublicIPAddress")]
+        public PublicIPAddress ServicePublicIPAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the NatGateway for the Public IP address.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.natGateway")]
+        public NatGateway NatGateway { get; set; }
+
+        /// <summary>
+        /// Gets or sets migration phase of Public IP Address. Possible values
+        /// include: 'None', 'Prepare', 'Commit', 'Abort', 'Committed'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.migrationPhase")]
+        public string MigrationPhase { get; set; }
+
+        /// <summary>
+        /// Gets or sets the linked public IP address of the public IP address
+        /// resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.linkedPublicIPAddress")]
+        public PublicIPAddress LinkedPublicIPAddress { get; set; }
+
+        /// <summary>
         /// Gets a unique read-only string that changes whenever the resource
         /// is updated.
         /// </summary>
@@ -212,6 +252,14 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
             if (IpConfiguration != null)
             {
                 IpConfiguration.Validate();
+            }
+            if (ServicePublicIPAddress != null)
+            {
+                ServicePublicIPAddress.Validate();
+            }
+            if (LinkedPublicIPAddress != null)
+            {
+                LinkedPublicIPAddress.Validate();
             }
         }
     }

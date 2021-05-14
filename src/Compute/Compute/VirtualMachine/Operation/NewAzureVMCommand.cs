@@ -12,15 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -36,18 +27,26 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Helpers.Network;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Helpers.Storage;
-using Microsoft.Azure.Commands.Compute.Helpers.Storage.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Reflection;
+using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
-using SM = Microsoft.Azure.Commands.Compute.Helpers.Storage.Models;
-using NM = Microsoft.Azure.Commands.Compute.Helpers.Network.Models;
+using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -500,7 +499,7 @@ namespace Microsoft.Azure.Commands.Compute
                     new StorageAccountCreateParameters
                     {
                         Kind = "StorageV2",
-                        Sku = new Microsoft.Azure.Commands.Compute.Helpers.Storage.Models.Sku
+                        Sku = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models.Sku
                         {
                             Name = SkuName.PremiumLRS
                         },

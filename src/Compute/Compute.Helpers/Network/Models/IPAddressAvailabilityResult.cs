@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections;
@@ -36,10 +36,13 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// <param name="available">Private IP address availability.</param>
         /// <param name="availableIPAddresses">Contains other available private
         /// IP addresses if the asked for address is taken.</param>
-        public IPAddressAvailabilityResult(bool? available = default(bool?), IList<string> availableIPAddresses = default(IList<string>))
+        /// <param name="isPlatformReserved">Private IP address platform
+        /// reserved.</param>
+        public IPAddressAvailabilityResult(bool? available = default(bool?), IList<string> availableIPAddresses = default(IList<string>), bool? isPlatformReserved = default(bool?))
         {
             Available = available;
             AvailableIPAddresses = availableIPAddresses;
+            IsPlatformReserved = isPlatformReserved;
             CustomInit();
         }
 
@@ -60,6 +63,12 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "availableIPAddresses")]
         public IList<string> AvailableIPAddresses { get; set; }
+
+        /// <summary>
+        /// Gets or sets private IP address platform reserved.
+        /// </summary>
+        [JsonProperty(PropertyName = "isPlatformReserved")]
+        public bool? IsPlatformReserved { get; set; }
 
     }
 }

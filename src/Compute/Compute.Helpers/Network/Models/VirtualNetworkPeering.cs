@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
@@ -62,12 +62,17 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// <param name="provisioningState">The provisioning state of the
         /// virtual network peering resource. Possible values include:
         /// 'Succeeded', 'Updating', 'Deleting', 'Failed'</param>
+        /// <param name="doNotVerifyRemoteGateways">If we need to verify the
+        /// provisioning state of the remote gateway.</param>
+        /// <param name="resourceGuid">The resourceGuid property of the Virtual
+        /// Network peering resource.</param>
         /// <param name="name">The name of the resource that is unique within a
         /// resource group. This name can be used to access the
         /// resource.</param>
         /// <param name="etag">A unique read-only string that changes whenever
         /// the resource is updated.</param>
-        public VirtualNetworkPeering(string id = default(string), bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), SubResource remoteVirtualNetwork = default(SubResource), AddressSpace remoteAddressSpace = default(AddressSpace), VirtualNetworkBgpCommunities remoteBgpCommunities = default(VirtualNetworkBgpCommunities), string peeringState = default(string), string provisioningState = default(string), string name = default(string), string etag = default(string))
+        /// <param name="type">Resource type.</param>
+        public VirtualNetworkPeering(string id = default(string), bool? allowVirtualNetworkAccess = default(bool?), bool? allowForwardedTraffic = default(bool?), bool? allowGatewayTransit = default(bool?), bool? useRemoteGateways = default(bool?), SubResource remoteVirtualNetwork = default(SubResource), AddressSpace remoteAddressSpace = default(AddressSpace), VirtualNetworkBgpCommunities remoteBgpCommunities = default(VirtualNetworkBgpCommunities), string peeringState = default(string), string provisioningState = default(string), bool? doNotVerifyRemoteGateways = default(bool?), string resourceGuid = default(string), string name = default(string), string etag = default(string), string type = default(string))
             : base(id)
         {
             AllowVirtualNetworkAccess = allowVirtualNetworkAccess;
@@ -79,8 +84,11 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
             RemoteBgpCommunities = remoteBgpCommunities;
             PeeringState = peeringState;
             ProvisioningState = provisioningState;
+            DoNotVerifyRemoteGateways = doNotVerifyRemoteGateways;
+            ResourceGuid = resourceGuid;
             Name = name;
             Etag = etag;
+            Type = type;
             CustomInit();
         }
 
@@ -161,6 +169,20 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         public string ProvisioningState { get; private set; }
 
         /// <summary>
+        /// Gets or sets if we need to verify the provisioning state of the
+        /// remote gateway.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.doNotVerifyRemoteGateways")]
+        public bool? DoNotVerifyRemoteGateways { get; set; }
+
+        /// <summary>
+        /// Gets the resourceGuid property of the Virtual Network peering
+        /// resource.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resourceGuid")]
+        public string ResourceGuid { get; private set; }
+
+        /// <summary>
         /// Gets or sets the name of the resource that is unique within a
         /// resource group. This name can be used to access the resource.
         /// </summary>
@@ -173,6 +195,12 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
         /// </summary>
         [JsonProperty(PropertyName = "etag")]
         public string Etag { get; private set; }
+
+        /// <summary>
+        /// Gets or sets resource type.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// Validate the object.

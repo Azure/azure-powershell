@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Storage.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
 {
     using Newtonsoft.Json;
     using System.Collections;

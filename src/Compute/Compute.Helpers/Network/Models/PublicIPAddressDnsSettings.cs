@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models
 {
     using Newtonsoft.Json;
     using System.Linq;

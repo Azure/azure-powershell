@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Compute.Helpers.Storage.Models
+namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Helpers.Storage.Models
          /// <summary>
          /// Gets the link to the next page.
          /// </summary>
-         [JsonProperty("")]
+         [JsonProperty("nextLink")]
          public string NextPageLink { get; private set; }
 
          [JsonProperty("value")]
