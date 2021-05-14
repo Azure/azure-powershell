@@ -3297,7 +3297,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -Zone 1,2 -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -3343,10 +3343,9 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$sslProfiles = Get-AzApplicationGatewaySslProfile -ApplicationGateway $getgw
 		Assert-AreEqual $sslProfiles.Count 1
 		Assert-AreEqual $sslProfiles[0].Id $sslProfile01.Id
-        Assert-AreEqual $sslProfile01.TrustedClientCertificates.Count 1
-        Assert-AreEqual $sslProfiles.TrustedClientCertificates[0].Id $trustedClient01.Id
+		Assert-AreEqual $sslProfile01.TrustedClientCertificates.Count 1
+		Assert-AreEqual $sslProfiles.TrustedClientCertificates[0].Id $trustedClient01.Id
 
-        $trustedClient01 = Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -ApplicationGateway $getgw 
 		$trustedClients = Get-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $getgw
 		Assert-AreEqual $trustedClients.Count 1
 		Assert-AreEqual $trustedClients[0].Id $trustedClient01.Id
