@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string HostName { get; }
 
+        [Obsolete]
         public string HostNamePrefix { get; }
 
         public string ProvisioningState { get; }
@@ -48,7 +50,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
         {
             ExternalIp = signalR.ExternalIP;
             HostName = signalR.HostName;
-            HostNamePrefix = signalR.HostNamePrefix;
             ProvisioningState = signalR.ProvisioningState;
             PublicPort = signalR.PublicPort;
             ServerPort = signalR.ServerPort;

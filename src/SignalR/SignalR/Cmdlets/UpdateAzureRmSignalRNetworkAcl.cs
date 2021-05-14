@@ -137,7 +137,7 @@ IWithResourceId,IWithInputObject
                     }
                     networkACLs.DefaultAction = DefaultAction ?? networkACLs.DefaultAction;
                     PromptParameter(nameof(networkACLs), networkACLs == null ? null : JsonConvert.SerializeObject(networkACLs));
-                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
                     WriteObject(new PSSignalRNetworkAcls(signalr.NetworkACLs));
                 }
             });

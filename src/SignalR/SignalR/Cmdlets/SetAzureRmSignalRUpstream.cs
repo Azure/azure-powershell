@@ -111,7 +111,7 @@ HelpMessage = "Clear all the upstream settings.")]
 
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                     signalr.Upstream.Templates = Template.Select(t => t.toSDKTemplate()).ToList();
-                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
                     WriteObject(new PSSignalRResource(signalr).Upstream);
                 }
             });
