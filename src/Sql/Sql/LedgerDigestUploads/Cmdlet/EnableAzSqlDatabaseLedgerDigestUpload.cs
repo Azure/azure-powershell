@@ -45,14 +45,9 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override AzureSqlDatabaseLedgerDigestUploadModel ApplyUserInputToModel(AzureSqlDatabaseLedgerDigestUploadModel model)
         {
-            return new AzureSqlDatabaseLedgerDigestUploadModel(
-                    ResourceGroupName,
-                    ServerName,
-                    DatabaseName,
-                    new Management.Sql.Models.LedgerDigestUploads
-                    {
-                        DigestStorageEndpoint = Endpoint
-                    });
+            model.Endpoint = Endpoint;
+            
+            return model;
         }
 
         /// <summary>
@@ -64,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         {
             if (!ShouldProcess(DatabaseName)) return null;
 
-            return ModelAdapter.SetLedgerDigestUpload(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity);
+            return ModelAdapter.SetLedgerDigestUpload(entity);
         }
     }
 }

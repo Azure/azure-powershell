@@ -30,23 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
     public class DisableAzSqlDatabaseLedgerDigestUpload : AzureSqlDatabaseLedgerDigestUploadBase
     {
         /// <summary>
-        /// Create the model from user input
-        /// </summary>
-        /// <param name="model">Model retrieved from service</param>
-        /// <returns>The model that was passed in</returns>
-        protected override AzureSqlDatabaseLedgerDigestUploadModel ApplyUserInputToModel(AzureSqlDatabaseLedgerDigestUploadModel model)
-        {
-            return new AzureSqlDatabaseLedgerDigestUploadModel(
-                    ResourceGroupName,
-                    ServerName,
-                    DatabaseName,
-                    new Management.Sql.Models.LedgerDigestUploads
-                    {
-                        DigestStorageEndpoint = null
-                    });
-        }
-
-        /// <summary>
         /// Update the entity
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
@@ -55,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         {
             if (!ShouldProcess(DatabaseName)) return null;
 
-            return ModelAdapter.DisableLedgerDigestUpload(this.ResourceGroupName, this.ServerName, this.DatabaseName);
+            return ModelAdapter.DisableLedgerDigestUpload(entity);
         }
     }
 }

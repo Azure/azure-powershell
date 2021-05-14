@@ -190,8 +190,8 @@ Gets the values of the parameters used for ledger digest upload tests
 #>
 function Get-LedgerTestEnvironmentParameters ($testSuffix)
 {
-	$subscriptionId = (Get-AzContext).Subscription.Id
-	return @{ rgname = "ledger-cmdlet-test-rg" + $testSuffix;
+	return @{ subscriptionId = (Get-AzContext).Subscription.Id;
+			  rgname = "ledger-cmdlet-test-rg" + $testSuffix;
 			  serverName = "ledger-cmdlet-server" + $testSuffix;
 			  databaseName = "ledger-cmdlet-db" + $testSuffix;
 		}
@@ -199,11 +199,11 @@ function Get-LedgerTestEnvironmentParameters ($testSuffix)
 
 <#
 .SYNOPSIS
-Creates the basic test environment needed to perform the Sql data security tests - resource group, server and database
+Creates the basic test environment used for the ledger tests - creates resource group, server, and database
 #>
 function Create-LedgerTestEnvironment ($params)
 {
-	$location = "West Europe"
+	$location = "eastus2euap"
 	$serverVersion = "12.0"
 	New-AzResourceGroup -Name $params.rgname -Location $location
 	$serverName = $params.serverName

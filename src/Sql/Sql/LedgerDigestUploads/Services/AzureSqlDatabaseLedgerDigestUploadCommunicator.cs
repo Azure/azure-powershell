@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <param name="databaseName">The database name.</param>
         /// <param name="parameters">Ledger digest upload parameters</param>
         /// <returns></returns>
-        public Management.Sql.Models.LedgerDigestUploads SetLedgerDigestUpload(
+        public void SetLedgerDigestUpload(
             string resourceGroupName,
             string serverName,
             string databaseName,
             Management.Sql.Models.LedgerDigestUploads parameters)
         {
-            return GetCurrentSqlClient().LedgerDigestUploads.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
+            GetCurrentSqlClient().LedgerDigestUploads.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>
@@ -99,12 +99,12 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <returns></returns>
-        public Management.Sql.Models.LedgerDigestUploads DisableLedgerDigestUpload(
+        public void DisableLedgerDigestUpload(
             string resourceGroupName,
             string serverName, 
             string databaseName)
         {
-            return GetCurrentSqlClient().LedgerDigestUploads.Disable(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient().LedgerDigestUploads.Disable(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>

@@ -23,7 +23,7 @@ function Test-GetDefaultLedgerDigestUpload
 	$params = Get-LedgerTestEnvironmentParameters $testSuffix
 	Create-LedgerTestEnvironment $params
 
-	$databaseResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName 
+	$databaseResourceId = "/subscriptions/" + $params.subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName 
 	$databaseObject = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 	try 
@@ -55,7 +55,7 @@ function Test-GetDefaultLedgerDigestUpload
 
 <#
 .SYNOPSIS
-Tests that when setting the storage account property's value in a database's blob auditing policy, that value is later fetched properly
+Tests enabling and disabling ledger digest uploading using named parameters
 #>
 function Test-SetLedgerDigestUploadByName
 {
@@ -76,7 +76,7 @@ function Test-SetLedgerDigestUploadByName
 
 		# Test get enabled settings
 		$ledgerDigestUploadEnabledGet = Get-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-		<#
+
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadEnabledGet.State "Enabled"
 
@@ -91,7 +91,6 @@ function Test-SetLedgerDigestUploadByName
 
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadDisabledGet.State "Disabled"
-		#>
 	}
 	finally
 	{
@@ -102,7 +101,7 @@ function Test-SetLedgerDigestUploadByName
 
 <#
 .SYNOPSIS
-Tests that when setting the storage account property's value in a database's blob auditing policy, that value is later fetched properly
+Tests enabling and disabling ledger digest uploading using the database object
 #>
 function Test-SetLedgerDigestUploadByDatabaseObject
 {
@@ -149,7 +148,7 @@ function Test-SetLedgerDigestUploadByDatabaseObject
 
 <#
 .SYNOPSIS
-Tests that when setting the storage account property's value in a database's blob auditing policy, that value is later fetched properly
+Tests enabling and disabling ledger digest uploading using the resource ID
 #>
 function Test-SetLedgerDigestUploadByResourceId
 {
@@ -158,7 +157,7 @@ function Test-SetLedgerDigestUploadByResourceId
 	$params = Get-LedgerTestEnvironmentParameters $testSuffix
 	Create-LedgerTestEnvironment $params
 	$endpoint = "https://test.confidential-ledger.azure.com"
-	$databaseResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName 
+	$databaseResourceId = "/subscriptions/" + $params.subscriptionId + "/resourceGroups/" + $params.rgname + "/providers/Microsoft.Sql/servers/" + $params.serverName + "/databases/" + $params.databaseName 
 
 	try 
 	{
@@ -176,7 +175,7 @@ function Test-SetLedgerDigestUploadByResourceId
 		Assert-AreEqual $ledgerDigestUploadEnabledGet.State "Enabled"
 
 		# Test disabling 
-		$ledgerDigestUploadDisable = Disable-AzSqlDatabaseLedgerDigestUpload -InputObject $databaseObject
+		$ledgerDigestUploadDisable = Disable-AzSqlDatabaseLedgerDigestUpload -ResourceId $databaseResourceId
 
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadDisable.State "Disabled"
