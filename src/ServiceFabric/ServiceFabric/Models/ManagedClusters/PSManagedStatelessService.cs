@@ -14,9 +14,22 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    internal enum ClusterType
+    using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
+    using System.Collections.Generic;
+
+    public class PSManagedStatelessService : PSManagedService
     {
-        Secure,
-        Unsecure
+        public int InstanceCount { get; set; }
+        public int? MinInstanceCount { get; set; }
+        public int? MinInstancePercentage { get; set; }
+
+        public PSManagedStatelessService(ServiceResource service) : base(service)
+        {
+            var properties = service.Properties as StatelessServiceProperties;
+
+            InstanceCount = properties.InstanceCount;
+            MinInstanceCount = properties.MinInstanceCount;
+            MinInstancePercentage = properties.MinInstancePercentage;
+        }
     }
 }

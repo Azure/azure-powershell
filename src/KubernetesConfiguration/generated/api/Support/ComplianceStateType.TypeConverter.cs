@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for ComplianceStateType.</summary>
+    /// <summary>The compliance state of the configuration.</summary>
     public partial class ComplianceStateTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

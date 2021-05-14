@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ServiceFabric.Common
+namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public static class CmdletNoun
+    public enum PSServiceKind
     {
-        public const string AzureRmServiceFabricNode = "AzureRmServiceFabricNode";
-        public const string AzureRmServiceFabricNodeType = "AzureRmServiceFabricNodeType";
-        public const string AzureRmServiceFabricCluster = "AzureRmServiceFabricCluster";
-        public const string AzureRmServiceFabricSetting = "AzureRmServiceFabricSetting";
-        public const string AzureRmServiceFabricUpgradeType = "AzureRmServiceFabricUpgradeType";
-        public const string AzureRmServiceFabricDurability = "AzureRmServiceFabricDurability";
-        public const string AzureRmServiceFabricReliability = "AzureRmServiceFabricReliability";
+        /// <summary>
+        /// Does not use Service Fabric to make its state highly available or
+        /// reliable. The value is 0.
+        /// </summary>
+        Stateless,
+        /// <summary>
+        /// Uses Service Fabric to make its state or part of its state highly
+        /// available and reliable. The value is 1.
+        /// </summary>
+        Stateful
     }
 }
