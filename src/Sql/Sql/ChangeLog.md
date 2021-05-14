@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
+* Added new cmdlets `Get-AzSqlDatabaseLedgerDigestUpload`, `Disable-AzSqlDatabaseLedgerDigestUpload`, and `Enable-AzSqlDatabaseLedgerDigestUpload`
+* Added -EnableLedger parameter to `New-AzSqlDatabase`
 
 ## Version 2.17.1
 * Added cmdlet output breaking change warnings to the following: 
