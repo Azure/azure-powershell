@@ -24,8 +24,9 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-PublishMicrosoftEndpoint <Boolean>] [-PublishInternetEndpoint <Boolean>] [-AsJob]
  [-EncryptionKeyTypeForTable <String>] [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>]
- [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-EdgeZone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -42,8 +43,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-ActiveDirectoryAzureStorageSid <String>] [-AsJob] [-EncryptionKeyTypeForTable <String>]
  [-EncryptionKeyTypeForQueue <String>] [-RequireInfrastructureEncryption] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>]
- [-AllowSharedKeyAccess <Boolean>] [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [<CommonParameters>]
+ [-AllowSharedKeyAccess <Boolean>] [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +99,7 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
 
 This command creates a Storage account with Azure Files AAD DS Authentication, and enable large file share.
 
-### Example 7: Create a Storage account with enable Files Active Directory Domain Service Authentication.
+### Example 7: Create a Storage account with enable Files Active Directory Domain Service Authentication and DefaultSharePermission.
 ```
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
@@ -106,10 +107,11 @@ PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "m
         -ActiveDirectoryForestName "mydomain.com" `
         -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
         -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
-        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234"
+        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234" `
+        -DefaultSharePermission StorageFileDataSmbShareElevatedContributor
 ```
 
-This command creates a Storage account withenable Files Active Directory Domain Service Authentication.
+This command creates a Storage account withenable Files Active Directory Domain Service Authentication and DefaultSharePermission.
 
 ### Example 8: Create a Storage account with Queue and Table Service use account-scoped encryption key, and Require Infrastructure Encryption.
 ```powershell
@@ -178,18 +180,21 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 
 This command creates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint and PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
 
-### Example 11: Create a Storage account with EdgeZone
+### Example 11: Create a Storage account with EdgeZone and AllowCrossTenantReplication
 ```powershell
-PS C:\>$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1"
+PS C:\>$account = New-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -SkuName Premium_LRS -Location westus -EdgeZone "microsoftlosangeles1" -AllowCrossTenantReplication $false
 
 PS C:\>$account.ExtendedLocation
 
 Name                 Type    
 ----                 ----    
 microsoftlosangeles1 EdgeZone
+
+PS C:\> $account.AllowCrossTenantReplication
+False
 ```
 
-This command creates a Storage account with EdgeZone as "microsoftlosangeles1", then show the created account ExtendedLocation properties.
+This command creates a Storage account with EdgeZone as "microsoftlosangeles1" and AllowCrossTenantReplication as false, then show the created account related properties.
 
 ### Example 12: Create a Storage account with KeyExpirationPeriod and SasExpirationPeriod
 ```powershell
@@ -364,6 +369,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AllowCrossTenantReplication
+Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AllowSharedKeyAccess
 Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
 
@@ -432,6 +452,22 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultSharePermission
+Default share permission for users using Kerberos authentication if RBAC role is not assigned.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor, StorageFileDataSmbShareOwner
 
 Required: False
 Position: Named

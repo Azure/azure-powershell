@@ -29,6 +29,14 @@
     - `Set-AzStorageBlobInventoryPolicy`
     - `Get-AzStorageBlobInventoryPolicy`
     - `Remove-AzStorageBlobInventoryPolicy`
+* Supported DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AllowCrossTenantReplication in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account reouce Id
+    - `Set-AzStorageObjectReplicationPolicy`
 
 ## Version 3.6.0
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
