@@ -110,9 +110,6 @@ Enables Azure AD only authentication for a specific SQL Server.
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
 
-### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
-Enables Advanced Threat Protection on a server.
-
 ### [Get-AzSqlCapability](Get-AzSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
 
