@@ -79,6 +79,7 @@ function Test-SetLedgerDigestUploadByName
 
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadEnabledGet.State "Enabled"
+		Assert-AreEqual $ledgerDigestUploadEnabledGet.Endpoint $endpoint
 
 		# Test disabling 
 		$ledgerDigestUploadDisable = Disable-AzSqlDatabaseLedgerDigestUpload -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
@@ -126,6 +127,7 @@ function Test-SetLedgerDigestUploadByDatabaseObject
 
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadEnabledGet.State "Enabled"
+		Assert-AreEqual $ledgerDigestUploadEnabledGet.Endpoint $endpoint
 
 		# Test disabling 
 		$ledgerDigestUploadDisable = Disable-AzSqlDatabaseLedgerDigestUpload -InputObject $databaseObject
@@ -173,6 +175,7 @@ function Test-SetLedgerDigestUploadByResourceId
 
 		# Assert
 		Assert-AreEqual $ledgerDigestUploadEnabledGet.State "Enabled"
+		Assert-AreEqual $ledgerDigestUploadEnabledGet.Endpoint $endpoint
 
 		# Test disabling 
 		$ledgerDigestUploadDisable = Disable-AzSqlDatabaseLedgerDigestUpload -ResourceId $databaseResourceId
