@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     public class UpdateAzureRmSignalRNetworkAcl : SignalRCmdletBase,
 IWithResourceId,IWithInputObject
     {
+        private const string ClientConnection = "ClientConnection";
+        private const string ServerConnection = "ServerConnection";
+        private const string RESTAPI = "RESTAPI";
+        private const string Trace = "Trace";
+
         [Parameter(
     Mandatory = false,
     ParameterSetName = ResourceGroupParameterSet,
@@ -84,13 +89,15 @@ IWithResourceId,IWithInputObject
         public  string[] PrivateEndpointName { get; set; }
 
         [Parameter(HelpMessage = "Allowed network ACLs")]
-        [PSArgumentCompleter("ClientConnection", "ServerConnection","RESTAPI")]
-        [ValidateSet("ClientConnection", "ServerConnection", "RESTAPI", IgnoreCase = true)]
+        [PSArgumentCompleter(ClientConnection, ServerConnection, RESTAPI, Trace)]
+        [AllowEmptyCollection]
+        [ValidateSet(ClientConnection, ServerConnection, RESTAPI, Trace, IgnoreCase = true)]
         public string[] Allow { get; set; }
 
         [Parameter(HelpMessage = "Denied network ACLs")]
-        [PSArgumentCompleter("ClientConnection", "ServerConnection", "RESTAPI")]
-        [ValidateSet("ClientConnection", "ServerConnection", "RESTAPI", IgnoreCase = true)]
+        [PSArgumentCompleter(ClientConnection, ServerConnection, RESTAPI, Trace)]
+        [AllowEmptyCollection]
+        [ValidateSet(ClientConnection, ServerConnection, RESTAPI, Trace, IgnoreCase = true)]
         public string[] Deny { get; set; }
 
         public override void ExecuteCmdlet()
@@ -120,7 +127,7 @@ IWithResourceId,IWithInputObject
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                     var networkACLs = signalr.NetworkACLs;
                     var publicNetwork = networkACLs.PublicNetwork;
-                   var privateEndpoints = networkACLs.PrivateEndpoints;
+                    var privateEndpoints = networkACLs.PrivateEndpoints;
                     if (PublicNetwork)
                     {
                         publicNetwork.Allow = Allow?? publicNetwork.Allow;
