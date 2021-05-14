@@ -13,21 +13,28 @@ namespace Microsoft.Azure.Commands.KeyVault.Helpers
             {
                 return null;
             }
-            var csp = new RSACryptoServiceProvider();
-            csp.ImportParameters(new RSAParameters()
+            try
             {
-                Exponent = jwk.E,
-                Modulus = jwk.N
-            });
-            return csp;
+                var csp = new RSACryptoServiceProvider();
+                csp.ImportParameters(new RSAParameters()
+                {
+                    Exponent = jwk.E,
+                    Modulus = jwk.N
+                });
+                return csp;
+            }
+            catch (CryptographicException)
+            {
+                return null;
+            }
         }
 
-        /// <summary>
-        /// Export the public key of a JsonWebKey to PEM format.
-        /// </summary>
-        /// <param name="jwk"></param>
-        /// <returns></returns>
-        internal static string ExportPublicKeyToPem(JsonWebKey jwk)
+            /// <summary>
+            /// Export the public key of a JsonWebKey to PEM format.
+            /// </summary>
+            /// <param name="jwk"></param>
+            /// <returns></returns>
+            internal static string ExportPublicKeyToPem(JsonWebKey jwk)
         {
 
             var csp = new RSACryptoServiceProvider();
