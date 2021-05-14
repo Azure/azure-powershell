@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.0
 * Fixed addition of assigned roles list.
 
 ## Version 0.5.0
