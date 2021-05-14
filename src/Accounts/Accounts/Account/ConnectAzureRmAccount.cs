@@ -598,12 +598,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     provider = new InMemoryTokenCacheProvider();
                 }
-                var tokenCache = provider.GetTokenCache();
                 IAzureEventListenerFactory azureEventListenerFactory = new AzureEventListenerFactory();
                 AzureSession.Instance.RegisterComponent(nameof(CommonUtilities), () => new CommonUtilities());
                 AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => provider);
                 AzureSession.Instance.RegisterComponent(nameof(IAzureEventListenerFactory), () => azureEventListenerFactory);
-                AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCache);
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
 #if DEBUG
