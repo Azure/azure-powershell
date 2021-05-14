@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Helpers.Storage.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Collections.Generic;
