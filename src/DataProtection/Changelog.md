@@ -20,6 +20,9 @@
 ## Upcoming Release
 * OnBoarded workload AzureBlobs
 
+## Version 0.2.0
+* OnBoarded workload AzureBlobs
+
 ## Version 0.1.0
 * First preview release for module Az.DataProtection
 

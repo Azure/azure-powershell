@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
-                {"Azure.Core", new Version("1.9.0.0")},
+                {"Azure.Core", new Version("1.14.0.0")},
                 {"Microsoft.Bcl.AsyncInterfaces", new Version("1.0.0.0")},
-                {"Microsoft.Identity.Client", new Version("4.23.0.0") },
-                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.16.6.0") },
+                {"Microsoft.Identity.Client", new Version("4.30.1.0") },
+                {"Microsoft.Identity.Client.Extensions.Msal", new Version("2.18.4.0") },
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory", new Version("3.19.2.6005")},
                 {"Microsoft.IdentityModel.Clients.ActiveDirectory.Platform", new Version("3.19.2.6005")},
                 {"Newtonsoft.Json", new Version("10.0.0.0")},
                 {"System.Buffers", new Version("4.0.3.0")},
                 {"System.Diagnostics.DiagnosticSource", new Version("4.0.4.0")},
                 {"System.Memory", new Version("4.0.1.1")},
-                {"System.Memory.Data", new Version("1.0.0.0")},
+                {"System.Memory.Data", new Version("1.0.2.0")},
                 {"System.Net.Http.WinHttpHandler", new Version("4.0.2.0")},
                 {"System.Numerics.Vectors", new Version("4.1.3.0")},
                 {"System.Private.ServiceModel", new Version("4.1.2.1")},
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Security.Permissions", new Version("4.0.1.0")},
                 {"System.Security.Principal.Windows", new Version("4.1.1.0")},
                 {"System.ServiceModel.Primitives", new Version("4.2.0.0")},
-                {"System.Text.Encodings.Web", new Version("4.0.4.0")},
+                {"System.Text.Encodings.Web", new Version("4.0.5.1")},
                 {"System.Text.Json", new Version("4.0.0.0")},
                 {"System.Threading.Tasks.Extensions", new Version("4.2.0.0")},
                 {"System.Xml.ReaderWriter", new Version("4.1.0.0")}

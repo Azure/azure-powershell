@@ -20,6 +20,9 @@
 ## Upcoming Release
 * Added support for cdn peering prefixes
 
+## Version 0.3.0
+* Added support for cdn peering prefixes
+
 ## Version 0.2.0
 * Adding support for Received routes
 

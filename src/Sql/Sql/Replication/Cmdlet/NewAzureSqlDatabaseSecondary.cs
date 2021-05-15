@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
 
                 }
             }
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
             };
 

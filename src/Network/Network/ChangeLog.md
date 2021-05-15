@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated validation to allow passing zero value for saDataSizeKilobytes parameter
+    - `New-AzureRmIpsecPolicy`
+
+## Version 4.8.0
 * Added edgezone parameter to support extendedlocation for cmdlets:
     - `New-AzNetworkInterface`
     - `New-AzPublicIpAddress`

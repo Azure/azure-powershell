@@ -52,7 +52,7 @@ function Test-SqlOperationsCmdlets
 
       # create an existing keyspace
       Try {
-          $NewDuplicateDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+          $NewDuplicateDatabase = New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
@@ -68,7 +68,7 @@ function Test-SqlOperationsCmdlets
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
-     
+
       # UniqueKey Creation
       $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
       $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
@@ -88,7 +88,7 @@ function Test-SqlOperationsCmdlets
 
       # create an existing container
       Try {
-            $NewDuplicateContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy 
+            $NewDuplicateContainer = New-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600 -IndexingPolicy $IndexingPolicy
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName + " already exists.")
@@ -137,35 +137,35 @@ function Test-SqlOperationsCmdlets
 
       # update non existing database, container, UDF, stored procedure, trigger
       Try {
-          $UpdatedDatabse = Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName2 
+          $UpdatedDatabse = Update-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName2
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName2 + " does not exist.")
       }
 
       Try {
-          $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName2 
+          $UpdatedContainer = Update-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName2
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $ContainerName2 + " does not exist.")
       }
 
       Try {
-          $UpdatedStoredProcedure  = Update-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName2 -Body $Body 
+          $UpdatedStoredProcedure  = Update-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName2 -Body $Body
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $StoredProcedureName2 + " does not exist.")
       }
 
       Try {
-          $UpdatedTrigger  = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName2 -Body $Body 
+          $UpdatedTrigger  = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName2 -Body $Body
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $TriggerName2 + " does not exist.")
       }
 
       Try {
-          $UpdatedUDF  = Update-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName2 -Body $Body 
+          $UpdatedUDF  = Update-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName2 -Body $Body
       }
       Catch {
           Assert-AreEqual $_.Exception.Message ("Resource with Name " + $UDFName2 + " does not exist.")
@@ -186,7 +186,7 @@ function Test-SqlOperationsCmdlets
       Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
       Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
       Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
-  
+
       # get a UDF
       $UDF = Get-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $UDFName
       Assert-AreEqual $NewUDF.Id $UDF.Id
@@ -221,7 +221,7 @@ function Test-SqlOperationsCmdlets
       Assert-AreEqual $UpdatedStoredProcedure.Resource.Body $Body2
 
       # update trigger
-      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body2 
+      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName -Body $Body2
       Assert-AreEqual $UpdatedTrigger.Name $TriggerName
       Assert-AreEqual $UpdatedTrigger.Resource.Body $Body2
       Assert-AreEqual $UpdatedTrigger.Resource.TriggerOperation $TriggerOperation
@@ -252,19 +252,19 @@ function Test-SqlOperationsCmdlets
       $ListTriggers = Get-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName
       Assert-NotNull($ListTriggers)
 
-      Remove-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName 
+      Remove-AzCosmosDBSqlStoredProcedure -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $StoredProcedureName
 
-      Remove-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName 
+      Remove-AzCosmosDBSqlTrigger -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName -Name $TriggerName
 
-      Remove-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName  -Name $UDFName 
+      Remove-AzCosmosDBSqlUserDefinedFunction -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -ContainerName $ContainerName  -Name $UDFName
 
-      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
+      Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
 
-      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
   Finally {
-    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
-    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
 
@@ -302,7 +302,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
   $TriggerType = "Pre"
 
   Try{
-      
+
       # get the database account object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
@@ -320,7 +320,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       $CompositePaths = (($cp1, $cp2), ($cp2, $cp1))
 
       $IndexingPolicy = New-AzCosmosDBSqlIndexingPolicy -IncludedPath $IncludedPath -SpatialSpec $SpatialSpec -CompositePath $CompositePaths -ExcludedPath "/myPathToNotIndex/*" -Automatic 1 -IndexingMode Consistent
-     
+
       # create a new  uniquekeypolicy
       $p1 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey3"
       $p2 = New-AzCosmosDBSqlUniqueKey -Path "/myUniqueKey4"
@@ -369,7 +369,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       Assert-AreEqual $NewStoredProcedure.Id $StoredProcedure.Id
       Assert-AreEqual $NewStoredProcedure.Name $StoredProcedure.Name
       Assert-AreEqual $NewStoredProcedure.Resource.Body $StoredProcedure.Resource.Body
-  
+
       # get a UDF
       $UDF = Get-AzCosmosDBSqlUserDefinedFunction -ParentObject $NewContainer -Name $UDFName
       Assert-AreEqual $NewUDF.Id $UDF.Id
@@ -404,7 +404,7 @@ function Test-SqlOperationsCmdletsUsingInputObject
       Assert-AreEqual $UpdatedStoredProcedure.Resource.Body $Body2
 
       # update trigger using parent object
-      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName -Body $Body2 
+      $UpdatedTrigger = Update-AzCosmosDBSqlTrigger -ParentObject $NewContainer -Name $TriggerName -Body $Body2
       Assert-AreEqual $UpdatedTrigger.Name $TriggerName
       Assert-AreEqual $UpdatedTrigger.Resource.Body $Body2
       Assert-AreEqual $UpdatedTrigger.Resource.TriggerOperation $TriggerOperation
@@ -455,11 +455,11 @@ function Test-SqlOperationsCmdletsUsingInputObject
       Assert-NotNull($ListDatabases)
 
       # list stored procedures
-      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer 
+      $ListStoredProcedures = Get-AzCosmosDBSqlStoredProcedure -ParentObject $NewContainer
       Assert-NotNull($ListStoredProcedures)
 
       # list udfs
-      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction  -ParentObject $NewContainer 
+      $ListUDFs = Get-AzCosmosDBSqlUserDefinedFunction  -ParentObject $NewContainer
       Assert-NotNull($ListUDFs)
 
       # list triggers
@@ -478,8 +478,8 @@ function Test-SqlOperationsCmdletsUsingInputObject
   }
   Finally {
 
-    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName 
-    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+    Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+    Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
 
@@ -558,10 +558,10 @@ function Test-SqlThroughputCmdlets
       # $UpdatedThroughput = Update-AzCosmosDBSqlDatabaseThroughput  -InputObject $AutoscaleDatabase -AutoscaleMaxThroughput $AutoscaleUpdatedDatabaseThroughput
       # Assert-AreEqual $UpdatedThroughput.AutoscaleSettings.MaxThroughput $AutoscaleUpdatedDatabaseThroughput
 
-      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
       Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
-      Remove-AzCosmosDBSqlContainer -InputObject $AutoscaleContainer 
-      Remove-AzCosmosDBSqlDatabase -InputObject $AutoscaleDatabase 
+      Remove-AzCosmosDBSqlContainer -InputObject $AutoscaleContainer
+      Remove-AzCosmosDBSqlDatabase -InputObject $AutoscaleDatabase
   }
   Finally{
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
@@ -573,7 +573,7 @@ function Test-SqlThroughputCmdlets
 
 <#
 .SYNOPSIS
-Test SQL migrate throughput cmdlets 
+Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
 {
@@ -615,11 +615,203 @@ function Test-SqlMigrateThroughputCmdlets
       $ManualContainerThroughput = Invoke-AzCosmosDBSqlContainerThroughputMigration  -InputObject $NewContainer -ThroughputType $Manual
       Assert-AreEqual $ManualContainerThroughput.AutoscaleSettings.MaxThroughput 0
 
-      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer 
+      Remove-AzCosmosDBSqlContainer -InputObject $NewContainer
       Remove-AzCosmosDBSqlDatabase -InputObject $NewDatabase
   }
   Finally{
       Remove-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName  -Name $ContainerName
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test SQL Roles cmdlets using all parameter sets
+#>
+function Test-SqlRoleCmdlets
+{
+  $AccountName = "rbactestps"
+  $rgName = "rgtest9921232812"
+  $subscriptionId = $(getVariable "SubscriptionId")
+
+  $DatabaseName = "dbName"
+
+  $RoleName = "roleDefinitionName"
+  $RoleName2 = "roleDefinitionName2"
+  $RoleName3 = "roleDefinitionName3"
+  $RoleName4 = "roleDefinitionName4"
+  $RoleName5 = "roleDefinitionName5"
+  $RoleName6 = "roleDefinitionName6"
+
+  $DataActionRead = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"
+  $DataActionCreate = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create"
+  $DataActionReplace = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace"
+  $DataActionInvalid = "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/invalid-action"
+
+  $PrincipalId = "ed4c2395-a18c-4018-afb3-6e521e7534d2"
+  $PrincipalId2 = "d60019b0-c5a8-4e38-beb9-fb80daa3ce90"
+
+  $Scope = "/"
+  $FullyQualifiedScope = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName"
+  $Scope2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/dbs/dbName"
+
+  $RoleAssignmentId = "a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $FullyQualifiedRoleAssignmentId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleAssignments/a2ccaf94-3c39-4728-b892-95edeef0e754"
+  $RoleAssignmentId2 = "8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $FullyQualifiedRoleAssignmentId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleAssignments/8f3f78c4-a8df-4088-9cbb-a3947e27076b"
+  $RoleAssignmentId3 = "e7a0b8a5-b381-495d-a020-5467c534e619"
+  $FullyQualifiedRoleAssignmentId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleAssignments/e7a0b8a5-b381-495d-a020-5467c534e619"
+
+  $RoleDefinitionId = "cf31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $FullyQualifiedRoleDefinitionId = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/cf31c3a1-20f5-4ff1-bdd0-5e0782617e22"
+  $RoleDefinitionId2 = "a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74"
+  $RoleDefinitionId3 = "9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $FullyQualifiedRoleDefinitionId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+
+  Try{
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+
+      # create a new role definition - using parent object and permission
+      $Permissions = New-AzCosmosDBPermission -DataAction $DataActionRead
+      $NewRoleDefinitionFromParentObject = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName -Permission $Permissions -AssignableScope $Scope -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.RoleName $RoleName
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromParentObject.Id $FullyQualifiedRoleDefinitionId
+      Assert-NotNull $NewRoleDefinitionFromParentObject.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromParentObject.Permissions
+
+      # create a new role definition - using fields and data actions
+      $NewRoleDefinitionFromFields = New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName2 -DataAction $DataActionCreate -AssignableScope $Scope2 -Id $FullyQualifiedRoleDefinitionId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleDefinitionFromFields.RoleName $RoleName2
+      Assert-AreEqual $NewRoleDefinitionFromFields.Type "CustomRole"
+      Assert-AreEqual $NewRoleDefinitionFromFields.Id $FullyQualifiedRoleDefinitionId2
+      Assert-NotNull $NewRoleDefinitionFromFields.AssignableScopes
+      Assert-NotNull $NewRoleDefinitionFromFields.Permissions
+
+      # create a new role assignment from name
+      $NewRoleAssignmentFromName = New-AzCosmosDBSqlRoleAssignment -RoleDefinitionName $RoleName -Scope $Scope2 -PrincipalId $PrincipalId -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $NewRoleAssignmentFromName.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromName.Scope $Scope2
+      Assert-AreEqual $NewRoleAssignmentFromName.PrincipalId $PrincipalId
+      Assert-AreEqual $NewRoleAssignmentFromName.Id $FullyQualifiedRoleAssignmentId
+
+      # create a new role assignment from parent object
+      $NewRoleAssignmentFromParentObject = New-AzCosmosDBSqlRoleAssignment -ParentObject $NewRoleDefinitionFromFields -Scope $Scope2 -PrincipalId $PrincipalId2 -Id $FullyQualifiedRoleAssignmentId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Scope $Scope2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.PrincipalId $PrincipalId2
+      Assert-AreEqual $NewRoleAssignmentFromParentObject.Id $FullyQualifiedRoleAssignmentId2
+
+      # create a new role assignment from Id
+      $NewRoleAssignmentFromId = New-AzCosmosDBSqlRoleAssignment -RoleDefinitionId $RoleDefinitionId -Scope $Scope -PrincipalId $PrincipalId -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId3
+      Assert-AreEqual $NewRoleAssignmentFromId.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $NewRoleAssignmentFromId.Scope $FullyQualifiedScope
+      Assert-AreEqual $NewRoleAssignmentFromId.PrincipalId $PrincipalId
+      Assert-NotNull $NewRoleAssignmentFromId.Id
+
+      # update non-existing role definition, role assignment
+      Try {
+          $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName "RoleName3" -DataAction $DataActionCreate -AssignableScope $Scope2 -Id "00000000-0000-0000-0000-000000000000" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Definition with Id [00000000-0000-0000-0000-000000000000] does not exist.")
+      }
+      Try {
+          $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionName "RoleName4" -Id "11111111-1111-1111-1111-111111111111" -AccountName $AccountName -ResourceGroupName $rgName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Role Assignment with Name [RoleName4] does not exist.")
+      }
+
+      # get a role definition
+      $RoleDefinition = Get-AzCosmosDBSqlRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleDefinitionId
+      Assert-AreEqual $RoleDefinition.RoleName $RoleName
+      Assert-AreEqual $RoleDefinition.Type "CustomRole"
+      Assert-NotNull $RoleDefinition.AssignableScopes
+      Assert-NotNull $RoleDefinition.Permissions
+
+      # get a role assignment
+      $RoleAssignment = Get-AzCosmosDBSqlRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId
+      Assert-AreEqual $RoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $RoleAssignment.Scope $Scope2
+      Assert-AreEqual $RoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $RoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role definition by parent object and data actions
+      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName3 -DataAction $DataActionReplace -AssignableScope $Scope2 -Id $RoleDefinitionId -ParentObject $DatabaseAccount
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName3
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      #update role definition by input object
+      $UpdatedRoleDefinition.RoleName = $RoleName4
+      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -InputObject $UpdatedRoleDefinition
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName4
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # update role definition by fields and permissions
+      $UpdatedRoleDefinition = Update-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName5 -Permission $Permissions -AssignableScope $Scope -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.Id $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleDefinition.RoleName $RoleName5
+      Assert-NotNull $UpdatedRoleDefinition.AssignableScopes
+      Assert-NotNull $UpdatedRoleDefinition.Permissions
+
+      # update role assignment by role definition name
+      $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionName $RoleName2 -Id $RoleAssignmentId -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by parent object
+      $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -Id $RoleAssignmentId -ParentObject $UpdatedRoleDefinition
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId
+
+      # update role assignmnent by role definition id
+      $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -RoleDefinitionId $RoleDefinitionId -Id $FullyQualifiedRoleAssignmentId2 -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
+
+      # update role assignmnent by input object
+      $UpdatedRoleAssignment.RoleDefinitionId = $FullyQualifiedRoleDefinitionId2
+
+      $UpdatedRoleAssignment = Update-AzCosmosDBSqlRoleAssignment -InputObject $UpdatedRoleAssignment
+      Assert-AreEqual $UpdatedRoleAssignment.RoleDefinitionId $FullyQualifiedRoleDefinitionId2
+      Assert-AreEqual $UpdatedRoleAssignment.Scope $Scope2
+      Assert-AreEqual $UpdatedRoleAssignment.PrincipalId $PrincipalId2
+      Assert-AreEqual $UpdatedRoleAssignment.Id $FullyQualifiedRoleAssignmentId2
+
+      # list Role Definitions
+      $ListRoleDefinitions = Get-AzCosmosDBSqlRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleDefinitions
+
+      # list Role Assignments
+      $ListRoleAssignments = Get-AzCosmosDBSqlRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull $ListRoleAssignments
+
+      # check for correct error propagation
+      $PermissionsInvalid = New-AzCosmosDBPermission -DataAction $DataActionInvalid
+      $ScriptBlockRoleDef = { New-AzCosmosDBSqlRoleDefinition -Type "CustomRole" -RoleName $RoleName6 -Permission $PermissionsInvalid -AssignableScope $Scope -Id $RoleDefinitionId3 -ParentObject $DatabaseAccount }
+      Assert-ThrowsContains $ScriptBlockRoleDef $DataActionInvalid
+  }
+  Finally
+  {
+      Remove-AzCosmosDBSqlRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $RoleAssignmentId
+      Remove-AzCosmosDBSqlRoleAssignment -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleAssignmentId2
+      $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
+      Remove-AzCosmosDBSqlRoleAssignment -ParentObject $DatabaseAccount -Id $FullyQualifiedRoleAssignmentId3
+
+      Remove-AzCosmosDBSqlRoleDefinition -AccountName $AccountName -ResourceGroupName $rgName -Id $FullyQualifiedRoleDefinitionId
+      Remove-AzCosmosDBSqlRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId2
+      Remove-AzCosmosDBSqlRoleDefinition -ParentObject $DatabaseAccount -Id $RoleDefinitionId3
   }
 }

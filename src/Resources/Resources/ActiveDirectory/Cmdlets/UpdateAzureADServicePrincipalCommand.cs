@@ -15,10 +15,9 @@
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal InputObject { get; set; }
 
-        [CmdletParameterBreakingChange("DisplayName", ChangeDescription = "DisplayName is used as the IdentifierUris of created application. The value will be considered valid only if it exists as a verified domain in a tenant.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The display name for the service principal.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The display name for the service principal.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the service principal.")]
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, HelpMessage = "The homepage for the service principal.")]
         public string Homepage { get; set; }
 
-        [CmdletParameterBreakingChange("IdentifierUri", ChangeDescription = "The value will be considered valid only if it exists as a verified domain in a tenant.")]
         [Parameter(Mandatory = false, HelpMessage = "The identifier URI(s) for the service principal.")]
         public string[] IdentifierUri { get; set; }
 
@@ -107,7 +104,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = DisplayName,
                     Homepage = Homepage,
-                    IdentifierUris = IdentifierUri,
+                    IdentifierUris = (IdentifierUri == null) ? new string[] { } : IdentifierUri,
                     KeyCredentials = KeyCredential,
                     PasswordCredentials = PasswordCredential
                 };

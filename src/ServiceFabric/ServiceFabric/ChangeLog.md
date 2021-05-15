@@ -18,6 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove deprecated cluster certificate commands:
+    - Add-AzServiceFabricClusterCertificate
+    - Remove-AzServiceFabricClusterCertificate
+Please follow instructions here to add/remove cluster certificates: https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security-update-certs-azure#add-a-secondary-certificate-using-azure-resource-manager
+* Change PSManagedService model to avoid using the properties parameter directly from sdk.
+* Remove deprecated parameters for managed cmdlets:
+    - ReverseProxyEndpointPort
+    - InstanceCloseDelayDuration
+    - ServiceDnsName
+    - InstanceCloseDelayDuration
+    - DropSourceReplicaOnMove
+* Fixed Update-AzServiceFabricReliability to update correctly the vm instance count of the primary node type on the cluster resource.
+
+## Version 2.4.0
 * Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0 which uses service fabric resource provider api-version 2021-05-01.
 * `New-AzServiceFabricManagedCluster` add parameters UpgradeCadence and ZonalResiliency.
 * `New-AzServiceFabricManagedNodeType` add parameters DiskType, VmUserAssignedIdentity, IsStateless and MultiplePlacementGroup.

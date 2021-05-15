@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.5.0
 * Added AllowLocalNfsUsersWithLdap to ActiveDirectory
 * Added VolumeName to Backup
 * Added LdapEnabled to Volume

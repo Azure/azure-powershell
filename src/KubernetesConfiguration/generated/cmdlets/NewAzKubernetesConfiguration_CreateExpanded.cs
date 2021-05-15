@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 
     /// <summary>Create a new Kubernetes Source Control Configuration.</summary>
     /// <remarks>
-    /// [OpenAPI] SourceControlConfigurations_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{clusterRp}/{clusterResourceName}/{clusterName}/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/{sourceControlConfigurationName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesConfiguration_CreateExpanded", SupportsShouldProcess = true)]
@@ -89,40 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ClusterType { get => this._clusterType; set => this._clusterType = value; }
 
-        /// <summary>Datetime the configuration was last applied.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Datetime the configuration was last applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Datetime the configuration was last applied.",
-        SerializedName = @"lastConfigApplied",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ComplianceStatusLastConfigApplied { get => SourceControlConfigurationBody.ComplianceStatusLastConfigApplied ?? default(global::System.DateTime); set => SourceControlConfigurationBody.ComplianceStatusLastConfigApplied = value; }
-
-        /// <summary>Message from when the configuration was applied.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Message from when the configuration was applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Message from when the configuration was applied.",
-        SerializedName = @"message",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ComplianceStatusMessage { get => SourceControlConfigurationBody.ComplianceStatusMessage ?? null; set => SourceControlConfigurationBody.ComplianceStatusMessage = value; }
-
-        /// <summary>Level of the message.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Level of the message.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Level of the message.",
-        SerializedName = @"messageLevel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType ComplianceStatusMessageLevel { get => SourceControlConfigurationBody.ComplianceStatusMessageLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType)""); set => SourceControlConfigurationBody.ComplianceStatusMessageLevel = value; }
-
         /// <summary>Name-value pairs of protected configuration settings for the configuration</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name-value pairs of protected configuration settings for the configuration")]
@@ -164,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Values override for the operator Helm chart.",
         SerializedName = @"chartValues",
         PossibleTypes = new [] { typeof(string) })]
-        public string HelmOperatorPropertyChartValue { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
+        public string HelmOperatorChartValues { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
 
         /// <summary>Version of the operator Helm chart.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of the operator Helm chart.")]
@@ -175,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Version of the operator Helm chart.",
         SerializedName = @"chartVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string HelmOperatorPropertyChartVersion { get => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion = value; }
+        public string HelmOperatorChartVersion { get => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -338,7 +304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances",
         SerializedName = @"sshKnownHostsContents",
         PossibleTypes = new [] { typeof(string) })]
-        public string SshKnownHostsContent { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
+        public string SshKnownHosts { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -359,74 +325,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Script = @"(Get-AzContext).Subscription.Id")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
-        /// <summary>The timestamp of resource creation (UTC).</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The timestamp of resource creation (UTC).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The timestamp of resource creation (UTC).",
-        SerializedName = @"createdAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime SystemDataCreatedAt { get => SourceControlConfigurationBody.SystemDataCreatedAt ?? default(global::System.DateTime); set => SourceControlConfigurationBody.SystemDataCreatedAt = value; }
-
-        /// <summary>The identity that created the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity that created the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity that created the resource.",
-        SerializedName = @"createdBy",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SystemDataCreatedBy { get => SourceControlConfigurationBody.SystemDataCreatedBy ?? null; set => SourceControlConfigurationBody.SystemDataCreatedBy = value; }
-
-        /// <summary>The type of identity that created the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity that created the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity that created the resource.",
-        SerializedName = @"createdByType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType SystemDataCreatedByType { get => SourceControlConfigurationBody.SystemDataCreatedByType ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType)""); set => SourceControlConfigurationBody.SystemDataCreatedByType = value; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity that last modified the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedAt",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime SystemDataLastModifiedAt { get => SourceControlConfigurationBody.SystemDataLastModifiedAt ?? default(global::System.DateTime); set => SourceControlConfigurationBody.SystemDataLastModifiedAt = value; }
-
-        /// <summary>The identity that last modified the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity that last modified the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity that last modified the resource.",
-        SerializedName = @"lastModifiedBy",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SystemDataLastModifiedBy { get => SourceControlConfigurationBody.SystemDataLastModifiedBy ?? null; set => SourceControlConfigurationBody.SystemDataLastModifiedBy = value; }
-
-        /// <summary>The type of identity that last modified the resource.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity that last modified the resource.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity that last modified the resource.",
-        SerializedName = @"lastModifiedByType",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType SystemDataLastModifiedByType { get => SourceControlConfigurationBody.SystemDataLastModifiedByType ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType)""); set => SourceControlConfigurationBody.SystemDataLastModifiedByType = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what

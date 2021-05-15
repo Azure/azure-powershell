@@ -120,6 +120,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
+            client.TrySetMaxTimesForRetryAfterHandler();
+            client.TrySetRetryCountofRetryPolicy();
+
             return client;
         }
 
