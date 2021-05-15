@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
         /// <summary>
         /// Parameter set name for named resources
         /// </summary>
-        private const string DatabaseSet = "DatabaseParameterSet";
+        protected const string DatabaseSet = "DatabaseParameterSet";
 
         /// <summary>
         /// Parameter set name for database object
