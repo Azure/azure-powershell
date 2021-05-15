@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLedgerDigestUpload", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLedgerDigestUploadModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLedgerDigestUpload", DefaultParameterSetName = DatabaseSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLedgerDigestUploadModel))]
     public class GetAzSqlDatabaseLedgerDigestUpload : AzureSqlDatabaseLedgerDigestUploadBase
     {
         /// <summary>
