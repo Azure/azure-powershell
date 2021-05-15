@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.LedgerDigestUploads.Cmdlet
     /// <summary>
     /// Defines the Disable-AzSqlDatabaseLedgerDigestUpload cmdlet
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLedgerDigestUpload", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLedgerDigestLocationModel))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLedgerDigestUpload", DefaultParameterSetName = DatabaseSet, ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLedgerDigestLocationModel))]
     public class DisableAzSqlDatabaseLedgerDigestUpload : AzureSqlDatabaseLedgerDigestUploadBase
     {
         /// <summary>
