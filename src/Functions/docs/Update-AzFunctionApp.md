@@ -15,7 +15,7 @@ Updates a function app.
 ### ByName (Default)
 ```
 Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-IdentityID <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-ApplicationInsightsName <String>] [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>]
  [-PlanName <String>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ Update-AzFunctionApp -Name <String> -ResourceGroupName <String> [-ApplicationIns
 ### ByObjectInput
 ```
 Update-AzFunctionApp -InputObject <ISite> [-ApplicationInsightsKey <String>]
- [-ApplicationInsightsName <String>] [-IdentityID <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-ApplicationInsightsName <String>] [-IdentityID <String[]>] [-IdentityType <ManagedServiceIdentityType>]
  [-PlanName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -129,7 +129,7 @@ Specifies the list of user identities associated with the function app.
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
