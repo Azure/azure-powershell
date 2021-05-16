@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities), ReplacementCmdletOutputTypeName = "Microsoft.Azure.Management.Sql.Models.ResourceIdentity")]
+    [GenericBreakingChange("Identity parameter changes", ChangeDescription = "The parameter Identity is changing from Management.Sql.Models.ResourceIdentity to Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerModel))]
     public class GetAzureSqlServer : AzureSqlServerCmdletBase
