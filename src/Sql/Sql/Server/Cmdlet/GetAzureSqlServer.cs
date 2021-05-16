@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlServer cmdlet
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities), ReplacementCmdletOutputTypeName = "Management.Sql.Models.Identity")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerModel))]
     public class GetAzureSqlServer : AzureSqlServerCmdletBase
