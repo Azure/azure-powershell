@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Set-AzSqlInstance cmdlet
     /// </summary>
-    [GenericBreakingChange("Identity parameterchanges", ChangeDescription = "The parameter Identity is changing from Management.Sql.Models.ResourceIdentity to Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities")]
+    [GenericBreakingChange("Identity parameter changes", ChangeDescription = "The parameter Identity is changing from Management.Sql.Models.ResourceIdentity to Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities")]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
