@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.network/sync-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -142,3 +142,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzVirtualNetworkPeering](./Add-AzVirtualNetworkPeering.md)
+
+[Get-AzVirtualNetworkPeering](./Get-AzVirtualNetworkPeering.md)
+
+[Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
+
+[Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
