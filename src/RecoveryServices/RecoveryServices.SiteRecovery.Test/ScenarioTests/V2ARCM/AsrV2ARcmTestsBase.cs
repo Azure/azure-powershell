@@ -110,7 +110,6 @@ namespace RecoveryServices.SiteRecovery.Test
 
                     _helper.SetupModules(
                         AzureModule.AzureResourceManager,
-                        PowershellFile,
                         rmProfileModule,
                         _helper.GetRMModulePath("AzureRM.Network.psd1"),
                         "AzureRM.Storage.ps1",
@@ -119,7 +118,8 @@ namespace RecoveryServices.SiteRecovery.Test
 #if !NETSTANDARD
                         _helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"),
 #endif
-                        "AzureRM.Resources.ps1");
+                        "AzureRM.Resources.ps1",
+                        PowershellFile);
 
                     try
                     {
