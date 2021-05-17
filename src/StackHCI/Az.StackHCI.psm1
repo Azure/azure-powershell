@@ -1807,7 +1807,7 @@ param(
     [Switch]$UseDeviceAuthentication,
     
     [Parameter(Mandatory = $false)]
-    [Switch]$EnableAzureArcServer = $true,
+    [Switch]$EnableAzureArcServer = $false,
     
     [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential
