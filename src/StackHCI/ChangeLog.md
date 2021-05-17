@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.6.0
+* Fixed addition of assigned roles list.
+
 ## Version 0.5.0
 * Made changes to registration script to add retries for AAD operations and to add AzureChinaCloud support.
     - Added retries for AAD operations for reliability.
