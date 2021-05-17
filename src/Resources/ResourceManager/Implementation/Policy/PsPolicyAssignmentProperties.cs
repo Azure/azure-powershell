@@ -1,7 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
 {
+    using System.Linq;
     using System.Management.Automation;
-
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
@@ -23,6 +23,10 @@
             EnforcementMode = (PsPolicyAssignmentEnforcementMode)properties.EnforcementMode;
             PolicyDefinitionId = properties.PolicyDefinitionId;
             Parameters = properties.Parameters.ToPsObject();
+            NonComplianceMessages = properties
+                .NonComplianceMessages?
+                .Where(message => message != null)
+                .SelectArray(message => new PsNonComplianceMessage(message));
         }
 
         /// <summary>
@@ -66,6 +70,11 @@
         public PSObject Parameters { get; set; }
 
         /// <summary>
+        /// The non-compliance messages used to describe why a resource is non-compliant with the policy.
+        /// </summary>
+        public PsNonComplianceMessage[] NonComplianceMessages { get; set; }
+
+        /// <summary>
         /// Convert to JSON
         /// </summary>
         /// <returns>JSON representatnion of policy assignment properties</returns>
@@ -107,6 +116,11 @@
             if (this.Parameters != null)
             {
                 returnValue["parameters"] = this.Parameters.ToJToken();
+            }
+
+            if (this.NonComplianceMessages != null)
+            {
+                returnValue["nonComplianceMessages"] = this.NonComplianceMessages.ToJToken();
             }
 
             return returnValue;

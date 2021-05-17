@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     using Newtonsoft.Json.Linq;
     using Policy;
+    using System.Linq;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -134,6 +135,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Location { get; set; }
 
         /// <summary>
+        /// Gets or sets the messages that describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentNonComplianceMessageHelp)]
+        [ValidateNotNull]
+        public PsNonComplianceMessage[] NonComplianceMessage { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -206,7 +214,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? null,
                     Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
                     EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
-                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
+                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject),
+                    NonComplianceMessages = this.NonComplianceMessage?.Where(message => message != null).SelectArray(message => message.ToModel())
                 }
             };
 
