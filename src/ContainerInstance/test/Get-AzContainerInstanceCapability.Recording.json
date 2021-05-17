@@ -1,0 +1,43 @@
+{
+  "Get-AzContainerInstanceCapability+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/capabilities?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.ContainerInstance/locations/eastus/capabilities?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "40293ff9-93e9-4acf-862f-b90c264b915b" ],
+        "CommandName": [ "Get-AzContainerInstanceCapability" ],
+        "FullCommandName": [ "Get-AzContainerInstanceCapability_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:bf6d3596-6627-42c1-9624-bf04751f195f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "457a6487-8a80-436c-94c0-45733dd1b0d7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210511T063202Z:457a6487-8a80-436c-94c0-45733dd1b0d7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 11 May 2021 06:32:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1452" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"containerGroups\",\"osType\":\"NotSpecified\",\"location\":\"eastus\",\"ipAddressType\":\"Public\",\"gpu\":\"None\",\"capabilities\":{\"maxMemoryInGB\":16.0,\"maxCpu\":4.0,\"maxGpuCount\":0}},{\"resourceType\":\"containerGroups\",\"osType\":\"NotSpecified\",\"location\":\"eastus\",\"ipAddressType\":\"Private\",\"gpu\":\"None\",\"capabilities\":{\"maxMemoryInGB\":16.0,\"maxCpu\":4.0,\"maxGpuCount\":0}},{\"resourceType\":\"containerGroups\",\"osType\":\"Linux\",\"location\":\"EASTUS\",\"ipAddressType\":\"Public\",\"gpu\":\"None\",\"capabilities\":{\"maxMemoryInGB\":16.0,\"maxCpu\":4.0,\"maxGpuCount\":0}},{\"resourceType\":\"containerGroups\",\"osType\":\"Linux\",\"location\":\"EASTUS\",\"ipAddressType\":\"Private\",\"gpu\":\"None\",\"capabilities\":{\"maxMemoryInGB\":148.0,\"maxCpu\":72.0,\"maxGpuCount\":0}},{\"resourceType\":\"containerGroups\",\"osType\":\"Linux\",\"location\":\"EASTUS\",\"ipAddressType\":\"Public\",\"gpu\":\"K80\",\"capabilities\":{\"maxMemoryInGB\":224.0,\"maxCpu\":24.0,\"maxGpuCount\":4}},{\"resourceType\":\"containerGroups\",\"osType\":\"Linux\",\"location\":\"EASTUS\",\"ipAddressType\":\"Public\",\"gpu\":\"P100\",\"capabilities\":{\"maxMemoryInGB\":448.0,\"maxCpu\":24.0,\"maxGpuCount\":4}},{\"resourceType\":\"containerGroups\",\"osType\":\"Linux\",\"location\":\"EASTUS\",\"ipAddressType\":\"Public\",\"gpu\":\"V100\",\"capabilities\":{\"maxMemoryInGB\":448.0,\"maxCpu\":24.0,\"maxGpuCount\":4}},{\"resourceType\":\"containerGroups\",\"osType\":\"Windows\",\"location\":\"EASTUS\",\"ipAddressType\":\"Public\",\"gpu\":\"None\",\"capabilities\":{\"maxMemoryInGB\":16.0,\"maxCpu\":4.0,\"maxGpuCount\":0}}]}",
+      "isContentBase64": false
+    }
+  }
+}

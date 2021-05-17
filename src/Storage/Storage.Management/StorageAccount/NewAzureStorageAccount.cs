@@ -360,7 +360,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public SwitchParameter RequireInfrastructureEncryption { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
-        public TimeSpan SasExpirationPeriod { get; set; }
+        public TimeSpan SasExpirationPeriod
+        {
+            get
+            {
+                return sasExpirationPeriod is null? TimeSpan.Zero : sasExpirationPeriod.Value;
+            }
+            set
+            {
+                sasExpirationPeriod = value;
+            }
+        }
+        private TimeSpan? sasExpirationPeriod = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
@@ -698,9 +709,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Name = this.EdgeZone
                 };
             }
-            if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+            if (sasExpirationPeriod != null)
             {
-                createParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
             }
             if (keyExpirationPeriodInDay != null)
             {
