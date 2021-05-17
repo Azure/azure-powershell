@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
@@ -65,7 +66,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                     int.TryParse(Regex.Match(AppServicePlan.Sku.Name, @"\d+").Value, out workerSizeAsNumber);
                     AppServicePlan.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, workerSizeAsNumber) : CmdletHelpers.GetSkuName(AppServicePlan.Sku.Tier, WorkerSize);
                     AppServicePlan.PerSiteScaling = PerSiteScaling;
-                    AppServicePlan.Tags = (IDictionary<string, string>)CmdletHelpers.ConvertToStringDictionary(Tag);
+                    if (Tag != null)
+                    {
+                        CmdletHelpers.ConvertToStringDictionary(Tag).ForEach(item => AppServicePlan.Tags.Add(item));
+                    }
                     break;
             }
 
