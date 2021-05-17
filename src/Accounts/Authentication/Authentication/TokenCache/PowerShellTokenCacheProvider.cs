@@ -16,6 +16,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Azure.Identity;
+
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -173,7 +175,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return client;
         }
 
-        public abstract PowerShellTokenCache GetTokenCache();
+        public abstract TokenCachePersistenceOptions GetTokenCachePersistenceOptions();
 
     }
 }

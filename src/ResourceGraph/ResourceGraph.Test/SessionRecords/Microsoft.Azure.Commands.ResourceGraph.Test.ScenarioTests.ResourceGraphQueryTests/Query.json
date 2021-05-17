@@ -1,88 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions?api-version=2016-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "31537677-7032-4654-becb-372f2eeebf21"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3163.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Internal.Subscriptions.SubscriptionClient/4.1.0"
-        ]
-      },
-      "ResponseBody": "{\"value\": [{\"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000\", \"subscriptionId\": \"00000000-0000-0000-0000-000000000000\", \"displayName\": \"Test Subscription\", \"state\": \"Enabled\", \"authorizationSource\": \"RoleBased\"}]}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "987"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
-        ],
-        "x-ms-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-correlation-request-id": [
-          "dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180926T232942Z:dc5b4ea5-4059-44fa-9d49-5c48f46224f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 26 Sep 2018 23:29:41 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAxOS0wNC0wMQ==",
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"00000000-0000-0000-0000-000000000000\"\r\n  ],\r\n  \"query\": \"project id, tags, properties |where tags != '' | where properties != '' | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 2,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"82506e98-9fdb-41f5-ab67-031005041a26\"\r\n  ],\r\n  \"query\": \"Resources | where tags != \\\"\\\" | project id, tags, properties | limit 2\",\r\n  \"options\": {\r\n    \"$top\": 100,\r\n    \"$skip\": 0,\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d56a964d-df96-4e23-ad5c-9ae16d8b4c5d"
+          "d30d2e76-c7fa-4169-b348-f01b023fde13"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.27617.04",
+          "FxVersion/4.6.29916.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "221"
+          "288"
         ]
       },
       "ResponseHeaders": {
@@ -95,38 +35,38 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "14"
+        ],
+        "x-ms-user-quota-remaining": [
+          "14"
+        ],
         "x-ms-user-quota-resets-after": [
           "00:00:05"
         ],
-        "x-ms-user-quota-remaining": [
-          "13"
-        ],
-        "x-ms-ratelimit-remaining-tenant-resource-requests": [
-          "13"
-        ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-request-id": [
-          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+          "2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "x-ms-correlation-request-id": [
-          "e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+          "2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20190710T225645Z:e27e652e-d30b-4e49-bbd3-a58a3f430d42"
+          "WESTCENTRALUS:20210420T113301Z:2b289c00-81af-4d04-a814-acbb8698a9d1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 10 Jul 2019 22:56:45 GMT"
+          "Tue, 20 Apr 2021 11:33:00 GMT"
         ],
         "Content-Length": [
-          "4542"
+          "1083"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -135,12 +75,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n      {\r\n        \"id\":        \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MEMVM/providers/Microsoft.Compute/virtualMachines/memvm/extensions/MicrosoftMonitoringAgent\",\r\n        \"tags\":        {},\r\n         \"properties\":        {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"type\": \"MicrosoftMonitoringAgent\",\r\n          \"autoUpgradeMinorVersion\": true,\r\n          \"typeHandlerVersion\": \"1.0\",\r\n          \"publisher\": \"Microsoft.EnterpriseCloud.Monitoring\",\r\n          \"settings\": {\r\n            \"stopOnMultipleConnections\": true,\r\n            \"workspaceId\": \"0f3577b5-fd56-4f52-81d3-43d1eab26618\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n         \"id\":        \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Workerbackup/providers/Microsoft.ClassicCompute/domainNames/worker-b\",\r\n         \"tags\":        {},\r\n         \"properties\":        {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"status\": \"Created\",\r\n          \"hostName\": \"worker-b.cloudapp.net\",\r\n          \"label\": \"worker-b\"\r\n        }\r\n      }\r\n      ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
+      "ResponseBody": "{\r\n  \"totalRecords\": 2,\r\n  \"count\": 2,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesTopologyDfStorage/providers/Microsoft.ServiceBus/namespaces/twofsnservicebusdf\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"zoneRedundant\": true,\r\n        \"serviceBusEndpoint\": \"https://twofsnservicebusdf.servicebus.windows.net:443/\",\r\n        \"createdAt\": \"2021-03-12T21:20:01.667Z\",\r\n        \"updatedAt\": \"2021-04-20T10:55:34.69Z\",\r\n        \"metricId\": \"82506e98-9fdb-41f5-ab67-031005041a26:twofsnservicebusdf\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesTopologyDfStorage/providers/Microsoft.ServiceBus/namespaces/threemponeservicebusdf\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"status\": \"Active\",\r\n        \"zoneRedundant\": true,\r\n        \"serviceBusEndpoint\": \"https://threemponeservicebusdf.servicebus.windows.net:443/\",\r\n        \"createdAt\": \"2020-12-23T02:50:43.14Z\",\r\n        \"updatedAt\": \"2021-04-20T06:32:36.617Z\",\r\n        \"metricId\": \"82506e98-9fdb-41f5-ab67-031005041a26:threemponeservicebusdf\"\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\"\r\n}",
       "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "82506e98-9fdb-41f5-ab67-031005041a26"
   }
 }

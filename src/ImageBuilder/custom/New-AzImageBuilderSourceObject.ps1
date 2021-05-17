@@ -19,20 +19,20 @@ Describes a virtual machine image source for building, customizing and distribut
 Describes a virtual machine image source for building, customizing and distributing.
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
+https://docs.microsoft.com/powershell/module/az.imagebuilder/New-AzImageBuilderSourceObject
 #>
 function New-AzImageBuilderSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateSource')]
     [CmdletBinding(PositionalBinding=$false, DefaultParameterSetName="ManagedImage")]
     Param(
         #region SourceType-PlatformImage
-        [Parameter(ParameterSetName='PlatformImage', Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Parameter(ParameterSetName='PlatformImagePlanInfo', Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImage', Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImagePlanInfo', Mandatory, HelpMessage="Describes an image source from [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [Switch]
         ${SourceTypePlatformImage},
-        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image offer from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image offer from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Offer},
@@ -48,18 +48,18 @@ function New-AzImageBuilderSourceObject {
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${PlanPublisher},
-        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Publisher},
-        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image sku from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image sku from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Sku},
-        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
-        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImage', HelpMessage="Image version from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
+        [Parameter(ParameterSetName='PlatformImagePlanInfo', HelpMessage="Image version from the [Azure Gallery Images](https://docs.microsoft.com/rest/api/compute/virtualmachineimages).")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
         [string]
         ${Version},

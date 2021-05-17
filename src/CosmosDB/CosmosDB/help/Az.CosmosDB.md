@@ -12,100 +12,133 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Cosmo
 
 ## Az.CosmosDB Cmdlets
 ### [Get-AzCosmosDBAccount](Get-AzCosmosDBAccount.md)
-Gets the CosmosDB Account.
+Get CosmosDB Account.
 
 ### [Get-AzCosmosDBAccountKey](Get-AzCosmosDBAccountKey.md)
-Get Keys (value from {"ConnectionKeys", "PrimaryReadOnly" or "Keys"}) for the given CosmosDB Account. 
+Get Keys{"ConnectionKeys", "PrimaryReadOnly" or "Keys"} for the given CosmosDB Account. 
 
 ### [Get-AzCosmosDBCassandraKeyspace](Get-AzCosmosDBCassandraKeyspace.md)
-Gets an existing CosmosDB Cassandra Keyspace.
+Gets a CosmosDB Cassandra Keyspace.
 
 ### [Get-AzCosmosDBCassandraKeyspaceThroughput](Get-AzCosmosDBCassandraKeyspaceThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Cassandra Keyspace.
+Gets the throughput value of the Cassandra Keyspace.
 
 ### [Get-AzCosmosDBCassandraTable](Get-AzCosmosDBCassandraTable.md)
-Gets an existing CosmosDB Cassandra Table.
+Gets a CosmosDB Cassandra Table.
 
 ### [Get-AzCosmosDBCassandraTableThroughput](Get-AzCosmosDBCassandraTableThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Cassandra Table.
+Gets the throughput value of the Cassandra Table.
 
 ### [Get-AzCosmosDBGremlinDatabase](Get-AzCosmosDBGremlinDatabase.md)
-Gets an existing CosmosDB Gremlin Database.
+Gets the CosmosDB Gremlin Database.
 
 ### [Get-AzCosmosDBGremlinDatabaseThroughput](Get-AzCosmosDBGremlinDatabaseThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Gremlin Database.
+Gets the throughput of a CosmosDB Gremlin Database.
 
 ### [Get-AzCosmosDBGremlinGraph](Get-AzCosmosDBGremlinGraph.md)
-Gets an existing CosmosDB Gremlin Graph.
+Gets the CosmosDB Gremlin Graph.
 
 ### [Get-AzCosmosDBGremlinGraphThroughput](Get-AzCosmosDBGremlinGraphThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Gremlin Graph.
+Gets the throughput of a CosmosDB Gremlin Graph.
 
 ### [Get-AzCosmosDBMongoDBCollection](Get-AzCosmosDBMongoDBCollection.md)
-Gets an existing CosmosDB MongoDB Collection.
+Gets the CosmosDB MongoDB Collection.
 
 ### [Get-AzCosmosDBMongoDBCollectionThroughput](Get-AzCosmosDBMongoDBCollectionThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB MongoDB Collection.
+Gets the CosmosDB throughput properties of MongoDB Collection.
 
 ### [Get-AzCosmosDBMongoDBDatabase](Get-AzCosmosDBMongoDBDatabase.md)
-Gets an existing CosmosDB MongoDB Database.
+Gets the CosmosDB MongoDB Database
 
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB MongoDB Database.
+Gets the CosmosDB throughput properties of MongoDB Database.
 
 ### [Get-AzCosmosDBSqlContainer](Get-AzCosmosDBSqlContainer.md)
-Gets an existing CosmosDB Sql Container.
+Gets the CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlContainerThroughput](Get-AzCosmosDBSqlContainerThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Sql Container.
+Gets the throughput settings corresponding to a CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlDatabase](Get-AzCosmosDBSqlDatabase.md)
-Gets an existing CosmosDB Sql Database.
+Gets the CosmosDB Sql Database.
 
 ### [Get-AzCosmosDBSqlDatabaseThroughput](Get-AzCosmosDBSqlDatabaseThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Sql Database.
+Gets the throughput settings corresponding to a CosmosDB Sql Database.
+
+### [Get-AzCosmosDBSqlRoleAssignment](Get-AzCosmosDBSqlRoleAssignment.md)
+Gets the CosmosDB Sql Role Assignment.
+
+### [Get-AzCosmosDBSqlRoleDefinition](Get-AzCosmosDBSqlRoleDefinition.md)
+Gets the CosmosDB Role Definition.
 
 ### [Get-AzCosmosDBSqlStoredProcedure](Get-AzCosmosDBSqlStoredProcedure.md)
-Gets an existing CosmosDB Sql StoredProcedure.
+Gets the CosmosDB Sql StoredProcedure.
 
 ### [Get-AzCosmosDBSqlTrigger](Get-AzCosmosDBSqlTrigger.md)
-Gets an existing CosmosDB Sql Trigger.
+Gets the CosmosDB Sql Trigger.
 
 ### [Get-AzCosmosDBSqlUserDefinedFunction](Get-AzCosmosDBSqlUserDefinedFunction.md)
-Gets an existing CosmosDB Sql UserDefinedFunction.
+Gets the CosmosDB Sql User Defined Function.
 
 ### [Get-AzCosmosDBTable](Get-AzCosmosDBTable.md)
-Gets an existing CosmosDB Table.
+Gets a CosmosDB Table.
 
 ### [Get-AzCosmosDBTableThroughput](Get-AzCosmosDBTableThroughput.md)
-Gets the ThroughputSettingsResource for an existing CosmosDB Table.
+Gets the throughput of a CosmosDB Table.
+
+### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBCassandraTableThroughputMigration](Invoke-AzCosmosDBCassandraTableThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBGremlinDatabaseThroughputMigration](Invoke-AzCosmosDBGremlinDatabaseThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBGremlinGraphThroughputMigration](Invoke-AzCosmosDBGremlinGraphThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBMongoDBCollectionThroughputMigration](Invoke-AzCosmosDBMongoDBCollectionThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration](Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBSqlContainerThroughputMigration](Invoke-AzCosmosDBSqlContainerThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBSqlDatabaseThroughputMigration](Invoke-AzCosmosDBSqlDatabaseThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
+
+### [Invoke-AzCosmosDBTableThroughputMigration](Invoke-AzCosmosDBTableThroughputMigration.md)
+Use this to migrate autoscale throughput to manual throughput and vice versa.
 
 ### [New-AzCosmosDBAccount](New-AzCosmosDBAccount.md)
-Creates a new CosmosDB Account.
+Create a new CosmosDB Account.
 
 ### [New-AzCosmosDBAccountKey](New-AzCosmosDBAccountKey.md)
-Regenerates the specified CosmosDB Account Key.
+Regenerate a given CosmosDB Account Key.
 
 ### [New-AzCosmosDBCassandraClusterKey](New-AzCosmosDBCassandraClusterKey.md)
-Creates a new local object of type PSCassandraClusterKey. 
+Creates a new CosmosDB Cassandra Cluster Key.
 
 ### [New-AzCosmosDBCassandraColumn](New-AzCosmosDBCassandraColumn.md)
-Creates a new local object of type PSCassandraColumn. 
+Creates a new CosmosDB Cassandra Column.
 
 ### [New-AzCosmosDBCassandraKeyspace](New-AzCosmosDBCassandraKeyspace.md)
 Creates a new CosmosDB Cassandra Keyspace.
 
 ### [New-AzCosmosDBCassandraSchema](New-AzCosmosDBCassandraSchema.md)
-Creates a new local object of type PSCassandraSchema. 
+Creates a new CosmosDB Cassandra Schema.
 
 ### [New-AzCosmosDBCassandraTable](New-AzCosmosDBCassandraTable.md)
 Creates a new CosmosDB Cassandra Table.
 
 ### [New-AzCosmosDBGremlinCompositePath](New-AzCosmosDBGremlinCompositePath.md)
-Creates a new local object of type PSGremlinCompositePath. 
+Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBGremlinGraph.
 
 ### [New-AzCosmosDBGremlinConflictResolutionPolicy](New-AzCosmosDBGremlinConflictResolutionPolicy.md)
-Creates a new local object of type PSGremlinConflictResolutionPolicy. 
+Creates a new object of type PSConflictResolutionPolicy. It can be passed as a parameter value for Set-AzCosmosDBGremlinGraph.
 
 ### [New-AzCosmosDBGremlinDatabase](New-AzCosmosDBGremlinDatabase.md)
 Creates a new CosmosDB Gremlin Database.
@@ -114,25 +147,25 @@ Creates a new CosmosDB Gremlin Database.
 Creates a new CosmosDB Gremlin Graph.
 
 ### [New-AzCosmosDBGremlinIncludedPath](New-AzCosmosDBGremlinIncludedPath.md)
-Creates a new local object of type PSGremlinIncludedPath. 
+Creates a new object of type PSIncludedPath. It can be passed as a parameter value for Set-AzCosmosDBGremlinGraph.
 
 ### [New-AzCosmosDBGremlinIncludedPathIndex](New-AzCosmosDBGremlinIncludedPathIndex.md)
-Creates a new local object of type PSGremlinIncludedPathIndex. 
+Creates a new object of type PSIndexes. It can be passed as a parameter value for Set-AzCosmosDBGremlinIncludedPath.
 
 ### [New-AzCosmosDBGremlinIndexingPolicy](New-AzCosmosDBGremlinIndexingPolicy.md)
-Creates a new local object of type PSGremlinIndexingPolicy. 
+Creates a new CosmosDB IndexingPolicy object.
 
 ### [New-AzCosmosDBGremlinSpatialSpec](New-AzCosmosDBGremlinSpatialSpec.md)
-Creates a new local object of type PSGremlinSpatialSpec. 
+Creates a new object of type PSSpatialSpec. It can be passed as a parameter value for Set-AzCosmosDBGremlinIndexingPolicy.
 
 ### [New-AzCosmosDBGremlinUniqueKey](New-AzCosmosDBGremlinUniqueKey.md)
-Creates a new local object of type PSGremlinUniqueKey. 
+Creates a new CosmosDB UniqueKeyPolicy object.
 
 ### [New-AzCosmosDBGremlinUniqueKeyPolicy](New-AzCosmosDBGremlinUniqueKeyPolicy.md)
-Creates a new local object of type PSGremlinUniqueKeyPolicy. 
+Creates a new CosmosDB UniqueKeyPolicy object.
 
 ### [New-AzCosmosDBLocationObject](New-AzCosmosDBLocationObject.md)
-Creates a new local object of type PSLocation. 
+Create a new CosmosDB Location Object(PSLocation).
 
 ### [New-AzCosmosDBMongoDBCollection](New-AzCosmosDBMongoDBCollection.md)
 Creates a new CosmosDB MongoDB Collection.
@@ -141,13 +174,16 @@ Creates a new CosmosDB MongoDB Collection.
 Creates a new CosmosDB MongoDB Database.
 
 ### [New-AzCosmosDBMongoDBIndex](New-AzCosmosDBMongoDBIndex.md)
-Creates a new local object of type PSMongoDBIndex.
+Creates a new CosmosDB MongoDB Index.
+
+### [New-AzCosmosDBPermission](New-AzCosmosDBPermission.md)
+Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
-Creates a new local object of type PSSqlCompositePath. 
+Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
 ### [New-AzCosmosDBSqlConflictResolutionPolicy](New-AzCosmosDBSqlConflictResolutionPolicy.md)
-Creates a new local object of type PSSqlConflictResolutionPolicy. 
+Creates a new object of type PSSqlConflictResolutionPolicy. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
 ### [New-AzCosmosDBSqlContainer](New-AzCosmosDBSqlContainer.md)
 Creates a new CosmosDB Sql Container.
@@ -156,16 +192,22 @@ Creates a new CosmosDB Sql Container.
 Creates a new CosmosDB Sql Database.
 
 ### [New-AzCosmosDBSqlIncludedPath](New-AzCosmosDBSqlIncludedPath.md)
-Creates a new local object of type PSSqlIncludedPath. 
+Creates a new object of type PSIncludedPath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
 ### [New-AzCosmosDBSqlIncludedPathIndex](New-AzCosmosDBSqlIncludedPathIndex.md)
-Creates a new local object of type PSSqlIncludedPathIndex. 
+Creates a new object of type PSIndexes. It can be passed as a parameter value for Set-AzCosmosDBSqlIncludedPath.
 
 ### [New-AzCosmosDBSqlIndexingPolicy](New-AzCosmosDBSqlIndexingPolicy.md)
-Creates a new local object of type PSSqlIndexingPolicy. 
+Creates a new CosmosDB Sql IndexingPolicy object.
+
+### [New-AzCosmosDBSqlRoleAssignment](New-AzCosmosDBSqlRoleAssignment.md)
+Creates a new CosmosDB Sql Role Assignment.
+
+### [New-AzCosmosDBSqlRoleDefinition](New-AzCosmosDBSqlRoleDefinition.md)
+Creates a new CosmosDB Sql Role Definition.
 
 ### [New-AzCosmosDBSqlSpatialSpec](New-AzCosmosDBSqlSpatialSpec.md)
-Creates a new local object of type PSSqlSpatialSpec. 
+Creates a new object of type PSSpatialSpec. It can be passed as a parameter value for Set-AzCosmosDBSqlIndexingPolicy.
 
 ### [New-AzCosmosDBSqlStoredProcedure](New-AzCosmosDBSqlStoredProcedure.md)
 Creates a new CosmosDB Sql StoredProcedure.
@@ -174,10 +216,10 @@ Creates a new CosmosDB Sql StoredProcedure.
 Creates a new CosmosDB Sql Trigger.
 
 ### [New-AzCosmosDBSqlUniqueKey](New-AzCosmosDBSqlUniqueKey.md)
-Creates a new local object of type PSSqlUniqueKey. 
+Creates a new CosmosDB Sql UniqueKey object.
 
 ### [New-AzCosmosDBSqlUniqueKeyPolicy](New-AzCosmosDBSqlUniqueKeyPolicy.md)
-Creates a new local object of type PSSqlUniqueKeyPolicy. 
+Creates a new CosmosDB SqlUniqueKeyPolicy object.
 
 ### [New-AzCosmosDBSqlUserDefinedFunction](New-AzCosmosDBSqlUserDefinedFunction.md)
 Creates a new CosmosDB Sql UserDefinedFunction.
@@ -186,55 +228,61 @@ Creates a new CosmosDB Sql UserDefinedFunction.
 Creates a new CosmosDB Table.
 
 ### [New-AzCosmosDBVirtualNetworkRule](New-AzCosmosDBVirtualNetworkRule.md)
-Creates a new local object of type PSVirtualNetworkRule. 
+Create a new CosmosDB VirtualNetworkRule Object(PSVirtualNetworkRule).
 
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
-Delete a CosmosDB Account.
+Remove a CosmosDB Account.
 
 ### [Remove-AzCosmosDBCassandraKeyspace](Remove-AzCosmosDBCassandraKeyspace.md)
-Delete a CosmosDB Cassandra Keyspace.
+Deletes a CosmosDB Cassandra Keyspace.
 
 ### [Remove-AzCosmosDBCassandraTable](Remove-AzCosmosDBCassandraTable.md)
-Delete a CosmosDB Cassandra Table.
+Deletes a CosmosDB Cassandra Table.
 
 ### [Remove-AzCosmosDBGremlinDatabase](Remove-AzCosmosDBGremlinDatabase.md)
-Delete a CosmosDB Gremlin Database.
+Deletes a CosmosDB Gremlin Database.
 
 ### [Remove-AzCosmosDBGremlinGraph](Remove-AzCosmosDBGremlinGraph.md)
-Delete a CosmosDB Gremlin Graph.
+Deletes a CosmosDB Gremlin Graph.
 
 ### [Remove-AzCosmosDBMongoDBCollection](Remove-AzCosmosDBMongoDBCollection.md)
-Delete a CosmosDB MongoDB Collection.
+Deletes a CosmosDB MongoDB Collection.
 
 ### [Remove-AzCosmosDBMongoDBDatabase](Remove-AzCosmosDBMongoDBDatabase.md)
-Delete a CosmosDB MongoDB Database.
+Deletes a CosmosDB MongoDB Database.
 
 ### [Remove-AzCosmosDBSqlContainer](Remove-AzCosmosDBSqlContainer.md)
-Delete a CosmosDB Sql Container.
+Deletes the CosmosDB Sql Container.
 
 ### [Remove-AzCosmosDBSqlDatabase](Remove-AzCosmosDBSqlDatabase.md)
-Delete a CosmosDB Sql Database.
+Deletes the CosmosDB Sql Database.
+
+### [Remove-AzCosmosDBSqlRoleAssignment](Remove-AzCosmosDBSqlRoleAssignment.md)
+Deletes the CosmosDB Sql Role Assignment.
+
+### [Remove-AzCosmosDBSqlRoleDefinition](Remove-AzCosmosDBSqlRoleDefinition.md)
+Deletes the CosmosDB Sql Role Definition.
 
 ### [Remove-AzCosmosDBSqlStoredProcedure](Remove-AzCosmosDBSqlStoredProcedure.md)
-Delete a CosmosDB Sql StoredProcedure.
+Deletes the CosmosDB Sql StoredProcedure.
 
 ### [Remove-AzCosmosDBSqlTrigger](Remove-AzCosmosDBSqlTrigger.md)
-Delete a CosmosDB Sql Trigger.
+Deletes the CosmosDB Sql Trigger.
 
 ### [Remove-AzCosmosDBSqlUserDefinedFunction](Remove-AzCosmosDBSqlUserDefinedFunction.md)
-Delete a CosmosDB Sql UserDefinedFunction.
+Deletes the CosmosDB Sql UserDefinedFunction.
 
 ### [Remove-AzCosmosDBTable](Remove-AzCosmosDBTable.md)
-Delete a CosmosDB Table.
+Deletes the CosmosDB Table.
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
-Update a CosmosDB Account. Performs a server side patch operation.
+Update a CosmosDB account attributes.
 
 ### [Update-AzCosmosDBAccountFailoverPriority](Update-AzCosmosDBAccountFailoverPriority.md)
-Updates the FailoverPolicies of the CosmosDB Account.
+{{ Fill in the Synopsis }}
 
 ### [Update-AzCosmosDBAccountRegion](Update-AzCosmosDBAccountRegion.md)
-Adds regions in a CosmosDB Account.
+Update Regions of a CosmosDB Account.
 
 ### [Update-AzCosmosDBCassandraKeyspace](Update-AzCosmosDBCassandraKeyspace.md)
 Updates the CosmosDB Cassandra Keyspace. Performs a client side patch operation by reading the existing Keyspace.
@@ -284,6 +332,12 @@ Updates the CosmosDB Sql Database. Performs a client side patch operation by rea
 ### [Update-AzCosmosDBSqlDatabaseThroughput](Update-AzCosmosDBSqlDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB Sql Database.
 
+### [Update-AzCosmosDBSqlRoleAssignment](Update-AzCosmosDBSqlRoleAssignment.md)
+Updates an existing CosmosDB Sql Role Assignment.
+
+### [Update-AzCosmosDBSqlRoleDefinition](Update-AzCosmosDBSqlRoleDefinition.md)
+Updates an existing CosmosDB Sql Role Definition.
+
 ### [Update-AzCosmosDBSqlStoredProcedure](Update-AzCosmosDBSqlStoredProcedure.md)
 Updates the CosmosDB Sql StoredProcedure. Performs a client side patch operation by reading the existing StoredProcedure.
 
@@ -298,3 +352,4 @@ Updates the CosmosDB Table. Performs a client side patch operation by reading th
 
 ### [Update-AzCosmosDBTableThroughput](Update-AzCosmosDBTableThroughput.md)
 Updates the throughput value of a CosmosDB Table.
+

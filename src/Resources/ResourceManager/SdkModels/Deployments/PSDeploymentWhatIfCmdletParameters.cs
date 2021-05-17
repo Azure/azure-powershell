@@ -102,6 +102,11 @@
             else if (Uri.IsWellFormedUriString(this.TemplateUri, UriKind.Absolute))
             {
                 properties.TemplateLink = new TemplateLink(this.TemplateUri);
+
+                if (!string.IsNullOrEmpty(this.QueryString))
+                {
+                    properties.TemplateLink.QueryString = this.QueryString;
+                }
             }
             else
             {

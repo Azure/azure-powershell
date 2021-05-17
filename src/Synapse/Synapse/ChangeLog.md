@@ -18,12 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
 
-## Version 0.8.0
-* Added support for operation of getting droppedsqlpool and geobackup
-    - Add `Get-AzSynapseDroppedSqlPool` cmdlet
-    - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
-* Switched to Azure PowerShell official exception types
+## Version 0.11.0
+* Removed principaltype in Synapse Role-based access control
+
+## Version 0.10.0
+* Add support for Synapse Role-based access control
+   - Upgraded Azure.Analytics.Synapse.AccessControl to 1.0.0-preview.3
+   - Updated `New-AzSynapseRoleAssignment` cmdlet
+   - Updated `Get-AzSynapseRoleAssignment` cmdlet
+   - Updated `Remove-AzSynapseRoleAssignment` cmdlet
+   - Added `Get-AzSynapseRoleScope` cmdlet
+* Renamed -AllowAllAzureIP to -AllowAllAzureIp and changed IP range to 0.0.0.0-0.0.0.0 
+* Added -AllowAllIp and set IP range to 0.0.0.0-255.255.255.255
+* Fixed the issue of retrieving Apache Spark pool information through management API
+
+## Version 0.9.0
 * Added support for workspace key encryption management
 	- Add `New-AzSynapseWorkspaceKey` cmdlet
     - Add `Get-AzSynapseWorkspaceKey` cmdlet
@@ -33,9 +44,15 @@
 	- Add `Set-AzSynapseManagedIdentitySqlControlSetting` cmdlet
     - Add `Get-AzSynapseManagedIdentitySqlControlSetting` cmdlet
 * Added support for data exfiltration
-	- Update `New-AzSynapseWorkspace` cmdlet to accpet `-ManagedVirtualNetwork`
+	- Update `New-AzSynapseWorkspace` cmdlet to accept `-ManagedVirtualNetwork`
     - Add `New-AzSynapseManagedVirtualNetworkConfig` cmdlet
     - Add `Update-AzSynapseManagedVirtualNetworkConfig` cmdlet
+
+## Version 0.8.0
+* Added support for operation of getting droppedsqlpool and geobackup
+    - Add `Get-AzSynapseDroppedSqlPool` cmdlet
+    - Add `Get-AzSynapseSqlPoolGeoBackup` cmdlet
+* Switched to Azure PowerShell official exception types
 
 ## Version 0.7.0
 * Simplify `Restore-AzSynapseSqlPool` cmdlet to make it consistent with the existing SQL DW cmdlet

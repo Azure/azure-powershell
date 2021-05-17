@@ -31,15 +31,15 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Models.Bookmarks
                 Type = value.Type,
                 Etag = value.Etag,
                 Created = value.Created,
-                CreatedBy = value.CreatedBy.ConvertToPSType(),
+                CreatedBy = value.CreatedBy?.ConvertToPSType(),
                 DisplayName = value.DisplayName,
-                IncidentInfo = value.IncidentInfo.ConvertToPSType(),
+                IncidentInfo = value.IncidentInfo?.ConvertToPSType(),
                 Labels = value.Labels,
                 Notes = value.Notes,
                 Query = value.Query,
                 QueryResult = value.QueryResult,
                 Updated = value.Updated,
-                UpdatedBy = value.UpdatedBy.ConvertToPSType()
+                UpdatedBy = value.UpdatedBy?.ConvertToPSType()
             };
         }
 

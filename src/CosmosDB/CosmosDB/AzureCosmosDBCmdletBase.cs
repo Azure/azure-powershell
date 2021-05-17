@@ -33,6 +33,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public const string ObjectParameterSet = "ByObjectParameterSet";
         public const string ResourceIdParameterSet = "ByResourceIdParameterSet";
         public const string ParentObjectParameterSet = "ByParentObjectParameterSet";
+        public const string FieldsParameterSet = "ByFieldsParameterSet";
+        public const string ParentObjectDataActionsParameterSet = "ByParentObjectDataActionsParameterSet";
+        public const string FieldsDataActionsParameterSet = "ByFieldsDataActionsParameterSet";
+        public const string ParentObjectPermissionsParameterSet = "ByParentObjectPermissionsParameterSet";
+        public const string FieldsPermissionsParameterSet = "ByFieldsPermissionsParameterSet";
 
         /// <summary>
         /// Gets or sets the CosmosDB Client

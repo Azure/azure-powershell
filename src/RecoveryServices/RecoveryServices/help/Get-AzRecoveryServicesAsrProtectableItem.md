@@ -30,6 +30,18 @@ Get-AzRecoveryServicesAsrProtectableItem -FriendlyName <String> -ProtectionConta
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByObjectWithSiteIdAndFriendlyName
+```
+Get-AzRecoveryServicesAsrProtectableItem -FriendlyName <String> -SiteId <String>
+ -ProtectionContainer <ASRProtectionContainer> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByObjectWithSiteId
+```
+Get-AzRecoveryServicesAsrProtectableItem -SiteId <String> -ProtectionContainer <ASRProtectionContainer>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzRecoveryServicesAsrProtectableItem** cmdlet gets the protectable items in an Azure Site Recovery Protection Container.
 
@@ -111,7 +123,7 @@ Specifies the friendly name of the ASR protectable item.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByObjectWithFriendlyName
+Parameter Sets: ByObjectWithFriendlyName, ByObjectWithSiteIdAndFriendlyName
 Aliases:
 
 Required: True
@@ -151,6 +163,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -SiteId
+Specifies the VMware site Id where the protectable item was discovered (Applicable only for VMware to Azure replication scenario).
+Use site Id from fabric specific details in the ASR fabric to specify one.
+
+```yaml
+Type: System.String
+Parameter Sets: ByObjectWithSiteIdAndFriendlyName, ByObjectWithSiteId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -166,6 +194,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzRecoveryServicesAsrProtectionEntity](./Get-AzRecoveryServicesAsrProtectionEntity.md)
-
-[Set-AzRecoveryServicesAsrProtectionEntity](./Set-AzRecoveryServicesAsrProtectionEntity.md)
+[Azure Recovery Services cmdlets](/powershell/module/az.recoveryservices)

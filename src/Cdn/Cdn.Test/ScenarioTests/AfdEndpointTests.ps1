@@ -28,19 +28,17 @@ function Test-CreateAfdEndpoint
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     Assert-AreEqual $profileName $createdProfile.Name
     Assert-AreEqual $profileSku $createdProfile.Sku
     Assert-AreEqual $createdProfile.Location "Global"
 
     $endpointName = getAssetName
-    $responseSeconds = 75
 
-    $createdEndpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginResponseTimeoutSeconds $responseSeconds
+    $createdEndpoint = New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
     Assert-AreEqual $endpointName $createdEndpoint.Name
-    Assert-AreEqual $responseSeconds $createdEndpoint.OriginResponseTimeoutSeconds
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -61,13 +59,13 @@ function Test-GetAfdEndpoint
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $endpointName = getAssetName
 
-    New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
-    $endpoint = Get-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
     Assert-AreEqual $endpointName $endpoint.Name
     Assert-AreEqual "Global" $endpoint.Location
@@ -91,13 +89,13 @@ function Test-RemoveAfdEndpoint
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $endpointName = getAssetName
 
-    $createdEndpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    $createdEndpoint = New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
-    $isDeleted = Remove-AzAfdEndpoint -Endpoint $createdEndpoint -PassThru
+    $isDeleted = Remove-AzFrontDoorCdnEndpoint -Endpoint $createdEndpoint -PassThru
 
     Assert-AreEqual $isDeleted true
 
@@ -120,20 +118,18 @@ function Test-SetAfdEndpoint
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $endpointName = getAssetName
 
-    New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
-    $endpoint = Get-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    $endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
 
     $endpoint.Tags = @{"endpoint"="afd-standard"}
-    $endpoint.OriginResponseTimeoutSeconds = 100
 
-    $updatedEndpoint = Set-AzAfdEndpoint -Endpoint $endpoint
+    $updatedEndpoint = Set-AzFrontDoorCdnEndpoint -Endpoint $endpoint
 
-    Assert-AreEqual $endpoint.OriginResponseTimeoutSeconds $updatedEndpoint.OriginResponseTimeoutSeconds
     Assert-AreEqual $endpoint.Tags["endpoint"] $updatedEndpoint.Tags["endpoint"]
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force

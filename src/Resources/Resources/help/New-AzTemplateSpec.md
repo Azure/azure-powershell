@@ -16,16 +16,16 @@ Creates a new Template Spec.
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
  [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
- [-VersionDescription <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VersionDescription <String>] [-Force] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromJsonFileParameterSet
 ```
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
  [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
- [-VersionDescription <String>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VersionDescription <String>] [-Force] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,6 +212,36 @@ Parameter Sets: FromJsonStringParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UIFormDefinitionFile
+UIForm for the templatespec resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UIFormDefinitionString
+UIForm for the templatespec resource
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

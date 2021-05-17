@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="LoadBalancerType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new LoadBalancerType(System.Convert.ToString(value));
+            return new LoadBalancerType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type LoadBalancerType</summary>

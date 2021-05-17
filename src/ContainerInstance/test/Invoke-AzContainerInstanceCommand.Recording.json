@@ -1,0 +1,38 @@
+{
+  "Invoke-AzContainerInstanceCommand+[NoContext]+ExecuteExpanded+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgkwuya/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgkwuya/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/exec?api-version=2021-03-01",
+      "Content": "{\r\n  \"terminalSize\": {\r\n    \"rows\": 12,\r\n    \"cols\": 12\r\n  },\r\n  \"command\": \"echo hello\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "91" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:6ff32751-6d81-4684-b597-00a8726a0e21" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "0f75bdb0-2b30-48bc-b01b-3fc73cc74c9d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210511T063206Z:0f75bdb0-2b30-48bc-b01b-3fc73cc74c9d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 11 May 2021 06:32:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "214" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"webSocketUri\":\"wss://sbzqpbd36pzqf2n.eastus.atlas.cloudapp.azure.com:19390/execstream/sessionId/daaed324-a9f1-45d2-bb20-a33b884a0271?api-version=1.0\u0026rows=12\u0026cols=12\",\"password\":\"wuWaJ$\u003eaMz93{WCGX{lAVPG^s[[EOM]]\"}",
+      "isContentBase64": false
+    }
+  }
+}

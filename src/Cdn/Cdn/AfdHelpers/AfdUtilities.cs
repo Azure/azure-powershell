@@ -216,5 +216,20 @@ namespace Microsoft.Azure.Commands.Cdn.AfdHelpers
 
             return forwardingProtocolActual;
         }
+
+        public static AfdMinimumTlsVersion CreateMinimumTlsVersion(string tlsVersion)
+        {
+            string lowercaseTlsVersion = tlsVersion.ToLower();
+
+            switch (lowercaseTlsVersion)
+            {
+                case "tls10":
+                    return AfdMinimumTlsVersion.TLS10;
+                case "tls12":
+                    return AfdMinimumTlsVersion.TLS12;
+                default:
+                    throw new Exception($"The TLS version {tlsVersion} is not valid. Accepted values TLS10 or TLS12.");
+            }
+        }
     }
 }

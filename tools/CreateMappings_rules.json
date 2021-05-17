@@ -494,7 +494,7 @@
     "alias": "Alerts Management"
   },
   {
-    "regex": "HealthcareApisService",
+    "regex": "HealthcareApis",
     "alias": "HealthcareApis Service"
   },
   {
@@ -656,5 +656,21 @@
   {
     "regex": "Confluent",
     "alias": "Confluent"
+  },
+  {
+    "regex": "DataProtection",
+    "alias": "Data Protection"
+  },
+  {
+    "alias": "ProviderHub",
+    "regex": "ProviderHub"
+  },
+  {
+    "alias": "Security Insights",
+    "regex": "SecurityInsights"
+  },
+  {
+    "regex": "ContainerInstance",
+    "alias": "ContainerInstance"
   }
 ]

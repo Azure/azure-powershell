@@ -97,7 +97,6 @@ function Remove-AzWvdRegistrationInfo {
             -FriendlyName $hostpool.FriendlyName `
             -MaxSessionLimit $hostpool.MaxSessionLimit `
             -VMTemplate $hostpool.VMTemplate `
-            -SsoContext $hostpool.SsoContext `
             -CustomRdpProperty $hostpool.CustomRdpProperty `
             -Ring $hostpool.Ring `
             -ValidationEnvironment:$hostpool.ValidationEnvironment `

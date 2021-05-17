@@ -19,9 +19,9 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
+      # linux:
+      #   OSName: ${{ variables.LinuxName }}
+      #   ImageName: ${{ variables.LinuxImage }}
       macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
@@ -39,14 +39,15 @@ jobs:
   displayName: Analyze
   dependsOn: Build
   condition: succeeded()
+  timeoutInMinutes: 90
   strategy:
     matrix:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
+      # linux:
+      #   OSName: ${{ variables.LinuxName }}
+      #   ImageName: ${{ variables.LinuxImage }}
       macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
@@ -69,9 +70,9 @@ jobs:
       windows:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
+      # linux:
+      #   OSName: ${{ variables.LinuxName }}
+      #   ImageName: ${{ variables.LinuxImage }}
       macOS:	
         OSName: ${{ variables.MacOSName }}	
         ImageName: ${{ variables.MacOSImage }}
