@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Upgraded Azure.Identity to 1.4 and MSAL lib to 4.30.1
+* Upgraded Azure.Identity to 1.4 and MSAL to 4.30.1
 * Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
 * Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
 * Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
