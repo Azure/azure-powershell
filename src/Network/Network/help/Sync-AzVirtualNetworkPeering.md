@@ -8,9 +8,8 @@ schema: 2.0.0
 # Sync-AzVirtualNetworkPeering
 
 ## SYNOPSIS
-```
-Command to sync the address space on the peering link if the remote vNet has a new address space.
-```
+Command to sync the address space on the peering link if the remote virtual network has a new address space.
+
 ## SYNTAX
 
 ### Fields
@@ -26,11 +25,7 @@ Sync-AzVirtualNetworkPeering -VirtualNetworkPeering <PSVirtualNetworkPeering>
 ```
 
 ## DESCRIPTION
-```
-Updating the address space on peered vNets is now supported. However, to sync the latest address space on the peering link,
-  this commandlet needs to be called on the (peered) remote vNet. When invoked, it would sync the address space on the peering
-  link with the latest address space of the (peered) remote vNet.
-```
+Updating the address space on peered virtual networks is now supported. However, to sync the latest address space on the peering link, this commandlet needs to be called on the (peered) remote virtual network. When invoked, it would sync the address space on the peering link with the latest address space of the (peered) remote virtual network.
 
 ## EXAMPLES
 
