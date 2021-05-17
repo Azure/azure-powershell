@@ -1,0 +1,303 @@
+{
+  "Remove-AzStaticWebAppBuild+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/8?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/8?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "cb6b5ee4-3c5c-4f54-a8ff-297a530f47cf" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01" ],
+        "Retry-After": [ "60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "f829d38c-4ef4-46e8-a5f9-9d2554878461" ],
+        "x-ms-correlation-request-id": [ "f829d38c-4ef4-46e8-a5f9-9d2554878461" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101420Z:f829d38c-4ef4-46e8-a5f9-9d2554878461" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:14:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "cb6b5ee4-3c5c-4f54-a8ff-297a530f47cf" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "92694d7a-742f-436b-a771-6c09cb7f98b1" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "1abdc7e3-af3d-4be1-97b0-a6bec84c335e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101522Z:1abdc7e3-af3d-4be1-97b0-a6bec84c335e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:15:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "179" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/e73833ae-f85f-4d2a-bd79-db3c06dac735\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/e73833ae-f85f-4d2a-bd79-db3c06dac735?api-version=2019-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "cb6b5ee4-3c5c-4f54-a8ff-297a530f47cf" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "4022ce7b-f87a-44af-9720-1bd87130e812" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "c9934a85-0795-4d67-bb08-168e33d3d17e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101522Z:c9934a85-0795-4d67-bb08-168e33d3d17e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:15:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/10?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/10?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "3f2a11af-b0db-4680-acbe-24bcce4a1fa9" ],
+        "CommandName": [ "Get-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Get-AzStaticWebAppBuild_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "eceac330-20c4-46e3-9dee-f2ecbb84cd02" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-correlation-request-id": [ "3eb742ed-e267-48ba-8cc5-332de6ca7b9d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101523Z:3eb742ed-e267-48ba-8cc5-332de6ca7b9d" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:15:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "552" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/10\",\"name\":\"10\",\"type\":\"Microsoft.Web/staticSites/builds\",\"location\":\"Central US\",\"properties\":{\"buildId\":\"10\",\"sourceBranch\":\"LucasYao93:lucas/PR02\",\"pullRequestTitle\":\"Create PR02.md\",\"hostname\":\"white-mushroom-05cf8d110-10.centralus.azurestaticapps.net\",\"createdTimeUtc\":\"2021-05-07T10:10:41.6213035\",\"lastUpdatedOn\":\"2021-05-07T10:11:09.2764409\",\"status\":\"Ready\",\"userProvidedFunctionApps\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/10?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/10?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "a970f195-3019-4495-8115-793883854a7f" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01" ],
+        "Retry-After": [ "60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "d5018322-7b4e-40a0-bcf1-c5fd8716f181" ],
+        "x-ms-correlation-request-id": [ "d5018322-7b4e-40a0-bcf1-c5fd8716f181" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101523Z:d5018322-7b4e-40a0-bcf1-c5fd8716f181" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:15:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "a970f195-3019-4495-8115-793883854a7f" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "be0542eb-b179-4b70-891b-f92e63e6254a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-correlation-request-id": [ "068edb69-cac9-45c7-bcd3-4570d5e8181b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101625Z:068edb69-cac9-45c7-bcd3-4570d5e8181b" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:16:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "179" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operationResults/3d1b33b2-5a1e-450f-8d1d-d17187313fb5\",\"status\":\"Succeeded\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzStaticWebAppBuild+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Web/locations/centralus/operations/3d1b33b2-5a1e-450f-8d1d-d17187313fb5?api-version=2019-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "a970f195-3019-4495-8115-793883854a7f" ],
+        "CommandName": [ "Remove-AzStaticWebAppBuild" ],
+        "FullCommandName": [ "Remove-AzStaticWebAppBuild_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "54245424-8acf-4e9e-b7fd-d44efc4c1416" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-correlation-request-id": [ "4585d393-101d-4c39-a8c2-365a8eaab228" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T101625Z:4585d393-101d-4c39-a8c2-365a8eaab228" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:16:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
