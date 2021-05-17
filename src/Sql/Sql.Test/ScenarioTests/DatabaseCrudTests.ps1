@@ -312,7 +312,8 @@ function Test-CreateDatabaseWithZoneRedundancy
 function Test-CreateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 
 	try
@@ -630,7 +631,8 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 function Test-UpdateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location	
 
 	try
@@ -939,7 +941,8 @@ function Test-GetDatabaseWithZoneRedundancy
 function Test-GetDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
