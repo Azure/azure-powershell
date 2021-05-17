@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
+* Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
+    - Copy LTR backups to different servers
+* Added cmdlet `Update-AzSqlDatabaseLongTermRetentionBackup`
+    - Update Backup Storage Redundancy values for LTR backups
+* Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
+    - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
+
+## Version 2.17.1
+* Added cmdlet output breaking change warnings to the following: 
+    - `New-AzSqlDatabase`
+    - `Get-AzSqlDatabase`
+    - `Set-AzSqlDatabase`
+    - `Remove-AzSqlDatabase`
+    - `New-AzSqlDatabaseSecondary`
+    - `Remove-AzSqlDatabaseSecondary`
+    - `Get-AzSqlDatabaseReplicationLink`
+    - `New-AzSqlDatabaseCopy`
+    - `Set-AzSqlDatabaseSecondary`
+
+## Version 2.17.0
+* Added cmdlet `New-AzSqlServerTrustGroup`
+* Added cmdlet `Remove-AzSqlServerTrustGroup`
+* Added cmdlet `Get-AzSqlServerTrustGroup`
 
 ## Version 2.16.0
 * Added MaintenanceConfigurationId to 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlElasticPool' and 'Set-AzSqlElasticPool'

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -20,6 +21,8 @@ using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
+
+using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -54,17 +57,17 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var requestContext = new TokenRequestContext(scopes);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
-            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
-
             var options = new InteractiveBrowserCredentialOptions()
             {
                 ClientId = clientId,
                 TenantId = tenantId,
-                TokenCache = tokenCache.TokenCache,
+                TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
             };
             var browserCredential = new InteractiveBrowserCredential(options);
+
+            TracingAdapter.Information($"{DateTime.Now:T} - [InteractiveUserAuthenticator] Calling InteractiveBrowserCredential.AuthenticateAsync with TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', RedirectUri:'{options.RedirectUri}'");
             var authTask = browserCredential.AuthenticateAsync(requestContext, cancellationToken);
 
             return MsalAccessToken.GetAccessTokenAsync(

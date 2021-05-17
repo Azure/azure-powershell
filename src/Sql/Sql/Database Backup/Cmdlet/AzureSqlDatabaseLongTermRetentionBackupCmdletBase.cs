@@ -21,12 +21,66 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Linq;
+using System.Globalization;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase :
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase<T> :
+        AzureSqlCmdletBase<IEnumerable<T>, AzureSqlDatabaseBackupAdapter>
     {
+        /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdSegmentsLength = 12;
+
+        /// <summary>
+        /// The expected number of segments in a long term retention backup resource id.
+        /// </summary>
+        private const int LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength = 14;
+
+        /// <summary>
+        /// Parse the longTermRetentionBackup resource Id
+        /// </summary>
+        /// <param name="resourceId"></param>
+        protected Dictionary<string, string> ParseLongTermRetentionBackupResourceId(string resourceId)
+        {
+            Dictionary<string, string> resourceSegments = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (tokens.Length != LongTermRetentionBackupResourceIdSegmentsLength
+                && tokens.Length != LongTermRetentionBackupResourceIdWithResourceGroupSegmentsLength)
+            {
+                throw new Exception($"Invalid ResourceId. resourceID: {resourceId}, tokens.Length {tokens.Length}");
+            }
+
+            int i = 0;
+            string type;
+            string name;
+            while (i < tokens.Length)
+            {
+                type = tokens[i++];
+                name = tokens[i++];
+                resourceSegments[type] = name;
+            }
+
+            try
+            {
+                resourceSegments.ContainsKey("locations");
+                resourceSegments.ContainsKey("longTermRetentionServers");
+                resourceSegments.ContainsKey("longTermRetentionDatabases");
+                resourceSegments.ContainsKey("longTermRetentionBackups");
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new AzPSArgumentException(Properties.Resources.InvalidLongTermRetentionBackupResourceIdFormat, "ResourceId");
+            }
+
+            return resourceSegments;
+        }
+
         /// <summary>
         /// Initializes the adapter
         /// </summary>
@@ -34,6 +88,23 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
         {
             return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
+        }
+
+        protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
+
+        protected void ShowBackupStorageRedundancyWarningIfNeeded(string backupStorageRedundancy, string location)
+        {
+            if (ListOfRegionsToShowWarningMessageForGeoBackupStorage.Contains(location.ToLower()))
+            {
+                if (backupStorageRedundancy == null)
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyNotChosenTakeSourceWarning));
+                }
+                else if (string.Equals(backupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
+                }
+            }
         }
     }
 }

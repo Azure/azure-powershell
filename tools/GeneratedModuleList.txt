@@ -9,6 +9,7 @@ Az.ConnectedKubernetes
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
+Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
 Az.Functions
@@ -24,9 +25,11 @@ Az.MonitoringSolutions
 Az.MySql
 Az.Portal
 Az.PostgreSql
+Az.ProviderHub
 Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud
+Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
 Az.WindowsIotServices

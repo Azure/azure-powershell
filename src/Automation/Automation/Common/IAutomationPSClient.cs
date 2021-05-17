@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         AutomationAccount GetAutomationAccount(string resourceGroupName, string automationAccountName);
 
-        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags);
+        AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName, string location, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess);
 
-        AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
+        AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
 

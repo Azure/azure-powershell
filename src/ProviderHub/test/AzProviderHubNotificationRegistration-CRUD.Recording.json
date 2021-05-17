@@ -1,0 +1,144 @@
+{
+  "AzProviderHubNotificationRegistration-CRUD+[NoContext]+Create and get a NotificationRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"notificationMode\": \"EventHub\",\r\n    \"messageScope\": \"RegisteredSubscriptions\",\r\n    \"includedEvents\": [ \"*/write\", \"Microsoft.Contoso/employees/delete\" ],\r\n    \"notificationEndpoints\": [\r\n      {\r\n        \"notificationDestination\": \"/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications\",\r\n        \"locations\": [ \"\", \"East US\" ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "504" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "af7da26e-ba58-411c-a922-05f01fa30664" ],
+        "x-ms-correlation-request-id": [ "f2b90257-12b1-4832-b268-5c0ebe33c76e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050611Z:f2b90257-12b1-4832-b268-5c0ebe33c76e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:06:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"employeesNotificationRegistration\",\"properties\":{\"notificationMode\":\"EventHub\",\"messageScope\":\"RegisteredSubscriptions\",\"includedEvents\":[\"*/write\",\"Microsoft.Contoso/employees/delete\"],\"notificationEndpoints\":[{\"notificationDestination\":\"/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications\",\"locations\":[\"\",\"East US\"]}]}}"
+    }
+  },
+  "AzProviderHubNotificationRegistration-CRUD+[NoContext]+Create and get a NotificationRegistration+$GET+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "9ec4c659-0ce6-4cee-855c-bb055bea4735" ],
+        "CommandName": [ "Get-AzProviderHubNotificationRegistration" ],
+        "FullCommandName": [ "Get-AzProviderHubNotificationRegistration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "c18c4113-da07-42ab-9b0f-e45f887966bd" ],
+        "x-ms-correlation-request-id": [ "62309b2c-b17f-45e1-af25-021a2dbc447a" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050612Z:62309b2c-b17f-45e1-af25-021a2dbc447a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:06:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"employeesNotificationRegistration\",\"properties\":{\"notificationMode\":\"EventHub\",\"messageScope\":\"RegisteredSubscriptions\",\"includedEvents\":[\"*/write\",\"Microsoft.Contoso/employees/delete\"],\"notificationEndpoints\":[{\"notificationDestination\":\"/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications\",\"locations\":[\"\",\"East US\"]}]}}"
+    }
+  },
+  "AzProviderHubNotificationRegistration-CRUD+[NoContext]+Create and get a NotificationRegistration+$DELETE+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "426fa9d5-8981-4cbb-8f8e-2491f50b36fa" ],
+        "CommandName": [ "Remove-AzProviderHubNotificationRegistration" ],
+        "FullCommandName": [ "Remove-AzProviderHubNotificationRegistration_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "22479983-e186-41ae-96fb-95d1afee6919" ],
+        "x-ms-correlation-request-id": [ "2914b852-1b10-4c55-85b7-c923c8ad2a91" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050612Z:2914b852-1b10-4c55-85b7-c923c8ad2a91" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:06:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA=="
+    }
+  },
+  "AzProviderHubNotificationRegistration-CRUD+[NoContext]+Create and get a NotificationRegistration+$PUT+https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20+4": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/6f53185c-ea09-4fc3-9075-318dec805303/providers/Microsoft.ProviderHub/providerRegistrations/Microsoft.Contoso/notificationRegistrations/employeesNotificationRegistration?api-version=2020-11-20",
+      "Content": "{\r\n  \"properties\": {\r\n    \"notificationMode\": \"EventHub\",\r\n    \"messageScope\": \"RegisteredSubscriptions\",\r\n    \"includedEvents\": [ \"*/write\", \"Microsoft.Contoso/employees/delete\" ],\r\n    \"notificationEndpoints\": [\r\n      {\r\n        \"notificationDestination\": \"/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications\",\r\n        \"locations\": [ \"\", \"East US\" ]\r\n      }\r\n    ]\r\n  }\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "504" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "8d31bff7-5389-4985-8998-284fa19efcb4" ],
+        "x-ms-correlation-request-id": [ "74e049bc-0313-4668-8116-5fb2b799bf57" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210406T050612Z:74e049bc-0313-4668-8116-5fb2b799bf57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Apr 2021 05:06:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "458" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"employeesNotificationRegistration\",\"properties\":{\"notificationMode\":\"EventHub\",\"messageScope\":\"RegisteredSubscriptions\",\"includedEvents\":[\"*/write\",\"Microsoft.Contoso/employees/delete\"],\"notificationEndpoints\":[{\"notificationDestination\":\"/subscriptions/ac6bcfb5-3dc1-491f-95a6-646b89bf3e88/resourceGroups/mgmtexp-eastus/providers/Microsoft.EventHub/namespaces/unitedstates-mgmtexpint/eventhubs/armlinkednotifications\",\"locations\":[\"\",\"East US\"]}]}}"
+    }
+  }
+}

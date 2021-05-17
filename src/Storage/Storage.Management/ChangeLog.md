@@ -18,6 +18,53 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported file share snapshot
+    - `New-AzRmStorageShare`
+    - `Get-AzRmStorageShare`
+    - `Remove-AzRmStorageShare`
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+    - `Remove-AzRmStorageShare`
+* Supported Set/Get/Remove blob inventory policy
+    - `New-AzStorageBlobInventoryPolicyRule`
+    - `Set-AzStorageBlobInventoryPolicy`
+    - `Get-AzStorageBlobInventoryPolicy`
+    - `Remove-AzStorageBlobInventoryPolicy`
+* Supported DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AllowCrossTenantReplication in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account reouce Id
+    - `Set-AzStorageObjectReplicationPolicy`
+
+## Version 3.6.0
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage account with keyvault encryption and access keyvault with user assigned identity
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported EdgeZone in create storage account
+    - `New-AzStorageAccount`
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - `Remove-AzStorageAccount`
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - `Set-AzStorageAccount`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Remove-AzRmStorageShare`
+
+## Version 3.5.1
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  `Start-AzStorageBlobCopy`
+
+## Version 3.5.0
+* Fixed an issue that list account from resource group won't use nextlink
+    - `Get-AzStorageAccount`
+* Supported ChangeFeedRetentionInDays when Enable ChangeFeed on Blob service
+    - `Update-AzStorageBlobServiceProperty`
+
+## Version 3.4.1
 * Supported secure SMB setting in File service properties
     - `Update-AzStorageFileServiceProperty`
 * Supported create account with EnableNfsV3

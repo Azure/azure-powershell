@@ -37,7 +37,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = psActiveDirectory.BackupOperators,
                 KdcIP = psActiveDirectory.KdcIP,
                 AdName = psActiveDirectory.AdName,
-                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate
+                ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate,
+                AesEncryption = psActiveDirectory.AesEncryption,
+                LdapSigning = psActiveDirectory.LdapSigning,
+                SecurityOperators = psActiveDirectory.SecurityOperators,                
+                LdapOverTLS = psActiveDirectory.LdapOverTLS,                
+                AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap
 
             }).ToList();
         }
@@ -66,7 +71,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupOperators = activeDirectory.BackupOperators,
                 KdcIP = activeDirectory.KdcIP,
                 AdName = activeDirectory.AdName,
-                ServerRootCACertificate = activeDirectory.ServerRootCACertificate
+                ServerRootCACertificate = activeDirectory.ServerRootCACertificate,
+                AesEncryption = activeDirectory.AesEncryption,
+                LdapSigning = activeDirectory.LdapSigning,
+                SecurityOperators = activeDirectory.SecurityOperators,
+                LdapOverTLS = activeDirectory.LdapOverTLS,
+                AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap
             };
             return psActiveDirectory;
         }
@@ -309,7 +319,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupId = volume.BackupId,
                 SecurityStyle = volume.SecurityStyle,
                 ThroughputMibps = volume.ThroughputMibps,
-                KerberosEnabled = volume.KerberosEnabled
+                KerberosEnabled = volume.KerberosEnabled,
+                SmbEncryption = volume.SmbEncryption,
+                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable
+
             };
         }
 

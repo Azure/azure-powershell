@@ -1,0 +1,85 @@
+{
+  "New-AzStreamAnalyticsTransformation+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt?api-version=2017-04-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt?api-version=2017-04-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"streamingUnits\": 6,\r\n    \"query\": \"SELECT * INTO outputbq16p8 FROM inputnlga1c HAVING Temperature \\u003e 27\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "143" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "c39f3a4e-7d4b-4b2f-9a12-d390f6542bc1" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "08866800-bd43-481d-866c-649386b3951a" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-correlation-request-id": [ "eaaa8f19-2cfb-4e38-af85-b8604e52f07d" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032053Z:eaaa8f19-2cfb-4e38-af85-b8604e52f07d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:20:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "389" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt\",\"name\":\"transfd2zuxt\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/transformations\",\"properties\":{\"streamingUnits\":6,\"query\":\"SELECT * INTO outputbq16p8 FROM inputnlga1c HAVING Temperature \u003e 27\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStreamAnalyticsTransformation+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt?api-version=2017-04-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt?api-version=2017-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "39" ],
+        "x-ms-client-request-id": [ "a5b37972-1e56-4bac-9fc6-4f543a3ebc49" ],
+        "CommandName": [ "Get-AzStreamAnalyticsTransformation" ],
+        "FullCommandName": [ "Get-AzStreamAnalyticsTransformation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "c39f3a4e-7d4b-4b2f-9a12-d390f6542bc1" ],
+        "X-AspNetMvc-Version": [ "5.0" ],
+        "x-ms-request-id": [ "a5b37972-1e56-4bac-9fc6-4f543a3ebc49" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11929" ],
+        "x-ms-correlation-request-id": [ "b7e40b78-4101-4655-8ef4-a7ed4617a37c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210316T032053Z:b7e40b78-4101-4655-8ef4-a7ed4617a37c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Mar 2021 03:20:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "389" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/streamanalytics-rg-qrine6/providers/Microsoft.StreamAnalytics/streamingjobs/jobcnh4bp/transformations/transfd2zuxt\",\"name\":\"transfd2zuxt\",\"type\":\"Microsoft.StreamAnalytics/streamingjobs/transformations\",\"properties\":{\"streamingUnits\":6,\"query\":\"SELECT * INTO outputbq16p8 FROM inputnlga1c HAVING Temperature \u003e 27\"}}",
+      "isContentBase64": false
+    }
+  }
+}

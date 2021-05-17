@@ -74,9 +74,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return;
             }
             __imageTemplateCustomizer = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ImageTemplateCustomizer(json);
-            {_inline = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("inline"), out var __jsonInline) ? If( __jsonInline as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Inline;}
             {_scriptUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("scriptUri"), out var __jsonScriptUri) ? (string)__jsonScriptUri : (string)ScriptUri;}
             {_sha256Checksum = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString>("sha256Checksum"), out var __jsonSha256Checksum) ? (string)__jsonSha256Checksum : (string)Sha256Checksum;}
+            {_inline = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray>("inline"), out var __jsonInline) ? If( __jsonInline as Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<string[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(string) (__u is Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString __t ? (string)(__t.ToString()) : null)) ))() : null : Inline;}
             AfterFromJson(json);
         }
 
@@ -100,6 +100,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 return container;
             }
             __imageTemplateCustomizer?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._scriptUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._scriptUri.ToString()) : null, "scriptUri" ,container.Add );
+            AddIf( null != (((object)this._sha256Checksum)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._sha256Checksum.ToString()) : null, "sha256Checksum" ,container.Add );
             if (null != this._inline)
             {
                 var __w = new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.XNodeArray();
@@ -109,8 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 }
                 container.Add("inline",__w);
             }
-            AddIf( null != (((object)this._scriptUri)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._scriptUri.ToString()) : null, "scriptUri" ,container.Add );
-            AddIf( null != (((object)this._sha256Checksum)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Json.JsonString(this._sha256Checksum.ToString()) : null, "sha256Checksum" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

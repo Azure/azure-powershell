@@ -22,11 +22,13 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string DeletionDate = "The deletion date of the Azure Synaspe SQL Database to retrieve backups for, with millisecond precision (e.g. 2016-02-23T00:21:22.847Z)";
 
-        public const string ManagedVirtualNetwork = "Name of a Synapse-managed virtual network dedicated for the Azure Synapse workspace.";
+        public const string ManagedVirtualNetwork = "Managed Virtual Network Settings.";
 
         public const string DisallowAllConnection = "Azure Synapse Studio and other client tools will only be able to connect to the workspace endpoints if this parameter is not present. Connections from specific IP addresses or all Azure services can be allowed/disallowed after the workspace is provisioned.";
 
         public const string SqlAdministratorLoginCredential = "SQL administrator credentials.";
+
+        public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";
 
@@ -257,13 +259,15 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string EndIpAddress = "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress.";
 
-        public const string AzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access.";
+        public const string AllowAllAzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access. The Start IP is 0.0.0.0. The End IP is 0.0.0.0.";
+
+        public const string AllowAllIpRule = "Creates a special firewall rule that allows connections from all IP addresses. The Start IP is 0.0.0.0. The End IP is 255.255.255.255.";
 
         public const string RoleAssignmentId = "The ID of the role assignment.";
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
@@ -398,5 +402,29 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string DataFlowName = "The data flow name.";
 
         public const string DataFlowObject = "The data flow object.";
+
+        public const string EnableManagedIdentitySqlControlSetting = "Indicates whether to enable managed identity SQL control setting. Specify $True to enable managed identity SQL control setting, or $False to disable managed identity SQL control setting.";
+
+        public const string PreventDataExfiltration = "Indicates whether to prevent data exfiltration.";
+
+        public const string LinkedAccessCheckOnTargetResource = "Indicates whther to check linked access on target resource.";
+
+        public const string AllowedAadTenantIdsForLinking = "The allowed AAD tenant IDs for linking.";
+
+        public const string EncryptionKeyName = "The workspace encryption key name.";
+
+        public const string EncryptionKeyIdentifier = "Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.";
+
+        public const string WorkspaceKeyName = "The name of the workspace key.";
+
+        public const string WorkspaceItemType = "The workspace item type.";
+
+        public const string WorkspaceItem = "The workspace item.";
+
+        public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
+
+        public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";
+
+        public const string KeyObject = "Workspace key input object, usually passed through the pipeline.";
     }
 }

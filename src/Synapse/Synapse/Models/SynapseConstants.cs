@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string AdvancedDataSecurityPolicy = nameof(AdvancedDataSecurityPolicy);
 
+        public const string ManagedIdentitySqlControlSetting = nameof(ManagedIdentitySqlControlSetting);
+
         public const string SqlDatabase = nameof(SqlDatabase);
 
         public const string SparkPoolName = nameof(SparkPoolName);
@@ -69,6 +71,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public const string RoleAssignment = nameof(RoleAssignment);
 
         public const string RoleDefinition = nameof(RoleDefinition);
+
+        public const string RoleScope = nameof(RoleScope);
 
         public const string SparkDotNetJarFile = "local:///usr/hdp/current/spark2-client/jars/microsoft-spark.jar";
 
@@ -147,6 +151,18 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string TargetSqlPoolName = nameof(TargetSqlPoolName);
 
+        public const string DefaultName = "default";
+
+        public const string ManagedVirtualNetworkConfig = nameof(ManagedVirtualNetworkConfig);
+
+        public const string EncryptionConfig = nameof(EncryptionConfig);
+
+        public const string WorkspaceKey = nameof(WorkspaceKey);
+
+        public const string WorkspaceKeyName = nameof(WorkspaceKeyName);
+
+        public const string KeyName = nameof(KeyName);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
@@ -190,10 +206,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultCollation = "SQL_Latin1_General_CP1_CI_AS";
 
-        public const string AllowAllStartIpAddress = "0.0.0.0";
-
-        public const string AllowAllEndIpAddress = "255.255.255.255";
-
         public const string StorageBlobDataContributorRoleName = "Azure Blob Data Contributor";
 
         public class Security
@@ -214,6 +226,14 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             public const string Data_Exfiltration = "Data_Exfiltration";
             public const string Unsafe_Action = "Unsafe_Action";
             public const string None = "None";
+        }
+
+        public enum WorkspaceItemType
+        {
+            ApacheSparkPool,
+            IntegrationRuntime,
+            LinkedService,
+            Credential
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true), OutputType(typeof(PSAppServiceEnvironment))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = ASEv2SubnetNameParameterSet), OutputType(typeof(PSAppServiceEnvironment))]
     public class NewAzureAppServiceEnvironmentCmdlet : WebAppBaseClientCmdLet
     {
         private const string ASEv2SubnetIdParameterSet = "ASEv2SubnetIdParameterSet";

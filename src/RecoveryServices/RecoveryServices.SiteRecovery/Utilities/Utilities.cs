@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         public static List<IPage<T>> GetAllFurtherPages<T>(
             Func<string, Dictionary<string, List<string>>, CancellationToken,
-                Task<AzureOperationResponse<IPage<T>>>> getNextPage,
+            Task<AzureOperationResponse<IPage<T>>>> getNextPage,
             string NextPageLink,
             Dictionary<string, List<string>> customHeaders = null)
         {
@@ -98,6 +98,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var page = getNextPage(
                         NextPageLink,
                         customHeaders,
+                        default(CancellationToken))
+                    .GetAwaiter()
+                    .GetResult()
+                    .Body;
+                result.Add(page);
+                NextPageLink = page.NextPageLink;
+            }
+
+            return result;
+        }
+
+        public static List<IPage<T>> GetNextPages<T>(
+            Func<string, CancellationToken,
+            Task<AzureOperationResponse<IPage<T>>>> getNextPage,
+            string NextPageLink)
+        {
+            var result = new List<IPage<T>>();
+
+            while ((NextPageLink != null) &&
+                   (getNextPage != null))
+            {
+                var page = getNextPage(
+                        NextPageLink,
                         default(CancellationToken))
                     .GetAwaiter()
                     .GetResult()
@@ -181,6 +204,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return string.Format(
                 ARMResourceIdPaths.SRSArmUrlPattern,
                 data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern));
+        }
+
+        /// <summary>
+        /// Checks whether the ARM Id is valid per the given format.
+        /// </summary>
+        /// <param name="armId">ARM Id.</param>
+        /// <param name="armIdFormat">ARM id format.</param>
+        /// <returns>True if the ARM Id is valid, false otherwise.</returns>
+        public static bool IsValidArmId(this string armId, string armIdFormat)
+        {
+            try
+            {
+                var tokens = armId.UnFormatArmId(armIdFormat);
+
+                return tokens.All(x => !string.IsNullOrEmpty(x));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public static List<T> IpageToList<T>(

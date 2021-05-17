@@ -199,27 +199,38 @@ param
       $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      $samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
+      $samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
       $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
       $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 
+      $aadTenant = "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4"
+      $aadIssuer = "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/"
+      $aadAudience = "a21fce82-76af-45e6-8583-a08cb3b956f9"
+
+      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+      $Secure_String_Pwd = ConvertTo-SecureString "radiuspd" -AsPlainText -Force
+      $RadiusIP = "1.2.3.4"
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
+      Assert-NotNull $expected.VpnClientConfiguration
+      $authTypes = $expected.VpnClientConfiguration.VpnAuthenticationTypes
+      Assert-NotNull $authTypes
+      Assert-AreEqual 3 @($authTypes).Count
 
-        $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
-        $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
-        Assert-NotNull $vpnProfilePackageUrl
-        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+      $radiusCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+      $vpnProfilePackageUrl = New-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname -AuthenticationMethod $vpnclientAuthMethod -RadiusRootCertificateFile $radiusCertFilePath
+      Assert-NotNull $vpnProfilePackageUrl
+      Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
 
-        $vpnProfilePackageUrl = Get-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname
-        Assert-NotNull $vpnProfilePackageUrl
-        Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
+      $vpnProfilePackageUrl = Get-AzVpnClientConfiguration -ResourceGroupName $rgname -name $rname
+      Assert-NotNull $vpnProfilePackageUrl
+      Assert-NotNull $vpnProfilePackageUrl.VpnProfileSASUrl
     }
      finally
      {
@@ -345,7 +356,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
 
       $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-      $samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
+      $samplePublicCertData =  "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
       $sampleClientCertName = "sampleClientCert.cer"
       $sampleClinentCertThumbprint = "5405D9A8AB2A303D4E772C444BC88C3B97F55F78"
 
@@ -604,8 +615,8 @@ function Test-VirtualNetworkGatewayIkeV2
 		# create the client root cert
 		$clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
-		$rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+		$samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+        $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 
 		# Create the Virtual Network
 		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -747,8 +758,13 @@ function Test-VirtualNetworkGatewayOpenVPN
 		# create the client root cert
 		$clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
-		$rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+		$samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+        $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $Secure_String_Pwd = ConvertTo-SecureString "radiuspd" -AsPlainText -Force
+        $aadTenant = "https://login.microsoftonline.com/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4"
+        $aadIssuer = "https://sts.windows.net/0ab2c4f4-81e6-44cc-a0b2-b3a47a1443f4/"
+        $aadAudience = "a21fce82-76af-45e6-8583-a08cb3b956f9"
 
 		# Create the Virtual Network
 		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -761,16 +777,33 @@ function Test-VirtualNetworkGatewayOpenVPN
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
       
 		# Create & Get OpenVPN virtualnetworkgateway
-		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert
+		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert  
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN
+		Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 
 		Assert-AreEqual "VpnGw1" $actual.Sku.Tier
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
+        $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]
 		Assert-AreEqual "201.169.0.0/16" $actual.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
+        Assert-AreEqual 3 @($authTypes).Count
+
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnAuthenticationType Certificate
+		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
+        Assert-AreEqual 1 @($authTypes).Count
+        Assert-AreEqual "" $actual.VpnClientConfiguration.AadAudience
+        Assert-AreEqual "" $actual.VpnClientConfiguration.RadiusServerAddress
+
+        Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol OpenVPN  -VpnAuthenticationType Certificate,Radius,AAD -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd
+		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        $authTypes = $actual.VpnClientConfiguration.VpnAuthenticationTypes
+        Assert-AreEqual 3 @($authTypes).Count
+        Assert-AreEqual $aadAudience $actual.VpnClientConfiguration.AadAudience
+        Assert-AreEqual "1.2.3.4" $actual.VpnClientConfiguration.RadiusServerAddress
+        Assert-NotNull $actual.VpnClientConfiguration.VpnClientRootCertificates
 	}
 	finally
     {
@@ -898,8 +931,8 @@ function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
 	  # create the client root cert
 	  $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 	  #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-	  $samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
-	  $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+	  $samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+      $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 
       # Create the Virtual Network
 	  $subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -1012,8 +1045,8 @@ function Test-VirtualNetworkGatewayVpnClientConnectionHealth
 		# create the client root cert
 		$clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
 		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
-		$rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+		$samplePublicCertData = "MIIC5zCCAc+gAwIBAgIQFzWsg2N5PItGfI8al3SfETANBgkqhkiG9w0BAQsFADAW MRQwEgYDVQQDDAtQMlNSb290Q2VydDAeFw0yMDEwMjgxODM1MDRaFw0yMTEwMjgx ODU1MDRaMBYxFDASBgNVBAMMC1AyU1Jvb3RDZXJ0MIIBIjANBgkqhkiG9w0BAQEF AAOCAQ8AMIIBCgKCAQEArZqDDCWiXAsrqgYYKDzDgzMKUjgVXgXpfaWltAFJR5rv KFpMJCJldq4YCdpkKT3n0STUz1PJii3cj/o8J9D2XTwdEY+gACOKNn5tRLE+Qz4N r77nfCzTyBNVcgllxoVZgyDhItVoo2JZ2G6+3ywDignfve20Wpj0YGGslanqQsmq o/OeSDNUXGmir4KLwlGjR6+os51y1X3nrqkMpE10K/uIPMe4+WFNrx7g4nOEz+cF vNmi0qdWDpwTg3/JxyhnZVL1TPdeM0zyclnveIvhhseSd3oW5L9OC3eSpPbjD70S UD4vDXrQuUV6SfYAX6aqhNeit/fqrI6ToT86mKwDhQIDAQABozEwLzAOBgNVHQ8B Af8EBAMCAgQwHQYDVR0OBBYEFJ7OyTGgBHVeDBZNKDnenAdlNTfwMA0GCSqGSIb3 DQEBCwUAA4IBAQAWopX5Gj2HslQnVAFzrteg9uIT+q503Zi8FTnGA4hN6I1xq9uo ETNAbQCrHf3R18lL37aP8Z//NVLcx5o+ZD0PMWhb5bhh1FeQ4QCVM0/CJKJqHLZU HCgc7FTiSAtpcGCdmSLM3Uq9Xpn3h5INB5Wekyk1SvyJYuoHqDRMZHKoxqnkYf7x QkThECnubbeFgdA+S/FpMa1+zMDPApcIFQ6/5vOcAEk/iRSv4dZZRyphgy+LlSdM rFKPtpeeEK/OeblVW0mBGIcQyz6sndHwk98u0Is46zlnGFeL7BHEvVSw/QBM6Hcq COZV52zKr851DjkNbHFttGXiwGMsSGdMnjzk"
+        $rootCert = New-AzVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
 
 		# Create the Virtual Network
 		$subnet = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24

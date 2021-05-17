@@ -179,20 +179,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccountGZRS()
-        {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzureStorageAccountRAGZRS()
-        {
-            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSetAzureStorageAccount_LargeFileShare()
         {
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_LargeFileShare");
@@ -207,10 +193,17 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAStorageAccount_RoutingPreference()
+        public void TestNewSetAzureStorageAccountGZRS()
         {
-            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
-        }        
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_GZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzureStorageAccountRAGZRS()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzureStorageAccount_RAGZRS");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -221,9 +214,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageBlobInventory()
+        public void TestNewSetAStorageAccount_RoutingPreference()
         {
-            TestRunner.RunTestScript("Test-StorageBlobInventory");
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccount_RoutingPreference");
         }
 
         [Fact]
@@ -233,7 +226,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewSetAzureStorageAccountAllowSharedKeyAccess");
         }
 
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountEnableNfsV3()
@@ -241,5 +233,32 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewAzureStorageAccountEnableNfsV3");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-NewAzureStorageAccountEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountKeySASPolicy()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountKeySASPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageAccountUserAssignedIdentity()
+        {
+            TestRunner.RunTestScript("Test-AzureStorageAccountUserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobInventory()
+        {
+            TestRunner.RunTestScript("Test-StorageBlobInventory");
+        }
     }
 }

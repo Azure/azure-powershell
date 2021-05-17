@@ -36,7 +36,7 @@ The **Get-AzNetAppFilesPool** cmdlet gets details of an ANF pool.
 
 ### Example 1: Get an ANF pool
 ```
-PS C:\>Get-AzAnfPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
+PS C:\>Get-AzNetAppFilesPool -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -Name "MyAnfPool"
 
 Output:
 
