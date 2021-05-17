@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Environment.SetEnvironmentVariable("Azure_PS_Data_Collection", "false");
             PowerShellTokenCacheProvider tokenProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenProvider);
-            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenProvider.GetTokenCache());
         }
 
         [Fact]

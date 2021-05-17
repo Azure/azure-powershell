@@ -38,7 +38,7 @@ function Test-UpdateAzureRmServiceFabricReliability
 
 	$cluster = Update-AzServiceFabricReliability -ReliabilityLevel $reliabilityLevel  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].ReliabilityLevel $reliabilityLevel
+	Assert-AreEqual $reliabilityLevel $clusters[0].ReliabilityLevel
 }
 
 function Test-AddAzureRmServiceFabricClientCertificate

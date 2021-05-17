@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20"/>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.23"/>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.3.32-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.3.32-preview"/>
@@ -20,7 +20,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.32-preview"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.9.0"/>
+    <PackageReference Include="Azure.Core" Version="1.14.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0">

@@ -43,15 +43,13 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = parameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
-            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
-
             DeviceCodeCredentialOptions options = new DeviceCodeCredentialOptions()
             {
                 DeviceCodeCallback = DeviceCodeFunc,
                 AuthorityHost = new Uri(authority),
                 ClientId = clientId,
                 TenantId = tenantId,
-                TokenCache = tokenCache.TokenCache,
+                TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
             };
             var codeCredential = new DeviceCodeCredential(options);
 

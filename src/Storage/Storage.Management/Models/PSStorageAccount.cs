@@ -66,8 +66,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.KeyCreationTime = storageAccount.KeyCreationTime is null? null : new PSKeyCreationTime(storageAccount.KeyCreationTime);
             this.KeyPolicy = storageAccount.KeyPolicy;
             this.SasPolicy = storageAccount.SasPolicy;
+            this.AllowCrossTenantReplication = storageAccount.AllowCrossTenantReplication;
 
         }
+        public bool? AllowCrossTenantReplication { get; set; }
 
         public PSKeyCreationTime KeyCreationTime { get; set; }
         public KeyPolicy KeyPolicy { get; }

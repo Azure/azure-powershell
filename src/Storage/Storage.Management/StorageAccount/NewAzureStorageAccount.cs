@@ -360,7 +360,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public SwitchParameter RequireInfrastructureEncryption { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
-        public TimeSpan SasExpirationPeriod { get; set; }
+        public TimeSpan SasExpirationPeriod
+        {
+            get
+            {
+                return sasExpirationPeriod is null? TimeSpan.Zero : sasExpirationPeriod.Value;
+            }
+            set
+            {
+                sasExpirationPeriod = value;
+            }
+        }
+        private TimeSpan? sasExpirationPeriod = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
@@ -415,7 +426,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " + 
+            HelpMessage = "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. " +
             "If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). " +
             "The default value is null, which is equivalent to true.")]
         [ValidateNotNullOrEmpty]
@@ -431,6 +442,34 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private bool? allowSharedKeyAccess = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowCrossTenantReplication
+        {
+            get
+            {
+                return allowCrossTenantReplication.Value;
+            }
+            set
+            {
+                allowCrossTenantReplication = value;
+            }
+        }
+        private bool? allowCrossTenantReplication = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default share permission for users using Kerberos authentication if RBAC role is not assigned.")]
+        [ValidateSet(DefaultSharePermissionType.None,
+            DefaultSharePermissionType.StorageFileDataSmbShareContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareReader,
+            DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
+            IgnoreCase = true)]
+        public string DefaultSharePermission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Set the extended location name for EdgeZone. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location")]
         [ValidateNotNullOrEmpty]
@@ -541,6 +580,19 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.AzureFilesIdentityBasedAuthentication.DirectoryServiceOptions = DirectoryServiceOptions.None;
                 }
             }
+
+            if (this.DefaultSharePermission != null)
+            {
+                if (enableAzureActiveDirectoryDomainServicesForFile == null && enableActiveDirectoryDomainServicesForFile == null)
+                {
+                    throw new ArgumentException("'-DefaultSharePermission' need be specify together with '-EnableAzureActiveDirectoryDomainServicesForFile' or '-EnableActiveDirectoryDomainServicesForFile'.");
+                }
+                if (createParameters.AzureFilesIdentityBasedAuthentication == null)
+                {
+                    createParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                }
+                createParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
+            }
             if (this.EnableLargeFileShare.IsPresent)
             {
                 createParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -636,13 +688,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     Name = this.EdgeZone
                 };
             }
-            if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+            if (sasExpirationPeriod != null)
             {
-                createParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+                createParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
             }
             if (keyExpirationPeriodInDay != null)
             {
                 createParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
+            }
+            if(allowCrossTenantReplication != null)
+            {
+                createParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

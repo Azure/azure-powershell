@@ -17,6 +17,8 @@ using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 
+using Azure.Identity;
+
 using Hyak.Common;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
@@ -118,13 +120,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             Task<IAccessToken> authToken;
             var processAuthenticator = Builder.Authenticator;
             var retries = 5;
+            var authParamters = GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId);
             while (retries-- > 0)
             {
                 try
                 {
-                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(GetAuthenticationParameters(tokenCacheProvider, account, environment, tenant, password, promptBehavior, promptAction, tokenCache, resourceId), out authToken))
+                    while (processAuthenticator != null && processAuthenticator.TryAuthenticate(authParamters, out authToken))
                     {
-                        token = authToken?.ConfigureAwait(false).GetAwaiter().GetResult();
+                        token = authToken?.GetAwaiter().GetResult();
                         if (token != null)
                         {
                             // token.UserId is null when getting tenant token in ADFS environment
@@ -143,7 +146,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 {
                     if (!IsTransientException(e) || retries == 0)
                     {
-                        throw;
+                        var mfaException = AnalyzeMsalException(e, environment, tenant, resourceId);
+                        if (mfaException != null)
+                        {
+                            throw mfaException;
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
 
                     TracingAdapter.Information(string.Format("[AuthenticationFactory] Exception caught when calling TryAuthenticate, retrying authentication - Exception message: '{0}'", e.Message));
@@ -165,6 +176,48 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     msalException.ErrorCode == MsalError.ServiceNotAvailable;
             }
             return false;
+        }
+
+        private static AzPSAuthenticationFailedException AnalyzeMsalException(Exception exception, IAzureEnvironment environment, string tenantId, string resourceId)
+        {
+            var originalException = exception;
+            while(exception != null)
+            {
+                if(exception is MsalUiRequiredException msalUiRequiredException)
+                {
+                    //There's no official error message for requiring MFA permission, so have to compare UGLY error message
+                    if(msalUiRequiredException.ErrorCode == "invalid_grant" &&
+                        msalUiRequiredException.Message.Contains("you must use multi-factor authentication to access"))
+                    {
+                        string errorMessage;
+                        string desensitizedMessage;
+                        if (NeedTenantArmPermission(environment, tenantId, resourceId))
+                        {
+                            errorMessage = $"You must use multi-factor authentication to access tenant {tenantId}, please rerun 'Connect-AzAccount' with additional parameter '-TenantId {tenantId}'.";
+                            desensitizedMessage = "MFA is required to access tenant";
+                        }
+                        else
+                        {
+                            errorMessage = $"You must use multi-factor authentication to access resource {resourceId}, please rerun 'Connect-AzAccount' with additional parameter '-AuthScope {resourceId}'.";
+                            desensitizedMessage = "MFA is required to access resource";
+                        }
+                        return new AzPSAuthenticationFailedException(
+                            errorMessage,
+                            msalUiRequiredException.ErrorCode,
+                            originalException,
+                            desensitizedMessage: desensitizedMessage);
+                    }
+                }
+                exception = exception.InnerException;
+            }
+
+            return null;
+        }
+
+        private static bool NeedTenantArmPermission(IAzureEnvironment environment, string tenantId, string resourceId)
+        {
+            return !string.IsNullOrEmpty(tenantId) && !string.IsNullOrEmpty(resourceId) &&
+                                        string.Equals(environment.GetEndpoint(resourceId), environment.GetEndpoint(AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId));
         }
 
         public IAccessToken Authenticate(

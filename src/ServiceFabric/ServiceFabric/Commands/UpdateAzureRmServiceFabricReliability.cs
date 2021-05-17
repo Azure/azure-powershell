@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 return;
             }
 
-            var primaryNodeType = GetPrimaryNodeType(this.NodeType);
+            var primaryNodeType = GetPrimaryNodeType(cluster, this.NodeType);
             var primaryVmss = GetPrimaryVmss(cluster, primaryNodeType);
             var instanceNumber = (int)ReliabilityLevel;
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected VirtualMachineScaleSet GetPrimaryVmss(Cluster cluster, string nodeTypeName)
         {
-            NodeTypeDescription primaryNodeType = GetPrimaryNodeType(nodeTypeName);
+            NodeTypeDescription primaryNodeType = GetPrimaryNodeType(cluster, nodeTypeName);
             var vmss = GetPrimaryVmss(cluster, primaryNodeType);
             return vmss;
         }
@@ -138,12 +138,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return vmss;
         }
 
-        protected NodeTypeDescription GetPrimaryNodeType(string nodeTypeName)
+        protected NodeTypeDescription GetPrimaryNodeType(Cluster cluster, string nodeTypeName)
         {
-            var clusterRes = GetCurrentCluster();
-            IList<NodeTypeDescription> nodeTypes = clusterRes.NodeTypes;
+            IList<NodeTypeDescription> nodeTypes = cluster.NodeTypes;
 
-            NodeTypeDescription primaryNodeType;
             if (string.IsNullOrEmpty(nodeTypeName))
             {
                 var primaryNodeTypes = nodeTypes.Where(nt => nt.IsPrimary);
@@ -152,7 +150,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw new PSInvalidOperationException(ServiceFabricProperties.Resources.MultiplePrimaryNodeTypesTargetUndefined);
                 }
 
-                primaryNodeType = primaryNodeTypes.First();
+                return primaryNodeTypes.First();
             }
             else
             {
@@ -166,10 +164,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     throw new PSInvalidOperationException(string.Format(ServiceFabricProperties.Resources.NodeTypeNotPrimary, nodeTypeName));
                 }
 
-                primaryNodeType = nodeType;
+                return nodeType;
             }
-
-            return primaryNodeType;
         }
     }
 }

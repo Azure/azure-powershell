@@ -107,6 +107,19 @@ function New-AzKubernetesConfiguration {
         [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
         [switch]
         ${ClusterScoped},
+
+        [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+        ${SshKnownHosts},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings]))]
+        [System.Collections.Hashtable]
+        # Name-value pairs of protected configuration settings for the configuration
+        ${ConfigurationProtectedSetting},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -174,23 +187,8 @@ function New-AzKubernetesConfiguration {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        if ($PSBoundParameters.ContainsKey('HelmOperatorChartValues')) {
-            $PSBoundParameters.Add('HelmOperatorPropertyChartValue', $HelmOperatorChartValues)
-            $null = $PSBoundParameters.Remove('HelmOperatorChartValues')
-        }
-
-        if ($PSBoundParameters.ContainsKey('HelmOperatorChartVersion')) {
-            $PSBoundParameters.Add('HelmOperatorPropertyChartVersion', $HelmOperatorChartVersion)
-            $null = $PSBoundParameters.Remove('HelmOperatorChartVersion')
-        }
-
-        if ($PSBoundParameters.ContainsKey('OperatorParam')) {
-            $PSBoundParameters.Add('OperatorParameters', $OperatorParam)
-            $null = $PSBoundParameters.Remove('OperatorParam')
-        }
         $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
 
-        
         Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
     }
 }
