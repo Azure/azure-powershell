@@ -178,7 +178,8 @@ function Test-CreateElasticPoolWithZoneRedundancy
 function Test-CreateElasticPoolWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 
 	try
@@ -411,7 +412,8 @@ function Test-UpdateElasticPoolWithZoneRedundancy
 function Test-UpdateElasticPoolWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location	
 
 	try
@@ -542,7 +544,8 @@ function Test-GetElasticPoolWithZoneRedundancy
 function Test-GetElasticPoolWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
