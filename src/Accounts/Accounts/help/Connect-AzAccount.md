@@ -39,9 +39,10 @@ Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <S
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
- [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
+ [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
@@ -56,7 +57,6 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
 ### ManagedServiceLogin
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
- [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
  [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -209,11 +209,13 @@ Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first login wi
 ```powershell
 Connect-AzAccount -AuthScope Storage
 ```
+
 ```Output
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
+
 ## PARAMETERS
 
 ### -AccessToken

@@ -35,6 +35,7 @@ using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -304,15 +305,8 @@ namespace Microsoft.Azure.Commands.Profile
                     azureAccount.SetProperty(AzureAccount.Property.KeyVaultAccessToken, KeyVaultAccessToken);
                     break;
                 case ServicePrincipalCertificateParameterSet:
-                    if (SendCertificateChain)
-                    {
-                        azureAccount.SetProperty("SendCertificateChain", SendCertificateChain.ToString());
-                        WriteDebug("SendCertificateChain is set.");
-                    }
-                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
-                    break;
                 case ServicePrincipalParameterSet:
-                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;  
+                    azureAccount.Type = AzureAccount.AccountType.ServicePrincipal;
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
@@ -349,6 +343,24 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrWhiteSpace(CertificateThumbprint))
             {
                 azureAccount.SetThumbprint(CertificateThumbprint);
+            }
+
+            if (ParameterSetName == ServicePrincipalCertificateParameterSet && SendCertificateChain)
+            {
+                azureAccount.SetProperty(AzureAccount.Property.SendCertificateChain, SendCertificateChain.ToString());
+                bool supressWarningOrError = false;
+                try
+                {
+                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch
+                {
+                    //if value of env variable is invalid, use default value of supressWarningOrError
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Resources.PreviewFunctionMessage);
+                }
             }
 
             if (!string.IsNullOrEmpty(Tenant))

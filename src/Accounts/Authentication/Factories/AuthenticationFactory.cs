@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 case AzureAccount.AccountType.Certificate:
                 case AzureAccount.AccountType.ServicePrincipal:
                     bool? sendCertificateChain = null;
-                    var sendCertificateChainStr = account.GetProperty("sendCertificateChain");
+                    var sendCertificateChainStr = account.GetProperty(AzureAccount.Property.SendCertificateChain);
                     if (!string.IsNullOrWhiteSpace(sendCertificateChainStr))
                     {
                         sendCertificateChain = Boolean.Parse(sendCertificateChainStr);
