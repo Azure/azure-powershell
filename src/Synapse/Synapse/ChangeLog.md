@@ -20,7 +20,7 @@
 ## Upcoming Release
 
 ## Version 0.12.0
-Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
 
 ## Version 0.11.0
 * Removed principaltype in Synapse Role-based access control
