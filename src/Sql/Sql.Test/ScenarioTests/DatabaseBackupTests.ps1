@@ -161,7 +161,7 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 
 		# Basic Policy Test
 		Set-AzSqlDatabaseLongTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -WeeklyRetention $weeklyRetention2
@@ -194,7 +194,7 @@ function Test-LongTermRetentionV2Backup($location = "southeastasia")
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 		
 		# Basic Get Tests
 		Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location
@@ -221,7 +221,7 @@ function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeast
 	{
 		# Create with default values
 		$databaseName = Get-DatabaseName
-		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 		
 		# Basic Get Tests
 		Get-AzSqlDatabaseLongTermRetentionBackup -Location $db.Location -ResourceGroupName $server.ResourceGroupName
