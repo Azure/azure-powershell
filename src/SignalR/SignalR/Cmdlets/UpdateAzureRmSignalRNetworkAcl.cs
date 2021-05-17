@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
-using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "NetworkAcl", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRNetworkAcls))]
     public class UpdateAzureRmSignalRNetworkAcl : SignalRCmdletBase,
-IWithResourceId,IWithInputObject
+IWithResourceId, IWithInputObject
     {
         private const string ClientConnection = "ClientConnection";
         private const string ServerConnection = "ServerConnection";
@@ -48,6 +48,7 @@ IWithResourceId,IWithInputObject
     ParameterSetName = ResourceGroupParameterSet,
     HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
+        [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -86,7 +87,7 @@ IWithResourceId,IWithInputObject
         [Parameter(
          Mandatory = false,
          HelpMessage = "Name(s) of private endpoint(s) to be updated")]
-        public  string[] PrivateEndpointName { get; set; }
+        public string[] PrivateEndpointName { get; set; }
 
         [Parameter(HelpMessage = "Allowed network ACLs")]
         [PSArgumentCompleter(ClientConnection, ServerConnection, RESTAPI, Trace)]
@@ -130,10 +131,10 @@ IWithResourceId,IWithInputObject
                     var privateEndpoints = networkACLs.PrivateEndpoints;
                     if (PublicNetwork)
                     {
-                        publicNetwork.Allow = Allow?? publicNetwork.Allow;
-                        publicNetwork.Deny = Deny?? publicNetwork.Deny;
+                        publicNetwork.Allow = Allow ?? publicNetwork.Allow;
+                        publicNetwork.Deny = Deny ?? publicNetwork.Deny;
                     }
-                    if (PrivateEndpointName != null && privateEndpoints!=null)  //if privateEndpoints is null, that means no private endpoint in this instance
+                    if (PrivateEndpointName != null && privateEndpoints != null)  //if privateEndpoints is null, that means no private endpoint in this instance
                     {
                         PrivateEndpointName.ForEach(name =>
                         {
