@@ -20,8 +20,8 @@
 
 -->
 ## Upcoming Release
-* Added 'Invoke-AzVmInstallPatch' to support patch installation in VMs using PowerShell.
-* Update Compute module to use the latest .Net SDK version 46.0.0.
+* Added `Invoke-AzVmInstallPatch` to support patch installation in VMs using PowerShell.
+* Updated Compute module to use the latest .Net SDK version 46.0.0.
 * Added optional parameter `-EdgeZone` to the following cmdlets:
     - `Get-AzVMImage
     - `Get-AzVMImageOffer`
