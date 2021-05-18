@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.StackHCI","Register-AzStackHCI","Register-AzStackHCI","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Register-AzStackHCI' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Register-AzStackHCI'."
