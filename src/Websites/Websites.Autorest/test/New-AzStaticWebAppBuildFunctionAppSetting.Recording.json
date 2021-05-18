@@ -1,0 +1,121 @@
+{
+  "New-AzStaticWebAppBuildFunctionAppSetting+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/builds/default/config/functionappsettings?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/builds/default/config/functionappsettings?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"buildsetting1\": \"someval\",\r\n    \"buildsetting2\": \"someval2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "94" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "fc2059a9-5fdb-4d70-b294-6831d67d0ad4" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "8874e26e-73b9-4b85-9b2b-acc0da75996c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T083900Z:8874e26e-73b9-4b85-9b2b-acc0da75996c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:38:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "344" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/builds/default/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/staticSites/builds/config\",\"location\":\"Central US\",\"properties\":{\"buildsetting1\":\"someval\",\"buildsetting2\":\"someval2\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebAppBuildFunctionAppSetting+[NoContext]+CreateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/listFunctionAppSettings?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/listFunctionAppSettings?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "503179e9-4373-4099-b75f-88ae8b33f892" ],
+        "CommandName": [ "Get-AzStaticWebAppBuildFunctionAppSetting" ],
+        "FullCommandName": [ "Get-AzStaticWebAppBuildFunctionAppSetting_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "3be3d287-51cc-41a4-a9fd-8700822a0153" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "7875f515-0cfe-45d6-a363-4d7c2bf556a8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T083901Z:7875f515-0cfe-45d6-a363-4d7c2bf556a8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:39:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "320" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/config/functionappsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/staticSites/builds/config/functionappsettings\",\"location\":\"Central US\",\"properties\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebAppBuildFunctionAppSetting+[NoContext]+CreateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/config/functionappsettings?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/config/functionappsettings?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"buildsetting1\": \"someval\",\r\n    \"buildsetting2\": \"someval2\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "94" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "889fb52b-51ff-46ac-b8b5-753872c83ae9" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-correlation-request-id": [ "2033176f-ed69-4e35-9e6a-4fe479473ea0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T083905Z:2033176f-ed69-4e35-9e6a-4fe479473ea0" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:39:05 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "344" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/builds/default/config/appsettings\",\"name\":\"appsettings\",\"type\":\"Microsoft.Web/staticSites/builds/config\",\"location\":\"Central US\",\"properties\":{\"buildsetting1\":\"someval\",\"buildsetting2\":\"someval2\"}}",
+      "isContentBase64": false
+    }
+  }
+}
