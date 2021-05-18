@@ -13,13 +13,13 @@
     <ModuleName>Az.Tools.Predictor</ModuleName>
     <ArtifactFolder>$(RepoArtifacts)Tools</ArtifactFolder>
     <ModuleSolutionFile>$(ModuleName).sln</ModuleSolutionFile>
-    <TestFramework>Net5.0</TestFramework>
+    <TestFramework>Net6.0</TestFramework>
     <TestOutputDirectory>$(RepoArtifacts)/TestResults/$(ModuleName)</TestOutputDirectory>
   </PropertyGroup>
 
   <Target Name="Clean">
     <Message Text="Clean artifacts folder" />
-    <RemoveDir Directories="$(ArtifactFolder)/$(ModuleName)" />
+    <RemoveDir Directories="$(ArtifactFolder)" />
     <RemoveDir Directories="$(TestOutputDirectory)" />
   </Target>
 
@@ -35,7 +35,7 @@
   </Target>
 
   <Target Name="GenerateHelp">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\GenerateHelp -ArtifactFolder $(ArtifactFolder) -ModuleName $(ModuleName)" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/$(ModuleName)/GenerateHelp.ps1 -ArtifactFolder $(ArtifactFolder) -HelpFolder $(RepoTools)/$(ModuleName)/help -ModuleName $(ModuleName)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

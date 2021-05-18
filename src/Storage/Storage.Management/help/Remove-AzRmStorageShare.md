@@ -15,25 +15,39 @@ Removes a Storage file share.
 ### AccountName (Default)
 ```
 Remove-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Include <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AccountNameSnapshot
+```
+Remove-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
+ -SnapshotTime <DateTime> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-Force] [-Include <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AccountObjectSnapshot
+```
+Remove-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> -SnapshotTime <DateTime> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareResourceId
 ```
-Remove-AzRmStorageShare [-ResourceId] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRmStorageShare [-ResourceId] <String> [-Force] [-Include <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
-Remove-AzRmStorageShare -InputObject <PSShare> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRmStorageShare -InputObject <PSShare> [-Force] [-Include <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,6 +76,29 @@ PS C:\>Get-AzStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountNa
 ```
 
 This command removes all Storage file shares in a Storage account with pipeline.
+
+### Example 4: Remove a single Storage file share snapshot
+```
+PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -SnapshotTime "2021-05-10T08:04:08Z"
+```
+
+This command removes a single Storage file share snapshot with the specific share name and snapshot time
+
+### Example 5: Remove a Storage file share and it's snapshots
+```
+PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Snapshots
+```
+
+This command removes a Storage file share and it's snapshots
+By default, the cmdlet will fail if the file share has snapshots without "-include" parameter.
+
+### Example 6: Remove a Storage file share and all it's snapshots (include leased snapshots)
+```
+PS C:\>Remove-AzRmStorageShare -ResourceGroupName "myResourceGroup" -StorageAccountName "myStorageAccount" -Name "myshare" -Include Leased-Snapshots
+```
+
+This command removes a Storage file share and all it's snapshots, include leased and not leased snapshots.
+By default, the cmdlet will fail if the file share has snapshots without "-include" parameter.
 
 ## PARAMETERS
 
@@ -95,6 +132,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Include
+Valid values are: snapshots, leased-snapshots, none. The default value is none. 
+For 'none', the file share is deleted if it has no share snapshots.If the file share contains any snapshots(leased or unleased), the deletion fails.
+For 'snapshots', the file share is deleted including all of its file share snapshots. If the file share contains leased snapshots, the deletion fails.
+For 'leased-snapshots', the file share is deleted included all of its file share snapshots (leased / unleased). 
+
+```yaml
+Type: System.String
+Parameter Sets: AccountName, AccountObject, ShareResourceId, ShareObject
+Aliases:
+Accepted values: None, Snapshots, Leased-Snapshots
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Storage Share object
 
@@ -115,7 +171,7 @@ Share Name
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName, AccountObject
+Parameter Sets: AccountName, AccountNameSnapshot, AccountObject, AccountObjectSnapshot
 Aliases: N, ShareName
 
 Required: True
@@ -146,7 +202,7 @@ Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName
+Parameter Sets: AccountName, AccountNameSnapshot
 Aliases:
 
 Required: True
@@ -171,12 +227,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SnapshotTime
+Share SnapshotTime
+
+```yaml
+Type: System.Nullable`1[System.DateTime]
+Parameter Sets: AccountNameSnapshot, AccountObjectSnapshot
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageAccount
 Storage account object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount
-Parameter Sets: AccountObject
+Parameter Sets: AccountObject, AccountObjectSnapshot
 Aliases:
 
 Required: True
@@ -191,7 +262,7 @@ Storage Account Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountName
+Parameter Sets: AccountName, AccountNameSnapshot
 Aliases: AccountName
 
 Required: True

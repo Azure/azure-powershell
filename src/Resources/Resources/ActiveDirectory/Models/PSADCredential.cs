@@ -23,5 +23,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string KeyId { get; set; }
 
         public string Type { get; set; }
+
+        public string Usage { get; set; }
+
+        public string CustomKeyIdentifier { get; set; }
     }
 }

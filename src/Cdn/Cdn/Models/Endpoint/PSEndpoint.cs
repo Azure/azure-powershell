@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.Cdn.Models;

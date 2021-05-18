@@ -2,8 +2,8 @@
 using Azure.Analytics.Synapse.Artifacts;
 using Azure.Analytics.Synapse.Artifacts.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Common;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Rest.Serialization;
 using System;
@@ -22,12 +22,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly TriggerRunClient _triggerRunClient;
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
+        private readonly BigDataPoolsClient _bigDataPoolsClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
             if (context == null)
             {
-                throw new SynapseException(Resources.InvalidDefaultSubscription);
+                throw new AzPSInvalidOperationException(Resources.InvalidDefaultSubscription);
             }
 
             string suffix = context.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
@@ -40,6 +41,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _triggerRunClient = new TriggerRunClient(uri, new AzureSessionCredential(context));
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
+            _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -253,6 +255,15 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public void DeleteDataFlow(string dataFlowName)
         {
             _dataFlowClient.StartDeleteDataFlow(dataFlowName).Poll();
+        }
+
+        #endregion
+
+        #region BigDataPools
+
+        public BigDataPoolResourceInfo GetBigDataPool(string bigDataPoolName)
+        {
+            return _bigDataPoolsClient.Get(bigDataPoolName);
         }
 
         #endregion

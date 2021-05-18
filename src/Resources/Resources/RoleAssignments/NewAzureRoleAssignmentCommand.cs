@@ -210,6 +210,30 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ConditionVersion { get; set; } = null;
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "To be used with ObjectId. Specifies the type of the asignee object")]
+        [PSArgumentCompleter("User", "Group", "Service Principal")]
+        [Alias("PrincipalType")]
+        public string ObjectType { get; set; } = null;
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
         [ValidateGuidNotEmpty]
@@ -243,6 +267,7 @@ namespace Microsoft.Azure.Commands.Resources
                     PSRoleAssignment RoleAssignment = JsonConvert.DeserializeObject<PSRoleAssignment>(File.ReadAllText(fileName));
 
                     this.ObjectId = RoleAssignment.ObjectId;
+                    this.ObjectType = RoleAssignment.ObjectType;
                     this.ResourceType = RoleAssignment.ObjectType;
                     this.Scope = RoleAssignment.Scope;
                     Guid guid = Guid.Empty;
@@ -290,6 +315,7 @@ namespace Microsoft.Azure.Commands.Resources
                     UPN = SignInName,
                     SPN = ApplicationId,
                     Id = ObjectId,
+                    ObjectType = ObjectType,
                 },
                 ResourceIdentifier = new ResourceIdentifier()
                 {

@@ -16,13 +16,14 @@ Creates a Storage file share.
 ```
 New-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
  [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>]
- [-AccessTier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AccessTier <String>] [-Snapshot] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 New-AzRmStorageShare -StorageAccount <PSStorageAccount> -Name <String> [-QuotaGiB <Int32>]
- [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>] [-AccessTier <String>]
+ [-Metadata <Hashtable>] [-EnabledProtocol <String>] [-RootSquash <String>] [-AccessTier <String>] [-Snapshot]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,6 +88,19 @@ myshare                            Hot
 ```
 
 This command creates a Storage file share with accesstier as Hot.
+
+### Example 5: Create a Storage file share snapshot of an existing share
+```
+PS C:\>$shareSnapshot = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -Snapshot
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes snapshotTime 
+----     -------- ---------------- ---------- ------- ------- --------------- ------------   
+myshare                                                                       2021-05-10T08:04:08
+```
+
+This command creates a Storage file share snapshot of an existing base file share.
 
 ## PARAMETERS
 
@@ -205,6 +219,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NoRootSquash, RootSquash, AllSquash
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Snapshot
+Create a snapshot of existing share with same name.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

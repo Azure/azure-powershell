@@ -18,6 +18,22 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed Set-AzRecoveryServicesBackupProperties cmdlet alias, Set-AzRecoveryServicesBackupProperty is supported.
+* Removed Get-AzRecoveryServicesBackupJobDetails cmdlet alias, Get-AzRecoveryServicesBackupJobDetail is supported.
+* Added support for cross subscription DS Move.
+* Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+
+## Version 3.6.0
+* Azure Site Recovery support for Multiple IP per NIC for Azure to Azure provider.
+* Azure Site Recovery support for SqlServerLicenseType for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Availability set for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for TargetVmSize for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for ResourceTagging for VMware to Azure and HyperV to Azure providers.
+* Azure Site Recovery support for Virtual Machine Scale Set for Azure to Azure provider.
+* Added support for restoring unmanaged disks vm as managed disks.
+
+## Version 3.5.0
+* Added Cross Zonal Restore for managed virtual machines.
 
 ## Version 3.4.1
 * Added null check for target storage account in FileShare restore.

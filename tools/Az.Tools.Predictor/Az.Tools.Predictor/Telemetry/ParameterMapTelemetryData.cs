@@ -22,10 +22,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class ParameterMapTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        string ITelemetryData.RequestId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
         /// Gets the exception if there is an error during the operation.

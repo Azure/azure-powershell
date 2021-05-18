@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.SystemData = policy.SystemData is null ? null : new PSSystemData(policy.SystemData);
 
             this.Enabled = policy.Policy.Enabled;
-            this.Destination = policy.Policy.Destination;
+            //this.Destination = policy.Policy.Destination;
 
             if (policy.Policy.Rules != null)
             {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             BlobInventoryPolicySchema policySchema = new BlobInventoryPolicySchema()
             {
                 Enabled = this.Enabled,
-                Destination = this.Destination,
+                //Destination = this.Destination,
                 Rules = invRules
             };
             return new BlobInventoryPolicy(
@@ -105,8 +105,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "Enabled", Target = ViewControl.List, Position = 6)]
         public bool Enabled { get; set; }
-        [Ps1Xml(Label = "Destination", Target = ViewControl.List, Position = 5)]
-        public string Destination { get; set; }
         [Ps1Xml(Label = "Rules", Target = ViewControl.List, Position = 7)]
         public PSBlobInventoryPolicyRule[] Rules { get; set; }
         public PSSystemData SystemData { get; set; }
@@ -122,6 +120,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = rule.Enabled;
             this.Name = rule.Name;
+            this.Destination = rule.Destination;
             this.Definition = rule.Definition is null ? null : new PSBlobInventoryPolicyDefinition(rule.Definition);
         }
 
@@ -131,6 +130,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             {
                 Enabled = this.Enabled,
                 Name = this.Name,
+                Destination = this.Destination,
                 Definition = this.Definition is null ? null : this.Definition.parseBlobInventoryPolicyDefinition()
             };
         }
@@ -138,6 +138,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public bool Enabled { get; set; }
 
         public string Name { get; set; }
+
+        public string Destination { get; set; }
 
         public PSBlobInventoryPolicyDefinition Definition { get; set; }
     }
@@ -152,14 +154,55 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSBlobInventoryPolicyDefinition(BlobInventoryPolicyDefinition Definition)
         {
             this.Filters = Definition.Filters is null ? null : new PSBlobInventoryPolicyFilter(Definition.Filters);
+            this.Format = Definition.Format;
+            this.Schedule = Definition.Schedule;
+            this.ObjectType = Definition.ObjectType;
+            this.SchemaFields = Definition.SchemaFields is null ? null : ((List<string>)Definition.SchemaFields).ToArray();
         }
 
         public BlobInventoryPolicyDefinition parseBlobInventoryPolicyDefinition()
         {
-            return new BlobInventoryPolicyDefinition(this.Filters is null? null : this.Filters.ParseBlobInventoryPolicyFilter());
+            return new BlobInventoryPolicyDefinition(this.Format, this.Schedule, this.ObjectType, 
+                this.SchemaFields is null? null: new List<string>(this.SchemaFields),
+                this.Filters is null? null : this.Filters.ParseBlobInventoryPolicyFilter());
         }
 
         public PSBlobInventoryPolicyFilter Filters { get; set; }
+
+        //Possible values include: 'Csv', 'Parquet'
+        public string Format { get; set; }
+
+        // Possible values include: 'Daily', 'Weekly'
+        public string Schedule { get; set; }
+
+        // Possible values include: 'Blob', 'Container'
+        public string ObjectType { get; set; }
+
+        //     Valid values for this field for the blob object type include: Name, Creation-Time, Last-Modified, Content-Length,
+        //     Content-MD5, BlobType, AccessTier, AccessTierChangeTime, Expiry-Time, hdi_isfolder,
+        //     Owner, Group, Permissions, Acl, Snapshot, VersionId, IsCurrentVersion, Metadata, LastAccessTime. 
+        //     Valid values for container object type include Name, Last-Modified,
+        //     Metadata, LeaseStatus, LeaseState, LeaseDuration, PublicAccess, HasImmutabilityPolicy, HasLegalHold.
+        public string[] SchemaFields { get; set; }
+
+        //private string[] BlobSchemaField = new string[] {"Name", "Creation-Time", "Last-Modified", "Content-Length", "Content-MD5", "BlobType", "AccessTier", "AccessTierChangeTime",
+        //            "Expiry-Time", "hdi_isfolder", "Owner", "Group", "Permissions", "Acl", "Snapshot", "VersionId", "IsCurrentVersion", "Metadata", "LastAccessTime"};
+        //private string[] ContainerSchemaField = new string[] { "Name", "Last-Modified", "Metadata", "LeaseStatus", "LeaseState", "LeaseDuration", "PublicAccess", "HasImmutabilityPolicy", "HasLegalHold" };
+
+        //public const string[] BlobInventoryPolicyRuleFormat = {"Csv", "Parquet"};
+
+        //public static string NormalizeString(string input, string[] validValue)
+        //{
+        //    foreach (string s in validValue)
+        //    {
+        //        if (input.ToLower() == s.ToLower())
+        //        {
+        //            return s;
+        //        }
+        //    }
+        //    return input;
+        //}
+
     }
 
     /// <summary>
@@ -223,5 +266,4 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string LastModifiedByType { get; set; }
         public DateTime? LastModifiedAt { get; set; }
     }
-
 }

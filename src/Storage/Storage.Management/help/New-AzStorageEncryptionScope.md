@@ -68,7 +68,7 @@ PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Accou
 
 Name         State   Source           KeyVaultKeyUri                                                                          RequireInfrastructureEncryption                                       
 ----         -----   ------             --------------                                                                        -------------------------------                                     
-testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57  True 
+testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57  True
 ```
 
 This command creates an encryption scope with Keyvault Encryption and RequireInfrastructureEncryption.

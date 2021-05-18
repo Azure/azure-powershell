@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -47,7 +47,7 @@ NestedModules = @("Microsoft.Azure.PowerShell.Tools.AzPredictor.dll")
 
 ScriptsToProcess = @("PromptSurvey.ps1")
 
-CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor")
+CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey")
 
 # Format files (.ps1xml) to be loaded when importing this module
 
@@ -57,7 +57,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure', 'PowerShell', 'Prediction', 'Recommendation', 'Az Predictor'
+        Tags = 'Azure', 'PowerShell', 'Prediction', 'Recommendation', 'Predictor'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -69,9 +69,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* second preview release
-* Add Enable-AzPredictor and Disable-AzPredictor cmdlet to simplify configuration
-* Use PSReadline new API'
+        ReleaseNotes = '* Add Open-AzPredictorSurvey to welcome feedback.'
 
         # Prerelease string of this module
         # Prerelease = ''

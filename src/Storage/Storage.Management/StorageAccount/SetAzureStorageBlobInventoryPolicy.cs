@@ -147,21 +147,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The container name where blob inventory files are stored. Must be pre-created.",
-           ParameterSetName = AccountNamePolicyRuleParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The container name where blob inventory files are stored. Must be pre-created.",
-           ParameterSetName = AccountObjectPolicyRuleParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The container name where blob inventory files are stored. Must be pre-created.",
-           ParameterSetName = AccountResourceIdPolicyRuleParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string Destination { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             HelpMessage = "Blob Inventory Policy Object to Set",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
@@ -211,7 +196,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             this.StorageAccountName,
                             new BlobInventoryPolicySchema(
                                 enabled: !(this.Disabled.IsPresent),
-                                destination: this.Destination,
                                 rules: PSBlobInventoryPolicy.ParseBlobInventoryPolicyRules(this.Rule)));
                         break;
                     case AccountObjectPolicyObjectParameterSet:

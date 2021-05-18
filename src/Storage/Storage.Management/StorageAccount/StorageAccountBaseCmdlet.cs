@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         protected struct AzureBlobType
         {
-            internal const string BlockBlob = "blockBlob";
-            internal const string PageBlob = "pageBlob";
-            internal const string AppendBlob = "appendBlob";
+            public const string BlockBlob = "blockBlob";
+            public const string PageBlob = "pageBlob";
+            public const string AppendBlob = "appendBlob";
         }
         protected struct ManagementPolicyAction
         {
@@ -74,12 +74,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Delete = "Delete";
         }
 
+        protected struct AccountIdentityType
+        {
+            internal const string systemAssigned = "SystemAssigned";
+            internal const string userAssigned = "UserAssigned";
+            internal const string systemAssignedUserAssigned = "SystemAssignedUserAssigned";
+            internal const string none = "None";
+        }
+
         [Flags]
         public enum EncryptionSupportServiceEnum
         {
             None = 0,
             Blob = 1,
             File = 2
+        }
+
+        protected struct DefaultSharePermissionType
+        {
+            internal const string None = "None";
+            internal const string StorageFileDataSmbShareReader = "StorageFileDataSmbShareReader";
+            internal const string StorageFileDataSmbShareContributor = "StorageFileDataSmbShareContributor";
+            internal const string StorageFileDataSmbShareElevatedContributor = "StorageFileDataSmbShareElevatedContributor";
+            internal const string StorageFileDataSmbShareOwner = "StorageFileDataSmbShareOwner";
         }
 
         public IStorageManagementClient StorageClient
@@ -143,6 +160,61 @@ namespace Microsoft.Azure.Commands.Management.Storage
             List<PSStorageAccount> output = new List<PSStorageAccount>();
             storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
             WriteObject(output, true);
+        }
+
+        public static string GetIdentityTypeString(string inputIdentityType)
+        {
+            if (inputIdentityType == null)
+            {
+                return null;
+            }
+
+            // The parameter validate set make sure the value must be systemAssigned or userAssigned or systemAssignedUserAssigned or None
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssigned.ToLower())
+            {
+                return IdentityType.SystemAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.userAssigned.ToLower())
+            {
+                return IdentityType.UserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.systemAssignedUserAssigned.ToLower())
+            {
+                return IdentityType.SystemAssignedUserAssigned;
+            }
+            if (inputIdentityType.ToLower() == AccountIdentityType.none.ToLower())
+            {
+                return IdentityType.None;
+            }
+            throw new ArgumentException("The value for AssignIdentityType is not valid, the valid value are: \"None\", \"SystemAssigned\", \"UserAssigned\", or \"SystemAssignedUserAssigned\"", "AssignIdentityType");
+        }
+
+        // Make the input string value case is aligned with the test API defination.
+        public static string NormalizeString<T>(string input)
+        {
+            foreach (var field in typeof(T).GetFields())
+            {
+                if (input.ToLower() == field.GetRawConstantValue().ToString().ToLower())
+                {
+                    return (string)field.GetRawConstantValue().ToString();
+                }
+            }
+            return input;
+        }
+
+        // Make the input string[] value case is aligned with the test API defination.
+        public static string[] NormalizeStringArray<T>(string[] input)
+        {
+            if (input != null)
+            {
+                List<string> stringList = new List<string>();
+                foreach (string s in input)
+                {
+                    stringList.Add(NormalizeString<T>(s));
+                }
+                return stringList.ToArray();
+            }
+            return input;
         }
     }
 }

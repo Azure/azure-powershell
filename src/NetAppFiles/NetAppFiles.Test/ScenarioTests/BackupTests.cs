@@ -40,5 +40,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-BackupPipelines");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeBackupStatusCrud()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-VolumeBackupStatus");
+        }
+
     }
 }

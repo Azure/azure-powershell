@@ -20,9 +20,9 @@ New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerTy
  [-FriendlyName <String>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-RegistrationInfoToken <String>]
  [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>] [-SsoadfsAuthority <String>]
- [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoContext <String>]
- [-SsoSecretType <SsoSecretType>] [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment]
- [-VMTemplate <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <SsoSecretType>]
+ [-StartVMOnConnect] [-Tag <Hashtable>] [-ValidationEnvironment] [-VMTemplate <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
@@ -51,7 +51,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
@@ -80,7 +79,6 @@ PS C:\> New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
                             -VMTemplate $null `
-                            -SsoContext $null `
                             -SsoClientId $null `
                             -SsoClientSecretKeyVaultPath $null `
                             -SsoSecretType $null `
@@ -399,21 +397,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SsoContext
-Path to keyvault containing ssoContext secret.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SsoSecretType
 The type of single sign on Secret Type.
 
@@ -557,7 +540,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20201102Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210201Preview.IHostPool
 
 ## NOTES
 

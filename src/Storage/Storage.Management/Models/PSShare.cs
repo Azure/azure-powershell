@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTier = share.AccessTier;
             this.AccessTierChangeTime = share.AccessTierChangeTime;
             this.AccessTierStatus = share.AccessTierStatus;
+            this.SnapshotTime = share.SnapshotTime;
         }
 
         public PSShare(FileShareItem share)
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.AccessTier = share.AccessTier;
             this.AccessTierChangeTime = share.AccessTierChangeTime;
             this.AccessTierStatus = share.AccessTierStatus;
+            this.SnapshotTime = share.SnapshotTime;
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
@@ -116,6 +118,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public long? ShareUsageBytes { get; }
 
 
+        public DateTime? SnapshotTime { get; private set; }
         public static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))

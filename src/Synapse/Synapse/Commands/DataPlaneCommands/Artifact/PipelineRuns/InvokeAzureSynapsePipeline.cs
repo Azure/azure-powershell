@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.Azure.Commands.Synapse.Properties;
@@ -8,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using JsonConvert = Newtonsoft.Json.JsonConvert;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
                 catch (InvalidCastException ex)
                 {
-                    throw new InvalidCastException(Resources.InvalidCastParameterKeyExceptionMessage, ex);
+                    throw new AzPSInvalidOperationException(Resources.InvalidCastParameterKeyExceptionMessage, ex);
                 }
             }
             else
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Commands.Synapse
             string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(ParameterFile));
             if (!string.IsNullOrWhiteSpace(rawJsonContent))
             {
-                parameters = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawJsonContent);
+                parameters = JsonSerializer.Deserialize<Dictionary<string, object>>(rawJsonContent);
             }
             return parameters;
         }

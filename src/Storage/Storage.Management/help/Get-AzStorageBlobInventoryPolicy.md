@@ -44,19 +44,18 @@ PS C:\> $policy
 StorageAccountName : mystorageaccount
 ResourceGroupName  : myresourcegroup
 Name               : DefaultInventoryPolicy
-Id                 : /subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/inventoryPolicies/default
+Id                 : /subscriptions/{subscription-Id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/inventoryPolicies/default
 Type               : Microsoft.Storage/storageAccounts/inventoryPolicies
 LastModifiedTime   : 11/4/2020 9:18:30 AM
-Destination        : containername
 Enabled            : True
 Rules              : {Test1, Test2}
 
 PS C:\> $policy.Rules
 
-Name  Enabled IncludeSnapshots IncludeBlobVersions BlobTypes                         PrefixMatch       
-----  ------- ---------------- ------------------- ---------                         -----------       
-Test1 True    True             True                blockBlob                         {prefix1, prefix2}
-Test2 False   True             False               {blockBlob, appendBlob, pageBlob} {prefix3, prefix4}
+Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch SchemaFields                                           
+----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               ----------- ------------                                           
+Test1 False   containername Container  Csv     Daily                                                                 {aaa, bbb}  {Name, Metadata, PublicAccess, Last-Modified...}       
+Test2 True    containername Blob       Parquet Weekly   True             True                {blockBlob, appendBlob} {ccc, ddd}  {Name, Creation-Time, Last-Modified, Content-Length...}
 ```
 
 This command gets blob inventory policy from a Storage account, and show its proeprties.

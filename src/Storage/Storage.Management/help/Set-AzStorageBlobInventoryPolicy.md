@@ -15,8 +15,8 @@ Creates or updates blob inventory policy in a Storage account.
 ### AccountNamePolicyRule (Default)
 ```
 Set-AzStorageBlobInventoryPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -Rule <PSBlobInventoryPolicyRule[]> [-Disabled] -Destination <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Rule <PSBlobInventoryPolicyRule[]> [-Disabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountNamePolicyObject
@@ -29,8 +29,7 @@ Set-AzStorageBlobInventoryPolicy [-ResourceGroupName] <String> [-StorageAccountN
 ### AccountObjectPolicyRule
 ```
 Set-AzStorageBlobInventoryPolicy -StorageAccount <PSStorageAccount> -Rule <PSBlobInventoryPolicyRule[]>
- [-Disabled] -Destination <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Disabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObjectPolicyObject
@@ -42,8 +41,7 @@ Set-AzStorageBlobInventoryPolicy -StorageAccount <PSStorageAccount> -Policy <PSB
 ### AccountResourceIdPolicyRule
 ```
 Set-AzStorageBlobInventoryPolicy [-StorageAccountResourceId] <String> -Rule <PSBlobInventoryPolicyRule[]>
- [-Disabled] -Destination <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Disabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountResourceIdPolicyObject
@@ -59,75 +57,90 @@ The **Set-AzStorageBlobInventoryPolicy** cmdlet creates or updates blob inventor
 
 ### Example 1: Create or update the blob inventory policy with BlobInventoryPolicy rule objects.
 ```
-PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -BlobType blockBlob -PrefixMatch prefix1,prefix2 -IncludeSnapshot -IncludeBlobVersion
+PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
-PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -BlobType blockBlob,appendBlob,pageBlob -IncludeSnapshot -Disabled 
+PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
+                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
 
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy "myresourcegroup" -AccountName "mystorageaccount"  -Disabled -Destination "containername" -Rule $rule1,$rule2
+PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
 PS C:\> $policy
 
 StorageAccountName : mystorageaccount
 ResourceGroupName  : myresourcegroup
 Name               : DefaultInventoryPolicy
-Id                 : /subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/inventoryPolicies/default
+Id                 : /subscriptions/{subscription-Id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/inventoryPolicies/default
 Type               : Microsoft.Storage/storageAccounts/inventoryPolicies
-LastModifiedTime   : 11/4/2020 9:23:36 AM
-Destination        : containername
+LastModifiedTime   : 5/12/2021 8:53:38 AM
 Enabled            : False
 Rules              : {Test1, Test2}
 
 PS C:\> $policy.Rules
 
-Name  Enabled IncludeSnapshots IncludeBlobVersions BlobTypes                         PrefixMatch       
-----  ------- ---------------- ------------------- ---------                         -----------       
-Test1 True    True             True                blockBlob                         {prefix1, prefix2}
-Test2 False   True             False               {blockBlob, appendBlob, pageBlob}
+Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch  SchemaFields                                           
+----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------  ------------                                           
+Test1 False   containername Container  Csv     Daily                                                                 {con1, con2} {Name, Metadata, PublicAccess, Last-Modified...}       
+Test2 True    containername Blob       Parquet Weekly   True             True                {blockBlob, appendBlob} {aaa, bbb}   {Name, Creation-Time, Last-Modified, Content-Length...}
 ```
 
-This command first creates 2 BlobInventoryPolicy rule objects, then sets blob inventory policy of a Storage account with the 2 rule objects, finally show the updated policy and rules properties.
+This first 2 commands create 2 BlobInventoryPolicy rule objects: rule "Test1" for contaienr inventory; rule "Test2" for blob inventory.
+The following command sets blob inventory policy to a Storage account with the 2 rule objects, then show the updated policy and rules properties.
 
 ### Example 2: Create or update the blob inventory policy of a Storage account with a Json format policy.
 ```
-PS C:\> Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
-            Enabled=$true;
-            Destination=$containerName;
-            Rules=(@{
+PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName  -StorageAccountName $accountName -Policy (@{
                 Enabled=$true;
-                Name="Test1";
-                Definition=(@{
-                    Filters=(@{
-                        BlobTypes=@("blockBlob");
-                        PrefixMatch=@("prefix1","prefix2");
-                        IncludeSnapshots=$true;
-                        IncludeBlobVersions=$true;
+                Rules=(@{
+                    Enabled=$true;
+                    Name="Test1";
+                    Destination=$containerName;
+                    Definition=(@{
+                        ObjectType="Blob";
+                        Format="Csv";
+                        Schedule="Weekly";
+                        SchemaFields=@("name","Content-Length","BlobType","Snapshot","VersionId","IsCurrentVersion");
+                        Filters=(@{
+                            BlobTypes=@("blockBlob","appendBlob");
+                            PrefixMatch=@("prefix1","prefix2");
+                            IncludeSnapshots=$true;
+                            IncludeBlobVersions=$true;
+                        })
                     })
-                })
-            },
-            @{
-                Enabled=$false;
-                Name="Test2";
-                Definition=(@{
-                    Filters=(@{
-                        BlobTypes=@("blockBlob","appendBlob","pageBlob");
-                        PrefixMatch=@("prefix3","prefix4");
-                        IncludeSnapshots=$true;
-                        IncludeBlobVersions=$false;
+                },
+                @{
+                    Enabled=$false;
+                    Name="Test2";
+                    Destination=$containerName;
+                    Definition=(@{
+                        ObjectType="Container";
+                        Format="Parquet";
+                        Schedule="Daily";
+                        SchemaFields=@("name","Metadata","PublicAccess");
+                        Filters=(@{
+                            PrefixMatch=@("conpre1","conpre2");
+                        })
                     })
                 })
             })
-        })
 
 
-StorageAccountName : mystorageaccount
-ResourceGroupName  : myresourcegroup
+PS C:\> $policy
+
+StorageAccountName : weiadlscanary1
+ResourceGroupName  : weitry
 Name               : DefaultInventoryPolicy
-Id                 : /subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/inventoryPolicies/default
+Id                 : /subscriptions/{subscription-Id}/resourceGroups/weitry/providers/Microsoft.Storage/storageAccounts/weiadlscanary1/inventoryPolicies/default
 Type               : Microsoft.Storage/storageAccounts/inventoryPolicies
-LastModifiedTime   : 11/4/2020 9:31:49 AM
-Destination        : containername
+LastModifiedTime   : 5/12/2021 9:02:21 AM
 Enabled            : True
 Rules              : {Test1, Test2}
+
+PS C:\> $policy.Rules 
+
+Name  Enabled Destination   ObjectType Format  Schedule IncludeSnapshots IncludeBlobVersions BlobTypes               PrefixMatch        SchemaFields                                 
+----  ------- -----------   ---------- ------  -------- ---------------- ------------------- ---------               -----------        ------------                                 
+Test1 True    containername Blob       Csv     Weekly   True             True                {blockBlob, appendBlob} {prefix1, prefix2} {name, Content-Length, BlobType, Snapshot...}
+Test2 False   containername Container  Parquet Daily                                                                 {conpre1, conpre2} {name, Metadata, PublicAccess}                                                                                       {name, Metadata, PublicAccess}
 ```
 
 This command creates or updates the blob inventory policy of a Storage account with a json format policy.
@@ -142,7 +155,7 @@ The proeprties： Destination, Enabled, and Rules of the policy will be set to t
 
 ### Example 4: Get the blob inventory policy rules from a Storage account, then set it to another Storage account.
 ```
-PS C:\>$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Destination $containerName
+PS C:\>$policy = ,((Get-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").Rules) | Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup2" -AccountName "mystorageaccount2" -Disabled
 ```
 
 This command first gets the blob inventory policy from a Storage account, then set it's rules to another Storage account.
@@ -158,22 +171,6 @@ Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Destination
-The container name where blob inventory files are stored.
-Must be pre-created.
-
-```yaml
-Type: System.String
-Parameter Sets: AccountNamePolicyRule, AccountObjectPolicyRule, AccountResourceIdPolicyRule
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

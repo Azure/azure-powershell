@@ -104,7 +104,7 @@ PS C:\> Update-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -Ac
 
 Name      State    Source             KeyVaultKeyUri                                                                          RequireInfrastructureEncryption 
 ----      -----    ------             --------------                                                                          -------------------------------
-testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57   
+testscope Enabled  Microsoft.Keyvault https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57
 ```
 
 This command updtaes an encryption scope to use Keyvault Encryption.

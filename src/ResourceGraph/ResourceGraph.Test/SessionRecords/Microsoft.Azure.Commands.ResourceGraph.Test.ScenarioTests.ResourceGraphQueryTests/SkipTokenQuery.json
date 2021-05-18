@@ -1,0 +1,86 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VHcmFwaC9yZXNvdXJjZXM/YXBpLXZlcnNpb249MjAyMS0wMy0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"subscriptions\": [\r\n    \"82506e98-9fdb-41f5-ab67-031005041a26\"\r\n  ],\r\n  \"query\": \"project id, properties\",\r\n  \"options\": {\r\n    \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogMywNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1ldXMtc2l4LXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ==\",\r\n    \"resultFormat\": \"objectArray\",\r\n    \"allowPartialScopes\": false\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2d9c6d18-ec18-4fb7-b1f1-32792ce06217"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29916.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.ResourceGraph.ResourceGraphClient/2.1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "395"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-resource-requests": [
+          "14"
+        ],
+        "x-ms-user-quota-remaining": [
+          "14"
+        ],
+        "x-ms-user-quota-resets-after": [
+          "00:00:05"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "1a211d48-ebab-46f8-8947-f2da8e877987"
+        ],
+        "x-ms-correlation-request-id": [
+          "1a211d48-ebab-46f8-8947-f2da8e877987"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20210420T113213Z:1a211d48-ebab-46f8-8947-f2da8e877987"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 20 Apr 2021 11:32:12 GMT"
+        ],
+        "Content-Length": [
+          "7388"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"totalRecords\": 244,\r\n  \"count\": 3,\r\n  \"data\": [\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/publicIPAddresses/LBIP-gov-art-df-nt-a\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"idleTimeoutInMinutes\": 4,\r\n        \"resourceGuid\": \"9c7b1246-f23f-4838-a60b-ba15712d3109\",\r\n        \"publicIPAllocationMethod\": \"Static\",\r\n        \"publicIPAddressVersion\": \"IPv4\",\r\n        \"ipConfiguration\": {\r\n          \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/loadBalancers/LB-gov-art-df-nt-a-nt/frontendIPConfigurations/LoadBalancerIPConfig\"\r\n        },\r\n        \"dnsSettings\": {\r\n          \"domainNameLabel\": \"gov-art-df-nt-a\",\r\n          \"fqdn\": \"gov-art-df-nt-a.eastus.cloudapp.azure.com\"\r\n        },\r\n        \"ipAddress\": \"20.42.26.73\",\r\n        \"ipTags\": []\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/virtualNetworks/VNet-gov-art-df-nt-a\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"resourceGuid\": \"d36001e0-93f5-4f6c-b9ee-49d521abbc01\",\r\n        \"virtualNetworkPeerings\": [],\r\n        \"enableDdosProtection\": false,\r\n        \"subnets\": [\r\n          {\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"ipConfigurations\": [\r\n                {\r\n                  \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt/virtualMachines/0/networkInterfaces/NIC-gov-art-df-nt-a/ipConfigurations/NIC-gov-art-df-nt-a\"\r\n                },\r\n                {\r\n                  \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt/virtualMachines/1/networkInterfaces/NIC-gov-art-df-nt-a/ipConfigurations/NIC-gov-art-df-nt-a\"\r\n                },\r\n                {\r\n                  \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt/virtualMachines/2/networkInterfaces/NIC-gov-art-df-nt-a/ipConfigurations/NIC-gov-art-df-nt-a\"\r\n                },\r\n                {\r\n                  \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt/virtualMachines/3/networkInterfaces/NIC-gov-art-df-nt-a/ipConfigurations/NIC-gov-art-df-nt-a\"\r\n                },\r\n                {\r\n                  \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt/virtualMachines/4/networkInterfaces/NIC-gov-art-df-nt-a/ipConfigurations/NIC-gov-art-df-nt-a\"\r\n                }\r\n              ],\r\n              \"privateLinkServiceNetworkPolicies\": \"Enabled\",\r\n              \"privateEndpointNetworkPolicies\": \"Enabled\",\r\n              \"addressPrefix\": \"10.0.0.0/24\",\r\n              \"networkSecurityGroup\": {\r\n                \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/networkSecurityGroups/nsgSubnet-0\"\r\n              },\r\n              \"delegations\": [],\r\n              \"serviceEndpoints\": [\r\n                {\r\n                  \"provisioningState\": \"Succeeded\",\r\n                  \"locations\": [\r\n                    \"*\"\r\n                  ],\r\n                  \"service\": \"Microsoft.AzureCosmosDB\"\r\n                },\r\n                {\r\n                  \"provisioningState\": \"Succeeded\",\r\n                  \"locations\": [\r\n                    \"*\"\r\n                  ],\r\n                  \"service\": \"Microsoft.KeyVault\"\r\n                },\r\n                {\r\n                  \"provisioningState\": \"Succeeded\",\r\n                  \"locations\": [\r\n                    \"eastus\",\r\n                    \"westus\"\r\n                  ],\r\n                  \"service\": \"Microsoft.Storage\"\r\n                },\r\n                {\r\n                  \"provisioningState\": \"Succeeded\",\r\n                  \"locations\": [\r\n                    \"*\"\r\n                  ],\r\n                  \"service\": \"Microsoft.ServiceBus\"\r\n                }\r\n              ]\r\n            },\r\n            \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.Network/virtualNetworks/VNet-gov-art-df-nt-a/subnets/Subnet\",\r\n            \"name\": \"Subnet\",\r\n            \"type\": \"Microsoft.Network/virtualNetworks/subnets\",\r\n            \"etag\": \"W/\\\"8f5339fa-e1a8-442a-a671-e2f4d1b871f6\\\"\"\r\n          }\r\n        ],\r\n        \"addressSpace\": {\r\n          \"addressPrefixes\": [\r\n            \"10.0.0.0/16\"\r\n          ]\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/82506e98-9fdb-41f5-ab67-031005041a26/resourceGroups/AzureResourcesCacheNotifications-Df-a/providers/Microsoft.ServiceFabric/clusters/gov-art-df-nt-a\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"clusterEndpoint\": \"https://eastus.servicefabric.azure.com/runtime/clusters/f0157222-1d05-41a8-b1d5-5a7efec95ed8\",\r\n        \"diagnosticsStorageAccountConfig\": {\r\n          \"storageAccountName\": \"sflogsgovartdfnta\",\r\n          \"tableEndpoint\": \"https://sflogsgovartdfnta.table.core.windows.net/\",\r\n          \"protectedAccountKeyName2\": \"\",\r\n          \"protectedAccountKeyName\": \"StorageAccountKey1\",\r\n          \"secondaryAccessKey\": \"\",\r\n          \"primaryAccessKey\": \"\",\r\n          \"queueEndpoint\": \"https://sflogsgovartdfnta.queue.core.windows.net/\",\r\n          \"blobEndpoint\": \"https://sflogsgovartdfnta.blob.core.windows.net/\"\r\n        },\r\n        \"clientCertificateCommonNames\": [],\r\n        \"clientCertificateThumbprints\": [],\r\n        \"availableClusterVersions\": [\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-07-31T00:00:00Z\",\r\n            \"codeVersion\": \"7.1.510.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.413.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.432.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.433.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.445.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.457.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"2021-11-30T00:00:00Z\",\r\n            \"codeVersion\": \"7.2.477.9590\"\r\n          },\r\n          {\r\n            \"environment\": \"Windows\",\r\n            \"supportExpiryUtc\": \"9999-12-31T23:59:59.9999999Z\",\r\n            \"codeVersion\": \"8.0.514.9590\"\r\n          }\r\n        ],\r\n        \"managementEndpoint\": \"https://arg-df-nt-a.arg-df.core.windows.net:19080\",\r\n        \"clusterCodeVersion\": \"8.0.514.9590\",\r\n        \"reliabilityLevel\": \"Silver\",\r\n        \"certificateCommonNames\": {\r\n          \"x509StoreName\": \"My\",\r\n          \"commonNames\": [\r\n            {\r\n              \"certificateCommonName\": \"gov-art-df-nt-a.eastus.cloudapp.azure.com\",\r\n              \"certificateIssuerThumbprint\": \"1b45ec255e0668375043ed5fe78a09ff1655844d,d7fe717b5ff3593764f4d90654d86e8362ec26c8,3ac7c3cac8de0dd392c02789c8be97474f456960,96ea05926e2e42cc207e358668be2c316857fb5e,38b8c60edafdf2a6c50bf5ee00279c788b6fa3b1,552ad1ecd94323d64de4670a55a57d2442b021b1,41bebdcf792c2c890749bf7ac802e33f518cf575,3486b1880c3b6b677f02ee782a7ee66217efc03b\"\r\n            },\r\n            {\r\n              \"certificateCommonName\": \"arg-df-nt-a.arg-df.core.windows.net\",\r\n              \"certificateIssuerThumbprint\": \"1b45ec255e0668375043ed5fe78a09ff1655844d,d7fe717b5ff3593764f4d90654d86e8362ec26c8,3ac7c3cac8de0dd392c02789c8be97474f456960,96ea05926e2e42cc207e358668be2c316857fb5e,38b8c60edafdf2a6c50bf5ee00279c788b6fa3b1,552ad1ecd94323d64de4670a55a57d2442b021b1,41bebdcf792c2c890749bf7ac802e33f518cf575,3486b1880c3b6b677f02ee782a7ee66217efc03b\"\r\n            }\r\n          ]\r\n        },\r\n        \"clusterState\": \"Ready\",\r\n        \"azureActiveDirectory\": {\r\n          \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n          \"clusterApplication\": \"c440fe38-5870-4510-9fbd-ae72edb3192e\",\r\n          \"clientApplication\": \"7e72ceff-fc78-4ad8-9548-f5ed079b5844\"\r\n        },\r\n        \"fabricSettings\": [\r\n          {\r\n            \"name\": \"Security\",\r\n            \"parameters\": [\r\n              {\r\n                \"name\": \"ClusterProtectionLevel\",\r\n                \"value\": \"EncryptAndSign\"\r\n              }\r\n            ]\r\n          },\r\n          {\r\n            \"name\": \"ClusterManager\",\r\n            \"parameters\": [\r\n              {\r\n                \"name\": \"EnableDefaultServicesUpgrade\",\r\n                \"value\": \"true\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"addonFeatures\": [],\r\n        \"clusterId\": \"f0157222-1d05-41a8-b1d5-5a7efec95ed8\",\r\n        \"upgradeMode\": \"Automatic\",\r\n        \"nodeTypes\": [\r\n          {\r\n            \"name\": \"nt\",\r\n            \"durabilityLevel\": \"Silver\",\r\n            \"clientConnectionEndpointPort\": 19000,\r\n            \"httpGatewayEndpointPort\": 19080,\r\n            \"applicationPorts\": {\r\n              \"startPort\": 20000,\r\n              \"endPort\": 30000\r\n            },\r\n            \"vmInstanceCount\": 5,\r\n            \"ephemeralPorts\": {\r\n              \"startPort\": 49152,\r\n              \"endPort\": 65534\r\n            },\r\n            \"isPrimary\": true\r\n          }\r\n        ],\r\n        \"vmImage\": \"Windows\",\r\n        \"eventStoreServiceEnabled\": true\r\n      }\r\n    }\r\n  ],\r\n  \"facets\": [],\r\n  \"resultTruncated\": \"false\",\r\n  \"$skipToken\": \"ew0KICAiJGlkIjogIjEiLA0KICAiTWF4Um93cyI6IDMsDQogICJSb3dzVG9Ta2lwIjogNiwNCiAgIkt1c3RvQ2x1c3RlclVybCI6ICJodHRwczovL2FyZy1ldXMtc2l4LXNmLmFyZy5jb3JlLndpbmRvd3MubmV0Ig0KfQ==\"\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "82506e98-9fdb-41f5-ab67-031005041a26"
+  }
+}
