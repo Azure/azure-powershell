@@ -18,7 +18,7 @@ $resourceGroup = 'jehurren-westcentralus'
 $resourceLocation = 'westcentralus'
 
 Describe 'New-AzWvdScalingPlan' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -skip {
         try {
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `

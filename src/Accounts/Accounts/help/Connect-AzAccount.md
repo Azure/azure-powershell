@@ -40,8 +40,9 @@ Connect-AzAccount [-Environment <String>] -Credential <PSCredential> [-Tenant <S
 ```
 Connect-AzAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
  [-ServicePrincipal] -Tenant <String> [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>]
- [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SkipContextPopulation] [-MaxContextPopulation <Int32>] [-Force] [-SendCertificateChain]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
@@ -56,7 +57,6 @@ Connect-AzAccount [-Environment <String>] [-Tenant <String>] -AccessToken <Strin
 ### ManagedServiceLogin
 ```
 Connect-AzAccount [-Environment <String>] [-Tenant <String>] [-AccountId <String>] [-Identity]
- [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
  [-Subscription <String>] [-AuthScope <String>] [-ContextName <String>] [-SkipContextPopulation]
  [-MaxContextPopulation <Int32>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -209,11 +209,13 @@ Once AuthScope is specified, e.g. Storage, Connect-AzAccount will first login wi
 ```powershell
 Connect-AzAccount -AuthScope Storage
 ```
+
 ```Output
 Account                SubscriptionName TenantId                Environment
 -------                ---------------- --------                -----------
 yyyy-yyyy-yyyy-yyyy    Subscription1    xxxx-xxxx-xxxx-xxxx     AzureCloud
 ```
+
 ## PARAMETERS
 
 ### -AccessToken
@@ -471,6 +473,21 @@ Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: Process, CurrentUser
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SendCertificateChain
+Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Aliases:
 
 Required: False
 Position: Named

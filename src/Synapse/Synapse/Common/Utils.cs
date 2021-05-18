@@ -199,6 +199,11 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return operation.WaitForCompletionAsync().Result;
         }
 
+        public static Response Poll(this Operation operation)
+        {
+            return operation.WaitForCompletionResponseAsync().Result;
+        }
+
         public static string GetItemTypeString(this WorkspaceItemType itemType)
         {
             string itemTypeString = null;

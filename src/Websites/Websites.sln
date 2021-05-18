@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Helper", "Websites
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{6EDB3615-02ED-4FDA-8F03-7E69B5BD6544}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Websites", "Websites.Autorest\Az.Websites.csproj", "{D00E6DAD-492F-4B6B-B656-0C78E4FFD7CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

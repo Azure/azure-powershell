@@ -9,7 +9,6 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '2.5.0'
@@ -57,7 +56,8 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll', 
-               'Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.dll'
+               'Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.dll',
+               'Websites.Autorest\bin\Az.Websites.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -66,13 +66,13 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Websites.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = 'Websites.format.ps1xml', 'Websites.Autorest\Az.Websites.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Websites.dll')
+NestedModules = 'Az.Websites.psm1', 'Websites.Autorest\Az.Websites.psm1'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzStaticWebApp', 'Get-AzStaticWebAppBuild', 'Get-AzStaticWebAppBuildAppSetting', 'Get-AzStaticWebAppBuildFunction', 'Get-AzStaticWebAppBuildFunctionAppSetting', 'Get-AzStaticWebAppConfiguredRole', 'Get-AzStaticWebAppCustomDomain', 'Get-AzStaticWebAppFunction', 'Get-AzStaticWebAppFunctionAppSetting', 'Get-AzStaticWebAppSecret', 'Get-AzStaticWebAppSetting', 'Get-AzStaticWebAppUser', 'Get-AzStaticWebAppUserProvidedFunctionApp', 'New-AzStaticWebApp', 'New-AzStaticWebAppBuildAppSetting', 'New-AzStaticWebAppBuildFunctionAppSetting', 'New-AzStaticWebAppCustomDomain', 'New-AzStaticWebAppFunctionAppSetting', 'New-AzStaticWebAppSetting', 'New-AzStaticWebAppUserRoleInvitationLink', 'Register-AzStaticWebAppUserProvidedFunctionApp', 'Remove-AzStaticWebApp', 'Remove-AzStaticWebAppAttachedRepository', 'Remove-AzStaticWebAppBuild', 'Remove-AzStaticWebAppCustomDomain', 'Remove-AzStaticWebAppUser', 'Reset-AzStaticWebAppApiKey', 'Test-AzStaticWebAppCustomDomain', 'Unregister-AzStaticWebAppBuildUserProvidedFunctionApp', 'Unregister-AzStaticWebAppUserProvidedFunctionApp', 'Update-AzStaticWebApp', 'Update-AzStaticWebAppUser'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan', 
