@@ -1,13 +1,13 @@
 {
-  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/attachedDatabaseConfigurations?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/attachedDatabaseConfigurations?api-version=2021-01-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/attachedDatabaseConfigurations?api-version=2021-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "438" ],
-        "x-ms-client-request-id": [ "89a8b368-b796-4529-8f59-94a442b503af" ],
+        "x-ms-unique-id": [ "40" ],
+        "x-ms-client-request-id": [ "ca7aecf8-8b90-425d-8aaf-5e9f637f22a8" ],
         "CommandName": [ "Get-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "Get-AzKustoAttachedDatabaseConfiguration_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,14 +21,14 @@
       "StatusCode": 200,
       "Headers": {
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6f40fd27-3411-48a2-84ef-384431326dec" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "f79385e2-ba64-4159-9bd2-25196f8efacc" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T152703Z:f79385e2-ba64-4159-9bd2-25196f8efacc" ],
+        "x-ms-request-id": [ "603151cc-44c1-4cf1-854f-7cbf5a3ea3a1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "293" ],
+        "x-ms-correlation-request-id": [ "9318106b-dc91-4e7a-acad-65211b5a5696" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20210518T112732Z:9318106b-dc91-4e7a-acad-65211b5a5696" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 15:27:02 GMT" ],
+        "Date": [ "Tue, 18 May 2021 11:27:32 GMT" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ]
       },
       "ContentHeaders": {
@@ -40,15 +40,15 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/AttachedDatabaseConfigurations/testdbconfzu7bam?api-version=2021-01-01+2": {
+  "[NoDescription]+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/AttachedDatabaseConfigurations/testdbconfzu7bam?api-version=2021-01-01+2": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testfclusterzu7bam/AttachedDatabaseConfigurations/testdbconfzu7bam?api-version=2021-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "439" ],
-        "x-ms-client-request-id": [ "3f6cbd73-42e6-4da9-9f8f-a2cfac2786a5" ],
+        "x-ms-unique-id": [ "41" ],
+        "x-ms-client-request-id": [ "28b55684-1d58-458c-82c4-cf2d480d2e43" ],
         "CommandName": [ "Get-AzKustoAttachedDatabaseConfiguration" ],
         "FullCommandName": [ "Get-AzKustoAttachedDatabaseConfiguration_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -62,14 +62,14 @@
       "StatusCode": 200,
       "Headers": {
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "123c4b1e-729b-45b8-854d-f799b75a2b7b" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-correlation-request-id": [ "36e1962e-a12c-43f9-9768-eaa4d73b15f9" ],
-        "x-ms-routing-request-id": [ "FRANCESOUTH:20210513T152704Z:36e1962e-a12c-43f9-9768-eaa4d73b15f9" ],
+        "x-ms-request-id": [ "5a9749d6-a6af-4f3e-bfc0-35789e6d9e2e" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "292" ],
+        "x-ms-correlation-request-id": [ "ba5860a5-b863-47f0-8fed-91d1d9e8143f" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20210518T112733Z:ba5860a5-b863-47f0-8fed-91d1d9e8143f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Cache-Control": [ "no-cache" ],
-        "Date": [ "Thu, 13 May 2021 15:27:03 GMT" ],
+        "Date": [ "Tue, 18 May 2021 11:27:32 GMT" ],
         "ETag": [ "\"\"" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ]
       },
