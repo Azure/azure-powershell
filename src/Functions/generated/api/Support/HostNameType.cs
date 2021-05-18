@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="HostNameType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new HostNameType(System.Convert.ToString(value));
+            return new HostNameType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type HostNameType</summary>

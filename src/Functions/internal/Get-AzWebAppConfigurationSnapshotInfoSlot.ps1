@@ -32,7 +32,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
 #>
 function Get-AzWebAppConfigurationSnapshotInfoSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
