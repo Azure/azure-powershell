@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated `Remove-AzWebAppAccessRestrictionRule` to fix issue when removing rules by name
 
 ## Version 2.5.0
 * Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
