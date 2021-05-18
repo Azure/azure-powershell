@@ -20,7 +20,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $databaseName = $env.databaseName1
+        $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
@@ -37,7 +37,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
-        $databaseName = $env.databaseName1
+        $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
         $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
