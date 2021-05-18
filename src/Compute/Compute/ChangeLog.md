@@ -21,13 +21,19 @@
 -->
 ## Upcoming Release
 * Added 'Invoke-AzVmInstallPatch' to support patch installation in VMs using PowerShell.
-* Update Compute module to use the latest .Net SDK version 46.0.0. 
+* Update Compute module to use the latest .Net SDK version 46.0.0.
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `Get-AzVMImage
+    - `Get-AzVMImageOffer`
+    - `Get-AzVMImageSku`
+    - `New-AzDiskConfig`
+    - `New-AzImageConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzVM`
+    - `New-AzVmssConfig`
+    - `New-AzVMSS`
 
 ## Version 4.12.0
-* Added optional parameter `-EdgeZone` to the following cmdlets:
-    - `New-AzVM`
-    - `New-AzVmss`
-    - `New-AzVmssConfig`
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
     - Added a switch parameter `-Migrate` to trigger migration workflow.
     - Added a switch parameter `-MigrationRecovery` to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
@@ -41,10 +47,6 @@
     - `Set-AzVmssSecurityProfile`
     - `Set-AzVmssUefi`
 * Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
-* Added optional parameter `-EdgeZone` to the following VM image cmdlets
-    - `Get-AzVmImage`
-    - `Get-AzVmImageOffer`
-    - `Get-AzVmImageSku`
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 
