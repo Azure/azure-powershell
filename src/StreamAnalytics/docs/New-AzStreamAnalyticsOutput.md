@@ -35,7 +35,6 @@ output-01 Microsoft.StreamAnalytics/streamingjobs/outputs 3819fb65-07f5-4dc3-83e
 This command creates a new output in the stream analytics job.
 
 (below is an example for "StroageAccount.json")
-```json
 {
   "properties": {
     "serialization": {
@@ -63,7 +62,6 @@ This command creates a new output in the stream analytics job.
     }
   }
 }
-```
 
 ## PARAMETERS
 

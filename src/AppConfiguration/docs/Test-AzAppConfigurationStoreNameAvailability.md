@@ -24,16 +24,12 @@ Checks whether the configuration store name is available for use.
 
 ### Example 1: Test availability of the app configuration store name
 ```powershell
-
-```
-
-```powershell
-PS C:\\> Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
+PS C:\> Test-AzAppConfigurationStoreNameAvailability -Name appconfig-test01
 
 Message                               NameAvailable Reason
 -------                               ------------- ------
-The specified name is already in use.
-False         AlreadyExists
+The specified name is already in use. False         AlreadyExists
+```
 
 This command tests availability of the app configuration store name.
 

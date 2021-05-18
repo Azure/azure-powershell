@@ -11,7 +11,6 @@ function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910
 This command creates a function from the file Function_JavascriptUdf.json.
 
 (below is an example for "Function_JavascriptUdf.json")
-```json
 {
   "properties": {
     "type": "Scalar",
@@ -36,7 +35,7 @@ This command creates a function from the file Function_JavascriptUdf.json.
     }
   }
 }
-```
+
 ### Example 2: Create a Stream Analytics function
 ```powershell
 PS C:\> New-AzStreamAnalyticsFunction -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name function-01 -File .\test\template-json\MachineLearningServices.json
@@ -49,7 +48,6 @@ function-01 Microsoft.StreamAnalytics/streamingjobs/functions 7bbd6ccd-c7a4-4910
 This command creates a function from the file MachineLearningServices.json.
 
 (below is an example for "MachineLearningServices.json")
-```json
 {
   "properties": {
     "type": "Scalar",
@@ -87,4 +85,3 @@ This command creates a function from the file MachineLearningServices.json.
     }
   }
 }
-```
