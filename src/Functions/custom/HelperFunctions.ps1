@@ -34,7 +34,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('2', '3')
+$constants["SupportedFunctionsVersion"] = @('3')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
@@ -140,7 +140,6 @@ function GetConnectionString
 
     $accountKey = $keys[0].Value
     $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey"
-
     return $connectionString
 }
 
@@ -836,7 +835,7 @@ function ValidateFunctionsVersion
         $currentlySupportedFunctionsVersions = $SupportedFunctionsVersion -join ' and '
         $errorMessage = "Functions version not supported. Currently supported version are: $($currentlySupportedFunctionsVersions)."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "FunctionsVersionIsInvalid" `
+        ThrowTerminatingError -ErrorId "FunctionsVersionNotSupported" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
