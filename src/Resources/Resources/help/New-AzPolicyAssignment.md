@@ -155,12 +155,14 @@ The assignment is set with an EnforcementMode value of _DoNotEnforce_ i.e. the p
 
 ### Example 7: Policy assignment with non-compliance messages
 ```
-PS C:\> $Policy = Get-AzPolicyDefinition -Name 'VirtualMachinePolicy'
-PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -NonComplianceMessage @{Message="All resources must follow resource naming guidelines."}
+PS C:\> $PolicySet = Get-AzPolicySetDefinition -Name 'VirtualMachinePolicySet'
+PS C:\> $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; PolicyDefinitionReferenceId="DefRef1"}, @{Message="Virtual machines must follow cost management best practices."})
+PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -NonComplianceMessage $NonComplianceMessages
 ```
 
-The first command gets the policy definition named VirtualMachinePolicy by using the Get-AzPolicyDefinition cmdlet and stores it in the $Policy variable.
-The seccomd command assigns the policy in $Policy to the subscription with a non-compliance message that will be shown when the policy denies a resource creation.
+The first command gets the policy set definition named VirtualMachinePolicy by using the Get-AzPolicySetDefinition cmdlet and stores it in the $PolicySet variable.
+The second command creates an array of non-compliance messages. One general purpose message for the entire assignment and one message specific to a naming restriction policy within the assigned policy set definition.
+The final command assigns the policy set definition in $PolicySet to the subscription with two non-compliance messages that will be shown if a resource is denied by policy.
 
 ## PARAMETERS
 

@@ -9,6 +9,13 @@
     public class PsNonComplianceMessage
     {
         /// <summary>
+        /// Creates an instance of <see cref="PsNonComplianceMessage"/>.
+        /// </summary>
+        public PsNonComplianceMessage()
+        {
+        }
+
+        /// <summary>
         /// Creates an instance of <see cref="PsNonComplianceMessage"/> from the equivalent model representation.
         /// </summary>
         /// <param name="messageModel">The non-compliance message model.</param>
