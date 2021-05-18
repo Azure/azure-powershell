@@ -551,8 +551,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     return new UsernamePasswordParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, password, null);
                 case AzureAccount.AccountType.Certificate:
                 case AzureAccount.AccountType.ServicePrincipal:
+                    bool? sendCertificateChain = null;
+                    var sendCertificateChainStr = account.GetProperty(AzureAccount.Property.SendCertificateChain);
+                    if (!string.IsNullOrWhiteSpace(sendCertificateChainStr))
+                    {
+                        sendCertificateChain = Boolean.Parse(sendCertificateChainStr);
+                    }
                     password = password ?? ConvertToSecureString(account.GetProperty(AzureAccount.Property.ServicePrincipalSecret));
-                    return new ServicePrincipalParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password);
+                    return new ServicePrincipalParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, account.GetProperty(AzureAccount.Property.CertificateThumbprint), password, sendCertificateChain);
                 case AzureAccount.AccountType.ManagedService:
                     return new ManagedServiceIdentityParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account);
                 case AzureAccount.AccountType.AccessToken:

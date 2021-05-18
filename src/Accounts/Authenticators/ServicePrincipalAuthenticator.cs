@@ -49,7 +49,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var options = new ClientCertificateCredentialOptions()
             {
-                AuthorityHost = new Uri(authority)
+                AuthorityHost = new Uri(authority),
+                SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
 
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))

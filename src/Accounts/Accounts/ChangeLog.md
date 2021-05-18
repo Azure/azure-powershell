@@ -24,6 +24,7 @@
 * Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
 * Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
 * Set retry times by environment variable [#14748]
+* Supported subject name issuer authentication
 
 ## Version 2.2.8
 * Fallback to first valid context if current default context key is "Default" which is invalid
