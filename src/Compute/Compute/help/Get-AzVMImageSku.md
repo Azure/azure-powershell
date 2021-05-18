@@ -14,7 +14,7 @@ Gets VMImage SKUs.
 ## SYNTAX
 
 ```
-Get-AzVMImageSku -Location <String> -PublisherName <String> -Offer <String>
+Get-AzVMImageSku -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -44,6 +44,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+Set the extended location name for EdgeZone. If not set, VM Image sku will be queried from Azure main region. Otherwise it will be queried from the specified extended location
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
