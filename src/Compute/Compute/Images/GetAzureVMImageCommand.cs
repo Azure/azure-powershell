@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -42,6 +43,12 @@ namespace Microsoft.Azure.Commands.Compute
         [LocationCompleter("Microsoft.Compute/locations/publishers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set the extended location name for EdgeZone. If not set, VM Image will be queried from Azure main region. Otherwise it will be queried from the specified extended location")]
+        public string EdgeZone { get; set; }
 
         [Parameter(ParameterSetName = ListVMImageParamSetName,
             Mandatory = true,
@@ -95,7 +102,69 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                if ((this.IsParameterBound(c => c.EdgeZone)) && this.EdgeZone != null)
+                {
+                    if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
+                    {
+                        var result = this.VirtualMachineImagesEdgeZoneClient.ListWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.EdgeZone.Canonicalize(),
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            top: this.Top,
+                            orderby: this.OrderBy
+                            ).GetAwaiter().GetResult();
+
+                        var images = from r in result.Body
+                                     select new PSVirtualMachineImage
+                                     {
+                                         RequestId = result.RequestId,
+                                         StatusCode = result.Response.StatusCode,
+                                         Id = r.Id,
+                                         Location = r.Location,
+                                         EdgeZone = r.ExtendedLocation.Name,
+                                         Version = r.Name,
+                                         PublisherName = this.PublisherName,
+                                         Offer = this.Offer,
+                                         Skus = this.Skus
+                                     };
+
+                        WriteObject(SubResourceWildcardFilter(Version, images), true);
+                    }
+                    else
+                    {
+                        var response = this.VirtualMachineImagesEdgeZoneClient.GetWithHttpMessagesAsync(
+                            this.Location.Canonicalize(),
+                            this.EdgeZone,
+                            this.PublisherName,
+                            this.Offer,
+                            this.Skus,
+                            version: this.Version).GetAwaiter().GetResult();
+
+                        var image = new PSVirtualMachineImageDetail
+                        {
+                            RequestId = response.RequestId,
+                            StatusCode = response.Response.StatusCode,
+                            Id = response.Body.Id,
+                            Location = response.Body.Location,
+                            EdgeZone = response.Body.ExtendedLocation.Name,
+                            Name = response.Body.Name,
+                            Version = this.Version,
+                            PublisherName = this.PublisherName,
+                            Offer = this.Offer,
+                            Skus = this.Skus,
+                            OSDiskImage = response.Body.OsDiskImage,
+                            DataDiskImages = response.Body.DataDiskImages,
+                            PurchasePlan = response.Body.Plan,
+                            AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
+                            HyperVGeneration = response.Body.HyperVGeneration
+                        };
+
+                        WriteObject(image);
+                    }
+                }
+                else if (this.ParameterSetName.Equals(ListVMImageParamSetName) || WildcardPattern.ContainsWildcardCharacters(Version))
                 {
                     var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
                         this.Location.Canonicalize(),
