@@ -342,22 +342,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpgradeCadence
-Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0.
-
-```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSClusterUpgradeCadence
-Parameter Sets: (All)
-Aliases: ClusterUpgradeCadence
-Accepted values: Wave0, Wave1, Wave2
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -UpgradeMode
 Cluster service fabric code version upgrade mode.
 Automatic or Manual.

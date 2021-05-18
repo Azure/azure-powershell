@@ -968,6 +968,9 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11926"
         ],
@@ -3620,9 +3623,6 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11901"
-        ],
         "Server": [
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
         ],
@@ -5010,7 +5010,7 @@
           "Wed, 12 May 2021 16:49:13 GMT"
         ],
         "Content-Length": [
-          "1266"
+          "1264"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5220,7 +5220,7 @@
           "Wed, 12 May 2021 16:48:53 GMT"
         ],
         "Content-Length": [
-          "1265"
+          "1263"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5260,9 +5260,6 @@
         ],
         "X-Content-Type-Options": [
           "nosniff"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11847"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0"
@@ -5406,7 +5403,7 @@
           "Wed, 12 May 2021 16:48:53 GMT"
         ],
         "Content-Length": [
-          "949"
+          "947"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5469,7 +5466,7 @@
           "Wed, 12 May 2021 16:48:53 GMT"
         ],
         "Content-Length": [
-          "949"
+          "947"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5664,7 +5661,7 @@
           "Wed, 12 May 2021 16:48:32 GMT"
         ],
         "Content-Length": [
-          "948"
+          "946"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -5988,7 +5985,7 @@
           "Wed, 12 May 2021 16:49:34 GMT"
         ],
         "Content-Length": [
-          "1265"
+          "1263"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"

@@ -201,9 +201,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the target replica set size for the managed service")]
         public SwitchParameter HasPersistedState { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "DropSourceReplicaOnMove",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. DropSourceReplicaOnMove is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulSingleton,
             HelpMessage = "Specify the replica restart wait duration for the managed service. Duration represented in ISO 8601 format 'hh:mm:ss'")]
         [Parameter(Mandatory = false, ParameterSetName = StatefulUniformInt64,
@@ -301,9 +298,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             HelpMessage = "Specify the placement constraints of the managed service, as a string.")]
         public PSServiceCorrelation[] Correlation { get; set; }
 
-        [CmdletParameterBreakingChange(
-            "ServiceDnsName",
-            ChangeDescription = "This parameter will be removed in an upcoming breaking change release. ServiceDnsName is currently not supported.")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessSingleton,
             HelpMessage = "Specify the default cost for a move. Higher costs make it less likely that the Cluster Resource Manager will move the replica when trying to balance the cluster")]
         [Parameter(Mandatory = false, ParameterSetName = StatelessUniformInt64,

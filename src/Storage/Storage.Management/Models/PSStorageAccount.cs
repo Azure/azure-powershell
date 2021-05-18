@@ -75,10 +75,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public KeyPolicy KeyPolicy { get; }
         public SasPolicy SasPolicy { get; }
 
-        public PSKeyCreationTime KeyCreationTime { get; set; }
-        public KeyPolicy KeyPolicy { get; }
-        public SasPolicy SasPolicy { get; }
-
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
 

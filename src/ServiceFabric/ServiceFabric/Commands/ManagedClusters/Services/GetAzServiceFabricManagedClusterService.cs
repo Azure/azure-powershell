@@ -24,7 +24,6 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [CmdletOutputBreakingChange(typeof(PSManagedService), DeprecatedOutputProperties = new String[] { "Properties" })]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterService", DefaultParameterSetName = ByResourceGroupAndCluster), OutputType(typeof(PSManagedService))]
     public class GetAzServiceFabricManagedClusterService : ManagedApplicationCmdletBase
     {
