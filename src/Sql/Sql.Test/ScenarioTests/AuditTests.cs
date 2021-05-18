@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public AuditTests(ITestOutputHelper output) : base(output)
         {
             base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers",
-                "Microsoft.Sql/databases"
+                "Microsoft.Sql/servers"
             };
         }
 
