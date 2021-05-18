@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Onboarded following cmdlets: `Start-AzContainerGroup`, `Stop-AzContainerGroup` [#10773], `Invoke-AzContainerInstanceCommand` [#7648], `Update-AzContainerGroup`, `Add-AzContainerInstanceOutput`, `Get-AzContainerInstanceCachedImage`, `Get-AzContainerInstanceCapability`, `Get-AzContainerInstanceUsage`, `New-AzContainerGroupImageRegistryCredentialObject`, `New-AzContainerGroupPortObject`, `New-AzContainerGroupVolumeObject`, `New-AzContainerInstanceEnvironmentVariableObject`, `New-AzContainerInstanceInitDefinitionObject`, `New-AzContainerInstanceObject`, `New-AzContainerInstancePortObject` and `New-AzContainerInstanceVolumeMountObject`
+* Added new cmdlets: `Start-AzContainerGroup`, `Stop-AzContainerGroup` [#10773], `Invoke-AzContainerInstanceCommand` [#7648], `Update-AzContainerGroup`, `Add-AzContainerInstanceOutput`, `Get-AzContainerInstanceCachedImage`, `Get-AzContainerInstanceCapability`, `Get-AzContainerInstanceUsage`, `New-AzContainerGroupImageRegistryCredentialObject`, `New-AzContainerGroupPortObject`, `New-AzContainerGroupVolumeObject`, `New-AzContainerInstanceEnvironmentVariableObject`, `New-AzContainerInstanceInitDefinitionObject`, `New-AzContainerInstanceObject`, `New-AzContainerInstancePortObject` and `New-AzContainerInstanceVolumeMountObject`
 * Supported Log Analytics parameters in `New-AzContainerGroup` [#11117]
 * Added support to specify network profile and the name of Azure File Share in `New-AzContainerGroup` [#9993] [#12218]
 * Added support to specify environment variables as SecureValue [#10110] [#10640]
