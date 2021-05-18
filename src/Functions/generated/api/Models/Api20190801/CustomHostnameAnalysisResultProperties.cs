@@ -52,27 +52,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Basic error code.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomDomainVerificationFailureInfoCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Code = value; }
+        public string CustomDomainVerificationFailureInfoCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Code; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Code = value ?? null; }
 
         /// <summary>Type of error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomDomainVerificationFailureInfoExtendedCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).ExtendedCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).ExtendedCode = value; }
+        public string CustomDomainVerificationFailureInfoExtendedCode { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).ExtendedCode; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).ExtendedCode = value ?? null; }
 
         /// <summary>Inner errors.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntity[] CustomDomainVerificationFailureInfoInnerError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).InnerError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).InnerError = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntity[] CustomDomainVerificationFailureInfoInnerError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).InnerError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).InnerError = value ?? null /* arrayOf */; }
 
         /// <summary>Any details of the error.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomDomainVerificationFailureInfoMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Message = value; }
+        public string CustomDomainVerificationFailureInfoMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Message; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Message = value ?? null; }
 
         /// <summary>Message template.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomDomainVerificationFailureInfoMessageTemplate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).MessageTemplate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).MessageTemplate = value; }
+        public string CustomDomainVerificationFailureInfoMessageTemplate { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).MessageTemplate; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).MessageTemplate = value ?? null; }
 
         /// <summary>Parameters for the template.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string[] CustomDomainVerificationFailureInfoParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Parameter = value; }
+        public string[] CustomDomainVerificationFailureInfoParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IErrorEntityInternal)CustomDomainVerificationFailureInfo).Parameter = value ?? null /* arrayOf */; }
 
         /// <summary>Backing field for <see cref="CustomDomainVerificationTest" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DnsVerificationTestResult? _customDomainVerificationTest;

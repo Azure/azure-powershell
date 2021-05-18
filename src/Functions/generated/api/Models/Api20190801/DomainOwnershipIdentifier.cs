@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.DomainOwnershipIdentifierProperties()); set { {_property = value;} } }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Ownership Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string OwnershipId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)Property).OwnershipId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)Property).OwnershipId = value; }
+        public string OwnershipId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)Property).OwnershipId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierPropertiesInternal)Property).OwnershipId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDomainOwnershipIdentifierProperties _property;

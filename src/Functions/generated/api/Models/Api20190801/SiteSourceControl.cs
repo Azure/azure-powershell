@@ -16,11 +16,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Name of branch to use for deployment.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string Branch { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).Branch; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).Branch = value; }
+        public string Branch { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).Branch; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).Branch = value ?? null; }
 
         /// <summary><code>true</code> to enable deployment rollback; otherwise, <code>false</code>.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? DeploymentRollbackEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).DeploymentRollbackEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).DeploymentRollbackEnabled = value; }
+        public bool? DeploymentRollbackEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).DeploymentRollbackEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).DeploymentRollbackEnabled = value ?? default(bool); }
 
         /// <summary>Resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -31,17 +31,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// webhooks into online repos like GitHub).
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? IsManualIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsManualIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsManualIntegration = value; }
+        public bool? IsManualIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsManualIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsManualIntegration = value ?? default(bool); }
 
         /// <summary>
         /// <code>true</code> for a Mercurial repository; <code>false</code> for a Git repository.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? IsMercurial { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsMercurial; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsMercurial = value; }
+        public bool? IsMercurial { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsMercurial; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).IsMercurial = value ?? default(bool); }
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Repository or source control URL.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RepoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).RepoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).RepoUrl = value; }
+        public string RepoUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).RepoUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteSourceControlPropertiesInternal)Property).RepoUrl = value ?? null; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]

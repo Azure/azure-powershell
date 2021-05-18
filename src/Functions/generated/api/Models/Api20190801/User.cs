@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -47,23 +47,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Password used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string PublishingPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPassword = value; }
+        public System.Security.SecureString PublishingPassword { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPassword; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPassword = value ?? null; }
 
         /// <summary>Password hash used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string PublishingPasswordHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHash; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHash = value; }
+        public System.Security.SecureString PublishingPasswordHash { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHash; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHash = value ?? null; }
 
         /// <summary>Password hash salt used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string PublishingPasswordHashSalt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHashSalt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHashSalt = value; }
+        public System.Security.SecureString PublishingPasswordHashSalt { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHashSalt; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingPasswordHashSalt = value ?? null; }
 
         /// <summary>Username used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string PublishingUserName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingUserName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingUserName = value; }
+        public string PublishingUserName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingUserName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).PublishingUserName = value ?? null; }
 
         /// <summary>Url of SCM site.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ScmUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).ScmUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).ScmUri = value; }
+        public string ScmUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).ScmUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserPropertiesInternal)Property).ScmUri = value ?? null; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -98,27 +98,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         ReadOnly = false,
         Description = @"Password used for publishing.",
         SerializedName = @"publishingPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string PublishingPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString PublishingPassword { get; set; }
         /// <summary>Password hash used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"Password hash used for publishing.",
         SerializedName = @"publishingPasswordHash",
-        PossibleTypes = new [] { typeof(string) })]
-        string PublishingPasswordHash { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString PublishingPasswordHash { get; set; }
         /// <summary>Password hash salt used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"Password hash salt used for publishing.",
         SerializedName = @"publishingPasswordHashSalt",
-        PossibleTypes = new [] { typeof(string) })]
-        string PublishingPasswordHashSalt { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString PublishingPasswordHashSalt { get; set; }
         /// <summary>Username used for publishing.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Username used for publishing.",
         SerializedName = @"publishingUserName",
@@ -141,11 +141,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>User resource specific properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IUserProperties Property { get; set; }
         /// <summary>Password used for publishing.</summary>
-        string PublishingPassword { get; set; }
+        System.Security.SecureString PublishingPassword { get; set; }
         /// <summary>Password hash used for publishing.</summary>
-        string PublishingPasswordHash { get; set; }
+        System.Security.SecureString PublishingPasswordHash { get; set; }
         /// <summary>Password hash salt used for publishing.</summary>
-        string PublishingPasswordHashSalt { get; set; }
+        System.Security.SecureString PublishingPasswordHashSalt { get; set; }
         /// <summary>Username used for publishing.</summary>
         string PublishingUserName { get; set; }
         /// <summary>Url of SCM site.</summary>
