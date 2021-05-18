@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getstorageaccount
+https://docs.microsoft.com/powershell/module/az.functions/getstorageaccount
 #>
 function GetStorageAccount {
 [CmdletBinding(PositionalBinding=$false)]

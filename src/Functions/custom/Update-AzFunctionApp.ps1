@@ -65,7 +65,7 @@ function Update-AzFunctionApp {
             The user identity references will be ARM resource ids in the form:
             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'")]
         [ValidateNotNullOrEmpty()]
-        [System.String]
+        [System.String[]]
         ${IdentityID},
 
         [Parameter(HelpMessage='Starts the operation and returns immediately, before the operation is completed. In order to determine if the operation has successfully been completed, use some other mechanism.')]

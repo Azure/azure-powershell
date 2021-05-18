@@ -237,7 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountByNameAndKey(string accountName, string accountKey,
             bool useHttps, string storageEndpoint = "")
         {
-            StorageCredentials credential = new StorageCredentials(accountName, accountKey);
+            StorageCredentials credential = new StorageCredentials(GetRealAccountName(accountName), accountKey);
             return GetStorageAccountWithEndPoint(credential, accountName, useHttps, storageEndpoint);
         }
 
@@ -252,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         internal CloudStorageAccount GetStorageAccountByNameAndKeyFromAzureEnvironment(string accountName,
             string accountKey, bool useHttps, string azureEnvironmentName = "")
         {
-            StorageCredentials credential = new StorageCredentials(accountName, accountKey);
+            StorageCredentials credential = new StorageCredentials(GetRealAccountName(accountName), accountKey);
             return GetStorageAccountWithAzureEnvironment(credential, StorageAccountName, useHttps, azureEnvironmentName);
         }
 
@@ -580,9 +580,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
             }
 
-            AzureStorageContext context = new AzureStorageContext(account, StorageAccountName, DefaultContext, WriteDebug);
+            AzureStorageContext context = new AzureStorageContext(account, GetRealAccountName(StorageAccountName), DefaultContext, WriteDebug);
 
             WriteObject(context);
+        }
+
+        private static string GetRealAccountName(string inputAccountName)
+        {
+            if (inputAccountName != null)
+            {
+                // remove zone patition from the input account name, like input "myaccountname.z10", the real account name is "myaccountname"
+                return inputAccountName.Split(new char[] { '.' })[0];
+            }
+            return null;
         }
     }
 }

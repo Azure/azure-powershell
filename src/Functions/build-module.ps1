@@ -120,9 +120,13 @@ $moduleName = 'Az.Functions'
 $examplesFolder = Join-Path $PSScriptRoot 'examples'
 $null = New-Item -ItemType Directory -Force -Path $examplesFolder
 
+Write-Host -ForegroundColor Green 'Creating cmdlets for specified models...'
+$modelCmdlets = @()
+. (Join-Path $PSScriptRoot 'create-model-cmdlets.ps1') -Models $modelCmdlets
+
 if($NoDocs) {
   Write-Host -ForegroundColor Green 'Creating exports...'
-  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs
+  Export-ProxyCmdlet -ModuleName $moduleName -ModulePath $modulePaths -ExportsFolder $exportsFolder -InternalFolder $internalFolder -ExcludeDocs -ExamplesFolder $examplesFolder
 } else {
   Write-Host -ForegroundColor Green 'Creating exports and docs...'
   $moduleDescription = 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/'

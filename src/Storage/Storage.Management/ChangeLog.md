@@ -35,8 +35,13 @@
 * Supported AllowCrossTenantReplication in create/update storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
-* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account reouce Id
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account resource Id
     - `Set-AzStorageObjectReplicationPolicy`
+* Supported set SasExpirationPeriod as TimeSpan.Zero
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount
+* Make sure the correct account name is used when create account credential
+    - `New-AzStorageContext`
 
 ## Version 3.6.0
 * Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod

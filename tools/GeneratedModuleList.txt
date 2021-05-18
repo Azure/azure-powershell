@@ -6,6 +6,7 @@ Az.CloudService
 Az.Communication
 Az.Confluent
 Az.ConnectedKubernetes
+Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
