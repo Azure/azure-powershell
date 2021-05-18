@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Management.RecoveryServices.Backup;
-using ComputeHelpers = Microsoft.Azure.Commands.Compute.Helpers;
+using ComputeHelpers = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers;
 
 namespace RecoveryServices.SiteRecovery.Test
 {

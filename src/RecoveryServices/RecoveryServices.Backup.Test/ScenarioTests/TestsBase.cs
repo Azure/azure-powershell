@@ -31,7 +31,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagement.Common.Models;
-using ComputeHelpers = Microsoft.Azure.Commands.Compute.Helpers;
+using ComputeHelpers = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
