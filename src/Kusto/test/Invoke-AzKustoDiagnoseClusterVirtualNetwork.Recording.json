@@ -492,7 +492,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob?api-version=2021-01-01+1": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob?api-version=2021-01-01+1": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob?api-version=2021-01-01",
@@ -534,7 +534,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob/diagnoseVirtualNetwork?api-version=2021-01-01+2": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$POST+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob/diagnoseVirtualNetwork?api-version=2021-01-01+2": {
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/resourceGroups/testgroupqlp6ob/providers/Microsoft.Kusto/Clusters/testclusterqlp6ob/diagnoseVirtualNetwork?api-version=2021-01-01",
@@ -576,7 +576,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+3": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+3": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -617,7 +617,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+4": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+4": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -658,7 +658,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+5": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+5": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -699,7 +699,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+6": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+6": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -740,7 +740,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+7": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+7": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -781,7 +781,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+8": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+8": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -822,7 +822,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+9": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+9": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -863,7 +863,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+10": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+10": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -904,7 +904,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+11": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+11": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -945,7 +945,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+12": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01+12": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01",
@@ -986,7 +986,7 @@
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+DetachViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01\u0026operationResultResponseType=Location+13": {
+  "[NoDescription]+[NoContext]+DiagnoseViaIdentity+$GET+https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01\u0026operationResultResponseType=Location+13": {
     "Request": {
       "Method": "GET",
       "RequestUri": "https://management.azure.com/subscriptions/11d5f159-a21d-4a6c-8053-c3aae30057cf/providers/Microsoft.Kusto/locations/East%20US/operationResults/12bf992b-8874-4f39-a50a-7b3da14004ca?api-version=2021-01-01\u0026operationResultResponseType=Location",
