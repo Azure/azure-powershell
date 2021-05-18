@@ -248,5 +248,29 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-CreateSubresourcesOnEmptyLoadBalancer");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestGatewayLoadBalancerProviderOnePool()
+        {
+            TestRunner.RunTestScript("Test-GatewayLoadBalancer-ProviderOnePool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestGatewayLoadBalancerProviderTwoPool()
+        {
+            TestRunner.RunTestScript("Test-GatewayLoadBalancer-ProviderTwoPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestGatewayLoadBalancerConsumerLb()
+        {
+            TestRunner.RunTestScript("Test-GatewayLoadBalancer-ConsumerLb");
+        }
     }
 }
