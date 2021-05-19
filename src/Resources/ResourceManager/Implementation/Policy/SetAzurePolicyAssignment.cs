@@ -178,7 +178,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             // get incoming object properties if present
             JObject inputMetadata = null;
-
             if (this.InputObject != null)
             {
                 var newProperties = this.InputObject.Properties.ToJToken();

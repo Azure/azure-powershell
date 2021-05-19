@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -27,7 +28,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     using Newtonsoft.Json.Linq;
     using Policy;
-    using System.Linq;
 
     /// <summary>
     /// Creates a policy assignment.
