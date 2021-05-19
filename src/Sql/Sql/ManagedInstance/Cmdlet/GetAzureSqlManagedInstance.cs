@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Get-AzSqlInstance cmdlet
     /// </summary>
-    [GenericBreakingChange("Identity parameter changes", ChangeDescription = "The parameter Identity is changing from Management.Sql.Models.ResourceIdentity to Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstance",
         DefaultParameterSetName = DefaultParameterSet),
         OutputType(typeof(AzureSqlManagedInstanceModel))]

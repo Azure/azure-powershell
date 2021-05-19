@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         /// <summary>
         /// Gets or sets the identity of the server.
         /// </summary>
-        public Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities Identity { get; set; }
+        public Management.Sql.Models.ResourceIdentity Identity { get; set; }
 
         /// <summary>
         /// Gets or sets the fully qualified domain name of the server

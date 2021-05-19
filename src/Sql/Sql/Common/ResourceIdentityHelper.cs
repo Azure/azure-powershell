@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
     public class ResourceIdentityHelper
     {
-        public static Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities GetIdentityObjectFromType(bool assignIdentityIsPresent)
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent)
         {
-            Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities identityResult = null;
+            Management.Sql.Models.ResourceIdentity identityResult = null;
             if (assignIdentityIsPresent)
             {
-                identityResult = new Management.Sql.Models.ResourceIdentityWithUserAssignedIdentities()
+                identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
                     Type = ResourceIdentityType.SystemAssigned.ToString()
                 };
