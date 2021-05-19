@@ -160,7 +160,7 @@ PS C:\> $NonComplianceMessages = @(@{Message="Only DsV2 SKUs are allowed."; Poli
 PS C:\> New-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicySetDefinition $PolicySet -NonComplianceMessage $NonComplianceMessages
 ```
 
-The first command gets the policy set definition named VirtualMachinePolicy by using the Get-AzPolicySetDefinition cmdlet and stores it in the $PolicySet variable.
+The first command gets the policy set definition named VirtualMachinePolicySet by using the Get-AzPolicySetDefinition cmdlet and stores it in the $PolicySet variable.
 The second command creates an array of non-compliance messages. One general purpose message for the entire assignment and one message specific to a SKU restriction policy within the assigned policy set definition.
 The final command assigns the policy set definition in $PolicySet to the subscription with two non-compliance messages that will be shown if a resource is denied by policy.
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.
+Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity. Permissions must be granted to the identity using New-AzRoleAssignment after the identity is created.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
