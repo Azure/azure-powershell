@@ -16,6 +16,11 @@ Creates or updates an attached database configuration.
 New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClusterResourceId <String>] [-DatabaseName <String>]
  [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>] [-Location <String>]
+ [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
+ [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
+ [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
+ [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -204,6 +209,96 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TableLevelSharingPropertyExternalTablesToExclude
+List of external tables exclude from the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyExternalTablesToInclude
+List of external tables to include in the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyMaterializedViewsToExclude
+List of materialized views exclude from the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyMaterializedViewsToInclude
+List of materialized views to include in the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyTablesToExclude
+List of tables to exclude from the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyTablesToInclude
+List of tables to include in the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -242,7 +337,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IAttachedDatabaseConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IAttachedDatabaseConfiguration
 
 ## NOTES
 
