@@ -18,11 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
 * updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
 * Fixed `Set-AzWebApp` to set the AppSettings
 * updated `Set-AzWebAppSlot` to set FtpsState
 * Added support for StaticSites.
-* Fix issue that prevents removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
 
 ## Version 2.5.0
 * Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
