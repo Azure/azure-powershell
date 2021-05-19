@@ -61,14 +61,6 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 // The current subscription level based profile list api has maximum item limit which will
                 // casue profile missing in the response
                 var existingProfile = CdnManagementClient.Profiles.Get(ResourceGroupName, ProfileName);
-                if (existingProfile == null)
-                {
-                    throw new PSArgumentException(string.Format(
-                        Resources.Error_DeleteNonExistingProfile,
-                        ProfileName,
-                        ResourceGroupName));
-                }
-
                 if (existingProfile.Sku.Name == AfdSkuConstants.PremiumAzureFrontDoor ||
                     existingProfile.Sku.Name == AfdSkuConstants.StandardAzureFrontDoor)
                 {
