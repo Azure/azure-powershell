@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappfunctionkey
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
 #>
 function Get-AzWebAppFunctionKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]

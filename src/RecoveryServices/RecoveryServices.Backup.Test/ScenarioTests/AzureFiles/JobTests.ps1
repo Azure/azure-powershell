@@ -57,10 +57,8 @@ function Test-AzureFSGetJob
 
 		foreach ($job in $jobs)
 		{
-			$jobDetails = Get-AzRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
-			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetails `
-				-VaultId $vault.ID `
-				-JobId $job.JobId
+			$jobDetails = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -JobId $job.JobId
 
 			Assert-AreEqual $jobDetails.JobId $job.JobId
 			Assert-AreEqual $jobDetails2.JobId $job.JobId

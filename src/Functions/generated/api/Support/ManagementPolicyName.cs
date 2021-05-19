@@ -18,7 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="ManagementPolicyName" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ManagementPolicyName(System.Convert.ToString(value));
+            return new ManagementPolicyName(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ManagementPolicyName</summary>

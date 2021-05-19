@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>The Virtual Network name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string VnetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VnetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VnetName = value; }
+        public string VnetName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VnetName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VnetName = value ?? null; }
 
         /// <summary>The URI where the VPN package can be downloaded.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string VpnPackageUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VpnPackageUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VpnPackageUri = value; }
+        public string VpnPackageUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VpnPackageUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IVnetGatewayPropertiesInternal)Property).VpnPackageUri = value ?? null; }
 
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> instance that will receive validation
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         string VnetName { get; set; }
         /// <summary>The URI where the VPN package can be downloaded.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The URI where the VPN package can be downloaded.",
         SerializedName = @"vpnPackageUri",

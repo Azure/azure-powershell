@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getfunctionapps
+https://docs.microsoft.com/powershell/module/az.functions/getfunctionapps
 #>
 function GetFunctionApps {
 [CmdletBinding(PositionalBinding=$false)]

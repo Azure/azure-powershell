@@ -1,0 +1,45 @@
+{
+  "Get-AzStaticWebAppUser+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/authproviders/all/listUsers?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/authproviders/all/listUsers?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "46af5bab-91c6-4f1d-bd20-e264e6d2ad26" ],
+        "CommandName": [ "Get-AzStaticWebAppUser" ],
+        "FullCommandName": [ "Get-AzStaticWebAppUser_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "a7efba2f-3c15-486d-bb1b-987a0035b46f" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "7b6c16d1-57c4-42de-b3e3-84fa403daa25" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T082652Z:7b6c16d1-57c4-42de-b3e3-84fa403daa25" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:26:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "38" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  }
+}

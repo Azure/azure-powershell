@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
-using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;

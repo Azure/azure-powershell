@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
-* Removed default DisplayName of ADServicePrincipal when it is not specified
+* Removed generated `DisplayName` of ADApplication created by `New-AzADServicePrincipal`
 * Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
 * Added `AdditionalProperties` to PSADUser and PSADGroup [#14568]
 * Supported `CustomKeyIdentifier` in `New-AzADAppCredential` and `Get-AzADAppCredential` [#11457], [#13723]
