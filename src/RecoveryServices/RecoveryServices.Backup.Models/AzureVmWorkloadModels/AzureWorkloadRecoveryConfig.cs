@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string RestoredDBName { get; set; }
 
         /// <summary>
+        /// Target Virtual Machine Id in case of Alternate Location Restore
+        /// </summary>
+        public string TargetVirtualMachineId { get; set; }
+
+        /// <summary>
         /// OverwriteWLIfpresent
         /// </summary>
         public string OverwriteWLIfpresent { get; set; }
@@ -66,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             : base(restoreRequestType, recoveryPoint, pointInTime)
         {
             TargetServer = targetServer;
-            TargetInstance = targetInstance;
+            TargetInstance = targetInstance;            
         }
     }
 }

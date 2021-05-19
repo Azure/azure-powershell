@@ -440,6 +440,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
@@ -465,12 +466,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
 
-            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+            List<RecoveryPointResource> rpListResponse;
+            if (secondaryRegion)
+            {
+                //fetch recovery points Log Chain from secondary region
+                rpListResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 queryFilter,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+            }
+            else
+            {
+                rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+            }
 
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();
             foreach (RecoveryPointResource rp in rpListResponse)
