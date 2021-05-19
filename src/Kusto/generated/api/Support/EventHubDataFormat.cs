@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="EventHubDataFormat" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new EventHubDataFormat(System.Convert.ToString(value));
+            return new EventHubDataFormat(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type EventHubDataFormat</summary>
