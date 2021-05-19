@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
 
 ## Version 1.0.1
 * Nullref Bug fixed in get discovered server and initialize replication infrastructure commandlets.
