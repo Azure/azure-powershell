@@ -117,7 +117,7 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
     }
     if (`$PSVersionTable.PSVersion -lt [Version]'7.0.6')
     {
-        Write-Warning "This version of Az.Accounts is only supported on Windows PowerShell 5.1 and PowerShell 7.0.6 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to http://aka.ms/azpslifecyle."
+        Write-Warning "This version of Az.Accounts is only supported on Windows PowerShell 5.1 and PowerShell 7.0.6 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to https://aka.ms/azpslifecycle."
     }
 }
 "@
