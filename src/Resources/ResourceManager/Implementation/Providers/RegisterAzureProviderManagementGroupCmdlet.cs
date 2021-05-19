@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// "Registers a management group with a resource provider.
     /// </summary>
-    [Cmdlet("RegisterAtManagementGroupScope", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsCommon.Register, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroup", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
     public class RegisterAzureProviderManagementGroupCmdlet : ResourceManagerCmdletBaseWithApiVersion
     {
         /// <summary>
