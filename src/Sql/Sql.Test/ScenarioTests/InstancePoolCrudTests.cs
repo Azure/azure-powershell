@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public InstancePoolCrudTests(ITestOutputHelper output) : base(output)
         {
             base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/instancePools"
+                "Microsoft.Sql/instancePools",
+                "Microsoft.Sql/managedInstances"
             };
         }
 
