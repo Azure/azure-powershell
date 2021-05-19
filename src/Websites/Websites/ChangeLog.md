@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
 * updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
 * Fixed `Set-AzWebApp` to set the AppSettings
 * updated `Set-AzWebAppSlot` to set FtpsState
