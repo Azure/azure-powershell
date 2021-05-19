@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustodatabase
+https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase])]
