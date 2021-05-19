@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Kusto
-online version: https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustodatabase
+online version: https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 schema: 2.0.0
 ---
 
