@@ -42,6 +42,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE64IV3 = @"Standard_E64i_v3";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE80IdsV4 = @"Standard_E80ids_v4";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AV4 = @"Standard_E8a_v4";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV41TbPs = @"Standard_E8as_v4+1TB_PS";
@@ -50,9 +52,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16S = @"Standard_L16s";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16SV2 = @"Standard_L16s_v2";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL4S = @"Standard_L4s";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8S = @"Standard_L8s";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8SV2 = @"Standard_L8s_v2";
 
         /// <summary>the value for an instance of the <see cref="AzureSkuName" /> Enum.</summary>
         private string _value { get; set; }
@@ -68,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="AzureSkuName" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new AzureSkuName(System.Convert.ToString(value));
+            return new AzureSkuName(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type AzureSkuName</summary>
