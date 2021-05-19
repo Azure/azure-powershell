@@ -24,6 +24,8 @@ if(-not $Isolated) {
 $isAzure = $true
 if($isAzure) {
   . (Join-Path $PSScriptRoot 'check-dependencies.ps1') -Isolated -Accounts
+  # Load the latest version of Az.Accounts installed
+  Import-Module -Name Az.Accounts -RequiredVersion (Get-Module -Name Az.Accounts -ListAvailable | Sort-Object -Property Version -Descending)[0].Version
 }
 
 $localModulesPath = Join-Path $PSScriptRoot 'generated\modules'
