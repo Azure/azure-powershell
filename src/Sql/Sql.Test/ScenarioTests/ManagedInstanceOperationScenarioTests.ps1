@@ -29,7 +29,7 @@ function Test-GetManagedInstanceOperation
 	$subnetName = "ManagedInstance"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResourceGroupName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	# Initiate sync create of managed instance.
@@ -82,7 +82,7 @@ function Test-StopManagedInstanceOperation
 	$subnetName = "ManagedInstance"
 
 	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
+	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location $rg.ResouceGroupName
 	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
 
 	# Initiate sync create of managed instance.
