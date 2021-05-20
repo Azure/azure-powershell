@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests getting the instance pool usage
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePoolUsage()
         {
