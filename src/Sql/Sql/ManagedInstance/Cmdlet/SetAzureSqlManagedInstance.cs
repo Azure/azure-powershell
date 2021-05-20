@@ -25,7 +25,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
