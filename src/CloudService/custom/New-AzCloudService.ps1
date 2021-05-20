@@ -185,6 +185,7 @@ function New-AzCloudService {
 
         # create resources
         If ($passMemory.ipFound -eq $false){
+            Write-Host("Creating ReservedIP")
             $null = New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $passMemory.ipName -location $location -Sku Basic -AllocationMethod Static -WarningAction SilentlyContinue 
         }
         If ($passMemory.vNetFound -eq $False){
@@ -208,6 +209,7 @@ function New-AzCloudService {
             }
 
             # vnet
+            Write-Host("Creating Virtual Network")
             $null = New-AzVirtualNetwork -name $passMemory.vnetName -resourcegroupname $resourcegroupname -location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnetsList 
         }
 
@@ -440,7 +442,7 @@ function validation
         }
 
         If($false -eq $vnetLocationMatch){
-            throw "The location of the Cloud Service needs to match the location of the virtual network."
+            throw "The location for the cloud service (" + $location + ") and virtual network ("+ $thevnet.location +") are different. The location of the cloud service needs to match the location of the virtual network. Change the location of the cloud service to match the virtual network or change the resource group of the cloud service to try to resolve this issue."
         }
 
     }elseif (1 -eq $vnetNameSplitCount) {
@@ -451,6 +453,9 @@ function validation
             if ($vnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
                 $vnetFound = $true
                 $theVNet = $vnet
+            }
+            elseif ($vnet.ResourceGroupName -eq $ResourceGroupName) {
+                throw "The location for the cloud service (" + $location + ") and virtual network ("+ $vnet.location +") are different. The location of the cloud service needs to match the location of the virtual network. Change the location of the cloud service to match the virtual network or change the resource group of the cloud service to try to resolve this issue."
             }
         }
 
@@ -553,6 +558,9 @@ function validation
                     $ipFound = $true
                     $theIPObj = $ipobj
                 }
+                elseif ($ipObj.ResourceGroupName -eq $ResourceGroupName) {
+                    throw "The location for the cloud service ("+ $location +") and public IP address ("+ $ipObj.location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
+                }
             }
         }else {
             throw "ReservedIP name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
@@ -571,14 +579,14 @@ function validation
                 throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' must have a 'Basic' SKU."
             }
 
-            # Existing Reserved (Static) IP Incorrect Allocation
-            if ("Static" -ne $theIPObj.PublicIPAllocationMethod){
-                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed."
-            }
-
             # Existing Reserved (Static) IP Address Incorrect Version
             if ("IPv4" -ne $theIPObj.PublicIPAddressVersion){
                 throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses IPv6 and an IPv4 public IP address is needed."
+            }
+
+            # Existing Reserved (Static) IP Incorrect Allocation
+            if ("Static" -ne $theIPObj.PublicIPAllocationMethod){
+                throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' uses a dynamic allocation and a static allocation is needed."
             }
         }
     }
