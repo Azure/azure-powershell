@@ -19,7 +19,7 @@ $resourceLocation = 'westcentralus'
 
 Describe 'New-AzWvdScalingPlan' {
     It 'CreateExpanded' {
-        try {
+ #       try {
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $resourceGroup `
@@ -97,12 +97,12 @@ Describe 'New-AzWvdScalingPlan' {
                 -Name 'ScalingPlanPowershellContained1'
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-        }
-        finally {
-            $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
-                -Name 'ScalingPlanPowershellContained1'
-        }
+#        }
+#        finally {
+#            $scalingPlan = Remove-AzWvdScalingPlan `
+#                -SubscriptionId $env.SubscriptionId `
+#                -ResourceGroupName $resourceGroup `
+#                -Name 'ScalingPlanPowershellContained1'
+#        }
     }
 }
