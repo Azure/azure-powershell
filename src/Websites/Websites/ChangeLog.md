@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.6.0
 * updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
 * Fixed `Set-AzWebApp` to set the AppSettings
 * updated `Set-AzWebAppSlot` to set FtpsState
