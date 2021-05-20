@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRole Monitor = @"Monitor";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRole UnrestrictedViewers = @"UnrestrictedViewers";
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRole UnrestrictedViewer = @"UnrestrictedViewer";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabasePrincipalRole User = @"User";
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="DatabasePrincipalRole" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DatabasePrincipalRole(System.Convert.ToString(value));
+            return new DatabasePrincipalRole(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DatabasePrincipalRole" Enum class./></summary>

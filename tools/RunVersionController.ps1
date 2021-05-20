@@ -146,7 +146,11 @@ function Get-ReleaseNotes
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                           (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
-
+    
+    if($ModuleManifestFile.Count -gt 1)
+    {
+        $ModuleManifestFile = $ModuleManifestFile[0]
+    }                                                                                                      
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
 }
@@ -291,7 +295,7 @@ function Generate-AzPreview
     $requiredModulesString = $requiredModulesString.Trim()
     $requiredModulesString = $requiredModulesString.TrimEnd(",")
 
-    $AzPrviewTemplate = Get-Item -Path "$PSScriptRoot\AzPreview\AzPreview.psd1.template"
+    $AzPrviewTemplate = Get-Item -Path "$PSScriptRoot\AzPreview.psd1.template"
     $AzPrviewTemplateContent = Get-Content -Path $AzPrviewTemplate.FullName
     $AzPreviewPsd1Content = $AzPrviewTemplateContent | % {
         $_ -replace "ModuleVersion = 'x.x.x'", "ModuleVersion = '$AzPrviewVersion'"

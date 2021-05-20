@@ -34,7 +34,7 @@ Message Name                  NameAvailable Reason
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICheckNameResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ICheckNameResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,21 +46,23 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [DataConnectionName <String>]: The name of the data connection.
   [DatabaseName <String>]: The name of the database in the Kusto cluster.
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure location.
+  [Location <String>]: Azure location (region) name.
+  [OperationId <String>]: The Guid of the operation ID
   [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
   [ResourceGroupName <String>]: The name of the resource group containing the Kusto cluster.
+  [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/test-azkustoclusternameavailability
+https://docs.microsoft.com/powershell/module/az.kusto/test-azkustoclusternameavailability
 #>
 function Test-AzKustoClusterNameAvailability {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICheckNameResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ICheckNameResult])]
 [CmdletBinding(DefaultParameterSetName='CheckExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CheckExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
     [System.String]
-    # Azure location.
+    # Azure location (region) name.
     ${Location},
 
     [Parameter(ParameterSetName='CheckExpanded')]
@@ -83,13 +85,6 @@ param(
     [System.String]
     # Cluster name.
     ${Name},
-
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Type])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Type]
-    # The type of resource, Microsoft.Kusto/clusters.
-    ${Type},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

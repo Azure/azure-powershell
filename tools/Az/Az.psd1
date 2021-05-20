@@ -30,8 +30,8 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Cmdlets to manage resources in Azure. This module is compatible with WindowsPowerShell and PowerShell Core.
-For more information about the Az module, please visit the following: https://docs.microsoft.com/en-us/powershell/azure/'
+Description = 'Microsoft Azure PowerShell - Cmdlets to manage resources in Azure. This module is compatible with PowerShell and Windows PowerShell.
+For more information about the Az module, please visit the following: https://docs.microsoft.com/powershell/azure/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

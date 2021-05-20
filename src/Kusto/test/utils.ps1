@@ -10,10 +10,11 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
+	Write-Host "sub id = " $env.SubscriptionId
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     # Generate some random strings for use in the test.
-    $rstr1 = RandomString -allChars $false -len 6
+    $rstr1 = RandomString -allChars $false -len 6	
     $rstr2 = RandomString -allChars $false -len 6
     $rstr3 = RandomString -allChars $false -len 6
     # Follow random strings will be used in the test directly, so add it to $env
@@ -34,7 +35,6 @@ function setupEnv() {
     $null = $env.Add("resourceGroupName", $resourceGroupName)
     New-AzResourceGroup -Name $resourceGroupName -Location $env.location
 
-
     # Create Storage Account
     $storageName = "storage" + $rstr1
     Write-Host "Start to create Storage Account" $storageName
@@ -43,9 +43,11 @@ function setupEnv() {
     $storageParams.parameters.storageAccounts_sdkpsstorage_name.value = $storageName
     set-content -Path .\test\deployment-templates\storage-account\parameters.json -Value (ConvertTo-Json $storageParams)
     New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\storage-account\template.json -TemplateParameterFile .\test\deployment-templates\storage-account\parameters.json -Name storage -ResourceGroupName $resourceGroupName
-
+	
+	$SubscriptionId = $env.SubscriptionId
+	Write-Host "sub id = " $SubscriptionId
     # Deploy cluster + database 
-    $SubscriptionId = $env.SubscriptionId
+    
     $clusterName = "testcluster" + $rstr1
     $databaseName = "testdatabase" + $rstr1
     $dataConnectionName = "testdataconnection" + $rstr1
@@ -58,7 +60,7 @@ function setupEnv() {
     Write-Host "Start to create a database" $databaseName
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
-    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated
+    New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated -Subscription $SubscriptionId
 
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
     New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
@@ -103,5 +105,5 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Removing resourcegroup will clean all the resources created for testing.
-    Remove-AzResourceGroup -Name $env.resourceGroupName
+    # Remove-AzResourceGroup -Name $env.resourceGroupName
 }
