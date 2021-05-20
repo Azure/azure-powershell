@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-RestoreManagedDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedManagedDatabase()
         {
