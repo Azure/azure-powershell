@@ -38,7 +38,7 @@ At line:1 char:1
 
 If you are receiving type loading errors when trying to import/run Az modules in Windows PowerShell, you'll need to install [.NET Framework 4.7.2](https://dotnet.microsoft.com/download) or greater. This is required as Windows PowerShell does not natively support .NET Standard.
 
-You can also avoid this issue by using [PowerShell Core](https://github.com/PowerShell/PowerShell/releases/latest). PowerShell Core natively supports .NET Standard assemblies. PowerShell Core also works cross platform, so Linux and Mac can use Az modules in PowerShell Core.
+You can also avoid this issue by using [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest). PowerShell 7 natively supports .NET Standard assemblies. PowerShell 7 also works cross platform, so Linux and Mac can use Az modules in PowerShell 7.
 
 ## Symptom: Prompt for Login When a Cmdlet is Executed After a Previous Login
 
@@ -162,6 +162,6 @@ This underlying problem is solved in Az by requiring all authentication types us
 
 The library `Newtonsoft.Json` is used throughout our cmdlets to handle JSON information. However, we do not have control of the version of this library that is loaded in PowerShell. To troubleshoot serialization issues, here is a table of the versions of `Newtonsoft.Json` that are loaded by the various editions of PowerShell.
 
-| | Windows PowerShell 5.1 | PowerShell Core 6.0 | PowerShell Core 6.1 | PowerShell Core 6.2
-| - | - | - | - | - |
-| **Newtonsoft.Json** | 6.0.8 | 10.0.3 | 11.0.2 | 12.0.1
+| | Windows PowerShell 5.1 | PowerShell 7.0 | PowerShell 7.1
+| - | - | - | - |
+| **Newtonsoft.Json** | 6.0.8 |  12.0.0 | 12.0.0

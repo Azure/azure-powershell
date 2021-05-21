@@ -25,7 +25,7 @@ Run the following command in an elevated PowerShell session to install the rollu
 Install-Module -Name Az
 ```
 
-This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
+This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [latest version of PowerShell 7][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
 
 If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 
