@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Security</PsModuleName>
@@ -42,7 +42,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <PackageReference Include="Microsoft.Azure.Management.SecurityCenter" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="44.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="46.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.21.0-preview" />
   </ItemGroup>
 </Project>

@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEdgeZoneConfigurations()
+        {
+            TestRunner.RunTestScript("Test-EdgeZoneConfigurations");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
             TestRunner.RunTestScript("Test-Snapshot");

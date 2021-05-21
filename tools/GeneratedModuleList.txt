@@ -6,6 +6,7 @@ Az.CloudService
 Az.Communication
 Az.Confluent
 Az.ConnectedKubernetes
+Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
@@ -29,6 +30,7 @@ Az.ProviderHub
 Az.RedisEnterpriseCache
 Az.ResourceMover
 Az.SpringCloud
+Az.StreamAnalytics
 Az.TimeSeriesInsights
 Az.VMware
 Az.WindowsIotServices

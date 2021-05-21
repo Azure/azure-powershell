@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]
 * Added support `AcrNameToDetach` in `Set-AzAksCluster`. [#14693] 
 * Added `Set-AzAksClusterCredential` to reset the ServicePrincipal of an existing AKS cluster.

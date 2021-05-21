@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "serialization": {
+      "type": "Json",
+      "properties": {
+        "encoding": "UTF8",
+        "format": "LineSeparated"
+      }
+    },
+    "datasource": {
+      "type": "Microsoft.Storage/Blob",
+      "properties": {
+        "storageAccounts": [
+          {
+            "accountName": "storageaccounthsuk20",
+            "accountKey": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+          }
+        ],
+        "container": "container01",
+        "pathPattern": "cluster1/{client_id}",
+        "dateFormat": "yyyy/MM/dd",
+        "timeFormat": "HH",
+        "authenticationMode": "ConnectionString"
+      }
+    }
+  }
+}

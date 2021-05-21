@@ -124,11 +124,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
-        [CmdletParameterBreakingChange("ReverseProxyEndpointPort", ChangeDescription = "Parameter is not supported in managed clusters. It will be depreacated without being replaced.")]
-        [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp, HelpMessage = "Endpoint used by reverse proxy.")]
-        [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn, HelpMessage = "Endpoint used by reverse proxy.")]
-        public int? ReverseProxyEndpointPort { get; set; }
-
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByTp,
             HelpMessage = "Cluster's Sku, the options are Basic: it will have a minimum of 3 seed nodes and only allows 1 node type and Standard: it will have a minimum of 5 seed nodes and allows multiple node types.")]
         [Parameter(Mandatory = false, ParameterSetName = ClientCertByCn,

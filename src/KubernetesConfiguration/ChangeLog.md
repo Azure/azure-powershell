@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added SshKnownHosts and ConfigurationProtectedSetting to New-AzKubernetesConfiguration.
 
 ## Version 0.3.0
 * Upgraded API version to 2021-03-01.

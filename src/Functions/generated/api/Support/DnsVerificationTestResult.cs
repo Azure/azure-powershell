@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="DnsVerificationTestResult" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DnsVerificationTestResult(System.Convert.ToString(value));
+            return new DnsVerificationTestResult(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DnsVerificationTestResult" Enum class./></summary>

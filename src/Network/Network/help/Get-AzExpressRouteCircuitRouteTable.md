@@ -29,7 +29,7 @@ connectivity.
 
 ### Example 1: Display the route table for the primary path
 ```
-Get-AzExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -DevicePath 'Primary'
+Get-AzExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering' -DevicePath 'Primary'
 ```
 
 ## PARAMETERS

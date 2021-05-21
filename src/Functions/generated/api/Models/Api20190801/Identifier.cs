@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Property</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierProperties Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierInternal.Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IdentifierProperties()); set { {_property = value;} } }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>String representation of the identity.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string Value { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierPropertiesInternal)Property).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierPropertiesInternal)Property).Value = value; }
+        public string Value { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierPropertiesInternal)Property).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IIdentifierPropertiesInternal)Property).Value = value ?? null; }
 
         /// <summary>Creates an new <see cref="Identifier" /> instance.</summary>
         public Identifier()

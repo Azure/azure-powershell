@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Allowed Enable-AzFrontDoorCustomDomainHttps's SecretVersion parameter to be optional to support bring-your-own-certificate auto-rotation
+* Added Sku / RuleSetAction parameters for WAF
 
 ## Version 1.7.0
 * Added FrontDoorId to properties

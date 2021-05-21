@@ -23,11 +23,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// This setting is only necessary when RecoverConfiguration is enabled.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? IgnoreConflictingHostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).IgnoreConflictingHostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).IgnoreConflictingHostName = value; }
+        public bool? IgnoreConflictingHostName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).IgnoreConflictingHostName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).IgnoreConflictingHostName = value ?? default(bool); }
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool Overwrite { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).Overwrite; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).Overwrite = value; }
+        public bool? Overwrite { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).Overwrite; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).Overwrite = value ?? default(bool); }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestProperties _property;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>If true, site configuration, in addition to content, will be reverted.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? RecoverConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverConfiguration = value; }
+        public bool? RecoverConfiguration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverConfiguration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverConfiguration = value ?? default(bool); }
 
         /// <summary>
         /// ARM resource ID of the source app.
@@ -73,17 +73,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// other slots.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RecoverySourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceId = value; }
+        public string RecoverySourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceId = value ?? null; }
 
         /// <summary>Geographical location of the source web app, e.g. SouthEastAsia, SouthCentralUS</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RecoverySourceLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceLocation = value; }
+        public string RecoverySourceLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).RecoverySourceLocation = value ?? null; }
 
         /// <summary>
         /// Point in time in which the app restore should be done, formatted as a DateTime string.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string SnapshotTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).SnapshotTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).SnapshotTime = value; }
+        public string SnapshotTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).SnapshotTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).SnapshotTime = value ?? null; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>If true, the snapshot is retrieved from DRSecondary endpoint.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? UseDrSecondary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).UseDrSecondary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).UseDrSecondary = value; }
+        public bool? UseDrSecondary { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).UseDrSecondary; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestPropertiesInternal)Property).UseDrSecondary = value ?? default(bool); }
 
         /// <summary>Creates an new <see cref="SnapshotRestoreRequest" /> instance.</summary>
         public SnapshotRestoreRequest()
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.",
         SerializedName = @"overwrite",
         PossibleTypes = new [] { typeof(bool) })]
-        bool Overwrite { get; set; }
+        bool? Overwrite { get; set; }
         /// <summary>If true, site configuration, in addition to content, will be reverted.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>
         /// If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>.
         /// </summary>
-        bool Overwrite { get; set; }
+        bool? Overwrite { get; set; }
         /// <summary>SnapshotRestoreRequest resource specific properties</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISnapshotRestoreRequestProperties Property { get; set; }
         /// <summary>If true, site configuration, in addition to content, will be reverted.</summary>

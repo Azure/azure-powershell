@@ -98,6 +98,13 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string RequestBodyCheck { get; set; }
 
+        /// <summary>
+        /// Sets Sku. Possible values include: 'Classic_AzureFrontDoor', 'Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Sets Sku. Possible values include: 'Classic_AzureFrontDoor', 'Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'")]
+        [PSArgumentCompleter("Classic_AzureFrontDoor", "Standard_AzureFrontDoor", "Premium_AzureFrontDoor")]
+        public string Sku { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var existingPolicy = FrontDoorManagementClient.Policies.List(ResourceGroupName)
@@ -128,7 +135,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Cmdlets
                     CustomBlockResponseStatusCode = this.IsParameterBound(c => c.CustomBlockResponseStatusCode) ? CustomBlockResponseStatusCode : (int?)null,
                     RedirectUrl = RedirectUrl,
                     RequestBodyCheck = this.IsParameterBound(c => c.RequestBodyCheck) ? RequestBodyCheck : PSEnabledState.Enabled.ToString()
-                }
+                },
+                Sku = this.IsParameterBound(c => c.Sku) ? new Management.FrontDoor.Models.Sku(Sku) : null
             };
             if (ShouldProcess(Resources.WebApplicationFirewallPolicyTarget, string.Format(Resources.CreateWebApplicationFirewallPolicy, Name)))
             {

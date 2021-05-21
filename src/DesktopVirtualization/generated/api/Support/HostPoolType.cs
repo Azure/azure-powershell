@@ -10,8 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
     public partial struct HostPoolType :
         System.IEquatable<HostPoolType>
     {
+        /// <summary>
+        /// Users assign their own machines, load balancing logic remains the same as Personal. PersonalDesktopAssignmentType must
+        /// be Direct.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType ByoDesktop = @"BYODesktop";
+
+        /// <summary>
+        /// Users will be assigned a SessionHost either by administrators (PersonalDesktopAssignmentType = Direct) or upon connecting
+        /// to the pool (PersonalDesktopAssignmentType = Automatic). They will always be redirected to their assigned SessionHost.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType Personal = @"Personal";
 
+        /// <summary>Users get a new (random) SessionHost every time it connects to the HostPool.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostPoolType Pooled = @"Pooled";
 
         /// <summary>the value for an instance of the <see cref="HostPoolType" /> Enum.</summary>
@@ -21,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="HostPoolType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new HostPoolType(System.Convert.ToString(value));
+            return new HostPoolType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type HostPoolType</summary>

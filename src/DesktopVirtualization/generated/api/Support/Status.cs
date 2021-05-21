@@ -10,16 +10,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
     public partial struct Status :
         System.IEquatable<Status>
     {
+        /// <summary>
+        /// Session Host has passed all the health checks and is available to handle connections.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status Available = @"Available";
 
+        /// <summary>The Session Host is unavailable because it is currently disconnected.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status Disconnected = @"Disconnected";
 
+        /// <summary>SessionHost's domain trust relationship lost</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status DomainTrustRelationshipLost = @"DomainTrustRelationshipLost";
+
+        /// <summary>FSlogix is in an unhealthy state on the session host.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status FsLogixNotHealthy = @"FSLogixNotHealthy";
+
+        /// <summary>
+        /// New status to inform admins that the health on their endpoint needs to be fixed. The connections might not fail, as these
+        /// issues are not fatal.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status NeedsAssistance = @"NeedsAssistance";
+
+        /// <summary>The Session Host is not heart beating.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status NoHeartbeat = @"NoHeartbeat";
+
+        /// <summary>SessionHost is not joined to domain.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status NotJoinedToDomain = @"NotJoinedToDomain";
+
+        /// <summary>
+        /// Session Host is shutdown - RD Agent reported session host to be stopped or deallocated.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status Shutdown = @"Shutdown";
 
+        /// <summary>SxS stack installed on the SessionHost is not ready to receive connections.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status SxSStackListenerNotReady = @"SxSStackListenerNotReady";
+
+        /// <summary>
+        /// Session Host is either turned off or has failed critical health checks which is causing service not to be able to route
+        /// connections to this session host. Note this replaces previous 'NoHeartBeat' status.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status Unavailable = @"Unavailable";
 
+        /// <summary>
+        /// Session Host is unavailable because the critical component upgrade (agent, side-by-side stack, etc.) failed.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status UpgradeFailed = @"UpgradeFailed";
 
+        /// <summary>
+        /// Session Host is unavailable because currently an upgrade of RDAgent/side-by-side stack is in progress. Note: this state
+        /// will be removed once the upgrade completes and the host is able to accept connections.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Status Upgrading = @"Upgrading";
 
         /// <summary>the value for an instance of the <see cref="Status" /> Enum.</summary>
@@ -29,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="Status" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Status(System.Convert.ToString(value));
+            return new Status(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Status</summary>

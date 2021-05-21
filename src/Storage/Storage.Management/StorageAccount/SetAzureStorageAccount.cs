@@ -396,7 +396,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool? allowSharedKeyAccess = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
-        public TimeSpan SasExpirationPeriod { get; set; }
+        public TimeSpan SasExpirationPeriod
+        {
+            get
+            {
+                return sasExpirationPeriod is null ? TimeSpan.Zero : sasExpirationPeriod.Value;
+            }
+            set
+            {
+                sasExpirationPeriod = value;
+            }
+        }
+        private TimeSpan? sasExpirationPeriod = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
@@ -412,6 +423,34 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? keyExpirationPeriodInDay = null;
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets allow or disallow cross AAD tenant object replication. The default interpretation is true for this property.")]
+        [ValidateNotNullOrEmpty]
+        public bool AllowCrossTenantReplication
+        {
+            get
+            {
+                return allowCrossTenantReplication.Value;
+            }
+            set
+            {
+                allowCrossTenantReplication = value;
+            }
+        }
+        private bool? allowCrossTenantReplication = null;
+
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Default share permission for users using Kerberos authentication if RBAC role is not assigned.")]
+        [ValidateSet(DefaultSharePermissionType.None,
+            DefaultSharePermissionType.StorageFileDataSmbShareContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareReader,
+            DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
+            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
+            IgnoreCase = true)]
+        public string DefaultSharePermission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -605,6 +644,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             }
                         }
                     }
+                    if (this.DefaultSharePermission != null)
+                    {
+                        if (updateParameters.AzureFilesIdentityBasedAuthentication == null)
+                        {
+                            updateParameters.AzureFilesIdentityBasedAuthentication = new AzureFilesIdentityBasedAuthentication();
+                        }
+                        updateParameters.AzureFilesIdentityBasedAuthentication.DefaultSharePermission = this.DefaultSharePermission;
+                    }
                     if (this.EnableLargeFileShare.IsPresent)
                     {
                         updateParameters.LargeFileSharesState = LargeFileSharesState.Enabled;
@@ -625,13 +672,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
                     }
-                    if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+                    if (sasExpirationPeriod != null)
                     {
-                        updateParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
                     }
                     if (keyExpirationPeriodInDay != null)
                     {
                         updateParameters.KeyPolicy = new KeyPolicy(keyExpirationPeriodInDay.Value);
+                    }
+                    if (allowCrossTenantReplication != null)
+                    {
+                        updateParameters.AllowCrossTenantReplication = allowCrossTenantReplication;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
