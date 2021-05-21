@@ -23,15 +23,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Description of the data that will help it be interpreted</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RenderingPropertyDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Description = value; }
+        public string RenderingPropertyDescription { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Description; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Description = value ?? null; }
 
         /// <summary>Title of data</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RenderingPropertyTitle { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Title; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Title = value; }
+        public string RenderingPropertyTitle { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Title; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Title = value ?? null; }
 
         /// <summary>Rendering Type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType? RenderingPropertyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Type = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType? RenderingPropertyType { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IRenderingInternal)RenderingProperty).Type = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RenderingType)""); }
 
         /// <summary>Backing field for <see cref="Table" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObject _table;
@@ -42,15 +42,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>List of columns with data types</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[] TableColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Column; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Column = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseColumn[] TableColumn { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Column; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Column = value ?? null /* arrayOf */; }
 
         /// <summary>Name of the table</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string TableName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).TableName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).TableName = value; }
+        public string TableName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).TableName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).TableName = value ?? null; }
 
         /// <summary>Raw row values</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string[][] TableRow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Row; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Row = value; }
+        public string[][] TableRow { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Row; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDataTableResponseObjectInternal)Table).Row = value ?? null /* arrayOf */; }
 
         /// <summary>Creates an new <see cref="DiagnosticData" /> instance.</summary>
         public DiagnosticData()

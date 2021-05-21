@@ -197,7 +197,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private static string GetBlobSasToken(CloudBlob blob)
         {
             if (null == blob.ServiceClient.Credentials
-                || blob.ServiceClient.Credentials.IsAnonymous)
+                || (blob.ServiceClient.Credentials.IsAnonymous && !blob.ServiceClient.Credentials.IsToken))
             {
                 return string.Empty;
             }
@@ -225,8 +225,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 rootBlob = Util.GetBlobReference(blob.Uri, blob.ServiceClient.Credentials, blob.BlobType);
             }
+            if (!blob.ServiceClient.Credentials.IsToken) // not oauth, generated normal sas
+            {
+                return rootBlob.GetSharedAccessSignature(policy);
+            }
+            else // oauth, generate identity sas
+            {
+                DateTimeOffset userDelegationKeyStartTime = DateTime.Now;
+                DateTimeOffset userDelegationKeyEndTime = userDelegationKeyStartTime.AddMinutes(CopySASLifeTimeInMinutes) ;
+                Azure.Storage.UserDelegationKey userDelegationKey = rootBlob.ServiceClient.GetUserDelegationKey(userDelegationKeyStartTime, userDelegationKeyEndTime);
 
-            return rootBlob.GetSharedAccessSignature(policy);
+                return rootBlob.GetUserDelegationSharedAccessSignature(userDelegationKey, policy);
+            }
         }
 
         private static string GetBlobSasToken(BlobBaseClient blob, AzureStorageContext context)

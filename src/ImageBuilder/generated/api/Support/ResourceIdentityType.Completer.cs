@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>Argument completer implementation for ResourceIdentityType.</summary>
+    /// <summary>
+    /// The type of identity used for the image template. The type 'None' will remove any identities from the image template.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityTypeTypeConverter))]
     public partial struct ResourceIdentityType :
         System.Management.Automation.IArgumentCompleter

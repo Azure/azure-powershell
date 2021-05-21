@@ -23,7 +23,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ActiveDirectoryTests: ResourceTestRunner
+    public class ActiveDirectoryTests : ResourceTestRunner
     {
         XunitTracingInterceptor interceptor { get; set; }
 
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewADServicePrincipalWithoutApp");
         }
 
-        [Fact]
+        [Fact]// (Skip = "Test indicates Graph call is not recorded when it actually is, refer to https://github.com/Azure/azure-powershell/issues/14632 for more details, test passes in record mode")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithReaderRole()
         {
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var spParam = new ServicePrincipalCreateParameters
             {
                 AppId = appId,
-                AccountEnabled = true
+                AccountEnabled = true.ToString()
             };
 
             return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);

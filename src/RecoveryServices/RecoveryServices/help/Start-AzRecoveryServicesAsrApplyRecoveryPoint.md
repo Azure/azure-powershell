@@ -154,4 +154,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Azure Site Recovery Cmdlets](./Az.SiteRecovery.md)
+[Azure Recovery Services cmdlets](/powershell/module/az.recoveryservices)

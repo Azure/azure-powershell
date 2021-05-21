@@ -15,21 +15,20 @@ Changes the Microsoft support operations auditing settings of an Azure SQL serve
 
 ### ServerParameterSet (Default)
 ```
-Set-AzSqlServerMSSupportAudit
- [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
+Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
- [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>]
- [-PassThru] [-ResourceGroupName] <String> [-ServerName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String>
+ [-ServerName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServerObjectParameterSet
 ```
 Set-AzSqlServerMSSupportAudit [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
- [-EventHubTargetState <String>] [-EventHubName <String>]
- [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
- [-WorkspaceResourceId <String>] [-PassThru] -ServerObject <AzureSqlServerModel> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EventHubTargetState <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>]
+ [-LogAnalyticsTargetState <String>] [-WorkspaceResourceId <String>] [-PassThru]
+ -ServerObject <AzureSqlServerModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -261,19 +260,6 @@ The storage account resource id
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Primary, Secondary
 
 Required: False
 Position: Named

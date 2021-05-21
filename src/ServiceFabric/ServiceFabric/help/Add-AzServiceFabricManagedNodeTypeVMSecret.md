@@ -27,7 +27,7 @@ Add-AzServiceFabricManagedNodeTypeVMSecret [-ResourceGroupName] <String> [-Clust
 ```
 
 ## DESCRIPTION
-Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
+Add certificate secret to the node type. The secret must be stored in an Azure Key Vault. For more information relating to Key Vault, see What is Azure Key Vault? (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/). For more information about the cmdlets, see Azure Key Vault Cmdlets (/powershell/module/az.keyvault/) in the Microsoft Developer Network library or the Set-AzKeyVaultSecret cmdlet.
 
 ## EXAMPLES
 

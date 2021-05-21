@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="BackupRestoreOperationType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new BackupRestoreOperationType(System.Convert.ToString(value));
+            return new BackupRestoreOperationType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type BackupRestoreOperationType</summary>

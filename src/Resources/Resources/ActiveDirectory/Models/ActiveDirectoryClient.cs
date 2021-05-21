@@ -18,10 +18,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -262,7 +260,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
         {
             List<PSADObject> result = new List<PSADObject>();
-            IPage<AADObject> adObjects;
+            IPage<DirectoryObject> adObjects;
             int objectIdBatchCount;
             for (int i = 0; i < objectIds.Count; i += 1000)
             {
@@ -372,7 +370,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public IEnumerable<PSADObject> GetGroupMembers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            return new GenericPageEnumerable<AADObject>(
+            return new GenericPageEnumerable<DirectoryObject>(
                 delegate ()
                 {
                     return GraphClient.Groups.GetGroupMembers(options.Id);
@@ -442,7 +440,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    AADObject currentUser = GraphClient.Objects.GetCurrentUser();
+                    User currentUser = GraphClient.SignedInUser.Get();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateApplicationNotAllowedGuestUser);
@@ -766,7 +764,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             ServicePrincipalCreateParameters graphParameters = new ServicePrincipalCreateParameters
             {
                 AppId = createParameters.ApplicationId.ToString(),
-                AccountEnabled = createParameters.AccountEnabled,
+                AccountEnabled = createParameters.AccountEnabled.ToString(),
                 KeyCredentials = keyCredentials,
                 PasswordCredentials = passwordCredentials
             };
@@ -779,7 +777,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (ce.Response.StatusCode == HttpStatusCode.Forbidden)
                 {
-                    AADObject currentUser = GraphClient.Objects.GetCurrentUser();
+                    User currentUser = GraphClient.SignedInUser.Get();
                     if (currentUser != null && string.Equals(currentUser.UserType, "Guest", StringComparison.InvariantCultureIgnoreCase))
                     {
                         throw new InvalidOperationException(ProjectResources.CreateServicePrincipalNotAllowedGuestUser);

@@ -19,7 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed profile missing issue in Remove-AzCdnProfile cmdlet
 
+## Version 1.7.0
+* Added cmdlets to support new AFD Premium / Standard SKUs
+  
 ## Version 1.6.0
 * Added cmdlets to support multi-origin and private link functionality 
 

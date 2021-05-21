@@ -94,7 +94,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azsystemassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity])]
@@ -230,7 +230,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappfunctionkeyslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkeyslot
 #>
 function Get-AzWebAppFunctionKeySlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -387,7 +387,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappfunctionkey
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappfunctionkey
 #>
 function Get-AzWebAppFunctionKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -604,7 +604,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
 #>
 function Get-AzWebAppSettingKeyVaultReference {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource])]
@@ -769,7 +769,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappsyncstatusslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatusslot
 #>
 function Get-AzWebAppSyncStatusSlot {
 [OutputType([System.Boolean])]
@@ -926,7 +926,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappsyncstatus
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatus
 #>
 function Get-AzWebAppSyncStatus {
 [OutputType([System.Boolean])]
@@ -1147,7 +1147,7 @@ MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resou
   [Resource <String[]>]: 
   [TargetResourceGroup <String>]: 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/move-az
+https://docs.microsoft.com/powershell/module/az.functions/move-az
 #>
 function Move-Az {
 [OutputType([System.Boolean])]
@@ -1391,7 +1391,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/sync-azwebappfunctionslot
+https://docs.microsoft.com/powershell/module/az.functions/sync-azwebappfunctionslot
 #>
 function Sync-AzWebAppFunctionSlot {
 [OutputType([System.Boolean])]
@@ -1640,7 +1640,7 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
   [ServerFarmId <String>]: ARM resource ID of an App Service plan that would host the app.
   [SkuName <String>]: Name of the target SKU for the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/test-az
+https://docs.microsoft.com/powershell/module/az.functions/test-az
 #>
 function Test-Az {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse])]
@@ -1913,7 +1913,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/addfunctionappplanworkertype
+https://docs.microsoft.com/powershell/module/az.functions/addfunctionappplanworkertype
 #>
 function AddFunctionAppPlanWorkerType {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2006,7 +2006,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/addfunctionappsettings
+https://docs.microsoft.com/powershell/module/az.functions/addfunctionappsettings
 #>
 function AddFunctionAppSettings {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2099,7 +2099,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/containsreservedfunctionappsettingname
+https://docs.microsoft.com/powershell/module/az.functions/containsreservedfunctionappsettingname
 #>
 function ContainsReservedFunctionAppSettingName {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2177,7 +2177,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/convertwebappapplicationsettingtohashtable
+https://docs.microsoft.com/powershell/module/az.functions/convertwebappapplicationsettingtohashtable
 #>
 function ConvertWebAppApplicationSettingToHashtable {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2255,7 +2255,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/createapplicationinsightsproject
+https://docs.microsoft.com/powershell/module/az.functions/createapplicationinsightsproject
 #>
 function CreateApplicationInsightsProject {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2358,7 +2358,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/createfunctionsidentity
+https://docs.microsoft.com/powershell/module/az.functions/createfunctionsidentity
 #>
 function CreateFunctionsIdentity {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2436,7 +2436,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/formatlisttostring
+https://docs.microsoft.com/powershell/module/az.functions/formatlisttostring
 #>
 function FormatListToString {
 [CmdletBinding(PositionalBinding=$false)]
@@ -2537,7 +2537,7 @@ Functions1-Windows-DoNet Running Windows DotNet  Central US CentralUSPlan  Funct
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -2786,7 +2786,7 @@ Germany West Central
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappavailablelocation
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
@@ -2950,7 +2950,7 @@ Func99-West-Europe-Windows-Premium Windows    ElasticPremium EP1     Central US 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -3099,7 +3099,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -3114,11 +3113,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -3170,6 +3169,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -3253,7 +3253,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappsetting
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappsetting
 #>
 function Get-AzFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -3397,7 +3397,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getapplicationinsightsproject
+https://docs.microsoft.com/powershell/module/az.functions/getapplicationinsightsproject
 #>
 function GetApplicationInsightsProject {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3490,7 +3490,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getazwebappconfig
+https://docs.microsoft.com/powershell/module/az.functions/getazwebappconfig
 #>
 function GetAzWebAppConfig {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3593,7 +3593,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getconnectionstring
+https://docs.microsoft.com/powershell/module/az.functions/getconnectionstring
 #>
 function GetConnectionString {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3686,7 +3686,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getdefaultostype
+https://docs.microsoft.com/powershell/module/az.functions/getdefaultostype
 #>
 function GetDefaultOSType {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3764,7 +3764,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/geterrormessage
+https://docs.microsoft.com/powershell/module/az.functions/geterrormessage
 #>
 function GetErrorMessage {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3843,7 +3843,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getfunctionappbyname
+https://docs.microsoft.com/powershell/module/az.functions/getfunctionappbyname
 #>
 function GetFunctionAppByName {
 [CmdletBinding(PositionalBinding=$false)]
@@ -3941,7 +3941,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getfunctionappplans
+https://docs.microsoft.com/powershell/module/az.functions/getfunctionappplans
 #>
 function GetFunctionAppPlans {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4039,7 +4039,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getfunctionapps
+https://docs.microsoft.com/powershell/module/az.functions/getfunctionapps
 #>
 function GetFunctionApps {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4137,7 +4137,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getfunctionappserviceplaninfo
+https://docs.microsoft.com/powershell/module/az.functions/getfunctionappserviceplaninfo
 #>
 function GetFunctionAppServicePlanInfo {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4230,7 +4230,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getparameterkeyvalues
+https://docs.microsoft.com/powershell/module/az.functions/getparameterkeyvalues
 #>
 function GetParameterKeyValues {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4315,7 +4315,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getruntimejsondefinition
+https://docs.microsoft.com/powershell/module/az.functions/getruntimejsondefinition
 #>
 function GetRuntimeJsonDefinition {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4408,7 +4408,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getserviceplan
+https://docs.microsoft.com/powershell/module/az.functions/getserviceplan
 #>
 function GetServicePlan {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4501,7 +4501,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getskuname
+https://docs.microsoft.com/powershell/module/az.functions/getskuname
 #>
 function GetSkuName {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4579,7 +4579,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getstorageaccount
+https://docs.microsoft.com/powershell/module/az.functions/getstorageaccount
 #>
 function GetStorageAccount {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4672,7 +4672,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getsupportedruntimes
+https://docs.microsoft.com/powershell/module/az.functions/getsupportedruntimes
 #>
 function GetSupportedRuntimes {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4750,7 +4750,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getsupportedruntimeversions
+https://docs.microsoft.com/powershell/module/az.functions/getsupportedruntimeversions
 #>
 function GetSupportedRuntimeVersions {
 [CmdletBinding(PositionalBinding=$false)]
@@ -4849,7 +4849,7 @@ PS C:\> New-AzFunctionApp -Name MyUniqueFunctionAppName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -5127,7 +5127,7 @@ PS C:\> New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -5319,7 +5319,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/newappsetting
+https://docs.microsoft.com/powershell/module/az.functions/newappsetting
 #>
 function NewAppSetting {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5402,7 +5402,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/newappsettingobject
+https://docs.microsoft.com/powershell/module/az.functions/newappsettingobject
 #>
 function NewAppSettingObject {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5480,7 +5480,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/newidentityuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/newidentityuserassignedidentity
 #>
 function NewIdentityUserAssignedIdentity {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5558,7 +5558,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/newresourcetag
+https://docs.microsoft.com/powershell/module/az.functions/newresourcetag
 #>
 function NewResourceTag {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5636,7 +5636,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/normalizesku
+https://docs.microsoft.com/powershell/module/az.functions/normalizesku
 #>
 function NormalizeSku {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5714,7 +5714,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/parsedockerimage
+https://docs.microsoft.com/powershell/module/az.functions/parsedockerimage
 #>
 function ParseDockerImage {
 [CmdletBinding(PositionalBinding=$false)]
@@ -5796,7 +5796,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -5811,11 +5810,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -5867,6 +5866,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -5950,7 +5950,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
 #>
 function Remove-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -6140,7 +6140,7 @@ INPUTOBJECT <IAppServicePlan>:
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 #>
 function Remove-AzFunctionAppPlan {
 [OutputType([System.Boolean])]
@@ -6298,7 +6298,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -6313,11 +6312,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -6369,6 +6368,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -6452,7 +6452,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionappsetting
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
 #>
 function Remove-AzFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -6612,7 +6612,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -6627,11 +6626,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -6683,6 +6682,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -6766,7 +6766,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/restart-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
 #>
 function Restart-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -6926,7 +6926,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -6941,11 +6940,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -6997,6 +6996,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -7080,7 +7080,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/start-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 #>
 function Start-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -7234,7 +7234,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -7249,11 +7248,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -7305,6 +7304,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -7388,7 +7388,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/stop-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
 #>
 function Stop-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -7543,7 +7543,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/throwruntimenotsupportedexception
+https://docs.microsoft.com/powershell/module/az.functions/throwruntimenotsupportedexception
 #>
 function ThrowRuntimeNotSupportedException {
 [CmdletBinding(PositionalBinding=$false)]
@@ -7626,7 +7626,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/throwterminatingerror
+https://docs.microsoft.com/powershell/module/az.functions/throwterminatingerror
 #>
 function ThrowTerminatingError {
 [CmdletBinding(PositionalBinding=$false)]
@@ -7732,7 +7732,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -7747,11 +7746,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -7803,6 +7802,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -7886,7 +7886,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 #>
 function Update-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -7953,7 +7953,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
+    [System.String[]]
     # Specifies the list of user identities associated with the function app.
     #             The user identity references will be ARM resource ids in the form:
     #             '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
@@ -8127,7 +8127,7 @@ INPUTOBJECT <IAppServicePlan>:
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -8315,7 +8315,6 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <ISite>: 
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -8330,11 +8329,11 @@ INPUTOBJECT <ISite>:
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -8386,6 +8385,7 @@ INPUTOBJECT <ISite>:
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -8469,7 +8469,7 @@ INPUTOBJECT <ISite>:
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionappsetting
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappsetting
 #>
 function Update-AzFunctionAppSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -8626,7 +8626,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validateconsumptionplanlocation
+https://docs.microsoft.com/powershell/module/az.functions/validateconsumptionplanlocation
 #>
 function ValidateConsumptionPlanLocation {
 [CmdletBinding(PositionalBinding=$false)]
@@ -8724,7 +8724,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionname
+https://docs.microsoft.com/powershell/module/az.functions/validatefunctionname
 #>
 function ValidateFunctionName {
 [CmdletBinding(PositionalBinding=$false)]
@@ -8817,7 +8817,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionsv2notavailablelocation
+https://docs.microsoft.com/powershell/module/az.functions/validatefunctionsv2notavailablelocation
 #>
 function ValidateFunctionsV2NotAvailableLocation {
 [CmdletBinding(PositionalBinding=$false)]
@@ -8895,7 +8895,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionsversion
+https://docs.microsoft.com/powershell/module/az.functions/validatefunctionsversion
 #>
 function ValidateFunctionsVersion {
 [CmdletBinding(PositionalBinding=$false)]
@@ -8973,7 +8973,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validateplanlocation
+https://docs.microsoft.com/powershell/module/az.functions/validateplanlocation
 #>
 function ValidatePlanLocation {
 [CmdletBinding(PositionalBinding=$false)]
@@ -9076,7 +9076,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validateplanswitchcompatibility
+https://docs.microsoft.com/powershell/module/az.functions/validateplanswitchcompatibility
 #>
 function ValidatePlanSwitchCompatibility {
 [CmdletBinding(PositionalBinding=$false)]
@@ -9159,7 +9159,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatepremiumplanlocation
+https://docs.microsoft.com/powershell/module/az.functions/validatepremiumplanlocation
 #>
 function ValidatePremiumPlanLocation {
 [CmdletBinding(PositionalBinding=$false)]

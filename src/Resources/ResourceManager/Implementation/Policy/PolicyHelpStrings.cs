@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string NewPolicyAssignmentDisplayNameHelp = "The display name for the new policy assignment.";
         public const string NewPolicyAssignmentDescriptionHelp = "The description for the new policy assignment.";
         public const string NewPolicyAssignmentPolicyDefinitionHelp = "The policy definition object for the new policy assignment.";
-        public const string NewPolicyAssignmentPolicySetDefinitionHelp = "The policy set definition object for the new policy assignment.";
+        public const string NewPolicyAssignmentPolicySetDefinitionHelp = "The policy set (initiative) definition object for the new policy assignment.";
         public const string NewPolicyAssignmentPolicyParameterObjectHelp = "The policy parameters object for the new policy assignment.";
         public const string NewPolicyParameterHelp = "The policy parameters file path or string for the new policy assignment.";
         public const string NewPolicyAssignmentMetadataHelp = "The metadata for the new policy assignment. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyParameterHelp = "The new policy parameters file path or string for the policy assignment.";
         public const string SetPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
         public const string SetPolicyAssignmentInputObjectHelp = "The policy assignment object to update that was output from another cmdlet.";
-        public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies. Location is required when assigning an identity.";
+        public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' and 'modify' policies. Location is required when assigning an identity.";
         public const string PolicyAssignmentLocationHelp = "The location of the policy assignment's resource identity. This is required when the -AssignIdentity switch is used.";
 
         /// <summary>
@@ -93,36 +93,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         /// <summary>
         /// Policy set definition cmdlet parameter help strings
         /// </summary>
-        public const string GetPolicySetDefinitionNameHelp = "The name of the policy set definition to get.";
-        public const string GetPolicySetDefinitionIdHelp = "The fully qualified ID of the policy set definition to get, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
-        public const string GetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition(s) to get.";
-        public const string GetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition(s) to get.";
-        public const string GetPolicySetDefinitionBuiltInFilterHelp = "Limits list of results to only built-in policy set definitions.";
-        public const string GetPolicySetDefinitionCustomFilterHelp = "Limits list of results to only custom policy set definitions.";
-        public const string NewPolicySetDefinitionNameHelp = "The name of the new policy set definition.";
-        public const string NewPolicySetDefinitionDisplayNameHelp = "The display name for the new policy set definition.";
-        public const string NewPolicySetDefinitionDescriptionHelp = "The description for the new policy set definition.";
-        public const string NewPolicySetDefinitionMetadataHelp = "The metadata for the new policy set definition. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
-        public const string NewPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions for the new policy set definition. This can either be a path to a file containing the policy set definitions JSON, or the policy set definition as a JSON string.";
-        public const string NewPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups for the new policy set definition. This can either be a path to a file containing the groups JSON, or the groups as a JSON string.";
-        public const string NewPolicySetDefinitionParametersHelp = "The parameters declaration for the new policy set definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
-        public const string NewPolicySetDefinitionManagementGroupHelp = "The name of the management group of the new policy set definition.";
-        public const string NewPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the new policy set definition.";
-        public const string RemovePolicySetDefinitionNameHelp = "The policy set definition name to delete.";
-        public const string RemovePolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to delete, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
-        public const string RemovePolicySetDefinitionInputObjectHelp = "The policy set definition object to remove that was output from another cmdlet.";
-        public const string RemovePolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to delete.";
-        public const string RemovePolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to delete.";
-        public const string SetPolicySetDefinitionNameHelp = "The name of the policy set definition to update.";
-        public const string SetPolicySetDefinitionIdHelp = "The fully qualified policy set definition ID to get, including the subscription or management group. e.g. /providers/Microsoft.Management/managementGroups/{managementGroup}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
-        public const string SetPolicySetDefinitionDisplayNameHelp = "The display name of the updated policy set definition.";
-        public const string SetPolicySetDefinitionDescriptionHelp = "The description of the updated policy set definition.";
-        public const string SetPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions of the updated policy set definition. This can either be a path to a file containing the policy set definitions JSON, or the policy set definitions as a JSON string.";
-        public const string SetPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups of the updated policy set definition. This can either be a path to a file containing the groups JSON, or the groups as a JSON string.";
-        public const string SetPolicySetDefinitionMetadataHelp = "The metadata of the updated policy set definition. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
-        public const string SetPolicySetDefinitionParameterHelp = "The parameters declaration of the updated policy set definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
-        public const string SetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set definition to update.";
-        public const string SetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set definition to update.";
-        public const string SetPolicySetDefinitionInputObjectHelp = "The policy set definition object to update that was output from another cmdlet.";
+        public const string GetPolicySetDefinitionNameHelp = "The name of the policy set (initiative) definition to get.";
+        public const string GetPolicySetDefinitionIdHelp = "The fully qualified ID of the policy set (initiative) definition to get, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
+        public const string GetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set (initiative) definition(s) to get.";
+        public const string GetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set (initiative) definition(s) to get.";
+        public const string GetPolicySetDefinitionBuiltInFilterHelp = "Limits list of results to only built-in policy set (initiative) definitions.";
+        public const string GetPolicySetDefinitionCustomFilterHelp = "Limits list of results to only custom policy set (initiative) definitions.";
+        public const string NewPolicySetDefinitionNameHelp = "The name of the new policy set (initiative) definition.";
+        public const string NewPolicySetDefinitionDisplayNameHelp = "The display name for the new policy set (initiative) definition.";
+        public const string NewPolicySetDefinitionDescriptionHelp = "The description for the new policy set (initiative) definition.";
+        public const string NewPolicySetDefinitionMetadataHelp = "The metadata for the new policy set (initiative) definition. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string NewPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions for the new policy set (initiative) definition. This can either be a path to a file containing the policy set (initiative) definitions JSON, or the policy set (initiative) definition as a JSON string.";
+        public const string NewPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups for the new policy set (initiative) definition. This can either be a path to a file containing the groups JSON, or the groups as a JSON string.";
+        public const string NewPolicySetDefinitionParametersHelp = "The parameters declaration for the new policy set (initiative) definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
+        public const string NewPolicySetDefinitionManagementGroupHelp = "The name of the management group of the new policy set (initiative) definition.";
+        public const string NewPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the new policy set (initiative) definition.";
+        public const string RemovePolicySetDefinitionNameHelp = "The policy set (initiative) definition name to delete.";
+        public const string RemovePolicySetDefinitionIdHelp = "The fully qualified policy set (initiative) definition ID to delete, including the subscription or management group. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
+        public const string RemovePolicySetDefinitionInputObjectHelp = "The policy set (initiative) definition object to remove that was output from another cmdlet.";
+        public const string RemovePolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set (initiative) definition to delete.";
+        public const string RemovePolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set (initiative) definition to delete.";
+        public const string SetPolicySetDefinitionNameHelp = "The name of the policy set (initiative) definition to update.";
+        public const string SetPolicySetDefinitionIdHelp = "The fully qualified policy set (initiative) definition ID to update, including the subscription or management group. e.g. /providers/Microsoft.Management/managementGroups/{managementGroup}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}.";
+        public const string SetPolicySetDefinitionDisplayNameHelp = "The display name of the updated policy set (initiative) definition.";
+        public const string SetPolicySetDefinitionDescriptionHelp = "The description of the updated policy set (initiative) definition.";
+        public const string SetPolicySetDefinitionPolicyDefinitionHelp = "The policy definitions of the updated policy set (initiative) definition. This can either be a path to a file containing the policy set (initiative) definitions JSON, or the policy set (initiative) definitions as a JSON string.";
+        public const string SetPolicySetDefinitionGroupDefinitionHelp = "The policy definition groups of the updated policy set (initiative) definition. This can either be a path to a file containing the groups JSON, or the groups as a JSON string.";
+        public const string SetPolicySetDefinitionMetadataHelp = "The metadata of the updated policy set (initiative) definition. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string SetPolicySetDefinitionParameterHelp = "The parameters declaration of the updated policy set (initiative) definition. This can either be a path to a file or uri containing the parameters JSON declaration, or the parameters declaration as a JSON string.";
+        public const string SetPolicySetDefinitionManagementGroupHelp = "The name of the management group of the policy set (initiative) definition to update.";
+        public const string SetPolicySetDefinitionSubscriptionIdHelp = "The subscription ID of the policy set (initiative) definition to update.";
+        public const string SetPolicySetDefinitionInputObjectHelp = "The policy set (initiative) definition object to update that was output from another cmdlet.";
+
+        /// <summary>
+        /// Policy exemption cmdlet parawmeter help strings
+        /// </summary>
+        public const string GetPolicyExemptionNameHelp = "The name of the policy exemption to get.";
+        public const string GetPolicyExemptionScopeHelp = "The scope of the policy exemption to get, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string GetPolicyExemptionIdHelp = "The fully qualified policy exemption ID to get, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string GetPolicyExemptionFilterHelp = "Limits the list of returned policy exemptions to those assigning the policy assignment identified by this fully qualified Id.";
+        public const string GetPolicyExemptionIncludeDescendentsHelp = "Causes the list of returned policy exemptions to include all exemptions related to the given scope, including those from ancestor scopes and those from descendent scopes.";
+        public const string GetPolicyExemptionDoesNothingHelp = "This parameter is ignored if provided with -Name or -Id parameters.";
+        public const string NewPolicyExemptionNameHelp = "The name of the new policy exemption.";
+        public const string NewPolicyExemptionScopeHelp = "The scope of the new policy exemption, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string NewPolicyExemptionCategoryHelp = "The policy exemption category of the new policy exemption. Possible values are Waiver and Mitigated.";
+        public const string NewPolicyExemptionDisplayNameHelp = "The display name for the new policy exemption.";
+        public const string NewPolicyExemptionDescriptionHelp = "The description for the new policy exemption.";
+        public const string NewPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the new policy exemption.";
+        public const string NewPolicyExemptionPolicyAssignmentIdHelp = "The referenced policy assignment Id for the new policy exemption.";
+        public const string NewPolicyExemptionPolicyDefinitionReferenceIdHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
+        public const string NewPolicyExemptionMetadataHelp = "The metadata for the new policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string RemovePolicyExemptionNameHelp = "The name of the policy exemption to delete.";
+        public const string RemovePolicyExemptionScopeHelp = "The scope of the policy exemption to delete, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string RemovePolicyExemptionIdHelp = "The fully qualified policy exemption ID to delete, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string RemovePolicyExemptionInputObjectHelp = "The policy exemption object to remove that was output from another cmdlet.";
+        public const string SetPolicyExemptionNameHelp = "The name of the policy exemption to update.";
+        public const string SetPolicyExemptionScopeHelp = "The scope of the updated policy exemption, e.g. /providers/managementGroups/{managementGroupName}, defaults to current subscription.";
+        public const string SetPolicyExemptionIdHelp = "The fully qualified policy exemption Id to update, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyExemptions/{policyExemptionName}.";
+        public const string SetPolicyExemptionCategoryHelp = "The policy exemption category of the updated policy exemption. Possible values are Waiver and Mitigated.";
+        public const string SetPolicyExemptionDisplayNameHelp = "The display name for the updated policy exemption.";
+        public const string SetPolicyExemptionDescriptionHelp = "The description for the updated policy exemption.";
+        public const string SetPolicyExemptionExpiresOnHelp = "The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the updated policy exemption.";
+        public const string SetPolicyExemptionClearExpirationHelp = "If set, this switch clears the expiration date and time on the updated policy exemption.";
+        public const string SetPolicyExemptionPolicyDefinitionReferenceIdHelp = "The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).";
+        public const string SetPolicyExemptionMetadataHelp = "The metadata for the updated policy exemption. This can either be a path to a file containing the metadata JSON, or the metadata as a JSON string.";
+        public const string SetPolicyExemptionInputObjectHelp = "The policy exemption object to update that was output from another cmdlet.";
     }
 }

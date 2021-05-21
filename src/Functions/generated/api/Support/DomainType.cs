@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="DomainType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DomainType(System.Convert.ToString(value));
+            return new DomainType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DomainType" Enum class./></summary>

@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Management.RecoveryServices.Backup;
+using ComputeHelpers = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -49,6 +50,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public ResourceManagementClient ResourceManagementRestClient { get; private set; }
         public StorageManagementClient StorageClient { get; private set; }
+        public ComputeHelpers.Storage.StorageManagementClient ComputeStorageClient { get; set; }
         public ComputeManagementClient ComputeManagementRestClient { get; private set; }
         public RecoveryServicesBackupClient RecoveryServicesBackupClient { get; private set; }
 
@@ -135,6 +137,7 @@ namespace RecoveryServices.SiteRecovery.Test
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient(context);
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
+            ComputeStorageClient = GetComputeStorageManagementClient(context);
             ComputeManagementRestClient = GetComputeManagementClientRestClient(context);
             RecoveryServicesBackupClient = GetRecoveryServicesBackupClient(context);
 
@@ -143,9 +146,11 @@ namespace RecoveryServices.SiteRecovery.Test
                 SiteRecoveryMgmtClient,
                 ResourceManagementRestClient,
                 StorageClient,
+                ComputeStorageClient,
                 ComputeManagementRestClient,
                 GetNetworkManagementClientRestClient(context),
                 GetNetworkManagementClient(context),
+                GetComputeNetworkManagementClient(context),
                 RecoveryServicesBackupClient);
         }
 
@@ -164,9 +169,19 @@ namespace RecoveryServices.SiteRecovery.Test
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        private static ComputeHelpers.Storage.StorageManagementClient GetComputeStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeHelpers.Storage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private static InternalNetwork.NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<InternalNetwork.NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static ComputeHelpers.Network.NetworkManagementClient GetComputeNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ComputeHelpers.Network.NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static NetworkManagementClient GetNetworkManagementClientRestClient(MockContext context)

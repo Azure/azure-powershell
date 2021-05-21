@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePiping");
@@ -148,6 +155,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVMImageCmdletOutputFormat()
         {
             TestRunner.RunTestScript("Test-VMImageCmdletOutputFormat");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMImageEdgeZoneCmdletOutputFormat()
+        {
+            TestRunner.RunTestScript("Test-VMImageEdgeZoneCmdletOutputFormat");
         }
 
         [Fact]
@@ -373,6 +387,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachinePatchAPI()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePatchAPI");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzVMDefaultingSize()
+        {
+            TestRunner.RunTestScript("Test-NewAzVMDefaultingSize");
+        }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestInvokeAzVMInstallPatch()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzVMInstallPatch");
         }
     }
 }

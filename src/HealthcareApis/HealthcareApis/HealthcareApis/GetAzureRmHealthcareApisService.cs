@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.HealthcareApis.Commands
         [Alias(HealthcareApisAccountNameAlias, FhirServiceNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-z0-9][a-z0-9-]{1,21}[a-z0-9]$")]
-        [ValidateLength(2, 64)]
+        [ValidateLength(5, 64)]
         public string Name { get; set; }
 
 

@@ -31,6 +31,20 @@ PS C:\> $gw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgna
 The first command creates an autoscale configuration with minimum capacity 3.
 The second command creates an application gateway with the autoscale configuration.
 
+### Example 2
+
+```powershell
+PS C:\> $gw = Get-AzApplicationGateway -Name <Name> -ResourceGroupName <ResourceGroupName>
+PS C:\> $gw.Sku.Capacity = $null
+PS C:\> $gw.AutoscaleConfiguration = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 2 -MaxCapacity 4
+PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+```
+
+The first command gets the configuration of the Application Gateway into a variable.
+The second command clears the SKU Capacity variable to allow the Autoscale Configuration to be set.
+The third command specifies a new AutoScale Configuration for the Application Gateway.
+The fourth command applies the new configuration to the Application Gateway.
+
 ## PARAMETERS
 
 ### -DefaultProfile

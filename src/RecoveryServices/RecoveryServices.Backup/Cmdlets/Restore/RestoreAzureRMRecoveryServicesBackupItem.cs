@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -39,6 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal const string AzureVMParameterSet = "AzureVMParameterSet";
         internal const string AzureVMManagedDiskParameterSet = "AzureVMManagedDiskParameterSet";
         internal const string AzureVMRestoreManagedAsUnmanaged = "AzureVMRestoreManagedAsUnmanaged";
+        internal const string AzureVMRestoreUnmanagedAsManaged = "AzureVMRestoreUnmanagedAsManaged";
         internal const string AzureVMUnManagedDiskParameterSet = "AzureVMUnManagedDiskParameterSet";
         internal const string AzureFileShareParameterSet = "AzureFileShareParameterSet";
         internal const string AzureWorkloadParameterSet = "AzureWorkloadParameterSet";
@@ -65,6 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = AzureVMManagedDiskParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
             ParameterSetName = AzureVMUnManagedDiskParameterSet, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
+            ParameterSetName = AzureVMRestoreUnmanagedAsManaged, HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
 
@@ -87,6 +89,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
@@ -101,6 +105,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
 
@@ -108,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// The resource group to which the managed disks are restored. This parameter is mandatory for backup of VM with managed disks.
         /// </summary>
         [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetResourceGroupName)]
+        [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
             HelpMessage = ParamHelpMsgs.RestoreVM.TargetResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroupName { get; set; }
@@ -172,6 +180,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AzureVMUnManagedDiskParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.OsaOption)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
+            HelpMessage = ParamHelpMsgs.RestoreVM.OsaOption)]
         public SwitchParameter UseOriginalStorageAccount { get; set; }
 
         /// <summary>
@@ -185,6 +195,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMUnManagedDiskParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
+            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreOnlyOSDisk)]
         public SwitchParameter RestoreOnlyOSDisk { get; set; }
 
         /// <summary>
@@ -197,6 +209,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
         [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreManagedAsUnmanaged,
+            HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMRestoreUnmanagedAsManaged,
             HelpMessage = ParamHelpMsgs.RestoreVM.RestoreDiskList)]
         public string[] RestoreDiskList { get; set; }
 
@@ -222,6 +236,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.UseSecondaryReg)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter RestoreToSecondaryRegion { get; set; }
+
+        /// <summary>
+        /// Target Zone Number to restore the VM disks
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
+        [Parameter(Mandatory = false, ParameterSetName = AzureVMManagedDiskParameterSet,
+            HelpMessage = ParamHelpMsgs.RestoreVM.TargetZone)]
+        public int? TargetZoneNumber { get; set; }
+
+        /// <summary>
+        /// Switch param to restore a backed up unmanaged vm as managed disks.
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = AzureVMRestoreUnmanagedAsManaged, HelpMessage = ParamHelpMsgs.RestoreVM.RestoreAsManagedDisk)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter RestoreAsManagedDisk { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -257,6 +287,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreOnlyOSDisk, RestoreOnlyOSDisk);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreAsUnmanagedDisks, RestoreAsUnmanagedDisks);
                 providerParameters.Add(CRRParams.UseSecondaryRegion, RestoreToSecondaryRegion.IsPresent);
+                providerParameters.Add(RestoreVMBackupItemParams.RestoreAsManagedDisk, RestoreAsManagedDisk.IsPresent);
 
                 if (DiskEncryptionSetId != null)
                 {
@@ -267,6 +298,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     if ((vaultEncryptionSettings.Properties.EncryptionAtRestType == "CustomerManaged") && rp.IsManagedVirtualMachine && !(rp.EncryptionEnabled) && !(RestoreToSecondaryRegion.IsPresent))
                     {
                         providerParameters.Add(RestoreVMBackupItemParams.DiskEncryptionSetId, DiskEncryptionSetId);
+                    }
+                }
+
+                if (TargetZoneNumber != null)
+                {   
+                    // get storage type 
+                    BackupResourceConfigResource getStorageResponse = ServiceClientAdapter.GetVaultStorageType(resourceGroupName, vaultName);
+                    string storageType = getStorageResponse.Properties.StorageType;
+                    bool crrEnabled = (bool)getStorageResponse.Properties.CrossRegionRestoreFlag;
+
+                    if (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.ZoneRedundant.ToString() ||
+                    (storageType == AzureRmRecoveryServicesBackupStorageRedundancyType.GeoRedundant.ToString() && crrEnabled))
+                    {
+                        AzureVmRecoveryPoint rp = (AzureVmRecoveryPoint)RecoveryPoint;
+                        if (rp.RecoveryPointTier == RecoveryPointTier.VaultStandard)  // RP recovery type should be vault only
+                        {
+                            if (rp.Zones != null)
+                            {
+                                //target region should support Zones 
+                                /*if (RestoreToSecondaryRegion.IsPresent)
+                                {
+                                    FeatureSupportRequest iaasvmFeatureRequest = new FeatureSupportRequest();
+                                    ServiceClientAdapter.BmsAdapter.Client.FeatureSupport.ValidateWithHttpMessagesAsync(secondaryRegion, iaasvmFeatureRequest);
+                                }*/
+                                providerParameters.Add(RecoveryPointParams.TargetZone, TargetZoneNumber);
+                            }
+                            else
+                            {
+                                throw new ArgumentException(string.Format(Resources.RecoveryPointZonePinnedException));
+                            }
+                        }
+                        else
+                        {
+                            throw new ArgumentException(string.Format(Resources.RecoveryPointVaultRecoveryTypeException));
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException(string.Format(Resources.ZonalRestoreVaultStorageRedundancyException));
                     }
                 }
 
@@ -308,17 +378,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     psBackupProvider = providerManager.GetProviderInstance(
                         WorkloadType.MSSQL, BackupManagementType.AzureWorkload);
                 }
-                var jobResponse = psBackupProvider.TriggerRestore();                                
+                var jobResponse = psBackupProvider.TriggerRestore();
 
                 if (RestoreToSecondaryRegion.IsPresent)
-                {                    
-                    var operationId = jobResponse.Request.RequestUri.Segments.Last();   
+                {
+                    var operationId = jobResponse.Request.RequestUri.Segments.Last();
                     var response = ServiceClientAdapter.GetCrrOperationStatus(secondaryRegion, operationId);
 
                     string jobIDJson = JsonConvert.SerializeObject(response.Body.Properties);
                     string[] jobSplits = jobIDJson.Split(new char[] { '\"' });
                     string jobID = jobSplits[jobSplits.Length - 2];
-                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID)); 
+                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID));
                 }
                 else
                 {

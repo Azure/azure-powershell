@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
+    /// <summary>Scope at which the operator will be installed.</summary>
     public partial struct OperatorScopeType :
         System.IEquatable<OperatorScopeType>
     {
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="OperatorScopeType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new OperatorScopeType(System.Convert.ToString(value));
+            return new OperatorScopeType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type OperatorScopeType</summary>

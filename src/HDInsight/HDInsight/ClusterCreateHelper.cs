@@ -248,50 +248,50 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             };
         }
 
-        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, string kafkaManagementNodeSize = null, bool isEnableIDBroker = false)
+        public static ComputeProfile CreateComputeProfile(OsProfile osProfile, VirtualNetworkProfile vnetProfile, Dictionary<ClusterNodeType, List<ScriptAction>> clusterScriptActions, string clusterType, int workerNodeCount, string headNodeSize, string workerNodeSize, string zookeeperNodeSize = null, string edgeNodeSize = null, bool isKafakaRestProxyEnable=false, string kafkaManagementNodeSize = null, bool isIDBrokerEnable = false, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations=null)
         {
             List<Role> roles = new List<Role>();
 
             // Create head node
-            headNodeSize = headNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.HeadNode);
+            headNodeSize = headNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.HeadNodeRole, defaultVmSizeConfigurations);
             List<ScriptAction> headNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.HeadNode);
             Role headNode = CreateHeadNodeRole(osProfile, vnetProfile, headNodeScriptActions, headNodeSize);
             roles.Add(headNode);
 
             // Create worker node
-            workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.WorkerNode);
+            workerNodeSize = workerNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.WorkerNodeRole, defaultVmSizeConfigurations);
             List<ScriptAction> workerNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.WorkerNode);
             Role workerNode = CreateWorkerNodeRole(osProfile, vnetProfile, workerNodeScriptActions, workerNodeCount, workerNodeSize);
             roles.Add(workerNode);
 
             // Create Zookeeper Node
-            if (zookeeperNodeSize != null)
-            {
-                List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
-                Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
-                roles.Add(zookeeperNode);
-            }
+            zookeeperNodeSize= zookeeperNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.ZookeeperNodeRole, defaultVmSizeConfigurations);
+            List<ScriptAction> zookeeperNodeScriptActions = GetScriptActionsForRoleType(clusterScriptActions, ClusterNodeType.ZookeeperNode);
+            Role zookeeperNode = CreateZookeeperNodeRole(osProfile, vnetProfile, zookeeperNodeScriptActions, zookeeperNodeSize);
+            roles.Add(zookeeperNode);
 
             // RServer & MLServices clusters contain an additional edge node. Return here for all other types.
             if (new[] { "RServer", "MLServices" }.Contains(clusterType, StringComparer.OrdinalIgnoreCase))
             {
                 // Set up edgenode and add to collection.
                 const int edgeNodeCount = 1;
-                edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, ClusterNodeType.EdgeNode);
+                edgeNodeSize = edgeNodeSize ?? GetNodeSize(clusterType, Constants.ClusterRoleType.EdgeNodeRole, defaultVmSizeConfigurations); ;
                 Role edgeNode = CreateEdgeNodeRole(osProfile, vnetProfile, null, edgeNodeCount, edgeNodeSize);
                 roles.Add(edgeNode);
             }
 
             // Create Id Broker Node
-            if (isEnableIDBroker)
+            if (isIDBrokerEnable)
             {
-                Role idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile);
+                string idBrokerNodeSize= GetNodeSize(clusterType, Constants.ClusterRoleType.HIBNodeRole, defaultVmSizeConfigurations);
+                Role idBrokerNode = CreateIdBrokerNodeRole(osProfile, vnetProfile, idBrokerNodeSize);
                 roles.Add(idBrokerNode);
             }
 
             // Create Kafka Management Node
-            if (kafkaManagementNodeSize != null)
+            if (isKafakaRestProxyEnable)
             {
+                kafkaManagementNodeSize = kafkaManagementNodeSize?? GetNodeSize(clusterType, Constants.ClusterRoleType.KafkaManagementNodeRole, defaultVmSizeConfigurations);
                 Role kafkaManagementNode = CreateKafkaManagementNode(osProfile, vnetProfile, kafkaManagementNodeSize);
                 roles.Add(kafkaManagementNode);
             }
@@ -320,10 +320,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return CreateCommonRole(osProfile, vnetProfile, AzureHDInsightClusterNodeType.EdgeNode, edgeNodeScriptActions, edgeNodeCount, edgeNodeSize);
         }
 
-        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile)
+        public static Role CreateIdBrokerNodeRole(OsProfile osProfile, VirtualNetworkProfile vnetProfile,string idBrokerNodeSize)
         {
             const int idBrokerNodeCount = 2;
-            return CreateCommonRole(null, vnetProfile, AzureHDInsightClusterNodeType.IdBrokerNode, null, idBrokerNodeCount, null);
+            return CreateCommonRole(null, vnetProfile, AzureHDInsightClusterNodeType.IdBrokerNode, null, idBrokerNodeCount, idBrokerNodeSize);
         }
 
         public static Role CreateKafkaManagementNode(OsProfile osProfile, VirtualNetworkProfile vnetProfile, string kafkaManagementNodeSize)
@@ -349,21 +349,35 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             };
         }
 
-        public static string GetNodeSize(string clusterType, ClusterNodeType nodeType)
+        public static string GetNodeSize(string clusterType, string nodeRoleType)
         {
-            switch (nodeType)
+            switch (nodeRoleType)
             {
-                case ClusterNodeType.HeadNode:
+                case Constants.ClusterRoleType.HeadNodeRole:
                     return DefaultVmSizes.HeadNode.GetSize(clusterType);
-                case ClusterNodeType.WorkerNode:
+                case Constants.ClusterRoleType.WorkerNodeRole:
                     return DefaultVmSizes.WorkerNode.GetSize(clusterType);
-                case ClusterNodeType.ZookeeperNode:
+                case Constants.ClusterRoleType.ZookeeperNodeRole:
                     return DefaultVmSizes.ZookeeperNode.GetSize(clusterType);
-                case ClusterNodeType.EdgeNode:
+                case Constants.ClusterRoleType.EdgeNodeRole:
                     return DefaultVmSizes.EdgeNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.KafkaManagementNodeRole:
+                    return DefaultVmSizes.KafkaManagementNode.GetSize(clusterType);
+                case Constants.ClusterRoleType.HIBNodeRole:
+                    return DefaultVmSizes.IdBrokerNode.GetSize(clusterType);
                 default:
                     throw new ArgumentOutOfRangeException("nodeType");
             }
+        }
+
+        public static string GetNodeSize(string clusterType, string nodeRoleType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfigurations)
+        {
+            string vmSize=GetDefaultVmSizeFromDictionary(clusterType.ToUpper(), nodeRoleType, defaultVmSizeConfigurations);
+            if (vmSize == null)
+            {
+                vmSize = GetNodeSize(clusterType, nodeRoleType);
+            }
+            return vmSize;
         }
 
         public static SecurityProfile ConvertAzureHDInsightSecurityProfileToSecurityProfile(AzureHDInsightSecurityProfile azureHDInsightSecurityProfile, string assignedIdentity)
@@ -405,6 +419,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return config;
         }
 
+        public static bool CheckEnableKafkaRestProxy(NetworkProperties networkProperties)
+        {
+            return networkProperties != null;
+        }
+
         private static void AddOrCombineConfigurations(this IDictionary<string, Dictionary<string, string>> configurations, string configKey, Dictionary<string, string> newConfigurations)
         {
             if (configurations.ContainsKey(configKey))
@@ -425,6 +444,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         private static Dictionary<TKey, TValue> MergedDictionaries<TKey, TValue>(IDictionary<TKey, TValue> dict1, IDictionary<TKey, TValue> dict2)
         {
             return dict1.Union(dict2).ToDictionary(p => p.Key, p => p.Value);
+        }
+
+        private static string GetDefaultVmSizeFromDictionary(string clusterType, string nodeType, Dictionary<string, Dictionary<string, string>> defaultVmSizeConfiguration)
+        {
+            string vmSize = null;
+            if (defaultVmSizeConfiguration != null && defaultVmSizeConfiguration.TryGetValue(nodeType, out var clusterTypeAndVmSizeDict))
+            {
+                if (!clusterTypeAndVmSizeDict.TryGetValue(clusterType, out vmSize))
+                {
+                    // backend will use the string "*" to stand for it is applicable for all clsuter type.
+                    clusterTypeAndVmSizeDict.TryGetValue(Constants.ClusterType.AllClusterType, out vmSize);
+                }
+            }
+            return vmSize;
         }
     }
 }
