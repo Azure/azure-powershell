@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported soft delete DataLake Gen2 item
+    - `Get-AzDataLakeGen2DeletedItem`
+    - `Restore-AzDataLakeGen2DeletedItem`
+
 * Supported file share snapshot
     - `New-AzRmStorageShare`
     - `Get-AzRmStorageShare`
