@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -20,12 +21,14 @@ using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
+    [CmdletOutputBreakingChange(typeof(PSSignalRResource), DeprecatedOutputProperties = new String[] { nameof(PSSignalRResource.HostNamePrefix) })]
     public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {
         private const string DefaultSku = "Standard_S1";

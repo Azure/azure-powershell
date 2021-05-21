@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.SignalR.Models;
 
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string HostName { get; }
 
-        [Obsolete]
         public string HostNamePrefix { get; }
 
         public string ProvisioningState { get; }
