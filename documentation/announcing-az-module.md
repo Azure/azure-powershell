@@ -1,5 +1,5 @@
 # Announcing New Module 'Az'
-In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az will go to version 1.0 on 12/18/2018. Az runs on both Windows PowerShell 5.1 and PowerShell 7.  'Az' ensures that the Windows PowerShell and PowerShell 7 cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
+In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az goes to version 1.0 on 12/18/2018. Az runs on both Windows PowerShell 5.1 and PowerShell 7.  'Az' ensures that the Windows PowerShell and PowerShell 7 cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
 Az currently ships in Cloud Shell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/)
 
@@ -173,7 +173,7 @@ Az and AzureRM cannot be imported side-by-side into the same PowerShell session.
 - Install Az and AzureRM side-by-side in Windows PowerShell and ensure scripts do not mix the modules
 
 #### Install Az in PowerShell 7
-You can follow the instructions in [Installing PowerShell 7 on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6
+You can follow the instructions in [Installing PowerShell 7 on Windows](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows
 ) to install PowerShell 7, then use ```Install-Module Az``` in PowerShell 7 to acquire the Az module.  Since Windows PowerShell and PowerShell 7 can exist side-by-side and do not share module directories, this will effectively isolate the two modules.
 
 #### Install Az and AzureRM Side-by-Side
