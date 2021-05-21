@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
         {
-            SparkJobDefinitionResource SparkJobDefinition = JsonConvert.DeserializeObject<SparkJobDefinitionResource>(rawJsonContent);
+            SparkJobDefinitionResource SparkJobDefinition = new SparkJobDefinitionResource(JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent));
             return _sparkJobDefinitionClient.CreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition);
         }
 

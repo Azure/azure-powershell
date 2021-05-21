@@ -681,4 +681,13 @@ Are you sure you want to continue?</value>
   <data name="SettingSynapseSqlScript" xml:space="preserve">
     <value>Setting SQL script '{0}' in workspace '{1}'.</value>
   </data>
+  <data name="RemoveSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Are you sure you want to remove Spark job definition '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Deleting Spark job definition '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Setting Spark job definition '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

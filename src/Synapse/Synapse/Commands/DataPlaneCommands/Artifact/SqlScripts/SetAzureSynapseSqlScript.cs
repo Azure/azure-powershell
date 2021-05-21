@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
-            Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject,
-            Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
-        [ValidateNotNullOrEmpty]
-        [Alias("File")]
-        public string ScriptFile { get; set; }
+        //[Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
+        //    Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
+        //[Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject,
+        //    Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
+        //[ValidateNotNullOrEmpty]
+        //[Alias("File")]
+        //public string ScriptFile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -72,21 +72,21 @@ namespace Microsoft.Azure.Commands.Synapse
                 {
                     case SetByName:
                     case SetByObject:
-                        string query = this.ReadFileAsText(this.TryResolvePath(ScriptFile));
-                        SqlConnection connection = new SqlConnection(SqlConnectionType.SqlPool, )
-                        SqlScriptContent sqlScriptContent = new SqlScriptContent(query, connection)
-                        {
-                            Metadata = new SqlScriptMetadata
-                            {
-                                Language = "sql"
-                            }
-                        };
-                        SqlScript script = new SqlScript(content);
-                        SqlScriptResource sqlScript = new SqlScriptResource(this.Name, new SqlScript)
-                        {
+                        //string query = this.ReadFileAsText(this.TryResolvePath(ScriptFile));
+                        //SqlConnection connection = new SqlConnection(SqlConnectionType.SqlPool, )
+                        //SqlScriptContent sqlScriptContent = new SqlScriptContent(query, connection)
+                        //{
+                        //    Metadata = new SqlScriptMetadata
+                        //    {
+                        //        Language = "sql"
+                        //    }
+                        //};
+                        //SqlScript script = new SqlScript(content);
+                        //SqlScriptResource sqlScript = new SqlScriptResource(this.Name, new SqlScript)
+                        //{
 
-                        }
-                        WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.CreateOrUpdateSqlScript(this.Name, rawJsonContent)));
+                        //}
+                        //WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.CreateOrUpdateSqlScript(this.Name, rawJsonContent)));
                         break;
 
                     case RenameByName:

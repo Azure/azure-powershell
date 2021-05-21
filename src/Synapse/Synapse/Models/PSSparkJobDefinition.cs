@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Description = properties?.Description;
             TargetBigDataPool = properties?.TargetBigDataPool != null ? new PSBigDataPoolReference(properties.TargetBigDataPool) : null;
             RequiredSparkVersion = properties?.RequiredSparkVersion;
-            JobProperties = properties?.JobProperties;
+            JobProperties = properties?.JobProperties != null ? new PSSparkJobProperties(properties.JobProperties) : null;
         }
 
         /// <summary> The description of the Spark job definition. </summary>

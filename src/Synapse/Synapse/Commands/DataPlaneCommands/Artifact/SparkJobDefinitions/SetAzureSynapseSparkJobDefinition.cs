@@ -1,5 +1,4 @@
-﻿using Azure.Analytics.Synapse.Artifacts.Models;
-using Microsoft.Azure.Commands.Common.Exceptions;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
@@ -10,11 +9,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript,
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJobDefinition,
         DefaultParameterSetName = SetByName, SupportsShouldProcess = true)]
-    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SqlScript)]
-    [OutputType(typeof(PSSqlScriptResource))]
-    public class SetAzureSynapseSqlScript : SynapseArtifactsCmdletBase
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + SynapseConstants.SynapsePrefix + SynapseConstants.SparkJobDefinition)]
+    [OutputType(typeof(PSSparkJobDefinitionResource))]
+    public class SetAzureSynapseSparkJobDefinition : SynapseArtifactsCmdletBase
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
@@ -36,25 +35,22 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.SqlScriptName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
         [ValidateNotNullOrEmpty]
-        [Alias("SqlScriptName")]
+        [Alias("SparkJobDefinitionName")]
         public string Name { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RenameByName,
-            Mandatory = true, HelpMessage = HelpMessages.SqlScriptName)]
+            Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RenameByObject,
-            Mandatory = true, HelpMessage = HelpMessages.SqlScriptName)]
+            Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
-            Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject,
-            Mandatory = true, HelpMessage = HelpMessages.ScriptFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
-        public string ScriptFile { get; set; }
+        public string DefinitionFile { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -66,33 +62,20 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.WorkspaceName = this.WorkspaceObject.Name;
             }
 
-            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseSqlScript, this.Name, this.WorkspaceName)))
+            if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseSparkJobDefinition, this.Name, this.WorkspaceName)))
             {
                 switch (ParameterSetName)
                 {
                     case SetByName:
                     case SetByObject:
-                        string query = this.ReadFileAsText(this.TryResolvePath(ScriptFile));
-                        SqlConnection connection = new SqlConnection(SqlConnectionType.SqlPool, )
-                        SqlScriptContent sqlScriptContent = new SqlScriptContent(query, connection)
-                        {
-                            Metadata = new SqlScriptMetadata
-                            {
-                                Language = "sql"
-                            }
-                        };
-                        SqlScript script = new SqlScript(content);
-                        SqlScriptResource sqlScript = new SqlScriptResource(this.Name, new SqlScript)
-                        {
-
-                        }
-                        WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.CreateOrUpdateSqlScript(this.Name, rawJsonContent)));
+                        string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
+                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.CreateOrUpdateSparkJobDefinition(this.Name, rawJsonContent)));
                         break;
 
                     case RenameByName:
                     case RenameByObject:
-                        SynapseAnalyticsClient.RenameSqlScript(this.Name, this.NewName);
-                        WriteObject(new PSSqlScriptResource(SynapseAnalyticsClient.GetSqlScript(this.Name)));
+                        SynapseAnalyticsClient.RenameSparkJobDefinition(this.Name, this.NewName);
+                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.GetSparkJobDefinition(this.Name)));
                         break;
 
                     default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
