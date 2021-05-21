@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: DiskPool
-online version: https://docs.microsoft.com/powershell/module/diskpool/invoke-azdiskpooldeallocation
+online version: https://docs.microsoft.com/powershell/module/diskpool/stop-azdiskpool
 schema: 2.0.0
 ---
 
-# Invoke-AzDiskPoolDeallocation
+# Stop-AzDiskPool
 
 ## SYNOPSIS
 Shuts down the Disk Pool and releases the compute resources.
@@ -15,14 +15,14 @@ You are not billed for the compute resources that this Disk Pool uses.
 
 ### Deallocate (Default)
 ```
-Invoke-AzDiskPoolDeallocation -DiskPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzDiskPool -DiskPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeallocateViaIdentity
 ```
-Invoke-AzDiskPoolDeallocation -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDiskPool -InputObject <IDiskPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

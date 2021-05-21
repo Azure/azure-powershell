@@ -53,9 +53,12 @@ directive:
       verb: Set
     remove: true
   - where:
+      verb: Invoke
       subject: DeallocateDiskPool
-    set: 
-      subject: Deallocation
+    set:
+      verb: Stop
+      subject-prefix: ''
+      subject: DiskPool
   - where:
       verb: New
       subject: DiskPool
@@ -73,9 +76,6 @@ directive:
       subject: IscsiTarget
     hide: true
   - model-cmdlet:
-    - Disk
-    - TargetPortalGroupCreate
-    - TargetPortalGroupUpdate
     - Acl
     - IscsiLun
 ```
