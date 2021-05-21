@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.2
 * Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
 
 ## Version 1.0.1

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Added support in function app creation for Python 3.9 and Node 14 function apps
 * Removed support in function app creation for V2, Python 3.6, Node 8, and Node 10 function apps
 * Updated IdentityID parameter from string to string array in Update-AzFunctionApp. This is to be consistent with New-AzFunctionApp which has the same parameter as a string array

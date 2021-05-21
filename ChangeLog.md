@@ -1,3 +1,171 @@
+## 6.0.0 - May 2021
+#### Az.Accounts
+* Upgraded Azure.Identity to 1.4 and MSAL to 4.30.1
+* Removed obsolete parameters 'ManagedServiceHostName', 'ManagedServicePort' and 'ManagedServiceSecret' of cmdlet 'Connect-AzAccount', environment variables 'MSI_ENDPOINT' and 'MSI_SECRET' could be used instead
+* Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Added optional parameter 'AuthScope' to 'Connect-AzAccount' to support enhanced authentication of data plane features
+* Set retry times by environment variable [#14748]
+* Supported subject name issuer authentication
+
+#### Az.Compute
+* Added 'Invoke-AzVmInstallPatch' to support patch installation in VMs using PowerShell.
+* Updated Compute module to use the latest .Net SDK version 46.0.0.
+* Added optional parameter '-EdgeZone' to the following cmdlets:
+    - 'Get-AzVMImage
+    - 'Get-AzVMImageOffer'
+    - 'Get-AzVMImageSku'
+    - 'New-AzDiskConfig'
+    - 'New-AzImageConfig'
+    - 'New-AzSnapshotConfig'
+    - 'New-AzVM'
+    - 'New-AzVmssConfig'
+    - 'New-AzVMSS'
+
+#### Az.ContainerInstance
+* Added new cmdlets: 'Start-AzContainerGroup', 'Stop-AzContainerGroup' [#10773], 'Invoke-AzContainerInstanceCommand' [#7648], 'Update-AzContainerGroup', 'Add-AzContainerInstanceOutput', 'Get-AzContainerInstanceCachedImage', 'Get-AzContainerInstanceCapability', 'Get-AzContainerInstanceUsage', 'New-AzContainerGroupImageRegistryCredentialObject', 'New-AzContainerGroupPortObject', 'New-AzContainerGroupVolumeObject', 'New-AzContainerInstanceEnvironmentVariableObject', 'New-AzContainerInstanceInitDefinitionObject', 'New-AzContainerInstanceObject', 'New-AzContainerInstancePortObject' and 'New-AzContainerInstanceVolumeMountObject'
+* Supported Log Analytics parameters in 'New-AzContainerGroup' [#11117]
+* Added support to specify network profile and the name of Azure File Share in 'New-AzContainerGroup' [#9993] [#12218]
+* Added support to specify environment variables as SecureValue [#10110] [#10640]
+
+#### Az.ContainerRegistry
+* Fixed username and password issue in 'Import-AzContainerRegistryImage' [#14971]
+* Fixed data plane operations (repository, tag, manifest) failed cross registry in single Powershell session [#14849]
+
+#### Az.CosmosDB
+* Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
+  - The following cmdlets are added:
+    - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlRoleDefinition, New-AzCosmosDBSqlRoleAssignment,
+    - Remove-AzCosmosDBSqlRoleDefinition, Remove-AzCosmosDBSqlRoleAssignment,
+    - Update-AzCosmosDBSqlRoleDefinition, Update-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlPermission
+
+#### Az.DesktopVirtualization
+* Upgraded api version to 2021-02-01-preview.
+
+#### Az.Functions
+* Added support in function app creation for Python 3.9 and Node 14 function apps
+* Removed support in function app creation for V2, Python 3.6, Node 8, and Node 10 function apps
+* Updated IdentityID parameter from string to string array in Update-AzFunctionApp. This is to be consistent with New-AzFunctionApp which has the same parameter as a string array
+* Updated FullyQualifiedErrorId for an invalid Functions version from FunctionsVersionIsInvalid to FunctionsVersionNotSupported 
+* When creating a Node.js function app, if no runtime version is specified, the default runtime version is set to 14 instead of 12
+
+#### Az.KeyVault
+* Provided key size for RSA key [#14819]
+
+#### Az.Kusto
+* Bumped API version to stable 2021-01-01
+
+#### Az.Maintenance
+* Bumped API version to stable 2021-05-01
+
+#### Az.Migrate
+* Fixed an issue in Initialize-AzMigrateReplicationInfrastructure.ps1
+
+#### Az.Network
+* Updated validation to allow passing zero value for saDataSizeKilobytes parameter
+    - 'New-AzureRmIpsecPolicy'
+* Added optional parameter '-EdgeZone' to the following cmdlets:
+    - 'New-AzNetworkInterface'
+    - 'New-AzPublicIpAddress'
+    - 'New-AzVirtualNetwork'
+
+#### Az.RecoveryServices
+* Fixed security issue with SQL restore, this is a necessary breaking change. TargetContainer becomes mandatory for Alternate Location Restore.
+* Removed Set-AzRecoveryServicesBackupProperties cmdlet alias, Set-AzRecoveryServicesBackupProperty is supported.
+* Removed Get-AzRecoveryServicesBackupJobDetails cmdlet alias, Get-AzRecoveryServicesBackupJobDetail is supported.
+* Added support for cross subscription DS Move.
+* Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.
+
+#### Az.Resources
+* Changed '-IdentifierUris' in 'New-AzADApplication' to optional parameter
+* Removed generated 'DisplayName' of ADApplication created by 'New-AzADServicePrincipal'
+* Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version
+* Added 'AdditionalProperties' to PSADUser and PSADGroup [#14568]
+* Supported 'CustomKeyIdentifier' in 'New-AzADAppCredential' and 'Get-AzADAppCredential' [#11457], [#13723]
+* Changed 'MainTemplate' to be shown by the default formatter for Template Spec Versions
+
+#### Az.SecurityInsights
+* GA release for `Az.SecurityInsights`
+
+#### Az.ServiceFabric
+* Removed deprecated cluster certificate commands:
+    - 'Add-AzServiceFabricClusterCertificate'
+    - 'Remove-AzServiceFabricClusterCertificate'
+* Changed PSManagedService model to avoid using the properties parameter directly from sdk.
+* Removed deprecated parameters for managed cmdlets:
+    - 'ReverseProxyEndpointPort'
+    - 'InstanceCloseDelayDuration'
+    - 'ServiceDnsName'
+    - 'InstanceCloseDelayDuration'
+    - 'DropSourceReplicaOnMove'
+* Fixed 'Update-AzServiceFabricReliability' to update correctly the vm instance count of the primary node type on the cluster resource.
+
+#### Az.Sql
+* Updated 'Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline' documentation to include example of define array of array with one inner array.
+* Added cmdlet 'Copy-AzSqlDatabaseLongTermRetentionBackup'
+    - Copy LTR backups to different servers
+* Added cmdlet 'Update-AzSqlDatabaseLongTermRetentionBackup'
+    - Update Backup Storage Redundancy values for LTR backups
+* Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to 'Get-AzSqlDatabase', 'New-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlDatabaseSecondary', 'Set-AzSqlDatabaseSecondary', 'New-AzSqlDatabaseCopy'
+    - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
+
+#### Az.Storage
+* Supported file share snapshot
+    - 'New-AzRmStorageShare'
+    - 'Get-AzRmStorageShare'
+    - 'Remove-AzRmStorageShare'
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+    - 'Remove-AzRmStorageShare'
+* Supported Set/Get/Remove blob inventory policy
+    - 'New-AzStorageBlobInventoryPolicyRule'
+    - 'Set-AzStorageBlobInventoryPolicy'
+    - 'Get-AzStorageBlobInventoryPolicy'
+    - 'Remove-AzStorageBlobInventoryPolicy'
+* Supported DefaultSharePermission in create/update storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported AllowCrossTenantReplication in create/update storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account resource Id
+    - 'Set-AzStorageObjectReplicationPolicy'
+* Supported set SasExpirationPeriod as TimeSpan.Zero
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount
+* Make sure the correct account name is used when create account credential
+    - 'New-AzStorageContext'
+
+#### Az.StorageSync
+* Deprecated 'Invoke-AzStorageSyncFileRecall'
+    - Customers should instead use 'Invoke-StorageSyncFileRecall', a cmdlet that is shipped with the Azure File Sync agent.
+* Removed offline data transfer feature in 'New-AzStorageSyncServerEndpoint'.
+
+#### Az.StreamAnalytics
+* Bumped API version to 2017-04-01-preview
+* Added StreamAnalytics Cluster support
+
+#### Az.Websites
+* updated 'Set-AzAppServicePlan' to keep existing Tags when adding new Tags
+* Fixed 'Set-AzWebApp' to set the AppSettings
+* updated 'Set-AzWebAppSlot' to set FtpsState
+* Added support for StaticSites.
+
+### Thanks to our community contributors
+* @corichte, Update New-AzVirutalNetworkGatewayConnection Ex 1 (#14858)
+* Hiroshi Yoshioka (@hyoshioka0128)
+  * Typo "Azure SQL database"→"Azure SQL Database" (#14883)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14891)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14892)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14902)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14901)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14900)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14898)
+  * Typo "Azure SQL managed instance"→"Azure SQL Managed Instance" (#14899)
+* Jay Zelos (@jzelos), Updated example 3 to use correct parameter (#14852)
+* @StevePantol, Update New-AzVMwarePrivateCloud.md (#14996)
+
+
 ## 5.9.0 - May 2021
 #### Az.Aks
 * Added support 'AcrNameToAttach' in 'Set-AzAksCluster'. [#14692]

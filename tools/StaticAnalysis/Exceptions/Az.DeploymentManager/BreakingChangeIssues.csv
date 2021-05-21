@@ -1,3 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.DeploymentManager","Microsoft.Azure.Commands.DeploymentManager.Commands.SetServiceTopology","Set-AzDeploymentManagerServiceTopology","0","1050","The parameter set 'InputObject' for cmdlet 'Set-AzDeploymentManagerServiceTopology' has been removed.","Add parameter set 'InputObject' back to cmdlet 'Set-AzDeploymentManagerServiceTopology'."
-"Az.DeploymentManager","Microsoft.Azure.Commands.DeploymentManager.Commands.SetServiceUnit","Set-AzDeploymentManagerServiceUnit","0","1050","The parameter set 'InputObject' for cmdlet 'Set-AzDeploymentManagerServiceUnit' has been removed.","Add parameter set 'InputObject' back to cmdlet 'Set-AzDeploymentManagerServiceUnit'."

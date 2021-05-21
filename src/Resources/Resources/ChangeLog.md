@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
 * Removed generated `DisplayName` of ADApplication created by `New-AzADServicePrincipal`
 * Updated SDK to 3.13.1-preview to use GA TemplateSpecs API version

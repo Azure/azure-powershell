@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.0
 * Removed deprecated cluster certificate commands:
     - `Add-AzServiceFabricClusterCertificate`
     - `Remove-AzServiceFabricClusterCertificate`
