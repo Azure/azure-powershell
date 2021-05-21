@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cross tenant DS Move.
+* Removed restrition to fetch recovery points only for a 30 days time range.
+* Enabled CRR for new regions.
 * Added Archive for V1 vaults.
 
 ## Version 4.1.0
