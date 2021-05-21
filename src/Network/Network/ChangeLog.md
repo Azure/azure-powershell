@@ -25,8 +25,6 @@
     - `New-AzNetworkInterface`
     - `New-AzPublicIpAddress`
     - `New-AzVirtualNetwork`
-* Added example to New-AzApplicationGatewayAutoscaleConfiguration
-   - `Example to convert Application Gateway scaling from Manual to Auto`
 
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
