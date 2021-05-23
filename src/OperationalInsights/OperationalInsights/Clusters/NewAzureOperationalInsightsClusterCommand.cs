@@ -38,16 +38,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
-        [ValidateSet("SystemAssigned", "None")]
+        [ValidateSet("SystemAssigned", "None", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sku Name, now can be 'CapacityReservation' only")]
-        [ValidateSet("CapacityReservation")]
+        [ValidateSet("CapacityReservation", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string SkuName { get; set; }
 
-        [Parameter(Mandatory = true,  HelpMessage = "Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.")]
+        [Parameter(Mandatory = true, HelpMessage = "Sku Capacity, value need to be multiple of 100 and at least 1000.")]
         [ValidateNotNullOrEmpty]
         public long SkuCapacity { get; set; }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         public bool? IsDoubleEncryptionEnabled { get; private set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Billing type can be set as 'Cluster' or 'Workspaces'")]
-        [ValidateSet("Cluster", "Workspaces")]
+        [ValidateSet("Cluster", "Workspaces", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string BillingType { get; private set; }
 

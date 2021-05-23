@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual HttpStatusCode DeleteWorkspace(string resourceGroupName, string workspaceName, bool? ForceDelete)
         {
-            Rest.Azure.AzureOperationResponse result  = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ForceDelete).GetAwaiter().GetResult();
+            Rest.Azure.AzureOperationResponse result = OperationalInsightsManagementClient.Workspaces.DeleteWithHttpMessagesAsync(resourceGroupName, workspaceName, ForceDelete).GetAwaiter().GetResult();
             return result.Response.StatusCode;
         }
 
@@ -111,24 +111,25 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             string resourceGroupName,
             string workspaceName,
             string location,
-            string sku,
-            IDictionary<string, string> tags, 
+            PSWorkspaceSku sku,
+            IDictionary<string, string> tags,
             string publicNetworkAccessForIngestion,
             string publicNetworkAccessForQuery,
             int? retentionInDays,
+            bool? forceCmkForQuery = null,
+            int? dailyQuotaGb = null,
             Guid? customerId = null)
         {
-            Workspace properties = new Workspace(location:location, tags:tags, customerId:customerId.HasValue?customerId.Value.ToString():null, publicNetworkAccessForIngestion:publicNetworkAccessForIngestion, publicNetworkAccessForQuery:publicNetworkAccessForQuery);
+            Workspace properties = new Workspace(location: location, tags: tags, customerId: customerId.HasValue ? customerId.Value.ToString() : null, publicNetworkAccessForIngestion: publicNetworkAccessForIngestion, publicNetworkAccessForQuery: publicNetworkAccessForQuery, forceCmkForQuery: forceCmkForQuery);
 
-            if (!string.IsNullOrWhiteSpace(sku))
-            {
-                properties.Sku = new WorkspaceSku(sku);
-            }
+            properties.Sku = sku.getWorkspaceSku();
 
             if (retentionInDays.HasValue)
             {
                 properties.RetentionInDays = retentionInDays.Value;
             }
+
+            properties.WorkspaceCapping = dailyQuotaGb != null ? new WorkspaceCapping(dailyQuotaGb) : null;
 
             var response = OperationalInsightsManagementClient.Workspaces.CreateOrUpdate(
                 resourceGroupName,
@@ -148,11 +149,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
                 workspace.Location,
-                string.IsNullOrWhiteSpace(parameters.Sku) ? workspace.Sku : parameters.Sku,
+                parameters?.Sku == null ? workspace.Sku : parameters.Sku,
                 parameters.Tags == null ? workspace.Tags : ToDictionary(parameters.Tags),
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForIngestion) ? workspace.PublicNetworkAccessForIngestion : parameters.PublicNetworkAccessForIngestion,
                 string.IsNullOrWhiteSpace(parameters.PublicNetworkAccessForQuery) ? workspace.PublicNetworkAccessForQuery : parameters.PublicNetworkAccessForQuery,
-                parameters.RetentionInDays,
+                retentionInDays: parameters.RetentionInDays,
+                forceCmkForQuery: parameters.ForceCmkForQuery,
+                dailyQuotaGb: parameters.DailyQuotaGb,
                 workspace.CustomerId);
 
             return new PSWorkspace(updatedWorkspace, parameters.ResourceGroupName);
@@ -179,7 +182,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             tags,
                             parameters.PublicNetworkAccessForIngestion,
                             parameters.PublicNetworkAccessForQuery,
-                            parameters.RetentionInDays),
+                            retentionInDays: parameters.RetentionInDays,
+                            forceCmkForQuery: parameters.ForceCmkForQuery),
                         parameters.ResourceGroupName);
                 if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
@@ -213,8 +217,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual List<PSWorkspace> GetDeletedWorkspace(string resourceGroupName)
         {
-            return String.IsNullOrEmpty(resourceGroupName) 
-                ? OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList() 
+            return String.IsNullOrEmpty(resourceGroupName)
+                ? OperationalInsightsManagementClient.DeletedWorkspaces.List().Select(x => new PSWorkspace(x, new ResourceIdentifier(x.Id).ResourceGroupName)).ToList()
                 : OperationalInsightsManagementClient.DeletedWorkspaces.ListByResourceGroup(resourceGroupName).Select(x => new PSWorkspace(x, resourceGroupName)).ToList();
         }
 
@@ -256,7 +260,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual PSLinkedStorageAccountsResource GetLinkedStorageAccount(string resourceGroupName, string workspaceName, string dataSourceType)
         {
-            LinkedStorageAccountsResource resource = this.OperationalInsightsManagementClient.LinkedStorageAccounts.Get(resourceGroupName, workspaceName,PSLinkedStorageAccountsResource.getDataSourceType(dataSourceType));
+            LinkedStorageAccountsResource resource = this.OperationalInsightsManagementClient.LinkedStorageAccounts.Get(resourceGroupName, workspaceName, PSLinkedStorageAccountsResource.getDataSourceType(dataSourceType));
 
             return new PSLinkedStorageAccountsResource(resource);
         }
@@ -265,7 +269,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             IList<PSLinkedStorageAccountsResource> resources = new List<PSLinkedStorageAccountsResource>();
 
-            IEnumerable<LinkedStorageAccountsResource> response =  this.OperationalInsightsManagementClient.LinkedStorageAccounts.ListByWorkspace(resourceGroupName, workspaceName);
+            IEnumerable<LinkedStorageAccountsResource> response = this.OperationalInsightsManagementClient.LinkedStorageAccounts.ListByWorkspace(resourceGroupName, workspaceName);
 
             if (response != null)
             {
@@ -361,7 +365,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             if (enabled)
             {
                 OperationalInsightsManagementClient.IntelligencePacks.Enable(resourceGroupName, workspaceName, intelligencePackName);
-                return new PSIntelligencePack(intelligencePackName, enabled); 
+                return new PSIntelligencePack(intelligencePackName, enabled);
             }
             else
             {

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            this.Sku = workspace.Sku != null ? workspace.Sku.Name : null;
+            this.Sku = workspace.Sku != null ? new PSWorkspaceSku(workspace.Sku.Name, workspace.Sku.CapacityReservationLevel) : null;
             this.retentionInDays = workspace.RetentionInDays;
             this.CustomerId = new Guid(workspace.CustomerId);
             this.ProvisioningState = workspace.ProvisioningState;
@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.PublicNetworkAccessForIngestion = workspace.PublicNetworkAccessForIngestion;
             this.PublicNetworkAccessForQuery = workspace.PublicNetworkAccessForQuery;
             this.PrivateLinkScopedResources = workspace.PrivateLinkScopedResources;
-
+            this.WorkspaceCapping = workspace.WorkspaceCapping;
+            this.CreatedDate = workspace.CreatedDate;
+            this.ModifiedDate = workspace.ModifiedDate;
+            this.ForceCmkForQuery = workspace.ForceCmkForQuery;
+            this.WsFeatures = workspace.Features;
         }
 
         public string Name { get; set; }
@@ -59,7 +63,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
-        public string Sku { get; set; }
+        public PSWorkspaceSku Sku { get; set; }
 
         public int? retentionInDays { get; set; }
 
@@ -72,5 +76,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string PublicNetworkAccessForQuery { get; set; }
 
         public IList<PrivateLinkScopedResource> PrivateLinkScopedResources { get; private set; }
+
+        public WorkspaceCapping WorkspaceCapping { get; private set; }
+
+        public string CreatedDate { get; set; }
+
+        public string ModifiedDate { get; set; }
+
+        public bool? ForceCmkForQuery { get; set; }
+
+        public IDictionary<string, object> WsFeatures { get; set; }
     }
 }

@@ -117,22 +117,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public Cluster getCluster()
         {
             return new Cluster(
+                name: Name,
                 location: Location,
-                id: Id,
-                type: Type,
                 tags: getTags(),
                 identity: Identity?.getIdentity(),
-                sku: Sku?.geteClusterSku(),
-                //clusterId: ClusterId,
-                //provisioningState: ProvisioningState,
-                //isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
-                //isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
-                //billingType: BillingType,
+                sku: Sku?.getClusterSku(),
+                isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
+                isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
+                billingType: BillingType,
                 keyVaultProperties: KeyVaultProperties.GetKeyVaultProperties()
-                //lastModifiedDate: LastModifiedDate,
-                //createdDate: CreatedDate,
-                //associatedWorkspaces: AssociatedWorkspaces,
-                //capacityReservationProperties: CapacityReservationProperties
                 );
         }
 

@@ -43,7 +43,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
         [PSArgumentCompleter("free", "standard", "premium", "pernode", "standalone", "pergb2018")]
-        public string Sku { get; set; }
+        public string SkuName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Sku Capacity, value need to be multiple of 100 and at least 0.")]
+        [ValidateNotNullOrEmpty]
+        public int SkuCapacity { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
@@ -54,17 +58,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public int? RetentionInDays { get; set; }
 
-        [Parameter(
-            Position = 7,
-            Mandatory = false,
+        [Parameter(Position = 7, Mandatory = false,
             HelpMessage = "The network access type for accessing workspace ingestion. Value should be 'Enabled' or 'Disabled'")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccessForIngestion;
 
-        [Parameter(
-            Position = 8,
-            Mandatory = false,
+        [Parameter(Position = 8, Mandatory = false,
             HelpMessage = "The network access type for accessing workspace query. Value should be 'Enabled' or 'Disabled'")]
+        [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string PublicNetworkAccessForQuery;
+
+        [Parameter(Position = 9, Mandatory = false,
+            HelpMessage = "Gets or sets indicates whether customer managed storage is mandatory for query management")]
+        public bool? ForceCmkForQuery;
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -76,12 +82,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
                 Location = Location,
-                Sku = Sku,
+                Sku = new PSWorkspaceSku(SkuName, SkuCapacity),
                 Tags = Tag,
                 RetentionInDays = RetentionInDays,
                 Force = Force.IsPresent,
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
+                ForceCmkForQuery = ForceCmkForQuery,
                 ConfirmAction = ConfirmAction
             };
 

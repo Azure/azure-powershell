@@ -61,6 +61,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public PSIdentity Identity { get; set; }
 
+        //public bool? IsDoubleEncryptionEnabled { get; set; }
+
+        //public bool? IsAvailabilityZonesEnabled { get; set; }
+
         private IDictionary<string, string> getTags()
         {
             return this.Tags?.Cast<DictionaryEntry>().ToDictionary(kv => (string)kv.Key, kv => (string)kv.Value);
@@ -68,7 +72,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public ClusterPatch GetClusterPatch()
         {
-            return new ClusterPatch(this.KeyVaultProperties?.GetKeyVaultProperties(), identity: Identity.getIdentity(), this.Sku?.geteClusterSku(), this.getTags());
+            return new ClusterPatch(
+                this.KeyVaultProperties?.GetKeyVaultProperties(), 
+                identity: Identity.getIdentity(), 
+                this.Sku?.getClusterSku(),
+                //TODO dabenham see why isDoubleEncryptionEnabled and isAvailabilityZonesEnabled
+                // apears in the swagger but not in the ClusterPatch object that is generatted from it
+
+                //isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled, 
+                //isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
+                this.getTags());
         }
     }
 }
