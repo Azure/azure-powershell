@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
 * Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
     - Copy LTR backups to different servers
@@ -25,7 +26,6 @@
     - Update Backup Storage Redundancy values for LTR backups
 * Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
     - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
-* Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 
 ## Version 2.17.1
 * Added cmdlet output breaking change warnings to the following: 
