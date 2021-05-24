@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         [Alias("DeploymentName")]
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the deployment it's going to create. If not specified, defaults to the template file name when a template file is provided; defaults to the current time when a template object is provided, e.g. \"20131223140835\".")]
+            HelpMessage = "The name of the deployment it's going to test. If not specified, defaults to the template file name when a template file is provided")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
         
