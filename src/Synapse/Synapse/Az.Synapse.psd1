@@ -171,8 +171,7 @@ CmdletsToExport = 'Get-AzSynapseSparkJob', 'Stop-AzSynapseSparkJob',
                'New-AzSynapseWorkspaceKey', 'Get-AzSynapseWorkspaceKey', 
                'Remove-AzSynapseWorkspaceKey', 'Update-AzSynapseWorkspaceKey', 
                'New-AzSynapseManagedVirtualNetworkConfig', 
-               'Update-AzSynapseManagedVirtualNetworkConfig', 'Get-AzSynapseSqlScript', 
-               'Remove-AzSynapseSqlScript', 'Set-AzSynapseSqlScript',
+               'Update-AzSynapseManagedVirtualNetworkConfig',
                'Get-AzSynapseSparkJobDefinition', 'Remove-AzSynapseSparkJobDefinition', 'Set-AzSynapseSparkJobDefinition'
 
 # Variables to export from this module

@@ -271,39 +271,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         #endregion
 
-        #region SQL Script
-
-        public SqlScriptResource CreateOrUpdateSqlScript(string sqlScriptName, string rawJsonContent)
-        {
-            SqlScriptResource sqlScript = JsonConvert.DeserializeObject<SqlScriptResource>(rawJsonContent);
-            return _sqlScriptClient.CreateOrUpdateSqlScript(sqlScriptName, sqlScript);
-        }
-
-        public SqlScriptResource GetSqlScript(string sqlScriptName)
-        {
-            return _sqlScriptClient.GetSqlScript(sqlScriptName).Value;
-        }
-
-        public Pageable<SqlScriptResource> GetSqlScriptsByWorkspace()
-        {
-            return _sqlScriptClient.GetSqlScriptsByWorkspace();
-        }
-
-        public void DeleteSqlScript(string sqlScriptName)
-        {
-            _sqlScriptClient.DeleteSqlScript(sqlScriptName);
-        }
-
-        public void RenameSqlScript(string sqlScriptName, string newName)
-        {
-            _sqlScriptClient.StartRenameSqlScript(sqlScriptName, new ArtifactRenameRequest
-            {
-                NewName = newName
-            }).Poll();
-        }
-
-        #endregion
-
         #region Spark Job Definition
 
         public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
