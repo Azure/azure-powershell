@@ -19,10 +19,10 @@
 -->
 ## Upcoming Release
 * Changes to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
-    - Accept `Trace` as a valid value.
-    - Accept `@()` as empty collection to clear the list.
-* Support `ResourceGroupCompleter` and `ResourceNameCompleter` in the applicable cmdlets.
-* Deprecate the `HostNamePrefix` property of output type `PSSignalRResource` of following cmdlets:
+    - Accepted `Trace` as a valid value.
+    - Accepted `@()` as empty collection to clear the list.
+* Supported `ResourceGroupCompleter` and `ResourceNameCompleter` in the applicable cmdlets.
+* Deprecated the `HostNamePrefix` property of output type `PSSignalRResource` of following cmdlets:
     - `Get-AzSignalR`
     - `New-AzSignalR`
     - `Update-AzSignalR`
