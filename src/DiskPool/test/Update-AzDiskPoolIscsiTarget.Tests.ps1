@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDiskPoolIscsiTarget' {
-    It 'UpdateExpanded'  {
+    It 'UpdateExpanded' {
         $lun0 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId $env.diskId2 -Name "lun0"
         $lun1 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId $env.diskId3 -Name "lun1"
         $luns = @($lun0, $lun1)
@@ -27,7 +27,7 @@ Describe 'Update-AzDiskPoolIscsiTarget' {
         $iscsiTarget.provisioningState | Should -Be "Succeeded"
     }
 
-    It 'UpdateViaIdentityExpanded'  {
+    It 'UpdateViaIdentityExpanded' {
         $lun1 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId $env.diskId3 -Name "lun1"
         $luns = @($lun1)
 

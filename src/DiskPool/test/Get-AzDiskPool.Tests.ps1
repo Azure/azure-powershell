@@ -12,22 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDiskPool' {
-    It 'List'   {
+    It 'List' {
         $diskPoolList = Get-AzDiskPool -ResourceGroupName $env.resourceGroup
         $diskPoolList.Count | Should -Be 2
     }
 
-    It 'Get'   {
+    It 'Get' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.name | Should -Be $env.diskPool1
     }
 
-    It 'List1'  {
+    It 'List1' {
         $diskPools = Get-AzDiskPool
         $diskPools.Count | Should -BeGreaterOrEqual 2
     }
 
-    It 'GetViaIdentity'  {
+    It 'GetViaIdentity' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool = Get-AzDiskPool -InputObject $diskPool
         $diskPool.name | Should -Be $env.diskPool1

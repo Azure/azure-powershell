@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDiskPool' {
-    It 'Start'   {
+    It 'Start' {
         Start-AzDiskPool -DiskPoolName $env.diskPool1 -ResourceGroupName $env.resourceGroup
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.status | Should -Be 'Running'

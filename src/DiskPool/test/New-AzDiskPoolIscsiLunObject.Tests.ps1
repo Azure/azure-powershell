@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDiskPoolIscsiLunObject' {
-    It '__AllParameterSets'  {
+    It '__AllParameterSets' {
         $lunObject = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId $env.diskId1 -Name 'lun0'
         $lunObject.ManagedDiskAzureResourceId | Should -Be $env.diskId1
         $lunObject.Name | Should -Be 'lun0'

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDiskPool' {
-    It 'UpdateExpanded'   {
+    It 'UpdateExpanded' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.Disk.Count | Should -Be 1 
 
@@ -21,7 +21,7 @@ Describe 'Update-AzDiskPool' {
         $diskPool.Disk.Count | Should -Be 0
     }
     
-    It 'UpdateViaIdentityExpanded'  {
+    It 'UpdateViaIdentityExpanded' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.Disk.Count | Should -Be 0 
         
