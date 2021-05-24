@@ -23,6 +23,7 @@
 * Fixed `Set-AzWebApp` to set the AppSettings
 * updated `Set-AzWebAppSlot` to set FtpsState
 * Added support for StaticSites.
+* fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
 
 ## Version 2.5.0
 * Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
