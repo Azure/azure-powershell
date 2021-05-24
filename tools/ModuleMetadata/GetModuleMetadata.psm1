@@ -178,7 +178,7 @@ function Get-ParameterMetadata
     $GlobalParameters = [System.Collections.Generic.List[ParameterMetadataInParameterSet]]::New()
     foreach ($Parameter in $Cmdlet.Parameters.Values)
     {
-        if ($Parameter.Name -in $CommonParameterList)
+        if (($Parameter.Name -in $CommonParameterList) -or ($Parameter.IsDynamic))
         {
             continue
         }
