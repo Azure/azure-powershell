@@ -19,9 +19,9 @@
 -->
 ## Upcoming Release
 * Support new azure monitor feature in HDInsight:
-    - Add cmdlet `Get-AzHDInsightMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.
-    - Add cmdlet `Enable-AzHDInsightMonitor` to allow customer to enable the Azure Monitor in HDInsight cluster.
-    - Add cmdlet `Disable-AzHDInsightMonitor` to allow customer to disable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet `Get-AzHDInsightAzureMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.
+    - Add cmdlet `Enable-AzHDInsightAzureMonitor` to allow customer to enable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet `Disable-AzHDInsightAzureMonitor` to allow customer to disable the Azure Monitor in HDInsight cluster.
 
 
 ## Version 4.2.1

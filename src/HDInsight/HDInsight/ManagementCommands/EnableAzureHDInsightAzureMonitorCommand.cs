@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.HDInsight.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class DisableAzureHDInsightMonitorCommand : HDInsightCmdletBase
+    public class EnableAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -66,6 +68,40 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ValidateNotNull]
         public AzureHDInsightCluster InputObject { get; set; }
 
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ParameterSetName = SetByNameParameterSet,
+            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = SetByResourceIdParameterSet,
+            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ParameterSetName = SetByInputObjectParameterSet,
+            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
+        public string WorkspaceId { get; set; }
+
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ParameterSetName = SetByNameParameterSet,
+            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ParameterSetName = SetByResourceIdParameterSet,
+            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ParameterSetName = SetByInputObjectParameterSet,
+            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
+        public string PrimaryKey { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -88,10 +124,16 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            if (ShouldProcess("Disable Azure Monitor"))
+            var monitoringParams = new ClusterMonitoringRequest
+            {
+                WorkspaceId = WorkspaceId,
+                PrimaryKey = PrimaryKey
+            };
+
+            if (ShouldProcess("Enable Azure Monitor"))
             {
                 // ToDO: need to change the api
-                HDInsightManagementClient.DisableMonitoring(ResourceGroupName, ClusterName);
+                HDInsightManagementClient.EnableMonitoring(ResourceGroupName, ClusterName, monitoringParams);
                 WriteObject(true);
             }
         }

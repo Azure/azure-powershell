@@ -5,59 +5,56 @@ online version:
 schema: 2.0.0
 ---
 
-# Enable-AzHDInsightMonitor
+# Get-AzHDInsightAzureMonitor
 
 ## SYNOPSIS
-Enables Azure Monitor in a specified HDInsight cluster.
+Gets the azure monitor status of a specified HDInsight cluster.
 
 ## SYNTAX
 
 ### SetByNameParameterSet (Default)
 ```
-Enable-AzHDInsightMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String> [-WorkspaceId] <String>
- [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Enable-AzHDInsightMonitor [-ResourceId] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Enable-AzHDInsightMonitor [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String> [-PrimaryKey] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet **Enable-AzHDInsightMonitor** enables Azure Monitor in a specified HDInsight cluster.
+The **Get-AzHDInsightAzureMonitor** cmdlet gets the azure monitor status of a specified HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $resourceGroupName = "Group"
-PS C:\> $workspaceId = "your-workspace-id"
-PS C:\> $primaryKey = "your-primary-key"
-PS C:\> Enable-AzHDInsightMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
+PS C:\> Get-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
 ```
 
-This cmdlet enables the azure monitor in a specified HDInsight cluster.
+This cmdlet gets the azure monitor status of a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $workspaceId = "your-workspace-id"
-PS C:\> $primaryKey = "your-primary-key"
-PS C:\> $cluster | Enable-AzHDInsightMonitor -WorkspaceId $workspaceId -PrimaryKey $primaryKey
+PS C:\> $cluster | Get-AzHDInsightAzureMonitor
 ```
 
-This cmdlet enables the azure monitor in a specified HDInsight cluster with pipeline.
+This cmdlet gets the azure monitor with pipeline.
+
 
 ## PARAMETERS
 
@@ -106,21 +103,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PrimaryKey
-Gets to sets the primary key of the Log Analytics workspace.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Gets or sets the name of the resource group.
 
@@ -151,52 +133,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WorkspaceId
-Gets or sets the ID of the Log Analytics workspace.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -208,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightMonitoring
 
 ## NOTES
 

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -22,11 +21,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitor", DefaultParameterSetName = SetByNameParameterSet)]
-    [OutputType(typeof(AzureHDInsightMonitoring))]
-    public class GetAzureHDInsightMonitorCommand : HDInsightCmdletBase
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class DisableAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
+
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
@@ -87,9 +87,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-            // ToDO: need to change the api and redefine a class to replace AzureHDInsightMonitoring
-            var clusterMonitoringResource = HDInsightManagementClient.GetMonitoring(ResourceGroupName, ClusterName);
-            WriteObject(new AzureHDInsightMonitoring(clusterMonitoringResource));
+
+            if (ShouldProcess("Disable Azure Monitor"))
+            {
+                // ToDO: need to change the api
+                HDInsightManagementClient.DisableMonitoring(ResourceGroupName, ClusterName);
+                WriteObject(true);
+            }
         }
     }
 }

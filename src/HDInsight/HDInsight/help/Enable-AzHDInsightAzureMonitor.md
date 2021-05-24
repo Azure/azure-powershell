@@ -5,55 +5,59 @@ online version:
 schema: 2.0.0
 ---
 
-# Disable-AzHDInsightMonitor
+# Enable-AzHDInsightAzureMonitor
 
 ## SYNOPSIS
-Disables Azure Monitor in a specified HDInsight cluster.
+Enables Azure Monitor in a specified HDInsight cluster.
 
 ## SYNTAX
 
 ### SetByNameParameterSet (Default)
 ```
-Disable-AzHDInsightMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String> [-WorkspaceId] <String>
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Disable-AzHDInsightMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Enable-AzHDInsightAzureMonitor [-ResourceId] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Disable-AzHDInsightMonitor [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Enable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
+ [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet **Disable-AzHDInsightMonitor** disables Azure Monitor in a specified HDInsight cluster.
+This cmdlet **Enable-AzHDInsightAzureMonitor** enables Azure Monitor in a specified HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $resourceGroupName = "Group"
-PS C:\> Disable-AzHDInsightMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
+PS C:\> $workspaceId = "your-workspace-id"
+PS C:\> $primaryKey = "your-primary-key"
+PS C:\> Enable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster.
+This cmdlet enables the azure monitor in a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $cluster | Disable-AzHDInsightMonitor
+PS C:\> $workspaceId = "your-workspace-id"
+PS C:\> $primaryKey = "your-primary-key"
+PS C:\> $cluster | Enable-AzHDInsightAzureMonitor -WorkspaceId $workspaceId -PrimaryKey $primaryKey
 ```
 
-This cmdlet disables the azure monitor in a specified HDInsight cluster with pipeline.
+This cmdlet enables the azure monitor in a specified HDInsight cluster with pipeline.
 
 ## PARAMETERS
 
@@ -102,6 +106,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PrimaryKey
+Gets to sets the primary key of the Log Analytics workspace.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Gets or sets the name of the resource group.
 
@@ -129,6 +148,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -WorkspaceId
+Gets or sets the ID of the Log Analytics workspace.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

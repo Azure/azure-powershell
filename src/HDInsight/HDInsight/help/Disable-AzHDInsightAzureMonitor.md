@@ -5,54 +5,55 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzHDInsightMonitor
+# Disable-AzHDInsightAzureMonitor
 
 ## SYNOPSIS
-Gets the azure monitor status of a specified HDInsight cluster.
+Disables Azure Monitor in a specified HDInsight cluster.
 
 ## SYNTAX
 
 ### SetByNameParameterSet (Default)
 ```
-Get-AzHDInsightMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Disable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Get-AzHDInsightMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Disable-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Get-AzHDInsightMonitor [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Disable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzHDInsightMonitor** cmdlet gets the azure monitor status of a specified HDInsight cluster.
+This cmdlet **Disable-AzHDInsightAzureMonitor** disables Azure Monitor in a specified HDInsight cluster.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $resourceGroupName = "Group"
-PS C:\> Get-AzHDInsightMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
+PS C:\> Disable-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
 ```
 
-This cmdlet gets the azure monitor status of a specified HDInsight cluster.
+This cmdlet disables the azure monitor in a specified HDInsight cluster.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
+PS C:\> # Cluster info
 PS C:\> $clusterName = "your-hadoop-001"
 PS C:\> $cluster=Get-AzHDInsightCluster -ClusterName $clusterName
-PS C:\> $cluster | Get-AzHDInsightMonitor
+PS C:\> $cluster | Disable-AzHDInsightAzureMonitor
 ```
 
-This cmdlet gets the azure monitor with pipeline.
+This cmdlet disables the azure monitor in a specified HDInsight cluster with pipeline.
 
 ## PARAMETERS
 
@@ -131,6 +132,37 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -142,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.HDInsight.Models.Management.AzureHDInsightMonitoring
+### System.Boolean
 
 ## NOTES
 

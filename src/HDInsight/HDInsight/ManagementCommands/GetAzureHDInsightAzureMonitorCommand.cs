@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
-using Microsoft.Azure.Management.HDInsight.Models;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
-    public class EnableAzureHDInsightMonitorCommand : HDInsightCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet)]
+    [OutputType(typeof(AzureHDInsightMonitoring))]
+    public class GetAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-
         private const string SetByNameParameterSet = "SetByNameParameterSet";
         private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
@@ -68,40 +66,6 @@ namespace Microsoft.Azure.Commands.HDInsight
         [ValidateNotNull]
         public AzureHDInsightCluster InputObject { get; set; }
 
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
-            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = SetByResourceIdParameterSet,
-            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = SetByInputObjectParameterSet,
-            HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
-        public string WorkspaceId { get; set; }
-
-        [Parameter(
-            Position = 3,
-            Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
-            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = SetByResourceIdParameterSet,
-            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ParameterSetName = SetByInputObjectParameterSet,
-            HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
-        public string PrimaryKey { get; set; }
-
         #endregion
 
         public override void ExecuteCmdlet()
@@ -123,19 +87,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-
-            var monitoringParams = new ClusterMonitoringRequest
-            {
-                WorkspaceId = WorkspaceId,
-                PrimaryKey = PrimaryKey
-            };
-
-            if (ShouldProcess("Enable Azure Monitor"))
-            {
-                // ToDO: need to change the api
-                HDInsightManagementClient.EnableMonitoring(ResourceGroupName, ClusterName, monitoringParams);
-                WriteObject(true);
-            }
+            // ToDO: need to change the api and redefine a class to replace AzureHDInsightMonitoring
+            var clusterMonitoringResource = HDInsightManagementClient.GetMonitoring(ResourceGroupName, ClusterName);
+            WriteObject(new AzureHDInsightMonitoring(clusterMonitoringResource));
         }
     }
 }
