@@ -12,11 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDiskPool' {
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Start'   {
+        Start-AzDiskPool -DiskPoolName $env.diskPool1 -ResourceGroupName $env.resourceGroup
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
+        $diskPool.status | Should -Be 'Running'
     }
 }

@@ -12,11 +12,13 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDiskPoolIscsiTarget' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'   {
+        {Remove-AzDiskPoolIscsiTarget -ResourceGroupName $env.resourceGroup -DiskPoolName $env.diskPool5 -Name $env.target0} | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity'   {
+        $target1 = Get-AzDiskPoolIscsiTarget -Name $env.target1 -DiskPoolName $env.diskPool1 -ResourceGroupName $env.resourceGroup
+        $target1.name | Should -Be $env.target1
+        {Remove-AzDiskPoolIscsiTarget -InputObject $target1} | Should -Not -Throw
     }
 }

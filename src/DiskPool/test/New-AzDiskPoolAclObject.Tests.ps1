@@ -12,7 +12,9 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDiskPoolAclObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets'  {
+        $acl = New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
+        $acl.InitiatorIqn | Should -Be 'iqn.2021-05.com.microsoft:target0'
+        $acl.MappedLun.Count | Should -Be 1
     }
 }
