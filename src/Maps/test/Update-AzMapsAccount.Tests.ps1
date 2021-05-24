@@ -12,19 +12,17 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzMapsAccount' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+          Update-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 -Tag @{'key1'='value1'; 'key2'='value2'}
+        } | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {  
+          $maps = Get-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 
+          Update-AzMapsAccount -InputObject $maps -Tag @{'key1'='value1'; 'key2'='value2'}
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

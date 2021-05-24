@@ -1,0 +1,156 @@
+{
+  "Remove-AzMapsCreator+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/maps280e9u/creators/creatordi8ltg?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/maps280e9u/creators/creatordi8ltg?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "2f01bbe3-4f55-45af-8f9d-eec29806a47c" ],
+        "CommandName": [ "Remove-AzMapsCreator" ],
+        "FullCommandName": [ "Remove-AzMapsCreator_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Correlation-ID": [ "5e2bcb35-04e8-4db8-afc8-d60481fe1e54" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "6c6efe79-0af1-4f42-b3e9-8ad7b2a03490" ],
+        "x-ms-correlation-request-id": [ "6c6efe79-0af1-4f42-b3e9-8ad7b2a03490" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085112Z:6c6efe79-0af1-4f42-b3e9-8ad7b2a03490" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:51:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsCreator+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"westcentralus\",\r\n  \"sku\": {\r\n    \"name\": \"S1\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "71" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-request-id": [ "06b4cabe-e1c7-4536-a3bf-84ece79588a8" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "b143a154-b76a-4cb5-8474-52a44a6e314a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085115Z:b143a154-b76a-4cb5-8474-52a44a6e314a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:51:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "484" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"b97bfdcf-5d1c-48f0-be54-4501c27420e4\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0\",\r\n  \"name\": \"mapsijq4g0\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {}\r\n}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsCreator+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0/creators/creatorrfj3a7?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0/creators/creatorrfj3a7?api-version=2021-02-01",
+      "Content": "{\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"storageUnits\": 3\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "77" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "X-Correlation-ID": [ "24644778-b3df-4107-bd7c-0ef53d988de2" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "68c3a4e9-ce53-4575-9674-1ab3d2d522ea" ],
+        "x-ms-correlation-request-id": [ "68c3a4e9-ce53-4575-9674-1ab3d2d522ea" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085116Z:68c3a4e9-ce53-4575-9674-1ab3d2d522ea" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:51:16 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.Maps/accounts/creators\",\"properties\":{\"provisioningState\":\"Created\",\"storageUnits\":3},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0/creators/creatorrfj3a7\",\"name\":\"creatorrfj3a7\",\"location\":\"eastus2\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzMapsCreator+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0/creators/creatorrfj3a7?api-version=2021-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapsijq4g0/creators/creatorrfj3a7?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "e8c91ea1-e6f2-4728-93b4-f3be463f1922" ],
+        "CommandName": [ "Remove-AzMapsCreator" ],
+        "FullCommandName": [ "Remove-AzMapsCreator_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Correlation-ID": [ "bc732cbf-acbd-4fd0-86c1-85ad6a4fd64f" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-request-id": [ "0f9fa4de-f488-4433-b889-89de20579d6a" ],
+        "x-ms-correlation-request-id": [ "0f9fa4de-f488-4433-b889-89de20579d6a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085118Z:0f9fa4de-f488-4433-b889-89de20579d6a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:51:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

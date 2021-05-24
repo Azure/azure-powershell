@@ -1,0 +1,43 @@
+{
+  "Get-AzMapsAccountKey+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/listKeys?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/listKeys?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "7d64ca17-762f-4930-820d-0c350bd40ecb" ],
+        "CommandName": [ "Get-AzMapsAccountKey" ],
+        "FullCommandName": [ "Get-AzMapsAccountKey_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "584584d4-9d6f-40fe-9552-a1beff4d8374" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "49c1c093-ea59-42f5-a2d4-28d4bd78a354" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085044Z:49c1c093-ea59-42f5-a2d4-28d4bd78a354" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:50:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "255" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\r\n  \"primaryKey\": \"etETsQJOnmpAJlFb8svoc2RxtETpW6slCZAw6rYuHzY\",\r\n  \"secondaryKey\": \"8wrWSHXjuFmnvHGk1tR2X5D0LP80K5RnNEy4QARt5xo\",\r\n  \"primaryKeyLastUpdated\": \"2021-05-24T08:50:28.1065313Z\",\r\n  \"secondaryKeyLastUpdated\": \"2021-05-24T08:50:28.1065313Z\"\r\n}",
+      "isContentBase64": false
+    }
+  }
+}

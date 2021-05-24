@@ -1,0 +1,128 @@
+{
+  "Get-AzMapsCreator+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "c7f39b6b-ef50-4985-a8c1-4d4a870d4577" ],
+        "CommandName": [ "Get-AzMapsCreator" ],
+        "FullCommandName": [ "Get-AzMapsCreator_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "X-Correlation-ID": [ "3898e563-578e-4095-9b31-fada359eeca8" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "3b3090fb-165a-4853-8af9-1062b0491006" ],
+        "x-ms-correlation-request-id": [ "3b3090fb-165a-4853-8af9-1062b0491006" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085045Z:3b3090fb-165a-4853-8af9-1062b0491006" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:50:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.Maps/accounts/creators\",\"properties\":{\"provisioningState\":\"Created\",\"storageUnits\":3},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs\",\"name\":\"creatorne07zs\",\"location\":\"eastus2\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMapsCreator+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "b57f172b-7592-4079-b386-4cafd1606a11" ],
+        "CommandName": [ "Get-AzMapsCreator" ],
+        "FullCommandName": [ "Get-AzMapsCreator_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "X-Correlation-ID": [ "c4340610-618e-4f25-a559-81d5fcd394eb" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "4ff3b313-9498-4125-951b-d54624c64fab" ],
+        "x-ms-correlation-request-id": [ "4ff3b313-9498-4125-951b-d54624c64fab" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085045Z:4ff3b313-9498-4125-951b-d54624c64fab" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:50:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.Maps/accounts/creators\",\"properties\":{\"provisioningState\":\"Created\",\"storageUnits\":3},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs\",\"name\":\"creatorne07zs\",\"location\":\"eastus2\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMapsCreator+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs?api-version=2021-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "6e1ebc48-b4fb-4f39-b0d8-ab197a45af55" ],
+        "CommandName": [ "Get-AzMapsCreator" ],
+        "FullCommandName": [ "Get-AzMapsCreator_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "X-Correlation-ID": [ "a723cd7e-d902-4551-a016-9d45ef9a1616" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "45bd9e04-6e25-4ee3-b04a-d8fe0a0c2003" ],
+        "x-ms-correlation-request-id": [ "45bd9e04-6e25-4ee3-b04a-d8fe0a0c2003" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085046Z:45bd9e04-6e25-4ee3-b04a-d8fe0a0c2003" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 24 May 2021 08:50:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "316" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"type\":\"Microsoft.Maps/accounts/creators\",\"properties\":{\"provisioningState\":\"Created\",\"storageUnits\":3},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2/creators/creatorne07zs\",\"name\":\"creatorne07zs\",\"location\":\"eastus2\",\"tags\":{}}",
+      "isContentBase64": false
+    }
+  }
+}

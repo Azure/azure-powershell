@@ -12,19 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMapsAccount' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        { Get-AzMapsAccount } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzMapsAccount -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+          $maps = Get-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01
+          Get-AzMapsAccount -InputObject $maps 
+        } | Should -Not -Throw
     }
 }

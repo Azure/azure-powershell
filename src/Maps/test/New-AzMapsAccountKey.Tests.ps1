@@ -12,19 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMapsAccountKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded' {
+        { New-AzMapsAccountKey -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 -KeyType primary } | Should -Not -Throw
     }
 
-    It 'Regenerate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+
+    It 'RegenerateViaIdentityExpanded' {
+        { 
+          $maps = Get-AzMapsAccount -ResourceGroupName $env.resourceGroup -Name $env.mapsName01
+          New-AzMapsAccountKey -InputObject $maps -KeyType primary
+        } | Should -Not -Throw
     }
 
-    It 'RegenerateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RegenerateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

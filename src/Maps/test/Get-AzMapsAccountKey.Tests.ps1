@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMapsAccountKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzMapsAccountKey -ResourceGroupName $env.resourceGroup -Name $env.mapsName01 } | Should -Not -Throw
     }
 }
