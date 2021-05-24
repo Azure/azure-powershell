@@ -79,7 +79,7 @@ Allowed network ACLs
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: ClientConnection, ServerConnection, RESTAPI
+Accepted values: ClientConnection, ServerConnection, RESTAPI, Trace
 
 Required: False
 Position: Named
@@ -141,7 +141,7 @@ Denied network ACLs
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: ClientConnection, ServerConnection, RESTAPI
+Accepted values: ClientConnection, ServerConnection, RESTAPI, Trace
 
 Required: False
 Position: Named
