@@ -148,7 +148,7 @@ function Add-ProjectDependencies
         [string]$SolutionPath
     )
 
-    $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests" )
+    $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests", "Test", "src", "tools" )
 
     $ProjectDependencies = @()
     $Content = Get-Content -Path $SolutionPath
@@ -260,7 +260,7 @@ function Get-ModuleFromPath
         [string]$FilePath
     )
 
-    return $FilePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+    return $FilePath.Replace('/', '\').Split('\src\')[-1].Split('\')[0]
 }
 function Add-CsprojMappings
 {
@@ -292,6 +292,10 @@ function Add-CsprojMappings
                             if (-not [string]::IsNullOrEmpty($TempValue))
                             {
                                 $Values.Add($TempValue) | Out-Null
+                            }
+                            else
+                            {
+                                Throw "${ProjectNameFromSolution}: $ReferencedProject is not found!"
                             }
                         }
                     }
