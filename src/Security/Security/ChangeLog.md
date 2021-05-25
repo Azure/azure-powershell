@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fix typo in regulatory compliance assessments
 
 ## Version 0.11.0
 * Fix typo in printing SQL vulnerability assessment scan results
