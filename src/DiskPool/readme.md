@@ -40,6 +40,7 @@ input-file:
 module-version: 0.1.0
 title: DiskPool
 subject-prefix: $(service-name)
+identity-correction-for-post: true 
 
 directive:
   # Following is two common directive which are normally required in all the RPs
