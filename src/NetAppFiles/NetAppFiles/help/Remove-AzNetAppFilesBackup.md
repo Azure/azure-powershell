@@ -27,8 +27,8 @@ Remove-AzNetAppFilesBackup -ResourceGroupName <String> -AccountName <String> -Ac
 
 ### ByParentObjectParameterSet
 ```
-Remove-AzNetAppFilesBackup -Name <String> -AccountBackupName <String> -VolumeObject <PSNetAppFilesVolume>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzNetAppFilesBackup -Name <String> -VolumeObject <PSNetAppFilesVolume> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -61,6 +61,7 @@ PS C:\> Remove-AzNetAppFilesBackup -ResourceGroupName "MyRG" -AccountName "MyAcc
 ```
 
 This command deletes the new ANF backup with a the name "MyBackup" for account "MyAccount".
+
 ## PARAMETERS
 
 ### -AccountBackupName
@@ -68,7 +69,7 @@ The name of the ANF backup
 
 ```yaml
 Type: System.String
-Parameter Sets: ByAccountBackupFieldsParameterSet, ByParentObjectParameterSet
+Parameter Sets: ByAccountBackupFieldsParameterSet
 Aliases:
 
 Required: True
