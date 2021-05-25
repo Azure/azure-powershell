@@ -24,10 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

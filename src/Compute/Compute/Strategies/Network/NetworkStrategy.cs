@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using System;
 using System.Threading.Tasks;
 

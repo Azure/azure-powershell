@@ -275,6 +275,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 SecondaryType = model.SecondaryType,
+                HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);

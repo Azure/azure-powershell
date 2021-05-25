@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getapplicationinsightsproject
+https://docs.microsoft.com/powershell/module/az.functions/getapplicationinsightsproject
 #>
 function GetApplicationInsightsProject {
 [CmdletBinding(PositionalBinding=$false)]

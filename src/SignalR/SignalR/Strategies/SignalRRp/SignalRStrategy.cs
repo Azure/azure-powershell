@@ -25,14 +25,13 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
                 type: new ResourceType("Microsoft.SignalRService", "SignalR"),
                 getOperations: (SignalRManagementClient client) => client.SignalR,
                 getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
-                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
-                    p.ResourceGroupName,
-                    p.Name,
-                    new SignalRResource(
+                createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(new SignalRResource(
                         location: p.Model.Location,
                         tags: p.Model.Tags,
-                        sku: p.Model.Sku,
-                        hostNamePrefix: p.Model.HostNamePrefix),
+                        sku: p.Model.Sku
+                        ),
+                    p.ResourceGroupName,
+                    p.Name,
                     p.CancellationToken),
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,

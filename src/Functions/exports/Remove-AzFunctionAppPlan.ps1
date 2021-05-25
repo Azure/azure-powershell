@@ -64,7 +64,7 @@ INPUTOBJECT <IAppServicePlan>:
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 #>
 function Remove-AzFunctionAppPlan {
 [OutputType([System.Boolean])]

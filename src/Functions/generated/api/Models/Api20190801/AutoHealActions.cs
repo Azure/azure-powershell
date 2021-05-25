@@ -24,11 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Executable to be run.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomActionExe { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Exe; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Exe = value; }
+        public string CustomActionExe { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Exe; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Exe = value ?? null; }
 
         /// <summary>Parameters for the executable.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string CustomActionParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Parameter = value; }
+        public string CustomActionParameter { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Parameter; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomActionInternal)CustomAction).Parameter = value ?? null; }
 
         /// <summary>Internal Acessors for CustomAction</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealCustomAction Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAutoHealActionsInternal.CustomAction { get => (this._customAction = this._customAction ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AutoHealCustomAction()); set { {_customAction = value;} } }

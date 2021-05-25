@@ -668,5 +668,9 @@
   {
     "alias": "Security Insights",
     "regex": "SecurityInsights"
+  },
+  {
+    "regex": "ContainerInstance",
+    "alias": "ContainerInstance"
   }
 ]

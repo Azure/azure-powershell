@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter("V1", "V2")]
         public string HyperVGeneration { get; set; }
@@ -161,6 +167,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Encryption
             Encryption vEncryption = null;
+
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -283,6 +292,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vEncryption.Type = this.EncryptionType;
             }
 
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -290,6 +304,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null,
                 Incremental = this.Incremental.IsPresent,
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = vExtendedLocation,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 Sku = vSku,
                 CreationData = vCreationData,

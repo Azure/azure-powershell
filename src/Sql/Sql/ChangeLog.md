@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
 * Added cmdlet `Copy-AzSqlDatabaseLongTermRetentionBackup`
     - Copy LTR backups to different servers
