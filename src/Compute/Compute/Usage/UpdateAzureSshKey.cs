@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [SupportsWildcards]
         [Alias("sshkeyName")]
         public string Name { get; set; }
-
+        
         [Parameter(
-           Mandatory = true,
+            Mandatory = true,
            ParameterSetName = ResourceIDParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Resource ID for your SSH Public Key Resource.")]
