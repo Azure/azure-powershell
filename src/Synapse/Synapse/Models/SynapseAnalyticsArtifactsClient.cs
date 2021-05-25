@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
         {
             SparkJobDefinitionResource SparkJobDefinition = new SparkJobDefinitionResource(JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent));
-            return _sparkJobDefinitionClient.CreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition);
+            return _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition).Poll().Value;
         }
 
         public SparkJobDefinitionResource GetSparkJobDefinition(string SparkJobDefinitionName)
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public void DeleteSparkJobDefinition(string SparkJobDefinitionName)
         {
-            _sparkJobDefinitionClient.DeleteSparkJobDefinition(SparkJobDefinitionName);
+            _sparkJobDefinitionClient.StartDeleteSparkJobDefinition(SparkJobDefinitionName).Poll();
         }
 
         public void RenameSparkJobDefinition(string SparkJobDefinitionName, string newName)

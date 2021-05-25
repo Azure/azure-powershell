@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByName, Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RemoveByObject, Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
         [ValidateNotNullOrEmpty]
         [Alias("SparkJobDefinitionName")]
         public string Name { get; set; }

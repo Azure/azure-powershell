@@ -26,8 +26,8 @@ Remove-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <
 
 ### RemoveByInputObject
 ```
-Remove-AzSynapseSparkJobDefinition -Name <String> -InputObject <PSSparkJobDefinitionResource> [-PassThru]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSparkJobDefinition -InputObject <PSSparkJobDefinitionResource> [-PassThru] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ The Spark job definition name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByName, RemoveByObject
 Aliases: SparkJobDefinitionName
 
 Required: True

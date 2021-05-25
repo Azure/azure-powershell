@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSynapseSparkJobDefinition
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Spark job definition in workspace.
 
 ## SYNTAX
 
@@ -20,9 +20,8 @@ Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -Definiti
 
 ### RenameByName
 ```
-Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -NewName <String>
- -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -NewName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
@@ -33,22 +32,31 @@ Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <Str
 
 ### RenameByObject
 ```
-Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -NewName <String>
- -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -NewName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzSynapseSparkJobDefinition** cmdlet creates a Spark job definition in workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
 ```
 
-{{ Add example description here }}
+This command creates a Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace.
+The command bases the Spark job definition on information in the sparkJobDefinition.json file.
+
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Set-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition -DefinitionFile "C:\sparkJobDefinition.json"
+```
+
+This command creates a Spark job definition named ContosoSparkJobDefinition in the workspace named ContosoWorkspace through pipeline.
+The command bases the Spark job definition on information in the sparkJobDefinition.json file.
 
 ## PARAMETERS
 
@@ -87,7 +95,7 @@ The JSON file path.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetByName, SetByObject
 Aliases: File
 
 Required: True
