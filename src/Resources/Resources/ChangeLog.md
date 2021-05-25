@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
 
 ## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
@@ -38,7 +39,7 @@
 
 ## Version 3.4.1
 * Added upcoming breaking change warnings on below cmdlets, because the value of `IdentifierUris` parameter will need verified domain.
-  - `New-AzADApplication` 
+  - `New-AzADApplication`
   - `Update-AzADApplication`
   - `New-AzADServicePrincipal`
   - `Update-AzADServicePrincipal`
@@ -73,7 +74,7 @@
 
 ## Version 3.1.0
 * Added `-Tag` parameter support to `Set-AzTemplateSpec` and `New-AzTemplateSpec`
-* Added Tag display support to default formatter for Template Specs 
+* Added Tag display support to default formatter for Template Specs
 
 ## Version 3.0.1
 * Fixed an issue where What-If shows two resource group scopes with different casing
@@ -91,7 +92,7 @@
 * Fixed an issue where template deployment cmdlets does not preserve case for template parameters
 * Added a default API version to be used in `Export-AzResourceGroup` cmdlet
 * Added cmdlets for Template Specs (`Get-AzTemplateSpec`, `Set-AzTemplateSpec`, `New-AzTemplateSpec`, `Remove-AzTemplateSpec`, `Export-AzTemplateSpec`)
-* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter) 
+* Added support for deploying Template Specs using existing deployment cmdlets (via the new -TemplateSpecId parameter)
 * Updated `Get-AzResourceGroupDeploymentOperation` to use the SDK.
 * Removed `-ApiVersion` parameter from `*-AzDeployment` cmdlets.
 
@@ -177,7 +178,7 @@
     - Remove-AzTag -ResourceId
 * Added new Tag cmdlet
     - Update-AzTag -ResourceId
-* Brought ScopedDeployment from SDK 3.3.0 
+* Brought ScopedDeployment from SDK 3.3.0
 
 ## Version 1.11.0
 * Refactored template deployment cmdlets
