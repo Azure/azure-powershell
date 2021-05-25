@@ -1,62 +1,62 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsepipeline
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzSynapsePipeline
+# Remove-AzSynapseSparkJobDefinition
 
 ## SYNOPSIS
-Removes a pipeline from workspace.
+Removes a Spark job definition from workspace.
 
 ## SYNTAX
 
 ### RemoveByName (Default)
 ```
-Remove-AzSynapsePipeline -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
+Remove-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByObject
 ```
-Remove-AzSynapsePipeline -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzSynapsePipeline -Name <String> -InputObject <PSPipelineResource> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSynapseSparkJobDefinition -Name <String> -InputObject <PSSparkJobDefinitionResource> [-PassThru]
+ [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapsePipeline** cmdlet removes a pipeline from workspace.
+The **Remove-AzSynapseSparkJobDefinition** cmdlet removes a Spark job definition from workspace.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+PS C:\> Remove-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition
 ```
 
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace.
+This cmdlet removes the Spark job definition named ContosoSparkJobDefinition from the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
 PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapsePipeline -Name ContosoPipeline
+PS C:\> $ws | Remove-AzSynapseSparkJobDefinition -Name ContosoSparkJobDefinition
 ```
 
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
+This cmdlet removes the Spark job definition named ContosoSparkJobDefinition from the workspace named ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
-PS C:\> $pipeline | Remove-AzSynapsePipeline
+PS C:\> $sparkJobDefinition = Get-AzSynapseSparkJobDefinition -WorkspaceName ContosoWorkspace -Name ContosoSparkJobDefinition
+PS C:\> $sparkJobDefinition | Remove-AzSynapseSparkJobDefinition
 ```
 
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
+This cmdlet removes the Spark job definition named ContosoSparkJobDefinition from the workspace named ContosoWorkspace through pipeline.
 
 ## PARAMETERS
 
@@ -106,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The pipeline object.
+The Spark job definition object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSparkJobDefinitionResource
 Parameter Sets: RemoveByInputObject
 Aliases:
 
@@ -121,12 +121,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The pipeline name.
+The Spark job definition name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PipelineName
+Aliases: SparkJobDefinitionName
 
 Required: True
 Position: Named
@@ -219,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 
-### Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
+### Microsoft.Azure.Commands.Synapse.Models.PSSparkJobDefinitionResource
 
 ## OUTPUTS
 

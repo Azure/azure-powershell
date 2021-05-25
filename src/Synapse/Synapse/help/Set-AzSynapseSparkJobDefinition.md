@@ -1,62 +1,54 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
-online version: https://docs.microsoft.com/powershell/module/az.synapse/remove-azsynapsepipeline
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzSynapsePipeline
+# Set-AzSynapseSparkJobDefinition
 
 ## SYNOPSIS
-Removes a pipeline from workspace.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### RemoveByName (Default)
+### SetByName (Default)
 ```
-Remove-AzSynapsePipeline -WorkspaceName <String> -Name <String> [-PassThru] [-AsJob] [-Force]
+Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -DefinitionFile <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByObject
+### RenameByName
 ```
-Remove-AzSynapsePipeline -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -NewName <String>
+ -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### RemoveByInputObject
+### SetByObject
 ```
-Remove-AzSynapsePipeline -Name <String> -InputObject <PSPipelineResource> [-PassThru] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -DefinitionFile <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RenameByObject
+```
+Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -NewName <String>
+ -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzSynapsePipeline** cmdlet removes a pipeline from workspace.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
+PS C:\> {{ Add example code here }}
 ```
 
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace.
-
-### Example 2
-```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapsePipeline -Name ContosoPipeline
-```
-
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
-
-### Example 3
-```powershell
-PS C:\> $pipeline = Get-AzSynapsePipeline -WorkspaceName ContosoWorkspace -Name ContosoPipeline
-PS C:\> $pipeline | Remove-AzSynapsePipeline
-```
-
-This cmdlet removes the pipeline named ContosoPipeline from the workspace named ContosoWorkspace through pipeline.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -90,43 +82,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The pipeline object.
-
-```yaml
-Type: Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
-Parameter Sets: RemoveByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The pipeline name.
+### -DefinitionFile
+The JSON file path.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: PipelineName
+Aliases: File
 
 Required: True
 Position: Named
@@ -135,16 +97,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-This Cmdlet does not return an object by default.
-If this switch is specified, it returns true if successful.
+### -Name
+The Spark job definition name.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
+Aliases: SparkJobDefinitionName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NewName
+The Spark job definition name.
+
+```yaml
+Type: System.String
+Parameter Sets: RenameByName, RenameByObject
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +132,7 @@ Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByName
+Parameter Sets: SetByName, RenameByName
 Aliases:
 
 Required: True
@@ -171,7 +147,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: RemoveByObject
+Parameter Sets: SetByObject, RenameByObject
 Aliases:
 
 Required: True
@@ -219,11 +195,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
 
-### Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
-
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Synapse.Models.PSSparkJobDefinitionResource
 
 ## NOTES
 

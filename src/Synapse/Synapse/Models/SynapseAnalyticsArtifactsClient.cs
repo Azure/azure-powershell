@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
-        private readonly SqlScriptClient _sqlScriptClient;
         private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
-            _sqlScriptClient = new SqlScriptClient(uri, new AzureSessionCredential(context));
             _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
         }
 

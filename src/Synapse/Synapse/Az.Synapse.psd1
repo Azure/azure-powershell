@@ -190,7 +190,8 @@ AliasesToExport = 'New-AzSynapsePipeline', 'New-AzSynapseLinkedService',
                'Clear-AzSynapseSqlPoolAdvancedThreatProtectionSetting', 
                'Clear-AzSynapseSqlPoolVulnerabilityAssessmentSetting', 
                'Enable-AzSynapseSqlAdvancedThreatProtection', 
-               'Disable-AzSynapseSqlAdvancedThreatProtection'
+               'Disable-AzSynapseSqlAdvancedThreatProtection',
+               'New-AzSynapseSparkJobDefinition'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

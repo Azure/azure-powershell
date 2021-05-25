@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [ValidateNotNullOrEmpty]
         [Alias("File")]
         public string DefinitionFile { get; set; }
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     case RenameByName:
                     case RenameByObject:
                         SynapseAnalyticsClient.RenameSparkJobDefinition(this.Name, this.NewName);
-                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.GetSparkJobDefinition(this.Name)));
+                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.GetSparkJobDefinition(this.NewName)));
                         break;
 
                     default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
