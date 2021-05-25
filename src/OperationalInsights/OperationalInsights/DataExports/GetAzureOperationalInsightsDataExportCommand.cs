@@ -2,12 +2,12 @@
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
-using System.Net;
+
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport"), OutputType(typeof(bool))]
-    public class RemoveAzureOperationalInsightsDataExport : OperationalInsightsBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport"), OutputType(typeof(PSDataExport))]
+    public class GetAzureOperationalInsightsDataExportCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -27,11 +27,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.DataExportName, string.Format("delete data export: {0} for workspace: {1}", this.DataExportName, this.WorkspaceName)))
-            {
-                HttpStatusCode response = this.OperationalInsightsClient.DeleteDataExports(this.ResourceGroupName, this.WorkspaceName, this.DataExportName);
-                WriteObject(true);
-            }
+            WriteObject(this.OperationalInsightsClient.FilterPSDataExports(ResourceGroupName, WorkspaceName, DataExportName), true);
         }
+
     }
 }

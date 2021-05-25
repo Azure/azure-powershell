@@ -5,11 +5,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport"), OutputType(typeof(PSDataExport))]
-    public class UpdateAzureOperationalInsightsDataExport : OperationalInsightsBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport"), OutputType(typeof(PSDataExport))]
+    public class NewAzureOperationalInsightsDataExportCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+    HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The data export name.")]
+            HelpMessage = "The table name.")]
         [ValidateNotNullOrEmpty]
         public string DataExportName { get; set; }
 
@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Active when enabled.")]
         public bool? Enable { get; set; }
-
 
         public override void ExecuteCmdlet()
         {
