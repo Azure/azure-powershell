@@ -385,10 +385,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     var operationId = jobResponse.Request.RequestUri.Segments.Last();
                     var response = ServiceClientAdapter.GetCrrOperationStatus(secondaryRegion, operationId);
 
-                    string jobIDJson = JsonConvert.SerializeObject(response.Body.Properties);
-                    string[] jobSplits = jobIDJson.Split(new char[] { '\"' });
-                    string jobID = jobSplits[jobSplits.Length - 2];
-                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobID));
+                    string jobIdJson = JsonConvert.SerializeObject(response.Body.Properties);
+                    string[] jobSplits = jobIdJson.Split(new char[] { '\"' });
+                    string jobId = jobSplits[jobSplits.Length - 2];
+                    WriteObject(GetCrrJobObject(secondaryRegion, VaultId, jobId));
                 }
                 else
                 {

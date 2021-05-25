@@ -1,7 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.Functions","Get-AzFunctionApp","Get-AzFunctionApp","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Get-AzFunctionApp' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Get-AzFunctionApp'."
-"Az.Functions","Get-AzFunctionApp","Get-AzFunctionApp","0","1050","The parameter set 'ByLocation' for cmdlet 'Get-AzFunctionApp' has been removed.","Add parameter set 'ByLocation' back to cmdlet 'Get-AzFunctionApp'."
-"Az.Functions","Get-AzFunctionApp","Get-AzFunctionApp","0","1050","The parameter set 'ByName' for cmdlet 'Get-AzFunctionApp' has been removed.","Add parameter set 'ByName' back to cmdlet 'Get-AzFunctionApp'."
-"Az.Functions","Get-AzFunctionApp","Get-AzFunctionApp","0","1050","The parameter set 'ByResourceGroupName' for cmdlet 'Get-AzFunctionApp' has been removed.","Add parameter set 'ByResourceGroupName' back to cmdlet 'Get-AzFunctionApp'."
-"Az.Functions","Get-AzFunctionApp","Get-AzFunctionApp","0","3000","The type of property 'IsPushEnabled' of type 'Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfig' has changed from 'System.Boolean' to 'System.Nullable`1[System.Boolean]'.","Change the type of property 'IsPushEnabled' back to 'System.Boolean'."
-"Az.Functions","Update-AzFunctionApp","Update-AzFunctionApp","0","2020","The cmdlet 'Update-AzFunctionApp' no longer supports the type 'System.String' for parameter 'IdentityID'.","Change the type for parameter 'IdentityID' back to 'System.String'."

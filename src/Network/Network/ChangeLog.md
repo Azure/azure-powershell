@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter
     - `New-AzureRmIpsecPolicy`
 * Added optional parameter `-EdgeZone` to the following cmdlets:
