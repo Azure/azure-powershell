@@ -17,4 +17,11 @@ Describe 'Start-AzDiskPool' {
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.status | Should -Be 'Running'
     }
+
+    It 'StartViaIdentity' {
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        Start-AzDiskPool -InputObject $diskPool
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        $diskPool.status | Should -Be 'Running'
+    }
 }

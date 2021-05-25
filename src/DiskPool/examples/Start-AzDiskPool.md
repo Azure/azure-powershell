@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start a Disk Pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Start-AzDiskPool -DiskPoolName 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a Disk Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Start a Disk Pool by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Start-AzDiskPool
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command starts a Disk Pool by object.
 

@@ -1,18 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an iSCSI target
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-1' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic'
 
-{{ Add output here }}
+Name               Type
+----               ----
+target1 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates an iSCSI target.
 
