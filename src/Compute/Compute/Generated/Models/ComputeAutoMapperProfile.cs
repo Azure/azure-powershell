@@ -186,7 +186,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachinePatchAssessmentResult, FROM.VirtualMachineAssessPatchesResult>();
                 cfg.CreateMap<FROM.VirtualMachineInstallPatchesResult, TO.PSVirtualMachineInstallPatchesResult>();
                 cfg.CreateMap<TO.PSVirtualMachineInstallPatchesResult, FROM.VirtualMachineInstallPatchesResult>();
-
+                cfg.CreateMap<FROM.SshPublicKeyResource, TO.PSSshPublicKeyResource>();
+                cfg.CreateMap<TO.PSSshPublicKeyResource, FROM.SshPublicKeyResource>();
+                cfg.CreateMap<FROM.SshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
+                cfg.CreateMap<TO.PSSshPublicKeyResourceList, TO.PSSshPublicKeyResource>();
+                cfg.CreateMap<TO.PSSshPublicKeyResource, TO.PSSshPublicKeyResourceList>();
             });
             _mapper = config.CreateMapper();
         }
