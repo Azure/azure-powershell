@@ -24,6 +24,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
@@ -163,6 +164,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [ValidateSet("Named", "Geo")]
         public string SecondaryType { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of high availability readonly replicas for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The number of readonly secondary replicas associated with the database to which readonly application intent connections may be routed. This property is only settable for Hyperscale edition databases.")]
+        public int HighAvailabilityReplicaCount { get; set; }
+
         protected static readonly string[] ListOfRegionsToShowWarningMessageForGeoBackupStorage = { "eastasia", "southeastasia", "brazilsouth", "east asia", "southeast asia", "brazil south" };
 
         /// <summary>
@@ -242,6 +250,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 LicenseType = LicenseType,
                 RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
+                HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

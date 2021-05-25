@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
