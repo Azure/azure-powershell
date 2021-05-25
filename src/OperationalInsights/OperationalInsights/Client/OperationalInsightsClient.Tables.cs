@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             else
             {
-                tables.AddRange(ListTables(resourceGroupName, workspaceName));
+                tables.AddRange(ListPSTables(resourceGroupName, workspaceName));
             }
 
             return tables;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSTable(response);
         }
 
-        public virtual List<PSTable> ListTables(string resourceGroupName, string workspaceName)
+        public virtual List<PSTable> ListPSTables(string resourceGroupName, string workspaceName)
         {
             List<PSTable> tables = new List<PSTable>();
             var responseTables = OperationalInsightsManagementClient.Tables.ListByWorkspace(resourceGroupName, workspaceName);
