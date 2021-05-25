@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/new-azdatadogtagrule
+online version: https://docs.microsoft.com/powershell/module/datadog/new-azdatadogtagrule
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create or update a tag rule set for a given monitor resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzDataDogTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
+New-AzDataDogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog]
  [-LogRuleSendResourceLog] [-LogRuleSendSubscriptionLog] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -183,9 +183,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Rule set name
 
 ```yaml
 Type: System.String
@@ -199,8 +198,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSetName
-Rule set name
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String

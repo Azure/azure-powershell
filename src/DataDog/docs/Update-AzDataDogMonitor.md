@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/update-azdatadogmonitor
+online version: https://docs.microsoft.com/powershell/module/datadog/update-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -15,14 +15,15 @@ Update a monitor resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzDataDogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MonitoringStatus <MonitoringStatus>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-MonitoringStatus <MonitoringStatus>] [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataDogMonitor -InputObject <IDataDogIdentity> [-MonitoringStatus <MonitoringStatus>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +50,21 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -111,6 +127,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -121,6 +152,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+Name of the SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

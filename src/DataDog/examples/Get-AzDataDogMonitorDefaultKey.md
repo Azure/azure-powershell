@@ -1,17 +1,21 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -Name lucasdatadog
 
-{{ Add output here }}
+Created CreatedBy Key                              Name
+------- --------- ---                              ----
+                  xxxxxxxxxxxxx78416607
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog | Get-AzDataDogMonitorDefaultKey
 
-{{ Add output here }}
+Created CreatedBy Key                              Name
+------- --------- ---                              ----
+                  xxxxxxxxxxxxx78416607
 ```
 
 {{ Add description here }}

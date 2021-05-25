@@ -1,31 +1,32 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/powershell/module/datadog/remove-azdatadogmonitor
+online version: https://docs.microsoft.com/powershell/module/datadog/set-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 
-# Remove-AzDataDogMonitor
+# Set-AzDataDogMonitorDefaultKey
 
 ## SYNOPSIS
-Delete a monitor resource.
+Set the default api key.
 
 ## SYNTAX
 
-### Delete (Default)
+### SetExpanded (Default)
 ```
-Remove-AzDataDogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Key <String>
+ [-SubscriptionId <String>] [-Created <String>] [-CreatedBy <String>] [-Name <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Set
 ```
-Remove-AzDataDogMonitor -InputObject <IDataDogIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Body <IDatadogApiKey>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a monitor resource.
+Set the default api key.
 
 ## EXAMPLES
 
@@ -49,12 +50,43 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -Body
+.
+To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
+Parameter Sets: Set
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Created
+The time of creation of the API key.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CreatedBy
+The user that created the API key.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -79,29 +111,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Monitor resource name
+### -Key
+The value of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: MonitorName
+Parameter Sets: SetExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -110,12 +126,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -MonitorName
+Monitor resource name
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the API key.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -146,7 +177,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -161,7 +192,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
 
 ## OUTPUTS
 
@@ -222,13 +253,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: Configuration name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Rule set name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
+BODY <IDatadogApiKey>: .
+  - `Key <String>`: The value of the API key.
+  - `[Created <String>]`: The time of creation of the API key.
+  - `[CreatedBy <String>]`: The user that created the API key.
+  - `[Name <String>]`: The name of the API key.
 
 ## RELATED LINKS
 

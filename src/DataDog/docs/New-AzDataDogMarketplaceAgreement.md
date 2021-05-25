@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/new-azdatadogmarketplaceagreement
+online version: https://docs.microsoft.com/powershell/module/datadog/new-azdatadogmarketplaceagreement
 schema: 2.0.0
 ---
 

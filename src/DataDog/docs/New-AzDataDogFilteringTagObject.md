@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module//az.DataDog/new-AzDataDogFilteringTagObject
+online version: https://docs.microsoft.com/powershell/module//az.DataDog/new-AzDataDogFilteringTagObject
 schema: 2.0.0
 ---
 

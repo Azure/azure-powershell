@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/update-azdatadogmonitorsetpasswordlink
+online version: https://docs.microsoft.com/powershell/module/datadog/update-azdatadogmonitorsetpasswordlink
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Refresh the set password link and return a latest one.
 
 ### Refresh (Default)
 ```
-Update-AzDataDogMonitorSetPasswordLink -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataDogMonitorSetPasswordLink -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### RefreshViaIdentity
@@ -80,7 +80,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml

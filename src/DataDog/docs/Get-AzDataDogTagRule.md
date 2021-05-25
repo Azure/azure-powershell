@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogtagrule
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogtagrule
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzDataDogTagRule -MonitorName <String> -ResourceGroupName <String> [-Subscri
 
 ### Get
 ```
-Get-AzDataDogTagRule -MonitorName <String> -ResourceGroupName <String> -RuleSetName <String>
+Get-AzDataDogTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -100,13 +100,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -Name
+Rule set name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -116,12 +115,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RuleSetName
-Rule set name
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True

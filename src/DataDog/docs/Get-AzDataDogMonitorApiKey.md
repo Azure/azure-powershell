@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitorapikey
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogmonitorapikey
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ List the api keys for a given monitor resource.
 ## SYNTAX
 
 ```
-Get-AzDataDogMonitorApiKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataDogMonitorApiKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -24,18 +24,11 @@ List the api keys for a given monitor resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitorApiKey -ResourceGroupName lucas-dog -Name lucasdatadog
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Created             CreatedBy           Key                              Name
+-------             ---------           ---                              ----
+2021-05-24 07:25:35 dixue@microsoft.com f42c9a4c2a15ea0bc6e0810a78416607 Azure Admin User API Key
 ```
 
 {{ Add description here }}
@@ -57,7 +50,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml

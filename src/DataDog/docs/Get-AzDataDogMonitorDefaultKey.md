@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitordefaultkey
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogmonitordefaultkey
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Get the default api key.
 
 ### Get (Default)
 ```
-Get-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataDogMonitorDefaultKey -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,9 +31,11 @@ Get the default api key.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -Name lucasdatadog
 
-{{ Add output here }}
+Created CreatedBy Key                              Name
+------- --------- ---                              ----
+                  f42c9a4c2a15ea0bc6e0810a78416607
 ```
 
 {{ Add description here }}
@@ -80,7 +82,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml

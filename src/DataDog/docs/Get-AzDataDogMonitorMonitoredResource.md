@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitormonitoredresource
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogmonitormonitoredresource
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ List the resources currently being monitored by the Datadog monitor resource.
 ## SYNTAX
 
 ```
-Get-AzDataDogMonitorMonitoredResource -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDataDogMonitorMonitoredResource -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml

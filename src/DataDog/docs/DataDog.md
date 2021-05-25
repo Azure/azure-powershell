@@ -1,7 +1,7 @@
 ---
 Module Name: DataDog
 Module Guid: 1a549fcc-2674-4e11-9865-ea4f934ae6ff
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/datadog
+Download Help Link: https://docs.microsoft.com/powershell/module/datadog
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -55,6 +55,9 @@ Create or update a tag rule set for a given monitor resource.
 
 ### [Remove-AzDataDogMonitor](Remove-AzDataDogMonitor.md)
 Delete a monitor resource.
+
+### [Set-AzDataDogMonitorDefaultKey](Set-AzDataDogMonitorDefaultKey.md)
+Set the default api key.
 
 ### [Update-AzDataDogMonitor](Update-AzDataDogMonitor.md)
 Update a monitor resource.

@@ -30,7 +30,7 @@ For information on how to develop for `Az.DataDog`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 3d039aede6de1e63023177d0aceaae1820b12cf2
+branch: 2e3f1e0c67ee7da1d681a26b6b23b888ce856695
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -39,16 +39,29 @@ input-file:
 title: DataDog
 module-version: 0.1.0
 subject-prefix: $(service-name)
+nested-object-to-string: true
+identity-correction-for-post: true
 
 directive:
   # Remove cmdlet.
   - where:
       verb: Set
+      subject: MarketplaceAgreement
+    remove: true
+
+  - where:
+      verb: Set
+      subject: SingleSignOnConfiguration
+    remove: true
+
+  - where:
+      verb: Set
+      subject: TagRule
     remove: true
 
   # Remove variant
   - where:
-      variant: ^Create$|^CreateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
       subject: MarketplaceAgreement
     remove: true
 
@@ -67,6 +80,30 @@ directive:
       subject: TagRule
     remove: true
 
+  - where:
+      variant: ^Set$
+      subject: MonitorDefaultKey
+    remove: true
+  # Rename parameter name
+  - where:
+      verb: Get|New|Update|Remove
+      subject: MonitorApiKey|MonitorDefaultKey|MonitorHost|MonitorLinkedResource|MonitorMonitoredResource|MonitorSetPasswordLink
+      parameter-name: MonitorName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Get|New|Update|Remove
+      subject: TagRule
+      parameter-name: RuleSetName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: SingleSignOnConfiguration
+      parameter-name: ConfigurationName
+    set:
+      parameter-name: Name
   # For memory object that generate cmdlet.
   - model-cmdlet:
     - FilteringTag

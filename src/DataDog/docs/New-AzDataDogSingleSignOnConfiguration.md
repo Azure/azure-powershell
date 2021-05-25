@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/new-azdatadogsinglesignonconfiguration
+online version: https://docs.microsoft.com/powershell/module/datadog/new-azdatadogsinglesignonconfiguration
 schema: 2.0.0
 ---
 
@@ -14,10 +14,9 @@ Configures single-sign-on for this resource.
 
 ### CreateExpanded (Default)
 ```
-New-AzDataDogSingleSignOnConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzDataDogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -61,21 +60,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigurationName
-Configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -130,6 +114,21 @@ Accept wildcard characters: False
 
 ### -MonitorName
 Monitor resource name
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Configuration name
 
 ```yaml
 Type: System.String

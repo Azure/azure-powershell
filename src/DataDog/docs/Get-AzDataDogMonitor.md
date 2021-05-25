@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitor
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogmonitor
 schema: 2.0.0
 ---
 
@@ -41,18 +41,44 @@ Get the properties of a specific monitor resource.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitor
 
-{{ Add output here }}
+Location    Name         Type
+--------    ----         ----
+eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog
 
-{{ Add output here }}
+Location    Name         Type
+--------    ----         ----
+eastus2euap lucasdatadog microsoft.datadog/monitors
+```
+
+{{ Add description here }}
+
+### Example 3: {{ Add title here }}
+```powershell
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog
+
+Location    Name         Type
+--------    ----         ----
+eastus2euap lucasdatadog microsoft.datadog/monitors
+```
+
+{{ Add description here }}
+
+### Example 4: {{ Add title here }}
+```powershell
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog | Get-AzDataDogMonitor
+
+Location    Name         Type
+--------    ----         ----
+eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
 {{ Add description here }}

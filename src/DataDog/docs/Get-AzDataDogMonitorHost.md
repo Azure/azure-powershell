@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogmonitorhost
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogmonitorhost
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ List the hosts for a given monitor resource.
 ## SYNTAX
 
 ```
-Get-AzDataDogMonitorHost -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzDataDogMonitorHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MonitorName
+### -Name
 Monitor resource name
 
 ```yaml

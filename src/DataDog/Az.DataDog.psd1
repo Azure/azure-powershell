@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DataDog.private.dll'
   FormatsToProcess = './Az.DataDog.format.ps1xml'
-  FunctionsToExport = 'Get-AzDataDogMarketplaceAgreement', 'Get-AzDataDogMonitor', 'Get-AzDataDogMonitorApiKey', 'Get-AzDataDogMonitorDefaultKey', 'Get-AzDataDogMonitorHost', 'Get-AzDataDogMonitorLinkedResource', 'Get-AzDataDogMonitorMonitoredResource', 'Get-AzDataDogSingleSignOnConfiguration', 'Get-AzDataDogTagRule', 'New-AzDataDogFilteringTagObject', 'New-AzDataDogMarketplaceAgreement', 'New-AzDataDogMonitor', 'New-AzDataDogSingleSignOnConfiguration', 'New-AzDataDogTagRule', 'Remove-AzDataDogMonitor', 'Update-AzDataDogMonitor', 'Update-AzDataDogMonitorSetPasswordLink', '*'
+  FunctionsToExport = 'Get-AzDataDogMarketplaceAgreement', 'Get-AzDataDogMonitor', 'Get-AzDataDogMonitorApiKey', 'Get-AzDataDogMonitorDefaultKey', 'Get-AzDataDogMonitorHost', 'Get-AzDataDogMonitorLinkedResource', 'Get-AzDataDogMonitorMonitoredResource', 'Get-AzDataDogSingleSignOnConfiguration', 'Get-AzDataDogTagRule', 'New-AzDataDogFilteringTagObject', 'New-AzDataDogMarketplaceAgreement', 'New-AzDataDogMonitor', 'New-AzDataDogSingleSignOnConfiguration', 'New-AzDataDogTagRule', 'Remove-AzDataDogMonitor', 'Set-AzDataDogMonitorDefaultKey', 'Update-AzDataDogMonitor', 'Update-AzDataDogMonitorSetPasswordLink', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

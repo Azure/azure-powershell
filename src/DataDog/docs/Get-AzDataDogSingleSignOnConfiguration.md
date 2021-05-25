@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: DataDog
-online version: https://docs.microsoft.com/en-us/powershell/module/datadog/get-azdatadogsinglesignonconfiguration
+online version: https://docs.microsoft.com/powershell/module/datadog/get-azdatadogsinglesignonconfiguration
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Get-AzDataDogSingleSignOnConfiguration -MonitorName <String> -ResourceGroupName 
 
 ### Get
 ```
-Get-AzDataDogSingleSignOnConfiguration -ConfigurationName <String> -MonitorName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataDogSingleSignOnConfiguration -MonitorName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -54,21 +54,6 @@ PS C:\> {{ Add code here }}
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ConfigurationName
-Configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -107,6 +92,21 @@ Monitor resource name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True
