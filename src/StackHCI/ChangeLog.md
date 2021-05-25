@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.7.0
 * Made changes in the registration to onboard nodes to Azure Arc.
     - Registering On-Premises Azure Stack HCI with Azure will also make the nodes in the cluster Azure Arc enabled.   
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.7.0
 * Supported file share snapshot
     - `New-AzRmStorageShare`
     - `Get-AzRmStorageShare`

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
 * GA release for `Az.SecurityInsights`.
 
 ## Version 0.2.0
