@@ -1,35 +1,36 @@
 # Migration Guide for Az 6.0.0
-- [Supported versions of PowerShell](#supported-versions-of-powershell)
-- [Az.Accounts](#azaccounts)
-	- [`Connect-AzAccount`](#connect-azaccount)
-- [Az.ContainerInstance](#azcontainerinstance)
-	- [`New-AzContainerGroup`](#new-azcontainergroup)
-	- [`Remove-AzContainerGroup`](#remove-azcontainergroup)
-	- [`Get-AzContainerGroup`](#get-azcontainergroup)
-	- [`Get-AzContainerInstanceLog`](#get-azcontainerinstancelog)
-- [Az.DesktopVirtualization](#azdesktopvirtualization)
-	- [`New-AzWvdHostPool`](#new-azwvdhostpool)
-	- [`Expand-AzWvdMsixImage`](#expand-azwvdmsiximage)
-	- [`New-AzWvdMsixPackage`](#new-azwvdmsixpackage)
-	- [`Update-AzWvdHostPool`](#update-azwvdhostpool)
-- [Az.StreamAnalytics](#azstreamanalytics)
-	- [`Get-AzStreamAnalyticsDefaultFunctionDefinition`](#get-azstreamanalyticsdefaultfunctiondefinition)
-	- [`New-AzStreamAnalyticsJob`](#new-azstreamanalyticsjob)
-	- [`New-AzStreamAnalyticsTransformation`](#new-azstreamanalyticstransformation)
-- [Az.RecoveryServices](#azrecoveryservices)
-	- [`Set-AzRecoveryServicesBackupProperty`](#set-azrecoveryservicesbackupproperty)
-	- [`Get-AzRecoveryServicesBackupJobDetail`](#get-azrecoveryservicesbackupjobdetail)
-- [Az.Storage](#azstorage)
-	- [`Remove-AzRmStorageShare`](#remove-azrmstorageshare)
-- [Az.ServiceFabric](#azservicefabric)
-	- [`Add-AzServiceFabricClusterCertificate`](#add-azservicefabricclustercertificate)
-	- [`Get-AzServiceFabricManagedClusterService`](#get-azservicefabricmanagedclusterservice)
-	- [`New-AzServiceFabricManagedCluster`](#new-azservicefabricmanagedcluster)
-	- [`New-AzServiceFabricManagedClusterService`](#new-azservicefabricmanagedclusterservice)
-	- [`Remove-AzServiceFabricClusterCertificate`](#remove-azservicefabricclustercertificate)
-	- [`Remove-AzServiceFabricManagedClusterService`](#remove-azservicefabricmanagedclusterservice)
-	- [`Set-AzServiceFabricManagedCluster`](#set-azservicefabricmanagedcluster)
-	- [`Set-AzServiceFabricManagedClusterService`](#set-azservicefabricmanagedclusterservice)
+- [Migration Guide for Az 6.0.0](#migration-guide-for-az-600)
+	- [Supported versions of PowerShell](#supported-versions-of-powershell)
+	- [Az.Accounts](#azaccounts)
+		- [`Connect-AzAccount`](#connect-azaccount)
+	- [Az.ContainerInstance](#azcontainerinstance)
+		- [`New-AzContainerGroup`](#new-azcontainergroup)
+		- [`Remove-AzContainerGroup`](#remove-azcontainergroup)
+		- [`Get-AzContainerGroup`](#get-azcontainergroup)
+		- [`Get-AzContainerInstanceLog`](#get-azcontainerinstancelog)
+	- [Az.DesktopVirtualization](#azdesktopvirtualization)
+		- [`New-AzWvdHostPool`](#new-azwvdhostpool)
+		- [`Expand-AzWvdMsixImage`](#expand-azwvdmsiximage)
+		- [`New-AzWvdMsixPackage`](#new-azwvdmsixpackage)
+		- [`Update-AzWvdHostPool`](#update-azwvdhostpool)
+	- [Az.StreamAnalytics](#azstreamanalytics)
+		- [`Get-AzStreamAnalyticsDefaultFunctionDefinition`](#get-azstreamanalyticsdefaultfunctiondefinition)
+		- [`New-AzStreamAnalyticsJob`](#new-azstreamanalyticsjob)
+		- [`New-AzStreamAnalyticsTransformation`](#new-azstreamanalyticstransformation)
+	- [Az.RecoveryServices](#azrecoveryservices)
+		- [`Set-AzRecoveryServicesBackupProperty`](#set-azrecoveryservicesbackupproperty)
+		- [`Get-AzRecoveryServicesBackupJobDetail`](#get-azrecoveryservicesbackupjobdetail)
+	- [Az.Storage](#azstorage)
+		- [`Remove-AzRmStorageShare`](#remove-azrmstorageshare)
+	- [Az.ServiceFabric](#azservicefabric)
+		- [`Add-AzServiceFabricClusterCertificate`](#add-azservicefabricclustercertificate)
+		- [`Get-AzServiceFabricManagedClusterService`](#get-azservicefabricmanagedclusterservice)
+		- [`New-AzServiceFabricManagedCluster`](#new-azservicefabricmanagedcluster)
+		- [`New-AzServiceFabricManagedClusterService`](#new-azservicefabricmanagedclusterservice)
+		- [`Remove-AzServiceFabricClusterCertificate`](#remove-azservicefabricclustercertificate)
+		- [`Remove-AzServiceFabricManagedClusterService`](#remove-azservicefabricmanagedclusterservice)
+		- [`Set-AzServiceFabricManagedCluster`](#set-azservicefabricmanagedcluster)
+		- [`Set-AzServiceFabricManagedClusterService`](#set-azservicefabricmanagedclusterservice)
 
 ## Supported versions of PowerShell
 
@@ -244,7 +245,6 @@ The cmdlet 'Get-AzStreamAnalyticsDefaultFunctionDefinition' no longer supports t
 #### Before
 ```powershell
 Get-AzStreamAnalyticsDefaultFunctionDefinition -ResourceGroupName "StreamAnalytics-Default-West-US" -JobName "StreamJob22" -File "C:\RetrieveDefaultDefinitionRequest.json" -Name "ScoreTweet"
-Please refer to https://github.com/Azure/azure-powershell/blob/v5.9.0-May2021/src/StreamAnalytics/StreamAnalytics.Test/Resources/RetrieveDefaultFunctionDefinitionRequest.json for an example of the input file.
 ```
 #### After
 ```powershell
@@ -259,7 +259,6 @@ The cmdlet 'New-AzStreamAnalyticsJob' no longer supports the parameter 'File' an
 #### Before
 ```powershell
 New-AzStreamAnalyticsJob -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\JobDefinition.json"
-Please refer to https://github.com/Azure/azure-powershell/blob/v5.9.0-May2021/src/StreamAnalytics/StreamAnalytics.Test/Resources/Job.json for an example of the input file.
 ```
 #### After
 ```powershell
@@ -274,7 +273,6 @@ The cmdlet 'New-AzStreamAnalyticsTransformation' no longer supports the paramete
 #### Before
 ```powershell
 New-AzStreamAnalyticsTransformation -ResourceGroupName "StreamAnalytics-Default-West-US" -File "C:\Transformation.json" -JobName "StreamingJob" -Name "StreamingJobTransform"
-Please refer to https://github.com/Azure/azure-powershell/blob/v5.9.0-May2021/src/StreamAnalytics/StreamAnalytics.Test/Resources/Transformation.json for an example fo the input file.
 ```
 #### After
 ```powershell
