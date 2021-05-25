@@ -44,7 +44,7 @@ Get IoT security solution
 ### [Get-AzJitNetworkAccessPolicy](Get-AzJitNetworkAccessPolicy.md)
 Gets the JIT network access policies
 
-### [Get-AzRegulatoryComplainceAssessment](Get-AzRegulatoryComplainceAssessment.md)
+### [Get-AzRegulatoryComplianceAssessment](Get-AzRegulatoryComplianceAssessment.md)
 Gets regulatory compliance assessments
 
 ### [Get-AzRegulatoryComplianceControl](Get-AzRegulatoryComplianceControl.md)
@@ -149,7 +149,7 @@ Invokes a temporary network access request.
 ### [Update-AzIotSecuritySolution](Update-AzIotSecuritySolution.md)
 Update one or more of the following properties in IoT security solution: tags, recommendation configuration, user defined resources
 
-### [Get-AzRegulatoryComplainceAssessment](Get-AzRegulatoryComplainceAssessment.md)
+### [Get-AzRegulatoryComplianceAssessment](Get-AzRegulatoryComplianceAssessment.md)
 Gets regulatory compliance assessments
 
 ### [Get-AzRegulatoryComplianceControl](Get-AzRegulatoryComplianceControl.md)
