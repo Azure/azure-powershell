@@ -20,6 +20,7 @@ $resourceLocation = 'westcentralus'
 Describe 'New-AzWvdScalingPlan' {
     It 'CreateExpanded' {
         try {
+            [System.Threading.Thread]::CurrentThread.CurrentCulture = 'en-US'
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $resourceGroup `

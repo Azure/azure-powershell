@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappapplicationsetting
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]

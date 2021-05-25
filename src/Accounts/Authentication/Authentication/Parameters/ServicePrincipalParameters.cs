@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public SecureString Secret { get; set; }
 
+        public bool? SendCertificateChain { get; set; } = null;
+
         public ServicePrincipalParameters(
             PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
@@ -34,11 +36,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string resourceId,
             string applicationId,
             string thumbprint,
-            SecureString secret) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
+            SecureString secret,
+            bool? sendCertificateChain) : base(tokenCacheProvider, environment, tokenCache, tenantId, resourceId)
         {
             ApplicationId = applicationId;
             Thumbprint = thumbprint;
             Secret = secret;
+            SendCertificateChain = sendCertificateChain;
         }
     }
 }

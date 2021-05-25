@@ -396,7 +396,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool? allowSharedKeyAccess = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The SAS expiration period of this account, it is a timespan and accurate to seconds.")]
-        public TimeSpan SasExpirationPeriod { get; set; }
+        public TimeSpan SasExpirationPeriod
+        {
+            get
+            {
+                return sasExpirationPeriod is null ? TimeSpan.Zero : sasExpirationPeriod.Value;
+            }
+            set
+            {
+                sasExpirationPeriod = value;
+            }
+        }
+        private TimeSpan? sasExpirationPeriod = null;
 
         [Parameter(Mandatory = false, HelpMessage = "The Key expiration period of this account, it is accurate to days.")]
         public int KeyExpirationPeriodInDay
@@ -661,9 +672,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         updateParameters.AllowSharedKeyAccess = allowSharedKeyAccess;
                     }
-                    if (SasExpirationPeriod != null && SasExpirationPeriod != TimeSpan.Zero)
+                    if (sasExpirationPeriod != null)
                     {
-                        updateParameters.SasPolicy = new SasPolicy(SasExpirationPeriod.ToString(@"d\.hh\:mm\:ss"));
+                        updateParameters.SasPolicy = new SasPolicy(sasExpirationPeriod.Value.ToString(@"d\.hh\:mm\:ss"));
                     }
                     if (keyExpirationPeriodInDay != null)
                     {

@@ -32,7 +32,7 @@ namespace RecoveryServices.SiteRecovery.Test
             XunitTracingInterceptor.AddToContext(_logger);
             this.PowershellFile = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "V2ARCM", "AsrV2ARCMTests.ps1");
+                "ScenarioTests", "V2ARCM", "AsrV2ARcmTests.ps1");
             this.Initialize();
         }
 

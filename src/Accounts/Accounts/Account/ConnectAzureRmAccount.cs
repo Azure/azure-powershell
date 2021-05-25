@@ -35,6 +35,7 @@ using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
@@ -200,6 +201,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, Mandatory = false, HelpMessage = "Specifies if the x5c claim (public key of the certificate) should be sent to the STS to achieve easy certificate rollover in Azure AD.")]
+        public SwitchParameter SendCertificateChain { get; set; }
+
         protected override IAzureContext DefaultContext
         {
             get
@@ -339,6 +343,24 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrWhiteSpace(CertificateThumbprint))
             {
                 azureAccount.SetThumbprint(CertificateThumbprint);
+            }
+
+            if (ParameterSetName == ServicePrincipalCertificateParameterSet && SendCertificateChain)
+            {
+                azureAccount.SetProperty(AzureAccount.Property.SendCertificateChain, SendCertificateChain.ToString());
+                bool supressWarningOrError = false;
+                try
+                {
+                    supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(BreakingChangeAttributeHelper.SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                }
+                catch
+                {
+                    //if value of env variable is invalid, use default value of supressWarningOrError
+                }
+                if (!supressWarningOrError)
+                {
+                    WriteWarning(Resources.PreviewFunctionMessage);
+                }
             }
 
             if (!string.IsNullOrEmpty(Tenant))
