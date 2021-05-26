@@ -60,8 +60,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     WriteDebug("No public key is provided. A key pair is being generated for you.");
                     
-                    SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                    sshkey.Location = "westus";
                     result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
                     SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
                     result.PublicKey = keypair.PublicKey;
