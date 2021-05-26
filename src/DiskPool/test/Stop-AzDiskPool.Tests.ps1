@@ -12,11 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Stop-AzDiskPool' {
-    It 'Deallocate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Deallocate' {
+        Stop-AzDiskPool -DiskPoolName $env.diskPool1 -ResourceGroupName $env.resourceGroup
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
+        $diskPool.status | Should -Be 'Stopped (deallocated)'
     }
 
-    It 'DeallocateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeallocateViaIdentity'  {
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        Stop-AzDiskPool -InputObject $diskPool
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool5
+        $diskPool.status | Should -Be 'Stopped (deallocated)'
     }
 }

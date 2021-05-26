@@ -1,18 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Disk Pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -DiskId @()
 
-{{ Add output here }}
+Location   Name        Type
+--------   ----        ----
+westeurope disk-pool-1 Microsoft.StoragePool/diskPools
 ```
 
-{{ Add description here }}
+This command updates a Disk Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a Disk Pool by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Update-AzDiskPool -DiskId @()
 
-{{ Add output here }}
+Location   Name        Type
+--------   ----        ----
+westeurope disk-pool-1 Microsoft.StoragePool/diskPools
 ```
 
-{{ Add description here }}
+This command updates a Disk Pool by object.
 

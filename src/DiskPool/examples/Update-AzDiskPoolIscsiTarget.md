@@ -1,18 +1,24 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an iSCSI target
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $lun0 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk1" -Name "lun0"
+PS C:\> Update-AzDiskPoolIscsiTarget -Name 'target0' -DiskPoolName 'disk-pool-5' -ResourceGroupName 'storagepool-rg-test' -Lun @($lun0)
 
-{{ Add output here }}
+Name               Type
+----               ----
+target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-{{ Add description here }}
+This command updates an iSCSI target.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an iSCSI target by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $lun0 = New-AzDiskPoolIscsiLunObject -ManagedDiskAzureResourceId "/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.Compute/disks/disk1" -Name "lun0"
+PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0' | Update-AzDiskPoolIscsiTarget -Lun @($lun0)
 
-{{ Add output here }}
+Name               Type
+----               ----
+target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-{{ Add description here }}
+This command updates an iSCSI target by object.
 

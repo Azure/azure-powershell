@@ -1,18 +1,32 @@
-### Example 1: {{ Add title here }}
+### Example 1: List iSCSI targets in a Disk Pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5'
 
-{{ Add output here }}
+Name               Type
+----               ----
+target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-{{ Add description here }}
+This command lists all iSCSI targets in a Disk Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a iSCSI target
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
 
-{{ Add output here }}
+Name               Type
+----               ----
+target0 Microsoft.StoragePool/diskPools/iscsiTargets
 ```
 
-{{ Add description here }}
+This command gets an iSCSI target.
 
+### Example 3: Get a iSCSI target by object
+```powershell
+PS C:\> New-AzDiskPoolIscsiTarget -DiskPoolName 'disk-pool-5' -Name 'target1' -ResourceGroupName 'storagepool-rg-test' -AclMode 'Dynamic' | Get-AzDiskPoolIscsiTarget
+
+Name               Type
+----               ----
+target1 Microsoft.StoragePool/diskPools/iscsiTargets
+```
+
+This command gets an iSCSI target by object.

@@ -12,11 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDiskPool' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'UpdateExpanded' {
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
+        $diskPool.Disk.Count | Should -Be 1 
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $disks = @()
+        $diskPool = Update-AzDiskPool -Name $env.diskPool1 -ResourceGroupName $env.resourceGroup -DiskId $disks 
+        $diskPool.Disk.Count | Should -Be 0
+    }
+    
+    It 'UpdateViaIdentityExpanded' {
+        $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
+        $diskPool.Disk.Count | Should -Be 0 
+        
+        $disks = @()
+        $disks += @($env.diskId1)
+        $diskPool = Update-AzDiskPool -InputObject $diskPool -DiskId $disks
+        $diskPool.Disk.Count | Should -Be 1
     }
 }
