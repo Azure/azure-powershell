@@ -81,6 +81,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
         public string Location { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        public string EdgeZone { get; set; }
+
         // this corresponds to VmSku in the Azure CLI
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string VmSize { get; set; } = "Standard_DS1_v2";
@@ -227,6 +230,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
+                    edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
                     //sku.Basic is not compatible with multiple placement groups
@@ -237,6 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName,
+                    edgeZone: _cmdlet.EdgeZone,
                     addressPrefix: _cmdlet.VnetAddressPrefix);
 
                 var subnet = virtualNetwork.CreateSubnet(
@@ -328,7 +333,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost : _cmdlet.EncryptionAtHost.IsPresent,
-                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null
+                    platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
+                    edgeZone: _cmdlet.EdgeZone
                     );
             }
         }

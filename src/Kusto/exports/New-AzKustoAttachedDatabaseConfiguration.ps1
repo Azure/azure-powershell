@@ -26,12 +26,12 @@ Name                                 Type                                       
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IAttachedDatabaseConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IAttachedDatabaseConfiguration
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
+https://docs.microsoft.com/powershell/module/az.kusto/new-azkustoattacheddatabaseconfiguration
 #>
 function New-AzKustoAttachedDatabaseConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IAttachedDatabaseConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IAttachedDatabaseConfiguration])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -85,6 +85,42 @@ param(
     [System.String]
     # Resource location.
     ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of external tables exclude from the follower database
+    ${TableLevelSharingPropertyExternalTablesToExclude},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of external tables to include in the follower database
+    ${TableLevelSharingPropertyExternalTablesToInclude},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of materialized views exclude from the follower database
+    ${TableLevelSharingPropertyMaterializedViewsToExclude},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of materialized views to include in the follower database
+    ${TableLevelSharingPropertyMaterializedViewsToInclude},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of tables to exclude from the follower database
+    ${TableLevelSharingPropertyTablesToExclude},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String[]]
+    # List of tables to include in the follower database
+    ${TableLevelSharingPropertyTablesToInclude},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

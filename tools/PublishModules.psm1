@@ -107,6 +107,7 @@ function Get-RollupModules {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
                 $targets += "$PSScriptRoot\Az"
+                $targets += "$PSScriptRoot\AzPreview"
             } else {
                 $targets += "$PSScriptRoot\AzureRM"
             }

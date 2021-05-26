@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+skip-semantics-validation: true
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:

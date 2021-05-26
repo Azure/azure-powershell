@@ -13,27 +13,26 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "Upstream", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSServerlessUpstreamSettings))]
-    public class SetAzureRmSignalRUpstream : SignalRCmdletBase ,  IWithResourceId, IWithInputObject
+    public class SetAzureRmSignalRUpstream : SignalRCmdletBase, IWithResourceId, IWithInputObject
     {
         [Parameter(
 Mandatory = false,
 ParameterSetName = ResourceGroupParameterSet,
 HelpMessage = "The resource group name. The default one will be used if not specified.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty()]
+        [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -42,6 +41,7 @@ HelpMessage = "The resource group name. The default one will be used if not spec
     ParameterSetName = ResourceGroupParameterSet,
     HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
+        [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -111,7 +111,7 @@ HelpMessage = "Clear all the upstream settings.")]
 
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                     signalr.Upstream.Templates = Template.Select(t => t.toSDKTemplate()).ToList();
-                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
                     WriteObject(new PSSignalRResource(signalr).Upstream);
                 }
             });

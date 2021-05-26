@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.4
 * Provided key size for RSA key [#14819]
 
 ## Version 3.4.3

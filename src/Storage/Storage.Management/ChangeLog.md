@@ -22,6 +22,7 @@
     - `Get-AzDataLakeGen2DeletedItem`
     - `Restore-AzDataLakeGen2DeletedItem`
 
+## Version 3.7.0
 * Supported file share snapshot
     - `New-AzRmStorageShare`
     - `Get-AzRmStorageShare`

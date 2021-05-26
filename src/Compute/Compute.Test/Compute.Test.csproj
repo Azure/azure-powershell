@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
     <ProjectReference Include="..\Compute\Compute.csproj" />
   </ItemGroup>
 

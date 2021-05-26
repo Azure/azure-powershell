@@ -19,16 +19,18 @@ Creates or updates a database.
 .Description
 Creates or updates a database.
 .Example
-PS C:\> New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+PS C:\> {{ Add code here }}
 
-Kind      Location Name                                Type
-----      -------- ----                                ----
-ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
+{{ Add output here }}
+.Example
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,10 +40,10 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
   Kind <Kind>: Kind of the database
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustodatabase
+https://docs.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 #>
 function New-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -73,7 +75,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
