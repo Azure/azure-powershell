@@ -5,7 +5,7 @@ schedules:
   displayName: Daily Midnight Build
   branches:
     include:
-    - master
+    - main
 
 trigger: none
 pr: none
