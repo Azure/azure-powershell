@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 06DAD751-3A43-4EF6-94C5-AA7AC1A67FC8
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworkpeering
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azvirtualnetworkpeering
 schema: 2.0.0
 ---
 
@@ -68,12 +68,11 @@ $myVnet1TomyVnet2 = Get-AzVirtualNetworkPeering -VirtualNetworkName "myVnet1" -R
 $myVnet1TomyVnet2.UseRemoteGateways = $True
 
 # Update the virtual network peering
-Set-AzVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+Set-AzVirtualNetworkPeering -VirtualNetworkPeering $myVnet1TomyVnet2
 ```
 
 By changing this property to $True, your peer's VNet gateway can be used.
 However, the peer VNet must have a gateway configured and **AllowGatewayTransit** must have a value of $True.
-
 This property cannot be used if a gateway has already been configured.
 
 ## PARAMETERS
@@ -82,9 +81,9 @@ This property cannot be used if a gateway has already been configured.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,9 +96,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -112,9 +111,9 @@ Accept wildcard characters: False
 Specifies the virtual network peering.
 
 ```yaml
-Type: PSVirtualNetworkPeering
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,8 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetworkPeering
-Parameter 'VirtualNetworkPeering' accepts value of type 'PSVirtualNetworkPeering' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 
 ## OUTPUTS
 
@@ -144,5 +142,3 @@ Parameter 'VirtualNetworkPeering' accepts value of type 'PSVirtualNetworkPeering
 [Get-AzVirtualNetworkPeering](./Get-AzVirtualNetworkPeering.md)
 
 [Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
-
-

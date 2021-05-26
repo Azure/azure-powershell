@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: E43C8D2A-A6B5-4259-94B9-353FBC15F5A8
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azapplicationgatewayurlpathmapconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-azapplicationgatewayurlpathmapconfig
 schema: 2.0.0
 ---
 
@@ -23,10 +23,16 @@ The **Remove-AzApplicationGatewayUrlPathMapConfig** cmdlet removes URL path mapp
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Remove an URL path mapping from an application gateway
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Remove-AzApplicationGatewayUrlPathMapConfig -ApplicationGateway $appgw -Name "map01"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-```
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command removes the URL path mapping named map01 from the application gateway.
+The third command updates the application gateway.
 
 ## PARAMETERS
 
@@ -34,9 +40,9 @@ The **Remove-AzApplicationGatewayUrlPathMapConfig** cmdlet removes URL path mapp
 Specifies the application gateway to which this cmdlet removes URL path map configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -49,9 +55,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,9 +70,9 @@ Accept wildcard characters: False
 Specifies the URL path map name that this cmdlet removes from the backend server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,8 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

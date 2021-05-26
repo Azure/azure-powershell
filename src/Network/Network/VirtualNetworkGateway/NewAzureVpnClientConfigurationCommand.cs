@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of client root certificate paths")]
-        public List<string> ClientRootCertificateFileList { get; set; }
+        public string[] ClientRootCertificateFileList { get; set; }
 
         public override void Execute()
         {

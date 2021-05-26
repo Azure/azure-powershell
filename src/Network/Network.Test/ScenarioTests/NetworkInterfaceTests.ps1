@@ -115,7 +115,8 @@ function Test-NetworkInterfaceCRUD
     try 
     {
         # Create the resource group
-        
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -822,9 +823,9 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = "westcentralus"
+    $rglocation = Get-ProviderLocation ResourceManagement "West Central US"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = "westcentralus"
+    $location = Get-ProviderLocation $resourceTypeParent "West Central US"
     
     try 
     {
@@ -884,5 +885,172 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating new NetworkInterfaceTapConfiguration using minimal set of parameters
+#>
+function Test-NetworkInterfaceTapConfigurationCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $rname = Get-ResourceName
+    $vtapName = Get-ResourceName
+    $vtapName2 = Get-ResourceName
+    $sourceIpConfigName = Get-ResourceName
+    $sourceNicName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $job = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
+        $job | Wait-Job
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        # Create required dependencies (Vtap)
+        $DestinationEndpoint = $expectedNic.IpConfigurations[0]
+        $actualVtap = New-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName -Location $location -DestinationNetworkInterfaceIPConfiguration $DestinationEndpoint  -Force
+        $vVirtualNetworkTap = Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+
+        # Create source Nic which is getting tapped
+        $sourceIpConfig = New-AzNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
+        $sourceNic = New-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+
+        # Add tap configuration
+        Add-AzNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname
+
+        #get tap configuration
+        $tapConfig = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
+        $tapConfigs = Get-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName
+        Assert-NotNull $tapConfigs
+
+        $tapConfig = Get-AzNetworkInterfaceTapConfig -ResourceId $tapConfig.Id
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
+        # get nic and check back reference
+        $sourceNic = Get-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname
+        Assert-NotNull $sourceNic.TapConfigurations
+        Assert-NotNull $sourceNic.TapConfigurations[0]
+        Assert-AreEqual $sourceNic.TapConfigurations[0].Id $tapConfig.Id
+
+        # get vtap and check back reference
+        $vVirtualNetworkTap = Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0]
+        Assert-AreEqual $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0].Id $tapConfig.Id
+
+        # set tap configuration
+        $job = Set-AzNetworkInterfaceTapConfig -NetworkInterfaceTapConfig $tapConfig -AsJob -Force
+        $job | Wait-Job
+        $tapConfig = $job | Receive-Job
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
+        # Remove NetworkInterfaceTapConfiguration
+        $removeNetworkInterfaceTapConfiguration = Remove-AzNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname -PassThru -Force;
+        Assert-AreEqual $true $removeNetworkInterfaceTapConfiguration;
+
+        $sourceNic = Get-AzNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname
+        Assert-NotNull $sourceNic.TapConfigurations
+        Assert-Null $sourceNic.TapConfigurations[0]
+
+        # get vtap and check back reference
+        $vVirtualNetworkTap = Get-AzVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations
+        Assert-Null $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0]
+
+        # Get NetworkInterfaceTapConfiguration should fail
+        Assert-ThrowsContains { Get-AzNetworkInterfaceTapConfig  -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname } "not found";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+function Get-NameById($Id, $ResourceType)
+{
+    $name = $Id.Substring($Id.IndexOf($ResourceType + '/') + $ResourceType.Length + 1);
+    if ($name.IndexOf('/') -ne -1)
+    {
+        $name = $name.Substring(0, $name.IndexOf('/'));
+    }
+    return $name;
+}
+
+function Test-NetworkInterfaceVmss
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Compute/virtualMachineScaleSets"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $lbName = Get-ResourceName
+
+    try
+    {
+       # Create the resource group
+       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+       $secpasswd = ConvertTo-SecureString "Pa$$word2018" -AsPlainText -Force
+       $mycreds = New-Object System.Management.Automation.PSCredential ("username", $secpasswd)
+
+       $vmssName = "vmssip"
+       $templateFile = (Resolve-Path ".\ScenarioTests\Data\VmssDeploymentTemplate.json").Path
+       New-AzureRmResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateFile $templateFile;
+
+       $listAllResults = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName;
+       Assert-NotNull $listAllResults;
+
+       $listFirstResultId = $listAllResults[0].Id;
+       $vmIndex = Get-NameById $listFirstResultId "virtualMachines";
+       $nicName = Get-NameById $listFirstResultId "networkInterfaces";
+
+       $listResults = Get-AzureRmNetworkInterface -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName -VirtualmachineIndex $vmIndex;
+       Assert-NotNull $listResults;
+       Assert-AreEqualObjectProperties $listAllResults[0] $listResults[0] "List and list all results should contain equal items";
+
+       $vmssNic = Get-AzureRmNetworkInterface -VirtualMachineScaleSetName $vmssName -ResourceGroupName $rgname -VirtualMachineIndex $vmIndex -Name $nicName;
+       Assert-NotNull $vmssNic;
+       Assert-AreEqualObjectProperties $vmssNic $listResults[0] "List and get results should contain equal items";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0780CB09-9C3B-468A-A718-3A646FE3D152
-online version: https://docs.microsoft.com/powershell/module/az.network/test-azprivateipaddressavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azprivateipaddressavailability
 schema: 2.0.0
 ---
 
@@ -44,9 +44,9 @@ This command gets a virtual network and uses the pipeline operator to pass it to
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Specifies the IP address to test.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 Specifies a **PSVirtualNetwork** object.
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: TestByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,8 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetwork
-Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 
 ## OUTPUTS
 

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of rules that will be disabled. If null, all rules of the rule group will be disabled.")]
-        public List<int> Rules { get; set; }
+        public int[] Rules { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallDisabledRuleGroup()
             {
                 RuleGroupName = this.RuleGroupName,
-                Rules = this.Rules
+                Rules = this.Rules?.ToList()
             };
         }
     }

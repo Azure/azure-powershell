@@ -29,24 +29,36 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Path of certificate PFX file")]
         [ValidateNotNullOrEmpty]
         public string CertificateFile { get; set; }
 
         [Parameter(
-               Mandatory = true,
+               Mandatory = false,
                HelpMessage = "Certificate password")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
+
+        [Parameter(
+               Mandatory = false,
+               HelpMessage = "SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultSecretId { get; set; }
 
         public PSApplicationGatewaySslCertificate NewObject()
         {
             var sslCertificate = new PSApplicationGatewaySslCertificate();
 
             sslCertificate.Name = this.Name;
-            sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
-            sslCertificate.Password = this.Password;
+            if (this.CertificateFile != null)
+            {
+                sslCertificate.Data = Convert.ToBase64String(File.ReadAllBytes(this.CertificateFile));
+                sslCertificate.Password = this.Password;
+            }
+
+            sslCertificate.KeyVaultSecretId = this.KeyVaultSecretId;
+
             sslCertificate.Id =
                 ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

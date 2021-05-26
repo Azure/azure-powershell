@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 706C918B-1D1A-476C-BB74-EBB4EE72AC0C
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayauthenticationcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azapplicationgatewayauthenticationcertificate
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Gets an authentication certificate for an application gateway.
 ## SYNTAX
 
 ```
-Get-AzApplicationGatewayAuthenticationCertificate [-Name <String>]
- -ApplicationGateway <PSApplicationGateway> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzApplicationGatewayAuthenticationCertificate [-Name <String>] -ApplicationGateway <PSApplicationGateway>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,14 @@ The **Get-AzApplicationGatewayAuthenticationCertificate** cmdlet gets an authent
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get a specified authentication certificate
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $pool = Get-AzApplicationGatewayBackendAddressPool -Name "pool01" -ApplicationGateway $appgw
 ```
 
-```
+The first command gets the application gateway named appGwName and stores it in the $appgw variable.
+The second command gets the authentication certificate named pool01 and stores it in the $pool variable.
 
 ## PARAMETERS
 
@@ -34,9 +38,9 @@ The **Get-AzApplicationGatewayAuthenticationCertificate** cmdlet gets an authent
 Specifies the name of application gateway for which this cmdlet gets an authentication certificate.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -49,9 +53,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -64,9 +68,9 @@ Accept wildcard characters: False
 Specifies the name of the authentication certificate that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

@@ -16,9 +16,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSExpressRouteServiveProvider
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
         public List<string> PeeringLocations { get; set; }

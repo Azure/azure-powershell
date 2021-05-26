@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 3D88F561-7FE4-4017-BAC4-8F085AD037A9
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysku
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewaysku
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- -Capacity <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,6 @@ PS C:\> $AppGw = Set-AzApplicationGatewaySku -ApplicationGateway $AppGw -Name "S
 ```
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.
-
 The second command updates the SKU of the application gateway.
 
 ## PARAMETERS
@@ -39,9 +38,9 @@ The second command updates the SKU of the application gateway.
 Specifies the application gateway object with which this cmdlet associates the SKU.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -54,11 +53,11 @@ Accept wildcard characters: False
 Specifies the instance count of the application gateway.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,9 +68,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -83,7 +82,6 @@ Accept wildcard characters: False
 ### -Name
 Specifies the name of the application gateway.
 The acceptable values for this parameter are:
-
 - Standard_Small
 - Standard_Medium
 - Standard_Large
@@ -91,10 +89,10 @@ The acceptable values for this parameter are:
 - WAF_Large
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
+Aliases:
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
 
 Required: True
 Position: Named
@@ -106,15 +104,14 @@ Accept wildcard characters: False
 ### -Tier
 Specifies the tier of the application gateway.
 The acceptable values for this parameter are:
-
 - Standard
 - WAF
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Standard, WAF
+Aliases:
+Accepted values: Standard, WAF, Standard_v2, WAF_v2
 
 Required: True
 Position: Named
@@ -128,7 +125,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

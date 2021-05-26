@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D7C275E5-BC43-454B-BF1E-48D639C4B4F0
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewaysslcertificate
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Sets the goal state of an SSL certificate.
 
 ```
 Set-AzApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> -Password <SecureString> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-CertificateFile <String>] [-Password <SecureString>] [-KeyVaultSecretId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Set-AzApplicationGatewaySslCertificate** cmdlet sets the goal state of an 
 
 ## EXAMPLES
 
-### Example 1: Set the goal state of an SSL certificate
+### Example 1: Update an existing SSL certificate on Application Gateway
 ```
 PS C:\> $appGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
@@ -33,15 +33,34 @@ PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppG
 
 This command sets the goal state for an SSL certificate from the application gateway named ApplicationGateway01.
 
+### Example 2: Update an existing SSL certificate using KeyVault Secret (version-less secretId) on Application Gateway
+```
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $secretId = $secret.Id.Replace($secret.Version, "") # https://<keyvaultname>.vault.azure.net/secrets/
+PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
+```
+
+Get the secret and update an existing SSL Certificate using `Set-AzApplicationGatewaySslCertificate`.
+
+### Example 3: Update an existing SSL certificate using KeyVault Secret on Application Gateway
+```
+PS C:\> $secret = Get-AzKeyVaultSecret -VaultName "keyvault01" -Name "sslCert01"
+PS C:\> $secretId = $secret.Id # https://<keyvaultname>.vault.azure.net/secrets/<hash>
+PS C:\> $cert = Set-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -KeyVaultSecretId $secretId
+```
+
+Get the secret and update an existing SSL Certificate using `Set-AzApplicationGatewaySslCertificate`.
+Note: If it is required that Application Gateway syncs the certificate with the KeyVault, please provide the version-less secretId.
+
 ## PARAMETERS
 
 ### -ApplicationGateway
 Specifies the application gateway with which the Secure Socket Layer (SSL) certificate is associated.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -54,11 +73,11 @@ Accept wildcard characters: False
 Specifies the path of the SSL certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -69,9 +88,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSecretId
+SecretId (uri) of the KeyVault Secret. Use this option when a specific version of secret needs to be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -84,9 +118,9 @@ Accept wildcard characters: False
 Specifies the name of the SSL certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,11 +133,11 @@ Accept wildcard characters: False
 Specifies the password of the SSL certificate.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

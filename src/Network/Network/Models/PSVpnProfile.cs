@@ -19,9 +19,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSVpnProfile
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string VpnProfileSASUrl { get; set; }
     }
 }

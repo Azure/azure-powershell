@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2A3B7343-9AA0-4505-AEDE-31C0C5B98694
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azexpressroutecircuit
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/set-azexpressroutecircuit
 schema: 2.0.0
 ---
 
@@ -36,9 +36,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -51,9 +51,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the **ExpressRouteCircuit** object that this cmdlet modifies.
 
 ```yaml
-Type: PSExpressRouteCircuit
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,8 +82,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCircuit
-Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 
 ## OUTPUTS
 

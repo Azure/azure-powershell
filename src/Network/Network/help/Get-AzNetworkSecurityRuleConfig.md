@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5A0D9326-3A8A-4156-8372-EBA93C1BB4E4
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworksecurityruleconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-aznetworksecurityruleconfig
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Get a network security rule configuration for a network security group.
 ## SYNTAX
 
 ```
-Get-AzNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup>
- [-DefaultRules] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetworkSecurityRuleConfig [-Name <String>] -NetworkSecurityGroup <PSNetworkSecurityGroup> [-DefaultRules]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ The **Get-AzNetworkSecurityRuleConfig** cmdlet gets a network security rule conf
 
 ### 1: Retrieving a network security rule config
 ```
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
     | Get-AzNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules
 ```
 
@@ -33,7 +33,7 @@ This command retrieves the default rule named "AllowInternetOutBound" from Azure
 
 ### 2: Retrieving a network security rule config using only the name
 ```
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName rg1 
     | Get-AzNetworkSecurityRuleConfig -Name "rdp-rule"
 ```
 
@@ -45,9 +45,9 @@ This command retrieves user defined rule named "rdp-rule" from Azure network sec
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Indicates whether this cmdlet gets a user-created rule configuration or a default rule configuration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the name of the network security rule configuration to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Specifies a **NetworkSecurityGroup** object that contains the network security rule configuration to get.
 
 ```yaml
-Type: PSNetworkSecurityGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,8 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkSecurityGroup
-Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 
 ## OUTPUTS
 

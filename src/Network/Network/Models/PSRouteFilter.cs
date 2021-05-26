@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
 
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSRouteFilter: PSTopLevelResource
     {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSPeering> Peerings { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

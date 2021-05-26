@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
 
-    [Cmdlet(VerbsCommon.Get, "AzExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
     public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
         public override void Execute()

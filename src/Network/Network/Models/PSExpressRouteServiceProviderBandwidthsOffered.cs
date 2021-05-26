@@ -13,12 +13,16 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSExpressRouteServiceProviderBandwidthsOffered
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string OfferName { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int ValueInMbps { get; set; }
     }
 }

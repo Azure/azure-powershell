@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
             return psVirtualNetwork;
         }
 
-        public PSVirtualNetwork ToPsVirtualNetwork(VirtualNetwork vnet)
+        public PSVirtualNetwork ToPsVirtualNetwork(Microsoft.Azure.Management.Network.Models.VirtualNetwork vnet)
         {
             var psVnet = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
 

@@ -19,13 +19,16 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectionMonitorResult : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         public string Type { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -34,12 +37,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSConnectionMonitorDestination Destination { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MonitoringIntervalInSeconds { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? StartTime { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string MonitoringStatus { get; set; }
 
         public Dictionary<string, string> Tags { get; set; }

@@ -12,33 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class VirtualNetworkGatewayConnectionTests : NetworkTestRunner
+    public class VirtualNetworkGatewayConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public VirtualNetworkGatewayConnectionTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionSharedKeyCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionSharedKeyCRUD");
         }
 
         [Fact(Skip = "Rerecord tests")]
@@ -46,15 +50,15 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkeExpressRouteGatewayConnectionCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
         }
 
-        [Fact(Skip = "Rerecord tests")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
         }
 
         [Fact]
@@ -62,23 +66,23 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
 	    }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset4)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft_subset1)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");
         }
     }
 }

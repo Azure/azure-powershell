@@ -2,28 +2,30 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online version: https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
 schema: 2.0.0
 ---
 
 # Test-AzDnsAvailability
 
 ## SYNOPSIS
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## SYNTAX
 
 ```
-Test-AzDnsAvailability -DomainNameLabel <String> -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzDnsAvailability -DomainNameLabel <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Check if contoso.cloudapp.azure.com is available for use.
 ```
-
+Test-AzDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
 ## PARAMETERS
@@ -32,9 +34,9 @@ Test-AzDnsAvailability -DomainNameLabel <String> -Location <String>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -45,7 +47,7 @@ Accept wildcard characters: False
 
 ### -DomainNameLabel
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DomainQualifiedName
 
@@ -58,9 +60,9 @@ Accept wildcard characters: False
 
 ### -Location
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,6 +76,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -81,4 +85,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

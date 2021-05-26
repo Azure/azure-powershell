@@ -13,16 +13,20 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayFrontendIPConfiguration : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIPAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIPAllocationMethod { get; set; }
         public PSResourceId Subnet { get; set; }
         public PSResourceId PublicIPAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
 

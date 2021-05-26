@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class VirtualNetworkTests : NetworkTestRunner
+    public class VirtualNetworkTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public VirtualNetworkTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 
@@ -31,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUD");
         }
 
         [Fact]
@@ -39,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkCRUDWithDDoSProtection");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUDWithDDoSProtection");
         }
 
         [Fact]
@@ -47,14 +51,47 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkSubnetCRUD()
         {
-            TestRunner.RunTestScript("Test-subnetCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkSubnetDelegationCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetDelegationCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkMultiPrefixSubnetCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-multiPrefixSubnetCRUD");
+        }
+
+        [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkPeeringCRUD()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkPeeringCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkPeeringCRUD");
+        }
+
+        [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestMultiTenantVNetPCRUD()
+        {
+            //this test is special, it requires 2 vnets, one of them created in a tenant other than the current context
+            //The test assumes one of the vnet (n the other tenant) is already up and runing 
+            //The test will create the second vnet and the peer them
+            //The underlying cmdlet will actually get a token for the other tenant and pass it on in the REST call..
+            //Because of the need to get a token for the remote VNets's tenant, we cant ruin this under a service principal
+            //This test needs to be run in a live user mode only where the user is asusmed to  have access to both the tenants
+
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiTenantVNetPCRUD");
+
         }
 
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
@@ -62,7 +99,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestResourceNavigationLinksOnSubnetCRUD()
         {
-            TestRunner.RunTestScript("Test-ResourceNavigationLinksCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ResourceNavigationLinksCRUD");
         }
 
         [Fact]
@@ -70,7 +107,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkUsage()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkUsage");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkUsage");
         }
 
         [Fact]
@@ -78,7 +115,15 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkSubnetServiceEndpoint()
         {
-            TestRunner.RunTestScript("Test-VirtualNetworkSubnetServiceEndpoint");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkSubnetServiceEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkSubnetServiceEndpointPolicies()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkSubnetServiceEndpointPolicies");
         }
     }
 }

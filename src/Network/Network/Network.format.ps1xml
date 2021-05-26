@@ -126,10 +126,6 @@
                 <Label>DdosProtectionPlan</Label>
                 <PropertyName>DdosProtectionPlanText</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>EnableVmProtection</Label>
-                <PropertyName>EnableVmProtectionText</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3518,8 +3514,8 @@
                 <PropertyName>RouteTable</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VirtualNetworkConnections</Label>
-                <PropertyName>VirtualNetworkConnections</PropertyName>
+                <Label>VirtualNetworkExpressRouteConnections</Label>
+                <PropertyName>VirtualNetworkExpressRouteConnections</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Location</Label>
@@ -3708,6 +3704,164 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGateway</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AutoScaleConfiguration</Label>
+                <PropertyName>AutoScaleConfigurationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHub</Label>
+                <ScriptBlock>$_.VirtualHub.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExpressRouteExpressRouteConnections</Label>
+                <PropertyName>ExpressRouteExpressRouteConnectionsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExpressRouteCircuitPeering</Label>
+                <ScriptBlock>$_.ExpressRouteCircuitPeering.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>AuthorizationKey</Label>
+                <PropertyName>AuthorizationKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RoutingWeight</Label>
+                <PropertyName>RoutingWeight</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGatewayAutoscaleConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGatewayAutoscaleConfiguration</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Bounds</Label>
+                <PropertyName>BoundsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteGatewayPropertiesAutoScaleConfigurationBounds</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Min</Label>
+                <PropertyName>Min</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Max</Label>
+                <PropertyName>Max</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkConfigurationDiagnosticResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkConfigurationDiagnosticResponse</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Results</Label>
+                <PropertyName>ResultsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

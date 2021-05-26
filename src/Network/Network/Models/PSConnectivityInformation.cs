@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectivityInformation
     {
@@ -25,21 +26,27 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSConnectivityHop> Hops { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionStatus { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? AvgLatencyInMs { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MinLatencyInMs { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MaxLatencyInMs { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? ProbesSent { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? ProbesFailed { get; set; }
 
         [JsonIgnore]

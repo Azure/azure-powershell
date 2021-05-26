@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class RouteTableTests : NetworkTestRunner
+    public class RouteTableTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public RouteTableTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 
@@ -31,7 +35,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestEmptyRouteTable()
         {
-            TestRunner.RunTestScript("Test-EmptyRouteTable");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-EmptyRouteTable");
         }
 
         [Fact]
@@ -39,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableCRUD()
         {
-            TestRunner.RunTestScript("Test-RouteTableCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableCRUD");
         }
 
         [Fact]
@@ -47,7 +51,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableSubnetRef()
         {
-            TestRunner.RunTestScript("Test-RouteTableSubnetRef");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableSubnetRef");
         }
 
         [Fact]
@@ -55,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteTableRouteCRUD()
         {
-            TestRunner.RunTestScript("Test-RouteTableRouteCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableRouteCRUD");
         }
 
         [Fact]
@@ -63,7 +67,15 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestRouteHopTypeTest()
         {
-            TestRunner.RunTestScript("Test-RouteHopTypeTest");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteHopTypeTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestRouteWithDisableBgpRoutePropagation()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableWithDisableBgpRoutePropagation");
         }
     }
 }

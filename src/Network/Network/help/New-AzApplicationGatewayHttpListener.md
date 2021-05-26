@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/new-azapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ Creates an HTTP listener for an application gateway.
 ```
 New-AzApplicationGatewayHttpListener -Name <String> [-FrontendIPConfigurationId <String>]
  [-FrontendPortId <String>] [-SslCertificateId <String>] [-HostName <String>]
- [-RequireServerNameIndication <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>]
+ [-RequireServerNameIndication <String>] -Protocol <String>
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +28,8 @@ New-AzApplicationGatewayHttpListener -Name <String>
  [-FrontendIPConfiguration <PSApplicationGatewayFrontendIPConfiguration>]
  [-FrontendPort <PSApplicationGatewayFrontendPort>] [-SslCertificate <PSApplicationGatewaySslCertificate>]
  [-HostName <String>] [-RequireServerNameIndication <String>] -Protocol <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomErrorConfiguration <PSApplicationGatewayCustomError[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,13 +54,28 @@ The command stores the result in the variable named $Listener.
 
 ## PARAMETERS
 
+### -CustomErrorConfiguration
+Customer error of an application gateway
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayCustomError[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,9 +88,9 @@ Accept wildcard characters: False
 Specifies front-end IP configuration object for the HTTP listener.
 
 ```yaml
-Type: PSApplicationGatewayFrontendIPConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,9 +103,9 @@ Accept wildcard characters: False
 Specifies the ID of the front-end IP configuration for the HTTP listener.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,9 +118,9 @@ Accept wildcard characters: False
 Specifies the front-end port for the HTTP listener.
 
 ```yaml
-Type: PSApplicationGatewayFrontendPort
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +133,9 @@ Accept wildcard characters: False
 Specifies the ID of the front-end port object for the HTTP listener.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,9 +148,9 @@ Accept wildcard characters: False
 Specifies the host name of the application gateway HTTP listener.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,9 +163,9 @@ Accept wildcard characters: False
 Specifies the name of the HTTP listener that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -161,9 +178,9 @@ Accept wildcard characters: False
 Specifies the protocol that the HTTP listener uses.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Http, Https
 
 Required: True
@@ -175,25 +192,25 @@ Accept wildcard characters: False
 
 ### -RequireServerNameIndication
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: true, false
 
 Required: False
 Position: Named
-Default value: None
+Default value: true
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -SslCertificate
-Specifies the SSL certificate object for  the HTTP listener.
+Specifies the SSL certificate object for the HTTP listener.
 
 ```yaml
-Type: PSApplicationGatewaySslCertificate
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -206,9 +223,9 @@ Accept wildcard characters: False
 Specifies the ID of the SSL certificate for the HTTP listener.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,11 +239,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSHttpListener
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
 
 ## NOTES
 

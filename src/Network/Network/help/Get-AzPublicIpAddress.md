@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -15,8 +15,8 @@ Gets a public IP address.
 
 ### NoExpandStandAloneIp (Default)
 ```
-Get-AzPublicIpAddress [-Name <String>] [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPublicIpAddress [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ExpandStandAloneIp
@@ -46,7 +46,7 @@ The **Get-AzPublicIPAddress** cmdlet gets one or more public IP addresses in a r
 
 ### 1: Get a public IP resource
 ```
-$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName $publicIp
+$publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
@@ -57,9 +57,9 @@ This command gets a public IP address resource with name $publicIPName in the re
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -83,10 +83,11 @@ Accept wildcard characters: False
 
 ### -IpConfigurationName
 Network Interface IP Configuration Name.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,9 +97,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 Specifies the name of the public IP address that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneIp, NoExpandScaleSetIp
 Aliases: ResourceName
 
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
 Aliases: ResourceName
 
@@ -136,10 +137,11 @@ Accept wildcard characters: False
 
 ### -NetworkInterfaceName
 Virtual Machine Network Interface Name.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +151,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -164,9 +166,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the public IP address that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -176,9 +178,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, NoExpandScaleSetIp, ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -189,10 +191,11 @@ Accept wildcard characters: False
 
 ### -VirtualMachineIndex
 Virtual Machine Index.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,9 +205,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -215,10 +218,11 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSetName
 Virtual Machine Scale Set Name.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -228,9 +232,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -243,6 +247,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ## OUTPUTS
 

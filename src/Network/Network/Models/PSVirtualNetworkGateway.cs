@@ -16,22 +16,29 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualNetworkGateway : PSTopLevelResource
     {
         public List<PSVirtualNetworkGatewayIpConfiguration> IpConfigurations { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string GatewayType { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string VpnType { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool ActiveActive { get; set; }
 
         public PSResourceId GatewayDefaultSite { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }

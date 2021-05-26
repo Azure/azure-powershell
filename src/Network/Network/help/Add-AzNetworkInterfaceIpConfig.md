@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 7610228A-61F9-41B8-A42A-CD7C793BB33F
-online version: https://docs.microsoft.com/powershell/module/az.network/add-aznetworkinterfaceipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/add-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -17,24 +17,20 @@ Adds a network interface IP configuration to a network interface.
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-Subnet <PSSubnet>]
- [-PublicIpAddress <PSPublicIpAddress>]
- [-LoadBalancerBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]>]
- [-LoadBalancerInboundNatRule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]>]
- [-ApplicationGatewayBackendAddressPool <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]>]
- [-ApplicationSecurityGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddress <PSPublicIpAddress>] [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>]
+ [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
+ [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
+ [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
 Add-AzNetworkInterfaceIpConfig -Name <String> -NetworkInterface <PSNetworkInterface>
  [-PrivateIpAddressVersion <String>] [-PrivateIpAddress <String>] [-Primary] [-SubnetId <String>]
- [-PublicIpAddressId <String>]
- [-LoadBalancerBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-LoadBalancerInboundNatRuleId <System.Collections.Generic.List`1[System.String]>]
- [-ApplicationGatewayBackendAddressPoolId <System.Collections.Generic.List`1[System.String]>]
- [-ApplicationSecurityGroupId <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PublicIpAddressId <String>] [-LoadBalancerBackendAddressPoolId <String[]>]
+ [-LoadBalancerInboundNatRuleId <String[]>] [-ApplicationGatewayBackendAddressPoolId <String[]>]
+ [-ApplicationSecurityGroupId <String[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,13 +43,13 @@ The **Add-AzNetworkInterfaceIpConfig** cmdlet adds a network interface IP config
 $subnet = New-AzVirtualNetworkSubnetConfig -Name MySubnet -AddressPrefix 10.0.1.0/24
 $vnet = New-AzvirtualNetwork -Name MyVNET -ResourceGroupName MyResourceGroup -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-$nic = New-AzNetworkInterface -Name MyNetworkInterface -ResourceGroupName MyResourceGroup -Location "West US"  -Subnet $vnet.Subnets[0]
+$nic = New-AzNetworkInterface -Name MyNetworkInterface -ResourceGroupName MyResourceGroup -Location "West US" -Subnet $vnet.Subnets[0]
 
 $asg = New-AzApplicationSecurityGroup -ResourceGroupName MyResourceGroup -Name MyASG -Location "West US"
 
 $nic | Set-AzNetworkInterfaceIpConfig -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg | Set-AzNetworkInterface
 
-$nic | Add-AzNetworkInterfaceIpConfig -Name MyNewIpConfig -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg  | Set-AzNetworkInterface
+$nic | Add-AzNetworkInterfaceIpConfig -Name MyNewIpConfig -Subnet $vnet.Subnets[0] -ApplicationSecurityGroup $asg | Set-AzNetworkInterface
 ```
 
 In this example, we create a new network interface MyNetworkInterface that belongs to a subnet in the new virtual network MyVNET. We also create an empty application security group MyASG to associate with the IP configurations in the network interface. Once both objects are created, we link the default IP configuration to the MyASG object. At last, we create a new IP configuration in the network interface also linked to the application security group object.
@@ -64,9 +60,9 @@ In this example, we create a new network interface MyNetworkInterface that belon
 Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -79,9 +75,9 @@ Accept wildcard characters: False
 Specifies a collection of application gateway backend address pool references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,9 +90,9 @@ Accept wildcard characters: False
 Specifies a collection of application security group references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,9 +105,9 @@ Accept wildcard characters: False
 Specifies a collection of application security group references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,9 +120,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -139,9 +135,9 @@ Accept wildcard characters: False
 Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -154,9 +150,9 @@ Accept wildcard characters: False
 Specifies a collection of load balancer backend address pool references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,9 +165,9 @@ Accept wildcard characters: False
 Specifies a collection of load balancer inbound network address translation (NAT) rule references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
+Type: Microsoft.Azure.Commands.Network.Models.PSInboundNatRule[]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,9 +180,9 @@ Accept wildcard characters: False
 Specifies a collection of load balancer inbound NAT rule references to which this network interface IP configuration belongs.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -199,9 +195,9 @@ Accept wildcard characters: False
 Specifies the name of the network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -215,9 +211,9 @@ Specifies a **NetworkInterface** object.
 This cmdlet adds a network interface IP configuration to the object that this parameter specifies.
 
 ```yaml
-Type: PSNetworkInterface
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -228,9 +224,9 @@ Accept wildcard characters: False
 
 ### -Primary
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -243,9 +239,9 @@ Accept wildcard characters: False
 Specifies the static IP address of the network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -257,14 +253,13 @@ Accept wildcard characters: False
 ### -PrivateIpAddressVersion
 Specifies the IP address version of a network interface IP configuration.
 The acceptable values for this parameter are:
-
 - IPv4
 - IPv6
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -279,9 +274,9 @@ Specifies a **PublicIPAddress** object.
 This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -294,9 +289,9 @@ Accept wildcard characters: False
 This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -310,9 +305,9 @@ Specifies a **Subnet** object.
 This cmdlet creates a reference to a subnet in which this network interface IP configuration is created.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -325,9 +320,9 @@ Accept wildcard characters: False
 This cmdlet creates a reference to a subnet in which this network interface IP configuration is created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -341,8 +336,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkInterface
-Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
+
+### System.String[]
+
+### Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
+
+### Microsoft.Azure.Commands.Network.Models.PSInboundNatRule[]
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool[]
+
+### Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup[]
 
 ## OUTPUTS
 
@@ -360,5 +364,3 @@ Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the
 [Remove-AzNetworkInterfaceIpConfig](./Remove-AzNetworkInterfaceIpConfig.md)
 
 [Set-AzNetworkInterfaceIpConfig](./Set-AzNetworkInterfaceIpConfig.md)
-
-

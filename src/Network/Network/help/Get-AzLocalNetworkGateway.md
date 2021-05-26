@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: F8756DA1-7BB9-4CD5-9D81-E11FF7A26125
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azlocalnetworkgateway
+online version: https://docs.microsoft.com/en-us/powershell/module/az.network/get-azlocalnetworkgateway
 schema: 2.0.0
 ---
 
@@ -20,7 +20,6 @@ Get-AzLocalNetworkGateway [-Name <String>] -ResourceGroupName <String>
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-
 The **Get-AzLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
@@ -38,9 +37,9 @@ Returns the object of the Local Network Gateway with the name "myLocalGW" within
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -51,7 +50,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -64,9 +63,9 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,6 +79,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
@@ -88,3 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
+
+[Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
+
+[Set-AzLocalNetworkGateway](./Set-AzLocalNetworkGateway.md)
