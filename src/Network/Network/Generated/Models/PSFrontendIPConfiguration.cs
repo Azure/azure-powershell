@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSResourceId PublicIPPrefix { get; set; }
         [JsonProperty(Order = 1)]
-        public PSFrontendIPConfiguration GatewayLoadBalancer { get; set; }
+        public PSResourceId GatewayLoadBalancer { get; set; }
 
         [JsonIgnore]
         public string ZonesText

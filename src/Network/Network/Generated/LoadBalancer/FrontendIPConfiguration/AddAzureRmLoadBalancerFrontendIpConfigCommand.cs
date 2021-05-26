@@ -129,7 +129,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = "SetByResource",
             HelpMessage = "The reference of Gateway LoadBalancer Provider resource.",
             ValueFromPipelineByPropertyName = true)]
         public string GatewayLoadBalancerId { get; set; }
