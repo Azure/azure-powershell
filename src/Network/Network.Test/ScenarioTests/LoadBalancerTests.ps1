@@ -2366,9 +2366,9 @@ function Test-GatewayLoadBalancer-ConsumerLb
     $frontendConsumerName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
 
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = "eastus2euap"
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "eastus2euap"
 
     try 
     {
@@ -2388,7 +2388,7 @@ function Test-GatewayLoadBalancer-ConsumerLb
 
         # Create Consumer LoadBalancer
         $lbConsumer = New-AzLoadBalancer -Name $lbConsumerName -ResourceGroupName $rgname -Location $location -Sku Standard
-        Add-AzLoadBalancerFrontendIpConfig -GatewayLoadBalancerId $frontendProvider.Id -LoadBalancer $lbConsumer -Name $frontendConsumerName
+        Add-AzLoadBalancerFrontendIpConfig -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id -LoadBalancer $lbConsumer -Name $frontendConsumerName
         $lbConsumer = Set-AzLoadBalancer -LoadBalancer $lbConsumer
 
         $expectedLbConsumer = Get-AzLoadBalancer -Name $lbConsumerName -ResourceGroupName $rgname
