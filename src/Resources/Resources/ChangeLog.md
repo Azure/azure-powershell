@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Allow naming the deployment when testing deployments [#11497]
 
 ## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
