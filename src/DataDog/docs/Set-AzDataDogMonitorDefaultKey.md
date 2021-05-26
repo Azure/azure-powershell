@@ -32,18 +32,11 @@ Set the default api key.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Created CreatedBy Key                              Name
+------- --------- ---                              ----
+                  xxxxxxxxxxxxxxxxxxxxxx
 ```
 
 {{ Add description here }}

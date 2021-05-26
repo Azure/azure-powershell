@@ -35,16 +35,18 @@ PS C:\> Get-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -Name lucasd
 
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
-                  f42c9a4c2a15ea0bc6e0810a78416607
+                  xxxxxxxxxxxxx78416607
 ```
 
 {{ Add description here }}
 
 ### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog | Get-AzDataDogMonitorDefaultKey
 
-{{ Add output here }}
+Created CreatedBy Key                              Name
+------- --------- ---                              ----
+                  xxxxxxxxxxxxx78416607
 ```
 
 {{ Add description here }}

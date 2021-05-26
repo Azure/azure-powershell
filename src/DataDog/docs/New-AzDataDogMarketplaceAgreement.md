@@ -35,18 +35,11 @@ Create Datadog marketplace agreement in the subscription.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataDogMarketplaceAgreement -Accepted
 
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Name    Type
+----    ----
+default microsoft.datadog/agreements
 ```
 
 {{ Add description here }}

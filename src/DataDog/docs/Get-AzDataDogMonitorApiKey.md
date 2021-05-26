@@ -28,7 +28,7 @@ PS C:\> Get-AzDataDogMonitorApiKey -ResourceGroupName lucas-dog -Name lucasdatad
 
 Created             CreatedBy           Key                              Name
 -------             ---------           ---                              ----
-2021-05-24 07:25:35 dixue@microsoft.com f42c9a4c2a15ea0bc6e0810a78416607 Azure Admin User API Key
+2021-05-24 07:25:35 dixue@microsoft.com xxxxxxxxxxxx6607 Azure Admin User API Key
 ```
 
 {{ Add description here }}
