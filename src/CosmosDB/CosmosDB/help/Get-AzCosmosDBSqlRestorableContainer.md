@@ -79,7 +79,7 @@ The instance Id of the CosmosDB database account.
 (This is returned as a part of database account properties).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ResourceId of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Name of the Location in string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 CosmosDB Restorable Sql Database object
 
 ```yaml
-Type: PSRestorableSqlDatabaseGetResult
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlDatabaseGetResult
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
