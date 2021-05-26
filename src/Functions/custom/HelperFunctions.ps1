@@ -139,9 +139,26 @@ function GetConnectionString
                               -Exception $exception
     }
 
+    $suffix = GetEndpointSuffix
     $accountKey = $keys[0].Value
-    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey"
+
+    $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey" + $suffix
+
     return $connectionString
+}
+
+function GetEndpointSuffix
+{
+    $environmentName = (Get-AzContext).Environment.Name
+
+    switch ($environmentName)
+    {
+        "AzureUSGovernment" { ';EndpointSuffix=core.usgovcloudapi.net' }
+        "AzureChinaCloud"   { ';EndpointSuffix=core.chinacloudapi.cn' }
+        "AzureGermanCloud"  { ';EndpointSuffix=core.cloudapi.de' }
+        "AzureCloud"        { ';EndpointSuffix=core.windows.net' }
+        default { '' }
+    }
 }
 
 function NewAppSetting
