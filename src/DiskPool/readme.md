@@ -30,12 +30,12 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 3ae16652e8bea04884a273329d6dead5e9205794
+Branch: 418603118e704ffeabacff1dd56957400cf83f3a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/dev/hakkaraj/storagepoolv2preview/specification/storagepool/resource-manager/Microsoft.StoragePool/preview/2021-04-01-preview/storagepool.json
+  - $(repo)/specification/storagepool/resource-manager/Microsoft.StoragePool/preview/2021-04-01-preview/storagepool.json
 
 module-version: 0.1.0
 title: DiskPool
@@ -78,6 +78,9 @@ directive:
     hide: true
   - where:
       subject: DiskPoolOutboundNetworkDependencyEndpoint
+    hide: true
+  - where:
+      subject: DiskPoolZone
     hide: true
   - model-cmdlet:
     - Acl
