@@ -1,53 +1,53 @@
 ---
 external help file:
 Module Name: HpcCache
-online version: https://docs.microsoft.com/powershell/module/hpccache/update-azhpccachecach
+online version: https://docs.microsoft.com/powershell/module/hpccache/new-azhpccache
 schema: 2.0.0
 ---
 
-# Update-AzHpcCacheCach
+# New-AzHpcCache
 
 ## SYNOPSIS
-Update a Cache instance.
+Create or update a Cache.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### CreateExpanded (Default)
 ```
-Update-AzHpcCacheCach -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CacheSizeGb <Int32>] [-DirectoryServicesSetting <ICacheDirectorySettings>]
- [-IdentityType <CacheIdentityType>] [-KeyEncryptionKeyUrl <String>] [-Location <String>]
- [-NetworkSettingDnsSearchDomain <String>] [-NetworkSettingDnsServer <String[]>] [-NetworkSettingMtu <Int32>]
- [-NetworkSettingNtpServer <String>] [-ProvisioningState <ProvisioningStateType>]
- [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>] [-SkuName <String>] [-SourceVaultId <String>]
- [-Subnet <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzHpcCacheCach -EName <String> -ResourceGroupName <String> -Cache <ICache> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzHpcCacheCach -InputObject <IHpcCacheIdentity> -Cache <ICache> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzHpcCacheCach -InputObject <IHpcCacheIdentity> [-CacheSizeGb <Int32>]
+New-AzHpcCache -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-CacheSizeGb <Int32>]
  [-DirectoryServicesSetting <ICacheDirectorySettings>] [-IdentityType <CacheIdentityType>]
  [-KeyEncryptionKeyUrl <String>] [-Location <String>] [-NetworkSettingDnsSearchDomain <String>]
  [-NetworkSettingDnsServer <String[]>] [-NetworkSettingMtu <Int32>] [-NetworkSettingNtpServer <String>]
  [-ProvisioningState <ProvisioningStateType>] [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>]
  [-SkuName <String>] [-SourceVaultId <String>] [-Subnet <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzHpcCache -EName <String> -ResourceGroupName <String> -Cache <ICache> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzHpcCache -InputObject <IHpcCacheIdentity> -Cache <ICache> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzHpcCache -InputObject <IHpcCacheIdentity> [-CacheSizeGb <Int32>]
+ [-DirectoryServicesSetting <ICacheDirectorySettings>] [-IdentityType <CacheIdentityType>]
+ [-KeyEncryptionKeyUrl <String>] [-Location <String>] [-NetworkSettingDnsSearchDomain <String>]
+ [-NetworkSettingDnsServer <String[]>] [-NetworkSettingMtu <Int32>] [-NetworkSettingNtpServer <String>]
+ [-ProvisioningState <ProvisioningStateType>] [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>]
+ [-SkuName <String>] [-SourceVaultId <String>] [-Subnet <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a Cache instance.
+Create or update a Cache.
 
 ## EXAMPLES
 
@@ -71,6 +71,21 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Cache
 A Cache instance.
 Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
@@ -78,7 +93,7 @@ To construct, see NOTES section for CACHE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICache
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -93,7 +108,7 @@ The size of this Cache, in GB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -124,7 +139,7 @@ To construct, see NOTES section for DIRECTORYSERVICESSETTING properties and crea
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICacheDirectorySettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -140,7 +155,7 @@ Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases: CacheName
 
 Required: True
@@ -155,7 +170,7 @@ The type of identity used for the cache
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.CacheIdentityType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -171,7 +186,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -186,7 +201,7 @@ The URL referencing a key encryption key in Key Vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -201,7 +216,7 @@ Region name string.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -216,7 +231,7 @@ DNS search domain
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -232,7 +247,7 @@ It will be set from the network configuration if no value is provided.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -247,7 +262,7 @@ The IPv4 maximum transmission unit configured for the subnet.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -263,7 +278,22 @@ The default is time.windows.com.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,7 +308,7 @@ ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.ProvisioningStateType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -293,7 +323,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: True
@@ -309,7 +339,7 @@ To construct, see NOTES section for SECURITYSETTINGACCESSPOLICY properties and c
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.INfsAccessPolicy[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -324,7 +354,7 @@ SKU name for this Cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -339,7 +369,7 @@ Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -354,7 +384,7 @@ Subnet used for the Cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -370,7 +400,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Create, CreateExpanded
 Aliases:
 
 Required: False
@@ -385,7 +415,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False

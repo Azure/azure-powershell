@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: HpcCache
-online version: https://docs.microsoft.com/powershell/module/hpccache/remove-azhpccachecach
+online version: https://docs.microsoft.com/powershell/module/hpccache/stop-azhpccache
 schema: 2.0.0
 ---
 
-# Remove-AzHpcCacheCach
+# Stop-AzHpcCache
 
 ## SYNOPSIS
-Schedules a Cache for deletion.
+Tells an Active Cache to transition to Stopped state.
 
 ## SYNTAX
 
-### Delete (Default)
+### Stop (Default)
 ```
-Remove-AzHpcCacheCach -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Stop-AzHpcCache -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### StopViaIdentity
 ```
-Remove-AzHpcCacheCach -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzHpcCache -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Schedules a Cache for deletion.
+Tells an Active Cache to transition to Stopped state.
 
 ## EXAMPLES
 
@@ -85,7 +85,7 @@ Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases: CacheName
 
 Required: True
@@ -101,7 +101,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: StopViaIdentity
 Aliases:
 
 Required: True
@@ -146,7 +146,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: True
@@ -162,7 +162,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Stop
 Aliases:
 
 Required: False

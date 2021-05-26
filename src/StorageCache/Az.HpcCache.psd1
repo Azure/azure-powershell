@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.HpcCache.private.dll'
   FormatsToProcess = './Az.HpcCache.format.ps1xml'
-  FunctionsToExport = 'Clear-AzHpcCacheCach', 'Debug-AzHpcCacheCachInfo', 'Get-AzHpcCacheAscOperation', 'Get-AzHpcCacheCach', 'Get-AzHpcCacheSku', 'Get-AzHpcCacheStorageTarget', 'Get-AzHpcCacheUsageModel', 'New-AzHpcCacheCach', 'New-AzHpcCacheCacheDirectorySettingsObject', 'New-AzHpcCacheNamespaceJunctionObject', 'New-AzHpcCacheNfsAccessPolicyObject', 'New-AzHpcCacheNfsAccessRuleObject', 'New-AzHpcCacheStorageTarget', 'Remove-AzHpcCacheCach', 'Remove-AzHpcCacheStorageTarget', 'Set-AzHpcCacheCach', 'Set-AzHpcCacheStorageTarget', 'Start-AzHpcCacheCach', 'Stop-AzHpcCacheCach', 'Update-AzHpcCacheCach', 'Update-AzHpcCacheCachFirmware', 'Update-AzHpcCacheStorageTargetDns', '*'
+  FunctionsToExport = 'Get-AzHpcCache', 'Get-AzHpcCacheSku', 'Get-AzHpcCacheStorageTarget', 'Get-AzHpcCacheUsageModel', 'Invoke-AzHpcCacheFlush', 'Invoke-AzHpcCacheUpgrade', 'New-AzHpcCache', 'New-AzHpcCacheCacheDirectorySettingsObject', 'New-AzHpcCacheNamespaceJunctionObject', 'New-AzHpcCacheNfsAccessPolicyObject', 'New-AzHpcCacheNfsAccessRuleObject', 'New-AzHpcCacheStorageTarget', 'Remove-AzHpcCache', 'Remove-AzHpcCacheStorageTarget', 'Start-AzHpcCache', 'Start-AzHpcCacheDebugInfo', 'Stop-AzHpcCache', 'Update-AzHpcCache', 'Update-AzHpcCacheStorageTargetDns', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

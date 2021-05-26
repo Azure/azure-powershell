@@ -1,41 +1,31 @@
 ---
 external help file:
 Module Name: HpcCache
-online version: https://docs.microsoft.com/powershell/module/hpccache/get-azhpccachecach
+online version: https://docs.microsoft.com/powershell/module/hpccache/start-azhpccachedebuginfo
 schema: 2.0.0
 ---
 
-# Get-AzHpcCacheCach
+# Start-AzHpcCacheDebugInfo
 
 ## SYNOPSIS
-Returns a Cache.
+Tells a Cache to write generate debug info for support to process.
 
 ## SYNTAX
 
-### List (Default)
+### Debug (Default)
 ```
-Get-AzHpcCacheCach [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzHpcCacheCach -EName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzHpcCacheDebugInfo -CacheName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DebugViaIdentity
 ```
-Get-AzHpcCacheCach -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzHpcCacheCach -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Start-AzHpcCacheDebugInfo -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a Cache.
+Tells a Cache to write generate debug info for support to process.
 
 ## EXAMPLES
 
@@ -59,6 +49,37 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CacheName
+Name of Cache.
+Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+
+```yaml
+Type: System.String
+Parameter Sets: Debug
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -74,29 +95,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EName
-Name of Cache.
-Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: CacheName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DebugViaIdentity
 Aliases:
 
 Required: True
@@ -106,12 +111,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Debug
 Aliases:
 
 Required: True
@@ -126,13 +161,44 @@ Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
+Type: System.String
+Parameter Sets: Debug
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -146,7 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICache
+### System.Boolean
 
 ## NOTES
 

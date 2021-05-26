@@ -1,33 +1,31 @@
 ---
 external help file:
 Module Name: HpcCache
-online version: https://docs.microsoft.com/powershell/module/hpccache/clear-azhpccachecach
+online version: https://docs.microsoft.com/powershell/module/hpccache/start-azhpccache
 schema: 2.0.0
 ---
 
-# Clear-AzHpcCacheCach
+# Start-AzHpcCache
 
 ## SYNOPSIS
-Tells a Cache to write all dirty data to the Storage Target(s).
-During the flush, clients will see errors returned until the flush is complete.
+Tells a Stopped state Cache to transition to Active state.
 
 ## SYNTAX
 
-### Flush (Default)
+### Start (Default)
 ```
-Clear-AzHpcCacheCach -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Start-AzHpcCache -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### FlushViaIdentity
+### StartViaIdentity
 ```
-Clear-AzHpcCacheCach -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzHpcCache -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Tells a Cache to write all dirty data to the Storage Target(s).
-During the flush, clients will see errors returned until the flush is complete.
+Tells a Stopped state Cache to transition to Active state.
 
 ## EXAMPLES
 
@@ -87,7 +85,7 @@ Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush
+Parameter Sets: Start
 Aliases: CacheName
 
 Required: True
@@ -103,7 +101,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: FlushViaIdentity
+Parameter Sets: StartViaIdentity
 Aliases:
 
 Required: True
@@ -148,7 +146,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush
+Parameter Sets: Start
 Aliases:
 
 Required: True
@@ -164,7 +162,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Flush
+Parameter Sets: Start
 Aliases:
 
 Required: False

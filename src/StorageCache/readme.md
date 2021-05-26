@@ -47,6 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: c18406cf84945e82cc7150b7088ce8877efe0a20
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -57,6 +58,42 @@ title: HPCCache
 subject-prefix: $(service-name)
 
 directive:
+  # Remove cmdlet
+  - where:
+      verb: Set
+    remove: true
+  - where:
+      verb: Get
+      subject: AscOperation
+    remove: true
+
+  # Rename cmdlet
+  - where:
+      verb: Debug
+      subject: CachInfo
+    set:
+      verb: Start
+      subject: DebugInfo
+
+  - where:
+      verb: Clear
+      subject: Cach
+    set:
+      verb: Invoke
+      subject: Flush
+
+  - where:
+      verb: Update
+      subject: CachFirmware
+    set:
+      verb: Invoke
+      subject: Upgrade    
+
+  - where:
+      subject: Cach(.*)
+    set:
+      subject: $1
+
   - model-cmdlet:
     - NamespaceJunction
     - CacheDirectorySettings

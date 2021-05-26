@@ -1,31 +1,33 @@
 ---
 external help file:
 Module Name: HpcCache
-online version: https://docs.microsoft.com/powershell/module/hpccache/stop-azhpccachecach
+online version: https://docs.microsoft.com/powershell/module/hpccache/invoke-azhpccacheupgrade
 schema: 2.0.0
 ---
 
-# Stop-AzHpcCacheCach
+# Invoke-AzHpcCacheUpgrade
 
 ## SYNOPSIS
-Tells an Active Cache to transition to Stopped state.
+Upgrade a Cache's firmware if a new version is available.
+Otherwise, this operation has no effect.
 
 ## SYNTAX
 
-### Stop (Default)
+### Upgrade (Default)
 ```
-Stop-AzHpcCacheCach -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Invoke-AzHpcCacheUpgrade -CacheName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StopViaIdentity
+### UpgradeViaIdentity
 ```
-Stop-AzHpcCacheCach -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Invoke-AzHpcCacheUpgrade -InputObject <IHpcCacheIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Tells an Active Cache to transition to Stopped state.
+Upgrade a Cache's firmware if a new version is available.
+Otherwise, this operation has no effect.
 
 ## EXAMPLES
 
@@ -64,6 +66,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CacheName
+Name of Cache.
+Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+
+```yaml
+Type: System.String
+Parameter Sets: Upgrade
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -79,29 +97,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EName
-Name of Cache.
-Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-
-```yaml
-Type: System.String
-Parameter Sets: Stop
-Aliases: CacheName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: StopViaIdentity
+Parameter Sets: UpgradeViaIdentity
 Aliases:
 
 Required: True
@@ -146,7 +148,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Upgrade
 Aliases:
 
 Required: True
@@ -162,7 +164,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Upgrade
 Aliases:
 
 Required: False
