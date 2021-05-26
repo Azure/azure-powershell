@@ -753,7 +753,7 @@
           "Tue, 25 May 2021 17:35:21 GMT"
         ],
         "Content-Length": [
-          "73"
+          "74"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -816,7 +816,7 @@
           "Tue, 25 May 2021 17:35:23 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -879,7 +879,7 @@
           "Tue, 25 May 2021 17:35:24 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -942,7 +942,7 @@
           "Tue, 25 May 2021 17:35:26 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1005,7 +1005,7 @@
           "Tue, 25 May 2021 17:35:28 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1068,7 +1068,7 @@
           "Tue, 25 May 2021 17:35:48 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1131,7 +1131,7 @@
           "Tue, 25 May 2021 17:36:08 GMT"
         ],
         "Content-Length": [
-          "107"
+          "108"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1257,7 +1257,70 @@
           "Tue, 25 May 2021 17:36:43 GMT"
         ],
         "Content-Length": [
-          "106"
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"769f403d-574b-4443-928c-49ea3af5e3eb\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-25T17:35:22.743Z\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/11c44a64-fef8-4f3b-bd24-5fea1c769ed5/resourceGroups/ps2503/providers/Microsoft.Sql/locations/westeurope/serverAzureAsyncOperation/769f403d-574b-4443-928c-49ea3af5e3eb?api-version=2020-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMTFjNDRhNjQtZmVmOC00ZjNiLWJkMjQtNWZlYTFjNzY5ZWQ1L3Jlc291cmNlR3JvdXBzL3BzMjUwMy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9sb2NhdGlvbnMvd2VzdGV1cm9wZS9zZXJ2ZXJBenVyZUFzeW5jT3BlcmF0aW9uLzc2OWY0MDNkLTU3NGItNDQ0My05MjhjLTQ5ZWEzYWY1ZTNlYj9hcGktdmVyc2lvbj0yMDIwLTExLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b37f22de-7ab8-48d0-a4e2-9959fceb18e5"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.29916.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.14393.",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.53.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "5581a0b8-6662-4c45-b919-198134fb4044"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "bcb5431e-d0d6-41df-8f98-95535af2c354"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20210525T173644Z:bcb5431e-d0d6-41df-8f98-95535af2c354"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 25 May 2021 17:36:43 GMT"
+        ],
+        "Content-Length": [
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
