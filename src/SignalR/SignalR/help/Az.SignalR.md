@@ -42,5 +42,5 @@ Check the availability of a name. Alias: Test-AzSignal.
 Update a SignalR service.
 
 ### [Update-AzSignalRNetworkAcl](Update-AzSignalRNetworkAcl.md)
-Update the NetworkAcl of a SignalR service.
+Update the Network ACL of a SignalR service.
 

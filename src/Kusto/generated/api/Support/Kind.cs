@@ -10,12 +10,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
     public partial struct Kind :
         System.IEquatable<Kind>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind EventGrid = @"EventGrid";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind EventHub = @"EventHub";
-
-        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind IotHub = @"IotHub";
-
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind ReadOnlyFollowing = @"ReadOnlyFollowing";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind ReadWrite = @"ReadWrite";
@@ -27,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="Kind" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Kind(System.Convert.ToString(value));
+            return new Kind(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Kind</summary>

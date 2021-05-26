@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime
         /// <param name="response">the HttpResponseMessage to fetch a header from</param>
         /// <param name="headerName">the header name</param>
         /// <returns>the first header value as a string from an HttpReponseMessage. string.empty if there is no header value matching</returns>
-        internal static string GetFirstHeader(this System.Net.Http.HttpResponseMessage response, string headerName) => response.Headers.FirstOrDefault(each => headerName == each.Key).Value?.FirstOrDefault() ?? string.Empty;
+        internal static string GetFirstHeader(this System.Net.Http.HttpResponseMessage response, string headerName) => response.Headers.FirstOrDefault(each => string.Equals(headerName, each.Key, System.StringComparison.OrdinalIgnoreCase)).Value?.FirstOrDefault() ?? string.Empty;
 
         /// <summary>
         /// Sets the Synchronization Context to null, and returns an IDisposable that when disposed, 

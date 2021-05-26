@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.12.0
 Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
 
 ## Version 0.11.0

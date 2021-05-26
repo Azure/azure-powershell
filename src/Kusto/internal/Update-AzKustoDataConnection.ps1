@@ -59,11 +59,11 @@ Kind      Location Name                                        Type
 IotHub East US  testnewkustocluster/mykustodatabase/myiothubdc Microsoft.Kusto/Clusters/Databases/DataConnections
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -75,19 +75,21 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
   [DataConnectionName <String>]: The name of the data connection.
   [DatabaseName <String>]: The name of the database in the Kusto cluster.
   [Id <String>]: Resource identity path
-  [Location <String>]: Azure location.
+  [Location <String>]: Azure location (region) name.
+  [OperationId <String>]: The Guid of the operation ID
   [PrincipalAssignmentName <String>]: The name of the Kusto principalAssignment.
   [ResourceGroupName <String>]: The name of the resource group containing the Kusto cluster.
+  [ScriptName <String>]: The name of the Kusto database script.
   [SubscriptionId <String>]: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 PARAMETER <IDataConnection>: Class representing an data connection.
-  Kind <Kind>: Kind of the endpoint for the data connection
+  Kind <DataConnectionKind>: Kind of the endpoint for the data connection
   [Location <String>]: Resource location.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/update-azkustodataconnection
+https://docs.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -139,16 +141,16 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDataConnection]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDataConnection]
     # Class representing an data connection.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind])]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind])]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind]
     # Kind of the endpoint for the data connection
     ${Kind},
 
