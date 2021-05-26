@@ -18,22 +18,8 @@ This operation is allowed at any time, but if the Cache is down or unhealthy, th
 New-AzHpcCacheStorageTarget -CacheName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-BlobNfTarget <String>] [-BlobNfUsageModel <String>] [-ClfTarget <String>]
  [-Junction <INamespaceJunction[]>] [-Nfs3Target <String>] [-Nfs3UsageModel <String>]
- [-ProvisioningState <ProvisioningStateType>] [-TargetType <StorageTargetType>]
- [-UnknownAttribute <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Create
-```
-New-AzHpcCacheStorageTarget -CacheName <String> -Name <String> -ResourceGroupName <String>
- -Storagetarget <IStorageTarget> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzHpcCacheStorageTarget -InputObject <IHpcCacheIdentity> -Storagetarget <IStorageTarget>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProvisioningState <ProvisioningStateType>] [-TargetType <StorageTargetType>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -41,8 +27,7 @@ New-AzHpcCacheStorageTarget -InputObject <IHpcCacheIdentity> -Storagetarget <ISt
 New-AzHpcCacheStorageTarget -InputObject <IHpcCacheIdentity> [-BlobNfTarget <String>]
  [-BlobNfUsageModel <String>] [-ClfTarget <String>] [-Junction <INamespaceJunction[]>] [-Nfs3Target <String>]
  [-Nfs3UsageModel <String>] [-ProvisioningState <ProvisioningStateType>] [-TargetType <StorageTargetType>]
- [-UnknownAttribute <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,23 +36,19 @@ This operation is allowed at any time, but if the Cache is down or unhealthy, th
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
 {{ Add output here }}
+
+### -------------------------- EXAMPLE 2 --------------------------
+```powershell
+{{ Add code here }}
 ```
 
-{{ Add description here }}
+{{ Add output here }}
 
 ## PARAMETERS
 
@@ -91,7 +72,7 @@ Resource ID of the storage container.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,7 +87,7 @@ Identifies the StorageCache usage model to be used for this storage target.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -122,7 +103,7 @@ Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -137,7 +118,7 @@ Resource ID of storage container.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -168,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -184,7 +165,7 @@ To construct, see NOTES section for JUNCTION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.INamespaceJunction[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -199,7 +180,7 @@ Name of Storage Target.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases: StorageTargetName
 
 Required: True
@@ -214,7 +195,7 @@ IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,7 +210,7 @@ Identifies the StorageCache usage model to be used for this storage target.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -259,7 +240,7 @@ ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.ProvisioningStateType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -274,7 +255,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -284,29 +265,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Storagetarget
-Type of the Storage Target.
-To construct, see NOTES section for STORAGETARGET properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.IStorageTarget
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -321,22 +286,7 @@ Type of the Storage Target.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.StorageTargetType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UnknownAttribute
-Dictionary of string-\>string pairs containing information about the Storage Target.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -382,8 +332,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.IStorageTarget
-
 ### Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
 
 ## OUTPUTS
@@ -413,28 +361,6 @@ JUNCTION <INamespaceJunction[]>: List of Cache namespace junctions to target for
   - `[NfsAccessPolicy <String>]`: Name of the access policy applied to this junction.
   - `[NfsExport <String>]`: NFS export where targetPath exists.
   - `[TargetPath <String>]`: Path in Storage Target to which namespacePath points.
-
-STORAGETARGET <IStorageTarget>: Type of the Storage Target.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[BlobNfTarget <String>]`: Resource ID of the storage container.
-  - `[BlobNfUsageModel <String>]`: Identifies the StorageCache usage model to be used for this storage target.
-  - `[ClfTarget <String>]`: Resource ID of storage container.
-  - `[Junction <INamespaceJunction[]>]`: List of Cache namespace junctions to target for namespace associations.
-    - `[NamespacePath <String>]`: Namespace path on a Cache for a Storage Target.
-    - `[NfsAccessPolicy <String>]`: Name of the access policy applied to this junction.
-    - `[NfsExport <String>]`: NFS export where targetPath exists.
-    - `[TargetPath <String>]`: Path in Storage Target to which namespacePath points.
-  - `[Nfs3Target <String>]`: IP address or host name of an NFSv3 host (e.g., 10.0.44.44).
-  - `[Nfs3UsageModel <String>]`: Identifies the StorageCache usage model to be used for this storage target.
-  - `[ProvisioningState <ProvisioningStateType?>]`: ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-  - `[TargetType <StorageTargetType?>]`: Type of the Storage Target.
-  - `[UnknownAttribute <IUnknownProperties>]`: Dictionary of string->string pairs containing information about the Storage Target.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

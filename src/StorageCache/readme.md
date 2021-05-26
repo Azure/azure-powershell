@@ -94,8 +94,54 @@ directive:
     set:
       subject: $1
 
+  # Rename parameter name
+
+  - where:
+      parameter-name: EName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Invoke
+      subject: Upgrade
+      parameter-name: CacheName
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Start
+      subject: DebugInfo
+      parameter-name: CacheName
+    set:
+      parameter-name: Name
+
+  # Remove variant
+  - where:
+      verb: New
+      subject: ^$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+
+  - where:
+      verb: New
+      subject: StorageTarget
+      variant: ^Create$|^CreateViaIdentity$
+    remove: true
+
+  - where:
+      verb: Update
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+
+  # Hide cmdlet
+  - where:
+      verb: New
+      subject: StorageTarget
+    hide: true
+
   - model-cmdlet:
-    - NamespaceJunction
+    # move cmdlet "New-AzHpcCacheNamespaceJunctionObject" under the folder autogen-model-cmdlets to the folder custom
+    # - NamespaceJunction 
     - CacheDirectorySettings
     - NfsAccessPolicy
     - NfsAccessRule

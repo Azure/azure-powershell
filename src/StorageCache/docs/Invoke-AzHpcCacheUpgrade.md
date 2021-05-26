@@ -15,7 +15,7 @@ Otherwise, this operation has no effect.
 
 ### Upgrade (Default)
 ```
-Invoke-AzHpcCacheUpgrade -CacheName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Invoke-AzHpcCacheUpgrade -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -66,22 +66,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CacheName
-Name of Cache.
-Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-
-```yaml
-Type: System.String
-Parameter Sets: Upgrade
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -110,6 +94,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of Cache.
+Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+
+```yaml
+Type: System.String
+Parameter Sets: Upgrade
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -13,7 +13,7 @@ Create a in-memory object for NamespaceJunction
 ## SYNTAX
 
 ```
-New-AzHpcCacheNamespaceJunctionObject [-NamespacePath <String>] [-NfsAccessPolicy <String>]
+New-AzHpcCacheNamespaceJunctionObject [-NamespacePath <String>] [-NfsAccessPolicyName <String>]
  [-NfsExport <String>] [-TargetPath <String>] [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NfsAccessPolicy
+### -NfsAccessPolicyName
 Name of the access policy applied to this junction.
 
 ```yaml

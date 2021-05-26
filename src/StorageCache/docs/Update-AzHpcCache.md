@@ -14,25 +14,13 @@ Update a Cache instance.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzHpcCache -EName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CacheSizeGb <Int32>] [-DirectoryServicesSetting <ICacheDirectorySettings>]
- [-IdentityType <CacheIdentityType>] [-KeyEncryptionKeyUrl <String>] [-Location <String>]
- [-NetworkSettingDnsSearchDomain <String>] [-NetworkSettingDnsServer <String[]>] [-NetworkSettingMtu <Int32>]
- [-NetworkSettingNtpServer <String>] [-ProvisioningState <ProvisioningStateType>]
- [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>] [-SkuName <String>] [-SourceVaultId <String>]
- [-Subnet <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzHpcCache -EName <String> -ResourceGroupName <String> -Cache <ICache> [-SubscriptionId <String>]
+Update-AzHpcCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-CacheSizeGb <Int32>]
+ [-DirectoryServicesSetting <ICacheDirectorySettings>] [-IdentityType <CacheIdentityType>]
+ [-KeyEncryptionKeyUrl <String>] [-Location <String>] [-NetworkSettingDnsSearchDomain <String>]
+ [-NetworkSettingDnsServer <String[]>] [-NetworkSettingMtu <Int32>] [-NetworkSettingNtpServer <String>]
+ [-ProvisioningState <ProvisioningStateType>] [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>]
+ [-SkuName <String>] [-SourceVaultId <String>] [-Subnet <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzHpcCache -InputObject <IHpcCacheIdentity> -Cache <ICache> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -71,29 +59,12 @@ PS C:\> {{ Add code here }}
 
 ## PARAMETERS
 
-### -Cache
-A Cache instance.
-Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
-To construct, see NOTES section for CACHE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICache
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CacheSizeGb
 The size of this Cache, in GB.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,26 +95,10 @@ To construct, see NOTES section for DIRECTORYSERVICESSETTING properties and crea
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICacheDirectorySettings
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EName
-Name of Cache.
-Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases: CacheName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -155,7 +110,7 @@ The type of identity used for the cache
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.CacheIdentityType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +126,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -186,7 +141,7 @@ The URL referencing a key encryption key in Key Vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -201,10 +156,26 @@ Region name string.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of Cache.
+Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: CacheName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -216,7 +187,7 @@ DNS search domain
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -232,7 +203,7 @@ It will be set from the network configuration if no value is provided.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -247,7 +218,7 @@ The IPv4 maximum transmission unit configured for the subnet.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -263,7 +234,7 @@ The default is time.windows.com.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -278,7 +249,7 @@ ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Support.ProvisioningStateType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -293,7 +264,7 @@ Target resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -309,7 +280,7 @@ To construct, see NOTES section for SECURITYSETTINGACCESSPOLICY properties and c
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.INfsAccessPolicy[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -324,7 +295,7 @@ SKU name for this Cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -339,7 +310,7 @@ Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -354,7 +325,7 @@ Subnet used for the Cache.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -370,7 +341,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -385,7 +356,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -431,8 +402,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.Api20210301.ICache
-
 ### Microsoft.Azure.PowerShell.Cmdlets.HpcCache.Models.IHpcCacheIdentity
 
 ## OUTPUTS
@@ -447,61 +416,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-CACHE <ICache>: A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
-  - `[DirectoryServicesSetting <ICacheDirectorySettings>]`: Specifies Directory Services settings of the cache.
-    - `[ActiveDirectoryCacheNetBiosName <String>]`: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
-    - `[ActiveDirectoryDomainName <String>]`: The fully qualified domain name of the Active Directory domain controller.
-    - `[ActiveDirectoryDomainNetBiosName <String>]`: The Active Directory domain's NetBIOS name.
-    - `[ActiveDirectoryPrimaryDnsIPAddress <String>]`: Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-    - `[ActiveDirectorySecondaryDnsIPAddress <String>]`: Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-    - `[CredentialsBindDn <String>]`: The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-    - `[CredentialsBindPassword <String>]`: The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-    - `[CredentialsPassword <String>]`: Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-    - `[CredentialsUsername <String>]`: Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-    - `[UsernameDownloadAutoDownloadCertificate <Boolean?>]`: Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
-    - `[UsernameDownloadCaCertificateUri <String>]`: The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
-    - `[UsernameDownloadEncryptLdapConnection <Boolean?>]`: Whether or not the LDAP connection should be encrypted.
-    - `[UsernameDownloadExtendedGroup <Boolean?>]`: Whether or not Extended Groups is enabled.
-    - `[UsernameDownloadGroupFileUri <String>]`: The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
-    - `[UsernameDownloadLdapBaseDn <String>]`: The base distinguished name for the LDAP domain.
-    - `[UsernameDownloadLdapServer <String>]`: The fully qualified domain name or IP address of the LDAP server to use.
-    - `[UsernameDownloadRequireValidCertificate <Boolean?>]`: Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
-    - `[UsernameDownloadUserFileUri <String>]`: The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
-    - `[UsernameDownloadUsernameSource <UsernameSource?>]`: This setting determines how the cache gets username and group names for clients.
-  - `[HealthState <HealthStateType?>]`: List of Cache health states.
-  - `[HealthStatusDescription <String>]`: Describes explanation of state.
-  - `[IdentityType <CacheIdentityType?>]`: The type of identity used for the cache
-  - `[KeyEncryptionKeyUrl <String>]`: The URL referencing a key encryption key in Key Vault.
-  - `[Location <String>]`: Region name string.
-  - `[NetworkSettingDnsSearchDomain <String>]`: DNS search domain
-  - `[NetworkSettingDnsServer <String[]>]`: DNS servers for the cache to use.  It will be set from the network configuration if no value is provided.
-  - `[NetworkSettingMtu <Int32?>]`: The IPv4 maximum transmission unit configured for the subnet.
-  - `[NetworkSettingNtpServer <String>]`: NTP server IP Address or FQDN for the cache to use. The default is time.windows.com.
-  - `[ProvisioningState <ProvisioningStateType?>]`: ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
-  - `[SecuritySettingAccessPolicy <INfsAccessPolicy[]>]`: NFS access policies defined for this cache.
-    - `AccessRule <INfsAccessRule[]>`: The set of rules describing client accesses allowed under this policy.
-      - `Access <NfsAccessRuleAccess>`: Access allowed by this rule.
-      - `Scope <NfsAccessRuleScope>`: Scope for this rule. The scope and filter determine which clients match the rule.
-      - `[AnonymousGid <String>]`: GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-      - `[AnonymousUid <String>]`: UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-      - `[Filter <String>]`: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-      - `[RootSquash <Boolean?>]`: Map root accesses to anonymousUID and anonymousGID.
-      - `[SubmountAccess <Boolean?>]`: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-      - `[Suid <Boolean?>]`: Allow SUID semantics.
-    - `Name <String>`: Name identifying this policy. Access Policy names are not case sensitive.
-  - `[SizeGb <Int32?>]`: The size of this Cache, in GB.
-  - `[SkuName <String>]`: SKU name for this Cache.
-  - `[SourceVaultId <String>]`: Resource Id.
-  - `[Subnet <String>]`: Subnet used for the Cache.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <ICacheTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 DIRECTORYSERVICESSETTING <ICacheDirectorySettings>: Specifies Directory Services settings of the cache.
   - `[ActiveDirectoryCacheNetBiosName <String>]`: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].

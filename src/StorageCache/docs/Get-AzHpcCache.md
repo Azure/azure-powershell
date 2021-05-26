@@ -19,7 +19,7 @@ Get-AzHpcCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<Commo
 
 ### Get
 ```
-Get-AzHpcCache -EName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzHpcCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -74,22 +74,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EName
-Name of Cache.
-Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: CacheName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -103,6 +87,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of Cache.
+Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: CacheName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
