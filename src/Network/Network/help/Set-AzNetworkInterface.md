@@ -70,7 +70,7 @@ The first command gets the network interface NetworkInterface1 and stores it in 
 >[!NOTE] 
 >The IP configurations must be dynamic before you can change the subnet. If you have static IP configurations, change then to dynamic before proceeding. 
 >[!NOTE]
->If the network interface has multiple IP configurations, the forth command must be done for all these IP configurations before the final Set-AzNetworkInterface command is executed. This can be done as in the forth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
+>If the network interface has multiple IP configurations, the fourth command must be done for all these IP configurations before the final Set-AzNetworkInterface command is executed. This can be done as in the fourth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
 
 ### Example 5: Associate/Dissociate a Network Security Group to a network interface
 ```
@@ -80,7 +80,7 @@ $nic.NetworkSecurityGroup = $nsg
 $nic | Set-AzNetworkInterface
 ```
 
-The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The third command assigns the $nsg to the $nic. Finally, the forth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the third command with $null.
+The first command gets an existing network interface called NetworkInterface1 and stores it in the $nic variable. The second command gets an existing network security group called MyNSG and stores it in the $nsg variable. The third command assigns the $nsg to the $nic. Finally, the fourth command applies the changes to the Network interface. To dissociate network security groups from a network interface, simple replace $nsg in the third command with $null.
 
 ## PARAMETERS
 
