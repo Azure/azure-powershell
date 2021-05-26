@@ -7,6 +7,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -43,12 +45,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string sshKeyName = this.Name;
                 SshPublicKeyResource result;
-
+                SshPublicKeyResource sshkey = new SshPublicKeyResource();
+                ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
+                sshkey.Location = rg.Location;
 
                 if (this.IsParameterBound(c => c.PublicKey))
                 {
-                    SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                    sshkey.Location = "westus";
+                    
                     sshkey.PublicKey = this.PublicKey;
                     result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
                 }
@@ -56,8 +59,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     WriteDebug("No public key is provided. A key pair is being generated for you.");
                     
-                    SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                    sshkey.Location = "westus";
                     result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
                     SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
                     result.PublicKey = keypair.PublicKey;
