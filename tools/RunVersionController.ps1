@@ -292,7 +292,8 @@ function Generate-AzPreview
             {
                 $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
             }
-            else{
+            else
+            {
                 $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, `n            "
             }            
         }
