@@ -154,3 +154,41 @@ function Test-SetTransparentDataEncryptionProtector
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+<#
+	.SYNOPSIS
+	Tests Setting a server transparent data encryption protector
+#>
+function Test-SetTransparentDataEncryptionProtectorWithKeyRotation
+{
+	# Setup
+	$params = Get-SqlServerKeyVaultKeyTestEnvironmentParameters
+	$rg = Create-ServerKeyVaultKeyTestEnvironment $params
+	$autoRotationEnabled = $true
+
+	try
+	{
+		# Encryption Protector should be set to Service Managed initially
+		$encProtector1 = Get-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName
+		Assert-AreEqual ServiceManaged $encProtector1.Type 
+		Assert-AreEqual ServiceManaged $encProtector1.ServerKeyVaultKeyName 
+
+		# Add server key
+		$keyResult = Add-AzSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		Assert-AreEqual $params.keyId $keyResult.Uri
+
+		# Rotate to AKV
+		$job = Set-AzSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName `
+			-Type AzureKeyVault -KeyId $params.keyId -AutoRotationEnabled $autoRotationEnabled -Force -AsJob
+		$job | Wait-Job
+		$encProtector2 = $job.Output
+
+		Assert-AreEqual AzureKeyVault $encProtector2.Type 
+		Assert-AreEqual $params.serverKeyName $encProtector2.ServerKeyVaultKeyName 
+		Assert-AreEqual $autoRotationEnabled $encProtector2.AutoRotationEnabled
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

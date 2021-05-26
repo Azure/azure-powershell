@@ -324,6 +324,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user assigned identity id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "URI of the key to use for encryption")]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -515,6 +529,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 BackupStorageRedundancy = this.BackupStorageRedundancy,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ManagedInstanceExternalAdministrator()
                 {
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,

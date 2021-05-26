@@ -55,5 +55,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-SetTransparentDataEncryptionProtector");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerTransparentDataEncryptionProtectorSetWithKeyRotation()
+        {
+            RunPowerShellTest("Test-SetTransparentDataEncryptionProtectorWithKeyRotation");
+        }
     }
 }

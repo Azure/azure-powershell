@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
             get { return this._serverKeyType; }
             set { this._serverKeyType = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// EncryptionProtectorCreateOrUpdateProperties class.

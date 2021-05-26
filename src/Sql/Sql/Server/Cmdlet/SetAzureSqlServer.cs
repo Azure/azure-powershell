@@ -84,6 +84,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user assigned identity id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "URI of the key to use for encryption")]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -123,7 +137,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin
+                SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId
             });
             return updateData;
         }
