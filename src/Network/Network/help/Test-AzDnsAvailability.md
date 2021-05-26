@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/test-azdnsavailability
+online version: https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability
 schema: 2.0.0
 ---
 

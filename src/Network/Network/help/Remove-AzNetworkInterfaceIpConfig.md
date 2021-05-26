@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 015C7DB7-2B08-4033-9B6E-1738D4DDACDA
-online version: https://docs.microsoft.com/en-us/powershell/module/az.network/remove-aznetworkinterfaceipconfig
+online version: https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
