@@ -7,7 +7,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSshPublicKeyResource))]
     public partial class UpdateAzureSshKey : ComputeAutomationBaseCmdlet
     {

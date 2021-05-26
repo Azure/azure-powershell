@@ -12,7 +12,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSshPublicKeyResource))]
     public partial class NewAzureSshKey : ComputeAutomationBaseCmdlet
     {
