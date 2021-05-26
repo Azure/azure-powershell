@@ -30,23 +30,21 @@ Delete an iSCSI Target.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an iSCSI target
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes an iSCSI target.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove an iSCSI target by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPoolIscsiTarget -ResourceGroupName 'storagepool-rg-test' -DiskPoolName 'disk-pool-5' -Name 'target0' | Remove-AzDiskPoolIscsiTarget
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes an iSCSI target by object.
 
 ## PARAMETERS
 

@@ -31,23 +31,21 @@ You are not billed for the compute resources that this Disk Pool uses.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop a Disk Pool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Stop-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test'
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deallocates a Disk Pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Stop a Disk Pool by object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' | Stop-AzDiskPool
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deallocates a Disk Pool by object.
 
 ## PARAMETERS
 

@@ -21,23 +21,16 @@ Create a in-memory object for Acl
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an acl object
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDiskPoolAclObject -InitiatorIqn 'iqn.2021-05.com.microsoft:target0' -MappedLun @('lun0')
 
-{{ Add output here }}
+InitiatorIqn                      MappedLun
+------------                      ---------
+iqn.2021-05.com.microsoft:target0 {lun0}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates an acl object.
 
 ## PARAMETERS
 
