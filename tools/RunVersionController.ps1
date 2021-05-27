@@ -288,8 +288,14 @@ function Generate-AzPreview
             $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
             $moduleName = "Az.${ModuleName}"
             $moduleVersion = $Psd1Object.ModuleVersion.ToString()
-            $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, 
-            "
+            if('Az.Accounts' -eq $moduleName)
+            {
+                $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
+            }
+            else
+            {
+                $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, `n            "
+            }            
         }
     }
     $requiredModulesString = $requiredModulesString.Trim()
