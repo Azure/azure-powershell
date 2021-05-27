@@ -1,6 +1,6 @@
 ---
 external help file:
-Module Name: DiskPool
+Module Name: Az.DiskPool
 online version: https://docs.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
 schema: 2.0.0
 ---

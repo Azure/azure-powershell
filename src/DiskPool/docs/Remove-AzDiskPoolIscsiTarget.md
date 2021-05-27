@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: DiskPool
-online version: https://docs.microsoft.com/powershell/module/diskpool/remove-azdiskpooliscsitarget
+Module Name: Az.DiskPool
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/remove-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 
