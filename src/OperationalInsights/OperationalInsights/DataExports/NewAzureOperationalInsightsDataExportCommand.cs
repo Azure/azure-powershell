@@ -5,7 +5,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport"), OutputType(typeof(PSDataExport))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsDataExport", SupportsShouldProcess = true), OutputType(typeof(PSDataExport))]
     public class NewAzureOperationalInsightsDataExportCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -48,8 +48,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 EventHubName = EventHubName,
                 Enable = Enable
             };
+            if (ShouldProcess(DataExportName, $"Create Data export: {DataExportName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(this.OperationalInsightsClient.CreateDataExport(ResourceGroupName, dataExportParameters), true);
+            }
 
-            WriteObject(this.OperationalInsightsClient.CreateOrUpdateDataExport(ResourceGroupName, dataExportParameters), true);
         }
     }
 }

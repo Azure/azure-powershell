@@ -114,7 +114,7 @@ Collects event logs from computers that run the Windows operating system.
 Adds Windows performance counter data source for connected computers that run the Windows operating system.
 
 ### [New-AzOperationalInsightsWorkspace](New-AzOperationalInsightsWorkspace.md)
-Creates a workspace.
+Creates a workspace, or restore a soft-deleted workspace.
 
 ### [Remove-AzOperationalInsightsCluster](Remove-AzOperationalInsightsCluster.md)
 Delete cluster

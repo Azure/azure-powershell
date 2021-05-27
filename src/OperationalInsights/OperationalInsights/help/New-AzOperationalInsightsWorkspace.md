@@ -15,9 +15,10 @@ Creates a workspace, or restore a soft-deleted workspace.
 
 ```
 New-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Sku] <String>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
+ [[-SkuName] <String>] [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [[-RetentionInDays] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [[-PublicNetworkAccessForIngestion] <String>]
- [[-PublicNetworkAccessForQuery] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-PublicNetworkAccessForQuery] <String>] [[-ForceCmkForQuery] <Boolean>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +76,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceCmkForQuery
+Gets or sets indicates whether customer managed storage is mandatory for query management
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 Specifies the location in which to create the workspace, for example, East US or West Europe.
 
@@ -112,6 +128,7 @@ The network access type for accessing workspace ingestion. Value should be 'Enab
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: 7
@@ -127,6 +144,7 @@ The network access type for accessing workspace query. Value should be 'Enabled'
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: 8
@@ -166,15 +184,23 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Sku
-Specifies the service tier of the workspace. For more information regarding which value to use please check https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers.
-Valid values are:
-- free
-- pergb2018
-- pernode
-- premium
-- standalone
-- standard
+### -SkuCapacity
+Sku Capacity, value need to be multiple of 100 and at least 0.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The service tier of the workspace.
 
 ```yaml
 Type: System.String
@@ -241,11 +267,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Nullable`1[[System.Guid, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
 ### System.Collections.Hashtable
 
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

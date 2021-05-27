@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 location: Location,
                 tags: getTags(),
                 identity: Identity?.getIdentity(),
-                sku: Sku?.getClusterSku(),
+                sku: Sku?.getClusterSku(), 
                 isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled,
                 isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
                 billingType: BillingType,

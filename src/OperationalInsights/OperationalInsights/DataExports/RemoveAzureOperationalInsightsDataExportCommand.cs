@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.DataExportName, string.Format("delete data export: {0} for workspace: {1}", this.DataExportName, this.WorkspaceName)))
+            if (ShouldProcess(this.DataExportName, string.Format("Delete data export: {0} for workspace: {1}", this.DataExportName, this.WorkspaceName)))
             {
                 HttpStatusCode response = this.OperationalInsightsClient.DeleteDataExports(this.ResourceGroupName, this.WorkspaceName, this.DataExportName);
                 WriteObject(true);

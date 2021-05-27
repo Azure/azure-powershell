@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public int? RetentionInDays { set; get; }
 
-        public bool IsTroubleshootEnabled { set; get; } //in the next API version i.e 2020-10-01
+        //public bool IsTroubleshootEnabled { set; get; } //in the next API version i.e 2020-10-01
 
-        public bool IsTroubleshootingAllowed { set; get; } //in the next API version i.e 2020-10-01
+        //public bool IsTroubleshootingAllowed { set; get; } //in the next API version i.e 2020-10-01
 
-        public string LastTroubleshootDate { set; get; } //in the next API version i.e 2020-10-01
+        //public string LastTroubleshootDate { set; get; } //in the next API version i.e 2020-10-01
     }
 }

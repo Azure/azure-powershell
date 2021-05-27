@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.Location = workspace.Location;
             this.Tags = workspace.Tags;
 
-            this.Sku = workspace.Sku != null ? new PSWorkspaceSku(workspace.Sku.Name, workspace.Sku.CapacityReservationLevel) : null;
+            this.Sku = workspace.Sku != null ? new PSWorkspaceSku(workspace.Sku) : null;
             this.retentionInDays = workspace.RetentionInDays;
             this.CustomerId = new Guid(workspace.CustomerId);
             this.ProvisioningState = workspace.ProvisioningState;

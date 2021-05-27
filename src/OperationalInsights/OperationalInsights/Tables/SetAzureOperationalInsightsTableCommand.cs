@@ -5,7 +5,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
 
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSWorkspace))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSWorkspace))]
     class SetAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -40,7 +40,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
                 //IsTroubleshootEnabled = IsTroubleshootEnabled,
             };
             //will return list of tables - with one table if get table is used - many if list is used
-            WriteObject(OperationalInsightsClient.UpdatePSTable(tableSetProperties), true);
+            if (ShouldProcess(TableName, $"Update Tab;e: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.UpdatePSTable(tableSetProperties), true);
+            }            
         }
     }
 }

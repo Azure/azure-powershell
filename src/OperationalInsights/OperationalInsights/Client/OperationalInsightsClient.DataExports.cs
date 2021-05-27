@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return dataExports;
         }
 
-        public virtual PSDataExport CreateOrUpdateDataExport(string resourceGroupName, CreatePSDataExportParameters parameters)
+        public virtual PSDataExport CreateDataExport(string resourceGroupName, CreatePSDataExportParameters parameters)
         {
             PSDataExport existingDataExport;
             try

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             List<PSTable> tables = new List<PSTable>();
 
-            if (!string.IsNullOrWhiteSpace(workspaceName))
+            if (!string.IsNullOrWhiteSpace(tableName))
             {
                 if (string.IsNullOrWhiteSpace(resourceGroupName))
                 {
