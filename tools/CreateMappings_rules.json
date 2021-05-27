@@ -672,5 +672,9 @@
   {
     "regex": "ContainerInstance",
     "alias": "ContainerInstance"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
   }
 ]
