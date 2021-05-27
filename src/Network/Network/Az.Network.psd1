@@ -421,13 +421,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added Cmdlets for Identity on Application Gateway.
-    - New cmdlets added:
-        - Set-AzApplicationGatewayIdentity
-        - Get-AzApplicationGatewayIdentity
-        - New-AzApplicationGatewayIdentity
-        - Remove-AzApplicationGatewayIdentity
-    - New-AzApplicationGateway cmdlet updated with optional parameter -Identity'
+        ReleaseNotes = '* Sign Automapper dll from version 1.2.0'
 
         # Prerelease string of this module
         # Prerelease = ''
