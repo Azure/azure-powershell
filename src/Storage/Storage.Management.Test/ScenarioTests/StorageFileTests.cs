@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFileServiceProperties()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-FileServiceProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureStorageShareNFS()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AzureStorageShareNFS");
