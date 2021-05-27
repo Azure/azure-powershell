@@ -20,7 +20,6 @@ function Test-SshKey
 {
 	$loc = 'westus'
 	$rgname = Get-ComputeTestResourceName
-	New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 	try 
 	{
