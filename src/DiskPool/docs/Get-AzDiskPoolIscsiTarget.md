@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: DiskPool
-online version: https://docs.microsoft.com/powershell/module/diskpool/get-azdiskpooliscsitarget
+Module Name: Az.DiskPool
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooliscsitarget
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: DiskPool
-online version: https://docs.microsoft.com/powershell/module/diskpool/stop-azdiskpool
+Module Name: Az.DiskPool
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/stop-azdiskpool
 schema: 2.0.0
 ---
 
