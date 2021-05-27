@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse))]
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse<PSObject>))]
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
             }
 
-            var psResourceGraphResponse = new PSResourceGraphResponse();
+            var psResourceGraphResponse = new PSResourceGraphResponse<PSObject>();
             QueryResponse response = null;
 
             var resultTruncated = false;
