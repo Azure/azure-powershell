@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestShareSnapshot()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-ShareSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureStorageShareNFS()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-AzureStorageShareNFS");
         }        
     }
 }

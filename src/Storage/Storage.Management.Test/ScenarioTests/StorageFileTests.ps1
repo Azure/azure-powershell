@@ -358,4 +358,58 @@ function Test-ShareSnapshot
     }
 }
 
+<#
+.SYNOPSIS
+Test Azure storage share with NFS
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-AzureStorageShareNFS
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $kind $sto.Kind; 
+
+		
+		$shareName = "share"+ $rgname
+		$sto | New-AzRmStorageShare -Name $shareName -EnabledProtocol NFS -RootSquash RootSquash
+		$share = $sto | Get-AzRmStorageShare -Name $shareName
+		Assert-AreEqual $rgname $share.ResourceGroupName
+		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual "NFS" $share.EnabledProtocols
+		Assert-AreEqual "RootSquash" $share.RootSquash
+
+		Update-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $stoname -Name $shareName -RootSquash NoRootSquash 	
+ 		$share = $sto | Get-AzRmStorageShare -Name $shareName
+ 		Assert-AreEqual $rgname $share.ResourceGroupName
+ 		Assert-AreEqual $stoname $share.StorageAccountName
+		Assert-AreEqual $shareName $share.Name
+		Assert-AreEqual "NFS" $share.EnabledProtocols
+		Assert-AreEqual "NoRootSquash" $share.RootSquash
+        
+        Retry-IfException { Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
 
