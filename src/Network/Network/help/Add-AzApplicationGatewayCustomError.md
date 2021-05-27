@@ -30,6 +30,20 @@ PS C:\> $updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGatewa
 
 This command adds a custom error of http status code 502 to the application gateway $appgw, and return the updated gateway.
 
+### Example 2: Adds custom error to application gateway listener level
+```powershell
+PS C:\> $resourceGroup = "resourceGroupName"
+PS C:\> $AppGWName = "applicationGatewayName"
+PS C:\> $customError502Url = "https://mycustomerrorpages.blob.core.windows.net/errorpages/502.htm"
+PS C:\> $listenerName = "listenerName"
+PS C:\> $AppGw = Get-AzApplicationGateway -Name $AppGWName -ResourceGroupName $rg
+PS C:\> $listener = Get-AzApplicationGatewayHttpListener -ApplicationGateway $AppGW -Name $listenerName
+PS C:\> $updatedListener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url 
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGw
+```
+
+This command adds a custom error of http status code 502 to the application gateway $appgw at the listener level, and return the updated gateway.
+
 ## PARAMETERS
 
 ### -ApplicationGateway
