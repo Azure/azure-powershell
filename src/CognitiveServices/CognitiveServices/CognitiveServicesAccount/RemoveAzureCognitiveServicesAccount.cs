@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccount", DefaultParameterSetName = AccountParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         protected const string AccountParameterSet = "AccountParameterSet";
