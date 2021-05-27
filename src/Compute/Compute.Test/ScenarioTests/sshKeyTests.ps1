@@ -20,10 +20,10 @@ function Test-SshKey
 {
 	$loc = 'westus'
 	$rgname = Get-ComputeTestResourceName
-	New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 	try 
 	{
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
 		#create sshkey1
 		$sshkey1 = New-AzSshKey -ResourceGroupName $rgname -Name "sshkey1"
