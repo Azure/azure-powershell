@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 {
     public class PSCognitiveServicesSkus
     {
-        public PSCognitiveServicesSkus(CognitiveServicesModels.CognitiveServicesAccountEnumerateSkusResult enumerateSkusResult)
+        public PSCognitiveServicesSkus(CognitiveServicesModels.AccountSkuListResult enumerateSkusResult)
         {
             this.List = enumerateSkusResult.Value.Select(x => x.Sku.Name.ToString());
         }

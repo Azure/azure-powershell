@@ -18,18 +18,27 @@ using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Globalization;
 using System.Management.Automation;
-using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
-    /// Regnerate Cognitive Services Account Key (Key1 or Key2)
+    /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountKey", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.ApiKeys))]
-    public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountRemoval", SupportsShouldProcess = true), OutputType(typeof(void))]
+    public class UndoAzureCognitiveServicesAccountRemovalCommand : CognitiveServicesAccountBaseCmdlet
     {
+
         [Parameter(
             Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Cognitive Services Account Location.")]
+        [LocationCompleter("Microsoft.CognitiveServices/accounts")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        [Parameter(
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
@@ -38,20 +47,13 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Cognitive Services Account Key.")]
-        public KeyName KeyName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -61,19 +63,29 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
 
             if (ShouldProcess(
-                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, this.Name))
+                this.Name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, this.Name))
                 ||
                 Force.IsPresent)
             {
-
                 RunCmdLet(() =>
                 {
-                    var keys = this.CognitiveServicesClient.Accounts.RegenerateKey(
-                        this.ResourceGroupName,
-                        this.Name,
-                        this.KeyName);
+                    var createParameters = new Account()
+                    {
+                        Location = Location,
+                        Properties = new AccountProperties()
+                        {
+                            Restore = true
+                        }
+                    };
 
-                    WriteObject(keys);
+                    var createAccountResponse = CognitiveServicesClient.Accounts.Create(
+                                    ResourceGroupName,
+                                    Name,
+                                    createParameters);
+
+                    var cognitiveServicesAccount = CognitiveServicesClient.Accounts.Get(ResourceGroupName, Name);
+
+                    WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 });
             }
         }

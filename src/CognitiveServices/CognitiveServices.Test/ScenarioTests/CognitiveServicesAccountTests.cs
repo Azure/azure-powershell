@@ -44,13 +44,6 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAccountWithInvalidName()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountInvalidName");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountWithCustomDomain()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithCustomDomain");
@@ -61,13 +54,6 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestNewAccountWithVnet()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmCognitiveServicesAccountWithVnet");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateAllKindsOfAccounts()
-        {
-            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-NewAzureRmAllKindsOfCognitiveServicesAccounts");
         }
 
         [Fact]
@@ -194,6 +180,13 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUserAssignedIdentity()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-UserAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEncryption()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Encryption");
@@ -222,6 +215,20 @@ namespace CognitiveServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestrictOutboundNetworkAccess()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-RestrictOutboundNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableLocalAuth()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-DisableLocalAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCapabilities()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-Capabilities");
@@ -232,6 +239,13 @@ namespace CognitiveServices.Test.ScenarioTests
         public void TestApiProperties()
         {
             TestController.NewInstance.RunPsTest(traceInterceptor, "Test-ApiProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSoftDelete()
+        {
+            TestController.NewInstance.RunPsTest(traceInterceptor, "Test-SoftDelete");
         }
     }
 }

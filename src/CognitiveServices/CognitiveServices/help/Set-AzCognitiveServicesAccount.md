@@ -16,20 +16,22 @@ Modifies an account.
 ### CognitiveServicesEncryption (Default)
 ```
 Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
- [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-IdentityType <IdentityType>]
- [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>]
- [-PublicNetworkAccess <String>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
+ [-IdentityType <String>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-ApiProperty <ApiProperties>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
 ```
 Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
- [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-IdentityType <IdentityType>]
- [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
+ [-IdentityType <String>] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String>
+ -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-ApiProperty <ApiProperties>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,11 +60,26 @@ Tags              :
 
 ## PARAMETERS
 
+### -AllowedFqdnList
+List of Allowed FQDN.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApiProperty
 The ApiProperties of Cognitive Services Account. Required by specific account types.
 
 ```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties
+Type: Microsoft.Azure.Management.CognitiveServices.Models.ApiProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -133,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableLocalAuth
+True if disable Local authentication methods.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -152,10 +184,10 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, SystemAssigned, UserAssigned
+Accepted values: None, SystemAssigned, UserAssigned, SystemAssignedUserAssigned
 
 Required: False
 Position: Named
@@ -184,6 +216,21 @@ Whether to set Cognitive Services Account encryption keySource to Microsoft.KeyV
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: KeyVaultEncryption
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultIdentityClientId
+Set IdentityClientId to access Azure KeyVault of Cognitive Services Account Encryption.
+
+```yaml
+Type: System.String
 Parameter Sets: KeyVaultEncryption
 Aliases:
 
@@ -285,6 +332,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RestrictOutboundNetworkAccess
+True if restrict outbound network access.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkuName
 Specifies the SKU for the account.
 The acceptable values for this parameter are:
@@ -334,6 +396,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+Set resource ids for the the new Cognitive Services Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
