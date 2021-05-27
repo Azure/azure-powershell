@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ETag { get; set; }
 
-        protected PSResource(string id, string subscriptionId, string resourceGroupName, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
+        public PSResource(string id, string subscriptionId, string resourceGroupName, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
         {
             this.ResourceId = id;
             this.Id = id;
