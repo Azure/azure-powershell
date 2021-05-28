@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Models
 
         [Ps1Xml(Target = ViewControl.List)]
         public IList<PSObject> Data { get; set; }
-        public PSObject this[int index] { get => Data[index]; set => Data[index] = value; }
+        public PSObject this[int index]
+        {
+            get => Data[index];
+            set => Data[index] = value;
+        }
 
         public IEnumerator<PSObject> GetEnumerator()
         {

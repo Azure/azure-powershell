@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed the output print issue for `Search-AzGraph`. Fixed the issue when Search-AzGraph fails  when no subscriptions are stored in the context.
+* Fixed the output print issue for `Search-AzGraph`.
+* Fixed the issue when Search-AzGraph fails if no subscriptions are stored in the context.
 
 ## Version 0.10.0
 * Changed output of `Search-AzGraph` to PSResourceGraphResponse which wrapped previous output under Data property.
