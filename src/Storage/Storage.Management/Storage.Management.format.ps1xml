@@ -326,6 +326,10 @@
                 <Label>ShareDeleteRetentionPolicy.Days</Label>
                 <ScriptBlock>$_.ShareDeleteRetentionPolicy.Days</ScriptBlock>
               </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.Multichannel.Enabled</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.Multichannel.Enabled</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -410,7 +414,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>EnabledProtocol</Label>
+            <Label>EnabledProtocols</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -446,7 +450,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>EnabledProtocol</PropertyName>
+                <PropertyName>EnabledProtocols</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
