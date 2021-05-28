@@ -42,28 +42,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroupName = this.ResourceGroupName;
-                string sshKeyName = this.Name;
-                SshPublicKeyResource result;
-                SshPublicKeyResource sshkey = new SshPublicKeyResource();
-                ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
-                sshkey.Location = rg.Location;
+            string resourceGroupName = this.ResourceGroupName;
+            string sshKeyName = this.Name;
+            SshPublicKeyResource result;
+            SshPublicKeyResource sshkey = new SshPublicKeyResource();
+            ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
+            sshkey.Location = rg.Location;
 
-                if (this.IsParameterBound(c => c.PublicKey))
-                {
-                    
-                    sshkey.PublicKey = this.PublicKey;
-                    result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                }
-                else
-                {
-                    WriteDebug("No public key is provided. A key pair is being generated for you.");
-                    
-                    result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
-                    SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
-                    result.PublicKey = keypair.PublicKey;
+            if (this.IsParameterBound(c => c.PublicKey))
+            {
 
-                    string sshFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\.ssh\";
+                sshkey.PublicKey = this.PublicKey;
+                result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
+            }
+            else
+            {
+                WriteDebug("No public key is provided. A key pair is being generated for you.");
+
+                result = SshPublicKeyClient.Create(resourceGroupName, sshKeyName, sshkey);
+                SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
+                result.PublicKey = keypair.PublicKey;
+
+                string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );
                     if (!Directory.Exists(sshFolder))
                     {
                         Directory.CreateDirectory(sshFolder);
@@ -72,18 +72,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     DateTimeOffset now = DateTimeOffset.UtcNow;
                     string privateKeyFileName = now.ToUnixTimeSeconds().ToString();
                     string publicKeyFileName = now.ToUnixTimeSeconds().ToString() + ".pub";
-
-                    using (StreamWriter writer = new StreamWriter(sshFolder + privateKeyFileName))
+                    string privateKeyFilePath = Path.Combine(sshFolder + privateKeyFileName);
+                    string publicKeyFilePath = Path.Combine(sshFolder + publicKeyFileName);
+                    using (StreamWriter writer = new StreamWriter(privateKeyFilePath))
                     {
                         writer.WriteLine(keypair.PrivateKey);
                     }
-                    Console.WriteLine("Private key is saved to " + sshFolder + privateKeyFileName);
+                    Console.WriteLine("Private key is saved to " + privateKeyFilePath);
                     
-                    using (StreamWriter writer = new StreamWriter(sshFolder + publicKeyFileName))
+                    using (StreamWriter writer = new StreamWriter(publicKeyFilePath))
                     {
                         writer.WriteLine(keypair.PublicKey);
                     }
-                    Console.WriteLine("Public key is saved to " + sshFolder + publicKeyFileName);
+                    Console.WriteLine("Public key is saved to " + publicKeyFilePath);
                 }
 
                 var psObject = new PSSshPublicKeyResource();
