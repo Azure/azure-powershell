@@ -28,6 +28,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsDiagnostic.Test, AzureRMConstants.AzureRMPrefix + "ManagementGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureManagementGroupDeploymentCmdlet : TestDeploymentCmdletBase
     {
+        [Alias("DeploymentName")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the deployment it's going to test. If not specified, defaults to the template file name when a template file is provided")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The management group id.")]
         [ValidateNotNullOrEmpty]
         public string ManagementGroupId { get; set; }
@@ -44,6 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ScopeType = DeploymentScopeType.ManagementGroup,
                 ManagementGroupId = this.ManagementGroupId,
                 Location = this.Location,
+                DeploymentName = this.Name,
                 QueryString = QueryString,
                 TemplateFile = this.TemplateUri ?? this.TryResolvePath(this.TemplateFile),
                 TemplateObject = this.TemplateObject,
