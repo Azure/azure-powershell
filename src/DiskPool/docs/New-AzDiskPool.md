@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DiskPool
-online version: https://docs.microsoft.com/powershell/module/diskpool/new-azdiskpool
+online version: https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 schema: 2.0.0
 ---
 
