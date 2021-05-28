@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
     - `New-AzRmStorageShare`
     - `Update-AzRmStorageShare`
 * Supported enable Smb Multichannel on File service
