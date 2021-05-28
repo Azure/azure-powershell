@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
 ## Version 3.7.1
 * Supported soft delete DataLake Gen2 item
     - `Get-AzDataLakeGen2DeletedItem`
