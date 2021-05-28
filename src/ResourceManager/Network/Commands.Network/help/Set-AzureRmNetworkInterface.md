@@ -20,6 +20,11 @@ Set-AzureRmNetworkInterface -NetworkInterface <PSNetworkInterface> [-AsJob]
 
 ## DESCRIPTION
 The **Set-AzureRmNetworkInterface** sets the goal state for an Azure network interface.
+>[!NOTE]
+> Get-AzureRmNetworkInterface and Set-AzureRmNetworkInterface will not work for the Network Interface created while creating VirtualMachine ScaleSet which requires Virtual Network and Subnet and Network Interface to be created along with it. Probelem is with the default template which is older(2015). You will need to use Azure REST API to get and set such Network Interface.
+>[!NOTE]
+> Easiest way to find out if Network Interface will be accessible via these cmdlets is to check Azure console, look for your Network Interface under Network Interfaces list, if your Network Interface is not showing up in the console, you will not be able to access these cmdlets to access that Network Interface.     
+   
 
 ## EXAMPLES
 
