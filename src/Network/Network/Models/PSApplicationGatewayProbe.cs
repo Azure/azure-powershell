@@ -13,21 +13,31 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayProbe : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Host { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Path { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? Interval { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? Timeout { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? UnhealthyThreshold { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? PickHostNameFromBackendHttpSettings { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MinServers { get; set; }
         public PSApplicationGatewayProbeHealthResponseMatch Match { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
 

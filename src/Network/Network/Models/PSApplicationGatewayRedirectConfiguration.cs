@@ -15,15 +15,20 @@
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayRedirectConfiguration : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string RedirectType { get; set; }
         public PSResourceId TargetListener { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string TargetUrl { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? IncludePath { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? IncludeQueryString { get; set; }
         public List<PSResourceId> RequestRoutingRules { get; set; }
         public List<PSResourceId> UrlPathMaps { get; set; }

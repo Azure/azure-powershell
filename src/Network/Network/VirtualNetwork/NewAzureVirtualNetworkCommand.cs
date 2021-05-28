@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +21,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzVirtualNetwork", SupportsShouldProcess = true),
-        OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -57,41 +58,40 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
-        public List<PSSubnet> Subnet { get; set; }
+        public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
-        
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A switch parameter which represents whether DDoS protection is enabled or not. It can only be turned on if a DDoS Protection Plan is associated with the virtual network.")]
+        public SwitchParameter EnableDdosProtection { get; set; }
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A switch parameter which represents if DDoS protection is enabled or not.")]
-        public SwitchParameter EnableDDoSProtection { get; set; }
-
-        [Parameter(
-           Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "A switch parameter which represents if Vm protection is enabled or not.")]
-        public SwitchParameter EnableVmProtection { get; set; }
+            HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
+        public string DdosProtectionPlanId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -100,8 +100,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-            var present = this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name);
+            var present = IsVirtualNetworkPresent(ResourceGroupName, Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -117,31 +116,35 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSVirtualNetwork CreateVirtualNetwork()
         {
-            var vnet = new PSVirtualNetwork();
-            vnet.Name = this.Name;
-            vnet.ResourceGroupName = this.ResourceGroupName;
-            vnet.Location = this.Location;
-            vnet.AddressSpace = new PSAddressSpace();
-            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
-
-            if (this.DnsServer != null)
+            var vnet = new PSVirtualNetwork
             {
-                vnet.DhcpOptions = new PSDhcpOptions();
-                vnet.DhcpOptions.DnsServers = this.DnsServer;
+                Name = Name,
+                ResourceGroupName = ResourceGroupName,
+                Location = Location,
+                AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
+            };
+
+            if (DnsServer != null)
+            {
+                vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
             }
 
-            vnet.Subnets = this.Subnet;
-            vnet.EnableDDoSProtection = this.EnableDDoSProtection;
-            vnet.EnableVmProtection = this.EnableVmProtection;
+            vnet.Subnets = this.Subnet?.ToList();
+            vnet.EnableDdosProtection = EnableDdosProtection;
+            
+            if (!string.IsNullOrEmpty(DdosProtectionPlanId))
+            {
+                vnet.DdosProtectionPlan = new PSResourceId {Id = DdosProtectionPlanId};
+            }
 
             // Map to the sdk object
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
-            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vnetModel);
+            VirtualNetworkClient.CreateOrUpdate(ResourceGroupName, Name, vnetModel);
 
-            var getVirtualNetwork = this.GetVirtualNetwork(this.ResourceGroupName, this.Name);
+            var getVirtualNetwork = GetVirtualNetwork(ResourceGroupName, Name);
 
             return getVirtualNetwork;
         }

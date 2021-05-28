@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -20,11 +19,14 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkInterfaceTests : NetworkTestRunner
+    public class NetworkInterfaceTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public NetworkInterfaceTests(Xunit.Abstractions.ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -32,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceCRUD()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUD");
         }
 
         [Fact]
@@ -40,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceCRUDUsingId()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceCRUDUsingId");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDUsingId");
         }
 
         [Fact]
@@ -48,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceCRUDStaticAllocation()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceCRUDStaticAllocation");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDStaticAllocation");
         }
 
         [Fact]
@@ -56,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceNoPublicIpAddress");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceNoPublicIpAddress");
         }
 
         [Fact]
@@ -64,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceSet()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceSet");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceSet");
         }
 
         [Fact]
@@ -72,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceIDns()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceIDns");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIDns");
         }
 
         [Fact]
@@ -80,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceEnableIPForwarding()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceEnableIPForwarding");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceEnableIPForwarding");
         }
 
         [Fact]
@@ -88,7 +90,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceExpandResource()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceExpandResource");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceExpandResource");
         }
 
         [Fact]
@@ -96,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceIpv6()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceIpv6");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIpv6");
         }
 
         [Fact]
@@ -104,7 +106,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceWithIpConfiguration()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceWithIpConfiguration");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithIpConfiguration");
         }
 
         [Fact]
@@ -112,7 +114,23 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
-            TestRunner.RunTestScript("Test-NetworkInterfaceWithAcceleratedNetworking");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithAcceleratedNetworking");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkInterfaceTapConfigurationCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkInterfaceTapConfigurationCRUD"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkInterfaceVmss()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceVmss");
         }
     }
 }

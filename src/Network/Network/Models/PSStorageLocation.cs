@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -19,12 +20,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSStorageLocation
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string StorageId { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string StoragePath { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string FilePath { get; set; }
     }
 }

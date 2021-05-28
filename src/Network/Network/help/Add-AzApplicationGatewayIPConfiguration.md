@@ -39,8 +39,8 @@ PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -Resource
 PS C:\> $AppGw = Add-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name "Appgwsubnet01" -Subnet $Subnet
 ```
 
-The first command creates a virtual network.
-The second command creates a subnet using the previously created virtual network.
+The first command gets a virtual network.
+The second command gets a subnet using the previously created virtual network.
 The third command gets the application gateway and stores it in the $AppGw variable.
 The fouth command adds the IP configuration to the application gateway stored in $AppGw.
 
@@ -50,9 +50,9 @@ The fouth command adds the IP configuration to the application gateway stored in
 Specifies the application gateway to which this cmdlet adds an IP configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -65,9 +65,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 Specifies the name of the IP configuration to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -96,9 +96,9 @@ Specifies a subnet.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,9 +112,9 @@ Specifies a subnet ID.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,7 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

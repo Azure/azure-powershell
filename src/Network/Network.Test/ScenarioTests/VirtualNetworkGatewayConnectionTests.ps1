@@ -23,7 +23,8 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
     # Setup
     $rgname = "onesdkTestConnection"
     $vnetConnectionName = Get-ResourceName
-	$location = "westus"
+    $location = Get-ProviderLocation "Microsoft.Network/vpnGateways" "West US"
+
     try 
      {
         # Get the resource group
@@ -43,9 +44,25 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual $expected.Name $actual.Name	
         Assert-AreEqual "ExpressRoute" $expected.ConnectionType
         Assert-AreEqual "3" $expected.RoutingWeight
+        Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
 
 		#get routes 
 		Get-AzExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
+
+        # Delete VirtualNetworkGatewayConnection
+        $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
+        Assert-AreEqual true $delete
+        $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual 0 @($list).Count
+
+        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass enabled
+        $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass
+        $getConnection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+        Assert-AreEqual $getConnection.ResourceGroupName $connection.ResourceGroupName
+        Assert-AreEqual $getConnection.Name $connection.Name
+        Assert-AreEqual "ExpressRoute" $getConnection.ConnectionType
+        Assert-AreEqual "3" $getConnection.RoutingWeight
+        Assert-AreEqual $True $getConnection.ExpressRouteGatewayBypass
 
         # Delete VirtualNetworkGatewayConnection
         $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
@@ -425,11 +442,15 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
       $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
+      Assert-AreEqual $rgname $actual.ResourceGroupName
+      Assert-AreEqual $rname $actual.Name
+      Assert-AreEqual "Vpn" $actual.GatewayType
+      Assert-AreEqual "RouteBased" $actual.VpnType
+      Assert-AreEqual $false $actual.EnableBgp
+
       $vnetGateway = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-      Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $vnetGateway.Name $actual.Name	
-      #Assert-AreEqual "Vpn" $expected.GatewayType
-      #Assert-AreEqual "RouteBased" $expected.VpnType
+      Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $vnetGateway.Name $actual.Name
     
       # Create LocalNetworkGateway
       $actual = New-AzLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.11
@@ -447,23 +468,26 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "IPsec" $expected.ConnectionType
       Assert-AreEqual "3" $expected.RoutingWeight
-      #Assert-AreEqual "abc" $expected.SharedKey
+      Assert-AreEqual "abc" $expected.SharedKey
 
       # Set VirtualNetworkGatewayConnectionSharedKey
       $actual = Set-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -Value "TestSharedKeyValue" -Force
-	  #Assert-AreEqual "TestSharedKeyValue" $actual
+      Assert-AreEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey
       $expected = Get-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
-      #Assert-AreEqual "TestSharedKeyValue" $expected
+      Assert-AreEqual "TestSharedKeyValue" $expected
+
+      # Wait to avoid conflict
+      Start-TestSleep 60000
 
       # Reset VirtualNetworkGatewayConnectionSharedKey
-      #$actual = Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
-	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
+      $actual = Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
+      Assert-AreNotEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey after Reset-VirtualNetworkGatewayConnectionSharedKey
-      #$expected = Get-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
-	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
+      $expected = Get-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName
+      Assert-AreNotEqual "TestSharedKeyValue" $expected
     }
     finally
     {

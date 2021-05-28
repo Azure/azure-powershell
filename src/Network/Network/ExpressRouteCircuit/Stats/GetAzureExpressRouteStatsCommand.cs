@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network		
 {
-    [Cmdlet(VerbsCommon.Get, "AzExpressRouteCircuitStat"), OutputType(typeof(PSExpressRouteCircuitStats))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {	
         [Parameter(		
@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
             Mandatory = true,		
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Name of ExpressRoute Circuit")]		
+            HelpMessage = "The Name of ExpressRoute Circuit")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]		
         public string ExpressRouteCircuitName { get; set; }		
 		
@@ -43,9 +44,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,		
             HelpMessage = "The PeeringType")]		
         [ValidateSet(		
-           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,		
-           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,		
-           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,		
+           MNM.ExpressRoutePeeringType.AzurePrivatePeering,		
+           MNM.ExpressRoutePeeringType.AzurePublicPeering,		
+           MNM.ExpressRoutePeeringType.MicrosoftPeering,		
            IgnoreCase = true)]		
         public string PeeringType { get; set; }		
 		

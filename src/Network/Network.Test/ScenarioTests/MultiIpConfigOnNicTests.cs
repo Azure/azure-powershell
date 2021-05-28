@@ -12,54 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class MultiIpConfigOnNicTests : NetworkTestRunner
+    public class MultiIpConfigOnNicTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public MultiIpConfigOnNicTests(ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestMultiIpConfigCRUD()
         {
-            TestRunner.RunTestScript("Test-MultiIpConfigCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiIpConfigCRUD");
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         /// current error is: LoadBalancingRules are not supported for secondary IpConfigurations. 
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestLBWithMultiIpConfigNICCRUD()
         {
-            TestRunner.RunTestScript("Test-LBWithMultiIpConfigNICCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LBWithMultiIpConfigNICCRUD");
         }
 
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestAddNICToLBWithMultiIpConfig()
         {
-            TestRunner.RunTestScript("Test-AddNICToLBWithMultiIpConfig");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AddNICToLBWithMultiIpConfig");
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         /// Public IP is not supported on secondary IpConfigurations
         public void TestLBWithMultiIpConfigMultiNIC()
         {
 
-            TestRunner.RunTestScript("Test-LBWithMultiIpConfigMultiNIC");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LBWithMultiIpConfigMultiNIC");
         }
     }
 }

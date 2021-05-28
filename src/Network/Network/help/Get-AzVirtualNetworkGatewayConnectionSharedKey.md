@@ -9,6 +9,7 @@ schema: 2.0.0
 # Get-AzVirtualNetworkGatewayConnectionSharedKey
 
 ## SYNOPSIS
+Displays the shared key used for the connection.
 
 ## SYNTAX
 
@@ -18,12 +19,14 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGroupNa
 ```
 
 ## DESCRIPTION
+Displays the shared key used for the connection.
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
-
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name 1 -ResourceGroupName P2SVPNGateway
+xxxxxx
 ```
 
 ## PARAMETERS
@@ -32,9 +35,9 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGroupNa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -45,7 +48,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -58,9 +61,9 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,6 +77,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
 ### System.String
@@ -82,3 +87,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
+[Reset-AzVirtualNetworkGatewayConnectionSharedKey](./Reset-AzVirtualNetworkGatewayConnectionSharedKey.md)
+
+[Set-AzVirtualNetworkGatewayConnectionSharedKey](./Set-AzVirtualNetworkGatewayConnectionSharedKey.md)

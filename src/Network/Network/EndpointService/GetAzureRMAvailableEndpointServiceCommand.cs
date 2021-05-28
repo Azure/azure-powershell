@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzVirtualNetworkAvailableEndpointService"), OutputType(typeof(List<PSEndpointServiceResult>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkAvailableEndpointService"), OutputType(typeof(PSEndpointServiceResult))]
     public partial class GetAzureRMVirtualNetworkAvailableEndpointServiceCommand : NetworkBaseCmdlet
     {
         [Parameter(

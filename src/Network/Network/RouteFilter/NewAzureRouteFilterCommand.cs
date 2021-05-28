@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
 
-    [Cmdlet(VerbsCommon.New, "AzRouteFilter", SupportsShouldProcess = true),OutputType(typeof(PSRouteFilter))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteFilter", SupportsShouldProcess = true),OutputType(typeof(PSRouteFilter))]
     public class NewAzureRouteFilterCommand : RouteFilterBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of Routes")]
-        public List<PSRouteFilterRule> Rule { get; set; }
+        public PSRouteFilterRule[] Rule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -77,7 +78,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsRouteFilterPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             psRouteFilter.Name = this.Name;
             psRouteFilter.ResourceGroupName = this.ResourceGroupName;
             psRouteFilter.Location = this.Location;
-            psRouteFilter.Rules = this.Rule;
+            psRouteFilter.Rules = this.Rule?.ToList();
 
             // Map to the sdk object
             var routeFilterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteFilter>(psRouteFilter);

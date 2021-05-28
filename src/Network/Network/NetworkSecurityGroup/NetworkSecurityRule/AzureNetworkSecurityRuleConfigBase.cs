@@ -48,49 +48,49 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Source Port Range rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourcePortRange { get; set; }
+        public string[] SourcePortRange { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Destination Port Range rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationPortRange { get; set; }
+        public string[] DestinationPortRange { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Source Address Prefix  rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceAddressPrefix { get; set; }
+        public string[] SourceAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Destination Address Prefix rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationAddressPrefix { get; set; }
+        public string[] DestinationAddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResource",
             HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
-        public List<PSApplicationSecurityGroup> SourceApplicationSecurityGroup { get; set; }
+        public PSApplicationSecurityGroup[] SourceApplicationSecurityGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResource",
             HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
-        public List<PSApplicationSecurityGroup> DestinationApplicationSecurityGroup { get; set; }
+        public PSApplicationSecurityGroup[] DestinationApplicationSecurityGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "The application security group set as source for the rule. It cannot be used with 'SourceAddressPrefix' parameter.")]
-        public List<string> SourceApplicationSecurityGroupId { get; set; }
+        public string[] SourceApplicationSecurityGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "The application security group set as destination for the rule. It cannot be used with 'DestinationAddressPrefix' parameter.")]
-        public List<string> DestinationApplicationSecurityGroupId { get; set; }
+        public string[] DestinationApplicationSecurityGroupId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The prioroty of the rule")]
+            HelpMessage = "The priority of the rule")]
         [ValidateNotNullOrEmpty]
         public int Priority { get; set; }
 

@@ -14,9 +14,8 @@ Removes an authentication certificate from an application gateway.
 ## SYNTAX
 
 ```
-Remove-AzApplicationGatewayAuthenticationCertificate -Name <String>
- -ApplicationGateway <PSApplicationGateway> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzApplicationGatewayAuthenticationCertificate -Name <String> -ApplicationGateway <PSApplicationGateway>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,10 +23,16 @@ The **Remove-AzApplicationGatewayAuthenticationCertificate** cmdlet removes an a
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Remove an authentication certificate from an application gateway
+```
+PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+PS C:\> $appgw = Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $appgw -Name "cert01"
+PS C:\> $appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-```
+The first command gets the application gateway named appGwName and stores the result in the $appgw variable.
+The second command removes the authentication certificate named cert01 from the application gateway.
+The third command updates the application gateway.
 
 ## PARAMETERS
 
@@ -35,9 +40,9 @@ The **Remove-AzApplicationGatewayAuthenticationCertificate** cmdlet removes an a
 Specifies the name of application gateway from which this cmdlet removes an authentication certificate.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -50,9 +55,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -65,9 +70,9 @@ Accept wildcard characters: False
 Specifies the name of the authentication certificate that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,7 +85,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +101,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -112,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

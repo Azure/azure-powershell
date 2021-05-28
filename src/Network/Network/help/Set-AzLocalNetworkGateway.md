@@ -14,10 +14,9 @@ Modifies a local network gateway.
 ## SYNTAX
 
 ```
-Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
- [-AddressPrefix <System.Collections.Generic.List`1[System.String]>] [-Asn <UInt32>]
- [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Set-AzLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway> [-AddressPrefix <String[]>]
+ [-Asn <UInt32>] [-BgpPeeringAddress <String>] [-PeerWeight <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,18 +24,37 @@ The **Set-AzLocalNetworkGateway** cmdlet modifies a local network gateway.
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+Set configuration for an existing gateway
 
+
+```
+$lgw = Get-AzLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
+Set-AzLocalNetworkGateway -LocalNetworkGateway $lgw
+
+Name                     : myLocalGW
+ResourceGroupName        : TestRG1
+Location                 : westus
+Id                       : /subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/TestRG1/providers/Microso
+                           ft.Network/localNetworkGateways/myLocalGW
+Etag                     : W/"d2de6968-315e-411d-a4b8-a8c335abe61b"
+ResourceGuid             : 393acf8b-dbb8-4b08-a9ea-c714570710e1
+ProvisioningState        : Succeeded
+Tags                     :
+GatewayIpAddress         : 1.2.3.4
+LocalNetworkAddressSpace : {
+                             "AddressPrefixes": []
+                           }
+BgpSettings              : null
 ```
 
 ## PARAMETERS
 
 ### -AddressPrefix
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -49,9 +67,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -62,9 +80,9 @@ Accept wildcard characters: False
 
 ### -Asn
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,9 +93,9 @@ Accept wildcard characters: False
 
 ### -BgpPeeringAddress
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,9 +108,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -103,9 +121,9 @@ Accept wildcard characters: False
 
 ### -LocalNetworkGateway
 ```yaml
-Type: PSLocalNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -116,9 +134,9 @@ Accept wildcard characters: False
 
 ### -PeerWeight
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,8 +150,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLocalNetworkGateway
-Parameter 'LocalNetworkGateway' accepts value of type 'PSLocalNetworkGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+
+### System.String[]
+
+### System.UInt32
+
+### System.String
+
+### System.Int32
 
 ## OUTPUTS
 
@@ -148,5 +173,3 @@ Parameter 'LocalNetworkGateway' accepts value of type 'PSLocalNetworkGateway' fr
 [New-AzLocalNetworkGateway](./New-AzLocalNetworkGateway.md)
 
 [Remove-AzLocalNetworkGateway](./Remove-AzLocalNetworkGateway.md)
-
-

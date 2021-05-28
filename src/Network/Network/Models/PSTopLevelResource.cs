@@ -13,14 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSTopLevelResource : PSChildResource
     {
+        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
 
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
         public string ResourceGuid { get; set; }

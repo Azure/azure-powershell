@@ -32,7 +32,7 @@ The **Get-AzNetworkSecurityGroup** cmdlet gets an Azure network security group.
 
 ### 1: Retrieve an existing network security group
 ```
-Get-AzNetworkSecurityGroup -Name  nsg1 -ResourceGroupName "rg1"
+Get-AzNetworkSecurityGroup -Name nsg1 -ResourceGroupName "rg1"
 ```
 
 This command returns contents of Azure network security group "nsg1" in resource group "rg1"
@@ -43,9 +43,9 @@ This command returns contents of Azure network security group "nsg1" in resource
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the network security group that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the network security group belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,6 +125,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ## OUTPUTS
 

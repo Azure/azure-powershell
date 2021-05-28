@@ -13,16 +13,16 @@ Gets route tables.
 
 ## SYNTAX
 
+### NoExpand (Default)
+```
+Get-AzRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### Expand
 ```
 Get-AzRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NoExpand
-```
-Get-AzRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,9 +65,9 @@ This command gets the route table named RouteTable01 in the resource group named
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,11 +93,11 @@ Accept wildcard characters: False
 Specifies the name of the route table that this cmdlet gets.
 
 ```yaml
-Type: String
-Parameter Sets: Expand
+Type: System.String
+Parameter Sets: NoExpand
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -105,11 +105,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: Expand
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -120,11 +120,11 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the route tables that this cmdlet gets.
 
 ```yaml
-Type: String
-Parameter Sets: Expand
-Aliases: 
+Type: System.String
+Parameter Sets: NoExpand
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -132,11 +132,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
-Aliases: 
+Type: System.String
+Parameter Sets: Expand
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -147,6 +147,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ## OUTPUTS
 

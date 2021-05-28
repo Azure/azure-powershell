@@ -72,15 +72,35 @@ This command gets the route table named RouteTable01 by using Get-AzRouteTable c
 The command passes that table to the Add-AzRouteConfig cmdlet by using the pipeline operator.
 **Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
+### Example 2: Modify route table
+
+```
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+False
+PS C:\> $rt.DisableBgpRoutePropagation = $true
+PS C:\> Set-AzRouteTable -RouteTable $rt
+PS C:\> $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
+PS C:\> $rt.DisableBgpRoutePropagation
+True
+```
+
+The first command gets the route table named rtName and stores it in the $rt variable.
+The second command displays the value of DisableBgpRoutePropagation.
+The third command updates value of DisableBgpRoutePropagation.
+The fourth command updates route table on the server.
+The fifth command gets updated route table and stores it in the $rt variable.
+The sixth command displays the value of DisableBgpRoutePropagation.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,9 +113,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -108,9 +128,9 @@ Accept wildcard characters: False
 Specifies a route table object that represents the goal state to which this cmdlet sets the route table.
 
 ```yaml
-Type: PSRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,7 +143,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -138,7 +158,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -154,8 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRouteTable
-Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
 
 ## OUTPUTS
 

@@ -39,9 +39,9 @@ The first command gets a network interface called mynic and stores it in the var
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -54,9 +54,9 @@ Accept wildcard characters: False
 Specifies the name of the network interface IP configuration to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,9 +70,9 @@ Specifies a **NetworkInterface** object.
 This object contains the network interface IP configuration to remove.
 
 ```yaml
-Type: PSNetworkInterface
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,8 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkInterface
-Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
 
 ## OUTPUTS
 

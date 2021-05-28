@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         Secondary		
      }		
  		
-     [Cmdlet(VerbsCommon.Get, "AzExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
+     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
      public class GetAzureExpressRouteCircuitARPTableCommand : NetworkBaseCmdlet		
      {
         [Parameter(		
@@ -46,17 +46,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(		
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The Name of ExpressRoute Circuit")]		
-         [ValidateNotNullOrEmpty]		
+             HelpMessage = "The Name of ExpressRoute Circuit")]
+        [ResourceNameCompleter("Microsoft.Network/expressRouteCircuits", "ResourceGroupName")]
+        [ValidateNotNullOrEmpty]		
          public string ExpressRouteCircuitName { get; set; }		
  		
          [Parameter(		
-             Mandatory = false,		
+             Mandatory = true,		
              HelpMessage = "The PeeringType")]		
          [ValidateSet(		
-            MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,		
-            MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,		
-            MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,		
+            MNM.ExpressRoutePeeringType.AzurePrivatePeering,		
+            MNM.ExpressRoutePeeringType.AzurePublicPeering,		
+            MNM.ExpressRoutePeeringType.MicrosoftPeering,		
             IgnoreCase = true)]		
          public string PeeringType { get; set; }		
  		

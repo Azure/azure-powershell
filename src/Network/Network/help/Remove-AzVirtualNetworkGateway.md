@@ -20,7 +20,6 @@ Remove-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [-Forc
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-
 The **Get-AzVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
 
 ## EXAMPLES
@@ -31,7 +30,6 @@ Remove-AzVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
 
 Deletes the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
-
 Note: You must first delete all connections to the Virtual Network Gateway using the **Remove-AzVirtualNetworkGatewayConnection** cmdlet.
 
 ## PARAMETERS
@@ -40,9 +38,9 @@ Note: You must first delete all connections to the Virtual Network Gateway using
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -55,9 +53,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -70,9 +68,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -101,9 +99,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +114,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the virtual network gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,7 +129,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -147,7 +145,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -163,9 +161,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 
 ## RELATED LINKS
 
+[Get-AzVirtualNetworkGateway](./Get-AzVirtualNetworkGateway.md)
+
+[New-AzVirtualNetworkGateway](./New-AzVirtualNetworkGateway.md)
+
+[Reset-AzVirtualNetworkGateway](./Reset-AzVirtualNetworkGateway.md)
+
+[Resize-AzVirtualNetworkGateway](./Resize-AzVirtualNetworkGateway.md)
+
+[Set-AzVirtualNetworkGateway](./Set-AzVirtualNetworkGateway.md)

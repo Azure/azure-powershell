@@ -14,16 +14,20 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectivityIssue
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Origin { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Severity { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Type { get; set; }
 
         [JsonProperty(Order = 1)]

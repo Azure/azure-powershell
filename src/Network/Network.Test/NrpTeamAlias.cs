@@ -34,14 +34,12 @@ namespace Commands.Network.Test
         // Split into subsets due to tests' long running time
         // Cortex and LocalNetworkGateway tests
         public const string brooklynft = "brooklynft";
-        // First part of VirtualNetworkGatewayConnection tests
+        // VirtualNetworkGatewayConnection tests
         public const string brooklynft_subset1 = "brooklynft_subset1";
         // First half of VirtualNetworkGateway tests
         public const string brooklynft_subset2 = "brooklynft_subset2";
         // Second half of VirtualNetworkGateway tests
         public const string brooklynft_subset3 = "brooklynft_subset3";
-        // Second part of VirtualNetworkGatewayConnection tests
-        public const string brooklynft_subset4 = "brooklynft_subset4";
 
         // Azure Network Analytics Dev Team
         public const string netanalyticsdev = "netanalyticsdev";
@@ -51,8 +49,5 @@ namespace Commands.Network.Test
 
         //Azure NRP Firewall dev team
         public const string azurefirewall = "azurefirewall";
-
-        // Azure NRP bastion dev team
-        public const string bastion = "bastion";
     }
 }

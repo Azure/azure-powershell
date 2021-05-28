@@ -18,16 +18,19 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSTopology 
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? CreatedDateTime { get; set; }
 
         [JsonProperty(Order = 1)]
         public string Id { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? LastModified { get; set; }
 
         [JsonProperty(Order = 1)]

@@ -15,9 +15,8 @@ Configures a virtual network gateway connection.
 
 ```
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtualNetworkGatewayConnection>
- [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>]
- [-IpsecPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableBgp <Boolean>] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,9 +24,38 @@ The **Set-AzVirtualNetworkGatewayConnection** cmdlet configures a virtual networ
 
 ## EXAMPLES
 
-### 1:
+### Example 1:
 ```
+$conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn
 
+Confirm
+Are you sure you want to overwrite resource '1'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+
+Name                    : 1
+ResourceGroupName       : myRG
+Location                : westus
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Mi
+                          crosoft.Network/connections/1
+Etag                    : W/"00000000-0000-0000-0000-000000000000"
+ResourceGuid            : 00000000-0000-0000-0000-000000000000
+ProvisioningState       : Succeeded
+Tags                    :
+AuthorizationKey        :
+VirtualNetworkGateway1  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/M
+                          icrosoft.Network/virtualNetworkGateways/myGateway"
+VirtualNetworkGateway2  : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/S2SVnetConn/providers/Mic
+                          rosoft.Network/virtualNetworkGateways/S2SConnGW"
+LocalNetworkGateway2    :
+Peer                    :
+RoutingWeight           : 0
+SharedKey               :
+ConnectionStatus        : Connected
+EgressBytesTransferred  : 91334484
+IngressBytesTransferred : 100386089
+TunnelConnectionStatus  : []
 ```
 
 ## PARAMETERS
@@ -36,9 +64,9 @@ The **Set-AzVirtualNetworkGatewayConnection** cmdlet configures a virtual networ
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -51,9 +79,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -66,9 +94,9 @@ Accept wildcard characters: False
 Whether to use a BGP session over a S2S VPN tunnel
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,9 +109,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,9 +124,9 @@ Accept wildcard characters: False
 A list of IPSec policies.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,9 +139,9 @@ Accept wildcard characters: False
 Whether to use policy-based traffic selectors for a S2S connection
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,9 +154,9 @@ Accept wildcard characters: False
 Specifies the PSVirtualNetworkGatewayConnection object that this cmdlet uses to modify the virtual network gateway connection.
 
 ```yaml
-Type: PSVirtualNetworkGatewayConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -157,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,8 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetworkGatewayConnection
-Parameter 'VirtualNetworkGatewayConnection' accepts value of type 'PSVirtualNetworkGatewayConnection' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
+
+### System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+
+### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 
 ## OUTPUTS
 

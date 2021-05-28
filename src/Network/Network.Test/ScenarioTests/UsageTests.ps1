@@ -24,11 +24,10 @@ function Test-NetworkUsage
     $subnetName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/Usages"
-    $location = Get-ProviderLocation $resourceTypeParent
-    
+    $location = Get-ProviderLocation $resourceTypeParent "West US" -UseCanonical $true
+
     try 
     {
-        $location = $location -replace " ","";
         $usage = Get-AzNetworkUsage -Location $location;
         $vnetCount = ($usage | Where-Object { $_.name.Value -eq "VirtualNetworks" }).currentValue;
         Assert-AreNotEqual 0 $usage.Length "Usage should return non-empty array";

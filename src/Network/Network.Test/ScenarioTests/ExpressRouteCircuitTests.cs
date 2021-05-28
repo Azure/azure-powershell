@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ExpressRouteCircuitTests : NetworkTestRunner
+    public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ExpressRouteCircuitTests(ITestOutputHelper output)
-            : base(output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -31,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitStageCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitStageCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitStageCRUD");
         }
 
         [Fact]
@@ -39,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitCRUD");
         }
 
         [Fact]
@@ -47,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
         }
 
         [Fact]
@@ -55,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
         }
 
         [Fact]
@@ -63,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteCircuitAuthorizationCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitAuthorizationCRUD");
         }
 
         [Fact]
@@ -71,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteBgpServiceCommunitiesGet()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteBGPServiceCommunities");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteBGPServiceCommunities");
         }
 
         [Fact]
@@ -79,9 +82,23 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.pgtm)]
         public void TestExpressRouteRouteFilterCRUD()
         {
-            TestRunner.RunTestScript("Test-ExpressRouteRouteFilters");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteRouteFilters");
         }
 
-        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitConnectionCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitConnectionCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.pgtm)]
+        public void TestExpressRouteCircuitPeeringWithRouteFilter()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPeeringWithRouteFilter");
+        }
     }
 }

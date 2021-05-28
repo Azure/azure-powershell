@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzApplicationGatewayConnectionDraining"),
-        OutputType(typeof(PSApplicationGatewayConnectionDraining))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayConnectionDraining"),OutputType(typeof(PSApplicationGatewayConnectionDraining))]
     public class NewAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
     {
         public override void ExecuteCmdlet()

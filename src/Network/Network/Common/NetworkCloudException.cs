@@ -51,39 +51,53 @@ namespace Microsoft.Azure.Commands.Network.Common
                 return sb.ToString();
             }
 
+            sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
+            if(cloudException.Response.ReasonPhrase != null)
+            {
+                sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
+            }
+
             if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
                 && cloudException.Response.Content != null)
             {
-                
                 var errorReturned = JsonConvert.DeserializeObject<PSNetworkLongRunningOperation>(
                     cloudException.Response.Content);
-                
-                
+
                 sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
                 if (errorReturned.Error == null)
                 {
                     return sb.ToString();
                 }
-                
+
+                if (errorReturned.Error.Code != null)
+                {
+                    sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                }
+
+                if (errorReturned.Error.Target != null)
+                {
+                    sb.AppendLine().AppendFormat("Target: {0}", errorReturned.Error.Target);
+                }
+
                 sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
-                
             }
             else
             {
-                sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
-                sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
                 if (cloudException.Response.Headers == null
                     || !cloudException.Response.Headers.ContainsKey(RequestIdHeaderInResponse))
                 {
                     return sb.ToString();
                 }
+            }
 
-                string operationId = cloudException.RequestId;
-
+            string operationId = cloudException.RequestId;
+            if (operationId != null)
+            {
                 sb.AppendLine().AppendFormat(
                     "OperationID : '{0}'",
                     operationId);
             }
+
             return sb.ToString();
         }
     }

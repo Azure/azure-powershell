@@ -30,7 +30,6 @@ PS C:\> $FirewallConfig = Get-AzApplicationGatewayWebApplicationFirewallConfigur
 ```
 
 The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGW variable.
-
 The second command gets the firewall configuration of the application gateway in $AppGW, and then stores it in $FirewallConfig.
 
 ## PARAMETERS
@@ -40,9 +39,9 @@ Specifies an application gateway object.
 You can use the Get-AzApplicationGateway cmdlet to get an application gateway object.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -55,9 +54,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,8 +70,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 
 ## OUTPUTS
 

@@ -17,10 +17,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefix = this.AddressPrefix?.ToList();
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
@@ -87,6 +88,24 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 subnet.ServiceEndpoints = null;
+            }
+
+            if (this.ServiceEndpointPolicy != null)
+            {
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy?.ToList();
+            }
+            else
+            {
+                subnet.ServiceEndpointPolicies = null;
+            }
+
+            if (this.Delegation != null)
+            {
+                subnet.Delegations = this.Delegation?.ToList();
+            }
+            else
+            {
+                subnet.Delegations = null;
             }
 
             WriteObject(this.VirtualNetwork);
