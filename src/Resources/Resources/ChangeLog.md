@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
+* Allow naming the deployment when testing deployments [#11497]
 
 ## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter

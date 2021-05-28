@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateAndGetServerWithPublicNetworkAccess");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be rewritten, skipping until owning team can update")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdateWithPublicNetworkAccess()
         {

@@ -693,6 +693,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disables uploading ledger digests.
+        /// </summary>
+        internal static string LedgerDisableConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("LedgerDisableConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable uploading ledger digests.
+        /// </summary>
+        internal static string LedgerEnableConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("LedgerEnableConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Managed Instance Advanced Data Security is not defined. Please run Enable-AzSqlInstanceAdvancedDataSecurityPolicy first..
         /// </summary>
         internal static string ManagedInstanceAdvancedDataSecurityIsNotDefined {

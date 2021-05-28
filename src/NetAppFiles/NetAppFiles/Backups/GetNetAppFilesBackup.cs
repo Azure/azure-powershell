@@ -185,8 +185,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 List<PSNetAppFilesBackup> anfBackups = null;
                 if (accountBackup)
                 {
-                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName);
-                    anfBackups = backups.Value.ConvertToPS();
+                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList(); 
+                    anfBackups = backups.ConvertToPS();
                 }
                 else
                 {

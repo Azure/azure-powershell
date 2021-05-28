@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -25,26 +27,31 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub"), OutputType(typeof(PSEventHubAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubPropertiesParameterSet), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Group Name", ParameterSetName= EventhubPropertiesParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = "Namespace Name", ParameterSetName = EventhubPropertiesParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
+        [Parameter(Mandatory = false, Position = 2, HelpMessage = "EventHub Name", ParameterSetName = EventhubPropertiesParameterSet)]
+        [Parameter(Mandatory = false,  Position = 1, HelpMessage = "EventHub Name", ParameterSetName = NamespaceInputObjectParameterSet)]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of EventHubs to return.")]
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of EventHubs to return.", ParameterSetName = EventhubPropertiesParameterSet)]
         [ValidateNotNull]
         public int? MaxCount { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace object", ParameterSetName = NamespaceInputObjectParameterSet)]
+        [ValidateNotNull]
+        public PSNamespaceAttributes NamespaceObject { get; set; }
 
         /// <summary>
         /// 
@@ -53,6 +60,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         {
             try
             {
+                if (this.IsParameterBound(c => c.NamespaceObject))
+                {
+                    this.ResourceGroupName = this.NamespaceObject.ResourceGroupName;
+                    this.Namespace = this.NamespaceObject.Name;
+                }
+
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a EventHub

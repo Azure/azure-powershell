@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added UseExistingSnapshot to Backups 
+* SnapshotPolicyId to UpdateAnfNetAppFilesVolume, this can be used to apply a snapshot policy to an existing volume
 
 ## Version 0.5.0
 * Added AllowLocalNfsUsersWithLdap to ActiveDirectory

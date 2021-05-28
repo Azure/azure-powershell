@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
                     Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
-                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite,                    
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -277,7 +277,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static VolumePatchPropertiesDataProtection ConvertToPatchFromPs(this PSNetAppFilesVolumeDataProtection psDataProtection)
         {
             var dataProtection = new VolumePatchPropertiesDataProtection();
-
+            if (psDataProtection.Snapshot != null)
+            {
+                var snapshot = new VolumeSnapshotProperties();
+                snapshot.SnapshotPolicyId = psDataProtection.Snapshot.SnapshotPolicyId;
+                dataProtection.Snapshot = snapshot;
+            }
             if (psDataProtection.Backup != null)
             {
                 var backup = new VolumeBackupProperties();

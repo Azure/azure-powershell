@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhub
@@ -12,8 +12,15 @@ Gets the details of a single Event Hub, or gets a list of Event Hubs.
 
 ## SYNTAX
 
+### EventhubPropertiesSet (Default)
 ```
 Get-AzEventHub [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>] [-MaxCount <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NamespaceInputObjectSet
+```
+Get-AzEventHub [[-Name] <String>] [-NamespaceObject] <PSNamespaceAttributes>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,7 +67,7 @@ Determine the maximum number of EventHubs to return.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: (All)
+Parameter Sets: EventhubPropertiesSet
 Aliases:
 
 Required: False
@@ -81,7 +88,7 @@ Aliases: EventHubName
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,13 +97,28 @@ Namespace Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventhubPropertiesSet
 Aliases: NamespaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceObject
+Namespace object
+
+```yaml
+Type: Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+Parameter Sets: NamespaceInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -105,18 +127,18 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: EventhubPropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
