@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroupName = this.ResourceGroupName;
                 string sshKeyName = this.Name;
                 SshPublicKeyResource result;
-            SshPublicKeyResource sshkey = new SshPublicKeyResource();
-            ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
-            sshkey.Location = rg.Location;
+                SshPublicKeyResource sshkey = new SshPublicKeyResource();
+                ResourceGroup rg = ArmClient.ResourceGroups.Get(resourceGroupName);
+                sshkey.Location = rg.Location;
 
 
                 if (this.IsParameterBound(c => c.PublicKey))
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     SshPublicKeyGenerateKeyPairResult keypair = SshPublicKeyClient.GenerateKeyPair(resourceGroupName, sshKeyName);
                     result.PublicKey = keypair.PublicKey;
 
-                string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );
+                    string sshFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".ssh" );
                     if (!Directory.Exists(sshFolder))
                     {
                         Directory.CreateDirectory(sshFolder);
