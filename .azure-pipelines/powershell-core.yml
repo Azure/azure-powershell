@@ -10,6 +10,11 @@ variables:
   Configuration: Debug
   DebugLocalBuildTasks: true
 
+pr:
+  branches:
+    include:
+      - '*'
+
 jobs:
 - job: Build
   displayName: Build
