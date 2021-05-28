@@ -17,20 +17,14 @@ namespace Microsoft.Azure.Commands.Synapse
     {
         private const string SetByName = "SetByName";
         private const string SetByObject = "SetByObject";
-        private const string RenameByName = "RenameByName";
-        private const string RenameByObject = "RenameByObject";
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RenameByName,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public override string WorkspaceName { get; set; }
 
         [Parameter(ValueFromPipeline = true, ParameterSetName = SetByObject,
-            Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
-        [Parameter(ValueFromPipeline = true, ParameterSetName = RenameByObject,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
         public PSSynapseWorkspace WorkspaceObject { get; set; }
@@ -39,13 +33,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         [Alias("SparkJobDefinitionName")]
         public string Name { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RenameByName,
-            Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
-        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = RenameByObject,
-            Mandatory = true, HelpMessage = HelpMessages.SparkJobDefinitionName)]
-        [ValidateNotNullOrEmpty]
-        public string NewName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByObject, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
         [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = SetByName, Mandatory = true, HelpMessage = HelpMessages.JsonFilePath)]
@@ -65,22 +52,8 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.SettingSynapseSparkJobDefinition, this.Name, this.WorkspaceName)))
             {
-                switch (ParameterSetName)
-                {
-                    case SetByName:
-                    case SetByObject:
-                        string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
-                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.CreateOrUpdateSparkJobDefinition(this.Name, rawJsonContent)));
-                        break;
-
-                    case RenameByName:
-                    case RenameByObject:
-                        SynapseAnalyticsClient.RenameSparkJobDefinition(this.Name, this.NewName);
-                        WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.GetSparkJobDefinition(this.NewName)));
-                        break;
-
-                    default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
-                }
+                string rawJsonContent = SynapseAnalyticsClient.ReadJsonFileContent(this.TryResolvePath(DefinitionFile));
+                WriteObject(new PSSparkJobDefinitionResource(SynapseAnalyticsClient.CreateOrUpdateSparkJobDefinition(this.Name, rawJsonContent)));
             }
         }
     }

@@ -18,22 +18,10 @@ Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -Definiti
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RenameByName
-```
-Set-AzSynapseSparkJobDefinition -WorkspaceName <String> -Name <String> -NewName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### SetByObject
 ```
 Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -DefinitionFile <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RenameByObject
-```
-Set-AzSynapseSparkJobDefinition -WorkspaceObject <PSSynapseWorkspace> -Name <String> -NewName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +83,7 @@ The JSON file path.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName, SetByObject
+Parameter Sets: (All)
 Aliases: File
 
 Required: True
@@ -120,27 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NewName
-The Spark job definition name.
-
-```yaml
-Type: System.String
-Parameter Sets: RenameByName, RenameByObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WorkspaceName
 Name of Synapse workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByName, RenameByName
+Parameter Sets: SetByName
 Aliases:
 
 Required: True
@@ -155,7 +128,7 @@ workspace input object, usually passed through the pipeline.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSSynapseWorkspace
-Parameter Sets: SetByObject, RenameByObject
+Parameter Sets: SetByObject
 Aliases:
 
 Required: True
