@@ -10,6 +10,15 @@ variables:
   Configuration: Debug
   DebugLocalBuildTasks: true
 
+trigger: none
+
+pr:
+  branches:
+    include:
+      - '*'
+    exclude:
+      - Azs-tzl
+
 jobs:
 - job: Build
   displayName: Build
