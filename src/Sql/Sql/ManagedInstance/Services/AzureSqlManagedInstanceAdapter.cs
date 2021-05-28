@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 DnsZonePartner = model.DnsZonePartner,
                 InstancePoolId = model.InstancePoolName != null ?
                     string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/instancePools/{2}",
-                        Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName): null,
+                        Context.Subscription.Id, model.ResourceGroupName, model.InstancePoolName) : null,
                 MinimalTlsVersion = model.MinimalTlsVersion,
                 StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
-                MaintenanceConfigurationId = model.MaintenanceConfigurationId
+                MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
             });
 
             return CreateManagedInstanceModelFromResponse(resp);

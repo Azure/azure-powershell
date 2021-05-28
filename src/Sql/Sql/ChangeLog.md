@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
 * Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 
 ## Version 3.1.0
