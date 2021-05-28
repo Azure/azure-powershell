@@ -64,7 +64,8 @@ A complex query on resources featuring field selection, filtering and summarizin
 
 ### Example 3
 ```powershell
-PS C:\> Search-AzGraph -Query 'project id, name' -SkipToken 'skiptokenvaluefromthepreviousquery=='
+PS C:\> $response = (Search-AzGraph -Query 'project id, name' -First 1000)
+PS C:\> Search-AzGraph -Query 'project id, name' -SkipToken $response.SkipToken
 
 
 id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-b/providers/Microsoft.Compute/virtualMachineScaleSets/nt2
@@ -74,7 +75,7 @@ id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/
 name       : egtopic-2
 ```
 
-A query with the skip token passed from the previous query results
+A query with the skip token passed from the previous query results. Please note that keeping id in the results is mandatory to get back a skip token.
 
 ### Example 4
 ```powershell

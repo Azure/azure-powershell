@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             IList<string> subscriptions = null;
             if (managementGroups == null)
             {
-                subscriptions = this.GetSubscriptions().ToList();
+                subscriptions = this.GetSubscriptions()?.ToList();
                 if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
                 {
                     subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
-            if (accountSubscriptions.Length > 0)
+            if (accountSubscriptions?.Length > 0)
             {
                 return accountSubscriptions;
             }
