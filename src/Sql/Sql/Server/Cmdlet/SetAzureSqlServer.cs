@@ -87,15 +87,22 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Id of the primary user assigned identity
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The primary user assigned identity id")]
+            HelpMessage = "The primary user managed identity(UMI) id")]
         public string PrimaryUserAssignedIdentityId { get; set; }
 
         /// <summary>
         /// URI of the key to use for encryption
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "URI of the key to use for encryption")]
+            HelpMessage = "The Key Vault URI for encryption")]
         public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentities { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -134,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,

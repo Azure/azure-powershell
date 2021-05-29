@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
             Model.EncryptionProtectorType type = Model.EncryptionProtectorType.ServiceManaged;
             Enum.TryParse<Model.EncryptionProtectorType>(resp.Properties.ServerKeyType, true, out type);
             EncryptionProtector.Type = type;
-            EncryptionProtector.AutoRotationEnabled = resp.Properties.AutoRotationEnabled;
+            EncryptionProtector.AutoRotationEnabled = resp.Properties.AutoKeyRotationEnabled;
 
             if (type == Model.EncryptionProtectorType.AzureKeyVault)
             {

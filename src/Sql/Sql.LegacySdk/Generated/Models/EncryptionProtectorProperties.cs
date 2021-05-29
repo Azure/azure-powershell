@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
         /// Optional. Gets or sets the Azure Sql Server Encryption
         /// Protector Key Rotation Status
         /// </summary>
-        public bool? AutoRotationEnabled
+        public bool? AutoKeyRotationEnabled
         {
             get { return this._isAutoRotationEnabled; }
             set { this._isAutoRotationEnabled = value; }

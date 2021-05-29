@@ -186,14 +186,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Id of the primary user assigned identity
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The primary user assigned identity id")]
+            HelpMessage = "The primary user managed identity(UMI) id")]
         public string PrimaryUserAssignedIdentityId { get; set; }
 
         /// <summary>
         /// URI of the key to use for encryption
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "URI of the key to use for encryption")]
+            HelpMessage = "The Key Vault URI for encryption")]
         public string KeyId { get; set; }
 
         /// <summary>
@@ -217,6 +217,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
         public string MaintenanceConfigurationId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentities { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -301,7 +308,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,

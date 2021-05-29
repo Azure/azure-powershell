@@ -12,25 +12,41 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     public enum ResourceIdentityType
     {
-        SystemAssigned
+        SystemAssigned,
+        UserAssigned,
+        None
     }
 
     public class ResourceIdentityHelper
     {
-        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent)
+        public static Management.Sql.Models.ResourceIdentity GetSystemAssignedIdentity()
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-            if (assignIdentityIsPresent)
+
+            identityResult = new Management.Sql.Models.ResourceIdentity()
             {
-                identityResult = new Management.Sql.Models.ResourceIdentity()
-                {
-                    Type = ResourceIdentityType.SystemAssigned.ToString()
-                };
-            }
+                Type = ResourceIdentityType.SystemAssigned.ToString()
+            };
+
+            return identityResult;
+        }
+
+        public static Management.Sql.Models.ResourceIdentity GetUserAssignedIdentity(List<string> userAssignedIdentities)
+        {
+            Management.Sql.Models.ResourceIdentity identityResult = null;
+
+            identityResult = new Management.Sql.Models.ResourceIdentity()
+            {
+                Type = ResourceIdentityType.UserAssigned.ToString(),
+                // TODO 
+                // Add user assigned identities.
+            };
 
             return identityResult;
         }

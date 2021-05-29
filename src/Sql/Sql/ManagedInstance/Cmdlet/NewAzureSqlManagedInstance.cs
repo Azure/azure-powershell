@@ -327,15 +327,22 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Id of the primary user assigned identity
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The primary user assigned identity id")]
+            HelpMessage = "The primary user managed identity(UMI) id")]
         public string PrimaryUserAssignedIdentityId { get; set; }
 
         /// <summary>
         /// URI of the key to use for encryption
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "URI of the key to use for encryption")]
+            HelpMessage = "The Key Vault URI for encryption")]
         public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentities { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -510,7 +517,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
                 AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
                 LicenseType = this.LicenseType,
                 // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
