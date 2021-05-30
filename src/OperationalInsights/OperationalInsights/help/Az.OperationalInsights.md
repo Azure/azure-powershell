@@ -39,7 +39,7 @@ Starts collection of syslog data from Linux computers.
 Get or list clusters
 
 ### [Get-AzOperationalInsightsDataExport](Get-AzOperationalInsightsDataExport.md)
-Lists all of the available OperationalInsights Rest API operations.
+Get or list data exports for workspace.
 
 ### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
@@ -57,7 +57,7 @@ Get or list linked service for workspace
 Get or list linked storage account
 
 ### [Get-AzOperationalInsightsOperations](Get-AzOperationalInsightsOperations.md)
-Get or list Operations for workspace.
+Lists all of the available OperationalInsights Rest API operations.
 
 ### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.

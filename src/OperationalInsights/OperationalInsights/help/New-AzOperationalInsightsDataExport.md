@@ -36,7 +36,7 @@ DataExportType   : EventHub
 EventHubName     :
 Enable           : True
 CreatedDate      : 
-LastModifiedDate : 
+LastModifiedDate :
 ```
 
 Creates data export for a workspace.

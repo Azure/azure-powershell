@@ -35,6 +35,7 @@ PS C:\>Get-AzOperationalInsightsTable -ResourceGroupName "ContosoResourceGroup" 
 ```
 
 This command gets a specific table by its name.
+
 ## PARAMETERS
 
 ### -DefaultProfile

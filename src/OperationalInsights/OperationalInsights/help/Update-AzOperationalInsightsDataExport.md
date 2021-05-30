@@ -38,7 +38,7 @@ DataExportType   : StorageAccount
 EventHubName     :
 Enable           : false
 CreatedDate      : 
-LastModifiedDate : 
+LastModifiedDate :
 ```
 
 Updates a workspace's Data export.

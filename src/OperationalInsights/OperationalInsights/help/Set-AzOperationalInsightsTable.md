@@ -9,6 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Updates a tables.
+
 ## SYNTAX
 
 ```

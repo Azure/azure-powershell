@@ -26,6 +26,7 @@ Lists all of the available OperationalInsights Rest API operations.
 ```powershell
 PS C:\> Get-AzOperationalInsightsOperations
 ```
+
 Name        : microsoft.operationalinsights/workspaces/features/{resource_name0}/read
 Provider    : MicrosoftOperationalInsights
 Resource    : {resource_name0}
