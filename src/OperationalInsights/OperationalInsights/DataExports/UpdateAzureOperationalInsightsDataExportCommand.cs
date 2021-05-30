@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.OperationalInsights.Client;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+﻿using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 

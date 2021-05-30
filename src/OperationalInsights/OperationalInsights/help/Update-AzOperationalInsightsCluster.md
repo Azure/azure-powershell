@@ -28,17 +28,23 @@ update cluster
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName azps-test-group -ClusterName yabo-cluster10 -Location eastus -SkuName CapacityReservation -SkuCapacity 1200 -KeyVaultUri {uri} -KeyName {key-name} -KeyVersion {version}
 
-Identity           : Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
-Sku                : Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
-NextLink           :
-ClusterId          : {cluster-id}
-ProvisioningState  : Updating
-KeyVaultProperties :
-Location           : South Central US
-Id                 : /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
-Name               : {cluster-name}
-Type               : Microsoft.OperationalInsights/clusters
-Tags               : {}
+Identity						: Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
+Sku								: Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
+ClusterId						: {cluster-id}
+ProvisioningState				: Succeeded
+IsDoubleEncryptionEnabled		: True
+IsAvailabilityZonesEnabled		: False
+BillingType						: Cluster
+KeyVaultProperties				: Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties
+LastModifiedDate				: 
+CreatedDate						: 
+AssociatedWorkspaces			: {workspaces}
+CapacityReservationProperties	: Microsoft.Azure.Management.OperationalInsights.Models.CapacityReservationProperties
+Location						: South Central US
+Id								: /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
+Name							: {cluster-name}
+Type							: Microsoft.OperationalInsights/clusters
+Tags							: {}
 ```
 
 update cluster with key vault properties and sku

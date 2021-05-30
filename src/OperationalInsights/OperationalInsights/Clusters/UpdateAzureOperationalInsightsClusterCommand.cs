@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Billing type can be set as 'Cluster' or 'Workspaces'")]
+        [ValidateSet("Cluster", "Workspaces", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string BillingType { get; private set; }//TODO dabenham curently not supportted from Nuget
+
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -80,7 +86,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
                 Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
                 Tags = this.Tag,
-                Identity = new PSIdentity(IdentityType)
+                Identity = new PSIdentity(IdentityType),
+                BillingType = BillingType
             };
 
             if (ShouldProcess(this.ClusterName,

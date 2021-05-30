@@ -30,17 +30,23 @@ Create cluster
 ```powershell
 New-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name} -Location eastus -IdentityType SystemAssigned -SkuName CapacityReservation -SkuCapacity 1000
 
-Identity           : Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
-Sku                : Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
-NextLink           :
-ClusterId          : {cluster-id}
-ProvisioningState  : ProvisioningAccount
-KeyVaultProperties :
-Location           : South Central US
-Id                 : /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
-Name               : {cluster-name}
-Type               : Microsoft.OperationalInsights/clusters
-Tags               : {}
+Identity						: Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
+Sku								: Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
+ClusterId						: {cluster-id}
+ProvisioningState				: Succeeded
+IsDoubleEncryptionEnabled		: True
+IsAvailabilityZonesEnabled		: False
+BillingType						: Cluster
+KeyVaultProperties				: Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties
+LastModifiedDate				: 
+CreatedDate						: 
+AssociatedWorkspaces			: {workspaces}
+CapacityReservationProperties	: Microsoft.Azure.Management.OperationalInsights.Models.CapacityReservationProperties
+Location						: South Central US
+Id								: /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
+Name							: {cluster-name}
+Type							: Microsoft.OperationalInsights/clusters
+Tags							: {}
 ```
 
 Create cluster

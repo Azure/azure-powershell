@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data export name.")]
         [ValidateNotNullOrEmpty]
         public string DataExportName { get; set; }

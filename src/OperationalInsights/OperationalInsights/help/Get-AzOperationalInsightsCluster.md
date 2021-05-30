@@ -26,17 +26,23 @@ Get or list clusters, list clusters under resource group when "-ClusterName" was
 ```powershell
 Get-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name}
 
-Identity           : Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
-Sku                : Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
-NextLink           :
-ClusterId          : {cluster-id}
-ProvisioningState  : Succeeded
-KeyVaultProperties :
-Location           : South Central US
-Id                 : /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
-Name               : {cluster-name}
-Type               : Microsoft.OperationalInsights/clusters
-Tags               : {}
+Identity						: Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
+Sku								: Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
+ClusterId						: {cluster-id}
+ProvisioningState				: Succeeded
+IsDoubleEncryptionEnabled		: True
+IsAvailabilityZonesEnabled		: False
+BillingType						: Cluster
+KeyVaultProperties				: Microsoft.Azure.Commands.OperationalInsights.Models.PSKeyVaultProperties
+LastModifiedDate				: Wed, 26 May 2021 15:19:38 GMT
+CreatedDate						: Sun, 27 Dec 2020 11:17:11 GMT
+AssociatedWorkspaces			: {workspaces}
+CapacityReservationProperties	: Microsoft.Azure.Management.OperationalInsights.Models.CapacityReservationProperties
+Location						: South Central US
+Id								: /subscriptions/{subscription}/resourceGroups/{rg-name}/providers/Microsoft.OperationalInsights/clusters/{cluster-name}
+Name							: {cluster-name}
+Type							: Microsoft.OperationalInsights/clusters
+Tags							: {}
 ```
 
 Get cluster

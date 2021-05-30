@@ -38,6 +38,9 @@ Starts collection of syslog data from Linux computers.
 ### [Get-AzOperationalInsightsCluster](Get-AzOperationalInsightsCluster.md)
 Get or list clusters
 
+### [Get-AzOperationalInsightsDataExport](Get-AzOperationalInsightsDataExport.md)
+Lists all of the available OperationalInsights Rest API operations.
+
 ### [Get-AzOperationalInsightsDataSource](Get-AzOperationalInsightsDataSource.md)
 Get datasources under Azure Log Analytics workspace.
 
@@ -53,6 +56,9 @@ Get or list linked service for workspace
 ### [Get-AzOperationalInsightsLinkedStorageAccount](Get-AzOperationalInsightsLinkedStorageAccount.md)
 Get or list linked storage account
 
+### [Get-AzOperationalInsightsOperations](Get-AzOperationalInsightsOperations.md)
+Get or list Operations for workspace.
+
 ### [Get-AzOperationalInsightsSavedSearch](Get-AzOperationalInsightsSavedSearch.md)
 Returns all of the saved searches for a specified workspace.
 
@@ -61,6 +67,9 @@ Returns the schema associated with a workspace.
 
 ### [Get-AzOperationalInsightsStorageInsight](Get-AzOperationalInsightsStorageInsight.md)
 Gets information about a Storage Insight.
+
+### [Get-AzOperationalInsightsTable](Get-AzOperationalInsightsTable.md)
+Get or list tables for workspace.
 
 ### [Get-AzOperationalInsightsWorkspace](Get-AzOperationalInsightsWorkspace.md)
 Gets information about a workspace.
@@ -92,6 +101,9 @@ Creates a computer group.
 ### [New-AzOperationalInsightsCustomLogDataSource](New-AzOperationalInsightsCustomLogDataSource.md)
 Defines a custom log collection policy.
 
+### [New-AzOperationalInsightsDataExport](New-AzOperationalInsightsDataExport.md)
+Create data export for workspace.
+
 ### [New-AzOperationalInsightsLinkedStorageAccount](New-AzOperationalInsightsLinkedStorageAccount.md)
 Create linked storage account for workspace
 
@@ -118,6 +130,9 @@ Creates a workspace, or restore a soft-deleted workspace.
 
 ### [Remove-AzOperationalInsightsCluster](Remove-AzOperationalInsightsCluster.md)
 Delete cluster
+
+### [Remove-AzOperationalInsightsDataExport](Remove-AzOperationalInsightsDataExport.md)
+Delete data export for workspace.
 
 ### [Remove-AzOperationalInsightsDataSource](Remove-AzOperationalInsightsDataSource.md)
 Deletes a data source.
@@ -158,9 +173,15 @@ Updates a saved search that already exists.
 ### [Set-AzOperationalInsightsStorageInsight](Set-AzOperationalInsightsStorageInsight.md)
 Updates a Storage Insight.
 
+### [Set-AzOperationalInsightsTable](Set-AzOperationalInsightsTable.md)
+Updates a tables.
+
 ### [Set-AzOperationalInsightsWorkspace](Set-AzOperationalInsightsWorkspace.md)
 Updates a workspace.
 
 ### [Update-AzOperationalInsightsCluster](Update-AzOperationalInsightsCluster.md)
 update cluster
+
+### [Update-AzOperationalInsightsDataExport](Update-AzOperationalInsightsDataExport.md)
+Update data export.
 

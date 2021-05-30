@@ -22,12 +22,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSClusterPatch
     {
-        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity))
+        public PSClusterPatch(PSKeyVaultProperties keyVaultProperties = default(PSKeyVaultProperties), PSClusterSku sku = default(PSClusterSku), Hashtable tags = default(Hashtable), PSIdentity identity = default(PSIdentity), string billingType = default(string))
         {
             KeyVaultProperties = keyVaultProperties;
             Sku = sku;
             Tags = tags;
             Identity = identity;
+            BillingType = billingType;
         }
 
         public PSClusterPatch(ClusterPatch patch)
@@ -51,6 +52,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             {
                 this.Identity = new PSIdentity(patch.Identity);
             }
+
+            //if (patch.BillingType != null) // todo dabenham
+            //{
+            //    this.BillingType = (patch.BillingType;
+            //}
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
@@ -61,9 +67,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public PSIdentity Identity { get; set; }
 
-        //public bool? IsDoubleEncryptionEnabled { get; set; }
-
-        //public bool? IsAvailabilityZonesEnabled { get; set; }
+        public string BillingType { get; set; }
 
         private IDictionary<string, string> getTags()
         {
@@ -76,12 +80,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.KeyVaultProperties?.GetKeyVaultProperties(), 
                 identity: Identity.getIdentity(), 
                 this.Sku?.getClusterSku(),
-                //TODO dabenham see why isDoubleEncryptionEnabled and isAvailabilityZonesEnabled
-                // apears in the swagger but not in the ClusterPatch object that is generatted from it
-
-                //isDoubleEncryptionEnabled: IsDoubleEncryptionEnabled, 
-                //isAvailabilityZonesEnabled: IsAvailabilityZonesEnabled,
-                this.getTags());
+                this.getTags()
+                //this.BillingType // todo dabenham
+                );
         }
     }
 }

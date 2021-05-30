@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             IPage<Cluster> list = string.IsNullOrWhiteSpace(resourceGroupName)
                 ? this.OperationalInsightsManagementClient.Clusters.List()
                 : this.OperationalInsightsManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
-            
+
             return list.Select(item => new PSCluster(item)).ToList();
         }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
                 existingCluster = null;
             }
@@ -82,14 +82,18 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 existingCluster = GetPSCluster(resourceGroupName, clusterName);
             }
-            catch(RestException)
+            catch (RestException)
             {
                 throw new System.ArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
             }
 
-            parameters.Tags = parameters.Tags == null 
-                ? existingCluster.Tags 
+            parameters.Tags = parameters.Tags == null
+                ? existingCluster.Tags
                 : parameters.Tags;
+
+            parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)    
+                ? existingCluster.BillingType    
+                : parameters.BillingType;
 
             if (parameters.KeyVaultProperties != null)
             {
@@ -118,6 +122,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
 
             Cluster cluster = this.OperationalInsightsManagementClient.Clusters.Update(resourceGroupName, clusterName, parameters.GetClusterPatch());
+
             return new PSCluster(cluster);
         }
 
