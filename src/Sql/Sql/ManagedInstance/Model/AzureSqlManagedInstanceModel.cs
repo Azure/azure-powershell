@@ -144,5 +144,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the managed instance maintenance configuration id
         /// </summary>
         public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Azure SQL Managed Instance Active Directory administrator
+        /// </summary>
+        public Management.Sql.Models.ManagedInstanceExternalAdministrator Administrators { get; set; }
     }
 }

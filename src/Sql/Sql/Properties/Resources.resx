@@ -177,10 +177,10 @@
   <data name="InvalidTenantId" xml:space="preserve">
     <value>Please set a valid tenant id in the AzureEnvironment.</value>
   </data>
-	<data name="LedgerDisableConfirmActionProcessMessage" xml:space="preserve">
+  <data name="LedgerDisableConfirmActionProcessMessage" xml:space="preserve">
     <value>Disables uploading ledger digests</value>
   </data>
-	<data name="LedgerEnableConfirmActionProcessMessage" xml:space="preserve">
+  <data name="LedgerEnableConfirmActionProcessMessage" xml:space="preserve">
     <value>Enable uploading ledger digests</value>
   </data>
   <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
@@ -672,5 +672,11 @@
 /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
 /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
                     "ResourceId"</value>
+  </data>
+  <data name="MissingExternalAdmin" xml:space="preserve">
+    <value>ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
+    <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
   </data>
 </root>
