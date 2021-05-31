@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             this.CreatedDate = workspace.CreatedDate;
             this.ModifiedDate = workspace.ModifiedDate;
             this.ForceCmkForQuery = workspace.ForceCmkForQuery;
-            this.WsFeatures = workspace.Features;
+            this.WorkspaceFeatures = workspace.Features;
         }
 
         public string Name { get; set; }
@@ -85,6 +85,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public bool? ForceCmkForQuery { get; set; }
 
-        public IDictionary<string, object> WsFeatures { get; set; }
+        public IDictionary<string, object> WorkspaceFeatures { get; set; }
     }
 }

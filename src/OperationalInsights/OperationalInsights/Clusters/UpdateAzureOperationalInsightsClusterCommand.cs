@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
-        [ValidateSet("SystemAssigned", "None")]
+        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.")]
+        [ValidateSet("SystemAssigned", "None", "UserAssigned", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
 

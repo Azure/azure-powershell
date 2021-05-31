@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None'.")]
-        [ValidateSet("SystemAssigned", "None", IgnoreCase = true)]
+        [Parameter(Mandatory = false, HelpMessage = "the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.")]
+        [ValidateSet("SystemAssigned", "None", "UserAssigned", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string IdentityType { get; set; }
 

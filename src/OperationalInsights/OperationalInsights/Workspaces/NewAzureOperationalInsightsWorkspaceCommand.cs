@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
-        [PSArgumentCompleter("free", "standard", "premium", "pernode", "standalone", "pergb2018")]
+        [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", "capacityreservation", "lacluster", IgnoreCase = true)]
         public string SkuName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sku Capacity, value need to be multiple of 100 and at least 0.")]

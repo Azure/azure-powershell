@@ -19,6 +19,26 @@
 -->
 ## Upcoming Release
 
+## Version 2.4.0
+* added new commanads for OperationalInsights tables: added 'Set-AzOperationalInsightsTable' and 'Get-AzOperationalInsightsTable' conmmands.
+* added new commanads for OperationalInsights Operations: added 'Get-AzOperationalInsightsOperations' command.
+* added new commanads for OperationalInsights data export added 'Get-AzOperationalInsightsDataExport', 'New-AzOperationalInsightsDataExport',
+            'Remove-AzOperationalInsightsDataExport' and 'Update-AzOperationalInsightsDataExport' commands.
+* Cluster:
+    - added BillingType parameter to Cluster update and creation taht supports "Cluster", "Workspaces" values.
+    - added support for adding a user's keyvault settings.
+    - Identity now supports : "SystemAssigned", "None" and "UserAssigned" values.
+* Create cluster:
+    - now supports both 'IsAvailabilityZonesEnabled'  and 'IsDoubleEncryptionEnabled'.
+* Workspace:
+    - added new properties: CreatedDate, ModifiedDate, WorkspaceCapping, ForceCmkForQuery and WorkspaceFeatures 
+    - SkuName now also supports 'capacityreservation' and 'lacluster'
+    - updatted Workspace SKU (for all workspace operations) from string to object with service tier and capacity.
+    - PublicNetworkAccessForQuery now supports only "Enabled" and "Disabled" values
+
+    
+
+
 ## Version 2.3.0
 * Added `-ForceDelete` option for `Remove-AzOperationalInsightsWorkspace`
 * Added new cmdlet `Get-AzOperationalInsightsDeletedWorkspace`
