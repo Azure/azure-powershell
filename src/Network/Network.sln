@@ -18,8 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "..\Compute\Compu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerInstance", "..\ContainerInstance\ContainerInstance\ContainerInstance.csproj", "{0E11B67A-1257-40D0-BD33-8315759FDB01}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManagedServiceIdentity", "..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj", "{72C596A0-636E-47F2-B81B-4BC9E6F1EBCE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{A2591FA5-BF93-4358-9097-E6D58FE1DDC4}"

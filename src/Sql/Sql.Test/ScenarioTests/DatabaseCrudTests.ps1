@@ -312,7 +312,8 @@ function Test-CreateDatabaseWithZoneRedundancy
 function Test-CreateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 
 	try
@@ -630,7 +631,8 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 function Test-UpdateDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location	
 
 	try
@@ -939,7 +941,8 @@ function Test-GetDatabaseWithZoneRedundancy
 function Test-GetDatabaseWithMaintenanceConfigurationId
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "East US 2 EUAP"
+	# Further actions required if you use Microsoft internal subscription. Please contact feature owners
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -970,6 +973,29 @@ function Test-GetDatabaseWithMaintenanceConfigurationId
 	{
 		Remove-ResourceGroupForTest $rg
 	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with ledger enabled
+#>
+function Test-DatabaseCreateWithLedgerEnabled ($location = "eastus2euap")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	# Create with ledger enabled
+	$databaseName = Get-DatabaseName
+	$db1 = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -EnableLedger -Force
+	Assert-AreEqual $db1.DatabaseName $databaseName
+	Assert-AreEqual	"True" $db1.EnableLedger
+
+	# Validate Get-AzSqlDatabase returns ledger property
+	$databaseFromGet = Get-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	Assert-AreEqual	"True" $databaseFromGet.EnableLedger
+
+	Remove-ResourceGroupForTest $rg
 }
 
 <#

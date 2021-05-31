@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
@@ -131,6 +132,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public PsPolicyAssignment InputObject { get; set; }
 
         /// <summary>
+        /// Gets or sets the messages that describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentNonComplianceMessageHelp)]
+        [ValidateNotNull]
+        public PsNonComplianceMessage[] NonComplianceMessage { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -166,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetResource(string resourceId, string apiVersion)
         {
-            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
+            var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource<PolicyAssignmentProperties>();
 
             // get incoming object properties if present
             JObject inputMetadata = null;
@@ -178,16 +186,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             var parameterMetadata = this.Metadata != null ? this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)) : null;
 
-            PolicyAssignmentEnforcementMode? existingMode = null;
-            if (Enum.TryParse(resource.Properties["enforcementMode"]?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode))
-            {
-                existingMode = tempMode;
-            }
-
             PolicyAssignmentEnforcementMode? inputMode = null;
             if (Enum.TryParse(this.InputObject?.Properties?.EnforcementMode?.ToString(), true, out PolicyAssignmentEnforcementMode tempMode1))
             {
                 inputMode = tempMode1;
+            }
+
+            // Grab the non-compliance messages from the parameter or input object or existing resource
+            var nonComplianceMessages = this.NonComplianceMessage?.Where(message => message != null).SelectArray(message => message.ToModel());
+            if (nonComplianceMessages == null && this.InputObject?.Properties.NonComplianceMessages != null)
+            {
+                nonComplianceMessages = this.InputObject.Properties.NonComplianceMessages.Where(message => message != null).SelectArray(message => message.ToModel());
+            }
+            else if (nonComplianceMessages == null)
+            {
+                nonComplianceMessages = resource.Properties.NonComplianceMessages;
             }
 
             var policyAssignmentObject = new PolicyAssignment
@@ -197,17 +210,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Location = this.Location ?? this.InputObject?.Location ?? resource.Location,
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties["displayName"]?.ToString(),
-                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties["description"]?.ToString(),
-                    Scope = resource.Properties["scope"]?.ToString(),
-                    NotScopes = this.NotScope ?? this.InputObject?.Properties?.NotScopes ?? resource.Properties["NotScopes"]?.ToString()?.Split(','),
-                    PolicyDefinitionId = resource.Properties["policyDefinitionId"]?.ToString(),
-                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties["metadata"] as JObject,
-                    EnforcementMode = this.EnforcementMode ?? inputMode ?? existingMode,
+                    DisplayName = this.DisplayName ?? this.InputObject?.Properties?.DisplayName ?? resource.Properties.DisplayName,
+                    Description = this.Description ?? this.InputObject?.Properties?.Description ?? resource.Properties.Description,
+                    Scope = resource.Properties.Scope,
+                    NotScopes = this.NotScope ?? this.InputObject?.Properties?.NotScopes ?? resource.Properties.NotScopes,
+                    PolicyDefinitionId = resource.Properties.PolicyDefinitionId,
+                    Metadata = parameterMetadata ?? inputMetadata ?? resource.Properties.Metadata,
+                    EnforcementMode = this.EnforcementMode ?? inputMode ?? resource.Properties.EnforcementMode,
+                    NonComplianceMessages = nonComplianceMessages,
                     Parameters =
                         this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
                             ?? this.InputObject?.Properties?.Parameters?.ToResourcePropertiesBody() as JObject
-                            ?? resource.Properties["parameters"] as JObject
+                            ?? resource.Properties.Parameters
                 }
             };
 

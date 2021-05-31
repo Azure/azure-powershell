@@ -28,21 +28,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase_NetworkIsolation()
         {
             RunPowerShellTest("Test-ExportDatabaseNetworkIsolation");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportNewDatabase()
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ImportNewDatabase");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         public void TestImportNewDatabase_NetworkIsolation()

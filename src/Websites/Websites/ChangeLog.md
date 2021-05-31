@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
+* Fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
 
 ## Version 2.6.0
 * updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags

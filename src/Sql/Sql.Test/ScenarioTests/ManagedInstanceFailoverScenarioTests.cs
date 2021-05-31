@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Depends on hardcoded resource")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFailoverManagedInstance()
         {

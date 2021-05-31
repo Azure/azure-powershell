@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
         public void TestAzureRmSignalRWithDefaultArgs() =>
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRWithDefaultArgs");
 
-        [Fact(Skip = "After latest network sdk import, test playback is failing. Need to enable test back after owner rerecords the test.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRUpdateNetworkAcl() =>
-    TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdateNetworkAcl");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRUpdateNetworkAcl");
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmSignalRSetUpstream() =>
-TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRSetUpstream");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureRmSignalRSetUpstream");
 
     }
 }

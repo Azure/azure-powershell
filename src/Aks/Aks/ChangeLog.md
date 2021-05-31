@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that `Set-AzAks` will fail in Automation Runbook. [#15006]
 
 ## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]

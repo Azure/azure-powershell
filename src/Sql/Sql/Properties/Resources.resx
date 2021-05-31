@@ -177,6 +177,12 @@
   <data name="InvalidTenantId" xml:space="preserve">
     <value>Please set a valid tenant id in the AzureEnvironment.</value>
   </data>
+	<data name="LedgerDisableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Disables uploading ledger digests</value>
+  </data>
+	<data name="LedgerEnableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Enable uploading ledger digests</value>
+  </data>
   <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
     <value>A rule that was defined on the same column already exists.</value>
   </data>
