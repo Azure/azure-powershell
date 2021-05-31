@@ -14,7 +14,7 @@ Returns information about SQL Database servers.
 ## SYNTAX
 
 ```
-Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>] [-ExpandActiveDirectoryAdministrators]
+Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>] [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -130,7 +130,7 @@ This command gets information about all the Azure SQL Database servers assigned 
 
 ### Example 5: Get all instances of SQL Server assigned to a resource group with external administrator information
 ```
-PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrators
+PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -173,7 +173,7 @@ This command gets information about all the Azure SQL Database servers assigned 
 
 ### Example 6: Get information about an Azure SQL Database server with external administrator information
 ```
-PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrators
+PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US
@@ -213,7 +213,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandActiveDirectoryAdministrators
+### -ExpandActiveDirectoryAdministrator
 Expand Active Directory Administrator Information on the server.
 
 ```yaml

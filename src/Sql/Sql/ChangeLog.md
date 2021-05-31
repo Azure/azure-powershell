@@ -22,7 +22,7 @@
 * Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 * Add External Administrator and AAD Only Properties to AzSqlServer and AzSqlInstance
     - Added option to specify `-ExternalAdminName`, `-ExternalAdminSid`, `-EnableActiveDirectoryOnlyAuthentication` in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
-    - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrators` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
+    - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrator` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.

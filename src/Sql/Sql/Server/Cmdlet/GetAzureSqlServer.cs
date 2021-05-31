@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Expand Active Directory Administrator Information on the server.")]
-        public SwitchParameter ExpandActiveDirectoryAdministrators { get; set; }
+        public SwitchParameter ExpandActiveDirectoryAdministrator { get; set; }
 
         /// <summary>
         /// Gets a server from the service.
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
-            string expand = (this.ExpandActiveDirectoryAdministrators.IsPresent) ? "administrators/activedirectory" : null;
+            string expand = (this.ExpandActiveDirectoryAdministrator.IsPresent) ? "administrators/activedirectory" : null;
 
             if (ShouldGetByName(ResourceGroupName, ServerName))
             {

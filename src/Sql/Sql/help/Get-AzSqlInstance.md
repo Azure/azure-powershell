@@ -14,32 +14,32 @@ Returns information about Azure SQL Managed Database Instance.
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-ExpandActiveDirectoryAdministrators]
+Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolObjectParameterSet
 ```
-Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDirectoryAdministrators]
+Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolResourceIdentiferParameterSet
 ```
-Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrators]
+Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByManagedInstanceResourceIdentifierParameterSet
 ```
-Get-AzSqlInstance [-ResourceId] <String> [-ExpandActiveDirectoryAdministrators]
+Get-AzSqlInstance [-ResourceId] <String> [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
- [-ExpandActiveDirectoryAdministrators] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExpandActiveDirectoryAdministrator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -291,7 +291,7 @@ This command gets information about the instance named managedInstance1.
 
 ### Example 8: Get all instances assigned to a resource group with external administrator information
 ```powershell
-PS C:\> $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrators
+PS C:\> $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -345,7 +345,7 @@ This command gets information about all instances assigned to the resource group
 
 ### Example 9: Get information about an instance with external administrator information
 ```powershell
-PS C:\> $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrators
+PS C:\> $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -390,7 +390,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandActiveDirectoryAdministrators
+### -ExpandActiveDirectoryAdministrator
 Expand Active Directory Administrator Information on the server.
 
 ```yaml

@@ -52,7 +52,7 @@ ServerVersion            : 12.0
 Tags                     :
 Administrators           :
 
-PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "server01" -ExpandActiveDirectoryAdministrators
+PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 Location                 : Central US

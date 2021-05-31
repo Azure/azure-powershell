@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Expand Active Directory Administrator Information on the server.")]
-        public SwitchParameter ExpandActiveDirectoryAdministrators { get; set; }
+        public SwitchParameter ExpandActiveDirectoryAdministrator { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceModel> results = new List<AzureSqlManagedInstanceModel>();
 
-            string expand = (this.ExpandActiveDirectoryAdministrators.IsPresent) ? "administrators/activeDirectory" : null;
+            string expand = (this.ExpandActiveDirectoryAdministrator.IsPresent) ? "administrators/activeDirectory" : null;
 
             if (ShouldGetByName(ResourceGroupName, Name))
             {
