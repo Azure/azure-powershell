@@ -35,7 +35,7 @@ Gets the datadog single sign-on resource for the given Monitor.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the datadog single sign-on resource for the given Monitor
 ```powershell
 PS C:\> Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName lucas-dog -MonitorName lucasdatadog
 
@@ -44,9 +44,9 @@ Name    Type
 default microsoft.datadog/monitors/singlesignonconfigurations
 ```
 
-{{ Add description here }}
+This command lists the datadog single sign-on resource for the given Monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets the datadog single sign-on resource for the given Monitor
 ```powershell
 PS C:\> Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Name 'default'
 
@@ -55,9 +55,9 @@ Name    Type
 default microsoft.datadog/monitors/singlesignonconfigurations
 ```
 
-{{ Add description here }}
+This command gets the datadog single sign-on resource for the given Monitor.
 
-### Example 3: {{ Add title here }}
+### Example 3: Gets the datadog single sign-on resource for the given Monitor by pipeline
 ```powershell
 PS C:\> Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Name 'default' | Get-AzDataDogSingleSignOnConfiguration
 
@@ -66,7 +66,7 @@ Name    Type
 default microsoft.datadog/monitors/singlesignonconfigurations
 ```
 
-{{ Add description here }}
+This command gets the datadog single sign-on resource for the given Monitor by pipeline.
 
 ## PARAMETERS
 

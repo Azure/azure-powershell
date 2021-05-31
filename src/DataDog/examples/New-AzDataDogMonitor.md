@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a monitor resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'lucas' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -IdentityType SystemAssigned
 
-{{ Add output here }}
+Location    Name           Type
+--------    ----           ----
+eastus2euap datadog-pwsh01 microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command creates a monitor resource.

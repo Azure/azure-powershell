@@ -1,11 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Set the default api key for monitor resource
 ```powershell
-PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
+PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName azure-rg-datadog -MonitorName lucasdatadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
 
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
                   xxxxxxxxxxxxxxxxxxxxxx
 ```
 
-{{ Add description here }}
+This command sets the default api key for monitor resource.
 

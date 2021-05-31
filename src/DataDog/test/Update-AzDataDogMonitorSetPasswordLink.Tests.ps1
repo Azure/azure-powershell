@@ -12,11 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDataDogMonitorSetPasswordLink' {
-    It 'Refresh' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Refresh' {
+        { Update-AzDataDogMonitorSetPasswordLink -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 } | Should -Not -Throw
     }
 
-    It 'RefreshViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RefreshViaIdentity' {
+        {
+          $obj = Get-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+          Update-AzDataDogMonitorSetPasswordLink -InputObject $obj
+        } | Should -Not -Throw
     }
 }

@@ -22,13 +22,13 @@ List the resources currently being monitored by the Datadog monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources currently being monitored by the Datadog monitor resource
 ```powershell
 PS C:\> Get-AzDataDogMonitorMonitoredResource -ResourceGroupName lucas-dog -Name lucasdatadog
 
 ```
 
-{{ Add description here }}
+This command lists the resources currently being monitored by the Datadog monitor resource.
 
 ## PARAMETERS
 

@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Datadog marketplace agreement in the subscription
 ```powershell
 PS C:\> New-AzDataDogMarketplaceAgreement -Accepted
 
@@ -7,5 +7,5 @@ Name    Type
 default microsoft.datadog/agreements
 ```
 
-{{ Add description here }}
+This command creates Datadog marketplace agreement in the subscription.
 

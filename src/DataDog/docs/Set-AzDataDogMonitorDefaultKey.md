@@ -12,17 +12,10 @@ Set the default api key.
 
 ## SYNTAX
 
-### SetExpanded (Default)
 ```
 Set-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Key <String>
  [-SubscriptionId <String>] [-Created <String>] [-CreatedBy <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Set
-```
-Set-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Body <IDatadogApiKey>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +23,7 @@ Set the default api key.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set the default api key for monitor resource
 ```powershell
 PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
 
@@ -39,32 +32,16 @@ Created CreatedBy Key                              Name
                   xxxxxxxxxxxxxxxxxxxxxx
 ```
 
-{{ Add description here }}
+This command sets the default api key for monitor resource.
 
 ## PARAMETERS
-
-### -Body
-.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
-Parameter Sets: Set
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Created
 The time of creation of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -79,7 +56,7 @@ The user that created the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -109,7 +86,7 @@ The value of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -139,7 +116,7 @@ The name of the API key.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -231,8 +208,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogApiKey
-
 ## OUTPUTS
 
 ### System.Boolean
@@ -240,17 +215,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY <IDatadogApiKey>: .
-  - `Key <String>`: The value of the API key.
-  - `[Created <String>]`: The time of creation of the API key.
-  - `[CreatedBy <String>]`: The user that created the API key.
-  - `[Name <String>]`: The name of the API key.
 
 ## RELATED LINKS
 

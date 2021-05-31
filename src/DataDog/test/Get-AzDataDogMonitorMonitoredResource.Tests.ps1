@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataDogMonitorMonitoredResource' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzDataDogMonitorMonitoredResource -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 } | Should -Not -Throw
     }
 }

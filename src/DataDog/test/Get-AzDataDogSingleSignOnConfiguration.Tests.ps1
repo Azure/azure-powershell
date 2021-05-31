@@ -12,15 +12,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataDogSingleSignOnConfiguration' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default' } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $obj = Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default'
+            Get-AzDataDogSingleSignOnConfiguration -InputObject $obj
+        } | Should -Not -Throw
     }
 }

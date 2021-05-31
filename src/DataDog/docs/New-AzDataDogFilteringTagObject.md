@@ -21,13 +21,13 @@ Create a in-memory object for FilteringTag
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a in-memory object for FilteringTag
 ```powershell
 PS C:\> New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 
 ```
 
-{{ Add description here }}
+This command Create a in-memory object for FilteringTag.
 
 ## PARAMETERS
 

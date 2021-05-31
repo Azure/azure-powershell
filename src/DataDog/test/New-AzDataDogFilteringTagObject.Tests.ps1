@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataDogFilteringTagObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    # Created In-memory object, The command not need record json file.
+    It '__AllParameterSets' -Skip {
+        { New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment" } | Should -Not -Throw
     }
 }

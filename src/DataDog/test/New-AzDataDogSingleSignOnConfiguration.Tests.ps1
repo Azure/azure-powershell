@@ -12,19 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataDogSingleSignOnConfiguration' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+            New-AzDataDogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02 -Name 'default' -SingleSignOnState Enable -EnterpriseAppId $env.enterpriseAppId
+        } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityExpanded' {
+        { 
+            $obj = Get-AzDataDogSingleSignOnConfiguration -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName02 -Name 'default' 
+            New-AzDataDogSingleSignOnConfiguration -InputObject $obj -SingleSignOnState Disable -EnterpriseAppId $env.enterpriseAppId
+        } | Should -Not -Throw
     }
 }

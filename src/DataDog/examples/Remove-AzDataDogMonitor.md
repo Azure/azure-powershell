@@ -1,18 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a monitor resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-portal03
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a monitor resource by pipeline
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-portal02 | Remove-AzDataDogMonitor
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command deletes a monitor resource by pipeline.
 

@@ -1,22 +1,22 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the default api key
 ```powershell
-PS C:\> Get-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -Name lucasdatadog
+PS C:\> Get-AzDataDogMonitorDefaultKey -ResourceGroupName azure-rg-datadog -Name lucasdatadog
 
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
                   xxxxxxxxxxxxx78416607
 ```
 
-{{ Add description here }}
+This command gets the default api key.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the default api key by pipeline
 ```powershell
-PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog | Get-AzDataDogMonitorDefaultKey
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName azure-rg-datadog -Name lucasdatadog | Get-AzDataDogMonitorDefaultKey
 
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
                   xxxxxxxxxxxxx78416607
 ```
 
-{{ Add description here }}
+This command gets the default api key by pipeline.
 

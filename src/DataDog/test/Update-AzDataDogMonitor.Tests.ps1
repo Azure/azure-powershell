@@ -12,19 +12,16 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDataDogMonitor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            Update-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 -Tag @{'key1'='value1'; 'key2'='value2'}
+        } | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+          $obj =  Get-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 
+          Update-AzDataDogMonitor -InputObject $obj -Tag @{'key1'='value1'; 'key2'='value2'}
+        } | Should -Not -Throw
     }
 }

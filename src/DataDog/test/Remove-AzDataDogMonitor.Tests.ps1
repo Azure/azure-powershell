@@ -12,11 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDataDogMonitor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName02 } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+          $obj = Get-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName03 
+          Remove-AzDataDogMonitor -InputObject $obj
+        } | Should -Not -Throw
     }
 }

@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all monitor resources under a subscription
 ```powershell
 PS C:\> Get-AzDataDogMonitor
 
@@ -7,37 +7,37 @@ Location    Name         Type
 eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
+This command lists all monitor resources under a subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: List monitor resources under a resource group
 ```powershell
-PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName azure-rg-datadog
 
 Location    Name         Type
 --------    ----         ----
 eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
+This command lists all monitor resources under a resource group.
 
-### Example 3: {{ Add title here }}
+### Example 3: Get the properties of a specific monitor resource
 ```powershell
-PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName azure-rg-datadog -Name lucasdatadog
 
 Location    Name         Type
 --------    ----         ----
 eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
+This command gets the properties of a specific monitor resource.
 
-### Example 4: {{ Add title here }}
+### Example 4: Get the properties of a specific monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzDataDogMonitor -ResourceGroupName lucas-dog -Name lucasdatadog | Get-AzDataDogMonitor
+PS C:\> Get-AzDataDogMonitor -ResourceGroupName azure-rg-datadog -Name lucasdatadog | Get-AzDataDogMonitor
 
 Location    Name         Type
 --------    ----         ----
 eastus2euap lucasdatadog microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
+This command gets the properties of a specific monitor resource by pipeline.

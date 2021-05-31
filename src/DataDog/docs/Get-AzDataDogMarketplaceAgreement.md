@@ -22,7 +22,7 @@ List Datadog marketplace agreements in the subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Datadog marketplace agreements in the subscription
 ```powershell
 PS C:\> Get-AzDataDogMarketplaceAgreement
 
@@ -32,7 +32,7 @@ marketplace Microsoft.Datadog/agreements
 datadog     Microsoft.Datadog/agreements
 ```
 
-{{ Add description here }}
+This command lists Datadog marketplace agreements in the subscription.
 
 ## PARAMETERS
 

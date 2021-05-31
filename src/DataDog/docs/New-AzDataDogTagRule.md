@@ -33,7 +33,7 @@ Create or update a tag rule set for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a tag rule set for a given monitor resource
 ```powershell
 PS C:\> $ftobjArray = @()
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
@@ -45,9 +45,9 @@ Name    Type
 default microsoft.datadog/monitors/tagrules
 ```
 
-{{ Add description here }}
+This command creates or updates a tag rule set for a given monitor resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create or update a tag rule set for a given monitor resource by pipeline
 ```powershell
 PS C:\> $ftobjArray = @()
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
@@ -59,7 +59,7 @@ Name    Type
 default microsoft.datadog/monitors/tagrules
 ```
 
-{{ Add description here }}
+This command creates or updates a tag rule set for a given monitor resource by pipeline.
 
 ## PARAMETERS
 

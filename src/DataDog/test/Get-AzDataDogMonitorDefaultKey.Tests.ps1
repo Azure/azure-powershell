@@ -12,11 +12,14 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataDogMonitorDefaultKey' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {  Get-AzDataDogMonitorDefaultKey -ResourceGroupName $env.resourceGroup -Name $env.monitorName01 } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $obj = Get-AzDataDogMonitor -ResourceGroupName $env.resourceGroup -Name $env.monitorName01
+            Get-AzDataDogMonitorDefaultKey -InputObject $obj
+        } | Should -Not -Throw
     }
 }

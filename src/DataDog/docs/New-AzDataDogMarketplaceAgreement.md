@@ -12,17 +12,8 @@ Create Datadog marketplace agreement in the subscription.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzDataDogMarketplaceAgreement [-SubscriptionId <String>] [-Accepted] [-LicenseTextLink <String>]
- [-Plan <String>] [-PrivacyPolicyLink <String>] [-Product <String>] [-Publisher <String>]
- [-RetrieveDatetime <DateTime>] [-Signature <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzDataDogMarketplaceAgreement -InputObject <IDataDogIdentity> [-Accepted] [-LicenseTextLink <String>]
  [-Plan <String>] [-PrivacyPolicyLink <String>] [-Product <String>] [-Publisher <String>]
  [-RetrieveDatetime <DateTime>] [-Signature <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -33,7 +24,7 @@ Create Datadog marketplace agreement in the subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create Datadog marketplace agreement in the subscription
 ```powershell
 PS C:\> New-AzDataDogMarketplaceAgreement -Accepted
 
@@ -42,7 +33,7 @@ Name    Type
 default microsoft.datadog/agreements
 ```
 
-{{ Add description here }}
+This command creates Datadog marketplace agreement in the subscription.
 
 ## PARAMETERS
 
@@ -73,22 +64,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -203,7 +178,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -249,8 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.IDataDogIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataDog.Models.Api20210301.IDatadogAgreementResource
@@ -258,19 +231,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IDataDogIdentity>: Identity Parameter
-  - `[ConfigurationName <String>]`: Configuration name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Rule set name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

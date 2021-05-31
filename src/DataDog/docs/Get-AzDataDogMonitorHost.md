@@ -22,13 +22,13 @@ List the hosts for a given monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the hosts for a given monitor resource
 ```powershell
 PS C:\> Get-AzDataDogMonitorHost -ResourceGroupName lucas-dog -Name lucasdatadog
 
 ```
 
-{{ Add description here }}
+This command lists the hosts for a given monitor resource
 
 ## PARAMETERS
 

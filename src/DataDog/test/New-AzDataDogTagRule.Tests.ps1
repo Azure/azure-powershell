@@ -12,19 +12,22 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDataDogTagRule' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+          $ftobjArray = @()
+          $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
+          $ftobjArray += New-AzDataDogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
+          New-AzDataDogTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default' -LogRuleFilteringTag $ftobjArray
+        } | Should -Not -Throw
     }
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateViaIdentityExpanded' {
+        {
+            $ftobjArray = @()
+            $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
+            $ftobjArray += New-AzDataDogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
+            $obj = Get-AzDataDogTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.monitorName01 -Name 'default'
+            New-AzDataDogTagRule -InputObject $obj -LogRuleFilteringTag $ftobjArray
+        } | Should -Not -Throw
     }
 }
