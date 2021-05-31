@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.Get(resourceGroupName, workspaceName, sqlPoolName);
+                var recoverableSqlPool = this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.Get(resourceGroupName, workspaceName, sqlPoolName);
 
                 return new PSRecoverableSqlPool(recoverableSqlPool);
             }
@@ -1998,8 +1998,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             try
             {
-                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.List(resourceGroupName, workspaceName);
-                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlpools.ListNext);
+                var firstPage =  this._synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.List(resourceGroupName, workspaceName);
+                return ListResources(firstPage, _synapseManagementClient.WorkspaceManagedSqlServerRecoverableSqlPools.ListNext);
             }
             catch (ErrorContractException ex)
             {
