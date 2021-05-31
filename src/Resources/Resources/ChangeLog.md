@@ -20,7 +20,9 @@
 
 ## Upcoming Release
 * Allow naming the deployment when testing deployments [#11497]
-* Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
+
+## Version 4.1.1
+ Fixed issue that property `IdentifierUri` is cleaned by `Update-AzAdApplication` [#15134]
 
 ## Version 4.1.0
 * Changed `-IdentifierUris` in `New-AzADApplication` to optional parameter
