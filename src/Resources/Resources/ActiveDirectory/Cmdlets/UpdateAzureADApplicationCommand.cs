@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = DisplayName,
                     Homepage = HomePage,
-                    IdentifierUris = (IdentifierUri == null) ? new string[] { } : IdentifierUri,
+                    IdentifierUris = IdentifierUri,
                     ReplyUrls = ReplyUrl,
                     AvailableToOtherTenants = this.IsParameterBound(c => c.AvailableToOtherTenants) ? AvailableToOtherTenants : (bool?)null
                 };
