@@ -338,14 +338,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <returns></returns>
         protected ManagedInstanceExternalAdministrator GetActiveDirectoryInformation(ManagedInstanceExternalAdministrator input)
         {
-            Guid? objectId = input.Sid;
-            string displayName = input.Login;
-            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
-
-            if (string.IsNullOrEmpty(displayName))
+            if (input == null || string.IsNullOrEmpty(input.Login))
             {
                 return null;
             }
+
+            Guid? objectId = input.Sid;
+            string displayName = input.Login;
+            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
 
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();

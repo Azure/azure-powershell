@@ -222,14 +222,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <returns></returns>
         protected ServerExternalAdministrator GetActiveDirectoryInformation(ServerExternalAdministrator input)
         {
-            Guid? objectId = input.Sid;
-            string displayName = input.Login;
-            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
-
-            if (string.IsNullOrEmpty(displayName))
+            if (input == null || string.IsNullOrEmpty(input.Login))
             {
                 return null;
             }
+
+            Guid? objectId = input.Sid;
+            string displayName = input.Login;
+            bool? adOnlyAuth = input.AzureADOnlyAuthentication;
 
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
