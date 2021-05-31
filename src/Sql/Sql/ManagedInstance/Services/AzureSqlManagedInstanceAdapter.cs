@@ -342,6 +342,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             string displayName = input.Login;
             bool? adOnlyAuth = input.AzureADOnlyAuthentication;
 
+            if (string.IsNullOrEmpty(displayName))
+            {
+                return null;
+            }
+
             // Gets the default Tenant id for the subscriptions
             Guid tenantId = GetTenantId();
 
