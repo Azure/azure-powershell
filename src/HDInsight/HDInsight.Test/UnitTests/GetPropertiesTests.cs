@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             {
                 Features = features,
                 Versions = versions,
-                VmSizes = vm,
+                Vmsizes = vm,
                 Regions = regions
             };
 

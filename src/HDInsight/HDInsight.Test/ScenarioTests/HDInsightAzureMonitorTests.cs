@@ -12,26 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.HDInsight.Models;
+using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xunit;
+using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.HDInsight.Models.Management
+namespace Commands.HDInsight.Test.ScenarioTests
 {
-    public class AzureHDInsightVersionSpec
+    public class HDInsightAzureMonitorTests
     {
-        public AzureHDInsightVersionSpec(VersionSpec versionSpec)
+        public XunitTracingInterceptor _logger;
+
+        public HDInsightAzureMonitorTests(ITestOutputHelper output)
         {
-            this.FriendlyName = versionSpec?.FriendlyName;
-            this.DisplayName = versionSpec?.DisplayName;
-            this.IsDefault = versionSpec?.IsDefault.ToString();  // ToDo: need to change IsDefault from string to bool, waiting for next major release
-            this.ComponentVersions = versionSpec?.ComponentVersions;
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        public string FriendlyName { get; set; }
-        public string DisplayName { get; set; }
-        public string IsDefault { get; set; }
-        public IDictionary<string, string> ComponentVersions { get; set; }
+        //[Fact(Skip = "test case cannot be re-recorded properly, need help from service team")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureMonitorRelatedCommands()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureMonitorRelatedCommands");
+        }
     }
 }

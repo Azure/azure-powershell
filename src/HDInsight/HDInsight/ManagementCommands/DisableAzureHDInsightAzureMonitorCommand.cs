@@ -90,8 +90,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess("Disable Azure Monitor"))
             {
-                // ToDO: need to change the api
-                HDInsightManagementClient.DisableMonitoring(ResourceGroupName, ClusterName);
+                HDInsightManagementClient.DisableAzureMonitor(ResourceGroupName, ClusterName);
                 WriteObject(true);
             }
         }

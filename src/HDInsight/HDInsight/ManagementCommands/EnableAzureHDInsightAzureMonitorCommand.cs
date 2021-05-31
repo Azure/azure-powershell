@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
 
-            var monitoringParams = new ClusterMonitoringRequest
+            var azureMonitorParams = new AzureMonitorRequest
             {
                 WorkspaceId = WorkspaceId,
                 PrimaryKey = PrimaryKey
@@ -132,8 +132,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             if (ShouldProcess("Enable Azure Monitor"))
             {
-                // ToDO: need to change the api
-                HDInsightManagementClient.EnableMonitoring(ResourceGroupName, ClusterName, monitoringParams);
+                HDInsightManagementClient.EnableAzureMonitor(ResourceGroupName, ClusterName, azureMonitorParams);
                 WriteObject(true);
             }
         }

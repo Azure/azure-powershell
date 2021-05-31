@@ -55,14 +55,13 @@ PS C:\> $cluster | Get-AzHDInsightAzureMonitor
 
 This cmdlet gets the azure monitor with pipeline.
 
-
 ## PARAMETERS
 
 ### -ClusterName
 Gets or sets the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -92,7 +91,7 @@ Accept wildcard characters: False
 Gets or sets the input object.
 
 ```yaml
-Type: AzureHDInsightCluster
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -107,7 +106,7 @@ Accept wildcard characters: False
 Gets or sets the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -122,7 +121,7 @@ Accept wildcard characters: False
 Gets or sets the resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -149,3 +148,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Enable-AzHDInsightAzureMonitor](./Enable-AzHDInsightAzureMonitor.md)
+[Disable-AzHDInsightAzureMonitor](./Disable-AzHDInsightAzureMonitor.md)

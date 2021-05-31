@@ -32,11 +32,20 @@ Adds a security profile to a cluster configuration object.
 ### [Add-AzHDInsightStorage](Add-AzHDInsightStorage.md)
 Adds an Azure Storage key to a cluster configuration object.
 
+### [Disable-AzHDInsightAzureMonitor](Disable-AzHDInsightAzureMonitor.md)
+Disables Azure Monitor in a specified HDInsight cluster.
+
 ### [Disable-AzHDInsightMonitoring](Disable-AzHDInsightMonitoring.md)
 Disables monitoring in a HDInsight cluster and relevant logs will stop flowing to the monitoring workspace specified during enable.
 
+### [Enable-AzHDInsightAzureMonitor](Enable-AzHDInsightAzureMonitor.md)
+Enables Azure Monitor in a specified HDInsight cluster.
+
 ### [Enable-AzHDInsightMonitoring](Enable-AzHDInsightMonitoring.md)
 Enables monitoring in a HDInsight cluster and relevant logs will be sent to the monitoring workspace specified during enable.
+
+### [Get-AzHDInsightAzureMonitor](Get-AzHDInsightAzureMonitor.md)
+Gets the azure monitor status of a specified HDInsight cluster.
 
 ### [Get-AzHDInsightCluster](Get-AzHDInsightCluster.md)
 Gets and lists all of the Azure HDInsight clusters associated with the current subscription or a specified resource group, or retrieves a specific cluster.

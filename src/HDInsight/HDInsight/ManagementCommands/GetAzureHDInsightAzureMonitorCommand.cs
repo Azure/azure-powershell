@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet)]
-    [OutputType(typeof(AzureHDInsightMonitoring))]
+    [OutputType(typeof(AzureHDInsightAzureMonitor))]
     public class GetAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-            // ToDO: need to change the api and redefine a class to replace AzureHDInsightMonitoring
-            var clusterMonitoringResource = HDInsightManagementClient.GetMonitoring(ResourceGroupName, ClusterName);
-            WriteObject(new AzureHDInsightMonitoring(clusterMonitoringResource));
+
+            var azureMonitorStatus = HDInsightManagementClient.GetAzureMonitor(ResourceGroupName, ClusterName);
+            WriteObject(new AzureHDInsightAzureMonitor(azureMonitorStatus));
         }
     }
 }
