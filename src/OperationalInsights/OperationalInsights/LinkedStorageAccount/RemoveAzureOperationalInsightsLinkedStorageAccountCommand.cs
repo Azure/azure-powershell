@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount"), OutputType(typeof(PSLinkedStorageAccountsResource))]
-    public class GetAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    public class RemoveAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, 
                    Mandatory = true,
@@ -30,21 +31,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, 
-                   Mandatory = true,
+                   Mandatory = true, 
                    HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2,
             Mandatory = false,
-            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson'.")]
+            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson', 'Query', 'Alerts'.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("CustomLogs", "AzureWatson")]
+        [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
         public string DataSourceType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(this.OperationalInsightsClient.FilterPSLinkedStorageAccounts(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType), true);
+            if (ShouldProcess(this.WorkspaceName, string.Format("delete Linked Storage Account type: {0} from workspace: {1} under resource group", this.DataSourceType, this.WorkspaceName, this.ResourceGroupName)))
+            {
+                HttpStatusCode response = this.OperationalInsightsClient.DeleteLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType);
+                WriteObject(true);
+            }
         }
     }
 }

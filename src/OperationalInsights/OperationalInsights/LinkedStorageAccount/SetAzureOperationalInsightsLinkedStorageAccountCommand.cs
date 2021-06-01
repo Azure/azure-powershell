@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 2,
             Mandatory = true,
-            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson'.")]
+            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson', 'Query', 'Alerts'.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("CustomLogs", "AzureWatson")]
+        [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
         public string DataSourceType { get; set; }
 
         [Parameter(Position = 3,

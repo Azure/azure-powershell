@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             //validate user input parameters were not null - if they were then use existing values so they wont be ran over by null values
             parameters.TableNames = parameters.TableNames ?? existingDataExport.TableNames.ToArray();
-            parameters.ResourceId = parameters.ResourceId ?? existingDataExport.ResourceId;
+            parameters.DestinationResourceId = parameters.DestinationResourceId ?? existingDataExport.ResourceId;
             parameters.EventHubName = parameters.EventHubName ?? existingDataExport.EventHubName;
             parameters.Enable = parameters.Enable ?? existingDataExport.Enable;
 

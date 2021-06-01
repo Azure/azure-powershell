@@ -17,22 +17,32 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSClusterPatch))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true,
+        [Parameter(Mandatory = true, ParameterSetName = UpdateByNameParameterSet,
             HelpMessage = "The cluster name.")]
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UpdateByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = UpdateByInputObjectParameterSet)]
+        [ValidateNotNull]
+        public PSCluster InputCluster { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Sku Name, now can be 'CapacityReservation' only")]
@@ -75,20 +85,36 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string BillingType { get; private set; }//TODO dabenham curently not supportted from Nuget
 
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSClusterPatch parameters = new PSClusterPatch()
+            if (this.IsParameterBound(c => c.ResourceId))
             {
-                KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
-                Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
-                Tags = this.Tag,
-                Identity = new PSIdentity(IdentityType),
-                BillingType = BillingType
-            };
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.ClusterName = resourceIdentifier.ResourceName;
+            }
+
+            PSClusterPatch parameters = new PSClusterPatch();
+
+            if (this.IsParameterBound(c => c.InputCluster))
+            {
+                parameters.KeyVaultProperties = InputCluster.KeyVaultProperties;
+                parameters.Sku = InputCluster.Sku;
+                parameters.Tags = InputCluster.Tags;
+                parameters.Identity = InputCluster.Identity;
+                parameters.BillingType = InputCluster.BillingType;
+            }
+            else
+            {
+                parameters.KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
+                parameters.Sku = new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
+                parameters.Tags = this.Tag;
+                parameters.Identity = new PSIdentity(IdentityType);
+                parameters.BillingType = BillingType;
+            }
 
             if (ShouldProcess(this.ClusterName,
                 string.Format("update cluster: {0} in resource group: {1}", this.ClusterName, this.ResourceGroupName)))

@@ -14,9 +14,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string DataExportId { get; set; }
 
-        public IList<string> TableNames { get; set; }
+        public List<string> TableNames { get; set; }
 
-        public string ResourceId { get; set; }
+        public string ResourceId { get; set; }//Destination Resource Id
 
         public string DataExportType { get; }
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new ArgumentNullException("dataExport");
             }
             DataExportId = dataExport.DataExportId;
-            TableNames = dataExport.TableNames;
+            TableNames = dataExport.TableNames as List<string>;
             ResourceId = dataExport.ResourceId;
             DataExportType = dataExport.DataExportType;
             EventHubName = dataExport.EventHubName;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             return new DataExport(
                 tableNames: parameters.TableNames,
-                resourceId: parameters.ResourceId,
+                resourceId: parameters.DestinationResourceId,
                 eventHubName: parameters.EventHubName,
                 enable: parameters.Enable);
         }

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.DataExports
                 WorkspaceName = WorkspaceName,
                 DataExportName = DataExportName,
                 TableNames = TableNames,
-                ResourceId = ResourceId,
+                DestinationResourceId = ResourceId,
                 EventHubName = EventHubName,
                 Enable = Enable
             };

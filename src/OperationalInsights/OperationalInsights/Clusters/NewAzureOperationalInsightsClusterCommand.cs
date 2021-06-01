@@ -67,9 +67,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string KeyVersion { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Flag for availability Zones,can be set to true only in supported regions")]
         public bool? IsAvailabilityZonesEnabled { get; private set; }
 
@@ -81,6 +78,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [ValidateNotNullOrEmpty]
         public string BillingType { get; private set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSCluster parameters = new PSCluster()
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 Name = this.ClusterName,
                 Location = this.Location,
                 Identity = new PSIdentity(this.IdentityType),
-                Sku = new PSClusterSku(this.SkuName, this.SkuCapacity),
+                Sku = new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity),
                 Tags = this.Tag,
                 IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
                 IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,

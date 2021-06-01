@@ -12,31 +12,56 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = DeleteByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true,
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = DeleteByNameParameterSet,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true,
+        [Parameter(Position = 1, Mandatory = true, ParameterSetName = DeleteByNameParameterSet,
             HelpMessage = "The cluster name.")]
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = DeleteByInputObjectParameterSet)]
+        [ValidateNotNull]
+        public PSCluster InputCluster { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DeleteByResourceIdParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (this.IsParameterBound(c => c.InputCluster))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.InputCluster.Id);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.ClusterName = resourceIdentifier.ResourceName;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.ClusterName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(this.ClusterName,
                 string.Format("delete cluster: {0} in resource group: {1}", this.ClusterName, this.ResourceGroupName)))
             {

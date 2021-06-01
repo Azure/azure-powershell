@@ -11,15 +11,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
-using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public enum PSDataSourceType
     {
         CustomLogs,
-        AzureWatson
+        AzureWatson,
+        Query,
+        Alerts
     }
     internal static class PSDataSourceTypeEnumExtension
     {
@@ -28,9 +29,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             switch (value)
             {
                 case PSDataSourceType.CustomLogs:
-                    return "CustomLogs";
+                    return Enum.GetName(typeof(PSDataSourceType), PSDataSourceType.CustomLogs);
                 case PSDataSourceType.AzureWatson:
-                    return "AzureWatson";
+                    return Enum.GetName(typeof(PSDataSourceType), PSDataSourceType.AzureWatson);
+                case PSDataSourceType.Query:
+                    return Enum.GetName(typeof(PSDataSourceType), PSDataSourceType.Query);
+                case PSDataSourceType.Alerts:
+                    return Enum.GetName(typeof(PSDataSourceType), PSDataSourceType.Alerts);
             }
             return null;
         }

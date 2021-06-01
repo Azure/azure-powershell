@@ -14,49 +14,37 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount", SupportsShouldProcess = true), OutputType(typeof(PSLinkedStorageAccountsResource))]
-    public class NewAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount"), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    public class GetAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, 
-                   Mandatory = true, 
+                   Mandatory = true,
                    HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1, 
-                   Mandatory = true, 
+                   Mandatory = true,
                    HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2,
-            Mandatory = true,
-            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson'.")]
+            Mandatory = false,
+            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson', 'Query', 'Alerts'.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("CustomLogs", "AzureWatson")]
+        [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
         public string DataSourceType { get; set; }
-
-        [Parameter(Position = 3,
-            Mandatory = true,
-            HelpMessage = "list of storage account Id.")]
-        [ValidateNotNullOrEmpty]
-        public string[] StorageAccountId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.WorkspaceName,
-                string.Format("create linked storage accounts type: {0} for workspace: {1}", this.DataSourceType, this.WorkspaceName)))
-            {
-                WriteObject(this.OperationalInsightsClient.CreateLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType, this.StorageAccountId));
-            }
+            WriteObject(this.OperationalInsightsClient.FilterPSLinkedStorageAccounts(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType), true);
         }
     }
 }

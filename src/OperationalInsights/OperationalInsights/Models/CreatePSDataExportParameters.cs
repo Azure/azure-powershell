@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
     {
         public string DataExportName { get; set; }
         public string[] TableNames { get; set; } 
-        public string ResourceId { get; set; }
+        public string DestinationResourceId { get; set; }
         public string EventHubName { get; set; } 
         public bool? Enable { get; set; } 
     }
