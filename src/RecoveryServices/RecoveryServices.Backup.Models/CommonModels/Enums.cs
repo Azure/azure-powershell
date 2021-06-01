@@ -106,19 +106,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
-    /// Tier information for Recovery point: "Vault", "Snapshot", "Archive"
-    /// </summary>
-    public enum RecoveryPointTier
-    {        
-        VaultStandard = 1,
-        Snapshot,
-        VaultArchive,
-        VaultStandardRehydrated,
-        SnapshotAndVaultStandard,
-        SnapshotAndVaultArchive
-    }
-
-    /// <summary>
     /// Type of the backup engine.
     /// </summary>
     public enum BackupEngineType
