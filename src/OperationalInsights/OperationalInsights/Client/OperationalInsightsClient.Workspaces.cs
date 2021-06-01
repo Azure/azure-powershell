@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             retentionInDays: parameters.RetentionInDays,
                             forceCmkForQuery: parameters.ForceCmkForQuery),
                         parameters.ResourceGroupName);
-                if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(workspace.ProvisioningState, Azure.OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
                 {
                     throw new ProvisioningFailedException(
                         string.Format(
@@ -288,6 +288,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 OperationalInsightsManagementClient.IntelligencePacks.Disable(resourceGroupName, workspaceName, intelligencePackName);
                 return existingIp;
             }
+        }
+
+        public virtual PSOperationStatus GetOperationStatus(string operationId, string location)
+        {
+            if (!Guid.TryParse(operationId, out Guid tempGuid))
+            {
+                throw new ArgumentException($"OperationStatus {operationId} is not a valid GUID");
+            }
+            return new PSOperationStatus(OperationalInsightsManagementClient.OperationStatuses.Get(location, operationId));
         }
 
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
