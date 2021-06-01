@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
         ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "The Key Auto Rotation status")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AutoRotationEnabled { get; set; }
