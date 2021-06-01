@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         {
             base.ExecuteCmdlet();
 
-            WriteObject(new ApiProperties());
+            WriteObject(new CognitiveServicesAccountApiProperties());
         }
     }
 }

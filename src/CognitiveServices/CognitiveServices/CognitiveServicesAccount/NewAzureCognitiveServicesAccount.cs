@@ -120,12 +120,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Set the new Cognitive Services Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
-        [ValidateSet("None",
-            "SystemAssigned",
-            "UserAssigned",
-            "SystemAssignedUserAssigned",
-            IgnoreCase = true)]
-        public string IdentityType { get; set; }
+        public IdentityType? IdentityType { get; set; }
 
         [Parameter(
             HelpMessage = "List of User Owned Storage Accounts.",
@@ -198,7 +193,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "The ApiProperties of Cognitive Services Account. Required by specific account types.")]
-        public ApiProperties ApiProperty { get; set; }
+        public CognitiveServicesAccountApiProperties ApiProperty { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -257,7 +252,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)
                 {
                     ResourceIdentityType resourceIdentityType = ResourceIdentityType.SystemAssigned;
-                    if (this.IdentityType == null || !Enum.TryParse(this.IdentityType, out resourceIdentityType))
+                    if (this.IdentityType == null || !Enum.TryParse(this.IdentityType.ToString(), out resourceIdentityType))
                     {
                         resourceIdentityType = ResourceIdentityType.SystemAssigned;
                     }
