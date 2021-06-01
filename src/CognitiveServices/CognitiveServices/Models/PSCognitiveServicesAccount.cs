@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.Identity = cognitiveServicesAccount.Identity;
             this.UserOwnedStorage = cognitiveServicesAccount.Properties.UserOwnedStorage;
             this.Encryption = cognitiveServicesAccount.Properties.Encryption;
-            this.ApiProperties = cognitiveServicesAccount.Properties.ApiProperties;
+            this.ApiProperties = CognitiveServicesAccountApiProperties.Parse(cognitiveServicesAccount.Properties.ApiProperties);
             this.PublicNetworkAccess = cognitiveServicesAccount.Properties.PublicNetworkAccess;
             this.DisableLocalAuth = cognitiveServicesAccount.Properties.DisableLocalAuth;
             this.RestrictOutboundNetworkAccess = cognitiveServicesAccount.Properties.RestrictOutboundNetworkAccess;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public IList<PrivateEndpointConnection> PrivateEndpointConnections { get; private set; }
 
-        public ApiProperties ApiProperties { get; private set; }
+        public CognitiveServicesAccountApiProperties ApiProperties { get; private set; }
 
         public AccountProperties Properties { get; private set; }
 
