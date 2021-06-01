@@ -17,9 +17,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class sshKeytests : ComputeTestRunner
+    public class sshKeyTests : ComputeTestRunner
     {
-        public sshKeytests(Xunit.Abstractions.ITestOutputHelper output)
+        public sshKeyTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
