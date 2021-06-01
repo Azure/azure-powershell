@@ -12,9 +12,22 @@ Delete cluster
 
 ## SYNTAX
 
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzOperationalInsightsCluster [-ResourceGroupName] <String> [-ClusterName] <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzOperationalInsightsCluster -InputCluster <PSCluster> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzOperationalInsightsCluster -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +66,7 @@ The cluster name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
@@ -78,18 +91,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputCluster
+{{ Fill InputCluster Description }}
+
+```yaml
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{ Fill ResourceId Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -14,7 +14,7 @@ Create linked storage account for workspace
 
 ```
 New-AzOperationalInsightsLinkedStorageAccount [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [-DataSourceType] <String> [-StorageAccountId] <String[]> [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-DataSourceType] <String> [-StorageAccountIds] <String[]> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Data Source Type should be one of 'CustomLogs', 'AzureWatson'.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: CustomLogs, AzureWatson
+Accepted values: CustomLogs, AzureWatson, Query, Alerts
 
 Required: True
 Position: 2
@@ -101,7 +101,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StorageAccountId
+### -StorageAccountIds
 list of storage account Id.
 
 ```yaml

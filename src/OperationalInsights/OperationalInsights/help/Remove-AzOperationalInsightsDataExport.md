@@ -12,9 +12,22 @@ Delete data export for workspace.
 
 ## SYNTAX
 
+### DeleteByNameParameterSet (Default)
 ```
 Remove-AzOperationalInsightsDataExport [-ResourceGroupName] <String> [-WorkspaceName] <String>
  [-DataExportName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzOperationalInsightsDataExport -InputDataExport <PSDataExport>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzOperationalInsightsDataExport -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,13 +49,13 @@ The data export name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -61,16 +74,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputDataExport
+{{ Fill InputDataExport Description }}
+
+```yaml
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{ Fill ResourceId Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -81,13 +124,13 @@ The name of the workspace that will contain the storage insight.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: DeleteByNameParameterSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

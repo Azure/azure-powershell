@@ -206,6 +206,7 @@ The service tier of the workspace.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: free, standard, premium, pernode, standalone, pergb2018, capacityreservation, lacluster
 
 Required: False
 Position: 3

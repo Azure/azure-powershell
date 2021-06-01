@@ -12,9 +12,22 @@ Get or list data exports for workspace.
 
 ## SYNTAX
 
+### ListParameterSet (Default)
 ```
-Get-AzOperationalInsightsDataExport [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [[-DataExportName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzOperationalInsightsDataExport [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzOperationalInsightsDataExport -ResourceGroupName <String> -WorkspaceName <String>
+ [-DataExportName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByResourceIdParameterSet
+```
+Get-AzOperationalInsightsDataExport -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,13 +69,13 @@ The data export name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -86,11 +99,38 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{ Fill ResourceId Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -101,13 +141,13 @@ The name of the workspace that will contain the storage insight.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

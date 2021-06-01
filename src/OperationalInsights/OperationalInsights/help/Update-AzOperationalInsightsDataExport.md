@@ -12,10 +12,23 @@ Update data export.
 
 ## SYNTAX
 
+### UpdateByNameParameterSet (Default)
 ```
-Update-AzOperationalInsightsDataExport [-ResourceGroupName] <String> [-WorkspaceName] <String>
- [[-DataExportName] <String>] [[-TableNames] <String[]>] [[-ResourceId] <String>] [[-EventHubName] <String>]
- [[-Enable] <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzOperationalInsightsDataExport -ResourceGroupName <String> -WorkspaceName <String>
+ [-DataExportName <String>] [-TableNames <String[]>] [-DestinationResourceId <String>] [-EventHubName <String>]
+ [-Enable <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateByResourceIdParameterSet
+```
+Update-AzOperationalInsightsDataExport -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateByInputObjectParameterSet
+```
+Update-AzOperationalInsightsDataExport -InputDataExport <PSDataExport>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,13 +63,13 @@ The data export name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -75,16 +88,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestinationResourceId
+The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateByNameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Enable
 Active when enabled.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -97,13 +125,28 @@ Not applicable when destination is Storage Account.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputDataExport
+{{ Fill InputDataExport Description }}
+
+```yaml
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataExport
+Parameter Sets: UpdateByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -112,13 +155,13 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,13 +171,13 @@ This can be copied from the Properties entry of the destination resource in Azur
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
-Required: False
-Position: 4
+Required: True
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -143,11 +186,11 @@ An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,13 +201,13 @@ The name of the workspace that will contain the storage insight.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

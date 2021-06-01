@@ -40,7 +40,7 @@ Data Source Type should be one of 'CustomLogs', 'AzureWatson'.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: CustomLogs, AzureWatson
+Accepted values: CustomLogs, AzureWatson, Query, Alerts
 
 Required: False
 Position: 2

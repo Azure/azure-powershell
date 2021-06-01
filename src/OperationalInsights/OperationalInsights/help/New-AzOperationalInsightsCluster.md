@@ -15,9 +15,9 @@ Create cluster
 ```
 New-AzOperationalInsightsCluster [-ResourceGroupName] <String> [-ClusterName] <String> [-Location] <String>
  [-IdentityType <String>] [-SkuName <String>] -SkuCapacity <Int64> [-Tag <Hashtable>] [-KeyVaultUri <String>]
- [-KeyName <String>] [-KeyVersion <String>] [-AsJob] [-IsAvailabilityZonesEnabled <Boolean>]
- [-IsDoubleEncryptionEnabled <Boolean>] [-BillingType <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyName <String>] [-KeyVersion <String>] [-IsAvailabilityZonesEnabled <Boolean>]
+ [-IsDoubleEncryptionEnabled <Boolean>] [-BillingType <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +121,7 @@ the identity type, value can be 'SystemAssigned', 'None'.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: SystemAssigned, None
+Accepted values: SystemAssigned, None, UserAssigned
 
 Required: False
 Position: Named
