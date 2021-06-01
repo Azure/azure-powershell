@@ -83,7 +83,7 @@ Gets the shared keys for a workspace.
 ### [Get-AzOperationalInsightsWorkspaceUsage](Get-AzOperationalInsightsWorkspaceUsage.md)
 Gets the usage data for a workspace.
 
-### [Get-OperationalInsightsOperationStatus](Get-OperationalInsightsOperationStatus.md)
+### [Get-AzOperationalInsightsOperationStatus](Get-AzOperationalInsightsOperationStatus.md)
 Get the status of a long running azure asynchronous operation.
 
 ### [Invoke-AzOperationalInsightsQuery](Invoke-AzOperationalInsightsQuery.md)

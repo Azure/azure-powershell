@@ -131,7 +131,7 @@ CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource',
                'New-AzOperationalInsightsDataExport',
                'Remove-AzOperationalInsightsDataExport',
                'Update-AzOperationalInsightsDataExport',
-               'Get-OperationalInsightsOperationStatus'
+               'Get-AzOperationalInsightsOperationStatus'
 
 # Variables to export from this module
 # VariablesToExport = @()
