@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorPassword = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.Password : null,
                 SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentities ?? null),
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,

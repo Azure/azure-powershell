@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
+                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentities ?? null),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,

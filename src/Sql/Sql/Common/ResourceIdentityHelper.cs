@@ -12,7 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -24,30 +27,35 @@ namespace Microsoft.Azure.Commands.Sql.Common
     }
 
     public class ResourceIdentityHelper
-    {
-        public static Management.Sql.Models.ResourceIdentity GetSystemAssignedIdentity()
+    {       
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(string AssignIdentity, List<string> userAssignedIdentities)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-
-            identityResult = new Management.Sql.Models.ResourceIdentity()
+            
+            if (AssignIdentity.Equals(ResourceIdentityType.SystemAssigned))
             {
-                Type = ResourceIdentityType.SystemAssigned.ToString()
-            };
+                identityResult = new Management.Sql.Models.ResourceIdentity()
+                {
+                    Type = ResourceIdentityType.SystemAssigned.ToString()
+                };
+            }
 
-            return identityResult;
-        }
-
-        public static Management.Sql.Models.ResourceIdentity GetUserAssignedIdentity(List<string> userAssignedIdentities)
-        {
-            Management.Sql.Models.ResourceIdentity identityResult = null;
-
-            identityResult = new Management.Sql.Models.ResourceIdentity()
+            if (AssignIdentity.Equals(ResourceIdentityType.UserAssigned) && userAssignedIdentities.Any())
             {
-                Type = ResourceIdentityType.UserAssigned.ToString(),
-                // TODO 
-                // Add user assigned identities.
-            };
+                Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
+                
+                foreach (string identity in userAssignedIdentities)
+                {
+                    umiDict.Add(identity, new UserIdentity());
+                }
 
+                identityResult = new Management.Sql.Models.ResourceIdentity()
+                {
+                    Type = ResourceIdentityType.UserAssigned.ToString(),
+                    UserAssignedIdentities = umiDict
+                };
+            }
+            
             return identityResult;
         }
     }

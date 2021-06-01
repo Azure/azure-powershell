@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
                 AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentities ?? null),
                 LicenseType = this.LicenseType,
                 // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.

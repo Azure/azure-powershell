@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
-                Identity = this.AssignIdentity.Equals(ResourceIdentityType.SystemAssigned) ? ResourceIdentityHelper.GetSystemAssignedIdentity() : ResourceIdentityHelper.GetUserAssignedIdentity(this.UserAssignedIdentities),
+                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentities ?? null),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
