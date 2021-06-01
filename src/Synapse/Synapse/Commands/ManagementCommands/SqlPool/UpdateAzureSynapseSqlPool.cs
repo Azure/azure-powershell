@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public int AutoPauseTimer { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoResume)]
-        public SwitchParameter AutoResume { get; set; }
+        public bool AutoResume { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
@@ -226,9 +226,9 @@ namespace Microsoft.Azure.Commands.Synapse
                 sqlPoolPatchInfo.AutoPauseTimer = this.AutoPauseTimer;
             }
 
-            if (this.AutoResume.IsPresent)
+            if (this.IsParameterBound(c => c.AutoResume))
             {
-                sqlPoolPatchInfo.AutoResume = true;
+                sqlPoolPatchInfo.AutoResume = this.AutoResume;
             }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
