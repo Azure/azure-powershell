@@ -50,7 +50,7 @@ function Test-AzureFSContainer
 	try
 	{
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Enable-Protection $vault $fileShareFriendlyName $saName
+		$item = Enable-ProtectionNew $vault $fileShareFriendlyName $saName
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `

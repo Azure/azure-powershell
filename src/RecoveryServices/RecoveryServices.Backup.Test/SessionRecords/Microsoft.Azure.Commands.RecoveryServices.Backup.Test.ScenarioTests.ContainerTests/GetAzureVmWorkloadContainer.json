@@ -14537,6 +14537,9 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "92"
+        ],
         "X-Powered-By": [
           "ASP.NET"
         ],

@@ -353,7 +353,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11986"
         ],
         "x-ms-correlation-request-id": [
           "07e05c0a-a959-43d1-ac9e-1e7037fe114c"
@@ -1712,7 +1712,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11992"
         ],
         "x-ms-request-id": [
           "8f42dbd4-c7eb-471b-92c5-c9cad601134b"
@@ -1783,7 +1783,7 @@
           "d9503f7e-1dc5-445b-a25c-25294f4ad259"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11991"
         ],
         "x-ms-request-id": [
           "936ea81b-1bd0-4225-ad69-3283320e327d"
@@ -1858,7 +1858,7 @@
           "Enabled"
         ],
         "x-ms-ratelimit-remaining-resource": [
-          "Microsoft.Compute/PutVM3Min;239,Microsoft.Compute/PutVM30Min;1199"
+          "Microsoft.Compute/PutVM3Min;239,Microsoft.Compute/PutVM30Min;1197"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2431,7 +2431,7 @@
           "Tue, 18 May 2021 21:50:28 GMT"
         ],
         "Content-Length": [
-          "134"
+          "133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2495,7 +2495,7 @@
           "Tue, 18 May 2021 21:50:59 GMT"
         ],
         "Content-Length": [
-          "134"
+          "133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2559,7 +2559,7 @@
           "Tue, 18 May 2021 21:51:28 GMT"
         ],
         "Content-Length": [
-          "134"
+          "133"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2672,7 +2672,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11988"
         ],
         "x-ms-correlation-request-id": [
           "20d20e89-da69-4c5b-922a-eca3cc13b100"
@@ -2736,7 +2736,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11987"
         ],
         "x-ms-correlation-request-id": [
           "8dad8abb-c59b-4d86-8eaf-c812b9906249"
@@ -3878,7 +3878,7 @@
           "Tue, 18 May 2021 21:53:10 GMT"
         ],
         "Content-Length": [
-          "304"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -4289,11 +4289,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "149"
         ],
         "x-ms-correlation-request-id": [
           "5fac50a4-368c-4639-a6a4-2ee1e47e30d6"
@@ -4306,13 +4309,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG81f98bdc/providers/Microsoft.RecoveryServices/vaults/PSTestRSV81f98bdc/backupOperations/b04e5be6-c987-4df8-96b5-5b95c3456d51?api-version=2021-03-01",
@@ -4340,6 +4340,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG45b78949/providers/Microsoft.RecoveryServices/vaults/PSTestRSV45b78949/backupOperationResults/8c46cb53-2dc8-4f35-a893-bb29a83fa6e0?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG45b78949/providers/Microsoft.RecoveryServices/vaults/PSTestRSV45b78949/backupOperations/8c46cb53-2dc8-4f35-a893-bb29a83fa6e0?api-version=2021-01-01"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -4353,14 +4362,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "141"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
         ],
         "x-ms-correlation-request-id": [
           "a020d7d1-ae41-4c3a-aa9d-f8b03c5f4b9c"
@@ -4379,6 +4385,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"b04e5be6-c987-4df8-96b5-5b95c3456d51\",\r\n  \"name\": \"b04e5be6-c987-4df8-96b5-5b95c3456d51\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-18T21:53:12.5707455Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
@@ -5912,7 +5921,7 @@
           "Tue, 18 May 2021 21:55:06 GMT"
         ],
         "Content-Length": [
-          "304"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -6020,10 +6029,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -6040,8 +6045,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
+          "117"
         ],
         "x-ms-correlation-request-id": [
           "f706566b-eef4-43c9-b051-193aa8dda152"
@@ -6053,7 +6064,7 @@
           "Tue, 18 May 2021 21:55:07 GMT"
         ],
         "Content-Length": [
-          "845"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -6091,6 +6102,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -6103,11 +6118,8 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "148"
         ],
         "x-ms-correlation-request-id": [
           "58fe1884-3cb6-4c10-b820-d552dd225d09"
@@ -6119,7 +6131,7 @@
           "Tue, 18 May 2021 21:55:08 GMT"
         ],
         "Content-Length": [
-          "478"
+          "845"
         ],
         "Content-Type": [
           "application/json"
@@ -6169,8 +6181,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "9"
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
         ],
         "x-ms-correlation-request-id": [
           "bf61e9cb-5875-4884-b96d-7f3296a47308"
@@ -6183,12 +6198,9 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"location\": \"southeastasia\",\r\n      \"name\": \"PSTestRSV45b78949\",\r\n      \"etag\": \"W/\\\"datetime'2021-03-04T08%3A21%3A05.7529117Z'\\\"\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"privateEndpointStateForBackup\": \"None\",\r\n        \"privateEndpointStateForSiteRecovery\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRG45b78949/providers/Microsoft.RecoveryServices/vaults/PSTestRSV45b78949\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n      \"sku\": {\r\n        \"name\": \"Standard\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {

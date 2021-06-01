@@ -723,7 +723,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "a2e89655-9955-4013-b3e0-0c6dc5848bc4"
@@ -799,7 +799,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
           "51574df4-4f72-4d7a-8fd7-3fb3b3e02000"

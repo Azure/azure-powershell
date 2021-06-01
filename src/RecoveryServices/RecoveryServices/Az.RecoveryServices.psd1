@@ -280,7 +280,7 @@ PrivateData = @{
 * Azure Site Recovery support for VMware to Azure disaster recovery scenarios using RCM as the control plane.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

@@ -755,6 +755,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/operationResults/f8a18575-3f2e-489b-943b-2ab4efe20f3b?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;pstestrg8895;pstestsa8895/operationsStatus/f8a18575-3f2e-489b-943b-2ab4efe20f3b?api-version=2019-05-13-preview"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -1278,6 +1287,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "",
@@ -1659,6 +1671,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -1678,6 +1694,9 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "146"
         ],
@@ -1691,7 +1710,7 @@
           "Tue, 18 May 2021 14:09:39 GMT"
         ],
         "Content-Length": [
-          "188"
+          "847"
         ],
         "Content-Type": [
           "application/json"
@@ -1761,7 +1780,7 @@
           "Tue, 18 May 2021 14:09:44 GMT"
         ],
         "Content-Length": [
-          "188"
+          "1219"
         ],
         "Content-Type": [
           "application/json"
@@ -1831,7 +1850,7 @@
           "Tue, 18 May 2021 14:09:49 GMT"
         ],
         "Content-Length": [
-          "188"
+          "1354"
         ],
         "Content-Type": [
           "application/json"
@@ -1869,6 +1888,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698df595948e2355f2bb744a41cf245d4ba1255d9699cc3c2ad1f5045e177959/operationResults/6b4ff340-20d6-429a-8943-24b805f89320?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698df595948e2355f2bb744a41cf245d4ba1255d9699cc3c2ad1f5045e177959/operationsStatus/6b4ff340-20d6-429a-8943-24b805f89320?api-version=2021-01-01"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -1881,9 +1909,6 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -1908,6 +1933,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"f36bd7c3-9249-4d73-b81e-5b13ea551964\",\r\n  \"name\": \"f36bd7c3-9249-4d73-b81e-5b13ea551964\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-18T14:09:23.5167217Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
@@ -2041,7 +2069,7 @@
           "Tue, 18 May 2021 14:10:05 GMT"
         ],
         "Content-Length": [
-          "188"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -2149,6 +2177,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -2167,6 +2199,9 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "139"
@@ -2360,6 +2395,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperationResults/2e335e35-cd21-4fd7-ab03-91885f1c113c?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupOperations/2e335e35-cd21-4fd7-ab03-91885f1c113c?api-version=2021-01-01"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -2372,9 +2416,6 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -2399,6 +2440,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/protectionContainers/StorageContainer;storage;pstestrg8895;pstestsa8895/protectedItems/AzureFileShare;698df595948e2355f2bb744a41cf245d4ba1255d9699cc3c2ad1f5045e177959\",\r\n  \"name\": \"AzureFileShare;698df595948e2355f2bb744a41cf245d4ba1255d9699cc3c2ad1f5045e177959\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n  \"properties\": {\r\n    \"kpisHealths\": {},\r\n    \"friendlyName\": \"fs1\",\r\n    \"protectionStatus\": \"Healthy\",\r\n    \"protectionState\": \"IRPending\",\r\n    \"lastBackupStatus\": \"IRPending\",\r\n    \"extendedInfo\": {\r\n      \"recoveryPointCount\": 0,\r\n      \"policyState\": \"Consistent\",\r\n      \"resourceState\": \"Active\",\r\n      \"resourceStateSyncTime\": \"2021-05-18T14:10:05.2343773Z\"\r\n    },\r\n    \"protectedItemType\": \"AzureFileShareProtectedItem\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"workloadType\": \"AzureFileShare\",\r\n    \"containerName\": \"StorageContainer;storage;pstestrg8895;pstestsa8895\",\r\n    \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.storage/storageAccounts/pstestsa8895\",\r\n    \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupPolicies/afspolicy1\",\r\n    \"isArchiveEnabled\": false\r\n  }\r\n}",
@@ -3534,13 +3578,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupJobs/6d2ddb40-e7dd-4cb7-a833-09655fa4c19a\",\r\n  \"name\": \"6d2ddb40-e7dd-4cb7-a833-09655fa4c19a\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureStorageJob\",\r\n    \"duration\": \"PT38.2932719S\",\r\n    \"storageAccountName\": \"pstestsa8895\",\r\n    \"storageAccountVersion\": \"Storage\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [],\r\n      \"propertyBag\": {\r\n        \"File Share Name\": \"fs1\",\r\n        \"Storage Account Name\": \"pstestsa8895\"\r\n      }\r\n    },\r\n    \"isUserTriggered\": false,\r\n    \"entityFriendlyName\": \"fs1\",\r\n    \"backupManagementType\": \"AzureStorage\",\r\n    \"operation\": \"DeleteBackupData\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2021-03-04T11:21:13.7496596Z\",\r\n    \"endTime\": \"2021-03-04T11:21:52.0429315Z\",\r\n    \"activityId\": \"c6f008f0-ae7d-4cf0-ac95-38473d1e2ca2\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/pstestrg8895/providers/Microsoft.RecoveryServices/vaults/pstestrsv8895/backupFabrics/Azure/operationResults/c32518d0-5bb6-40d3-9b20-a0d2da9a1f70?api-version=2021-03-01",

@@ -293,7 +293,7 @@
         "User-Agent": [
           "FxVersion/4.6.29719.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "OSVersion/Microsoft.Windows.10.0.18363.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.1.0"
         ]
       },
@@ -1993,7 +1993,7 @@
           "Tue, 16 Feb 2021 10:14:36 GMT"
         ],
         "Content-Length": [
-          "188"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -2063,7 +2063,7 @@
           "Tue, 16 Feb 2021 10:14:41 GMT"
         ],
         "Content-Length": [
-          "188"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -2115,6 +2115,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
+          "Microsoft-IIS/10.0",
           "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
@@ -2190,6 +2191,9 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "138"
         ],
@@ -2203,7 +2207,7 @@
           "Tue, 16 Feb 2021 10:14:51 GMT"
         ],
         "Content-Length": [
-          "304"
+          "847"
         ],
         "Content-Type": [
           "application/json"
@@ -2344,7 +2348,7 @@
           "Tue, 16 Feb 2021 10:14:52 GMT"
         ],
         "Content-Length": [
-          "847"
+          "1219"
         ],
         "Content-Type": [
           "application/json"
@@ -3812,7 +3816,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "141"
+          "143"
         ],
         "x-ms-correlation-request-id": [
           "43bac016-b1c7-4d91-9938-30eac91ad138"

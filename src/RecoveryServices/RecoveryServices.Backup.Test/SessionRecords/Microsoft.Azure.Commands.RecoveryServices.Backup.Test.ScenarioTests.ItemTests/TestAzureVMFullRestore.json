@@ -3323,7 +3323,7 @@
           "Tue, 18 May 2021 15:12:30 GMT"
         ],
         "Content-Length": [
-          "466"
+          "465"
         ],
         "Content-Type": [
           "application/json"
@@ -3381,7 +3381,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "148"
         ],
         "x-ms-correlation-request-id": [
           "afc1a22a-f7cf-40f2-916a-a6c1e7b1bd37"
@@ -3737,7 +3737,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "121"
         ],
         "x-ms-correlation-request-id": [
           "a1a0a1d2-f2f7-413a-96e9-a1a790a91e40"
@@ -3956,7 +3956,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
+          "120"
         ],
         "x-ms-correlation-request-id": [
           "a00eae6b-98ae-4327-a4fb-9b947679f658"
@@ -4026,7 +4026,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "147"
+          "119"
         ],
         "x-ms-correlation-request-id": [
           "6bd25f2b-25f8-474b-a920-b42930b13ab2"
@@ -4096,7 +4096,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "146"
+          "118"
         ],
         "x-ms-correlation-request-id": [
           "dfe61e21-8f5b-427a-b5c9-b7a37d797b6a"
@@ -4166,7 +4166,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "145"
+          "117"
         ],
         "x-ms-correlation-request-id": [
           "30afee78-8af6-4ad2-875f-ec62a1be2c72"
@@ -4236,7 +4236,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "144"
+          "116"
         ],
         "x-ms-correlation-request-id": [
           "4d01ebcf-bc7d-46c6-8d6e-bd9d450f4bcb"
@@ -4306,7 +4306,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "143"
+          "115"
         ],
         "x-ms-correlation-request-id": [
           "41a5ae76-28b9-458b-aaa0-e60fa813e2d1"
@@ -4318,7 +4318,7 @@
           "Tue, 18 May 2021 15:13:12 GMT"
         ],
         "Content-Length": [
-          "304"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -4376,7 +4376,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "142"
+          "114"
         ],
         "x-ms-correlation-request-id": [
           "556e1c51-bfb1-492f-aaac-d371071c5736"
@@ -4388,7 +4388,7 @@
           "Tue, 18 May 2021 15:13:12 GMT"
         ],
         "Content-Length": [
-          "304"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -4426,10 +4426,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -4446,8 +4442,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "115"
         ],
         "x-ms-correlation-request-id": [
           "3f8cb7c5-e977-48e2-a7ea-dbc49e020088"
@@ -4517,7 +4519,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "114"
         ],
         "x-ms-correlation-request-id": [
           "40f3ebe5-0564-4f3f-b3d8-719ed1730ee9"
@@ -4567,6 +4569,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -4585,6 +4591,9 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "148"
@@ -4657,7 +4666,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "149"
+          "148"
         ],
         "x-ms-correlation-request-id": [
           "0b2e4def-8465-4665-9636-471fb2c4ff83"
@@ -4735,11 +4744,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "148"
         ],
         "x-ms-correlation-request-id": [
           "2b321e44-6883-4854-9eec-8c0ce92eab17"
@@ -4752,13 +4764,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/protectedItems/VM;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300\",\r\n      \"name\": \"VM;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300\",\r\n      \"type\": \"Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems\",\r\n      \"properties\": {\r\n        \"kpisHealths\": {\r\n          \"BackupOperationStatusKPI\": {\r\n            \"resourceHealthStatus\": \"Healthy\",\r\n            \"resourceHealthDetails\": [\r\n              {\r\n                \"code\": 0,\r\n                \"title\": \"Success\",\r\n                \"message\": \"\",\r\n                \"recommendations\": []\r\n              }\r\n            ]\r\n          }\r\n        },\r\n        \"friendlyName\": \"PSTestVMf52300\",\r\n        \"virtualMachineId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.Compute/virtualMachines/PSTestVMf52300\",\r\n        \"protectionStatus\": \"Healthy\",\r\n        \"protectionState\": \"Protected\",\r\n        \"healthStatus\": \"Passed\",\r\n        \"healthDetails\": [\r\n          {\r\n            \"code\": 400239,\r\n            \"title\": \"IaasVmHealthGreenDefault\",\r\n            \"message\": \"Backup pre-check status of this virtual machine is OK.\",\r\n            \"recommendations\": []\r\n          }\r\n        ],\r\n        \"lastBackupStatus\": \"Completed\",\r\n        \"lastBackupTime\": \"2021-03-05T08:00:04.0628835Z\",\r\n        \"protectedItemDataId\": \"17593495957044\",\r\n        \"extendedProperties\": {\r\n          \"linuxVmApplicationName\": \"\"\r\n        },\r\n        \"protectedItemType\": \"Microsoft.Compute/virtualMachines\",\r\n        \"backupManagementType\": \"AzureIaasVM\",\r\n        \"workloadType\": \"VM\",\r\n        \"containerName\": \"iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300\",\r\n        \"sourceResourceId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.Compute/virtualMachines/PSTestVMf52300\",\r\n        \"policyId\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupPolicies/DefaultPolicy\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"lastRecoveryPoint\": \"2021-03-05T08:00:08.5100402Z\",\r\n        \"isArchiveEnabled\": false\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupOperations/37211988-4df0-4090-93b3-89abefef9e7a?api-version=2021-03-01",
@@ -4806,7 +4815,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "141"
+          "149"
         ],
         "x-ms-correlation-request-id": [
           "af3f667a-2291-45d0-9b55-2675c013ca9f"
@@ -4818,7 +4827,7 @@
           "Tue, 18 May 2021 15:13:15 GMT"
         ],
         "Content-Length": [
-          "188"
+          "1550"
         ],
         "Content-Type": [
           "application/json"
@@ -4856,6 +4865,15 @@
         "Pragma": [
           "no-cache"
         ],
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/protectedItems/VM;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/operationResults/3c58e2af-0cf1-4691-84eb-b96b0b19fdff?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/protectedItems/VM;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/operationsStatus/3c58e2af-0cf1-4691-84eb-b96b0b19fdff?api-version=2021-01-01"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -4869,14 +4887,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "140"
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "fbfa3185-5a88-4738-be3c-2b10666ca9c6"
@@ -4895,6 +4910,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"37211988-4df0-4090-93b3-89abefef9e7a\",\r\n  \"name\": \"37211988-4df0-4090-93b3-89abefef9e7a\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-05-18T15:13:15.3343011Z\",\r\n  \"endTime\": \"2021-05-18T15:13:15.3343011Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"89f1732e-8d1a-463e-ab93-e7da9ce135e1\"\r\n  }\r\n}",
@@ -4946,7 +4964,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "139"
+          "113"
         ],
         "x-ms-correlation-request-id": [
           "8e5b2cfa-87a9-4874-ba4b-7861b20b7212"
@@ -4958,7 +4976,7 @@
           "Tue, 18 May 2021 15:13:20 GMT"
         ],
         "Content-Length": [
-          "304"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -4996,10 +5014,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -5016,8 +5030,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "148"
+          "112"
         ],
         "x-ms-correlation-request-id": [
           "1531b74a-a25a-4aa0-8c9b-e60d13e5c870"
@@ -5029,7 +5049,7 @@
           "Tue, 18 May 2021 15:13:21 GMT"
         ],
         "Content-Length": [
-          "968"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -5067,10 +5087,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -5087,8 +5103,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "147"
+          "111"
         ],
         "x-ms-correlation-request-id": [
           "1b2f9448-4fed-4b49-9181-3e10d04e825a"
@@ -5159,7 +5181,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "146"
+          "50"
         ],
         "x-ms-correlation-request-id": [
           "8416c343-c32a-4358-b7f1-bb735e77b356"
@@ -5171,7 +5193,7 @@
           "Tue, 18 May 2021 15:13:52 GMT"
         ],
         "Content-Length": [
-          "969"
+          "968"
         ],
         "Content-Type": [
           "application/json"
@@ -5230,7 +5252,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "145"
+          "49"
         ],
         "x-ms-correlation-request-id": [
           "16a8d648-17e5-4bdf-8a58-08402cfe83b6"
@@ -5242,7 +5264,7 @@
           "Tue, 18 May 2021 15:14:22 GMT"
         ],
         "Content-Length": [
-          "970"
+          "968"
         ],
         "Content-Type": [
           "application/json"
@@ -5301,7 +5323,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "144"
+          "48"
         ],
         "x-ms-correlation-request-id": [
           "d6a721b3-e674-4a9e-9ace-a39d12854bd0"
@@ -5313,7 +5335,7 @@
           "Tue, 18 May 2021 15:14:52 GMT"
         ],
         "Content-Length": [
-          "971"
+          "969"
         ],
         "Content-Type": [
           "application/json"
@@ -5372,7 +5394,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "143"
+          "47"
         ],
         "x-ms-correlation-request-id": [
           "6ed1f290-b7f4-430c-95f7-71b7d0e87028"
@@ -5443,7 +5465,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "142"
+          "46"
         ],
         "x-ms-correlation-request-id": [
           "03357f32-b82e-4e96-af97-5c370855d35e"
@@ -5514,7 +5536,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "141"
+          "45"
         ],
         "x-ms-correlation-request-id": [
           "5478b839-444b-4010-aa7d-4f55df1306c4"
@@ -5585,7 +5607,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "140"
+          "44"
         ],
         "x-ms-correlation-request-id": [
           "9fc004c2-d916-4d32-85ed-71af1861f430"
@@ -5656,7 +5678,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "139"
+          "43"
         ],
         "x-ms-correlation-request-id": [
           "8a7cc95c-8284-4ede-8048-fbf691d5efa6"
@@ -5668,7 +5690,7 @@
           "Tue, 18 May 2021 15:17:25 GMT"
         ],
         "Content-Length": [
-          "971"
+          "970"
         ],
         "Content-Type": [
           "application/json"
@@ -5727,7 +5749,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "138"
+          "42"
         ],
         "x-ms-correlation-request-id": [
           "51c9b878-0c16-427f-a0dc-f7922ba68728"
@@ -5798,7 +5820,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "137"
+          "41"
         ],
         "x-ms-correlation-request-id": [
           "609641cf-5f03-4015-9386-f12691ec8160"
@@ -5810,7 +5832,7 @@
           "Tue, 18 May 2021 15:18:26 GMT"
         ],
         "Content-Length": [
-          "971"
+          "970"
         ],
         "Content-Type": [
           "application/json"
@@ -5869,7 +5891,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "136"
+          "40"
         ],
         "x-ms-correlation-request-id": [
           "136f9f69-ebd4-4ca1-8de4-a794e399ab7d"
@@ -5940,7 +5962,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "135"
+          "49"
         ],
         "x-ms-correlation-request-id": [
           "aedbdc43-1dff-4f85-8886-ccfdfe46670f"
@@ -6011,7 +6033,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "134"
+          "48"
         ],
         "x-ms-correlation-request-id": [
           "e6122407-1967-4de4-99ff-5a59a9858cef"
@@ -6023,7 +6045,7 @@
           "Tue, 18 May 2021 15:19:58 GMT"
         ],
         "Content-Length": [
-          "970"
+          "971"
         ],
         "Content-Type": [
           "application/json"
@@ -6082,7 +6104,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "133"
+          "47"
         ],
         "x-ms-correlation-request-id": [
           "9f1ff1cb-9692-4173-b53e-f6165c5afad1"
@@ -6153,7 +6175,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "132"
+          "46"
         ],
         "x-ms-correlation-request-id": [
           "cc906a9e-04f7-4001-a23e-8f08913ca020"
@@ -6165,7 +6187,7 @@
           "Tue, 18 May 2021 15:20:59 GMT"
         ],
         "Content-Length": [
-          "970"
+          "971"
         ],
         "Content-Type": [
           "application/json"
@@ -6224,7 +6246,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "131"
+          "45"
         ],
         "x-ms-correlation-request-id": [
           "faf185a7-68f3-45a1-9fd5-a77caf2e42e2"
@@ -6236,7 +6258,7 @@
           "Tue, 18 May 2021 15:21:29 GMT"
         ],
         "Content-Length": [
-          "970"
+          "971"
         ],
         "Content-Type": [
           "application/json"
@@ -6295,7 +6317,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "130"
+          "44"
         ],
         "x-ms-correlation-request-id": [
           "15a3d2cd-61f5-40bc-a089-d99e9ef32ec3"
@@ -6366,7 +6388,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "129"
+          "43"
         ],
         "x-ms-correlation-request-id": [
           "255a98a9-2822-42cb-bca0-1e871810381f"
@@ -6437,7 +6459,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "128"
+          "42"
         ],
         "x-ms-correlation-request-id": [
           "7f92d4e0-eb83-45af-ab7c-8fbd91854270"
@@ -6449,7 +6471,7 @@
           "Tue, 18 May 2021 15:23:01 GMT"
         ],
         "Content-Length": [
-          "970"
+          "969"
         ],
         "Content-Type": [
           "application/json"
@@ -6508,7 +6530,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "127"
+          "41"
         ],
         "x-ms-correlation-request-id": [
           "e37e844a-9388-4b20-b759-c52e12b2e039"
@@ -6520,7 +6542,7 @@
           "Tue, 18 May 2021 15:23:31 GMT"
         ],
         "Content-Length": [
-          "971"
+          "969"
         ],
         "Content-Type": [
           "application/json"
@@ -6579,7 +6601,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "126"
+          "40"
         ],
         "x-ms-correlation-request-id": [
           "f02a8c30-36fa-4e43-8455-01321c7d6556"
@@ -6591,7 +6613,7 @@
           "Tue, 18 May 2021 15:24:02 GMT"
         ],
         "Content-Length": [
-          "971"
+          "969"
         ],
         "Content-Type": [
           "application/json"
@@ -6650,7 +6672,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "125"
+          "48"
         ],
         "x-ms-correlation-request-id": [
           "cf2bd5f3-b701-4155-89ee-745358d1ad41"
@@ -6721,7 +6743,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "124"
+          "47"
         ],
         "x-ms-correlation-request-id": [
           "cde4225e-7111-4526-b7d8-5a18d8b39bab"
@@ -6733,7 +6755,7 @@
           "Tue, 18 May 2021 15:25:04 GMT"
         ],
         "Content-Length": [
-          "971"
+          "970"
         ],
         "Content-Type": [
           "application/json"
@@ -6792,7 +6814,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "123"
+          "46"
         ],
         "x-ms-correlation-request-id": [
           "490696c8-cd67-45bf-a54e-07b3772ec1fb"
@@ -6863,7 +6885,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "122"
+          "45"
         ],
         "x-ms-correlation-request-id": [
           "bec27103-a4ae-4933-a7bf-be50e3edac2a"
@@ -6934,7 +6956,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "121"
+          "44"
         ],
         "x-ms-correlation-request-id": [
           "da675f77-d7a6-47e4-85ad-764f9941bf09"
@@ -7005,7 +7027,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "120"
+          "43"
         ],
         "x-ms-correlation-request-id": [
           "94da9e67-ed2e-4bac-994b-8d3caf861fef"
@@ -7076,7 +7098,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "119"
+          "42"
         ],
         "x-ms-correlation-request-id": [
           "52170397-8882-4e46-afd3-156634e0d53e"
@@ -7147,7 +7169,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "118"
+          "41"
         ],
         "x-ms-correlation-request-id": [
           "b25ead51-6b28-4d62-a51f-7acbaf349b61"
@@ -7218,7 +7240,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "117"
+          "40"
         ],
         "x-ms-correlation-request-id": [
           "b9b453b3-700a-4bb2-88fe-76d4fabeaf00"
@@ -7289,7 +7311,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "116"
+          "39"
         ],
         "x-ms-correlation-request-id": [
           "086762ae-520a-4afb-95db-cc85993fcd83"
@@ -7360,7 +7382,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "115"
+          "48"
         ],
         "x-ms-correlation-request-id": [
           "89996a88-9606-4750-b7ab-5e4fb1ed73da"
@@ -7431,7 +7453,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "114"
+          "47"
         ],
         "x-ms-correlation-request-id": [
           "9c961e0e-9ad2-4c83-a7a9-dd2f32ef0b7b"
@@ -7502,7 +7524,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "113"
+          "46"
         ],
         "x-ms-correlation-request-id": [
           "8c0dcafc-7496-40c9-b6cf-2511efe5a978"
@@ -7573,7 +7595,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "112"
+          "45"
         ],
         "x-ms-correlation-request-id": [
           "ca582b0f-8dc6-4af2-9443-858ece4c083d"
@@ -7585,7 +7607,7 @@
           "Tue, 18 May 2021 15:31:10 GMT"
         ],
         "Content-Length": [
-          "971"
+          "970"
         ],
         "Content-Type": [
           "application/json"
@@ -7644,7 +7666,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "111"
+          "44"
         ],
         "x-ms-correlation-request-id": [
           "59b8301d-958f-482a-be16-caa3cadb8203"
@@ -7715,7 +7737,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "110"
+          "43"
         ],
         "x-ms-correlation-request-id": [
           "9428f8a4-7144-4a71-9f0f-f2f5f0302e90"
@@ -7786,7 +7808,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "109"
+          "42"
         ],
         "x-ms-correlation-request-id": [
           "012f0abe-f224-4834-8955-5779f0569023"
@@ -7857,7 +7879,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "108"
+          "41"
         ],
         "x-ms-correlation-request-id": [
           "92c5fcd1-2f3e-49da-8beb-7555330fda6a"
@@ -7928,7 +7950,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "107"
+          "40"
         ],
         "x-ms-correlation-request-id": [
           "56d86215-2286-4eda-8c2f-1265b9ed2da3"
@@ -7999,7 +8021,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "106"
+          "49"
         ],
         "x-ms-correlation-request-id": [
           "190991eb-97f3-4819-9df1-ff56eafd862a"
@@ -8070,7 +8092,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "105"
+          "48"
         ],
         "x-ms-correlation-request-id": [
           "b7835df0-d26e-4785-b0e0-a9d4a5e39a27"
@@ -8141,7 +8163,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "104"
+          "47"
         ],
         "x-ms-correlation-request-id": [
           "a4702ef7-6582-42fa-b52c-c2d57bd8f158"
@@ -8153,7 +8175,7 @@
           "Tue, 18 May 2021 15:35:14 GMT"
         ],
         "Content-Length": [
-          "970"
+          "971"
         ],
         "Content-Type": [
           "application/json"
@@ -8212,7 +8234,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "103"
+          "46"
         ],
         "x-ms-correlation-request-id": [
           "08d54983-e891-45d1-a635-107a5ab1f1ea"
@@ -9865,14 +9887,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20210305T084226Z:770641ce-b643-46d0-93c0-b4d27c5aafe8"
         ],
         "Date": [
           "Tue, 18 May 2021 15:44:56 GMT"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -9910,8 +9932,12 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "x-ms-request-id": [
           "dfe519e4-9fdf-44dd-801e-4a3155093bd0"
@@ -9925,14 +9951,20 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "45"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6d1834f-073c-41a1-81d0-46cee423cce9"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20210305T084226Z:d6d1834f-073c-41a1-81d0-46cee423cce9"
         ],
         "Date": [
           "Tue, 18 May 2021 16:02:17 GMT"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -10001,8 +10033,11 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "44"
         ],
         "x-ms-correlation-request-id": [
           "26c75d87-3d2e-4298-9983-fd35e6cd085c"
@@ -10015,13 +10050,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupJobs/14c01254-57d4-42d2-9eb2-5e340e2456d8\",\r\n  \"name\": \"14c01254-57d4-42d2-9eb2-5e340e2456d8\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"containerName\": \"iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300\",\r\n    \"duration\": \"PT1M1.3917407S\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover disks\",\r\n        \"Target VM Name\": \"vmName\",\r\n        \"Target Storage Account Name\": \"pstestsaf523077e\",\r\n        \"Recovery point time \": \"3/5/2021 8:00:08 AM\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"RestoreDisks\"\r\n      },\r\n      \"progressPercentage\": 1.0\r\n    },\r\n    \"entityFriendlyName\": \"pstestvmf52300\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2021-03-05T08:41:25.1546751Z\",\r\n    \"activityId\": \"153d1f59-0589-4365-b1f0-1c8cf1a201ee\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupFabrics/Azure/protectionContainers/IaasVMContainer%3Biaasvmcontainerv2%3Bpstestrg1574334b%3Bpstestvm157430/protectedItems/VM%3Biaasvmcontainerv2%3Bpstestrg1574334b%3Bpstestvm157430/recoveryPoints/53288486025778/restore?api-version=2021-03-01",
@@ -10094,13 +10126,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupJobs/14c01254-57d4-42d2-9eb2-5e340e2456d8\",\r\n  \"name\": \"14c01254-57d4-42d2-9eb2-5e340e2456d8\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"containerName\": \"iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300\",\r\n    \"duration\": \"PT1M31.8078683S\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover disks\",\r\n        \"Target VM Name\": \"vmName\",\r\n        \"Target Storage Account Name\": \"pstestsaf523077e\",\r\n        \"Recovery point time \": \"3/5/2021 8:00:08 AM\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"RestoreDisks\"\r\n      },\r\n      \"progressPercentage\": 1.0\r\n    },\r\n    \"entityFriendlyName\": \"pstestvmf52300\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2021-03-05T08:41:25.1546751Z\",\r\n    \"activityId\": \"153d1f59-0589-4365-b1f0-1c8cf1a201ee\"\r\n  }\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;pstestrg1574334b;pstestvm157430/protectedItems/VM;iaasvmcontainerv2;pstestrg1574334b;pstestvm157430/operationsStatus/c0777953-0b10-4bfc-b7f1-faa846695ed6?api-version=2021-03-01",
@@ -10125,6 +10154,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -10143,6 +10176,9 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "149"
@@ -10214,6 +10250,9 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "149"
         ],
@@ -10262,6 +10301,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -10281,6 +10324,9 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "138"
         ],
@@ -10294,7 +10340,7 @@
           "Tue, 18 May 2021 15:45:58 GMT"
         ],
         "Content-Length": [
-          "304"
+          "1064"
         ],
         "Content-Type": [
           "application/json"
@@ -10577,7 +10623,7 @@
           "Tue, 18 May 2021 15:46:30 GMT"
         ],
         "Content-Length": [
-          "1066"
+          "1064"
         ],
         "Content-Type": [
           "application/json"
@@ -10719,7 +10765,7 @@
           "Tue, 18 May 2021 15:47:31 GMT"
         ],
         "Content-Length": [
-          "1066"
+          "1064"
         ],
         "Content-Type": [
           "application/json"
@@ -12177,10 +12223,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -12196,6 +12238,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "59"
@@ -12248,9 +12296,11 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/protectedItems/VM;iaasvmcontainerv2;pstestrgf523077e;pstestvmf52300/operationsStatus/6a168678-c8b7-46d2-b59d-c12fe8bd3739?api-version=2021-01-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -12268,6 +12318,9 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "58"
         ],
@@ -12284,7 +12337,7 @@
           "1172"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
@@ -12319,10 +12372,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -12338,6 +12387,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "57"
@@ -12390,10 +12445,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -12409,6 +12460,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "56"
@@ -12813,6 +12870,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -12831,6 +12892,9 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "148"
@@ -12901,6 +12965,9 @@
         ],
         "X-Powered-By": [
           "ASP.NET"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "148"
@@ -13090,10 +13157,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -13109,6 +13172,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "50"
@@ -13161,9 +13230,14 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupOperationResults/f5be0603-1c69-4725-9bde-1411620e9e32?api-version=2021-01-01"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/PSTestRGf523077e/providers/Microsoft.RecoveryServices/vaults/PSTestRSVf523077e/backupOperations/f5be0603-1c69-4725-9bde-1411620e9e32?api-version=2021-01-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -13201,6 +13275,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupJobs/5abf7f39-c16c-4a7e-be68-a3264a92a33c\",\r\n  \"name\": \"5abf7f39-c16c-4a7e-be68-a3264a92a33c\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"containerName\": \"iaasvmcontainerv2;pstestrg1574334b;pstestvm157430\",\r\n    \"duration\": \"PT1M4.411621S\",\r\n    \"actionsInfo\": [\r\n      1\r\n    ],\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [\r\n        {\r\n          \"taskId\": \"Transfer data from vault\",\r\n          \"duration\": \"PT0S\",\r\n          \"status\": \"InProgress\"\r\n        }\r\n      ],\r\n      \"propertyBag\": {\r\n        \"Job Type\": \"Recover disks\",\r\n        \"Target VM Name\": \"vmName\",\r\n        \"Target Storage Account Name\": \"pstestsa1574334b\",\r\n        \"Recovery point time \": \"5/18/2021 3:13:18 PM\",\r\n        \"Target resource group\": \"PSTestRG1574334b1\"\r\n      },\r\n      \"internalPropertyBag\": {\r\n        \"restoreLocationType\": \"RestoreDisks\"\r\n      },\r\n      \"progressPercentage\": 1.0\r\n    },\r\n    \"entityFriendlyName\": \"pstestvm157430\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"Restore\",\r\n    \"status\": \"InProgress\",\r\n    \"startTime\": \"2021-05-18T16:02:18.452862Z\",\r\n    \"activityId\": \"5534bb2d-8dce-49be-851b-2baa996a6dc3\"\r\n  }\r\n}",
@@ -13232,10 +13309,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -13251,6 +13324,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "48"
@@ -13303,10 +13382,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -13322,6 +13397,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "47"
@@ -13374,10 +13455,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -13393,6 +13470,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "46"
@@ -13445,10 +13528,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0",
-          "Microsoft-IIS/10.0"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -13464,6 +13543,12 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "45"
@@ -13544,7 +13629,7 @@
           "Tue, 18 May 2021 16:05:26 GMT"
         ],
         "Content-Length": [
-          "478"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -13614,7 +13699,7 @@
           "Tue, 18 May 2021 16:05:27 GMT"
         ],
         "Content-Length": [
-          "914"
+          "188"
         ],
         "Content-Type": [
           "application/json"
@@ -13674,11 +13759,14 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
         "X-Powered-By": [
           "ASP.NET"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "134"
         ],
         "x-ms-correlation-request-id": [
           "568f83b7-2f99-4431-9edc-5bd92c169a55"
@@ -13691,13 +13779,10 @@
         ],
         "Expires": [
           "-1"
-        ],
-        "Content-Length": [
-          "0"
         ]
       },
-      "ResponseBody": "",
-      "StatusCode": 202
+      "ResponseBody": "{\r\n  \"id\": \"f5be0603-1c69-4725-9bde-1411620e9e32\",\r\n  \"name\": \"f5be0603-1c69-4725-9bde-1411620e9e32\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-03-05T09:02:19.3357066Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupOperations/3cba7ad0-aaad-4945-a41f-3137f6a955b2?api-version=2021-03-01",
@@ -14807,7 +14892,7 @@
           "Tue, 18 May 2021 16:06:48 GMT"
         ],
         "Content-Length": [
-          "188"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -14877,7 +14962,7 @@
           "Tue, 18 May 2021 16:06:54 GMT"
         ],
         "Content-Length": [
-          "188"
+          "304"
         ],
         "Content-Type": [
           "application/json"
@@ -14915,6 +15000,10 @@
         "Pragma": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-IIS/10.0",
+          "Microsoft-IIS/10.0"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
@@ -14934,6 +15023,9 @@
         "X-Powered-By": [
           "ASP.NET"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "117"
         ],
@@ -14947,7 +15039,7 @@
           "Tue, 18 May 2021 16:06:59 GMT"
         ],
         "Content-Length": [
-          "188"
+          "844"
         ],
         "Content-Type": [
           "application/json"
@@ -14997,12 +15089,6 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "116"
@@ -15024,6 +15110,9 @@
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"name\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
@@ -15055,8 +15144,14 @@
         "Pragma": [
           "no-cache"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0Y1MjMwNzdFLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
         ],
         "x-ms-request-id": [
           "4d90ea0f-f47f-4ae0-8ef1-badd6f42c04c"
@@ -15068,11 +15163,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Date": [
+          "Fri, 05 Mar 2021 09:05:15 GMT"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "115"
@@ -15086,14 +15181,17 @@
         "Date": [
           "Tue, 18 May 2021 16:07:09 GMT"
         ],
-        "Content-Length": [
-          "188"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "Content-Type": [
-          "application/json"
+        "Date": [
+          "Fri, 05 Mar 2021 09:05:30 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"name\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
@@ -15125,8 +15223,14 @@
         "Pragma": [
           "no-cache"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "Location": [
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU1RFU1RSR0Y1MjMwNzdFLVNPVVRIRUFTVEFTSUEiLCJqb2JMb2NhdGlvbiI6InNvdXRoZWFzdGFzaWEifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
         ],
         "x-ms-request-id": [
           "4617b416-3a1e-4982-86f9-67416bb18b74"
@@ -15138,11 +15242,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "Date": [
+          "Fri, 05 Mar 2021 09:05:45 GMT"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "114"
@@ -15156,14 +15260,17 @@
         "Date": [
           "Tue, 18 May 2021 16:07:14 GMT"
         ],
-        "Content-Length": [
-          "188"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "Content-Type": [
-          "application/json"
+        "Date": [
+          "Fri, 05 Mar 2021 09:06:00 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"name\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"endTime\": \"0001-01-01T00:00:00\"\r\n}",
@@ -15208,11 +15315,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+        "Retry-After": [
+          "15"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "113"
@@ -15229,11 +15336,14 @@
         "Content-Length": [
           "304"
         ],
-        "Content-Type": [
-          "application/json"
+        "Date": [
+          "Fri, 05 Mar 2021 09:06:15 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"name\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"endTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"15f98436-7357-4372-97cf-aa8b3ffa1406\"\r\n  }\r\n}",
@@ -15278,11 +15388,11 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
+        "Retry-After": [
+          "15"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "112"
@@ -15296,14 +15406,17 @@
         "Date": [
           "Tue, 18 May 2021 16:07:20 GMT"
         ],
-        "Content-Length": [
-          "304"
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
-        "Content-Type": [
-          "application/json"
+        "Date": [
+          "Fri, 05 Mar 2021 09:06:30 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"name\": \"3cba7ad0-aaad-4945-a41f-3137f6a955b2\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"endTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n  \"properties\": {\r\n    \"objectType\": \"OperationStatusJobExtendedInfo\",\r\n    \"jobId\": \"15f98436-7357-4372-97cf-aa8b3ffa1406\"\r\n  }\r\n}",
@@ -15349,8 +15462,8 @@
           "e160bbcd-9c50-4d45-993d-d46af213f9da",
           "e160bbcd-9c50-4d45-993d-d46af213f9da"
         ],
-        "X-Powered-By": [
-          "ASP.NET"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -15370,11 +15483,14 @@
         "Content-Length": [
           "845"
         ],
-        "Content-Type": [
-          "application/json"
+        "Date": [
+          "Fri, 05 Mar 2021 09:06:46 GMT"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/da364f0f-307b-41c9-9d47-b7413ec45535/resourceGroups/PSTestRG1574334b/providers/Microsoft.RecoveryServices/vaults/PSTestRSV1574334b/backupJobs/15f98436-7357-4372-97cf-aa8b3ffa1406\",\r\n  \"name\": \"15f98436-7357-4372-97cf-aa8b3ffa1406\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupJobs\",\r\n  \"properties\": {\r\n    \"jobType\": \"AzureIaaSVMJob\",\r\n    \"containerName\": \"iaasvmcontainerv2;pstestrg1574334b;pstestvm157430\",\r\n    \"duration\": \"PT1M51.4442655S\",\r\n    \"virtualMachineVersion\": \"Compute\",\r\n    \"extendedInfo\": {\r\n      \"tasksList\": [],\r\n      \"propertyBag\": {\r\n        \"VM Name\": \"PSTestVM157430\",\r\n        \"Number of Recovery Points\": \"1\"\r\n      }\r\n    },\r\n    \"entityFriendlyName\": \"PSTestVM157430\",\r\n    \"backupManagementType\": \"AzureIaasVM\",\r\n    \"operation\": \"DeleteBackupData\",\r\n    \"status\": \"Completed\",\r\n    \"startTime\": \"2021-05-18T16:05:28.6620251Z\",\r\n    \"endTime\": \"2021-05-18T16:07:20.1062906Z\",\r\n    \"activityId\": \"e160bbcd-9c50-4d45-993d-d46af213f9da\"\r\n  }\r\n}",

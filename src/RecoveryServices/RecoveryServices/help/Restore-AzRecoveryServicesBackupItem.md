@@ -625,6 +625,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RehydratePriority 
+
+Rehydration priority for an archived recovery point while triggering the restore. Acceptable values are Standard, High.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureWorkloadParameterSet
+Aliases:
+Accepted values: Standard, High
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RehydrateDuration 
+
+Duration in days for which to keep the archived recovery point rehydrated. Value can range from 10 to 30 days, default value is 15 days.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureVMParameterSet, AzureVMRestoreManagedAsUnmanaged, AzureVMManagedDiskParameterSet, AzureVMUnManagedDiskParameterSet, AzureWorkloadParameterSet
+Aliases:
+Accepted values: 10 to 30 days
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultId
 
 ARM ID of the Recovery Services Vault.

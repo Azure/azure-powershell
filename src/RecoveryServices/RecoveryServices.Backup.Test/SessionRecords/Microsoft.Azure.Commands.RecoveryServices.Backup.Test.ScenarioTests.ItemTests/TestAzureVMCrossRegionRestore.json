@@ -370,7 +370,7 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
           "428ca526-4228-491f-8b19-9abe809410f6"
@@ -500,7 +500,7 @@
           "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11968"
         ],
         "x-ms-correlation-request-id": [
           "957afc84-60fc-4e61-8083-b30fa8be9d98"
@@ -687,7 +687,7 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-request-id": [
           "8d58c760-a29e-412c-9925-13012ecc986e"
