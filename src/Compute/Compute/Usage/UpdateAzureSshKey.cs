@@ -32,7 +32,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [SupportsWildcards]
         [Alias("sshkeyName")]
         public string Name { get; set; }
-        
+
+        [Parameter(
+           Mandatory = true,
+           ParameterSetName = ResourceIDParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Resource ID for your SSH Public Key Resource.")]
+        [ResourceIdCompleter("Microsoft.Compute/SshPublicKeys")]
+        public string ResourceId { get; set; }
+
+        [Alias("SshKey")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "PowerShell Ssh Public Key Object")]
+        [ValidateNotNullOrEmpty]
+        public PSSshPublicKeyResource InputObject { get; set; } 
+
         [Parameter(
             Mandatory = true,
            ParameterSetName = ResourceIDParameterSet,
