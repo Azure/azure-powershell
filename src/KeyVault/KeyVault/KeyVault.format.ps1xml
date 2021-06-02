@@ -511,15 +511,11 @@
                 <PropertyName>EnableSoftDelete</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Enabled Purge Protection?</Label>
-                <PropertyName>EnablePurgeProtection</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Soft Delete Retention Period (days)</Label>
                 <PropertyName>SoftDeleteRetentionInDays</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Enabled Purge Protection?</Label>
+                <Label>Purge Protection Enabled?</Label>
                 <PropertyName>EnablePurgeProtection</PropertyName>
               </ListItem>
               <ListItem>
