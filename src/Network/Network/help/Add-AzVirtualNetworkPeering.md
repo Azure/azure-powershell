@@ -232,3 +232,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVirtualNetworkPeering](./Remove-AzVirtualNetworkPeering.md)
 
 [Set-AzVirtualNetworkPeering](./Set-AzVirtualNetworkPeering.md)
+
+[Sync-AzVirtualNetworkPeering](./Sync-AzVirtualNetworkPeering.md)

@@ -153,5 +153,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualNetworkCRUD-FlowTimeout");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkPeeringSyncCRUD()
+        {
+            TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
+        }
     }
 }

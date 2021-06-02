@@ -18,7 +18,7 @@ Creates a rule configuration for a load balancer.
 New-AzLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
- [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>]
+ [-BackendAddressPool <PSBackendAddressPool[]>] [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribut
 New-AzLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
  [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
  [-EnableTcpReset] [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>]
- [-BackendAddressPoolId <String>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-BackendAddressPoolId <String[]>] [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,16 +38,25 @@ The **New-AzLoadBalancerRuleConfig** cmdlet creates a rule configuration for an 
 
 ### Example 1: Creating a rule configuration for an Azure Load Balancer
 ```powershell
-PS C:\>  $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
+PS C:\> $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
     -name MyPublicIP -location 'West US' -AllocationMethod Dynamic
-PS C:\>  $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
+PS C:\> $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
     -PublicIpAddress $publicip
-PS C:\>  $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
+PS C:\> $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
     80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
 PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
     $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp `
     -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP `
     -LoadDistribution SourceIP
+```
+
+### Example 2: Creating a rule configuration for an Azure Load Balancer with Gateway Load Balancer
+```powershell
+PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> $MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
+PS C:\> $MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
+PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "All" -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1,$MyBackendPool2
+PS C:\>$slb | Set-AzLoadBalancer
 ```
 
 The first three commands set up a public IP, a front end, and a probe for the rule configuration in the forth command. The forth command creates a new rule called MyLBrule with certain specifications.
@@ -58,7 +67,7 @@ The first three commands set up a public IP, a front end, and a probe for the ru
 Specifies a **BackendAddressPool** object to associate with a load balancer rule configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool[]
 Parameter Sets: SetByResource
 Aliases:
 
@@ -73,7 +82,7 @@ Accept wildcard characters: False
 Specifies the ID of a **BackendAddressPool** object to associate with a load balancer rule configuration.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: SetByResourceId
 Aliases:
 

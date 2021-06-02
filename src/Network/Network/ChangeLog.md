@@ -30,11 +30,18 @@
 * Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
     - `New-AzVirtualNetworkGatewayConnection`
     - `Set-AzVirtualNetworkGatewayConnection`
+* Updated cmdlet to enable setting of FlowTimeout in VirtualNetwork.
+    - `New-AzVirtualNetwork`
 * Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
     - `New-AzVirtualNetworkGatewayNatRule`
     - `Update-AzVirtualNetworkGatewayNatRule`
     - `Get-AzVirtualNetworkGatewayNatRule`
     - `Remove-AzVirtualNetworkGatewayNatRule`
+* Added a new cmdlet for Sync on VirtualNetworkPeering
+    - `Sync-AzVirtualNetworkPeering`
+* Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
+    - `Add-AzVirtualNetworkPeering`
+    - `Get-AzVirtualNetworkPeering`
 * Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
     - `New-AzVirtualHub`
     - `Update-AzVirtualHub`

@@ -38,12 +38,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
-        [JsonProperty(Order = 1)] 
+        [JsonProperty(Order = 1)]
         public List<PSLoadBalancerBackendAddress> LoadBalancerBackendAddresses { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
         [JsonProperty(Order = 1)]
         public PSResourceId OutboundRule { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSTunnelInterface> TunnelInterfaces { get; set; }
 
         [JsonIgnore]
         public string BackendIpConfigurationsText
@@ -67,6 +69,17 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string OutboundRuleText
         {
             get { return JsonConvert.SerializeObject(OutboundRule, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string TunnelInterfacesText
+        {
+            get { return JsonConvert.SerializeObject(TunnelInterfaces, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeTunnelInterfaces()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
 
         public bool ShouldSerializeBackendIpConfigurations()

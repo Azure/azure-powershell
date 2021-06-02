@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public PSPublicIpPrefix PublicIpAddressPrefix { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The reference of Gateway LoadBalancer Provider resource.",
+            ValueFromPipelineByPropertyName = true)]
+        public string GatewayLoadBalancerId { get; set; }
+
         public override void Execute()
         {
 
@@ -157,7 +163,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.PublicIpAddressId = this.PublicIpAddress.Id;
                 }
             }
-            
+
             if (string.Equals(ParameterSetName, "SetByResourcePublicIpAddressPrefix"))
             {
                 if (this.PublicIpAddressPrefix != null)
@@ -170,7 +176,7 @@ namespace Microsoft.Azure.Commands.Network
 
             vFrontendIpConfigurations.PrivateIpAddress = this.PrivateIpAddress;
             vFrontendIpConfigurations.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-            if(!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
+            if (!string.IsNullOrEmpty(vFrontendIpConfigurations.PrivateIpAddress))
             {
                 vFrontendIpConfigurations.PrivateIpAllocationMethod = "Static";
             }
@@ -180,8 +186,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vFrontendIpConfigurations.Name = this.Name;
+
             vFrontendIpConfigurations.Zones = this.Zone?.ToList();
-            if(!string.IsNullOrEmpty(this.SubnetId))
+            if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 // Subnet
                 if (vFrontendIpConfigurations.Subnet == null)
@@ -190,7 +197,18 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vFrontendIpConfigurations.Subnet.Id = this.SubnetId;
             }
-            if(!string.IsNullOrEmpty(this.PublicIpAddressId))
+
+            if (!string.IsNullOrEmpty(this.GatewayLoadBalancerId))
+            {
+                // Gateway
+                if (vFrontendIpConfigurations.GatewayLoadBalancer == null)
+                {
+                    vFrontendIpConfigurations.GatewayLoadBalancer = new PSFrontendIPConfiguration();
+                }
+                vFrontendIpConfigurations.GatewayLoadBalancer.Id = this.GatewayLoadBalancerId;
+            }
+
+            if (!string.IsNullOrEmpty(this.PublicIpAddressId))
             {
                 // PublicIpAddress
                 if (vFrontendIpConfigurations.PublicIpAddress == null)
@@ -199,6 +217,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vFrontendIpConfigurations.PublicIpAddress.Id = this.PublicIpAddressId;
             }
+
             if (!string.IsNullOrEmpty(this.PublicIpAddressPrefixId))
             {
                 // PublicIpAddressPrefix
@@ -208,6 +227,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 vFrontendIpConfigurations.PublicIPPrefix.Id = this.PublicIpAddressPrefixId;
             }
+
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,

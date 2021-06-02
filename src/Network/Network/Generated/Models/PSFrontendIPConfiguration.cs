@@ -63,6 +63,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSPublicIpAddress PublicIpAddress { get; set; }
         [JsonProperty(Order = 1)]
         public PSResourceId PublicIPPrefix { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId GatewayLoadBalancer { get; set; }
 
         [JsonIgnore]
         public string ZonesText
@@ -74,6 +76,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InboundNatRulesText
         {
             get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string GatewayLoadBalancerText
+        {
+            get { return JsonConvert.SerializeObject(GatewayLoadBalancer, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -133,6 +141,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         public bool ShouldSerializeZones()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeGatewayLoadBalancer()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

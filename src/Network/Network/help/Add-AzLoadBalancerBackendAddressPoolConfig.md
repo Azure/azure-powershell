@@ -14,7 +14,7 @@ Adds a backend address pool configuration to a load balancer.
 ## SYNTAX
 
 ```
-Add-AzLoadBalancerBackendAddressPoolConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+Add-AzLoadBalancerBackendAddressPoolConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-TunnelInterface <PSTunnelInterface[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
