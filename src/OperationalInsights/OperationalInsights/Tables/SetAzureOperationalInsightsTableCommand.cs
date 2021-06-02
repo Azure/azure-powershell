@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
                 //IsTroubleshootEnabled = IsTroubleshootEnabled,
             };
 
-            if (ShouldProcess(TableName, $"Update Tab;e: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
                 WriteObject(OperationalInsightsClient.UpdatePSTable(tableSetProperties), true);
             }

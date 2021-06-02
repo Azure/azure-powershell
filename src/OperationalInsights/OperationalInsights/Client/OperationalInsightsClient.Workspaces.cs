@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSWorkspaceKeys(response);
         }
 
+        public virtual PSWorkspaceKeys UpdateWorkspaceKeys(string resourceGroupName, string workspaceName)
+        {
+            var response = OperationalInsightsManagementClient.SharedKeys.Regenerate(resourceGroupName, workspaceName);
+
+            return new PSWorkspaceKeys(response);
+        }
+
         public virtual List<PSManagementGroup> GetWorkspaceManagementGroups(string resourceGroupName, string workspaceName)
         {
             List<PSManagementGroup> managementGroups = new List<PSManagementGroup>();

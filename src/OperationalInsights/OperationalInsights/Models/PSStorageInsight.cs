@@ -18,6 +18,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
+    using System.Collections;
     using System.Linq;
 
     public class PSStorageInsight
@@ -35,15 +36,21 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
             this.ResourceGroupName = resourceGroupName;
             this.WorkspaceName = workspaceName;
-            this.Name = storageInsight.Name;
-            this.ResourceId = storageInsight.Id;
 
             if (storageInsight != null)
             {
+                this.Name = storageInsight.Name;
+                this.ResourceId = storageInsight.Id;
+                this.Type = storageInsight.Type;
+
                 this.StorageAccountResourceId = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Id : null;
+                this.StorageAccountKey = storageInsight.StorageAccount != null ? storageInsight.StorageAccount.Key : null;
                 this.Tables = storageInsight.Tables.ToList();
                 this.Containers = storageInsight.Containers.ToList();
                 this.State = storageInsight.Status != null ? storageInsight.Status.State : null;
+                this.StateDescription = storageInsight.Status != null ? storageInsight.Status.Description : null;
+                this.ETag = storageInsight.ETag;
+                this.Tags = new Hashtable((IDictionary)storageInsight.Tags);
             }
         }
 
@@ -55,12 +62,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public string WorkspaceName { get; set; }
 
+        public string Type { get; set; }//added
+
         public string StorageAccountResourceId { get; set; }
 
+        public string StorageAccountKey { get; set; }// new prop
+
         public string State { get; set; }
+
+        public string StateDescription { get; set; }//new prop
 
         public List<string> Tables { get; set; }
 
         public List<string> Containers { get; set; }
+
+        public Hashtable Tags { get; set; } //new prop
+
+        public string ETag { get; set; }//new prop
     }
 }
