@@ -344,6 +344,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentity { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignUserAssignIdentity { get; set; }
+
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
@@ -517,7 +521,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
                 AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentity ?? null),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
                 LicenseType = this.LicenseType,
                 // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.

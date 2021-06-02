@@ -55,7 +55,47 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     UserAssignedIdentities = umiDict
                 };
             }
-            
+
+            return identityResult;
+        }
+
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, bool userAssignedIdentityIsPresent, List<string> userAssignedIdentities)
+        {
+            Management.Sql.Models.ResourceIdentity identityResult = null;
+
+            if (assignIdentityIsPresent && userAssignedIdentityIsPresent)
+            {
+                Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
+
+                if (userAssignedIdentities != null && userAssignedIdentities.Any())
+                {
+                    foreach (string identity in userAssignedIdentities)
+                    {
+                        umiDict.Add(identity, new UserIdentity());
+                    }
+
+                    identityResult = new Management.Sql.Models.ResourceIdentity()
+                    {
+                        Type = ResourceIdentityType.UserAssigned.ToString(),
+                        UserAssignedIdentities = umiDict
+                    };
+                }
+                else
+                {
+                    identityResult = new Management.Sql.Models.ResourceIdentity()
+                    {
+                        Type = ResourceIdentityType.SystemAssigned.ToString()
+                    };
+                }    
+            }
+            else if (assignIdentityIsPresent)
+            {
+                identityResult = new Management.Sql.Models.ResourceIdentity()
+                {
+                    Type = ResourceIdentityType.SystemAssigned.ToString()
+                };
+            }
+
             return identityResult;
         }
     }

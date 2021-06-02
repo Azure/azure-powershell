@@ -225,6 +225,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentity { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignUserAssignIdentity { get; set; }
+
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
@@ -308,7 +312,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentity ?? null),
+                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,

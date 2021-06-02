@@ -104,6 +104,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentity { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignUserAssignIdentity { get; set; }
+
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
@@ -141,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentity ?? null),
+                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,

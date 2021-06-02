@@ -110,6 +110,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "List of user assigned identities")]
         public List<string> UserAssignedIdentity { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignUserAssignIdentity { get; set; }
+
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
@@ -205,7 +209,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorPassword = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.Password : null,
                 SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent ? this.AssignIdentity.ToString() : null, UserAssignedIdentity ?? null),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
