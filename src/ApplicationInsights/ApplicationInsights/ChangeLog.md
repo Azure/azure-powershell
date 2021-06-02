@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Get-AzApplicationInsightsLinkedStorageAccount` `New-AzApplicationInsightsLinkedStorageAccount` `Update-AzApplicationInsightsLinkedStorageAccount` `Remove-AzApplicationInsightsLinkedStorageAccount` complain missing `ResourcegroupName` parameter when executing command with `InputObject` parameter [#14848]
 
 ## Version 1.1.0
 * Added Parameters: `RetentionInDays` `PublicNetworkAccessForIngestion` `PublicNetworkAccessForQuery` for `New-AzApplicationInsights`
