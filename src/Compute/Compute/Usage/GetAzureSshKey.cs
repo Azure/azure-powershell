@@ -9,13 +9,16 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSSshPublicKeyResource))]
     public partial class GetAzureSshKey : ComputeAutomationBaseCmdlet
     {
+        private const string DefaultParameterSet = "DefaultParameterSet";
+        private const string ResourceIDParameterSet = "ResourceIDParameterSet";
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [SupportsWildcards]
@@ -23,19 +26,39 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true)]
         [ResourceNameCompleter("Microsoft.Compute/SshPublicKeys", "ResourceGroupName")]
         [SupportsWildcards]
         [Alias("sshkeyName")]
         public string Name { get; set; }
 
+        [Parameter(
+           Mandatory = true,
+           ParameterSetName = ResourceIDParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Resource ID for your SSH Public Key Resource.")]
+        [ResourceIdCompleter("Microsoft.Compute/sshPublicKeys")]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                string resourceGroupName = this.ResourceGroupName;
-                string sshKeyName = this.Name;
+                string resourceGroupName;
+                string sshKeyName;
+
+                if (this.ParameterSetName == ResourceIDParameterSet)
+                {
+                    resourceGroupName = GetResourceGroupName(this.ResourceId);
+                    sshKeyName = GetResourceName(this.ResourceId, "Microsoft.Compute/sshPublicKeys");
+                }
+                else
+                {
+                    resourceGroupName = this.ResourceGroupName;
+                    sshKeyName = this.Name;
+                }
 
                 if (ShouldGetByName(resourceGroupName, sshKeyName))
                 {

@@ -12,9 +12,22 @@ Delete a SSH Public Key resource.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Remove-AzSshKey -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ResourceIDParameterSet
+```
+Remove-AzSshKey [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzSshKey [-InputObject] <PSSshPublicKeyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +59,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+PowerShell SSH Public Key Object
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSSshPublicKeyResource
+Parameter Sets: InputObjectParameterSet
+Aliases: SshKey
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Ssh Public Key resource to get.
 
@@ -74,6 +102,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+Resource ID for your SSH Public Key Resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIDParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters

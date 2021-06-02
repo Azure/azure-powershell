@@ -12,9 +12,15 @@ Gets the properties of SSH Public Key resources.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Get-AzSshKey [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
+```
+
+### ResourceIDParameterSet
+```
+Get-AzSshKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +94,21 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ResourceId
+Resource ID for your SSH Public Key Resource.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIDParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
 ```
 
 ### CommonParameters
