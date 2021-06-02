@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed the output print issue for `Search-AzGraph`.
+* Fixed the output print issue for `Search-AzGraph` by updating the output type to Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]].
 * Fixed the issue when Search-AzGraph fails if no subscriptions are stored in the context.
 
 ## Version 0.10.0
