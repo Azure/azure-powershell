@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Management.Automation;
 using System.Security;
 using System.Threading;
@@ -366,7 +367,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if( !string.IsNullOrWhiteSpace(CertificatePath))
             {
-                var resolvedPath = this.SessionState.Path.GetResolvedPSPathFromPSPath(CertificatePath).MaxOrDefault(p => p.Path, string.Empty);
+                var resolvedPath = this.SessionState.Path.GetResolvedPSPathFromPSPath(CertificatePath).FirstOrDefault()?.Path;
                 if (string.IsNullOrEmpty(resolvedPath))
                 {
                     var parametersLog = $"- Invalid certificate path :'{CertificatePath}'.";
@@ -403,7 +404,7 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, Tenant);
             }
 
-            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && string.IsNullOrEmpty(CertificateThumbprint) && password != null)
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal && password != null)
             {
                 azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
                 if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
