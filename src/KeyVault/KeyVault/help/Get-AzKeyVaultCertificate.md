@@ -107,15 +107,11 @@ Updated     : 2/8/2016 11:21:45 PM
 This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
 
 ```powershell
-$cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+$cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
 $secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name -AsPlainText
 $secretByte = [Convert]::FromBase64String($secret)
-$x509Cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($secretByte, "", "Exportable,PersistKeySet")
-$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
-$pfxFileByte = $x509Cert.Export($type, $password)
-
 # Write to a file
-[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
+[System.IO.File]::WriteAllBytes("cert.pfx", $secretByte)
 ```
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
