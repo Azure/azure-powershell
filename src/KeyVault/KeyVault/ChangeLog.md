@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed duplicate list item in `Get-AzKeyVault` [#15164]
 
 ## Version 3.4.4
 * Provided key size for RSA key [#14819]
