@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
-                ReadScale = ReadScale,
+                ReadScale = this.IsParameterBound(p => p.ReadScale) ? ReadScale : (DatabaseReadScale?)null,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType, // set to original license type
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
