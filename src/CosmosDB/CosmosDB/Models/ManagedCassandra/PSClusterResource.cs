@@ -17,13 +17,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSManagedCassandraClusterGetResults
+    public class PSClusterResource
     {
-        public PSManagedCassandraClusterGetResults()
+        public PSClusterResource()
         {
         }        
         
-        public PSManagedCassandraClusterGetResults(ClusterResource clusterResource)
+        public PSClusterResource(ClusterResource clusterResource)
         {
             if (clusterResource == null)
                 return;
@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             Name = clusterResource.Name;
             Location = clusterResource.Location;
             Tags = clusterResource.Tags;
-            Identity = clusterResource.Identity;
-            Properties = new PSManagedCassandraClusterGetPropertiesResource(clusterResource.Properties);
+            Properties = new PSClusterResourceProperties(clusterResource.Properties);
         }
 
         /// <summary>
@@ -52,15 +51,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets Identity of the Managed Cassandra Cluster
-        /// </summary>
-        public ManagedServiceIdentity Identity { get; set; }
-
-        /// <summary>
         /// Gets or sets Tags of the Managed Cassandra Cluster
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }
 
-        public PSManagedCassandraClusterGetPropertiesResource Properties { get; set; }
+        public PSClusterResourceProperties Properties { get; set; }
     }
 }

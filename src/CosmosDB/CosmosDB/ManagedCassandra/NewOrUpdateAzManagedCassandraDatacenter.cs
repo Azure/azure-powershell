@@ -39,16 +39,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public int? NodeCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraBase64EncodedCassandraYamlFragment)]
+        [ValidateNotNullOrEmpty]
         public string Base64EncodedCassandraYamlFragment { get; set; }
-
-        public IList<SeedNode> PopulateSeedNodes(string[] seedNodes)
-        {
-            IList<SeedNode> seedNodeList = new List<SeedNode>();
-            foreach (string seedNode in seedNodes)
-            {
-                seedNodeList.Add(new SeedNode(seedNode));
-            }
-            return seedNodeList;
-        }
     }
 }

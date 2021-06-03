@@ -18,13 +18,13 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    public class PSManagedCassandraDatacenterGetPropertiesResource
+    public class PSDataCenterResourceProperties
     {
-        PSManagedCassandraDatacenterGetPropertiesResource()
+        PSDataCenterResourceProperties()
         {
         }
 
-        public PSManagedCassandraDatacenterGetPropertiesResource(DataCenterResourceProperties dataCenterProperties)
+        public PSDataCenterResourceProperties(DataCenterResourceProperties dataCenterProperties)
         {
             if (dataCenterProperties == null)
             {

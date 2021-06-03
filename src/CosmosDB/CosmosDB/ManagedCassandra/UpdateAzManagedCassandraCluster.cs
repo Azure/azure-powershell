@@ -19,14 +19,40 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagedCassandraClusterGetResults))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSClusterResource))]
     public class UpdateAzManagedCassandraCluster : NewOrUpdateAzManagedCassandraCluster
     {
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             ClusterResource clusterResource = null;
             try
             {
@@ -45,9 +71,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IList<SeedNode> ExternalSeedNodesList;
-            if (ExternalSeedNodes != null)
+            if (ExternalSeedNode != null)
             {
-                ExternalSeedNodesList = base.PopulateSeedNodes(ExternalSeedNodes);
+                ExternalSeedNodesList = base.PopulateExternalSeedNodes(ExternalSeedNode);
             }
             else
             {                
@@ -55,9 +81,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IList<Certificate> ClientCertificateList;
-            if (ClientCertificates != null)
+            if (ClientCertificate != null)
             {
-                ClientCertificateList = base.PopulateCertificates(ClientCertificates);
+                ClientCertificateList = base.PopulateCertificates(ClientCertificate);
             }
             else
             {
@@ -65,9 +91,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IList<Certificate> ExternalGossipCertificateList;
-            if (ExternalGossipCertificates != null)
+            if (ExternalGossipCertificate != null)
             {
-                ExternalGossipCertificateList = base.PopulateCertificates(ExternalGossipCertificates);
+                ExternalGossipCertificateList = base.PopulateCertificates(ExternalGossipCertificate);
             }
             else
             {
@@ -75,9 +101,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
 
             IDictionary<string, string> tagsDict;
-            if (Tags != null)
+            if (Tag != null)
             {
-                tagsDict = base.PopulateTags(Tags);
+                tagsDict = base.PopulateTags(Tag);
             }
             else
             {
@@ -102,14 +128,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     AuthenticationMethod = AuthenticationMethod ?? clusterResource.Properties.AuthenticationMethod,
                 },
                 Location = clusterResource.Location,
-                Identity = Identity,
                 Tags = tagsDict
             };
 
             if (ShouldProcess(ClusterName, "Updating Managed Cassandra Cluster."))
             {
                 ClusterResource clusterResourceResult = CosmosDBManagementClient.CassandraClusters.CreateUpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, ClusterUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSManagedCassandraClusterGetResults(clusterResourceResult));
+                WriteObject(new PSClusterResource(clusterResourceResult));
             }
 
             return;

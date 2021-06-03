@@ -27,7 +27,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagedCassandraClusterGetResults), typeof(ConflictingResourceException))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSClusterResource), typeof(ConflictingResourceException))]
     public class NewAzManagedCassandraCluster : NewOrUpdateAzManagedCassandraCluster
     {
 
@@ -36,15 +36,19 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.ManagedCassandraDelegatedSubnetIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string DelegatedManagementSubnetId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraInitialCassandraAdminPasswordHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string InitialCassandraAdminPassword { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraClusterNameOverrideHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string ClusterNameOverride { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraRestoreFromBackupIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string RestoreFromBackupId { get; set; }
 
 
@@ -68,38 +72,38 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, ClusterName));
             }
 
-            if(InitialCassandraAdminPassword == null && ExternalGossipCertificates == null)
+            if(InitialCassandraAdminPassword == null && ExternalGossipCertificate == null)
             {
                 throw new ArgumentException("At least one out of the InitialCassandraAdminPassword or ExternalGossipCertificates is required.");
             }
 
-            if (InitialCassandraAdminPassword != null && ExternalGossipCertificates != null)
+            if (InitialCassandraAdminPassword != null && ExternalGossipCertificate != null)
             {
                 throw new ArgumentException("Only one out of the InitialCassandraAdminPassword or ExternalGossipCertificates has to be specified.");
             }
 
             IList<SeedNode> ExternalSeedNodesList = new List<SeedNode>();
-            if(ExternalSeedNodes != null)
+            if(ExternalSeedNode != null)
             {
-                ExternalSeedNodesList = base.PopulateSeedNodes(ExternalSeedNodes);
+                ExternalSeedNodesList = base.PopulateExternalSeedNodes(ExternalSeedNode);
             }
 
             IList<Certificate> ClientCertificateList = new List<Certificate>();
-            if (ClientCertificates != null)
+            if (ClientCertificate != null)
             {
-                ClientCertificateList = base.PopulateCertificates(ClientCertificates);
+                ClientCertificateList = base.PopulateCertificates(ClientCertificate);
             }
 
             IList<Certificate> ExternalGossipCertificateList = new List<Certificate>();
-            if (ExternalGossipCertificates != null)
+            if (ExternalGossipCertificate != null)
             {
-                ExternalGossipCertificateList = base.PopulateCertificates(ExternalGossipCertificates);
+                ExternalGossipCertificateList = base.PopulateCertificates(ExternalGossipCertificate);
             }
 
             Dictionary<string, string> tagsDict = new Dictionary<string, string>();
-            if (Tags != null)
+            if (Tag != null)
             {
-                tagsDict = base.PopulateTags(Tags);
+                tagsDict = base.PopulateTags(Tag);
             }
 
             ClusterResource ClusterCreateParameters = new ClusterResource
@@ -119,14 +123,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     InitialCassandraAdminPassword = InitialCassandraAdminPassword,
                 },
                 Location = Location,
-                Identity = Identity,
                 Tags = tagsDict
             };
 
             if (ShouldProcess(ClusterName, "Creating a new Managed Cassandra Cluster"))
             {
                 ClusterResource clusterResourceResult = CosmosDBManagementClient.CassandraClusters.CreateUpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, ClusterCreateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSManagedCassandraClusterGetResults(clusterResourceResult));
+                WriteObject(new PSClusterResource(clusterResourceResult));
             }
 
             return;

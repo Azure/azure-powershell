@@ -37,20 +37,62 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DataCenterName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraDatacenterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSDataCenterResource InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.PassThruHelpMessage)]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource ParentObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                String[] parentSegments = resourceIdentifier.ParentResource.Split(separator: '/');
+                if (parentSegments.Length != 2)
+                {
+                    throw new ArgumentException("ResourceId is invalid.");
+                }
+                ClusterName = resourceIdentifier.ParentResource.Split(separator: '/')[1];
+                DataCenterName = resourceIdentifier.ResourceName;
+            }
+
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(ClusterName, "Removing Managed Cassandra DataCenter."))
             {
-                CosmosDBManagementClient.CassandraClusters.DeleteWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult();
+                CosmosDBManagementClient.CassandraDataCenters.DeleteWithHttpMessagesAsync(ResourceGroupName, ClusterName, DataCenterName).GetAwaiter().GetResult();
 
                 if (PassThru)
+                {
                     WriteObject(true);
+                }                    
             }
 
             return;

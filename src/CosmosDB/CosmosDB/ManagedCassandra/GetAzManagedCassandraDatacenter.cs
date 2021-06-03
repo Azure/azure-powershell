@@ -18,10 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraDatacenter", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSManagedCassandraDatacenterGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraDatacenter", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSDataCenterResource))]
     public class GetAzManagedCassandraDatacenter: AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -37,19 +39,63 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DataCenterName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraDatacenterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSDataCenterResource InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource ParentObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            ResourceIdentifier resourceIdentifier = null;
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                String[] parentSegments = resourceIdentifier.ParentResource.Split(separator: '/');
+                if(parentSegments.Length != 2)
+                {
+                    throw new ArgumentException("ResourceId is invalid.");
+                }
+                ClusterName = resourceIdentifier.ParentResource.Split(separator:'/')[1];
+                DataCenterName = resourceIdentifier.ResourceName;
+            }
+
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             if (!string.IsNullOrEmpty(DataCenterName))
             {
                 DataCenterResource dataCenterResource = CosmosDBManagementClient.CassandraDataCenters.GetWithHttpMessagesAsync(ResourceGroupName, ClusterName, DataCenterName).GetAwaiter().GetResult().Body;
-                WriteObject(new PSManagedCassandraDatacenterGetResults(dataCenterResource));
+                WriteObject(new PSDataCenterResource(dataCenterResource));
             }
             else 
             {
                 IEnumerable<DataCenterResource> dataCenterResources = CosmosDBManagementClient.CassandraDataCenters.ListWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult().Body;
 
                 foreach (DataCenterResource dataCenterResource in dataCenterResources)
-                    WriteObject(new PSManagedCassandraDatacenterGetResults(dataCenterResource));
+                {
+                    WriteObject(new PSDataCenterResource(dataCenterResource));
+                }                    
             }
 
             return;

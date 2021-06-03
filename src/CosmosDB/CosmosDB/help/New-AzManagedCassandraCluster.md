@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azmanagedcassandracluster
 schema: 2.0.0
 ---
 
@@ -29,7 +29,13 @@ This cmdlet is used to create a ManagedCassandra Cluster in supported regions.
 
 ### Example 1: Create a New Managed Cassandra Cluster
 ```powershell
-PS C:\> New-AzManagedCassandraCluster -ResourceGroupName "RG01" -ClusterName "Cluster01" -Location "westus" -InitialCassandraAdminPassword "password" -DelegatedManagementSubnetId "/subscriptions/94d9b402-77b4-4049-b4c1-947bc6b7729b/resourceGroups/My-vnet/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-subnet"
+PS C:\> New-AzManagedCassandraCluster -ResourceGroupName "test-powershell" -ClusterName "cluster1" -Location "westus" -InitialCassandraAdminPassword "password" -DelegatedManagementSubnetId "/subscriptions/94d9b402-77b4-4049-b4c1-947bc6b7729b/resourceGroups/My-vnet/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-subnet"
+
+Id         : /subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/cluster1
+Name       : cluster1
+Location   : eastus2
+Tags       : {}
+Properties : Microsoft.Azure.Commands.CosmosDB.Models.PSClusterResourceProperties
 ```
 
 ## PARAMETERS

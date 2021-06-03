@@ -19,7 +19,7 @@ Test Cassandra Cluster CRUD cmdlets using Name paramter set
 function Test-ManagedCassandraClusterCreateUpdateGetCmdlets
 {
   $RgName = "test-powershell"
-  $ClusterName = "cluster1"
+  $ClusterName = "cluster01"
   $DCName = "dc1"
   $Location = "eastus2"
   $MyVirtualNetwork = "network1"
@@ -34,7 +34,7 @@ function Test-ManagedCassandraClusterCreateUpdateGetCmdlets
       $cluster = New-AzManagedCassandraCluster -ResourceGroupName $RgName -ClusterName $ClusterName -Location $Location -InitialCassandraAdminPassword "password" -DelegatedManagementSubnetId $subnet.Id
       Assert-AreEqual "Succeeded" $cluster.Properties.ProvisioningState
 
-      $cluster = Update-AzManagedCassandraCluster -ResourceGroupName $RgName -ClusterName $ClusterName -ExternalSeedNodes "127.0.0.1", "127.0.0.2", "127.0.0.3"
+      $cluster = Update-AzManagedCassandraCluster -ResourceGroupName $RgName -ClusterName $ClusterName -ExternalSeedNode "127.0.0.1", "127.0.0.2", "127.0.0.3"
       Assert-AreEqual "Succeeded" $cluster.Properties.ProvisioningState
 
       $cluster = Get-AzManagedCassandraCluster -ResourceGroupName $RgName -ClusterName $ClusterName
@@ -56,7 +56,7 @@ Test Cassandra Datacenter CRUD cmdlets using Name paramter set
 function Test-ManagedCassandraDatacenterCreateUpdateGetCmdlets
 {
   $RgName = "test-powershell"
-  $ClusterName = "cluster1"
+  $ClusterName = "cluster01"
   $DCName = "dc1"
   $Location = "eastus2"
   $MyVirtualNetwork = "network1"

@@ -18,13 +18,13 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Models
 {
-    public class PSManagedCassandraClusterGetPropertiesResource
+    public class PSClusterResourceProperties
     {
-        PSManagedCassandraClusterGetPropertiesResource()
+        PSClusterResourceProperties()
         {
         }
 
-        public PSManagedCassandraClusterGetPropertiesResource(ClusterResourceProperties clusterProperties)
+        public PSClusterResourceProperties(ClusterResourceProperties clusterProperties)
         {
             if(clusterProperties == null)
             {
@@ -36,16 +36,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             {
                 GossipCertificates.Add(new PSCertificate(gossipCertificate?.Pem));
             }
+
             ExternalGossipCertificates = new List<PSCertificate>();
             foreach (Certificate externalGossipCertificate in clusterProperties.ExternalGossipCertificates)
             {
                 ExternalGossipCertificates.Add(new PSCertificate(externalGossipCertificate?.Pem));
             }
+
             ClientCertificates = new List<PSCertificate>();
             foreach (Certificate ClientCertificate in clusterProperties.ClientCertificates)
             {
                 ClientCertificates.Add(new PSCertificate(ClientCertificate?.Pem));
             }
+
             RepairEnabled = clusterProperties.RepairEnabled;
             PrometheusEndpoint = new PSSeedNode(clusterProperties.PrometheusEndpoint?.IpAddress);
             HoursBetweenBackups = clusterProperties.HoursBetweenBackups;
@@ -57,10 +60,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RestoreFromBackupId = clusterProperties.RestoreFromBackupId;
             ProvisioningState = clusterProperties.ProvisioningState;
             ExternalSeedNodes = new List<PSSeedNode>();
+
             foreach (SeedNode externalSeedNode in clusterProperties.ExternalSeedNodes ?? Enumerable.Empty<SeedNode>())
             {
                 ExternalSeedNodes.Add(new PSSeedNode(externalSeedNode?.IpAddress));
             }
+
             SeedNodes = new List<PSSeedNode>();
             foreach (SeedNode seedNode in clusterProperties.SeedNodes)
             {

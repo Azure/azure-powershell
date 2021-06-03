@@ -20,14 +20,56 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using System;
+using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraDatacenter", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagedCassandraDatacenterGetResults))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraDatacenter", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSDataCenterResource))]
     public class UpdateAzManagedCassandraDatacenter : NewOrUpdateAzManagedCassandraDatacenter
     {
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraDatacenterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSDataCenterResource InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource ParentObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                String[] parentSegments = resourceIdentifier.ParentResource.Split(separator: '/');
+                if (parentSegments.Length != 2)
+                {
+                    throw new ArgumentException("ResourceId is invalid.");
+                }
+                ClusterName = resourceIdentifier.ParentResource.Split(separator: '/')[1];
+                DatacenterName = resourceIdentifier.ResourceName;
+            }
+
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             DataCenterResource dataCenterResource = null;
             try
             {
@@ -56,15 +98,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     DataCenterLocation = dataCenterResource.Properties.DataCenterLocation,
                     DelegatedSubnetId = dataCenterResource.Properties.DelegatedSubnetId,
-                    NodeCount = NodeCount,
-                    Base64EncodedCassandraYamlFragment = Base64EncodedCassandraYamlFragment
+                    NodeCount = NodeCount?? dataCenterResource.Properties.NodeCount,
+                    Base64EncodedCassandraYamlFragment = Base64EncodedCassandraYamlFragment?? dataCenterResource.Properties.Base64EncodedCassandraYamlFragment
                 }
             };
 
             if (ShouldProcess(ClusterName, "Updating Managed Cassandra Datacenter."))
             {
                 DataCenterResource dataCenterResourceResult = CosmosDBManagementClient.CassandraDataCenters.CreateUpdateWithHttpMessagesAsync(ResourceGroupName, ClusterName, DatacenterName, datacenterUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSManagedCassandraDatacenterGetResults(dataCenterResourceResult));
+                WriteObject(new PSDataCenterResource(dataCenterResourceResult));
             }
 
             return;

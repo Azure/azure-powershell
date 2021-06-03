@@ -33,6 +33,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource InputObject { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
@@ -41,12 +49,29 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(ClusterName, "Removing Managed Cassandra Cluster."))
             {
                 CosmosDBManagementClient.CassandraClusters.DeleteWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult();
 
                 if (PassThru)
+                {
                     WriteObject(true);
+                }                    
             }
 
             return;

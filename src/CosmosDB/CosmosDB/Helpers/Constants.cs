@@ -189,16 +189,18 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 
         // Throughput cmdlets for all APIs
         public const string ThroughputHelpMessage = "Throughput value in int.";
-        public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";        
+        public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
 
-        //Cassandra cmdlets help messages                  
+        //Cassandra cmdlets help messages        
         public const string ManagedCassandraTagsHelpMessage = "Managed Cassandra Tags.";
         public const string ManagedCassandraIdentityHelpMessage = "Identity used to authenticate.";
         public const string ManagedCassandraRepairEnabledHelpMessage = "Enables automatic repair.";
         public const string ManagedCassandraLocationHelpMessage = "Azure Location of the Cluster.";        
         public const string ManagedCassandraClusterNameHelpMessage = "Managed Cassandra Cluster Name.";
+        public const string ManagedCassandraClusterObjectHelpMessage = "Managed Cassandra Cluster object";        
         public const string ManagedCassandraDatacenterNameHelpMessage = "Managed Cassandra Datacenter Name.";
         public const string ManagedCassandraCassandraVersionHelpMessage = "The version of Cassandra chosen.";
+        public const string ManagedCassandraDatacenterObjectHelpMessage = "Managed Cassandra Datacenter object";
         public const string ManagedCassandraDatacenterLocationHelpMessage = "Azure Location of the DataCenter.";
         public const string ManagedCassandraHoursBetweenBackupsHelpMessage = "The number of hours between backup attempts.";
         public const string ManagedCassandraExternalSeedNodesHelpMessage = "A list of ip addresses of the seed nodes of on-premise data centers.";

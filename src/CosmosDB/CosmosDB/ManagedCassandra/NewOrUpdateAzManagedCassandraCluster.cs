@@ -32,18 +32,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraIdentityHelpMessage)]
-        public ManagedServiceIdentity Identity { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraTagsHelpMessage)]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraExternalGossipCertificatesHelpMessage)]
-        public string[] ExternalGossipCertificates { get; set; }
+        public string[] ExternalGossipCertificate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraClientCertificatesHelpMessage)]
-        public string[] ClientCertificates { get; set; }
+        public string[] ClientCertificate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraRepairEnabledHelpMessage)]
         public bool? RepairEnabled { get; set; }
@@ -52,13 +49,15 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public int? HoursBetweenBackups { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraAuthenticationMethodHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string AuthenticationMethod { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraCassandraVersionHelpMessage)]
+        [ValidateNotNullOrEmpty]
         public string CassandraVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraExternalSeedNodesHelpMessage)]
-        public string[] ExternalSeedNodes { get; set; }
+        public string[] ExternalSeedNode { get; set; }
 
 
         public Dictionary<string, string> PopulateTags(Hashtable Tag)
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             return certificateList;
         }
 
-        public IList<SeedNode> PopulateSeedNodes(string[] seedNodes)
+        public IList<SeedNode> PopulateExternalSeedNodes(string[] seedNodes)
         {
             IList<SeedNode> seedNodeList = new List<SeedNode>();
             foreach (string seedNode in seedNodes)

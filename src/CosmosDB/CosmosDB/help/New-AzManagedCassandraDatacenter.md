@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/new-azmanagedcassandradatacenter
 schema: 2.0.0
 ---
 
@@ -26,8 +26,13 @@ This cmdlet is used to create a ManagedCassandra Datacenter in supported regions
 
 ### Example 1: Create a New Managed Cassandra Datacenter
 ```powershell
-PS C:\> New-AzManagedCassandraDatacenter -ResourceGroupName "RG01" -ClusterName "Cluster01" -DatacenterName "dc01" -Location "westus" -NodeCount 3 -DelegatedSubnetId "/subscriptions/94d9b402-77b4-4049-b4c1-947bc6b7729b/resourceGroups/My-vnet/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-subnet"
+PS C:\> New-AzManagedCassandraDatacenter -ResourceGroupName "test-powershell" -ClusterName "Cluster01" -DatacenterName "dc01" -Location "westus" -NodeCount 3 -DelegatedSubnetId "/subscriptions/94d9b402-77b4-4049-b4c1-947bc6b7729b/resourceGroups/My-vnet/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-subnet"
 ```
+
+Id                                                                                                                                                           Name Properties
+--                                                                                                                                                           ---- ----------
+/subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/Cluster01/dataCenters/dc01 dc01  Microsoft.Azure.Commands.CosmosDB.Models.PSDataCenterResourceProperties
+
 
 This command creates a ManagedCassandra datacenter dc01 in cluster01 with 3 nodes in region West US.
 

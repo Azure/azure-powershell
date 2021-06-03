@@ -18,10 +18,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
+using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSManagedCassandraClusterGetResults))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedCassandraCluster", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSClusterResource))]
     public class GetAzManagedCassandraCluster : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = false, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -33,26 +35,53 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string ClusterName { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = Constants.ResourceIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ObjectParameterSet, HelpMessage = Constants.ManagedCassandraClusterObjectHelpMessage)]
+        [ValidateNotNull]
+        public PSClusterResource InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = null;
+                if (ParameterSetName.Equals(ResourceIdParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
+                }
+                else if (ParameterSetName.Equals(ObjectParameterSet))
+                {
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                }
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(ClusterName))
             {
                 ClusterResource clusterResource = CosmosDBManagementClient.CassandraClusters.GetWithHttpMessagesAsync(ResourceGroupName, ClusterName).GetAwaiter().GetResult().Body;
-                WriteObject(new PSManagedCassandraClusterGetResults(clusterResource));
+                WriteObject(new PSClusterResource(clusterResource));
             }
             else if (!string.IsNullOrEmpty(ResourceGroupName))
             {
                 IEnumerable<ClusterResource> clusterResources = CosmosDBManagementClient.CassandraClusters.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).GetAwaiter().GetResult().Body;
 
                 foreach (ClusterResource clusterResource in clusterResources)
-                    WriteObject(new PSManagedCassandraClusterGetResults(clusterResource));
+                {
+                    WriteObject(new PSClusterResource(clusterResource));
+                }
             }
-            else 
+            else
             {
                 IEnumerable<ClusterResource> clusterResources = CosmosDBManagementClient.CassandraClusters.ListBySubscriptionWithHttpMessagesAsync().GetAwaiter().GetResult().Body;
 
                 foreach (ClusterResource clusterResource in clusterResources)
-                    WriteObject(new PSManagedCassandraClusterGetResults(clusterResource));
+                {
+                    WriteObject(new PSClusterResource(clusterResource));
+                }
             }
 
             return;

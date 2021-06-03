@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.cosmosdb/remove-azmanagedcassandracluster
 schema: 2.0.0
 ---
 
@@ -25,6 +25,7 @@ This cmdlet is used to delete a ManagedCassandra Cluster.
 ### Example 1: Delete a Managed Cassandra Cluster
 ```powershell
 PS C:\> Remove-AzManagedCassandraCluster -ResourceGroupName "RG01" -ClusterName "Cluster01"
+
 ```
 
 ## PARAMETERS

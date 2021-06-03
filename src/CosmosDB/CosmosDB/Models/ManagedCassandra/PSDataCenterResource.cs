@@ -17,20 +17,20 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Management.CosmosDB.Models;
 
-    public class PSManagedCassandraDatacenterGetResults
+    public class PSDataCenterResource
     {
-        public PSManagedCassandraDatacenterGetResults()
+        public PSDataCenterResource()
         {
         }
 
-        public PSManagedCassandraDatacenterGetResults(DataCenterResource dataCenterResource)
+        public PSDataCenterResource(DataCenterResource dataCenterResource)
         {
             if (dataCenterResource == null)
                 return;
 
             Id = dataCenterResource.Id;
             Name = dataCenterResource.Name;
-            Properties = new PSManagedCassandraDatacenterGetPropertiesResource(dataCenterResource.Properties);
+            Properties = new PSDataCenterResourceProperties(dataCenterResource.Properties);
         }
 
         /// <summary>
@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public string Name { get; set; }
 
-        public PSManagedCassandraDatacenterGetPropertiesResource Properties { get; set; }
+        public PSDataCenterResourceProperties Properties { get; set; }
     }
 }
