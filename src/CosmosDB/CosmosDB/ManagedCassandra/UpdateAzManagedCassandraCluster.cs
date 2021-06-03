@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     CassandraVersion = CassandraVersion ?? clusterResource.Properties.CassandraVersion,
                     DelegatedManagementSubnetId = clusterResource.Properties.DelegatedManagementSubnetId,
                     InitialCassandraAdminPassword = clusterResource.Properties.InitialCassandraAdminPassword,
-                    HoursBetweenBackups = HoursBetweenBackups ?? clusterResource.Properties.HoursBetweenBackups,
+                    HoursBetweenBackups = TimeBetweenBackupInHours ?? clusterResource.Properties.HoursBetweenBackups,
                     AuthenticationMethod = AuthenticationMethod ?? clusterResource.Properties.AuthenticationMethod,
                 },
                 Location = clusterResource.Location,

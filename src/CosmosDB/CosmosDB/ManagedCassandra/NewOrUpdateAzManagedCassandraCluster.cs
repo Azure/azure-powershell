@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public bool? RepairEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraHoursBetweenBackupsHelpMessage)]
-        public int? HoursBetweenBackups { get; set; }
+        public int? TimeBetweenBackupInHours { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ManagedCassandraAuthenticationMethodHelpMessage)]
         [ValidateNotNullOrEmpty]

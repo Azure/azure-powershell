@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     ClientCertificates = ClientCertificateList,
                     ClusterNameOverride = ClusterNameOverride,
                     RestoreFromBackupId = RestoreFromBackupId,
-                    HoursBetweenBackups = HoursBetweenBackups,
+                    HoursBetweenBackups = TimeBetweenBackupInHours,
                     AuthenticationMethod = AuthenticationMethod,
                     ExternalGossipCertificates = ExternalGossipCertificateList,
                     DelegatedManagementSubnetId = DelegatedManagementSubnetId,
