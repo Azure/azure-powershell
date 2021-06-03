@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Key Auto Rotation status")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter AutoRotationEnabled { get; set; }
+        public bool? AutoRotationEnabled { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of setting Transparent Data Encryption protector confirmation

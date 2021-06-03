@@ -342,11 +342,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "List of user assigned identities")]
-        public List<string> UserAssignedIdentity { get; set; }
+        public List<string> UserAssignedIdentityId { get; set; }
 
+        // <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
-        public SwitchParameter AssignUserAssignIdentity { get; set; }
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -521,7 +525,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
                 AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
                 LicenseType = this.LicenseType,
                 // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.

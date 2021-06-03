@@ -223,11 +223,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "List of user assigned identities")]
-        public List<string> UserAssignedIdentity { get; set; }
+        public List<string> UserAssignedIdentityId { get; set; }
 
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Generate and assign an Azure Active Directory User Assigned Identity for this server for use with key management services like Azure KeyVault.")]
-        public SwitchParameter AssignUserAssignIdentity { get; set; }
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -312,12 +316,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity, this.AssignUserAssignIdentity, UserAssignedIdentity),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, GetEntity().FirstOrDefault().Identity),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
                 AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
-                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                PrimaryUserAssignedIdentityId = model.FirstOrDefault().PrimaryUserAssignedIdentityId ?? this.PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId
             });
             return updateData;
