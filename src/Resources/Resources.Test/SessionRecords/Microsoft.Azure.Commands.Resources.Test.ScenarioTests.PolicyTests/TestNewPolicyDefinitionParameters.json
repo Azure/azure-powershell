@@ -1,14 +1,14 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIwLTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\",\r\n    \"policyType\": \"Custom\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.2.3"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v6.2.4"
         ],
         "ParameterSetName": [
           "NameParameterSet"
@@ -20,27 +20,30 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "136"
+          "165"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:6344fa9e-c9a1-4cab-843d-d3968e578d78"
-        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "71abfa4f-4eb9-4470-95ee-1aa3e2fc47f5"
+        ],
         "x-ms-correlation-request-id": [
-          "ff361dfc-faf9-452f-bf02-4741fd3fb784"
+          "71abfa4f-4eb9-4470-95ee-1aa3e2fc47f5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T002834Z:ff361dfc-faf9-452f-bf02-4741fd3fb784"
+          "WESTUS2:20210517T224325Z:71abfa4f-4eb9-4470-95ee-1aa3e2fc47f5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -49,13 +52,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 00:28:34 GMT"
+          "Mon, 17 May 2021 22:43:25 GMT"
         ],
         "Content-Length": [
-          "166"
+          "176"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -64,18 +67,18 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPolicyRule\",\r\n    \"message\": \"Failed to parse policy rule: 'Could not find member 'someThing' on object of type 'PolicyRule'. Path 'someThing'.'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPolicyRule\",\r\n    \"message\": \"Failed to parse policy rule: 'Could not find member 'someThing' on object of type 'PolicyRuleDefinition'. Path 'someThing'.'.\"\r\n  }\r\n}",
       "StatusCode": 400
     },
     {
-      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
+      "RequestUri": "/subscriptions/f67cc918-f64f-4c3f-aa24-a855465f9d41/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2020-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjY3Y2M5MTgtZjY0Zi00YzNmLWFhMjQtYTg1NTQ2NWY5ZDQxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDIwLTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\",\r\n    \"policyType\": \"Custom\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.2.3"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v6.2.4"
         ],
         "ParameterSetName": [
           "SubscriptionIdParameterSet"
@@ -87,27 +90,30 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "136"
+          "165"
         ]
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-request-id": [
-          "westus:fde34af3-fe03-4b69-8ccc-2a1fab0dd81c"
-        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
+        "x-ms-request-id": [
+          "fa9e2a01-e668-4555-a6ed-f34b4041e9f6"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
         "x-ms-correlation-request-id": [
-          "7ec6e9c5-f346-497c-9a27-f5c782a842d2"
+          "fa9e2a01-e668-4555-a6ed-f34b4041e9f6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T002835Z:7ec6e9c5-f346-497c-9a27-f5c782a842d2"
+          "WESTUS2:20210517T224326Z:fa9e2a01-e668-4555-a6ed-f34b4041e9f6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,13 +122,13 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 00:28:35 GMT"
+          "Mon, 17 May 2021 22:43:25 GMT"
         ],
         "Content-Length": [
-          "166"
+          "176"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -131,18 +137,18 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPolicyRule\",\r\n    \"message\": \"Failed to parse policy rule: 'Could not find member 'someThing' on object of type 'PolicyRule'. Path 'someThing'.'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPolicyRule\",\r\n    \"message\": \"Failed to parse policy rule: 'Could not find member 'someThing' on object of type 'PolicyRuleDefinition'. Path 'someThing'.'.\"\r\n  }\r\n}",
       "StatusCode": 400
     },
     {
-      "RequestUri": "/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2019-09-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeWRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMTktMDktMDE=",
+      "RequestUri": "/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName?api-version=2020-09-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9tYW5hZ2VtZW50R3JvdXBzL3NvbWVNYW5hZ2VtZW50R3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3BvbGljeWRlZmluaXRpb25zL3NvbWVOYW1lP2FwaS12ZXJzaW9uPTIwMjAtMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"someName\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"someThing\": \"someOtherThing\"\r\n    },\r\n    \"mode\": \"All\",\r\n    \"policyType\": \"Custom\"\r\n  }\r\n}",
       "RequestHeaders": {
         "User-Agent": [
-          "AzurePowershell/v1.0.0",
-          "PSVersion/v6.2.3"
+          "AzurePowershell/v5.4.0",
+          "PSVersion/v6.2.4"
         ],
         "ParameterSetName": [
           "ManagementGroupNameParameterSet"
@@ -154,7 +160,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "136"
+          "165"
         ]
       },
       "ResponseHeaders": {
@@ -168,13 +174,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8b61ecb1-67f1-4b90-b774-fd69f5ebf5d7"
+          "40a09481-044b-409f-b6dc-45565d0b621f"
         ],
         "x-ms-correlation-request-id": [
-          "8b61ecb1-67f1-4b90-b774-fd69f5ebf5d7"
+          "40a09481-044b-409f-b6dc-45565d0b621f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200109T002834Z:8b61ecb1-67f1-4b90-b774-fd69f5ebf5d7"
+          "WESTUS2:20210517T224325Z:40a09481-044b-409f-b6dc-45565d0b621f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,7 +189,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Jan 2020 00:28:34 GMT"
+          "Mon, 17 May 2021 22:43:25 GMT"
         ],
         "Connection": [
           "close"
@@ -201,12 +207,12 @@
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '54920461-deae-4c50-9893-ca85918263a2' with object id '54920461-deae-4c50-9893-ca85918263a2' does not have authorization to perform action 'Microsoft.Authorization/policydefinitions/write' over scope '/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '7140c269-e408-47a5-a626-a1d836b96883' with object id '7140c269-e408-47a5-a626-a1d836b96883' does not have authorization to perform action 'Microsoft.Authorization/policydefinitions/write' over scope '/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policydefinitions/someName' or the scope is invalid. If access was recently granted, please refresh your credentials.\"\r\n  }\r\n}",
       "StatusCode": 403
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b"
+    "SubscriptionId": "f67cc918-f64f-4c3f-aa24-a855465f9d41"
   }
 }

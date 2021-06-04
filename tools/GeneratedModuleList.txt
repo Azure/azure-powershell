@@ -13,6 +13,7 @@ Az.Databricks
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
+Az.DiskPool
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot

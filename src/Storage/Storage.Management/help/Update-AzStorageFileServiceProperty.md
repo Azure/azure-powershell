@@ -15,22 +15,22 @@ Modifies the service properties for the Azure Storage File service.
 ### AccountName (Default)
 ```
 Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
- [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>]
+ [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
- [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>]
+ [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileServicePropertiesResourceId
 ```
 Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
- [-ShareRetentionDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,9 +46,23 @@ StorageAccountName                            : mystorageaccount
 ResourceGroupName                             : myresourcegroup
 ShareDeleteRetentionPolicy.Enabled            : True
 ShareDeleteRetentionPolicy.Days               : 5
+ProtocolSettings.Smb.Multichannel.Enabled     : False
 ```
 
 This command enables File share softdelete delete with retention days as 5
+
+### Example 2: Enable Smb Multichannel
+```powershell
+PS C:\> Update-AzStorageFileServiceProperty -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSmbMultichannel $true
+
+StorageAccountName                        : mystorageaccount
+ResourceGroupName                         : myresourcegroup
+ShareDeleteRetentionPolicy.Enabled        : True
+ShareDeleteRetentionPolicy.Days           : 5
+ProtocolSettings.Smb.Multichannel.Enabled : True
+```
+
+This command enables Smb Multichannel, only supported on Premium FileStorage account.
 
 ## PARAMETERS
 
@@ -69,6 +83,21 @@ Accept wildcard characters: False
 
 ### -EnableShareDeleteRetentionPolicy
 Enable share Delete Retention Policy for the storage account by set to $true, disable share Delete Retention Policy  by set to $false.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSmbMultichannel
+Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.
 
 ```yaml
 Type: System.Boolean
