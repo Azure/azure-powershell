@@ -111,7 +111,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile();
             }
 
-            this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = this.NetworkApiVersion?? Microsoft.Azure.Management.Compute.Models.NetworkApiVersion.TwoZeroTwoZeroHyphenMinusOneOneHyphenMinusZeroOne;
+            if (this.IsParameterBound(c => c.NetworkApiVersion))
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = this.NetworkApiVersion;
+            }
+            else
+            {
+                // If networkApiVersion is not specified, reuse the existing one in network profile if not null,
+                // else use default version
+                this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkApiVersion = this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkApiVersion
+                    ?? Microsoft.Azure.Management.Compute.Models.NetworkApiVersion.TwoZeroTwoZeroHyphenMinusOneOneHyphenMinusZeroOne;
+            }
 
             // NetworkInterfaceConfigurations
             if (this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations == null)

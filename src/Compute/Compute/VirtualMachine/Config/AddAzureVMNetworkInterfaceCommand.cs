@@ -169,7 +169,10 @@ namespace Microsoft.Azure.Commands.Compute
                     else
                     {
                         existingNic.Primary = nic.Primary;
-                        existingNic.DeleteOption = this.IsParameterBound(c => c.DeleteOption) ? this.DeleteOption : null;
+                        if (this.IsParameterBound(c => c.DeleteOption))
+                        {
+                            existingNic.DeleteOption = this.DeleteOption;
+                        }
                     }
                 }
             }

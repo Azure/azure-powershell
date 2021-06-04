@@ -17,14 +17,15 @@ Adds a data disk to a virtual machine.
 ```
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-SourceImageUri] <String>]
- [-DiskEncryptionSetId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DiskEncryptionSetId <String>] [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### VmManagedDiskParameterSetName
 ```
 Add-AzVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-ManagedDiskId] <String>]
- [[-StorageAccountType] <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator]
+ [[-StorageAccountType] <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DeleteOption <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -157,6 +158,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeleteOption
+Data Disk Delete Option. Specifies what action to perform on the disk after VM deletion. Options are: Detach, Delete.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
