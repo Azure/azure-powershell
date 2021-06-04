@@ -149,11 +149,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, GetEntity().FirstOrDefault().Identity),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
-                PrimaryUserAssignedIdentityId = model.FirstOrDefault().PrimaryUserAssignedIdentityId ?? this.PrimaryUserAssignedIdentityId,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId
             });
             return updateData;

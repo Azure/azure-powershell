@@ -316,12 +316,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, GetEntity().FirstOrDefault().Identity),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
                 AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
-                PrimaryUserAssignedIdentityId = model.FirstOrDefault().PrimaryUserAssignedIdentityId ?? this.PrimaryUserAssignedIdentityId,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
                 KeyId = this.KeyId
             });
             return updateData;
