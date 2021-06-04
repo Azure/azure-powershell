@@ -147,19 +147,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (!string.IsNullOrEmpty(this.DeleteOption))
                 {
                     var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(this.Id));
-                    if (existingNic == null)
-                    {
-                        networkProfile.NetworkInterfaces.Add(
-                            new NetworkInterfaceReference
-                            {
-                                Id = this.Id,
-                                DeleteOption = this.DeleteOption
-                            });
-                    }
-                    else
-                    {
-                        existingNic.DeleteOption = this.DeleteOption;
-                    }
+                    existingNic.DeleteOption = this.DeleteOption;
                 }
             }
             else

@@ -92,7 +92,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     StorageProfile = new StorageProfile
                     {
                         ImageReference = imageAndOsType?.Image,
-                        //OsDisk= new OSDisk() { DeleteOption = osDiskDeleteOption},
                         DataDisks = DataDiskStrategy.CreateDataDisks(
                             imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
                     },

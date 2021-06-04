@@ -180,6 +180,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Detach", "Delete")]
         public string DeleteOption { get; set; }
 

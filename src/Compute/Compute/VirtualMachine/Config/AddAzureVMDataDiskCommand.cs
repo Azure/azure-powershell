@@ -139,9 +139,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
-        [Parameter(
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = HelpMessages.VMManagedDiskAccountType)]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Detach", "Delete")]
         public string DeleteOption { get; set; }
