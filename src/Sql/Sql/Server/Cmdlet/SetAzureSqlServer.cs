@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
+                SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin
             });
             return updateData;
         }
