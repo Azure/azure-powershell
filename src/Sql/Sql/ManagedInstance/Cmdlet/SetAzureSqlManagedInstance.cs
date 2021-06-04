@@ -290,7 +290,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                MaintenanceConfigurationId = this.MaintenanceConfigurationId
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId,
+                AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
             });
             return updateData;
         }
