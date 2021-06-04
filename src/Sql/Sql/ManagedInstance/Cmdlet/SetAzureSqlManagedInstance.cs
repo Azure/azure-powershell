@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
-                AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
+                AdministratorLogin = model.FirstOrDefault().AdministratorLogin
             });
             return updateData;
         }
