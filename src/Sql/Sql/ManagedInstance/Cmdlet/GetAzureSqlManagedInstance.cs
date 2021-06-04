@@ -113,6 +113,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// Expand Active Directory Administrator Information on the Managed Instance
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Expand Active Directory Administrator Information on the server.")]
+        public SwitchParameter ExpandActiveDirectoryAdministrator { get; set; }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -148,25 +155,27 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceModel> results = new List<AzureSqlManagedInstanceModel>();
 
+            string expand = (this.ExpandActiveDirectoryAdministrator.IsPresent) ? "administrators/activeDirectory" : null;
+
             if (ShouldGetByName(ResourceGroupName, Name))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
-                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name));
+                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name, expand));
             }
             else if (ShouldListByResourceGroup(ResourceGroupName, Name))
             {
                 if (this.InstancePoolName != null)
                 {
-                    results = ModelAdapter.ListManagedInstancesByInstancePool(this.ResourceGroupName, this.InstancePoolName);
+                    results = ModelAdapter.ListManagedInstancesByInstancePool(this.ResourceGroupName, this.InstancePoolName, expand);
                 }
                 else
                 {
-                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
+                    results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName, expand);
                 }
             }
             else
             {
-                results = ModelAdapter.ListManagedInstances();
+                results = ModelAdapter.ListManagedInstances(expand);
             }
 
             return TopLevelWildcardFilter(ResourceGroupName, Name, results);

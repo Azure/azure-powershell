@@ -161,5 +161,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkInEdgeZone");
+        }
     }
 }

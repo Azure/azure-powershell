@@ -101,6 +101,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         public string Label { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter UseExistingSnapshot { get; set; }
+
+        [Parameter(
             ParameterSetName = ParentObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -123,7 +129,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             var backupBody = new Management.NetApp.Models.Backup()
             {
                 Location = Location,
-                Label = Label
+                Label = Label,
+                UseExistingSnapshot = UseExistingSnapshot
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

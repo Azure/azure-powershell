@@ -48,6 +48,14 @@
 * Updated cmdlets to expose two read-only properties of client certificate.
     - `Get-AzApplicationGatewayTrustedClientCertificate`
 
+## Version 4.8.0
+* Updated validation to allow passing zero value for saDataSizeKilobytes parameter
+    - `New-AzureRmIpsecPolicy`
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `New-AzNetworkInterface`
+    - `New-AzPublicIpAddress`
+    - `New-AzVirtualNetwork`
+
 ## Version 4.7.0
 * Added new cmdlets to replace old product name `virtual router` with new name `route server` in the future.
     - `Get-AzRouteServerPeerAdvertisedRoute`

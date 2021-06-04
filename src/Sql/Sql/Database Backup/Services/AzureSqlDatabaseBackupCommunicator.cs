@@ -224,12 +224,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The resource group name.</param>
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy GetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.Get(resourceGroup, serverName, databaseName);
         }
 
         /// <summary>
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The server name.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="policy">The Long Term Retention policy to apply.</param>
-        public Management.Sql.Models.BackupLongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
+        public Management.Sql.Models.LongTermRetentionPolicy SetDatabaseLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
             string databaseName,
-            Management.Sql.Models.BackupLongTermRetentionPolicy policy)
+            Management.Sql.Models.LongTermRetentionPolicy policy)
         {
-            return GetCurrentSqlClient().BackupLongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+            return GetCurrentSqlClient().LongTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
         }
 
         /// <summary>
@@ -324,6 +324,59 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 }
             }
         }
+
+        /// <summary>
+        /// Copies a Long Term Retention backup to another server/database.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        public Management.Sql.Models.LongTermRetentionBackupOperationResult CopyDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            Management.Sql.Models.CopyLongTermRetentionBackupParameters parameters)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.Copy(locationName, serverName, databaseName, backupName, parameters);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.CopyByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+            }
+        }
+
+        /// <summary>
+        /// Updates a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="resourceGroupName">The resource group name</param>
+        public Management.Sql.Models.LongTermRetentionBackupOperationResult UpdateDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            string resourceGroupName,
+            Management.Sql.Models.UpdateLongTermRetentionBackupParameters parameters)
+        {
+            if (string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.Update(locationName, serverName, databaseName, backupName, parameters);
+            }
+            else
+            {
+                return GetCurrentSqlClient().LongTermRetentionBackups.UpdateByResourceGroup(resourceGroupName, locationName, serverName, databaseName, backupName, parameters);
+            }
+        }
+
 
         /// <summary>
         /// Removes a Long Term Retention backup.

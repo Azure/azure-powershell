@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue = (string) content.GetValueForProperty("ChartValue",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartVersion = (string) content.GetValueForProperty("ChartVersion",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue = (string) content.GetValueForProperty("ChartValue",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue = (string) content.GetValueForProperty("ChartValue",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartVersion = (string) content.GetValueForProperty("ChartVersion",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartVersion, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue = (string) content.GetValueForProperty("ChartValue",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IHelmOperatorPropertiesInternal)this).ChartValue, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

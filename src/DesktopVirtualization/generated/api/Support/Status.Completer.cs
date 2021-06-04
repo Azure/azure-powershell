@@ -50,6 +50,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("UpgradeFailed", "UpgradeFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "UpgradeFailed");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoHeartbeat".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("NoHeartbeat", "NoHeartbeat", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoHeartbeat");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotJoinedToDomain".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("NotJoinedToDomain", "NotJoinedToDomain", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotJoinedToDomain");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "DomainTrustRelationshipLost".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("DomainTrustRelationshipLost", "DomainTrustRelationshipLost", global::System.Management.Automation.CompletionResultType.ParameterValue, "DomainTrustRelationshipLost");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SxSStackListenerNotReady".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("SxSStackListenerNotReady", "SxSStackListenerNotReady", global::System.Management.Automation.CompletionResultType.ParameterValue, "SxSStackListenerNotReady");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "FSLogixNotHealthy".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("FSLogixNotHealthy", "FSLogixNotHealthy", global::System.Management.Automation.CompletionResultType.ParameterValue, "FSLogixNotHealthy");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "NeedsAssistance".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("NeedsAssistance", "NeedsAssistance", global::System.Management.Automation.CompletionResultType.ParameterValue, "NeedsAssistance");
+            }
         }
     }
 }

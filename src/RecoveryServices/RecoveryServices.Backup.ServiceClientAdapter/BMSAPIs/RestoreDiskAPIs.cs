@@ -78,14 +78,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             AzureRecoveryPoint rp,
             string secondaryRegion,
             string vaultName = null,
-            string resourceGroupName = null)
+            string resourceGroupName = null,
+            string backupManagementType = null)
         {
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
 
-            AADPropertiesResource userInfo = GetAADProperties(secondaryRegion);
+            AADPropertiesResource userInfo = GetAADProperties(secondaryRegion, backupManagementType);
             var accessToken = BmsAdapter.Client.RecoveryPoints.GetAccessTokenWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName, containerUri, protectedItemUri, recoveryPointId, userInfo).Result.Body; 
 

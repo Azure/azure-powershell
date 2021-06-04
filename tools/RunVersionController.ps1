@@ -146,7 +146,11 @@ function Get-ReleaseNotes
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                           (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
-
+    
+    if($ModuleManifestFile.Count -gt 1)
+    {
+        $ModuleManifestFile = $ModuleManifestFile[0]
+    }                                                                                                      
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
 }
@@ -183,6 +187,132 @@ function Get-ExistSerializedCmdletJsonFile
     return $(ls "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
 }
 
+function Bump-AzVersion
+{
+    Write-Host "Getting local Az information..." -ForegroundColor Yellow
+    $localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
+
+    Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
+    $galleryAz = Find-Module -Name Az -Repository $GalleryName
+
+    $versionBump = [PSVersion]::NONE
+    $updatedModules = @()
+    foreach ($galleryDependency in $galleryAz.Dependencies)
+    {
+        $localDependency = $localAz.RequiredModules | where { $_.Name -eq $galleryDependency.Name }
+        if ($localDependency -eq $null)
+        {
+            Write-Error "Could not find matching dependency for $($galleryDependency.Name)"
+        }
+
+        $galleryVersion = $galleryDependency.RequiredVersion
+        if ([string]::IsNullOrEmpty($galleryVersion))
+        {
+            $galleryVersion = $galleryDependency.MinimumVersion
+        }
+        $localVersion = $localDependency.Version.ToString()
+        if ($galleryVersion.ToString() -ne $localVersion)
+        {
+            $updatedModules += $galleryDependency.Name
+            $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
+            Write-Host "Found $currBump version bump for $($localDependency.NAME)"
+            if ($currBump -eq [PSVersion]::MAJOR)
+            {
+                $versionBump = [PSVersion]::MAJOR
+            }
+            elseif ($currBump -eq [PSVersion]::MINOR -and $versionBump -ne [PSVersion]::MAJOR)
+            {
+                $versionBump = [PSVersion]::MINOR
+            }
+            elseif ($currBump -eq [PSVersion]::PATCH -and $versionBump -eq [PSVersion]::NONE)
+            {
+                $versionBump = [PSVersion]::PATCH
+            }
+        }
+    }
+
+    if ($versionBump -eq [PSVersion]::NONE)
+    {
+        Write-Host "No changes found in Az." -ForegroundColor Green
+        return
+    }
+
+    $newVersion = Get-BumpedVersion -Version $localAz.Version -VersionBump $versionBump
+
+    Write-Host "New version of Az: $newVersion" -ForegroundColor Green
+
+    $rootPath = "$PSScriptRoot\.."
+    $oldVersion = $galleryAz.Version
+
+    Update-AzurecmdFile -OldVersion $oldVersion -NewVersion $newVersion -Release $Release -RootPath $rootPath
+
+    # This was moved to the common repo
+    # Update-AzurePowerShellFile -OldVersion $oldVersion -NewVersion $newVersion -RootPath $rootPath
+
+    $releaseNotes = @()
+    $releaseNotes += "$newVersion - $Release"
+
+    $changeLog = @()
+    $changeLog += "## $newVersion - $Release"
+    foreach ($updatedModule in $updatedModules)
+    {
+        $releaseNotes += $updatedModule
+        $releaseNotes += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
+
+        $changeLog += "#### $updatedModule"
+        $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
+    }
+
+    Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
+    Update-ChangeLog -Content $changeLog -RootPath $rootPath
+}
+
+function Generate-AzPreview
+{
+    # The version of AzPrview aligns with Az
+    $AzPrviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
+    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+    $requiredModulesString = "RequiredModules = @("
+    $rawRequiredModulesString = "RequiredModules = @\("
+    foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
+    {
+        $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
+        $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
+        $Psd1FilePath = $(Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName)
+        if ($null -ne $Psd1FilePath)
+        {
+            if($Psd1FilePath.Count -gt 1)
+            {
+                $Psd1FilePath = $Psd1FilePath[0]
+            }
+            $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
+            $moduleName = "Az.${ModuleName}"
+            $moduleVersion = $Psd1Object.ModuleVersion.ToString()
+            if('Az.Accounts' -eq $moduleName)
+            {
+                $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
+            }
+            else
+            {
+                $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, `n            "
+            }            
+        }
+    }
+    $requiredModulesString = $requiredModulesString.Trim()
+    $requiredModulesString = $requiredModulesString.TrimEnd(",")
+
+    $AzPrviewTemplate = Get-Item -Path "$PSScriptRoot\AzPreview.psd1.template"
+    $AzPrviewTemplateContent = Get-Content -Path $AzPrviewTemplate.FullName
+    $AzPreviewPsd1Content = $AzPrviewTemplateContent | % {
+        $_ -replace "ModuleVersion = 'x.x.x'", "ModuleVersion = '$AzPrviewVersion'"
+    } | % {
+        $_ -replace "$rawRequiredModulesString", "$requiredModulesString"
+    }
+
+    $AzPrviewPsd1 = New-Item -Path "$PSScriptRoot\AzPreview\" -Name "AzPreview.psd1" -ItemType "file" -Force
+    Set-Content -Path $AzPrviewPsd1.FullName -Value $AzPreviewPsd1Content -Encoding UTF8
+}
+
 switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
@@ -212,25 +342,16 @@ switch ($PSCmdlet.ParameterSetName)
                 $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
                 if ($Psd1Object.ModuleVersion -ge "1.0.0")
                 {
-                    foreach ($NestedModule in $Psd1Object.NestedModules)
-                    {
-                        $JsonFile = $NestedModule.Replace(".\", "") + ".json"
-                        $ExpectJsonHashSet.Add($JsonFile, $true)
-                    }
-                    if($null -eq $Psd1Object.NestedModules)
-                    {
-                        $ExpectJsonHashSet.Add("Microsoft.Azure.PowerShell.Cmdlets.${ModuleName}.dll.json", $true)
-                    }
+                    $ExpectJsonHashSet.Add("Az.${ModuleName}.json", $true)
                 }
             }
         }
         foreach ($JsonFile in $ExistSerializedCmdletJsonFile)
         {
-            $ModuleName = $JsonFile.Replace('Microsoft.Azure.PowerShell.Cmdlets.', '').Replace('.dll.json', '')
+            $ModuleName = $JsonFile.Replace('.json', '')
             if (!$ExpectJsonHashSet.Contains($JsonFile))
             {
                 Write-Warning "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
-                # rm $(Join-Path -Path "$PSScriptRoot\Tools.Common\SerializedCmdlets" -ChildPath $JsonFile)
             }
         }
         try
@@ -248,81 +369,8 @@ switch ($PSCmdlet.ParameterSetName)
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
-        Write-Host "Getting local Az information..." -ForegroundColor Yellow
-        $localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
+        Bump-AzVersion
 
-        Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
-        $galleryAz = Find-Module -Name Az -Repository $GalleryName
-
-        $versionBump = [PSVersion]::NONE
-        $updatedModules = @()
-        foreach ($galleryDependency in $galleryAz.Dependencies)
-        {
-            $localDependency = $localAz.RequiredModules | where { $_.Name -eq $galleryDependency.Name }
-            if ($localDependency -eq $null)
-            {
-                Write-Error "Could not find matching dependency for $($galleryDependency.Name)"
-            }
-
-            $galleryVersion = $galleryDependency.RequiredVersion
-            if ([string]::IsNullOrEmpty($galleryVersion))
-            {
-                $galleryVersion = $galleryDependency.MinimumVersion
-            }
-            $localVersion = $localDependency.Version.ToString()
-            if ($galleryVersion.ToString() -ne $localVersion)
-            {
-                $updatedModules += $galleryDependency.Name
-                $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
-                Write-Host "Found $currBump version bump for $($localDependency.NAME)"
-                if ($currBump -eq [PSVersion]::MAJOR)
-                {
-                    $versionBump = [PSVersion]::MAJOR
-                }
-                elseif ($currBump -eq [PSVersion]::MINOR -and $versionBump -ne [PSVersion]::MAJOR)
-                {
-                    $versionBump = [PSVersion]::MINOR
-                }
-                elseif ($currBump -eq [PSVersion]::PATCH -and $versionBump -eq [PSVersion]::NONE)
-                {
-                    $versionBump = [PSVersion]::PATCH
-                }
-            }
-        }
-
-        if ($versionBump -eq [PSVersion]::NONE)
-        {
-            Write-Host "No changes found in Az." -ForegroundColor Green
-            return
-        }
-
-        $newVersion = Get-BumpedVersion -Version $localAz.Version -VersionBump $versionBump
-
-        Write-Host "New version of Az: $newVersion" -ForegroundColor Green
-
-        $rootPath = "$PSScriptRoot\.."
-        $oldVersion = $galleryAz.Version
-
-        Update-AzurecmdFile -OldVersion $oldVersion -NewVersion $newVersion -Release $Release -RootPath $rootPath
-
-        # This was moved to the common repo
-        # Update-AzurePowerShellFile -OldVersion $oldVersion -NewVersion $newVersion -RootPath $rootPath
-
-        $releaseNotes = @()
-        $releaseNotes += "$newVersion - $Release"
-
-        $changeLog = @()
-        $changeLog += "## $newVersion - $Release"
-        foreach ($updatedModule in $updatedModules)
-        {
-            $releaseNotes += $updatedModule
-            $releaseNotes += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
-
-            $changeLog += "#### $updatedModule"
-            $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
-        }
-
-        Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
-        Update-ChangeLog -Content $changeLog -RootPath $rootPath
+        Generate-AzPreview
     }
 }

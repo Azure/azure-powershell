@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="DirectoryServiceOptions" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new DirectoryServiceOptions(System.Convert.ToString(value));
+            return new DirectoryServiceOptions(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="DirectoryServiceOptions" Enum class./></summary>

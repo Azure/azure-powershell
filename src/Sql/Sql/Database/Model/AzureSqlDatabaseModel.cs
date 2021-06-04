@@ -186,9 +186,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public int? HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup storage redundancy for the database
+        /// Gets or sets the current backup storage redundancy for the database
         /// </summary>
-        public string BackupStorageRedundancy { get; set; }
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested backup storage redundancy for the database
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
 
         /// <summary>
         /// Gets or sets the secondary type for the database if it is a secondary.
@@ -199,6 +204,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the maintenance configuration id for the database
         /// </summary>
         public string MaintenanceConfigurationId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ledger property for the database
+        /// </summary>
+        public bool? EnableLedger { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -254,9 +264,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             MinimumCapacity = null;
             ReadReplicaCount = null;
             HighAvailabilityReplicaCount = null;
-            BackupStorageRedundancy = null;
+            CurrentBackupStorageRedundancy = null;
+            RequestedBackupStorageRedundancy = null;
             SecondaryType = null;
             MaintenanceConfigurationId = null;
+            EnableLedger = false;
         }
 
         /// <summary>
@@ -308,9 +320,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             AutoPauseDelayInMinutes = database.AutoPauseDelay;
             MinimumCapacity = database.MinCapacity;
             HighAvailabilityReplicaCount = database.HighAvailabilityReplicaCount;
-            BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            CurrentBackupStorageRedundancy = database.CurrentBackupStorageRedundancy;
+            RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
             SecondaryType = database.SecondaryType;
             MaintenanceConfigurationId = database.MaintenanceConfigurationId;
+            EnableLedger = database.IsLedgerOn;
         }
 
         /// <summary>

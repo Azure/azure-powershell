@@ -9,10 +9,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IProxyResource"
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResource"
         /// />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IProxyResource __proxyResource = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ProxyResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.Resource();
 
         /// <summary>The compliance state of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
@@ -20,46 +20,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
 
         /// <summary>Datetime the configuration was last applied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ComplianceStatusLastConfigApplied { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusLastConfigApplied; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusLastConfigApplied = value; }
+        public global::System.DateTime? ComplianceStatusLastConfigApplied { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusLastConfigApplied; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusLastConfigApplied = value ?? default(global::System.DateTime); }
 
         /// <summary>Message from when the configuration was applied.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string ComplianceStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessage = value; }
+        public string ComplianceStatusMessage { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessage; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessage = value ?? null; }
 
         /// <summary>Level of the message.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType? ComplianceStatusMessageLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessageLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessageLevel = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType? ComplianceStatusMessageLevel { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessageLevel; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatusMessageLevel = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType)""); }
 
         /// <summary>Name-value pairs of protected configuration settings for the configuration</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings ConfigurationProtectedSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ConfigurationProtectedSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ConfigurationProtectedSetting = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings ConfigurationProtectedSetting { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ConfigurationProtectedSetting; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ConfigurationProtectedSetting = value ?? null /* model class */; }
 
         /// <summary>Option to enable Helm Operator for this git configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public bool? EnableHelmOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).EnableHelmOperator; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).EnableHelmOperator = value; }
+        public bool? EnableHelmOperator { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).EnableHelmOperator; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).EnableHelmOperator = value ?? default(bool); }
 
         /// <summary>Values override for the operator Helm chart.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string HelmOperatorPropertyChartValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartValue = value; }
+        public string HelmOperatorPropertyChartValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartValue = value ?? null; }
 
         /// <summary>Version of the operator Helm chart.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string HelmOperatorPropertyChartVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartVersion = value; }
+        public string HelmOperatorPropertyChartVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).HelmOperatorPropertyChartVersion = value ?? null; }
 
         /// <summary>
         /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Id; }
 
         /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Id = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Id = value; }
 
         /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Name = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Name = value; }
 
         /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Type = value; }
+        string Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Type = value; }
 
         /// <summary>Internal Acessors for ComplianceStatus</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IComplianceStatus Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationInternal.ComplianceStatus { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatus; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).ComplianceStatus = value; }
@@ -84,30 +84,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
 
         /// <summary>The name of the resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Name; }
 
         /// <summary>Instance name of the operator - identifying the specific configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string OperatorInstanceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorInstanceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorInstanceName = value; }
+        public string OperatorInstanceName { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorInstanceName; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorInstanceName = value ?? null; }
 
         /// <summary>
         /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period
         /// only.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string OperatorNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorNamespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorNamespace = value; }
+        public string OperatorNamespace { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorNamespace; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorNamespace = value ?? null; }
 
         /// <summary>Any Parameters for the Operator instance in string format.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string OperatorParam { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorParam; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorParam = value; }
+        public string OperatorParam { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorParam; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorParam = value ?? null; }
 
         /// <summary>Scope at which the operator will be installed.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType? OperatorScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorScope = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType? OperatorScope { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorScope; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorScope = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType)""); }
 
         /// <summary>Type of the operator</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? OperatorType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType? OperatorType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).OperatorType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType)""); }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationProperties _property;
@@ -128,13 +128,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
 
         /// <summary>Url of the SourceControl Repository.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string RepositoryUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).RepositoryUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).RepositoryUrl = value; }
+        public string RepositoryUrl { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).RepositoryUrl; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).RepositoryUrl = value ?? null; }
 
         /// <summary>
         /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string SshKnownHostsContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).SshKnownHostsContent; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).SshKnownHostsContent = value; }
+        public string SshKnownHostsContent { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).SshKnownHostsContent; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfigurationPropertiesInternal)Property).SshKnownHostsContent = value ?? null; }
 
         /// <summary>Backing field for <see cref="SystemData" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemData _systemData;
@@ -147,33 +147,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
 
         /// <summary>The timestamp of resource creation (UTC).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedAt = value; }
+        public global::System.DateTime? SystemDataCreatedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedBy = value; }
+        public string SystemDataCreatedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedBy = value ?? null; }
 
         /// <summary>The type of identity that created the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType? SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedByType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType? SystemDataCreatedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).CreatedByType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType)""); }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedAt = value; }
+        public global::System.DateTime? SystemDataLastModifiedAt { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedAt; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedAt = value ?? default(global::System.DateTime); }
 
         /// <summary>The identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedBy = value; }
+        public string SystemDataLastModifiedBy { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedBy; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedBy = value ?? null; }
 
         /// <summary>The type of identity that last modified the resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType? SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedByType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType? SystemDataLastModifiedByType { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedByType; set => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.ISystemDataInternal)SystemData).LastModifiedByType = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByType)""); }
 
         /// <summary>
         /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Origin(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__proxyResource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal)__resource).Type; }
 
         /// <summary>Creates an new <see cref="SourceControlConfiguration" /> instance.</summary>
         public SourceControlConfiguration()
@@ -189,14 +189,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IEventListener eventListener)
         {
-            await eventListener.AssertNotNull(nameof(__proxyResource), __proxyResource);
-            await eventListener.AssertObjectIsValid(nameof(__proxyResource), __proxyResource);
+            await eventListener.AssertNotNull(nameof(__resource), __resource);
+            await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
     /// The SourceControl Configuration object returned in Get & Put response.
     public partial interface ISourceControlConfiguration :
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IProxyResource
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResource
     {
         /// <summary>The compliance state of the configuration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
     }
     /// The SourceControl Configuration object returned in Get & Put response.
     internal partial interface ISourceControlConfigurationInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IProxyResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20.IResourceInternal
     {
         /// <summary>Compliance Status of the Configuration</summary>
         Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IComplianceStatus ComplianceStatus { get; set; }

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// The immutability period for the blobs in the container since the policy creation, in days.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public int ImmutabilityPeriodSinceCreationInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).ImmutabilityPeriodSinceCreationInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).ImmutabilityPeriodSinceCreationInDay = value; }
+        public int? ImmutabilityPeriodSinceCreationInDay { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).ImmutabilityPeriodSinceCreationInDay; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).ImmutabilityPeriodSinceCreationInDay = value ?? default(int); }
 
         /// <summary>ImmutabilityPolicy Etag.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
@@ -81,11 +81,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
 
         /// <summary>The list of LegalHold tags of a blob container.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagProperty[] LegalHoldTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).LegalHoldTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).LegalHoldTag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.ITagProperty[] LegalHoldTag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).LegalHoldTag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).LegalHoldTag = value ?? null /* arrayOf */; }
 
         /// <summary>A name-value pair to associate with the container as metadata.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).Metadata = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesMetadata Metadata { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).Metadata; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).Metadata = value ?? null /* model class */; }
 
         /// <summary>Internal Acessors for Etag</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.IAzureEntityResourceInternal.Etag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.IAzureEntityResourceInternal)__azureEntityResource).Etag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api10.IAzureEntityResourceInternal)__azureEntityResource).Etag = value; }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// Specifies whether data in the container may be accessed publicly and the level of access.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccess? PublicAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).PublicAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).PublicAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccess? PublicAccess { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).PublicAccess; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IContainerPropertiesInternal)Property).PublicAccess = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicAccess)""); }
 
         /// <summary>
         /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
@@ -220,12 +220,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// The immutability period for the blobs in the container since the policy creation, in days.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"The immutability period for the blobs in the container since the policy creation, in days.",
         SerializedName = @"immutabilityPeriodSinceCreationInDays",
         PossibleTypes = new [] { typeof(int) })]
-        int ImmutabilityPeriodSinceCreationInDay { get; set; }
+        int? ImmutabilityPeriodSinceCreationInDay { get; set; }
         /// <summary>ImmutabilityPolicy Etag.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = false,
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// <summary>
         /// The immutability period for the blobs in the container since the policy creation, in days.
         /// </summary>
-        int ImmutabilityPeriodSinceCreationInDay { get; set; }
+        int? ImmutabilityPeriodSinceCreationInDay { get; set; }
         /// <summary>The ImmutabilityPolicy property of the container.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IImmutabilityPolicyProperties ImmutabilityPolicy { get; set; }
         /// <summary>ImmutabilityPolicy Etag.</summary>

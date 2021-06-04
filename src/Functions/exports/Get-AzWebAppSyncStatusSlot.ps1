@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappsyncstatusslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsyncstatusslot
 #>
 function Get-AzWebAppSyncStatusSlot {
 [OutputType([System.Boolean])]

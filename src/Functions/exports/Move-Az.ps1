@@ -100,7 +100,7 @@ MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resou
   [Resource <String[]>]: 
   [TargetResourceGroup <String>]: 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/move-az
+https://docs.microsoft.com/powershell/module/az.functions/move-az
 #>
 function Move-Az {
 [OutputType([System.Boolean])]

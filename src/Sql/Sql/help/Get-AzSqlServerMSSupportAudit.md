@@ -21,8 +21,8 @@ Get-AzSqlServerMSSupportAudit [-ResourceGroupName] <String> [-ServerName] <Strin
 
 ### ServerObjectParameterSet
 ```
-Get-AzSqlServerMSSupportAudit -ServerObject <AzureSqlServerModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlServerMSSupportAudit -ServerObject <AzureSqlServerModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

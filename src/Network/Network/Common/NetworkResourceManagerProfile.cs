@@ -380,7 +380,12 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.SubResource, CNM.PSVirtualNetwork>();
                 cfg.CreateMap<MNM.AddressSpace, CNM.PSAddressSpace>();
-                cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>();
+                cfg.CreateMap<MNM.VirtualNetwork, CNM.PSVirtualNetwork>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.VirtualNetworkUsage, CNM.PSVirtualNetworkUsage>();
                 cfg.CreateMap<MNM.VirtualNetworkUsageName, CNM.PSUsageName>();
 
@@ -392,7 +397,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>();
+                cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
@@ -426,7 +436,12 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.SubResource>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
+                cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>()
+                    .ForMember(
+                        dest => dest.ExtendedLocation,
+                        opt => opt.MapFrom(src =>
+                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    );
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
                 cfg.CreateMap<MNM.NetworkInterfaceTapConfiguration, CNM.PSNetworkInterfaceTapConfiguration>();

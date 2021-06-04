@@ -122,6 +122,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public ISshPublicKeysOperations SshPublicKeyClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.SshPublicKeys;
+            }
+        }
+
         public IGalleriesOperations GalleriesClient
         {
             get

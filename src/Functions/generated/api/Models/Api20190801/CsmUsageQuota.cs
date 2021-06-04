@@ -34,11 +34,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Localized name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).LocalizedValue = value; }
+        public string NameLocalizedValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).LocalizedValue; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).LocalizedValue = value ?? null; }
 
         /// <summary>Non-localized name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string NameValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).Value = value; }
+        public string NameValue { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).Value; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ILocalizableStringInternal)Name).Value = value ?? null; }
 
         /// <summary>Backing field for <see cref="NextResetTime" /> property.</summary>
         private global::System.DateTime? _nextResetTime;

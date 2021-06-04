@@ -14,7 +14,7 @@ Creates a virtual network.
 ## SYNTAX
 
 ```
-New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]>
+New-AzVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String> -AddressPrefix <String[]> [-EdgeZone <String>]
  [-DnsServer <String[]>] [-FlowTimeout <Int32>] [-Subnet <PSSubnet[]>] [-BgpCommunity <String>]
  [-Tag <Hashtable>] [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-IpAllocation <PSIpAllocation[]>]
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -153,6 +153,21 @@ Specifies the DNS server for a subnet.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+{{ Fill EdgeZone Description }}
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

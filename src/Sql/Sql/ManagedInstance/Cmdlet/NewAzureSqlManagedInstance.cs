@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Sql.Instance_Pools.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Sql.Instance_Pools.Services;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -120,8 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the admin credential of the instance
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The SQL authentication credential of the instance.")]
-        [ValidateNotNull]
+        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credential of the instance.")]
         public PSCredential AdministratorCredential { get; set; }
 
         /// <summary>
@@ -336,10 +336,41 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Enable Active Directory Only Authentication on the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Enable Active Directory Only Authentication on the server.")]
+        public SwitchParameter EnableActiveDirectoryOnlyAuthentication { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory display name for a user or group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+        public string ExternalAdminName { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory object id for a user, group or application
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
+        public Guid? ExternalAdminSID { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.ExternalAdminName == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingExternalAdmin, "ExternalAdminName");
+            }
+
+            if (!this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.AdministratorCredential == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "AdministratorCredential");
+            }
+
             if (this.IsParameterBound(c => c.InstancePool))
             {
                 this.ResourceGroupName = this.InstancePool.ResourceGroupName;
@@ -397,7 +428,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 {
                     if (!Force.IsPresent && !ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.DoYouWantToProceed, this.Name),
-                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning, this.Name)))
+                        string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning, this.Name)))
                     {
                         return;
                     }
@@ -462,8 +493,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
                 FullyQualifiedDomainName = this.Name,
-                AdministratorLogin = this.AdministratorCredential.UserName,
-                AdministratorPassword = this.AdministratorCredential.Password,
+                AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
+                AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 LicenseType = this.LicenseType,
@@ -483,7 +514,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 BackupStorageRedundancy = this.BackupStorageRedundancy,
-                MaintenanceConfigurationId = this.MaintenanceConfigurationId
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId,
+                Administrators = new Management.Sql.Models.ManagedInstanceExternalAdministrator()
+                {
+                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    Login = this.ExternalAdminName,
+                    Sid = this.ExternalAdminSID
+                }
             });
             return newEntity;
         }

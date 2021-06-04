@@ -1,0 +1,43 @@
+{
+  "Add-AzContainerInstanceOutput+[NoContext]+Attach+$POST+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgkwuya/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rgkwuya/providers/Microsoft.ContainerInstance/containerGroups/bez-test-cg/containers/bez-test-ci/attach?api-version=2021-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "44c52f4d-2d9e-4d01-953b-1aeed95d99d7" ],
+        "CommandName": [ "Add-AzContainerInstanceOutput" ],
+        "FullCommandName": [ "Add-AzContainerInstanceOutput_Attach" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "eastus:761ddf53-6ede-43e1-89a9-21fee825d2cd" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "3b32ec45-2557-42dc-85e3-858c64c6dc94" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210511T063152Z:3b32ec45-2557-42dc-85e3-858c64c6dc94" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 11 May 2021 06:31:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "197" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"webSocketUri\":\"wss://sbzqpbd36pzqf2n.eastus.atlas.cloudapp.azure.com:19390/logstream/sessionId/8b50bc05-61fc-4149-98c2-1b975331542a?api-version=1.0\",\"password\":\"o4@?;uZj22c7YalFkh#R0@/L3[[EOM]]\"}",
+      "isContentBase64": false
+    }
+  }
+}

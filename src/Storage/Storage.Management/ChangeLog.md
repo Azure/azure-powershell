@@ -18,6 +18,58 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported enable Smb Multichannel on File service
+    -  `Update-AzStorageFileServiceProperty`
+* Fixed copy inside same account issue by access source with anynymous credentail, when copy Blob inside same account with Oauth credentail
+
+## Version 3.7.0
+* Supported file share snapshot
+    - `New-AzRmStorageShare`
+    - `Get-AzRmStorageShare`
+    - `Remove-AzRmStorageShare`
+* Supported remove file share with it's snapshot (leased and not leased), by default remove file share will fail when share has snapshot
+    - `Remove-AzRmStorageShare`
+* Supported Set/Get/Remove blob inventory policy
+    - `New-AzStorageBlobInventoryPolicyRule`
+    - `Set-AzStorageBlobInventoryPolicy`
+    - `Get-AzStorageBlobInventoryPolicy`
+    - `Remove-AzStorageBlobInventoryPolicy`
+* Supported DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported AllowCrossTenantReplication in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported Set Object Replication Policy with SourceAccount/DestinationAccount as Storage account resource Id
+    - `Set-AzStorageObjectReplicationPolicy`
+* Supported set SasExpirationPeriod as TimeSpan.Zero
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount
+* Make sure the correct account name is used when create account credential
+    - `New-AzStorageContext`
+
+## Version 3.6.0
+* Supported create/update storage account with KeyExpirationPeriod and SasExpirationPeriod
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported create/update storage account with keyvault encryption and access keyvault with user assigned identity
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Supported EdgeZone in create storage account
+    - `New-AzStorageAccount`
+* Fixed an issue that delete immutable blob will prompt incorrect message.
+    - `Remove-AzStorageAccount`
+* Allowed update Storage Account KeyVault properties by cleanup Keyversion to enable key auto rotation [#14769]
+    - `Set-AzStorageAccount`
+* Added breaking change warning message for upcoming cmdlet breaking change
+    - `Remove-AzRmStorageShare`
+
+## Version 3.5.1
+* Fixed copy blob fail with source context as Oauth [#14662]
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 3.5.0
 * Fixed an issue that list account from resource group won't use nextlink

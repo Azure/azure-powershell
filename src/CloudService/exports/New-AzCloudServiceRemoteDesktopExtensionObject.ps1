@@ -24,12 +24,12 @@ PS C:\> $expiration = (Get-Date).AddYears(1)
 PS C:\> $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1'
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
 https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudserviceremotedesktopextensionobject
 #>
 function New-AzCloudServiceRemoteDesktopExtensionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=0, Mandatory)]

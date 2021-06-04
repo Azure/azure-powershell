@@ -96,8 +96,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializeDictionary(content);
         }
 
@@ -115,8 +115,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ResourceProviderOperationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IResourceProviderOperationListInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
         }
 

@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL instance to remove.
+The name of the Azure SQL instance to fail over.
 
 ```yaml
 Type: System.String
@@ -96,7 +96,7 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PassThru

@@ -179,21 +179,33 @@ public static int hashForArtifact(String artifact)
 }
 "@
 
-        # Get all appliances and sites in the project
-        $solution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Migration-ServerMigration"
-        $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-        $appMapV2 = $solution.DetailExtendedDetail.AdditionalProperties["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
-        $appMapV3 = $solution.DetailExtendedDetail.AdditionalProperties["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
+        #Get vault name from SMS solution.
+        $smsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Migration-ServerMigration"
+        $VaultName = $smsSolution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+
+        # Get all appliances and sites in the project from SDS solution.
+		$sdsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Discovery-ServerDiscovery"
         $appMap = @{}
 
-        # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
-        foreach ($item in $appMapV2) {
-            $appMap[$item.ApplianceName] = $item.SiteId
+        if ($null -ne $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"]) {
+            $appMapV2 = $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
+            # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
+            foreach ($item in $appMapV2) {
+                $appMap[$item.ApplianceName] = $item.SiteId
+            }
+        }
+        
+        if ($null -ne $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"]) {
+            $appMapV3 = $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
+            foreach ($item in $appMapV3) {
+                $t = $item.psobject.properties
+                $appMap[$t.Name] = $t.Value.SiteId
+            }    
         }
 
-        foreach ($item in $appMapV3) {
-            $t = $item.psobject.properties
-            $appMap[$t.Name] = $t.Value.SiteId
+        if ($null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
+             $null -eq $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
+            throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 
         foreach ($eachApp in $appMap.GetEnumerator()) {
