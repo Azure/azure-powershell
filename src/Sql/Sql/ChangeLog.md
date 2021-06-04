@@ -24,6 +24,7 @@
     - Added option to specify `-ExternalAdminName`, `-ExternalAdminSid`, `-EnableActiveDirectoryOnlyAuthentication` in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
     - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrator` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
 * Fixed `Set-AzSqlDatabase` to no longer default ReadScale to Disabled when not specified
+* Fixed `Set-AzSqlServer` and `Set-AzSqlInstance` for partial PUT with only identity and null properties
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
