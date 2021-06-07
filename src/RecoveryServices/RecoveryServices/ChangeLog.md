@@ -19,7 +19,7 @@
 -->
 ## Upcoming Release
 * Added cross tenant DS Move.
-* Removed restrition to fetch recovery points only for a 30 days time range.
+* Removed restriction to fetch recovery points only for a 30 days time range.
 * Enabled CRR for new regions.
 
 ## Version 4.1.0

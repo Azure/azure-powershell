@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Changes to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
+* Changed to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
     - Accepted `Trace` as a valid value.
     - Accepted `@()` as empty collection to clear the list.
 * Supported `ResourceGroupCompleter` and `ResourceNameCompleter` in the applicable cmdlets.
