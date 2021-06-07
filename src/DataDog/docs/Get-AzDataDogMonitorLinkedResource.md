@@ -24,7 +24,7 @@ List all Azure resources associated to the same Datadog organization as the targ
 
 ### Example 1: List all Azure resources associated to the same Datadog organization as the target resource
 ```powershell
-PS C:\> Get-AzDataDogMonitorLinkedResource -ResourceGroupName lucas-dog -Name lucasdatadog
+PS C:\> Get-AzDataDogMonitorLinkedResource -ResourceGroupName azure-rg-datadog -Name lucasdatadog
 
 Id
 --

@@ -1,6 +1,6 @@
 ### Example 1: Create a monitor resource
 ```powershell
-PS C:\> New-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'lucas' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -IdentityType SystemAssigned
+PS C:\> New-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -IdentityType SystemAssigned
 
 Location    Name           Type
 --------    ----           ----

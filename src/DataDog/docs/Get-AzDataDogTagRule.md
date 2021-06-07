@@ -36,7 +36,7 @@ Get a tag rule set for a given monitor resource.
 
 ### Example 1: List all tag rules set for a given monitor resource
 ```powershell
-PS C:\> Get-AzDataDogTagRule -ResourceGroupName lucas-dog -MonitorName lucasdatadog
+PS C:\> Get-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName datadog
 
 Name    Type
 ----    ----
@@ -47,7 +47,7 @@ This command lists all tag rules set for a given monitor resource.
 
 ### Example 2: Get a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Get-AzDataDogTagRule -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Name 'default'
+PS C:\> Get-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName datadog -Name 'default'
 
 Name    Type
 ----    ----
@@ -58,7 +58,7 @@ This command gets a tag rule set for a given monitor resource.
 
 ### Example 3: Get a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzDataDogTagRule -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Name 'default' | Get-AzDataDogTagRule
+PS C:\> Get-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName datadog -Name 'default' | Get-AzDataDogTagRule
 
 Name    Type
 ----    ----

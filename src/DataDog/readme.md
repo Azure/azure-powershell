@@ -84,6 +84,7 @@ directive:
       variant: ^Set$
       subject: MonitorDefaultKey
     remove: true
+
   # Rename parameter name
   - where:
       verb: Get|New|Update|Remove
@@ -91,6 +92,20 @@ directive:
       parameter-name: MonitorName
     set:
       parameter-name: Name
+
+  - where:
+      verb: New
+      subject: Monitor
+      parameter-name: Datadog(.*)Property(.*)
+    set:
+      parameter-name: $1$2
+
+  - where:
+      verb: Set
+      subject: MonitorDefaultKey
+      parameter-name: Created
+    set:
+      parameter-name: CreatedAt
 
   - where:
       verb: Get|New|Update|Remove

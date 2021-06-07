@@ -14,12 +14,12 @@ Create a monitor resource.
 
 ```
 New-AzDataDogMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-DatadogOrganizationPropertyApiKey <String>] [-DatadogOrganizationPropertyApplicationKey <String>]
- [-DatadogOrganizationPropertyEnterpriseAppId <String>] [-DatadogOrganizationPropertyLinkingAuthCode <String>]
- [-DatadogOrganizationPropertyLinkingClientId <String>] [-DatadogOrganizationPropertyRedirectUri <String>]
- [-IdentityType <ManagedIdentityTypes>] [-MonitoringStatus <MonitoringStatus>] [-SkuName <String>]
- [-Tag <Hashtable>] [-UserInfoEmailAddress <String>] [-UserInfoName <String>] [-UserInfoPhoneNumber <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ManagedIdentityTypes>] [-MonitoringStatus <MonitoringStatus>] [-OrganizationApiKey <String>]
+ [-OrganizationApplicationKey <String>] [-OrganizationEnterpriseAppId <String>]
+ [-OrganizationLinkingAuthCode <String>] [-OrganizationLinkingClientId <String>]
+ [-OrganizationRedirectUri <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>]
+ [-UserInfoName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,23 +27,16 @@ Create a monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a monitor resource
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDataDogMonitor -ResourceGroupName azure-rg-test -Name datadog-pwsh01 -SkuName 'drawdown_testing_20200904_Monthly' -Location 'eastus2euap' -UserInfoEmailAddress 'xxxx@microsoft.com' -UserInfoName 'user' -UserInfoPhoneNumber 'xxxxxxxxxxxx' -IdentityType SystemAssigned
 
-{{ Add output here }}
+Location    Name           Type
+--------    ----           ----
+eastus2euap datadog-pwsh01 microsoft.datadog/monitors
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates a monitor resource.
 
 ## PARAMETERS
 
@@ -52,96 +45,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyApiKey
-Api key associated to the Datadog organization.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyApplicationKey
-Application key associated to the Datadog organization.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyEnterpriseAppId
-The Id of the Enterprise App used for Single sign on.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyLinkingAuthCode
-The auth code used to linking to an existing datadog organization.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyLinkingClientId
-The client_id from an existing in exchange for an auth token to link organization.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatadogOrganizationPropertyRedirectUri
-The redirect uri for linking.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -232,6 +135,96 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationApiKey
+Api key associated to the Datadog organization.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationApplicationKey
+Application key associated to the Datadog organization.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationEnterpriseAppId
+The Id of the Enterprise App used for Single sign on.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationLinkingAuthCode
+The auth code used to linking to an existing datadog organization.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationLinkingClientId
+The client_id from an existing in exchange for an auth token to link organization.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OrganizationRedirectUri
+The redirect uri for linking.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

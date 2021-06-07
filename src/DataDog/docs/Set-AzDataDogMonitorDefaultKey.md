@@ -14,7 +14,7 @@ Set the default api key.
 
 ```
 Set-AzDataDogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Key <String>
- [-SubscriptionId <String>] [-Created <String>] [-CreatedBy <String>] [-Name <String>]
+ [-SubscriptionId <String>] [-CreatedAt <String>] [-CreatedBy <String>] [-Name <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Set the default api key.
 
 ### Example 1: Set the default api key for monitor resource
 ```powershell
-PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName lucas-dog -MonitorName lucasdatadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
+PS C:\> Set-AzDataDogMonitorDefaultKey -ResourceGroupName azure-rg-datadog -MonitorName datadog -Key 'xxxxxxxxxxxxxxxxxxxxxx'
 
 Created CreatedBy Key                              Name
 ------- --------- ---                              ----
@@ -36,7 +36,7 @@ This command sets the default api key for monitor resource.
 
 ## PARAMETERS
 
-### -Created
+### -CreatedAt
 The time of creation of the API key.
 
 ```yaml

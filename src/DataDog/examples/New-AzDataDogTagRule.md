@@ -3,7 +3,7 @@
 PS C:\> $ftobjArray = @()
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-PS C:\> New-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName lucasdatadog -Name 'test' -LogRuleFilteringTag $ftobjArray
+PS C:\> New-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName datadog -Name 'test' -LogRuleFilteringTag $ftobjArray
 
 Name    Type
 ----    ----
@@ -17,7 +17,7 @@ This command creates or updates a tag rule set for a given monitor resource.
 PS C:\> $ftobjArray = @()
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Include" -Value "Prod" -Name "Environment"
 PS C:\> $ftobjArray += New-AzDataDogFilteringTagObject -Action "Exclude" -Value "Dev" -Name "Environment"
-PS C:\> Get-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName lucasdatadog -Name 'default' | New-AzDataDogTagRule -LogRuleFilteringTag $ftobjArray
+PS C:\> Get-AzDataDogTagRule -ResourceGroupName azure-rg-datadog -MonitorName datadog -Name 'default' | New-AzDataDogTagRule -LogRuleFilteringTag $ftobjArray
 
 Name    Type
 ----    ----

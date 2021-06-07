@@ -24,7 +24,7 @@ List the resources currently being monitored by the Datadog monitor resource.
 
 ### Example 1: List the resources currently being monitored by the Datadog monitor resource
 ```powershell
-PS C:\> Get-AzDataDogMonitorMonitoredResource -ResourceGroupName lucas-dog -Name lucasdatadog
+PS C:\> Get-AzDataDogMonitorMonitoredResource -ResourceGroupName azure-rg-datadog -Name datadog
 
 ```
 

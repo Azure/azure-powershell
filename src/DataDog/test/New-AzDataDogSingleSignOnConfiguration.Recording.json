@@ -3,7 +3,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Enable\",\r\n    \"enterpriseAppId\": \"ac754169-3489-42ae-bd06-8be89db12e58\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Enable\",\r\n    \"enterpriseAppId\": \"00000000-0000-0000-0000-000000000000\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -35,7 +35,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:19:07.06305Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"ac754169-3489-42ae-bd06-8be89db12e58\",\"singleSignOnUrl\":null}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:19:07.06305Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
       "isContentBase64": false
     }
   },
@@ -118,7 +118,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"ac754169-3489-42ae-bd06-8be89db12e58\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
       "isContentBase64": false
     }
   },
@@ -160,7 +160,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"ac754169-3489-42ae-bd06-8be89db12e58\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Enable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
       "isContentBase64": false
     }
   },
@@ -168,7 +168,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default?api-version=2021-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Disable\",\r\n    \"enterpriseAppId\": \"ac754169-3489-42ae-bd06-8be89db12e58\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"singleSignOnState\": \"Disable\",\r\n    \"enterpriseAppId\": \"00000000-0000-0000-0000-000000000000\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -200,7 +200,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"ac754169-3489-42ae-bd06-8be89db12e58\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:22:31.8587617Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":\"https://us3.datadoghq.com/account/login/id/f685e980-c1d8-11eb-99d0-da7ad0900003\"}}",
       "isContentBase64": false
     }
   },
@@ -283,7 +283,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:23:02.7949289Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"ac754169-3489-42ae-bd06-8be89db12e58\",\"singleSignOnUrl\":null}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/datadogmonitor-rg-9jkqrl/providers/Microsoft.Datadog/monitors/monitorab3cim/singleSignOnConfigurations/default\",\"name\":\"default\",\"type\":\"microsoft.datadog/monitors/singlesignonconfigurations\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:19:07.06305Z\",\"lastModifiedBy\":\"ae11f5fb-c627-4eec-b4a0-f7b5969426e5\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2021-05-31T07:23:02.7949289Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"singleSignOnState\":\"Disable\",\"enterpriseAppId\":\"00000000-0000-0000-0000-000000000000\",\"singleSignOnUrl\":null}}",
       "isContentBase64": false
     }
   }

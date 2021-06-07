@@ -12,7 +12,7 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     $env.location = 'eastus2euap'
-    $env.enterpriseAppId = 'ac754169-3489-42ae-bd06-8be89db12e58'
+    $env.enterpriseAppId = '00000000-0000-0000-0000-000000000000'
     # For any resources you created for test, you should add it to $env here.
     # Generate random string for use in test.
     $env.resourceGroup = 'datadogmonitor-rg-' + (RandomString -allChars $false -len 6)
