@@ -247,6 +247,24 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            List<string> resourceIds = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
+            // Get aux token for each gateway lb references
+            foreach (FrontendIPConfiguration frontend in vLoadBalancerModel.FrontendIPConfigurations)
+            {
+                if (frontend.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIds.Add(frontend.GatewayLoadBalancer.Id);
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+                }
+            }
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -254,7 +272,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
             () =>
             {
-                this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdate(this.ResourceGroupName, this.Name, vLoadBalancerModel);
+                this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, vLoadBalancerModel, auxAuthHeader);
                 var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.ResourceGroupName, this.Name);
                 var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);
                 psLoadBalancer.ResourceGroupName = this.ResourceGroupName;

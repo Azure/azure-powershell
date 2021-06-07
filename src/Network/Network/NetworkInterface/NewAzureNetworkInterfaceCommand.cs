@@ -437,13 +437,31 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
+            List<string> resourceIds = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
+            // Get aux token for each gateway lb references
+            foreach (var ipConfiguration in networkInterface.IpConfigurations)
+            {
+                if (ipConfiguration.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIds.Add(ipConfiguration.GatewayLoadBalancer.Id);
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+                }
+            }
+
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 
 			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
+            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, networkInterfaceModel, auxAuthHeader);
              
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 
