@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            List<string> resourceIds = new List<string>();
+            List<string> resourceIdsRequiringAuthToken = new List<string>();
             Dictionary<string, List<string>> auxAuthHeader = null;
 
             // Get aux token for each gateway lb references
@@ -256,14 +256,19 @@ namespace Microsoft.Azure.Commands.Network
                 if (frontend.GatewayLoadBalancer != null)
                 {
                     //Get the aux header for the remote vnet
-                    resourceIds.Add(frontend.GatewayLoadBalancer.Id);
-                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                    {
-                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                    }
+                    resourceIdsRequiringAuthToken.Add(frontend.GatewayLoadBalancer.Id);
                 }
             }
+
+            if (resourceIdsRequiringAuthToken.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIdsRequiringAuthToken);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+            }
+
 
             ConfirmAction(
                 Force.IsPresent,

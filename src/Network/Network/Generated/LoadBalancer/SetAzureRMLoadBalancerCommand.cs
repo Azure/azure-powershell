@@ -138,11 +138,15 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     //Get the aux header for the remote vnet
                     resourceIds.Add(frontend.GatewayLoadBalancer.Id);
-                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                    {
-                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                    }
+                }
+            }
+
+            if (resourceIds.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
                 }
             }
 
