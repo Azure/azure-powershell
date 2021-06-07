@@ -12,7 +12,7 @@ Disables Azure Monitor in a specified HDInsight cluster.
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
 Disable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -62,7 +62,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -107,7 +107,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: False
@@ -179,5 +179,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Enable-AzHDInsightAzureMonitor](./Enable-AzHDInsightAzureMonitor.md)
 [Get-AzHDInsightAzureMonitor](./Get-AzHDInsightAzureMonitor.md)

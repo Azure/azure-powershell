@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class GetAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-        private const string SetByNameParameterSet = "SetByNameParameterSet";
+        private const string SetByNameParameterSet = "ByNameParameterSet";
         private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
         private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
 

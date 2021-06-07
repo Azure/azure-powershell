@@ -12,7 +12,7 @@ Gets the azure monitor status of a specified HDInsight cluster.
 
 ## SYNTAX
 
-### SetByNameParameterSet (Default)
+### ByNameParameterSet (Default)
 ```
 Get-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -62,7 +62,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: True
@@ -107,7 +107,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByNameParameterSet
+Parameter Sets: ByNameParameterSet
 Aliases:
 
 Required: False
@@ -148,5 +148,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Enable-AzHDInsightAzureMonitor](./Enable-AzHDInsightAzureMonitor.md)
 [Disable-AzHDInsightAzureMonitor](./Disable-AzHDInsightAzureMonitor.md)
