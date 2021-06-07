@@ -21,20 +21,20 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = DisableByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class DisableAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
-        private const string SetByNameParameterSet = "ByNameParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string DisableByNameParameterSet = "DisableByNameParameterSet";
+        private const string DisableByResourceIdParameterSet = "DisableByResourceIdParameterSet";
+        private const string DisableByInputObjectParameterSet = "DisableByInputObjectParameterSet";
 
         [Parameter(
             Position = 0,
             Mandatory = false,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = DisableByNameParameterSet,
             HelpMessage = "Gets or sets the name of the resource group.")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = DisableByNameParameterSet,
             HelpMessage = "Gets or sets the name of the cluster.")]
         [ResourceNameCompleter("Microsoft.HDInsight/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = SetByResourceIdParameterSet,
+            ParameterSetName = DisableByResourceIdParameterSet,
             HelpMessage = "Gets or sets the resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = SetByInputObjectParameterSet,
+            ParameterSetName = DisableByInputObjectParameterSet,
             HelpMessage = "Gets or sets the input object.")]
         [ValidateNotNull]
         public AzureHDInsightCluster InputObject { get; set; }

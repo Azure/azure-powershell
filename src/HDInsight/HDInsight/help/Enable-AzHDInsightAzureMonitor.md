@@ -12,19 +12,19 @@ Enables Azure Monitor in a specified HDInsight cluster.
 
 ## SYNTAX
 
-### ByNameParameterSet (Default)
+### EnableByNameParameterSet (Default)
 ```
 Enable-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String> [-WorkspaceId] <String>
  [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### EnableByResourceIdParameterSet
 ```
 Enable-AzHDInsightAzureMonitor [-ResourceId] <String> [-WorkspaceId] <String> [-PrimaryKey] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### EnableByInputObjectParameterSet
 ```
 Enable-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster> [-WorkspaceId] <String>
  [-PrimaryKey] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -66,7 +66,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: True
@@ -96,7 +96,7 @@ Gets or sets the input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
-Parameter Sets: SetByInputObjectParameterSet
+Parameter Sets: EnableByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -126,7 +126,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: EnableByNameParameterSet
 Aliases:
 
 Required: False
@@ -141,7 +141,7 @@ Gets or sets the resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: EnableByResourceIdParameterSet
 Aliases:
 
 Required: True

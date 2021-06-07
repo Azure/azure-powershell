@@ -12,19 +12,19 @@ Gets the azure monitor status of a specified HDInsight cluster.
 
 ## SYNTAX
 
-### ByNameParameterSet (Default)
+### GetByNameParameterSet (Default)
 ```
 Get-AzHDInsightAzureMonitor [[-ResourceGroupName] <String>] [-ClusterName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByResourceIdParameterSet
+### GetByResourceIdParameterSet
 ```
 Get-AzHDInsightAzureMonitor [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
-### SetByInputObjectParameterSet
+### GetByInputObjectParameterSet
 ```
 Get-AzHDInsightAzureMonitor [-InputObject] <AzureHDInsightCluster> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -62,7 +62,7 @@ Gets or sets the name of the cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
@@ -92,7 +92,7 @@ Gets or sets the input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
-Parameter Sets: SetByInputObjectParameterSet
+Parameter Sets: GetByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -107,7 +107,7 @@ Gets or sets the name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByNameParameterSet
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: False
@@ -122,7 +122,7 @@ Gets or sets the resource id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceIdParameterSet
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True

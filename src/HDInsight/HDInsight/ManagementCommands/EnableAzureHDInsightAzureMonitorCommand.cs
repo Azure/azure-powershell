@@ -23,20 +23,20 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = SetByNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightAzureMonitor", DefaultParameterSetName = EnableByNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class EnableAzureHDInsightAzureMonitorCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
-        private const string SetByNameParameterSet = "ByNameParameterSet";
-        private const string SetByResourceIdParameterSet = "SetByResourceIdParameterSet";
-        private const string SetByInputObjectParameterSet = "SetByInputObjectParameterSet";
+        private const string EnableByNameParameterSet = "EnableByNameParameterSet";
+        private const string EnableByResourceIdParameterSet = "EnableByResourceIdParameterSet";
+        private const string EnableByInputObjectParameterSet = "EnableByInputObjectParameterSet";
 
         [Parameter(
             Position = 0,
             Mandatory = false,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = EnableByNameParameterSet,
             HelpMessage = "Gets or sets the name of the resource group.")]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = EnableByNameParameterSet,
             HelpMessage = "Gets or sets the name of the cluster.")]
         [ResourceNameCompleter("Microsoft.HDInsight/clusters", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = SetByResourceIdParameterSet,
+            ParameterSetName = EnableByResourceIdParameterSet,
             HelpMessage = "Gets or sets the resource id.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = SetByInputObjectParameterSet,
+            ParameterSetName = EnableByInputObjectParameterSet,
             HelpMessage = "Gets or sets the input object.")]
         [ValidateNotNull]
         public AzureHDInsightCluster InputObject { get; set; }
@@ -71,34 +71,34 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = EnableByNameParameterSet,
             HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = SetByResourceIdParameterSet,
+            ParameterSetName = EnableByResourceIdParameterSet,
             HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ParameterSetName = SetByInputObjectParameterSet,
+            ParameterSetName = EnableByInputObjectParameterSet,
             HelpMessage = "Gets or sets the ID of the Log Analytics workspace.")]
         public string WorkspaceId { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true,
-            ParameterSetName = SetByNameParameterSet,
+            ParameterSetName = EnableByNameParameterSet,
             HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ParameterSetName = SetByResourceIdParameterSet,
+            ParameterSetName = EnableByResourceIdParameterSet,
             HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ParameterSetName = SetByInputObjectParameterSet,
+            ParameterSetName = EnableByInputObjectParameterSet,
             HelpMessage = "Gets to sets the primary key of the Log Analytics workspace.")]
         public string PrimaryKey { get; set; }
 
