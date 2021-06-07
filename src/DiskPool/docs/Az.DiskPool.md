@@ -1,6 +1,6 @@
 ---
 Module Name: Az.DiskPool
-Module Guid: 4ef9a257-25da-4db7-832b-0c44a0e44cf0
+Module Guid: 6ee0ccda-b0ba-4017-92fe-6eb1cfacfc66
 Download Help Link: https://docs.microsoft.com/powershell/module/az.diskpool
 Help Version: 1.0.0.0
 Locale: en-US
