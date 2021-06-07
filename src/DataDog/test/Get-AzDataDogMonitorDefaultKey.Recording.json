@@ -37,7 +37,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"createdBy\":null,\"name\":null,\"key\":\"c2200ba61f8f44a69a2cbe6fc4edf124\",\"created\":null}",
+      "Content": "{\"createdBy\":null,\"name\":null,\"key\":\"00000000000000000000000\",\"created\":null}",
       "isContentBase64": false
     }
   },
@@ -121,7 +121,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"createdBy\":null,\"name\":null,\"key\":\"c2200ba61f8f44a69a2cbe6fc4edf124\",\"created\":null}",
+      "Content": "{\"createdBy\":null,\"name\":null,\"key\":\"00000000000000000000000\",\"created\":null}",
       "isContentBase64": false
     }
   }
