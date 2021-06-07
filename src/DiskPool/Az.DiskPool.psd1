@@ -1,5 +1,5 @@
 @{
-  GUID = '4ef9a257-25da-4db7-832b-0c44a0e44cf0'
+  GUID = '6ee0ccda-b0ba-4017-92fe-6eb1cfacfc66'
   RootModule = './Az.DiskPool.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
