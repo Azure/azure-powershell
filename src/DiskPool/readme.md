@@ -41,6 +41,7 @@ module-version: 0.1.0
 title: DiskPool
 subject-prefix: $(service-name)
 identity-correction-for-post: true 
+nested-object-to-string: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -60,6 +61,12 @@ directive:
       verb: Stop
       subject-prefix: ''
       subject: DiskPool
+  - where:
+      verb: Stop
+      subject: DiskPool
+      parameter-name: DiskPoolName
+    set:
+      parameter-name: Name
   - where:
       verb: New
       subject: DiskPool

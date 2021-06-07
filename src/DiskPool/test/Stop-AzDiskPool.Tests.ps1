@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Stop-AzDiskPool' {
     It 'Deallocate' {
-        Stop-AzDiskPool -DiskPoolName $env.diskPool1 -ResourceGroupName $env.resourceGroup
+        Stop-AzDiskPool -Name $env.diskPool1 -ResourceGroupName $env.resourceGroup
         $diskPool = Get-AzDiskPool -ResourceGroupName $env.resourceGroup -Name $env.diskPool1
         $diskPool.status | Should -Be 'Stopped (deallocated)'
     }

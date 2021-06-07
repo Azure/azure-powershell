@@ -54,7 +54,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
     # The name of the Disk Pool.
-    ${DiskPoolName},
+    ${Name},
 
     [Parameter(ParameterSetName='Deallocate', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]

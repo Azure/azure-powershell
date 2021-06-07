@@ -57,20 +57,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Backing field for <see cref="DiskPoolName" /> property.</summary>
-        private string _diskPoolName;
-
-        /// <summary>The name of the Disk Pool.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Disk Pool.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"The name of the Disk Pool.",
-        SerializedName = @"diskPoolName",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Path)]
-        public string DiskPoolName { get => this._diskPoolName; set => this._diskPoolName = value; }
-
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
         [global::System.Management.Automation.ValidateNotNull]
@@ -93,6 +79,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
 
         /// <summary><see cref="IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
+
+        /// <summary>Backing field for <see cref="Name" /> property.</summary>
+        private string _name;
+
+        /// <summary>The name of the Disk Pool.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The name of the Disk Pool.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(
+        Required = true,
+        ReadOnly = false,
+        Description = @"The name of the Disk Pool.",
+        SerializedName = @"diskPoolName",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.ParameterCategory.Path)]
+        public string Name { get => this._name; set => this._name = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
-            clone.DiskPoolName = this.DiskPoolName;
+            clone.Name = this.Name;
             return clone;
         }
 
@@ -371,12 +371,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DiskPoolsDeallocate(SubscriptionId, ResourceGroupName, DiskPoolName, onOk, onDefault, this, Pipeline);
+                    await this.Client.DiskPoolsDeallocate(SubscriptionId, ResourceGroupName, Name, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,DiskPoolName=DiskPoolName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -430,14 +430,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DiskPoolName=DiskPoolName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, DiskPoolName=DiskPoolName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
