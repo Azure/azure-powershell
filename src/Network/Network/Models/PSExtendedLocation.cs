@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSExtendedLocation(string EdgeZone)
         {
-            var extendedLocation = new ExtendedLocation(EdgeZone);
+            var extendedLocation = new ExtendedLocation(EdgeZone, ExtendedLocationTypes.EdgeZone);
 
             this.Name = extendedLocation.Name;
-            this.Type = ExtendedLocationTypes.EdgeZone;
+            this.Type = extendedLocation.Type;
         }
 
         public string Name { get; set; }
