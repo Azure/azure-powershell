@@ -182,6 +182,11 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
             }
 
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
             // Map to the sdk object
             var vnetModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetwork>(vnet);
             vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
@@ -193,11 +198,6 @@ namespace Microsoft.Azure.Commands.Network
                     var ipAllocationReference = new MNM.SubResource(ipAllocation.Id);
                     vnetModel.IpAllocations.Add(ipAllocationReference);
                 }
-            }
-
-            if (!string.IsNullOrEmpty(this.EdgeZone))
-            {
-                vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             // Execute the Create VirtualNetwork call

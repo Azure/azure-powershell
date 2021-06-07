@@ -1496,6 +1496,46 @@ function Test-VirtualNetworkInEdgeZone
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $ResourceGroup
+        Clean-ResourceGroup $ResourceGroupfunction Test-VirtualNetworkEdgeZone
+    }
+}
+
+<#
+.SYNOPSIS
+Test for creating a new virtual network in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-VirtualNetworkEdgeZone
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $job = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EdgeZone "MicrosoftRRDCLab1" -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
+        $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual $expected.ExtendedLocation.Name "MicrosoftRRDCLab1"
+        Assert-AreEqual $expected.ExtendedLocation.Type "EdgeZone"
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }
