@@ -152,6 +152,9 @@ Imports the specified ASR vault settings file to set the vault context(PowerShel
 ### [Initialize-AzRecoveryServicesBackupProtectableItem](Initialize-AzRecoveryServicesBackupProtectableItem.md)
 This command triggers the discovery of any unprotected items of the given workload type in the given container. If the DB application is not auto-protected use this command to discover new DBs whenever they are added and proceed to protect them.
 
+### [Initialize-AzRecoveryServicesDSMove](Initialize-AzRecoveryServicesDSMove.md)
+Initializes DS move for Copy-AzRecoveryServicesVault.
+
 ### [New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
 Creates a disk mapping object for Azure virtual machine disks to be replicated.
 
@@ -299,6 +302,9 @@ Stops an Azure Site Recovery job.
 
 ### [Stop-AzRecoveryServicesBackupJob](Stop-AzRecoveryServicesBackupJob.md)
 Cancels a running job.
+
+### [Test-AzRecoveryServicesDSMove](Test-AzRecoveryServicesDSMove.md)
+This cmdlet performs necessary validations for DS Move.
 
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
 If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
