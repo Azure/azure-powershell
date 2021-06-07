@@ -21,6 +21,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,12 +43,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         /// <inhericdoc />
         public Guid Id => Identifier;
-
-        /// <inhericdoc />
-        public bool SupportEarlyProcessing => true;
-
-        /// <inhericdoc />
-        public bool AcceptFeedback => true;
 
         internal static readonly Guid Identifier = new Guid("599d1760-4ee1-4ed2-806e-f2a1b1a0ba4d");
 
@@ -90,7 +85,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inhericdoc />
-        public void StartEarlyProcessing(string clientId, IReadOnlyList<string> history)
+        public bool CanAcceptFeedback(PredictionClient client, PredictorFeedbackKind feedback)
+        {
+            switch (feedback)
+            {
+                case PredictorFeedbackKind.SuggestionDisplayed:
+                case PredictorFeedbackKind.SuggestionAccepted:
+                case PredictorFeedbackKind.CommandLineAccepted:
+                case PredictorFeedbackKind.CommandLineExecuted:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        /// <inhericdoc />
+        public void OnCommandLineAccepted(PredictionClient client, IReadOnlyList<string> history)
         {
             // The context only changes when the user executes the corresponding command.
             _azContext?.UpdateContext();
@@ -162,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.MaskedValue ?? AzPredictorConstants.CommandPlaceholder));
+                _telemetryClient.OnHistory(new HistoryTelemetryData(client, lastCommand.MaskedValue ?? AzPredictorConstants.CommandPlaceholder));
 
                 if (isLastTwoCommandsChanged)
                 {
@@ -194,7 +204,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                 }
                                 finally
                                 {
-                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(clientId, lastTwoMaskedCommands,
+                                    _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(client, lastTwoMaskedCommands,
                                                 hasSentHttpRequest,
                                                 (exception is OperationCanceledException ? null : exception)));
                                 }
@@ -216,8 +226,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
+        public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success)
+        {
+
+        }
+
         /// <inhericdoc />
-        public SuggestionPackage GetSuggestion(string clientId, PredictionContext context, CancellationToken cancellationToken)
+        public SuggestionPackage GetSuggestion(PredictionClient client, PredictionContext context, CancellationToken cancellationToken)
         {
             var localSuggestionSessionId = _suggestionSessionId++;
 
@@ -246,7 +261,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             finally
             {
 
-                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(clientId, localSuggestionSessionId, context.InputAst,
+                _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
                         suggestions,
                         cancellationToken.IsCancellationRequested,
                         exception));
@@ -264,22 +279,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inhericdoc />
-        public void OnSuggestionDisplayed(string clientId, uint session, int countOrIndex)
+        public void OnSuggestionDisplayed(PredictionClient client, uint session, int countOrIndex)
         {
             if (countOrIndex > 0)
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(clientId, session, countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForListView(client, session, countOrIndex));
             }
             else
             {
-                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(clientId, session, -countOrIndex));
+                _telemetryClient.OnSuggestionDisplayed(SuggestionDisplayedTelemetryData.CreateForInlineView(client, session, -countOrIndex));
             }
         }
 
         /// <inhericdoc />
-        public void OnSuggestionAccepted(string clientId, uint session, string acceptedSuggestion)
+        public void OnSuggestionAccepted(PredictionClient client, uint session, string acceptedSuggestion)
         {
-            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(clientId, session, acceptedSuggestion));
+            _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(client, session, acceptedSuggestion));
         }
     }
 

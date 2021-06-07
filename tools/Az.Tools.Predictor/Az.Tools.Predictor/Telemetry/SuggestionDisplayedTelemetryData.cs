@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -29,9 +31,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets the client that makes the calls.
         /// </summary>
-        public string ClientId { get; init; }
+        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// The mode the suggestion is displayed in.
@@ -55,13 +57,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="displayMode">The mode the suggestion is displayed in.</param>
         /// <param name="suggestionCountOrIndex">The index or count of the suggestions displayed.</param>
-        private SuggestionDisplayedTelemetryData(string clientId, uint suggestionSessionId, SuggestionDisplayMode displayMode, int suggestionCountOrIndex)
+        private SuggestionDisplayedTelemetryData(PredictionClient client, uint suggestionSessionId, SuggestionDisplayMode displayMode, int suggestionCountOrIndex)
         {
-            ClientId = clientId;
+            Client = client;
             SuggestionSessionId = suggestionSessionId;
             DisplayMode = displayMode;
             SuggestionCountOrIndex = suggestionCountOrIndex;
@@ -71,24 +73,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/> for the suggestions displayed in
         /// <see cref="SuggestionDisplayMode.InlineView"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="index">The index of the suggestion that's displayed.</param>
-        public static SuggestionDisplayedTelemetryData CreateForInlineView(string clientId, uint suggestionSessionId, int index)
+        public static SuggestionDisplayedTelemetryData CreateForInlineView(PredictionClient client, uint suggestionSessionId, int index)
         {
-            return new SuggestionDisplayedTelemetryData(clientId, suggestionSessionId, SuggestionDisplayMode.InlineView, index);
+            return new SuggestionDisplayedTelemetryData(client, suggestionSessionId, SuggestionDisplayMode.InlineView, index);
         }
 
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionDisplayedTelemetryData"/> for the suggestions displayed in
         /// <see cref="SuggestionDisplayMode.ListView"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="count">The count of the suggestions that are displayed.</param>
-        public static SuggestionDisplayedTelemetryData CreateForListView(string clientId, uint suggestionSessionId, int count)
+        public static SuggestionDisplayedTelemetryData CreateForListView(PredictionClient client, uint suggestionSessionId, int count)
         {
-            return new SuggestionDisplayedTelemetryData(clientId, suggestionSessionId, SuggestionDisplayMode.ListView, count);
+            return new SuggestionDisplayedTelemetryData(client, suggestionSessionId, SuggestionDisplayMode.ListView, count);
         }
     }
 }

@@ -11,7 +11,7 @@
 RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -29,7 +29,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 preview 3 and PSReadLine 2.2.0-beta2.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 preview 6 and PSReadLine 2.2.0-beta3.
 
 The suggestions must be activated:
 - Enable-AzPredictor:  Activate the suggestions

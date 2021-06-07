@@ -50,12 +50,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string CommandsEndpoint = "/commands";
 
         /// <summary>
-        /// The default client id. This is used when we don't get the client id from the caller. For example, when the module
-        /// is imported and it hasn't started processing yet.
-        /// </summary>
-        public const string DefaultClientId = "AzPredictor";
-
-        /// <summary>
         /// The service endpoint to get the list of suggestions.
         /// </summary>
         public const string PredictionsEndpoint = "/predictions";

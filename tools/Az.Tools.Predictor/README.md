@@ -8,15 +8,15 @@ Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en
 
 Required configuration for Az Predictor:
 
-- [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
-- [PSReadline 2.2.0-beta2](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta2)
+- [PowerShell 7.2 preview 6](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.6)
+- [PSReadline 2.2.0-beta3](https://github.com/PowerShell/PSReadLine/releases/tag/v2.2.0-beta3)
 
 ## Getting started
 
 ### Installing the module
 
-1. Install [PowerShell 7.2 preview 3](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.3)
-2. Install [PSReadline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2)
+1. Install [PowerShell 7.2 preview 6](https://github.com/PowerShell/PowerShell/releases/tag/v7.2.0-preview.6)
+2. Install [PSReadline 2.2.0-beta3](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta3)
 
     `Install-Module -Name PSReadline -AllowPrerelease`
 

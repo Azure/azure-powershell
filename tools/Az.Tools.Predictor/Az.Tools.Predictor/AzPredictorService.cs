@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
                                         exception));
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
-                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(AzPredictorConstants.DefaultClientId,
+                            _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         placeholderCommands,
                                         hasSentHttpRequest,
                                         (exception is OperationCanceledException ? null : exception)));
