@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 
             this.Regions = capabilitiesResult?.Regions?.ToDictionary(item => item.Key, item => new AzureHDInsightRegionsCapability(item.Value));
 
-            this.VmSizes = capabilitiesResult?.VmSizes?.ToDictionary(item => item.Key, item => new AzureHDInsightVmSizesCapability(item.Value));
+            this.VmSizes = capabilitiesResult?.Vmsizes?.ToDictionary(item => item.Key, item => new AzureHDInsightVmSizesCapability(item.Value));
 
-            this.VmSizeFilters = capabilitiesResult?.VmSizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
+            this.VmSizeFilters = capabilitiesResult?.VmsizeFilters?.Select(val => new AzureHDInsightVmSizeCompatibilityFilter(val)).ToList();
 
             this.Features = capabilitiesResult?.Features;
 

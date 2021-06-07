@@ -13,25 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.HDInsight.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {
-    public class AzureHDInsightVersionSpec
+    public class AzureHDInsightAzureMonitor
     {
-        public AzureHDInsightVersionSpec(VersionSpec versionSpec)
+        public AzureHDInsightAzureMonitor(AzureMonitorResponse azureMonitorResponse)
         {
-            this.FriendlyName = versionSpec?.FriendlyName;
-            this.DisplayName = versionSpec?.DisplayName;
-            this.IsDefault = versionSpec?.IsDefault.ToString();  // ToDo: need to change IsDefault from string to bool, waiting for next major release
-            this.ComponentVersions = versionSpec?.ComponentVersions;
+            ClusterMonitoringEnabled = azureMonitorResponse.ClusterMonitoringEnabled ?? false;
+            WorkspaceId = azureMonitorResponse.WorkspaceId;
         }
 
-        public string FriendlyName { get; set; }
-        public string DisplayName { get; set; }
-        public string IsDefault { get; set; }
-        public IDictionary<string, string> ComponentVersions { get; set; }
+        /// <summary>
+        /// Bool indicates whether the cluster has enabled montioring or not.
+        /// </summary>
+        public bool ClusterMonitoringEnabled { get; set; }
+
+        /// <summary>
+        /// The workspaceId of cluster.
+        /// </summary>
+        public string WorkspaceId { get; set; }
     }
 }
