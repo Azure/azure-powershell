@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System;
     using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -74,7 +75,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy definition parameter.
         /// </summary>
-        [CmdletParameterBreakingChange("PolicyDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicyDefinition")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicyParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicyDefinitionHelp)]
@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment policy set definition parameter.
         /// </summary>
-        [CmdletParameterBreakingChange("PolicySetDefinition", OldParamaterType = typeof(PSObject), NewParameterTypeName = "PsPolicySetDefinition")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.DefaultParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicySetParameterObjectParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.NewPolicyAssignmentPolicySetDefinitionHelp)]
@@ -132,6 +131,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentLocationHelp)]
         [LocationCompleter("Microsoft.ManagedIdentity/userAssignedIdentities")]
         public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the messages that describe why a resource is non-compliant with the policy.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentNonComplianceMessageHelp)]
+        [ValidateNotNull]
+        public PsNonComplianceMessage[] NonComplianceMessage { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -206,7 +212,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     NotScopes = this.NotScope ?? null,
                     Metadata = this.Metadata == null ? null : this.GetObjectFromParameter(this.Metadata, nameof(this.Metadata)),
                     EnforcementMode = EnforcementMode ?? PolicyAssignmentEnforcementMode.Default,
-                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject)
+                    Parameters = this.GetParameters(this.PolicyParameter, this.PolicyParameterObject),
+                    NonComplianceMessages = this.NonComplianceMessage?.Where(message => message != null).SelectArray(message => message.ToModel())
                 }
             };
 

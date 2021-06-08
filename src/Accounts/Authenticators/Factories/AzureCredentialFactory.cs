@@ -14,6 +14,9 @@
 
 using Azure.Core;
 using Azure.Identity;
+using Microsoft.WindowsAzure.Commands.Common;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.PowerShell.Authenticators.Factories
 {
@@ -22,6 +25,21 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
         public virtual TokenCredential CreateManagedIdentityCredential(string clientId)
         {
             return new ManagedIdentityCredential(clientId);
+        }
+
+        public virtual TokenCredential CreateClientSecretCredential(string tenantId, string clientId, SecureString secret, ClientCertificateCredentialOptions options)
+        {
+            return new ClientSecretCredential(tenantId, clientId, secret.ConvertToString(), options);
+        }
+
+        public virtual TokenCredential CreateClientCertificateCredential(string tenantId, string clientId, X509Certificate2 certifiate, ClientCertificateCredentialOptions options)
+        {
+            return new ClientCertificateCredential(tenantId, clientId, certifiate, options);
+        }
+
+        public virtual TokenCredential CreateClientCertificateCredential(string tenantId, string clientId, string certificatePath, ClientCertificateCredentialOptions options)
+        {
+            return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
         }
     }
 }

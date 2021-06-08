@@ -177,6 +177,13 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string DiffDiskSetting { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Detach", "Delete")]
+        public string DeleteOption { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -200,6 +207,7 @@ namespace Microsoft.Azure.Commands.Compute
             this.VM.StorageProfile.OsDisk.Name = this.Name ?? this.VM.StorageProfile.OsDisk.Name;
             this.VM.StorageProfile.OsDisk.Caching = this.Caching ?? this.VM.StorageProfile.OsDisk.Caching;
             this.VM.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeInGB ?? this.VM.StorageProfile.OsDisk.DiskSizeGB;
+            this.VM.StorageProfile.OsDisk.DeleteOption = this.DeleteOption ?? this.VM.StorageProfile.OsDisk.DeleteOption;
 
             if (this.Windows.IsPresent)
             {

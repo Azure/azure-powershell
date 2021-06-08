@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models.Management
             this.ClusterFlavors = vmSizeCompatibilityFilter?.ClusterFlavors;
             this.NodeTypes = vmSizeCompatibilityFilter?.NodeTypes;
             this.ClusterVersions = vmSizeCompatibilityFilter?.ClusterVersions;
-            this.Vmsizes = vmSizeCompatibilityFilter?.Vmsizes;
+            this.Vmsizes = vmSizeCompatibilityFilter?.VMSizes;
         }
         public string FilterMode { get; set; }
         public IList<string> Regions { get; set; }

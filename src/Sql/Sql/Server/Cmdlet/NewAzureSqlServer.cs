@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,9 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// The SQL administrator credentials for the server
         /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The SQL administrator credentials for the server")]
-        [ValidateNotNull]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The SQL administrator credentials for the server. Optional when Azure Active Directory only is enabled and an Azure Active Directory administrator is specified.")]
         public PSCredential SqlAdministratorCredentials { get; set; }
 
         /// <summary>
@@ -90,16 +90,76 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        // <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Enable Active Directory Only Authentication on the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Enable Active Directory Only Authentication on the server.")]
+        public SwitchParameter EnableActiveDirectoryOnlyAuthentication { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory display name for a user or group
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the display name of the user, group or application which is the Azure Active Directory administrator for the server. This display name must exist in the active directory associated with the current subscription.")]
+        public string ExternalAdminName { get; set; }
+
+        /// <summary>
+        /// Azure Active Directory object id for a user, group or application
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies the object ID of the user, group or application which is the Azure Active Directory administrator.")]
+        public Guid? ExternalAdminSID { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            if (this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.ExternalAdminName == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingExternalAdmin, "ExternalAdminName");
+            }
+
+            if (!this.EnableActiveDirectoryOnlyAuthentication.IsPresent && this.SqlAdministratorCredentials == null)
+            {
+                throw new PSArgumentException(Properties.Resources.MissingSQLAdministratorCredentials, "SqlAdministratorCredentials");
+            }
+
             base.ExecuteCmdlet();
         }
 
@@ -150,12 +210,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 ServerVersion = this.ServerVersion,
-                SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
-                SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
+                SqlAdministratorPassword = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.Password : null,
+                SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId,
+                Administrators = new Management.Sql.Models.ServerExternalAdministrator()
+                {
+                    AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
+                    Login = this.ExternalAdminName,
+                    Sid = this.ExternalAdminSID
+                }              
             });
             return newEntity;
         }

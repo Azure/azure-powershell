@@ -139,6 +139,11 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = false)]
         public SwitchParameter WriteAccelerator { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Detach", "Delete")]
+        public string DeleteOption { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -169,7 +174,8 @@ namespace Microsoft.Azure.Commands.Compute
                     Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                     {
                         Uri = this.SourceImageUri
-                    }
+                    },
+                    DeleteOption = this.DeleteOption
                 });
 
                 this.VM.StorageProfile = storageProfile;
@@ -206,7 +212,8 @@ namespace Microsoft.Azure.Commands.Compute
                     Lun = this.Lun.GetValueOrDefault(),
                     CreateOption = this.CreateOption,
                     ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
-                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
+                    WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent,
+                    DeleteOption = this.DeleteOption
                 });
 
                 this.VM.StorageProfile = storageProfile;

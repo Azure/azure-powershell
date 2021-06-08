@@ -9,7 +9,7 @@
 
   <PropertyGroup>
     <RootNamespace>Microsoft.WindowsAzure.Management.$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
-    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

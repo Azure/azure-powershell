@@ -50,6 +50,40 @@ function Test-SimpleNewVm
 .SYNOPSIS
 Test Simple Paremeter Set for New Vm
 #>
+function Test-SimpleNewVmWithDeleteOptions
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+        $x = New-AzVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -NetworkInterfaceDeleteOption "Delete" -OSDiskDeleteOption "Detach" -DataDiskSizeInGb 32 -DataDiskDeleteOption "Delete"
+
+        Assert-AreEqual $vmname $x.Name;
+        Assert-Null $x.Identity
+        Assert-False { $x.AdditionalCapabilities.UltraSSDEnabled };
+
+        Assert-AreEqual $x.NetworkProfile.NetworkInterfaces[0].DeleteOption "Delete"
+        Assert-AreEqual $x.StorageProfile.OSDisk.DeleteOption "Detach"
+        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
 function Test-SimpleNewVmFromSIGImage
 {
     #This test needs to be run form the following subscription in record mode :

@@ -11,7 +11,7 @@ steps:
   displayName: 'Use .NET Core sdk'
   inputs:
     packageType: sdk
-    version: 2.1.x
+    version: 3.1.x
 
 - pwsh: 'Install-Module platyPS -Force -Confirm:$false -Scope CurrentUser'
   displayName: 'Install platyPS'

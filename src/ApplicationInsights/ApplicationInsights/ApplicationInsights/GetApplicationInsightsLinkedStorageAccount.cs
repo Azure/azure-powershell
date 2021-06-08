@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.ApplicationInsights
                 this.ResourceId = this.InputObject.Id;
             }
 
-            if (this.IsParameterBound(c => c.ResourceId))
+            if (this.IsParameterBound(c => c.ResourceId) || !string.IsNullOrEmpty(this.ResourceId))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = identifier.ResourceGroupName;

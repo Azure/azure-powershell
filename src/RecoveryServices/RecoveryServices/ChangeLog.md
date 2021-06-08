@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cross tenant DS Move.
+* Removed restriction to fetch recovery points only for a 30 days time range.
+* Enabled CRR for new regions.
 
 ## Version 4.1.0
 * Fixed security issue with SQL restore, this is a necessary breaking change. TargetContainer becomes mandatory for Alternate Location Restore.

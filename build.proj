@@ -103,7 +103,7 @@
   </Target>
 
   <Target Name="BuildTools">
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration)" />
   </Target>
 
   <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''" DependsOnTargets="BuildTools">
@@ -111,7 +111,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
     <!-- Build the Microsoft.Azure.Build.Tasks project -->
-    <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration) -f netstandard2.0" />
+    <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)">
@@ -268,11 +268,11 @@
   </Target>
 
   <Target Name="AzToolsInstaller">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:'clean;build;test'" />
+    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="AzToolsPredictor">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:'clean;build;test'" />
+    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="ChangeLogErrorMessage">

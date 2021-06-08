@@ -169,7 +169,7 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
                'Remove-AzDiskAccess', 'Get-AzDiskAccess', 
                'Invoke-AzVmPatchAssessment', 
                'Get-AzDiskEncryptionSetAssociatedResource', 
-               'Start-AzVmssRollingExtensionUpgrade', 'Invoke-AzVmInstallPatch'
+               'Start-AzVmssRollingExtensionUpgrade', 'Invoke-AzVmInstallPatch', 'Get-AzSshKey', 'Remove-AzSshkey', 'Update-AzSshKey', 'New-AzSshKey'
 
 # Variables to export from this module
 # VariablesToExport = @()

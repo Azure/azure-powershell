@@ -109,7 +109,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 shareRetentionDays = value;
             }
         }
-        private int? shareRetentionDays = null;       
+        private int? shareRetentionDays = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbMultichannel
+        {
+            get
+            {
+                return enableSmbMultichannel is null ? false : enableSmbMultichannel.Value;
+            }
+            set
+            {
+                enableSmbMultichannel = value;
+            }
+        }
+        private bool? enableSmbMultichannel = null;
 
         public override void ExecuteCmdlet()
         {
@@ -160,8 +177,17 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
 
+                ProtocolSettings protocolSettings = null;
+                if (this.enableSmbMultichannel != null)
+                {
+                    protocolSettings = new ProtocolSettings();
+                    protocolSettings.Smb = new SmbSetting();
+                    protocolSettings.Smb.Multichannel = new Multichannel();
+                    protocolSettings.Smb.Multichannel.Enabled = this.enableSmbMultichannel;
+                }
+
                 FileServiceProperties serviceProperties = this.StorageClient.FileServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, 
-                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy));
+                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy, protocolSettings: protocolSettings));
 
                 // Get all File service properties from server for output
                 serviceProperties = this.StorageClient.FileServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);
