@@ -140,7 +140,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Identity = model.Identity,
                 MinimalTlsVersion = model.MinimalTlsVersion,
                 PublicNetworkAccess = model.PublicNetworkAccess,
-                Administrators = GetActiveDirectoryInformation(model.Administrators)
+                Administrators = GetActiveDirectoryInformation(model.Administrators),
+                PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
+                KeyId = model.KeyId
             });
 
             return CreateServerModelFromResponse(resp);
@@ -188,6 +190,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             {
                 server.Administrators.AdministratorType = "ActiveDirectory";
             }
+            server.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
+            server.KeyId = resp.KeyId;
 
             return server;
         }

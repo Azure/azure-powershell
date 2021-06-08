@@ -25,6 +25,13 @@
     - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrator` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
 * Fixed `Set-AzSqlDatabase` to no longer default ReadScale to Disabled when not specified
 * Fixed `Set-AzSqlServer` and `Set-AzSqlInstance` for partial PUT with only identity and null properties
+* Added parameters related to UMI in `New-AzSqlServer`, `New-AzSqlInstance`, `Set-AzSqlServer` and `Set-AzSqlInstance` cmdlets.
+* Added -AutoRotationEnabled parameter to following cmdlets:
+    - `Set-AzSqlServerTransparentDataEncryptionProtector`
+    - `Get-AzSqlServerTransparentDataEncryptionProtector`
+    - `Set-AzSqlInstanceTransparentDataEncryptionProtector`
+    - `Get-AzSqlInstanceTransparentDataEncryptionProtector`
+
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.

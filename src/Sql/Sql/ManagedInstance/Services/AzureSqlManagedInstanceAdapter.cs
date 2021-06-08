@@ -172,7 +172,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 MinimalTlsVersion = model.MinimalTlsVersion,
                 StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
                 MaintenanceConfigurationId = MaintenanceConfigurationHelper.ConvertMaintenanceConfigurationIdArgument(model.MaintenanceConfigurationId, Context.Subscription.Id),
-                Administrators = GetActiveDirectoryInformation(model.Administrators)
+                Administrators = GetActiveDirectoryInformation(model.Administrators),
+                PrimaryUserAssignedIdentityId = model.PrimaryUserAssignedIdentityId,
+                KeyId = model.KeyId
             });
 
             return CreateManagedInstanceModelFromResponse(resp);

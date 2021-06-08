@@ -324,6 +324,35 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        // <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -496,7 +525,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = (this.AdministratorCredential != null) ? this.AdministratorCredential.Password : null,
                 AdministratorLogin = (this.AdministratorCredential != null) ? this.AdministratorCredential.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
                 LicenseType = this.LicenseType,
                 // `-StorageSizeInGB 0` as a parameter to this cmdlet means "use default".
                 // For non-MI database, we can just pass in 0 and the server will treat 0 as default.
@@ -515,6 +544,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 BackupStorageRedundancy = this.BackupStorageRedundancy,
                 MaintenanceConfigurationId = this.MaintenanceConfigurationId,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ManagedInstanceExternalAdministrator()
                 {
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,

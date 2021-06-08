@@ -987,7 +987,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
     # The name of the Disk Pool.
-    ${DiskPoolName},
+    ${Name},
 
     [Parameter(ParameterSetName='Deallocate', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
@@ -1145,7 +1145,7 @@ westeurope disk-pool-1 Microsoft.StoragePool/diskPools
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool
 .Link
-https://docs.microsoft.com/powershell/module/diskpool/new-azdiskpool
+https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool])]
@@ -1528,7 +1528,7 @@ STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN m
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   MappedLun <String[]>: List of LUN names mapped to the ACL.
 .Link
-https://docs.microsoft.com/powershell/module/diskpool/new-azdiskpooliscsitarget
+https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpooliscsitarget
 #>
 function New-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget])]
@@ -1737,7 +1737,7 @@ INPUTOBJECT <IDiskPoolIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/diskpool/update-azdiskpool
+https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
 #>
 function Update-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPool])]
@@ -1944,7 +1944,7 @@ STATICACL <IAcl[]>: Access Control List (ACL) for an iSCSI Target; defines LUN m
   InitiatorIqn <String>: iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   MappedLun <String[]>: List of LUN names mapped to the ACL.
 .Link
-https://docs.microsoft.com/powershell/module/diskpool/update-azdiskpooliscsitarget
+https://docs.microsoft.com/powershell/module/az.diskpool/update-azdiskpooliscsitarget
 #>
 function Update-AzDiskPoolIscsiTarget {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget])]
