@@ -24,10 +24,15 @@ namespace Microsoft.Azure.Commands.Network
 
         public void AddIpConfigurtaionToPSVirtualHub(CNM.PSVirtualHub virtualHubModel,
                                                     string resourceGroupName,
-                                                    string routerName,
-                                                    string ipConfigName)
+                                                    string routerName)
         {
-            var ipConfigModel = this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.Get(resourceGroupName, routerName, ipConfigName);
+            var ipConfigModels = this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.List(resourceGroupName, routerName);
+            var ipConfigList = ListNextLink<HubIpConfiguration>.GetAllResourcesByPollingNextLink(ipConfigModels, this.NetworkClient.NetworkManagementClient.VirtualHubIpConfiguration.ListNext);
+            HubIpConfiguration ipConfigModel = null;
+            if (ipConfigList.Count > 0)
+            {
+                ipConfigModel = ipConfigList[0];
+            }
             var ipconfig = NetworkResourceManagerProfile.Mapper.Map<CNM.PSHubIpConfiguration>(ipConfigModel);
             virtualHubModel.IpConfigurations = new List<CNM.PSHubIpConfiguration>();
             virtualHubModel.IpConfigurations.Add(ipconfig);

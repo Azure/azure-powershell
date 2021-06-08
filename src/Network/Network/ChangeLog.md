@@ -19,6 +19,35 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets for route server for a more stable way to add IP configuration.
+* Added support for getting a single private link resource.
+* Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
+* Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Updated cmdlets to add NatRules in VirtualNetworkGateway and BgpRouteTranslationForNat.
+    - `New-AzVirtualNetworkGateway`
+    - `Set-AzVirtualNetworkGateway`
+* Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
+    - `New-AzVirtualNetworkGatewayConnection`
+    - `Set-AzVirtualNetworkGatewayConnection`
+* Updated cmdlet to enable setting of FlowTimeout in VirtualNetwork.
+    - `New-AzVirtualNetwork`
+* Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
+    - `New-AzVirtualNetworkGatewayNatRule`
+    - `Update-AzVirtualNetworkGatewayNatRule`
+    - `Get-AzVirtualNetworkGatewayNatRule`
+    - `Remove-AzVirtualNetworkGatewayNatRule`
+* Added a new cmdlet for Sync on VirtualNetworkPeering
+    - `Sync-AzVirtualNetworkPeering`
+* Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
+    - `Add-AzVirtualNetworkPeering`
+    - `Get-AzVirtualNetworkPeering`
+* Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
+    - `New-AzVirtualHub`
+    - `Update-AzVirtualHub`
+* Updated cmdlets to expose two read-only properties of client certificate.
+    - `Get-AzApplicationGatewayTrustedClientCertificate`
 
 ## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter

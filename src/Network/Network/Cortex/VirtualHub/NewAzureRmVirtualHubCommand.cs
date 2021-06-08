@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using MNM = Microsoft.Azure.Management.Network.Models;
 
     [Cmdlet(VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
@@ -99,6 +100,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Preferred Routing Gateway to Route On-Prem traffic from VNET")]
+        [ValidateSet(
+            MNM.PreferredRoutingGateway.ExpressRoute,
+            MNM.PreferredRoutingGateway.VpnGateway,
+            IgnoreCase = true)]
+        public string PreferredRoutingGateway { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -162,6 +172,15 @@ namespace Microsoft.Azure.Commands.Network
                     if (string.IsNullOrWhiteSpace(this.Sku))
                     {
                         virtualHub.Sku = "Standard";
+                    }
+
+                    if (string.IsNullOrWhiteSpace(this.PreferredRoutingGateway))
+                    {
+                        virtualHub.PreferredRoutingGateway = "ExpressRoute";
+                    }
+                    else
+                    {
+                        virtualHub.PreferredRoutingGateway = this.PreferredRoutingGateway;
                     }
 
                     WriteObject(CreateOrUpdateVirtualHub(

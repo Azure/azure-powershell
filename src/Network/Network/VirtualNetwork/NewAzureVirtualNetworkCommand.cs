@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.")]
+        public int? FlowTimeout { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
         public PSSubnet[] Subnet { get; set; }
 
@@ -149,6 +155,11 @@ namespace Microsoft.Azure.Commands.Network
             if (DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
+            }
+            
+            if (this.FlowTimeout > 0)
+            {
+                vnet.FlowTimeoutInMinutes = this.FlowTimeout;
             }
 
             vnet.Subnets = this.Subnet?.ToList();

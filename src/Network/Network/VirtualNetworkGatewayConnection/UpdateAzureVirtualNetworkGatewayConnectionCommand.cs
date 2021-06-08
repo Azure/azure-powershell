@@ -78,6 +78,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSTrafficSelectorPolicy[] TrafficSelectorPolicy { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of ingress NAT rules that are associated with this Connection.")]
+        public PSResourceId[] IngressNatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
+        public PSResourceId[] EgressNatRule { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -140,6 +150,32 @@ namespace Microsoft.Azure.Commands.Network
                     if (this.TrafficSelectorPolicy != null)
                     {
                         this.VirtualNetworkGatewayConnection.TrafficSelectorPolicies = this.TrafficSelectorPolicy?.ToList();
+                    }
+
+                    if (this.IngressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.IngressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.IngressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.IngressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
+                    }
+
+                    if (this.EgressNatRule != null)
+                    {
+                        this.VirtualNetworkGatewayConnection.EgressNatRules = new List<PSResourceId>();
+                        foreach (var resource in this.EgressNatRule)
+                        {
+                            this.VirtualNetworkGatewayConnection.EgressNatRules.Add(
+                                new PSResourceId()
+                                {
+                                    Id = resource.Id
+                                });
+                        }
                     }
 
                     var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);

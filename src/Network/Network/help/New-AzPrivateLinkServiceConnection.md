@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupId
-The list of group id.
+The list of group id. You can use '(Get-AzPrivateLinkResource -PrivateLinkResourceId ${privateLinkResourceId}).GroupId' to get the supported group ids.
 
 ```yaml
 Type: System.String[]

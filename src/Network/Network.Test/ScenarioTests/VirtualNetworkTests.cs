@@ -148,6 +148,22 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkCRUDFlowTimeout()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkCRUD-FlowTimeout");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkPeeringSyncCRUD()
+        {
+            TestRunner.RunTestScript("Test-SyncVirtualNetworkPeeringCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkInEdgeZone()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkInEdgeZone");
