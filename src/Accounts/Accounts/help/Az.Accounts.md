@@ -81,6 +81,9 @@ Loads Azure authentication information from a file.
 ### [Invoke-AzRestMethod](Invoke-AzRestMethod.md)
 Construct and perform HTTP request to Azure resource management endpoint only
 
+### [Open-AzSurveyLink](Open-AzSurveyLink.md)
+Open survey link in default browser.
+
 ### [Register-AzModule](Register-AzModule.md)
 FOR INTERNAL USE ONLY - Provide Runtime Support for AutoRest Generated cmdlets
 
