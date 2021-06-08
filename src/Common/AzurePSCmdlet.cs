@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Azure.PowerShell.Share.Survey;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -25,7 +26,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Net.Http.Headers;
 using System.Text;
@@ -265,9 +265,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected bool CheckIfInteractive()
         {
             bool interactive = true;
-            if (this.Host == null ||
-                this.Host.UI == null ||
-                this.Host.UI.RawUI == null ||
+            if (this.Host?.UI?.RawUI == null ||
                 Environment.GetCommandLineArgs().Any(s =>
                     s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
             {
@@ -410,6 +408,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
+            if (CheckIfInteractive() && SurveyHelper.GetInstance().ShouldPropmtSurvey(this.MyInvocation.MyCommand.ModuleName, this.MyInvocation.MyCommand.Version))
+            {
+                WriteSurvey();
+                if (_qosEvent != null)
+                {
+                    _qosEvent.SurveyPrompted = true;
+                }
+            }
             LogQosEvent();
             LogCmdletEndInvocationInfo();
             TearDownDebuggingTraces();
@@ -434,6 +440,57 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return verbose;
         }
 
+        protected void WriteSurvey()
+        {
+            HostInformationMessage newLine = new HostInformationMessage()
+            {
+                Message = "\n"
+            };
+            HostInformationMessage howWas = new HostInformationMessage()
+            {
+                Message = ": How was your experience using Azure PowerShell?\nRun ",
+                NoNewLine = true
+            };
+            HostInformationMessage survey;
+            HostInformationMessage link;
+            try
+            {
+                survey = new HostInformationMessage()
+                {
+                    Message = "Survey",
+                    NoNewLine = true,
+                    ForegroundColor = (ConsoleColor)Host.PrivateData.Properties.Match("ProgressForegroundColor").SingleOrDefault().Value
+                };
+                link = new HostInformationMessage()
+                {
+                    Message = "Open-AzSurveyLink",
+                    NoNewLine = true,
+                    ForegroundColor = (ConsoleColor)Host.PrivateData.Properties.Match("ProgressbackgroundColor").SingleOrDefault().Value
+                };
+            }
+            catch
+            {
+                survey = new HostInformationMessage()
+                {
+                    Message = "Survey",
+                    NoNewLine = true,
+                };
+                link = new HostInformationMessage()
+                {
+                    Message = "Open-AzSurveyLink",
+                    NoNewLine = true,
+                };
+            } 
+            HostInformationMessage action = new HostInformationMessage()
+            {
+                Message = " to fill out a short Survey"
+            };
+            WriteInformation(newLine, new string[] { "PSHOST" });
+            WriteInformation(survey, new string[] { "PSHOST" });
+            WriteInformation(howWas, new string[] { "PSHOST" });
+            WriteInformation(link, new string[] { "PSHOST" });
+            WriteInformation(action, new string[] { "PSHOST" });
+        }
         protected new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages(IsDataCollectionAllowed());

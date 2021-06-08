@@ -1,15 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IncludeHyak>true</IncludeHyak>
     <IsCmdletProject>true</IsCmdletProject>
   </PropertyGroup>
   <Import Project="$(ProjectDir)..\Dependencies.Client.targets" />
-
-  <PropertyGroup>
+  
+    <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Common</AssemblyName>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.Common</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Share</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Share</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -17,9 +17,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell Common</Title>
-    <Description>Microsoft Azure PowerShell Common library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
-    <PackageTags>azure;powershell;common</PackageTags>
+    <Title>Microsoft Azure PowerShell Share</Title>
+    <Description>Microsoft Azure PowerShell Share library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
+    <PackageTags>azure;powershell;share</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -40,34 +40,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>true</DesignTime>
-      <AutoGen>true</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Share\Share.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\LICENSE.txt" Link="LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
-
+  
 </Project>
