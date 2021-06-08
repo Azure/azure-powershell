@@ -19,8 +19,8 @@ Test Cassandra CRUD cmdlets using Name paramter set
 function Test-CassandraCreateUpdateGetCmdlets
 {
   # using a pre-created CosmosDB Account, since account provisioning takes some time
-  $AccountName = "db2725"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "cassandra-db2725"
+  $rgName = "CosmosDBResourceGroup27"
   $KeyspaceName = "keyspace1"
   $TableName = "table"
   $KeyspaceName2 = "keyspace2"
@@ -144,8 +144,8 @@ Test Cassandra CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-CassandraCreateUpdateGetCmdletsByPiping
 {
-  $AccountName = "db2725"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "cassandra-db2725"
+  $rgName = "CosmosDBResourceGroup27"
   $KeyspaceName = "db2"
   $TableName = "table"
   $ThroughputValue = 500
@@ -235,8 +235,8 @@ Test Cassandra Throughput cmdlets using all paramter sets
 #>
 function Test-CassandraThroughputCmdlets
 {
-  $AccountName = "db2725"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "cassandra-db2725"
+  $rgName = "CosmosDBResourceGroup27"
   $KeyspaceName = "KeyspaceName"
   $TableName = "tableName"
 

@@ -163,7 +163,18 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Remove-AzCosmosDBSqlRoleDefinition', 
                'Remove-AzCosmosDBSqlRoleAssignment', 
                'Update-AzCosmosDBSqlRoleDefinition', 
-               'Update-AzCosmosDBSqlRoleAssignment', 'New-AzCosmosDBPermission'
+               'Update-AzCosmosDBSqlRoleAssignment', 'New-AzCosmosDBPermission',
+               'Remove-AzCosmosDBSqlRoleAssignment',
+               'New-AzCosmosDBDatabaseToRestore',
+               'Restore-AzCosmosDBAccount',
+               'Get-AzCosmosDBRestorableDatabaseAccount',
+               'Get-AzCosmosDBSqlRestorableDatabase',
+               'Get-AzCosmosDBSqlRestorableContainer',
+               'Get-AzCosmosDBSqlRestorableResource',
+               'Get-AzCosmosDBMongoDBRestorableDatabase',
+               'Get-AzCosmosDBMongoDBRestorableCollection',
+               'Get-AzCosmosDBMongoDBRestorableResource',
+               'Get-AzCosmosDBSqlContainerBackupInformation'
 
 # Variables to export from this module
 # VariablesToExport = @()

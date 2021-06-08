@@ -18,8 +18,8 @@ Test Table CRUD operations
 #>
 function Test-TableOperationsCmdlets
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-db2527"
+  $rgName = "CosmosDBResourceGroup27"
   $TableName = "table1"
   $TableName2 = "table2"
   $ThroughputValue = 500
@@ -79,8 +79,8 @@ Test Table CRUD operations using InputObject and ParentObject parameter set
 #>
 function Test-TableOperationsCmdletsUsingInputObject
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-db2527"
+  $rgName = "CosmosDBResourceGroup27"
   $TableName = "table1"
   $TableName2 = "table2"
   $ThroughputValue = 500
@@ -132,8 +132,8 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "table-29"
+  $rgName = "CosmosDBResourceGroup29"
   $TableName = "tableName3"
 
   $ThroughputValue = 1200
