@@ -65,7 +65,7 @@ RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'CosmosDB.generated.format.ps1xml'
+FormatsToProcess = @('Az.CosmosDB.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll')
@@ -146,24 +146,18 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBTableThroughput', 
                'Update-AzCosmosDBMongoDBCollection', 
                'Update-AzCosmosDBMongoDBDatabase', 
-               'New-AzCosmosDBMongoDBCollection', 'New-AzCosmosDBMongoDBDatabase', 
-               'Invoke-AzCosmosDBSqlContainerThroughputMigration', 
-               'Invoke-AzCosmosDBSqlDatabaseThroughputMigration', 
-               'Invoke-AzCosmosDBMongoDBCollectionThroughputMigration', 
-               'Invoke-AzCosmosDBMongoDBDatabaseThroughputMigration', 
-               'Invoke-AzCosmosDBGremlinGraphThroughputMigration', 
-               'Invoke-AzCosmosDBGremlinDatabaseThroughputMigration', 
-               'Invoke-AzCosmosDBCassandraTableThroughputMigration', 
-               'Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration', 
-               'Invoke-AzCosmosDBTableThroughputMigration', 
-               'New-AzCosmosDBSqlRoleDefinition', 
-               'New-AzCosmosDBSqlRoleAssignment', 
-               'Get-AzCosmosDBSqlRoleDefinition', 
-               'Get-AzCosmosDBSqlRoleAssignment', 
-               'Remove-AzCosmosDBSqlRoleDefinition', 
-               'Remove-AzCosmosDBSqlRoleAssignment', 
-               'Update-AzCosmosDBSqlRoleDefinition', 
-               'Update-AzCosmosDBSqlRoleAssignment', 'New-AzCosmosDBPermission'
+               'New-AzCosmosDBMongoDBCollection', 'New-AzCosmosDBMongoDBDatabase',
+               'Remove-AzCosmosDBSqlRoleAssignment',
+               'New-AzCosmosDBDatabaseToRestore',
+               'Restore-AzCosmosDBAccount',
+               'Get-AzCosmosDBRestorableDatabaseAccount',
+               'Get-AzCosmosDBSqlRestorableDatabase',
+               'Get-AzCosmosDBSqlRestorableContainer',
+               'Get-AzCosmosDBSqlRestorableResource',
+               'Get-AzCosmosDBMongoDBRestorableDatabase',
+               'Get-AzCosmosDBMongoDBRestorableCollection',
+               'Get-AzCosmosDBMongoDBRestorableResource',
+               'Get-AzCosmosDBSqlContainerBackupInformation'
 
 # Variables to export from this module
 # VariablesToExport = @()

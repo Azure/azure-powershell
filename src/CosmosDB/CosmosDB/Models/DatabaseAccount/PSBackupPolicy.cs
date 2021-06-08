@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
     public class PSBackupPolicy
     {
         public static readonly string PeriodicModeBackupType = "Periodic";
+        public static readonly string ContinuousModeBackupType = "Continuous";
 
         public PSBackupPolicy()
         {
@@ -32,17 +33,17 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             if (backupPolicy is PeriodicModeBackupPolicy)
             {
                 PeriodicModeBackupPolicy periodicModeBackupPolicy = backupPolicy as PeriodicModeBackupPolicy;
-                BackupIntervalInMinutes = periodicModeBackupPolicy.PeriodicModeProperties.BackupIntervalInMinutes;
+                BackupIntervalInMin = periodicModeBackupPolicy.PeriodicModeProperties.BackupIntervalInMinutes;
                 BackupRetentionIntervalInHours = periodicModeBackupPolicy.PeriodicModeProperties.BackupRetentionIntervalInHours;
                 BackupType = PeriodicModeBackupType;
             }
-            else
+            else if (backupPolicy is ContinuousModeBackupPolicy)
             {
-                return;
+                BackupType = ContinuousModeBackupType;
             }
         }
 
-        public int? BackupIntervalInMinutes { get; set; }
+        public int? BackupIntervalInMin { get; set; }
 
         public int? BackupRetentionIntervalInHours { get; set; }
 
@@ -50,22 +51,22 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
 
         public BackupPolicy ToSDKModel()
         {
-            if (BackupType.Equals(PSBackupPolicy.PeriodicModeBackupType))
+            if (BackupType.Equals(PSBackupPolicy.ContinuousModeBackupType))
+            {
+                return new ContinuousModeBackupPolicy();
+            }
+            else
             {
                 PeriodicModeBackupPolicy periodicModeBackupPolicy = new PeriodicModeBackupPolicy
                 {
                     PeriodicModeProperties = new PeriodicModeProperties()
                     {
-                        BackupIntervalInMinutes = BackupIntervalInMinutes,
+                        BackupIntervalInMinutes = BackupIntervalInMin,
                         BackupRetentionIntervalInHours = BackupRetentionIntervalInHours
                     }
                 };
 
                 return periodicModeBackupPolicy;
-            }
-            else
-            {
-                return null;
             }
         }
     }

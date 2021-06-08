@@ -158,6 +158,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
             {
+                if (BackupPolicyType == "Continuous")
+                {
+                    WriteWarning("Cannot set BackupPolicyType along with BackupInterval or BackupRetention parameters");
+                    return;
+                }
+
                 if (readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
                 {
                     databaseAccountUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
@@ -174,6 +180,12 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     WriteWarning("Can accept BackupInterval or BackupRetention parameters only for accounts with PeriodicMode backup policy");
                     return;
                 }
+            }
+
+            // Update backup policy to ContinuousModeBackupPolicy
+            if (BackupPolicyType == "Continuous" && readDatabase.BackupPolicy is PeriodicModeBackupPolicy)
+            {
+                databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy();
             }
 
             if (ShouldProcess(Name, "Updating Database Account"))
