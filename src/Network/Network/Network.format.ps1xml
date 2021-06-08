@@ -115,10 +115,6 @@
                 <PropertyName>FlowTimeoutInMinutesText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ExtendedLocation</Label>
-                <PropertyName>ExtendedLocationText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
@@ -142,6 +138,10 @@
               <ListItem>
                 <Label>DdosProtectionPlan</Label>
                 <PropertyName>DdosProtectionPlanText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
