@@ -14,14 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class NetworkInterfaceReferenceStrategy
     {
         public static NetworkInterfaceReference GetReference(
-            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface)
-            => new NetworkInterfaceReference { Id = engine.GetId(networkInterface) };
+            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface, string deleteOption = null)
+            => new NetworkInterfaceReference { Id = engine.GetId(networkInterface), DeleteOption = deleteOption };
     }
 }

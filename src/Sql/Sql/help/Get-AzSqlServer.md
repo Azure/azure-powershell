@@ -14,7 +14,7 @@ Returns information about SQL Database servers.
 ## SYNTAX
 
 ```
-Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>]
+Get-AzSqlServer [[-ResourceGroupName] <String>] [[-ServerName] <String>] [-ExpandActiveDirectoryAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -128,6 +128,74 @@ FullyQualifiedDomainName : server02.database.windows.net
 
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01 that start with "server".
 
+### Example 5: Get all instances of SQL Server assigned to a resource group with external administrator information
+```
+PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
+ResourceGroupName        : resourcegroup01
+ServerName               : server01
+Location                 : Central US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
+Administrators           : Microsoft.Azure.Management.Sql.Models.ServerExternalAdministrator
+
+ResourceGroupName        : resourcegroup01
+ServerName               : server02
+Location                 : West US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server02.database.windows.net
+Administrators           : Microsoft.Azure.Management.Sql.Models.ServerExternalAdministrator
+
+PS C:\>$val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy2
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+```
+
+This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01.
+
+### Example 6: Get information about an Azure SQL Database server with external administrator information
+```
+PS C:\>$val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrator
+ResourceGroupName        : resourcegroup01
+ServerName               : server01
+Location                 : Central US
+SqlAdministratorLogin    : adminLogin
+SqlAdministratorPassword :
+ServerVersion            : 12.0
+Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
+Administrators           : Microsoft.Azure.Management.Sql.Models.ServerExternalAdministrator
+
+PS C:\>$val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+```
+
+This command gets information about the Azure SQL Database server named Server01.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -137,6 +205,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandActiveDirectoryAdministrator
+Expand Active Directory Administrator Information on the server.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -157,7 +240,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ServerName
@@ -172,7 +255,7 @@ Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm

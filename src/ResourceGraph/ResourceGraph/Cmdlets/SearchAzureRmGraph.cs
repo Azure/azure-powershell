@@ -14,10 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
-    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceGraph.Models;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
-    using Microsoft.Azure.Internal.Subscriptions.Version2018_06_01;
     using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
     using System.Collections.Generic;
@@ -28,28 +27,33 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse))]
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
-        /// The synchronize root
+        /// Subscription scoped query parameter set.
         /// </summary>
-        private static readonly object SyncRoot = new object();
+        public const string SubscriptionParameterSet = "SubscriptionScopedQuery";
 
         /// <summary>
-        /// Query extension with subscription names
+        /// Tenant scoped query parameter set.
         /// </summary>
-        private static string queryExtensionToIncludeNames = null;
+        public const string TenantParameterSet = "TenantScopedQuery";
 
         /// <summary>
         /// The rows per page
         /// </summary>
-        private const int RowsPerPage = 1000;
+        private const int MaxRowsPerPage = 1000;
 
         /// <summary>
         /// Maximum number of subscriptions for request
         /// </summary>
         private const int SubscriptionLimit = 1000;
+
+        /// <summary>
+        /// Maximum number of management groups for request
+        /// </summary>
+        private const int ManagementGroupLimit = 10;
 
         /// <summary>
         /// Gets or sets the query.
@@ -65,8 +69,29 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the subscriptions.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Subscription(s) to run query against")]
+        [Parameter(Mandatory = false, ParameterSetName = SubscriptionParameterSet, HelpMessage = "Subscription(s) to run query against")]
         public string[] Subscription
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the management groups.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = TenantParameterSet, HelpMessage = "Management group(s) to run query against")]
+        public string[] ManagementGroup
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets if query should succeed with partial scopes when total number of scopes exceeds the number allowed on server side.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = TenantParameterSet,
+            HelpMessage = "Indicates if query should succeed when only partial number of subscription underneath can be processed by server")]
+        public SwitchParameter AllowPartialScope
         {
             get;
             set;
@@ -78,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "The maximum number of objects to return. Default value is 100.")]
-        [ValidateRange(1, 5000), PSDefaultValue(Value = 100)]
+        [ValidateRange(1, 1000), PSDefaultValue(Value = 100)]
         public int First
         {
             get;
@@ -99,11 +124,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         }
 
         /// <summary>
-        /// Gets or sets if result should be extended with subcription and tenant names.
+        /// Gets or sets the skip token.
         /// </summary>s
-        [Parameter(Mandatory = false, HelpMessage = "Indicates if result should be extended with subcription and tenants names")]
-        [PSDefaultValue(Value = IncludeOptionsEnum.None)]
-        public IncludeOptionsEnum Include
+        [Parameter(Mandatory = false, HelpMessage = "The skip token to use for getting the next page of results if applicable")]
+        public string SkipToken
         {
             get;
             set;
@@ -114,70 +138,83 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var subscriptions = this.GetSubscriptions().ToList();
-            if (subscriptions == null || subscriptions.Count == 0)
+            var managementGroups = this.ManagementGroup?.ToList();
+            if (managementGroups != null && managementGroups.Count > ManagementGroupLimit)
             {
-                var exception = new ArgumentException("No subscriptions were found to run query. " +
-                    "Please try to add them implicitly as param to your request (e.g. Search-AzGraph -Query '' -Subscription '11111111-1111-1111-1111-111111111111')");
-
-                var errorRecord = new ErrorRecord(
-                            exception, "400",
-                            ErrorCategory.InvalidArgument, null);
-                this.WriteError(errorRecord);
-                return;
+                managementGroups = managementGroups.Take(ManagementGroupLimit).ToList();
+                this.WriteWarning("The query included more management groups than allowed. " +
+                    $"Only the first {ManagementGroupLimit} management groups were included for the results. " +
+                    $"To use more than {ManagementGroupLimit} management groups, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
             }
 
-            if (subscriptions.Count > SubscriptionLimit)
+            IList<string> subscriptions = null;
+            if (managementGroups == null)
             {
-                subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
-                this.WriteWarning("The query included more subscriptions than allowed. " +
-                    $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
-                    $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+                subscriptions = this.GetSubscriptions().ToList();
+                if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
+                {
+                    subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
+                    this.WriteWarning("The query included more subscriptions than allowed. " +
+                        $"Only the first {SubscriptionLimit} subscriptions were included for the results. " +
+                        $"To use more than {SubscriptionLimit} subscriptions, see the docs for examples: https://aka.ms/arg-error-toomanysubs");
+                }
             }
 
-            var first = this.MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
-            var skip = this.MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
-
-            var results = new List<PSObject>();
+            var psResourceGraphResponse = new PSResourceGraphResponse();
             QueryResponse response = null;
 
             var resultTruncated = false;
             try
             {
-                do
+                var skipToken = this.SkipToken;
+                var isSkipTokenPassed = this.MyInvocation.BoundParameters.ContainsKey("SkipToken");
+
+                int? first = null;
+                if (this.MyInvocation.BoundParameters.ContainsKey("First"))
                 {
-                    var requestTop = Math.Min(first - results.Count, RowsPerPage);
-                    var requestSkip = skip + results.Count;
-                    var requestSkipToken = response?.SkipToken;
-                    this.WriteVerbose($"Sent top={requestTop} skip={requestSkip} skipToken={requestSkipToken}");
-
-                    var requestOptions = new QueryRequestOptions(
-                        top: requestTop,
-                        skip: requestSkip,
-                        skipToken: requestSkipToken,
-                        resultFormat: ResultFormat.ObjectArray);
-
-                    var queryExtenstion = (this.Include == IncludeOptionsEnum.DisplayNames && this.QueryExtensionInitizalized()) ?
-                        (queryExtensionToIncludeNames + (this.Query.Length != 0 ? "| " : string.Empty)) :
-                        string.Empty;
-
-                    var request = new QueryRequest(subscriptions, queryExtenstion + this.Query, options: requestOptions);
-                    response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
-                        .Result
-                        .Body;
-
-                    if (response.ResultTruncated == ResultTruncated.True)
-                    {
-                        resultTruncated = true;
-                    }
-
-                    var requestResults = response.Data.ToPsObjects();
-                    results.AddRange(requestResults);
-                    this.WriteVerbose($"Received results: {requestResults.Count}");
+                    first = Math.Min(First, MaxRowsPerPage);
                 }
-                while (results.Count < first && response.SkipToken != null);
+                else if (!isSkipTokenPassed)
+                {
+                    first = 100;
+                }
 
-                if (resultTruncated && results.Count < first)
+                int? skip = null;
+                if (this.MyInvocation.BoundParameters.ContainsKey("Skip"))
+                {
+                    skip = this.Skip;
+                }
+                else if (!isSkipTokenPassed)
+                {
+                    skip = 0;
+                }
+
+                var allowPartialScopes = AllowPartialScope.IsPresent;
+                this.WriteVerbose($"Sent top={first} skip={skip} skipToken={skipToken}");
+
+                var requestOptions = new QueryRequestOptions(
+                        top: first,
+                        skip: skip,
+                        skipToken: skipToken,
+                        resultFormat: ResultFormat.ObjectArray,
+                        allowPartialScopes: allowPartialScopes);
+
+                var request = new QueryRequest(this.Query, subscriptions, managementGroups, options: requestOptions);
+                response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
+                    .Result
+                    .Body;
+
+                if (response.ResultTruncated == ResultTruncated.True)
+                {
+                    resultTruncated = true;
+                }
+
+                var requestResults = response.Data.ToPsObjects();
+                psResourceGraphResponse.Data = requestResults;
+                psResourceGraphResponse.SkipToken = response.SkipToken;
+                this.WriteVerbose($"Received results: {requestResults.Count}");
+
+                if (resultTruncated && psResourceGraphResponse.Data.Count < first)
                 {
                     this.WriteWarning("Unable to paginate the results of the query. " +
                         "Some resources may be missing from the results. " +
@@ -210,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return;
             }
 
-            this.WriteObject(results, true);
+            this.WriteObject(psResourceGraphResponse);
         }
 
         /// <summary>
@@ -230,61 +267,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return accountSubscriptions;
             }
 
-            return SubscriptionCache.GetSubscriptions(this.DefaultContext);
-        }
-
-        /// <summary>
-        /// Ensure that this.queryExtensionToIncludeNames is initialized
-        /// </summary>
-        /// <returns></returns>
-        private bool QueryExtensionInitizalized()
-        {
-            if (queryExtensionToIncludeNames == null)
-            {
-                lock (SyncRoot)
-                {
-                    if (queryExtensionToIncludeNames == null)
-                    {
-                        this.InitializeQueryExtension();
-                    }
-                }
-            }
-
-            return queryExtensionToIncludeNames != null && queryExtensionToIncludeNames.Length > 0;
-        }
-
-        /// <summary>
-        /// Initialize this.queryExtensionToIncludeNames 
-        /// </summary>
-        private void InitializeQueryExtension()
-        {
-            queryExtensionToIncludeNames = string.Empty;
-
-            // Query extension with subscription names 
-            var subscriptionList = this.DefaultContext.Account.GetSubscriptions(this.DefaultProfile);
-            if (subscriptionList != null && subscriptionList.Count != 0)
-            {
-                queryExtensionToIncludeNames =
-                    $"extend subscriptionDisplayName=case({string.Join(",", subscriptionList.Select(sub => $"subscriptionId=='{sub.Id}', '{sub.Name}'"))},'')";
-            }
-
-            // Query extension with tenant names
-            using (var subscriptionsClient =
-                AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
-                    this.DefaultContext, AzureEnvironment.Endpoint.ResourceManager))
-            {
-                var tenantList = subscriptionsClient.Tenants.List().ToList();
-                if (tenantList != null && tenantList.Count != 0)
-                {
-                    if (queryExtensionToIncludeNames.Length > 0)
-                    {
-                        queryExtensionToIncludeNames += "| ";
-                    }
-
-                    queryExtensionToIncludeNames +=
-                        $"extend tenantDisplayName=case({string.Join(",", tenantList.Select(tenant => $"tenantId=='{tenant.TenantId}', '{tenant.DisplayName}'"))},'')";
-                }
-            }
+            return null;
         }
     }
 }

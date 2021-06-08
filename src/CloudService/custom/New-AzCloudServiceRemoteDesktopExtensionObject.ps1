@@ -20,7 +20,7 @@ Create a in-memory object for Remote Desktop Extension
 #>
 
 function New-AzCloudServiceRemoteDesktopExtensionObject {
-  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
+  [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension')]
   param(
     [Parameter(HelpMessage="Name of Remote Desktop Extension.", Mandatory)]
     [string] $Name,

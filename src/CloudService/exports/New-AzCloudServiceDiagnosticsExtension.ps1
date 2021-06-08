@@ -24,12 +24,12 @@ PS C:\> $configFile = "<WAD configuration file path>"
 PS C:\> $extension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
+Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
 .Link
 https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservicediagnosticsextension
 #>
 function New-AzCloudServiceDiagnosticsExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Position=1)]

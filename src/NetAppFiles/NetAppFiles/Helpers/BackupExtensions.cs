@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 BackupType = backup.Type,
                 Label = backup.Label,
                 ProvisioningState = backup.ProvisioningState,
-                Size = backup.Size
+                Size = backup.Size,
+                VolumeName = backup.VolumeName,
+                UseExistingSnapshot = backup.UseExistingSnapshot
             };
             return psBackup;
         }
@@ -45,5 +47,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             return volumeBackups.Select(e => e.ConvertToPs()).ToList();
         }
 
+        public static PSNetAppFilesVolumeBackupStatus ConvertToPs(this Management.NetApp.Models.BackupStatus backupStatus)
+        {
+            var psBackupStatus = new PSNetAppFilesVolumeBackupStatus
+            {
+               Healthy = backupStatus.Healthy,
+               MirrorState = backupStatus.MirrorState,
+               RelationshipStatus = backupStatus.RelationshipStatus,
+               UnhealthyReason = backupStatus.UnhealthyReason,
+               ErrorMessage = backupStatus.ErrorMessage
+            };
+            return psBackupStatus;
+        }
     }
 }

@@ -1,0 +1,164 @@
+{
+  "Update-AzStaticWebAppUser+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/all/listUsers?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/all/listUsers?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "d9489b73-8913-4d2e-987e-059afc4c873c" ],
+        "CommandName": [ "Get-AzStaticWebAppUser" ],
+        "FullCommandName": [ "Get-AzStaticWebAppUser_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "e79f734f-4049-4294-9d35-93a5af9e2f74" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "96d51a9a-9bb2-46ae-b7cf-95fd0c4a7ce8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T103822Z:96d51a9a-9bb2-46ae-b7cf-95fd0c4a7ce8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:38:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932\",\"name\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"type\":\"Microsoft.Web/staticSites/users\",\"location\":\"Central US\",\"properties\":{\"provider\":\"aad\",\"userId\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"displayName\":\"v-diya@microsoft.com\",\"roles\":\"contributor,anonymous,authenticated\"}}],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStaticWebAppUser+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"roles\": \"contributor\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "856608fa-227f-4581-9e41-eb0bce7ef89b" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "ee2df5e7-0a56-4b47-86d1-2c2094ae7a25" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T103823Z:ee2df5e7-0a56-4b47-86d1-2c2094ae7a25" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:38:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "471" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932\",\"name\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"type\":\"Microsoft.Web/staticSites/users\",\"location\":\"Central US\",\"properties\":{\"provider\":\"aad\",\"userId\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"displayName\":\"v-diya@microsoft.com\",\"roles\":\"contributor,anonymous,authenticated\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStaticWebAppUser+[NoContext]+UpdateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/all/listUsers?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/all/listUsers?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "59439d0c-339b-4818-aa1d-20c1cb167673" ],
+        "CommandName": [ "Get-AzStaticWebAppUser" ],
+        "FullCommandName": [ "Get-AzStaticWebAppUser_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "21867ea8-07b2-4df9-b489-2038cf482a82" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "4d01f015-61c4-44b2-bd09-dc5b77a32622" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T103824Z:4d01f015-61c4-44b2-bd09-dc5b77a32622" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:38:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "509" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932\",\"name\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"type\":\"Microsoft.Web/staticSites/users\",\"location\":\"Central US\",\"properties\":{\"provider\":\"aad\",\"userId\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"displayName\":\"v-diya@microsoft.com\",\"roles\":\"contributor,anonymous,authenticated\"}}],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzStaticWebAppUser+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"roles\": \"contributor\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "c0de3567-8f64-4d7b-b1cb-c8644bb49342" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "d493eb5f-34f1-47f5-b82e-c84fc54f4008" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T103825Z:d493eb5f-34f1-47f5-b82e-c84fc54f4008" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 10:38:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "471" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/authproviders/aad/users/4c21f1411dad4ada98c8c7b1e1f91932\",\"name\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"type\":\"Microsoft.Web/staticSites/users\",\"location\":\"Central US\",\"properties\":{\"provider\":\"aad\",\"userId\":\"4c21f1411dad4ada98c8c7b1e1f91932\",\"displayName\":\"v-diya@microsoft.com\",\"roles\":\"contributor,anonymous,authenticated\"}}",
+      "isContentBase64": false
+    }
+  }
+}

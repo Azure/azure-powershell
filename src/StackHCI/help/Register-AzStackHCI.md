@@ -14,10 +14,11 @@ Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representin
 
 ```
 Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceName] <String>]
- [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
+ [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration]
- [-UseDeviceAuthentication] [[-Credential] <PSCredential>] [<CommonParameters>]
+ [-UseDeviceAuthentication] [-EnableAzureArcServer] [[-Credential] <PSCredential>] [-IsWAC]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +82,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -97,7 +98,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,7 +113,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,7 +128,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,8 +144,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: 13
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureArcServer
+Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: True
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,7 +176,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 10
 Default value: $AzureCloud
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -176,8 +192,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 8
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsWAC
+Registrations through Windows Admin Center specifies this parameter to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -223,7 +254,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -261,6 +292,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Specifies the resource tags for the resource in Azure in the form of key-value pairs in a hash table. For example: @{key0="value0";key1=$null;key2="value2"}
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TenantId
 Specifies the Azure TenantId.
 
@@ -270,7 +316,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

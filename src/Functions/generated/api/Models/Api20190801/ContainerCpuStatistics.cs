@@ -14,16 +14,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsage CpuUsage { get => (this._cpuUsage = this._cpuUsage ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerCpuUsage()); set => this._cpuUsage = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public long? CpuUsageKernelModeUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).KernelModeUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).KernelModeUsage = value; }
+        public long? CpuUsageKernelModeUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).KernelModeUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).KernelModeUsage = value ?? default(long); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public long[] CpuUsagePerCpuUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).PerCpuUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).PerCpuUsage = value; }
+        public long[] CpuUsagePerCpuUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).PerCpuUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).PerCpuUsage = value ?? null /* arrayOf */; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public long? CpuUsageTotalUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).TotalUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).TotalUsage = value; }
+        public long? CpuUsageTotalUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).TotalUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).TotalUsage = value ?? default(long); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public long? CpuUsageUserModeUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).UserModeUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).UserModeUsage = value; }
+        public long? CpuUsageUserModeUsage { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).UserModeUsage; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsageInternal)CpuUsage).UserModeUsage = value ?? default(long); }
 
         /// <summary>Internal Acessors for CpuUsage</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuUsage Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerCpuStatisticsInternal.CpuUsage { get => (this._cpuUsage = this._cpuUsage ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerCpuUsage()); set { {_cpuUsage = value;} } }
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         internal Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingData ThrottlingData { get => (this._throttlingData = this._throttlingData ?? new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ContainerThrottlingData()); set => this._throttlingData = value; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public int? ThrottlingDataPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).Period; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).Period = value; }
+        public int? ThrottlingDataPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).Period; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).Period = value ?? default(int); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public int? ThrottlingDataThrottledPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledPeriod = value; }
+        public int? ThrottlingDataThrottledPeriod { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledPeriod; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledPeriod = value ?? default(int); }
 
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public int? ThrottlingDataThrottledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledTime = value; }
+        public int? ThrottlingDataThrottledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IContainerThrottlingDataInternal)ThrottlingData).ThrottledTime = value ?? default(int); }
 
         /// <summary>Creates an new <see cref="ContainerCpuStatistics" /> instance.</summary>
         public ContainerCpuStatistics()

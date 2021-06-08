@@ -84,34 +84,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact, TestPriority(0)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricClusterCertificateCNNotAllowed()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClusterCertificateCNNotAllowed");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmServiceFabricClusterCertificate()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClusterCertificate");
-        }
-
-        [Fact, TestPriority(1)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRmServiceFabricClusterCertificate()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClusterCertificate");
-        }
-
-        [Fact, TestPriority(2)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveAzureRmServiceFabricClusterCertificateNotAllowed()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmServiceFabricClusterCertificateNotAllowed");
-        }
-
-        [Fact, TestPriority(0)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClientCertificate()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmServiceFabricClientCertificate");

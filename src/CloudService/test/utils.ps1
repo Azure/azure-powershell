@@ -16,7 +16,8 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     # Create Public IP
     Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"
-    
+    $env.PublicIpId = $publicIp.Id
+
     # Create Network Profile
     $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $publicIp.Id
     $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
@@ -67,7 +68,7 @@ function setupEnv() {
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
     $env.Location = "EastUS2EUAP"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
-    
+
     $env.CscfgFile = "test-artifacts\CSCmdletTest.cscfg"
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
     $env.RoleInstanceName = "WebRole_IN_0"
@@ -103,6 +104,12 @@ function setupEnv() {
     $env.NewCSPublicIPId = $publicIp.Id
 
     CreateCloudService "cscmdlettestip" $env.CloudServiceName
+
+    # Get and OS version/family to validate
+    $osVersions = Get-AzCloudServiceOSVersion -Location $env.Location
+    $osFamilies = Get-AzCloudServiceOSFamily -Location $env.Location
+    $env.OSVersionName = $osVersions[0].Name
+    $env.OSFamilyName = $osFamilies[0].Name
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

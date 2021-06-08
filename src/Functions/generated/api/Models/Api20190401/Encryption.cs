@@ -12,7 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? BlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobEnabled = value; }
+        public bool? BlobEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? FileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).FileEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).FileEnabled = value; }
+        public bool? FileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).FileEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).FileEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
 
         /// <summary>The name of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyName = value; }
+        public string KeyVaultPropertyKeyName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyName = value ?? null; }
 
         /// <summary>The Uri of KeyVault.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVaultUri = value; }
+        public string KeyVaultPropertyKeyVaultUri { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVaultUri; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVaultUri = value ?? null; }
 
         /// <summary>The version of KeyVault key.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string KeyVaultPropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVersion = value; }
+        public string KeyVaultPropertyKeyVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IKeyVaultPropertiesInternal)KeyVaultProperty).KeyVersion = value ?? null; }
 
         /// <summary>Internal Acessors for BlobLastEnabledTime</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionInternal.BlobLastEnabledTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobLastEnabledTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).BlobLastEnabledTime = value; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? QueueEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).QueueEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).QueueEnabled = value; }
+        public bool? QueueEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).QueueEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).QueueEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         /// A boolean indicating whether or not the service encrypts the data as it is stored.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? TableEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).TableEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).TableEnabled = value; }
+        public bool? TableEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).TableEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IEncryptionServicesInternal)Service).TableEnabled = value ?? default(bool); }
 
         /// <summary>
         /// Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption

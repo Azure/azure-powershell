@@ -57,6 +57,20 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorEndpointCustomDomainHTTPSByocSpecificVersion()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFrontDoorEndpointCustomDomainHTTPSByocLatestVersion()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudRedirect()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudRedirect");

@@ -15,13 +15,18 @@
 function Test-AzureVMGetJobs
 {
 	$location = "southeastasia"
-	$resourceGroupName = Create-ResourceGroup $location
+	$resourceGroupName = Create-ResourceGroup -Location $location
 	
 	try
 	{
 		# Setup
 		$vm1 = Create-VM $resourceGroupName $location 1
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
+		# Enable Protection
 		Enable-Protection $vault $vm1
 
 		# Test 1: Triggering a new job increases job count
@@ -45,8 +50,8 @@ function Test-AzureVMGetJobs
 		# Test 2: Job details
 		foreach ($job in $jobs)
 		{
-			$jobDetails = Get-AzRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
-			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetails `
+			$jobDetails = Get-AzRecoveryServicesBackupJobDetail -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzRecoveryServicesBackupJobDetail `
 				-VaultId $vault.ID `
 				-JobId $job.JobId
 
@@ -76,7 +81,7 @@ function Test-AzureVMGetJobs
 			-From $startDate1 `
 			-To $endDate2 `
 			-BackupManagementType AzureVM
-		Assert-True { $jobs.Count -gt 0}
+		Assert-True { $jobs.Count -gt 0} 
 	}
 	finally
 	{
@@ -96,6 +101,10 @@ function Test-AzureVMGetJobsTimeFilter
 		$vm1 = Create-VM $resourceGroupName $location 1
 		$vm2 = Create-VM $resourceGroupName $location 2
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		Enable-Protection $vault $vm1
 		Enable-Protection $vault $vm2
 
@@ -137,16 +146,7 @@ function Test-AzureVMGetJobsTimeFilter
 			-To $endTime2 } `
 			"Please specify From and To filter values in UTC. Other timezones are not supported";
 
-		# 3. rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30)
-		$startTime3 = Get-QueryDateInUtc $((Get-Date).AddDays(-40)) "StartTime3"
-		$endTime3 = Get-QueryDateInUtc $(Get-Date) "EndTime3"
-		Assert-ThrowsContains { Get-AzRecoveryServicesBackupJob `
-			-VaultId $vault.ID `
-			-From $startTime3 `
-			-To $endTime3 } `
-			"To filter should not be more than 30 days away from From filter";
-
-		# 4. rangeStart > DateTime.UtcNow
+		# 3. rangeStart > DateTime.UtcNow
 		$startTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100).AddDays(-1)) "StartTime4"
 		$endTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100)) "EndTime4"
 		Assert-ThrowsContains { Get-AzRecoveryServicesBackupJob `
@@ -172,6 +172,10 @@ function Test-AzureVMWaitJob
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		$item = Enable-Protection $vault $vm
 		
 		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item
@@ -199,6 +203,10 @@ function Test-AzureVMCancelJob
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# Disable soft Delete
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
+
 		$item = Enable-Protection $vault $vm
 		
 		$backupJob = Backup-AzRecoveryServicesBackupItem -VaultId $vault.ID -Item $item

@@ -30,7 +30,7 @@ eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
+https://docs.microsoft.com/powershell/module/az.desktopvirtualization/unregister-azwvdapplicationgroup
 #>
 function Unregister-AzWvdApplicationGroup {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]

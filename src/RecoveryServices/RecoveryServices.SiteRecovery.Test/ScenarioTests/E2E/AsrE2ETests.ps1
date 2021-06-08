@@ -18,18 +18,19 @@ $JobQueryWaitTimeInSeconds = 0
 $ResourceGroupName = "E2ERg"
 $VaultName = "E2ETest"
 $FabricNameToBeCreated = "ReleaseFabric"
-$PrimaryFabricName = "IDCLAB-A137.ntdev.corp.microsoft.com"
-$RecoveryFabricName = "IDCLAB-A147.ntdev.corp.microsoft.com"
+$PrimaryFabricName = "IDCLAB-A495.fareast.corp.microsoft.com"
+$RecoveryFabricName = "IDCLAB-A412.fareast.corp.microsoft.com"
 $PolicyName = "E2EPolicy1"
-$PrimaryProtectionContainerName = "primary"
-$RecoveryProtectionContainerName = "recovery"
+$PrimaryProtectionContainerName = "PrimaryForPowershellE2E"
+$RecoveryProtectionContainerName = "SecondaryForPowershellE2E"
 $ProtectionContainerMappingName = "E2AClP26mapping"
 $PrimaryNetworkFriendlyName = "corp"
 $RecoveryNetworkFriendlyName = "corp"
-$NetworkMappingName = "corp96map"
-$VMName = "Vm1"
-$RecoveryPlanName = "RPSwag96"
-$VmList = "Vm1,Vm3"
+$NetworkMappingName = "corpE2Emap"
+$VMName = "ForE2EPowershell1"
+$VMNameUFO = "ForE2EPowershell2"
+$RecoveryPlanName = "E2ERP"
+$VmList = "ForE2EPowershell1,ForE2EPowershell2"
 <#
 .SYNOPSIS
 Wait for job completion
@@ -200,11 +201,11 @@ function Test-RemoveFabric
     Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
 
     # Get a policy created in previous test
-    $fabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName 
+    $fabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $RecoveryFabricName 
     $job = Remove-ASRFabric -InputObject $fabric
     WaitForJobCompletion -JobId $job.Name
 
-    Get-AzRecoveryServicesAsrFabric|Remove-ASRFabric
+    #Get-AzRecoveryServicesAsrFabric|Remove-ASRFabric
     #WaitForJobCompletion -JobId $Job.Name
 }
 <#
@@ -257,7 +258,7 @@ function Test-SiteRecoveryEnableDR
         # EnableDR
         $Job = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping
         WaitForJobCompletion -JobId $Job.Name
-        WaitForIRCompletion -VM $VM 
+        #WaitForIRCompletion -VM $VM 
     }
 }
 
@@ -428,21 +429,21 @@ function Test-UFOandFailback
     # Get the primary container
     $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName | Get-AzRecoveryServicesAsrProtectionContainer | where { $_.FriendlyName -eq $PrimaryProtectionContainerName }
 
-    $rpi = Get-ASRReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-ASRReplicationProtectedItem -FriendlyName $VMNameUFO -ProtectionContainer $PrimaryProtectionContainer 
 
     $job =  Start-AsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
     WaitForJobCompletion -JobId $Job.Name
 
-    $rpi = Get-AsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AsrReplicationProtectedItem -FriendlyName $VMNameUFO -ProtectionContainer $PrimaryProtectionContainer 
     $currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
     WaitForJobCompletion -JobId $currentJob.Name 
     WaitForIRCompletion -VM $rpi 
     #timeout 120
 
-    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMNameUFO -ProtectionContainer $PrimaryProtectionContainer 
     $job =  Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $rpi -Direction RecoveryToPrimary
     WaitForJobCompletion -JobId $Job.Name
-    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    $rpi = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMNameUFO -ProtectionContainer $PrimaryProtectionContainer 
     $currentJob = Update-ASRProtectionDirection -ReplicationProtectedItem $rpi -Direction PrimaryToRecovery
     WaitForJobCompletion -JobId $currentJob.Name  
 }
@@ -549,15 +550,12 @@ function Test-EditRecoveryPlan
     $RP = Get-AsrRecoveryPlan -Name $RecoveryPlanName
     $RP = Edit-ASRRecoveryPlan -RecoveryPlan $RP -AppendGroup
 
-    $VMNameList = $VMList.split(',')
     $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -FriendlyName $PrimaryFabricName
     $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryProtectionContainerName -Fabric $PrimaryFabric
     
-    $VMList = Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtectionContainer
-    $VM = $VMList | where { $_.FriendlyName -eq $VMNameList[1] }
-    #-or  $_.FriendlyName -eq $VMNameList[2]}
-
-    $RP = Edit-ASRRecoveryPlan -RecoveryPlan $RP -Group $RP.Groups[3] -AddProtectedItems $VM
+    $VM = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer 
+    
+    $RP = Edit-ASRRecoveryPlan -InputObject $RP -Group $RP.Groups[2] -AddProtectedItems $VM
     $RP.Groups
 
     Write-Host $("Triggered Update RP") -ForegroundColor Green
@@ -666,7 +664,7 @@ function Test-SiteRecoveryFabricTest
     # Remove specific fabric
     $Job = Remove-AzRecoveryServicesAsrFabric -Fabric $fabric
     Assert-NotNull($Job)
-    #WaitForJobCompletion -JobId $Job.Name -JobQueryWaitTimeInSeconds $JobQueryWaitTimeInSeconds
+    WaitForJobCompletion -JobId $Job.Name
     $fabric =  Get-AzRecoveryServicesAsrFabric | Where-Object {$_.Name -eq $FabricNameToBeCreated }
     Assert-Null($fabric)
 }

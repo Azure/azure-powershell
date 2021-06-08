@@ -17,17 +17,13 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    public class PSADApplication
+    public class PSADApplication : PSADObject
     {
-        public string DisplayName { get; set; }
-
         public string ObjectId { get; set; }
 
         public IList<string> IdentifierUris { get; set; }
 
         public string HomePage { get; set; }
-
-        public string Type { get; set; }
 
         public Guid ApplicationId { get; set; }
 

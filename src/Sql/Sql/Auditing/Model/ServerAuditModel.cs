@@ -35,7 +35,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP,
         SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP,
         SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP,
-        USER_CHANGE_PASSWORD_GROUP
+        USER_CHANGE_PASSWORD_GROUP,
+        LEDGER_OPERATION_GROUP
     }
 
     public enum StorageKeyKind { None, Primary, Secondary };

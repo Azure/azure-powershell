@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/convertwebappapplicationsettingtohashtable
+https://docs.microsoft.com/powershell/module/az.functions/convertwebappapplicationsettingtohashtable
 #>
 function ConvertWebAppApplicationSettingToHashtable {
 [CmdletBinding(PositionalBinding=$false)]

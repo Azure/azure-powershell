@@ -124,6 +124,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
         [ValidateSet("Enabled", "Disabled")]
         public string SharePoint { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSetNames.Office365, Mandatory = true, HelpMessage = ParameterHelpMessages.Teams)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Enabled", "Disabled")]
+        public string Teams { get; set; }
+
         [Parameter(ParameterSetName = ParameterSetNames.ThreatIntelligence, Mandatory = true, HelpMessage = ParameterHelpMessages.Indicators)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Enabled", "Disabled")]
@@ -252,10 +257,13 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                         { State = Exchange.ToLower() };
                         OfficeDataConnectorDataTypesSharePoint officeSharePoint = new OfficeDataConnectorDataTypesSharePoint
                         { State = SharePoint.ToLower() };
+                        OfficeDataConnectorDataTypesTeams officeTeams = new OfficeDataConnectorDataTypesTeams
+                        { State = Teams.ToLower() };
                         OfficeDataConnectorDataTypes officeDataTypes = new OfficeDataConnectorDataTypes
                         {
                             Exchange = officeExchange,
-                            SharePoint = officeSharePoint
+                            SharePoint = officeSharePoint,
+                            Teams = officeTeams
                         };
                         OfficeDataConnector officeConnector = new OfficeDataConnector
                         {

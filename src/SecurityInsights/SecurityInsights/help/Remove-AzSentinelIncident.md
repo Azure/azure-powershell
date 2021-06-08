@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSentinelIncident
 
 ## SYNOPSIS
-Delete an Incident.
+Deletes an Incident.
 
 ## SYNTAX
 
@@ -37,6 +37,18 @@ PS C:\> Remove-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -Workspac
 ```
 
 This command removes the Incident from the workspace.
+
+### Example 2
+```powershell
+$SentinelConnection = @{
+    ResourceGroupName = "myResourceGroupName"
+    WorkspaceName = "myWorkspaceName"
+}
+$Incident = Get-AzSentinelIncident @SentinelConnection | Where-Object {$_.IncidentNumber -eq "346"}
+Remove-AzSentinelIncident @SentinelConnection -IncidentId $Incident.Name
+```
+
+This example uses a connection object to pass the resourceGroupName and workspaceName to get a specific Incident based on the Incident number (as shown in the Incident view). Then it uses the $Incident.Name value (which represents the IncidentId) to delete the Incident.
 
 ## PARAMETERS
 

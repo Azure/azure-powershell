@@ -66,7 +66,7 @@ INPUTOBJECT <IAppServicePlan>:
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
   [WorkerTierName <String>]: Target worker tier assigned to the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]

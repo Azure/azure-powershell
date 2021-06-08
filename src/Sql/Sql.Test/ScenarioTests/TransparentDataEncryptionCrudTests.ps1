@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = 'westcentralus'
+$location = 'southeastasia'
 
 <#
 	.SYNOPSIS
@@ -26,7 +26,7 @@ function Test-UpdateTransparentDataEncryption
 	
 	# Create with default values
 	$databaseName = Get-DatabaseName
-	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Force
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	#Default database will be Standard s0 with maxsize: 268435456000 (250GB)

@@ -15,31 +15,35 @@ Creates a virtual machine.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String[]>] -Name <String>
- -Credential <PSCredential> [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [[-Zone] <String[]>]
+ -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
+ [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
  [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
- [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>]
- [-HostId <String>] [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
+ [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
+ [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
-New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-VM] <PSVirtualMachine> [[-Zone] <String[]>]
- [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
+ [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
+ [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> [-VirtualNetworkName <String>]
- [-AddressPrefix <String>] [-SubnetName <String>] [-SubnetAddressPrefix <String>]
- [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
- [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
- [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
- [-DataDiskSizeInGb <Int32[]>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] -Name <String>
+ [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>] [-AddressPrefix <String>]
+ [-SubnetName <String>] [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>]
+ [-DomainNameLabel <String>] [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>]
+ -DiskFile <String> [-Linux] [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity]
+ [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
+ [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
  [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -244,6 +248,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DataDiskDeleteOption
+Specifies Data Disk delete option after VM deletion. Options are Detach, Delete
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataDiskSizeInGb
 Specifies the sizes of data disks in GB.
 
@@ -319,6 +338,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableUltraSSD
 Use UltraSSD disks for the vm.
 
@@ -330,6 +364,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionAtHost
+EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
+This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -380,7 +431,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built.  These include: Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: System.String
@@ -472,24 +523,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EncryptionAtHost
-EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. 
-This will enable the encryption for all the disks including Resource/Temp disk at host itself. 
-Default: The Encryption at host will be disabled unless this property is set to true for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: SimpleParameterSet, DiskParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-
 ### -Name
 The name of the VM resource.
 
@@ -505,12 +538,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkInterfaceDeleteOption
+{{ Fill NetworkInterfaceDeleteOption Description }}
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OpenPorts
 A list of ports to open on the network security group (NSG) for the created VM.  The default value depends on the type of image chosen (i.e., Windows: 3389, 5985 and Linux: 22).
 
 ```yaml
 Type: System.Int32[]
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OSDiskDeleteOption
+Specifies OS Disk delete option after VM deletion. Options are Detach, Delete
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -611,7 +674,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
+The Virtual Machine Size.  The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String
@@ -620,7 +683,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: Standard_DS1_v2
+Default value: Standard_D2s_v3
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -741,6 +804,7 @@ The ID of Virtual Machine Scale Set that this VM will be associated with
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
+
 Required: False
 Position: Named
 Default value: None

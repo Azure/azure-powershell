@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests creation of an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstancePool()
         {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests updating an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateInstancePool()
         {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests getting an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePool()
         {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests creation of a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateManagedInstanceInInstancePool()
         {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests getting all managed instances in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceInInstancePool()
         {
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests updating a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateManagedInstanceInInstancePool()
         {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests updating a managed instance in an instance pool
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteManagedInstanceInInstancePool()
         {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         /// <summary>
         /// Tests getting the instance pool usage
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetInstancePoolUsage()
         {

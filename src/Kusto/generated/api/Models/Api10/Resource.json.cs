@@ -2,6 +2,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Extensions;
 
+    /// <summary>
+    /// Common fields that are returned in the response for all Azure Resource Manager resources
+    /// </summary>
     public partial class Resource
     {
 

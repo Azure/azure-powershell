@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
+            string edgeZone,
             string addressPrefix)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -43,7 +44,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     AddressSpace = new AddressSpace
                     {
                         AddressPrefixes = new[] { addressPrefix }
-                    }
+                    },
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
     }
 }

@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed duplicate list item in `Get-AzKeyVault` [#15164]
+* Added `SecretManagement` tag to `Az.KeyVault` module [#15173]
+
+## Version 3.4.4
+* Provided key size for RSA key [#14819]
+
+## Version 3.4.3
+* Fixed a bug for `Get-AzKeyVaultSecret -IncludeVersions` when current version is disabled [#14740]
+* Displayed error code and message when updating purged secret [#14800]
+
+## Version 3.4.2
+* Fixed a bug for `Get-AzKeyVaultSecret -AsPlainText` if the secret is not found [#14645]
 
 ## Version 3.4.1
 * Supported upcoming new API design for `Export-AzKeyVaultSecurityDomain`

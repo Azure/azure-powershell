@@ -379,12 +379,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
-
             //we need to fetch the list of RPs
             var queryFilterString = "null";
             if (string.Compare(restorePointQueryType, "All") == 0)
@@ -440,18 +434,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             string restorePointQueryType = (string)ProviderData[RecoveryPointParams.RestorePointQueryType];
+            bool secondaryRegion = (bool)ProviderData[CRRParams.UseSecondaryRegion];
 
             ItemBase item = ProviderData[RecoveryPointParams.Item] as ItemBase;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
 
             //we need to fetch the list of RPs
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
@@ -465,12 +454,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
             queryFilter.Filter = queryFilterString;
 
-            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+            List<RecoveryPointResource> rpListResponse;
+            if (secondaryRegion)
+            {
+                //fetch recovery points Log Chain from secondary region
+                rpListResponse = ServiceClientAdapter.GetRecoveryPointsFromSecondaryRegion(
                 containerUri,
                 protectedItemName,
                 queryFilter,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName);
+            }
+            else
+            {
+                rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
+            }
 
             List<PointInTimeBase> timeRanges = new List<PointInTimeBase>();
             foreach (RecoveryPointResource rp in rpListResponse)

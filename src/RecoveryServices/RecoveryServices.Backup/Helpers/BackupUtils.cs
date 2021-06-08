@@ -26,6 +26,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// secondary region mapping
         /// </summary>
         public static Dictionary<string, string> regionMap = new Dictionary<string, string>(){
+            {"ussecwest", "usseceast"},
+            {"usseceast", "ussecwest"},
+            {"usnateast", "usnatwest"},
+            {"usnatwest", "usnateast"},
+            {"swedencentral", "swedensouth"},
+            {"swedensouth", "swedencentral"},
+            {"norwaywest", "norwayeast"},
+            {"norwayeast", "norwaywest"},
+            {"germanynorth", "germanywestcentral"},
+            {"germanywestcentral", "germanynorth"},
+            {"westus3", "eastus"},
             {"eastasia", "southeastasia"},
             {"southeastasia", "eastasia"},
             {"australiaeast", "australiasoutheast"},
@@ -33,6 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {"australiacentral", "australiacentral2"},
             {"australiacentral2", "australiacentral"},
             {"brazilsouth", "southcentralus"},
+            {"brazilsoutheast", "brazilsouth"},
             {"canadacentral", "canadaeast"},
             {"canadaeast", "canadacentral"},
             {"chinanorth", "chinaeast"},
