@@ -541,7 +541,7 @@ Default share permission for users using Kerberos authentication if RBAC role is
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor, StorageFileDataSmbShareOwner
+Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor
 
 Required: False
 Position: Named

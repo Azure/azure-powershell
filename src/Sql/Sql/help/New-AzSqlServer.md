@@ -275,6 +275,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrimaryUserAssignedIdentityId
+The primary User Managed Identity(UMI) id.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyId
+The Azure Key Vault URI that is used for encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+The list of user assigned identities.
+
+```yaml
+Type: System.Collections.Generic.List
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Type of identity to be assigned to the server. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}

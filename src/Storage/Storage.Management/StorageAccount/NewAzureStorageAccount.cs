@@ -467,7 +467,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             DefaultSharePermissionType.StorageFileDataSmbShareContributor,
             DefaultSharePermissionType.StorageFileDataSmbShareReader,
             DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
-            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 

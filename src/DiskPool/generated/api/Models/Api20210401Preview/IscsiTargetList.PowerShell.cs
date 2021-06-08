@@ -48,6 +48,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetList"
         /// />.
         /// </summary>
@@ -81,25 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
         public static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetList FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetList"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal IscsiTargetList(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).NextLink, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetList"
         /// />.
         /// </summary>
@@ -118,10 +107,41 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
             AfterDeserializePSObject(content);
         }
 
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetList"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal IscsiTargetList(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTarget>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IscsiTargetTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IIscsiTargetListInternal)this).NextLink, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
+        }
+
         /// <summary>Serializes this instance to a json string.</summary>
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     /// List of iSCSI Targets.
     [System.ComponentModel.TypeConverter(typeof(IscsiTargetListTypeConverter))]

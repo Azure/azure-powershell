@@ -29,6 +29,7 @@ $ConnectingToCloudBillingServiceFailed = "Can't reach Azure from node(s) {0}. Ma
 $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
+$ArcIntegrationNotAvailableChinaCloudError = "Azure Arc integration is not available in AzureChinaCloud. Specify '-EnableAzureArcServer:`$false' in Register-AzStackHCI Cmdlet to register without Arc integration."
 
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
@@ -163,6 +164,7 @@ $OutputPropertyTest = "Test"
 $OutputPropertyEndpointTested = "EndpointTested"
 $OutputPropertyIsRequired = "IsRequired"
 $OutputPropertyFailedNodes = "FailedNodes"
+$OutputPropertyErrorDetail = "ErrorDetail"
 
 $ConnectionTestToAzureHCIServiceName = "Connect to Azure Stack HCI Service"
 
@@ -296,6 +298,35 @@ param(
     $LogFileName = $LogFilePrefix + "_" + $datestring + ".log"
 
     Start-Transcript -LiteralPath $LogFileName -Append | out-null
+}
+
+function Show-LatestModuleVersion{
+    
+    $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
+    $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
+
+    if($Null -eq $latestModule)
+    {
+        $CouldNotGetLatestModuleInformationWarningMsg = $CouldNotGetLatestModuleInformationWarning -f $installedModule.Version.Major
+        Write-Warning $CouldNotGetLatestModuleInformationWarningMsg
+    }
+    else
+    {
+        if($latestModule.Version.GetType() -eq [string])
+        {
+            $latestModuleVersion = [System.Version]::Parse($latestModule.Version)
+        }
+        else
+        {
+            $latestModuleVersion = $latestModule.Version
+        }
+
+        if(($latestModuleVersion.Major -eq $installedModule.Version.Major) -and ($latestModuleVersion -gt $installedModule.Version))
+        {
+            $InstallLatestVersionWarningMsg = $InstallLatestVersionWarning -f $installedModule.Version, $latestModuleVersion
+            Write-Warning $InstallLatestVersionWarningMsg
+        }
+    }
 }
 
 function Retry-Command {
@@ -879,11 +910,11 @@ param(
 
         if([string]::IsNullOrEmpty($TenantId))
         {
-            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -Scope Process | Out-Null
+            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -GraphAccessToken $GraphAccessToken -Scope Process | Out-Null
         }
         else
         {
-            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -Scope Process | Out-Null
+            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -GraphAccessToken $GraphAccessToken -Scope Process | Out-Null
         }
 
         Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $ConnectingToAzureAD -percentcomplete 35
@@ -927,12 +958,33 @@ param(
     return $False
 }
 
+function Get-ClusterDNSSuffix{
+param(
+    [System.Management.Automation.Runspaces.PSSession] $Session
+    )
+
+    $clusterNameResourceGUID = Invoke-Command -Session $Session -ScriptBlock { (Get-ItemProperty -Path HKLM:\Cluster -Name ClusterNameResource).ClusterNameResource }
+    $clusterDNSSuffix = Invoke-Command -Session $Session -ScriptBlock { (Get-ClusterResource $using:clusterNameResourceGUID | Get-ClusterParameter DnsSuffix).Value }
+    return $clusterDNSSuffix
+}
+
+function Get-ClusterDNSName{
+param(
+    [System.Management.Automation.Runspaces.PSSession] $Session
+    )
+
+    $clusterNameResourceGUID = Invoke-Command -Session $Session -ScriptBlock { (Get-ItemProperty -Path HKLM:\Cluster -Name ClusterNameResource).ClusterNameResource }
+    $clusterDNSName = Invoke-Command -Session $Session -ScriptBlock { (Get-ClusterResource $using:clusterNameResourceGUID | Get-ClusterParameter DnsName).Value }
+    return $clusterDNSName
+}
+
 function Check-ConnectionToCloudBillingService{
 param(
     $ClusterNodes,
     [System.Management.Automation.PSCredential] $Credential,
     [string] $HealthEndpoint,
-    [System.Collections.ArrayList] $HealthEndPointCheckFailedNodes
+    [System.Collections.ArrayList] $HealthEndPointCheckFailedNodes,
+    [string] $ClusterDNSSuffix
     )
 
     Foreach ($clusNode in $ClusterNodes)
@@ -943,11 +995,11 @@ param(
         {
             if($Credential -eq $Null)
             {
-                $nodeSession = New-PSSession -ComputerName $clusNode.Name
+                $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix)
             }
             else
             {
-                $nodeSession = New-PSSession -ComputerName $clusNode.Name -Credential $Credential
+                $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix) -Credential $Credential
             }
 
             # Check if node can reach cloud billing service
@@ -986,7 +1038,8 @@ param(
     [System.Collections.ArrayList] $NewCertificateFailedNodes,
     [System.Collections.ArrayList] $SetCertificateFailedNodes,
     [System.Collections.ArrayList] $OSNotLatestOnNodes,
-    [System.Collections.HashTable] $CertificatesToBeMaintained
+    [System.Collections.HashTable] $CertificatesToBeMaintained,
+    [string] $ClusterDNSSuffix
     )
 
     $userProvidedCertAddedToAAD = $false
@@ -998,11 +1051,11 @@ param(
         {
             if($Credential -eq $Null)
             {
-                $nodeSession = New-PSSession -ComputerName $clusNode.Name
+                $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix)
             }
             else
             {
-                $nodeSession = New-PSSession -ComputerName $clusNode.Name -Credential $Credential
+                $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $ClusterDNSSuffix) -Credential $Credential
             }
         }
         catch
@@ -1117,7 +1170,8 @@ function Create-ArcApplication{
 param(
     [string] $AppName,
     [ref] $AppId,
-    [ref] $Secret
+    [ref] $Secret,
+    [Switch] $IsWAC
     )
     Write-Verbose "Creating AAD Arc Agent Application $AppName"
 
@@ -1125,10 +1179,10 @@ param(
     $app = Retry-Command -ScriptBlock { New-AzureADApplication -DisplayName $AppName }
     $sp = Retry-Command -ScriptBlock { New-AzureADServicePrincipal -AppId $app.AppId }
 
-    # Usually takes 10-20 seconds after app creation to be able to assign roles.
+    # Usually takes 10-20 seconds after app creation to be able to assign roles. Can take upto 140 seconds for AAD to replicate in rare cases.
     $stopLoop = $false
     [int]$retryCount = "0"
-    [int]$maxRetryCount = "3"
+    [int]$maxRetryCount = "14"
 
     do {
         try 
@@ -1140,13 +1194,15 @@ param(
         }
         catch
         {
+            $positionMessage = $_.InvocationInfo.PositionMessage
+
             if ($retryCount -ge $maxRetryCount)
             {
                 # Cleanup
                 Remove-AzureADApplication -ObjectId $app.ObjectId
 
                 # Timed out.
-                Write-Debug "Failed to assign roles to service principal with App Id $($app.AppId)."
+                Write-Debug ("Failed to assign roles to service principal with App Id $($app.AppId). ErrorMessage: " + $_.Exception.Message + " PositionalMessage: " + $positionMessage)
                 throw $_
             }
 
@@ -1155,9 +1211,15 @@ param(
                 # Cleanup
                 Remove-AzureADApplication -ObjectId $app.ObjectId
 
-                # Insufficient privilige error.
-                Write-Error -Message $ArcAgentRolesInsufficientPreviligeMessage
-                throw $_
+                Write-Verbose "Create-ArcApplication Missing Permissions. IsWAC: $IsWAC"
+
+                if($IsWAC -eq $false)
+                {
+                    # Insufficient privilige error.
+                    Write-Error -Message $ArcAgentRolesInsufficientPreviligeMessage -ErrorAction Continue
+                }
+
+                return $false
             }
             
             # Service principal creation hasn't propogated fully yet, usually takes 10-20 seconds.
@@ -1176,6 +1238,7 @@ param(
     Write-Verbose "Created new AAD Arc Agent Application $($app.AppId)"
     $AppId.Value = $app.AppId
     $Secret.Value = $pw.Value
+    return $true
 }
 
 function Remove-ArcApplication{
@@ -1213,10 +1276,11 @@ function Remove-ArcApplication{
 function Enable-ArcForServers{
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
-    [System.Management.Automation.PSCredential] $Credential
+    [System.Management.Automation.PSCredential] $Credential,
+    [string] $ClusterDNSSuffix
     )
     # Create new sessions for all nodes in cluster.
-    $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { $_.Name }
+    $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { ($_.Name + "." + $ClusterDNSSuffix) }
     if($Credential -eq $Null)
     {
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames
@@ -1225,6 +1289,8 @@ param(
     {
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames -Credential $Credential
     }
+
+    $retStatus = [ErrorDetail]::Success
 
     # Start running
     try
@@ -1258,6 +1324,7 @@ param(
                     if($nodeStatus[$node] -ne $using:enabledArcStatus)
                     {
                         Write-Warning -Message $using:RegisterArcFailedWarningMessage
+                        $retStatus = [ErrorDetail]::ArcIntegrationFailedOnNodes
                         break
                     }
                 }
@@ -1265,24 +1332,29 @@ param(
             else
             {
                 Write-Warning -Message $using:RegisterArcFailedWarningMessage
+                $retStatus = [ErrorDetail]::ArcIntegrationFailedOnNodes
             }
         }
     }
     catch
     {
         Write-Warning -Message $RegisterArcFailedWarningMessage
+        $retStatus = [ErrorDetail]::ArcIntegrationFailedOnNodes
         Write-Debug ("Exception occured in registering nodes to Arc For Servers. ErrorMessage : {0}" -f ($_.Exception.Message))
         Write-Debug $_
     }
 
     # Cleanup sessions.
     Remove-PSSession $clusterNodeSessions | Out-Null
+
+    return $retStatus
 }
 
 function Disable-ArcForServers{
 param(
     [System.Management.Automation.Runspaces.PSSession] $Session,
-    [System.Management.Automation.PSCredential] $Credential
+    [System.Management.Automation.PSCredential] $Credential,
+    [string] $ClusterDNSSuffix
     )
 
     $res = $true
@@ -1290,7 +1362,7 @@ param(
     $AgentInstaller_Name      = "AzureConnectedMachineAgent.msi";
     $AgentExecutable_Path     = $Env:Programfiles + '\AzureConnectedMachineAgent\azcmagent.exe'
 
-    $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { $_.Name }
+    $clusterNodeNames = Invoke-Command -Session $Session -ScriptBlock { Get-ClusterNode } | ForEach-Object { ($_.Name + "." + $ClusterDNSSuffix) }
     if($Credential -eq $Null)
     {
         $clusterNodeSessions = New-PSSession -ComputerName $clusterNodeNames
@@ -1349,8 +1421,10 @@ param(
     [string] $SubscriptionId,
     [string] $ResourceGroup,
     [string] $Region,
-    [string] $AppName
-    )    
+    [string] $AppName,
+    [string] $ClusterDNSSuffix,
+    [Switch] $IsWAC
+    )
 
     if($IsManagementNode)
     {
@@ -1362,14 +1436,14 @@ param(
         {
             $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
         }
-
-        $clusterName = Invoke-Command -Session $session -ScriptBlock { (Get-Cluster).Name }
     }
     else
     {
-        $clusterName = (Get-Cluster).Name
         $session = New-PSSession -ComputerName localhost
     }
+
+    $clusterName = Invoke-Command -Session $session -ScriptBlock { (Get-Cluster).Name }
+    $clusterDNSName = Get-ClusterDNSName -Session $session
 
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $FetchingRegistrationState -PercentComplete 1
     $arcStatus = Invoke-Command -Session $session -ScriptBlock { Get-AzureStackHCIArcIntegration }
@@ -1401,7 +1475,12 @@ param(
         # Create application.
         $CreatingAADAppMessageProgress = $CreatingAADAppMessage -f $AppName, $TenantId
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $CreatingAADAppMessageProgress -PercentComplete 30
-        Create-ArcApplication -AppName $AppName -AppId ([ref]$appId) -Secret ([ref]$secret)
+        $appCreated = Create-ArcApplication -AppName $AppName -AppId ([ref]$appId) -Secret ([ref]$secret) -IsWAC:$IsWAC
+
+        if($appCreated -eq $false)
+        {
+            return [ErrorDetail]::ArcPermissionsMissing
+        }
 
         # Save Arc context.
         Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $SetupArcMessage -PercentComplete 40
@@ -1422,11 +1501,11 @@ param(
         # Connect to cluster and use that session for registering clustered scheduled task
         if($Credential -eq $Null)
         {
-            $clusterNameSession = New-PSSession -ComputerName $clusterName
+            $clusterNameSession = New-PSSession -ComputerName ($clusterDNSName + "." + $ClusterDNSSuffix)
         }
         else
         {
-            $clusterNameSession = New-PSSession -ComputerName $clusterName -Credential $Credential
+            $clusterNameSession = New-PSSession -ComputerName ($clusterDNSName + "." + $ClusterDNSSuffix) -Credential $Credential
         }
 
         Invoke-Command -Session $clusterNameSession -ScriptBlock { 
@@ -1466,13 +1545,15 @@ param(
 
     # Run
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $StartingArcAgentMessage -PercentComplete 50
-    Enable-ArcForServers -Session $session -Credential $Credential
-    
+    $arcResult = Enable-ArcForServers -Session $session -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix
+
     Write-Progress -Id $ArcProgressBarId -activity $RegisterArcProgressActivityName -Completed
 
     Remove-PSSession $session | Out-Null
 
     Write-Verbose "Successfully registered cluster with Arc for Servers."
+
+    return $arcResult
 }
 
 function Unregister-ArcForServers{
@@ -1481,7 +1562,8 @@ param(
     [string] $ComputerName,
     [System.Management.Automation.PSCredential] $Credential,
     [string] $ResourceId,
-    [Switch] $Force
+    [Switch] $Force,
+    [string] $ClusterDNSSuffix
     )
 
     if($IsManagementNode)
@@ -1494,14 +1576,14 @@ param(
         {
             $session = New-PSSession -ComputerName $ComputerName -Credential $Credential
         }
-
-        $clusterName = Invoke-Command -Session $session -ScriptBlock { (Get-Cluster).Name }
     }
     else
     {
-        $clusterName = (Get-Cluster).Name
         $session = New-PSSession -ComputerName localhost
     }
+
+    $clusterName = Invoke-Command -Session $session -ScriptBlock { (Get-Cluster).Name }
+    $clusterDNSName = Get-ClusterDNSName -Session $session
 
     $cmdlet = Invoke-Command -Session $session -ScriptBlock { Get-Command Get-AzureStackHCIArcIntegration -Type Cmdlet -ErrorAction Ignore }
 
@@ -1583,11 +1665,11 @@ param(
         # Connect to cluster and use that session for registering clustered scheduled task
         if($Credential -eq $Null)
         {
-            $clusterNameSession = New-PSSession -ComputerName $clusterName
+            $clusterNameSession = New-PSSession -ComputerName ($clusterDNSName + "." + $ClusterDNSSuffix)
         }
         else
         {
-            $clusterNameSession = New-PSSession -ComputerName $clusterName -Credential $Credential
+            $clusterNameSession = New-PSSession -ComputerName ($clusterDNSName + "." + $ClusterDNSSuffix) -Credential $Credential
         }
 
         Invoke-Command -Session $clusterNameSession -ScriptBlock {
@@ -1614,7 +1696,7 @@ param(
 
     # Unregister all nodes.
     Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $UnregisterArcProgressActivityName -Status $WaitingUnregisterMessage -PercentComplete 30
-    $disabled = Disable-ArcForServers -Session $session -Credential $Credential
+    $disabled = Disable-ArcForServers -Session $session -Credential $Credential -ClusterDNSSuffix $ClusterDNSSuffix
 
     if ($disabled)
     {
@@ -1661,7 +1743,8 @@ enum OperationStatus
     Failed;
     Success;
     PendingForAdminConsent;
-    Cancelled
+    Cancelled;
+    RegisterSucceededButArcFailed
 }
 
 enum ConnectionTestResult
@@ -1669,6 +1752,14 @@ enum ConnectionTestResult
     Unused;
     Succeeded;
     Failed
+}
+
+enum ErrorDetail
+{
+    Unused;
+    ArcPermissionsMissing;
+    ArcIntegrationFailedOnNodes;
+    Success
 }
 
 <#
@@ -1722,6 +1813,9 @@ enum ConnectionTestResult
 
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
+
+    .PARAMETER IsWAC
+    Registrations through Windows Admin Center specifies this parameter to true.
 
     .OUTPUTS
     PSCustomObject. Returns following Properties in PSCustomObject
@@ -1807,10 +1901,13 @@ param(
     [Switch]$UseDeviceAuthentication,
     
     [Parameter(Mandatory = $false)]
-    [Switch]$EnableAzureArcServer = $false,
+    [Switch]$EnableAzureArcServer = $true,
     
     [Parameter(Mandatory = $false)]
-    [System.Management.Automation.PSCredential] $Credential
+    [System.Management.Automation.PSCredential] $Credential,
+
+    [Parameter(Mandatory = $false)]
+    [Switch]$IsWAC
     )
 
     try
@@ -1829,31 +1926,7 @@ param(
             Install-PackageProvider NuGet -Force | Out-Null
         }
 
-        $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
-        $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
-
-        if($latestModule -eq $Null)
-        {
-            $CouldNotGetLatestModuleInformationWarningMsg = $CouldNotGetLatestModuleInformationWarning -f $installedModule.Version.Major
-            Write-Warning $CouldNotGetLatestModuleInformationWarningMsg
-        }
-        else
-        {
-            if($latestModule.Version.GetType() -eq [string])
-            {
-                $latestModuleVersion = [System.Version]::Parse($latestModule.Version)
-            }
-            else
-            {
-                $latestModuleVersion = $latestModule.Version
-            }
-
-            if(($latestModuleVersion.Major -eq $installedModule.Version.Major) -and ($latestModuleVersion -gt $installedModule.Version))
-            {
-                $InstallLatestVersionWarningMsg = $InstallLatestVersionWarning -f $installedModule.Version, $latestModuleVersion
-                Write-Warning $InstallLatestVersionWarningMsg
-            }
-        }
+        Show-LatestModuleVersion
 
         if([string]::IsNullOrEmpty($ComputerName))
         {
@@ -1922,6 +1995,8 @@ param(
         Invoke-Command -Session $clusterNodeSession -ScriptBlock $clusScript
         $getCluster = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Cluster }
         $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
+        $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
+        $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
         if([string]::IsNullOrEmpty($ResourceName))
         {
@@ -1944,10 +2019,25 @@ param(
             $ResourceGroupName = $ResourceName + "-rg"
         }
 
-        $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
-
         Write-Verbose "Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
-            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer"
+            SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
+            AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
+            RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
+
+        if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
+        {
+            Write-Error -Message $ArcIntegrationNotAvailableChinaCloudError
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            Write-Output $registrationOutput
+            return
+        }
+
+        if(-Not ([string]::IsNullOrEmpty($Region)))
+        {
+            $Region = Normalize-RegionName -Region $Region
+        }
+
+        $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
 
         $resourceId = Get-ResourceId -ResourceName $ResourceName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
         Write-Verbose "ResourceId : $resourceId"
@@ -1956,13 +2046,15 @@ param(
 
         if($resource -ne $null)
         {
+            $resourceLocation = Normalize-RegionName -Region $resource.Location
+
             if([string]::IsNullOrEmpty($Region))
             {
-                $Region = $resource.Location
+                $Region = $resourceLocation
             }
-            elseif($Region -ne $resource.Location)
+            elseif($Region -ne $resourceLocation)
             {
-                $ResourceExistsInDifferentRegionErrorMessage = $ResourceExistsInDifferentRegionError -f $resource.Location, $Region
+                $ResourceExistsInDifferentRegionErrorMessage = $ResourceExistsInDifferentRegionError -f $resourceLocation, $Region
                 Write-Error -Message $ResourceExistsInDifferentRegionErrorMessage
                 $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
                 Write-Output $registrationOutput
@@ -2152,7 +2244,7 @@ param(
 
                 $setupCertsError = Setup-Certificates -ClusterNodes $clusterNodes -Credential $Credential -ResourceName $ResourceName -ObjectId $objectId -CertificateThumbprint $CertificateThumbprint -AppId $appId -TenantId $TenantId -CloudId $cloudId `
                                     -ServiceEndpoint $ServiceEndpoint -BillingServiceApiScope $BillingServiceApiScope -GraphServiceApiScope $GraphServiceApiScope -Authority $Authority -NewCertificateFailedNodes $NewCertificateFailedNodes `
-                                    -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained
+                                    -SetCertificateFailedNodes $SetCertificateFailedNodes -OSNotLatestOnNodes $OSNotLatestOnNodes -CertificatesToBeMaintained $CertificatesToBeMaintained -ClusterDNSSuffix $clusterDNSSuffix
 
                 if($setupCertsError -ne $null)
                 {
@@ -2244,11 +2336,11 @@ param(
                 {
                     if($Credential -eq $Null)
                     {
-                        $nodeSession = New-PSSession -ComputerName $clusNode.Name
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
                     }
                     else
                     {
-                        $nodeSession = New-PSSession -ComputerName $clusNode.Name -Credential $Credential
+                        $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
                     }
                 }
                 catch
@@ -2306,7 +2398,13 @@ param(
             $arcAppName = $ResourceName + ".arc"
 
             Write-Verbose "Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $arcResourceGroupName"
-            Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName
+            $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $arcResourceGroupName -Region $Region -AppName $arcAppName -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC
+
+            if($arcResult -ne [ErrorDetail]::Success)
+            {
+                $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+            }
         }
 
         Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -Completed
@@ -2495,7 +2593,20 @@ param(
         else
         {
             $RegContext = Get-AzureStackHCI
+            $clusterNodeSession = New-PSSession -ComputerName localhost
         }
+
+        $clusScript = {
+                $clusterPowershell = Get-WindowsFeature -Name RSAT-Clustering-PowerShell;
+                if ( $clusterPowershell.Installed -eq $false)
+                {
+                    Install-WindowsFeature RSAT-Clustering-PowerShell | Out-Null;
+                }
+            }
+
+        Invoke-Command -Session $clusterNodeSession -ScriptBlock $clusScript
+        $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
+        $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $ValidatingParametersRegisteredInfo -percentcomplete 5
 
@@ -2529,15 +2640,20 @@ param(
 
         if ($PSCmdlet.ShouldProcess($resourceId))
         {
-            $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
-
-            Write-Verbose "Unregister-AzStackHCI triggered - ResourceName: $ResourceName `
+            Write-Verbose "Unregister-AzStackHCI triggered - ResourceName: $ResourceName Region: $Region `
                    SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
                    AccountId: $AccountId EnvironmentName: $EnvironmentName DisableOnlyAzureArcServer: $DisableOnlyAzureArcServer Force:$Force"
 
+            if(-Not ([string]::IsNullOrEmpty($Region)))
+            {
+                $Region = Normalize-RegionName -Region $Region
+            }
+
+            $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $UnregisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
+
             Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterArcMessage -percentcomplete 40
 
-            $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force $Force
+            $arcUnregisterRes = Unregister-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -ResourceId $resourceId -Force:$Force -ClusterDNSSuffix $clusterDNSSuffix
 
             if($arcUnregisterRes -eq $false)
             {
@@ -2559,23 +2675,9 @@ param(
         
             if($RegContext.RegistrationStatus -eq [RegistrationStatus]::Registered)
             {
-                if($IsManagementNode)
-                {
-                    Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-AzureStackHCIRegistration }
-                }
-                else
-                {
-                    Remove-AzureStackHCIRegistration
-                }
 
-                if($IsManagementNode)
-                {
-                    $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
-                }
-                else
-                {
-                    $clusterNodes = Get-ClusterNode
-                }
+                Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-AzureStackHCIRegistration }
+                $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
 
                 Foreach ($clusNode in $clusterNodes)
                 {
@@ -2585,11 +2687,11 @@ param(
                     {
                         if($Credential -eq $Null)
                         {
-                            $nodeSession = New-PSSession -ComputerName $clusNode.Name
+                            $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix)
                         }
                         else
                         {
-                            $nodeSession = New-PSSession -ComputerName $clusNode.Name -Credential $Credential
+                            $nodeSession = New-PSSession -ComputerName ($clusNode.Name + "." + $clusterDNSSuffix) -Credential $Credential
                         }
 
                         if([Environment]::MachineName -eq $clusNode.Name)
@@ -2800,6 +2902,8 @@ param(
 
         Invoke-Command -Session $clusterNodeSession -ScriptBlock $clusScript
         $getCluster = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Cluster }
+        $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
+        $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
 
         if($getCluster -eq $Null)
         {
@@ -2824,7 +2928,7 @@ param(
             $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyEndpointTested -Value $EndPointToInvoke
             $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyIsRequired -Value $True
 
-            Check-ConnectionToCloudBillingService -ClusterNodes $clusterNodes -Credential $Credential -HealthEndpoint $EndPointToInvoke -HealthEndPointCheckFailedNodes $HealthEndPointCheckFailedNodes
+            Check-ConnectionToCloudBillingService -ClusterNodes $clusterNodes -Credential $Credential -HealthEndpoint $EndPointToInvoke -HealthEndPointCheckFailedNodes $HealthEndPointCheckFailedNodes -ClusterDNSSuffix $clusterDNSSuffix
 
             if($HealthEndPointCheckFailedNodes.Count -ge 1)
             {

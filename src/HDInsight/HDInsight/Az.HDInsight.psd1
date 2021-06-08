@@ -104,7 +104,9 @@ CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition',
                'Get-AzHDInsightClusterAutoscaleConfiguration', 
                'New-AzHDInsightClusterAutoscaleConfiguration', 
                'Set-AzHDInsightClusterAutoscaleConfiguration', 
-               'Remove-AzHDInsightClusterAutoscaleConfiguration'
+               'Remove-AzHDInsightClusterAutoscaleConfiguration',
+               'Get-AzHDInsightAzureMonitor',
+               'Enable-AzHDInsightAzureMonitor', 'Disable-AzHDInsightAzureMonitor'
 
 # Variables to export from this module
 # VariablesToExport = @()

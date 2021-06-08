@@ -354,6 +354,95 @@ EnableBgpRouteTranslationForNat : True
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
 The second command assigns the existing natrules into variable vngNatRules.
+The third command assigns the value newly created PSVirtualNetworkGatewayNatRule object natrule into variable natRule.
+The fourth command add this PSVirtualNetworkGatewayNatRule object into vngNatRules list.
+The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.
+
+### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
+```
+PS C:\>$Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+PS C:\>$vngNatRules = $Gateway.NatRules
+PS C:\>$natRule = New-AzVirtualNetworkGatewayNatRule -Name "natRule1" -Type "Static" -Mode "IngressSnat" -InternalMapping @("25.0.0.0/16") -ExternalMapping @("30.0.0.0/16")
+PS C:\>$vngNatRules.Add($natrule)
+PS C:\>Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -NatRule $vngNatRules.NatRules -BgpRouteTranslationForNat $true
+
+Name                   : Gateway001
+ResourceGroupName      : ResourceGroup001
+Location               : westcentralus
+Id                     : /subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001
+Etag                   : W/"a08f13d3-6106-44e0-9127-e35e6f9793d5"
+ResourceGuid           : 30993429-a1ed-42ca-9862-9156b013626e
+ProvisioningState      : Succeeded
+Tags                   :
+IpConfigurations       : [
+                           {
+                             "PrivateIpAllocationMethod": "Dynamic",
+                             "Subnet": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworks/newApipaNet/subnets/GatewaySubnet"
+                             },
+                             "PublicIpAddress": {
+                               "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/publicIPAddresses/newapipaip"
+                             },
+                             "Name": "default",
+                             "Etag": "W/\"a08f13d3-6106-44e0-9127-e35e6f9793d5\"",
+                             "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default"
+                           }
+                         ]
+GatewayType            : Vpn
+VpnType                : RouteBased
+EnableBgp              : False
+ActiveActive           : False
+GatewayDefaultSite     : null
+Sku                    : {
+                           "Capacity": 2,
+                           "Name": "VpnGw1",
+                           "Tier": "VpnGw1"
+                         }
+VpnClientConfiguration : null
+BgpSettings            : {
+                           "Asn": 65515,
+                           "BgpPeeringAddress": "10.1.255.30",
+                           "PeerWeight": 0,
+                           "BgpPeeringAddresses": [
+                             {
+                               "IpconfigurationId": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/ipConfigurations/default",
+                               "DefaultBgpIpAddresses": [
+                                 "10.1.255.30"
+                               ],
+                               "CustomBgpIpAddresses": [
+                                 "169.254.21.55"
+                               ],
+                               "TunnelIpAddresses": [
+                                 "13.78.146.151"
+                               ]
+                             }
+                           ]
+                         }
+NatRules                        : [
+                                    {
+                                      "VirtualNetworkGatewayNatRulePropertiesType": "Static",
+                                      "Mode": "IngressSnat",
+                                      "InternalMappings": [
+                                        {
+                                          "AddressSpace": "25.0.0.0/16"
+                                        }
+                                      ],
+                                      "ExternalMappings": [
+                                        {
+                                          "AddressSpace": "30.0.0.0/16"
+                                        }
+                                      ],
+                                      "ProvisioningState": "Succeeded",
+                                      "Name": "natRule1",
+                                      "Etag": "W/\"5150d788-e165-42ba-99c4-8138a545fce9\"",
+                                      "Id": "/subscriptions/59ac12a6-f2b7-46d4-af3d-98ba9d9dbd92/resourceGroups/ResourceGroup001/providers/Microsoft.Network/virtualNetworkGateways/Gateway001/natRules/natRule1"
+                                    }
+                                  ]
+EnableBgpRouteTranslationForNat : True
+```
+
+The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
+The second command assigns the existing natrules into variable vngNatRules.
 The third command assigns the value newly created PSVirtualNeyworkGatewayNatRule object natrule into variable natRule.
 The fourth command add this PSVirtualNeyworkGatewayNatRule object into vngNatRules list.
 The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRules of gateway and update the gateway.

@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
         public static IList<DataDisk> CreateDataDisks(
             IEnumerable<int> imageDataDiskLuns,
-            IEnumerable<int> dataDiskSizes)
+            IEnumerable<int> dataDiskSizes,
+            string deleteOption = null)
             => CreateDataDisks(
                 imageDataDiskLuns,
                 dataDiskSizes,
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CreateOption = createOption,
                     Lun = lun,
                     DiskSizeGB = size,
+                    DeleteOption = deleteOption
                 });
 
         public static IList<VirtualMachineScaleSetDataDisk> CreateVmssDataDisks(

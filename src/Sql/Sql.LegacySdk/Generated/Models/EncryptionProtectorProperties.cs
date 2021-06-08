@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.Sql.LegacySdk.Models
             get { return this._uri; }
             set { this._uri = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the EncryptionProtectorProperties
         /// class.

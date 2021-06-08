@@ -52,6 +52,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
 
         /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
+
+        /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
         /// />.
         /// </summary>
@@ -78,29 +86,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal DiskPoolIdentity(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName = (string) content.GetValueForProperty("DiskPoolName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName = (string) content.GetValueForProperty("IscsiTargetName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
         /// />.
         /// </summary>
@@ -124,6 +109,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
         }
 
         /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.DiskPoolIdentity"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal DiskPoolIdentity(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName = (string) content.GetValueForProperty("DiskPoolName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).DiskPoolName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Location, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName = (string) content.GetValueForProperty("IscsiTargetName",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).IscsiTargetName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentityInternal)this).Id, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
+        }
+
+        /// <summary>
         /// Creates a new instance of <see cref="DiskPoolIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
@@ -134,6 +142,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(DiskPoolIdentityTypeConverter))]
     public partial interface IDiskPoolIdentity

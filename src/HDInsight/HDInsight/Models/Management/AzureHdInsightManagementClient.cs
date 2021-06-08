@@ -209,6 +209,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Extensions.GetMonitoringStatus(resourceGroupName, clusterName);
         }
 
+        public virtual void EnableAzureMonitor(string resourceGroupName, string clusterName, AzureMonitorRequest azureMonitorRequestParameters)
+        {
+            HdInsightManagementClient.Extensions.EnableAzureMonitor(resourceGroupName, clusterName, azureMonitorRequestParameters);
+        }
+
+        public virtual void DisableAzureMonitor(string resourceGroupName, string clusterName)
+        {
+            HdInsightManagementClient.Extensions.DisableAzureMonitor(resourceGroupName, clusterName);
+        }
+
+        public virtual AzureMonitorResponse GetAzureMonitor(string resourceGroupName, string clusterName)
+        {
+            return HdInsightManagementClient.Extensions.GetAzureMonitorStatus(resourceGroupName, clusterName);
+        }
+
         public virtual void RotateDiskEncryptionKey(string resourceGroupName, string clusterName, ClusterDiskEncryptionParameters parameters)
         {
             HdInsightManagementClient.Clusters.RotateDiskEncryptionKey(resourceGroupName, clusterName, parameters);

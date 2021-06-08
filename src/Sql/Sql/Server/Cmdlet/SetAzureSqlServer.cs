@@ -84,6 +84,35 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        // <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -120,9 +149,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 PublicNetworkAccess = this.PublicNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
+                SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId
             });
             return updateData;
         }
