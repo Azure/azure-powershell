@@ -37,6 +37,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithDeleteOptions()
+        {
+            TestRunner.RunTestScript("Test-SimpleNewVmWithDeleteOptions");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmFromSIGImage()
         {
             TestRunner.RunTestScript("Test-SimpleNewVmFromSIGImage");

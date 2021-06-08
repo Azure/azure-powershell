@@ -144,6 +144,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string NetworkInterfaceDeleteOption { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
@@ -224,9 +228,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public string OSDiskDeleteOption { get; set; }
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string DataDiskDeleteOption { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
@@ -419,7 +429,10 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                         );
                 }
                 else
@@ -446,7 +459,10 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent
+                        encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
+                        osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
+                        dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption
                     );
                 }
             }

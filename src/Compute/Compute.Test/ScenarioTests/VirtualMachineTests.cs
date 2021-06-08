@@ -251,6 +251,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDiskDeleteOption()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineDiskDeleteOption");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePerformanceMaintenance()
         {
             TestRunner.RunTestScript("Test-VirtualMachinePerformanceMaintenance");
