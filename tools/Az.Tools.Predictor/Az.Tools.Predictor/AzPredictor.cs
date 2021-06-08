@@ -207,7 +207,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                                 try
                                 {
-                                    await _service.RequestPredictionsAsync(lastTwoMaskedCommands, requestId,  _predictionRequestCancellationSource.Token);
+                                    hasSentHttpRequest = await _service.RequestPredictionsAsync(lastTwoMaskedCommands, requestId,  _predictionRequestCancellationSource.Token);
                                 }
                                 catch (ServiceRequestException e)
                                 {
