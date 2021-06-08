@@ -30,7 +30,7 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 418603118e704ffeabacff1dd56957400cf83f3a
+branch: 418603118e704ffeabacff1dd56957400cf83f3a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
