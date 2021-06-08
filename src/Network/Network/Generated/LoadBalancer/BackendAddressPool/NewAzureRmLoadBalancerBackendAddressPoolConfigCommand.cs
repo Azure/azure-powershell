@@ -42,12 +42,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Name of the backend address pool.")]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gateway Load Balancer provider configurations.")]
+        public PSTunnelInterface[] TunnelInterface { get; set; }
 
         public override void Execute()
         {
-            var vBackendAddressPools = new PSBackendAddressPool();
+            var vBackendAddressPool = new PSBackendAddressPool();
 
-            vBackendAddressPools.Name = this.Name;
+            vBackendAddressPool.Name = this.Name;
+            vBackendAddressPool.TunnelInterfaces = this.TunnelInterface?.ToList();
+
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
@@ -55,9 +61,9 @@ namespace Microsoft.Azure.Commands.Network
                 Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
                 "BackendAddressPools",
                 this.Name);
-            vBackendAddressPools.Id = generatedId;
+            vBackendAddressPool.Id = generatedId;
 
-            WriteObject(vBackendAddressPools, true);
+            WriteObject(vBackendAddressPool, true);
         }
     }
 }
