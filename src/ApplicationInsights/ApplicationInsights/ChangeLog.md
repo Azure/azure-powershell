@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed issue that `ResourcegroupName` is missed when executing below cmdlets with `InputObject` parameter [#14848]
+  * `Get-AzApplicationInsightsLinkedStorageAccount`
+  * `New-AzApplicationInsightsLinkedStorageAccount`
+  * `Update-AzApplicationInsightsLinkedStorageAccount`
+  * `Remove-AzApplicationInsightsLinkedStorageAccount` 
 
 ## Version 1.1.0
 * Added Parameters: `RetentionInDays` `PublicNetworkAccessForIngestion` `PublicNetworkAccessForQuery` for `New-AzApplicationInsights`
