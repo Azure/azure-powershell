@@ -17,6 +17,7 @@ Open-AzSurveyLink [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>
 ```
 
 ## DESCRIPTION
+Open survey link in default browser.
 
 ## EXAMPLES
 

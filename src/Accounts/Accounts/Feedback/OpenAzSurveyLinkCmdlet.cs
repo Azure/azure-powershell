@@ -21,7 +21,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Profile.Survey
 {
-    [Cmdlet(VerbsCommon.Open, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SurveyLink")]
+    [Cmdlet(VerbsCommon.Open, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SurveyLink"), OutputType(typeof(void))]
     public class OpenAzSurveyLinkCmdlet : AzureRMCmdlet
     {
         private const string _surveyLinkFormat = "https://aka.ms/azpssurvey?Q_CHL=INTERCEPT";
