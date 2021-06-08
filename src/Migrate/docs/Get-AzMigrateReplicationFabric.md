@@ -21,7 +21,7 @@ Get-AzMigrateReplicationFabric -ResourceGroupName <String> -ResourceName <String
 ### Get
 ```
 Get-AzMigrateReplicationFabric -FabricName <String> -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +113,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+OData filter options.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group where the recovery services vault is present.
 
@@ -165,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IFabric
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabric
 
 ## NOTES
 

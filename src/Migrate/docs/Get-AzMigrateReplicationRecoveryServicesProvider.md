@@ -74,7 +74,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProviderName
-Recovery services provider name
+Recovery services provider name.
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.IRecoveryServicesProvider
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProvider
 
 ## NOTES
 
