@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.Network
 
 			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, networkInterfaceModel, auxAuthHeader);
+            this.NetworkInterfaceClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, networkInterfaceModel, auxAuthHeader).GetAwaiter().GetResult();
              
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 

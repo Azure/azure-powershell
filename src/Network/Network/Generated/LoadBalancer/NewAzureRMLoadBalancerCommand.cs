@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
             () =>
             {
-                this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, vLoadBalancerModel, auxAuthHeader);
+                this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, vLoadBalancerModel, auxAuthHeader).GetAwaiter().GetResult();
                 var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.ResourceGroupName, this.Name);
                 var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);
                 psLoadBalancer.ResourceGroupName = this.ResourceGroupName;

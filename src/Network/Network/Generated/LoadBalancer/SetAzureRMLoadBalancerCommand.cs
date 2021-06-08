@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Execute the PUT LoadBalancer call
-            this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel, auxAuthHeader);
+            this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel, auxAuthHeader).GetAwaiter().GetResult();
 
             var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
             var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);
