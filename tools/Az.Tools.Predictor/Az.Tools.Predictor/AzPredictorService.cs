@@ -232,7 +232,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         }
 
         /// <inheritdoc/>
-        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, CancellationToken cancellationToken)
+        public virtual async Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     SetCommandToRequestPrediction(localCommands);
 
-                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.RequestId);
+                    AzPredictorService.SetHttpRequestHeader(_client?.DefaultRequestHeaders, _azContext.HashUserId, requestId);
 
                     var requestContext = new PredictionRequestBody.RequestContext()
                     {
@@ -342,7 +342,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                     AzPredictorConstants.CommandPlaceholder};
                         try
                         {
-                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, CancellationToken.None);
+                            _telemetryClient.RequestId = Guid.NewGuid().ToString();
+                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, _telemetryClient.RequestId, CancellationToken.None);
                         }
                         catch (ServiceRequestException e)
                         {

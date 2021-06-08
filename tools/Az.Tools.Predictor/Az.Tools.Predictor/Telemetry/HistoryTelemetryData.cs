@@ -41,14 +41,21 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Command { get; }
 
         /// <summary>
+        /// Gets whether the commdn line ran successfully.
+        /// </summary>
+        public bool Success { get; }
+
+        /// <summary>
         /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
         /// </summary>
         /// <param name="client">The client that makes the call.</param>
         /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(PredictionClient client, string command)
+        /// <param name="success">Whether the <paramref name="command" /> ran successfully.</param>
+        public HistoryTelemetryData(PredictionClient client, string command, bool success)
         {
             Client = client;
             Command = command;
+            Success = success;
         }
     }
 }

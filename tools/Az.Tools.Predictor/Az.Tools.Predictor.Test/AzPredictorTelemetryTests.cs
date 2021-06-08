@@ -60,6 +60,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[0], false);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.HistoryData.Command);
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(inputData), telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
 
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[0], true);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(history[0], telemetryClient.HistoryData.Command);
@@ -120,6 +123,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(history[0], telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{history[0]}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
@@ -152,6 +156,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[0], true);
 
             var maskedCommand = "New-AzVM -Location *** -Name ***";
 
@@ -166,6 +171,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal($"{AzPredictorConstants.CommandPlaceholder}\n{maskedCommand}", telemetryClient.RecordedTelemetry[1].Properties["Command"]);
@@ -197,6 +203,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[1], false);
 
             var maskedCommands = new List<string>()
             {
@@ -217,6 +224,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal(string.Join("\n", maskedCommands), telemetryClient.RecordedTelemetry[1].Properties["Command"]);
@@ -249,6 +257,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[1], true);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
@@ -261,6 +270,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             // Should use the placeholder for the assignment like \"$a='ResourceGroup01'\" where there is no command name at the right side.
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.RecordedTelemetry[0].Properties["History"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
@@ -301,6 +311,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history[1], false);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(maskedCommands[1], telemetryClient.HistoryData.Command);
@@ -314,6 +325,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal(string.Join("\n", maskedCommands), telemetryClient.RecordedTelemetry[1].Properties["Command"]);
@@ -327,6 +339,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             history.Add("git status");
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), true);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.HistoryData.Command);
@@ -339,6 +352,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
 
             var secondHistoryData = telemetryClient.HistoryData;
 
@@ -355,6 +369,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             history.Add(@"$a='NewResourceName'");
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(AzPredictorConstants.CommandPlaceholder, telemetryClient.HistoryData.Command);
@@ -367,6 +382,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(AzPredictorTelemetryTests.GetCommandName(history.Last()), telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
 
             // There is no new request prediction. The request id isn't changed.
             AzPredictorTelemetryTests.EnsureSameRequestId(firstRequestPredictionData, telemetryClient.HistoryData);
@@ -380,6 +396,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             history.Add("Get-AzResourceGroup -Name:ResourceGroup01");
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), true);
 
             maskedCommands = new List<string>()
             {
@@ -399,6 +416,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(maskedCommands[1], telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("True", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
             Assert.Equal(string.Join("\n", maskedCommands), telemetryClient.RecordedTelemetry[1].Properties["Command"]);
@@ -425,6 +443,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             var maskedCommands = new List<string>()
             {
@@ -463,6 +482,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), true);
 
             var maskedCommands = new List<string>()
             {
@@ -502,6 +522,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var maskedCommand = "New-AzVM -Location *** -Name ***";
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             await telemetryClient.HistoryTaskCompletionSource.Task;
             Assert.Equal(maskedCommand, telemetryClient.HistoryData.Command);
@@ -516,6 +537,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("CommandHistory", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
             Assert.Equal(maskedCommand, telemetryClient.RecordedTelemetry[0].Properties["History"]);
+            Assert.Equal("False", telemetryClient.RecordedTelemetry[0].Properties["Success"]);
 
             Assert.EndsWith("RequestPrediction", telemetryClient.RecordedTelemetry[1].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[1].Properties["ClientId"]);
@@ -743,6 +765,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             var predictionContext = PredictionContext.Create("New-AzResourceGroup -Name 'ResourceGroup01' -Location 'Central US'");
             var suggestionPackage = azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
@@ -763,6 +786,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
@@ -794,6 +818,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), false);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 
@@ -814,6 +839,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             };
 
             azPredictor.OnCommandLineAccepted(MockObjects.PredictionClient, history);
+            azPredictor.OnCommandLineExecuted(MockObjects.PredictionClient, history.Last(), true);
 
             VerifyTelemetryRecordCount(expectedTelemetryCount, telemetryClient);
 

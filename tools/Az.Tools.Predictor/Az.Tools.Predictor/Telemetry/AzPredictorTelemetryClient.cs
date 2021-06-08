@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         private const string TelemetryEventPrefix = "Az.Tools.Predictor";
 
         /// <inheritdoc/>
-        public string RequestId { get; private set; } = Guid.NewGuid().ToString();
+        public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
         /// <inheritdoc/>
         public string SessionId { get; } = Guid.NewGuid().ToString();
@@ -93,8 +93,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public virtual void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
-            RequestId = Guid.NewGuid().ToString();
-
             PostTelemetryData(telemetryData);
 
 #if TELEMETRY_TRACE && DEBUG
@@ -248,6 +246,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             var properties = CreateProperties(telemetryData, telemetryData.Client);
             properties.Add("History", telemetryData.Command);
+            properties.Add("Success", telemetryData.Success.ToString(CultureInfo.InvariantCulture));
 
             SendTelemetry($"{AzPredictorTelemetryClient.TelemetryEventPrefix}/CommandHistory", properties);
         }

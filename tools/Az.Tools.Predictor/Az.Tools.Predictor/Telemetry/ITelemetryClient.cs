@@ -20,9 +20,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public interface ITelemetryClient
     {
         /// <summary>
-        /// Gets the id to correlate the request and the server.
+        /// Gets and sets the id to correlate the request and the server.
         /// </summary>
-        public string RequestId { get; }
+        public string RequestId { get; set; }
 
         /// <summary>
         /// Gets the session id for the telemetry events.

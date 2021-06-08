@@ -15,6 +15,7 @@
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -35,6 +36,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// </summary>
     internal sealed class AzPredictor : ICommandPredictor, IDisposable
     {
+        private struct ParsedCommandLineHistory
+        {
+            public CommandAst Ast;
+            public string MaskedCommandLine;
+            public bool IsSupported;
+        }
+
         /// <inhericdoc />
         public string Name => "Az Predictor";
 
@@ -57,7 +65,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private uint _suggestionSessionId = 0;
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
+        private ConcurrentDictionary<string, ParsedCommandLineHistory> _parsedCommandLineHistory = new ConcurrentDictionary<string, ParsedCommandLineHistory>();
+
         private CancellationTokenSource _predictionRequestCancellationSource;
+        private TaskCompletionSource _commandLineExecutedCompletion;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>.
@@ -102,22 +113,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public void OnCommandLineAccepted(PredictionClient client, IReadOnlyList<string> history)
         {
-            // The context only changes when the user executes the corresponding command.
-            _azContext?.UpdateContext();
+            _commandLineExecutedCompletion = new TaskCompletionSource();
 
             if (history.Count > 0)
             {
                 // We try to find the commands to request predictions for.
                 // We should only have "start_of_snippet" when there are no enough Az commands for prediction.
-                // We then ignore that when there are new "start_of_snippet".
+                // We only send the requests when Az commands are changed. So we'll never add "start_of_snippet" again
+                // once we have enough Az commands.
                 // This is the scenario.
                 // 1. New-AzResourceGroup -Name ****
                 // 2. $resourceName="Test"
                 // 3. $resourceLocation="westus2"
                 // 4. New-AzVM -Name $resourceName -Location $resourceLocation
                 //
-                // We'll replace 2 and 3 with "start_of_snippet" but if we request prediction using 2 and 3, that'll reset the
-                // workflow. We want to predict only by Az commands. That's to use commands 1 and 4.
+                // If the history only contains 1, we'll add "start_of_snippet" to the request.
+                // We'll replace 2 and 3 with "start_of_snippet". But if we request prediction using 2 and 3, that'll reset the
+                // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
+                // That's to use commands 1 and 4 to request prediction.
 
                 bool isLastTwoCommandsChanged = false;
 
@@ -130,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
                         var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
-                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedValue : AzPredictorConstants.CommandPlaceholder);
+                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedCommandLine : AzPredictorConstants.CommandPlaceholder);
 
                         if (secondToLastCommand.IsSupported)
                         {
@@ -159,10 +172,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         _lastTwoMaskedCommands.Dequeue();
                     }
 
-                    _lastTwoMaskedCommands.Enqueue(lastCommand.Item2);
+                    _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
                     isLastTwoCommandsChanged = true;
 
-                    _service.RecordHistory(lastCommand.Item1);
+                    _service.RecordHistory(lastCommand.Ast);
                 }
                 else if (_lastTwoMaskedCommands.Count == 1)
                 {
@@ -172,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(client, lastCommand.MaskedValue ?? AzPredictorConstants.CommandPlaceholder));
+                _parsedCommandLineHistory.TryAdd(lastLine, lastCommand);
 
                 if (isLastTwoCommandsChanged)
                 {
@@ -189,9 +202,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // We don't need to block on the task. It sends the HTTP request and update prediction list. That can run at the background.
                     Task.Run(async () =>
                             {
+                                var localCommandLineExecutedCompletion = _commandLineExecutedCompletion;
+                                var requestId = Guid.NewGuid().ToString();
+
                                 try
                                 {
-                                    await _service.RequestPredictionsAsync(lastTwoMaskedCommands, _predictionRequestCancellationSource.Token);
+                                    await _service.RequestPredictionsAsync(lastTwoMaskedCommands, requestId,  _predictionRequestCancellationSource.Token);
                                 }
                                 catch (ServiceRequestException e)
                                 {
@@ -204,6 +220,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                                 }
                                 finally
                                 {
+                                    await localCommandLineExecutedCompletion.Task;
+                                    _telemetryClient.RequestId = requestId;
                                     _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(client, lastTwoMaskedCommands,
                                                 hasSentHttpRequest,
                                                 (exception is OperationCanceledException ? null : exception)));
@@ -211,24 +229,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                             }, _predictionRequestCancellationSource.Token);
                 }
             }
-
-            (CommandAst Ast, string MaskedValue, bool IsSupported) GetAstAndMaskedCommandLine(string commandLine)
-            {
-                var asts = Parser.ParseInput(commandLine, out _, out _);
-                var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
-                var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
-
-                var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
-                bool isSupported = _service.IsSupportedCommand(commandName);
-                string maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
-
-                return (commandAst, maskedCommandLine, isSupported);
-            }
         }
 
         public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success)
         {
+            if (success && (commandLine.Equals("Connect-AzAccount", StringComparison.InvariantCultureIgnoreCase)
+                        || commandLine.Equals("Clear-AzContext", StringComparison.InvariantCultureIgnoreCase)
+                        || commandLine.Equals("Disconnect-AzAccount", StringComparison.InvariantCultureIgnoreCase)
+                        || commandLine.Equals("Import-AzContext", StringComparison.InvariantCultureIgnoreCase)
+                        || commandLine.Equals("Remove-AzContext", StringComparison.InvariantCultureIgnoreCase)
+                        || commandLine.Equals("Set-AzContext", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                // The context only changes when the user executes the corresponding command successfully.
+                _azContext?.UpdateContext();
+            }
 
+            if (!_parsedCommandLineHistory.TryRemove(commandLine, out var parsedResult))
+            {
+                // We should already parsed the last command in OnCommandLineAccepted which we don't need to do again now.
+                // Just in case that wasn't correct, we clear the _parsedCommandLineHistory and parse it now.
+                _parsedCommandLineHistory.Clear();
+                parsedResult = GetAstAndMaskedCommandLine(commandLine);
+            }
+
+            _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
+            _commandLineExecutedCompletion?.SetResult();
         }
 
         /// <inhericdoc />
@@ -295,6 +320,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public void OnSuggestionAccepted(PredictionClient client, uint session, string acceptedSuggestion)
         {
             _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(client, session, acceptedSuggestion));
+        }
+
+        private ParsedCommandLineHistory GetAstAndMaskedCommandLine(string commandLine)
+        {
+            var asts = Parser.ParseInput(commandLine, out _, out _);
+            var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
+            var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
+
+            var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
+            bool isSupported = _service.IsSupportedCommand(commandName);
+            string maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
+
+            return new ParsedCommandLineHistory
+            {
+                Ast = commandAst,
+                MaskedCommandLine = maskedCommandLine,
+                IsSupported = isSupported
+            };
         }
     }
 
