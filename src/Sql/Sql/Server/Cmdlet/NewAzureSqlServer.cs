@@ -90,6 +90,35 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        // <summary>
+        /// Type of identity to be assigned to the server..
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -184,15 +213,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 SqlAdministratorPassword = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.Password : null,
                 SqlAdministratorLogin = (this.SqlAdministratorCredentials != null) ? this.SqlAdministratorCredentials.UserName : null,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, null),
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId,
                 Administrators = new Management.Sql.Models.ServerExternalAdministrator()
                 {
                     AzureADOnlyAuthentication = (this.EnableActiveDirectoryOnlyAuthentication.IsPresent) ? (bool?)true : null,
                     Login = this.ExternalAdminName,
                     Sid = this.ExternalAdminSID
-                }
+                }              
             });
             return newEntity;
         }

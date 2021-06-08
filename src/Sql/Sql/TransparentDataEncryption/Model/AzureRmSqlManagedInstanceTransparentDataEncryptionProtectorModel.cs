@@ -30,11 +30,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
             ManagedInstanceName = managedInstanceName;
         }
 
-        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel(string resourceGroupName, string managedInstanceName, EncryptionProtectorType type, string keyId) 
+        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel(string resourceGroupName, string managedInstanceName, EncryptionProtectorType type, string keyId, bool? autoRotatonEnabled) 
             : this(resourceGroupName, managedInstanceName)
         {
             Type = type;
             KeyId = keyId;
+            AutoRotationEnabled = autoRotatonEnabled;
         }
 
         /// <summary>
@@ -63,6 +64,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
         public string KeyId { get; private set; }
 
         /// <summary>
+        /// Gets or sets the key auto rotation status.
+        /// </summary>
+        public bool? AutoRotationEnabled { get; set; }
+
+        /// <summary>
         /// Create a AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel from a given ManagedInstanceEncryptionProtector
         /// </summary>
         /// <param name="resourceGroupName"></param>
@@ -80,7 +86,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
             {
                 ManagedInstanceKeyVaultKeyName = managedInstanceEncryptionProtector.ServerKeyName,
                 Type = type,
-                KeyId = managedInstanceEncryptionProtector.Uri
+                KeyId = managedInstanceEncryptionProtector.Uri,
+                AutoRotationEnabled = managedInstanceEncryptionProtector.AutoRotationEnabled
             };
         }
     }
