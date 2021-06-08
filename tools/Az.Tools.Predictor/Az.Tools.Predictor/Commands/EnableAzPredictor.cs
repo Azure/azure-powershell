@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <para type="description">Use this cmdlet to enable Az Predictor and start receiving suggestions</para>
     /// </summary>
     [Cmdlet("Enable", "AzPredictor"), OutputType(typeof(bool))]
-    public sealed class EnableAzPredictor : PSCmdlet
+    public sealed class EnableAzPredictor : BasePSCmdlet
     {
         private static readonly string[] _EnableStatements = {
             "Import-Module Az.Tools.Predictor",

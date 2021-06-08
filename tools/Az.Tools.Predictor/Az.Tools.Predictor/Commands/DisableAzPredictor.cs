@@ -21,8 +21,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <para type="synopsis">Cmdlet to disable Az Predictor and stop receiving suggestions</para>
     /// <para type="description">Use this cmdlet to disable Az Predictor and stop receiving suggestions</para>
     /// </summary>
-    [Cmdlet("Disable", "AzPredictor")]
-    public sealed class DisableAzPredictor : PSCmdlet
+    [Cmdlet("Disable", "AzPredictor"), OutputType(typeof(bool))]
+    public sealed class DisableAzPredictor : BasePSCmdlet
     {
         private static readonly string[] _DisableStatements = {
             "Set-PSReadLineOption -PredictionSource History"

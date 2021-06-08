@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <para type="description">This cmdlet will open a survey link in the default browser. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information </para>
     /// </summary>
     [Cmdlet("Open", "AzPredictorSurvey"), OutputType(typeof(bool))]
-    public sealed class OpenAzPredictorSurvey : PSCmdlet
+    public sealed class OpenAzPredictorSurvey : BasePSCmdlet
     {
         private const string _SurveyLinkFormat = "https://aka.ms/azpredictorisurvey?SessionId={0}&Q_CHL=cmdlet";
         /// <summary>
