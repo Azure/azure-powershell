@@ -15,27 +15,30 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### UpdateByNameParameterSet (Default)
 ```
 Update-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-MaxSizeInBytes <Int64>] [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MaxSizeInBytes <Int64>] [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>] [-Tag <Hashtable>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByParentObjectParameterSet
 ```
-Update-AzSynapseSqlDatabase -Name <String> [-MaxSizeInBytes <Int64>] -WorkspaceObject <PSSynapseWorkspace>
+Update-AzSynapseSqlDatabase -Name <String> [-MaxSizeInBytes <Int64>]
+ [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>] -WorkspaceObject <PSSynapseWorkspace>
  [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzSynapseSqlDatabase -InputObject <PSSynapseSqlDatabase> [-Tag <Hashtable>] [-PassThru] [-AsJob]
+Update-AzSynapseSqlDatabase [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>]
+ -InputObject <PSSynapseSqlDatabase> [-Tag <Hashtable>] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzSynapseSqlDatabase -ResourceId <String> [-Tag <Hashtable>] [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzSynapseSqlDatabase [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>] -ResourceId <String>
+ [-Tag <Hashtable>] [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,6 +170,22 @@ Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageRedundancy
+Storage redundancy of the database.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSqlDatabaseStorageRedundancyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Geo, GeoZone, Local, Zone
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

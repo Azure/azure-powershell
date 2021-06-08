@@ -1964,6 +1964,40 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             }
         }
 
+        public void PauseSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseSqlV3ManagementClient.SqlPoolsV3.Deactivate(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
+        public void ResumeSqlPoolV3(string resourceGroupName, string workspaceName, string sqlPoolName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(resourceGroupName))
+                {
+                    resourceGroupName = GetResourceGroupByWorkspaceName(workspaceName);
+                }
+
+                this._synapseSqlV3ManagementClient.SqlPoolsV3.Activate(resourceGroupName, workspaceName, sqlPoolName);
+            }
+            catch (ErrorContractException ex)
+            {
+                throw GetAzurePowerShellException(ex);
+            }
+        }
+
         #endregion
 
         #region SQL Database operations

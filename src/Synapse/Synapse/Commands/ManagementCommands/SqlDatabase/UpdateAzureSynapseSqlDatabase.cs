@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public long MaxSizeInBytes { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.StorageRedundancy)]
+        public PSSqlDatabaseStorageRedundancyType StorageRedundancy { get; set; }
+
         [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
@@ -143,6 +146,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingSqlDatabase.Tags,
                 MaxSizeBytes = this.IsParameterBound(c => c.MaxSizeInBytes) ? this.MaxSizeInBytes : existingSqlDatabase.MaxSizeBytes,
+                StorageRedundancy = this.IsParameterBound(c => c.StorageRedundancy) ? this.StorageRedundancy.ToString() : existingSqlDatabase.StorageRedundancy
             };
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlDatabase, this.Name, this.ResourceGroupName, this.WorkspaceName)))

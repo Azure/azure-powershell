@@ -158,6 +158,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         
         public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
+        public const string StorageRedundancy = "Storage redundancy of the database.";
+
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 
         public const string BackupWorkspaceName = "The Synapse workspace name of bakcup SQL pool object to create from.";

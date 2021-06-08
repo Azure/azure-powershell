@@ -15,15 +15,16 @@ This feature is in a limited preview, initially accessible only to certain subsc
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSynapseSqlDatabase [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
- [-Tag <Hashtable>] [-Collation <String>] [-MaxSizeInBytes <Int64>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-Collation <String>] [-MaxSizeInBytes <Int64>]
+ [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzSynapseSqlDatabase -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Tag <Hashtable>]
- [-Collation <String>] [-MaxSizeInBytes <Int64>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Collation <String>] [-MaxSizeInBytes <Int64>] [-StorageRedundancy <PSSqlDatabaseStorageRedundancyType>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,6 +124,22 @@ Resource group name.
 Type: System.String
 Parameter Sets: CreateByNameParameterSet
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageRedundancy
+Storage redundancy of the database.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.PSSqlDatabaseStorageRedundancyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Geo, GeoZone, Local, Zone
 
 Required: False
 Position: Named

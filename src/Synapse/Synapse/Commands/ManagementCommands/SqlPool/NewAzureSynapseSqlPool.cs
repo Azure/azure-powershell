@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
         [ValidateNotNullOrEmpty]
+        [ValidateRange(2, 3)]
         public int Version { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.Tag)]
