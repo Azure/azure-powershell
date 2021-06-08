@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated Compute module to use the latest .Net SDK version 47.0.0.
 
 ## Version 4.13.0
 * Added `Invoke-AzVmInstallPatch` to support patch installation in VMs using PowerShell.
