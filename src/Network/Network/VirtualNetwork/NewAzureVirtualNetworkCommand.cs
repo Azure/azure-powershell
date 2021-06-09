@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string EdgeZone { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
@@ -153,11 +148,6 @@ namespace Microsoft.Azure.Commands.Network
                 Location = Location,
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
-
-            if (this.EdgeZone != null)
-            {
-                vnet.ExtendedLocation = new PSExtendedLocation(EdgeZone);
-            }
 
             if (DnsServer != null)
             {
