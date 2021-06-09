@@ -50,6 +50,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreFailuresAccountCmdlets()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RestoreFailuresAccountCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlContainerBackupInformationCmdLets()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-SqlContainerBackupInformationCmdLets");
