@@ -23,8 +23,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
     public class PSVirtualNetwork : PSTopLevelResource, IResourceReference, IVirtualNetwork
     {
-        public PSExtendedLocation ExtendedLocation { get; set; }
-
         public PSAddressSpace AddressSpace { get; set; }
 
         public PSDhcpOptions DhcpOptions { get; set; }
@@ -46,6 +44,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId DdosProtectionPlan { get; set; }
 
         public List<PSResourceId> IpAllocations { get; set; }
+
+        public PSExtendedLocation ExtendedLocation { get; set; }
 
         [JsonIgnore]
         public string AddressSpaceText
@@ -99,6 +99,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpAllocationsText
         {
             get { return JsonConvert.SerializeObject(IpAllocations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
