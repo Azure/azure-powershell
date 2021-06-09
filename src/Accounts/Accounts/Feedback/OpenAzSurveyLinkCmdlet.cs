@@ -12,25 +12,55 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation;
-using System.Text;
+using System.Runtime.InteropServices;
 
 namespace Microsoft.Azure.Commands.Profile.Survey
 {
     [Cmdlet(VerbsCommon.Open, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SurveyLink"), OutputType(typeof(void))]
-    public class OpenAzSurveyLinkCmdlet : AzureRMCmdlet
+    public class OpenAzSurveyLinkCmdlet : AzurePSCmdlet
     {
         private const string _surveyLinkFormat = "https://aka.ms/azpssurvey?Q_CHL=INTERCEPT";
 
+        protected override IAzureContext DefaultContext => null;
+
+        protected override string DataCollectionWarning => null;
+
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
             WriteInformation(new HostInformationMessage() { Message = $"Opening the default browser to {_surveyLinkFormat}" }, new string[] { "PSHOST" });
-            Process.Start(new ProcessStartInfo() { FileName = _surveyLinkFormat, UseShellExecute = true});
+            OpenBrowser(_surveyLinkFormat);
+        }
+
+        private void OpenBrowser(string url)
+        {
+            try
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }
