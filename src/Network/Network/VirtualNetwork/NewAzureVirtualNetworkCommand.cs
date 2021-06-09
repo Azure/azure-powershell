@@ -111,7 +111,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The edge zone of the virtual network.")]
-        [ValidateNotNullOrEmpty]
         public string EdgeZone { get; set; }
 
         [Parameter(
