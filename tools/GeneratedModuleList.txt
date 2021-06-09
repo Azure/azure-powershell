@@ -10,6 +10,7 @@ Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
+Az.DataDog
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
