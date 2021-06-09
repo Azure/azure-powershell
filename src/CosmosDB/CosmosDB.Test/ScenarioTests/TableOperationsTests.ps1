@@ -18,14 +18,23 @@ Test Table CRUD operations
 #>
 function Test-TableOperationsCmdlets
 {
-  $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "table-db2528"
+  $rgName = "CosmosDBResourceGroup38"
   $TableName = "table1"
   $TableName2 = "table2"
+  $apiKind = "Table"
   $ThroughputValue = 500
+  $location = "East US"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
   $UpdatedThroughputValue = 600
 
   Try{
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+
       # create a new table
       $NewTable = New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput $ThroughputValue
       Assert-AreEqual $NewTable.Name $TableName
@@ -80,13 +89,22 @@ Test Table CRUD operations using InputObject and ParentObject parameter set
 function Test-TableOperationsCmdletsUsingInputObject
 {
   $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup27"
+  $rgName = "CosmosDBResourceGroup35"
+  $apiKind = "Table"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
   $TableName = "table1"
   $TableName2 = "table2"
   $ThroughputValue = 500
   $UpdatedThroughputValue = 600
 
   Try{
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+
       # get the cosmosDBAccount object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
@@ -132,16 +150,23 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "table-29"
-  $rgName = "CosmosDBResourceGroup29"
+  $AccountName = "table-30"
+  $rgName = "CosmosDBResourceGroup34"
   $TableName = "tableName3"
-
+  $apiKind = "Table"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
   $ThroughputValue = 1200
   $UpdatedThroughputValue = 1100
   $UpdatedThroughputValue2 = 1000
   $UpdatedThroughputValue3 = 900
 
   Try{
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+  $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+
   $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
   $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
   Assert-AreEqual $Throughput.Throughput $ThroughputValue

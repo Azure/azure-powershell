@@ -54,7 +54,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public override void ExecuteCmdlet()
         {
             ResourceIdentifier resourceIdentifier = null;
-            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+            else if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
             {
                 
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
@@ -74,13 +80,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
                 ClusterName = resourceIdentifier.ParentResource.Split(separator:'/')[1];
                 DataCenterName = resourceIdentifier.ResourceName;
-            }
-
-            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
-            {
-                resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                ClusterName = resourceIdentifier.ResourceName;
             }
 
             if (!string.IsNullOrEmpty(DataCenterName))

@@ -57,7 +57,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         public override void ExecuteCmdlet()
         {
-            if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
+
+            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                ClusterName = resourceIdentifier.ResourceName;
+            }
+            else if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
             {
                 ResourceIdentifier resourceIdentifier = null;
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
@@ -76,13 +83,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
                 ClusterName = resourceIdentifier.ParentResource.Split(separator: '/')[1];
                 DataCenterName = resourceIdentifier.ResourceName;
-            }
-
-            if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
-            {
-                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ParentObject.Id);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                ClusterName = resourceIdentifier.ResourceName;
             }
 
             if (ShouldProcess(ClusterName, "Removing Managed Cassandra DataCenter."))
