@@ -30,7 +30,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell: Blockchain cmdlets'
+Description = 'Microsoft Azure PowerShell: Blockchain cmdlets
+On September 10, 2021, Azure Blockchain will be retired. Please migrate ledger data from Azure Blockchain Service to an alternative offering based on your development status in production or evaluation.
+For more information on evaluating alternatives, see Migrate Azure Blockchain Service (https://docs.microsoft.com/en-us/azure/blockchain/service/migration-guide).'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

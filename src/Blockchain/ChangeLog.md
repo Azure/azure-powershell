@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated the description of module and added retirement notice
 
 ## Version 0.2.0
 * Fixed SecureString parameters of `New-AzBlockchainMember` on Linux [12707]
