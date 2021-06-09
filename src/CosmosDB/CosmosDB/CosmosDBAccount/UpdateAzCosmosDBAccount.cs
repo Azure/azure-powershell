@@ -100,13 +100,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             }
             if (NetworkAclBypass != null)
             {
-                databaseAccountUpdateParameters.NetworkAclBypass = 
+                databaseAccountUpdateParameters.NetworkAclBypass =
                     NetworkAclBypass == "AzureServices" ? SDKModel.NetworkAclBypass.AzureServices : SDKModel.NetworkAclBypass.None;
             }
 
             if (!string.IsNullOrEmpty(DefaultConsistencyLevel))
             {
-               databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
+                databaseAccountUpdateParameters.ConsistencyPolicy = base.PopoulateConsistencyPolicy(DefaultConsistencyLevel, MaxStalenessIntervalInSeconds, MaxStalenessPrefix);
             }
 
             if (Tag != null)
