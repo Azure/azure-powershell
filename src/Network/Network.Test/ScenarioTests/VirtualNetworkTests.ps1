@@ -1521,9 +1521,7 @@ function Test-VirtualNetworkEdgeZone
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $job = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EdgeZone "MicrosoftRRDCLab1" -AsJob
-        $job | Wait-Job
-        $actual = $job | Receive-Job
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EdgeZone "MicrosoftRRDCLab1"
         $expected = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 
         Assert-AreEqual $expected.ExtendedLocation.Name "MicrosoftRRDCLab1"
