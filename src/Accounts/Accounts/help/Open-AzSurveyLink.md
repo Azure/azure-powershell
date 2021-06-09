@@ -20,6 +20,11 @@ Open-AzSurveyLink [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>
 Open survey link in default browser.
 
 ## EXAMPLES
+```
+Open-AzSurveyLink
+
+Opening the default browser to https://aka.ms/azpssurvey?Q_CHL=INTERCEPT
+```
 
 ## PARAMETERS
 
