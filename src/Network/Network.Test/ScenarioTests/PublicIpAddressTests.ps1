@@ -826,15 +826,15 @@ function Test-PublicIpAddressInEdgeZone
     # Setup
     $resourceName = Get-ResourceName
 	$domainNameLabel = Get-ResourceName
-    $resourceGroupName = Get-ResourceGroupName;
-    $locationName = "westus";
-    $edgeZone = "microsoftlosangeles1";
-   
-    try 
+    $resourceGroupName = Get-ResourceGroupName
+    $locationName = "westus"
+    $edgeZone = "microsoftlosangeles1"
+
+    try
     {
         # Create the resource group
         New-AzResourceGroup -Name $resourceGroupName -Location $locationName
-      
+
         # Create publicIpAddres
         New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name $resourceName -Location $locationName -EdgeZone $edgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
