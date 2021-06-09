@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Share
+namespace Microsoft.Azure.PowerShell.Common.Share
 {
     /// <summary>
     /// Static class containing variables shared across assemblies

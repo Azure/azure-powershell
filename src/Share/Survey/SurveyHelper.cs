@@ -21,7 +21,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.PowerShell.Share.Survey
+namespace Microsoft.Azure.PowerShell.Common.Share.Survey
 {
     using Condition = Func<SurveyHelper, string, int, bool>;
     using UpdateModule = Action<SurveyHelper, string, int>;

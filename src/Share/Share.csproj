@@ -8,8 +8,8 @@
   
     <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Share</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.Share</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Common.Share</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Common.Share</RootNamespace>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
