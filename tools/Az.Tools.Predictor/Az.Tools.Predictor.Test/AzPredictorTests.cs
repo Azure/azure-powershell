@@ -345,15 +345,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
-        /// Verify when we cannot parse the user input correctly.
+        /// Verify when we don't support the commands.
         /// </summary>
-        /// <remarks>
-        /// When we can parse them correctly, please move the InlineData to the corresponding test methods, for example, "git status"
-        /// can be moved to <see cref="VerifySuggestion"/>.
-        /// </remarks>
         [Theory]
         [InlineData("git status")]
-        public void VerifyMalFormattedCommandLine(string userInput)
+        public void VerifyUnsupportedCommandSuggestion(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
             var actual = _azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);

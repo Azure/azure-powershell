@@ -107,6 +107,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzKeyVault -VaultName")]
         [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
         [InlineData("new-azresourcegroup -name hello")]
+        [InlineData("new-azresourcegroup hello")]
         public void VerifyUsingCommandBasedPredictor(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -196,6 +197,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("new-azresourcegroup -NoExistingParam")]
         [InlineData("get-azaccount ")]
         [InlineData("NEW-AZCONTEXT")]
+        [InlineData("git status")]
+        [InlineData("Get-AzContext Name")]
         public void VerifyNoPrediction(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -216,27 +219,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify that it returns null when we cannot parse the user input.
         /// </summary>
         [Theory]
-        [InlineData("git status")]
+        [InlineData("New-AzVM -Name A $Location")]
         public void VerifyFailToParseUserInput(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
-            var actual = this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
-            Assert.Null(actual);
-        }
-
-        /// <summary>
-        /// Verify when we cannot parse the user input correctly.
-        /// </summary>
-        /// <remarks>
-        /// When we can parse them correctly, please move the InlineData to the corresponding test methods.
-        /// </remarks>
-        [Theory]
-        [InlineData("Get-AzContext Name")]
-        public void VerifyMalFormattedCommandLine(string userInput)
-        {
-            var predictionContext = PredictionContext.Create(userInput);
-            Action actual = () => this._service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None);
-            _ = Assert.Throws<InvalidOperationException>(actual);
+            Assert.Throws<CommandLineException>(() => _service.GetSuggestion(predictionContext, 1, 1, CancellationToken.None));
         }
     }
 }

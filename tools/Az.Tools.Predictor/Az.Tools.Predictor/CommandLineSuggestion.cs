@@ -80,6 +80,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(predictiveSuggestion.SuggestionText), $"{nameof(predictiveSuggestion)} cannot have a null or whitespace suggestion text.");
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(sourceText), $"{nameof(sourceText)} cannot be null or whitespace.");
 
+            for (var i = 0; i < _predictiveSuggestions.Count; ++i)
+            {
+                if (string.Equals(_predictiveSuggestions[i].SuggestionText, predictiveSuggestion.SuggestionText, StringComparison.Ordinal))
+                {
+                    return;
+                }
+            }
+
             _predictiveSuggestions.Add(predictiveSuggestion);
             _sourceTexts.Add(sourceText);
             _suggestionSources.Add(suggestionSource);

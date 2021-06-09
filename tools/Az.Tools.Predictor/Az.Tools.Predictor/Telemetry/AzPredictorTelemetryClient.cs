@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Profile;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
@@ -178,10 +177,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                 return string.Empty;
             }
 
-            // The exception message may contain data such as file path if it is IO related exception.
-            // It's this solution to throw the exception, the type and the stack trace only contain information related to the solution.
-            return string.Format($"Type: {exception.GetType().ToString()}\nStack Trace: {exception.StackTrace?.ToString()}");
-;        }
+            switch (exception)
+            {
+                case CommandLineException:
+                case ServiceRequestException:
+                    // This is the exception type created by us. We should not contain private data in the message.
+                    return $"Message: {exception.Message}\nStack Trace: {exception.StackTrace?.ToString()}";
+                default:
+                    // The exception message may contain data such as file path if it is IO related exception.
+                    // It's this solution to throw the exception, the type and the stack trace only contain information related to the solution.
+                    return $"Type: {exception.GetType().ToString()}\nStack Trace: {exception.StackTrace?.ToString()}";
+            }
+        }
 
         private void PostTelemetryData(ITelemetryData telemetryData)
         {

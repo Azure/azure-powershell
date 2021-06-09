@@ -82,7 +82,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <param name="text">The text to escape.</param>
         public static string EscapePredictionText(string text)
         {
-            return text.Replace("<", "'<").Replace(">", ">'");
+            return text.Replace("<", "'<")
+                .Replace(">", ">'")
+                .Replace("{", "'{")
+                .Replace("}", "}'");
         }
 
         /// <summary>
@@ -92,7 +95,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <param name="text">The text to unescape.</param>
         public static string UnescapePredictionText(string text)
         {
-            return text.Replace("'<", "<").Replace(">'", ">");
+            return text.Replace("'<", "{")
+                .Replace(">'", "}")
+                .Replace("'{", "{")
+                .Replace("}'", "}");
         }
     }
 }

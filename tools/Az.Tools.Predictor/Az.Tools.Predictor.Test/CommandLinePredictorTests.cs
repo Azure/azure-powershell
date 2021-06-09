@@ -169,6 +169,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzKeyVault -VaultName")]
         [InlineData("GET-AZSTORAGEACCOUNTKEY -NAME ")]
         [InlineData("new-azresourcegroup -name hello")]
+        [InlineData("new-azresourcegroup hello")]
         public void GetPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
@@ -240,10 +241,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         }
 
         /// <summary>
-        /// Verify that the prediction for the command (with parameter) has the right parameters.
+        /// Verify that the prediction for the command with named parameter has the right parameters.
         /// </summary>
         [Fact]
-        public void VerifyPredictionForCommandAndParameters()
+        public void VerifyPredictionForCommandAndNamedParameters()
         {
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
@@ -260,6 +261,36 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                     CancellationToken.None);
 
             Assert.Equal("Get-AzStorageAccountKey -Name 'myStorageAccount' -ResourceGroupName 'ContosoGroup02'", result.PredictiveSuggestions.First().SuggestionText);
+        }
+
+        /// <summary>
+        /// Verify that the prediction for the command with positional parameter has the right parameters.
+        /// </summary>
+        [Fact]
+        public void VerifyPredictionForCommandAndPositionalParameters()
+        {
+            var predictionContext = PredictionContext.Create("Get-AzStorageAccount resourcegroup");
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
+            var presentCommands = new Dictionary<string, int>();
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    3,
+                    1,
+                    CancellationToken.None);
+
+            var expected = new PredictiveSuggestion[]
+            {
+                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount'"),
+                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount' -DefaultProfile {IAzureContextContainer}"),
+                new PredictiveSuggestion("Get-AzStorageAccount resourcegroup -Name 'myStorageAccount' -IncludeGeoReplicationStats"),
+            };
+
+            Assert.Equal(expected.Select(e => e.SuggestionText), result.PredictiveSuggestions.Select(r => r.SuggestionText));
         }
     }
 }

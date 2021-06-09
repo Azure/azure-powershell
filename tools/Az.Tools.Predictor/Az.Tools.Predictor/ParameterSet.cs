@@ -24,9 +24,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// does not matter to resulting prediction - the prediction should adapt to the
     /// order of the parameters typed by the user.
     /// </summary>
-    /// <remarks>
-    /// This doesn't handle the positional parameters yet.
-    /// </remarks>
     sealed class ParameterSet
     {
         /// <summary>
@@ -34,22 +31,61 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public IReadOnlyList<Parameter> Parameters { get; }
 
+        private CommandAst _commandAst;
+
+        // The bound parameters are used to parse the positional parameters.
+        // We don't always need to handle positional parameters. The data set we get from the service are in the format
+        // of named parameters. In that case, we don't need to spend time to get the bound parameters.
+        private IDictionary<string, ParameterBindingResult> _boundParameters;
+
+        private IDictionary<string, ParameterBindingResult> BoundParameters
+        {
+            get
+            {
+                if (_boundParameters == null)
+                {
+                    var boundResult = StaticParameterBinder.BindCommand(_commandAst);
+                    if (boundResult.BindingExceptions.Any())
+                    {
+                        throw new CommandLineException("There are errors in binding the parameters.");
+                    }
+
+                    _boundParameters = boundResult.BoundParameters;
+                }
+
+                return _boundParameters;
+            }
+        }
+
         public ParameterSet(CommandAst commandAst)
         {
             Validation.CheckArgument(commandAst, $"{nameof(commandAst)} cannot be null.");
+
+            _commandAst = commandAst;
 
             var parameters = new List<Parameter>();
             CommandParameterAst param = null;
             Ast arg = null;
 
+            // positional parameters must be before named parameters.
+            // This loop will convert them to named parameters.
             // Loop through all the parameters. The first element of CommandElements is the command name, so skip it.
+            bool hasSeenNamedParameter = false;
+            bool hasSeenIncompleteParameter = false;
             for (var i = 1; i < commandAst.CommandElements.Count(); ++i)
             {
                 var elem = commandAst.CommandElements[i];
 
                 if (elem is CommandParameterAst p)
                 {
-                    AddParameter(param, arg);
+                    if (hasSeenIncompleteParameter)
+                    {
+                        throw new CommandLineException("'-' is in the middle of the parameter list.");
+                    }
+
+                    hasSeenNamedParameter = true;
+                    AddNamedParameter(param, arg);
+                    // In case there is a switch parameter, we store the parameter name/value and add them when we see the next pair.
                     param = p;
                     arg = null;
                 }
@@ -58,23 +94,43 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     // We have an incomplete command line such as
                     // `New-AzResourceGroup -Name ResourceGroup01 -Location WestUS -`
                     // We'll ignore the incomplete parameter.
-                    AddParameter(param, arg);
+                    AddNamedParameter(param, arg);
                     param = null;
                     arg = null;
+                    hasSeenIncompleteParameter = true;
                 }
                 else
                 {
-                    arg = elem;
+                    if (hasSeenIncompleteParameter || (hasSeenNamedParameter && param == null))
+                    {
+                        throw new CommandLineException("Positional parameters must be before named parameters.");
+                    }
+
+                    if (param == null)
+                    {
+                        // This is a positional parameter.
+                        var pair = BoundParameters.First((pair) => pair.Value.Value == elem);
+
+                        var parameterName = pair.Key;
+                        var parameterValue = CommandLineUtilities.EscapePredictionText(pair.Value.Value.ToString());
+                        parameters.Add(new Parameter(parameterName, parameterValue, true));
+                    }
+                    else
+                    {
+                        arg = elem;
+                        AddNamedParameter(param, arg);
+                        param = null;
+                        arg = null;
+                    }
                 }
             }
 
-            Validation.CheckInvariant((param != null) || (arg == null));
-
-            AddParameter(param, arg);
+            Validation.CheckInvariant<CommandLineException>((param != null) || (arg == null));
+            AddNamedParameter(param, arg);
 
             Parameters = parameters;
 
-            void AddParameter(CommandParameterAst parameter, Ast parameterValue)
+            void AddNamedParameter(CommandParameterAst parameter, Ast parameterValue)
             {
                 if (parameter != null)
                 {
@@ -89,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         value = CommandLineUtilities.UnescapePredictionText(value);
                     }
 
-                    parameters.Add(new Parameter(parameter.ParameterName, value));
+                    parameters.Add(new Parameter(parameter.ParameterName, value, false));
                 }
             }
         }

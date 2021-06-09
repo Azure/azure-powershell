@@ -160,8 +160,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             catch when (!IsSupportedCommand(commandName))
             {
                 // We only ignore the exception when the command name is not supported.
-                // For the supported ones, this most likely happens when positional parameters are used.
-                // We want to collect the telemetry about the exception how common a positional parameter is used.
+                // We want to collect the telemetry about the exception how common it is for the format we don't support.
                 return null;
             }
 

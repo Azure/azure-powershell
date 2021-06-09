@@ -70,8 +70,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 if (!string.IsNullOrWhiteSpace(commandName))
                 {
-                    var parameterSet = new ParameterSet(commandAst);
-                    this._commandLinePredictions.Add(new CommandLine(commandName, predictiveCommand.Description, parameterSet));
+                    try
+                    {
+                        var parameterSet = new ParameterSet(commandAst);
+                        this._commandLinePredictions.Add(new CommandLine(commandName, predictiveCommand.Description, parameterSet));
+                    }
+                    catch
+                    {
+                        // TODO there are some invalid commands in the model. Should we collect the telemetry?
+                    }
                 }
             }
         }
@@ -144,6 +151,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         if (resultBuilder.Length <= rawUserInput.Length)
                         {
+                            // We don't add anything to to the raw user input. So skip this.
                             continue;
                         }
 
@@ -154,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         foreach (var p in _commandLinePredictions[i].ParameterSet.Parameters)
                         {
-                            AppendParameterNameAndValue(sourceBuilder, p.Name, p.Value);
+                            AppendParameterNameAndValue(sourceBuilder, p.Name, p.Value, isPositional: false);
                         }
 
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
@@ -216,8 +224,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="usedParams">Set of used parameters for set.</param>
         private bool DoesPredictionParameterSetMatchInput(StringBuilder builder, ParameterSet inputParameters, string commandNoun,ParameterSet predictionParameters, HashSet<int> usedParams)
         {
-            foreach (var inputParameter in inputParameters.Parameters)
+            for (var i = 0; i < inputParameters.Parameters.Count; ++i)
             {
+                var inputParameter = inputParameters.Parameters[i];
                 var matchIndex = FindParameterPositionInSet(inputParameter, predictionParameters, usedParams);
                 if (matchIndex == -1)
                 {
@@ -228,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     usedParams.Add(matchIndex);
                     if (inputParameter.Value != null)
                     {
-                        AppendParameterNameAndValue(builder, predictionParameters.Parameters[matchIndex].Name, inputParameter.Value);
+                        AppendParameterNameAndValue(builder, predictionParameters.Parameters[matchIndex].Name, inputParameter.Value, inputParameter.IsPositional);
                     }
                     else
                     {
@@ -263,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 parameterValue = parameter.Value;
             }
 
-            AppendParameterNameAndValue(builder, parameterName, parameterValue);
+            AppendParameterNameAndValue(builder, parameterName, parameterValue, isPositional: false);
         }
 
         /// <summary>
@@ -287,11 +296,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return -1;
         }
 
-        private static void AppendParameterNameAndValue(StringBuilder builder, string name, string value)
+        private static void AppendParameterNameAndValue(StringBuilder builder, string name, string value, bool isPositional)
         {
-            _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
-            _ = builder.Append(AzPredictorConstants.ParameterIndicator);
-            _ = builder.Append(name);
+            if (!isPositional)
+            {
+                _ = builder.Append(AzPredictorConstants.CommandParameterSeperator);
+                _ = builder.Append(AzPredictorConstants.ParameterIndicator);
+                _ = builder.Append(name);
+            }
 
             if (!string.IsNullOrWhiteSpace(value))
             {
