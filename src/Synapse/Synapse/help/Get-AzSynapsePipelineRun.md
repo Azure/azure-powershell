@@ -50,6 +50,21 @@ PS C:\> Get-AzSynapsePipelineRun -WorkspaceName ContosoWorkspace -PipelineRunId 
 
 This command gets details about the pipeline run with ID "61eb095a-fe23-4591-8a97-fade6c65ca72".
 
+### Example 2
+```powershell
+PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+PS C:\> $ws | Get-AzSynapsePipelineRun -RunStartedAfter "4/2/2007 7:23:57 PM" -RunStartedBefore "4/2/2027 7:23:57 PM"
+```
+
+This command gets details about the runs of all pipelines in the workspace ContosoWorkspace that started between "4/2/2007 7:23:57 PM" and "4/2/2027 7:23:57 PM"
+
+### Example 3
+```powershell
+PS C:\> Get-AzSynapsePipelineRun -WorkspaceName ContosoWorkspace -Name ContosoPipeline -RunStartedAfter "4/2/2007 7:23:57 PM" -RunStartedBefore "4/2/2027 7:23:57 PM"
+```
+
+This command gets details about the runs of ContosoPipeline pipeline in the workspace ContosoWorkspace that started between "4/2/2007 7:23:57 PM" and "4/2/2027 7:23:57 PM"
+
 ## PARAMETERS
 
 ### -DefaultProfile
