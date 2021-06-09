@@ -30,7 +30,7 @@ For information on how to develop for `Az.ADDomainServices`, see [how-to.md](how
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 394ab556cb4aed1196918856a24be9b02609cc93
+Branch: 394ab556cb4aed1196918856a24be9b02609cc9
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
