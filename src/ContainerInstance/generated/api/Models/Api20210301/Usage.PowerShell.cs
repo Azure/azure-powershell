@@ -106,29 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Usage"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal Usage(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageNameTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Unit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).CurrentValue = (int?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).CurrentValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Limit = (int?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Limit, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue = (string) content.GetValueForProperty("NameValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue = (string) content.GetValueForProperty("NameLocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Usage"
         /// />.
         /// </summary>
@@ -149,6 +126,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue = (string) content.GetValueForProperty("NameValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue = (string) content.GetValueForProperty("NameLocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Usage"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal Usage(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Name = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageName) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Name, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageNameTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Unit = (string) content.GetValueForProperty("Unit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Unit, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).CurrentValue = (int?) content.GetValueForProperty("CurrentValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).CurrentValue, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Limit = (int?) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).Limit, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue = (string) content.GetValueForProperty("NameValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameValue, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue = (string) content.GetValueForProperty("NameLocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageInternal)this).NameLocalizedValue, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
     }
     /// A single usage result

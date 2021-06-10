@@ -91,35 +91,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirements FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceRequirements"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal ResourceRequirements(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Request = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequests) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Request, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceRequestsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Limit = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceLimits) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Limit, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceLimitsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestGpu = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGpuResource) content.GetValueForProperty("RequestGpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestGpu, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GpuResourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestMemoryInGb = (double) content.GetValueForProperty("RequestMemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestMemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestCpu = (double) content.GetValueForProperty("RequestCpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuSku = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku) content.GetValueForProperty("RequestsGpuSku",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuSku, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitGpu = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGpuResource) content.GetValueForProperty("LimitGpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitGpu, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GpuResourceTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitMemoryInGb = (double?) content.GetValueForProperty("LimitMemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitMemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitCpu = (double?) content.GetValueForProperty("LimitCpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuSku = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku) content.GetValueForProperty("LimitsGpuSku",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuSku, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount = (int) content.GetValueForProperty("RequestsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount = (int) content.GetValueForProperty("LimitsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceRequirements"
         /// />.
         /// </summary>
@@ -146,6 +117,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount = (int) content.GetValueForProperty("RequestsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount = (int) content.GetValueForProperty("LimitsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceRequirements"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal ResourceRequirements(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Request = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequests) content.GetValueForProperty("Request",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Request, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceRequestsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Limit = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceLimits) content.GetValueForProperty("Limit",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).Limit, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ResourceLimitsTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestGpu = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGpuResource) content.GetValueForProperty("RequestGpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestGpu, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GpuResourceTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestMemoryInGb = (double) content.GetValueForProperty("RequestMemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestMemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestCpu = (double) content.GetValueForProperty("RequestCpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuSku = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku) content.GetValueForProperty("RequestsGpuSku",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuSku, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitGpu = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGpuResource) content.GetValueForProperty("LimitGpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitGpu, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GpuResourceTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitMemoryInGb = (double?) content.GetValueForProperty("LimitMemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitMemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitCpu = (double?) content.GetValueForProperty("LimitCpu",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitCpu, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuSku = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku) content.GetValueForProperty("LimitsGpuSku",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuSku, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku.CreateFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount = (int) content.GetValueForProperty("RequestsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).RequestsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount = (int) content.GetValueForProperty("LimitsGpuCount",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IResourceRequirementsInternal)this).LimitsGpuCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>

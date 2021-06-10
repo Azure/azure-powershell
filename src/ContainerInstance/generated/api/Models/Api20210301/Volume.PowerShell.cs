@@ -106,35 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal Volume(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFile = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IAzureFileVolume) content.GetValueForProperty("AzureFile",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFile, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.AzureFileVolumeTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepo = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolume) content.GetValueForProperty("GitRepo",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepo, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GitRepoVolumeTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.AnyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Secret = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ISecretVolume) content.GetValueForProperty("Secret",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Secret, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.SecretVolumeTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileShareName = (string) content.GetValueForProperty("AzureFileShareName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileShareName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileReadOnly = (bool?) content.GetValueForProperty("AzureFileReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountName = (string) content.GetValueForProperty("AzureFileStorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountKey = (string) content.GetValueForProperty("AzureFileStorageAccountKey",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountKey, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoDirectory = (string) content.GetValueForProperty("GitRepoDirectory",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoDirectory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository = (string) content.GetValueForProperty("GitRepoRepository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision = (string) content.GetValueForProperty("GitRepoRevision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume"
         /// />.
         /// </summary>
@@ -161,6 +132,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository = (string) content.GetValueForProperty("GitRepoRepository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision = (string) content.GetValueForProperty("GitRepoRevision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Volume"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal Volume(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFile = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IAzureFileVolume) content.GetValueForProperty("AzureFile",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFile, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.AzureFileVolumeTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepo = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolume) content.GetValueForProperty("GitRepo",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepo, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GitRepoVolumeTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).EmptyDir = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny) content.GetValueForProperty("EmptyDir",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).EmptyDir, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.AnyTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Secret = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.ISecretVolume) content.GetValueForProperty("Secret",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).Secret, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.SecretVolumeTypeConverter.ConvertFrom);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileShareName = (string) content.GetValueForProperty("AzureFileShareName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileShareName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileReadOnly = (bool?) content.GetValueForProperty("AzureFileReadOnly",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileReadOnly, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountName = (string) content.GetValueForProperty("AzureFileStorageAccountName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountKey = (string) content.GetValueForProperty("AzureFileStorageAccountKey",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).AzureFileStorageAccountKey, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoDirectory = (string) content.GetValueForProperty("GitRepoDirectory",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoDirectory, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository = (string) content.GetValueForProperty("GitRepoRepository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRepository, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision = (string) content.GetValueForProperty("GitRepoRevision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IVolumeInternal)this).GitRepoRevision, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
     }
     /// The properties of the volume.

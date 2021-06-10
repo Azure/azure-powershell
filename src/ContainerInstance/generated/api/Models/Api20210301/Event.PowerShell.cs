@@ -82,29 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Event"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal Event(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).FirstTimestamp = (global::System.DateTime?) content.GetValueForProperty("FirstTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).FirstTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).LastTimestamp = (global::System.DateTime?) content.GetValueForProperty("LastTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).LastTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Event"
         /// />.
         /// </summary>
@@ -125,6 +102,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Event"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal Event(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Count = (int?) content.GetValueForProperty("Count",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Count, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).FirstTimestamp = (global::System.DateTime?) content.GetValueForProperty("FirstTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).FirstTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).LastTimestamp = (global::System.DateTime?) content.GetValueForProperty("LastTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).LastTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Name, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message = (string) content.GetValueForProperty("Message",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Message, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEventInternal)this).Type, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>

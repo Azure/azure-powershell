@@ -84,26 +84,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EncryptionProperties"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal EncryptionProperties(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).VaultBaseUrl = (string) content.GetValueForProperty("VaultBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).VaultBaseUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EncryptionProperties"
         /// />.
         /// </summary>
@@ -121,6 +101,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.EncryptionProperties"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal EncryptionProperties(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).VaultBaseUrl = (string) content.GetValueForProperty("VaultBaseUrl",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).VaultBaseUrl, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName = (string) content.GetValueForProperty("KeyName",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyName, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion = (string) content.GetValueForProperty("KeyVersion",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IEncryptionPropertiesInternal)this).KeyVersion, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>

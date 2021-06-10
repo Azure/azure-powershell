@@ -93,25 +93,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResult FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationListResult"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal OperationListResult(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationListResult"
         /// />.
         /// </summary>
@@ -128,6 +109,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationTypeConverter.ConvertFrom));
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationListResult"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal OperationListResult(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.OperationTypeConverter.ConvertFrom));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>

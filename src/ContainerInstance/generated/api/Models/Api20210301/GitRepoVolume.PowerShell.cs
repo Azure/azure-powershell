@@ -89,26 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         public static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolume FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GitRepoVolume"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal GitRepoVolume(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Directory = (string) content.GetValueForProperty("Directory",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Directory, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository = (string) content.GetValueForProperty("Repository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision = (string) content.GetValueForProperty("Revision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GitRepoVolume"
         /// />.
         /// </summary>
@@ -126,6 +106,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository = (string) content.GetValueForProperty("Repository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision = (string) content.GetValueForProperty("Revision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.GitRepoVolume"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal GitRepoVolume(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Directory = (string) content.GetValueForProperty("Directory",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Directory, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository = (string) content.GetValueForProperty("Repository",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Repository, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision = (string) content.GetValueForProperty("Revision",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IGitRepoVolumeInternal)this).Revision, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>Serializes this instance to a json string.</summary>

@@ -106,25 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageName"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UsageName(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageName"
         /// />.
         /// </summary>
@@ -141,6 +122,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageName"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal UsageName(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value = (string) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).Value, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue = (string) content.GetValueForProperty("LocalizedValue",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageNameInternal)this).LocalizedValue, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
     }
     /// The name object of the resource

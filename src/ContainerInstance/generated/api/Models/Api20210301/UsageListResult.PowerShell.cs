@@ -106,24 +106,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageListResult"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal UsageListResult(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageTypeConverter.ConvertFrom));
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageListResult"
         /// />.
         /// </summary>
@@ -139,6 +121,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             // actually deserialize
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageTypeConverter.ConvertFrom));
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageListResult"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal UsageListResult(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value = (Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage[]) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsageListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IUsage>(__y, Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.UsageTypeConverter.ConvertFrom));
+            AfterDeserializeDictionary(content);
         }
     }
     /// The response containing the usage data

@@ -82,26 +82,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.DnsConfiguration"
-        /// />.
-        /// </summary>
-        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal DnsConfiguration(global::System.Collections.IDictionary content)
-        {
-            bool returnNow = false;
-            BeforeDeserializeDictionary(content, ref returnNow);
-            if (returnNow)
-            {
-                return;
-            }
-            // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).NameServer = (string[]) content.GetValueForProperty("NameServer",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).NameServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain = (string) content.GetValueForProperty("SearchDomain",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option = (string) content.GetValueForProperty("Option",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option, global::System.Convert.ToString);
-            AfterDeserializeDictionary(content);
-        }
-
-        /// <summary>
         /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.DnsConfiguration"
         /// />.
         /// </summary>
@@ -119,6 +99,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021030
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain = (string) content.GetValueForProperty("SearchDomain",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain, global::System.Convert.ToString);
             ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option = (string) content.GetValueForProperty("Option",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option, global::System.Convert.ToString);
             AfterDeserializePSObject(content);
+        }
+
+        /// <summary>
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.DnsConfiguration"
+        /// />.
+        /// </summary>
+        /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
+        internal DnsConfiguration(global::System.Collections.IDictionary content)
+        {
+            bool returnNow = false;
+            BeforeDeserializeDictionary(content, ref returnNow);
+            if (returnNow)
+            {
+                return;
+            }
+            // actually deserialize
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).NameServer = (string[]) content.GetValueForProperty("NameServer",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).NameServer, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain = (string) content.GetValueForProperty("SearchDomain",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).SearchDomain, global::System.Convert.ToString);
+            ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option = (string) content.GetValueForProperty("Option",((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.IDnsConfigurationInternal)this).Option, global::System.Convert.ToString);
+            AfterDeserializeDictionary(content);
         }
 
         /// <summary>
