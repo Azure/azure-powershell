@@ -1,4 +1,4 @@
-## 6.1.0 - July 2021
+## 6.1.0 - June 2021
 #### Az.Accounts
 * Added cmdlet 'Open-AzSurveyLink'
 * Supported certificate file as input parameter of Connect-AzAccount
@@ -109,7 +109,7 @@
 * Supported enable Smb Multichannel on File service
     -  'Update-AzStorageFileServiceProperty'
 * Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
-* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/udpate storage account
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
     - 'New-AzStorageAccount'
     - 'Set-AzStorageAccount'
 
@@ -126,6 +126,7 @@
 * @sohaibMSFT, Application Gateway AutoScale Example (#15071)
 * @Srihsu, Update Split-AzReservation.md (#15049)
 * @srozemuller, typo in examples resourcegroup parameter (#15146)
+
 
 ## 6.0.0 - May 2021
 Az 6.0.0 (Az.Accounts 2.3.0) is only supported on Windows PowerShell 5.1, PowerShell 7.0 version 7.0.6 or greater and PowerShell 7.1 version 7.1.3 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to http://aka.ms/azpslifecyle.

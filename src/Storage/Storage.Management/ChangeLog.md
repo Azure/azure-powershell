@@ -26,7 +26,7 @@
 * Supported enable Smb Multichannel on File service
     -  `Update-AzStorageFileServiceProperty`
 * Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
-* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/udpate storage account
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
 

@@ -174,7 +174,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.1.0 - July 2021
+        ReleaseNotes = '6.1.0 - June 2021
 Az.Accounts
 * Added cmdlet ''Open-AzSurveyLink''
 * Supported certificate file as input parameter of Connect-AzAccount
@@ -285,7 +285,7 @@ Az.Storage
 * Supported enable Smb Multichannel on File service
     -  ''Update-AzStorageFileServiceProperty''
 * Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
-* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/udpate storage account
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
     - ''New-AzStorageAccount''
     - ''Set-AzStorageAccount''
 
