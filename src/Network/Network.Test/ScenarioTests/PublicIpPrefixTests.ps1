@@ -249,3 +249,38 @@ function Test-PublicIpPrefixAllocatePublicIpAddress
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test creating a public IP prefix in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-PublicIpPrefixInEdgeZone
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $pipname = $rname+"pip"
+    $domainNameLabel = Get-ResourceName
+    $rglocation = "westus"
+    $resourceTypeParent = "Microsoft.Network/publicIpPrefixes"
+    $location = "westus"
+    $edgeZone = "microsoftlosangeles1"
+   
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create publicIpPrefix
+        New-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname -location $location -Sku Standard -PrefixLength 30 -EdgeZone $edgeZone
+        $publicIpPrefix = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $rname
+
+        Assert-AreEqual $publicIpPrefix.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $publicIpPrefix.ExtendedLocation.Type "EdgeZone"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
