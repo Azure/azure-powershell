@@ -1,5 +1,5 @@
 @{
-  GUID = 'ddf74844-4a25-4263-8a5c-f27979292e4e'
+  GUID = '78f5cd97-9a2c-4258-bf37-7a8820083684'
   RootModule = './Az.ContainerInstance.psm1'
   ModuleVersion = '1.0.3'
   CompatiblePSEditions = 'Core', 'Desktop'
