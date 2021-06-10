@@ -827,8 +827,8 @@ function Test-PublicIpAddressInEdgeZone
     $resourceName = Get-ResourceName
 	$domainNameLabel = Get-ResourceName
     $resourceGroupName = Get-ResourceGroupName
-    $locationName = "westus"
-    $edgeZone = "microsoftlosangeles1"
+    $locationName = 'westus'
+    $edgeZone = 'microsoftlosangeles1'
 
     try
     {
@@ -840,7 +840,7 @@ function Test-PublicIpAddressInEdgeZone
 
 	    $publicIP = Get-AzPublicIpAddress -Name $resourceName -ResourceGroupName $resourceGroupName
 	    Assert-AreEqual $publicIP.ExtendedLocation.Name $edgeZone
-        Assert-AreEqual $publicIP.ExtendedLocation.Type "EdgeZone"
+        Assert-AreEqual $publicIP.ExtendedLocation.Type 'EdgeZone'
     }
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
     {
