@@ -202,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -EdgeZone
-{{ Fill EdgeZone Description }}
+The edge zone of the network interface
 
 ```yaml
 Type: System.String
