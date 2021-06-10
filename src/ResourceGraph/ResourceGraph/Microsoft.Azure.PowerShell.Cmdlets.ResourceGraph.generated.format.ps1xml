@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0"?>
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse</Name>
+      <Name>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]]</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ResourceGraph.Models.PSResourceGraphResponse`1[[System.Management.Automation.PSObject]]</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -12,15 +12,10 @@
             <ListItems>
               <ListItem>
                 <PropertyName>SkipToken</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>
-                    $_.SkipToken -ne $null
-                  </ScriptBlock>
-                </ItemSelectionCondition>
               </ListItem>
               <ListItem>
                 <PropertyName>Data</PropertyName>
-              </ListItem>            
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
