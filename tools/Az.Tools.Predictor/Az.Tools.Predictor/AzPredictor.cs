@@ -58,10 +58,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private static readonly string[] CommonParameters = new string[] { "location" };
 
-        private readonly IAzPredictorService _service;
-        private readonly ITelemetryClient _telemetryClient;
-        private readonly Settings _settings;
-        private readonly IAzContext _azContext;
+        private IAzPredictorService _service;
+        private ITelemetryClient _telemetryClient;
+        private Settings _settings;
+        private IAzContext _azContext;
         private uint _suggestionSessionId = 0;
 
         private Queue<string> _lastTwoMaskedCommands = new Queue<string>(AzPredictorConstants.CommandHistoryCountToProcess);
@@ -72,19 +72,49 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
 
+        private bool _isInitialized;
+
         /// <summary>
-        /// Constructs a new instance of <see cref="AzPredictor"/>.
+        /// Constructs a new instance of <see cref="AzPredictor"/> to use in PowerShell's prediction subsystem.
+        /// </summary>
+        public AzPredictor()
+        {
+            // To make import-module fast, we'll do all the initialization in a task.
+            // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
+            Task.Run(() =>
+                    {
+                        _settings = Settings.GetSettings();
+                        var azContext = new AzContext()
+                        {
+                            IsInternal = (_settings.SetAsInternal == true) ? true : false,
+                            SurveyId = _settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
+                        };
+
+                        RegisterDisposableObject(azContext);
+
+                        _azContext = azContext;
+
+                        _azContext.UpdateContext();
+                        _telemetryClient = new AzPredictorTelemetryClient(_azContext);
+                        _service = new AzPredictorService(_settings.ServiceUri, _telemetryClient, _azContext);
+                        _isInitialized = true;
+                    });
+        }
+
+        /// <summary>
+        /// Constructs a new instance of <see cref="AzPredictor"/> for testing.
         /// </summary>
         /// <param name="service">The service that provides the suggestion.</param>
         /// <param name="telemetryClient">The client to collect telemetry.</param>
         /// <param name="settings">The settings for <see cref="AzPredictor"/>.</param>
         /// <param name="azContext">The Az context which this module runs in.</param>
-        public AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings, IAzContext azContext)
+        internal AzPredictor(IAzPredictorService service, ITelemetryClient telemetryClient, Settings settings, IAzContext azContext)
         {
             _service = service;
             _telemetryClient = telemetryClient;
             _settings = settings;
             _azContext = azContext;
+            _isInitialized = true;
         }
 
         /// <inhericdoc/>
@@ -103,6 +133,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inhericdoc />
         public bool CanAcceptFeedback(PredictionClient client, PredictorFeedbackKind feedback)
         {
+            if (!_isInitialized)
+            {
+                return false;
+            }
+
             switch (feedback)
             {
                 case PredictorFeedbackKind.SuggestionDisplayed:
@@ -266,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             var localSuggestionSessionId = _suggestionSessionId++;
 
-            if (_settings.SuggestionCount.Value <= 0)
+            if (!_isInitialized || _settings.SuggestionCount.Value <= 0)
             {
                 return CreateResult(null);
             }
@@ -363,18 +398,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <inheritdoc/>
         public void OnImport()
         {
-            var settings = Settings.GetSettings();
-            var azContext = new AzContext()
-            {
-                IsInternal = (settings.SetAsInternal == true) ? true : false,
-                SurveyId = settings.SurveyId?.ToString(CultureInfo.InvariantCulture) ?? string.Empty,
-            };
-
-            azContext.UpdateContext();
-            var telemetryClient = new AzPredictorTelemetryClient(azContext);
-            var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);
-            var predictor = new AzPredictor(azPredictorService, telemetryClient, settings, azContext);
-            predictor.RegisterDisposableObject(azContext);
+            var predictor = new AzPredictor();
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
     }

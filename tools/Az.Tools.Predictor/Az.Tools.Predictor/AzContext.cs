@@ -54,13 +54,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     InitialSessionState minimalState = InitialSessionState.CreateDefault2();
                     minimalState.Types.Clear();
                     minimalState.Formats.Clear();
-                    minimalState.ImportPSModule("Az.Accounts");
+                    // Refer to the remarks for the property DefaultRunspace.
+                    minimalState.ImportPSModule("Az.Accounts", "Az.Storage", "Az.Network", "Az.KeyVault", "Az.Compute", "Az");
                     var runspace = RunspaceFactory.CreateRunspace(minimalState);
                     runspace.Open();
                     return runspace;
                 });
 
         /// <inheritdoc />
+        /// <remarks>
+        /// We pre-load some common Az service modules and also the rollup Az module when we create the instance.
+        /// Creating the instance is at the first time this is called.
+        /// It's slow to load the rollup Az module. So the first call must not be in the path of the user interaction.
+        /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
         /// <inheritdoc/>
