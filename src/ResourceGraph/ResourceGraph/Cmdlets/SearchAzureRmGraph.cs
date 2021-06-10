@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse))]
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse<PSObject>))]
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             IList<string> subscriptions = null;
             if (managementGroups == null)
             {
-                subscriptions = this.GetSubscriptions().ToList();
+                subscriptions = this.GetSubscriptions()?.ToList();
                 if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
                 {
                     subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
             }
 
-            var psResourceGraphResponse = new PSResourceGraphResponse();
+            var psResourceGraphResponse = new PSResourceGraphResponse<PSObject>();
             QueryResponse response = null;
 
             var resultTruncated = false;
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
-            if (accountSubscriptions.Length > 0)
+            if (accountSubscriptions?.Length > 0)
             {
                 return accountSubscriptions;
             }
