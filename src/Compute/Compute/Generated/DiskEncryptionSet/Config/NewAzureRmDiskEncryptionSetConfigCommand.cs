@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("EncryptionAtRestWithPlatformAndCustomerKeys", "EncryptionAtRestWithCustomerKey")]
         public string EncryptionType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? RotationToLatestKeyVersionEnabled { get; set; }
+
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("DiskEncryptionSet", "New"))
@@ -127,6 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionType = this.IsParameterBound(c => c.EncryptionType) ? this.EncryptionType : null,
                 Identity = vIdentity,
                 ActiveKey = vActiveKey,
+                RotationToLatestKeyVersionEnabled = this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled) ? this.RotationToLatestKeyVersionEnabled : null
             };
 
             WriteObject(vDiskEncryptionSet);

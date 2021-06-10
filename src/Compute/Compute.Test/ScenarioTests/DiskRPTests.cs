@@ -121,5 +121,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-SnapshotDuplicateCreationFails");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskPurchasePlan()
+        {
+            TestRunner.RunTestScript("Test-DiskPurchasePlan");
+        }
     }
 }

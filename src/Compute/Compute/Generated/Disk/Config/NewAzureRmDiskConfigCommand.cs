@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [Alias("AccountType")]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS", "Premium_ZRS", "StandardSSD_ZRS")]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Compute/disks")]
         public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -199,6 +204,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public bool? BurstingEnabled { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? SupportsHibernation { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Disk", "New"))
@@ -223,6 +233,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
+
+            PurchasePlan purchasePlan = new PurchasePlan();
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -377,6 +389,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
+            if (this.IsParameterBound(c => c.PurchasePlan))
+            {
+                ComputeAutomationAutoMapperProfile.Mapper.Map<PSPurchasePlan, PurchasePlan>(this.PurchasePlan, purchasePlan);
+            }
+
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -399,6 +416,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
                 BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? purchasePlan : null,
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
             };
 
             WriteObject(vDisk);

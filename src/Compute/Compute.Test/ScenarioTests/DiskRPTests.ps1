@@ -1407,3 +1407,40 @@ function Test-EdgeZoneConfigurations
 		Clean-ResourceGroup $rgname
 	}
 }
+
+
+function Test-DiskPurchasePlanNewAndUpdate
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name "planName" -Publisher "planPublisher" -Product "planPorduct" -PromotionCode "planPromotionCode"
+		$diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1" -PurchasePlan $diskPurchasePlan;
+		$diskname = "disk" + $rgname;
+		$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+		Assert-AreEqual $disk.PurchasePlan.Product "planPorduct"
+		Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCode"
+        Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisher"
+        Assert-AreEqual $disk.PurchasePlan.Name "planName"
+
+        $diskPurchasePlanUpdate = New-AzDiskPurchasePlanConfig -Name "planNameupdate" -Publisher "planPublisherupdate" -Product "planPorductupdate" -PromotionCode "planPromotionCodeupdate"
+        $updateconfig = New-AzDiskUpdateConfig -PurchasePlan $diskPurchasePlanUpdate;
+        $diskUp = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual $disk.PurchasePlan.Product "planPorductupdate"
+		Assert-AreEqual $disk.PurchasePlan.PromotionCode "planPromotionCodeupdate"
+        Assert-AreEqual $disk.PurchasePlan.Publisher "planPublisherupdate"
+        Assert-AreEqual $disk.PurchasePlan.Name "planNameupdate"
+    }
+    finally{
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-DiskSupportsHibernation
+{
+
+}

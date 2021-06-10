@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [Alias("AccountType")]
-        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS","Premium_ZRS", "StandardSSD_ZRS")]
         public string SkuName { get; set; }
 
         [Parameter(
@@ -135,6 +135,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public bool? BurstingEnabled { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public PSPurchasePlan PurchasePlan { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? SupportsHibernation { get; set; }
+
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("DiskUpdate", "New"))
@@ -156,6 +167,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Sku
             DiskSku vSku = null;
+
+            PurchasePlan purchasePlan = new PurchasePlan();
 
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
@@ -235,6 +248,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Name = this.SkuName;
             }
 
+            if (this.IsParameterBound(c => c.PurchasePlan))
+            {
+                ComputeAutomationAutoMapperProfile.Mapper.Map<PSPurchasePlan, PurchasePlan>(this.PurchasePlan, purchasePlan);
+            }
+
+
             var vDiskUpdate = new PSDiskUpdate
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -252,6 +271,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Sku = vSku,
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
                 BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? purchasePlan : null,
+                SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
+
             };
 
             WriteObject(vDiskUpdate);
