@@ -35,7 +35,7 @@ If you specify the *AlertRuleId* parameter, a single AlertRule object is returne
 If you do not specify the *AlertRuleId* parameter, an array containing all of the Alert Rules in the specified workspace is returned.
 You can use the AlertRule object to update the AlertRule. For example you can enable or disable the AlertRule. <br/>
 
-*Note: An AlertRuleId is in the following format: c464bcd7-daee-47ff-ac58-1fbb73cf1d6b and can be found in the Azure Sentinel Analytics view under the rule details pane on your right in the field "Id"*
+*Note: An AlertRuleId can be any string, as long as it is unique in your workspace and can be found in the Azure Sentinel Analytics view under the rule details pane on your right in the field "Id"*
 
 ## EXAMPLES
 

@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateLinkResource", DefaultParameterSetName = "ByPrivateLinkResourceId"), OutputType(typeof(PSPrivateLinkResource))]
     public class GetAzurePrivateLinkResourceCommand : NetworkBaseCmdlet, IDynamicParameters
     {
+        [Alias("PrivateLinkServiceId")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = "ByPrivateLinkResourceId",
@@ -47,6 +48,12 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = "ByResource")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
+
+        [Alias("GroupName")]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The private link resource name.")]
+        public string Name { get; set; }
 
         public string PrivateLinkResourceType { get; set; }
         string NamedContextParameterSet = "ByResource";
@@ -87,10 +94,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(string.Format(Properties.Resources.InvalidResourceId, this.PrivateLinkResourceId));
             }
-
-            var plrs = provider.ListPrivateLinkResource(ResourceGroupName, ServiceName);
-            WriteObject(plrs, true);
-
+            if (this.IsParameterBound(c => c.Name))
+            {
+                var plr = provider.GetPrivateLinkResource(ResourceGroupName, ServiceName, Name);
+                WriteObject(plr);
+            }
+            else
+            {
+                var plrs = provider.ListPrivateLinkResource(ResourceGroupName, ServiceName);
+                WriteObject(plrs, true);
+            }
         }
     }
 }

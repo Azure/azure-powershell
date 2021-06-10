@@ -59,7 +59,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string priority,
             string evictionPolicy,
             double? maxPrice,
-            bool encryptionAtHostPresent)
+            bool encryptionAtHostPresent,
+            string networkInterfaceDeleteOption = null,
+            string osDiskDeleteOption = null,
+            string dataDiskDeleteOption = null)
 
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         NetworkInterfaces = new[]
                         {
-                            engine.GetReference(networkInterface)
+                            engine.GetReference(networkInterface, networkInterfaceDeleteOption)
                         }
                     },
                     HardwareProfile = new HardwareProfile
@@ -90,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         ImageReference = imageAndOsType?.Image,
                         DataDisks = DataDiskStrategy.CreateDataDisks(
-                            imageAndOsType?.DataDiskLuns, dataDisks)
+                            imageAndOsType?.DataDiskLuns, dataDisks, dataDiskDeleteOption)
                     },
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones,
@@ -124,7 +127,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string priority,
             string evictionPolicy,
             double? maxPrice,
-            bool encryptionAtHostPresent
+            bool encryptionAtHostPresent,
+            string networkInterfaceDeleteOption = null,
+            string osDiskDeleteOption = null,
+            string dataDiskDeleteOption = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -135,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         NetworkInterfaces = new[]
                         {
-                            engine.GetReference(networkInterface)
+                            engine.GetReference(networkInterface, networkInterfaceDeleteOption)
                         }
                     },
                     HardwareProfile = new HardwareProfile
@@ -150,8 +156,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
                             ManagedDisk = engine.GetReference(disk, ultraSSDEnabled ? StorageAccountTypes.UltraSSDLRS : StorageAccountTypes.PremiumLRS),
+                            DeleteOption = osDiskDeleteOption
                         },
-                        DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
+                        DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks, dataDiskDeleteOption)
                     },
                     Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),

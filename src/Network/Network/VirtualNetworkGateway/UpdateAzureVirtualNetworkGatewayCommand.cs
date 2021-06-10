@@ -202,6 +202,17 @@ namespace Microsoft.Azure.Commands.Network
         public string[] CustomRoute { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The NatRules for Virtual network gateway.")]
+        public PSVirtualNetworkGatewayNatRule[] NatRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
+        public bool? BgpRouteTranslationForNat { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -440,6 +451,16 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 this.VirtualNetworkGateway.CustomRoutes = null;
+            }
+
+            if (this.NatRule != null)
+            {
+                this.VirtualNetworkGateway.NatRules = this.NatRule?.ToList();
+            }
+
+            if (this.BgpRouteTranslationForNat.HasValue)
+            {
+                this.VirtualNetworkGateway.EnableBgpRouteTranslationForNat = this.BgpRouteTranslationForNat.Value;
             }
 
             // Map to the sdk object

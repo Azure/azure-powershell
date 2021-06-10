@@ -382,22 +382,65 @@ function Test-PolicyAssignmentCRUD
     $rg = New-AzResourceGroup -Name $rgname -Location "west us"
     $policy = New-AzPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
 
+    $nonComplianceMessages = @(@{ Message = "General message" })
+
     # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
     $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual 1 $expected.Properties.NonComplianceMessages.Length
+    Assert-AreEqual "General message" $expected.Properties.NonComplianceMessages[0].Message
 
     # get it back by id and validate
     $actualId = Get-AzPolicyAssignment -Id $actual.ResourceId
     Assert-AreEqual $actual.ResourceId $actualId.ResourceId
+    Assert-AreEqual 1 $actualId.Properties.NonComplianceMessages.Length
+    Assert-AreEqual "General message" $actualId.Properties.NonComplianceMessages[0].Message
+
+    $nonComplianceMessages += @{
+        Message = "Specific message 1"
+        PolicyDefinitionReferenceId = "ref1"
+    }
+
+    # create it again with two non-compliance messages
+    $actual = New-AzPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages
+    $expected = Get-AzPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual 2 $expected.Properties.NonComplianceMessages.Length
+    Assert-AreEqual "Specific message 1" $expected.Properties.NonComplianceMessages[1].Message
+    Assert-AreEqual "ref1" $expected.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
 
     # update the policy assignment, validate the result
     $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -DisplayName testDisplay
     Assert-AreEqual testDisplay $set.Properties.DisplayName
+
+    $nonComplianceMessages = @(@{ Message = "General non-compliance message" })
+
+    # update the policy assignment's non-compliance messages with one new general message
+    $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -NonComplianceMessage $nonComplianceMessages
+    Assert-AreEqual 1 $set.Properties.NonComplianceMessages.Length
+    Assert-AreEqual "General non-compliance message" $set.Properties.NonComplianceMessages[0].Message
+    Assert-Null $set.Properties.NonComplianceMessages[0].PolicyDefinitionReferenceId
+
+    $nonComplianceMessages = @(
+        @{
+            Message = "Specific message 1"
+            PolicyDefinitionReferenceId = "ref1"
+        },
+        @{
+            Message = "Specific message 2"
+            PolicyDefinitionReferenceId = "ref2"
+        }
+    )
+
+    # update the policy assignment's non-compliance message with two specific messages
+    $set = Set-AzPolicyAssignment -Id $actualId.ResourceId -NonComplianceMessage $nonComplianceMessages
+    Assert-AreEqual 2 $set.Properties.NonComplianceMessages.Length
+    Assert-AreEqual "Specific message 2" $set.Properties.NonComplianceMessages[1].Message
+    Assert-AreEqual "ref2" $set.Properties.NonComplianceMessages[1].PolicyDefinitionReferenceId
 
     # make another policy assignment, ensure both are present in resource group scope listing
     $expected = New-AzPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description

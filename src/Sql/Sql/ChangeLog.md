@@ -18,7 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
 * Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
+* Added External Administrator and AAD Only Properties to AzSqlServer and AzSqlInstance
+    - Added option to specify `-ExternalAdminName`, `-ExternalAdminSid`, `-EnableActiveDirectoryOnlyAuthentication` in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
+    - Added option to expand external administrators information using `-ExpandActiveDirectoryAdministrator` in `Get-AzSqlServer` and `Get-AzSqlInstance` cmdlets
+* Fixed `Set-AzSqlDatabase` to no longer default ReadScale to Disabled when not specified
+* Fixed `Set-AzSqlServer` and `Set-AzSqlInstance` for partial PUT with only identity and null properties
+* Added parameters related to UMI in `New-AzSqlServer`, `New-AzSqlInstance`, `Set-AzSqlServer` and `Set-AzSqlInstance` cmdlets.
+* Added -AutoRotationEnabled parameter to following cmdlets:
+    - `Set-AzSqlServerTransparentDataEncryptionProtector`
+    - `Get-AzSqlServerTransparentDataEncryptionProtector`
+    - `Set-AzSqlInstanceTransparentDataEncryptionProtector`
+    - `Get-AzSqlInstanceTransparentDataEncryptionProtector`
+
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
@@ -28,6 +41,8 @@
     - Update Backup Storage Redundancy values for LTR backups
 * Added CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to `Get-AzSqlDatabase`, `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseSecondary`, `Set-AzSqlDatabaseSecondary`, `New-AzSqlDatabaseCopy`
     - Changed BackupStorageRedundancy value to CurrentBackupStorageRedundancy, RequestedBackupStorageRedundancy to reflect both the current value and what has been requested if a change was made
+* Added new cmdlets `Get-AzSqlDatabaseLedgerDigestUpload`, `Disable-AzSqlDatabaseLedgerDigestUpload`, and `Enable-AzSqlDatabaseLedgerDigestUpload`
+* Added -EnableLedger parameter to `New-AzSqlDatabase`
 
 ## Version 2.17.1
 * Added cmdlet output breaking change warnings to the following: 

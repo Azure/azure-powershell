@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the network interface")]
         public string EdgeZone { get; set; }
 
         [Parameter(
@@ -275,7 +276,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Name = this.Name;
 
             networkInterface.Location = this.Location;
-            if (this.EdgeZone != null)
+            if (!string.IsNullOrEmpty(EdgeZone))
             {
                 networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }

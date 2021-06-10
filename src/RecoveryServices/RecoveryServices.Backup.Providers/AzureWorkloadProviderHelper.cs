@@ -379,12 +379,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
-
             //we need to fetch the list of RPs
             var queryFilterString = "null";
             if (string.Compare(restorePointQueryType, "All") == 0)
@@ -447,12 +441,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
 
             //we need to fetch the list of RPs
             var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()

@@ -51,6 +51,22 @@ function Test-LinkedStorageAccountCRUD
 
         Remove-AzApplicationInsightsLinkedStorageAccount -ResourceGroupName $rgname -ComponentName $appName
 
+        # Test CRUD by pipeline.
+        New-AzApplicationInsightsLinkedStorageAccount -InputObject $app -LinkedStorageAccountResourceId $account1.Id
+        $linkedAccount = Get-AzApplicationInsightsLinkedStorageAccount -InputObject $app
+
+        Assert-NotNull $linkedAccount
+        Assert-AreEqual $account1.Id $linkedAccount.linkedStorageAccount
+        Assert-AreEqual "serviceprofiler" $linkedAccount.Name
+
+        Update-AzApplicationInsightsLinkedStorageAccount -InputObject $app -LinkedStorageAccountResourceId $account2.Id
+        $linkedAccount = Get-AzApplicationInsightsLinkedStorageAccount -InputObject $app
+
+        Assert-NotNull $linkedAccount
+        Assert-AreEqual $account2.Id $linkedAccount.linkedStorageAccount
+
+        Remove-AzApplicationInsightsLinkedStorageAccount -InputObject $app
+
         Remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountName1 -force
         Remove-AzStorageAccount -ResourceGroupName $rgname -Name $accountName2 -force
 
