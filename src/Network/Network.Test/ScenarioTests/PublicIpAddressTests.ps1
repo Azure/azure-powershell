@@ -838,8 +838,8 @@ function Test-PublicIpAddressInEdgeZone
         # Create publicIpAddres
         New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name $resourceName -Location $locationName -EdgeZone $edgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
-	    $publicIP = Get-AzPublicIpAddress -Name $resourceName -ResourceGroupName $resourceGroupName
-	    Assert-AreEqual $publicIP.ExtendedLocation.Name $edgeZone
+        $publicIP = Get-AzPublicIpAddress -Name $resourceName -ResourceGroupName $resourceGroupName
+        Assert-AreEqual $publicIP.ExtendedLocation.Name $edgeZone
         Assert-AreEqual $publicIP.ExtendedLocation.Type 'EdgeZone'
     }
     catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
