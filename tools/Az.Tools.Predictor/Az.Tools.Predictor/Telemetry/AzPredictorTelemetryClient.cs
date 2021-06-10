@@ -136,6 +136,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 #endif
         }
 
+        /// <inheritdoc/>
+        public void OnParseCommandLineFailure(CommandLineParsingTelemetryData telemetryData)
+        {
+            PostTelemetryData(telemetryData);
+
+#if TELEMETRY_TRACE && DEBUG
+            System.Diagnostics.Trace.WriteLine("Recording CommandLineParsing");
+#endif
+        }
+
         /// <summary>
         /// Gets the client that can send telemetry via Application Insight.
         /// </summary>
@@ -228,6 +238,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
                     break;
                 case ParameterMapTelemetryData parameterMap:
                     SendTelemetry(parameterMap);
+                    break;
+                case CommandLineParsingTelemetryData commandLineParsing:
+                    SendTelemetry(commandLineParsing);
                     break;
                 default:
                     throw new NotImplementedException();
@@ -339,6 +352,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
 
             SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/LoadParameterMap", properties);
+        }
+
+        /// <summary>
+        /// Sends the telemetry with the command line parsing information.
+        /// </summary>
+        private void SendTelemetry(CommandLineParsingTelemetryData telemetryData)
+        {
+            var properties = CreateProperties(telemetryData, client: null);
+            properties.Add("Exception", AzPredictorTelemetryClient.FormatException(telemetryData.Exception));
+            properties.Add("Command", telemetryData.Command);
+
+            SendTelemetry($"{TelemetryUtilities.TelemetryEventPrefix}/ParseCommandLineFailure", properties);
         }
 
         /// <summary>

@@ -373,7 +373,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
-            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor);
+            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor, _telemetryClient);
             _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x.Command)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(commands), $"{nameof(commands)} cannot be null or whitespace.");
             Validation.CheckArgument(suggestions, $"{nameof(suggestions)} cannot be null.");
 
-            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor));
+            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor, _telemetryClient));
         }
 
         /// <summary>

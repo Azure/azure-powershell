@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry;
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation.Language;
 using System.Management.Automation.Subsystem.Prediction;
 using System.Text;
 using System.Threading;
@@ -48,16 +48,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private readonly IList<CommandLine> _commandLinePredictions = new List<CommandLine>();
         private readonly ParameterValuePredictor _parameterValuePredictor;
+        private readonly ITelemetryClient _telemetryClient;
 
         /// <summary>
         /// Creates a new instance of <see cref="CommandLinePredictor"/>.
         /// </summary>
         /// <param name="modelPredictions">List of suggestions from the model, sorted by frequency (most to least).</param>
         /// <param name="parameterValuePredictor">Provide the prediction to the parameter values.</param>
-        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor)
+        /// <param name="telemetryClient">The telemetry client.</param>
+        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor, ITelemetryClient telemetryClient)
         {
             Validation.CheckArgument(modelPredictions, $"{nameof(modelPredictions)} cannot be null.");
 
+            _telemetryClient = telemetryClient;
             _parameterValuePredictor = parameterValuePredictor;
             var commnadLines =  new List<CommandLine>();
 
@@ -69,9 +72,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         this._commandLinePredictions.Add(new CommandLine(modelPredictions[i]));
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        // TODO there are some invalid commands in the model. Should we collect the telemetry?
+                        _telemetryClient?.OnParseCommandLineFailure(new CommandLineParsingTelemetryData(modelPredictions[i].Command, e));
                     }
                 }
             }

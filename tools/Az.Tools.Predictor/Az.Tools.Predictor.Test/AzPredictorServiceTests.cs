@@ -68,8 +68,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             this._fixture = fixture;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
-            this._commandBasedPredictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null);
-            this._fallbackPredictor = new CommandLinePredictor(this._fixture.CommandCollection, null);
+            this._commandBasedPredictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null, null);
+            this._fallbackPredictor = new CommandLinePredictor(this._fixture.CommandCollection, null, null);
 
             this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
 
