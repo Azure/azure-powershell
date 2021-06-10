@@ -27,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// Tests for <see cref="AzPredictorService"/>
     /// </summary>
     [Collection("Model collection")]
-    public class AzPredictorServiceTests
+    public sealed class AzPredictorServiceTests : IDisposable
     {
         private class PredictiveSuggestionComparer : EqualityComparer<PredictiveSuggestion>
         {
@@ -60,6 +60,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         private readonly AzPredictorService _noCommandBasedPredictorService;
         private readonly AzPredictorService _noPredictorService;
 
+        private AzContext _azContext;
+
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorServiceTests"/>
         /// </summary>
@@ -67,15 +69,26 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public AzPredictorServiceTests(ModelFixture fixture)
         {
             this._fixture = fixture;
+            _azContext = new AzContext();
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
-            this._commandBasedPredictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null, null);
-            this._fallbackPredictor = new CommandLinePredictor(this._fixture.CommandCollection, null, null);
+            this._commandBasedPredictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null, null, _azContext);
+            this._fallbackPredictor = new CommandLinePredictor(this._fixture.CommandCollection, null, null, _azContext);
 
-            this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection);
+            this._service = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], this._fixture.CommandCollection, _azContext);
 
-            this._noFallbackPredictorService = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], null);
-            this._noCommandBasedPredictorService = new MockAzPredictorService(null, null, this._fixture.CommandCollection);
-            this._noPredictorService = new MockAzPredictorService(null, null, null);
+            this._noFallbackPredictorService = new MockAzPredictorService(startHistory, this._fixture.PredictionCollection[startHistory], null, _azContext);
+            this._noCommandBasedPredictorService = new MockAzPredictorService(null, null, this._fixture.CommandCollection, _azContext);
+            this._noPredictorService = new MockAzPredictorService(null, null, null, null);
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            if (_azContext != null)
+            {
+                _azContext.Dispose();
+                _azContext = null;
+            }
         }
 
         /// <summary>
@@ -113,7 +126,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var commandName = commandAst?.GetCommandName();
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var expected = this._commandBasedPredictor.GetSuggestion(commandName,
@@ -156,7 +169,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var expected = this._fallbackPredictor.GetSuggestion(commandName,

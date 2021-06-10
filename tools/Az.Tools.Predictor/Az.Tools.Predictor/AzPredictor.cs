@@ -70,6 +70,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private CancellationTokenSource _predictionRequestCancellationSource;
         private TaskCompletionSource _commandLineExecutedCompletion;
 
+        private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
+
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictor"/>.
         /// </summary>
@@ -93,6 +95,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 _predictionRequestCancellationSource.Dispose();
                 _predictionRequestCancellationSource = null;
             }
+
+            _externalDisposableObjects.ForEach((o) => o?.Dispose());
+            _externalDisposableObjects.Clear();
         }
 
         /// <inhericdoc />
@@ -322,6 +327,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _telemetryClient.OnSuggestionAccepted(new SuggestionAcceptedTelemetryData(client, session, acceptedSuggestion));
         }
 
+        /// <summary>
+        /// Addds an object that's not created by <see cref="AzPredictor"/> to the list to be disposed in
+        /// <see cref="AzPredictor.Dispose"/>.
+        /// </summary>
+        public void RegisterDisposableObject(IDisposable o)
+        {
+            _externalDisposableObjects.Add(o);
+        }
+
         private ParsedCommandLineHistory GetAstAndMaskedCommandLine(string commandLine)
         {
             var asts = Parser.ParseInput(commandLine, out _, out _);
@@ -360,6 +374,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             var telemetryClient = new AzPredictorTelemetryClient(azContext);
             var azPredictorService = new AzPredictorService(settings.ServiceUri, telemetryClient, azContext);
             var predictor = new AzPredictor(azPredictorService, telemetryClient, settings, azContext);
+            predictor.RegisterDisposableObject(azContext);
             SubsystemManager.RegisterSubsystem<ICommandPredictor, AzPredictor>(predictor);
         }
     }

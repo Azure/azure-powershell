@@ -869,7 +869,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.ExceptedTelemetryRecordCount = expectedTelemetryEvent;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
-            var service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection);
+            var service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, null);
             service.ThrowException = throwException;
             var azPredictor = new AzPredictor(service, telemetryClient, new Settings()
             {

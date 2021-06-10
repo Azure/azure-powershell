@@ -47,7 +47,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// Create a new instance of <see cref="CommandLine"/> from <see cref="PredictiveCommand" />.
         /// </summary>
         /// <param name="predictiveCommand">The command information.</param>
-        public CommandLine(PredictiveCommand predictiveCommand)
+        /// <param name="azContext">The current PowerShell conext.</param>
+        public CommandLine(PredictiveCommand predictiveCommand, IAzContext azContext = null)
         {
             Validation.CheckArgument(predictiveCommand, $"{nameof(predictiveCommand)} cannot be null.");
 
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             Validation.CheckInvariant<CommandLineException>(!string.IsNullOrWhiteSpace(commandName), $"Cannot get the command name from the model {predictiveCommand.Command}");
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, azContext);
 
             Name = commandName;
             Description = predictiveCommand.Description;

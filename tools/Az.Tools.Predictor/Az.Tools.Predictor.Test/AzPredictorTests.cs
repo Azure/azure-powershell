@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Subsystem.Prediction;
@@ -26,12 +27,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// Tests for <see cref="AzPredictor"/>
     /// </summary>
     [Collection("Model collection")]
-    public sealed class AzPredictorTests
+    public sealed class AzPredictorTests : IDisposable
     {
         private readonly ModelFixture _fixture;
         private readonly MockAzPredictorTelemetryClient _telemetryClient;
         private readonly MockAzPredictorService _service;
-        private readonly AzPredictor _azPredictor;
+        private AzPredictor _azPredictor;
 
         /// <summary>
         /// Constructs a new instance of <see cref="AzPredictorTests"/>
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             _fixture = modelFixture;
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
 
-            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection);
+            _service = new MockAzPredictorService(startHistory, _fixture.PredictionCollection[startHistory], _fixture.CommandCollection, null);
             _telemetryClient = new MockAzPredictorTelemetryClient();
             _azPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
@@ -49,6 +50,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 MaxAllowedCommandDuplicate = 1,
             },
             null);
+        }
+
+        /// <inhertdoc />
+        public void Dispose()
+        {
+            if (_azPredictor != null)
+            {
+                _azPredictor.Dispose();
+                _azPredictor = null;
+            }
         }
 
         /// <summary>
@@ -328,7 +339,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         public void VerifySuggestionOnIncompleteCommand()
         {
             // We need to get the suggestions for more than one. So we create a local version az predictor.
-            var localAzPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
+            using var localAzPredictor = new AzPredictor(_service, _telemetryClient, new Settings()
             {
                 SuggestionCount = 7,
                 MaxAllowedCommandDuplicate = 1,

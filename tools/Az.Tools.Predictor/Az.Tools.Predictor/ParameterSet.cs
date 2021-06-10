@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation.Language;
+using System.Management.Automation.Runspaces;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -31,7 +33,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// </summary>
         public IReadOnlyList<Parameter> Parameters { get; }
 
-        private CommandAst _commandAst;
+        private readonly CommandAst _commandAst;
+        private readonly IAzContext _azContext;
 
         // The bound parameters are used to parse the positional parameters.
         // We don't always need to handle positional parameters. The data set we get from the service are in the format
@@ -44,7 +47,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (_boundParameters == null)
                 {
+                    Validation.CheckInvariant<CommandLineException>(_azContext != null, "The az context must not be null.");
+
+                    Runspace.DefaultRunspace = _azContext.DefaultRunspace;
                     var boundResult = StaticParameterBinder.BindCommand(_commandAst);
+                    Runspace.DefaultRunspace = null;
                     if (boundResult.BindingExceptions.Any())
                     {
                         throw new CommandLineException("There are errors in binding the parameters.");
@@ -57,11 +64,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             }
         }
 
-        public ParameterSet(CommandAst commandAst)
+        public ParameterSet(CommandAst commandAst, IAzContext azContext = null)
         {
             Validation.CheckArgument(commandAst, $"{nameof(commandAst)} cannot be null.");
 
             _commandAst = commandAst;
+            _azContext = azContext;
 
             var parameters = new List<Parameter>();
             CommandParameterAst param = null;

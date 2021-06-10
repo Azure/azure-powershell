@@ -26,19 +26,31 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
     /// Test cases for <see cref="CommandLinePredictor" />
     /// </summary>
     [Collection("Model collection")]
-    public class CommandLinePredictorTests
+    public sealed class CommandLinePredictorTests : IDisposable
     {
         private readonly ModelFixture _fixture;
         private readonly CommandLinePredictor _predictor;
+        private AzContext _azContext;
 
         /// <summary>
         /// Constructs a new instance of <see cref="CommandLinePredictorTests" />
         /// </summary>
         public CommandLinePredictorTests(ModelFixture fixture)
         {
-            this._fixture = fixture;
+            _fixture = fixture;
+            _azContext = new AzContext();
             var startHistory = $"{AzPredictorConstants.CommandPlaceholder}{AzPredictorConstants.CommandConcatenator}{AzPredictorConstants.CommandPlaceholder}";
-            this._predictor = new CommandLinePredictor(this._fixture.PredictionCollection[startHistory], null, null);
+            _predictor = new CommandLinePredictor(_fixture.PredictionCollection[startHistory], null,null,  _azContext);
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            if (_azContext != null)
+            {
+                _azContext.Dispose();
+                _azContext = null;
+            }
         }
 
         /// <summary>
@@ -50,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("Get-AzContext");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
 
@@ -122,7 +134,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -149,7 +161,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -175,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -196,15 +208,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzADServicePrincipal -ApplicationObject")] // Doesn't exist
         [InlineData("new-azresourcegroup -NoExistingParam")]
         [InlineData("Set-StorageAccount -WhatIf")]
-        // Enable "git status" and "Get-AzContext Name" when ParameterSet can parse this format of command
-        // [InlineData("git status")]
-        // [InlineData("Get-AzContext Name")] // a wrong command
+        [InlineData("git status")]
+        [InlineData("Get-AzContext Name")] // a wrong command
         public void GetNoPredictionWithCommandNameParameters(string userInput)
         {
             var predictionContext = PredictionContext.Create(userInput);
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -226,7 +237,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("Connect-AzAccount");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -249,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("GET-AZSTORAGEACCOUNTKEY -NAME");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,
@@ -272,7 +283,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create("Get-AzStorageAccount resourcegroup");
             var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
             var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
-            var inputParameterSet = new ParameterSet(commandAst);
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
             var rawUserInput = predictionContext.InputAst.Extent.Text;
             var presentCommands = new Dictionary<string, int>();
             var result = this._predictor.GetSuggestion(commandName,

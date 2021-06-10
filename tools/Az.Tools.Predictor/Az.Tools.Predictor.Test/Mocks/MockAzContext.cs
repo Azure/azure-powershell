@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation.Runspaces;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 {
@@ -31,6 +32,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         public Version AzVersion => Version.Parse("0.0.0.0");
 
         public bool IsInternal => true;
+
+        public Runspace DefaultRunspace => default;
 
         public void UpdateContext()
         {

@@ -116,8 +116,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// A default constructor for the derived class. This is used in test cases.
         /// </summary>
-        protected AzPredictorService()
+        /// <param name="azContext">The Az context which this module runs in.</param>
+        protected AzPredictorService(IAzContext azContext)
         {
+            _azContext = azContext;
             RequestAllPredictiveCommands();
         }
 
@@ -160,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             try
             {
-                inputParameterSet = new ParameterSet(commandAst);
+                inputParameterSet = new ParameterSet(commandAst, _azContext);
             }
             catch when (!IsSupportedCommand(commandName))
             {
@@ -373,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             Validation.CheckArgument(commands, $"{nameof(commands)} cannot be null.");
 
-            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor, _telemetryClient);
+            _fallbackPredictor = new CommandLinePredictor(commands, _parameterValuePredictor, _telemetryClient, _azContext);
             _allPredictiveCommands = commands.Select(x => AzPredictorService.GetCommandName(x.Command)).ToHashSet<string>(StringComparer.OrdinalIgnoreCase); // this could be slow
         }
 
@@ -387,7 +389,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(commands), $"{nameof(commands)} cannot be null or whitespace.");
             Validation.CheckArgument(suggestions, $"{nameof(suggestions)} cannot be null.");
 
-            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor, _telemetryClient));
+            _commandBasedPredictor = Tuple.Create(commands, new CommandLinePredictor(suggestions, _parameterValuePredictor, _telemetryClient, _azContext));
         }
 
         /// <summary>

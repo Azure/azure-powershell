@@ -22,10 +22,27 @@ using Xunit;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
-    /// Tests for <see cref="ParameterSet"/>
+    /// Tests for <see cref="ParameterSet"/>. Positional parameter test cases requires the corresponding Az module installed.
     /// </summary>
-    public sealed class ParameterSetTests
+    public sealed class ParameterSetTests : IDisposable
     {
+        private AzContext _azContext;
+
+        /// <summary>
+        /// Creates a new instance of <see cref="ParameterSetTests" />.
+        /// </summary>
+        public ParameterSetTests() => _azContext = new AzContext();
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            if (_azContext != null)
+            {
+                _azContext.Dispose();
+                _azContext = null;
+            }
+        }
+
         /// <summary>
         /// Verify that we can get the two named parameters.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Location", "WestUs2", false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -59,7 +76,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Name", "test", false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -73,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var predictionContext = PredictionContext.Create(inputData);
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Empty(parameterSet.Parameters);
         }
 
@@ -90,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("VaultName", null, false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -107,7 +124,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("ListAvailable", null, false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -125,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("DefaultProfile", "$Profile", false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -145,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Name", "Test", isPositional),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -160,7 +177,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var predictionContext = PredictionContext.Create(inputData);
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
 
-            Assert.Throws<CommandLineException>(() => new ParameterSet(commandAst));
+            Assert.Throws<CommandLineException>(() => new ParameterSet(commandAst, _azContext));
         }
 
         /// <summary>
@@ -176,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Name", "Test", true),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -194,7 +211,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Location", "$Location", true),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -206,7 +223,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var predictionContext = PredictionContext.Create("Get-AzResourceGroup Name Location Test");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
-            Assert.Throws<CommandLineException>(() => new ParameterSet(commandAst));
+            Assert.Throws<CommandLineException>(() => new ParameterSet(commandAst, _azContext));
         }
 
         /// <summary>
@@ -225,7 +242,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Pre", null, false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -243,7 +260,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
                 new Parameter("Location", "$Location", false),
             };
 
-            var parameterSet = new ParameterSet(commandAst);
+            var parameterSet = new ParameterSet(commandAst, _azContext);
             Assert.Equal(expected, parameterSet.Parameters);
         }
 
@@ -255,7 +272,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         {
             var predictionContext = PredictionContext.Create("Get-AzResourceGroup -Name Test Location");
             var commandAst = predictionContext.RelatedAsts.OfType<CommandAst>().LastOrDefault();
-            Assert.Throws<CommandLineException>(() =>  new ParameterSet(commandAst));
+            Assert.Throws<CommandLineException>(() =>  new ParameterSet(commandAst, _azContext));
         }
     }
 }

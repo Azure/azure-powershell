@@ -56,7 +56,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="modelPredictions">List of suggestions from the model, sorted by frequency (most to least).</param>
         /// <param name="parameterValuePredictor">Provide the prediction to the parameter values.</param>
         /// <param name="telemetryClient">The telemetry client.</param>
-        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor, ITelemetryClient telemetryClient)
+        /// <param name="azContext">The current PowerShell conext.</param>
+        public CommandLinePredictor(IList<PredictiveCommand> modelPredictions, ParameterValuePredictor parameterValuePredictor, ITelemetryClient telemetryClient, IAzContext azContext = null)
         {
             Validation.CheckArgument(modelPredictions, $"{nameof(modelPredictions)} cannot be null.");
 
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     try
                     {
-                        this._commandLinePredictions.Add(new CommandLine(modelPredictions[i]));
+                        this._commandLinePredictions.Add(new CommandLine(modelPredictions[i], azContext));
                     }
                     catch (Exception e)
                     {
