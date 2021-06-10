@@ -33,7 +33,7 @@
     - `Get-AzSqlServerTransparentDataEncryptionProtector`
     - `Set-AzSqlInstanceTransparentDataEncryptionProtector`
     - `Get-AzSqlInstanceTransparentDataEncryptionProtector`
-
+* Fix for AutoRotationEnabled param in AzSqlInstanceTransparentDataEncryptionProtector cmdlet.
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
