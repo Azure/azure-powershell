@@ -144,7 +144,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            var commandName = commandAst?.GetCommandName();
+            if (commandAst == null)
+            {
+                return null;
+            }
+
+            var commandName = commandAst.GetCommandName();
 
             if (string.IsNullOrWhiteSpace(commandName))
             {
@@ -163,6 +168,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // We want to collect the telemetry about the exception how common it is for the format we don't support.
                 return null;
             }
+
+            cancellationToken.ThrowIfCancellationRequested();
 
             var rawUserInput = context.InputAst.ToString();
             var presentCommands = new Dictionary<string, int>();
@@ -217,11 +224,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 {
                     for (var i = 0; i < resultsFromFallback.Count; ++i)
                     {
-                        if (result.SourceTexts.Contains(resultsFromFallback.SourceTexts[i]))
-                        {
-                            continue;
-                        }
-
                         result.AddSuggestion(resultsFromFallback.PredictiveSuggestions[i], resultsFromFallback.SourceTexts[i], SuggestionSource.StaticCommands);
                     }
                 }

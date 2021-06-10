@@ -61,19 +61,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _parameterValuePredictor = parameterValuePredictor;
             var commnadLines =  new List<CommandLine>();
 
-            foreach (var predictiveCommand in modelPredictions ?? Enumerable.Empty<PredictiveCommand>())
+            if (modelPredictions != null)
             {
-                var predictionText = CommandLineUtilities.EscapePredictionText(predictiveCommand.Command);
-                Ast ast = Parser.ParseInput(predictionText, out Token[] tokens, out _);
-                var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
-                var commandName = commandAst?.GetCommandName();
-
-                if (!string.IsNullOrWhiteSpace(commandName))
+                for (var i = 0; i < modelPredictions.Count; ++i)
                 {
                     try
                     {
-                        var parameterSet = new ParameterSet(commandAst);
-                        this._commandLinePredictions.Add(new CommandLine(commandName, predictiveCommand.Description, parameterSet));
+                        this._commandLinePredictions.Add(new CommandLine(modelPredictions[i]));
                     }
                     catch
                     {
@@ -113,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             CommandLineSuggestion result = new();
             var duplicateResults = new Dictionary<string, DuplicateResult>(commandCollectionCapacity, StringComparer.OrdinalIgnoreCase);
 
-            var isCommandNameComplete = inputParameterSet.Parameters.Any() || rawUserInput.EndsWith(' ');
+            var isCommandNameComplete = (inputParameterSet.Parameters.Count > 0) || rawUserInput.EndsWith(' ');
 
             Func<string, bool> commandNameQuery = (command) => command.Equals(inputCommandName, StringComparison.OrdinalIgnoreCase);
             if (!isCommandNameComplete)
@@ -132,7 +126,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             const int parameterCollectionCapacity = 10;
             var resultBuilder = new StringBuilder();
             var usedParams = new HashSet<int>(parameterCollectionCapacity);
-            var sourceBuilder = new StringBuilder();
 
             for (var i = 0; i < _commandLinePredictions.Count && result.Count < suggestionCount; ++i)
             {
@@ -157,27 +150,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                         var prediction = resultBuilder.ToString();
 
-                        sourceBuilder.Clear();
-                        sourceBuilder.Append(_commandLinePredictions[i].Name);
-
-                        foreach (var p in _commandLinePredictions[i].ParameterSet.Parameters)
-                        {
-                            AppendParameterNameAndValue(sourceBuilder, p.Name, p.Value, isPositional: false);
-                        }
-
                         if (!presentCommands.ContainsKey(_commandLinePredictions[i].Name))
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), _commandLinePredictions[i].SourceText);
                             presentCommands.Add(_commandLinePredictions[i].Name, 1);
                         }
                         else if (presentCommands[_commandLinePredictions[i].Name] < maxAllowedCommandDuplicate)
                         {
-                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), sourceBuilder.ToString());
+                            result.AddSuggestion(new PredictiveSuggestion(prediction, _commandLinePredictions[i].Description), _commandLinePredictions[i].SourceText);
                             presentCommands[_commandLinePredictions[i].Name] += 1;
                         }
                         else
                         {
-                            _ = duplicateResults.TryAdd(prediction, new DuplicateResult(sourceBuilder.ToString(), _commandLinePredictions[i].Description));
+                            _ = duplicateResults.TryAdd(prediction, new DuplicateResult(_commandLinePredictions[i].SourceText, _commandLinePredictions[i].Description));
                         }
                     }
                 }

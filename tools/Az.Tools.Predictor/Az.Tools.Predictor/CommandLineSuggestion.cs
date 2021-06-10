@@ -74,7 +74,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="predictiveSuggestion">The suggestion to show to the user.</param>
         /// <param name="sourceText">The text that used to construct <paramref name="predictiveSuggestion"/>.</param>
         /// <param name="suggestionSource">The source where the suggestion is from.</param>
-        public void AddSuggestion(PredictiveSuggestion predictiveSuggestion, string sourceText, SuggestionSource suggestionSource)
+        /// <returns>True if the suggestion is added. Otherwise, it returns false.</returns>
+        public bool AddSuggestion(PredictiveSuggestion predictiveSuggestion, string sourceText, SuggestionSource suggestionSource)
         {
             Validation.CheckArgument(predictiveSuggestion, $"{nameof(predictiveSuggestion)} cannot be null.");
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(predictiveSuggestion.SuggestionText), $"{nameof(predictiveSuggestion)} cannot have a null or whitespace suggestion text.");
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 if (string.Equals(_predictiveSuggestions[i].SuggestionText, predictiveSuggestion.SuggestionText, StringComparison.Ordinal))
                 {
-                    return;
+                    return false;
                 }
             }
 
@@ -93,6 +94,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             _suggestionSources.Add(suggestionSource);
 
             CheckObjectInvariant();
+
+            return true;
         }
 
         /// <summary>
