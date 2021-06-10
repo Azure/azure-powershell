@@ -150,8 +150,9 @@ function Test-CortexCRUD
 		Assert-NotNull $vpnSitesAll
 
 		# Create the VpnGateway
-		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -EnableRoutingPreferenceInternetFlag #-VpnGatewayNatRule $natRule
-		
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -EnableRoutingPreferenceInternetFlag -EnableBgpRouteTranslationForNat #-VpnGatewayNatRule $natRule
+		Assert-AreEqual $True $createdVpnGateway.EnableBgpRouteTranslationForNat
+
 		# Update VpnGateway with new NatRule2
 		$natRule = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule
 		$natRule.Name = "NatRule2"
@@ -167,7 +168,7 @@ function Test-CortexCRUD
 		$natRule.ExternalMappings[0] = $natRuleExternalMapping
 		$vpnGatewayNatRules = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnGatewayNatRule[] 1
 		$vpnGatewayNatRules[0] = $natRule
-		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules
+		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 4 -VpnGatewayNatRule $vpnGatewayNatRules -DisableBgpRouteTranslationForNat
 
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
@@ -178,6 +179,7 @@ function Test-CortexCRUD
 		Assert-AreEqual "EgressSnat" $vpnGateway.NatRules[0].Mode
 		Assert-AreEqual "Static" $vpnGateway.NatRules[0].VpnGatewayNatRulePropertiesType
 		Assert-AreEqual "Succeeded" $vpnGateway.NatRules[0].ProvisioningState	
+		Assert-AreEqual $false $createdVpnGateway.EnableBgpRouteTranslationForNat
 
 		# Create one more NATRule using New-AzVpnGatewayNatRule
 		New-AzVpnGatewayNatRule -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name "NatRule3" -Type "Dynamic" -Mode "IngressSnat" -InternalMapping "192.168.1.0/26" -ExternalMapping "10.0.1.0/26"
