@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.4.0
 * Added cmdlet `Open-AzSurveyLink`
 * Supported certificate file as input parameter of Connect-AzAccount
 

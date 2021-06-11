@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.
 
 ## Version 4.13.0
