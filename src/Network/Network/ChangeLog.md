@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to enable specification of edge zone
+    - `New-AzPublicIpPrefix`
 * Updated cmdlets for route server for a more stable way to add IP configuration.
 * Added support for getting a single private link resource.
 * Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
@@ -48,8 +50,6 @@
     - `Update-AzVirtualHub`
 * Updated cmdlets to expose two read-only properties of client certificate.
     - `Get-AzApplicationGatewayTrustedClientCertificate`
-* Updated cmdlets to enable specification of edge zone
-    - `New-AzPublicIpPrefix`
 
 ## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter
