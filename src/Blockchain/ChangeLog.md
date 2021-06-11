@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * Updated the description of module and added retirement notice
 
 ## Version 0.2.0

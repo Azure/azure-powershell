@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.8.0
 * Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
     - `New-AzRmStorageShare`
     - `Update-AzRmStorageShare`

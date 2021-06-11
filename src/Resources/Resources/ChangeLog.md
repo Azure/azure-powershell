@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.2.0
 * Allowed naming the deployment when testing deployments [#11497]
 
 ## Version 4.1.1
