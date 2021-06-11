@@ -42,7 +42,6 @@ Custom Resource Providers             | `Az.CustomProviders`                    
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
 Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
-DataDog                               | `Az.DataDog`                            | [![DataDog]][DataDogGallery]
 Data Factory                          | `Az.DataFactory`                        | [![DataFactory]][DataFactoryGallery]
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]

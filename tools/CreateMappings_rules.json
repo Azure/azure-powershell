@@ -676,9 +676,5 @@
   {
     "alias": "DiskPool",
     "regex": "DiskPool"
-  },
-  {
-    "alias": "DataDog",
-    "regex": "DataDog"
   }
 ]
