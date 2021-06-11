@@ -35,7 +35,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         public static TelemetryClient CreateApplicationInsightTelemetryClient()
         {
             TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
-            configuration.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"; // Use Azuer-PowerShell instrumentation key. see https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs
+            // Use Azuer-PowerShell instrumentation key. see https://github.com/Azure/azure-powershell-common/blob/master/src/Common/AzurePSCmdlet.cs
+            configuration.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
             var telemetryClient = new TelemetryClient(configuration);
             telemetryClient.Context.Location.Ip = "0.0.0.0";
             telemetryClient.Context.Cloud.RoleInstance = "placeholderdon'tuse";

@@ -84,8 +84,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         {
             return text.Replace("<", "'<")
                 .Replace(">", ">'")
-                .Replace("{", "{(")
-                .Replace("}", ")}");
+                .Replace("{", "[[")
+                .Replace("}", "]]");
         }
 
         /// <summary>
@@ -95,10 +95,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// <param name="text">The text to unescape.</param>
         public static string UnescapePredictionText(string text)
         {
+            // Since the value with '<', and '>' doesn't make it a valid powershell command and
+            // make it hard to use Alt+a from PSReadLine to navigate parameter value, we replace '<' with '{' and '>' with '}'.
             return text.Replace("'<", "{")
                 .Replace(">'", "}")
-                .Replace("{(", "{")
-                .Replace(")}", "}");
+                .Replace("[[", "{")
+                .Replace("]]", "}");
         }
     }
 }
