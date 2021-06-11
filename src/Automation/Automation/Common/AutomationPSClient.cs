@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         }
 
         public AutomationAccount CreateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string location, string plan, IDictionary tags)
+            string location, string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("Location", location).NotNull();
@@ -165,13 +165,61 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 Tags = accountTags
             };
 
+            if (addSystemId == true)
+            {
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountCreateOrUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountCreateOrUpdateParameters.PublicNetworkAccess = false;
+            }
+
             var account = this.automationManagementClient.AutomationAccount.CreateOrUpdate(resourceGroupName, automationAccountName, accountCreateOrUpdateParameters);
 
             return new AutomationAccount(resourceGroupName, account);
         }
 
         public AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName,
-            string plan, IDictionary tags)
+            string plan, IDictionary tags, bool addSystemId, string[] userIds, bool enableAMK, bool enableCMK, string KeyName, string KeyVersion, string KeyVaultUri, string UserIdentityEncryption, bool disablePublicNetworkAccess)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
@@ -200,6 +248,54 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 },
                 Tags = accountTags,
             };
+
+            if (addSystemId == true)
+            {
+                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+            }
+            if ((userIds != null) && userIds.Any())
+            {
+                var userIdDict = new Dictionary<string, IdentityUserAssignedIdentitiesValue>();
+                foreach (var id in userIds)
+                {
+                    userIdDict.Add(id, new IdentityUserAssignedIdentitiesValue());
+                }
+
+                var IdType = ResourceIdentityType.UserAssigned;
+                if (addSystemId == true)
+                {
+                    IdType = ResourceIdentityType.SystemAssignedUserAssigned;
+                }
+
+                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+            }
+            if (enableAMK == true)
+            {
+                accountUpdateParameters.Encryption = new EncryptionProperties(null, EncryptionKeySourceType.MicrosoftAutomation);
+            }
+            if (enableCMK == true)
+            {
+                if (String.IsNullOrEmpty(UserIdentityEncryption))
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault
+                        );
+                }
+                else
+                {
+                    accountUpdateParameters.Encryption = new EncryptionProperties(
+                        new KeyVaultProperties(KeyVaultUri, KeyName, KeyVersion),
+                        EncryptionKeySourceType.MicrosoftKeyvault,
+                        new EncryptionPropertiesIdentity(UserIdentityEncryption)
+                        );
+                }
+            }
+
+            if (disablePublicNetworkAccess == true)
+            {
+                accountUpdateParameters.PublicNetworkAccess = false;
+            }
 
             var account = this.automationManagementClient.AutomationAccount.Update(resourceGroupName, automationAccountName, accountUpdateParameters);
 
@@ -1700,7 +1796,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     Resources.RunbookHasNoPublishedVersion, runbookName));
             }
             
-            if (runbook != null && runbook.RunbookType == "Python2") {
+            if (runbook != null && (runbook.RunbookType == "Python2" || runbook.RunbookType == "Python3")) {
                 int i = 1;
 
                 foreach (var key in parameters.Keys) {

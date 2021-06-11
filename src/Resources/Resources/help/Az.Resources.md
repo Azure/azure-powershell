@@ -59,7 +59,7 @@ Gets or lists deployment scripts.
 Gets the log of a deployment script execution.
 
 ### [Get-AzDeploymentWhatIfResult](Get-AzDeploymentWhatIfResult.md)
-Gets an ARM template What-If result for a deployment at subscription scope. 
+Gets a template What-If result for a deployment at subscription scope. 
 
 ### [Get-AzLocation](Get-AzLocation.md)
 Gets all locations and the supported resource providers for each location.
@@ -80,7 +80,7 @@ Get deployment at a management group
 Get deployment operation for management group deployment
 
 ### [Get-AzManagementGroupDeploymentWhatIfResult](Get-AzManagementGroupDeploymentWhatIfResult.md)
-Gets an ARM template What-If result for a deployment at management group scope. 
+Gets a template What-If result for a deployment at management group scope. 
 
 ### [Get-AzPolicyAlias](Get-AzPolicyAlias.md)
 Get-AzPolicyAlias retrieves and outputs Azure provider resource types that have aliases defined and match the
@@ -92,6 +92,9 @@ Gets policy assignments.
 
 ### [Get-AzPolicyDefinition](Get-AzPolicyDefinition.md)
 Gets policy definitions.
+
+### [Get-AzPolicyExemption](Get-AzPolicyExemption.md)
+Gets policy exemptions.
 
 ### [Get-AzPolicySetDefinition](Get-AzPolicySetDefinition.md)
 Gets policy set definitions.
@@ -115,7 +118,7 @@ Gets the deployments in a resource group.
 Gets the resource group deployment operation
 
 ### [Get-AzResourceGroupDeploymentWhatIfResult](Get-AzResourceGroupDeploymentWhatIfResult.md)
-Gets an ARM template What-If result for a deployment at resource group scope. 
+Gets a template What-If result for a deployment at resource group scope. 
 
 ### [Get-AzResourceLock](Get-AzResourceLock.md)
 Gets a resource lock.
@@ -144,7 +147,7 @@ Get deployment at tenant scope
 Get deployment operation for deployment at tenant scope
 
 ### [Get-AzTenantDeploymentWhatIfResult](Get-AzTenantDeploymentWhatIfResult.md)
-Gets an ARM template What-If result for a deployment at tenant scope. 
+Gets a template What-If result for a deployment at tenant scope. 
 
 ### [Invoke-AzResourceAction](Invoke-AzResourceAction.md)
 Invokes an action on a resource.
@@ -193,6 +196,9 @@ Creates a policy assignment.
 
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
 Creates a policy definition.
+
+### [New-AzPolicyExemption](New-AzPolicyExemption.md)
+Creates a policy exemption.
 
 ### [New-AzPolicySetDefinition](New-AzPolicySetDefinition.md)
 Creates a policy set definition.
@@ -282,6 +288,9 @@ Removes a policy assignment.
 ### [Remove-AzPolicyDefinition](Remove-AzPolicyDefinition.md)
 Removes a policy definition.
 
+### [Remove-AzPolicyExemption](Remove-AzPolicyExemption.md)
+Removes a policy exemption.
+
 ### [Remove-AzPolicySetDefinition](Remove-AzPolicySetDefinition.md)
 Removes a policy set definition.
 
@@ -341,6 +350,9 @@ Modifies a policy assignment.
 ### [Set-AzPolicyDefinition](Set-AzPolicyDefinition.md)
 Modifies a policy definition.
 
+### [Set-AzPolicyExemption](Set-AzPolicyExemption.md)
+Modifies a policy exemption.
+
 ### [Set-AzPolicySetDefinition](Set-AzPolicySetDefinition.md)
 Modifies a policy set definition
 
@@ -354,7 +366,7 @@ Modifies a resource group.
 Modifies a resource lock.
 
 ### [Set-AzRoleAssignment](Set-AzRoleAssignment.md)
-Update a role assignment.
+Update an existing Role Assignment.
 
 ### [Set-AzRoleDefinition](Set-AzRoleDefinition.md)
 Modifies a custom role in Azure RBAC.
@@ -410,3 +422,4 @@ Updates a Management Group
 
 ### [Update-AzTag](Update-AzTag.md)
 Selectively updates the set of tags on a resource or subscription.
+

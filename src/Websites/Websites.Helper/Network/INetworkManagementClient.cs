@@ -120,5 +120,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         /// </summary>
         IDefaultSecurityRulesOperations DefaultSecurityRules { get; }
 
+        /// <summary>
+        /// Gets the IServiceTagsOperations.
+        /// </summary>
+        IServiceTagsOperations ServiceTags { get; }
+
     }
 }

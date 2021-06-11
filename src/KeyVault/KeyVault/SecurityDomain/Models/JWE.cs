@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.SecurityDomain.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
@@ -52,11 +53,11 @@ concatenation:
             }
 
             encoded_header = parts[0];
-            string header = Base64UrlEncoder.Decode(encoded_header);
-            encrypted_key = Base64UrlEncoder.DecodeBytes(parts[1]);
-            init_vector = Base64UrlEncoder.DecodeBytes(parts[2]);
-            ciphertext = Base64UrlEncoder.DecodeBytes(parts[3]);
-            auth_tag = Base64UrlEncoder.DecodeBytes(parts[4]);
+            string header = Base64UrlHelper.DecodeToString(encoded_header);
+            encrypted_key = Base64UrlHelper.DecodeToBytes(parts[1]);
+            init_vector = Base64UrlHelper.DecodeToBytes(parts[2]);
+            ciphertext = Base64UrlHelper.DecodeToBytes(parts[3]);
+            auth_tag = Base64UrlHelper.DecodeToBytes(parts[4]);
 
             protected_header = JsonConvert.DeserializeObject<JWE_header>(header);
         }
@@ -79,7 +80,7 @@ concatenation:
                                                 Formatting.None,
                                                 new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
-            encoded_header = Base64UrlEncoder.Encode(header_json);
+            encoded_header = Base64UrlHelper.Encode(header_json);
         }
 
         public string EncodeCompact()
@@ -88,25 +89,25 @@ concatenation:
 
             if (encrypted_key != null)
             {
-                ret += Base64UrlEncoder.Encode(encrypted_key);
+                ret += Base64UrlHelper.Encode(encrypted_key);
             }
 
             ret += ".";
             if (init_vector != null)
             {
-                ret += Base64UrlEncoder.Encode(init_vector);
+                ret += Base64UrlHelper.Encode(init_vector);
             }
 
             ret += ".";
             if (ciphertext != null)
             {
-                ret += Base64UrlEncoder.Encode(ciphertext);
+                ret += Base64UrlHelper.Encode(ciphertext);
             }
 
             ret += ".";
             if (auth_tag != null)
             {
-                ret += Base64UrlEncoder.Encode(auth_tag);
+                ret += Base64UrlHelper.Encode(auth_tag);
             }
 
             return ret;

@@ -12,7 +12,7 @@ Creates an App Service Environment including the recommended Route Table and Net
 
 ## SYNTAX
 
-### ASEv2SubnetNameParameterSet
+### ASEv2SubnetNameParameterSet (Default)
 ```
 New-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Kind] <String>] -VirtualNetworkName <String> -SubnetName <String> -LoadBalancerMode <String>

@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     public class PSChangeFeed
     {
         public bool? Enabled { get; set; }
+        public int? RetentionInDays { get; set; }
 
         public PSChangeFeed()
         {
@@ -116,13 +117,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSChangeFeed(ChangeFeed changeFeed)
         {
             this.Enabled = changeFeed.Enabled;
+            this.RetentionInDays = changeFeed.RetentionInDays;
         }
 
         public ChangeFeed ParseChangeFeed()
         {
             return new ChangeFeed
             {
-                Enabled = this.Enabled
+                Enabled = this.Enabled,
+                RetentionInDays = this.RetentionInDays
             };
         }
     }

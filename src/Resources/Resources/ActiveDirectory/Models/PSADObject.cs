@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     public class PSADObject
@@ -21,5 +24,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string Id { get; set; }
 
         public string Type { get; set; }
+
+        public DateTime? DeletionTimestamp { get; set; }
+
+        public IDictionary<string, object> AdditionalProperties { get; set; }
     }
 }

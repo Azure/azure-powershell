@@ -8,6 +8,7 @@ schema: 2.0.0
 # Update-AzServiceFabricDurability
 
 ## SYNOPSIS
+
 Update the durability tier or VmSku of a node type in the cluster.
 
 ## SYNTAX
@@ -19,13 +20,14 @@ Update-AzServiceFabricDurability [-ResourceGroupName] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
+
 Use **Update-AzServiceFabricDurability** to update durability or SKU of the cluster.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS c:> Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
+```powershell
+Update-AzServiceFabricDurability -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -DurabilityLevel Silver -NodeType nt1
 ```
 
 This command changes durability tier of the NodeType 'nt1' to silver.

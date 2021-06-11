@@ -616,6 +616,18 @@ Please contact Microsoft for further assistance.</value>
   <data name="InvalidTargetStorageAccount" xml:space="preserve">
     <value>Please provide a vaild target storage account</value>
   </data>
+  <data name="RecoveryPointVaultRecoveryTypeException" xml:space="preserve">
+    <value>Please ensure that the given RP recovery type is 'VaultStandard' or remove TargetZone</value>
+  </data>
+  <data name="RecoveryPointZonePinnedException" xml:space="preserve">
+    <value>Please ensure that the Recovery point is Zone pinned or remove TargetZone</value>
+  </data>
+  <data name="ZonalRestoreVaultStorageRedundancyException" xml:space="preserve">
+    <value>Please check whether the vault storageRedundancy is ZRS or RA-GRS  or remove TargetZone</value>
+  </data>
+  <data name="TargetVirtualMachineIdRequiredException" xml:space="preserve">
+    <value>WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore</value>
+  </data>
   <data name="ArchiveNotSupported" xml:space="preserve">
     <value>Archive is currently not supported for the workload type of the BackupItem passed in the cmdlet</value>
   </data>

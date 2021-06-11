@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Cmdlets
 
     /// <summary>Create artifacts from a existing image template</summary>
     /// <remarks>
-    /// [OpenAPI] VirtualMachineImageTemplates_Run=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run"
+    /// [OpenAPI] Run=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}/run"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzImageBuilderTemplate_Run", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]

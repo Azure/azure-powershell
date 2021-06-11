@@ -292,7 +292,6 @@ function Test-AddWebAppAccessRestrictionServiceEndpoint
 	$wname = Get-WebsiteName	
 	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
-	$vNetResourceGroupName = "pstest-rg"
 	$vNetName = "pstest-vnet"
 	$subnetName = "endpoint-subnet"
 	$tier = "Shared"
@@ -302,16 +301,10 @@ function Test-AddWebAppAccessRestrictionServiceEndpoint
 		# Setup
 		Write-Debug "Starting Test-AddWebAppAccessRestrictionServiceEndpoint"
 		New-AzResourceGroup -Name $rgname -Location $location
-		############
-		# Test depends on vNet being created in the active TestFramework subscription (default location is West US)
-		# $endpointSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
-		# New-AzVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $endpointSubnet
-		############
-
-		# vNet is in different RG, so we need to fetch Id. Get Subnet in AzResource is currently not working, so manually constructing string
-		$subscriptionId = getSubscription
-		$subnetId = '/subscriptions/' + $subscriptionId + '/resourceGroups/' + $vNetResourceGroupName + '/providers/Microsoft.Network/virtualNetworks/' + $vNetName +  '/subnets/' + $subnetName
-				
+		
+		$endpointSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24"
+		New-AzVirtualNetwork -Name $vNetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $endpointSubnet
+					
 		$serverFarm = New-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		
 		# Create new web app
@@ -322,7 +315,7 @@ function Test-AddWebAppAccessRestrictionServiceEndpoint
 		Assert-AreEqual $serverFarm.Id $webApp.ServerFarmId		
 		
 		# Run Tests
-		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name vNetIntegration -Action Allow -SubnetId $subnetId -Priority 150 -PassThru
+		$actual = Add-AzWebAppAccessRestrictionRule -ResourceGroupName $rgname -WebAppName $wname -Name vNetIntegration -Action Allow -SubnetName $subnetName -VirtualNetworkName $vNetName -Priority 150 -PassThru
 
 		# Assert
 		Assert-AreEqual 2 $actual.MainSiteAccessRestrictions.Count

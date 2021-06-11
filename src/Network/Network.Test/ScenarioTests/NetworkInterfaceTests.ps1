@@ -1088,3 +1088,38 @@ function Test-NetworkInterfaceVmss
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test that network interface can be put in an edge zone.
+#>
+function Test-NetworkInterfaceInEdgeZone
+{
+    $ResourceGroup = Get-ResourceGroupName;
+    $LocationName = "westus";
+    $EdgeZone = "microsoftlosangeles1";
+    $VMName = "MyVM";
+
+    try
+    {
+        New-AzResourceGroup -Name $ResourceGroup -Location $LocationName -Force;
+        
+        $NetworkName = "MyNet";
+        $NICName = "MyNIC";
+        $SubnetName = "MySubnet";
+        $SubnetAddressPrefix = "10.0.0.0/24";
+        $VnetAddressPrefix = "10.0.0.0/16";
+
+        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
+        New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -SubnetId $Vnet.Subnets[0].Id;
+
+		$NIC = Get-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroup
+        Assert-AreEqual $NIC.ExtendedLocation.Name $EdgeZone
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup;
+    }
+}

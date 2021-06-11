@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = InputValuesParameterSet), OutputType(typeof(Boolean))]
     public class RemoveAzureAppServiceEnvironmentCmdlet : WebAppBaseClientCmdLet
     {
         private const string InputValuesParameterSet = "InputValuesParameterSet";

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
                 new Tuple<string, string, string>("Network", "RouteTables", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "Routes", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "SecurityRules", "2020-07-01"),
+                new Tuple<string, string, string>("Network", "ServiceTags", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "Subnets", "2020-07-01"),
                 new Tuple<string, string, string>("Network", "VirtualNetworks", "2020-07-01"),
               }.AsEnumerable();

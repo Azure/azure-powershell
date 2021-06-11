@@ -30,6 +30,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/8c8ae024cbd209644e6f93a3bb031f9cffb07401/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkInterface.json
   - https://github.com/Azure/azure-rest-api-specs/blob/8c8ae024cbd209644e6f93a3bb031f9cffb07401/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/routeTable.json
   - https://github.com/Azure/azure-rest-api-specs/blob/8c8ae024cbd209644e6f93a3bb031f9cffb07401/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/networkSecurityGroup.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/8c8ae024cbd209644e6f93a3bb031f9cffb07401/specification/network/resource-manager/Microsoft.Network/stable/2020-07-01/serviceTags.json
 
 output-folder: Network
 

@@ -137,5 +137,5 @@ directive:
       alias: BotName
   - from: Az.BotService.nuspec
     where: $
-    transform: $ = $.replace('</files>', '  <file src="resources\**\*.*" target="resources" />\n  </files>');
+    transform: $ = $.replace('</files>', '  <file src="resources\\**\\*.*" target="resources" />\n  </files>');
 ```

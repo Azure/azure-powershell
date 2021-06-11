@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to download security domain backup data..
+        ///   Looks up a localized string similar to Failed to export security domain data..
         /// </summary>
         internal static string DownloadSecurityDomainFail {
             get {
@@ -1243,7 +1243,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to restore security domain from backup..
+        ///   Looks up a localized string similar to Failed to import security domain..
         /// </summary>
         internal static string RestoreSecurityDomainFailure {
             get {
@@ -1252,7 +1252,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt security domain backup data..
+        ///   Looks up a localized string similar to There need to be at least {0} keys to decrypt exported security domain data..
         /// </summary>
         internal static string RestoreSecurityDomainNotEnoughKey {
             get {

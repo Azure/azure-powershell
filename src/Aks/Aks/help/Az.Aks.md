@@ -21,7 +21,7 @@ Enable the addons for aks.
 List Kubernetes managed clusters.
 
 ### [Get-AzAksNodePool](Get-AzAksNodePool.md)
-Create note pool in specified cluster.
+List node pools in specified cluster.
 
 ### [Get-AzAksVersion](Get-AzAksVersion.md)
 List available version for creating managed Kubernetes cluster.
@@ -46,6 +46,9 @@ Delete node pool from managed cluster.
 
 ### [Set-AzAksCluster](Set-AzAksCluster.md)
 Update or create a managed Kubernetes cluster.
+
+### [Set-AzAksClusterCredential](Set-AzAksClusterCredential.md)
+Reset the ServicePrincipal of a existing aks cluster.
 
 ### [Start-AzAksDashboard](Start-AzAksDashboard.md)
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.

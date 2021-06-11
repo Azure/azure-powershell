@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Models
         public PSAcrManifest(AcrManifests manifest)
         {
             Registry = manifest?.Registry;
-            ImageName = manifest?.Registry;
+            ImageName = manifest?.ImageName;
             if (manifest != null && manifest.ManifestsAttributes != null)
             {
                 ManifestsAttributes = manifest.ManifestsAttributes.Select(x => new PSManifestAttributeBase(x)).ToList();

@@ -20,8 +20,9 @@ function Test-PoolCrud
 {
     $resourceGroup = Get-ResourceGroupName
     $accName = Get-ResourceName
-    $poolName1 = Get-ResourceName 
-    $poolName2 = Get-ResourceName 
+    $poolName1 = Get-ResourceName
+    $poolName2 = Get-ResourceName
+    $poolName3 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -42,13 +43,21 @@ function Test-PoolCrud
         Assert-AreEqual $serviceLevel $retrievedPool.ServiceLevel
         Assert-AreEqual True $retrievedPool.Tags.ContainsKey($newTagName)
         Assert-AreEqual "tagValue1" $retrievedPool.Tags[$newTagName].ToString()
+        
+        $retrievedPool = Get-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName1
+        Assert-AreEqual "$accName/$poolName1" $retrievedPool.Name
+
+        #update with set
+        $setNewTagValue = "tagValue1-set"
+        $retrievedPool = Set-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel -Tag @{$newTagName = $setNewTagValue}
+        Assert-AreEqual $setNewTagValue $retrievedPool.Tags[$newTagName].ToString()
 
         # create and check pool 2 using the confirm flag
         $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel -Confirm:$false
         Assert-AreEqual "$accName/$poolName2" $retrievedPool.Name
 		
         # create and check pool 3 using the WhatIf - it should not be created
-        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName2 -PoolSize $poolSize -ServiceLevel $serviceLevel -WhatIf
+        $retrievedPool = New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName3 -PoolSize $poolSize -ServiceLevel $serviceLevel -WhatIf
 
         # get and check pools by group (list)
         $retrievedPool = Get-AzNetAppFilesPool -ResourceGroupName $resourceGroup -AccountName $accName
@@ -134,7 +143,8 @@ function Test-PoolPipelines
 
         # delete a pool by piping from account
         Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName | Remove-AnfPool -Name $poolName1 
-
+        Start-Sleep -Seconds 20.0
+        
         # recreate two pools
         New-AnfPool -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -Name $PoolName1 -PoolSize $poolSize -ServiceLevel $serviceLevel
 

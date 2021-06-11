@@ -41,7 +41,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="ResourceState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ResourceState(System.Convert.ToString(value));
+            return new ResourceState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ResourceState</summary>

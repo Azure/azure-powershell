@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         break;
 
                     case ServiceTagParameterSet:
+                        ValidateServiceTagNames(ServiceTag, webApp.Location);
                         CheckDuplicateIPRestriction(ServiceTag, accessRestrictionList);
                         ipSecurityRestriction = new IpSecurityRestriction(ServiceTag, null, null, null, null, Action, "ServiceTag", intPriority, Name, Description, httpHeader);
                         accessRestrictionList.Add(ipSecurityRestriction);
@@ -256,6 +257,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 if (accessRestriction.VnetSubnetResourceId == subnetResourceId)
                     throw new Exception($"Rule for '{subnetResourceId}' already exist");
+            }
+        }
+
+        private void ValidateServiceTagNames(string serviceTags, string location)
+        {
+            var serviceTagList = serviceTags.Split(',');
+            var supportedServiceTagList = NetworkClient.GetServiceTags(location);
+            foreach (var tag in serviceTagList)
+            {
+                if (!supportedServiceTagList.Any(t => t.Name.Equals(tag, StringComparison.OrdinalIgnoreCase)))
+                    throw new Exception($"Unknown Service Tag '{tag}'.");
             }
         }
     }

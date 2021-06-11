@@ -4,11 +4,7 @@
 
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
-Try it out in Azure Cloud Shell!
-* Direct link: Open a browser to https://shell.azure.com
-* Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
-
-[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
+Try it out in [Azure Cloud Shell](https://portal.azure.com/#cloudshell)!
 
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.
@@ -29,7 +25,7 @@ Run the following command in an elevated PowerShell session to install the rollu
 Install-Module -Name Az
 ```
 
-This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [PowerShell Core][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
+This module runs on Windows PowerShell with [.NET Framework 4.7.2][DotNetFramework] or greater, or [the latest version of PowerShell 7][PowerShellCore]. The `Az` module replaces `AzureRM`. You should not install `Az` side-by-side with `AzureRM`.
 
 If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
 

@@ -67,6 +67,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
 
             switch ( json.StringProperty("type") )
             {
+                case "PlatformImage":
+                {
+                    return new ImageTemplatePlatformImageSource(json);
+                }
                 case "ManagedImage":
                 {
                     return new ImageTemplateManagedImageSource(json);
@@ -74,10 +78,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
                 case "SharedImageVersion":
                 {
                     return new ImageTemplateSharedImageVersionSource(json);
-                }
-                case "PlatformImage":
-                {
-                    return new ImageTemplatePlatformImageSource(json);
                 }
             }
             return new ImageTemplateSource(json);

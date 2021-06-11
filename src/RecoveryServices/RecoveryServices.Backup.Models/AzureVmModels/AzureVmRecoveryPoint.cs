@@ -67,19 +67,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public bool OriginalSAEnabled { get; set; }
 
         /// <summary>
+        /// Zone pinned information for the Recovery point
+        /// </summary>
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
         /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
         /// </summary>
         public RecoveryPointTier RecoveryPointTier;
 
         /// <summary>
-        /// Recovery point move rediness info
-        /// </summary>
-        public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
-
-        /// <summary>
         /// Rehydration expiry time
         /// </summary>
         public DateTime? RehydrationExpiryTime;
+
+        /// <summary>
+        /// Recovery point move rediness info
+        /// </summary>
+        public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
 
         public AzureVmRecoveryPoint()
         {

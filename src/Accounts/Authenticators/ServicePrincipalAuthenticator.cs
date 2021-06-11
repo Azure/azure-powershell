@@ -20,6 +20,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 
+using Hyak.Common;
+
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Identity.Client;
@@ -47,7 +49,8 @@ namespace Microsoft.Azure.PowerShell.Authenticators
 
             var options = new ClientCertificateCredentialOptions()
             {
-                AuthorityHost = new Uri(authority)
+                AuthorityHost = new Uri(authority),
+                SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
 
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))
@@ -55,7 +58,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 //Service Principal with Certificate
                 var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
                 ClientCertificateCredential certCredential = new ClientCertificateCredential(tenantId, spParameters.ApplicationId, certificate, options);
+                var parametersLog = $"- Thumbprint:'{spParameters.Thumbprint}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
                 return MsalAccessToken.GetAccessTokenAsync(
+                    nameof(ServicePrincipalAuthenticator),
+                    parametersLog,
                     certCredential,
                     requestContext,
                     cancellationToken,
@@ -66,7 +72,10 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             {
                 // service principal with secret
                 var secretCredential = new ClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret.ConvertToString(), options);
+                var parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
                 return MsalAccessToken.GetAccessTokenAsync(
+                    nameof(ServicePrincipalAuthenticator),
+                    parametersLog,
                     secretCredential,
                     requestContext,
                     cancellationToken,

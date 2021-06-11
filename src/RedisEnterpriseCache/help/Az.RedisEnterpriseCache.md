@@ -11,36 +11,42 @@ Locale: en-US
 Microsoft Azure PowerShell: RedisEnterpriseCache cmdlets
 
 ## Az.RedisEnterpriseCache Cmdlets
-### [Export-AzRedisEnterpriseCacheDatabase](Export-AzRedisEnterpriseCacheDatabase.md)
+### [Export-AzRedisEnterpriseCache](Export-AzRedisEnterpriseCache.md)
 Exports a database file from target database.
 
 ### [Get-AzRedisEnterpriseCache](Get-AzRedisEnterpriseCache.md)
-Gets information about a RedisEnterprise cluster and its associated database
+Gets information about a Redis Enterprise cluster and its associated databases.
 
 ### [Get-AzRedisEnterpriseCacheDatabase](Get-AzRedisEnterpriseCacheDatabase.md)
-Gets information about a database in a RedisEnterprise cluster.
+Gets information about a database in a Redis Enterprise cluster.
 
-### [Get-AzRedisEnterpriseCacheDatabaseKey](Get-AzRedisEnterpriseCacheDatabaseKey.md)
-Retrieves the access keys for the RedisEnterprise database.
+### [Get-AzRedisEnterpriseCacheKey](Get-AzRedisEnterpriseCacheKey.md)
+Retrieves all access keys for a Redis Enterprise database.
 
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
 
-### [Import-AzRedisEnterpriseCacheDatabase](Import-AzRedisEnterpriseCacheDatabase.md)
+### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster and an associated database named 'default'
+Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
 
-### [New-AzRedisEnterpriseCacheDatabaseKey](New-AzRedisEnterpriseCacheDatabaseKey.md)
-Regenerates the RedisEnterprise database's access keys.
+### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
+Creates a database for a Redis Enterprise cache.
+
+### [New-AzRedisEnterpriseCacheKey](New-AzRedisEnterpriseCacheKey.md)
+Regenerates an access key for a Redis Enterprise database.
 
 ### [Remove-AzRedisEnterpriseCache](Remove-AzRedisEnterpriseCache.md)
 Deletes a RedisEnterprise cache cluster.
+
+### [Remove-AzRedisEnterpriseCacheDatabase](Remove-AzRedisEnterpriseCacheDatabase.md)
+Deletes a single database in a Redis Enterprise cache.
 
 ### [Update-AzRedisEnterpriseCache](Update-AzRedisEnterpriseCache.md)
 Updates an existing RedisEnterprise cluster
 
 ### [Update-AzRedisEnterpriseCacheDatabase](Update-AzRedisEnterpriseCacheDatabase.md)
-Updates a database
+Updates an existing Redis Enterprise database
 

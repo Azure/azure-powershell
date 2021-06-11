@@ -19,7 +19,7 @@ Returns a BotService specified by the parameters.
 .Description
 Returns a BotService specified by the parameters.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/new-azbotservice
+https://docs.microsoft.com/powershell/module/az.botservice/new-azbotservice
 #>
 function New-AzBotService {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]
@@ -222,7 +222,7 @@ function New-AzBotService {
                     $ServerFarmId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Web/serverfarms/$Name"
                     $CreateServerFarm = $true
                 }
-                $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'webappv4.template.json')
+                $TemplateFile = [System.IO.Path]::Combine($PSScriptRoot, 'webappv4.template.json')
                 $AppSecret = ConvertFrom-SecureString $ApplicationSecret -AsPlainText
                 $Parameter = @{
                     'location' = $Location;

@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
         [ValidateSet("Enabled", "Disabled")]
         public string SharePoint { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.Teams)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Enabled", "Disabled")]
+        public string Teams { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = ParameterHelpMessages.Indicators)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Enabled", "Disabled")]
@@ -190,6 +195,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Cmdlets.DataConnectors
                 convertedO365DataConnector.TenantId = convertedO365DataConnector.TenantId;
                 convertedO365DataConnector.DataTypes.Exchange.State = this.IsParameterBound(c => c.Exchange) ? this.Exchange : convertedO365DataConnector.DataTypes.Exchange.State;
                 convertedO365DataConnector.DataTypes.SharePoint.State = this.IsParameterBound(c => c.SharePoint) ? this.SharePoint : convertedO365DataConnector.DataTypes.SharePoint.State;
+                convertedO365DataConnector.DataTypes.Teams.State = this.IsParameterBound(c => c.Teams) ? this.Teams : convertedO365DataConnector.DataTypes.Teams.State;
 
                 dataConnector = convertedO365DataConnector;
             };

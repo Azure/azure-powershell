@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies a base-64 encoded string of custom data.
 This is decoded to a binary array that is saved as a file on the virtual machine.
 The maximum length of the binary array is 65535 bytes. <br>
-For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](/azure/virtual-machines/linux/tutorial-automate-vm-deployment).
 
 ```yaml
 Type: System.String

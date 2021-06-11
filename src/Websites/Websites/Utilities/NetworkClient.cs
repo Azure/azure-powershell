@@ -302,7 +302,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             pe.PrivateLinkServiceConnections = new List<PrivateLinkServiceConnection>() { plsConnection };
             return WrappedNetworkClient.PrivateEndpoints.CreateOrUpdate(resourceGroupName, privateEndpointName, pe);
         }
-                               
+
+        public IList<ServiceTagInformation> GetServiceTags(string location)
+        {
+            ServiceTagsListResult serviceTags = WrappedNetworkClient.ServiceTags.List(location);
+            return serviceTags.Values;
+        }
+
+
         private void WriteVerbose(string verboseFormat, params object[] args)
         {
             if (VerboseLogger != null)

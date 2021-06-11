@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PsModuleName>Compute</PsModuleName>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers</RootNamespace>
+    <NoWarn>CS0108</NoWarn>
+  </PropertyGroup>
+
+</Project>

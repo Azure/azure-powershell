@@ -21,8 +21,9 @@ Set-AzRecoveryServicesVaultProperty -SoftDeleteFeatureState <String> [-VaultId <
 
 ### AzureRSVaultCMKParameterSet
 ```
-Set-AzRecoveryServicesVaultProperty -EncryptionKeyId <string> -KeyVaultSubscriptionId <string> [-InfrastructureEncryption] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ -EncryptionKeyId <String> -KeyVaultSubscriptionId <String> [-InfrastructureEncryption] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,46 +70,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SoftDeleteFeatureState
-SoftDeleteFeatureState of the Recovery Services Vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: Enable, Disable
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EncryptionKeyId
 KeyId of the encryption key to be used for CMK.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureRSVaultCMKParameterSet
 Aliases:
-Accepted values: KeyID
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -KeyVaultSubscriptionId
-Subscription Id of the Key Vault.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: SubscriptionID
 
 Required: True
 Position: Named
@@ -121,12 +89,42 @@ Accept wildcard characters: False
 Enables infrastructure encryption on this vault. Infrastructure encryption must be enabled when configuring encryption.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureRSVaultCMKParameterSet
 Aliases:
-Accepted values:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultSubscriptionId
+Subscription Id of the Key Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultCMKParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftDeleteFeatureState
+SoftDeleteFeatureState of the Recovery Services Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
+Accepted values: Enable, Disable
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

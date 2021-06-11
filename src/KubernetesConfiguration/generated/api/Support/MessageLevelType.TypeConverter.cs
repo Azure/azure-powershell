@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for MessageLevelType.</summary>
+    /// <summary>Level of the message.</summary>
     public partial class MessageLevelTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

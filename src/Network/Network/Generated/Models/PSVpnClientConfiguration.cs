@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSIpsecPolicy> VpnClientIpsecPolicies { get; set; }
         public List<PSRadiusServer> RadiusServers { get; set; }
 
+        [Ps1Xml(Label = "VpnAuthenticationTypes", Target = ViewControl.Table)]
+        public List<string> VpnAuthenticationTypes { get; set; }
+
         [JsonIgnore]
         public string VpnClientProtocolsText
         {
@@ -84,6 +87,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RadiusServersText
         {
             get { return JsonConvert.SerializeObject(RadiusServers, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VpnAuthenticationTypesText
+        {
+            get { return JsonConvert.SerializeObject(VpnAuthenticationTypes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

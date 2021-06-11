@@ -1,0 +1,62 @@
+﻿{
+  "isProxyResource": true,
+  "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
+  "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "allowedRestoreModes": [ "RecoveryPointBased" ],
+  "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
+  "policySettings": {
+    "supportedRetentionTags": [ "Daily", "Weekly", "Monthly", "Yearly" ],
+    "supportedDatastoreTypes": [ "VaultStore" ],
+    "disableAddRetentionRule": false,
+    "disableCustomRetentionTag": false,
+    "supportedBackupFrequency": [ "Daily", "Weekly" ],
+    "backupScheduleSupported":  true,
+    "defaultPolicy": {
+      "DatasourceType": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
+      "ObjectType": "BackupPolicy",
+      "PolicyRule": [
+        {
+          "BackupParameter": {
+            "BackupType": "Full",
+            "ObjectType": "AzureBackupParams"
+          },
+          "BackupParameterObjectType": "AzureBackupParams",
+          "DataStoreObjectType": "DataStoreInfoBase",
+          "DataStoreType": "VaultStore",
+          "Name": "BackupWeekly",
+          "ObjectType": "AzureBackupRule",
+          "Trigger": {
+            "ObjectType": "ScheduleBasedTriggerContext",
+            "ScheduleRepeatingTimeInterval": [ "R/2020-04-05T13:00:00+00:00/P1W" ],
+            "TaggingCriterion": [
+              {
+                "Criterion": null,
+                "IsDefault": true,
+                "TagInfoETag": null,
+                "TagInfoId": "Default_",
+                "TagInfoTagName": "Default",
+                "TaggingPriority": 99
+              }
+            ]
+          },
+          "TriggerObjectType": "ScheduleBasedTriggerContext"
+        },
+        {
+          "IsDefault": true,
+          "Lifecycle": [
+            {
+              "DeleteAfterDuration": "P10D",
+              "DeleteAfterObjectType": "AbsoluteDeleteOption",
+              "SourceDataStoreObjectType": "DataStoreInfoBase",
+              "SourceDataStoreType": "VaultStore",
+              "TargetDataStoreCopySetting": null
+            }
+          ],
+          "Name": "Default",
+          "ObjectType": "AzureRetentionRule"
+        }
+      ]
+    }
+  }
+}

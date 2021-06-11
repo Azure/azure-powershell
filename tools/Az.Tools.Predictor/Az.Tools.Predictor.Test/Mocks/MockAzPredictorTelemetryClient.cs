@@ -102,6 +102,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             HistoryTaskCompletionSource = new TaskCompletionSource();
             RequestPredictionTaskCompletionSource  = new TaskCompletionSource();
             SendTelemetryTaskCompletionSource = new TaskCompletionSource();
+            HistoryData = default;
+            RequestPredictionData = default;
         }
 
         protected override TelemetryClient GetApplicationInsightTelemetryClient()

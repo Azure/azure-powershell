@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
-        {
+        {   
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             AzureWorkloadSQLDatabaseProtectedItem item = (AzureWorkloadSQLDatabaseProtectedItem)ProviderData[ItemParams.Item];
@@ -434,6 +434,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }                    
                 }
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
                 {
@@ -471,6 +480,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ContainerId = wLRecoveryConfig.ContainerId
                     };
                     azureWorkloadSQLPointInTimeRestoreRequest.AlternateDirectoryPaths = wLRecoveryConfig.targetPhysicalPath;
+
+                    if (wLRecoveryConfig.TargetVirtualMachineId != null && wLRecoveryConfig.TargetVirtualMachineId != "")
+                    {
+                        azureWorkloadSQLPointInTimeRestoreRequest.TargetVirtualMachineId = wLRecoveryConfig.TargetVirtualMachineId;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(Resources.TargetVirtualMachineIdRequiredException);
+                    }
                 }
 
                 if (wLRecoveryConfig.RecoveryMode == "FileRecovery")
@@ -494,7 +512,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 AzureRecoveryPoint rp = (AzureRecoveryPoint)wLRecoveryConfig.RecoveryPoint;
 
                 // get access token
-                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName);
+                CrrAccessToken accessToken = ServiceClientAdapter.GetCRRAccessToken(rp, secondaryRegion, vaultName: vaultName, resourceGroupName: resourceGroupName, ServiceClientModel.BackupManagementType.AzureWorkload);
 
                 // AzureWorkload  CRR Request
                 Logger.Instance.WriteDebug("Triggering Restore to secondary region: " + secondaryRegion);

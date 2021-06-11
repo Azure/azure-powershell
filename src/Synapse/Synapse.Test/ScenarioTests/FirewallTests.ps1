@@ -48,6 +48,15 @@ function Test-SynapseFirewall
 
         # Delete firewall
         Assert-True {Remove-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $firewallRuleName -PassThru -Force} "Remove firewall rule failed"
+
+        # create firewall rule to allow all Azure IP
+        $firewallCreated = New-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -AllowAllAzureIp
+        Assert-AreEqual "0.0.0.0" $firewallCreated.StartIpAddress
+        Assert-AreEqual "0.0.0.0" $firewallCreated.EndIpAddress
+
+        $firewallCreated = New-AzSynapseFirewallRule -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -AllowAllIp
+        Assert-AreEqual "0.0.0.0" $firewallCreated.StartIpAddress
+        Assert-AreEqual "255.255.255.255" $firewallCreated.EndIpAddress
 	}
     finally
     {

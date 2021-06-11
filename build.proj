@@ -103,8 +103,7 @@
   </Target>
 
   <Target Name="BuildTools">
-    <!-- Publish static analysis for use cross-platform -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
+    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration)" />
   </Target>
 
   <Target Name="FilterBuild" Condition="$(PullRequestNumber) != '' OR $(TargetModule) != ''" DependsOnTargets="BuildTools">
@@ -112,7 +111,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
     <!-- Build the Microsoft.Azure.Build.Tasks project -->
-    <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration) -f netstandard2.0" />
+    <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
     <!-- Get all of the files changed in the given pull request -->
     <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)">
@@ -139,12 +138,6 @@
         <Output
             TaskParameter="Value"
             PropertyName="SubTasks" />
-    </CreateProperty>
-    <CreateProperty
-        Value="$(TestCsprojList.Split(';').Length)">
-        <Output
-            TaskParameter="Value"
-            PropertyName="TestCsprojListCount" />
     </CreateProperty>
   </Target>
 
@@ -231,7 +224,7 @@
   <Target Name="StaticAnalysisBreakingChange" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for breaking change..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
-
+    
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers breaking-change -u -m '%(FilterTaskResult.breaking-change)'" />
   </Target>
 
@@ -245,20 +238,18 @@
   <Target Name="StaticAnalysisSignature" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for signature..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
-
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.breaking-change)'" />
+    
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers signature -u -m '%(FilterTaskResult.signature)'" />
   </Target>
   
   <Target Name="StaticAnalysisHelp" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build">
     <Message Importance="high" Text="Running static analysis for help..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
-
-    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.breaking-change)'" />
+    
+    <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.help)'" />
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp">
-  <!-- <Target Name="StaticAnalysis"> -->
-    <Exec Command="dotnet publish $(RepoTools)StaticAnalysis/StaticAnalysis.Netcore.csproj -c $(Configuration) -f netcoreapp2.1" />
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
@@ -277,11 +268,11 @@
   </Target>
 
   <Target Name="AzToolsInstaller">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:'clean;build;test'" />
+    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="AzToolsPredictor">
-    <Exec Command="dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:'clean;build;test'" />
+    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="ChangeLogErrorMessage">
@@ -314,10 +305,9 @@
   <Target Name="Test" DependsOnTargets="FilterBuild">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="$(TestCsprojListCount) != 0" />
+    <Exec Command="dotnet test $(RepoArtifacts)Azure.PowerShell.sln --filter &quot;AcceptanceType=CheckIn%26RunType!=DesktopOnly&quot; --configuration $(Configuration) --framework $(TestFramework) --logger trx --results-directory &quot;$(TestOutputDirectory)&quot;" Condition="'$(TestCsprojList)' != ''" />
     <Message Importance="high" Text="Finish running tests..." />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>

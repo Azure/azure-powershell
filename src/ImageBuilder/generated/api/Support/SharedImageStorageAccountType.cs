@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
+    /// <summary>
+    /// Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).
+    /// </summary>
     public partial struct SharedImageStorageAccountType :
         System.IEquatable<SharedImageStorageAccountType>
     {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         /// <param name="value">the value to convert to an instance of <see cref="SharedImageStorageAccountType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SharedImageStorageAccountType(System.Convert.ToString(value));
+            return new SharedImageStorageAccountType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SharedImageStorageAccountType</summary>

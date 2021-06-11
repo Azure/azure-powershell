@@ -47,10 +47,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string NounAzureRmStorageSyncServerConfiguration = StorageSyncConstants.ProductPrefix + "ServerConfiguration";
         /// <summary>
-        /// The noun azure rm storage sync file recall
-        /// </summary>
-        public const string NounAzureRmStorageSyncFileRecall = StorageSyncConstants.ProductPrefix + "FileRecall";
-        /// <summary>
         /// The noun azure rm storage sync server certificate
         /// </summary>
         public const string NounAzureRmStorageSyncServerCertificate = NounAzureRmStorageSyncServer + "Certificate";

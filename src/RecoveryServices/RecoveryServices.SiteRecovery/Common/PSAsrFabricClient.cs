@@ -95,6 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             return this.GetSiteRecoveryClient()
                 .ReplicationFabrics.GetWithHttpMessagesAsync(
                     fabricName,
+                    null,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult()

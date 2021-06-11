@@ -136,6 +136,57 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 It.IsAny<CancellationToken>()), Times.Once);
         }
 
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithFalseAutoMitigateFlag()
+        {
+            _cmdlet.AutoMitigate = false;
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(false, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithTrueAutoMitigateFlag()
+        {
+            _cmdlet.AutoMitigate = true; ;
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(true, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewMetricAlertRuleV2WithDefaultAutoMitigateFlag()
+        {
+            _cmdlet.ExecuteCmdlet();
+
+            Func<MetricAlertResource, bool> verify = metricAlert =>
+            {
+                Assert.Equal(true, metricAlert.AutoMitigate);
+                return true;
+            };
+
+            this._insightsMetricAlertsOperationsMock.Verify(o => o.CreateOrUpdateWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.Is<MetricAlertResource>(r => verify(r)), It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()), Times.Once);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewMetricAlertRuleV2WithWebtestConditionProcessing()

@@ -32,7 +32,7 @@ d----          2020/12/15    13:45                youriechobottest
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/export-azbotserviceapp
+https://docs.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 #>
 function Export-AzBotServiceApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot])]

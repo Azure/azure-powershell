@@ -254,5 +254,28 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string DatabaseUserKey = "database-user-name";
             public const string DatabasePasswordKey = "database-user-password";
         }
+
+        public static class ClusterRoleType
+        {
+            public const string HeadNodeRole = "HEADNODEROLE";
+            public const string WorkerNodeRole = "WORKERNODEROLE";
+            public const string ZookeeperNodeRole = "ZOOKEEPERROLE";
+            public const string EdgeNodeRole = "EDGENODEROLE";
+            public const string KafkaManagementNodeRole = "KAFKAMANAGEMENTNODEROLE";
+            public const string HIBNodeRole = "HIBROLE";
+            public const string AllRole = "*";
+        }
+
+        public static class ClusterType
+        {
+            public const string Hadoop = "HADOOP";
+            public const string Spark = "SPARK";
+            public const string Kafka = "KAFKA";
+            public const string Storm = "STORM";
+            public const string MLService = "MLSERVICE";
+            public const string LLAP = "LLAP";
+            public const string InterActiveHive = "INTERACTIVEHIVE";
+            public const string AllClusterType = "*";
+        }
     }
 }

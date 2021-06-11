@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azoperation
+https://docs.microsoft.com/powershell/module/az.botservice/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IOperationEntity])]

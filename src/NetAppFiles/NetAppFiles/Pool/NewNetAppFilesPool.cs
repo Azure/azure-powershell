@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
@@ -116,6 +118,21 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 {
                     tagPairs.Add(key, Tag[key].ToString());
                 }
+            }
+            //check existing 
+            CapacityPool existingPool = null;
+
+            try
+            {
+                existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName,  Name);
+            }
+            catch
+            {
+                existingPool = null;
+            }
+            if (existingPool != null)
+            {
+                throw new AzPSResourceNotFoundCloudException($"A Capacity Pool with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.");
             }
 
             if (ParameterSetName == ParentObjectParameterSet)

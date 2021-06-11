@@ -88,10 +88,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Remove(vDataDisks);
             }
 
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Count == 0)
-            {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks = null;
-            }
             WriteObject(this.VirtualMachineScaleSet);
         }
     }

@@ -254,6 +254,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     recoveryPoint.IsManagedVirtualMachine.Value : false,
                 OriginalSAEnabled = recoveryPoint.OriginalStorageAccountOption.HasValue ?
                     recoveryPoint.OriginalStorageAccountOption.Value : false,
+                Zones = recoveryPoint.Zones,
                 RehydrationExpiryTime = (DateTime?)null,
             };
 

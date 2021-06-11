@@ -22,20 +22,6 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
 {
     public class ValidateServiceTagAttribute : ValidateArgumentsAttribute
     {
-        private List<string> SupportedServiceTags = new List<string>() { 
-            "ActionGroup", 
-            "AzureCloud", 
-            "AzureCognitiveSearch", 
-            "AzureConnectors", 
-            "AzureEventGrid", 
-            "AzureFrontDoor.Backend", 
-            "AzureMachineLearning",
-            "AzureSignalR",
-            "AzureTrafficManager",
-            "LogicApps",
-            "ServiceFabric"
-        };
-
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
             var ipAddressArgumentValue = arguments as string;
@@ -46,18 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             var ipAddresses = ipAddressArgumentValue.Split(',');
 
             if (ipAddresses.Length > 8)
-                throw new ValidationMetadataException("Only 8 service tags are allowed per rule");
-
-            if (!ipAddresses.All(a => this.IsValidServiceTag(a)))
-            {
-                throw new ValidationMetadataException("One or more service tags are invalid.");
-            }            
-        }
-
-        private bool IsValidServiceTag(string serviceTag)
-        {
-            // Currently a static list - will be updated once Service Tag team publishes an API to request the full list"
-            return SupportedServiceTags.Contains(serviceTag, StringComparer.OrdinalIgnoreCase);
+                throw new ValidationMetadataException("Only 8 service tags are allowed per rule");           
         }
     }
 }

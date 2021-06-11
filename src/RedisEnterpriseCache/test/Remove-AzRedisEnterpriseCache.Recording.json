@@ -1,12 +1,13 @@
 {
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test?api-version=2020-10-01-preview+1": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1?api-version=2021-03-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "37" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "72" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -21,35 +22,37 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test/operationresults/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview" ],
-        "x-ms-request-id": [ "c9b6e5f1-df80-440c-96f7-f14bed49b779" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "Location": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1/operationresults/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01" ],
+        "x-ms-request-id": [ "2df805d6-fc35-4bdf-ba0f-cfb6ab697134" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "7eeb9385-53f6-458a-b4cd-d8f5e63acf1a" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010352Z:7eeb9385-53f6-458a-b4cd-d8f5e63acf1a" ],
-        "Date": [ "Sat, 05 Dec 2020 01:03:51 GMT" ]
+        "x-ms-correlation-request-id": [ "b264f476-ec62-4012-b53f-67ba2d6cd2aa" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T222950Z:b264f476-ec62-4012-b53f-67ba2d6cd2aa" ],
+        "Date": [ "Wed, 03 Mar 2021 22:29:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "534" ],
+        "Content-Length": [ "589" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"location\": \"East US\",\r\n  \"name\": \"ps-cache-test\",\r\n  \"id\": \"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-pkstny/providers/Microsoft.Cache/redisEnterprise/ps-cache-test\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Enterprise_E10\",\r\n    \"capacity\": 2\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Deleting\",\r\n    \"resourceState\": \"Deleting\",\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\",\r\n    \"3\"\r\n  ]\r\n}"
+      "Content": "{\r\n  \"location\": \"East US\",\r\n  \"name\": \"ps-cache-test1-dhf6qri1\",\r\n  \"id\": \"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test1-dhf6qri1\",\r\n  \"type\": \"Microsoft.Cache/redisEnterprise\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Enterprise_E10\",\r\n    \"capacity\": 4\r\n  },\r\n  \"properties\": {\r\n    \"minimumTlsVersion\": \"1.2\",\r\n    \"provisioningState\": \"Deleting\",\r\n    \"resourceState\": \"Deleting\",\r\n    \"privateEndpointConnections\": []\r\n  },\r\n  \"zones\": [\r\n    \"1\",\r\n    \"2\",\r\n    \"3\"\r\n  ]\r\n}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+2": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "38" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "73" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,33 +66,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "73706f31-ee07-4817-bbb6-2d3d7a954f0f" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "9b7a718a-4b82-4b80-9d51-1bcb9f7f1589" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
-        "x-ms-correlation-request-id": [ "9d8281c4-e654-460d-9d0f-27c7b683b132" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010422Z:9d8281c4-e654-460d-9d0f-27c7b683b132" ],
-        "Date": [ "Sat, 05 Dec 2020 01:04:22 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "caa1232e-40ee-41a5-beba-0674446e1ae5" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223020Z:caa1232e-40ee-41a5-beba-0674446e1ae5" ],
+        "Date": [ "Wed, 03 Mar 2021 22:30:20 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+3": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "39" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "74" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -103,33 +108,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "397a194a-8b54-4ebb-aed7-5c936cb5f1b5" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "6614299e-ba39-4910-9393-f8ececf71b4c" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
-        "x-ms-correlation-request-id": [ "feb5b578-dc91-4221-a22f-c76b30affc38" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010452Z:feb5b578-dc91-4221-a22f-c76b30affc38" ],
-        "Date": [ "Sat, 05 Dec 2020 01:04:51 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "18a78ac8-4d6a-4c7a-8cb2-435ef1d7a7aa" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223051Z:18a78ac8-4d6a-4c7a-8cb2-435ef1d7a7aa" ],
+        "Date": [ "Wed, 03 Mar 2021 22:30:50 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+4": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "40" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "75" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -143,33 +150,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1d40a5b4-d1a0-4f78-9cb9-49c61479f2b0" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "e8fd4e95-946d-4a24-80fe-04e4ea1c88f1" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
-        "x-ms-correlation-request-id": [ "090c54fb-fbeb-41be-832c-097ccf1cd373" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010522Z:090c54fb-fbeb-41be-832c-097ccf1cd373" ],
-        "Date": [ "Sat, 05 Dec 2020 01:05:21 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "9095bb6f-3653-41cf-8ac4-3c2e17e09f62" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223121Z:9095bb6f-3653-41cf-8ac4-3c2e17e09f62" ],
+        "Date": [ "Wed, 03 Mar 2021 22:31:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+5": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "76" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -183,33 +192,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d7124490-9ae2-42d3-996c-7fe9cecb588e" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "9333e37d-7e90-4f52-b756-b20eb237aade" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
-        "x-ms-correlation-request-id": [ "803edcbe-21f8-43c6-bbd4-58333f4d8669" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010552Z:803edcbe-21f8-43c6-bbd4-58333f4d8669" ],
-        "Date": [ "Sat, 05 Dec 2020 01:05:52 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "7dc51266-326b-4995-bb04-a60356a8bed6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223151Z:7dc51266-326b-4995-bb04-a60356a8bed6" ],
+        "Date": [ "Wed, 03 Mar 2021 22:31:51 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+6": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "42" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "77" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -223,33 +234,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5eb8628b-ac1a-4773-a082-11b7323ed962" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "a0db84d0-bcae-4954-b373-229738248008" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
-        "x-ms-correlation-request-id": [ "ce39bc65-6e09-47c6-b33c-c64c74f0ee20" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010622Z:ce39bc65-6e09-47c6-b33c-c64c74f0ee20" ],
-        "Date": [ "Sat, 05 Dec 2020 01:06:21 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "5835f89c-489e-46e0-9aa7-bb25fd8542c0" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223221Z:5835f89c-489e-46e0-9aa7-bb25fd8542c0" ],
+        "Date": [ "Wed, 03 Mar 2021 22:32:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+7": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "43" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "78" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -263,33 +276,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "777b6ce3-ccc4-4825-9713-2a6dc6d8f7c2" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "b2acc3e8-e855-490f-880c-d1edbf2520b6" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
-        "x-ms-correlation-request-id": [ "c490b7e5-4484-4d47-b77f-f17d140a11f4" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010652Z:c490b7e5-4484-4d47-b77f-f17d140a11f4" ],
-        "Date": [ "Sat, 05 Dec 2020 01:06:51 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "6362b695-e9c4-41b8-8dd7-159440c36375" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223251Z:6362b695-e9c4-41b8-8dd7-159440c36375" ],
+        "Date": [ "Wed, 03 Mar 2021 22:32:51 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+8": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "44" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "79" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -303,33 +318,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "2a4c3be5-0c7b-4edb-8faf-d33578910d15" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "a546a141-89e3-4be0-b49a-18adf8a7c5da" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11962" ],
-        "x-ms-correlation-request-id": [ "bc448571-e34c-43cd-baa3-78b473335a40" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010722Z:bc448571-e34c-43cd-baa3-78b473335a40" ],
-        "Date": [ "Sat, 05 Dec 2020 01:07:22 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "5823c3f4-5ba7-4b28-9920-ff2fbaf770da" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223322Z:5823c3f4-5ba7-4b28-9920-ff2fbaf770da" ],
+        "Date": [ "Wed, 03 Mar 2021 22:33:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+9": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+9": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "45" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -343,33 +360,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "ca2cc337-007d-4dda-a061-6275b07044c5" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "ba6f45df-f8a8-4359-adba-609b6b3b37ca" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "9d4ffd1c-754e-499e-b235-d147877a57a7" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010752Z:9d4ffd1c-754e-499e-b235-d147877a57a7" ],
-        "Date": [ "Sat, 05 Dec 2020 01:07:52 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "f7775af7-2fbe-4f1d-8d7f-b71f7363817e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223352Z:f7775af7-2fbe-4f1d-8d7f-b71f7363817e" ],
+        "Date": [ "Wed, 03 Mar 2021 22:33:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+10": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+10": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "46" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -383,33 +402,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "04a22bbe-3a54-40d5-b4ba-05dd2dea1f50" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "559109cf-7f72-41f2-a61e-3a12c37b890c" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11960" ],
-        "x-ms-correlation-request-id": [ "25e63e97-c302-47b0-b11f-a6b1d9b9eed3" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010823Z:25e63e97-c302-47b0-b11f-a6b1d9b9eed3" ],
-        "Date": [ "Sat, 05 Dec 2020 01:08:22 GMT" ]
+        "x-ms-correlation-request-id": [ "0916d20d-6186-4a09-acf3-6dcfd93675c8" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223422Z:0916d20d-6186-4a09-acf3-6dcfd93675c8" ],
+        "Date": [ "Wed, 03 Mar 2021 22:34:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+11": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+11": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "47" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "82" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -423,33 +444,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e2a233ff-e3db-4afc-b3f8-0f77c7bdb537" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "279209f5-ff27-434b-a147-822bd1a7c666" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11959" ],
-        "x-ms-correlation-request-id": [ "2103802a-09bc-4691-82e5-fa2158d37453" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010853Z:2103802a-09bc-4691-82e5-fa2158d37453" ],
-        "Date": [ "Sat, 05 Dec 2020 01:08:53 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "3fe742a8-17f8-411a-bb0f-be5c71e2ec64" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223452Z:3fe742a8-17f8-411a-bb0f-be5c71e2ec64" ],
+        "Date": [ "Wed, 03 Mar 2021 22:34:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+12": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+12": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "48" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "83" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -463,33 +486,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "512e8cad-2508-4963-bde5-e4bab47180d2" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "4f3342c0-1f09-499d-a97f-f30ab3f447a0" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
-        "x-ms-correlation-request-id": [ "7c65f5d8-c356-468f-b19b-7b5e49a1c868" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010923Z:7c65f5d8-c356-468f-b19b-7b5e49a1c868" ],
-        "Date": [ "Sat, 05 Dec 2020 01:09:23 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "919cde5e-86fc-4fd5-8588-89d834d34a39" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223523Z:919cde5e-86fc-4fd5-8588-89d834d34a39" ],
+        "Date": [ "Wed, 03 Mar 2021 22:35:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+13": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+13": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "49" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -503,33 +528,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "65174309-022f-497e-b40d-794624f280cd" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "cd0bcf2c-7894-4df3-a797-b09a60177f4f" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
-        "x-ms-correlation-request-id": [ "2ad98285-0e20-4028-becb-d24729a54023" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T010953Z:2ad98285-0e20-4028-becb-d24729a54023" ],
-        "Date": [ "Sat, 05 Dec 2020 01:09:53 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "21f92fe5-0940-438a-9a38-ae7d0bcbef49" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223553Z:21f92fe5-0940-438a-9a38-ae7d0bcbef49" ],
+        "Date": [ "Wed, 03 Mar 2021 22:35:53 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+14": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+14": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "50" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -543,33 +570,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a83ecd49-2085-44cd-8cc4-1b60127b7f6c" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "a28a3fd1-6734-4ae6-b9dc-3f4a965d4588" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
-        "x-ms-correlation-request-id": [ "bb4d4a19-bd8a-42bf-a97f-93f8a11022b5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011023Z:bb4d4a19-bd8a-42bf-a97f-93f8a11022b5" ],
-        "Date": [ "Sat, 05 Dec 2020 01:10:23 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "3ba506b7-95ff-4c4b-9854-bc4b22cb286e" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223623Z:3ba506b7-95ff-4c4b-9854-bc4b22cb286e" ],
+        "Date": [ "Wed, 03 Mar 2021 22:36:22 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+15": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+15": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "51" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "86" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -583,33 +612,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "dcab1d77-fe36-4c23-8706-723ff70da723" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "1d5e035f-057b-4548-9a1a-a6e4db1da402" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
-        "x-ms-correlation-request-id": [ "f5e76cdc-47cd-479d-b928-df6d4761e820" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011053Z:f5e76cdc-47cd-479d-b928-df6d4761e820" ],
-        "Date": [ "Sat, 05 Dec 2020 01:10:52 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "196a1317-716e-4ae2-bbd6-da00cfa7203f" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223653Z:196a1317-716e-4ae2-bbd6-da00cfa7203f" ],
+        "Date": [ "Wed, 03 Mar 2021 22:36:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+16": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+16": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "87" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -623,33 +654,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f69457a4-7e8b-47c3-8b80-83416a128a84" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "41b94db9-4b3a-4e14-894b-a674300cfbaa" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11954" ],
-        "x-ms-correlation-request-id": [ "45f08426-9a1c-4637-8e7d-895a3f07c2a5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011123Z:45f08426-9a1c-4637-8e7d-895a3f07c2a5" ],
-        "Date": [ "Sat, 05 Dec 2020 01:11:23 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "40b05f9e-7392-4ac0-8270-99468106cbfa" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223723Z:40b05f9e-7392-4ac0-8270-99468106cbfa" ],
+        "Date": [ "Wed, 03 Mar 2021 22:37:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
+        "Content-Length": [ "320" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"InProgress\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:29:52.6564907+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+17": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "88" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -663,33 +696,35 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "21f293f2-dd9b-408f-aaf1-bd3c867d48d5" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "43ed5370-06f3-41de-af96-8cdc50585860" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11953" ],
-        "x-ms-correlation-request-id": [ "9461ef8f-c53c-43c0-8fce-8b40950226da" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011154Z:9461ef8f-c53c-43c0-8fce-8b40950226da" ],
-        "Date": [ "Sat, 05 Dec 2020 01:11:53 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "23187db1-8916-4e51-be40-57c7f4af4088" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223753Z:23187db1-8916-4e51-be40-57c7f4af4088" ],
+        "Date": [ "Wed, 03 Mar 2021 22:37:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "318" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"Succeeded\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:37:38.677734+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+18": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01+18": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "54" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "89" ],
+        "x-ms-client-request-id": [ "f3df9a2c-ce07-498c-8e94-0cefe7a2d110" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -703,262 +738,61 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "5b5d27fa-75c8-4027-8042-723c0f3d4060" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-request-id": [ "c0dd4122-caf8-44e3-bb13-dec292602d54" ],
+        "x-rp-server-mvid": [ "8add1af5-2006-47da-bfe5-9b1738f65b5b" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11952" ],
-        "x-ms-correlation-request-id": [ "a8bffd75-a706-467b-8b2e-bc1e936a1dbe" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011224Z:a8bffd75-a706-467b-8b2e-bc1e936a1dbe" ],
-        "Date": [ "Sat, 05 Dec 2020 01:12:23 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "c2b02b08-724e-43fb-ab7a-a23b358f5d4d" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223754Z:c2b02b08-724e-43fb-ab7a-a23b358f5d4d" ],
+        "Date": [ "Wed, 03 Mar 2021 22:37:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "318" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
+      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"name\":\"4e908b08-dd9f-4bb3-b71c-c83c4c512b91\",\"status\":\"Succeeded\",\"startTime\":\"2021-03-03T22:29:50.5659937+00:00\",\"endTime\":\"2021-03-03T22:37:38.677734+00:00\"}",
+      "isContentBase64": false
     }
   },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+19": {
+  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt?api-version=2021-03-01+19": {
     "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/resourceGroups/ps-redisenterprise-rg-143npg82/providers/Microsoft.Cache/redisEnterprise/ps-cache-test2-qxv04oyt?api-version=2021-03-01",
       "Content": null,
+      "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "55" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
+        "x-ms-unique-id": [ "90" ],
+        "x-ms-client-request-id": [ "ec6864a3-5a21-4c89-9cd5-d341ecd5b626" ],
         "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
         "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 204,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4a557e56-4d03-49f2-8bb3-6fef4f8306b5" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "c05b1235-c8f6-458e-b2af-b041efb32a27" ],
+        "x-ms-correlation-request-id": [ "c05b1235-c8f6-458e-b2af-b041efb32a27" ],
+        "x-ms-routing-request-id": [ "WESTUS:20210303T223754Z:c05b1235-c8f6-458e-b2af-b041efb32a27" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-correlation-request-id": [ "81198007-3009-4688-9681-5140f5b7f1c5" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011254Z:81198007-3009-4688-9681-5140f5b7f1c5" ],
-        "Date": [ "Sat, 05 Dec 2020 01:12:54 GMT" ]
+        "Date": [ "Wed, 03 Mar 2021 22:37:54 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
-    }
-  },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+20": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
       "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "56" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
-        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
-        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c44fc9f1-440c-4943-84aa-d3a5cb1545d0" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-correlation-request-id": [ "28707662-5ecb-4205-84eb-43e91f252fdd" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011324Z:28707662-5ecb-4205-84eb-43e91f252fdd" ],
-        "Date": [ "Sat, 05 Dec 2020 01:13:24 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
-    }
-  },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+21": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
-        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
-        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6d60feb6-c528-453b-8562-8ef7f7de0fb2" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
-        "x-ms-correlation-request-id": [ "487ef2b4-7750-4ff5-a725-7545c5874353" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011354Z:487ef2b4-7750-4ff5-a725-7545c5874353" ],
-        "Date": [ "Sat, 05 Dec 2020 01:13:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
-    }
-  },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+22": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
-        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
-        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "72669319-1e26-4cdb-8583-cc6856083812" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
-        "x-ms-correlation-request-id": [ "2fe15dd4-7177-49da-8ef7-ae73cc194f00" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011424Z:2fe15dd4-7177-49da-8ef7-ae73cc194f00" ],
-        "Date": [ "Sat, 05 Dec 2020 01:14:24 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"InProgress\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:03:52.714672+00:00\"}"
-    }
-  },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+23": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
-        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
-        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d763718f-ba60-4475-a2c1-a9751fa01c52" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
-        "x-ms-correlation-request-id": [ "2f7bc3aa-d8e5-40d1-a2f5-49abe7571e1b" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011454Z:2f7bc3aa-d8e5-40d1-a2f5-49abe7571e1b" ],
-        "Date": [ "Sat, 05 Dec 2020 01:14:54 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"Succeeded\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:14:37.8532718+00:00\"}"
-    }
-  },
-  "Remove-AzRedisEnterpriseCache+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview+24": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East%20US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51?api-version=2020-10-01-preview",
-      "Content": null,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "24bcc126-9b26-4b8c-a305-4fb2dfba9be2" ],
-        "CommandName": [ "Remove-AzRedisEnterpriseCache" ],
-        "FullCommandName": [ "Remove-AzRedisEnterpriseCache_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a22d8964-43f3-482d-adf0-6eea68919dd1" ],
-        "x-rp-server-mvid": [ "f86edc6b-6a96-45c8-9297-8d7daae8142d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
-        "x-ms-correlation-request-id": [ "bf9aee4c-4a92-4c0c-a67c-9ee0585fff91" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20201205T011455Z:bf9aee4c-4a92-4c0c-a67c-9ee0585fff91" ],
-        "Date": [ "Sat, 05 Dec 2020 01:14:55 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "318" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/e311648e-a318-4a16-836e-f4a91cc73e9b/providers/Microsoft.Cache/locations/East US/operationsStatus/82537d3f-e368-46db-b801-1b5147ba0e51\",\"name\":\"82537d3f-e368-46db-b801-1b5147ba0e51\",\"status\":\"Succeeded\",\"startTime\":\"2020-12-05T01:03:51.777129+00:00\",\"endTime\":\"2020-12-05T01:14:37.8532718+00:00\"}"
+      "isContentBase64": false
     }
   }
 }

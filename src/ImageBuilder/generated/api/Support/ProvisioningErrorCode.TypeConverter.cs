@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
 {
 
-    /// <summary>TypeConverter implementation for ProvisioningErrorCode.</summary>
+    /// <summary>Error code of the provisioning failure</summary>
     public partial class ProvisioningErrorCodeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

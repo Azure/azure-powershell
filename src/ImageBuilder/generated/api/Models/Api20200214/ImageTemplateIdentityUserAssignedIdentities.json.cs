@@ -74,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214
             {
                 return;
             }
-            Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, null ,exclusions );
+            Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.JsonSerializable.FromJson( json, ((Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.IAssociativeArray<Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties>)this).AdditionalProperties, (j) => Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties.FromJson(j) ,exclusions );
             AfterFromJson(json);
         }
 

@@ -83,8 +83,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string LicenseType { get; set; }
 
         /// <summary>
-        /// Gets or sets the backup storage redundancy for the database
+        /// Gets or sets the current backup storage redundancy for the database
         /// </summary>
-        public string BackupStorageRedundancy { get; set; }
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested backup storage redundancy for the database
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
     }
 }
