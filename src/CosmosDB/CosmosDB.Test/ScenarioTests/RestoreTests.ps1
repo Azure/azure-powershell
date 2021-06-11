@@ -15,15 +15,15 @@
 function Test-RestoreFromNewAccountCmdlets
 {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup13"
+  $rgName = "CosmosDBResourceGroup03"
   $location = "West US"
-  $restoreTimestampInUtc = "2021-01-08T04:59:30+00:00"
-  $cosmosDBAccountName = "restored-cosmosdb-1213"
-  $sourceCosmosDBAccountName = "cosmosdb-1213"
+  $cosmosDBAccountName = "restored-cosmosdb-1203"
+  $sourceCosmosDBAccountName = "cosmosdb-1203"
   $databaseName = "TestDB1";
   $collectionName = "TestCollectionInDB1";
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
+  $consistencyLevel = "Session"
   $apiKind = "Sql"
   $locations = @() 
   $locations += New-AzCosmosDBLocationObject -LocationName "West Us" -FailoverPriority 0 -IsZoneRedundant 0
@@ -33,6 +33,7 @@ function Test-RestoreFromNewAccountCmdlets
   $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   
+  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
 
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName  
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
@@ -73,10 +74,9 @@ function Test-RestoreFromNewAccountCmdlets
 function Test-RestoreAccountCmdlets
 {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup10"
-  $restoreTimestampInUtc = "2021-05-08T22:57:48+00:00"
-  $cosmosDBAccountName = "restored2-cosmosdb-1210-1"
-  $sourceCosmosDBAccountName = "cosmosdb-1210"
+  $rgName = "CosmosDBResourceGroup2"
+  $cosmosDBAccountName = "restored2-cosmosdb-122-1"
+  $sourceCosmosDBAccountName = "cosmosdb-122"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";
@@ -85,7 +85,7 @@ function Test-RestoreAccountCmdlets
   $consistencyLevel = "Session"
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
-  $locations = @() 
+  $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -93,7 +93,8 @@ function Test-RestoreAccountCmdlets
   $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  
+  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1,$collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
