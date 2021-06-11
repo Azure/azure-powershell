@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Disable SQL AG AutoProtection.
 
 ## Version 4.2.0
 * Added cross tenant DS Move.

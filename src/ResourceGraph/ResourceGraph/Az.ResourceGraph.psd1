@@ -66,11 +66,11 @@ RequiredAssemblies = 'Microsoft.Azure.Management.ResourceGraph.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'ResourceGraph.format.ps1xml', 
+FormatsToProcess = 'Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.generated.format.ps1xml', 
                'ResourceGraph.Autorest\Az.ResourceGraph.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Az.ResourceGraph.psm1', 
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.dll', 
                'ResourceGraph.Autorest\Az.ResourceGraph.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.

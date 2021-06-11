@@ -164,9 +164,18 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestVirtualNetworkInEdgeZone()
         {
             TestRunner.RunTestScript("Test-VirtualNetworkInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestVirtualNetworkEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualNetworkEdgeZone");
         }
     }
 }
