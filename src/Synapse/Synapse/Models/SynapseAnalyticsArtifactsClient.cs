@@ -5,7 +5,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Properties;
-using Microsoft.Rest.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +22,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         private readonly DatasetClient _datasetClient;
         private readonly DataFlowClient _dataFlowClient;
         private readonly BigDataPoolsClient _bigDataPoolsClient;
+        private readonly SparkJobDefinitionClient _sparkJobDefinitionClient;
 
         public SynapseAnalyticsArtifactsClient(string workspaceName, IAzureContext context)
         {
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             _datasetClient = new DatasetClient(uri, new AzureSessionCredential(context));
             _dataFlowClient = new DataFlowClient(uri, new AzureSessionCredential(context));
             _bigDataPoolsClient = new BigDataPoolsClient(uri, new AzureSessionCredential(context));
+            _sparkJobDefinitionClient = new SparkJobDefinitionClient(uri, new AzureSessionCredential(context));
         }
 
         #region pipeline
@@ -264,6 +265,39 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public BigDataPoolResourceInfo GetBigDataPool(string bigDataPoolName)
         {
             return _bigDataPoolsClient.Get(bigDataPoolName);
+        }
+
+        #endregion
+
+        #region Spark Job Definition
+
+        public SparkJobDefinitionResource CreateOrUpdateSparkJobDefinition(string SparkJobDefinitionName, string rawJsonContent)
+        {
+            SparkJobDefinitionResource SparkJobDefinition = new SparkJobDefinitionResource(JsonConvert.DeserializeObject<SparkJobDefinition>(rawJsonContent));
+            return _sparkJobDefinitionClient.StartCreateOrUpdateSparkJobDefinition(SparkJobDefinitionName, SparkJobDefinition).Poll().Value;
+        }
+
+        public SparkJobDefinitionResource GetSparkJobDefinition(string SparkJobDefinitionName)
+        {
+            return _sparkJobDefinitionClient.GetSparkJobDefinition(SparkJobDefinitionName).Value;
+        }
+
+        public Pageable<SparkJobDefinitionResource> GetSparkJobDefinitionsByWorkspace()
+        {
+            return _sparkJobDefinitionClient.GetSparkJobDefinitionsByWorkspace();
+        }
+
+        public void DeleteSparkJobDefinition(string SparkJobDefinitionName)
+        {
+            _sparkJobDefinitionClient.StartDeleteSparkJobDefinition(SparkJobDefinitionName).Poll();
+        }
+
+        public void RenameSparkJobDefinition(string SparkJobDefinitionName, string newName)
+        {
+            _sparkJobDefinitionClient.StartRenameSparkJobDefinition(SparkJobDefinitionName, new ArtifactRenameRequest
+            {
+                NewName = newName
+            }).Poll();
         }
 
         #endregion
