@@ -287,7 +287,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             if (!_parsedCommandLineHistory.TryRemove(commandLine, out var parsedResult))
             {
                 // We should already parsed the last command in OnCommandLineAccepted which we don't need to do again now.
-                // Just in case that wasn't correct, we clear the _parsedCommandLineHistory and parse it now.
+                // Just in case that wasn't correct or that's missing, we clear the _parsedCommandLineHistory and parse it now.
+                // On possible reason it's missing is because we're still initializing in the task and don't handle
+                // OnCommandLineAccepted.
                 _parsedCommandLineHistory.Clear();
                 parsedResult = GetAstAndMaskedCommandLine(commandLine);
             }
