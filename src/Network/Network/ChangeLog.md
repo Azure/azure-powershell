@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Added support for viewing extended location of public IP address in the console
+    - `New-AzPublicIpAddress`
+    - `Get-AzPublicIpAddress`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
 * Updated cmdlets for route server for a more stable way to add IP configuration.
