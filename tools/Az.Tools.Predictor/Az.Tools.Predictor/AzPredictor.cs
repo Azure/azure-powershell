@@ -172,7 +172,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 // workflow. We want to predict only by Az commands. So we don't send the request until the command 4.
                 // That's to use commands 1 and 4 to request prediction.
 
-                bool isLastTwoCommandsChanged = false;
+                bool ShouldRequestPrediction = false;
 
                 if (_lastTwoMaskedCommands.Count == 0)
                 {
@@ -197,12 +197,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         // So we don't need to do that for a placeholder.
                     }
 
-                    isLastTwoCommandsChanged = true;
+                    ShouldRequestPrediction = true;
                 }
 
                 string lastLine = history.Last();
                 var lastCommand = GetAstAndMaskedCommandLine(lastLine);
                 bool isLastCommandSupported = lastCommand.IsSupported;
+
+                _parsedCommandLineHistory.TryAdd(lastLine, lastCommand);
 
                 if (isLastCommandSupported)
                 {
@@ -213,21 +215,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     }
 
                     _lastTwoMaskedCommands.Enqueue(lastCommand.MaskedCommandLine);
-                    isLastTwoCommandsChanged = true;
+                    ShouldRequestPrediction = true;
 
                     _service.RecordHistory(lastCommand.Ast);
                 }
                 else if (_lastTwoMaskedCommands.Count == 1)
                 {
-                    isLastTwoCommandsChanged = true;
+                    ShouldRequestPrediction = true;
                     var existingInQueue = _lastTwoMaskedCommands.Dequeue();
                     _lastTwoMaskedCommands.Enqueue(AzPredictorConstants.CommandPlaceholder);
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _parsedCommandLineHistory.TryAdd(lastLine, lastCommand);
 
-                if (isLastTwoCommandsChanged)
+                if (ShouldRequestPrediction)
                 {
                     // When it's called multiple times, we only need to keep the one for the latest command.
 
