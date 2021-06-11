@@ -55,7 +55,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         public override int GetHashCode()
         {
-            return Name.GetHashCode() ^ (Value ?? string.Empty).GetHashCode() ^ IsPositional.GetHashCode();
+            int hashCode = 17;
+
+            hashCode = hashCode * 23 + Name.GetHashCode();
+            hashCode = hashCode * 23 + IsPositional.GetHashCode();
+
+            if (Value != null)
+            {
+                hashCode = hashCode * 23 + Value.GetHashCode();
+            }
+
+            return hashCode;
         }
 
         public override bool Equals(object other)
