@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.3.0
 * Changed to `Allow` and `Deny` parameters of `Update-AzSignalRNetworkAcl` cmdlet:
     - Accepted `Trace` as a valid value.
     - Accepted `@()` as empty collection to clear the list.

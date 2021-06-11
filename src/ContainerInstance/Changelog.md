@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.1.0
 * Removed the display of file share credential [#15224]
 
 ## Version 2.0.0

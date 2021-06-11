@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Added functionality to accept input from pipeline for `Get-AzEventHub` from `Get-AzEventHubNamespace`.
 
 ## Version 1.7.2
