@@ -84,8 +84,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         {
             return text.Replace("<", "'<")
                 .Replace(">", ">'")
-                .Replace("{", "'{")
-                .Replace("}", "}'");
+                .Replace("{", "{(")
+                .Replace("}", ")}");
         }
 
         /// <summary>
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         {
             return text.Replace("'<", "{")
                 .Replace(">'", "}")
-                .Replace("'{", "{")
-                .Replace("}'", "}");
+                .Replace("{(", "{")
+                .Replace(")}", "}");
         }
     }
 }

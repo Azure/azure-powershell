@@ -313,10 +313,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         var hasSentHttpRequest = false;
                         Exception exception = null;
+                        var requestId = Guid.NewGuid().ToString();
 
                         try
                         {
-                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, _telemetryClient.RequestId);
+                            AzPredictorService.SetHttpRequestHeader(_client.DefaultRequestHeaders, _azContext.HashUserId, requestId);
 
                             var httpResponseMessage = await _client.GetAsync(_commandsEndpoint);
                             hasSentHttpRequest = true;
@@ -332,6 +333,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
+                            _telemetryClient.RequestId = requestId;
                             _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         new List<string>(),
                                         hasSentHttpRequest,
@@ -343,10 +345,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var placeholderCommands = new string[] {
                                     AzPredictorConstants.CommandPlaceholder,
                                     AzPredictorConstants.CommandPlaceholder};
+                        requestId = Guid.NewGuid().ToString();
+
                         try
                         {
-                            _telemetryClient.RequestId = Guid.NewGuid().ToString();
-                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, _telemetryClient.RequestId, CancellationToken.None);
+                            hasSentHttpRequest = await RequestPredictionsAsync(placeholderCommands, requestId, CancellationToken.None);
                         }
                         catch (ServiceRequestException e)
                         {
@@ -359,6 +362,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         }
                         finally
                         {
+                            _telemetryClient.RequestId = requestId;
                             _telemetryClient.OnRequestPrediction(new RequestPredictionTelemetryData(null,
                                         placeholderCommands,
                                         hasSentHttpRequest,

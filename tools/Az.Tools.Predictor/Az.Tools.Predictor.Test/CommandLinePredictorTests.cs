@@ -278,6 +278,35 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         /// Verify that the prediction for the command with positional parameter has the right parameters.
         /// </summary>
         [Fact]
+        public void VerifyPredictionForCommandAndTwoPositionalParameters()
+        {
+            var predictionContext = PredictionContext.Create("Get-AzStorageAccount test test"); // Two positional parameters with the same value.
+            var commandAst = predictionContext.InputAst.FindAll(p => p is CommandAst, true).LastOrDefault() as CommandAst;
+            var commandName = (commandAst?.CommandElements?.FirstOrDefault() as StringConstantExpressionAst)?.Value;
+            var inputParameterSet = new ParameterSet(commandAst, _azContext);
+            var rawUserInput = predictionContext.InputAst.Extent.Text;
+            var presentCommands = new Dictionary<string, int>();
+            var result = this._predictor.GetSuggestion(commandName,
+                    inputParameterSet,
+                    rawUserInput,
+                    presentCommands,
+                    3,
+                    1,
+                    CancellationToken.None);
+
+            var expected = new PredictiveSuggestion[]
+            {
+                new PredictiveSuggestion("Get-AzStorageAccount test test -DefaultProfile {IAzureContextContainer}"),
+                new PredictiveSuggestion("Get-AzStorageAccount test test -IncludeGeoReplicationStats"),
+            };
+
+            Assert.Equal(expected.Select(e => e.SuggestionText), result.PredictiveSuggestions.Select(r => r.SuggestionText));
+        }
+
+        /// <summary>
+        /// Verify that the prediction for the command with positional parameter has the right parameters.
+        /// </summary>
+        [Fact]
         public void VerifyPredictionForCommandAndPositionalParameters()
         {
             var predictionContext = PredictionContext.Create("Get-AzStorageAccount resourcegroup");

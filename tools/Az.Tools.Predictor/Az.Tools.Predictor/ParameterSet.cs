@@ -122,6 +122,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         var parameterName = pair.Key;
                         var parameterValue = CommandLineUtilities.EscapePredictionText(pair.Value.Value.ToString());
                         parameters.Add(new Parameter(parameterName, parameterValue, true));
+                        BoundParameters.Remove(pair); // Remove it so that we can match another parameter with the same value.
                     }
                     else
                     {
