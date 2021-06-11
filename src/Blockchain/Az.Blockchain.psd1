@@ -119,7 +119,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated the description of module and added retirement notice'
+        ReleaseNotes = '* On September 10, 2021, Azure Blockchain will be retired.
+        - Please migrate ledger data from Azure Blockchain Service to an alternative offering based on your development status in production or evaluation.
+        - For more information on evaluating alternatives, see Migrate Azure Blockchain Service (https://docs.microsoft.com/en-us/azure/blockchain/service/migration-guide).
+        - The module will be retired after September 10, 2021
+      * Updated the description of module and added retirement notice'
 
         # Prerelease string of this module
         # Prerelease = ''
