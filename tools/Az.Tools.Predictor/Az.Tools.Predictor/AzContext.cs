@@ -55,7 +55,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     minimalState.Types.Clear();
                     minimalState.Formats.Clear();
                     // Refer to the remarks for the property DefaultRunspace.
-                    minimalState.ImportPSModule("Az.Accounts", "Az.Storage", "Az.Network", "Az.KeyVault", "Az.Compute", "Az");
+                    minimalState.ImportPSModule("Az.Accounts");
                     var runspace = RunspaceFactory.CreateRunspace(minimalState);
                     runspace.Open();
                     return runspace;
@@ -63,9 +63,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         /// <inheritdoc />
         /// <remarks>
-        /// We pre-load some common Az service modules and also the rollup Az module when we create the instance.
+        /// We pre-load some common Az service modules.
         /// Creating the instance is at the first time this is called.
-        /// It's slow to load the rollup Az module. So the first call must not be in the path of the user interaction.
+        /// It can be slow. So the first call must not be in the path of the user interaction.
+        /// Loading too many modules can also impact user experience because that may add to much memory pressure at the same
+        /// time.
         /// </remarks>
         public Runspace DefaultRunspace => _defaultRunspace.Value;
 
