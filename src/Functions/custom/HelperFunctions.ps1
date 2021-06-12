@@ -171,8 +171,7 @@ function NewAppSetting
         [System.String]
         $Name,
 
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory=$false)]
         [System.String]
         $Value
     )
