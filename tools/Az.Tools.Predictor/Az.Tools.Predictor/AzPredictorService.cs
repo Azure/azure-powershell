@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
             Validation.CheckArgument(azContext, $"{nameof(azContext)} cannot be null.");
 
-            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient);
+            _parameterValuePredictor = new ParameterValuePredictor(telemetryClient, azContext);
 
             _commandsEndpoint = $"{serviceUri}{AzPredictorConstants.CommandsEndpoint}?clientType={AzPredictorService.ClientType}&context.versionNumber={azContext.AzVersion}";
             _predictionsEndpoint = serviceUri + AzPredictorConstants.PredictionsEndpoint;
