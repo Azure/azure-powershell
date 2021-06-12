@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.2.0
 * Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
 * Added HighAvailabilityReplicaCount to `New-AzSqlDatabaseSecondary`
 * Added External Administrator and AAD Only Properties to AzSqlServer and AzSqlInstance

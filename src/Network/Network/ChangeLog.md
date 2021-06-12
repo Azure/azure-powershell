@@ -24,6 +24,8 @@
     - `Get-AzPublicIpAddress`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
+
+## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.
 * Added support for getting a single private link resource.
 * Added more detailed description about GroupId in `New-AzPrivateLinkServiceConnection`
