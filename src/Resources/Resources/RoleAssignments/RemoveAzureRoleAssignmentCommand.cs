@@ -164,6 +164,7 @@ namespace Microsoft.Azure.Commands.Resources
                 Scope = InputObject.Scope;
                 ObjectId = InputObject.ObjectId;
                 RoleDefinitionName = InputObject.RoleDefinitionName;
+                RoleDefinitionId = InputObject.RoleDefinitionId
             }
 
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
