@@ -552,7 +552,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RuleSetType = sdkRule.RuleSetType,
                 RuleSetVersion = sdkRule.RuleSetVersion,
                 RuleGroupOverrides = sdkRule.RuleGroupOverrides?.Select(ruleGroupOverride => ruleGroupOverride.ToPSAzRuleGroupOverride()).ToList(),
-                Exclusions = sdkRule.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList()
+                Exclusions = sdkRule.Exclusions?.Select(exclusion => exclusion.ToPSAzManagedRuleExclusion()).ToList(),
+                RuleSetAction = sdkRule.RuleSetAction
             };
         }
 
@@ -571,7 +572,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 CustomBlockResponseBody = sdkPolicy.PolicySettings?.CustomBlockResponseBody == null ? null : Encoding.UTF8.GetString(Convert.FromBase64String(sdkPolicy.PolicySettings?.CustomBlockResponseBody)),
                 CustomBlockResponseStatusCode = (ushort?)sdkPolicy.PolicySettings?.CustomBlockResponseStatusCode,
                 RedirectUrl = sdkPolicy.PolicySettings?.RedirectUrl,
-                RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck)
+                RequestBodyCheck = sdkPolicy.PolicySettings?.RequestBodyCheck == null ? (PSEnabledState?)null : (PSEnabledState)Enum.Parse(typeof(PSEnabledState), sdkPolicy.PolicySettings.RequestBodyCheck),
+                Sku = sdkPolicy.Sku == null ? null : sdkPolicy.Sku.Name,
             };
         }
 
@@ -657,7 +659,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 RuleSetType = psAzRule.RuleSetType,
                 RuleSetVersion = psAzRule.RuleSetVersion,
                 RuleGroupOverrides = psAzRule.RuleGroupOverrides?.Select(x => x.ToSdkAzRuleGroupOverride()).ToList(),
-                Exclusions = psAzRule.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList()
+                Exclusions = psAzRule.Exclusions?.Select(x => x.ToSdkAzManagedRuleExclusion()).ToList(),
+                RuleSetAction = psRule.RuleSetAction
             };
         }
 
@@ -697,7 +700,11 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 PolicySettings = new sdkPolicySetting()
                 {
                     EnabledState = psPolicy.PolicyEnabledState.ToString(),
-                    Mode = psPolicy.PolicyMode
+                    Mode = psPolicy.PolicyMode,
+                    CustomBlockResponseBody = psPolicy.CustomBlockResponseBody,
+                    CustomBlockResponseStatusCode = psPolicy.CustomBlockResponseStatusCode,
+                    RedirectUrl = psPolicy.RedirectUrl,
+                    RequestBodyCheck = psPolicy.RequestBodyCheck?.ToString()
                 },
                 CustomRules = new SdkCustomRuleList()
                 {
@@ -706,7 +713,8 @@ namespace Microsoft.Azure.Commands.FrontDoor.Helpers
                 ManagedRules = new SdkManagedRuleList()
                 {
                     ManagedRuleSets = psPolicy.ManagedRules?.Select(x => x.ToSdkAzManagedRule()).ToList()
-                }
+                },
+                Sku = new Management.FrontDoor.Models.Sku(psPolicy.Sku)
             };
         }
 

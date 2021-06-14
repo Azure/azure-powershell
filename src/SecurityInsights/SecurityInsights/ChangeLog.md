@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.0
+* GA release for `Az.SecurityInsights`.
+
+## Version 0.2.0
 * Added support for Teams in Office Connector
 * Bug Fixes
 * Updated Documentations

@@ -38,78 +38,7 @@ function Test-UpdateAzureRmServiceFabricReliability
 
 	$cluster = Update-AzServiceFabricReliability -ReliabilityLevel $reliabilityLevel  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].ReliabilityLevel $reliabilityLevel
-}
-
-function Test-AddAzureRmServiceFabricClusterCertificate
-{
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
-    $keyvaulturi = Get-SecretUrl
-
-	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
-
-    $cluster = 	Add-AzServiceFabricClusterCertificate -ResourceGroupName $resourceGroupName  -ClusterName $clusterName -SecretIdentifier $keyvaulturi -Verbose
-	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-NotNull $clusters[0].Certificate.ThumbprintSecondary 
-}
-
-function Test-AddAzureRmServiceFabricClusterCertificateCNNotAllowed
-{
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
-    $keyvaulturi = Get-SecretUrl
-	$commonName = Get-CACertCommonName
-	$issuerThumbprint = Get-CACertIssuerThumbprint
-
-	$exceptionThrown = $false
-
-	Try
-	{
-		$cluster = 	Add-AzServiceFabricClusterCertificate -ResourceGroupName $resourceGroupName  -ClusterName $clusterName -SecretIdentifier $keyvaulturi `
-			-CertificateCommonName $commonName -CertificateIssuerThumbprint $issuerThumbprint -Verbose -ErrorAction Stop
-	}
-	Catch [System.Management.Automation.PSInvalidOperationException]
-	{
-		Assert-AreEqual $true ($PSItem.Exception.Message -match 'Unable to mix certificates by common name and thumbprint')
-		$exceptionThrown = $true
-	}
-
-	Assert-AreEqual $true $exceptionThrown "Expected Exception mix certs not thrown"
-
-}
-
-function Test-RemoveAzureRmServiceFabricClusterCertificate
-{
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
-    $thumbprint  = Get-InitialThumbprint
-
-	WaitForClusterReadyStateIfRecord $clusterName  $resourceGroupName
-
-	$cluster = Remove-AzServiceFabricClusterCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint -Verbose
-	$clusters = Get-AzServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-Null $clusters[0].Certificate.ThumbprintSecondary 
-}
-
-function Test-RemoveAzureRmServiceFabricClusterCertificateNotAllowed
-{
-	$clusterName = Get-ClusterName
-	$resourceGroupName = Get-ResourceGroupName
-    $thumbprint  = Get-Thumbprint
-
-	$exceptionThrown = $false
-	Try
-	{
-		$cluster = Remove-AzServiceFabricClusterCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint -Verbose -ErrorAction Stop
-	}
-	Catch [System.InvalidOperationException]
-	{
-		Assert-AreEqual $true ($PSItem.Exception.Message -match 'There is only one certificate in the cluster')
-		$exceptionThrown = $true
-	}
-	
-	Assert-AreEqual $true $exceptionThrown "Expected Exception only one cert not thrown"
+	Assert-AreEqual $reliabilityLevel $clusters[0].ReliabilityLevel
 }
 
 function Test-AddAzureRmServiceFabricClientCertificate

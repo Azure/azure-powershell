@@ -211,7 +211,7 @@ Test-GetAllSoftwareUpdateConfigurations
 function Test-GetAllSoftwareUpdateConfigurations {
     $sucs = Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName $rg `
                                                               -AutomationAccountName $aa
-    Assert-AreEqual $sucs.Count 7 "Get all software update configuration didn't retrieve the expected number of items. actual SUC count is $($sucs.Count)"
+    Assert-AreEqual $sucs.Count 9 "Get all software update configuration didn't retrieve the expected number of items. actual SUC count is $($sucs.Count)"
 }
 
 
@@ -304,7 +304,7 @@ function Test-GetAllSoftwareUpdateMachineRuns {
     $runs = Get-AzAutomationSoftwareUpdateMachineRun  -ResourceGroupName $rg `
                                                            -AutomationAccountName $aa
     
-    Assert-AreEqual $runs.Count 6 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
+    Assert-AreEqual $runs.Count 20 "Get software update configurations machine runs didn't return expected number of items $($runs.Count)" 
 }
 
 <#

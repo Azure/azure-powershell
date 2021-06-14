@@ -162,5 +162,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ThroughputHelpMessage = "Throughput value in int.";
         public const string AutoscaleMaxThroughputHelpMessage = "Maximum Throughput value if autoscale is enabled.";
         public const string ThroughputTypeHelpMessage = "Throughput type to migrate to. Possible values are: Autoscale, Manual.";
+
+        // Role cmdlets help messages
+        public const string PrincipalIdHelpMessage = "Object ID (Guid) of the AAD principal to which the Role Assignment is being granted. This could be user, group, service principal, or managed identity.";
+        public const string ScopeHelpMessage  = "Resource path below which the Role Assignment shall grant access. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
+        public const string RoleAssignmentHelpMessage  = "A Role Assignment attaches a Role Definition to an AAD principal at a specified resource scope for granting access.";
+        public const string RoleAssignmentIdHelpMessage  = "Unique ID (Guid) for the Role Assignment.";
+        public const string RoleDefinitionHelpMessage  = "A Role Definition is a collection of permissions.";
+        public const string RoleDefinitionIdHelpMessage  = "Unique ID (Guid) for the Role Definition.";
+        public const string TypeHelpMessage = "Type of the Role Definition, either CustomRole or BuiltInRole.";
+        public const string RoleNameHelpMessage = "Unique display name for the Role Definition.";
+        public const string DataActionsHelpMessage = "Set of data actions granted through the Role Definition. List of allowed actions can be found at: https://aka.ms/cosmos-native-rbac";
+        public const string PermissionsHelpMessage = "Permission is a collection of data actions.";
+        public const string AssignableScopesHelpMessage = "Set of resource paths below which a Role Assignment can be attached to the Role Definition. Eg. '/', '/dbs/dbname','/dbs/dbname/colls/collname'.";
+        public const string RoleDefinitionNameHelpMessage = "Unique display name for the Role Definition.";
     }
 }

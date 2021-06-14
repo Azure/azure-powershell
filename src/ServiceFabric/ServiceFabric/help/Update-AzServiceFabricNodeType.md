@@ -1,9 +1,10 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricnodetype
 schema: 2.0.0
 ---
+
 # Update-AzServiceFabricNodeType
 
 ## SYNOPSIS
@@ -12,9 +13,8 @@ Update a node type within the cluster.
 ## SYNTAX
 
 ```
-Update-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> -NodeType <String>
- [-IsPrimaryNodeType <Bool>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzServiceFabricNodeType [-ResourceGroupName] <String> [-Name] <String> [-IsPrimaryNodeType <Boolean>]
+ -NodeType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Define whether the node type is a primary node type. Primary node type may have seed nodes and system services.
 
 ```yaml
-Type: System.Nullable<System.Boolean>
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

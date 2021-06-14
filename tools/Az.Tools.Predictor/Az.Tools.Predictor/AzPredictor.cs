@@ -120,11 +120,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     {
                         string secondToLastLine = history.TakeLast(AzPredictorConstants.CommandHistoryCountToProcess).First();
                         var secondToLastCommand = GetAstAndMaskedCommandLine(secondToLastLine);
-                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.Item2);
+                        _lastTwoMaskedCommands.Enqueue(secondToLastCommand.IsSupported ? secondToLastCommand.MaskedValue : AzPredictorConstants.CommandPlaceholder);
 
-                        if (!string.Equals(AzPredictorConstants.CommandPlaceholder, secondToLastCommand.Item2, StringComparison.Ordinal))
+                        if (secondToLastCommand.IsSupported)
                         {
-                            _service.RecordHistory(secondToLastCommand.Item1);
+                            _service.RecordHistory(secondToLastCommand.Ast);
                         }
                     }
                     else
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
                 string lastLine = history.Last();
                 var lastCommand = GetAstAndMaskedCommandLine(lastLine);
-                bool isLastCommandSupported = !string.Equals(AzPredictorConstants.CommandPlaceholder, lastCommand.Item2, StringComparison.Ordinal);
+                bool isLastCommandSupported = lastCommand.IsSupported;
 
                 if (isLastCommandSupported)
                 {
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     _lastTwoMaskedCommands.Enqueue(existingInQueue);
                 }
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.Item2));
+                _telemetryClient.OnHistory(new HistoryTelemetryData(clientId, lastCommand.MaskedValue ?? AzPredictorConstants.CommandPlaceholder));
 
                 if (isLastTwoCommandsChanged)
                 {
@@ -202,21 +202,17 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
             }
 
-            ValueTuple<CommandAst, string> GetAstAndMaskedCommandLine(string commandLine)
+            (CommandAst Ast, string MaskedValue, bool IsSupported) GetAstAndMaskedCommandLine(string commandLine)
             {
                 var asts = Parser.ParseInput(commandLine, out _, out _);
                 var allNestedAsts = asts?.FindAll((ast) => ast is CommandAst, true);
                 var commandAst = allNestedAsts?.LastOrDefault() as CommandAst;
-                string maskedCommandLine = AzPredictorConstants.CommandPlaceholder;
 
                 var commandName = commandAst?.CommandElements?.FirstOrDefault().ToString();
+                bool isSupported = _service.IsSupportedCommand(commandName);
+                string maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
 
-                if (_service.IsSupportedCommand(commandName))
-                {
-                    maskedCommandLine = CommandLineUtilities.MaskCommandLine(commandAst);
-                }
-
-                return ValueTuple.Create(commandAst, maskedCommandLine);
+                return (commandAst, maskedCommandLine, isSupported);
             }
         }
 

@@ -626,7 +626,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(), destBlob).ConfigureAwait(false);
+                Uri srcBlobUriWithCredentail = null;
+                if (Channel!=null && destChannel != null && 
+                    Channel.StorageContext!= null && destChannel.StorageContext != null 
+                    && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                {
+                    // if inside same account, source blob can be anonumous
+                    srcBlobUriWithCredentail = srcBlob.SnapshotQualifiedUri;
+                }
+                else
+                {
+                    srcBlobUriWithCredentail = srcBlob.GenerateUriWithCredentials();
+                }
+                await StartCopyFromUri(taskId, destChannel, srcBlobUriWithCredentail, destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {
@@ -648,7 +661,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             try
             {
-                await StartCopyFromUri(taskId, destChannel, srcBlob.GenerateUriWithCredentials(Channel.StorageContext), destBlob).ConfigureAwait(false);
+                Uri srcBlobUriWithCredentail = null;
+                if (Channel != null && destChannel != null &&
+                    Channel.StorageContext != null && destChannel.StorageContext != null
+                    && Channel.StorageContext.StorageAccountName == destChannel.StorageContext.StorageAccountName
+                    && Channel.StorageContext.StorageAccount.Credentials.IsToken)
+                {
+                    // if inside same account, source blob can be anonumous
+                    srcBlobUriWithCredentail = srcBlob.Uri;
+                }
+                else
+                {
+                    srcBlobUriWithCredentail = srcBlob.GenerateUriWithCredentials(Channel.StorageContext);
+                }
+                await StartCopyFromUri(taskId, destChannel, srcBlobUriWithCredentail, destBlob).ConfigureAwait(false);
             }
             catch (StorageException ex)
             {

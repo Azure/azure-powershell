@@ -42,6 +42,7 @@ Custom Resource Providers             | `Az.CustomProviders`                    
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
 Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
+DataDog                               | `Az.DataDog`                            | [![DataDog]][DataDogGallery]
 Data Factory                          | `Az.DataFactory`                        | [![DataFactory]][DataFactoryGallery]
 Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
 Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
@@ -99,6 +100,7 @@ Portal                                | `Az.Portal`                             
 Database for PostgreSQL               | `Az.PostgreSql`                         | [![PostgreSql]][PostgreSqlGallery]
 Power BI Embedded                     | `Az.PowerBIEmbedded`                    | [![PowerBIEmbedded]][PowerBIEmbeddedGallery]
 Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
+Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery]
 Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
 Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
 Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
@@ -223,6 +225,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PostgreSql]:                 https://img.shields.io/powershellgallery/v/Az.PostgreSql.svg?style=flat-square&label=Az.PostgreSql
 [PowerBIEmbedded]:            https://img.shields.io/powershellgallery/v/Az.PowerBIEmbedded.svg?style=flat-square&label=Az.PowerBIEmbedded
 [PrivateDns]:                 https://img.shields.io/powershellgallery/v/Az.PrivateDns.svg?style=flat-square&label=Az.PrivateDns
+[ProviderHub]:                https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub
 [RecoveryServices]:           https://img.shields.io/powershellgallery/v/Az.RecoveryServices.svg?style=flat-square&label=Az.RecoveryServices
 [RedisCache]:                 https://img.shields.io/powershellgallery/v/Az.RedisCache.svg?style=flat-square&label=Az.RedisCache
 [RedisEnterpriseCache]:       https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache
@@ -345,6 +348,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [PostgreSqlGallery]:                 https://www.powershellgallery.com/packages/Az.PostgreSql/
 [PowerBIEmbeddedGallery]:            https://www.powershellgallery.com/packages/Az.PowerBIEmbedded/
 [PrivateDnsGallery]:                 https://www.powershellgallery.com/packages/Az.PrivateDns/
+[ProviderHubGallery]:                https://www.powershellgallery.com/packages/Az.ProviderHub/
 [RecoveryServicesGallery]:           https://www.powershellgallery.com/packages/Az.RecoveryServices/
 [RedisCacheGallery]:                 https://www.powershellgallery.com/packages/Az.RedisCache/
 [RedisEnterpriseCacheGallery]:       https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/

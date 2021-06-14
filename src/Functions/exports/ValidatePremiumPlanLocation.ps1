@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatepremiumplanlocation
+https://docs.microsoft.com/powershell/module/az.functions/validatepremiumplanlocation
 #>
 function ValidatePremiumPlanLocation {
 [CmdletBinding(PositionalBinding=$false)]

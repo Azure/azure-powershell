@@ -5,6 +5,7 @@
   "datasourceType": "Microsoft.Compute/disks",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation" ],
+  "itemLevelRecoveyEnabled": false,
   "policySettings": {
     "supportedRetentionTags": [ "Daily", "Weekly" ],
     "supportedDatastoreTypes": [ "OperationalStore" ],

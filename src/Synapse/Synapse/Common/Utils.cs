@@ -199,6 +199,11 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return operation.WaitForCompletionAsync().Result;
         }
 
+        public static Response Poll(this Operation operation)
+        {
+            return operation.WaitForCompletionResponseAsync().Result;
+        }
+
         public static string GetItemTypeString(this WorkspaceItemType itemType)
         {
             string itemTypeString = null;
@@ -219,25 +224,6 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             }
 
             return itemTypeString;
-        }
-
-        public static string GetPrincipalTypeString(this PrincipalType principalType)
-        {
-            string principalTypeString = null;
-            switch (principalType)
-            {
-                case PrincipalType.User:
-                    principalTypeString = "User";
-                    break;
-                case PrincipalType.Group:
-                    principalTypeString = "Group";
-                    break;
-                case PrincipalType.ServicePrincipal:
-                    principalTypeString = "ServicePrincipal";
-                    break;
-            }
-
-            return principalTypeString;
         }
     }
 }

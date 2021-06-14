@@ -39,35 +39,35 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             };
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDatabaseShortTermRetentionPolicy()
         {
             RunPowerShellTest("Test-ManagedLiveDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedDeletedDatabaseShortTermRetentionPolicy()
         {
             RunPowerShellTest("Test-ManagedDeletedDatabaseShortTermRetentionPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionPolicy()
         {
             RunPowerShellTest("Test-ManagedInstanceLongTermRetentionPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionBackup()
         {
             RunPowerShellTest("Test-ManagedInstanceLongTermRetentionBackup");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceLongTermRetentionResourceGroupBasedBackup()
         {

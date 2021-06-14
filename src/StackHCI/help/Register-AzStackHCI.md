@@ -17,7 +17,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [[-Region] <String>] [[-ResourceN
  [[-Tag] <Hashtable>] [[-TenantId] <String>] [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>]
  [[-GraphAccessToken] <String>] [[-AccountId] <String>] [[-EnvironmentName] <String>]
  [[-ComputerName] <String>] [[-CertificateThumbprint] <String>] [-RepairRegistration]
- [-UseDeviceAuthentication] [[-Credential] <PSCredential>] [<CommonParameters>]
+ [-UseDeviceAuthentication] [-EnableAzureArcServer] [[-Credential] <PSCredential>] [-IsWAC]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +150,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureArcServer
+Specifying this parameter to $false will skip registering the cluster nodes with Arc for servers.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: True
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnvironmentName
 Specifies the Azure Environment.
 Default is AzureCloud.
@@ -178,6 +194,21 @@ Aliases:
 Required: False
 Position: 8
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsWAC
+Registrations through Windows Admin Center specifies this parameter to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

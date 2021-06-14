@@ -18151,15 +18151,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>PublishingPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublishingPasswordHash</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>PublishingPasswordHashSalt</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>PublishingUserName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -18169,15 +18160,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>PublishingPassword</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublishingPasswordHash</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>PublishingPasswordHashSalt</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PublishingUserName</PropertyName>
               </TableColumnItem>

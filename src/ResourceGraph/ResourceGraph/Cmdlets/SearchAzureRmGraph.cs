@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 {
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.ResourceGraph.Models;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
     using Microsoft.Azure.Management.ResourceGraph.Models;
     using System;
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     /// Search-AzGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph", DefaultParameterSetName = "SubscriptionScopedQuery"), OutputType(typeof(PSResourceGraphResponse<PSObject>))]
     public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
@@ -149,7 +150,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             IList<string> subscriptions = null;
             if (managementGroups == null)
             {
-                subscriptions = this.GetSubscriptions().ToList();
+                subscriptions = this.GetSubscriptions()?.ToList();
                 if (subscriptions != null && subscriptions.Count > SubscriptionLimit)
                 {
                     subscriptions = subscriptions.Take(SubscriptionLimit).ToList();
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
             }
 
-            var results = new List<PSObject>();
+            var psResourceGraphResponse = new PSResourceGraphResponse<PSObject>();
             QueryResponse response = null;
 
             var resultTruncated = false;
@@ -209,10 +210,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 }
 
                 var requestResults = response.Data.ToPsObjects();
-                results.AddRange(requestResults);
+                psResourceGraphResponse.Data = requestResults;
+                psResourceGraphResponse.SkipToken = response.SkipToken;
                 this.WriteVerbose($"Received results: {requestResults.Count}");
 
-                if (resultTruncated && results.Count < first)
+                if (resultTruncated && psResourceGraphResponse.Data.Count < first)
                 {
                     this.WriteWarning("Unable to paginate the results of the query. " +
                         "Some resources may be missing from the results. " +
@@ -245,7 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return;
             }
 
-            this.WriteObject(results, true);
+            this.WriteObject(psResourceGraphResponse);
         }
 
         /// <summary>
@@ -260,7 +262,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             }
 
             var accountSubscriptions = this.DefaultContext.Account.GetSubscriptions();
-            if (accountSubscriptions.Length > 0)
+            if (accountSubscriptions?.Length > 0)
             {
                 return accountSubscriptions;
             }

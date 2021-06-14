@@ -49,7 +49,7 @@ SpatialIndexes   : {Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec}
 Bool to indicate if the indexing policy is automatic
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 Array of array of objects of type Microsoft.Azure.Commands.CosmosDB.PSCompositePath
 
 ```yaml
-Type: PSCompositePath[][]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCompositePath[][]
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Array of strings containing excludedPath(Specifies a path within a JSON document to be excluded in the Azure Cosmos DB service.)  elements.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Array of strings containing includedPath (Specifies a path within a JSON document to be included in the Azure Cosmos DB service.) elements.
 
 ```yaml
-Type: PSIncludedPath[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSIncludedPath[]
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ indicates the indexing mode.
 Possible values include: 'Consistent', 'Lazy', 'None'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Array of objects of type Microsoft.Azure.Commands.CosmosDB.PSSpatialSpec
 
 ```yaml
-Type: PSSpatialSpec[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSpatialSpec[]
 Parameter Sets: (All)
 Aliases:
 

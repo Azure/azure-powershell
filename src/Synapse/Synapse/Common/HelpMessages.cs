@@ -421,12 +421,14 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string WorkspaceItem = "The workspace item.";
 
-        public const string WorkspacePrincipalType = "The workspace principal type.";
-
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 
         public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";
 
         public const string KeyObject = "Workspace key input object, usually passed through the pipeline.";
+
+        public const string SparkJobDefinitionName = "The Spark job definition name.";
+
+        public const string SparkJobDefinitionObject = "The Spark job definition object.";
     }
 }

@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var spParam = new ServicePrincipalCreateParameters
             {
                 AppId = appId,
-                AccountEnabled = true
+                AccountEnabled = true.ToString()
             };
 
             return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);

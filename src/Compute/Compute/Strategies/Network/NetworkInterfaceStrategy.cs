@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
+            string edgeZone,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
             ResourceConfig<PublicIPAddress> publicIPAddress,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
@@ -55,7 +56,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     },
                     NetworkSecurityGroup = networkSecurityGroup == null 
                         ? null 
-                        : engine.GetReference(networkSecurityGroup)
+                        : engine.GetReference(networkSecurityGroup),
+                    ExtendedLocation = edgeZone == null
+                        ? null
+                        : new ExtendedLocation { Name = edgeZone }
                 });
     }
 }

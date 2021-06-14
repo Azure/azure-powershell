@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             PowerShellTokenCacheProvider tokenCacheProvider = new InMemoryTokenCacheProvider();
             AzureSession.Instance.RegisterComponent(PowerShellTokenCacheProvider.PowerShellTokenCacheProviderKey, () => tokenCacheProvider);
-            AzureSession.Instance.RegisterComponent(nameof(PowerShellTokenCache), () => tokenCacheProvider.GetTokenCache());
             IAuthenticatorBuilder builder = new DefaultAuthenticatorBuilder();
             AzureSession.Instance.RegisterComponent(AuthenticatorBuilder.AuthenticatorBuilderKey, () => builder);
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());

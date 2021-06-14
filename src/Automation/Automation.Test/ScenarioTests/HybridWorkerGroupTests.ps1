@@ -15,7 +15,7 @@
 # Automation account information
 $resourceGroupName = "hw-RG"
 $automationAccountName = "hw-aa123"
-$hybridWorkerGroupName = "hw-grp2"
+$hybridWorkerGroupName = "hw-grp3"
 
 function Test-E2EHybridWorkerGroup
 {

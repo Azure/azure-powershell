@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
-using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
@@ -27,8 +27,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR" + "NetworkAcl", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRNetworkAcls))]
     public class UpdateAzureRmSignalRNetworkAcl : SignalRCmdletBase,
-IWithResourceId,IWithInputObject
+IWithResourceId, IWithInputObject
     {
+        private const string ClientConnection = "ClientConnection";
+        private const string ServerConnection = "ServerConnection";
+        private const string RESTAPI = "RESTAPI";
+        private const string Trace = "Trace";
+
         [Parameter(
     Mandatory = false,
     ParameterSetName = ResourceGroupParameterSet,
@@ -43,6 +48,7 @@ IWithResourceId,IWithInputObject
     ParameterSetName = ResourceGroupParameterSet,
     HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
+        [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -81,16 +87,18 @@ IWithResourceId,IWithInputObject
         [Parameter(
          Mandatory = false,
          HelpMessage = "Name(s) of private endpoint(s) to be updated")]
-        public  string[] PrivateEndpointName { get; set; }
+        public string[] PrivateEndpointName { get; set; }
 
         [Parameter(HelpMessage = "Allowed network ACLs")]
-        [PSArgumentCompleter("ClientConnection", "ServerConnection","RESTAPI")]
-        [ValidateSet("ClientConnection", "ServerConnection", "RESTAPI", IgnoreCase = true)]
+        [PSArgumentCompleter(ClientConnection, ServerConnection, RESTAPI, Trace)]
+        [AllowEmptyCollection]
+        [ValidateSet(ClientConnection, ServerConnection, RESTAPI, Trace, IgnoreCase = true)]
         public string[] Allow { get; set; }
 
         [Parameter(HelpMessage = "Denied network ACLs")]
-        [PSArgumentCompleter("ClientConnection", "ServerConnection", "RESTAPI")]
-        [ValidateSet("ClientConnection", "ServerConnection", "RESTAPI", IgnoreCase = true)]
+        [PSArgumentCompleter(ClientConnection, ServerConnection, RESTAPI, Trace)]
+        [AllowEmptyCollection]
+        [ValidateSet(ClientConnection, ServerConnection, RESTAPI, Trace, IgnoreCase = true)]
         public string[] Deny { get; set; }
 
         public override void ExecuteCmdlet()
@@ -120,13 +128,13 @@ IWithResourceId,IWithInputObject
                     var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                     var networkACLs = signalr.NetworkACLs;
                     var publicNetwork = networkACLs.PublicNetwork;
-                   var privateEndpoints = networkACLs.PrivateEndpoints;
+                    var privateEndpoints = networkACLs.PrivateEndpoints;
                     if (PublicNetwork)
                     {
-                        publicNetwork.Allow = Allow?? publicNetwork.Allow;
-                        publicNetwork.Deny = Deny?? publicNetwork.Deny;
+                        publicNetwork.Allow = Allow ?? publicNetwork.Allow;
+                        publicNetwork.Deny = Deny ?? publicNetwork.Deny;
                     }
-                    if (PrivateEndpointName != null && privateEndpoints!=null)  //if privateEndpoints is null, that means no private endpoint in this instance
+                    if (PrivateEndpointName != null && privateEndpoints != null)  //if privateEndpoints is null, that means no private endpoint in this instance
                     {
                         PrivateEndpointName.ForEach(name =>
                         {
@@ -137,7 +145,7 @@ IWithResourceId,IWithInputObject
                     }
                     networkACLs.DefaultAction = DefaultAction ?? networkACLs.DefaultAction;
                     PromptParameter(nameof(networkACLs), networkACLs == null ? null : JsonConvert.SerializeObject(networkACLs));
-                    signalr = Client.SignalR.Update(ResourceGroupName, Name, signalr);
+                    signalr = Client.SignalR.Update(signalr, ResourceGroupName, Name);
                     WriteObject(new PSSignalRNetworkAcls(signalr.NetworkACLs));
                 }
             });

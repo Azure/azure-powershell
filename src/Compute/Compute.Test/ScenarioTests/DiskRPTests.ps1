@@ -1375,3 +1375,35 @@ function Test-SnapshotDuplicateCreationFails
         Clean-ResourceGroup $rgname
     }
 }
+
+function Test-EdgeZoneConfigurations
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+	$edge = "eastus2euapmockedge";
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+		$diskconfig = New-AzDiskConfig -Location $loc -EdgeZone $edge -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+		$diskname = "disk" + $rgname;
+		$disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+		Assert-AreEqual $disk.Location $loc;
+		Assert-AreEqual $disk.ExtendedLocation.Name $edge;
+
+		$snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
+		$snapshotname = "snapshot" + $rgname
+		$snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+		Assert-AreEqual $snapshot.Location $loc;
+		Assert-AreEqual $snapshot.ExtendedLocation.Name $edge
+
+		$imageConfig = New-AzImageConfig -Location $loc -EdgeZone $edge -HyperVGeneration "V1";
+		Assert-AreEqual $imageConfig.ExtendedLocation.Name $edge
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}

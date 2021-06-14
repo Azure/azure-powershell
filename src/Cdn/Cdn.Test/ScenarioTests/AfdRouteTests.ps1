@@ -23,25 +23,25 @@ function Test-CreateAfdRoute
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $endpointName = getAssetName 
 
-    $createdEndpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
+    $createdEndpoint = New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName
     
     $originGroupName = getAssetName 
 
-    $originGroup = New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    $originGroup = New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize 3
 
     $customDomainName = getAssetName
 
     $hostName = "$customDomainName.azfdtests.xyz"
 
-    $customDomain = New-AzAfdCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
+    $customDomain = New-AzFrontDoorCdnCustomDomain -ResourceGroupName $resourceGroupName -ProfileName $profileName -CustomDomainName $customDomainName -HostName $hostName
 
     $routeName = getAssetName
 
-    $route = New-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName -OriginGroupId $originGroup.Id -DomainId $customDomain.Id
+    $route = New-AzFrontDoorCdnRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName -OriginGroupId $originGroup.Id -DomainId $customDomain.Id
 
     Assert-AreEqual $routeName $route.Name
     Assert-AreEqual $originGroup.Id $route.OriginGroupId
@@ -60,15 +60,15 @@ function Test-GetAfdRoute
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    $profile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $profile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $endpointName = getAssetName
 
-    $endpoint = New-AzAfdEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName 
+    $endpoint = New-AzFrontDoorCdnEndpoint -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName 
 
     $routeName = getAssetName
 
-    Assert-ThrowsContains { Get-AzAfdRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName } "NotFound"
+    Assert-ThrowsContains { Get-AzFrontDoorCdnRoute -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -RouteName $routeName } "NotFound"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

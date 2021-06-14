@@ -105,6 +105,23 @@ function New-ModulePsm1 {
             {
                 $template = $template -replace "%AZURECOREPREREQUISITE%", ""
             }
+            elseif($file.BaseName -ieq 'Az.Accounts')
+            {
+                $template = $template -replace "%AZURECOREPREREQUISITE%", 
+@"
+if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
+{
+    if (`$PSVersionTable.PSVersion -lt [Version]'6.2.4')
+    {
+        throw "Current Az version doesn't support PowerShell Core versions lower than 6.2.4. Please upgrade to PowerShell Core 6.2.4 or higher."
+    }
+    if (`$PSVersionTable.PSVersion -lt [Version]'7.0.6')
+    {
+        Write-Warning "This version of Az.Accounts is only supported on Windows PowerShell 5.1 and PowerShell 7.0.6 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to https://aka.ms/azpslifecycle."
+    }
+}
+"@
+            }
             else
             {
                 $template = $template -replace "%AZURECOREPREREQUISITE%", 
@@ -434,6 +451,11 @@ function Update-Netcore {
     }
 
     $modulePath = "$PSScriptRoot\Az"
+    Write-Host "Updating Netcore module from $modulePath"
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
+    Write-Host "Updated Netcore module"
+
+    $modulePath = "$PSScriptRoot\AzPreview"
     Write-Host "Updating Netcore module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
     Write-Host "Updated Netcore module"

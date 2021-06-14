@@ -163,6 +163,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string KeyName = nameof(KeyName);
 
+        public const string SparkJobDefinition = nameof(SparkJobDefinition);
+
         public static Dictionary<string, ComputeNodeSize> ComputeNodeSizes = new Dictionary<string, ComputeNodeSize>
         {
             {
@@ -234,13 +236,6 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             IntegrationRuntime,
             LinkedService,
             Credential
-        }
-
-        public enum PrincipalType
-        {
-            User,
-            Group,
-            ServicePrincipal
         }
     }
 }

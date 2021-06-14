@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
         public PackagedTemplate(TemplateSpecVersion versionModel)
         {
-            this.RootTemplate = (JObject)versionModel?.Template;
-            this.Artifacts = versionModel?.Artifacts?.ToArray() 
-                ?? new TemplateSpecArtifact[0];
+            this.RootTemplate = (JObject)versionModel?.MainTemplate;
+            this.Artifacts = versionModel?.LinkedTemplates?.ToArray() 
+                ?? new LinkedTemplateArtifact[0];
         }
 
         public JObject RootTemplate { get; set; }
 
-        public TemplateSpecArtifact[] Artifacts { get; set; }
+        public LinkedTemplateArtifact[] Artifacts { get; set; }
     }
 
     /// <summary>
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             public string CurrentDirectory { get; set; }
 
-            public IList<TemplateSpecArtifact> Artifacts { get; private set; }
-                = new List<TemplateSpecArtifact>();
+            public IList<LinkedTemplateArtifact> Artifacts { get; private set; }
+                = new List<LinkedTemplateArtifact>();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
                     PackArtifacts(absoluteLocalPath, context, out JObject templateObjForArtifact);
 
-                    TemplateSpecArtifact artifact = new TemplateSpecTemplateArtifact
+                    LinkedTemplateArtifact artifact = new LinkedTemplateArtifact
                     {
                         Path = asRelativePath,
                         Template = templateObjForArtifact
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             foreach (var artifact in packagedTemplate.Artifacts)
             {
-                if (!(artifact is TemplateSpecTemplateArtifact templateArtifact))
+                if (!(artifact is LinkedTemplateArtifact templateArtifact))
                 {
                     throw new NotSupportedException("Unknown artifact type encountered...");
                 }

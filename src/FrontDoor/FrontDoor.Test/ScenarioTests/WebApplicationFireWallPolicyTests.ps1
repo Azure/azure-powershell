@@ -146,3 +146,26 @@ function Test-ManagedRuleSetDefinition
     Assert-AreEqual $definitions[4].RuleSetVersion "preview-0.1"
     Assert-AreEqual $definitions[4].RuleGroups.Count 1
 }
+
+<#
+.SYNOPSIS
+Policy Action test
+#>
+function Test-PolicyAction
+{
+    $Name = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceGroupName = $resourceGroup.ResourceGroupName
+    $managedSet = New-AzFrontDoorWafManagedRuleObject -Type Microsoft_DefaultRuleSet -Version 1.1 -RuleGroupOverride $ruleGroupOverride -Action Block # Should use v2.0 but it's not enabled for all subscriptions
+    New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -ManagedRule $managedSet -EnabledState Enabled -Mode Prevention -Sku Premium_AzureFrontDoor
+    $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
+
+    Assert-NotNull $retrievedPolicy
+    Assert-AreEqual $Name $retrievedPolicy.Name
+    Assert-AreEqual "Enabled" $retrievedPolicy.RequestBodyCheck
+    Assert-AreEqual "Block" $retrievedPolicy.ManagedRules[0].RuleSetAction
+
+    $removed = Remove-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -PassThru
+    Assert-True { $removed }
+    Assert-ThrowsContains { Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName } "does not exist."
+}

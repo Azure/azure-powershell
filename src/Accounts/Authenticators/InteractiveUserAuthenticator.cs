@@ -57,13 +57,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var requestContext = new TokenRequestContext(scopes);
             var authority = interactiveParameters.Environment.ActiveDirectoryAuthority;
 
-            AzureSession.Instance.TryGetComponent(nameof(PowerShellTokenCache), out PowerShellTokenCache tokenCache);
-
             var options = new InteractiveBrowserCredentialOptions()
             {
                 ClientId = clientId,
                 TenantId = tenantId,
-                TokenCache = tokenCache.TokenCache,
+                TokenCachePersistenceOptions = tokenCacheProvider.GetTokenCachePersistenceOptions(),
                 AuthorityHost = new Uri(authority),
                 RedirectUri = GetReplyUrl(onPremise, interactiveParameters),
             };

@@ -61,8 +61,12 @@ Function Move-Generation2Master {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory $DestPath -FileName "Az.$ModuleName.psd1"
             $ModuleGuid = $Psd1Metadata.GUID
             $RequiredModule = $Psd1Metadata.RequiredModules
+            $Psd1Version = $Psd1Metadata.ModuleVersion
         }
         $Psd1Metadata = Import-LocalizedData -BaseDirectory $SourcePath -FileName "Az.$ModuleName.psd1"
+        if ($Null -ne $Psd1Version) {
+            $Psd1Metadata.ModuleVersion = $Psd1Version
+        }
         If ($Null -ne $ModuleGuid) {
             $Psd1Metadata.GUID = $ModuleGuid
         }

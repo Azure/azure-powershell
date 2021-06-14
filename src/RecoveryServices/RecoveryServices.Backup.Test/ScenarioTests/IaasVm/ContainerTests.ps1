@@ -27,6 +27,7 @@ function Test-AzureVMGetContainers
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 		Enable-Protection $vault $vm
 		
 		# VARIATION-1: Get All Containers with only mandatory parameters

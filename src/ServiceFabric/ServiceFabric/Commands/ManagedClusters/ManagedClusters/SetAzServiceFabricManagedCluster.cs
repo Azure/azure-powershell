@@ -79,11 +79,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Cluster's dns name.")]
         public string DnsName { get; set; }
 
-        [CmdletParameterBreakingChange("ReverseProxyEndpointPort", ChangeDescription = "Parameter is not supported in managed clusters. It will be depreacated without being replaced.")]
-        [Parameter(Mandatory = false, ParameterSetName = WithParamsByName, HelpMessage = "Endpoint used by reverse proxy.")]
-        [Parameter(Mandatory = false, ParameterSetName = WithParamsById, HelpMessage = "Endpoint used by reverse proxy.")]
-        public int? ReverseProxyEndpointPort { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
         public SwitchParameter AsJob { get; set; }
 

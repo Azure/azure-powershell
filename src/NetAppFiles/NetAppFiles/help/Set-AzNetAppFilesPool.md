@@ -26,6 +26,13 @@ Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-
  [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceIdParameterSet
+```
+Set-AzNetAppFilesPool -Name <String> -PoolSize <Int64> -ServiceLevel <String> [-QosType <String>]
+ [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzNetAppFilesPool** cmdlet modifies an ANF Capacity Pool.
 
@@ -161,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The resource id of the ANF account
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceLevel
 The service level of the ANF pool. Possible values "Standard", "Premium", "Ultra"
 
@@ -228,6 +250,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesAccount
+
+### System.String
 
 ## OUTPUTS
 

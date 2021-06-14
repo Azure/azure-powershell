@@ -157,7 +157,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 managedInstanceEncryptionProtector: new ManagedInstanceEncryptionProtector()
                 {
                     ServerKeyType = model.Type.ToString(),
-                    ServerKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(model.KeyId)
+                    ServerKeyName = TdeKeyHelper.CreateServerKeyNameFromKeyId(model.KeyId),
+                    AutoRotationEnabled = model.AutoRotationEnabled
                 });
 
             return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel

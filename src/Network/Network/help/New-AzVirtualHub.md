@@ -16,16 +16,16 @@ Creates an Azure VirtualHub resource.
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
- [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,7 @@ VirtualNetworkConnections : {}
 RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
+PreferredRoutingGateway   : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -73,6 +74,7 @@ VirtualNetworkConnections : {}
 RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
+PreferredRoutingGateway   : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -101,6 +103,7 @@ VirtualNetworkConnections : {}
 RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
+PreferredRoutingGateway   : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -109,13 +112,37 @@ The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub
 
 This example is similar to Example 2, but also attaches a route table to the virtual hub.
 
+### Example 4
+
+```powershell
+PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -PreferredRoutingGateway "VpnGateway"    
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 10.0.1.0/24
+RouteTable                :
+Location                  : West US
+Sku                  : Standard 
+PreferredRoutingGateway   : VpnGateway
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+```
+
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway.
+
 ## PARAMETERS
 
 ### -AddressPrefix
 The address space string for this virtual hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +157,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +172,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -160,7 +187,7 @@ Accept wildcard characters: False
 The hub virtual network connections associated with this Virtual Hub.
 
 ```yaml
-Type: PSHubVirtualNetworkConnection[]
+Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +202,7 @@ Accept wildcard characters: False
 location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +217,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubName
 
@@ -201,11 +228,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PreferredRoutingGateway
+Preferred Routing Gateway to Route On-Prem traffic from VNET
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +263,7 @@ Accept wildcard characters: False
 The route table associated with this Virtual Hub.
 
 ```yaml
-Type: PSVirtualHubRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +278,7 @@ Accept wildcard characters: False
 The sku of the Virtual Hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +293,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +308,7 @@ Accept wildcard characters: False
 The virtual wan object this hub is linked to.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases:
 
@@ -280,7 +323,7 @@ Accept wildcard characters: False
 The id of virtual wan object this hub is linked to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceId
 Aliases:
 
@@ -295,7 +338,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -311,7 +354,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

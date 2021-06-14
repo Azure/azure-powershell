@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>Argument completer implementation for CreatedByType.</summary>
+    /// <summary>The type of identity that created the resource.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.CreatedByTypeTypeConverter))]
     public partial struct CreatedByType :
         System.Management.Automation.IArgumentCompleter

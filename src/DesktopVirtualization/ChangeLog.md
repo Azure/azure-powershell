@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.0.0
+* Upgraded api version to 2021-02-01-preview.
+
 ## Version 2.1.1
 * Added StartVMOnConnect property to hostpool.
 

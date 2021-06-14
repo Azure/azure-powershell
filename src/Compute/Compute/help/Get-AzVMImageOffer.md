@@ -14,8 +14,8 @@ Gets VMImage offer types.
 ## SYNTAX
 
 ```
-Get-AzVMImageOffer -Location <String> -PublisherName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzVMImageOffer -Location <String> [-EdgeZone <String>] -PublisherName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +44,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZone
+Set the extended location name for EdgeZone. If not set, VM Image offer will be queried from Azure main region. Otherwise it will be queried from the specified extended location
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

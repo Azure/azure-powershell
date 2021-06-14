@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedBy = automationAccount.LastModifiedBy;
             this.Identity = automationAccount.Identity;
             this.Encryption = automationAccount.Encryption;
+            this.PublicNetworkAccess = automationAccount.PublicNetworkAccess;
         }
 
         /// <summary>
@@ -138,5 +139,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the encryption properties.
         /// </summary>
         public EncryptionProperties Encryption { get; private set; }
+
+        /// <summary>
+        /// Get or set indicate whether traffic on the non-ARM endpoint (Webhook/Agent)
+        //     is allowed from the public internet
+        /// </summary>
+        public bool? PublicNetworkAccess { get; set; }
     }
 }

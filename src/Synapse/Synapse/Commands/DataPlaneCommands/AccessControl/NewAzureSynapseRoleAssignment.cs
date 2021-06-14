@@ -106,10 +106,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Item { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, HelpMessage = HelpMessages.WorkspacePrincipalType)]
-        [ValidateNotNullOrEmpty]
-        public PrincipalType PrincipalType { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -141,12 +137,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 itemType = this.ItemType.GetItemTypeString();
             }
 
-            string principalType = null;
-            if (this.IsParameterBound(c => c.PrincipalType))
-            {
-                principalType = this.PrincipalType.GetPrincipalTypeString();
-            }
-
             if (this.ShouldProcess(this.WorkspaceName, String.Format(Resources.CreatingSynapseRoleAssignment, this.WorkspaceName, this.RoleDefinitionId, this.ObjectId)))
             {
                 // Item type and item should appear Report error if either item type or item is specified.
@@ -158,7 +148,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 string roleAssignmentId = Guid.NewGuid().ToString();
                 string scope = SynapseAnalyticsClient.GetRoleAssignmentScope(this.WorkspaceName, itemType, this.Item);
-                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope, principalType));
+                PSRoleAssignmentDetails roleAssignmentDetails = new PSRoleAssignmentDetails(SynapseAnalyticsClient.CreateRoleAssignment(roleAssignmentId, this.RoleDefinitionId, this.ObjectId, scope));
                 WriteObject(roleAssignmentDetails);
             }
         }

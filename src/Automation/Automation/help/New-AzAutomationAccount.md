@@ -58,6 +58,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AssignUserIdentity
+Specifies the list of user assigned identities associated with the automation account. The user assigned identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AutomationServicesEncryption
 Whether to set Automation Account Encryption KeySource to Microsoft.AutomationServices or not.
 
@@ -88,6 +102,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisablePublicNetworkAccess
+Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet and allow access only through private network.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyName
 Automation Account encryption KeyVault KeyName
 
@@ -103,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultEncryption
-Whether to set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault weather this parameter is set or not.
+Whether to set Automation Account encryption keySource to Microsoft.KeyVault or not. If you specify KeyName, KeyVersion and KeyVaultUri, Automation Account Encryption KeySource will also be set to Microsoft.KeyVault whether this parameter is set or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -206,6 +234,20 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserIdentityEncryption
+User Assigned Identity associated with the account to be used for encryption. The user assigned identity reference will be ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String
+Parameter Sets: KeyVaultEncryption
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

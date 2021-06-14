@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             HelpMessage = "Generate and assign a new System Identity for this automation account")]
         public SwitchParameter AssignSystemIdentity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Assign the User Assigned Identities to this automation account")]
+        [ValidateNotNullOrEmpty]
+        public string[] AssignUserIdentity { get; set; }
+
         [Parameter(HelpMessage = "Whether to set Automation Account KeySource to Microsoft.Automation or not.",
             Mandatory = false,
             ParameterSetName = AutomationServicesEncryptionParameterSet)]
@@ -123,6 +129,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string KeyVaultUri { get; set; }
 
+        [Parameter(HelpMessage = "User Assigned Identity used for encryption",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string UserIdentityEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet")]
+        public SwitchParameter DisablePublicNetworkAccess { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -132,8 +149,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             bool addSystemId = AssignSystemIdentity.IsPresent;
             bool enableAMK = AutomationServicesEncryption.IsPresent;
             bool enableCMK =  (ParameterSetName == KeyVaultEncryptionParameterSet);
+            bool disablePublicNetworkAccess = DisablePublicNetworkAccess.IsPresent;
 
-            var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags, addSystemId, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri);
+            var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags, addSystemId, AssignUserIdentity, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri, UserIdentityEncryption, disablePublicNetworkAccess);
             this.WriteObject(account);
         }
     }

@@ -208,5 +208,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         ///  Enables continuously available share property for SMB volume. Only applicable for SMB volume
         /// </remarks>
         public bool? SmbContinuouslyAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or sets LdapEnabled
+        /// </summary>
+        /// <remarks>
+        ///  Specifies whether LDAP is enabled or not for a given NFS volume.
+        /// </remarks>
+        public bool? LdapEnabled { get; set; }        
     }
 }

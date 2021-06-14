@@ -161,13 +161,13 @@ function Test-ProfilePipeline
 
     Assert-NotNull $createdProfile2
 
-    $profiles = Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+    $profiles = Get-AzCdnProfile -ResourceGroupName $resourceGroup.ResourceGroupName | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
-    Assert-True { $profiles.Count -eq 0 }
+    Assert-True { $profiles.Count -eq 2 }
 
-    Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzCdnProfile -Force
+    Get-AzCdnProfile -ResourceGroupName $resourceGroup.ResourceGroupName | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzCdnProfile -Force
 
-    $deletedProfiles = Get-AzCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+    $deletedProfiles = Get-AzCdnProfile -ResourceGroupName $resourceGroup.ResourceGroupName | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
     Assert-True { $deletedProfiles.Count -eq 0 }
 

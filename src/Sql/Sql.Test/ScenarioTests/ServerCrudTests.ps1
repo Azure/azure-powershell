@@ -58,7 +58,7 @@ function Test-UpdateServer
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$server = Create-ServerForTest $rg $rg.Location
 
 	try
 	{
@@ -99,11 +99,11 @@ function Test-UpdateServer
 function Test-GetServer
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
-	$rg1 = Create-ResourceGroupForTest
-	$server1 = Create-ServerForTest $rg
-	$server2 = Create-ServerForTest $rg
-	$server3 = Create-ServerForTest $rg1
+	$rg = Create-ResourceGroupForTest "West Europe"
+	$rg1 = Create-ResourceGroupForTest "West Europe"
+	$server1 = Create-ServerForTest $rg $rg.Location
+	$server2 = Create-ServerForTest $rg $rg.Location
+	$server3 = Create-ServerForTest $rg1 $rg.Location
 
 	try
 	{
@@ -145,9 +145,9 @@ function Test-GetServer
 function Test-RemoveServer
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
-	$server1 = Create-ServerForTest $rg
-	$server2 = Create-ServerForTest $rg
+	$rg = Create-ResourceGroupForTest "West Europe"
+	$server1 = Create-ServerForTest $rg $rg.Location
+	$server2 = Create-ServerForTest $rg $rg.Location
 
 	try
 	{
@@ -182,7 +182,7 @@ function Test-CreateServerWithIdentity
 
 	try
 	{
-		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "West Europe" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -237,7 +237,7 @@ function Test-UpdateServerWithoutIdentity
 	try
 	{
 		# Create a server with identity
-		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "northeurope" -SqlAdministratorCredentials $credentials -AssignIdentity
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location "West Europe" -SqlAdministratorCredentials $credentials -AssignIdentity
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.Identity.Type SystemAssigned
 		Assert-NotNull $server1.Identity.PrincipalId
@@ -264,7 +264,7 @@ function Test-UpdateServerWithoutIdentity
 function Test-CreateandUpdateServerWithMinimalTlsVersion
 {
 	# Setup
-	$location = "eastus2euap"
+	$location = "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 
 	try

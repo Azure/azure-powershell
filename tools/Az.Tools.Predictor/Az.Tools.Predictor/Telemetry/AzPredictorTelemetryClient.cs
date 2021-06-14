@@ -34,10 +34,10 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         private const string TelemetryEventPrefix = "Az.Tools.Predictor";
 
         /// <inheritdoc/>
-        public string SessionId { get; } = Guid.NewGuid().ToString();
+        public string RequestId { get; private set; } = Guid.NewGuid().ToString();
 
         /// <inheritdoc/>
-        public string CorrelationId { get; private set; } = Guid.NewGuid().ToString();
+        public string SessionId { get; } = Guid.NewGuid().ToString();
 
         /// <summary>
         /// The client that sends the telemetry to the server.
@@ -92,11 +92,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <inheritdoc/>
         public virtual void OnRequestPrediction(RequestPredictionTelemetryData telemetryData)
         {
-            // OnRequestPrediction may be running as a task on a different thread, or it's not triggerred at all because the history isn't changed,
-            // regardless, we only update the correlation id when that happens.
-            // If correlation id isn't updated, that's the same as the prediction used for suggestion isn't updated yet.
-            // The correlation id should be to correlate the prediction from the server and the suggestions presented to the user.
-            CorrelationId = Guid.NewGuid().ToString();
+            RequestId = Guid.NewGuid().ToString();
 
             PostTelemetryData(telemetryData);
 
@@ -208,7 +204,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             }
 
             telemetryData.SessionId = SessionId;
-            telemetryData.CorrelationId = CorrelationId;
+            telemetryData.RequestId = RequestId;
+            telemetryData.CommandId = _commandId;
 
             _telemetryDispatcher.Post(telemetryData);
         }
@@ -362,8 +359,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
             return new Dictionary<string, string>()
             {
                 { "SessionId", telemetryData.SessionId },
-                { "CorrelationId", telemetryData.CorrelationId },
-                { "CommandId", _commandId },
+                { "RequestId", telemetryData.RequestId},
+                { "CommandId", telemetryData.CommandId},
                 { "UserId", _azContext.HashUserId },
                 { "IsInternal", _azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },
                 { "SurveyId", (_azContext as AzContext)?.SurveyId },

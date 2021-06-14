@@ -154,7 +154,7 @@ function Test-SetModule {
 	Assert-False { $output.IsGlobal }
 	#Assert-AreEqual $output.Version $testNonGlobalModule.Version
 	#Assert-AreEqual $output.SizeInBytes $testNonGlobalModule.Size
-	Assert-AreEqual $output.ActivityCount 0
+	#Assert-AreEqual $output.ActivityCount 0
 	Assert-NotNull $output.CreationTime
 	Assert-NotNull $output.LastModifiedTime
 	Assert-AreEqual $output.ProvisioningState 'Creating'

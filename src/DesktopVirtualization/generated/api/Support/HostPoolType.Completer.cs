@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("Pooled", "Pooled", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pooled");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "BYODesktop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("BYODesktop", "BYODesktop", global::System.Management.Automation.CompletionResultType.ParameterValue, "BYODesktop");
+            }
         }
     }
 }

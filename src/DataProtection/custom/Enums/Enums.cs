@@ -5,7 +5,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 
     public enum DatasourceTypes
     {
-        AzureDisk = 0
+        AzureDisk = 0,
+        AzureBlob
     }
 
     public enum StorageSettingType
@@ -117,7 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support
 
     public enum RestoreTargetType
     {
-        AlternateLocation = 0
+        AlternateLocation = 0,
+        OriginalLocation
     }
 
     public enum ProtectionStatus
