@@ -474,7 +474,7 @@ public static int hashForArtifact(String artifact)
                 $providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtPolicyCreationInput]::new()
                 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
                 $providerSpecificPolicy.InstanceType = "VMwareCbt"
-                $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
+                $providerSpecificPolicy.RecoveryPointHistoryInMinute = 360
                 $providerSpecificPolicy.CrashConsistentFrequencyInMinute = 60
                 $existingPolicyObject = New-AzMigrateReplicationPolicy -PolicyName $policyName -ResourceGroupName $ResourceGroupName -ResourceName $VaultName -ProviderSpecificInput $providerSpecificPolicy
                 Write-Host $LogStringCreated, $policyName
