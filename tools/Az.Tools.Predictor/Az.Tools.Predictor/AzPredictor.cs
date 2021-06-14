@@ -56,7 +56,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private const int SuggestionCountForTelemetry = 5;
 
-        private static readonly string[] CommonParameters = new string[] { "location" };
+        private static HashSet<string> _azAccountCommands = new HashSet<string>(new string[]
+                {
+                    "Connect-AzAccount", "Clear-AzContext", "Disconnect-AzAccount", "Import-AzContext", "Remove-AzContext", "Set-AzContext"
+                },
+                StringComparer.InvariantCultureIgnoreCase);
 
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
@@ -274,12 +278,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success)
         {
-            if (success && (commandLine.Equals("Connect-AzAccount", StringComparison.InvariantCultureIgnoreCase)
-                        || commandLine.Equals("Clear-AzContext", StringComparison.InvariantCultureIgnoreCase)
-                        || commandLine.Equals("Disconnect-AzAccount", StringComparison.InvariantCultureIgnoreCase)
-                        || commandLine.Equals("Import-AzContext", StringComparison.InvariantCultureIgnoreCase)
-                        || commandLine.Equals("Remove-AzContext", StringComparison.InvariantCultureIgnoreCase)
-                        || commandLine.Equals("Set-AzContext", StringComparison.InvariantCultureIgnoreCase)))
+            if (success && AzPredictor._azAccountCommands.Contains(commandLine))
             {
                 // The context only changes when the user executes the corresponding command successfully.
                 _azContext?.UpdateContext();

@@ -232,6 +232,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         {
             List<T> output = new List<T>();
 
+            PowerShellRuntime.Commands.Clear();
             PowerShellRuntime.AddScript(contents);
             Collection<T> result = PowerShellRuntime.Invoke<T>();
 
