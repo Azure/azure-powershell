@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported secure SMB setting in File service properties
+    - `Update-AzStorageFileServiceProperty`
+* Supported create account with EnableNfsV3
+    - `New-AzStorageAccount`
 
 ## Version 3.8.0
 * Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
