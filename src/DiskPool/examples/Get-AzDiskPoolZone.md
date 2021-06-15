@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: List availability zones for a location
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPoolZone -Location eastus
 
-{{ Add output here }}
+AdditionalCapability AvailabilityZone
+-------------------- ----------------
+                     {3, 1, 2}
+                     {3, 1, 2}
+                     {3, 1, 2}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The command lists all availability zones for a location.
