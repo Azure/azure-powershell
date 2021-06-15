@@ -83,12 +83,6 @@ directive:
       verb: Update
       subject: IscsiTarget
     hide: true
-  - where:
-      subject: DiskPoolOutboundNetworkDependencyEndpoint
-    hide: true
-  - where:
-      subject: DiskPoolZone
-    hide: true
   - model-cmdlet:
     - Acl
     - IscsiLun
