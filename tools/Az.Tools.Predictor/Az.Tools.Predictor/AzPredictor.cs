@@ -278,7 +278,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         public void OnCommandLineExecuted(PredictionClient client, string commandLine, bool success)
         {
-            if (success && AzPredictor._azAccountCommands.Contains(commandLine))
+            if (success && AzPredictor._azAccountCommands.Contains(commandLine.Trim().Split().FirstOrDefault()))
             {
                 // The context only changes when the user executes the corresponding command successfully.
                 _azContext?.UpdateContext();
