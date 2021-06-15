@@ -2955,14 +2955,15 @@ function Test-LoadBalancerInEdgeZone
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
         $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
         $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
-        $job = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -EdgeZone $edgeZone -AsJob
-        $job | Wait-Job
-		$actualLb = $job | Receive-Job
+        New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -EdgeZone $edgeZone
 
-        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
-
-        Assert-AreEqual $expectedLb.ExtendedLocation.Name $edgeZone
-        Assert-AreEqual $expectedLb.ExtendedLocation.Type "EdgeZone"
+        $loadBalancer = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual $loadBalancer.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $loadBalancer.ExtendedLocation.Type "EdgeZone"
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally
     {
