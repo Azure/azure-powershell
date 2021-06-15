@@ -2933,18 +2933,17 @@ function Test-LoadBalancerInEdgeZone
     $inboundNatRuleName = Get-ResourceName
     $lbruleName = Get-ResourceName
     $rglocation = "westus"
-    $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $location = "westus"
     $edgeZone = "microsoftlosangeles1"
 
     try
     {
         # Create the resource group
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}
+        New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}
 
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
 
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -EdgeZone $edgeZone
