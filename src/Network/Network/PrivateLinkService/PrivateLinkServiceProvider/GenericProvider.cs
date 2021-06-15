@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network.PrivateLinkService.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Internal.Common;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkServiceProvider
 {
@@ -132,9 +133,16 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         public PSPrivateLinkResource GetPrivateLinkResource(string resourceGroupName, string serviceName, string name)
         {
-            string url = BuildPrivateLinkResourceURL(resourceGroupName, serviceName, name);
-            PrivateLinkResource resource = ServiceClient.Operations.GetResource<PrivateLinkResource>(url, _configuration.ApiVersion);
-            return ToPsPrivateLinkResource(resource);
+            if (_configuration.HasResourceURI)
+            {
+                string url = BuildPrivateLinkResourceURL(resourceGroupName, serviceName, name);
+                PrivateLinkResource resource = ServiceClient.Operations.GetResource<PrivateLinkResource>(url, _configuration.ApiVersion);
+                return ToPsPrivateLinkResource(resource);
+            }
+            else 
+            {
+                return ListPrivateLinkResource(resourceGroupName, serviceName).Single(plr => plr.Name.Equals(name));
+            }
         }
 
         public List<PSPrivateLinkResource> ListPrivateLinkResource(string resourceGroupName, string serviceName)

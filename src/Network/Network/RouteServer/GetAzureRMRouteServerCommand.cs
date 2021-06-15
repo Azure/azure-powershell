@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
                 RouteServerName = resourceInfo.ResourceName;
             }
 
-            string ipConfigName = "ipconfig1";
             if (ShouldGetByName(ResourceGroupName, RouteServerName))
             {
                 var virtualHub = this.NetworkClient.NetworkManagementClient.VirtualHubs.Get(ResourceGroupName, RouteServerName);
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                 virtualHubModel.ResourceGroupName = this.ResourceGroupName;
                 virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
                 AddBgpConnectionsToPSVirtualHub(virtualHubModel, ResourceGroupName, RouteServerName);
-                AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouteServerName, ipConfigName);
+                AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouteServerName);
 
                 var routeServerModel = new PSRouteServer(virtualHubModel);
                 routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
                     virtualHubModel.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(virtualHub.Id);
                     virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
                     AddBgpConnectionsToPSVirtualHub(virtualHubModel, ResourceGroupName, RouteServerName);
-                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouteServerName, ipConfigName);
+                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, RouteServerName);
 
                     var routeServerModel = new PSRouteServer(virtualHubModel);
                     routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
