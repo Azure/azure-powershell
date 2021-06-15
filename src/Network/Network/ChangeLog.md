@@ -24,6 +24,7 @@
     - `Get-AzPublicIpAddress`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancer`
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.
