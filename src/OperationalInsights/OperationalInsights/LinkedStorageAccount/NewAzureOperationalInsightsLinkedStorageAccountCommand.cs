@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
@@ -41,11 +42,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
         public string DataSourceType { get; set; }
 
+        [CmdletParameterBreakingChange("StorageAccountId", ReplaceMentCmdletParameterName = "StorageAccountIds")]
         [Parameter(Position = 3,
             Mandatory = true,
             HelpMessage = "list of storage account Id.")]
         [ValidateNotNullOrEmpty]
-        public string[] StorageAccountIds { get; set; }
+        public string[] StorageAccountId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             if (ShouldProcess(this.WorkspaceName,
                 string.Format("create linked storage accounts type: {0} for workspace: {1}", this.DataSourceType, this.WorkspaceName)))
             {
-                WriteObject(this.OperationalInsightsClient.CreateLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType, this.StorageAccountIds));
+                WriteObject(this.OperationalInsightsClient.CreateLinkedStorageAccount(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType, this.StorageAccountId));
             }
         }
     }

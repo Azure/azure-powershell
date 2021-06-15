@@ -16,22 +16,27 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class PSSavedSearchValue
+    public class PSSavedSearch
     {
-        public PSSavedSearchValue()
+        public PSSavedSearch()
         {
         }
 
-        public PSSavedSearchValue(SavedSearch v)
+        public PSSavedSearch(SavedSearch v)
         {
             if (v != null)
             {
                 this.Id = v.Id;
+                this.Name = v.Name;
+                this.Type = v.Type;
+
                 this.ETag = v.Etag;
                 this.Properties = new PSSavedSearchProperties(v);
             }
         }
         public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
         public string ETag { get; set; }
         public PSSavedSearchProperties Properties { get; set; }
     }

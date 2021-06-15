@@ -14,14 +14,12 @@
 
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Net;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(HttpStatusCode))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(PSSavedSearch))]
     public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -83,20 +81,26 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         protected override void ProcessRecord()
         {
-            SavedSearch properties = new SavedSearch()
+            PSSavedSearchParameters parameters = new PSSavedSearchParameters(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                savedSearchId: SavedSearchId,
+                category: Category,
+                displayName: DisplayName,
+                query: Query,
+                version: Version,
+                functionAlias: FunctionAlias,
+                functionParameter: FunctionParameter,
+                eTag: string.Empty,
+                tags: Tag);
+
+            if (ShouldProcess(DisplayName, $"Create new saved search: {DisplayName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
-                Category = this.Category,
-                DisplayName = this.DisplayName,
-                Query = this.Query,
-                Version = this.Version,
-                FunctionAlias = this.FunctionAlias,
-                FunctionParameters = this.FunctionParameter
-            };
+                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters));
+            }
 
-            bool patch = this.IsParameterBound(c => c.FunctionParameter);
 
-            properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, patch, Force, ConfirmAction), true);
+            ////TODO look at New-OperationalInsightsWorkspace for implementation of 'ConfirmAction' and 'Force'
         }
 
     }

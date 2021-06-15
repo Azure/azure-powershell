@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service tier of the workspace.")]
         [ValidateSet("free", "standard", "premium", "pernode", "standalone", "pergb2018", "capacityreservation", "lacluster", IgnoreCase = true)]
-        public string SkuName { get; set; }
+        public string Sku { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Sku Capacity, value need to be multiple of 100 and above 0.")]
         [ValidateNotNullOrEmpty]
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             {
                 ResourceGroupName = ResourceGroupName,
                 WorkspaceName = Name,
-                Sku = new PSWorkspaceSku(SkuName, SkuCapacity),
+                Sku = new PSWorkspaceSku(Sku, SkuCapacity),
                 Tags = Tag,
                 PublicNetworkAccessForIngestion = this.PublicNetworkAccessForIngestion,
                 PublicNetworkAccessForQuery = this.PublicNetworkAccessForQuery,
