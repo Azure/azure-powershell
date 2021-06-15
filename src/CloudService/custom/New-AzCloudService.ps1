@@ -441,26 +441,26 @@ function validation
             $vnetFound = $false
         }
 
-        If($false -eq $vnetLocationMatch){
-            throw "The location for the cloud service (" + $location + ") and virtual network ("+ $thevnet.location +") are different. The location of the cloud service needs to match the location of the virtual network. Change the location of the cloud service to match the virtual network or change the resource group of the cloud service to try to resolve this issue."
-        }
-
-    }elseif (1 -eq $vnetNameSplitCount) {
-        $vnets = Get-AzVirtualNetwork -name $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name
+    } elseif (1 -eq $vnetNameSplitCount) {
         $passMemory.Add("vnetName", $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name)
-        $vnetFound = $false
-        foreach ($vnet in $vnets) {
-            if ($vnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
+        try {
+            $thevnet = Get-AzVirtualNetwork -name $cscfg.ServiceConfiguration.NetworkConfiguration.VirtualNetworkSite.name -ResourceGroupName $ResourceGroupName -ErrorAction Stop
+            if ($thevnet.location.replace(" ","").tolower() -eq $Location.replace(" ","").tolower()){
                 $vnetFound = $true
-                $theVNet = $vnet
             }
-            elseif ($vnet.ResourceGroupName -eq $ResourceGroupName) {
-                throw "The location for the cloud service (" + $location + ") and virtual network ("+ $vnet.location +") are different. The location of the cloud service needs to match the location of the virtual network. Change the location of the cloud service to match the virtual network or change the resource group of the cloud service to try to resolve this issue."
+            else {
+                $vnetLocationMatch = $false
             }
         }
-
+        catch {
+            $vnetFound = $false
+        }
     }else {
         throw "VirtualNetworkSite name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
+    }
+
+    If($false -eq $vnetLocationMatch){
+        throw "The location for the cloud service (" + $location + ") and virtual network ("+ $thevnet.location +") are different. The location of the cloud service needs to match the location of the virtual network. Change the location of the cloud service to match the virtual network or change the resource group of the cloud service to try to resolve this issue."
     }
 
     $passMemory.Add("vnetFound", $vnetFound)
@@ -543,32 +543,32 @@ function validation
                 $ipFound = $false
             }
 
-            if ($false -eq $IpLocationMatch){
-                throw "The location for the cloud service ("+ $location +") and public IP address ("+ $theIp.location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
-            }
-
         }elseif (1 -eq $IpNameSplitCount) {
-            $ipObjs = Get-AzPublicIpAddress -name $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name
             $passMemory.Add("ipName", $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name)
-
-            # Existing Reserved (Static) IP Location Mismatch
-            $ipFound = $false
-            foreach ($ipObj in $IpObjs) {
-                if ($ipObj.Location.replace(" ","").tolower() -eq $location.replace(" ","").tolower()){
+            try {
+                $theIpObj = Get-AzPublicIpAddress -name $cscfg.ServiceConfiguration.NetworkConfiguration.AddressAssignments.ReservedIPs.ReservedIP.Name -ResourceGroupName $ResourceGroupName -ErrorAction Stop
+                # Existing Reserved (Static) IP Location Mismatch
+                if ($theIpObj.Location.replace(" ","").tolower() -eq $location.replace(" ","").tolower()) {
                     $ipFound = $true
-                    $theIPObj = $ipobj
-                }
-                elseif ($ipObj.ResourceGroupName -eq $ResourceGroupName) {
-                    throw "The location for the cloud service ("+ $location +") and public IP address ("+ $ipObj.location +") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
+                } else {
+                    $ipLocationMatch = $false
                 }
             }
-        }else {
+            catch {
+                $ipFound = $false
+            }
+        } else {
             throw "ReservedIP name should be formated either ""{Name}"" or ""Group {ResourceGroupName} {Name}""."
+        }
+
+        If ($false -eq $IpLocationMatch){
+            throw "The location for the cloud service (" + $location + ") and public IP address (" + $theIpObj.location + ") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
         }
         
         $passMemory.Add("ipFound", $ipFound)
 
         If ($ipFound){
+            
             # Existing Reserved (Static) IP In Use
             if ($null -ne $theIPObj.IPConfiguration){
                 throw "The Public IP provided in the CSCFG: '" + $theIPObj.name + "' is currently in use by another resource."
