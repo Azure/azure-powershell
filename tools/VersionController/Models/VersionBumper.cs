@@ -68,6 +68,7 @@ namespace VersionController.Models
             UpdateChangeLog();
             var releaseNotes = GetReleaseNotes();
             UpdateOutputModuleManifest(releaseNotes);
+            UpdateDependentModules();
             UpdateRollupModuleManifest();
             UpdateAssemblyInfo();
             Console.WriteLine("Finished bumping version " + moduleName + "\n");
@@ -354,7 +355,7 @@ namespace VersionController.Models
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var projectModuleManifestPath = _fileHelper.ProjectModuleManifestPath;
             var tempModuleManifestPath = Path.Combine(outputModuleDirectory, moduleName + "-temp.psd1");
-            File.Copy(outputModuleManifestPath, tempModuleManifestPath);
+            File.Copy(outputModuleManifestPath, tempModuleManifestPath, true);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
             script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
@@ -378,6 +379,34 @@ namespace VersionController.Models
             File.Delete(tempModuleManifestPath);
         }
 
+        /// <summary>
+        /// Update the ModuleVersion of the bumped module in any dependent module's RequiredModule field.
+        /// </summary>
+        private void UpdateDependentModules()
+        {
+            var moduleName = _fileHelper.ModuleName;
+            var projectDirectories = _fileHelper.ProjectDirectories;
+            foreach (var projectDirectory in projectDirectories)
+            {
+                var moduleManifestPaths = Directory.GetFiles(projectDirectory, "*.psd1", SearchOption.AllDirectories)
+                                                   .Where(f => !f.Contains("Netcore") &&
+                                                               !f.Contains("bin") &&
+                                                               !f.Contains("dll-Help") &&
+                                                               !ModuleFilter.IsAzureStackModule(f))
+                                                   .ToList();
+                foreach (var moduleManifestPath in moduleManifestPaths)
+                {
+                    var file = File.ReadAllLines(moduleManifestPath);
+                    var pattern = @"ModuleName(\s*)=(\s*)(['\""])" + moduleName + @"(['\""])(\s*);(\s*)ModuleVersion(\s*)=(\s*)(['\""])" + "\\d+(\\.\\d+)+" + @"(['\""])";
+                    if (file.Where(l => Regex.IsMatch(l, pattern)).Any())
+                    {
+                        var updatedFile = file.Select(l => Regex.Replace(l, pattern, "ModuleName = '" + moduleName + "'; ModuleVersion = '" + _newVersion + "'"));
+                        File.WriteAllLines(moduleManifestPath, updatedFile);
+                    }
+                }
+            }
+        }
+        
         /// <summary>
         /// Creates a new header for the upcoming release based on the new version.
         /// </summary>

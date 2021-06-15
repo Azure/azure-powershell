@@ -128,8 +128,30 @@ namespace Microsoft.Azure.Commands.Network
             var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
             vLoadBalancerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
 
+            List<string> resourceIds = new List<string>();
+            Dictionary<string, List<string>> auxAuthHeader = null;
+
+            // Get aux token for each gateway lb references
+            foreach (FrontendIPConfiguration frontend in vLoadBalancerModel.FrontendIPConfigurations)
+            {
+                if (frontend.GatewayLoadBalancer != null)
+                {
+                    //Get the aux header for the remote vnet
+                    resourceIds.Add(frontend.GatewayLoadBalancer.Id);
+                }
+            }
+
+            if (resourceIds.Count > 0)
+            {
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
+            }
+
             // Execute the PUT LoadBalancer call
-            this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdate(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel);
+            this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel, auxAuthHeader).GetAwaiter().GetResult();
 
             var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
             var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);

@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PeeringState { get; set; }
 
         [JsonProperty(Order = 1)]
+        public string PeeringSyncLevel { get; set; }
+
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? AllowVirtualNetworkAccess { get; set; }
 
@@ -54,6 +57,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> RemoteGateways { get; set; }
 
         [JsonProperty(Order = 1)]
+        public PSAddressSpace PeeredRemoteAddressSpace { get; set; }
+
+        [JsonProperty(Order = 1)]
         public PSAddressSpace RemoteVirtualNetworkAddressSpace { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -73,6 +79,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RemoteGatewaysText
         {
             get { return JsonConvert.SerializeObject(RemoteGateways, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PeeredRemoteAddressSpaceText
+        {
+            get { return JsonConvert.SerializeObject(PeeredRemoteAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

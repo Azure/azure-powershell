@@ -24,9 +24,9 @@ Remove-AzSynapsePipeline -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NewByInputObject
+### RemoveByInputObject
 ```
-Remove-AzSynapsePipeline -Name <String> -InputObject <PSPipelineResource> [-PassThru] [-AsJob] [-Force]
+Remove-AzSynapsePipeline -InputObject <PSPipelineResource> [-PassThru] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,7 +110,7 @@ The pipeline object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Synapse.Models.PSPipelineResource
-Parameter Sets: NewByInputObject
+Parameter Sets: RemoveByInputObject
 Aliases:
 
 Required: True
@@ -125,7 +125,7 @@ The pipeline name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByName, RemoveByObject
 Aliases: PipelineName
 
 Required: True
