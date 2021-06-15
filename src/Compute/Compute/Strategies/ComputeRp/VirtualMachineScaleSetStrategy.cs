@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                         new VirtualMachineScaleSetIPConfiguration
                                         {
                                             Name = name,
-                                            LoadBalancerBackendAddressPools = new [] 
+                                            LoadBalancerBackendAddressPools = new []
                                             {
                                                 engine.GetReference(backendAdressPool)
                                             },
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Rules = scaleInPolicy
                     },
                     DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
-                    OrchestrationMode = (orchestrationMode == null) ? (OrchestrationMode?)null : (OrchestrationMode)Enum.Parse(typeof(OrchestrationMode), orchestrationMode, false)
+                    OrchestrationMode = (orchestrationMode == null) ? null : orchestrationMode
                 });
     }
 }
