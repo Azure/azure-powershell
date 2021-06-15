@@ -191,13 +191,15 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupStatus', 
                'Undo-AzRecoveryServicesBackupItemDeletion', 
                'Set-AzRecoveryServicesVaultProperty', 
-               'Copy-AzRecoveryServicesVault', 
+               'Get-AzRecoveryServicesVaultProperty', 
+               'Copy-AzRecoveryServicesVault',
                'Update-AzRecoveryServicesVault',
-               'Get-AzRecoveryServicesVaultProperty',               
                'New-AzRecoveryServicesAsrInMageRcmDiskInput', 
                'Start-AzRecoveryServicesAsrCancelFailoverJob',
                'Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup',
-               'Move-AzRecoveryServicesBackupRecoveryPoint'
+               'Move-AzRecoveryServicesBackupRecoveryPoint',
+               'Test-AzRecoveryServicesDSMove',
+               'Initialize-AzRecoveryServicesDSMove'
 
 # Variables to export from this module
 # VariablesToExport = @()
