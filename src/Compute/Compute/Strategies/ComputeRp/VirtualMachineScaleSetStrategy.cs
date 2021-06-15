@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Rules = scaleInPolicy
                     },
                     DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
-                    OrchestrationMode = (orchestrationMode == null) ? null : orchestrationMode
+                    OrchestrationMode = orchestrationMode
                 });
     }
 }
