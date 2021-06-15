@@ -54,10 +54,10 @@ This example gets a specific **AlertRuleTemplate** in the specified workspace, a
 
 ### Example 3
 ```powershell
-Get-AzSentinelAlertRuleTemplate @SentinelConnection | Where-Object {$_.Kind -eq "Azure Active Directory"}
+Get-AzSentinelAlertRuleTemplate @SentinelConnection | Where-Object {$_.Kind -eq "Scheduled"}
 ```
 
-This example (using a connection object) gets AlertRuleTemplates of the kind "Azure Active Directory"
+This example (using a connection object) gets AlertRuleTemplates of the kind "Scheduled"
 
 ## PARAMETERS
 

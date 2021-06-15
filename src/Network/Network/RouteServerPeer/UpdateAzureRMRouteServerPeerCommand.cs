@@ -154,8 +154,6 @@ namespace Microsoft.Azure.Commands.Network
                         PeerAsn = this.PeerAsn,
                         PeerIp = this.PeerIp
                     };
-                    string ipConfigName = "ipconfig1";
-
 
                     var bgpConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.BgpConnection>(peer);
 
@@ -165,7 +163,7 @@ namespace Microsoft.Azure.Commands.Network
                     virtualHubModel.ResourceGroupName = this.ResourceGroupName;
                     virtualHubModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);
                     AddBgpConnectionsToPSVirtualHub(virtualHubModel, ResourceGroupName, this.RouteServerName);
-                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, this.RouteServerName, ipConfigName);
+                    AddIpConfigurtaionToPSVirtualHub(virtualHubModel, this.ResourceGroupName, this.RouteServerName);
 
                     var routeServerModel = new PSRouteServer(virtualHubModel);
                     routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHub.Tags);

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class NetworkInterfaceReferenceStrategy
     {
         public static NetworkInterfaceReference GetReference(
-            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface)
-            => new NetworkInterfaceReference { Id = engine.GetId(networkInterface) };
+            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface, string deleteOption = null)
+            => new NetworkInterfaceReference { Id = engine.GetId(networkInterface), DeleteOption = deleteOption };
     }
 }

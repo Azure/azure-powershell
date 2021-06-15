@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the migrate project location.
+Specifies the VMware machine name.
 
 ```yaml
 Type: System.String

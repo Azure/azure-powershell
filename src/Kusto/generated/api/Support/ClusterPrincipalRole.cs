@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="ClusterPrincipalRole" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ClusterPrincipalRole(System.Convert.ToString(value));
+            return new ClusterPrincipalRole(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ClusterPrincipalRole</summary>

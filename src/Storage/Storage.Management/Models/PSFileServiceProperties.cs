@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "DeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.DeleteRetentionPolicy.Days", Position = 3)]
         public PSDeleteRetentionPolicy ShareDeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
+        public PSProtocolSettings ProtocolSettings { get; set; }
 
         public PSFileServiceProperties()
         { }
@@ -49,14 +50,52 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Type = policy.Type;
             this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
             this.ShareDeleteRetentionPolicy = policy.ShareDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ShareDeleteRetentionPolicy);
+            this.ProtocolSettings = policy.ProtocolSettings is null ? null : new PSProtocolSettings(policy.ProtocolSettings);
         }
-        public FileServiceProperties ParseBlobServiceProperties()
+        public FileServiceProperties ParseFileServiceProperties()
         {
             return new FileServiceProperties
             {
                 Cors = this.Cors is null ? null : this.Cors.ParseCorsRules(),
                 ShareDeleteRetentionPolicy = this.ShareDeleteRetentionPolicy is null ? null : this.ShareDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
             };
+        }
+    }
+    public class PSProtocolSettings
+    {
+        public PSSmbSetting Smb { get; set; }
+
+        public PSProtocolSettings(ProtocolSettings protocolSettings)
+        {
+            this.Smb = protocolSettings.Smb is null ? null : new PSSmbSetting(protocolSettings.Smb);
+        }
+    }
+
+    public class PSSmbSetting
+    {
+        public string[] Versions { get; set; }
+        public string[] AuthenticationMethods { get; set; }
+        public string[] KerberosTicketEncryption { get; set; }
+        public string[] ChannelEncryption { get; set; }
+        public PSMultichannel Multichannel { get; set; }
+
+        public PSSmbSetting(SmbSetting smbSetting)
+        {
+            this.Versions = smbSetting.Versions is null ? null : smbSetting.Versions.Split(new char[] { ';'});
+            this.AuthenticationMethods = smbSetting.AuthenticationMethods is null ? null : smbSetting.AuthenticationMethods.Split(new char[] { ';' });
+            this.KerberosTicketEncryption = smbSetting.KerberosTicketEncryption is null ? null : smbSetting.KerberosTicketEncryption.Split(new char[] { ';' });
+            this.ChannelEncryption = smbSetting.ChannelEncryption is null ? null : smbSetting.ChannelEncryption.Split(new char[] { ';' });
+            this.Multichannel = smbSetting.Multichannel is null ? null : new PSMultichannel(smbSetting.Multichannel);
+        }
+    }
+
+    public class PSMultichannel
+    {
+        public bool? Enabled { get; set; }
+
+        public PSMultichannel(Multichannel multichannel)
+        {
+            this.Enabled = multichannel.Enabled;
         }
     }
 }

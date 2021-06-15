@@ -289,14 +289,18 @@ namespace Microsoft.Azure.Commands.Aks
                         cluster = BuildNewCluster();
                     }
 
-                    acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
-                    if (this.IsParameterBound(c => c.AcrNameToAttach))
+                    if (this.IsParameterBound(c => c.AcrNameToAttach) ||
+                        this.IsParameterBound(c => c.AcrNameToDetach))
                     {
-                        AddAcrRoleAssignment(AcrNameToAttach, nameof(AcrNameToAttach), acsServicePrincipal);
-                    }
-                    if (this.IsParameterBound(c => c.AcrNameToDetach))
-                    {
-                        RemoveAcrRoleAssignment(AcrNameToDetach, nameof(AcrNameToDetach), acsServicePrincipal);
+                        acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+                        if (this.IsParameterBound(c => c.AcrNameToAttach))
+                        {
+                            AddAcrRoleAssignment(AcrNameToAttach, nameof(AcrNameToAttach), acsServicePrincipal);
+                        }
+                        if (this.IsParameterBound(c => c.AcrNameToDetach))
+                        {
+                            RemoveAcrRoleAssignment(AcrNameToDetach, nameof(AcrNameToDetach), acsServicePrincipal);
+                        }
                     }
 
                     var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);

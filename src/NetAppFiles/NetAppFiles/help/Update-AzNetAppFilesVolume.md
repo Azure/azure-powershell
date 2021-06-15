@@ -17,15 +17,15 @@ Updates an Azure NetApp Files (ANF) volume according to the optional modifiers p
 Update-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountName <String>
  -PoolName <String> -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
- [-ThroughputMibps <Double>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
- [-ThroughputMibps <Double>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,15 +33,15 @@ Update-AzNetAppFilesVolume -Name <String> [-UsageThreshold <Int64>] [-ServiceLev
 ```
 Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
- [-ThroughputMibps <Double>] [-Tag <Hashtable>] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-Tag <Hashtable>] -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzNetAppFilesVolume [-UsageThreshold <Int64>] [-ServiceLevel <String>]
  [-ExportPolicy <PSNetAppFilesVolumeExportPolicy>] [-Backup <PSNetAppFilesVolumeBackupProperties>]
- [-ThroughputMibps <Double>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesVolume>
+ [-ThroughputMibps <Double>] [-SnapshotPolicyId <String>] [-Tag <Hashtable>] -InputObject <PSNetAppFilesVolume>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -240,6 +240,21 @@ Accept wildcard characters: False
 
 ### -ServiceLevel
 The service level of the ANF volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotPolicyId
+Snapshot Policy ResourceId used to apply a snapshot policy to the volume
 
 ```yaml
 Type: System.String

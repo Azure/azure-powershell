@@ -271,6 +271,40 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid..
+        /// </summary>
+        internal static string InvalidPrivateIPRange
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPrivateIPRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid. Subnet masks should be between 0 and 32 bits..
+        /// </summary>
+        internal static string InvalidPrivateIPRangeMask
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPrivateIPRangeMask", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The private IP range specified, {0}, is invalid. Bits not covered by the subnet mask should be all 0..
+        /// </summary>
+        internal static string InvalidPrivateIPRangeUnmaskedBits
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPrivateIPRangeUnmaskedBits", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
@@ -1822,6 +1856,17 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput {
             get {
                 return ResourceManager.GetString("WorkspaceResourceIdIsNotProvidedInConnectionMonitorOutput", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VirtualNetworkGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
             }
         }
     }
