@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -716,6 +716,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ManagedInstanceAdvancedDataSecurityIsNotDefined {
             get {
                 return ResourceManager.GetString("ManagedInstanceAdvancedDataSecurityIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
+        /// </summary>
+        internal static string MissingExternalAdmin {
+            get {
+                return ResourceManager.GetString("MissingExternalAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication..
+        /// </summary>
+        internal static string MissingSQLAdministratorCredentials {
+            get {
+                return ResourceManager.GetString("MissingSQLAdministratorCredentials", resourceCulture);
             }
         }
         

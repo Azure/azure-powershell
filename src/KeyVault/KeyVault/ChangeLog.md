@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.5
+* Removed duplicate list item in `Get-AzKeyVault` [#15164]
+* Added `SecretManagement` tag to `Az.KeyVault` module [#15173]
+
 ## Version 3.4.4
 * Provided key size for RSA key [#14819]
 

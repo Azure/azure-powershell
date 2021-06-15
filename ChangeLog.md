@@ -1,3 +1,133 @@
+## 6.1.0 - June 2021
+#### Az.Accounts
+* Added cmdlet 'Open-AzSurveyLink'
+* Supported certificate file as input parameter of Connect-AzAccount
+
+#### Az.Aks
+* Fixed the issue that 'Set-AzAks' will fail in Automation Runbook. [#15006]
+
+#### Az.ApplicationInsights
+* Fixed issue that 'ResourcegroupName' is missed when executing below cmdlets with 'InputObject' parameter [#14848]
+  * 'Get-AzApplicationInsightsLinkedStorageAccount'
+  * 'New-AzApplicationInsightsLinkedStorageAccount'
+  * 'Update-AzApplicationInsightsLinkedStorageAccount'
+  * 'Remove-AzApplicationInsightsLinkedStorageAccount' 
+
+#### Az.Cdn
+* Fixed profile missing issue in 'Remove-AzCdnProfile' cmdlet
+
+#### Az.Compute
+* Updated Compute module to use the latest .Net SDK version 47.0.0.
+
+#### Az.ContainerInstance
+* Removed the display of file share credential [#15224]
+
+#### Az.DataFactory
+* Updated ADF .Net SDK version to 4.19.0
+
+#### Az.EventHub
+* Added functionality to accept input from pipeline for 'Get-AzEventHub' from 'Get-AzEventHubNamespace'.
+
+#### Az.HDInsight
+* Support new azure monitor feature in HDInsight:
+    - Add cmdlet 'Get-AzHDInsightAzureMonitor' to allow customer to get the Azure Monitor status of HDInsight cluster.
+    - Add cmdlet 'Enable-AzHDInsightAzureMonitor' to allow customer to enable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet 'Disable-AzHDInsightAzureMonitor' to allow customer to disable the Azure Monitor in HDInsight cluster.
+
+#### Az.KeyVault
+* Removed duplicate list item in 'Get-AzKeyVault' [#15164]
+* Added 'SecretManagement' tag to 'Az.KeyVault' module [#15173]
+
+#### Az.Network
+* Updated cmdlets for route server for a more stable way to add IP configuration.
+* Added support for getting a single private link resource.
+* Added more detailed description about GroupId in 'New-AzPrivateLinkServiceConnection'
+* Updated cmdlets to enable setting of PrivateRange on AzureFirewallPolicy.
+    - 'New-AzFirewallPolicy'
+    - 'Set-AzFirewallPolicy'
+* Updated cmdlets to add NatRules in VirtualNetworkGateway and BgpRouteTranslationForNat.
+    - 'New-AzVirtualNetworkGateway'
+    - 'Set-AzVirtualNetworkGateway'
+* Updated cmdlets to add EngressNatRules and EgressNatRules in VirtualNetworkGateway Connection.
+    - 'New-AzVirtualNetworkGatewayConnection'
+    - 'Set-AzVirtualNetworkGatewayConnection'
+* Updated cmdlet to enable setting of FlowTimeout in VirtualNetwork.
+    - 'New-AzVirtualNetwork'
+* Added cmdlets for Get/Create/Update/Delete VirtualNetworkGatewayNatRules.
+    - 'New-AzVirtualNetworkGatewayNatRule'
+    - 'Update-AzVirtualNetworkGatewayNatRule'
+    - 'Get-AzVirtualNetworkGatewayNatRule'
+    - 'Remove-AzVirtualNetworkGatewayNatRule'
+* Added a new cmdlet for Sync on VirtualNetworkPeering
+    - 'Sync-AzVirtualNetworkPeering'
+* Updated cmdlets to add new properties and redefined an existing property in the VirtualNetworkPeering
+    - 'Add-AzVirtualNetworkPeering'
+    - 'Get-AzVirtualNetworkPeering'
+* Updated cmdlets to enable setting of PreferredRoutingGateway on VirtualHub.
+    - 'New-AzVirtualHub'
+    - 'Update-AzVirtualHub'
+* Updated cmdlets to expose two read-only properties of client certificate.
+    - 'Get-AzApplicationGatewayTrustedClientCertificate'
+
+#### Az.RecoveryServices
+* Added cross tenant DS Move.
+* Removed restriction to fetch recovery points only for a 30 days time range.
+* Enabled CRR for new regions.
+
+#### Az.Resources
+* Allowed naming the deployment when testing deployments [#11497]
+
+#### Az.SignalR
+* Changed to 'Allow' and 'Deny' parameters of 'Update-AzSignalRNetworkAcl' cmdlet:
+    - Accepted 'Trace' as a valid value.
+    - Accepted '@()' as empty collection to clear the list.
+* Supported 'ResourceGroupCompleter' and 'ResourceNameCompleter' in the applicable cmdlets.
+* Deprecated the 'HostNamePrefix' property of output type 'PSSignalRResource' of following cmdlets:
+    - 'Get-AzSignalR'
+    - 'New-AzSignalR'
+    - 'Update-AzSignalR'
+
+#### Az.Sql
+* Added option to support short version of maintenance configuration id for Managed Instance in 'New-AzSqlInstance' and 'Set-AzSqlInstance' cmdlets
+* Added HighAvailabilityReplicaCount to 'New-AzSqlDatabaseSecondary'
+* Added External Administrator and AAD Only Properties to AzSqlServer and AzSqlInstance
+    - Added option to specify '-ExternalAdminName', '-ExternalAdminSid', '-EnableActiveDirectoryOnlyAuthentication' in 'New-AzSqlInstance' and 'Set-AzSqlInstance' cmdlets
+    - Added option to expand external administrators information using '-ExpandActiveDirectoryAdministrator' in 'Get-AzSqlServer' and 'Get-AzSqlInstance' cmdlets
+* Fixed 'Set-AzSqlDatabase' to no longer default ReadScale to Disabled when not specified
+* Fixed 'Set-AzSqlServer' and 'Set-AzSqlInstance' for partial PUT with only identity and null properties
+* Added parameters related to UMI in 'New-AzSqlServer', 'New-AzSqlInstance', 'Set-AzSqlServer' and 'Set-AzSqlInstance' cmdlets.
+* Added -AutoRotationEnabled parameter to following cmdlets:
+    - 'Set-AzSqlServerTransparentDataEncryptionProtector'
+    - 'Get-AzSqlServerTransparentDataEncryptionProtector'
+    - 'Set-AzSqlInstanceTransparentDataEncryptionProtector'
+    - 'Get-AzSqlInstanceTransparentDataEncryptionProtector'
+
+#### Az.Storage
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - 'New-AzRmStorageShare'
+    - 'Update-AzRmStorageShare'
+* Supported enable Smb Multichannel on File service
+    -  'Update-AzStorageFileServiceProperty'
+* Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+
+#### Az.Websites
+* Fixed issue that prevented removing rules by name and unique identifier in 'Remove-AzWebAppAccessRestrictionRule'
+* Fixed issue that defaults AlwaysOn to false in 'Set-AzWebAppSlot'
+
+### Thanks to our community contributors
+* Andy Roberts (@andyr8939), Removing unused TimeGrain variable from example (#15062)
+* Ashley Roll (@AshleyRoll), Remove Write-Host leaking file share credentials (#15225)
+* Kailash Mandal (@KaishM), Update New-AzPublicIpAddress.md (#15040)
+* Olivier Miossec (@omiossec), Update Get-AzExpressRouteCircuitRouteTable.md (#15054)
+* Scott (@S-T-S), Update Set-AzNetworkInterface.md (#15112)
+* @sohaibMSFT, Application Gateway AutoScale Example (#15071)
+* @Srihsu, Update Split-AzReservation.md (#15049)
+* @srozemuller, typo in examples resourcegroup parameter (#15146)
+
+
 ## 6.0.0 - May 2021
 Az 6.0.0 (Az.Accounts 2.3.0) is only supported on Windows PowerShell 5.1, PowerShell 7.0 version 7.0.6 or greater and PowerShell 7.1 version 7.1.3 or greater, open https://aka.ms/install-powershell to learn how to upgrade. For further information, go to http://aka.ms/azpslifecyle.
 
