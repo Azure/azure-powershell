@@ -158,6 +158,28 @@ function Initialize-AzMigrateReplicationInfrastructure {
 
         $LogStringCreated = "Created : "
         $LogStringSkipping = " already exists."
+    
+    $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
+
+    if (-not $userObject) {
+            $userObject = Get-AzADUser -Mail $context.Subscription.ExtendedProperties.Account
+        }
+                
+        if (-not $userObject) {
+            $mailNicname = "{0}#EXT#" -f $($context.Account.Id -replace '@', '_')
+                    
+            $userObject = Get-AzADUser | 
+                Where-Object {$_.MailNickName -eq $mailNicname}
+        }
+                
+        if (-not $userObject) {
+            $userObject = Get-AzADServicePrincipal -ApplicationID $context.Account.Id
+        }
+                 
+        if (-not $userObject)
+        {
+            throw 'User Object Id Not Found!'
+        }
 
         # Hash code source code
         $Source = @"
@@ -181,10 +203,13 @@ public static int hashForArtifact(String artifact)
 
         #Get vault name from SMS solution.
         $smsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Migration-ServerMigration"
+        if (-not $smsSolution.DetailExtendedDetail.AdditionalProperties.vaultId) {
+            throw 'Azure Migrate appliance not configured. Setup Azure Migrate appliance before proceeding.'
+        }
         $VaultName = $smsSolution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
 
         # Get all appliances and sites in the project from SDS solution.
-		$sdsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Discovery-ServerDiscovery"
+        $sdsSolution = Get-AzMigrateSolution -MigrateProjectName $ProjectName -ResourceGroupName $ResourceGroupName -Name "Servers-Discovery-ServerDiscovery"
         $appMap = @{}
 
         if ($null -ne $sdsSolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"]) {
@@ -326,8 +351,7 @@ public static int hashForArtifact(String artifact)
                 if ($CloudEnvironMent -eq "AzureUSGovernment") {
                     $HyperVManagerAppId = "AFAE2AF7-62E0-4AA4-8F66-B11F74F56326"
                 }
-                $hyperVManagerObject = Get-AzADServicePrincipal -ApplicationID $HyperVManagerAppId
-                $userObject = Get-AzADUser -UserPrincipalName $context.Subscription.ExtendedProperties.Account
+                $hyperVManagerObject = Get-AzADServicePrincipal -ApplicationID $HyperVManagerAppId				
                 $accessPolicies = @()
                 $userAccessPolicy = @{
                     "tenantId"    = $tenantID;
@@ -427,11 +451,25 @@ public static int hashForArtifact(String artifact)
             $lsaStorageAccount = Get-AzResource -ResourceName $LogStorageAcName -ResourceGroupName $ResourceGroupName
             $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
             $lsaRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
-            if (!$lsaRoleAssignments) {
+            if (-not $lsaRoleAssignments) {
                 $output = New-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -RoleDefinitionId $roleDefinitionId
             }
-            if (!$gwyRoleAssignments) {
+            if (-not $gwyRoleAssignments) {
                 $output = New-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -RoleDefinitionId $roleDefinitionId
+            }
+
+            if (-not $lsaRoleAssignments -or -not $gwyRoleAssignments) {
+                for ($i = 1; $i -le 18; $i++) {
+                    Write-Information "Waiting for Role Assignments to be available... $( $i * 10 ) seconds" -InformationAction Continue
+                    Start-Sleep -Seconds 10
+
+                    $gwyRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $gwyStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    $lsaRoleAssignments = Get-AzRoleAssignment -ObjectId $kvspnid -Scope $lsaStorageAccount.Id -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+                    if ($gwyRoleAssignments -and $lsaRoleAssignments) {
+                        break
+                    }
+                }
             }
 
             # SA. SAS definition
