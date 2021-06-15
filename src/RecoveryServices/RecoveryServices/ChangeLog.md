@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.1-preview
 * Added Archive for V1 vaults.
 * Fixed Disable SQL AG AutoProtection.
 
