@@ -125,6 +125,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the load balancer")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -211,6 +217,7 @@ namespace Microsoft.Azure.Commands.Network
                 InboundNatPools = this.InboundNatPool?.ToList(),
                 OutboundRules = this.OutboundRule?.ToList(),
                 Sku = vSku,
+                ExtendedLocation = string.IsNullOrEmpty(this.EdgeZone) ? null : new PSExtendedLocation(this.EdgeZone)
             };
 
             NormalizeChildIds(vLoadBalancer);
