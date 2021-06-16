@@ -267,4 +267,54 @@ Test creating a private link service in an edge zone. Subscriptions need to be e
 #>
 function Test-PrivateLinkServiceInEdgeZone
 {
+    # Setup
+    $rgname = Get-ResourceGroupName;
+    $rname = Get-ResourceName;
+    $location = Get-ProviderLocation "Microsoft.Network/privateLinkServices" "westcentralus";
+    # Dependency parameters
+    $IpConfigurationName = "IpConfigurationName";
+    $vnetName = Get-ResourceName;
+    $ilbFrontName = "LB-Frontend";
+    $ilbBackendName = "LB-Backend";
+    $ilbName = Get-ResourceName;
+
+    try
+    {
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+
+        # Create Virtual networks
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
+        $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled"; 
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet;
+
+        # Create LoadBalancer
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $ilbFrontName -PrivateIpAddress "10.0.1.5" -SubnetId $vnet.subnets[0].Id;
+        $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName;
+        $job = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -AsJob;
+        $job | Wait-Job
+        $ilbcreate = $job | Receive-Job
+
+        # Verfify if load balancer is created successfully
+        Assert-NotNull $ilbcreate;
+        Assert-AreEqual $ilbName $ilbcreate.Name;
+        Assert-AreEqual (Normalize-Location $location) $ilbcreate.Location;
+        Assert-AreEqual "Succeeded" $ilbcreate.ProvisioningState
+
+        # Create required dependencies
+        $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
+        $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig
+        
+        # Create PrivateLinkService
+        $job = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob;
+        $job | Wait-Job
+        $plscreate = $job | Receive-Job
+        
+        $vPrivateLinkService = Get-AzPrivateLinkService -Name $rname -ResourceGroupName $rgName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
 }
