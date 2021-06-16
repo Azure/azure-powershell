@@ -124,7 +124,7 @@ function Create-SolutionToProjectMappings
     $Mappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln"
+        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln" -Recurse
         foreach ($SolutionFile in $SolutionFiles)
         {
             $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath $SolutionFile.FullName
