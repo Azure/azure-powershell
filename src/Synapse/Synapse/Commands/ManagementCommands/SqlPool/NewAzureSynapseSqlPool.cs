@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public int AutoPauseTimer { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoResume)]
-        public SwitchParameter AutoResume { get; set; }
+        public SwitchParameter EnableAutoResume { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     createParams.AutoPauseTimer = this.AutoPauseTimer;
                 }
 
-                if (this.AutoResume.IsPresent)
+                if (this.EnableAutoResume.IsPresent)
                 {
                     createParams.AutoResume = true;
                 }

@@ -93,7 +93,6 @@ namespace Microsoft.Azure.Commands.Synapse
         public string NewName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.MaxServiceObjectName)]
-        [ValidateNotNullOrEmpty]
         public string MaxServiceObjectName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoPauseTimer)]
@@ -219,7 +218,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => this.MaxServiceObjectName))
             {
-                sqlPoolPatchInfo.MaxServiceObjectiveName = this.MaxServiceObjectName;
+                sqlPoolPatchInfo.MaxServiceObjectiveName = this.MaxServiceObjectName == null ? SynapseConstants.DisableMaxServiceObjectiveName : this.MaxServiceObjectName;
             }
 
             if (this.IsParameterBound(c => c.AutoPauseTimer))
