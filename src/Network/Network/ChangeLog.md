@@ -23,6 +23,7 @@
     - `New-AzPublicIpPrefix`
     - `New-AzLoadBalancer`
     - `New-AzPrivateLinkService`
+    - `New-AzPrivateEndpoint`
 * Added support for viewing extended location of virtual network in the console
     - `New-AzVirtualNetwork`
     - `Get-AzVirtualNetwork`
