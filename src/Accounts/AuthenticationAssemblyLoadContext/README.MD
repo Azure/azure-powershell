@@ -53,6 +53,7 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
         }
     }
 
+    //Classes from storage SDK should be wrapped and must not be exposed as public here  
     public class PSBlobDownloadInfo
     {
         private BlobDownloadInfo _blobDownloadInfo;
@@ -76,13 +77,13 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
 
 1. Update `Debug` tab of Compute project for debugging. **You must replace 'C:\AME\erich-powershell' with real solution directory of azure-powershell on your PC**
 
-- **Launch**: Executable
-- **Executable**: pwsh
-- **Application arguments**: -NoExit -Command "Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1;Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Compute\Az.Compute.psd1;"
+    - **Launch**: Executable
+    - **Executable**: pwsh
+    - **Application arguments**: -NoExit -Command "Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Accounts\Az.Accounts.psd1;Import-Module C:\AME\erich-powershell\artifacts\Debug\Az.Compute\Az.Compute.psd1;"
 
 1. [To Be Automated]Update Compute.csproj to copy Compute.AlcWrapper and storage SDKs assemblies to predefined directory.
 
-```xml
+    ```xml
     <ItemGroup>
         <ModuleAclAssemblies Include="$(TargetDir)Microsoft.Azure.Commands.Compute.AlcWrapper.dll" />
         <ModuleAclAssemblies Include="$(TargetDir)Azure.Storage.Blobs.dll" />
@@ -97,27 +98,27 @@ As Compute.csproj project must not reference to storage SDK, the types of parame
     <ItemGroup>
         <None Update="PostImportScripts\*.ps1" CopyToOutputDirectory="PreserveNewest" />
     </ItemGroup>
-```
+    ```
 
 1. [To Be Automated]Add new build targets file src/Compute/Compute/Directory.Build.targets
 
-```xml
+    ```xml
     <Project>
         <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., Directory.Build.targets))\Directory.Build.targets" />
         <Target Name="AddAccountsPsm1Dependency" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
             <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/AddModulePsm1Dependency.ps1' -ModuleFolder '$(OutDir)' -IgnorePwshVersion &quot;" />
         </Target>
     </Project>
-```
+    ```
 
 1. [To Be Automated]Create script file InitializeAssemblyLoadContext.ps1 which will be executed during importing current module
 
-```powershell
-try {
-    $assemblyLoadContextFolder = [System.IO.Path]::Combine($PSScriptRoot, "..", "ModuleAclAssemblies")
-    [Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.AzAssemblyLoadContextInitializer]::RegisterModuleAssemblyLoadContext("Microsoft.Azure.Commands.Compute.AlcWrapper", $assemblyLoadContextFolder)
+    ```powershell
+    try {
+        $assemblyLoadContextFolder = [System.IO.Path]::Combine($PSScriptRoot, "..", "ModuleAclAssemblies")
+        [Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.AzAssemblyLoadContextInitializer]::RegisterModuleAssemblyLoadContext("Microsoft.Azure.Commands.Compute.AlcWrapper", $assemblyLoadContextFolder)
 
-  } catch {
-        Write-Warning $_
-  }
-```
+    } catch {
+            Write-Warning $_
+    }
+    ```
