@@ -1126,6 +1126,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
+
+            if (this.VirtualMachineScaleSet != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id != null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = null;
+            }
         }
 
         private void BuildPutObject()
@@ -1748,6 +1757,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration != null)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+            }
+
+            if (this.VirtualMachineScaleSet != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null
+                && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id != null)
+            {
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = null;
             }
         }
     }
