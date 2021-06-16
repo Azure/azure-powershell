@@ -86,4 +86,20 @@ directive:
   - model-cmdlet:
     - Acl
     - IscsiLun
+  - where:
+      model-name: DiskPoolZoneInfo
+    set:
+      format-table:
+        properties:
+          - SkuName
+          - SkuTier
+          - AvailabilityZone
+          - AdditionalCapability
+  - where:
+      model-name: OutboundEnvironmentEndpoint
+    set:
+      format-table:
+        properties:
+          - Category
+          - Endpoint           
 ```
