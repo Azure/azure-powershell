@@ -291,7 +291,7 @@ function Test-PrivateEndpointInEdgeZone
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+        New-AzResourceGroup -Name $rgname -Location $location
 
         # Create Virtual networks
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24"
@@ -302,9 +302,7 @@ function Test-PrivateEndpointInEdgeZone
         # Create LoadBalancer
         $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $ilbFrontName -PrivateIpAddress "10.0.1.5" -SubnetId $vnet.subnets[0].Id
         $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName
-        $job = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -AsJob
-        $job | Wait-Job
-        $ilbcreate = $job | Receive-Job
+        $ilbcreate = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard"
 
         # Verfify if load balancer is created successfully
         Assert-NotNull $ilbcreate
@@ -316,10 +314,7 @@ function Test-PrivateEndpointInEdgeZone
         $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2]
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig
 
-        $job = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -AsJob
-        $job | Wait-Job
-        $plscreate = $job | Receive-Job
-        $vPrivateLinkService = Get-AzPrivateLinkService -Name $PrivateLinkServiceName -ResourceGroupName $rgName
+        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration
 
         # Verfify if private link service is created successfully
         Assert-NotNull $vPrivateLinkService
@@ -334,11 +329,8 @@ function Test-PrivateEndpointInEdgeZone
 
         # Create PrivateEndpoint
         $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName -PrivateLinkServiceId  $vPrivateLinkService.Id
+        New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection
 
-        $job = New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection -AsJob
-        $job | Wait-Job
-        $pecreate = $job | Receive-Job
-        
         $vPrivateEndpoint = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
     }
     finally
