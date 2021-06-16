@@ -562,7 +562,7 @@ function validation
         }
 
         If ($false -eq $IpLocationMatch){
-            throw "The location for the cloud service (" + $location + ") and public IP address (" + $theIpObj.location + ") are different. The location of the cloud service needs to match the location of the public IP address. Change the location of the cloud service to match the public IP address or change the resource group of the cloud service to try to resolve the issue."
+            throw "The location for the Cloud Service (" + $location + ") and the Public IP Address (" + $theIPObj.location + ") are different. The location of the Cloud Service needs to match the location of the Public IP Address. Change the location of the Cloud Service to match the Public IP Address or change the resource group of the Cloud Service to try to resolve the issue."
         }
         
         $passMemory.Add("ipFound", $ipFound)
