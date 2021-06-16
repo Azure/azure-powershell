@@ -15,39 +15,32 @@
 
 <#
 .Synopsis
-Gets the network endpoints of all outbound dependencies of a Disk Pool
+Lists available Disk Pool Skus in an Azure location.
 .Description
-Gets the network endpoints of all outbound dependencies of a Disk Pool
+Lists available Disk Pool Skus in an Azure location.
 .Example
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDiskPoolZone -Location eastus
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+SkuName  SkuTier  AvailabilityZone AdditionalCapability
+-------  -------  ---------------- --------------------
+Basic    Basic    {3, 1, 2}
+Standard Standard {3, 1, 2}
+Premium  Premium  {3, 1, 2}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IOutboundEnvironmentEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
+https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
 #>
-function Get-AzDiskPoolOutboundNetworkDependencyEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IOutboundEnvironmentEndpoint])]
+function Get-AzDiskPoolZone {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
-    # The name of the Disk Pool.
-    ${DiskPoolName},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+    # The location of the resource.
+    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
@@ -112,7 +105,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'Az.DiskPool.private\Get-AzDiskPoolOutboundNetworkDependencyEndpoint_List';
+            List = 'Az.DiskPool.private\Get-AzDiskPoolZone_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

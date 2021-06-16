@@ -15,32 +15,75 @@
 
 <#
 .Synopsis
-Lists available Disk Pool Skus in an Azure location.
+Gets the network endpoints of all outbound dependencies of a Disk Pool
 .Description
-Lists available Disk Pool Skus in an Azure location.
+Gets the network endpoints of all outbound dependencies of a Disk Pool
 .Example
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName disk-pool-1 -ResourceGroupName storagepool-rg-test | ft -Wrap
 
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Category              Endpoint
+--------              --------
+Microsoft Event Hub   {{
+                        "domainName": "evhns-rp-prod-eus2euap.servicebus.windows.net",
+                        "endpointDetails": [
+                          {
+                            "port": 443
+                          }
+                        ]
+                      }}
+Microsoft Service Bus {{
+                        "domainName": "sb-rp-prod-eus2euap.servicebus.windows.net",
+                        "endpointDetails": [
+                          {
+                            "port": 443
+                          }
+                        ]
+                      }}
+Microsoft Storage     {{
+                        "domainName": "strpprodeus2euap.blob.core.windows.net",
+                        "endpointDetails": [
+                          {
+                            "port": 443
+                          }
+                        ]
+                      }, {
+                        "domainName": "stbsprodeus2euap.blob.core.windows.net",
+                        "endpointDetails": [
+                          {
+                            "port": 443
+                          }
+                        ]
+                      }}
+Microsoft Apt Mirror  {{
+                        "domainName": "azure.archive.ubuntu.com",
+                        "endpointDetails": [
+                          {
+                            "port": 443
+                          }
+                        ]
+                      }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IOutboundEnvironmentEndpoint
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpoolzone
+https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloutboundnetworkdependencyendpoint
 #>
-function Get-AzDiskPoolZone {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IDiskPoolZoneInfo])]
+function Get-AzDiskPoolOutboundNetworkDependencyEndpoint {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IOutboundEnvironmentEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
     [System.String]
-    # The location of the resource.
-    ${Location},
+    # The name of the Disk Pool.
+    ${DiskPoolName},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Path')]
@@ -105,7 +148,7 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            List = 'Az.DiskPool.private\Get-AzDiskPoolZone_List';
+            List = 'Az.DiskPool.private\Get-AzDiskPoolOutboundNetworkDependencyEndpoint_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
