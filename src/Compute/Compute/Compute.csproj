@@ -3,6 +3,9 @@
   <PropertyGroup>
     <PsModuleName>Compute</PsModuleName>
     <OmitJsonPackage>true</OmitJsonPackage>
+    <!--TODO: Automatically copy ALC related assemblies?-->
+    <AlcEntryAssembly>Compute.AlcWrapper</AlcEntryAssembly>
+    <AlcAssemblies>Azure.Storage.Blobs;Azure.Storage.Common;Azure.Security.KeyVault.Secrets</AlcAssemblies>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
@@ -23,8 +26,29 @@
     <EmbeddedResource Include="Strategies\ComputeRp\Images.json" />
   </ItemGroup>
 
+  <!--TODO: Could we automate below?-->
+  <ItemGroup>
+    <ModuleAclAssemblies Include="$(TargetDir)Microsoft.Azure.Commands.Compute.AlcWrapper.dll" />
+    <ModuleAclAssemblies Include="$(TargetDir)Azure.Storage.Blobs.dll" />
+    <ModuleAclAssemblies Include="$(TargetDir)Azure.Storage.Common.dll" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(ModuleAclAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
+    <Move SourceFiles="@(ModuleAclAssemblies)" DestinationFolder="$(TargetDir)\ModuleAclAssemblies" />
+  </Target>
+
+  <ItemGroup>
+    <None Update="PostImportScripts\*.ps1" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.AlcWrapper\Compute.AlcWrapper.csproj" />
   </ItemGroup>
 
 </Project>
