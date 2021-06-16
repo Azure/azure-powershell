@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.7.1
 * Fixed profile missing issue in `Remove-AzCdnProfile` cmdlet
 
 ## Version 1.7.0

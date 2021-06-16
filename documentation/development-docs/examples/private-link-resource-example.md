@@ -23,18 +23,18 @@ if "List Private Endpoint Connection API" is not available, `Private Endpoint Co
 `privateEndpointConnections` need to be defined under this API
 
 ## Code Changes Needed
-Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12)
+Add corresponding {Provider}, {Top-Level-Resource} and {API-Version} into [ProviderConfiguration.cs](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/ProviderConfiguration.cs#L12)
 in following pattern:
 ```
 RegisterConfiguration("{Provider}/{Top-Level-Resource}", "{API-Version}")
 ```
 For example:
 
-if "List Private Endpoint Connection API" is [available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L74),
+if "List Private Endpoint Connection API" is [available](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L74),
 ```
 RegisterConfiguration("Microsoft.Sql/servers", "2018-06-01-preview")
 ```
-if "List Private Endpoint Connection API" is [not available](https://github.com/Azure/azure-powershell/blob/master/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L93), provide extra bool parameter 'false'
+if "List Private Endpoint Connection API" is [not available](https://github.com/Azure/azure-powershell/blob/main/src/Network/Network/PrivateLinkService/PrivateLinkServiceProvider/GenericProvider.cs#L93), provide extra bool parameter 'false'
 ```
 RegisterConfiguration("Microsoft.Storage/storageAccounts", "2019-06-01", false)
 ```

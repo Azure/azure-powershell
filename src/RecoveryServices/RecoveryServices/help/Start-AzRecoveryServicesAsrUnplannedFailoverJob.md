@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryPoint
-Specifies a custom recovery point to failover the protected machine to.
+Specifies a custom recovery point to failover the protected machine to. If not specified, ASR will process the pending writes and pick the latest recovery point (lowest RPO).
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint

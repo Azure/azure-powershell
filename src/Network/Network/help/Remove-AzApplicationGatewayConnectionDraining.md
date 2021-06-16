@@ -27,11 +27,12 @@ The **Remove-AzApplicationGatewayConnectionDraining** cmdlet removes the connect
 PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 PS C:\> $Settings  = Get-AzApplicationGatewayBackendHttpSettings -Name "Settings01" -ApplicationGateway $AppGw
 PS C:\> Remove-AzApplicationGatewayConnectionDraining -BackendHttpSettings $Settings
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable.
 The second command gets the back-end HTTP settings named Settings01 for $AppGw and stores the settings in the $Settings variable.
-The last command removes the connection draining configuration of the back-end HTTP settings stored in $Settings.
+The third command removes the connection draining configuration of the back-end HTTP settings stored in $Settings. And, the last command updates the application gateway.
 
 ## PARAMETERS
 
