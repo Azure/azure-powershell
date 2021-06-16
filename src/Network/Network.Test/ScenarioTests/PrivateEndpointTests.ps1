@@ -266,3 +266,13 @@ function Test-PrivateDnsZoneGroupCRUD
         Clean-ResourceGroup $rgname;
     }
 }
+
+
+
+<#
+.SYNOPSIS
+Test creating a private endpoint in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-PrivateEndpointInEdgeZone
+{
+}
