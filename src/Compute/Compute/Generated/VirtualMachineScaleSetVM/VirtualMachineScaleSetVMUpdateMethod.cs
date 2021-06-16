@@ -110,6 +110,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         parameters.ProtectionPolicy.ProtectFromScaleSetActions = this.ProtectFromScaleSetAction;
                     }
 
+                    if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
+                    {
+                        parameters.StorageProfile.ImageReference.Id = null;
+                    }
+
                     var result = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, instanceId, parameters);
                     var psObject = new PSVirtualMachineScaleSetVM();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);

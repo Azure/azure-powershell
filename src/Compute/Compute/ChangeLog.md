@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzGalleryImageVersion`
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.

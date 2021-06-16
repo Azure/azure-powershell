@@ -226,6 +226,11 @@ namespace Microsoft.Azure.Commands.Compute
                         parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
                     }
 
+                    if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
+                    {
+                        parameters.StorageProfile.ImageReference.Id = null;
+                    }
+
                     if (NoWait.IsPresent)
                     {
                         var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
