@@ -337,6 +337,10 @@ function Test-PrivateEndpointInEdgeZone
         Assert-AreEqual $vPrivateEndpoint.ExtendedLocation.Name $edgeZone
         Assert-AreEqual $vPrivateEndpoint.ExtendedLocation.Type "EdgeZone"
     }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
+    }
     finally
     {
         # Cleanup
