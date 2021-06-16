@@ -268,25 +268,25 @@ Test creating a private link service in an edge zone. Subscriptions need to be e
 function Test-PrivateLinkServiceInEdgeZone
 {
     # Setup
-    $rgname = Get-ResourceGroupName;
-    $rname = Get-ResourceName;
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
     $location = "westus"
     # Dependency parameters
-    $IpConfigurationName = "IpConfigurationName";
-    $vnetName = Get-ResourceName;
-    $ilbFrontName = "LB-Frontend";
-    $ilbBackendName = "LB-Backend";
-    $ilbName = Get-ResourceName;
+    $IpConfigurationName = "IpConfigurationName"
+    $vnetName = Get-ResourceName
+    $ilbFrontName = "LB-Frontend"
+    $ilbBackendName = "LB-Backend"
+    $ilbName = Get-ResourceName
     $edgeZone = "microsoftlosangeles1"
 
     try
     {
-        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location;
+        New-AzResourceGroup -Name $rgname -Location $location;
 
         # Create Virtual networks
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24";
         $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24";
-        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled"; 
+        $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet -EdgeZone $edgeZone
 
         # Create LoadBalancer
@@ -305,13 +305,16 @@ function Test-PrivateLinkServiceInEdgeZone
         # Create required dependencies
         $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2];
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig
-        
+
         # Create PrivateLinkService
         $job = New-AzPrivateLinkService -ResourceGroupName $rgName -Name $rname -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -EdgeZone $edgeZone -AsJob;
         $job | Wait-Job
-        $plscreate = $job | Receive-Job
-        
+        $job | Receive-Job
+
         $vPrivateLinkService = Get-AzPrivateLinkService -Name $rname -ResourceGroupName $rgName
+
+        Assert-AreEqual $vPrivateLinkService.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $vPrivateLinkService.ExtendedLocation.Type "EdgeZone"
     }
     finally
     {
