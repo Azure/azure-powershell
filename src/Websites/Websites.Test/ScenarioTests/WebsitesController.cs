@@ -27,7 +27,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Management.KeyVault;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {

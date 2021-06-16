@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -33,7 +33,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4fcb9f0e-ea16-4f2e-bc6e-069fb54ee6d9"
+          "3143b8be-6ff3-497e-b980-c4219bd0cf60"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -48,16 +48,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "adfc13d2-4c42-4d52-a08c-977943ec6e55"
+          "87d6256f-c521-4d8b-94b6-5183a6a103d6"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074010Z:adfc13d2-4c42-4d52-a08c-977943ec6e55"
+          "JIOINDIAWEST:20210616T171812Z:87d6256f-c521-4d8b-94b6-5183a6a103d6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:10 GMT"
+          "Wed, 16 Jun 2021 17:18:11 GMT"
         ],
         "Content-Length": [
           "5892"
@@ -79,7 +79,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,7 +102,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "15f0ba1d-aee0-49c5-b4ac-8b697931e5fd"
+          "c45e3242-52f8-4592-a3f8-dfbf464c4572"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -117,16 +117,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "4a75d6b7-bab9-4710-9665-8de94102969d"
+          "79609f0a-1dad-4e7d-8db5-8de92773f5fa"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074011Z:4a75d6b7-bab9-4710-9665-8de94102969d"
+          "JIOINDIAWEST:20210616T171814Z:79609f0a-1dad-4e7d-8db5-8de92773f5fa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:11 GMT"
+          "Wed, 16 Jun 2021 17:18:13 GMT"
         ],
         "Content-Length": [
           "3649"
@@ -148,7 +148,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -171,7 +171,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2a744522-2423-4a84-a164-655f50d8e7b0"
+          "a4b6b9bb-bb7b-4fdf-9ab1-3952a994a77c"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -186,16 +186,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "83951218-0db1-4eef-8edb-d6b547d40b07"
+          "0d9ac0be-b79e-4e25-8c39-5df89ef34b0f"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074012Z:83951218-0db1-4eef-8edb-d6b547d40b07"
+          "JIOINDIAWEST:20210616T171815Z:0d9ac0be-b79e-4e25-8c39-5df89ef34b0f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:12 GMT"
+          "Wed, 16 Jun 2021 17:18:14 GMT"
         ],
         "Content-Length": [
           "612"
@@ -217,7 +217,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -240,7 +240,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7eb4ec0f-c809-4259-a7b7-5612074978b3"
+          "27ff7060-d93c-4434-9786-edc10ef4a8b7"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -255,16 +255,16 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "c4d68460-dbfc-4cd6-8d2c-b8f15cca919b"
+          "8eb4bf71-05d6-4f9a-9f1e-c1384976f8ea"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074013Z:c4d68460-dbfc-4cd6-8d2c-b8f15cca919b"
+          "JIOINDIAWEST:20210616T171816Z:8eb4bf71-05d6-4f9a-9f1e-c1384976f8ea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:12 GMT"
+          "Wed, 16 Jun 2021 17:18:15 GMT"
         ],
         "Content-Length": [
           "255"
@@ -286,7 +286,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -309,7 +309,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d84a57b0-bc39-491f-a78f-067ef0bbf08a"
+          "432a651e-92f1-4690-803f-218838012e25"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -324,16 +324,16 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "22ab1c67-ee15-4fc2-af8a-7bd1764a6427"
+          "32bc8a74-d9c4-45f0-8b4a-e3e4ee0ba88f"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074013Z:22ab1c67-ee15-4fc2-af8a-7bd1764a6427"
+          "JIOINDIAWEST:20210616T171817Z:32bc8a74-d9c4-45f0-8b4a-e3e4ee0ba88f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:13 GMT"
+          "Wed, 16 Jun 2021 17:18:16 GMT"
         ],
         "Content-Length": [
           "252"
@@ -355,7 +355,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -378,13 +378,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "aaab1c35-61ae-481f-86ef-645b80fa01a6"
+          "fdb22f22-11eb-49fa-9b40-1b95d840662b"
         ],
         "x-ms-correlation-request-id": [
-          "aaab1c35-61ae-481f-86ef-645b80fa01a6"
+          "fdb22f22-11eb-49fa-9b40-1b95d840662b"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074014Z:aaab1c35-61ae-481f-86ef-645b80fa01a6"
+          "JIOINDIAWEST:20210616T171818Z:fdb22f22-11eb-49fa-9b40-1b95d840662b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -393,7 +393,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:14 GMT"
+          "Wed, 16 Jun 2021 17:18:17 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -409,13 +409,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611?api-version=2016-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL3Rlc3RrdjE2MTEvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvdGVzdGt2MTYxMT9hcGktdmVyc2lvbj0yMDE2LTEwLTAx",
+      "RequestUri": "/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611?api-version=2019-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRiMDYzOWQtODVkOC00NDVhLWJhZGEtOGRhNzhlNTBmZjMwL3Jlc291cmNlR3JvdXBzL3Rlc3RrdjE2MTEvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvdGVzdGt2MTYxMT9hcGktdmVyc2lvbj0yMDE5LTA5LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -424,7 +424,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Commands.Common.KeyVault.Version2016.10.1.KeyVaultManagementClient/1.3.36"
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/3.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -435,13 +435,13 @@
           "no-cache"
         ],
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "x-ms-keyvault-service-version": [
           "1.5.23.0"
         ],
         "x-ms-request-id": [
-          "bdca796b-5955-4b77-acf0-d3a8bb2feb9b"
+          "71399856-2a4e-4038-99a4-25cf52cb7d0f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -459,16 +459,16 @@
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "22c87e29-1132-427f-b4ad-ae979a613bdd"
+          "311847cc-30b7-4737-ac2e-ef8410d574dc"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074017Z:22c87e29-1132-427f-b4ad-ae979a613bdd"
+          "JIOINDIAWEST:20210616T171820Z:311847cc-30b7-4737-ac2e-ef8410d574dc"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:16 GMT"
+          "Wed, 16 Jun 2021 17:18:20 GMT"
         ],
         "Content-Length": [
           "1232"
@@ -490,7 +490,7 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"password\": \"\",\r\n    \"keyVaultId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/testkv1611/providers/Microsoft.KeyVault/vaults/testkv1611\",\r\n    \"keyVaultSecretName\": \"testcertname1611\",\r\n    \"serverFarmId\": \"/subscriptions/04b0639d-85d8-445a-bada-8da78e50ff30/resourceGroups/ASE109/providers/Microsoft.Web/serverfarms/appthek29\"\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1eef11a1-a7a3-4a54-ac72-59ab5541ff6b"
+          "c1a2cdea-f6ff-4bd8-a58c-1497e639fa5c"
         ],
         "Accept-Language": [
           "en-US"
@@ -519,7 +519,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2f0e4bda-ef0d-4bb5-be77-5c0e53aa7f9f"
+          "d12ddfb4-58a2-4552-b798-5ee2b228e1f8"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -534,16 +534,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "e6743769-8e2f-4d63-9756-1cb0ad0105d9"
+          "ed16311f-0483-4954-9ac1-e63056f6c300"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20210616T074019Z:e6743769-8e2f-4d63-9756-1cb0ad0105d9"
+          "JIOINDIAWEST:20210616T171822Z:ed16311f-0483-4954-9ac1-e63056f6c300"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 16 Jun 2021 07:40:18 GMT"
+          "Wed, 16 Jun 2021 17:18:22 GMT"
         ],
         "Content-Length": [
           "1180"
