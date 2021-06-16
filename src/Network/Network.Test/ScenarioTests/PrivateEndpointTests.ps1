@@ -288,6 +288,7 @@ function Test-PrivateEndpointInEdgeZone
     $IpConfigurationName = "IpConfigurationName"
     $PrivateLinkServiceName = "PrivateLinkServiceName"
     $vnetPEName = "VNetPE"
+    $edgeZone = "microsoftlosangeles1"
 
     try
     {
@@ -297,12 +298,12 @@ function Test-PrivateEndpointInEdgeZone
         $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name "frontendSubnet" -AddressPrefix "10.0.1.0/24"
         $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name "backendSubnet" -AddressPrefix "10.0.2.0/24"
         $otherSubnet = New-AzVirtualNetworkSubnetConfig -Name "otherSubnet" -AddressPrefix "10.0.3.0/24" -PrivateLinkServiceNetworkPoliciesFlag "Disabled"
-        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet,$otherSubnet -EdgeZone $edgeZone
 
         # Create LoadBalancer
         $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $ilbFrontName -PrivateIpAddress "10.0.1.5" -SubnetId $vnet.subnets[0].Id
         $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $ilbBackendName
-        $ilbcreate = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard"
+        $ilbcreate = New-AzLoadBalancer -ResourceGroupName $rgname -Name $ilbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beaddresspool -Sku "Standard" -EdgeZone $edgeZone
 
         # Verfify if load balancer is created successfully
         Assert-NotNull $ilbcreate
@@ -314,7 +315,7 @@ function Test-PrivateEndpointInEdgeZone
         $IpConfiguration = New-AzPrivateLinkServiceIpConfig -Name $IpConfigurationName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.subnets[2]
         $LoadBalancerFrontendIpConfiguration = Get-AzLoadBalancer -Name $ilbName | Get-AzLoadBalancerFrontendIpConfig
 
-        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration
+        $vPrivateLinkService = New-AzPrivateLinkService -ResourceGroupName $rgname -Name $PrivateLinkServiceName -Location $location -IpConfiguration $IpConfiguration -LoadBalancerFrontendIpConfiguration $LoadBalancerFrontendIpConfiguration -EdgeZone $edgeZone
 
         # Verfify if private link service is created successfully
         Assert-NotNull $vPrivateLinkService
@@ -325,13 +326,16 @@ function Test-PrivateEndpointInEdgeZone
 
         # Create virtual network for private endpoint
         $peSubnet = New-AzVirtualNetworkSubnetConfig -Name "peSubnet" -AddressPrefix "11.0.1.0/24" -PrivateEndpointNetworkPoliciesFlag "Disabled"
-        $vnetPE = New-AzVirtualNetwork -Name $vnetPEName -ResourceGroupName $rgName -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet
+        $vnetPE = New-AzVirtualNetwork -Name $vnetPEName -ResourceGroupName $rgName -Location $location -AddressPrefix "11.0.0.0/16" -Subnet $peSubnet -EdgeZone $edgeZone
 
         # Create PrivateEndpoint
         $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $PrivateLinkServiceConnectionName -PrivateLinkServiceId  $vPrivateLinkService.Id
-        New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection
+        New-AzPrivateEndpoint -ResourceGroupName $rgname -Name $rname -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $PrivateLinkServiceConnection -EdgeZone $edgeZone
 
         $vPrivateEndpoint = Get-AzPrivateEndpoint -Name $rname -ResourceGroupName $rgname
+
+        Assert-AreEqual $vPrivateEndpoint.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $vPrivateEndpoint.ExtendedLocation.Type "EdgeZone"
     }
     finally
     {
