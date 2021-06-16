@@ -5317,6 +5317,10 @@
                 <Label>NetworkInterfaces</Label>
                 <PropertyName>NetworkInterfacesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

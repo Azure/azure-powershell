@@ -22,6 +22,7 @@
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
     - `New-AzLoadBalancer`
+    - `New-AzPrivateLinkService`
 * Added support for viewing extended location of virtual network in the console
     - `New-AzVirtualNetwork`
     - `Get-AzVirtualNetwork`
