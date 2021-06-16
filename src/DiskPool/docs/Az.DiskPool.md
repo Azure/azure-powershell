@@ -17,6 +17,12 @@ Get a Disk pool.
 ### [Get-AzDiskPoolIscsiTarget](Get-AzDiskPoolIscsiTarget.md)
 Get an iSCSI Target.
 
+### [Get-AzDiskPoolOutboundNetworkDependencyEndpoint](Get-AzDiskPoolOutboundNetworkDependencyEndpoint.md)
+Gets the network endpoints of all outbound dependencies of a Disk Pool
+
+### [Get-AzDiskPoolZone](Get-AzDiskPoolZone.md)
+Lists available Disk Pool Skus in an Azure location.
+
 ### [New-AzDiskPool](New-AzDiskPool.md)
 Create or Update Disk pool.
 
