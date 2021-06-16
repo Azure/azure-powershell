@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
-using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.Management.KeyVault;
+using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 
 
@@ -25,11 +25,21 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Vault GetKeyVault(string resourceGroupName, string vaultName)
+        public Vault GetKeyVault(string resourceGroupName, string vaultName, string kvSubscriptionId)
         {
             try
             {
-                return this.WrappedKeyVaultClient.Vaults.Get(resourceGroupName, vaultName);
+                string originalSubscreptionId = this.WrappedKeyVaultClient.SubscriptionId;
+
+                // Replacing the actual Subscription to fetch the Vaults from other Subscriptions.
+                if (!String.IsNullOrEmpty(kvSubscriptionId) && originalSubscreptionId != kvSubscriptionId)
+                    this.WrappedKeyVaultClient.SubscriptionId = kvSubscriptionId;
+
+                var vault = this.WrappedKeyVaultClient.Vaults.Get(resourceGroupName, vaultName);
+                // Replacing back to the original Subscription after fetching Vault.
+                this.WrappedKeyVaultClient.SubscriptionId = originalSubscreptionId;
+
+                return vault;
             }
             catch (Exception ex)
             {
