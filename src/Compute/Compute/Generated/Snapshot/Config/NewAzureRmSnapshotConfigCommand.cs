@@ -146,6 +146,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
         public string NetworkAccessPolicy { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public PSPurchasePlan PurchasePlan { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("Snapshot", "New"))
@@ -170,6 +175,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
+
+            PurchasePlan purchasePlan = new PurchasePlan();
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -297,6 +304,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
+            if (this.IsParameterBound(c => c.PurchasePlan))
+            {
+                ComputeAutomationAutoMapperProfile.Mapper.Map<PSPurchasePlan, PurchasePlan>(this.PurchasePlan, purchasePlan);
+            }
+
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -311,7 +323,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
-                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null
+                DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? purchasePlan : null
             };
 
             WriteObject(vSnapshot);
