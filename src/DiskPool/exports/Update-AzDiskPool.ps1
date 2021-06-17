@@ -21,15 +21,15 @@ Update a Disk pool.
 .Example
 PS C:\> Update-AzDiskPool -Name 'disk-pool-1' -ResourceGroupName 'storagepool-rg-test' -DiskId @()
 
-Location   Name        Type
---------   ----        ----
-westeurope disk-pool-1 Microsoft.StoragePool/diskPools
+Name             Location    Status    ProvisioningState AvailabilityZone
+----             --------    ------    ----------------- ----------------
+disk-pool-1      eastus2euap Running   Succeeded         {3}
 .Example
 PS C:\> Get-AzDiskPool -ResourceGroupName 'storagepool-rg-test' -Name 'disk-pool-1' | Update-AzDiskPool -DiskId @()
 
-Location   Name        Type
---------   ----        ----
-westeurope disk-pool-1 Microsoft.StoragePool/diskPools
+Name             Location    Status    ProvisioningState AvailabilityZone
+----             --------    ------    ----------------- ----------------
+disk-pool-1      eastus2euap Running   Succeeded         {3}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolIdentity
