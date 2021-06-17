@@ -101,5 +101,15 @@ directive:
       format-table:
         properties:
           - Category
-          - Endpoint           
+          - Endpoint
+  - where:
+      model-name: DiskPool 
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Status
+          - ProvisioningState
+          - AvailabilityZone       
 ```
