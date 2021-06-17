@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     "Connect-AzAccount", "Clear-AzContext", "Disconnect-AzAccount", "Import-AzContext", "Remove-AzContext", "Set-AzContext"
                 },
                 StringComparer.InvariantCultureIgnoreCase);
-        private static readonly PredictiveSuggestion _surveySuggestion = new PredictiveSuggestion("Open-AzPredictorSurvey # Would you like to provide us feedback?");
+        private static readonly PredictiveSuggestion _surveySuggestion = new PredictiveSuggestion("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor");
 
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
