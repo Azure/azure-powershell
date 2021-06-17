@@ -62,8 +62,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null)
                     {
-                        var currentVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
-                        if (currentVMSS.VirtualMachineProfile.StorageProfile.ImageReference == this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference)
+                        var newImageRef = this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference;
+                        var currVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
+                        var currImageRef = currVMSS.VirtualMachineProfile.StorageProfile.ImageReference;
+                        if (currImageRef.Id == newImageRef.Id)
                         {
                             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = null;
                         }
