@@ -87,6 +87,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("EncryptionAtRestWithPlatformKey", "EncryptionAtRestWithCustomerKey")]
         public string EncryptionType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public PSPurchasePlan PurchasePlan { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -106,6 +111,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // Sku
             SnapshotSku vSku = null;
 
+            PurchasePlan purchasePlan = new PurchasePlan();
+            
             if (this.IsParameterBound(c => c.EncryptionSettingsEnabled))
             {
                 if (vEncryptionSettingsCollection == null)
@@ -186,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 EncryptionSettingsCollection = vEncryptionSettingsCollection,
                 Encryption = vEncryption,
-                Sku = vSku,
+                Sku = vSku
             };
 
             WriteObject(vSnapshotUpdate);
