@@ -119,7 +119,7 @@
       <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;"  Condition="'$(IsGenerateBased)' == 'true'"/>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
 
     <CIFilterTask FilesChanged="@(FilesChanged)" TargetModule="$(TargetModule)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
