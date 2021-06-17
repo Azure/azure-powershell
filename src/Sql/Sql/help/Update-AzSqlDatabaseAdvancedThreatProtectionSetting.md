@@ -22,7 +22,6 @@ Update-AzSqlDatabaseAdvancedThreatProtectionSetting [-PassThru] [-NotificationRe
 
 ## DESCRIPTION
 The **Update-AzSqlDatabaseAdvancedThreatProtectionSetting** cmdlet sets a advanced threat protection settings on an Azure SQL database.
-In order to enable advanced threat protection on a database an auditing settings must be enabled on that database.
 To use this cmdlet, specify the *ResourceGroupName*, *ServerName* and *DatabaseName* parameters to identify the database.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
@@ -30,7 +29,7 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ### Example 1: Set the advanced threat protection settings for a database
 ```
-PS C:\>Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01" -NotificationRecipientsEmails "admin01@contoso.com;secadmin@contoso.com" -EmailAdmins $False -ExcludedDetectionType "Sql_Injection_Vulnerability", "SQL_Injection" -StorageAccountName "mystorageAccount"
+PS C:\>Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command sets the advanced threat protection settings for a database named Database01 on the server named Server01.

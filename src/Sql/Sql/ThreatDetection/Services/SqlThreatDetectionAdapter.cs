@@ -318,12 +318,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        private Management.Sql.Models.DatabaseSecurityAlertPolicy PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
-            var updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
-            var properties = PopulateDatabasePolicyProperties(model, storageEndpointSuffix, new DatabaseSecurityAlertPolicyProperties()) as DatabaseSecurityAlertPolicyProperties;
-            updateParameters.Properties = properties;
-            return updateParameters;
+            var policy = new Management.Sql.Models.DatabaseSecurityAlertPolicy()
+            {
+                State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled ? SecurityAlertsPolicyState.Enabled : SecurityAlertsPolicyState.Disabled,
+                DisabledAlerts = ExtractExcludedDetectionType(model),
+                EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
+                EmailAccountAdmins = model.EmailAdmins,
+                RetentionDays = Convert.ToInt32(model.RetentionInDays),
+            };
+
+            if (string.IsNullOrEmpty(model.StorageAccountName))
+            {
+                policy.StorageEndpoint = null;
+                policy.StorageAccountAccessKey = null;
+            }
+            else
+            {
+                BaseSecurityAlertPolicyProperties legacyProperties = new BaseSecurityAlertPolicyProperties();
+                PopulateStoragePropertiesInPolicy(model, legacyProperties, storageEndpointSuffix);
+                policy.StorageEndpoint = legacyProperties.StorageEndpoint;
+                policy.StorageAccountAccessKey = legacyProperties.StorageAccountAccessKey;
+            }
+
+            return policy;
         }
 
         private BaseSecurityAlertPolicyProperties PopulateDatabasePolicyProperties(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix, BaseSecurityAlertPolicyProperties properties)
