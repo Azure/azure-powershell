@@ -279,6 +279,16 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true)]
         public string HostGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Name of the SSH Public Key resource.")]
+        public string SshKeyName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate a SSH Public/Private key pair and create a SSH Public Key resource on Azure.")]
+        public SwitchParameter GenerateSshKey { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
