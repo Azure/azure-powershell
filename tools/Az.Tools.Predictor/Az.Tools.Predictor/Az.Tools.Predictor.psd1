@@ -29,9 +29,9 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2 preview 6 and PSReadLine 2.2.0-beta3.
+Description = 'Microsoft Azure PowerShell - Module providing recommendations for cmdlets comprised in the Az module - This module requires PowerShell 7.2-preview.6 and PSReadLine 2.2.0-beta3.
 
-The suggestions must be activated:
+Suggestions must be activated:
 - Enable-AzPredictor:  Activate the suggestions
 - Disable-AzPredictor: Disable the suggestions
 
@@ -69,7 +69,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add Open-AzPredictorSurvey to welcome feedback.'
+        ReleaseNotes = '* Display Open-AzPredictorSurvey cmdlet as the last suggestion in listview mode
+- Fixed compatibility issues with Powershell 7.2.0-preview 6 and PS Readline 2.2.0-beta3'
 
         # Prerelease string of this module
         # Prerelease = ''
