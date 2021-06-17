@@ -819,32 +819,36 @@ function Test-PublicIpAddressCRUD-IdleTimeout
 
 <#
 .SYNOPSIS
-Tests creating new simple publicIpAddress.
+Test for creating a new simple publicIpAddress in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
 #>
 function Test-PublicIpAddressInEdgeZone
 {
     # Setup
-    $ResourceName = Get-ResourceName
+    $resourceName = Get-ResourceName
 	$domainNameLabel = Get-ResourceName
-    $ResourceGroupName = Get-ResourceGroupName;
-    $LocationName = "westus";
-    $EdgeZone = "microsoftlosangeles1";
-    $VMName = "MyVM";
-   
-    try 
-     {
-      # Create the resource group
-      New-AzResourceGroup -Name $ResourceGroupName -Location $LocationName
-      
-      # Create publicIpAddres
-      New-AzPublicIpAddress -ResourceGroupName $ResourceGroupName -Name $ResourceName -Location $LocationName -EdgeZone $EdgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $resourceGroupName = Get-ResourceGroupName
+    $locationName = 'westus'
+    $edgeZone = 'microsoftlosangeles1'
 
-	  $publicIP = Get-AzPublicIpAddress -Name $ResourceName -ResourceGroupName $ResourceGroupName
-	  Assert-AreEqual $publicIP.ExtendedLocation.Name $EdgeZone
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location $locationName
+
+        # Create publicIpAddres
+        New-AzPublicIpAddress -ResourceGroupName $resourceGroupName -Name $resourceName -Location $locationName -EdgeZone $edgeZone -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        $publicIP = Get-AzPublicIpAddress -Name $resourceName -ResourceGroupName $resourceGroupName
+        Assert-AreEqual $publicIP.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $publicIP.ExtendedLocation.Type 'EdgeZone'
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally
     {
         # Cleanup
-        Clean-ResourceGroup $ResourceGroupName
+        Clean-ResourceGroup $resourceGroupName
     }
 }

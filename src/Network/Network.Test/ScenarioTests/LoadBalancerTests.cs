@@ -272,5 +272,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GatewayLoadBalancer-ConsumerLb");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestLoadBalancerInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerInEdgeZone");
+        }
     }
 }

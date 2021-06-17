@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.6.0
 * Added UseExistingSnapshot to Backups 
 * SnapshotPolicyId to UpdateAnfNetAppFilesVolume, this can be used to apply a snapshot policy to an existing volume
 

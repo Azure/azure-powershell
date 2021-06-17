@@ -1556,6 +1556,10 @@
                 <Label>IpTags</Label>
                 <PropertyName>IpTagsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1717,6 +1721,10 @@
               <ListItem>
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2453,6 +2461,10 @@
               <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -5304,6 +5316,10 @@
               <ListItem>
                 <Label>NetworkInterfaces</Label>
                 <PropertyName>NetworkInterfacesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
