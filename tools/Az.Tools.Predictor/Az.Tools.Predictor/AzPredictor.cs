@@ -56,11 +56,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private const int SuggestionCountForTelemetry = 5;
 
-        private static HashSet<string> _azAccountCommands = new HashSet<string>(new string[]
+        private static readonly HashSet<string> _azAccountCommands = new HashSet<string>(new string[]
                 {
                     "Connect-AzAccount", "Clear-AzContext", "Disconnect-AzAccount", "Import-AzContext", "Remove-AzContext", "Set-AzContext"
                 },
                 StringComparer.InvariantCultureIgnoreCase);
+        private static readonly PredictiveSuggestion _surveySuggestion = new PredictiveSuggestion("Open-AzPredictorSurvey # Would you like to provide us feedback?");
 
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
@@ -339,6 +340,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 if ((suggestions == null) || (suggestions.Count == 0))
                 {
                     return default(SuggestionPackage);
+                }
+
+                // Replace the last suggestion with "Open-AzPredictorSurvey".
+                // TODO Remove it in GA.
+
+                if (suggestions.Count == _settings.SuggestionCount.Value)
+                {
+                    suggestions[suggestions.Count - 1] = _surveySuggestion;
+                }
+                else
+                {
+                    suggestions.Add(_surveySuggestion);
                 }
 
                 return new SuggestionPackage(localSuggestionSessionId, suggestions);
