@@ -168,6 +168,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
 [Databricks]:                 https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks
+[Datadog]:                    https://img.shields.io/powershellgallery/v/Az.Datadog.svg?style=flat-square&label=Az.Datadog
 [DataFactory]:                https://img.shields.io/powershellgallery/v/Az.DataFactory.svg?style=flat-square&label=Az.DataFactory
 [DataLakeAnalytics]:          https://img.shields.io/powershellgallery/v/Az.DataLakeAnalytics.svg?style=flat-square&label=Az.DataLakeAnalytics
 [DataLakeStore]:              https://img.shields.io/powershellgallery/v/Az.DataLakeStore.svg?style=flat-square&label=Az.DataLakeStore
@@ -291,6 +292,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [DataBoxGallery]:                    https://www.powershellgallery.com/packages/Az.DataBox/
 [DataBoxEdgeGallery]:                https://www.powershellgallery.com/packages/Az.DataBoxEdge/
 [DatabricksGallery]:                 https://www.powershellgallery.com/packages/Az.Databricks/
+[DatadogGallery]:                    https://www.powershellgallery.com/packages/Az.Datadog/
 [DataFactoryGallery]:                https://www.powershellgallery.com/packages/Az.DataFactory/
 [DataLakeAnalyticsGallery]:          https://www.powershellgallery.com/packages/Az.DataLakeAnalytics/
 [DataLakeStoreGallery]:              https://www.powershellgallery.com/packages/Az.DataLakeStore/
