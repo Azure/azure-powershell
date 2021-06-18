@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.Azure.Management.Internal.Network.Common;
-    using Microsoft.Azure.Management.Network.Models;
     using Newtonsoft.Json;
     using System.Collections.Generic;
     using WindowsAzure.Commands.Common.Attributes;
@@ -25,6 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId VirtualMachine { get; set; }
 
         public PSExtendedLocation ExtendedLocation { get; set; }
+
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
         public List<PSNetworkInterfaceTapConfiguration> TapConfigurations { get; set; }
@@ -86,6 +86,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string PrivateEndpointText
         {
             get { return JsonConvert.SerializeObject(PrivateEndpoint, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ExtendedLocationText
+        {
+            get { return JsonConvert.SerializeObject(ExtendedLocation, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeIpConfigurations()

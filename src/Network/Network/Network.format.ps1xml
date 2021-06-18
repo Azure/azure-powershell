@@ -139,6 +139,10 @@
                 <Label>DdosProtectionPlan</Label>
                 <PropertyName>DdosProtectionPlanText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1552,6 +1556,10 @@
                 <Label>IpTags</Label>
                 <PropertyName>IpTagsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1714,6 +1722,10 @@
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1817,6 +1829,10 @@
               <ListItem>
                 <Label>MacAddress</Label>
                 <PropertyName>MacAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2445,6 +2461,10 @@
               <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -5109,6 +5129,10 @@
                 <Label>CustomDnsConfigs</Label>
                 <PropertyName>CustomDnsConfigsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5296,6 +5320,10 @@
               <ListItem>
                 <Label>NetworkInterfaces</Label>
                 <PropertyName>NetworkInterfacesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -30,7 +30,7 @@ For information on how to develop for `Az.DiskPool`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: 418603118e704ffeabacff1dd56957400cf83f3a
+branch: 418603118e704ffeabacff1dd56957400cf83f3a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
@@ -83,13 +83,33 @@ directive:
       verb: Update
       subject: IscsiTarget
     hide: true
-  - where:
-      subject: DiskPoolOutboundNetworkDependencyEndpoint
-    hide: true
-  - where:
-      subject: DiskPoolZone
-    hide: true
   - model-cmdlet:
     - Acl
     - IscsiLun
+  - where:
+      model-name: DiskPoolZoneInfo
+    set:
+      format-table:
+        properties:
+          - SkuName
+          - SkuTier
+          - AvailabilityZone
+          - AdditionalCapability
+  - where:
+      model-name: OutboundEnvironmentEndpoint
+    set:
+      format-table:
+        properties:
+          - Category
+          - Endpoint
+  - where:
+      model-name: DiskPool 
+    set:
+      format-table:
+        properties:
+          - Name
+          - Location
+          - Status
+          - ProvisioningState
+          - AvailabilityZone       
 ```

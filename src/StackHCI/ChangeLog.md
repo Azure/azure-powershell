@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Made changes to use FQDN while connecting to nodes and the cluster.
     - Using FQDN while connecting to cluster and the nodes.
     - Using AAD retries in Arc AAD application setup.
