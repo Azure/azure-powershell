@@ -110,6 +110,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string activity = String.Format(Resources.ReceiveAzureBlobActivity, blob.Name, filePath);
             string status = Resources.PrepareDownloadingBlob;
             ProgressRecord pr = new ProgressRecord(OutputStream.GetProgressId(taskId), activity, status);
+
+            // If the blob has no length information, need get it
+            if(blob.Properties.Length < 0)
+            {
+                blob.FetchAttributes();
+            }
+
             DataMovementUserData data = new DataMovementUserData()
             {
                 Data = blob,

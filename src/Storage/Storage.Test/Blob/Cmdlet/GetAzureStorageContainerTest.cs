@@ -19,6 +19,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.Azure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
 {
@@ -64,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         public void ListContainersByNameWithContainerNameTest()
         {
             AddTestContainers();
-            IEnumerable<Tuple<CloudBlobContainer, BlobContinuationToken>> containerList = command.ListContainersByName("text");
+            IEnumerable<Tuple<AzureStorageContainer, BlobContinuationToken>> containerList = command.ListContainersByName("text");
             Assert.AreEqual(1, containerList.Count());
             Assert.AreEqual("text", containerList.First().Item1.Name);
         }
