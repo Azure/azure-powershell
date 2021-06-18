@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using System;
 
 
