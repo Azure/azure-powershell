@@ -97,42 +97,39 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            // Validate if regional database accounts exists as of restore timestamp
-            RestorableLocationResource restorableLocationResource = null;
-            foreach (RestorableLocationResource restorableResource in sourceAccountToRestore.RestorableLocations)
-            {
-                if (restorableResource.LocationName.Equals(Location, StringComparison.OrdinalIgnoreCase) &&
-                    (restorableResource.CreationTime.HasValue && restorableResource.CreationTime < utcRestoreDateTime) &&
-                    (!restorableResource.DeletionTime.HasValue || restorableResource.DeletionTime > utcRestoreDateTime))
-                {
-                    restorableLocationResource = restorableResource;
-                    break;
-                }
-            }
-
-            if (restorableLocationResource == null)
-            {
-                WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} in location {Location} that was alive at given utc-timestamp {utcRestoreDateTime}");
-                return;
-            }
-
             // Validate if source account is empty
-            IEnumerable<DatabaseRestoreResource> restorableResources;
+            IEnumerable<DatabaseRestoreResource> restorableResources = null;
             if (sourceAccountToRestore.ApiType.Equals("Sql", StringComparison.OrdinalIgnoreCase))
             {
-                restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
+                try
+                {
+                    restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
+                        sourceAccountToRestore.Location,
+                        sourceAccountToRestore.Name,
+                        Location,
+                        utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                }
+                catch (Exception)
+                {
+                    WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {Location}");
+                    return;
+                }
+            }
+            else if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
                     sourceAccountToRestore.Location,
                     sourceAccountToRestore.Name,
                     Location,
                     utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
-            }
-            else if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
-            {
-                restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
-                    sourceAccountToRestore.Location,
-                    restorableLocationResource.RegionalDatabaseAccountInstanceId,
-                    Location,
-                    utcRestoreDateTime.ToString()).GetAwaiter().GetResult().Body;
+                }
+                catch (Exception)
+                {
+                    WriteWarning($"No database accounts found with matching account name {SourceDatabaseAccountName} that was alive at given utc-timestamp {utcRestoreDateTime} in location {Location}");
+                    return;
+                }
             }
             else
             {
@@ -140,14 +137,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            if (!restorableResources.Any())
+            if (restorableResources == null || !restorableResources.Any())
             {
-                WriteWarning($"Database account {SourceDatabaseAccountName} contains no restorable resources in location {Location} at given restore timestamp {utcRestoreDateTime}");
+                WriteWarning($"Database account {SourceDatabaseAccountName} contains no restorable resources in location {Location} at given restore timestamp {utcRestoreDateTime} in location {Location}");
                 return;
             }
 
             // Trigger restore
-            DatabaseAccountCreateUpdateProperties databaseAccountCreateUpdateProperties = null;
             PSRestoreParameters restoreParameters = new PSRestoreParameters()
             {
                 RestoreSource = sourceAccountToRestore.Id,
@@ -159,21 +155,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
             Location loc = new Location(locationName: Location, failoverPriority: 0);
             LocationCollection.Add(loc);
 
-            databaseAccountCreateUpdateProperties = new RestoreReqeustDatabaseAccountCreateUpdateProperties()
-            {
-                RestoreParameters = restoreParameters.ToSDKModel(),
-                Locations = LocationCollection
-            };
-
             string apiKind = "GlobalDocumentDB";
             if (sourceAccountToRestore.ApiType.Equals("MongoDB", StringComparison.OrdinalIgnoreCase))
             {
                 apiKind = "MongoDB";
             }
 
-            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(location: sourceAccountToRestore.Location, name: TargetDatabaseAccountName, properties: databaseAccountCreateUpdateProperties)
+            DatabaseAccountCreateUpdateParameters databaseAccountCreateUpdateParameters = new DatabaseAccountCreateUpdateParameters(locations: LocationCollection, location: sourceAccountToRestore.Location, name: TargetDatabaseAccountName)
             {
-                Kind = apiKind
+                Kind = apiKind,
+                CreateMode = CreateMode.Restore,
+                RestoreParameters = restoreParameters.ToSDKModel()
             };
 
             if (ShouldProcess(TargetDatabaseAccountName,
