@@ -37,7 +37,7 @@ Columns PartitionKeys ClusterKeys
 Array of PSClusterKey objects.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSClusterKey[]
+Type: PSClusterKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 PSColumn object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSColumn[]
+Type: PSColumn[]
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Array of strings containing Partition Keys.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -45,7 +45,7 @@ Resource Object contains IndexingPolicy, PartitionKey, DefaultTtl, UniqueKeyPoli
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Gremlin Graph Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Gremlin Database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetResults
+Type: PSGremlinDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 

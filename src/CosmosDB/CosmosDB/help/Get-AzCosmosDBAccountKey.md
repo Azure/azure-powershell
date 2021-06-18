@@ -53,7 +53,7 @@ Lists the keys for CosmosDB Account. The Key Type can be value from : Connection
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 CosmosDB Account object
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSDatabaseAccountGetResults
+Type: PSDatabaseAccountGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ResourceId of the resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByResourceIdParameterSet
 Aliases:
 
@@ -129,7 +129,7 @@ Value from: {ConnectionStrings, Keys, ReadOnlyKeys}.
 Default is Keys.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

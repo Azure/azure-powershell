@@ -70,7 +70,7 @@ Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetProperti
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 TTL for Analytical Storage (in Seconds).
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -100,9 +100,24 @@ Accept wildcard characters: False
 Maximum Throughput value if autoscale is enabled.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -115,7 +130,7 @@ Accept wildcard characters: False
 ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlConflictResolutionPolicy
+Type: PSSqlConflictResolutionPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +146,7 @@ Can have the values: LastWriterWins, Custom, Manual.
 If provided along with ConflictResolutionPolicy parameter, it is ignored.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +162,7 @@ To be provided when the type is LastWriterWins.
 If provided along with ConflictResolutionPolicy parameter, it is ignored.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +178,7 @@ To be provided when the type is custom.
 If provided along with ConflictResolutionPolicy parameter, it is ignored.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +193,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -193,7 +208,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -208,7 +223,7 @@ Accept wildcard characters: False
 Indexing Policy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlIndexingPolicy.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlIndexingPolicy
+Type: PSSqlIndexingPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +238,7 @@ Accept wildcard characters: False
 Sql Container object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
+Type: PSSqlContainerGetResults
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -238,7 +253,7 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +268,7 @@ Accept wildcard characters: False
 Sql Database object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
+Type: PSSqlDatabaseGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -269,7 +284,7 @@ The kind of algorithm used for partitioning.
 Possible values include: 'Hash', 'Range'
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -284,7 +299,7 @@ Accept wildcard characters: False
 Partition Key Path, e.g., '/address/zipcode'.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +314,7 @@ Accept wildcard characters: False
 The version of the partition key definition
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +329,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -330,7 +345,7 @@ The throughput of SQL container (RU/s).
 Default value is 400.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -347,7 +362,7 @@ If the value is missing or set to  - 1, items don't expire.
 If the value is set to n, items will expire n seconds after last modified time.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -362,7 +377,7 @@ Accept wildcard characters: False
 UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKeyPolicy
+Type: PSSqlUniqueKeyPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -373,27 +388,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

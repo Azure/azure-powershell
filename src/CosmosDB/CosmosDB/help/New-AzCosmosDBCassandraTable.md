@@ -61,7 +61,7 @@ PS C:\>
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Analytical Storage TTL.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -91,9 +91,24 @@ Accept wildcard characters: False
 Maximum Throughput value if autoscale is enabled.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -106,7 +121,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -121,7 +136,7 @@ Accept wildcard characters: False
 Cassandra Keyspace Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -136,7 +151,7 @@ Accept wildcard characters: False
 Cassandra Table Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +166,7 @@ Accept wildcard characters: False
 Cassandra Keyspace object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraKeyspaceGetResults
+Type: PSCassandraKeyspaceGetResults
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -166,7 +181,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -182,7 +197,7 @@ PSCassandraSchema object.
 Use New-AzCosmosDBCassandraSchema to create this object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSCassandraSchema
+Type: PSCassandraSchema
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +213,7 @@ The throughput of Cassandra Keyspace (RU/s).
 Default value is 400.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -215,24 +230,9 @@ If the value is missing or set to  - 1, items don't expire.
 If the value is set to n, items will expire n seconds after last modified time.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -246,7 +246,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
