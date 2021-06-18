@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     {
         const string ParameterSet1Name = "S1";
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the keyvault.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the keyvault or Id of the KeyVault.")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultName { get; set; }
 

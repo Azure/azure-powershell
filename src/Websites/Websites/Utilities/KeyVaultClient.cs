@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             private set;
         }
 
-        public Vault GetKeyVault(string resourceGroupName, string vaultName, string kvSubscriptionId)
+        public Vault GetKeyVault(string resourceGroupName, string vaultName, string kvSubscriptionId = null)
         {
             try
             {
