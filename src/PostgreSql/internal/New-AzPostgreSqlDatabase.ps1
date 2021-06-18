@@ -54,7 +54,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.postgresql/new-azpostgresqldatabase
+https://docs.microsoft.com/powershell/module/az.postgresql/new-azpostgresqldatabase
 #>
 function New-AzPostgreSqlDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IDatabase])]

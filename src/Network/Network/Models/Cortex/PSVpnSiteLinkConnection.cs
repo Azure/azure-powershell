@@ -49,6 +49,9 @@
         [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
         public List<PSResourceId> EgressNatRules { get; set; }
 
+        [Ps1Xml(Label = "VpnLinkConnectionMode", Target = ViewControl.Table)]
+        public string VpnLinkConnectionMode { get; set; }
+
         [JsonIgnore]
         public string IngressNatRulesText
         {

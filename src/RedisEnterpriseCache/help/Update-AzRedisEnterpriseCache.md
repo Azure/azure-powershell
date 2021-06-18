@@ -15,14 +15,14 @@ Updates an existing RedisEnterprise cluster
 ### UpdateExpanded (Default)
 ```
 Update-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Capacity <Int32>] [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>]
+ [-Capacity <Int32>] [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Capacity <Int32>]
- [-MinimumTlsVersion <String>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-MinimumTlsVersion <TlsVersion>] [-Sku <SkuName>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,9 +31,9 @@ Updates an existing RedisEnterprise cluster
 
 ## EXAMPLES
 
-### Example 1: Update Redis Enterprise Cache
+### Example 1: Update Redis Enterprise cache
 ```powershell
-PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag" = "value"}
+PS C:\> Update-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -MinimumTlsVersion "1.2" -Tag @{"tag1" = "value1"}
 
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
@@ -41,7 +41,7 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 
 ```
 
-This command updates the minimum TLS version and adds a tag to the Redis Enterprise Cache named MyCache.
+This command updates the minimum TLS version and adds a tag to the Redis Enterprise cache named MyCache.
 
 ## PARAMETERS
 
@@ -128,7 +128,7 @@ The minimum TLS version for the cluster to support, e.g.
 '1.2'
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion
 Parameter Sets: (All)
 Aliases:
 
@@ -156,6 +156,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -186,8 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Gets subscription credentials which uniquely identify the Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -256,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20201001Preview.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
 
 ## NOTES
 
@@ -274,8 +274,8 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[Location <String>]`: The region the operation is in.
   - `[OperationId <String>]`: The operation's unique identifier.
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

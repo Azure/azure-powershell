@@ -59,7 +59,7 @@ PARAMETER <IConfiguration>: Represents a Configuration.
   [Source <String>]: Source of the configuration.
   [Value <String>]: Value of the configuration.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.postgresql/update-azpostgresqlconfiguration
+https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlconfiguration
 #>
 function Update-AzPostgreSqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration])]

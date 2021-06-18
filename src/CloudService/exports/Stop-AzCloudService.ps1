@@ -35,13 +35,16 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   [CloudServiceName <String>]: 
   [Id <String>]: Resource identity path
+  [Location <String>]: Name of the location that the OS version pertains to.
+  [OSFamilyName <String>]: Name of the OS family.
+  [OSVersionName <String>]: Name of the OS version.
   [ResourceGroupName <String>]: 
   [RoleInstanceName <String>]: Name of the role instance.
   [RoleName <String>]: Name of the role.
   [SubscriptionId <String>]: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [UpdateDomain <Int32?>]: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.cloudservice/stop-azcloudservice
+https://docs.microsoft.com/powershell/module/az.cloudservice/stop-azcloudservice
 #>
 function Stop-AzCloudService {
 [OutputType([System.Boolean])]

@@ -184,6 +184,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
                 cfg.CreateMap<FROM.VirtualMachineAssessPatchesResult, TO.PSVirtualMachinePatchAssessmentResult>();
                 cfg.CreateMap<TO.PSVirtualMachinePatchAssessmentResult, FROM.VirtualMachineAssessPatchesResult>();
+                cfg.CreateMap<FROM.VirtualMachineInstallPatchesResult, TO.PSVirtualMachineInstallPatchesResult>();
+                cfg.CreateMap<TO.PSVirtualMachineInstallPatchesResult, FROM.VirtualMachineInstallPatchesResult>();
 
             });
             _mapper = config.CreateMapper();

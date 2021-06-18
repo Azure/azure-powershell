@@ -42,7 +42,7 @@ Get-AzAlert [-TargetResourceId <String>] [-MonitorService <String>] [-MonitorCon
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext true
+PS C:\> Get-AzAlert -Severity "Sev2" -MonitorCondition "Fired" -IncludeContext $true
 ```
 
 List all alerts with Sev2 severity and Fired monitor condition. Setting IncludeContext to true, include custom payload of alert.

@@ -16,6 +16,7 @@ function setupEnv() {
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]  
     $password = 'Pa88word!' | ConvertTo-SecureString -AsPlainText -Force
     $serverName = "postgresql-test-100"
+    $flexibleServerName = "postgresql-flexible-test-100"
     $serverName2 = "postgresql-test-200"
     $serverName3 = "postgresql-test-300"
     $restoreName = "postgresql-test-100-restore"
@@ -43,7 +44,6 @@ function setupEnv() {
         $restoreName = $PowershellPrefix + "replica-server" + $RandomNumbers
         $firewallRuleName = $PowershellPrefix + "firewallrule" + $RandomNumbers
     }
-
 
     $env.Add("serverName", $serverName)
     $env.Add("flexibleServerName", $flexibleServerName)

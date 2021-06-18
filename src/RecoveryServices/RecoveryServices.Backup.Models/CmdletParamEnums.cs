@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         TargetLocation,
         KeyFileDownloadLocation,
         FileDownloadLocation,
-        RestorePointQueryType
+        RestorePointQueryType,
+        TargetZone
     }
 
     public enum RestoreBackupItemParams
@@ -62,7 +63,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RestoreDiskList,
         RestoreOnlyOSDisk,
         RestoreAsUnmanagedDisks,
-        DiskEncryptionSetId
+        DiskEncryptionSetId,
+        RestoreAsManagedDisk
     }
 
     public enum RestoreFSBackupItemParams

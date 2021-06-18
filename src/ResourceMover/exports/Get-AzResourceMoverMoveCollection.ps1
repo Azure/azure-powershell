@@ -19,39 +19,41 @@ Gets the move collection.
 .Description
 Gets the move collection.
 .Example
-PS C:\>Get-AzResourceMoverMoveCollection  -SubscriptionId e80eb9fa-c996-4435-aa32-5af6f3d3077c
+PS C:\>Get-AzResourceMoverMoveCollection  -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
-Location    Name                                            Type
---------    ----                                            ----
-eastus2     mvcolle2e07001                                  Microsoft.Migrate/moveCollections
-eastus2     mvcolle2e34745                                  Microsoft.Migrate/moveCollections
-eastus2     mvcolle2e56720                                  Microsoft.Migrate/moveCollections
+Etag                                   Location      Name                                Type                             
+----                                   --------      ----                                ----                             
+"270119e0-0000-0c00-0000-5f5c94940000" centraluseuap PS-centralus-westcentralus-demoRMS  Microsoft.Migrate/moveCollections
+"39015ed4-0000-0c00-0000-5f5ce2760000" centraluseuap PS-centralus-westcentralus-demo2RMS Microsoft.Migrate/moveCollections
+"1000b505-0000-0c00-0000-5f69db6e0000" centraluseuap MoveCollection-cus-eus-ccy         Microsoft.Migrate/moveCollections
 
-
-.Example
-PS C:\>Get-AzResourceMoverMoveCollection -ResourceGroupName RG-MoveCollection-demoRM -Name PS-centralus-westcentralus-demoRM
-
-Location    Name                              Type
---------    ----                              ----
-eastus2     PS-centralus-westcentralus-demoRM Microsoft.Migrate/moveCollections
 
 .Example
-PS C:\> Get-AzResourceMoverMoveCollection -ResourceGroupName RG-MoveCollection-demoRM 
+PS C:\>Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PS-centralus-westcentralus-demoRMS"
+
+Etag                                   Location      Name                               Type                             
+----                                   --------      ----                               ----                             
+"22006609-0000-3300-0000-602169590000" centraluseuap PS-centralus-westcentralus-demoRMS Microsoft.Migrate/moveCollections
+
+.Example
+PS C:\> Get-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" 
 
 Location    Name                               Type
 --------    ----                               ----
 eastus2     PS-centralus-westcentralus-demoRM  Microsoft.Migrate/moveCollections
-eastus2euap PS-centralus-westcentralus-demoRM2 Microsoft.Migrate/moveCollections
-
+Etag                                   Location      Name                                Type                             
+----                                   --------      ----                                ----                             
+"22006609-0000-3300-0000-602169590000" centraluseuap PS-centralus-westcentralus-demoRMS  Microsoft.Migrate/moveCollections
+"4e02b0a9-0000-0c00-0000-5fd101cc0000" centraluseuap PS-centralus-westcentralus-demo2RMS Microsoft.Migrate/moveCollections
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/get-azresourcemovermovecollection
+https://docs.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermovecollection
 #>
 function Get-AzResourceMoverMoveCollection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveCollection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveCollection])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

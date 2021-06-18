@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of P2S VPN client tunneling protocols.")]
+            HelpMessage = "The list of P2S VPN gateway authentication types.")]
         [ValidateSet(
             MNM.VpnAuthenticationType.Certificate,
             MNM.VpnAuthenticationType.Radius,

@@ -149,7 +149,7 @@ namespace VersionController.Models
             }
 
             var bumpedVersion = GetBumpedVersionByType(new AzurePSVersion(_oldVersion), versionBump);
-
+            
             List<AzurePSVersion> galleryVersion = GetGalleryVersion();
 
             AzurePSVersion maxGalleryGAVersion = new AzurePSVersion("0.0.0");
@@ -167,8 +167,9 @@ namespace VersionController.Models
             }
             else if (maxGalleryGAVersion >= bumpedVersion)
             {
-                _logger.LogError("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
-                throw new Exception("The GA version of " + moduleName + " in gallery is greater or equal to the bumped version.");
+                string errorMsg = $"The GA version of {moduleName} in gallery ({maxGalleryGAVersion}) is greater or equal to the bumped version({bumpedVersion}).";
+                _logger.LogError(errorMsg);
+                throw new Exception(errorMsg);
             }
             else if (HasGreaterPreviewVersion(bumpedVersion, galleryVersion))
             {

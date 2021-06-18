@@ -33,7 +33,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         /// <param name="value">the value to convert to an instance of <see cref="SkuName" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new SkuName(System.Convert.ToString(value));
+            return new SkuName(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type SkuName</summary>

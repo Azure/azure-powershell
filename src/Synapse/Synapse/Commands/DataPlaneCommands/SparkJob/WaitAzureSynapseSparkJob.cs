@@ -1,7 +1,7 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             catch (TimeoutException)
             {
-                throw new SynapseException(string.Format(Resources.WaitJobTimeoutExceeded, this.LivyId, TimeoutInSeconds));
+                throw new AzPSInvalidOperationException(string.Format(Resources.WaitJobTimeoutExceeded, this.LivyId, TimeoutInSeconds));
             }
         }
     }

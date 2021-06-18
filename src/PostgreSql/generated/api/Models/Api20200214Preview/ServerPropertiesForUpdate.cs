@@ -8,11 +8,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Previe
     {
 
         /// <summary>Backing field for <see cref="AdministratorLoginPassword" /> property.</summary>
-        private string _administratorLoginPassword;
+        private System.Security.SecureString _administratorLoginPassword;
 
         /// <summary>The password of the administrator login.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Origin(Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.PropertyOrigin.Owned)]
-        public string AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
+        public System.Security.SecureString AdministratorLoginPassword { get => this._administratorLoginPassword; set => this._administratorLoginPassword = value; }
 
         /// <summary>Backing field for <see cref="HaEnabled" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum? _haEnabled;
@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Previe
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        string AdministratorLoginPassword { get; set; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>stand by count value can be either enabled or disabled</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(
         Required = false,
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Previe
 
     {
         /// <summary>The password of the administrator login.</summary>
-        string AdministratorLoginPassword { get; set; }
+        System.Security.SecureString AdministratorLoginPassword { get; set; }
         /// <summary>stand by count value can be either enabled or disabled</summary>
         Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HaEnabledEnum? HaEnabled { get; set; }
         /// <summary>Maintenance window of a server.</summary>

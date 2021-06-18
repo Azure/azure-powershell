@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Gets a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Gets a Synapse Analytics SQL database.
 
 ## SYNTAX
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Updates a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Updates a Synapse Analytics SQL database.
 
 ## SYNTAX
 

@@ -66,7 +66,7 @@ PARAMETER <IFirewallRule>: Represents a server firewall rule.
   EndIPAddress <String>: The end IP address of the server firewall rule. Must be IPv4 format.
   StartIPAddress <String>: The start IP address of the server firewall rule. Must be IPv4 format.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.postgresql/update-azpostgresqlfirewallrule
+https://docs.microsoft.com/powershell/module/az.postgresql/update-azpostgresqlfirewallrule
 #>
 function Update-AzPostgreSqlFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IFirewallRule])]

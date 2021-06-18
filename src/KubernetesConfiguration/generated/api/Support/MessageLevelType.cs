@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="MessageLevelType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new MessageLevelType(System.Convert.ToString(value));
+            return new MessageLevelType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type MessageLevelType</summary>

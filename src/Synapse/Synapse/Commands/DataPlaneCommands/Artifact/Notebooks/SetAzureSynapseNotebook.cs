@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                     string suffix = DefaultContext.Environment.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AzureSynapseAnalyticsEndpointSuffix);
                     string endpoint = "https://" + this.WorkspaceName + "." + suffix;
-                    var sparkPoolInfo = new SynapseAnalyticsManagementClient(DefaultContext).GetSparkPool(null, this.WorkspaceName, this.SparkPoolName);
+                    var sparkPoolInfo = SynapseAnalyticsClient.GetBigDataPool(SparkPoolName);
 
                     options["auth"] = new ComputeOptions
                     {

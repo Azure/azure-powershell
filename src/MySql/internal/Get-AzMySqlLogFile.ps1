@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFile
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqllogfile
+https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqllogfile
 #>
 function Get-AzMySqlLogFile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ILogFile])]

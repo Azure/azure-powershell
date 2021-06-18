@@ -4,11 +4,7 @@
 
 This repository contains PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
-Try it out in Azure Cloud Shell!
-* Direct link: Open a browser to https://shell.azure.com
-* Azure portal: Select the Cloud Shell icon on the [Azure portal](https://portal.azure.com/):
-
-[![CloudShellLaunchIcon](https://docs.microsoft.com/en-us/azure/cloud-shell/media/overview/portal-launch-icon.png)](#)
+Try it out in [Azure Cloud Shell](https://portal.azure.com/#cloudshell)!
 
 ## Modules
 Below is a table containing our Azure PowerShell rollup module.

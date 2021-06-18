@@ -72,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
             }
             __serverPropertiesForCreate = new Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForCreate(json);
             {_administratorLogin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("administratorLogin"), out var __jsonAdministratorLogin) ? (string)__jsonAdministratorLogin : (string)AdministratorLogin;}
-            {_administratorLoginPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("administratorLoginPassword"), out var __jsonAdministratorLoginPassword) ? (string)__jsonAdministratorLoginPassword : (string)AdministratorLoginPassword;}
+            {_administratorLoginPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString>("administratorLoginPassword"), out var __jsonAdministratorLoginPassword) ? new System.Net.NetworkCredential("",(string)__jsonAdministratorLoginPassword).SecurePassword : AdministratorLoginPassword;}
             AfterFromJson(json);
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201
             }
             __serverPropertiesForCreate?.ToJson(container, serializationMode);
             AddIf( null != (((object)this._administratorLogin)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._administratorLogin.ToString()) : null, "administratorLogin" ,container.Add );
-            AddIf( null != (((object)this._administratorLoginPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(this._administratorLoginPassword.ToString()) : null, "administratorLoginPassword" ,container.Add );
+            AddIf( null != (((object)this._administratorLoginPassword)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Json.JsonString(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this._administratorLoginPassword))) : null, "administratorLoginPassword" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

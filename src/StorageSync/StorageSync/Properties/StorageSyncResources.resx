@@ -123,9 +123,6 @@
   <data name="GetSyncServerCertificateErrorMessageFormat" xml:space="preserve">
     <value>COM Exception while loading certificate: HResult: {0} Message: {1}</value>
   </data>
-  <data name="InvokeStorageSyncFileRecallActionMessage" xml:space="preserve">
-    <value>Invoke Storage Sync File Recall</value>
-  </data>
   <data name="MissingAfsAgentInstallerPathErrorMessage" xml:space="preserve">
     <value>We cannot find the Storage Sync agent installed in the system. The given registry AfsAgentInstallerPath cannot be found.</value>
   </data>

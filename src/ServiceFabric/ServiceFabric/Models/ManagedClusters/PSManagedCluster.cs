@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ServiceFabric.Models;
+using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
@@ -26,25 +26,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Models
                    tags: cluster.Tags,
                    etag: cluster.Etag,
                    clusterId: cluster.ClusterId,
-                   clusterUpgradeDescription: cluster.ClusterUpgradeDescription,
+                   addonFeatures: cluster.AddonFeatures,
+                   clusterUpgradeCadence: cluster.ClusterUpgradeCadence,
                    clusterUpgradeMode: cluster.ClusterUpgradeMode,
                    clusterCodeVersion: cluster.ClusterCodeVersion,
                    provisioningState: cluster.ProvisioningState,
-                   useTestExtension: cluster.UseTestExtension,
                    fabricSettings: cluster.FabricSettings,
                    azureActiveDirectory: cluster.AzureActiveDirectory,
                    clients: cluster.Clients,
+                   networkSecurityRules: cluster.NetworkSecurityRules,
                    loadBalancingRules: cluster.LoadBalancingRules,
                    adminPassword: cluster.AdminPassword,
                    adminUserName: cluster.AdminUserName,
                    httpGatewayConnectionPort: cluster.HttpGatewayConnectionPort,
                    clientConnectionPort: cluster.ClientConnectionPort,
-                   clusterCertificateThumbprint: cluster.ClusterCertificateThumbprint,
+                   clusterCertificateThumbprints: cluster.ClusterCertificateThumbprints,
                    clusterState: cluster.ClusterState,
+                   ipv4Address: cluster.Ipv4Address,
                    fqdn: cluster.Fqdn,
                    dnsName: cluster.DnsName,
-                   reverseProxyEndpointPort: cluster.ReverseProxyEndpointPort,
-                   sku: cluster.Sku)
+                   applicationTypeVersionsCleanupPolicy: cluster.ApplicationTypeVersionsCleanupPolicy,
+                   sku: cluster.Sku,
+                   zonalResiliency: cluster.ZonalResiliency)
         {
         }
     }

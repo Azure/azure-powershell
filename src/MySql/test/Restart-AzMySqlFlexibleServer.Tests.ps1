@@ -20,7 +20,7 @@ Describe 'Restart-AzMySqlFlexibleServer' {
 
     It 'RestartViaIdentity' {
         {
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForMySql/flexibleServers/$($env.flexibleServerName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/restart"
             Restart-AzMySqlFlexibleServer -InputObject $ID
         } | Should -Not -Throw
     }

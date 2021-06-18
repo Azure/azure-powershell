@@ -26,14 +26,14 @@ Describe 'Update-AzPostgreSqlFlexibleServerFirewallRule' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -EndIPAddress 0.0.0.5 -StartIPAddress 0.0.0.4
         $rule.StartIPAddress | Should -Be 0.0.0.4
         $rule.EndIPAddress | Should -Be 0.0.0.5
     }
 
     It 'ClientIPAddressViaIdentity' {
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBForPostgreSql/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName)/firewallRules/$($env.firewallRuleName)"
         $rule = Update-AzPostgreSqlFlexibleServerFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.9
         $rule.StartIPAddress | Should -Be 0.0.0.9
         $rule.EndIPAddress | Should -Be 0.0.0.9

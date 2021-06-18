@@ -40,7 +40,7 @@ PARAMETER <ICheckNameAvailabilityRequestBody>: The request body for a request to
   [Name <String>]: the name of the bot for which availability needs to be checked.
   [Type <String>]: the type of the bot for which availability needs to be checked
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.botservice/get-azbotchecknameavailability
+https://docs.microsoft.com/powershell/module/az.botservice/get-azbotchecknameavailability
 #>
 function Get-AzBotCheckNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody])]

@@ -19,7 +19,7 @@ Generic distribution object
 Generic distribution object
 
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderDistributorObject
+https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderDistributorObject
 #>
 function New-AzImageBuilderDistributorObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor')]

@@ -86,5 +86,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobRestore");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestStorageBlobChangeFeed()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobChangeFeed");
+        }        
     }
 }

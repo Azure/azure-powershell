@@ -520,6 +520,8 @@
     "Remove-AzVmssDataDisk": "Remove-AzureRmVmssDataDisk",
     "Remove-AzVmssNetworkInterfaceConfiguration": "Remove-AzureRmVmssNetworkInterfaceConfiguration",
     "Set-AzVmssOsProfile": "Set-AzureRmVmssOsProfile",
+    "Set-AzVmssSecurityProfile": "Set-AzureRmVmssSecurityProfile",
+    "Set-AzVmssUefi": "Set-AzureRmVmssUefi",
     "Set-AzVmssStorageProfile": "Set-AzureRmVmssStorageProfile",
     "New-AzVmss": "New-AzureRmVmss",
     "Update-AzVmss": "Update-AzureRmVmss",

@@ -190,7 +190,7 @@ Creates the test environment needed to perform the tests
 function Create-SqlPoolTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlPoolTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params $params.location
+	Create-SqlTestEnvironmentWithParams $params $params.location
 }
 
 <#

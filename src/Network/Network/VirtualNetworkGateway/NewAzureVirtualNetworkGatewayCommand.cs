@@ -36,41 +36,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
-            HelpMessage = "The resource name.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
-            HelpMessage = "The resource name.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "The resource name.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.Default,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
-            HelpMessage = "The resource group name.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
-            HelpMessage = "The resource group name.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -80,21 +50,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
-            HelpMessage = "location.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
-            HelpMessage = "location.")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
-            HelpMessage = "location.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -199,6 +154,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of P2S VPN client authentication types.")]
+        [ValidateSet(
+            MNM.VpnAuthenticationType.Certificate,
+            MNM.VpnAuthenticationType.Radius,
+            MNM.VpnAuthenticationType.AAD)]
+        [ValidateNotNullOrEmpty]
+        public string[] VpnAuthenticationType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of VpnClientRootCertificates to be added.")]
         public PSVpnClientRootCertificate[] VpnClientRootCertificates { get; set; }
 
@@ -245,48 +211,42 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.MultipleRadiusServersConfiguration,
             HelpMessage = "P2S multiple external Radius server servers.")]
         public PSRadiusServer[] RadiusServerList { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "P2S AAD authentication option:AadTenantUri.")]
         [ValidateNotNullOrEmpty]
         public string AadTenantUri { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "P2S AAD authentication option:AadAudienceId.")]
         [ValidateNotNullOrEmpty]
         public string AadAudienceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = VirtualNetworkGatewayParameterSets.AadAuthenticationConfiguration,
             HelpMessage = "P2S AAD authentication option:AadIssuerUri.")]
         [ValidateNotNullOrEmpty]
         public string AadIssuerUri { get; set; }
@@ -426,6 +386,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientProtocol != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol?.ToList();
+                }
+
+                if (this.VpnAuthenticationType != null)
+                {
+                    vnetGateway.VpnClientConfiguration.VpnAuthenticationTypes = this.VpnAuthenticationType?.ToList();
                 }
 
                 if (this.VpnClientRootCertificates != null)

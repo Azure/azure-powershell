@@ -343,115 +343,114 @@ namespace Microsoft.Azure.Commands.Network
                 vpnServerConfigurationToUpdate.VpnClientRootCertificates = null;
             }
 
-            // VpnAuthenticationType = Radius related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
+            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes != null)
             {
-                if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
+                if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.Radius))
                 {
-                    throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
-                }
+                    if ((this.RadiusServerList != null && this.RadiusServerList.Count() > 0) && (this.RadiusServerAddress != null || this.RadiusServerSecret != null))
+                    {
+                        throw new ArgumentException("Cannot configure both singular radius server and multiple radius servers at the same time.");
+                    }
 
-                if (RadiusServerList != null && this.RadiusServerList.Count() > 0)
-                {
-                    vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList.ToList();
-                    vpnServerConfigurationToUpdate.RadiusServerAddress = null;
-                    vpnServerConfigurationToUpdate.RadiusServerSecret = null;
+                    if (this.RadiusServerList != null && this.RadiusServerList.Count() > 0)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServers = this.RadiusServerList.ToList();
+                        vpnServerConfigurationToUpdate.RadiusServerAddress = null;
+                        vpnServerConfigurationToUpdate.RadiusServerSecret = null;
+                    }
+                    else
+                    {
+                        if (this.RadiusServerAddress != null)
+                        {
+                            vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
+                        }
+
+                        if (this.RadiusServerSecret != null)
+                        {
+                            vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
+                        }
+
+                        vpnServerConfigurationToUpdate.RadiusServers = null;
+                    }
+
+                    // Read the RadiusServerRootCertificates if present
+                    if (this.RadiusServerRootCertificateFilesList != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusServerRootCertificates = new List<PSClientRootCertificate>();
+
+                        foreach (string radiusServerRootCertPath in this.RadiusServerRootCertificateFilesList)
+                        {
+                            X509Certificate2 RadiusServerRootCertificate = new X509Certificate2(radiusServerRootCertPath);
+
+                            PSClientRootCertificate radiusServerRootCert = new PSClientRootCertificate()
+                            {
+                                Name = Path.GetFileNameWithoutExtension(radiusServerRootCertPath),
+                                PublicCertData = Convert.ToBase64String(RadiusServerRootCertificate.Export(X509ContentType.Cert))
+                            };
+
+                            vpnServerConfigurationToUpdate.RadiusServerRootCertificates.Add(radiusServerRootCert);
+                        }
+                    }
+
+                    // Read the RadiusClientRootCertificates if present
+                    if (this.RadiusClientRootCertificateFilesList != null)
+                    {
+                        vpnServerConfigurationToUpdate.RadiusClientRootCertificates = new List<PSClientCertificate>();
+
+                        foreach (string radiusClientRootCertPath in this.RadiusClientRootCertificateFilesList)
+                        {
+                            X509Certificate2 radiusClientRootCertificate = new X509Certificate2(radiusClientRootCertPath);
+
+                            PSClientCertificate radiusClientRootCert = new PSClientCertificate()
+                            {
+                                Name = Path.GetFileNameWithoutExtension(radiusClientRootCertPath),
+                                Thumbprint = radiusClientRootCertificate.Thumbprint
+                            };
+
+                            vpnServerConfigurationToUpdate.RadiusClientRootCertificates.Add(radiusClientRootCert);
+                        }
+                    }
                 }
                 else
                 {
-                    if (this.RadiusServerAddress != null)
-                    {
-                        vpnServerConfigurationToUpdate.RadiusServerAddress = this.RadiusServerAddress;
-                    }
-
-                    if (this.RadiusServerSecret != null)
-                    {
-                        vpnServerConfigurationToUpdate.RadiusServerSecret = SecureStringExtensions.ConvertToString(this.RadiusServerSecret);
-                    }
-
+                    vpnServerConfigurationToUpdate.RadiusServerAddress = null;
+                    vpnServerConfigurationToUpdate.RadiusServerSecret = null;
+                    vpnServerConfigurationToUpdate.RadiusClientRootCertificates = null;
+                    vpnServerConfigurationToUpdate.RadiusServerRootCertificates = null;
                     vpnServerConfigurationToUpdate.RadiusServers = null;
                 }
 
-                // Read the RadiusServerRootCertificates if present
-                if (this.RadiusServerRootCertificateFilesList != null)
+                if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
                 {
-                    vpnServerConfigurationToUpdate.RadiusServerRootCertificates = new List<PSClientRootCertificate>();
-
-                    foreach (string radiusServerRootCertPath in this.RadiusServerRootCertificateFilesList)
+                    if (vpnServerConfigurationToUpdate.AadAuthenticationParameters == null)
                     {
-                        X509Certificate2 RadiusServerRootCertificate = new X509Certificate2(radiusServerRootCertPath);
+                        vpnServerConfigurationToUpdate.AadAuthenticationParameters = new PSAadAuthenticationParameters();
+                    }
 
-                        PSClientRootCertificate radiusServerRootCert = new PSClientRootCertificate()
-                        {
-                            Name = Path.GetFileNameWithoutExtension(radiusServerRootCertPath),
-                            PublicCertData = Convert.ToBase64String(RadiusServerRootCertificate.Export(X509ContentType.Cert))
-                        };
+                    if ((this.AadTenant == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant == null) ||
+                        (this.AadAudience == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience == null) ||
+                        (this.AadIssuer == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer == null))
+                    {
+                        throw new ArgumentException("All Aad tenant, Aad audience and Aad issuer must be specified if VpnAuthenticationType is being configured as AAD.");
+                    }
 
-                        vpnServerConfigurationToUpdate.RadiusServerRootCertificates.Add(radiusServerRootCert);
+                    if (this.AadTenant != null)
+                    {
+                        vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant = this.AadTenant;
+                    }
+                    if (this.AadAudience != null)
+                    {
+                        vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience = this.AadAudience;
+                    }
+                    if (this.AadIssuer != null)
+                    {
+                        vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = this.AadIssuer;
                     }
                 }
-
-                // Read the RadiusClientRootCertificates if present
-                if (this.RadiusClientRootCertificateFilesList != null)
+                else
                 {
-                    vpnServerConfigurationToUpdate.RadiusClientRootCertificates = new List<PSClientCertificate>();
-
-                    foreach (string radiusClientRootCertPath in this.RadiusClientRootCertificateFilesList)
-                    {
-                        X509Certificate2 radiusClientRootCertificate = new X509Certificate2(radiusClientRootCertPath);
-
-                        PSClientCertificate radiusClientRootCert = new PSClientCertificate()
-                        {
-                            Name = Path.GetFileNameWithoutExtension(radiusClientRootCertPath),
-                            Thumbprint = radiusClientRootCertificate.Thumbprint
-                        };
-
-                        vpnServerConfigurationToUpdate.RadiusClientRootCertificates.Add(radiusClientRootCert);
-                    }
+                    vpnServerConfigurationToUpdate.AadAuthenticationParameters = null;
                 }
-            }
-            else
-            {
-                vpnServerConfigurationToUpdate.RadiusServerAddress = null;
-                vpnServerConfigurationToUpdate.RadiusServerSecret = null;
-                vpnServerConfigurationToUpdate.RadiusClientRootCertificates = null;
-                vpnServerConfigurationToUpdate.RadiusServerRootCertificates = null;
-                vpnServerConfigurationToUpdate.RadiusServers = null;
-            }
-
-            // VpnAuthenticationType = AAD related validations.
-            if (vpnServerConfigurationToUpdate.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
-            {
-                if (vpnServerConfigurationToUpdate.AadAuthenticationParameters == null)
-                {
-                    vpnServerConfigurationToUpdate.AadAuthenticationParameters = new PSAadAuthenticationParameters();
-                }
-
-                if ((this.AadTenant == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant == null) ||
-                    (this.AadAudience == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience == null) ||
-                    (this.AadIssuer == null && vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer == null))
-                {
-                    throw new ArgumentException("All Aad tenant, Aad audience and Aad issuer must be specified if VpnAuthenticationType is being configured as AAD.");
-                }
-
-                if (this.AadTenant != null)
-                {
-                    vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant = this.AadTenant;
-                }
-                if (this.AadAudience != null)
-                {
-                    vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience = this.AadAudience;
-                }
-                if (this.AadIssuer != null)
-                {
-                    vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = this.AadIssuer;
-                }
-            }
-            else
-            {
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadTenant = null;
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadIssuer = null;
-                vpnServerConfigurationToUpdate.AadAuthenticationParameters.AadAudience = null;
             }
 
             ConfirmAction(

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 "Test-SqlPoolRestorePoint");
         }
 
-        [Fact]
+        [Fact(Skip = "Not recordable. Geo backup requires one day to complete.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlPoolGeoBackup()
         {

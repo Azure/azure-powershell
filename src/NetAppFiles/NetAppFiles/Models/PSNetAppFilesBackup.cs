@@ -91,5 +91,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets Volume name
+        /// </summary>
+        public string VolumeName { get; set; }
+
     }
 }

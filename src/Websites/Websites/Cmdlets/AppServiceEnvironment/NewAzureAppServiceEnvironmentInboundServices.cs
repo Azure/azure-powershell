@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServiceEnvironment
     /// <summary>
     /// this commandlet will let you create inbound services for a new Azure App Service Environment
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironmentInboundServices", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServiceEnvironmentInboundServices", SupportsShouldProcess = true, DefaultParameterSetName = SubnetNameParameterSet), OutputType(typeof(Boolean))]
     public class NewAzureAppServiceEnvironmentInboundServicesCmdlet : WebAppBaseClientCmdLet
     {
         private const string SubnetIdParameterSet = "SubnetIdParameterSet";

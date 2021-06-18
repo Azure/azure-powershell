@@ -9,10 +9,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
 
     /// <summary>Gets a list of unresolved dependencies.</summary>
     /// <remarks>
-    /// [OpenAPI] UnresolvedDependencies_Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/unresolvedDependencies"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzResourceMoverUnresolvedDependency_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependency))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Description(@"Gets a list of unresolved dependencies.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Generated]
     public partial class GetAzResourceMoverUnresolvedDependency_Get : global::System.Management.Automation.PSCmdlet,
@@ -48,6 +48,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
+
+        /// <summary>Backing field for <see cref="DependencyLevel" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel _dependencyLevel;
+
+        /// <summary>Defines the dependency level.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Defines the dependency level.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Defines the dependency level.",
+        SerializedName = @"dependencyLevel",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Query)]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Support.DependencyLevel DependencyLevel { get => this._dependencyLevel; set => this._dependencyLevel = value; }
+
+        /// <summary>Backing field for <see cref="Filter" /> property.</summary>
+        private string _filter;
+
+        /// <summary>The filter to apply on the operation. For example, $apply=filter(count eq 2).</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The filter to apply on the operation. For example, $apply=filter(count eq 2).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The filter to apply on the operation. For example, $apply=filter(count eq 2).",
+        SerializedName = @"$filter",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Query)]
+        public string Filter { get => this._filter; set => this._filter = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -85,6 +114,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Path)]
         public string MoveCollectionName { get => this._moveCollectionName; set => this._moveCollectionName = value; }
+
+        /// <summary>Backing field for <see cref="Orderby" /> property.</summary>
+        private string _orderby;
+
+        /// <summary>OData order by query option. For example, you can use $orderby=Count desc.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "OData order by query option. For example, you can use $orderby=Count desc.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"OData order by query option. For example, you can use $orderby=Count desc.",
+        SerializedName = @"$orderby",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Query)]
+        public string Orderby { get => this._orderby; set => this._orderby = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.HttpPipeline" /> that the remote call will use.
@@ -144,24 +187,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependencyCollection"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependencyCollection> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -304,13 +347,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
                     foreach( var SubscriptionId in this.SubscriptionId )
                     {
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                        await this.Client.UnresolvedDependenciesGet(SubscriptionId, ResourceGroupName, MoveCollectionName, onOk, onDefault, this, Pipeline);
+                        await this.Client.UnresolvedDependenciesGet(SubscriptionId, ResourceGroupName, MoveCollectionName, this.InvocationInformation.BoundParameters.ContainsKey("DependencyLevel") ? DependencyLevel : null, this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, onOk, onDefault, this, Pipeline);
                         await ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MoveCollectionName=MoveCollectionName})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,MoveCollectionName=MoveCollectionName,DependencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("DependencyLevel") ? DependencyLevel : null,Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -333,12 +376,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -355,15 +398,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MoveCollectionName=MoveCollectionName })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MoveCollectionName=MoveCollectionName, DependencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("DependencyLevel") ? DependencyLevel : null, Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MoveCollectionName=MoveCollectionName })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MoveCollectionName=MoveCollectionName, DependencyLevel=this.InvocationInformation.BoundParameters.ContainsKey("DependencyLevel") ? DependencyLevel : null, Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -373,12 +416,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependencyCollection"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IUnresolvedDependencyCollection> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IUnresolvedDependencyCollection> response)
         {
             using( NoSynchronizationContext )
             {
@@ -391,7 +434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
                 }
                 // onOk - response for 200 / application/json
                 // response should be returning an array of some kind. +Pageable
-                // nested-array / value / nextLink
+                // pageable / value / nextLink
                 var result = await response;
                 WriteObject(result.Value,true);
                 if (result.NextLink != null)

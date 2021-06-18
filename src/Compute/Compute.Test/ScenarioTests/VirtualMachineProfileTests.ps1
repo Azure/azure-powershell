@@ -349,6 +349,26 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
+    # Verify Security Profile
+    Assert-Null $p.SecurityProfile.UefiSettings.VtpmEnabled;
+    Assert-Null $p.SecurityProfile.UefiSettings.SecureBootEnabled;
+
+    $p = Set-AzVmUefi -VM $p -EnableVtpm $true -EnableSecureBoot $true
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.VtpmEnabled $true;
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+    $p = Set-AzVmUefi -VM $p -EnableVtpm $true -EnableSecureBoot $false
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.VtpmEnabled $true;
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.SecureBootEnabled $false;
+
+    $p = Set-AzVmUefi -VM $p -EnableVtpm $false -EnableSecureBoot $true
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.VtpmEnabled $false;
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+    $p = Set-AzVmUefi -VM $p -EnableVtpm $false -EnableSecureBoot $false
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.VtpmEnabled $false;
+    Assert-AreEqual $p.SecurityProfile.UefiSettings.SecureBootEnabled $false;
+
     # Windows OS
     $user = "Foo12";
     $password = $PLACEHOLDER;

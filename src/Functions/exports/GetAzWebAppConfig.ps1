@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/getazwebappconfig
+https://docs.microsoft.com/powershell/module/az.functions/getazwebappconfig
 #>
 function GetAzWebAppConfig {
 [CmdletBinding(PositionalBinding=$false)]

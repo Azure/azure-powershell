@@ -20,10 +20,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class HistoryTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        string ITelemetryData.RequestId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.SessionId { get; set; }
+
+        /// <summary>
+        /// Gets the id of the client that makes the calls.
+        /// </summary>
+        public string ClientId { get; init; }
 
         /// <summary>
         /// Gets the history command line.
@@ -33,7 +41,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="HistoryTelemetryData"/>.
         /// </summary>
+        /// <param name="clientId">The client id that makes the call.</param>
         /// <param name="command">The history command line.</param>
-        public HistoryTelemetryData(string command) => Command = command;
+        public HistoryTelemetryData(string clientId, string command)
+        {
+            ClientId = clientId;
+            Command = command;
+        }
     }
 }

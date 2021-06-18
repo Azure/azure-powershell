@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzSynapseSqlDatabase
 
 ## SYNOPSIS
-Deletes a Synapse Analytics SQL database.
+This feature is in a limited preview, initially accessible only to certain subscriptions. Deletes a Synapse Analytics SQL database.
 
 ## SYNTAX
 

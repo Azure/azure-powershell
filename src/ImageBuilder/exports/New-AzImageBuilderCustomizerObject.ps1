@@ -55,7 +55,7 @@ downloadBuildArtifacts Shell        https://raw.githubusercontent.com/danielsoll
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
+https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
 #>
 function New-AzImageBuilderCustomizerObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer])]
@@ -112,6 +112,13 @@ param(
     [System.Boolean]
     # If specified, the PowerShell script will be run with elevated privileges.
     ${RunElevated},
+
+    [Parameter(ParameterSetName='PowerShellCustomizer')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    [System.Boolean]
+    # If specified, the PowerShell script will be run with elevated privileges using the Local System user.
+    # Can only be true when the runElevated field above is set to true.
+    ${RunAsSystem},
 
     [Parameter(ParameterSetName='PowerShellCustomizer')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]

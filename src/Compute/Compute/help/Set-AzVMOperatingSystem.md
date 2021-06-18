@@ -17,8 +17,8 @@ Sets operating system properties for a virtual machine.
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
- [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsWinRmHttps
@@ -26,15 +26,15 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-ProvisionVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableHotpatching] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgent
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
- [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-TimeZone] <String>] [-WinRMHttp] [-PatchMode <String>] [-EnableHotpatching]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDisableVMAgentWinRmHttps
@@ -42,14 +42,14 @@ Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <Str
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
  [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
  [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri> [-PatchMode <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-EnableHotpatching] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Linux
 ```
 Set-AzVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <String> [-Credential] <PSCredential>
- [[-CustomData] <String>] [-DisablePasswordAuthentication] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [[-CustomData] <String>] [-PatchMode <String>] [-DisablePasswordAuthentication]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ You can specify logon credentials, computer name, and operating system type.
 
 ## EXAMPLES
 
-### Example 1: Set operating system properties for a new virtual machines
+### Example 1: Set operating system properties for a new virtual machine
 ```
 $SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 $Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
@@ -68,7 +68,7 @@ $ComputerName = "ContosoVM122"
 $WinRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion"
 $TimeZone = "Pacific Standard Time"
 $CustomData = "echo 'Hello World'"
-$VirtualMachine = Set-AzVMOperatingSystem -VM $$VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -WinRMHttp -WinRMHttps -WinRMCertificateUrl $WinRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $TimeZone -PatchMode "AutomaticByPlatform"
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -WinRMHttp -WinRMHttps -WinRMCertificateUrl $WinRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $TimeZone -PatchMode "AutomaticByPlatform"
 ```
 
 The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
@@ -85,6 +85,60 @@ However, you might use an approach such as this in scripts.
 The final command sets operating system properties for the virtual machine stored in $VirtualMachine.
 The command uses the credentials stored in $Credential.
 The command uses variables assigned in previous commands for some parameters.
+
+### Example 2: Set operating system properties for a new virtual machine with hot patching enabled
+```
+$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
+$AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+$ComputerName = "ContosoVM122"
+$WinRMCertUrl = "http://keyVaultName.vault.azure.net/secrets/secretName/secretVersion"
+$TimeZone = "Pacific Standard Time"
+$CustomData = "echo 'Hello World'"
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -WinRMHttp -WinRMHttps -WinRMCertificateUrl $WinRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $TimeZone -PatchMode "AutomaticByPlatform" -EnableHotPatching
+```
+
+The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
+For more information, type `Get-Help ConvertTo-SecureString`.
+The second command creates a credential for the user FullerP and the password stored in $SecurePassword, and then stores the credential in the $Credential variable.
+For more information, type `Get-Help New-Object`.
+The third command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+The fourth command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
+The command assigns a name and size to the virtual machine.
+The virtual machine belongs to the availability set stored in $AvailabilitySet.
+The next four commands assign values to variables to use in the following command.
+Because you could specify these strings directly in the **Set-AzVMOperatingSystem** command, this approach is used only for readability.
+However, you might use an approach such as this in scripts.
+The final command sets operating system properties for the virtual machine stored in $VirtualMachine.
+The command uses the credentials stored in $Credential.
+The command uses variables assigned in previous commands for some parameters.
+The command enables Hotpatching on the virtual machine.
+
+### Example 3: Set operating system properties for a new Linux virtual machine
+```
+$SecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$Credential = New-Object System.Management.Automation.PSCredential ("FullerP", $SecurePassword); 
+$AvailabilitySet = Get-AzAvailabilitySet -ResourceGroupName "ResourceGroup11" -Name "AvailabilitySet03" 
+$VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
+$ComputerName = "ContosoVM122"
+$CustomData = "echo 'Hello World'"
+$VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Linux -ComputerName $ComputerName -Credential $Credential -CustomData $CustomData -PatchMode "AutomaticByPlatform"
+```
+
+The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
+For more information, type `Get-Help ConvertTo-SecureString`.
+The second command creates a credential for the user FullerP and the password stored in $SecurePassword, and then stores the credential in the $Credential variable.
+For more information, type `Get-Help New-Object`.
+The third command gets the availability set named AvailabilitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
+The fourth command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
+The command assigns a name and size to the virtual machine.
+The virtual machine belongs to the availability set stored in $AvailabilitySet.
+The next two commands assign values to variables to use in the following command.
+The final command sets operating system properties for the virtual machine stored in $VirtualMachine.
+The command uses the credentials stored in $Credential.
+The command uses variables assigned in previous commands for some parameters.
+The command sets the patch mode value on the virtual machine to "AutomaticByPlatform".
 
 ## PARAMETERS
 
@@ -197,6 +251,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableHotpatching
+Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Linux
 Indicates that the type of operating system is Linux.
 
@@ -215,13 +284,14 @@ Accept wildcard characters: False
 ### -PatchMode
 Specifies the mode of in-guest patching to IaaS virtual machine.<br><br>
 Possible values are:<br>
-**Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br>
-**AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br >
-**AutomaticByPlatform** - the virtual machine will automatically updated by the OS. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true
+**AutomaticByPlatform** - Patch installation for the virtual machine will be managed by Azure. Use with -Windows or -Linux. Requires -ProvisionVMAgent. Requires -EnableAutoUpdate when used with -Windows. <br>
+**AutomaticByOS** - Patch installation for the virtual machine will be managed by the OS. Use with -Windows. Requires -ProvisionVMAgent and -EnableAutoUpdate.<br>
+**Manual** - You control the application of patches to a virtual machine. Use with -Windows. Requires -ProvisionVMAgent.<br>
+**ImageDefault** - Patch installation managed by the default settings on the OS image. Use with -Linux.
 
 ```yaml
 Type: System.String
-Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Parameter Sets: (All)
 Aliases:
 
 Required: False

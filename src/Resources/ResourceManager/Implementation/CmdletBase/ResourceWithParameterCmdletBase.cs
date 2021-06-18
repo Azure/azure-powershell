@@ -281,11 +281,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             ResourceIdUtility.GetResourceName(templateSpecId).Split('/')[0],
                             resourceIdentifier.ResourceName);
 
-                        if (!(templateSpecVersion.Template is JObject))
+                        if (!(templateSpecVersion.MainTemplate is JObject))
                         {
                             throw new InvalidOperationException("Unexpected type."); // Sanity check
                         }
-                        templateObj = (JObject)templateSpecVersion.Template;
+                        templateObj = (JObject)templateSpecVersion.MainTemplate;
                     }
                     catch (TemplateSpecsErrorException e)
                     {
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         protected void BuildAndUseBicepTemplate()
         {
-            TemplateFile = BicepUtility.BuildFile(this.ExecuteScript<Object>, this.ResolvePath(TemplateFile));
+            TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose);
         }
     }
 }

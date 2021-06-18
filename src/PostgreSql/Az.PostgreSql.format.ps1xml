@@ -1065,9 +1065,6 @@
           <TableColumnHeader>
             <Label>AdministratorLogin</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>AdministratorLoginPassword</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1104,9 +1101,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AdministratorLogin</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AdministratorLoginPassword</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1401,9 +1395,6 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AdministratorLoginPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>MinimalTlsVersion</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1422,9 +1413,6 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdministratorLoginPassword</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>MinimalTlsVersion</PropertyName>
               </TableColumnItem>
@@ -2346,9 +2334,6 @@
             <Label>AdministratorLogin</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>AdministratorLoginPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>AvailabilityZone</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -2393,9 +2378,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>AdministratorLogin</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>AdministratorLoginPassword</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>AvailabilityZone</PropertyName>
@@ -2471,18 +2453,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>AdministratorLoginPassword</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>HaEnabled</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AdministratorLoginPassword</PropertyName>
-              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>HaEnabled</PropertyName>
               </TableColumnItem>

@@ -124,6 +124,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Starts Azure Site Recovery cancel failover.
+        /// </summary>
+        /// <param name="recoveryPlanName">Recovery plan name.</param>
+        /// <returns>Job response.</returns>
+        public PSSiteRecoveryLongRunningOperation StartAzureSiteRecoveryCancelFailover(
+            string recoveryPlanName)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationRecoveryPlans.BeginFailoverCancelWithHttpMessagesAsync(
+                    recoveryPlanName,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
         ///     Starts Azure Site Recovery Planned failover.
         /// </summary>
         /// <param name="recoveryPlanName">Recovery Plan Name</param>

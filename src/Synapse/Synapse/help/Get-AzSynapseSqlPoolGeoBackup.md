@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Synapse.dll-Help.xml
 Module Name: Az.Synapse
 online version: https://docs.microsoft.com/powershell/module/az.synapse/get-azsynapsesqlpoolgeobackup
@@ -14,13 +14,13 @@ Gets a geo-redundant backup of a Sql Pool.
 
 ### GetByNameParameterSet (Default)
 ```
-Get-AzSynapseSqlPoolGeoBackup [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String>
+Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName <String> -WorkspaceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SqlPoolGeoBackupResourceId
+### GetByResourceIdParameterSet
 ```
-Get-AzSynapseSqlPoolGeoBackup [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzSynapseSqlPoolGeoBackup [-ResourceId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -35,18 +35,21 @@ You can use Geo-Restore to restore a geo-redundant backup in the event of a regi
 ```powershell
 PS C:\> Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName ContosoResourceGroup -WorkspaceName "ContosoWorkspace" -Name "ContosoSqlPool"
 ```
+
 The cmdlet retrieves Geo Backup for a sql pool.
 
 ### Example 2: Get all geo-redundant backups on a workspace
 ```
 PS C:\>Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
+
 This command gets all available geo-redundant backups on a specified workspace.
 
 ### Example 3: Get all geo-redundant backups on a workspace using filtering
 ```
 PS C:\>Get-AzSynapseSqlPoolGeoBackup -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -Name "Contoso*"
 ```
+
 This command gets all available geo-redundant backups on a specified workspace that start with "Contoso".
 
 ## PARAMETERS
@@ -72,7 +75,22 @@ The Synapse Sql pool.
 ```yaml
 Type: System.String
 Parameter Sets: GetByNameParameterSet
-Aliases: The Synapse Sql pool.
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource group name.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -86,28 +104,13 @@ Input a Sql Pool Geo Backup Resource Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: SqlPoolGeoBackupResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: System.String
-Parameter Sets: GetByNameParameterSet
+Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (!string.IsNullOrWhiteSpace(SubjectName) ||
                 DnsNames != null ||
                 Ekus != null ||
-                KeyUsage != null |
+                KeyUsage != null ||
                 ValidityInMonths.HasValue)
             {
                 var x509CertificateProperties = new X509CertificateProperties
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (Ekus != null)
                 {
-                    x509CertificateProperties.Ekus = Ekus == null ? null : new List<string>(Ekus);
+                    x509CertificateProperties.Ekus = new List<string>(Ekus);
                 }                
 
                 if (DnsNames != null)

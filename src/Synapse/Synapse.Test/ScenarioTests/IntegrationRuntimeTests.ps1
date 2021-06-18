@@ -5,18 +5,17 @@ Deletes the created integration runtime at the end.
 #>
 function Test-SelfHosted-IntegrationRuntime
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $irname = "selfhosted-test-integrationruntime"
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-WorkspaceTestEnvironment $testSuffix
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+
+    $resourceGroupName = $params.rgname
+    $workspaceName = $params.workspaceName
+    $irname = "selfhosted-test-integrationruntime"
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-
         $actual = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
             -WorkspaceName $workspaceName `
             -Name $irname `
@@ -58,7 +57,8 @@ function Test-SelfHosted-IntegrationRuntime
 	}
     finally
     {
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $irname} -IgnoreFailures
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
     }
 }
 
@@ -69,18 +69,17 @@ Deletes the created integration runtime at the end.
 #>
 function Test-Azure-IntegrationRuntime
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $irname = "test-ManagedElastic-integrationruntime"
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-WorkspaceTestEnvironment $testSuffix
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+
+    $resourceGroupName = $params.rgname
+    $workspaceName = $params.workspaceName
+    $irname = "test-ManagedElastic-integrationruntime"
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-
         $description = "ManagedElastic"
    
         $actual = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
@@ -100,7 +99,8 @@ function Test-Azure-IntegrationRuntime
     }
     finally
     {
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $irname} -IgnoreFailures
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
     }
 }
 
@@ -110,18 +110,17 @@ Creates a self-hosted integration runtime and then does piping operations.
 #>
 function Test-IntegrationRuntime-Piping
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $irname = "test-integrationruntime-for-piping"
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-WorkspaceTestEnvironment $testSuffix
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+
+    $resourceGroupName = $params.rgname
+    $workspaceName = $params.workspaceName
+    $irname = "test-integrationruntime-for-piping"
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-    
         $result = Set-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName `
             -WorkspaceName $workspaceName `
             -Name $irname `
@@ -136,6 +135,43 @@ function Test-IntegrationRuntime-Piping
     }
     finally
     {
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseIntegrationRuntime -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $irname} -IgnoreFailures
+		# Cleanup
+		Remove-WorkspaceTestEnvironment $testSuffix
     }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the tests
+#>
+function Create-WorkspaceTestEnvironment ($testSuffix)
+{
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $params.location
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the tests
+#>
+function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "ws-cmdlet-test-rg" +$testSuffix;
+			  workspaceName = "ws" +$testSuffix;
+			  storageAccountName = "wsstorage" + $testSuffix;
+			  fileSystemName = "wscmdletfs" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+              location = "westcentralus";
+		}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the tests
+#>
+function Remove-WorkspaceTestEnvironment ($testSuffix)
+{
+	$params = Get-WorkspaceTestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
 }

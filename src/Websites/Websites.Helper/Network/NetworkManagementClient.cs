@@ -126,6 +126,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
         public virtual IDefaultSecurityRulesOperations DefaultSecurityRules { get; private set; }
 
         /// <summary>
+        /// Gets the IServiceTagsOperations.
+        /// </summary>
+        public virtual IServiceTagsOperations ServiceTags { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the NetworkManagementClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -375,6 +380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Helper.Network
             NetworkSecurityGroups = new NetworkSecurityGroupsOperations(this);
             SecurityRules = new SecurityRulesOperations(this);
             DefaultSecurityRules = new DefaultSecurityRulesOperations(this);
+            ServiceTags = new ServiceTagsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             ApiVersion = "2020-07-01";
             AcceptLanguage = "en-US";

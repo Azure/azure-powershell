@@ -1,8 +1,8 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = SetByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.WorkspaceName)]
+        [Parameter(ParameterSetName = SetByNameParameterSet, Mandatory = true, HelpMessage = HelpMessages.WorkspaceName)]
         [Alias(SynapseConstants.WorkspaceName)]
         [ResourceNameCompleter(ResourceTypes.Workspace, nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
@@ -53,6 +53,14 @@ namespace Microsoft.Azure.Commands.Synapse
             HelpMessage = HelpMessages.SqlAdministratorLoginPassword)]
         [ValidateNotNull]
         public SecureString SqlAdministratorLoginPassword { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ManagedVirtualNetwork)]
+        [ValidateNotNull]
+        public PSManagedVirtualNetworkSettings ManagedVirtualNetwork { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.EncryptionKeyName)]
+        [ValidateNotNullOrEmpty]
+        public string EncryptionKeyName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
@@ -90,18 +98,31 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.FailedToDiscoverWorkspace, this.Name, this.ResourceGroupName));
+                throw new AzPSInvalidOperationException(string.Format(Resources.FailedToDiscoverWorkspace, this.Name, this.ResourceGroupName));
             }
 
-            existingWorkspace.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingWorkspace.Tags;
-            existingWorkspace.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : existingWorkspace.SqlAdministratorLoginPassword;
+            WorkspacePatchInfo patchInfo = new WorkspacePatchInfo();
+            patchInfo.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : TagsConversionHelper.CreateTagDictionary(this.InputObject?.Tags, validate:true);
+            patchInfo.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : null;
+            patchInfo.ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : this.InputObject?.ManagedVirtualNetworkSettings?.ToSdkObject();
+            string encrptionKeyName = this.IsParameterBound(c => c.EncryptionKeyName) ? this.EncryptionKeyName : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.Key?.Name;
+            patchInfo.Encryption = !string.IsNullOrEmpty(encrptionKeyName) ? new EncryptionDetails
+            {
+                Cmk = new CustomerManagedKeyDetails
+                {
+                    Key = new WorkspaceKeyDetails
+                    {
+                        Name = encrptionKeyName
+                    }
+                }
+            } : null;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {
-                var workspace = new PSSynapseWorkspace(SynapseAnalyticsClient.CreateOrUpdateWorkspace(
+                var workspace = new PSSynapseWorkspace(SynapseAnalyticsClient.UpdateWorkspace(
                     this.ResourceGroupName,
                     this.Name,
-                    existingWorkspace));
+                    patchInfo));
                 this.WriteObject(workspace);
             }
         }

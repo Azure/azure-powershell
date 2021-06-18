@@ -192,5 +192,29 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         ///  describe if a volume is KerberosEnabled.
         /// </remarks>
         public bool? KerberosEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets SmbEncryption
+        /// </summary>
+        /// <remarks>
+        ///  Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. 
+        /// </remarks>
+        public bool? SmbEncryption { get; set; }
+
+        /// <summary>
+        /// Gets or sets SmbContinuouslyAvailable
+        /// </summary>
+        /// <remarks>
+        ///  Enables continuously available share property for SMB volume. Only applicable for SMB volume
+        /// </remarks>
+        public bool? SmbContinuouslyAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or sets LdapEnabled
+        /// </summary>
+        /// <remarks>
+        ///  Specifies whether LDAP is enabled or not for a given NFS volume.
+        /// </remarks>
+        public bool? LdapEnabled { get; set; }        
     }
 }

@@ -1,8 +1,8 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 if (existingSqlPool == null)
                 {
-                    throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
                 }
 
                 switch (this.ParameterSetName)
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         UpdateSqlPoolV3(existingSqlPool);
                         break;
 
-                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                    default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
                 }
             }
             else
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
                 if (existingSqlPool == null)
                 {
-                    throw new SynapseException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
                 }
 
                 switch (this.ParameterSetName)
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Synapse
                         RenameSqlPool();
                         break;
 
-                    default: throw new SynapseException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
+                    default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
                 }
             }
         }

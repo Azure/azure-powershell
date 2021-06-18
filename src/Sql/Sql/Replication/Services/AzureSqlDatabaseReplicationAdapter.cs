@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy)
+                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.CopyLocation = database.Location;
             model.CreationDate = database.CreationDate.Value;
             model.LicenseType = database.LicenseType;
-            model.BackupStorageRedundancy = MapInternalBackupStorageRedundancyToExternal(database.StorageAccountType);
+            model.RequestedBackupStorageRedundancy = database.RequestedBackupStorageRedundancy;
 
             return model;
         }
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
-                StorageAccountType = MapExternalBackupStorageRedundancyToInternal(model.BackupStorageRedundancy),
+                RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 SecondaryType = model.SecondaryType,
             });
 

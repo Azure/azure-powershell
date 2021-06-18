@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Automation/automationAccounts", "2020-01-13-preview");
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01");
             RegisterConfiguration("Microsoft.Batch/batchAccounts", "2020-03-01");
-            RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2020-10-01-preview");
+            RegisterConfiguration("Microsoft.Cache/redisEnterprise", "2021-03-01");
             RegisterConfiguration("Microsoft.CognitiveServices/accounts", "2017-04-18");
             RegisterConfiguration("Microsoft.Compute/diskAccesses", "2020-09-30");
             RegisterConfiguration("Microsoft.ContainerRegistry/registries", "2019-12-01-preview");

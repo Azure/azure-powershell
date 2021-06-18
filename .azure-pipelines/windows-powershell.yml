@@ -27,6 +27,7 @@ jobs:
   displayName: Analyze
   dependsOn: Build
   condition: succeeded()
+  timeoutInMinutes: 90
   pool:
     vmImage: ${{ variables.WindowsImage }}
 

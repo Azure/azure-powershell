@@ -9,6 +9,12 @@ steps:
   inputs:
     filePath: tools/CheckIgnoredFile.ps1
 
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 2.1.x
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:

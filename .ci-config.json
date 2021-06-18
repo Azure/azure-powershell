@@ -18,7 +18,7 @@
     },
     {
       "patterns": [
-        "src/*.props"
+        "src/*.props$"
       ],
       "phases": [
         "build:all",
@@ -65,7 +65,7 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.md"
+        "src/{ModuleName}/**/*.md$"
       ],
       "phases": [
         "build:module",
@@ -74,7 +74,7 @@
     },
     {
       "patterns": [
-        "src/{ModuleName}/**/*.csproj"
+        "src/{ModuleName}/**/*.csproj$"
       ],
       "phases": [
         "build:related-module",

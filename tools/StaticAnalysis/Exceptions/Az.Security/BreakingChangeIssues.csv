@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Security","Microsoft.Azure.Commands.Security.Cmdlets.AdvancedThreatProtection.GetAdvancedThreatProtection","Get-AzSecurityAdvancedThreatProtection","0","1050","The parameter set 'ResourceId' for cmdlet 'Get-AzSecurityAdvancedThreatProtection' has been removed.","Add parameter set 'ResourceId' back to cmdlet 'Get-AzSecurityAdvancedThreatProtection'."

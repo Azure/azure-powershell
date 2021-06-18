@@ -29,6 +29,26 @@ PS C:\>Get-AzLocation
 
 This command gets all locations and the supported resource providers for each location.
 
+### Example 2: Get all locations supporting resource provider Microsoft.AppConfiguration
+```
+PS C:\>Get-AzLocation | Where-Object {$_.Providers -contains "Microsoft.AppConfiguration"}
+
+Location    : eastasia
+DisplayName : East Asia
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+
+Location    : southeastasia
+DisplayName : Southeast Asia
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+
+Location    : centralus
+DisplayName : Central US
+Providers   : {Microsoft.Devices, Microsoft.Cache, Microsoft.AppConfiguration, microsoft.insights…}
+...
+```
+
+This example gets all locations which supports resource provider "Microsoft.AppConfiguration".
+
 ## PARAMETERS
 
 ### -ApiVersion

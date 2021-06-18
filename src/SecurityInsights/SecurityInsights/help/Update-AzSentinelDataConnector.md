@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSentinelDataConnector
 
 ## SYNOPSIS
-Update a Data Connector.
+Updates a Data Connector.
 
 ## SYNTAX
 
@@ -16,7 +16,7 @@ Update a Data Connector.
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -DataConnectorId <String>
  [-Alerts <String>] [-SubscriptionId <String>] [-AwsRoleArn <String>] [-Logs <String>]
- [-DiscoveryLogs <String>] [-Exchange <String>] [-SharePoint <String>] [-Indicators <String>]
+ [-DiscoveryLogs <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>] [-Indicators <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,15 +24,16 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -InputObject <PSSentinelDataConnector> [-Alerts <String>]
  [-SubscriptionId <String>] [-AwsRoleArn <String>] [-Logs <String>] [-DiscoveryLogs <String>]
- [-Exchange <String>] [-SharePoint <String>] [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Exchange <String>] [-SharePoint <String>] [-Teams <String>] [-Indicators <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Update-AzSentinelDataConnector -ResourceId <String> [-Alerts <String>] [-SubscriptionId <String>]
  [-AwsRoleArn <String>] [-Logs <String>] [-DiscoveryLogs <String>] [-Exchange <String>] [-SharePoint <String>]
- [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Teams <String>] [-Indicators <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +48,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 PS C:\> Update-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId" -Alerts Disabled
 ```
 
-The command gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.
+This example gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.
 
 ## PARAMETERS
 
@@ -55,7 +56,7 @@ The command gets the Data Connector by *DataConnectorId* and sets the *Alerts* s
 Data Connector Alerts
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 Data Connector AWS Role Arn
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +87,7 @@ Accept wildcard characters: False
 Data Connector Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DataConnectorId
 Aliases:
 
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 Data Connector Discovery Logs
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -132,7 +133,7 @@ Accept wildcard characters: False
 Data Connector Exchange
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 Data Connector Indicators
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -164,7 +165,7 @@ Accept wildcard characters: False
 InputObject.
 
 ```yaml
-Type: PSSentinelDataConnector
+Type: Microsoft.Azure.Commands.SecurityInsights.Models.DataConnectors.PSSentinelDataConnector
 Parameter Sets: InputObject
 Aliases:
 
@@ -179,7 +180,7 @@ Accept wildcard characters: False
 Data Connector Logs
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -195,7 +196,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DataConnectorId
 Aliases:
 
@@ -210,7 +211,7 @@ Accept wildcard characters: False
 Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceId
 Aliases:
 
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 Data Connector SharePoint
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -241,9 +242,25 @@ Accept wildcard characters: False
 Data connector Subscription Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Teams
+Data Connector Teams
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
@@ -256,7 +273,7 @@ Accept wildcard characters: False
 Workspace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DataConnectorId
 Aliases:
 
@@ -271,7 +288,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -287,7 +304,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

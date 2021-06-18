@@ -1,8 +1,8 @@
 ﻿using Azure.Analytics.Synapse.Spark.Models;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Synapse
             {
                 if (LanguageType.SparkDotNet == this.Language || LanguageType.Spark == this.Language)
                 {
-                    throw new SynapseException(Resources.MissingMainClassName);
+                    throw new AzPSInvalidOperationException(Resources.MissingMainClassName);
                 }
             }
 

@@ -19,5 +19,7 @@ namespace Microsoft.Azure.Commands.FrontDoor.Models
         public string RuleSetType { get; set; }
 
         public string RuleSetVersion { get; set; }
+
+        public string RuleSetAction { get; set; }
     }
 }

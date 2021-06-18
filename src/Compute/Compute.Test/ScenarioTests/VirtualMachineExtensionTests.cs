@@ -109,6 +109,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureDiskEncryptionExtension");
         }
 
+        [Fact(Skip = "TODO: only works for live mode")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAzureDiskEncryptionExtensionDualPassToSinglePassMigration()
+        {
+            TestRunner.RunTestScript("Test-AzureDiskEncryptionExtensionDualPassToSinglePassMigration");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()

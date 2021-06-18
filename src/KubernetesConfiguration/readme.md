@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the KubernetesConfiguration se
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 3d5b14e7836543e6d9ebec0c653688db8e07e33c
+branch: cb4659b009275e9024ba89efb581e91dc4ede181
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/preview/2020-10-01-preview/kubernetesconfiguration.json
+  - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2021-03-01/kubernetesconfiguration.json
 
 title: KubernetesConfiguration
 module-version: 0.1.0
@@ -74,6 +74,30 @@ directive:
       parameter-name: ClusterResourceName
     set:
       parameter-name: ClusterType
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+      parameter-name: HelmOperatorPropertyChartValue
+    set:
+      parameter-name: HelmOperatorChartValues
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+      parameter-name: HelmOperatorPropertyChartVersion
+    set:
+      parameter-name: HelmOperatorChartVersion
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+      parameter-name: OperatorParameters
+    set:
+      parameter-name: OperatorParam
+  - where:
+      verb: New
+      subject: KubernetesConfiguration
+      parameter-name: SshKnownHostsContent
+    set:
+      parameter-name: SshKnownHosts
   - where:
       verb: Set
       subject: KubernetesConfiguration

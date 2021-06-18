@@ -24,7 +24,7 @@ function Test-E2ESchedules
     $StartTime = Get-Date "13:00:00"
     $StartTime = $StartTime.AddDays(1)
     $EndTime = $StartTime.AddYears(1)
-    $ScheduleName = "Schedule3"
+    $ScheduleName = "Schedule3"  
 
     New-AzAutomationSchedule -ResourceGroupName $resourceGroupName `
                                   -AutomationAccountName $automationAccountName `

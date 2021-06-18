@@ -36,6 +36,7 @@ The New-AzCdnOriginGroup will create a new origin group within the specified end
 ```powershell
 PS C:\> New-AzCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -EndpointName $endpointName -OriginGroupName $originGroupName -OriginId $originId
 ```
+
 This cmdlet will create a new origin group within the specified endpoint. It will utilize the given origin ids as the set of origins.
 
 ## PARAMETERS
@@ -119,7 +120,7 @@ Accept wildcard characters: False
 The number of seconds between health probes.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 

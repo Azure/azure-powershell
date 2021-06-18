@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Cmdlets
         ReadOnly = false,
         Description = @"The password of the administrator login.",
         SerializedName = @"administratorLoginPassword",
-        PossibleTypes = new [] { typeof(string) })]
-        public string AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
+        PossibleTypes = new [] { typeof(System.Security.SecureString) })]
+        public System.Security.SecureString AdministratorLoginPassword { get => ParametersBody.AdministratorLoginPassword ?? null; set => ParametersBody.AdministratorLoginPassword = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]

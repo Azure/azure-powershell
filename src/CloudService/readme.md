@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the CloudService service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,12 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 88fa0d128fbcf2d1ff3b330add6b4425c84f4149
+branch: 7b19bbd8ee63fa724edf5c780b63ae038312d2b1
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
   # - $(this-folder)/resources/CloudService.json
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/preview/2020-10-01-preview/cloudService.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
 
 title: CloudService
 module-version: 0.1.0
@@ -60,6 +60,14 @@ module-version: 0.1.0
 identity-correction-for-post: true
 
 directive:
+  - where:
+      subject: ^CloudServiceOperatingSystemOSFamily$
+    set:
+      subject: CloudServiceOSFamily
+  - where:
+      subject: ^CloudServiceOperatingSystemOSVersion$
+    set:
+      subject: CloudServiceOSVersion
   - where:
       variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
       subject: ^CloudService$|^RebuildCloudService$
@@ -170,8 +178,21 @@ directive:
 
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
+    transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('if ((first == \'{\' && last == \'}\') || (first == \'<\' && last == \'>\') || (first == \'[\' && last == \']\') || (first == \'"\' && last == \'"\'))\n            {','')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('            }\n\n            // base64 for everyone else\n            return new JsonString(System.Convert.ToBase64String(content));','')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('if (content.EndsWith("=="))','if (!(content.Contains("{") || content.Contains("[")))')
 
+  # - from: source-file-csharp
+  #   where: 
+  #   transform: return new JsonString(System.Text.Encoding.UTF8.GetString(content));
+            
   - where:
       model-name: CloudService
     set:
@@ -226,6 +247,24 @@ directive:
           - Location
           - SkuName
           - SkuTier
+  - where:
+      model-name: OSVersion
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
+          - IsDefault
+          - IsActive
+          - Family
+          - FamilyLabel
+  - where:
+      model-name: OSFamily
+    set:
+      format-table:
+        properties:
+          - Name
+          - Label
 
   - where:
       model-name: CloudServiceInstanceView

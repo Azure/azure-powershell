@@ -245,9 +245,30 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(
+            ParameterSetName = LinuxParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Choose one of the following settings: 'Manual', 'AutomaticByOS', or 'AutomaticByPlatform'")]
         [PSArgumentCompleter("Manual", "AutomaticByOS", "AutomaticByPlatform")]
         public string PatchMode { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.")]
+        public SwitchParameter EnableHotpatching { get; set; }
 
         // Linux Parameter Sets
         [Parameter(
@@ -278,6 +299,16 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.VM.OSProfile.LinuxConfiguration == null)
                 {
                     this.VM.OSProfile.LinuxConfiguration = new LinuxConfiguration();
+                }
+
+                //seting patchmode
+                if (this.IsParameterBound(c => c.PatchMode))
+                {
+                    if (this.VM.OSProfile.LinuxConfiguration.PatchSettings == null)
+                    {
+                        this.VM.OSProfile.LinuxConfiguration.PatchSettings = new LinuxPatchSettings();
+                    }
+                    this.VM.OSProfile.LinuxConfiguration.PatchSettings.PatchMode = this.PatchMode;
                 }
 
                 this.VM.OSProfile.LinuxConfiguration.DisablePasswordAuthentication =
@@ -318,9 +349,6 @@ namespace Microsoft.Azure.Commands.Compute
                     });
                 }
 
-                // OS Profile
-                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent;
-
                 if (this.ProvisionVMAgent.IsPresent)
                 {
                     this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = true;
@@ -352,6 +380,13 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     this.VM.OSProfile.WindowsConfiguration.PatchSettings.PatchMode = this.PatchMode;
                 }
+
+                if (this.IsParameterBound(c => c.EnableHotpatching))
+                {
+                    this.VM.OSProfile.WindowsConfiguration.PatchSettings.EnableHotpatching = this.EnableHotpatching;
+                }
+
+
             }
 
             WriteObject(this.VM);

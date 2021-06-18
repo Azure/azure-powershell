@@ -9,10 +9,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
 
     /// <summary>Creates or updates a Move Resource in the move collection.</summary>
     /// <remarks>
-    /// [OpenAPI] MoveResources_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Add, @"AzResourceMoverMoveResource_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource))]
+    [global::System.Management.Automation.Alias("Update-AzResourceMoverMoveResource")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Description(@"Creates or updates a Move Resource in the move collection.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Generated]
     public partial class AddAzResourceMoverMoveResource_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -38,10 +39,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
         /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource _body= new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.MoveResource();
+        private Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource _body= new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.MoveResource();
 
         /// <summary>Defines the move resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource Body { get => this._body; set => this._body = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -69,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         ReadOnly = false,
         Description = @"Gets or sets the move resource dependencies overrides.",
         SerializedName = @"dependsOnOverrides",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceDependencyOverride) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceDependencyOverride[] DependsOnOverride { get => Body.DependsOnOverride ?? null /* arrayOf */; set => Body.DependsOnOverride = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[] DependsOnOverride { get => Body.DependsOnOverride ?? null /* arrayOf */; set => Body.DependsOnOverride = value; }
 
         /// <summary>Gets or sets the existing target ARM Id of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the existing target ARM Id of the resource.")]
@@ -178,29 +179,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>
-        /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource type. For example, the value can be Microsoft.Compute/virtualMachines.")]
+        /// <summary>Gets or sets the resource settings.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the resource settings.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The resource type. For example, the value can be Microsoft.Compute/virtualMachines.",
-        SerializedName = @"resourceType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ResourceSettingResourceType { get => Body.ResourceSettingResourceType ?? null; set => Body.ResourceSettingResourceType = value; }
-
-        /// <summary>Gets or sets the target Resource name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the target Resource name.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Gets or sets the target Resource name.",
-        SerializedName = @"targetResourceName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ResourceSettingTargetResourceName { get => Body.ResourceSettingTargetResourceName ?? null; set => Body.ResourceSettingTargetResourceName = value; }
+        Description = @"Gets or sets the resource settings.",
+        SerializedName = @"resourceSettings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings ResourceSetting { get => Body.ResourceSetting ?? null /* object */; set => Body.ResourceSetting = value; }
 
         /// <summary>Gets or sets the Source ARM Id of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the Source ARM Id of the resource.")]
@@ -212,30 +200,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         SerializedName = @"sourceId",
         PossibleTypes = new [] { typeof(string) })]
         public string SourceId { get => Body.SourceId ?? null; set => Body.SourceId = value; }
-
-        /// <summary>
-        /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource type. For example, the value can be Microsoft.Compute/virtualMachines.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The resource type. For example, the value can be Microsoft.Compute/virtualMachines.",
-        SerializedName = @"resourceType",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SourceResourceSettingResourceType { get => Body.SourceResourceSettingResourceType ?? null; set => Body.SourceResourceSettingResourceType = value; }
-
-        /// <summary>Gets or sets the target Resource name.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the target Resource name.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Gets or sets the target Resource name.",
-        SerializedName = @"targetResourceName",
-        PossibleTypes = new [] { typeof(string) })]
-        public string SourceResourceSettingTargetResourceName { get => Body.SourceResourceSettingTargetResourceName ?? null; set => Body.SourceResourceSettingTargetResourceName = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -260,24 +224,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// Intializes a new instance of the <see cref="AddAzResourceMoverMoveResource_CreateExpanded" /> cmdlet class.
@@ -504,12 +468,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -526,7 +490,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, MoveCollectionName=MoveCollectionName, Name=Name, body=Body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -544,12 +508,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -561,7 +525,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource
                 WriteObject((await response));
             }
         }

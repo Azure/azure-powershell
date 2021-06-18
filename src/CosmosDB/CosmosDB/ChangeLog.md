@@ -19,6 +19,15 @@
 -->
 
 ## Upcoming Release
+* Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
+  - The following cmdlets are added:
+    - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlRoleDefinition, New-AzCosmosDBSqlRoleAssignment,
+    - Remove-AzCosmosDBSqlRoleDefinition, Remove-AzCosmosDBSqlRoleAssignment,
+    - Update-AzCosmosDBSqlRoleDefinition, Update-AzCosmosDBSqlRoleAssignment,
+    - New-AzCosmosDBSqlPermission
+
+## Version 1.1.0
 * Introduced NetworkAclBypass and NetworkAclBypassResourceIds for Database Account cmdlets.
 * Introduced ServerVersion parameter to Update-AzCosmosDBAccount.
 * Introduced BackupInterval and BackupRetention for Database Account cmdlets

@@ -1,8 +1,8 @@
-﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Synapse.Models;
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingSparkPool != null)
             {
-                throw new SynapseException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
+                throw new AzPSInvalidOperationException(string.Format(Resources.SynapseSparkPoolExists, this.Name, this.ResourceGroupName, this.WorkspaceName));
             }
 
             Workspace existingWorkspace = null;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (existingWorkspace == null)
             {
-                throw new SynapseException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.WorkspaceDoesNotExist, this.WorkspaceName));
             }
 
             LibraryRequirements libraryRequirements = null;

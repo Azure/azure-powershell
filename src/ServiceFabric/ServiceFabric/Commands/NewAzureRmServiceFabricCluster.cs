@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
             {OperatingSystem.UbuntuServer1604, "16.04-LTS"},
+            {OperatingSystem.UbuntuServer1804, "18.04-LTS"},
             {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
             {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"}
         };
@@ -434,12 +435,25 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             // Future change: Use GitHub templates when possible
             if (string.IsNullOrWhiteSpace(templateFilePath) || string.IsNullOrWhiteSpace(parameterFilePath))
             {
-                string templateDirectory = 
-                    Path.Combine(
-                        assemblyFolder,
-                        this.OS != OperatingSystem.UbuntuServer1604
-                            ? Constants.WindowsTemplateRelativePath
-                            : Constants.LinuxTemplateRelativePath);
+                string osRelativePath;
+                switch (this.OS)
+                {
+                    case OperatingSystem.WindowsServer2012R2Datacenter:
+                    case OperatingSystem.WindowsServer2016Datacenter:
+                    case OperatingSystem.WindowsServer2016DatacenterwithContainers:
+                        osRelativePath = Constants.WindowsTemplateRelativePath;
+                        break;
+                    case OperatingSystem.UbuntuServer1604:
+                        osRelativePath = Constants.UbuntuServer16TemplateRelativePath;
+                        break;
+                    case OperatingSystem.UbuntuServer1804:
+                        osRelativePath = Constants.UbuntuServer18TemplateRelativePath;
+                        break;
+                    default:
+                        throw new NotImplementedException("OS not defined for DeployWithDefaultTemplate");
+                }
+
+                string templateDirectory = Path.Combine(assemblyFolder, osRelativePath);
                 templateFilePath = Path.Combine(templateDirectory, Constants.TemplateFileName);
                 parameterFilePath = Path.Combine(templateDirectory, Constants.ParameterFileName);
             }

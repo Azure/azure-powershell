@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
@@ -62,6 +65,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// disks to their original storage accounts.
         /// </summary>
         public bool OriginalSAEnabled { get; set; }
+
+        /// <summary>
+        /// Zone pinned information for the Recovery point
+        /// </summary>
+        public IList<string> Zones { get; set; }
+
+        /// <summary>
+        /// Recovery Type information for Recovery point: "Vault", "Snapshot", "Snapshot and Vault" 
+        /// </summary>
+        public RecoveryPointTier RecoveryPointTier;
+
+        /// <summary>
+        /// Rehydration expiry time
+        /// </summary>
+        public DateTime? RehydrationExpiryTime;
 
         public AzureVmRecoveryPoint()
         {

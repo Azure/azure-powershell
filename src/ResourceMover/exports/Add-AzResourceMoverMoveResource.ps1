@@ -19,45 +19,99 @@ Creates or updates a Move Resource in the move collection.
 .Description
 Creates or updates a Move Resource in the move collection.
 .Example
-PS C:\> Add-AzResourceMoverMoveResource -ResourceGroupName RG-MoveCollection-demoRM -MoveCollectionName "PS-centralus-westcentralus-demoRM" -SourceId "/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name PSDemoVM -ResourceSettingResourceType "Microsoft.Compute/virtualMachines" -ResourceSettingTargetResourceName PSDemoVM
+PS C:\> Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $targetResourceSettingsObj
 
-Output:
+DependsOn                         : {}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              : 
+ErrorsPropertiesDetail            : 
+ErrorsPropertiesMessage           : 
+ErrorsPropertiesTarget            : 
+ExistingTargetId                  : 
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/moveResources/PSDemoVM
+IsResolveRequired                 : False
+JobStatusJobName                  : 
+JobStatusJobProgress              : 
+MoveStatusErrorsPropertiesCode    : DependencyComputationPending
+MoveStatusErrorsPropertiesDetail  : {}
+MoveStatusErrorsPropertiesMessage : The dependency computation is not completed for resource - /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM. Possible Causes: Dependency computation is pending for resource. Recommended Action: Validate dependencies to compute the dependencies.
+MoveStatusErrorsPropertiesTarget  : 
+MoveStatusMoveState               : PreparePending
+Name                              : PSDemoVM
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings
+TargetId                          : 
+Type                              : 
 
-Code                                    :
-DependsOn                               : {}
-DependsOnOverride                       : {}
-Detail                                  :
-ExistingTargetId                        :
-Id                                      : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RG-MoveCollection-demoRM/providers/Microsoft.Migr
-                                          ate/MoveCollections/PS-centralus-westcentralus-demoRM/MoveResources/PSDemoVM
-Message                                 :
-MoveStatusCode                          : DependencyComputationPending
-MoveStatusDetail                        : {}
-MoveStatusJobName                       :
-MoveStatusJobProgress                   :
-MoveStatusMessage                       : The dependency computation is not completed for resource - /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resou
-                                          rceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM.
-                                              Possible Causes: Dependency computation is pending for resource.
-                                              Recommended Action: Validate dependencies to compute the dependencies.
+PS C:\> $targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings
+PS C:\> $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
+$targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
-MoveStatusMoveState                     : PreparePending
-MoveStatusTarget                        :
-MoveStatusTargetId                      :
-Name                                    : PSDemoVM
-ProvisioningState                       : Succeeded
-ResourceSettingResourceType             : Microsoft.Compute/virtualMachines
-ResourceSettingTargetResourceName       : PSDemoVM
-SourceId                                : /subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachi
-                                          nes/PSDemoVM
-SourceResourceSettingResourceType       : Microsoft.Compute/virtualMachines
-SourceResourceSettingTargetResourceName : PSDemoVM
-Target                                  :
-TargetId                                :
-Type          
+.Example
+PS C:\> Add-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS"  -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm"  -Name "psdemorm"  -ExistingTargetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target"
+
+DependsOn                         : {}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              : 
+ErrorsPropertiesDetail            : 
+ErrorsPropertiesMessage           : 
+ErrorsPropertiesTarget            : 
+ExistingTargetId                  : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/moveResources/psdemorm
+IsResolveRequired                 : False
+JobStatusJobName                  : 
+JobStatusJobProgress              : 
+MoveStatusErrorsPropertiesCode    : 
+MoveStatusErrorsPropertiesDetail  : 
+MoveStatusErrorsPropertiesMessage : 
+MoveStatusErrorsPropertiesTarget  : 
+MoveStatusMoveState               : CommitPending
+Name                              : psdemorm
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.ResourceSettings
+TargetId                          : 
+Type                              : 
+
+.Example
+PS C:\> Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+
+
+DependsOn                         : {/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Network/networkInterfaces/psdemov
+                                    m111, /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM}
+DependsOnOverride                 : {}
+ErrorsPropertiesCode              : 
+ErrorsPropertiesDetail            : 
+ErrorsPropertiesMessage           : 
+ErrorsPropertiesTarget            : 
+ExistingTargetId                  : 
+Id                                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/RG-MoveCollection-demoRMS/providers/Microsoft.Migrate/moveCollections/PS-centralus-westcentralus-demoRMS/moveResources/PSDemoVM
+IsResolveRequired                 : True
+JobStatusJobName                  : 
+JobStatusJobProgress              : 
+MoveStatusErrorsPropertiesCode    : 
+MoveStatusErrorsPropertiesDetail  : 
+MoveStatusErrorsPropertiesMessage : 
+MoveStatusErrorsPropertiesTarget  : 
+MoveStatusMoveState               : PreparePending
+Name                              : PSDemoVM
+ProvisioningState                 : Succeeded
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings
+SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.VirtualMachineResourceSettings
+TargetId                          : 
+Type                              : 
+
+PS C:\> $moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
+PS C:\> $TargetResourceSettingObj = $moveResourceObj.ResourceSetting
+$TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource
+Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -66,11 +120,16 @@ To create the parameters described below, construct a hash table containing the 
 DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>: Gets or sets the move resource dependencies overrides.
   [Id <String>]: Gets or sets the ARM ID of the dependent resource.
   [TargetId <String>]: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
+
+RESOURCESETTING <IResourceSettings>: Gets or sets the resource settings.
+  ResourceType <String>: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+  TargetResourceName <String>: Gets or sets the target Resource name.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcemover/add-azresourcemovermoveresource
+https://docs.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
 #>
 function Add-AzResourceMoverMoveResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResource])]
+[Alias('Update-AzResourceMoverMoveResource')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -101,7 +160,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.IMoveResourceDependencyOverride[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IMoveResourceDependencyOverride[]]
     # Gets or sets the move resource dependencies overrides.
     # To construct, see NOTES section for DEPENDSONOVERRIDE properties and create a hash table.
     ${DependsOnOverride},
@@ -114,35 +173,16 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [System.String]
-    # The resource type.
-    # For example, the value can be Microsoft.Compute/virtualMachines.
-    ${ResourceSettingResourceType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [System.String]
-    # Gets or sets the target Resource name.
-    ${ResourceSettingTargetResourceName},
+    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api202101.IResourceSettings]
+    # Gets or sets the resource settings.
+    # To construct, see NOTES section for RESOURCESETTING properties and create a hash table.
+    ${ResourceSetting},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
     [System.String]
     # Gets or sets the Source ARM Id of the resource.
     ${SourceId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [System.String]
-    # The resource type.
-    # For example, the value can be Microsoft.Compute/virtualMachines.
-    ${SourceResourceSettingResourceType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Category('Body')]
-    [System.String]
-    # Gets or sets the target Resource name.
-    ${SourceResourceSettingTargetResourceName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

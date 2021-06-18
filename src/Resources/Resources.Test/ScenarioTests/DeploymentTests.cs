@@ -182,13 +182,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewDeploymentWithQueryString()
-        {
-            TestRunner.RunTestScript("Test-NewDeploymentWithQueryString");
-        }
-
-        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewDeploymentFromBicepFile()
         {
@@ -200,6 +193,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestTestDeploymentFromBicepFile()
         {
             TestRunner.RunTestScript("Test-TestDeploymentFromBicepFile");
+        }
+
+        //Please make sure to re-record this test if any changes are made to WhatIf, QueryString or ResourceGroupDeployments
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWhatIfWithQueryString()
+        {
+            TestRunner.RunTestScript("Test-WhatIfWithQueryString");
         }
     }
 }

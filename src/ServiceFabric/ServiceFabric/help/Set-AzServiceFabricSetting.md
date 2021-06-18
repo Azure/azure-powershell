@@ -37,7 +37,6 @@ Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
 
-
 ### Example 2
 ```
 $fabricSettings = @(

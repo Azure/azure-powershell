@@ -1,7 +1,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Synapse.Models.Exceptions;
 using Microsoft.Azure.Commands.Synapse.Properties;
 using Microsoft.Rest;
 
@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             if (context == null)
             {
-                throw new SynapseException(Resources.NoSubscriptionInContext);
+                throw new AzPSInvalidOperationException(Resources.NoSubscriptionInContext);
             }
 
             var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);

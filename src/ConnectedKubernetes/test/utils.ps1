@@ -26,7 +26,7 @@ function setupEnv() {
     $env.Add('connaksName02', $connaksName02)
     $env.Add('connaksName03', $connaksName03)
 
-    $kubeContext = 'portal-aks-t01'
+    $kubeContext = 'youriKubtest'
     $env.Add('kubeContext', $kubeContext)
     New-AzConnectedKubernetes -ClusterName $env.connaksName00 -ResourceGroupName $env.resourceGroup -Location $env.location
     New-AzConnectedKubernetes -ClusterName $env.connaksName01 -ResourceGroupName $env.resourceGroup -Location $env.location -KubeConfig $HOME\.kube\config -KubeContext $kubeContext

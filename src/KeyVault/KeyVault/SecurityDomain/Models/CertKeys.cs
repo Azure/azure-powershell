@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
         {
             CertKey certKey = new CertKey();
             certKey.Load(path);
-            string encodedThumbprint = Base64UrlEncoder.Encode(certKey.GetThumbprint());
+            string encodedThumbprint = Base64UrlHelper.Encode(certKey.GetThumbprint());
             _keys.Add(encodedThumbprint, certKey);
         }
 

@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         Module module = registryManager.GetModuleAsync(this.DeviceId, this.ModuleId).GetAwaiter().GetResult();
                         if (module != null)
                         {
-                            if (module.Authentication.Type.Equals(AuthenticationType.Sas))
+                            if (module.Authentication.Type.Equals(Devices.AuthenticationType.Sas))
                             {
                                 resourceUri = string.Format("{0}/devices/{1}/modules/{2}", iotHubDescription.Properties.HostName, this.DeviceId, this.ModuleId);
                                 key = this.KeyType.Equals(PSKeyType.primary) ? module.Authentication.SymmetricKey.PrimaryKey : module.Authentication.SymmetricKey.SecondaryKey;
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         Device device = registryManager.GetDeviceAsync(this.DeviceId).GetAwaiter().GetResult();
                         if (device != null)
                         {
-                            if (device.Authentication.Type.Equals(AuthenticationType.Sas))
+                            if (device.Authentication.Type.Equals(Devices.AuthenticationType.Sas))
                             {
                                 resourceUri = string.Format("{0}/devices/{1}", iotHubDescription.Properties.HostName, this.DeviceId);
                                 key = this.KeyType.Equals(PSKeyType.primary) ? device.Authentication.SymmetricKey.PrimaryKey : device.Authentication.SymmetricKey.SecondaryKey;

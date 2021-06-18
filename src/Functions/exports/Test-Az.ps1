@@ -114,7 +114,7 @@ VALIDATEREQUEST <IValidateRequest>: Resource validation request content.
   [ServerFarmId <String>]: ARM resource ID of an App Service plan that would host the app.
   [SkuName <String>]: Name of the target SKU for the App Service plan.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/test-az
+https://docs.microsoft.com/powershell/module/az.functions/test-az
 #>
 function Test-Az {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IValidateResponse])]

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             NewParameterTypeName = "List<PSPublicIpAddress>",
             ReplaceMentCmdletParameterName = "PublicIpAddress")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "OldIpConfigurationParameterValues",
             HelpMessage = "Public IP address name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "One or more Public IP Addresses. The Public IP addresses must use Standard SKU and must belong to the same resource group as the Firewall.")]

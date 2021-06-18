@@ -183,7 +183,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Dictionary<string, string> commandNounMap = null;
             _commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap);
 
-            for (int i = 1; i < command.CommandElements.Count;)
+            // Don't need to check the last command element. If it's a switch parameter, we don't have a value to store.
+            // If it's a value, it should be counted in the previous command element (at Count - 2).
+            for (int i = 1; i < command.CommandElements.Count - 1;)
             {
                 if (command.CommandElements[i] is CommandParameterAst parameterAst)
                 {

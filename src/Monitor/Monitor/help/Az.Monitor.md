@@ -42,7 +42,7 @@ Retrieve Activity Log events.
 Gets one or more activity log alert resources.
 
 ### [Get-AzAlertHistory](Get-AzAlertHistory.md)
-Gets the history of alerts.
+Gets the history of classic alert rules.
 
 ### [Get-AzAlertRule](Get-AzAlertRule.md)
 Gets alert rules.
@@ -52,6 +52,12 @@ Gets the Autoscale history.
 
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
 Gets Autoscale settings.
+
+### [Get-AzDataCollectionRule](Get-AzDataCollectionRule.md)
+Gets data collection rule(s).
+
+### [Get-AzDataCollectionRuleAssociation](Get-AzDataCollectionRuleAssociation.md)
+Gets data collection rule association(s).
 
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
 Gets the logged categories and time grains.
@@ -80,6 +86,9 @@ Gets metric definitions.
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Gets Scheduled Query Resources
 
+### [Get-AzSubscriptionDiagnosticSettingCategory](Get-AzSubscriptionDiagnosticSettingCategory.md)
+Get diagnostic setting categories for subscription.
+
 ### [New-AzActionGroup](New-AzActionGroup.md)
 Creates an ActionGroup reference object in memory.
 
@@ -106,6 +115,12 @@ Creates an Autoscale rule.
 
 ### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
 Creates an Autoscale webhook.
+
+### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
+Create a data collection rule.
+
+### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
+Create data collection rule association.
 
 ### [New-AzDiagnosticDetailSetting](New-AzDiagnosticDetailSetting.md)
 Create PSDiagnosticDetailSetting Object, type could be metric or log
@@ -161,6 +176,12 @@ Removes an alert rule.
 ### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
 Removes an Autoscale setting.
 
+### [Remove-AzDataCollectionRule](Remove-AzDataCollectionRule.md)
+Delete a data collection rule.
+
+### [Remove-AzDataCollectionRuleAssociation](Remove-AzDataCollectionRuleAssociation.md)
+Delete a data collection rule association.
+
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Remove a diagnostic setting for the a resource.
 
@@ -185,11 +206,17 @@ Creates a new or updates an existing action group.
 ### [Set-AzActivityLogAlert](Set-AzActivityLogAlert.md)
 Creates a new or sets an existing activity log alert.
 
+### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
+Updates (full replacement) a data collection rule.
+
 ### [Set-AzDiagnosticSetting](Set-AzDiagnosticSetting.md)
 Sets the logs and metrics settings for the resource.
 
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Updates a Log Alert Rule
+
+### [Update-AzDataCollectionRule](Update-AzDataCollectionRule.md)
+Updates a data collection rule tags property.
 
 ### [Update-AzInsightsPrivateLinkScope](Update-AzInsightsPrivateLinkScope.md)
 Update for private link scope

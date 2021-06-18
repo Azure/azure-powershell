@@ -109,7 +109,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
         }
         private string accessTier = null;
-        
+
+        [Parameter(Mandatory = false, HelpMessage = "Create a snapshot of existing share with same name.")]
+        public SwitchParameter Snapshot { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -128,6 +131,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 Dictionary<string, string> MetadataDictionary = CreateMetadataDictionary(Metadata, validate: true);
+                string expand = null;
+                if (this.Snapshot)
+                {
+                    expand = ShareCreateExpand.Snapshots;
+                }
 
                 var share =
                     this.StorageClient.FileShares.Create(
@@ -137,7 +145,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
                             new FileShare(
                                 metadata: MetadataDictionary,
                                 shareQuota: shareQuota,
-                                accessTier: accessTier));
+                                accessTier: accessTier),
+                            expand: expand);
 
                 WriteObject(new PSShare(share));
             }

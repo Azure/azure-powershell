@@ -23,12 +23,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Secondary and Replication Link
     /// </summary>
+    [CmdletOutputBreakingChange(
+        deprecatedCmdletOutputTypeName: typeof(AzureReplicationLinkModel),
+        deprecateByVersion: "3.0.0",
+        DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
+        NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecondary",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureReplicationLinkModel))]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
@@ -173,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
 
                 }
             }
@@ -233,7 +240,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 LicenseType = LicenseType,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = this.BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
             };
 

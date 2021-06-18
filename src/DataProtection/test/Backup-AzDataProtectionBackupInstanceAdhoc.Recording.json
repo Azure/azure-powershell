@@ -1,0 +1,1134 @@
+{
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "bd1a4d05-f405-4d81-8129-f455fa6d1cd6" ],
+        "CommandName": [ "Get-AzDataProtectionBackupInstance" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupInstance_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-correlation-request-id": [ "afd7343e-8cbc-4925-adbf-718a9076f190" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044041Z:afd7343e-8cbc-4925-adbf-718a9076f190" ],
+        "Date": [ "Wed, 17 Mar 2021 04:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "7825" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/pstestdisk2-pstestdisk2-b72ef488-fc30-4257-a2f0-b30528ee8e91\",\"name\":\"pstestdisk2-pstestdisk2-b72ef488-fc30-4257-a2f0-b30528ee8e91\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"pstestdisk2\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.Compute/disks/pstestdisk2\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.Compute/disks/pstestdisk2\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"pstestdisk2\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"name\":\"sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"sarathdisk\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"sarathdisk\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"policyParameters\":{\"dataStoreParametersList\":[{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"AzureOperationalStoreParameters\",\"resourceGroupId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk2-sarathdisk2-e66363cf-70a6-4720-a5eb-1ee0b4aa7496\",\"name\":\"sarathdisk2-sarathdisk2-e66363cf-70a6-4720-a5eb-1ee0b4aa7496\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"sarathdisk2\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk2\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk2\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"sarathdisk2\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/newdiskpolicy-vgxrh5mld6\",\"policyParameters\":{\"dataStoreParametersList\":[{\"objectType\":\"AzureOperationalStoreParameters\",\"dataStoreType\":\"OperationalStore\",\"resourceGroupId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-snapshot-rg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarath-disk3-sarath-disk3-cbfbeccf-fa0b-4953-9853-a07a68f6eec6\",\"name\":\"sarath-disk3-sarath-disk3-cbfbeccf-fa0b-4953-9853-a07a68f6eec6\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"sarath-disk3\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarath-disk3\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarath-disk3\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"sarath-disk3\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"policyParameters\":{\"dataStoreParametersList\":[{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"AzureOperationalStoreParameters\",\"resourceGroupId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-snapshot-rg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionError\",\"errorDetails\":{\"message\":\"Generic Internal Server Error in DataStore\",\"recommendedAction\":[\"\"],\"code\":\"DataStoreInternalError\",\"target\":\"\",\"isRetryable\":false,\"isUserError\":false,\"properties\":{\"ActivityId\":\"454bcb51-9082-4d06-9b95-a91322038028-Ibz\"}}},\"currentProtectionState\":\"ProtectionError\",\"protectionErrorDetails\":{\"message\":\"Generic Internal Server Error in DataStore\",\"recommendedAction\":[\"\"],\"code\":\"DataStoreInternalError\",\"target\":\"\",\"isRetryable\":false,\"isUserError\":false,\"properties\":{\"ActivityId\":\"454bcb51-9082-4d06-9b95-a91322038028-Ibz\"}},\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}},{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/hiagaDisk1-hiagaDisk1-7ec9b426-5a1b-4e3b-af37-213a40e0266b\",\"name\":\"hiagaDisk1-hiagaDisk1-7ec9b426-5a1b-4e3b-af37-213a40e0266b\",\"type\":\"Microsoft.DataProtection/backupVaults/backupInstances\",\"properties\":{\"friendlyName\":\"hiagaDisk1\",\"dataSourceInfo\":{\"resourceID\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.Compute/disks/hiagaDisk1\",\"resourceUri\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.Compute/disks/hiagaDisk1\",\"datasourceType\":\"Microsoft.Compute/disks\",\"resourceName\":\"hiagaDisk1\",\"resourceType\":\"Microsoft.Compute/disks\",\"resourceLocation\":\"centraluseuap\",\"objectType\":\"Datasource\"},\"policyInfo\":{\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/hiagaPSPolicy\",\"policyParameters\":{\"dataStoreParametersList\":[{\"dataStoreType\":\"OperationalStore\",\"objectType\":\"AzureOperationalStoreParameters\",\"resourceGroupId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg\"}]}},\"protectionStatus\":{\"status\":\"ProtectionConfigured\"},\"currentProtectionState\":\"ProtectionConfigured\",\"provisioningState\":\"Succeeded\",\"objectType\":\"BackupInstance\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$POST+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166/backup?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166/backup?api-version=2021-01-01",
+      "Content": "{\r\n  \"backupRuleOptions\": {\r\n    \"triggerOption\": {\r\n      \"retentionTagOverride\": \"Default\"\r\n    },\r\n    \"ruleName\": \"BackupHourly\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "140" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "aef1fe33-f967-4229-b174-58672ac41d84" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044042Z:aef1fe33-f967-4229-b174-58672ac41d84" ],
+        "Date": [ "Wed, 17 Mar 2021 04:40:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "0ef119ea-1ad3-4cb7-abbf-b983298a59a7" ],
+        "CommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc" ],
+        "FullCommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc_BackupExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-correlation-request-id": [ "84bc5056-c79d-4178-b712-fdd9e85c7e61" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044112Z:84bc5056-c79d-4178-b712-fdd9e85c7e61" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "694" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==\",\"name\":\"Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==\",\"status\":\"Succeeded\",\"startTime\":\"2021-03-17T04:40:42.1256862Z\",\"endTime\":\"2021-03-17T04:40:44Z\",\"properties\":{\"jobId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.DataProtection/BackupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"objectType\":\"OperationJobExtendedInfo\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "0ef119ea-1ad3-4cb7-abbf-b983298a59a7" ],
+        "CommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc" ],
+        "FullCommandName": [ "Backup-AzDataProtectionBackupInstanceAdhoc_BackupExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/Y2EwMTdlZGYtMGQ4OC00MDc1LTkzYWMtMWQ5MDI1NDkwMWYwOzczN2E2NTIyLWJjNDMtNGZlMi1iYjVmLWFkNjAyYjFkMDgxZg==?api-version=2021-01-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "b1af4f01-9f7a-42d7-834c-f9fe2e5655d7" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044113Z:b1af4f01-9f7a-42d7-834c-f9fe2e5655d7" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "237" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"jobId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.DataProtection/BackupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"objectType\":\"OperationJobExtendedInfo\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d70afc60-c1bd-4753-ad09-67e816e82a64" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "77b9bf61-57b5-4340-bbad-a048aa664860" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044118Z:77b9bf61-57b5-4340-bbad-a048aa664860" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "c438f1a0-7236-4ecb-9453-64f441d9f5da" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-correlation-request-id": [ "782161f5-d428-4d92-9a28-8029fcca63f2" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044124Z:782161f5-d428-4d92-9a28-8029fcca63f2" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "fb473d00-934a-42f5-ad24-77b46981f459" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-correlation-request-id": [ "b3e15970-f4d1-4789-a612-dfcd5ddb31c3" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044129Z:b3e15970-f4d1-4789-a612-dfcd5ddb31c3" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "a811f4f9-018b-48a4-8daa-d1b00c849816" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "6efda404-62dd-42ee-9dae-ce7e50857f84" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044135Z:6efda404-62dd-42ee-9dae-ce7e50857f84" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+9": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "4cc33f41-9eb4-4737-80c8-dea8eaf5e661" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "b09b2e17-9327-46ae-8ed2-8f81f95ae585" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044140Z:b09b2e17-9327-46ae-8ed2-8f81f95ae585" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+10": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "02ef1292-6340-40a1-a662-244de8d5ede7" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "441ec1ef-e4a8-4866-b5bf-547bad299af0" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044146Z:441ec1ef-e4a8-4866-b5bf-547bad299af0" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+11": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "64602e26-bcb3-45d3-a42f-5a794cb91d78" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "8d746ae2-835e-4e4e-99c5-f5b5c78eae8a" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044151Z:8d746ae2-835e-4e4e-99c5-f5b5c78eae8a" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+12": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "43d1809b-1774-442b-bacf-834566d584cb" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "8a1135fb-950a-4b8c-b65c-8f0acbcee023" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044156Z:8a1135fb-950a-4b8c-b65c-8f0acbcee023" ],
+        "Date": [ "Wed, 17 Mar 2021 04:41:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+13": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "092a74d6-e7b2-4c81-a376-2ac97f42241b" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "38ae5262-702f-4c27-b4ea-db9abe4a035d" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044202Z:38ae5262-702f-4c27-b4ea-db9abe4a035d" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+14": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "ef4c8b8c-8a34-4b2f-80ff-ccba9fd5c280" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "d9750a9a-ad62-4745-aa59-e67119db0b5d" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044207Z:d9750a9a-ad62-4745-aa59-e67119db0b5d" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+15": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "f8aa849d-438c-45fd-8644-35510bc3b582" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "ffac908d-b23e-4f51-9da5-ed3b398d6b33" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044213Z:ffac908d-b23e-4f51-9da5-ed3b398d6b33" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+16": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "16778333-1230-49e9-9334-321dbab51411" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "6be76a4f-9d6b-4d26-a39c-d528822158c7" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044218Z:6be76a4f-9d6b-4d26-a39c-d528822158c7" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+17": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "c156a0f8-3c7e-477d-9fc2-e3b0bd0b69a1" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "05b78ac8-0e8e-413e-806a-00539c48a6d2" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044224Z:05b78ac8-0e8e-413e-806a-00539c48a6d2" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+18": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "26" ],
+        "x-ms-client-request-id": [ "9c59ca88-c488-45d3-ab27-3e63cb19241f" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "x-ms-correlation-request-id": [ "056cb29d-968b-4622-8cb5-1950c44ab9c4" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044229Z:056cb29d-968b-4622-8cb5-1950c44ab9c4" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+19": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "4d0df267-96f6-49f6-92c2-93efdd1b7865" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "x-ms-correlation-request-id": [ "b5e60d86-0e0a-4cc7-ab94-82bc7c2556bc" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044235Z:b5e60d86-0e0a-4cc7-ab94-82bc7c2556bc" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+20": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "28" ],
+        "x-ms-client-request-id": [ "0728e351-71ba-4436-a916-4500f52ce331" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11970" ],
+        "x-ms-correlation-request-id": [ "be359bb6-4f07-4145-86e1-83369f85891f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044240Z:be359bb6-4f07-4145-86e1-83369f85891f" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+21": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "264b821e-4c99-4d14-8bb5-d7454fca27c6" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-correlation-request-id": [ "2f311c68-6783-4813-a46d-1154fa9bf324" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044246Z:2f311c68-6783-4813-a46d-1154fa9bf324" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+22": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "31bbf0ee-f286-4e91-987c-3b12e3ab03fb" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-correlation-request-id": [ "f6513727-683e-4902-9ea3-1894b0f9e34f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044251Z:f6513727-683e-4902-9ea3-1894b0f9e34f" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+23": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "eee2018a-2a7b-475f-8925-cdc1f2dc6d71" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11967" ],
+        "x-ms-correlation-request-id": [ "016d59b7-2abf-46a4-859c-4059b09e0e09" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044257Z:016d59b7-2abf-46a4-859c-4059b09e0e09" ],
+        "Date": [ "Wed, 17 Mar 2021 04:42:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+24": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "202c5f65-dba4-4ca1-a85e-d0968ce3cf77" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-correlation-request-id": [ "2b55cea9-f97c-4c83-831e-ae0545b22e7a" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044302Z:2b55cea9-f97c-4c83-831e-ae0545b22e7a" ],
+        "Date": [ "Wed, 17 Mar 2021 04:43:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+25": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "585092de-e148-4ddb-87af-6e4d1c3cb72d" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11965" ],
+        "x-ms-correlation-request-id": [ "137632ed-2742-4164-baee-d97e173fa75f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044308Z:137632ed-2742-4164-baee-d97e173fa75f" ],
+        "Date": [ "Wed, 17 Mar 2021 04:43:07 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+26": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "0f776af9-3949-4f48-a2e8-fa680db87946" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11964" ],
+        "x-ms-correlation-request-id": [ "69ace979-88a1-4dfb-a00d-64589cbc7431" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044313Z:69ace979-88a1-4dfb-a00d-64589cbc7431" ],
+        "Date": [ "Wed, 17 Mar 2021 04:43:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1680" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A40%3A43.0003366Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"InProgress\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT0S\",\"extendedInfo\":{\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"InProgress\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  },
+  "Backup-AzDataProtectionBackupInstanceAdhoc+[NoContext]+BackupExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01+27": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "0bbe8639-dfb6-4976-90fb-5843e0b7b9f8" ],
+        "CommandName": [ "Get-AzDataProtectionJob" ],
+        "FullCommandName": [ "Get-AzDataProtectionJob_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET", "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11963" ],
+        "x-ms-correlation-request-id": [ "eb4c03cd-8462-4ee3-bdf7-77f0b22a84c7" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210317T044319Z:eb4c03cd-8462-4ee3-bdf7-77f0b22a84c7" ],
+        "Date": [ "Wed, 17 Mar 2021 04:43:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1898" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"activityID\":\"0ef119ea-1ad3-4cb7-abbf-b983298a59a7\",\"subscriptionId\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"backupInstanceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupInstances/sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166\",\"policyId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupPolicies/DiskPolicy1\",\"dataSourceId\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.Compute/disks/sarathdisk\",\"vaultName\":\"sarath-vault\",\"backupInstanceFriendlyName\":\"sarathdisk\",\"policyName\":\"DiskPolicy1\",\"sourceResourceGroup\":\"sarath-rg\",\"dataSourceName\":\"sarathdisk\",\"destinationDataStoreName\":\"OperationalTierStore\",\"progressEnabled\":false,\"etag\":\"W/\\\"datetime\u00272021-03-17T04%3A43%3A16.6294073Z\u0027\\\"\",\"sourceSubscriptionID\":\"62b829ee-7936-40c9-a1c9-47a93f9f3965\",\"dataSourceLocation\":\"centraluseuap\",\"startTime\":\"2021-03-17T04:40:42.5280141Z\",\"endTime\":\"2021-03-17T04:43:16.0925193Z\",\"dataSourceType\":\"Microsoft.Compute/disks\",\"operationCategory\":\"Backup\",\"operation\":\"Backup\",\"status\":\"Completed\",\"isUserTriggered\":true,\"supportedActions\":[\"\"],\"duration\":\"PT2M33.5645052S\",\"extendedInfo\":{\"targetRecoverPoint\":{\"recoveryPointID\":\"ade37f4ab91d425b93795e7f6ff925d9\",\"recoveryPointTime\":\"0001-01-01T00:00:00\"},\"subTasks\":[{\"taskId\":1,\"taskName\":\"Trigger Backup\",\"taskStatus\":\"Completed\"}],\"additionalDetails\":{\"RetentionTag\":\"Default\"}}},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault/backupJobs/5730c038-56b2-498c-b82d-49af36b8a851\",\"name\":\"5730c038-56b2-498c-b82d-49af36b8a851\",\"type\":\"Microsoft.DataProtection/backupVaults/backupJobs\"}",
+      "isContentBase64": false
+    }
+  }
+}

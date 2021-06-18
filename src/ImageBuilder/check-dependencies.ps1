@@ -46,7 +46,7 @@ if(Test-Path -Path $localModulesPath) {
   $env:PSModulePath = "$localModulesPath$([IO.Path]::PathSeparator)$env:PSModulePath"
 }
 
-DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '1.8.1'
+DownloadModule -predicate ($all -or $Accounts) -path $localModulesPath -moduleName 'Az.Accounts' -versionMinimum '2.2.3'
 DownloadModule -predicate ($all -or $Pester) -path $localModulesPath -moduleName 'Pester' -requiredVersion '4.10.1'
 
 $tools = Join-Path $PSScriptRoot 'tools'
@@ -56,7 +56,7 @@ $resourceModule = Join-Path $HOME '.PSSharedModules\Resources\Az.Resources.TestS
 if ($Resources.IsPresent -and (-not (Test-Path -Path $resourceModule))) {
   Write-Host -ForegroundColor Green "Building local Resource module used for test..."
   Set-Location $resourceDir
-  $null = autorest-beta .\readme.md --output-folder=$HOME/.PSSharedModules/Resources
+  $null = autorest .\readme.md --use:@autorest/powershell@3.0.414 --output-folder=$HOME/.PSSharedModules/Resources
   $null = Copy-Item custom/* $HOME/.PSSharedModules/Resources/custom/
   Set-Location $HOME/.PSSharedModules/Resources
   $null = .\build-module.ps1

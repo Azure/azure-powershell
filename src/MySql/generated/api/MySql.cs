@@ -2441,7 +2441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -2480,10 +2480,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2497,7 +2497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -2618,7 +2618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations"
                         + "?"
@@ -2656,10 +2656,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/configurations$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2672,7 +2672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/configurations"
                         + "?"
@@ -2794,7 +2794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/configurations/"
                         + global::System.Uri.EscapeDataString(configurationName)
@@ -2838,10 +2838,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/configurations/(?<configurationName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/configurations/{configurationName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -2855,7 +2855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/configurations/"
                         + configurationName
@@ -3083,7 +3083,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -3127,10 +3127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3144,7 +3144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -3374,7 +3374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -3414,10 +3414,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3431,7 +3431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -3659,7 +3659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases/"
                         + global::System.Uri.EscapeDataString(databaseName)
@@ -3698,10 +3698,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases/{databaseName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3715,7 +3715,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/databases/"
                         + databaseName
@@ -3836,7 +3836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/databases"
                         + "?"
@@ -3874,10 +3874,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/databases$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/databases'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases'");
                 }
 
                 // replace URI parameters with values from identity
@@ -3890,7 +3890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/databases"
                         + "?"
@@ -4010,7 +4010,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -4054,10 +4054,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4071,7 +4071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -4301,7 +4301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -4341,10 +4341,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4358,7 +4358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -4586,7 +4586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules/"
                         + global::System.Uri.EscapeDataString(firewallRuleName)
@@ -4625,10 +4625,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/firewallRules/(?<firewallRuleName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4642,7 +4642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/firewallRules/"
                         + firewallRuleName
@@ -4763,7 +4763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/firewallRules"
                         + "?"
@@ -4801,10 +4801,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/firewallRules$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/firewallRules'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules'");
                 }
 
                 // replace URI parameters with values from identity
@@ -4817,7 +4817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/firewallRules"
                         + "?"
@@ -4939,7 +4939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/keys/"
                         + global::System.Uri.EscapeDataString(keyName)
@@ -4983,10 +4983,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/keys/{keyName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5000,7 +5000,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/keys/"
                         + keyName
@@ -5228,7 +5228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/keys/"
                         + global::System.Uri.EscapeDataString(keyName)
@@ -5268,10 +5268,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/keys/{keyName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5285,7 +5285,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/keys/"
                         + keyName
@@ -5513,7 +5513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/keys/"
                         + global::System.Uri.EscapeDataString(keyName)
@@ -5552,10 +5552,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/keys/(?<keyName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys/{keyName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/keys/{keyName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5569,7 +5569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/keys/"
                         + keyName
@@ -5690,7 +5690,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/keys"
                         + "?"
@@ -5728,10 +5728,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/keys$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/keys$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/keys'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/keys'");
                 }
 
                 // replace URI parameters with values from identity
@@ -5744,7 +5744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/keys"
                         + "?"
@@ -6191,7 +6191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/replicas"
                         + "?"
@@ -6229,10 +6229,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/replicas$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/replicas'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/replicas'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6245,7 +6245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/replicas"
                         + "?"
@@ -6542,7 +6542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -6586,10 +6586,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6602,7 +6602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -6825,7 +6825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -6863,10 +6863,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -6879,7 +6879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -7102,7 +7102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -7139,10 +7139,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7155,7 +7155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -7589,7 +7589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/restart"
                         + "?"
@@ -7627,10 +7627,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/restart$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/restart'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/restart'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7643,7 +7643,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/restart"
                         + "?"
@@ -7860,7 +7860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/start"
                         + "?"
@@ -7898,10 +7898,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/start$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/start$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/start'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/start'");
                 }
 
                 // replace URI parameters with values from identity
@@ -7914,7 +7914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/start"
                         + "?"
@@ -8131,7 +8131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "/stop"
                         + "?"
@@ -8169,10 +8169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)/stop$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)/stop$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}/stop'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/stop'");
                 }
 
                 // replace URI parameters with values from identity
@@ -8185,7 +8185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "/stop"
                         + "?"
@@ -8405,7 +8405,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + global::System.Uri.EscapeDataString(subscriptionId)
                         + "/resourceGroups/"
                         + global::System.Uri.EscapeDataString(resourceGroupName)
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + global::System.Uri.EscapeDataString(serverName)
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
@@ -8449,10 +8449,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBForMySql/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.DBforMySQL/flexibleServers/(?<serverName>[^/]+)$").Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBForMySql/flexibleServers/{serverName}'");
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}'");
                 }
 
                 // replace URI parameters with values from identity
@@ -8465,7 +8465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MySql
                         + subscriptionId
                         + "/resourceGroups/"
                         + resourceGroupName
-                        + "/providers/Microsoft.DBForMySql/flexibleServers/"
+                        + "/providers/Microsoft.DBforMySQL/flexibleServers/"
                         + serverName
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)

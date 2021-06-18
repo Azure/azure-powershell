@@ -25,7 +25,7 @@ The **Set-AzLoadBalancer** cmdlet updates a load balancer.
 
 ### Example 1: Modify a load balancer
 ```
-PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB" -ResourceGroupName "NRP-RG"
+PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB"
 PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
 PS C:\> $slb | Set-AzLoadBalancer
 ```

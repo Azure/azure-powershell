@@ -20,23 +20,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Local log_errors setting.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string LocalLogError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogError = value; }
+        public string LocalLogError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogError = value ?? null; }
 
         /// <summary>Local log_errors_max_len setting.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string LocalLogErrorsMaxLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogErrorsMaxLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogErrorsMaxLength = value; }
+        public string LocalLogErrorsMaxLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogErrorsMaxLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).LocalLogErrorsMaxLength = value ?? null; }
 
         /// <summary>Master log_errors setting.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string MasterLogError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogError = value; }
+        public string MasterLogError { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogError; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogError = value ?? null; }
 
         /// <summary>Master log_errors_max_len setting.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string MasterLogErrorsMaxLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogErrorsMaxLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogErrorsMaxLength = value; }
+        public string MasterLogErrorsMaxLength { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogErrorsMaxLength; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISitePhpErrorLogFlagPropertiesInternal)Property).MasterLogErrorsMaxLength = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }

@@ -49,7 +49,7 @@ INPUTOBJECT <IMySqlIdentity>: The server for the connection string.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/get-azmysqlflexibleserverconnectionstring
+https://docs.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverconnectionstring
 #>
 function Get-AzMySqlFlexibleServerConnectionString {
 [OutputType([System.String])]

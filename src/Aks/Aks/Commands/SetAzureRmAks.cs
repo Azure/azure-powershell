@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -21,9 +22,16 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -50,6 +58,9 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("System", "User")]
         public string NodePoolMode { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Disable the 'acrpull' role assignment to the ACR specified by name or resource ID, e.g. myacr")]
+        public string AcrNameToDetach { get; set; }
+
         /// <summary>
         /// Cluster name
         /// </summary>
@@ -61,6 +72,55 @@ namespace Microsoft.Azure.Commands.Aks
         [ValidateNotNullOrEmpty]
         [Alias("ResourceId")]
         public string Id { get; set; }
+
+        private ManagedCluster BuildNewCluster()
+        {
+            BeforeBuildNewCluster();
+
+            var defaultAgentPoolProfile = new ManagedClusterAgentPoolProfile(
+                name: NodeName ?? "default",
+                count: NodeCount,
+                vmSize: NodeVmSize,
+                osDiskSizeGB: NodeOsDiskSize);
+
+            if (this.IsParameterBound(c => c.NodeMinCount))
+            {
+                defaultAgentPoolProfile.MinCount = NodeMinCount;
+            }
+            if (this.IsParameterBound(c => c.NodeMaxCount))
+            {
+                defaultAgentPoolProfile.MaxCount = NodeMaxCount;
+            }
+            if (EnableNodeAutoScaling.IsPresent)
+            {
+                defaultAgentPoolProfile.EnableAutoScaling = EnableNodeAutoScaling.ToBool();
+            }
+
+            var pubKey =
+                new List<ContainerServiceSshPublicKey> { new ContainerServiceSshPublicKey(SshKeyValue) };
+
+            var linuxProfile =
+                new ContainerServiceLinuxProfile(LinuxProfileAdminUserName,
+                    new ContainerServiceSshConfiguration(pubKey));
+
+            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+
+            var spProfile = new ManagedClusterServicePrincipalProfile(
+                acsServicePrincipal.SpId,
+                acsServicePrincipal.ClientSecret);
+
+            WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
+            var managedCluster = new ManagedCluster(
+                Location,
+                name: Name,
+                tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
+                dnsPrefix: DnsNamePrefix,
+                kubernetesVersion: KubernetesVersion,
+                agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
+                linuxProfile: linuxProfile,
+                servicePrincipalProfile: spProfile);
+            return managedCluster;
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -93,6 +153,7 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 RunCmdLet(() =>
                 {
+                    AcsServicePrincipal acsServicePrincipal;
                     if (Exists())
                     {
                         if (cluster == null)
@@ -125,7 +186,7 @@ namespace Microsoft.Azure.Commands.Aks
                         if (this.IsParameterBound(c => c.ServicePrincipalIdAndSecret))
                         {
                             WriteVerbose(Resources.UpdatingServicePrincipal);
-                            var acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret.UserName, ServicePrincipalIdAndSecret.Password?.ConvertToString());
+                            acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret.UserName, ServicePrincipalIdAndSecret.Password?.ConvertToString());
 
                             var spProfile = new ManagedClusterServicePrincipalProfile(
                                 acsServicePrincipal.SpId,
@@ -228,9 +289,55 @@ namespace Microsoft.Azure.Commands.Aks
                         cluster = BuildNewCluster();
                     }
 
+                    acsServicePrincipal = EnsureServicePrincipal(ServicePrincipalIdAndSecret?.UserName, ServicePrincipalIdAndSecret?.Password?.ConvertToString());
+                    if (this.IsParameterBound(c => c.AcrNameToAttach))
+                    {
+                        AddAcrRoleAssignment(AcrNameToAttach, nameof(AcrNameToAttach), acsServicePrincipal);
+                    }
+                    if (this.IsParameterBound(c => c.AcrNameToDetach))
+                    {
+                        RemoveAcrRoleAssignment(AcrNameToDetach, nameof(AcrNameToDetach), acsServicePrincipal);
+                    }
+
                     var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
+
                     WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
                 });
+            }
+        }
+        private void RemoveAcrRoleAssignment(string acrName, string acrParameterName, AcsServicePrincipal acsServicePrincipal)
+        {
+            string acrResourceId = null;
+            try
+            {
+                //Find Acr resourceId first
+                var acrQuery = new ODataQuery<GenericResourceFilter>($"$filter=resourceType eq 'Microsoft.ContainerRegistry/registries' and name eq '{acrName}'");
+                var acrObjects = RmClient.Resources.List(acrQuery);
+                acrResourceId = acrObjects.First().Id;
+            }
+            catch (Exception)
+            {
+                throw new AzPSArgumentException(
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
+                    acrParameterName,
+                    string.Format(Resources.CouldNotFindSpecifiedAcr, "*"));
+            }
+
+            var roleDefinitionId = GetRoleId("acrpull", acrResourceId);
+            RoleAssignment roleAssignment = GetRoleAssignmentWithRoleDefinitionId(roleDefinitionId);
+            if (roleAssignment == null)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotDeleteAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotDeleteAcrRoleAssignment);
+            }
+
+            var deleteResult = RetryAction(() => AuthClient.RoleAssignments.DeleteById(roleAssignment.Id));
+            if (!deleteResult)
+            {
+                throw new AzPSInvalidOperationException(
+                    Resources.CouldNotDeleteAcrRoleAssignment,
+                    desensitizedMessage: Resources.CouldNotDeleteAcrRoleAssignment);
             }
         }
 

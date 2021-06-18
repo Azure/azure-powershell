@@ -56,7 +56,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlconfiguration
+https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlconfiguration
 #>
 function Update-AzMySqlConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]

@@ -90,6 +90,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// represents that the BackupManagementType is Not Applicable.
         /// </summary>
         NA
+    }  
+
+    /// <summary>
+    /// Tier information for Recovery point: "Vault", "Snapshot", "Archive"
+    /// </summary>
+    public enum RecoveryPointTier
+    {
+        VaultStandard = 1,
+        Snapshot,
+        VaultArchive,
+        VaultStandardRehydrated,
+        SnapshotAndVaultStandard,
+        SnapshotAndVaultArchive
     }
 
     /// <summary>

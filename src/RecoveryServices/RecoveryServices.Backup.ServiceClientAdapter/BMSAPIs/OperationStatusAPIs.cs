@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string vaultName = null,
             string resourceGroupName = null)
         {
-            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.BeginGetWithHttpMessagesAsync(
+            var prepareResponseBase = BmsAdapter.Client.BMSPrepareDataMoveOperationResult.GetWithHttpMessagesAsync(
                                 vaultName,
                                 resourceGroupName,
                                 operationId).Result.Body;

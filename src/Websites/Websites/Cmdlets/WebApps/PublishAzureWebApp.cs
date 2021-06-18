@@ -16,6 +16,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Management.Automation;
@@ -45,6 +46,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Configurable timeout in millseconds to wait for deployment operation to complete. The default timeout is 100000 milliseconds")]
+        [ValidateRange(100000, 3600000)]
+        public double Timeout { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -72,6 +77,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
+                    if (this.IsParameterBound(cmdlet => cmdlet.Timeout))
+                    {
+                        // Considering the deployment of large packages the default time(150 seconds) is not sufficient. So increased the timeout based on user choice.
+                        client.Timeout = TimeSpan.FromMilliseconds(Timeout);
+                    }
+
                     var byteArray = Encoding.ASCII.GetBytes(user.PublishingUserName + ":" + user.PublishingPassword);
                     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
                     HttpContent fileContent = new StreamContent(s);

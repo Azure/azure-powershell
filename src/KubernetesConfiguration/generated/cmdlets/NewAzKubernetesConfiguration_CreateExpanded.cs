@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKubernetesConfiguration_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Description(@"Create a new Kubernetes Source Control Configuration.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Generated]
     public partial class NewAzKubernetesConfiguration_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -89,40 +89,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Path)]
         public string ClusterType { get => this._clusterType; set => this._clusterType = value; }
 
-        /// <summary>Datetime the configuration was last applied.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Datetime the configuration was last applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Datetime the configuration was last applied.",
-        SerializedName = @"lastConfigApplied",
-        PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime ComplianceStatusLastConfigApplied { get => SourceControlConfigurationBody.ComplianceStatusLastConfigApplied ?? default(global::System.DateTime); set => SourceControlConfigurationBody.ComplianceStatusLastConfigApplied = value; }
-
-        /// <summary>Message from when the configuration was applied.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Message from when the configuration was applied.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Message from when the configuration was applied.",
-        SerializedName = @"message",
-        PossibleTypes = new [] { typeof(string) })]
-        public string ComplianceStatusMessage { get => SourceControlConfigurationBody.ComplianceStatusMessage ?? null; set => SourceControlConfigurationBody.ComplianceStatusMessage = value; }
-
-        /// <summary>Level of the message.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Level of the message.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category(global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Level of the message.",
-        SerializedName = @"messageLevel",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType ComplianceStatusMessageLevel { get => SourceControlConfigurationBody.ComplianceStatusMessageLevel ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.MessageLevelType)""); set => SourceControlConfigurationBody.ComplianceStatusMessageLevel = value; }
-
         /// <summary>Name-value pairs of protected configuration settings for the configuration</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name-value pairs of protected configuration settings for the configuration")]
@@ -132,8 +98,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Name-value pairs of protected configuration settings for the configuration",
         SerializedName = @"configurationProtectedSettings",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IConfigurationProtectedSettings) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IConfigurationProtectedSettings ConfigurationProtectedSetting { get => SourceControlConfigurationBody.ConfigurationProtectedSetting ?? null /* object */; set => SourceControlConfigurationBody.ConfigurationProtectedSetting = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings ConfigurationProtectedSetting { get => SourceControlConfigurationBody.ConfigurationProtectedSetting ?? null /* object */; set => SourceControlConfigurationBody.ConfigurationProtectedSetting = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -152,9 +118,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         ReadOnly = false,
         Description = @"Option to enable Helm Operator for this git configuration.",
         SerializedName = @"enableHelmOperator",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType) })]
-        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType EnableHelmOperator { get => SourceControlConfigurationBody.EnableHelmOperator ?? ((Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType)""); set => SourceControlConfigurationBody.EnableHelmOperator = value; }
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter EnableHelmOperator { get => SourceControlConfigurationBody.EnableHelmOperator ?? default(global::System.Management.Automation.SwitchParameter); set => SourceControlConfigurationBody.EnableHelmOperator = value; }
 
         /// <summary>Values override for the operator Helm chart.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Values override for the operator Helm chart.")]
@@ -165,7 +130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Values override for the operator Helm chart.",
         SerializedName = @"chartValues",
         PossibleTypes = new [] { typeof(string) })]
-        public string HelmOperatorPropertyChartValue { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
+        public string HelmOperatorChartValues { get => SourceControlConfigurationBody.HelmOperatorPropertyChartValue ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartValue = value; }
 
         /// <summary>Version of the operator Helm chart.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Version of the operator Helm chart.")]
@@ -176,7 +141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Version of the operator Helm chart.",
         SerializedName = @"chartVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string HelmOperatorPropertyChartVersion { get => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion = value; }
+        public string HelmOperatorChartVersion { get => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion ?? null; set => SourceControlConfigurationBody.HelmOperatorPropertyChartVersion = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -323,10 +288,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
         /// <summary>Backing field for <see cref="SourceControlConfigurationBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration _sourceControlConfigurationBody= new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.SourceControlConfiguration();
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration _sourceControlConfigurationBody= new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.SourceControlConfiguration();
 
         /// <summary>The SourceControl Configuration object returned in Get & Put response.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration SourceControlConfigurationBody { get => this._sourceControlConfigurationBody; set => this._sourceControlConfigurationBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration SourceControlConfigurationBody { get => this._sourceControlConfigurationBody; set => this._sourceControlConfigurationBody = value; }
 
         /// <summary>
         /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
@@ -339,7 +304,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         Description = @"Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances",
         SerializedName = @"sshKnownHostsContents",
         PossibleTypes = new [] { typeof(string) })]
-        public string SshKnownHostsContent { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
+        public string SshKnownHosts { get => SourceControlConfigurationBody.SshKnownHostsContent ?? null; set => SourceControlConfigurationBody.SshKnownHostsContent = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -366,36 +331,36 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IErrorResponse"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -565,12 +530,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration> response)
         {
             using( NoSynchronizationContext )
             {
@@ -582,7 +547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
                 WriteObject((await response));
             }
         }
@@ -591,12 +556,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IErrorResponse"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IErrorResponse"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -613,7 +578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, ClusterRp=ClusterRp, ClusterType=ClusterType, ClusterName=ClusterName, Name=Name, body=SourceControlConfigurationBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -631,12 +596,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration> response)
         {
             using( NoSynchronizationContext )
             {
@@ -648,7 +613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
                 WriteObject((await response));
             }
         }

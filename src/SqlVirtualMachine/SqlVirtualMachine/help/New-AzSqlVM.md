@@ -32,7 +32,7 @@ The New-AzSqlVM cmdlet creates an Azure SQL virtual machine.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzSqlVM  New-AzSqlVM -ResourceGroupName ResourceGroup01 -Name vm -LicenseType 'PAYG' -Sku Developer
+PS C:\> New-AzSqlVM -ResourceGroupName ResourceGroup01 -Name vm -LicenseType 'PAYG' -Sku Developer
 Name ResourceGroupName  LicenseType Sku       Offer          SqlManagementType
 ---- -----------------  ----------- ---       -----          -----------------
 vm   ResourceGroup01	PAYG        Developer SQL2017-WS2016 Full

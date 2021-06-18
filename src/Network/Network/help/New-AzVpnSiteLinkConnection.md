@@ -16,7 +16,7 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-VpnLinkConnectionMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -230,6 +230,19 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VpnLinkConnectionMode
+The connection mode for this link connection.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: Default
 Accept wildcard characters: False
 ```
 
