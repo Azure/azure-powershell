@@ -400,6 +400,9 @@ function Test-MongoMigrateThroughputCmdlets
   $rgName = "CosmosDBResourceGroup3668"
   $DatabaseName = "dbName4"
   $CollectionName = "collectionName"
+  $location = "East US"
+  $apiKind = "MongoDB"
+  $consistencyLevel = "Session"
 
   $ShardKey = "shardKeyPath"
   $ThroughputValue = 1200
@@ -409,6 +412,9 @@ function Test-MongoMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBMongoDBDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue

@@ -89,7 +89,7 @@ Test Table CRUD operations using InputObject and ParentObject parameter set
 function Test-TableOperationsCmdletsUsingInputObject
 {
   $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup27"
+  $rgName = "CosmosDBResourceGroup34"
   $apiKind = "Table"
   $consistencyLevel = "Session"
   $location = "East US 2"
@@ -196,7 +196,7 @@ function Test-TableMigrateThroughputCmdlets
 {
 
   $AccountName = "db2527"
-  $rgName = "CosmosDBResourceGroup2510"
+  $rgName = "CosmosDBResourceGroup34"
   $TableName = "tableName4"
 
   $ThroughputValue = 1200

@@ -328,7 +328,7 @@ function Test-CassandraMigrateThroughputCmdlets
 {
 
   $AccountName = "db2725"
-  $rgName = "CosmosDBResourceGroup2510"
+  $rgName = "CosmosDBResourceGroup48"
   $KeyspaceName = "KeyspaceName3"
   $TableName = "tableName"
 
