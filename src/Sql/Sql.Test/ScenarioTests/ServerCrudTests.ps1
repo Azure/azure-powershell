@@ -316,7 +316,7 @@ function Test-CreateAndGetServerWithPublicNetworkAccess
 
 	try
 	{
-		# Create a server with PublicNetworkAccess Disabled
+		# Create a server with PublicNetworkAccess Enabled
 		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName1 -Location $location -SqlAdministratorCredentials $credentials -PublicNetworkAccess "Enabled"
 		Assert-AreEqual $server1.ServerName $serverName1
 		Assert-AreEqual $server1.PublicNetworkAccess $enabled
@@ -362,25 +362,137 @@ function Test-UpdateServerWithPublicNetworkAccess
 	try
 	{
 		# Create a server with PublicNetworkAccess Disabled
-		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials -PublicNetworkAccess $disabled
 		Assert-AreEqual $server.ServerName $serverName
-		Assert-AreEqual $server.PublicNetworkAccess $enabled
-
-		# Update server with PublicNetworkAccess Disabled
-		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -PublicNetworkAccess "Disabled"
-		Assert-AreEqual $server.ServerName $serverName
-		Assert-AreEqual $server.PublicNetworkAccess $disabled
-
-		# Update server with PublicNetworkAccess null (should still be Disabled)
-		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -AssignIdentity
-		Assert-AreEqual $server.ServerName $serverName
-		Assert-AreEqual $server.Identity.Type SystemAssigned
 		Assert-AreEqual $server.PublicNetworkAccess $disabled
 
 		# Update server with PublicNetworkAccess Enabled
-		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -PublicNetworkAccess "Enabled"
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -PublicNetworkAccess $enabled
 		Assert-AreEqual $server.ServerName $serverName
 		Assert-AreEqual $server.PublicNetworkAccess $enabled
+
+		# Update server with PublicNetworkAccess null (should still be Enabled)
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -AssignIdentity
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.Identity.Type SystemAssigned
+		Assert-AreEqual $server.PublicNetworkAccess $enabled
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests create server with Enabled/Disabled/null RestrictOutboundNetworkAccess.  Also check get server returns correct RestrictOutboundNetworkAccess.
+#>
+function Test-CreateAndGetServerWithRestrictOutboundNetworkAccess
+{
+	# Setup
+	$location = "westeurope"
+	$rg = Create-ResourceGroupForTest $location
+	 	
+	$serverName1 = Get-ServerName
+	$serverName2 = Get-ServerName
+	$serverName3 = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$enabled = "Enabled"
+	$disabled = "Disabled"
+
+	try
+	{
+		# Create a server with RestrictOutboundNetworkAccess Enabled
+		$server1 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName1 -Location $location -SqlAdministratorCredentials $credentials -RestrictOutboundNetworkAccess "Enabled"
+		Assert-AreEqual $server1.ServerName $serverName1
+		Assert-AreEqual $server1.RestrictOutboundNetworkAccess $enabled
+
+		$retrievedServer1 = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
+		Assert-AreEqual $retrievedServer1.ServerName $server1.ServerName
+		Assert-AreEqual $retrievedServer1.RestrictOutboundNetworkAccess $enabled
+
+		# Create a server with RestrictOutboundNetworkAccess Disabled
+		$server2 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName2 -Location $location -SqlAdministratorCredentials $credentials -RestrictOutboundNetworkAccess "Disabled"
+		Assert-AreEqual $server2.ServerName $serverName2
+		Assert-AreEqual $server2.RestrictOutboundNetworkAccess $disabled
+
+		$retrievedServer2 = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server2.ServerName
+		Assert-AreEqual $retrievedServer2.ServerName $server2.ServerName
+		Assert-AreEqual $retrievedServer2.RestrictOutboundNetworkAccess $disabled
+
+		# Create a server with RestrictOutboundNetworkAccess null (should default to Disabled)
+		$server3 = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName3 -Location $location -SqlAdministratorCredentials $credentials
+		Assert-AreEqual $server3.ServerName $serverName3
+		Assert-AreEqual $server3.RestrictOutboundNetworkAccess $disabled
+
+		$retrievedServer3 = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server3.ServerName
+		Assert-AreEqual $retrievedServer3.ServerName $server3.ServerName
+		Assert-AreEqual $retrievedServer3.RestrictOutboundNetworkAccess $disabled
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests update RestrictOutboundNetworkAccess to Enabled/Disabled/null on server
+#>
+function Test-UpdateServerWithRestrictOutboundNetworkAccess
+{
+	# Setup
+	$location = "westeurope"
+	$rg = Create-ResourceGroupForTest $location
+	 	
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$enabled = "Enabled"
+	$disabled = "Disabled"
+
+	try
+	{
+		# Create a server with RestrictOutboundNetworkAccess Disabled
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials -RestrictOutboundNetworkAccess $disabled
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.RestrictOutboundNetworkAccess $disabled
+
+		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $disabled
+
+		# Update server with RestrictOutboundNetworkAccess Enabled
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -RestrictOutboundNetworkAccess $enabled
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.RestrictOutboundNetworkAccess $enabled
+
+		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $enabled
+
+		# Update server with RestrictOutboundNetworkAccess null (should still be Enabled)
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -AssignIdentity
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.Identity.Type SystemAssigned
+		Assert-AreEqual $server.RestrictOutboundNetworkAccess $enabled
+
+		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $enabled
+
+		# Update server with RestrictOutboundNetworkAccess Disabled
+		$server = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -SqlAdministratorPassword $secureString -RestrictOutboundNetworkAccess $disabled
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.RestrictOutboundNetworkAccess $disabled
+
+		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $disabled
 	}
 	finally
 	{
