@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
 
 ## Version 2.7.0
 * Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
