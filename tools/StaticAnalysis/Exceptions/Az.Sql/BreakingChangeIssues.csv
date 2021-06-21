@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Sql","Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet.SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector","Set-AzSqlInstanceTransparentDataEncryptionProtector","0","2020","The cmdlet 'Set-AzSqlInstanceTransparentDataEncryptionProtector' no longer supports the type 'System.Management.Automation.SwitchParameter' for parameter 'AutoRotationEnabled'.","Change the type for parameter 'AutoRotationEnabled' back to 'System.Management.Automation.SwitchParameter'."
