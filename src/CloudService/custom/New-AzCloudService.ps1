@@ -280,16 +280,18 @@ function New-AzCloudService {
     
         # OS Profile
         if ($PSBoundParameters.ContainsKey("KeyVaultName")) {
-            $keyVault = Get-AzKeyVault -ResourceGroupName $resourcegroupname -VaultName $keyVaultName 
+            $keyVault = $passMemory.KeyVault 
 
             $certSecretList = @()
+            $certNameList = @()
 
             foreach ($role in $cscfg.ServiceConfiguration.Role){
                 foreach ($cert in $role.Certificates.Certificate){
-                    #if ( "Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" -ne $cert.Name){
-                    $aCert = Get-AzKeyVaultCertificate -vaultName $keyvaultName -name $cert.name
-                    $certSecretList = $certSecretList + $aCert.SecretId
-                    #}
+                    if (-not $certNameList.Contains($cert.name)) {
+                      $certNameList = $cert.name + $certNameList
+                      $aCert = Get-AzKeyVaultCertificate -vaultName $keyvaultName -name $cert.name
+                      $certSecretList = $certSecretList + $aCert.SecretId
+                    }
                 }
             }
 
@@ -400,8 +402,8 @@ function validation
     }
 
     $certList = @()
-    foreach ($cfgRoleName in $csCfgRoleNames){
-        $defCerts = ($csdef.ServiceDefinition.childnodes | where-object {$_.name.tolower() -eq $cfgRoleName.tolower()}).Certificates.Certificate
+    foreach ($role in $cscfg.ServiceConfiguration.Role){
+        $defCerts = ($csdef.ServiceDefinition.childnodes | where-object {$_.name.tolower() -eq $role.name.tolower()}).Certificates.Certificate
         If ( 1 -eq $defCerts.count ){
             $defCerts = @($defCerts)
         }
@@ -599,6 +601,7 @@ function validation
             if ($kv.location.replace(" ","").tolower() -eq $location.replace(" ","").tolower()) {
                 $keyvaultFound = $true
                 $theKV = Get-AzKeyVault -vaultName $keyvaultname -resourceGroupName $kv.resourcegroupname
+                $passMemory.Add("KeyVault", $theKV)
             }
         }
         If (-not $keyvaultFound){
@@ -610,21 +613,19 @@ function validation
             throw "The Key vault is not enabled for deployment. The Key Vault must have 'Azure Virtual Machines for deployment' access enabled. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname + " -ResourceGroupName " +$resourcegroupname +" -EnabledForDeployment"
         }
 
-        $PolicyFound = $false
-        foreach ($accessPolicy in $theKV.accessPolicies) {
-            if ($accessPolicy.DisplayName -Match (get-azcontext).Account.id){
-                if ($accessPolicy.PermissionsToCertificates -contains "Get" -and $accessPolicy.PermissionsToCertificates -contains "List"){
-                    $PolicyFound = $true
-                }
+        try {
+            $certsInKV = Get-AzKeyVaultCertificate -VaultName $keyvaultname -ErrorAction Stop
+        }
+        catch [Microsoft.Azure.KeyVault.Models.KeyVaultErrorException]{
+            $KVnoPolicy = $true
+        }
+        finally {
+            If ($KVnoPolicy){
+              throw "The certificates must have 'Get' and 'List' permissions enabled on the Key Vault. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname +" -ResourceGroupName " + $theKV.resourcegroupname + " -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete "  
             }
         }
 
-        If (-not $PolicyFound){
-            throw "The certificates must have 'Get' and 'List' permissions enabled on the Key Vault. Please run the following cmdlets to enable access: Set-AzKeyVaultAccessPolicy -VaultName " + $keyvaultname +" -ResourceGroupName " + $resourcegroupname + " -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete "
-        }
-
         # All certificates are found in the keyvault
-        $certsInKV = Get-AzKeyVaultCertificate -VaultName $keyvaultname
         $certsThumbprints = @()
         foreach ($cert in $CertsInKV) {
             $certsThumbprints = $certsThumbprints + (Get-AzKeyVaultCertificate -VaultName $keyvaultname -name $cert.name).thumbprint
