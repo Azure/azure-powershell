@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.ContainerInstance.dll","Microsoft.Azure.Commands.ContainerInstance.NewAzureContainerGroupCommand","New-AzContainerGroup","0","1050","The parameter set 'CreateContainerGroupBaseParamSet' for cmdlet 'New-AzContainerGroup' has been removed.","Add parameter set 'CreateContainerGroupBaseParamSet' back to cmdlet 'New-AzContainerGroup'."

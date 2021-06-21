@@ -13,7 +13,10 @@ Param(
 
 $ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
-$UnfilteredHelpFolders = Get-ChildItem -Include 'help' -Path "$PSScriptRoot\..\artifacts" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
+
+.($PSScriptRoot + "\PreloadToolDll.ps1")
+$UnfilteredHelpFolders = Get-ChildItem -Include 'help' -Path "$PSScriptRoot\..\artifacts" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) }
+
 $FilteredHelpFolders = $UnfilteredHelpFolders
 if (![string]::IsNullOrEmpty($FilteredModules))
 {
@@ -67,7 +70,7 @@ if ($ValidateMarkdownHelp)
     $Exceptions = Import-Csv "$NewExceptionsPath\ValidateHelpIssues.csv"
     if (($Exceptions | Measure-Object).Count -gt 0)
     {
-        $Exceptions | ft
+        $Exceptions | Format-List
         throw "A markdown file containing the help for a cmdlet is incomplete. Please check the exceptions provided for more details."
     }
     else
@@ -78,7 +81,28 @@ if ($ValidateMarkdownHelp)
     }
 }
 
+# We need to define new version of module instead of hardcode here
+$GeneratedModuleListPath = [System.IO.Path]::Combine($PSScriptRoot, "GeneratedModuleList.txt")
+$NewModules = Get-Content $GeneratedModuleListPath
 if ($GenerateMamlHelp)
 {
-    $FilteredHelpFolders | foreach { New-AzMamlHelp $_.FullName }
+    $FilteredMamlHelpFolders = @()
+    foreach ($HelpFolder in $FilteredHelpFolders)
+    {
+        $ModuleName = "" 
+        if($HelpFolder -match "(?s)artifacts\\$BuildConfig\\(?<module>.+)\\help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($HelpFolder -match "(?s)artifacts/$BuildConfig/(?<module>.+)/help")
+        {
+            $ModuleName = $Matches["module"]
+        }
+        if($NewModules -notcontains $ModuleName)
+        {
+            $FilteredMamlHelpFolders += $HelpFolder
+        }
+
+    }
+    $FilteredMamlHelpFolders | foreach { New-AzMamlHelp $_.FullName }
 }
