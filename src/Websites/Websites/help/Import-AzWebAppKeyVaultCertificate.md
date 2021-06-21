@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultName
-The name of the keyvault.
+The name of the keyvault or Id of the KeyVault.
 
 ```yaml
 Type: System.String

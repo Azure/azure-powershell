@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         [Ps1Xml(Label = "RestorePolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.Days", Position = 6)]
         [Ps1Xml(Label = "RestorePolicy.MinRestoreTime", Target = ViewControl.Table, ScriptBlock = "$_.RestorePolicy.MinRestoreTime", Position = 7)]
         public PSRestorePolicy RestorePolicy { get; set; }
+        [Ps1Xml(Label = "ContainerDeleteRetentionPolicy.Days", Target = ViewControl.Table, ScriptBlock = "$_.ContainerDeleteRetentionPolicy.Days", Position = 8)]
+        public PSDeleteRetentionPolicy ContainerDeleteRetentionPolicy { get; set; }
         public PSCorsRules Cors { get; set; }
         public bool? IsVersioningEnabled { get; set; }
 
@@ -62,6 +64,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.RestorePolicy = policy.RestorePolicy is null ? null : new PSRestorePolicy(policy.RestorePolicy);
             this.ChangeFeed = policy.ChangeFeed is null ? null : new PSChangeFeed(policy.ChangeFeed);
             this.IsVersioningEnabled = policy.IsVersioningEnabled;
+            this.ContainerDeleteRetentionPolicy = policy.ContainerDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ContainerDeleteRetentionPolicy);
         }
         public BlobServiceProperties ParseBlobServiceProperties()
         {
@@ -72,7 +75,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 DeleteRetentionPolicy = this.DeleteRetentionPolicy is null ? null : this.DeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
                 RestorePolicy = this.RestorePolicy is null ? null : this.RestorePolicy.ParseRestorePolicy(),
                 ChangeFeed = this.ChangeFeed is null ? null : this.ChangeFeed.ParseChangeFeed(),
-                IsVersioningEnabled = this.IsVersioningEnabled                
+                IsVersioningEnabled = this.IsVersioningEnabled,
+                ContainerDeleteRetentionPolicy = this.ContainerDeleteRetentionPolicy is null ? null : this.ContainerDeleteRetentionPolicy.ParseDeleteRetentionPolicy(),
             };
         }
 

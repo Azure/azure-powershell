@@ -16,27 +16,21 @@ Modifies the service properties for the Azure Storage File service.
 ```
 Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
- [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
- [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileServicePropertiesResourceId
 ```
 Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
- [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-SmbProtocolVersion <String[]>]
- [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,70 +199,6 @@ The value should only be set when enable share Delete Retention Policy.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases: Days, RetentionDays
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SmbAuthenticationMethod
-Gets or sets SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Kerberos, NTLMv2
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SmbChannelEncryption
-Gets or sets SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: AES-128-CCM, AES-128-GCM, AES-256-GCM
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SmbKerberosTicketEncryption
-Gets or sets kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: AES-256, RC4-HMAC
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SmbProtocolVersion
-Gets or sets SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: SMB2.1, SMB3.0, SMB3.1.1
 
 Required: False
 Position: Named
