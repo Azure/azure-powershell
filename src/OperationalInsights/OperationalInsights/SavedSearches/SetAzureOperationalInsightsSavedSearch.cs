@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(HttpStatusCode))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSavedSearch))]
     public class SetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -94,15 +94,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 version: Version,
                 functionAlias: FunctionAlias,
                 functionParameter: FunctionParameter,
-                eTag: string.IsNullOrEmpty(ETag) ? "*" : ETag,
+                eTag: string.IsNullOrEmpty(ETag) ? PSSavedSearchParameters.EtagWildCard : ETag,
                 tags: Tag);
 
             if (ShouldProcess(DisplayName, $"Update new saved search: {DisplayName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
                 WriteObject(OperationalInsightsClient.UpdateSavedSearch(parameters));
             }
-            ////TODO look at New-OperationalInsightsWorkspace for implementation of 'ConfirmAction' and 'Force'
         }
-
     }
 }

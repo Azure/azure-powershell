@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSSavedSearchParameters : OperationalInsightsParametersBase
     {
-
+        public const string EtagWildCard = "*";
         public PSSavedSearchParameters(string resourceGroupName, string workspaceName, string savedSearchId, string category, string displayName, string query, long? version, string functionAlias, string functionParameter,string eTag, Hashtable tags)
         {
             WorkspaceName = workspaceName;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string ETag { get; set; }
 
 
-        public SavedSearch GetSavedSearch()
+        public SavedSearch GetSavedSearchFromParameters()
         {
             SavedSearch savedSearch = new SavedSearch() {
                 

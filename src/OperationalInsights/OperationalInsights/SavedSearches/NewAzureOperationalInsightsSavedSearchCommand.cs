@@ -96,11 +96,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             if (ShouldProcess(DisplayName, $"Create new saved search: {DisplayName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
-                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters));
+                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters, ConfirmAction, force: Force));
             }
-
-
-            ////TODO look at New-OperationalInsightsWorkspace for implementation of 'ConfirmAction' and 'Force'
         }
 
     }

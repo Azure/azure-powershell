@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             if (ShouldProcess(DisplayName, $"Create computer group: {DisplayName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
-                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters));
+                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters, ConfirmAction, force: Force));
             }
         }
     }
