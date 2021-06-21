@@ -259,7 +259,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             string result = string.Empty;
             try
             {
-                using (var sha256 = new SHA256CryptoServiceProvider())
+                using (var sha256 = SHA256.Create())
                 {
                     var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(originInput));
                     result = BitConverter.ToString(bytes);
