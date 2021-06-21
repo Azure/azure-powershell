@@ -299,6 +299,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = LinuxParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [PSArgumentCompleter("ImageDefault", "AutomaticByPlatform")]
         public string AssessmentMode { get; set; }
 
         public override void ExecuteCmdlet()
