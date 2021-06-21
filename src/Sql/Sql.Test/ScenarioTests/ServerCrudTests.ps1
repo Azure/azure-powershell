@@ -22,12 +22,12 @@ function Test-CreateServer
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+
 	$serverName = Get-ServerName
 	$version = "12.0"
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
 	try
 	{
@@ -68,7 +68,7 @@ function Test-UpdateServer
 
 		$server1 = Set-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 			-SqlAdministratorPassword $secureString
-		
+
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
@@ -112,13 +112,13 @@ function Test-GetServer
 		Assert-AreEqual $server1.ServerName $resp1.ServerName
 		Assert-AreEqual $server1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
-		
+
 		# Test piping
 		$resp2 = $server2 | Get-AzSqlServer
 		Assert-AreEqual $server2.ServerName $resp2.ServerName
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
 		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
-		
+
 		$all = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -Name *
 		Assert-AreEqual 2 $all.Count
 
@@ -153,7 +153,7 @@ function Test-RemoveServer
 	{
 		# Test using parameters
 		Remove-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName -Force
-		
+
 		# Test piping
 		$server2 | Remove-AzSqlServer -Force
 
@@ -174,11 +174,11 @@ function Test-CreateServerWithIdentity
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
 	try
 	{
@@ -228,11 +228,11 @@ function Test-UpdateServerWithoutIdentity
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
-	 	
+
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 
 	try
 	{
@@ -274,7 +274,7 @@ function Test-CreateandUpdateServerWithMinimalTlsVersion
 		$version = "12.0"
 		$serverLogin = "testusername"
 		$serverPassword = "t357ingP@s5w0rd!"
-		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+		$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 		$tls1_1 = "1.1"
 		$tls1_2 = "1.2"
 
@@ -304,13 +304,13 @@ function Test-CreateAndGetServerWithPublicNetworkAccess
 	# Setup
 	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
-	 	
+
 	$serverName1 = Get-ServerName
 	$serverName2 = Get-ServerName
 	$serverName3 = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
 	$disabled = "Disabled"
 
@@ -350,12 +350,12 @@ function Test-UpdateServerWithPublicNetworkAccess
 	# Setup
 	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
-	 	
+
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
 	$disabled = "Disabled"
 
@@ -392,13 +392,13 @@ function Test-CreateAndGetServerWithRestrictOutboundNetworkAccess
 	# Setup
 	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
-	 	
+
 	$serverName1 = Get-ServerName
 	$serverName2 = Get-ServerName
 	$serverName3 = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
 	$disabled = "Disabled"
 
@@ -446,12 +446,12 @@ function Test-UpdateServerWithRestrictOutboundNetworkAccess
 	# Setup
 	$location = "westeurope"
 	$rg = Create-ResourceGroupForTest $location
-	 	
+
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
 	$serverPassword = "t357ingP@s5w0rd!"
 	$secureString = ConvertTo-SecureString $serverPassword -AsPlainText -Force
-	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
 	$enabled = "Enabled"
 	$disabled = "Disabled"
 
@@ -493,6 +493,95 @@ function Test-UpdateServerWithRestrictOutboundNetworkAccess
 		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
 		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $disabled
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Outbound Firewall Rules CRUD operations.
+#>
+function Test-OutboundFirewallRulesCRUD
+{
+	# Setup
+	$location = "westeurope"
+	$rg = Create-ResourceGroupForTest $location
+
+	$serverName = Get-ServerName
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force))
+    $enabled = "Enabled"
+
+	try
+	{
+		# Create a server with RestrictOutboundNetworkAccess Enabled
+		$server = New-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials -RestrictOutboundNetworkAccess $enabled
+		Assert-AreEqual $server.ServerName $serverName
+		Assert-AreEqual $server.RestrictOutboundNetworkAccess $enabled
+
+		$retrievedServer = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServer.RestrictOutboundNetworkAccess $enabled
+
+		# Create a server with RestrictOutboundNetworkAccess Disabled
+        $initialOBFR = Get-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName
+        Assert-AreEqual $initalOBFR.Count 0
+        #0
+
+        $newOBFR = New-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName -AllowedFQDN "testOBFR1"
+        Assert-AreEqual $newOBFR.Count 1
+        #1
+        Assert-AreEqual $newOBFR[0].AllowedFQDN "testOBFR1"
+        Assert-AreEqual $newOBFR[0].ServerName $serverName
+        Assert-AreEqual $newOBFR[0].ResourceGroupName $rg.ResourceGroupName
+
+        $getNewOBFR = Get-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName -AllowedFQDN "testOBFR1"
+        Assert-AreEqual $getNewOBFR.Count 1
+        #1
+        Assert-AreEqual $getNewOBFR[0].AllowedFQDN "testOBFR1"
+        Assert-AreEqual $getNewOBFR[0].ServerName $serverName
+        Assert-AreEqual $getNewOBFR[0].ResourceGroupName $rg.ResourceGroupName
+
+        try
+        {
+            $getUnknownOBFR = Get-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName -AllowedFQDN "testOBFR2"
+        }
+        catch
+        {
+            Assert-AreEqual $_.Exception.Message.StartsWith("Allowed FQDN with name 'testOBFR2' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server") true
+        }
+
+        $getAllOBFR = Get-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName
+        Assert-AreEqual $getAllOBFR.Count 1
+        Assert-AreEqual $getAllOBFR[0].AllowedFQDN "testOBFR1"
+        Assert-AreEqual $getAllOBFR[0].ServerName $serverName
+        Assert-AreEqual $getAllOBFR[0].ResourceGroupName $rg.ResourceGroupName
+
+        $removeOBFR = Remove-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName -AllowedFQDN "testOBFR1"
+        Assert-AreEqual $removeOBFR.Count 1
+        Assert-AreEqual $removeOBFR[0].AllowedFQDN "testOBFR1"
+        Assert-AreEqual $removeOBFR[0].ServerName $serverName
+        Assert-AreEqual $removeOBFR[0].ResourceGroupName $rg.ResourceGroupName
+
+        try
+        {
+            $removeUnknownOBFR = Remove-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName -AllowedFQDN "testOBFR2"
+        }
+        catch
+        {
+            Assert-AreEqual $_.Exception.Message.StartsWith("Allowed FQDN with name 'testOBFR2' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server") true
+        }
+
+        $finalOBFR = Get-AzSqlServerOutboundFirewallRule -ServerName $serverName -ResourceGroupName $rg.ResourceGroupName
+        Assert-AreEqual $finalOBFR.Count 0
+
+        $retrievedServerAgain = Get-AzSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+		Assert-AreEqual $retrievedServerAgain.ServerName $server.ServerName
+		Assert-AreEqual $retrievedServerAgain.RestrictOutboundNetworkAccess $enabled
 	}
 	finally
 	{
