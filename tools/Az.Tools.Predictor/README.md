@@ -4,7 +4,7 @@
 
 **[Az Predictor](https://www.powershellgallery.com/packages/Az.Tools.Predictor/)** is a PowerShell module that helps you navigate the cmdlets and parameters of the [Az module](https://www.powershellgallery.com/packages/Az) by providing context-aware suggestions in the PowerShell command line.
 
-Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.1#pssubsystempluginmodel) available with PowerShell 7.1. This updated version requires [PS Readline 2.2.0-beta2](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta2) to display the suggestions.
+Az Predictor is using the [subsystem plugin model](https://docs.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.2#pssubsystempluginmodel) available with PowerShell 7.2. This updated version requires [PS Readline 2.2.0-beta3](https://www.powershellgallery.com/packages/PSReadLine/2.2.0-beta3) to display the suggestions.
 
 Required configuration for Az Predictor:
 
