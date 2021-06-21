@@ -4,6 +4,13 @@ parameters:
   configuration: ''
 
 steps:
+- task: Npm@1
+  displayName: Install autorest
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: install -g autorest@latest
+
 - task: PowerShell@2
   displayName: 'Check Ingored File'
   inputs:
