@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using System.Management.Automation;
+using System.Net;
 using Microsoft.Rest;
 using System;
 using System.Globalization;
-using System.Management.Automation;
-using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
 {
@@ -71,8 +71,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             PSSavedSearch createdSavedSearch = null;
             Action createSavedSearch = () =>
             {
-                Rest.Azure.AzureOperationResponse<SavedSearch> response = this.OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.SavedSearchId, parameters.GetSavedSearchFromParameters()).GetAwaiter().GetResult();
-                createdSavedSearch = new PSSavedSearch(response.Body);
+                createdSavedSearch = new PSSavedSearch( this.OperationalInsightsManagementClient.SavedSearches.CreateOrUpdate(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.SavedSearchId, parameters.GetSavedSearchFromParameters()));
             };
 
             ConfirmAction(
@@ -96,7 +95,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual PSSavedSearch UpdateSavedSearch(PSSavedSearchParameters parameters)
         {
-
             PSSavedSearch existingSavedSearch;
             try
             {
@@ -115,7 +113,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             parameters.FunctionParameters = parameters.FunctionParameters == null ? existingSavedSearch.Properties.FunctionParameters : parameters.FunctionParameters;
             parameters.ETag = parameters.ETag == null ? existingSavedSearch.Properties.Etag : parameters.ETag;
             parameters.Tags = parameters.Tags == null ? existingSavedSearch.Properties.Tags : parameters.Tags;
-
 
             Rest.Azure.AzureOperationResponse<SavedSearch> response = this.OperationalInsightsManagementClient.SavedSearches.CreateOrUpdateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.SavedSearchId, parameters.GetSavedSearchFromParameters()).GetAwaiter().GetResult();
 
