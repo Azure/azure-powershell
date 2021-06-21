@@ -21,6 +21,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     using Microsoft.WindowsAzure.Commands.Storage;
     using global::Azure.Storage;
     using global::Azure.Storage.Blobs.Models;
+    using BlobContainerProperties = global::Azure.Storage.Blobs.Models.BlobContainerProperties;
+    using Microsoft.Azure.Storage.Auth;
+    using Microsoft.Azure.Storage;
 
     /// <summary>
     /// azure storage container
@@ -32,12 +35,52 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         [Ps1Xml(Label = "Blob End Point", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudBlobContainer.ServiceClient.BaseUri")]
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
-        public CloudBlobContainer CloudBlobContainer { get; private set; }
+        public CloudBlobContainer CloudBlobContainer {
+            get
+            {
+                // cloudBlobContainer is not null, but not fetach attribute yet.
+                if (cloudBlobContainer!=null 
+                    && cloudBlobContainer.Properties != null 
+                    && cloudBlobContainer.Properties.LeaseStatus == Azure.Storage.Blob.LeaseStatus.Unspecified 
+                    && cloudBlobContainer.Properties.ETag == null)
+                {
+                    cloudBlobContainer.FetchAttributes();
+                }
+                return cloudBlobContainer;
+            }
+            private set
+            {
+                cloudBlobContainer = value;
+            }
+        }
+        private CloudBlobContainer cloudBlobContainer;
 
         /// <summary>
         /// the permission of CloudBlobContainer
         /// </summary>
-        public BlobContainerPermissions Permission { get; private set; }
+        public BlobContainerPermissions Permission {
+            get
+            {
+                if(privatePermission == null)
+                {
+                    try
+                    {
+                        privatePermission = cloudBlobContainer.GetPermissions();
+                    }
+                    catch (StorageException e) when (e.RequestInformation.HttpStatusCode == 403 || e.RequestInformation.HttpStatusCode == 404)
+                    {                
+                        // 404 Not found, or 403 Forbidden means we don't have permission to query the Permission of the specified container.
+                        // Just skip return container permission in this case.
+                    }
+                }
+                return privatePermission;
+            }
+            private set
+            {
+                privatePermission = value;
+            }
+        }
+        private BlobContainerPermissions privatePermission;
 
         /// <summary>
         /// the AccessPolicy of BlobContainer
@@ -62,6 +105,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public BlobContinuationToken ContinuationToken { get; set; }
 
         /// <summary>
+        /// Set to true if the container is deleted
+        /// </summary>
+        public bool? IsDeleted { get; set; }
+
+        /// <summary>
+        /// deleted container version
+        /// </summary>
+        public string VersionId { get; set; }
+
+        /// <summary>
         /// XSCL Track2 container Client, used to run blob APIs
         /// </summary>
         public BlobContainerClient BlobContainerClient
@@ -70,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 if (privateBlobContainerClient == null)
                 {
-                    privateBlobContainerClient = GetTrack2BlobContainerClient(this.CloudBlobContainer, (AzureStorageContext)this.Context);
+                    privateBlobContainerClient = GetTrack2BlobContainerClient(this.cloudBlobContainer, (AzureStorageContext)this.Context);
                 }
                 return privateBlobContainerClient;
             }
@@ -100,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <param name="permissions">permissions of container</param>
         public AzureStorageContainer(CloudBlobContainer container, BlobContainerPermissions permissions)
         {
-            CloudBlobContainer = container;
+            cloudBlobContainer = container;
             Permission = permissions;
             Name = container.Name;
 
@@ -116,14 +169,45 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             LastModified = container.Properties.LastModified;
         }
 
+        public AzureStorageContainer(BlobContainerClient container, AzureStorageContext storageContext, BlobContainerProperties properties = null)
+        {
+            Name = container.Name;
+            privateBlobContainerClient = container;
+            cloudBlobContainer = GetTrack1BlobContainer(privateBlobContainerClient, storageContext.StorageAccount.Credentials);
+            privateBlobContainerProperties = properties;
+
+            if (privateBlobContainerProperties == null)
+            {
+                LastModified = null;
+            }
+            else
+            {
+                LastModified = privateBlobContainerProperties.LastModified;
+            }
+            this.Context = storageContext;
+        }
+
+        public AzureStorageContainer(BlobContainerItem containerItem, AzureStorageContext storageContext, BlobServiceClient serviceClient)
+        {
+            Name = containerItem.Name;
+            privateBlobContainerClient = serviceClient.GetBlobContainerClient(containerItem.Name);
+            cloudBlobContainer = GetTrack1BlobContainer(privateBlobContainerClient, storageContext.StorageAccount.Credentials);
+            privateBlobContainerProperties = containerItem.Properties;
+
+            IsDeleted = containerItem.IsDeleted;
+            VersionId = containerItem.VersionId;
+            LastModified = privateBlobContainerProperties.LastModified;
+            this.Context = storageContext;
+        }
+
         public void SetTrack2Permission(BlobContainerAccessPolicy accesspolicy = null)
         {
             // Try to get container permission if not input it, and container not deleted
-            if (accesspolicy == null)
+            if (accesspolicy == null && (this.IsDeleted == null || !this.IsDeleted.Value))
             {
                 try
                 {
-                    accesspolicy = BlobContainerClient.GetAccessPolicy().Value;
+                    accesspolicy = privateBlobContainerClient.GetAccessPolicy().Value;
                 }
                 catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404)
                 {
@@ -189,6 +273,21 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
 
             return blobContainerClient;
+        }
+
+        /// <summary>
+        /// Get Track1 Blob Container Object
+        /// </summary>
+        /// <param name="track2BlobContainerClient"></param>
+        public static CloudBlobContainer GetTrack1BlobContainer(BlobContainerClient track2BlobContainerClient, StorageCredentials credentials)
+        {
+            if (credentials.IsSAS) // the Uri already contains credentail.
+            {
+                credentials = null;
+            }
+            CloudBlobContainer track1Container;
+            track1Container = new CloudBlobContainer(track2BlobContainerClient.Uri, credentials);
+            return track1Container;
         }
     }
 }

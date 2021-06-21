@@ -678,7 +678,7 @@
     "regex": "DiskPool"
   },
   {
-    "alias": "DataDog",
-    "regex": "DataDog"
+    "alias": "Datadog",
+    "regex": "Datadog"
   }
 ]
