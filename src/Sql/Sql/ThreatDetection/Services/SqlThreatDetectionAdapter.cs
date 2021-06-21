@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using DatabaseSecurityAlertPolicy= Microsoft.Azure.Management.Sql.Models.DatabaseSecurityAlertPolicy;
 using System;
 using System.Linq;
 
@@ -318,9 +319,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        private Management.Sql.Models.DatabaseSecurityAlertPolicy PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        private DatabaseSecurityAlertPolicy PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
-            var policy = new Management.Sql.Models.DatabaseSecurityAlertPolicy()
+            var policy = new DatabaseSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled ? SecurityAlertsPolicyState.Enabled : SecurityAlertsPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),

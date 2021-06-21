@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAdmins
-Specifies whether the advanced threat protection settings contacts administrators by using email.
+Specifies whether the advanced threat protection settings contacts administrators by using email. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludedDetectionType
-Specifies an array of detection types to exclude from the settings.
+Specifies an array of detection types to exclude from the settings. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 The acceptable values for this parameter are:
 - Sql_Injection
 - Sql_Injection_Vulnerability
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -NotificationRecipientsEmails
-Specifies a semicolon-separated list of email addresses to which the settings sends alerts.
+Specifies a semicolon-separated list of email addresses to which the settings sends alerts. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 
 ```yaml
 Type: System.String
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs
+The number of retention days for the audit logs. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. If this is the first time a database advanced threat protection settings is defined and this parameter is not provided, the cmdlet will fail.
+Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions.
 
 ```yaml
 Type: System.String
