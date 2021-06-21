@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added `RestrictOutboundNetworkAccess` parameter to following cmdlets
+    - `New-AzSqlServer`
+    - `Set-AzSqlServer`
+* Added new cmdlets for CRUD operations on Allowed FQDNs of Outbound Firewall rules
+      `Get-AzSqlServerOutboundFirewallRule`
+      `New-AzSqlServerOutboundFirewallRule`
+      `Remove-AzSqlServerOutboundFirewallRule`
 
 ## Version 3.2.0
 * Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
@@ -33,13 +40,6 @@
     - `Get-AzSqlServerTransparentDataEncryptionProtector`
     - `Set-AzSqlInstanceTransparentDataEncryptionProtector`
     - `Get-AzSqlInstanceTransparentDataEncryptionProtector`
-* Added RestrictOutboundNetworkAccess parameter to following cmdlets
-    - `New-AzSqlServer`
-    - `Set-AzSqlServer`
-* Added new cmdlets for CRUD operations on Outbound Firewall rules
-      `Get-AzSqlServerOutboundFirewallRule`
-      `New-AzSqlServerOutboundFirewallRule`
-      `Remove-AzSqlServerOutboundFirewallRule`
 
 ## Version 3.1.0
 * Updated `Set-AzSqlDatabaseVulnerabilityAssessmentRuleBaseline` documentation to include example of define array of array with one inner array.
