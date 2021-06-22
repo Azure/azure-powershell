@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -36,5 +37,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         }
 
         public DateTimeOffset ExpiresOn { get; set; }
+
+        public string HomeAccountId => throw new NotImplementedException();
+
+        public IDictionary<string, string> ExtendedProperties => throw new NotImplementedException();
     }
 }

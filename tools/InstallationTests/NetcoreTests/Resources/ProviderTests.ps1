@@ -102,7 +102,7 @@ function Test-AzureProviderOperation
 	    Assert-True { $action.Operation.ToLower().StartsWith("microsoft.insights/"); }
 	}
 
-	# Case insenstive search
+	# Case insensitive search
 	$insightsCaseActions = Get-AzureRmProviderOperation MicROsoFt.InSIghTs/*
 	Assert-True { $insightsCaseActions.Length -gt 0 }
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }
