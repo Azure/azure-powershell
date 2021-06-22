@@ -13,9 +13,9 @@ Adds the allowed FQDN to the list of outbound firewall rules and creates a new o
 ## SYNTAX
 
 ```
-New-AzSqlServerOutboundFirewallRule -AllowedFQDN <String> [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
+ [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +81,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### -AllowedFQDN
 Specifies the allowed fully qualified domain name (FQDN) in the list of outbound firewall rules.

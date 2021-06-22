@@ -13,9 +13,9 @@ Deletes an allowed FQDN from the list of outbound firewall rules (Allowed FQDNs)
 ## SYNTAX
 
 ```
-Remove-AzSqlServerOutboundFirewallRule [-AllowedFQDN] <String> [-Force] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
+ [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Force] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

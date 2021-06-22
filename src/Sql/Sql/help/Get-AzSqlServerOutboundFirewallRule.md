@@ -13,8 +13,9 @@ Gets outbound firewall rules (Allowed FQDNs) for a SQL Database server.
 ## SYNTAX
 
 ```
-Get-AzSqlServerOutboundFirewallRule [[-AllowedFQDN] <String>] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlServerOutboundFirewallRule [-ResourceGroupName] <String> [-ServerName] <String>
+ [-AllowedFQDN] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
