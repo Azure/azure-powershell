@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            Position = 2,
             HelpMessage = "The Azure Sql Database Server Outbound Firewall Rule FQDN.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
