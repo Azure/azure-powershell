@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,13 +26,6 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerOutboundFirewallRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(Model.AzureSqlServerOutboundFirewallRulesModel))]
     public class NewAzureSqlServerOutboundFirewallRule : AzureSqlServerOutboundFirewallRulesCmdletBase
     {
-        #region Private
-
-        /// <summary> Name of the allowed FQDN parameter for the Outbound Firewall Rules</summary>
-        //private const string AllowedFQDN = "AllowedFQDN";
-
-        #endregion Private
-
         /// <summary>
         /// Gets or sets the allowed FQDN of the Azure Sql Database Server Outbound Firewall Rule
         /// </summary>
@@ -67,8 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
             }
 
             // The server already has an Outbound Firewall Rule with the provided allowed FQDN.
-            throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerOutboundFirewallRuleFQDNExists, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
+            throw new AzPSArgumentException(
+                string.Format(Properties.Resources.ServerOutboundFirewallRuleFQDNExists, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
         }
 
         /// <summary>

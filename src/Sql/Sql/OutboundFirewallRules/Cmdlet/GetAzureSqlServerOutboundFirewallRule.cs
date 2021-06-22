@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Model;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -60,8 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
                 {
                     if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                     {
-                        throw new PSArgumentException(
-                            string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerOutboundFirewallRuleFQDNDoesNotExist, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
+                        throw new AzPSArgumentException(
+                            string.Format(Properties.Resources.ServerOutboundFirewallRuleFQDNDoesNotExist, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
                     }
 
                     //Unexpected status code was returned in the response.

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Globalization;
@@ -58,8 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    throw new PSArgumentException(
-                        string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerOutboundFirewallRuleFQDNDoesNotExist, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
+                    throw new AzPSArgumentException(
+                        string.Format(Properties.Resources.ServerOutboundFirewallRuleFQDNDoesNotExist, this.AllowedFQDN, this.ServerName), "AllowedFQDN");
                 }
 
                 //Unexpected status code was returned in the response.
@@ -97,8 +98,8 @@ namespace Microsoft.Azure.Commands.Sql.OutboundFirewallRules.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (Force.IsPresent || ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerOutboundFirewallRuleDescription, this.AllowedFQDN, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerOutboundFirewallRuleWarning, this.AllowedFQDN, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlServerOutboundFirewallRuleDescription, this.AllowedFQDN, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlServerOutboundFirewallRuleWarning, this.AllowedFQDN, this.ServerName),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 base.ExecuteCmdlet();
