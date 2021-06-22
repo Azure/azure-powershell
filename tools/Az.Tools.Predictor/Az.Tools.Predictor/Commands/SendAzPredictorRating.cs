@@ -24,8 +24,8 @@ using System.Text.Json;
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// <para type="synopsis">Cmdlet to send a rating about Az.Predictor to the serer</para>
-    /// <para type="description">This cmdlet will send the given rating about Az.Tools.Predictor to the server. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information </para>
+    /// <para type="synopsis">Cmdlet to send a rating between 1 and 5 about the suggestions provided by the Az.Tools.Predictor module</para>
+    /// <para type="description">This cmdlet sends the given rating about Az.Tools.Predictor to the server. Accepted values for the rating range 1 (poor) - 5 (great). All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information </para>
     /// </summary>
     [Cmdlet("Send", "AzPredictorRating"), OutputType(typeof(bool))]
     public sealed class SendAzPredictorRating : BasePSCmdlet
