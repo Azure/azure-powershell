@@ -599,10 +599,15 @@ Test SQL migrate throughput cmdlets
 #>
 function Test-SqlMigrateThroughputCmdlets
 {
-  $AccountName = "cosmosdb9921232812"
-  $rgName = "rgtest9921232812"
+  $AccountName = "dbaccount62-1"
+  $rgName = "CosmosDBResourceGroup62"
   $DatabaseName = "dbName4"
   $ContainerName = "containerName"
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
@@ -615,6 +620,7 @@ function Test-SqlMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
       $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
 
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue

@@ -253,11 +253,24 @@ function Test-SqlContainerBackupInformationCmdLets
 {
   $rgName = "CosmosDBResourceGroup3668"
   $location = "EAST US 2"
-  $accountName = "cosmosdb-1214"
+  $cosmosDBAccountName = "cosmosdb-1214"
   $databaseName = "TestDB1";
   $collectionName = "TestCollectionInDB1";
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "Session"
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
-  $backupInfo = Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName $rgName -AccountName $accountName -DatabaseName $databaseName -Name $collectionName -Location $location
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+
+  $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $cosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
+  $NewContainer = New-AzCosmosDBSqlContainer -AccountName $cosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
+
+  $backupInfo = Get-AzCosmosDBSqlContainerBackupInformation -ResourceGroupName $rgName -AccountName $cosmosDBAccountName -DatabaseName $databaseName -Name $collectionName -Location $location
   Assert-NotNull $backupInfo
   Assert-NotNull $backupInfo.LatestRestorableTimestamp
 }

@@ -326,11 +326,15 @@ Test Cassandra migrate throughput cmdlets
 #>
 function Test-CassandraMigrateThroughputCmdlets
 {
-
-  $AccountName = "db2725"
-  $rgName = "CosmosDBResourceGroup48"
+  $AccountName = "cassandra-db2745"
+  $rgName = "CosmosDBResourceGroup45"
   $KeyspaceName = "KeyspaceName3"
   $TableName = "tableName"
+  $apiKind = "Cassandra"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $ThroughputValue = 1200
   $TableThroughputValue = 800
@@ -339,6 +343,9 @@ function Test-CassandraMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $account = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
       $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
       $clusterkey1 = New-AzCosmosDBCassandraClusterKey -Name "ColumnB" -OrderBy "Asc"

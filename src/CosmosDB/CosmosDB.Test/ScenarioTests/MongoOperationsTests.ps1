@@ -395,14 +395,15 @@ Test Mongo migrate throughput cmdlets
 #>
 function Test-MongoMigrateThroughputCmdlets
 {
-
-  $AccountName = "db001"
-  $rgName = "CosmosDBResourceGroup3668"
+  $AccountName = "mongo-db0029"
+  $rgName = "CosmosDBResourceGroup29"
   $DatabaseName = "dbName4"
   $CollectionName = "collectionName"
   $location = "East US"
   $apiKind = "MongoDB"
   $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $ShardKey = "shardKeyPath"
   $ThroughputValue = 1200
@@ -412,7 +413,7 @@ function Test-MongoMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
-      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
       New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
 
       $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue

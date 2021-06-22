@@ -194,10 +194,14 @@ Test Cassandra migrate throughput cmdlets
 #>
 function Test-TableMigrateThroughputCmdlets
 {
-
-  $AccountName = "db2527"
+  $AccountName = "table-30"
   $rgName = "CosmosDBResourceGroup34"
   $TableName = "tableName4"
+  $apiKind = "Table"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $ThroughputValue = 1200
   $TableThroughputValue = 800
@@ -206,6 +210,9 @@ function Test-TableMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -EnableAutomaticFailover:$true
+
       $NewTable =  New-AzCosmosDBTable -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBTableThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $TableName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue

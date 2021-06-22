@@ -340,10 +340,15 @@ Test Gremlin migrate throughput cmdlets
 #>
 function Test-GremlinMigrateThroughputCmdlets
 {
-  $AccountName = "db1002"
+  $AccountName = "gremlin-db1053"
   $rgName = "CosmosDBResourceGroup53"
   $DatabaseName = "dbName4"
   $GraphName = "graphName"
+  $apiKind = "Gremlin"
+  $location = "East US"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $PartitionKeyPathValue = "/foo"
   $PartitionKeyKindValue = "Hash"
@@ -356,6 +361,9 @@ function Test-GremlinMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
