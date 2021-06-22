@@ -22,7 +22,6 @@ Update-AzSqlDatabaseAdvancedThreatProtectionSetting [-PassThru] [-NotificationRe
 
 ## DESCRIPTION
 The **Update-AzSqlDatabaseAdvancedThreatProtectionSetting** cmdlet sets a advanced threat protection settings on an Azure SQL database.
-In order to enable advanced threat protection on a database an auditing settings must be enabled on that database.
 To use this cmdlet, specify the *ResourceGroupName*, *ServerName* and *DatabaseName* parameters to identify the database.
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
@@ -30,7 +29,7 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ### Example 1: Set the advanced threat protection settings for a database
 ```
-PS C:\>Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01" -NotificationRecipientsEmails "admin01@contoso.com;secadmin@contoso.com" -EmailAdmins $False -ExcludedDetectionType "Sql_Injection_Vulnerability", "SQL_Injection" -StorageAccountName "mystorageAccount"
+PS C:\>Update-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command sets the advanced threat protection settings for a database named Database01 on the server named Server01.
@@ -68,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -EmailAdmins
-Specifies whether the advanced threat protection settings contacts administrators by using email.
+Specifies whether the advanced threat protection settings contacts administrators by using email. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExcludedDetectionType
-Specifies an array of detection types to exclude from the settings.
+Specifies an array of detection types to exclude from the settings. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 The acceptable values for this parameter are:
 - Sql_Injection
 - Sql_Injection_Vulnerability
@@ -103,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -NotificationRecipientsEmails
-Specifies a semicolon-separated list of email addresses to which the settings sends alerts.
+Specifies a semicolon-separated list of email addresses to which the settings sends alerts. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions
 
 ```yaml
 Type: System.String
@@ -149,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs
+The number of retention days for the audit logs. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions.
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -179,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. If this is the first time a database advanced threat protection settings is defined and this parameter is not provided, the cmdlet will fail.
+Specifies the name of the storage account to be used. Wildcards are not permitted. This parameter is not required. When this parameter is not provided, the cmdlet will use the storage account that was defined previously as part of the advanced threat protection settings of the database. Leave empty to use the enhanced Azure Security Center experience for consuming alerts, configure notifications and handle suppressions.
 
 ```yaml
 Type: System.String

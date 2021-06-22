@@ -5129,6 +5129,10 @@
                 <Label>CustomDnsConfigs</Label>
                 <PropertyName>CustomDnsConfigsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

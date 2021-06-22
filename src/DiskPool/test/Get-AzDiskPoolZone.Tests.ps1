@@ -12,7 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDiskPoolZone' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $zones = Get-AzDiskPoolZone -Location $env.location
+        $zones.Count | Should -Be 3
     }
 }

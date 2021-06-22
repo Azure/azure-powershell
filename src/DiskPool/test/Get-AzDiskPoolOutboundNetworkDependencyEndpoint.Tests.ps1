@@ -12,11 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDiskPoolOutboundNetworkDependencyEndpoint' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $deps = Get-AzDiskPoolOutboundNetworkDependencyEndpoint -ResourceGroupName $env.resourceGroup -DiskPoolName $env.diskPool1
+        $deps.Count | Should -Be 4
     }
 }

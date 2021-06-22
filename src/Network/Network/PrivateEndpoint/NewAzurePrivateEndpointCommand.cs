@@ -72,6 +72,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the private endpoint")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -103,7 +109,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 psPrivateEndpoint.PrivateLinkServiceConnections = this.PrivateLinkServiceConnection.ToList();
             }
-            
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                psPrivateEndpoint.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
             var peModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PrivateEndpoint>(psPrivateEndpoint);
             peModel.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
 
