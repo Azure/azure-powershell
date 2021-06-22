@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Microsoft.ApplicationInsights;
@@ -28,6 +29,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// The telemetry event prefix to use in Az.Tools.Predictor.
         /// </summary>
         public const string TelemetryEventPrefix = "Az.Tools.Predictor";
+
+        /// <summary>
+        /// Gets the session id for the telemetry events.
+        /// </summary>
+        public static readonly string SessionId = Guid.NewGuid().ToString();
 
         /// <summary>
         /// Creates a new instance of telemetry client.
@@ -50,6 +56,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// </summary>
         public static IDictionary<string, string> CreateCommonProperties(IAzContext azContext) => new Dictionary<string, string>()
             {
+                { "SessionId", TelemetryUtilities.SessionId },
                 { "Cohort", azContext.Cohort.ToString(CultureInfo.InvariantCulture) },
                 { "UserId", azContext.HashUserId },
                 { "IsInternal", azContext.IsInternal.ToString(CultureInfo.InvariantCulture) },

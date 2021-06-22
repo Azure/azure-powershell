@@ -35,7 +35,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string RequestId { get; set; } = Guid.NewGuid().ToString();
 
         /// <inheritdoc/>
-        public string SessionId { get; } = Guid.NewGuid().ToString();
+        public string SessionId => TelemetryUtilities.SessionId;
 
         /// <summary>
         /// The client that sends the telemetry to the server.
@@ -372,7 +372,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         private IDictionary<string, string> CreateProperties(ITelemetryData telemetryData, PredictionClient client)
         {
             var properties = TelemetryUtilities.CreateCommonProperties(this._azContext);
-            properties.Add("SessionId", telemetryData.SessionId);
             properties.Add("RequestId", telemetryData.RequestId);
             properties.Add("CommandId", telemetryData.CommandId);
 
