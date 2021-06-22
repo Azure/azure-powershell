@@ -9,6 +9,7 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
+  IsGenerateBased: true
 
 trigger: none
 
