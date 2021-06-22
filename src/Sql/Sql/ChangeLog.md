@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
+* Fixed Update-AzSqlDatabaseAdvancedThreatProtectionSetting with StorageAccount as an optional parameter instead of required.
 
 ## Version 3.2.0
 * Added option to support short version of maintenance configuration id for Managed Instance in `New-AzSqlInstance` and `Set-AzSqlInstance` cmdlets
