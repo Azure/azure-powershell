@@ -505,7 +505,7 @@ function Test-VirtualMachineScaleSetUpdate
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count; commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
 
         Assert-ThrowsContains {
@@ -519,14 +519,12 @@ function Test-VirtualMachineScaleSetUpdate
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         $returned_tags = $vmss.Tags;
-        Assert-AreEqual 2 $returned_tags.Count;
+        Assert-True { $returned_tags.Count -ge 2 }
         Assert-AreEqual $tags["test1"] $returned_tags["test1"];
         Assert-AreEqual $tags["test2"] $returned_tags["test2"];
         Assert-AreEqual 3 $vmss.Sku.Capacity;
 
         $vmss2 = $vmss | Update-AzVmss -SkuCapacity 4;
-        $returned_tags2 = $vmss2.Tags;
-        Assert-AreEqual 2 $returned_tags2.Count;
         Assert-AreEqual $tags["test1"] $returned_tags["test1"];
         Assert-AreEqual $tags["test2"] $returned_tags["test2"];
         Assert-AreEqual 4 $vmss2.Sku.Capacity;
@@ -1666,7 +1664,7 @@ function Test-VirtualMachineScaleSetWriteAcceleratorUpdate
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count; commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
         Assert-AreEqual $false $vmss.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
 
@@ -2184,7 +2182,7 @@ function Test-VirtualMachineScaleSetAutoRollback
         # Verify the result of VMSS
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
-        Assert-AreEqual 0 $vmss.Tags.Count;
+        # Assert-AreEqual 0 $vmss.Tags.Count;  commenting out because there are default tags being placed by internal policy
         Assert-AreEqual 2 $vmss.Sku.Capacity;
         Assert-AreEqual $false $vmss.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
 
