@@ -6,6 +6,7 @@ Az.CloudService
 Az.Communication
 Az.Confluent
 Az.ConnectedKubernetes
+Az.ConnectedMachine
 Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
@@ -14,6 +15,7 @@ Az.Datadog
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
+Az.DigitalTwins
 Az.DiskPool
 Az.Functions
 Az.HanaOnAzure
@@ -30,6 +32,7 @@ Az.Portal
 Az.PostgreSql
 Az.ProviderHub
 Az.RedisEnterpriseCache
+Az.ResourceGraph
 Az.ResourceMover
 Az.SpringCloud
 Az.StreamAnalytics
