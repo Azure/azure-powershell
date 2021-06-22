@@ -19,7 +19,7 @@ Gets the items from a container in Backup.
 Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
  [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
 ```
 
 ### GetItemsForVault
@@ -27,7 +27,7 @@ Get-AzRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
 Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
  [-WorkloadType] <WorkloadType> [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
 ```
 
 ### GetItemsForPolicy
@@ -35,7 +35,7 @@ Get-AzRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> 
 Get-AzRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
  [[-DeleteState] <ItemDeleteState>] [-FriendlyName <String>] [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>]  [-UseSecondaryRegion] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-UseSecondaryRegion] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -237,6 +237,21 @@ Accepted values: Healthy, Unhealthy
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseSecondaryRegion
+Filters from Secondary Region for Cross Region Restore
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

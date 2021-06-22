@@ -462,6 +462,10 @@
                 <Label>LastModifiedTime(UTC)</Label>
                 <PropertyName>LastModifiedTime</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>MainTemplate</Label>
+                <PropertyName>MainTemplate</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

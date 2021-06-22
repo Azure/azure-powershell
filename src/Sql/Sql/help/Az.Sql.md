@@ -65,6 +65,12 @@ Converts a vulnerability assessment scan results to Excel format.
 ### [Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan](Convert-AzSqlInstanceDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Copy-AzSqlDatabaseLongTermRetentionBackup](Copy-AzSqlDatabaseLongTermRetentionBackup.md)
+Copies a long term retention backup to a target database. 
+
+### [Disable-AzSqlDatabaseLedgerDigestUpload](Disable-AzSqlDatabaseLedgerDigestUpload.md)
+Disables uploading ledger digests to Azure Blob storage or to Azure Confidential Ledger.
+
 ### [Disable-AzSqlDatabaseSensitivityRecommendation](Disable-AzSqlDatabaseSensitivityRecommendation.md)
 Disables (dismisses) sensitivity recommendations on columns in the database.
 
@@ -83,8 +89,8 @@ Disables Azure AD only authentication for a specific SQL Server.
 ### [Disable-AzSqlServerAdvancedDataSecurity](Disable-AzSqlServerAdvancedDataSecurity.md)
 Disables Advanced Data Security on a server.
 
-### [Disable-AzSqlServerAdvancedThreatProtection](Disable-AzSqlServerAdvancedThreatProtection.md)
-Disables Advanced Threat Protection on a server.
+### [Enable-AzSqlDatabaseLedgerDigestUpload](Enable-AzSqlDatabaseLedgerDigestUpload.md)
+Enables uploading ledger digests to an Azure Storage account or to Azure Confidential Ledger.
 
 ### [Enable-AzSqlDatabaseSensitivityRecommendation](Enable-AzSqlDatabaseSensitivityRecommendation.md)
 Enables sensitivity recommendations on columns (recommendations are enabled by default on all columns) in the database.
@@ -103,9 +109,6 @@ Enables Azure AD only authentication for a specific SQL Server.
 
 ### [Enable-AzSqlServerAdvancedDataSecurity](Enable-AzSqlServerAdvancedDataSecurity.md)
 Enables Advanced Data Security on a server.
-
-### [Enable-AzSqlServerAdvancedThreatProtection](Enable-AzSqlServerAdvancedThreatProtection.md)
-Enables Advanced Threat Protection on a server.
 
 ### [Get-AzSqlCapability](Get-AzSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
@@ -157,6 +160,9 @@ Gets the recommended index operations for a server or database.
 
 ### [Get-AzSqlDatabaseInstanceFailoverGroup](Get-AzSqlDatabaseInstanceFailoverGroup.md)
 Gets or lists Instance Failover Groups.
+
+### [Get-AzSqlDatabaseLedgerDigestUpload](Get-AzSqlDatabaseLedgerDigestUpload.md)
+Gets the ledger digest upload settings of an Azure SQL database.
 
 ### [Get-AzSqlDatabaseLongTermRetentionBackup](Get-AzSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
@@ -329,9 +335,6 @@ Gets the auditing settings of an Azure SQL server.
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
-### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
-Gets the Microsoft support operations auditing settings of an Azure SQL server.
-
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
@@ -346,6 +349,9 @@ Gets firewall rules for a SQL Database server.
 
 ### [Get-AzSqlServerKeyVaultKey](Get-AzSqlServerKeyVaultKey.md)
 Gets a SQL server's Key Vault keys.
+
+### [Get-AzSqlServerMSSupportAudit](Get-AzSqlServerMSSupportAudit.md)
+Gets the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Get-AzSqlServerRecommendedAction](Get-AzSqlServerRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Server Advisor.
@@ -720,7 +726,7 @@ Modifies the server to which Azure SQL Server DNS Alias is pointing
 Modifies a firewall rule in Azure SQL Database server.
 
 ### [Set-AzSqlServerMSSupportAudit](Set-AzSqlServerMSSupportAudit.md)
-Changes the Microsoft support operations auditing settings for an Azure SQL database.
+Changes the Microsoft support operations auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerRecommendedActionState](Set-AzSqlServerRecommendedActionState.md)
 Updates the state of an Azure SQL Server recommended action.
@@ -781,6 +787,9 @@ Executes a failover of an Instance Failover Group.
 
 ### [Update-AzSqlDatabaseAdvancedThreatProtectionSetting](Update-AzSqlDatabaseAdvancedThreatProtectionSetting.md)
 Sets a advanced threat protection settings on a database.
+
+### [Update-AzSqlDatabaseLongTermRetentionBackup](Update-AzSqlDatabaseLongTermRetentionBackup.md)
+Updates a long term retention backup.
 
 ### [Update-AzSqlDatabaseVulnerabilityAssessmentSetting](Update-AzSqlDatabaseVulnerabilityAssessmentSetting.md)
 Updates the vulnerability assessment settings of a database.

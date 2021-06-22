@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Compute</PsModuleName>
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="44.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="47.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
@@ -24,10 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs" Link="Common\ARMStorageProvider.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs" Link="Common\ARMStorageService.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs" Link="Common\AzureContextAdapterExtensions.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs" Link="Common\AzureStorageContext.cs" />
+    <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

@@ -33,6 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetInEdgeZone");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSet_ManagedDisks()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSet-ManagedDisks");

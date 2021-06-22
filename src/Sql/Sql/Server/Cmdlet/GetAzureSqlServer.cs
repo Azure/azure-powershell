@@ -55,7 +55,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string ServerName { get; set; }
-        
+
+        /// <summary>
+        /// Expand Active Directory Administrator Information on the server
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Expand Active Directory Administrator Information on the server.")]
+        public SwitchParameter ExpandActiveDirectoryAdministrator { get; set; }
+
         /// <summary>
         /// Gets a server from the service.
         /// </summary>
@@ -64,18 +71,20 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             ICollection<AzureSqlServerModel> results = null;
 
+            string expand = (this.ExpandActiveDirectoryAdministrator.IsPresent) ? "administrators/activedirectory" : null;
+
             if (ShouldGetByName(ResourceGroupName, ServerName))
             {
                 results = new List<AzureSqlServerModel>();
-                results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName));
+                results.Add(ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName, expand));
             }
             else if (ShouldListByResourceGroup(ResourceGroupName, ServerName))
             {
-                results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName);
+                results = ModelAdapter.ListServersByResourceGroup(this.ResourceGroupName, expand);
             }
             else
             {
-                results = ModelAdapter.ListServers();
+                results = ModelAdapter.ListServers(expand);
             }
 
             return TopLevelWildcardFilter(ResourceGroupName, ServerName, results);

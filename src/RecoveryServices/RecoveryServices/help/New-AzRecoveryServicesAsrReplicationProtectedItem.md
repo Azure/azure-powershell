@@ -103,6 +103,35 @@ New-AzRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmId <St
  [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ReplicateVMwareToAzure
+```
+New-AzRecoveryServicesAsrReplicationProtectedItem [-ReplicateVMwareToAzure]
+ -ProtectableItem <ASRProtectableItem> -Name <String> [-RecoveryVmName <String>] [-LicenseType <String>]
+ [-TestNetworkId <String>] [-TestSubnetName <String>]
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> [-CredentialsToAccessVm <String>]
+ -LogStorageAccountId <String> -ApplianceName <String> -Fabric <ASRFabric> [-RecoveryAzureNetworkId <String>]
+ [-RecoveryAzureSubnetName <String>] -RecoveryResourceGroupId <String> [-ReplicationGroupName <String>]
+ [-RecoveryAvailabilityZone <String>] [-RecoveryProximityPlacementGroupId <String>]
+ [-RecoveryAvailabilitySetId <String>] [-Size <String>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion] -DiskType <String>
+ [-DiskEncryptionSetId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ReplicateVMwareToAzureWithDiskInput
+```
+New-AzRecoveryServicesAsrReplicationProtectedItem [-ReplicateVMwareToAzure]
+ -ProtectableItem <ASRProtectableItem> -InMageRcmDiskInput <ASRInMageRcmDiskInput[]> -Name <String>
+ [-RecoveryVmName <String>] [-LicenseType <String>] [-TestNetworkId <String>] [-TestSubnetName <String>]
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> [-CredentialsToAccessVm <String>]
+ -ApplianceName <String> -Fabric <ASRFabric> [-RecoveryAzureNetworkId <String>]
+ [-RecoveryAzureSubnetName <String>] -RecoveryResourceGroupId <String> [-ReplicationGroupName <String>]
+ [-RecoveryAvailabilityZone <String>] [-RecoveryProximityPlacementGroupId <String>]
+ [-RecoveryAvailabilitySetId <String>] [-Size <String>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new replication protected item.
 Use this cmdlet to enable replication for an ASR protectable item.
@@ -215,6 +244,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ApplianceName
+Specifies the name of appliance to be used to replicate this machine.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureToAzure
 Switch parameter specifies creating the replicated item in azure to azure scenario.
 
@@ -260,6 +304,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CredentialsToAccessVm
+Specifies the name of credentials to be used to push install the Mobility service on source machine if needed.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -296,7 +355,7 @@ Specifies the resource Id of the disk encryption set, to be used for the encrypt
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, ReplicateVMwareToAzure
 Aliases:
 
 Required: False
@@ -341,7 +400,22 @@ Specifies the Recovery VM managed disk type.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType
+Parameter Sets: VMwareToAzureWithDiskType, ReplicateVMwareToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Fabric
+Specifies the ASR Fabric object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: True
@@ -396,6 +470,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InMageRcmDiskInput
+Specifies the disk input to be used for VMware to Azure disaster recovery scenario.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRInMageRcmDiskInput[]
+Parameter Sets: ReplicateVMwareToAzureWithDiskInput
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyEncryptionKeyUrl
 Specifies the disk encryption key URL with version(Azure disk encryption) to be used be recovery VM after failover.
 
@@ -426,6 +515,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LicenseType
+Specifies the the license type.
+The acceptable values for this parameter are: NoLicenseType or WindowsServer.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
+Accepted values: NoLicenseType, WindowsServer
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogStorageAccountId
 Specifies the log or cache storage account Id to be used to store replication logs.
 
@@ -443,7 +549,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureToAzureWithoutDiskDetails
+Parameter Sets: AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure
 Aliases:
 
 Required: True
@@ -520,7 +626,7 @@ Specifies the ASR protectable item object for which replication is being enabled
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
-Parameter Sets: EnterpriseToEnterprise, VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure
+Parameter Sets: EnterpriseToEnterprise, VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: True
@@ -550,7 +656,7 @@ The ID of the AvailabilitySet to recover the machine to in the event of a failov
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -566,7 +672,7 @@ Specifies the recovery VM availability zone after failover.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -581,7 +687,7 @@ The ID of the Azure virtual network to recover the machine to in the event of a 
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -623,7 +729,7 @@ The subnet within the recovery Azure virtual network to which the failed over vi
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -638,7 +744,7 @@ Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -683,7 +789,7 @@ Specify the proximity placement group Id to used by the failover Vm in target re
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -698,7 +804,7 @@ Specifies the ARM identifier of the resource group in which the virtual machine 
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: True
@@ -728,7 +834,7 @@ Name of the recovery Vm created after failover.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -753,12 +859,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReplicateVMwareToAzure
+Switch parameter to specify the replicated item is a VMware virtual machine that is being replicated to Azure.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationGroupName
 Specifies the replication group name to use to create multi-VM consistent recovery points. By default each replication protected item is created in a group of its own and multi-VM consistent recovery points are not generated. Use this option only if you need to create multi-VM consistent recovery points across a group of machines by protecting all machines to the same replication group. 
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -773,7 +894,7 @@ Specify the recovery virtual machine size.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure
+Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure, ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
 Aliases:
 
 Required: False
@@ -791,6 +912,36 @@ Type: System.String
 Parameter Sets: VMwareToAzureWithDiskType, VMwareToAzure, HyperVSiteToAzure
 Aliases:
 Accepted values: NoLicenseType, PAYG, AHUB
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestNetworkId
+Specifies the test network ARM Id.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestSubnetName
+Specifies the test network subnet name.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure, ReplicateVMwareToAzureWithDiskInput
+Aliases:
 
 Required: False
 Position: Named

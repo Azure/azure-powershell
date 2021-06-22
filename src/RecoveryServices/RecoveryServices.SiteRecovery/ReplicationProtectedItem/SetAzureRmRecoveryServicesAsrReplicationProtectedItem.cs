@@ -96,6 +96,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
+        ///     Gets or sets the test subnet name.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string TestNicSubnetName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the test static IP address.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string TestNicStaticIPAddress { get; set; }
+
+        /// <summary>
         ///     Gets or sets the network interface card (NIC) properties set by user or set by default.
         /// </summary>
         [Parameter]
@@ -281,6 +295,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRVMNicConfig[] ASRVMNicConfiguration { get; set; }
 
         /// <summary>
+        ///     Gets or sets the test network ARM Id.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string TestNetworkId { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
@@ -303,10 +324,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 var provider = replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
-                // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2/A2A
+                // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2/A2A/InMageRcm
                 if (!(provider is HyperVReplicaAzureReplicationDetails) &&
                     !(provider is InMageAzureV2ReplicationDetails) &&
-                    !(provider is A2AReplicationDetails))
+                    !(provider is A2AReplicationDetails) &&
+                    !(provider is InMageRcmReplicationDetails))
                 {
                     this.WriteWarning(
                         Resources.UnsupportedReplicationProvidedForUpdateVmProperties);
@@ -318,6 +340,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.Size) &&
                     string.IsNullOrEmpty(this.UpdateNic) &&
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
+                    string.IsNullOrEmpty(this.TestNetworkId) &&
                     string.IsNullOrEmpty(this.PrimaryNic) &&
                     this.UseManagedDisk == null &&
                     this.IsParameterBound(c => c.RecoveryAvailabilitySet) &&
@@ -372,6 +395,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var vmName = this.Name;
                 var vmSize = this.Size;
                 var vmRecoveryNetworkId = this.RecoveryNetworkId;
+                var vmTestNetworkId = this.TestNetworkId;
                 var licenseType = this.LicenseType;
                 var recoveryResourceGroupId = this.RecoveryResourceGroupId;
                 var recoveryCloudServiceId = this.RecoveryCloudServiceId;
@@ -789,6 +813,78 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
                 }
+                else if (provider is InMageRcmReplicationDetails)
+                {
+                    var providerSpecificDetails =
+                        (InMageRcmReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.Name)))
+                    {
+                        vmName = providerSpecificDetails.TargetVmName;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.Size)))
+                    {
+                        vmSize = providerSpecificDetails.TargetVmSize;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryNetworkId)))
+                    {
+                        vmRecoveryNetworkId = providerSpecificDetails.TargetNetworkId;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.TestNetworkId)))
+                    {
+                        vmTestNetworkId = providerSpecificDetails.TestNetworkId;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.LicenseType)))
+                    {
+                        licenseType = providerSpecificDetails.LicenseType;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                        Utilities.GetMemberName(() => this.RecoveryBootDiagStorageAccountId)))
+                    {
+                        this.RecoveryBootDiagStorageAccountId = providerSpecificDetails.TargetBootDiagnosticsStorageAccountId;
+                    }
+
+                    proximityPlacementGroupId = this.IsParameterBound(c => c.RecoveryProximityPlacementGroupId)
+                       ? this.RecoveryProximityPlacementGroupId
+                       : providerSpecificDetails.TargetProximityPlacementGroupId;
+
+                    availabilitySetId = this.IsParameterBound(c => c.RecoveryAvailabilitySet)
+                        ? this.RecoveryAvailabilitySet : providerSpecificDetails.TargetAvailabilitySetId;
+
+                    availabilityZone = this.IsParameterBound(c => c.RecoveryAvailabilityZone)
+                        ? this.RecoveryAvailabilityZone : providerSpecificDetails.TargetAvailabilityZone;
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryResourceGroupId)))
+                    {
+                        recoveryResourceGroupId = providerSpecificDetails.TargetResourceGroupId;
+                    }
+
+                    providerSpecificInput = new InMageRcmUpdateReplicationProtectedItemInput
+                    {
+                        TargetVmName = vmName,
+                        TargetVmSize = vmSize,
+                        TargetResourceGroupId = recoveryResourceGroupId,
+                        TargetAvailabilitySetId = availabilitySetId,
+                        TargetAvailabilityZone = availabilityZone,
+                        TargetProximityPlacementGroupId = proximityPlacementGroupId,
+                        TargetBootDiagnosticsStorageAccountId = RecoveryBootDiagStorageAccountId,
+                        LicenseType = this.LicenseType,
+                        TargetNetworkId = vmRecoveryNetworkId,
+                        TestNetworkId = vmTestNetworkId,
+                        VmNics = GetInMageRcmNicListToUpdate(providerSpecificDetails.VmNics)
+                    };
+                }
 
                 var updateReplicationProtectedItemInputProperties =
                     new UpdateReplicationProtectedItemInputProperties
@@ -959,6 +1055,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         vMNicInputDetails.EnableAcceleratedNetworkingOnRecovery = nDetails.EnableAcceleratedNetworkingOnRecovery;
                         vMNicInputDetails.RecoveryNetworkSecurityGroupId =
                             nDetails.RecoveryNetworkSecurityGroupId;
+                        vMNicInputDetailsList.Add(vMNicInputDetails);
+                    }
+                }
+            }
+
+            if (!nicFoundToBeUpdated)
+            {
+                throw new PSInvalidOperationException(Resources.NicNotFoundInVMForUpdateVmProperties);
+            }
+            return vMNicInputDetailsList;
+        }
+
+        private List<InMageRcmNicInput> GetInMageRcmNicListToUpdate(IList<InMageRcmNicDetails> vmNicList)
+        {
+            var vMNicInputDetailsList = new List<InMageRcmNicInput>();
+            var nicFoundToBeUpdated = string.IsNullOrEmpty(this.UpdateNic);
+
+            if (vmNicList != null)
+            {
+                // If VM NICs list provided along with UpdateNic then only the NICs list is
+                // honored.
+                foreach (var nDetails in vmNicList)
+                {
+                    var vMNicInputDetails = new InMageRcmNicInput();
+                    if (!string.IsNullOrEmpty(this.UpdateNic)
+                        && string.Compare(nDetails.NicId, this.UpdateNic, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        vMNicInputDetails.NicId = this.UpdateNic;
+                        vMNicInputDetails.TargetSubnetName = this.RecoveryNicSubnetName;
+                        vMNicInputDetails.TargetStaticIPAddress = this.RecoveryNicStaticIPAddress;
+                        vMNicInputDetails.IsPrimaryNic =
+                            (string.Compare(nDetails.NicId, this.PrimaryNic, StringComparison.OrdinalIgnoreCase) == 0)
+                            ? Constants.True
+                            : Constants.False;
+                        vMNicInputDetails.IsSelectedForFailover = string.IsNullOrEmpty(this.NicSelectionType)
+                            ? Constants.True 
+                            : (this.NicSelectionType.Equals(Constants.SelectedByUser) 
+                                ? Constants.True 
+                                : Constants.False);
+                        vMNicInputDetails.TestSubnetName = this.TestNicSubnetName;
+                        vMNicInputDetails.TestStaticIPAddress = this.TestNicStaticIPAddress;
+                        vMNicInputDetailsList.Add(vMNicInputDetails);
+                        
+                        // NicId  matched for update.
+                        nicFoundToBeUpdated = true;
+                    }
+                    else
+                    {
+                        vMNicInputDetails.NicId = nDetails.NicId;
+                        vMNicInputDetails.TargetSubnetName = nDetails.TargetSubnetName;
+                        vMNicInputDetails.TargetStaticIPAddress = nDetails.TargetIPAddress;
+                        vMNicInputDetails.IsPrimaryNic = nDetails.IsPrimaryNic;
+                        vMNicInputDetails.IsSelectedForFailover = nDetails.IsSelectedForFailover;
+                        vMNicInputDetails.TestSubnetName = nDetails.TestSubnetName;
+                        vMNicInputDetails.TestStaticIPAddress = nDetails.TestIPAddress;
                         vMNicInputDetailsList.Add(vMNicInputDetails);
                     }
                 }

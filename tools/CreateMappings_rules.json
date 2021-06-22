@@ -668,5 +668,17 @@
   {
     "alias": "Security Insights",
     "regex": "SecurityInsights"
+  },
+  {
+    "regex": "ContainerInstance",
+    "alias": "ContainerInstance"
+  },
+  {
+    "alias": "DiskPool",
+    "regex": "DiskPool"
+  },
+  {
+    "alias": "Datadog",
+    "regex": "Datadog"
   }
 ]

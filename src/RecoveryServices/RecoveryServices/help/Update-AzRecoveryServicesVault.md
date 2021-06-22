@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.dll-Help.xml
 Module Name: Az.RecoveryServices
 online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault
 schema: 2.0.0
@@ -13,7 +13,7 @@ Updates MSI to the recovery services vault.
 ## SYNTAX
 
 ```
-Update-AzRecoveryServicesVault -ResourceGroupName <string> -Name <string> -IdentityType <MSIdentity>
+Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,11 +35,27 @@ This cmdlet is used to add a SystemAssigned identity to a recovery services vaul
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The MSI type assigned to Recovery Services Vault.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.MSIdentity
+Parameter Sets: (All)
+Aliases:
+Accepted values: SystemAssigned, None
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,27 +94,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The MSI type assigned to Recovery Services Vault.
-
-```yaml
-Type: MSIdentity
-Parameter Sets: (All)
-Aliases:
-Accepted values: SystemAssigned, None
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -114,7 +114,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

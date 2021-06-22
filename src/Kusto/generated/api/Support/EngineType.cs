@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// <param name="value">the value to convert to an instance of <see cref="EngineType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new EngineType(System.Convert.ToString(value));
+            return new EngineType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Creates an instance of the <see cref="EngineType" Enum class./></summary>

@@ -118,6 +118,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Snapshot Policy ResourceId used to apply a snapshot policy to the volume")]
+        [ValidateNotNullOrEmpty]
+        public string SnapshotPolicyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
@@ -187,11 +193,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 AccountName = NameParts[0];
                 PoolName = NameParts[1];
             }
-            
-            var dataProtection = new PSNetAppFilesVolumeDataProtection
+
+            PSNetAppFilesVolumeDataProtection dataProtection = null;
+            if (!string.IsNullOrWhiteSpace(SnapshotPolicyId) || Backup != null)
             {
-                Backup = Backup
-            };
+                dataProtection = new PSNetAppFilesVolumeDataProtection
+                {             
+                    Snapshot = new PSNetAppFilesVolumeSnapshot() { SnapshotPolicyId = SnapshotPolicyId },
+                    Backup = Backup
+                };
+            }
 
             var volumePatchBody = new VolumePatch()
             {
@@ -199,8 +210,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 UsageThreshold = UsageThreshold,
                 ExportPolicy = (ExportPolicy != null) ? ModelExtensions.ConvertExportPolicyPatchFromPs(ExportPolicy) : null,
                 Tags = tagPairs,
-                ThroughputMibps = ThroughputMibps,
-                DataProtection = (dataProtection.Backup != null) ? dataProtection.ConvertToPatchFromPs() : null
+                ThroughputMibps = ThroughputMibps,                
+                DataProtection = (dataProtection != null) ? dataProtection.ConvertToPatchFromPs() : null
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))

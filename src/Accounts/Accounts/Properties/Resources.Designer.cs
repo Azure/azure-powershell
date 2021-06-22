@@ -691,6 +691,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
+        /// </summary>
+        internal static string PreviewFunctionMessage {
+            get {
+                return ResourceManager.GetString("PreviewFunctionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set the target account, tenant, and subscription of cmdlets executed in this session to the context stored in {0}.
         /// </summary>
         internal static string ProcessImportContextFromFile {

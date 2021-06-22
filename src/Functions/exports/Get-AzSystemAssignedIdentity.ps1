@@ -94,7 +94,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azsystemassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/get-azsystemassignedidentity
 #>
 function Get-AzSystemAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity])]

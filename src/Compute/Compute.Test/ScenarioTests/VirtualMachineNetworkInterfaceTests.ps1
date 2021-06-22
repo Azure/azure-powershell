@@ -388,10 +388,11 @@ function Test-AddNetworkInterface
 
         $nicList = Get-AzNetworkInterface -ResourceGroupName $rgname;
         $nicList[0].Primary = $true;
-        $p = Add-AzVMNetworkInterface -VM $p -NetworkInterface $nicList;
+        $p = Add-AzVMNetworkInterface -VM $p -NetworkInterface $nicList -DeleteOption "Detach";
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicList[0].Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].DeleteOption "Detach";
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -453,6 +454,7 @@ function Test-AddNetworkInterface
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].DeleteOption "Detach";
     }
     finally
     {
@@ -840,3 +842,5 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         Clean-ResourceGroup $rgname
     }
 }
+
+

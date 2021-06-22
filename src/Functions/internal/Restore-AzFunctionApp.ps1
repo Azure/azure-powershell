@@ -103,8 +103,6 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 REQUEST <IRestoreRequest>: Description of a restore request.
-  Overwrite <Boolean>: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
-  StorageAccountUrl <String>: SAS URL to the container.
   [Kind <String>]: Kind of resource.
   [AdjustConnectionString <Boolean?>]: <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
   [AppServicePlan <String>]: Specify app service plan that will own restored site.
@@ -118,9 +116,11 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [IgnoreConflictingHostName <Boolean?>]: Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to         the app's object when it is being restored, but that might fail due to conflicts during the operation.
   [IgnoreDatabase <Boolean?>]: Ignore the databases and only restore the site content
   [OperationType <BackupRestoreOperationType?>]: Operation type.
+  [Overwrite <Boolean?>]: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
   [SiteName <String>]: Name of an app.
+  [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/restore-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
 function Restore-AzFunctionApp {
 [OutputType([System.Boolean])]

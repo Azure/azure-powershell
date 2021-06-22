@@ -43,10 +43,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
         public const string NewAzureRmStorageSyncServerEndpoint = VerbsCommon.New + "-" + StorageSyncNouns.NounAzureRmStorageSyncServerEndpoint;
         /// <summary>
-        /// The invoke azure rm storage sync file recall
-        /// </summary>
-        public const string InvokeAzureRmStorageSyncFileRecall = VerbsLifecycle.Invoke + "-" + StorageSyncNouns.NounAzureRmStorageSyncFileRecall;
-        /// <summary>
         /// The get azure rm storage sync service
         /// </summary>
         public const string GetAzureRmStorageSyncService = VerbsCommon.Get + "-" + StorageSyncNouns.NounAzureRmStorageSyncService;

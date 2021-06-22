@@ -163,6 +163,14 @@
             <Label>HasImmutabilityPolicy</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Deleted</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VersionId</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -181,6 +189,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.HasImmutabilityPolicy</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Deleted</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Version</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -326,6 +340,26 @@
                 <Label>ShareDeleteRetentionPolicy.Days</Label>
                 <ScriptBlock>$_.ShareDeleteRetentionPolicy.Days</ScriptBlock>
               </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.Multichannel.Enabled</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.Multichannel.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.Versions</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.Versions</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.AuthenticationMethods</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.AuthenticationMethods</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.KerberosTicketEncryption</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.KerberosTicketEncryption</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ProtocolSettings.Smb.ChannelEncryption</Label>
+                <ScriptBlock>$_.ProtocolSettings.Smb.ChannelEncryption</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -359,6 +393,14 @@
               <ListItem>
                 <Label>DeleteRetentionPolicy.Days</Label>
                 <ScriptBlock>$_.DeleteRetentionPolicy.Days</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ContainerDeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.ContainerDeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>ContainerDeleteRetentionPolicy.Days</Label>
+                <ScriptBlock>$_.ContainerDeleteRetentionPolicy.Days</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>RestorePolicy.Enabled</Label>
@@ -410,7 +452,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>EnabledProtocol</Label>
+            <Label>EnabledProtocols</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
@@ -428,6 +470,10 @@
             <Alignment>Left</Alignment>
             <Label>ShareUsageBytes</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>snapshotTime</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -442,7 +488,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <PropertyName>EnabledProtocol</PropertyName>
+                <PropertyName>EnabledProtocols</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -459,6 +505,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ShareUsageBytes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.snapshotTime.ToUniversalTime().ToString("s")+"Z"</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -786,6 +836,156 @@
                 <ScriptBlock>ConvertTo-Json $_.InternetEndpoints -Compress</ScriptBlock>
                 <Label>InternetEndpoints</Label>
               </ListItem>   
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobInventoryPolicyRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobInventoryPolicyRule</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Destination</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ObjectType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Format</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Schedule</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IncludeSnapshots</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IncludeBlobVersions</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BlobTypes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrefixMatch</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SchemaFields</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Destination</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.ObjectType</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Format</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Schedule</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Filters.IncludeSnapshots</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Filters.IncludeBlobVersions</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Filters.BlobTypes</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.Filters.PrefixMatch</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Definition.SchemaFields</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobInventoryPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.Storage.Models.PSBlobInventoryPolicy</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>StorageAccountName</PropertyName>
+                <Label>StorageAccountName</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+                <Label>ResourceGroupName</Label>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+                <Label>Name</Label>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastModifiedTime</Label>
+                <PropertyName>LastModifiedTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Enabled</Label>
+                <ScriptBlock>$_.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <ScriptBlock>$_.Rules</ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

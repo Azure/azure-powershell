@@ -48,7 +48,7 @@ Delete node pool from managed cluster.
 Update or create a managed Kubernetes cluster.
 
 ### [Set-AzAksClusterCredential](Set-AzAksClusterCredential.md)
-Reset the ServicePrincipal of a existing aks cluster.
+Reset the ServicePrincipal of an existing AKS cluster.
 
 ### [Start-AzAksDashboard](Start-AzAksDashboard.md)
 Create a Kubectl SSH tunnel to the managed cluster's dashboard.

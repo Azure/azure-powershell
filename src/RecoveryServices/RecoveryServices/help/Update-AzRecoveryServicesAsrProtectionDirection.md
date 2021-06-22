@@ -37,6 +37,22 @@ Update-AzRecoveryServicesAsrProtectionDirection [-VMwareToAzure] -Account <ASRRu
  -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ReplicateAzureToVMware
+```
+Update-AzRecoveryServicesAsrProtectionDirection [-ReplicateAzureToVMware]
+ -ProtectionContainerMapping <ASRProtectionContainerMapping> -DataStoreName <String> -ApplianceName <String>
+ -Fabric <ASRFabric> -LogStorageAccountId <String> -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ReplicateVMwareToAzure
+```
+Update-AzRecoveryServicesAsrProtectionDirection [-ReplicateVMwareToAzure] -SiteId <String>
+ -CredentialsToAccessVm <String> -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ -ApplianceName <String> -Fabric <ASRFabric> -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### HyperVToAzure
 ```
 Update-AzRecoveryServicesAsrProtectionDirection [-HyperVToAzure] [-LogStorageAccountId <String>]
@@ -143,7 +159,6 @@ PS C:\> $currentJob = Update-AzRecoveryServicesAsrProtectionDirection -AzureToAz
 
 Start the update direction operation for the specified replication protected item in target azure region defined by protection container mapping and using cache storage (in same region as VM) and virtual machine scale set.
 
-
 ## PARAMETERS
 
 ### -Account
@@ -164,6 +179,21 @@ Accept wildcard characters: False
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount
 Parameter Sets: VMwareToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplianceName
+Specifies the name of appliance to be used to replicate this machine.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateAzureToVMware, ReplicateVMwareToAzure
 Aliases:
 
 Required: True
@@ -218,12 +248,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CredentialsToAccessVm
+Specifies the name of credentials to be used to push install the Mobility service on source machine if needed.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataStore
 The VMware data-store to be used for the vmdisk's.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRDataStore
 Parameter Sets: AzureToVMware
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataStoreName
+Name of the VMware data store to be used for the VM disk's.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateAzureToVMware
 Aliases:
 
 Required: True
@@ -258,7 +318,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, ByRPObject, ByPEObject
+Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, ReplicateAzureToVMware, ReplicateVMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, ByRPObject, ByPEObject
 Aliases:
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
 
@@ -293,6 +353,21 @@ Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Fabric
+Specifies the ASR Fabric object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Parameter Sets: ReplicateAzureToVMware, ReplicateVMwareToAzure
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -361,7 +436,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: AzureToAzure
+Parameter Sets: ReplicateAzureToVMware, AzureToAzure
 Aliases:
 
 Required: True
@@ -406,7 +481,7 @@ Protection containerMapping to be used for replication.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping
-Parameter Sets: AzureToVMware, VMwareToAzure, AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Parameter Sets: AzureToVMware, VMwareToAzure, ReplicateAzureToVMware, ReplicateVMwareToAzure, AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
 Required: True
@@ -536,12 +611,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReplicateAzureToVMware
+Switch parameter specifying Azure to VMware replication scenario..
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReplicateAzureToVMware
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicateVMwareToAzure
+Switch parameter specifying VMware to Azure replication scenario..
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReplicateVMwareToAzure
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationProtectedItem
 Specifies an ASR replication protected item.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, ReplicateAzureToVMware, ReplicateVMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
 Required: True
@@ -557,6 +662,22 @@ Retention Volume on the master target server to be used.
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRetentionVolume
 Parameter Sets: AzureToVMware
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SiteId
+Specifies the VMware site Id where the protectable item was discovered.
+Use site Id from fabric specific details in the ASR fabric to specify one.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplicateVMwareToAzure
 Aliases:
 
 Required: True

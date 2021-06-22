@@ -13,19 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Concurrent;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
 using Azure.Identity;
-
-using Hyak.Common;
-
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -46,45 +43,57 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
             var requestContext = new TokenRequestContext(scopes);
+            AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 
             var options = new ClientCertificateCredentialOptions()
             {
-                AuthorityHost = new Uri(authority)
+                AuthorityHost = new Uri(authority),
+                SendCertificateChain = spParameters.SendCertificateChain ?? default(bool)
             };
 
+            TokenCredential tokenCredential = null;
+            string parametersLog = null;
             if (!string.IsNullOrEmpty(spParameters.Thumbprint))
             {
-                //Service Principal with Certificate
-                var certificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
-                ClientCertificateCredential certCredential = new ClientCertificateCredential(tenantId, spParameters.ApplicationId, certificate, options);
-                var parametersLog = $"- Thumbprint:'{spParameters.Thumbprint}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
-                return MsalAccessToken.GetAccessTokenAsync(
-                    nameof(ServicePrincipalAuthenticator),
-                    parametersLog,
-                    certCredential,
-                    requestContext,
-                    cancellationToken,
-                    spParameters.TenantId,
-                    spParameters.ApplicationId);
+                //Service Principal with Certificate thumbprint
+                var certCertificate = AzureSession.Instance.DataStore.GetCertificate(spParameters.Thumbprint);
+                tokenCredential = azureCredentialFactory.CreateClientCertificateCredential(tenantId, spParameters.ApplicationId, certCertificate, options);
+                parametersLog = $"- Thumbprint:'{spParameters.Thumbprint}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
             }
             else if (spParameters.Secret != null)
             {
-                // service principal with secret
-                var secretCredential = new ClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret.ConvertToString(), options);
-                var parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
-                return MsalAccessToken.GetAccessTokenAsync(
-                    nameof(ServicePrincipalAuthenticator),
-                    parametersLog,
-                    secretCredential,
-                    requestContext,
-                    cancellationToken,
-                    spParameters.TenantId,
-                    spParameters.ApplicationId);
+                //Service principal with secret
+                tokenCredential = azureCredentialFactory.CreateClientSecretCredential(tenantId, spParameters.ApplicationId, spParameters.Secret, options);
+                parametersLog = $"- ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+            }
+            else if(!string.IsNullOrEmpty(spParameters.CertificatePath))
+            {
+                if (spParameters.CertificateSecret != null)
+                {
+                    //Service Principal with Certificate file and password
+                    var certCertificate = new X509Certificate2(spParameters.CertificatePath, spParameters.CertificateSecret);
+                    tokenCredential = azureCredentialFactory.CreateClientCertificateCredential(tenantId, spParameters.ApplicationId, certCertificate, options);
+                    parametersLog = $"- CertificatePath(with password):'{spParameters.CertificatePath}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+                }
+                else
+                {
+                    //Service Principal with Certificate file without password
+                    tokenCredential = azureCredentialFactory.CreateClientCertificateCredential(tenantId, spParameters.ApplicationId, spParameters.CertificatePath, options);
+                    parametersLog = $"- CertificatePath:'{spParameters.CertificatePath}', ApplicationId:'{spParameters.ApplicationId}', TenantId:'{tenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}'";
+                }
             }
             else
             {
                 throw new MsalException(MsalError.AuthenticationFailed, string.Format(AuthenticationFailedMessage, clientId));
             }
+            return MsalAccessToken.GetAccessTokenAsync(
+                nameof(ServicePrincipalAuthenticator),
+                parametersLog,
+                tokenCredential,
+                requestContext,
+                cancellationToken,
+                spParameters.TenantId,
+                spParameters.ApplicationId);
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

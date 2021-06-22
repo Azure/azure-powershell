@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
@@ -91,6 +97,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // StorageProfile
             ImageStorageProfile vStorageProfile = null;
 
+            // ExtendedLocation
+            ExtendedLocation vExtendedLocation = null;
+
             if (this.IsParameterBound(c => c.SourceVirtualMachineId))
             {
                 if (vSourceVirtualMachine == null)
@@ -124,10 +133,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             vStorageProfile.ZoneResilient = this.ZoneResilient.IsPresent;
 
+            if (this.IsParameterBound(c => c.EdgeZone))
+            {
+                vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+            }
+
             var vImage = new PSImage
             {
                 HyperVGeneration = this.IsParameterBound(c => c.HyperVGeneration) ? this.HyperVGeneration : "V1",
                 Location = this.IsParameterBound(c => c.Location) ? this.Location : null,
+                ExtendedLocation = vExtendedLocation,
                 Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
                 SourceVirtualMachine = vSourceVirtualMachine,
                 StorageProfile = vStorageProfile,

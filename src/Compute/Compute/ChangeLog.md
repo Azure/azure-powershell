@@ -20,7 +20,30 @@
 
 -->
 ## Upcoming Release
-* Added 'Invoke-AzVmInstallPatch' to support patch installation in VMs using PowerShell.
+* Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
+* Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
+
+## Version 4.14.0
+* Updated Compute module to use the latest .Net SDK version 47.0.0.
+
+## Version 4.13.0
+* Added `Invoke-AzVmInstallPatch` to support patch installation in VMs using PowerShell.
+* Updated Compute module to use the latest .Net SDK version 46.0.0.
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `Get-AzVMImage
+    - `Get-AzVMImageOffer`
+    - `Get-AzVMImageSku`
+    - `New-AzDiskConfig`
+    - `New-AzImageConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzVM`
+    - `New-AzVmssConfig`
+    - `New-AzVMSS`
+* Added cmdlets to create, update, delete, and get new Azure resource: Ssh Public Key
+    - `New-AzSshKey`
+    - `Remove-AzSshKey`
+    - `Get-AzSshKey`
+    - `Update-AzSshKey`
 
 ## Version 4.12.0
 * Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).

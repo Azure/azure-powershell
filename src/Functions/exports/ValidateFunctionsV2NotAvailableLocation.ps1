@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 System.Object
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/validatefunctionsv2notavailablelocation
+https://docs.microsoft.com/powershell/module/az.functions/validatefunctionsv2notavailablelocation
 #>
 function ValidateFunctionsV2NotAvailableLocation {
 [CmdletBinding(PositionalBinding=$false)]

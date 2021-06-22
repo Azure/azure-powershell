@@ -232,6 +232,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string MaintenanceConfigurationId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ledger option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.")]
+        public SwitchParameter EnableLedger { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -251,7 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 }
                 else if (string.Equals(this.BackupStorageRedundancy, "Geo", System.StringComparison.OrdinalIgnoreCase))
                 {
-                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.GeoBackupRedundancyChosenWarning));
+                    WriteWarning(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BackupRedundancyChosenIsGeoWarning));
                 }
             }
             base.ExecuteCmdlet();
@@ -312,9 +319,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 AutoPauseDelayInMinutes = this.IsParameterBound(p => p.AutoPauseDelayInMinutes) ? AutoPauseDelayInMinutes : (int?)null,
                 MinimumCapacity = this.IsParameterBound(p => p.MinimumCapacity) ? MinimumCapacity : (double?)null,
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
-                BackupStorageRedundancy = BackupStorageRedundancy,
+                RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
+                EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)
