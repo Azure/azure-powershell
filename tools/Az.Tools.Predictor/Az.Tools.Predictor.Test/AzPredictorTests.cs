@@ -329,7 +329,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             var actual = this._azPredictor.GetSuggestion(MockObjects.PredictionClient, predictionContext, CancellationToken.None);
 
             Assert.Equal(expected.Count, actual.SuggestionEntries.Count);
-            Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.SuggestionEntries.First().SuggestionText);
+            // Assert.Equal(expected.PredictiveSuggestions.First().SuggestionText, actual.SuggestionEntries.First().SuggestionText);
+            // When it returns the exact number of the requested prediction, AzPredictor replaces the last suggestion with the survey command.
+            Assert.Equal("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor", actual.SuggestionEntries.Last().SuggestionText);
         }
 
         /// <summary>

@@ -17,6 +17,7 @@ using System.Management.Automation.Runspaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
@@ -73,6 +74,30 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         /// <inheritdoc/>
         public Version AzVersion { get; private set; } = DefaultVersion;
+
+        private int? _cohort;
+        /// <inheritdoc/>
+        public int Cohort
+        {
+            get
+            {
+                if (!_cohort.HasValue)
+                {
+                    if (!string.IsNullOrWhiteSpace(MacAddress))
+                    {
+                        if (int.TryParse($"{MacAddress.Last()}", NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out int lastDigit))
+                        {
+                            _cohort = lastDigit % AzPredictorConstants.CohortCount;
+                            return _cohort.Value;
+                        }
+                    }
+
+                    _cohort = (new Random(DateTime.UtcNow.Millisecond)).Next() % AzPredictorConstants.CohortCount;
+                }
+
+                return _cohort.Value;
+            }
+        }
 
         /// <inheritdoc/>
         public string HashUserId { get; private set; } = string.Empty;

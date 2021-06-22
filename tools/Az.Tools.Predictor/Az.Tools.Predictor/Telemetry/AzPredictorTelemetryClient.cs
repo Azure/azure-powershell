@@ -333,7 +333,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         {
             if (!_userAcceptedAndSuggestion.TryGetValue(telemetryData.Suggestion, out var suggestion))
             {
-                suggestion = "NoRecord";
+                suggestion = telemetryData.Suggestion;
             }
 
             var properties = CreateProperties(telemetryData, telemetryData.Client);

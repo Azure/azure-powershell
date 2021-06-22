@@ -25,6 +25,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string AzCommandMoniker = "-Az";
 
         /// <summary>
+        /// The value of number of cohort groups.
+        /// </summary>
+        public const int CohortCount = 2;
+
+        /// <summary>
         /// The value to use when the command isn't an Az command.
         /// </summary>
         public const string CommandPlaceholder = "start_of_snippet";

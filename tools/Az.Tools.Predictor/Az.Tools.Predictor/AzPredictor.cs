@@ -61,7 +61,12 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     "Connect-AzAccount", "Clear-AzContext", "Disconnect-AzAccount", "Import-AzContext", "Remove-AzContext", "Set-AzContext"
                 },
                 StringComparer.InvariantCultureIgnoreCase);
-        private static readonly PredictiveSuggestion _surveySuggestion = new PredictiveSuggestion("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor");
+
+        private static readonly PredictiveSuggestion[] _surveySuggestions = new PredictiveSuggestion[AzPredictorConstants.CohortCount]
+        {
+            new PredictiveSuggestion("Open-AzPredictorSurvey # Run this command to tell us about your experience with Az Predictor"),
+            new PredictiveSuggestion("Send-AzPredictorRating # Run this command followed by your rating of Az Predictor: 1 (poor) - 5 (great)"),
+        };
 
         private IAzPredictorService _service;
         private ITelemetryClient _telemetryClient;
@@ -343,15 +348,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
 
                 // Replace the last suggestion with "Open-AzPredictorSurvey".
-                // TODO Remove it in GA.
 
                 if (suggestions.Count == _settings.SuggestionCount.Value)
                 {
-                    suggestions[suggestions.Count - 1] = _surveySuggestion;
+                    suggestions[suggestions.Count - 1] = _surveySuggestions[_azContext?.Cohort ?? 0];
                 }
                 else
                 {
-                    suggestions.Add(_surveySuggestion);
+                    suggestions.Add(_surveySuggestions[_azContext?.Cohort ?? 0]);
                 }
 
                 return new SuggestionPackage(localSuggestionSessionId, suggestions);

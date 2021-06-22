@@ -31,6 +31,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
         public Version AzVersion => Version.Parse("0.0.0.0");
 
+        public int Cohort => -1;
+
         public bool IsInternal => true;
 
         public Runspace DefaultRunspace => default;

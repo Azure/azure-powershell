@@ -53,6 +53,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version AzVersion { get; }
 
         /// <summary>
+        /// Gets the group number of the cohort.
+        /// </summary>
+        public int Cohort { get; }
+
+        /// <summary>
         /// Gets whether the user is an internal user.
         /// </summary>
         public bool IsInternal { get; }
