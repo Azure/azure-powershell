@@ -17,21 +17,23 @@ Modifies an account.
 ```
 Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
  [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
- [-IdentityType <String>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
+ [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-ApiProperty <ApiProperties>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
 ```
 Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName <String>]
  [-Tag <Hashtable[]>] [-CustomSubdomainName <String>] [-AssignIdentity] [-UserAssignedIdentityId <String[]>]
- [-IdentityType <String>] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String>
+ [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String>
  -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
- [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>] [-ApiProperty <ApiProperties>]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
+ [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 The ApiProperties of Cognitive Services Account. Required by specific account types.
 
 ```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.ApiProperties
+Type: Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +186,7 @@ Accept wildcard characters: False
 Type of managed service identity.
 
 ```yaml
-Type: System.String
+Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, SystemAssigned, UserAssigned, SystemAssignedUserAssigned

@@ -18,13 +18,14 @@ using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Globalization;
 using System.Management.Automation;
+using CognitiveServicesModels = Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
 {
     /// <summary>
     /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountRemoval", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountRemoval", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class UndoAzureCognitiveServicesAccountRemovalCommand : CognitiveServicesAccountBaseCmdlet
     {
 

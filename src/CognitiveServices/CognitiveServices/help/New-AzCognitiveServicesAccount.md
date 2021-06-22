@@ -17,23 +17,23 @@ Creates a Cognitive Services account.
 ```
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
- [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-StorageAccountId <String[]>]
- [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
- [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <ApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-CognitiveServicesEncryption] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
+ [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
 ```
 New-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
  [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-CustomSubdomainName <String>]
- [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <String>] [-StorageAccountId <String[]>]
- [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String> -KeyVaultUri <String>
- [-KeyVaultIdentityClientId <String>] [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>]
- [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <ApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AssignIdentity] [-UserAssignedIdentityId <String[]>] [-IdentityType <IdentityType>]
+ [-StorageAccountId <String[]>] [-KeyVaultEncryption] -KeyName <String> -KeyVersion <String>
+ -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>] [-RestrictOutboundNetworkAccess <Boolean>]
+ [-AllowedFqdnList <String[]>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The ApiProperties of Cognitive Services Account. Required by specific account types.
 
 ```yaml
-Type: Microsoft.Azure.Management.CognitiveServices.Models.ApiProperties
+Type: Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountApiProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 Set the new Cognitive Services Account Identity type, the idenetity is for use with key management services like Azure KeyVault.
 
 ```yaml
-Type: System.String
+Type: System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.IdentityType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, SystemAssigned, UserAssigned, SystemAssignedUserAssigned

@@ -51,7 +51,7 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Cogniti
 Modifies an account.
 
 ### [Undo-AzCognitiveServicesAccountRemoval](Undo-AzCognitiveServicesAccountRemoval.md)
-{{ Fill in the Synopsis }}
+Recover a deleted account.
 
 ### [Update-AzCognitiveServicesAccountNetworkRuleSet](Update-AzCognitiveServicesAccountNetworkRuleSet.md)
 Update the NetworkRule property of a Cognitive Services account

@@ -13,7 +13,7 @@ Deletes a Cognitive Services account.
 
 ## SYNTAX
 
-### AccountParameterSet
+### AccountParameterSet (Default)
 ```
 Remove-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
