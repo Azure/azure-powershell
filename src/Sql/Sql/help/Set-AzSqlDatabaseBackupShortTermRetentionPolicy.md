@@ -14,22 +14,20 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-ResourceGroupName] <String>
- [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
+[-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
- -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-DatabaseName] <String> [-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>]
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId <String> [-RetentionDays <Int32>] [-DiffBackupIntervalInHours <Int32>]
+[-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,38 +38,63 @@ The policy is the retention period, in days, for point-in-time restore backups.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 35
- ResourceGroupName ServerName  DatabaseName RetentionDays
------------------ ----------  ------------ -------------
-resourcegroup01   server01    database01   35
+PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 6 -DiffBackupIntervalInHours 24
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- -------------------------
+resourcegroup01   server01   database01   6             24
 ```
 
-This command sets the short term retention policy for database01 to 35 days.
+This command sets the short term retention policy for database01 to 6 retention days and 24 differential backup interval hours.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 35
- ResourceGroupName ServerName  DatabaseName RetentionDays
------------------ ----------  ------------ -------------
-resourcegroup01   server01    database01   35
+PS C:\> Get-AzSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 5 -DiffBackupIntervalInHours 12
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- ------------------------
+resourcegroup01   server01   database01   5             12
 ```
 
-This command sets the short term retention policy for database01 to 35 days via piping in a database object.
+This command sets the short term retention policy for database01 to 5 retention days and 12 differential backup interval hours via piping in a database object.
+
+### Example 3
+```powershell
+PS C:\> Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RetentionDays 7
+ResourceGroupName ServerName DatabaseName RetentionDays DiffBackupIntervalInHours
+----------------- ---------- ------------ ------------- -------------------------
+resourcegroup01   server01   database01   7             12
+```
+
+This command sets the short term retention policy for database01 to 7 retention days only. DiffBackupIntervalInHours is unchanged.  
 
 ## PARAMETERS
 
-### -AzureSqlDatabaseObject
-The database object to get the policy for.
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
-Parameter Sets: PolicyByInputObjectSet
-Aliases: AzureSqlDatabase
+Type: System.String
+Parameter Sets: PolicyByResourceServerDatabaseSet
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServerName
+The name of the Azure SQL Server the database is in.
+
+```yaml
+Type: System.String
+Parameter Sets: PolicyByResourceServerDatabaseSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -90,33 +113,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -RetentionDays
+The backup retention setting, in days.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
-Required: False
-Position: Named
-Default value: None
+Required: True
+Position: 3
+Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -DiffBackupIntervalInHours
+The differential backup interval, in hours.
 
 ```yaml
-Type: System.String
-Parameter Sets: PolicyByResourceServerDatabaseSet
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Position: 4
+Default value: 24
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,33 +158,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RetentionDays
-The backup retention setting, in days.
+### -AzureSqlDatabaseObject
+The database object to get the policy for.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
+Type: Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameter Sets: PolicyByInputObjectSet
+Aliases: AzureSqlDatabase
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ServerName
-The name of the Azure SQL Server the database is in.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: PolicyByResourceServerDatabaseSet
-Aliases:
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
