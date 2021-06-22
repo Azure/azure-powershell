@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.SecurityCenter.Common;
 namespace Microsoft.Azure.Commands.SecurityCenter.Cmdlets.RegulatoryCompliance
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RegulatoryComplianceAssessment", DefaultParameterSetName = ParameterSetNames.SubscriptionLevelResource), OutputType(typeof(PSSecurityRegulatoryComplianceAssessment))]
-	[Alias(VerbsCommon.Get + "-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RegulatoryComplainceAssessment")]
+	[Alias("Get-AzRegulatoryComplainceAssessment")]
     
 	public class GetRegulatoryComplianceAssessment : SecurityCenterCmdletBase
     {
