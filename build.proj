@@ -33,6 +33,7 @@
     <Scope Condition="$(Scope) == ''">All</Scope>
     <TestFramework Condition="'$(TestFramework)' == ''">netcoreapp2.2</TestFramework>
     <IsGenerateBased Condition="'$(IsGenerateBased)' != 'true'">false</IsGenerateBased>
+    <IsSecurityCheck Condition="'$(IsSecurityCheck)' != 'true'">false</IsSecurityCheck>
 
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
@@ -119,8 +120,9 @@
       <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;"  Condition="'$(IsGenerateBased)' == 'true'"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CreateFilterMappings.ps1&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" Condition="'$(IsGenerateBased)' == 'true'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/CreateFilterMappings.ps1&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
     <CIFilterTask FilesChanged="@(FilesChanged)" TargetModule="$(TargetModule)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
       <Output TaskParameter="FilterTaskResult" ItemName="FilterTaskResult" />
