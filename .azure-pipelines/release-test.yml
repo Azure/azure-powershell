@@ -1,0 +1,63 @@
+pr: none
+trigger: none
+
+jobs:
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Win_PS5_1_14_SmokeTest'
+    vmImage: 'vs2017-win2016'
+    psVersion: '5.1.14'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Win_PS6_2_4_SmokeTest'
+    vmImage: 'vs2017-win2016'
+    psVersion: '6.2.4'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Win_PS7_0_3_SmokeTest'
+    vmImage: 'vs2017-win2016'
+    psVersion: '7.0.3'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Win_Latest_PS_SmokeTest'
+    vmImage: 'vs2017-win2016'
+    psVersion: 'latest'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Linux_PS6_2_4_SmokeTest'
+    vmImage: 'ubuntu-18.04'
+    psVersion: '6.2.4'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Linux_PS7_0_3_SmokeTest'
+    vmImage: 'ubuntu-18.04'
+    psVersion: '7.0.3'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'Linux_Latest_PS_SmokeTest'
+    vmImage: 'ubuntu-18.04'
+    psVersion: 'latest'
+    
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'MacOS_PS6_2_4_SmokeTest'
+    vmImage: 'macOS-10.15'
+    psVersion: '6.2.4'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'MacOS_PS7_0_3_SmokeTest'
+    vmImage: 'macOS-10.15'
+    psVersion: '7.0.3'
+
+- template: util/smoke-test-steps.yml 
+  parameters:
+    name: 'MacOS_Latest_PS_SmokeTest'
+    vmImage: 'macOS-10.15'
+    psVersion: 'latest'

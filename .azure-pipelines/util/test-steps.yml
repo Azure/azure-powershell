@@ -1,0 +1,57 @@
+parameters:
+  osName: ''
+  testFramework: ''
+  testTarget: ''
+  configuration: ''
+
+steps:
+- template: download-build-steps.yml
+  parameters:
+    osName: ${{ parameters.osName }}
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 2.1.x
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 3.1.x
+
+- task: DotNetCoreCLI@2
+  displayName: Test
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+
+- powershell: |
+   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
+   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   $env:PSModulePath = $env:PSModulePath + ";" + (pwd).Path
+   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
+  workingDirectory: 'artifacts/Debug'
+  displayName: Test for AutoGen Modules With Windows PowerShell
+  condition: and(succeeded(), ne('${{ parameters.testTarget }}', 'Test'))
+
+- pwsh: |
+   Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+   Install-Module -Name Az.Accounts -Scope CurrentUser -Force
+   if ($IsWindows) { $sp = ";" } else { $sp = ":" }
+   $env:PSModulePath = $env:PSModulePath + $sp + (pwd).Path
+   Get-ChildItem -File -Recurse -Depth 1 test-module.ps1 | ForEach-Object {. $_; if ($LastExitCode -ne 0) {throw "test fails when executing $_"}}
+  workingDirectory: 'artifacts/Debug'
+  displayName: 'Test for AutoGen Modules With PowerShell Core'
+  condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
+
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: test-${{ parameters.osName }}
