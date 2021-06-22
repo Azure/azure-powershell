@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* updated docs and examples for sql vulnerability assessment cmdlets
 
 ## Version 0.11.0
 * Fix typo in printing SQL vulnerability assessment scan results
