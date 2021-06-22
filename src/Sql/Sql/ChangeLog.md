@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.3.0
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
 * Fixed Update-AzSqlDatabaseAdvancedThreatProtectionSetting with StorageAccount as an optional parameter instead of required.
 
