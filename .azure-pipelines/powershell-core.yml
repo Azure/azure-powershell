@@ -9,6 +9,7 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
+  IsGenerateBased: $[eq(variables['Build.SourceBranch'], 'refs/heads/generation')]
 
 trigger: none
 
