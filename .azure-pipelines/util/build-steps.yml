@@ -1,0 +1,27 @@
+parameters:
+  osName: ''
+  testFramework: ''
+  configuration: ''
+
+steps:
+- task: PowerShell@2
+  displayName: 'Check Ingored File'
+  inputs:
+    filePath: tools/CheckIgnoredFile.ps1
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 3.1.x
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+
+- template: publish-artifacts-steps.yml
+  parameters:
+    artifactName: build-${{ parameters.osName }}
