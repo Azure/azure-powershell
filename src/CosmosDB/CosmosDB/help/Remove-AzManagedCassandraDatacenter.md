@@ -27,6 +27,11 @@ This cmdlet is used to delete a ManagedCassandra Datacenter.
 PS C:\> Remove-AzManagedCassandraDatacenter -ResourceGroupName "RG01" -ClusterName "Cluster01" -DataCenterName "dc01"
 ```
 
+### Example 2: Delete a Managed Cassandra Datacenter with ResourceId
+```powershell
+PS C:\> Remove-AzManagedCassandraDatacenter -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/RG01/providers/Microsoft.DocumentDB/cassandraClusters/Cluster01/dataCenters/dc01"
+```
+
 ## PARAMETERS
 
 ### -AsJob

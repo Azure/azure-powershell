@@ -30,6 +30,11 @@ PS C:\> Update-AzManagedCassandraDatacenter -ResourceGroupName "RG01" -ClusterNa
 
 This command is used to scale up a datacenter to 5 nodes which initially has 3 nodes.
 
+### Example 2: Update a Managed Cassandra Datacenter with ResourceId
+```powershell
+PS C:\> Update-AzManagedCassandraDatacenter -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/RG01/providers/Microsoft.DocumentDB/cassandraClusters/Cluster01/dataCenters/dc01" -NodeCount 5
+```
+
 ## PARAMETERS
 
 ### -Base64EncodedCassandraYamlFragment

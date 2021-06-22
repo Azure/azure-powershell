@@ -25,7 +25,11 @@ This cmdlet is used to delete a ManagedCassandra Cluster.
 ### Example 1: Delete a Managed Cassandra Cluster
 ```powershell
 PS C:\> Remove-AzManagedCassandraCluster -ResourceGroupName "RG01" -ClusterName "Cluster01"
+```
 
+### Example 2: Delete a Managed Cassandra Cluster with ResourceId
+```powershell
+PS C:\> Remove-AzManagedCassandraCluster -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/RG01/providers/Microsoft.DocumentDB/cassandraClusters/Cluster01"
 ```
 
 ## PARAMETERS

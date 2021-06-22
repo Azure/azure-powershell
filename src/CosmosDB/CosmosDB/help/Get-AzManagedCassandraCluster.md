@@ -43,6 +43,11 @@ PS C:\> Get-AzManagedCassandraCluster -ResourceGroupName "RG01"
 PS C:\> Get-AzManagedCassandraCluster
 ```
 
+### Example 3: Get a Managed Cassandra Cluster using ResourceId
+```powershell
+PS C:\> Get-AzManagedCassandraCluster -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/cluster01"
+```
+
 ## PARAMETERS
 
 ### -ClusterName

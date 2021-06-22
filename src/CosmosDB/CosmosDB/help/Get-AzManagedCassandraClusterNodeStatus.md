@@ -27,6 +27,11 @@ This cmdlet is used to get status of each node in a ManagedCassandra Cluster.
 PS C:\> Get-AzManagedCassandraClusterNodeStatus -ResourceGroupName "RG01" -ClusterName "Cluster01"
 ```
 
+### Example 2: Get status of all nodes in Managed Cassandra Cluster using ResourceId
+```powershell
+PS C:\> Get-AzManagedCassandraClusterNodeStatus -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/test-powershell/providers/Microsoft.DocumentDB/cassandraClusters/cluster01"
+```
+
 
 ## PARAMETERS
 

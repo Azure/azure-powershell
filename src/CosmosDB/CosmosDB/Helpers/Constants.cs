@@ -211,9 +211,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ManagedCassandraBase64EncodedCassandraYamlFragment = "This is a Base64 encoded yaml file that is a subset of cassandra.yaml. Supported fields will be honored and others will be ignored.";
         public const string ManagedCassandraDataCenterDelegatedSubnetIdHelpMessage = "The resource id of a subnet where ip addresses of the Cassandra virtual machines will be allocated. This must be in the same region as datacenter location.";
         public const string ManagedCassandraAuthenticationMethodHelpMessage = "Authentication mode can be None or Cassandra. If None, no authentication will be required to connect to the Cassandra API. If Cassandra, then passwords will be used.";
-        public const string ManagedCassandraRestoreFromBackupIdHelpMessage = "The resource id of a backup. If provided on create, the backup will be used to prepopulate the cluster. The cluster data center count and node counts must match the backup.";
+        public const string ManagedCassandraRestoreFromBackupIdHelpMessage = "The resource id of a backup. If provided on create, the backup will be used to prepopulate the cluster.";
         public const string ManagedCassandraDelegatedSubnetIdHelpMessage = "The resource id of a subnet where the ip address of the cassandra management server will be allocated. This subnet must have connectivity to the DelegatedSubnetId subnet of each data center.";        
-        public const string ManagedCassandraClusterNameOverrideHelpMessage = "If a cluster must have a name that is not a valid azure resource name, this field can be specified to choose the Cassandra cluster name. Otherwise, the resource name will be used as the cluster name.";
+        public const string ManagedCassandraClusterNameOverrideHelpMessage = "By default, the Azure resource name is used to populate the clusterName field in cassandra.yaml. If this field is set, its value is used instead of the Azure resource name, for example, if you need a clusterName that is not a valid Azure resource name, or you need multiple clusters with the same clusterName.";
         
     }
 }

@@ -15,10 +15,10 @@ Create a new ManagedCassandra Cluster.
 ```
 New-AzManagedCassandraCluster -Location <String> -DelegatedManagementSubnetId <String>
  [-InitialCassandraAdminPassword <String>] [-ClusterNameOverride <String>] [-RestoreFromBackupId <String>]
- -ResourceGroupName <String> -ClusterName <String> [-Identity <ManagedServiceIdentity>] [-Tags <Hashtable>]
- [-ExternalGossipCertificates <String[]>] [-ClientCertificates <String[]>] [-RepairEnabled <Boolean>]
- [-HoursBetweenBackups <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
- [-ExternalSeedNodes <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -ResourceGroupName <String> -ClusterName <String> [-Identity <ManagedServiceIdentity>] [-Tag <Hashtable>]
+ [-ExternalGossipCertificate <String[]>] [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>]
+ [-TimeBetweenBackupInHours <Int32>] [-AuthenticationMethod <String>] [-CassandraVersion <String>]
+ [-ExternalSeedNode <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -72,7 +72,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientCertificates
+### -ClientCertificate
 If specified, enables client certificate authentication to the Cassandra API.
 
 ```yaml
@@ -149,7 +149,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalGossipCertificates
+### -ExternalGossipCertificate
 A list of certificates that the managed cassandra data center's should accept.
 
 ```yaml
@@ -164,7 +164,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalSeedNodes
+### -ExternalSeedNode
 A list of ip addresses of the seed nodes of on-premise data centers.
 
 ```yaml
@@ -179,7 +179,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HoursBetweenBackups
+### -TimeBetweenBackupInHours
 The number of hours between backup attempts.
 
 ```yaml
@@ -286,7 +286,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Managed Cassandra Tags.
 
 ```yaml

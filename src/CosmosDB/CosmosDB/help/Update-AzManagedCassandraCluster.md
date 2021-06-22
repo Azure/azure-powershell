@@ -14,9 +14,9 @@ Update a ManagedCassandra Cluster.
 
 ```
 Update-AzManagedCassandraCluster -ResourceGroupName <String> -ClusterName <String>
- [-Identity <ManagedServiceIdentity>] [-Tags <Hashtable>] [-ExternalGossipCertificates <String[]>]
- [-ClientCertificates <String[]>] [-RepairEnabled <Boolean>] [-HoursBetweenBackups <Int32>]
- [-AuthenticationMethod <String>] [-CassandraVersion <String>] [-ExternalSeedNodes <String[]>]
+ [-Identity <ManagedServiceIdentity>] [-Tag <Hashtable>] [-ExternalGossipCertificate <String[]>]
+ [-ClientCertificate <String[]>] [-RepairEnabled <Boolean>] [-TimeBetweenBackupInHours <Int32>]
+ [-AuthenticationMethod <String>] [-CassandraVersion <String>] [-ExternalSeedNode <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,6 +28,11 @@ This cmdlet is used to update a ManagedCassandra Cluster in supported regions.
 ### Example 1: Update a Managed Cassandra Cluster
 ```powershell
 PS C:\> Update-AzManagedCassandraCluster -ResourceGroupName "RG01" -ClusterName "Cluster01" -ExternalSeedNodes "127.0.0.1", "127.0.0.2", "127.0.0.3"
+```
+
+### Example 2: Update a Managed Cassandra Cluster with ResourceId
+```powershell
+PS C:\> Update-AzManagedCassandraCluster -ResourceId "/subscriptions/{subscriptionId}/resourceGroups/RG01/providers/Microsoft.DocumentDB/cassandraClusters/Cluster01" -ExternalSeedNodes "127.0.0.1", "127.0.0.2", "127.0.0.3"
 ```
 
 This command updates external seed nodes on a cluster.
@@ -66,7 +71,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientCertificates
+### -ClientCertificate
 If specified, enables client certificate authentication to the Cassandra API.
 
 ```yaml
@@ -111,7 +116,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalGossipCertificates
+### -ExternalGossipCertificate
 A list of certificates that the managed cassandra data center's should accept.
 
 ```yaml
@@ -126,7 +131,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalSeedNodes
+### -ExternalSeedNode
 A list of ip addresses of the seed nodes of on-premise data centers.
 
 ```yaml
@@ -141,7 +146,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HoursBetweenBackups
+### -TimeBetweenBackupInHours
 The number of hours between backup attempts.
 
 ```yaml
@@ -201,7 +206,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Managed Cassandra Tags.
 
 ```yaml
