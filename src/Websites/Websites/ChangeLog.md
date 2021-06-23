@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
+
+## Version 2.7.0
 * Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
+* Fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
+
+## Version 2.6.0
 * updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
 * Fixed `Set-AzWebApp` to set the AppSettings
 * updated `Set-AzWebAppSlot` to set FtpsState

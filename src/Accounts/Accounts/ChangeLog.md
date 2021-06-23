@@ -19,9 +19,16 @@
 -->
 
 ## Upcoming Release
+* Printed auto generated modules' default logs to verbose stream
+
+## Version 2.4.0
+* Added cmdlet `Open-AzSurveyLink`
+* Supported certificate file as input parameter of Connect-AzAccount
+
+## Version 2.3.0
 * Upgraded Azure.Identity to 1.4 and MSAL to 4.30.1
 * Removed obsolete parameters `ManagedServiceHostName`, `ManagedServicePort` and `ManagedServiceSecret` of cmdlet `Connect-AzAccount`, environment variables `MSI_ENDPOINT` and `MSI_SECRET` could be used instead
-* Customize display format of PSAzureRmAccount to hide secret of service principal [#14208]
+* Customized display format of PSAzureRmAccount to hide secret of service principal [#14208]
 * Added optional parameter `AuthScope` to `Connect-AzAccount` to support enhanced authentication of data plane features
 * Set retry times by environment variable [#14748]
 * Supported subject name issuer authentication

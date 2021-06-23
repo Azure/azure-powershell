@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using DatabaseSecurityAlertPolicy= Microsoft.Azure.Management.Sql.Models.DatabaseSecurityAlertPolicy;
 using System;
 using System.Linq;
 
@@ -253,8 +254,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             var policy = new Management.Sql.Models.ServerSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
-                    ? SecurityAlertPolicyState.Enabled
-                    : SecurityAlertPolicyState.Disabled,
+                    ? SecurityAlertsPolicyState.Enabled
+                    : SecurityAlertsPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),
                 EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
                 EmailAccountAdmins = model.EmailAdmins,
@@ -285,15 +286,15 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             var policy = new Management.Sql.Models.ManagedServerSecurityAlertPolicy()
             {
                 State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled
-                    ? SecurityAlertPolicyState.Enabled
-                    : SecurityAlertPolicyState.Disabled,
+                    ? SecurityAlertsPolicyState.Enabled
+                    : SecurityAlertsPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),
                 EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
                 EmailAccountAdmins = model.EmailAdmins,
                 RetentionDays = Convert.ToInt32(model.RetentionInDays),
             };
 
-            if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
+            if (policy.State == SecurityAlertsPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
             {
                 // For new TD policy, make sure EmailAccountAdmins is true
                 policy.EmailAccountAdmins = true;
@@ -318,12 +319,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <summary>
         /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
         /// </summary>
-        private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
+        private DatabaseSecurityAlertPolicy PolicizeDatabaseSecurityAlertModel(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix)
         {
-            var updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
-            var properties = PopulateDatabasePolicyProperties(model, storageEndpointSuffix, new DatabaseSecurityAlertPolicyProperties()) as DatabaseSecurityAlertPolicyProperties;
-            updateParameters.Properties = properties;
-            return updateParameters;
+            var policy = new DatabaseSecurityAlertPolicy()
+            {
+                State = model.ThreatDetectionState == ThreatDetectionStateType.Enabled ? SecurityAlertsPolicyState.Enabled : SecurityAlertsPolicyState.Disabled,
+                DisabledAlerts = ExtractExcludedDetectionType(model),
+                EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
+                EmailAccountAdmins = model.EmailAdmins,
+                RetentionDays = Convert.ToInt32(model.RetentionInDays),
+            };
+
+            if (string.IsNullOrEmpty(model.StorageAccountName))
+            {
+                policy.StorageEndpoint = null;
+                policy.StorageAccountAccessKey = null;
+            }
+            else
+            {
+                BaseSecurityAlertPolicyProperties legacyProperties = new BaseSecurityAlertPolicyProperties();
+                PopulateStoragePropertiesInPolicy(model, legacyProperties, storageEndpointSuffix);
+                policy.StorageEndpoint = legacyProperties.StorageEndpoint;
+                policy.StorageAccountAccessKey = legacyProperties.StorageAccountAccessKey;
+            }
+
+            return policy;
         }
 
         private BaseSecurityAlertPolicyProperties PopulateDatabasePolicyProperties(BaseThreatDetectionPolicyModel model, string storageEndpointSuffix, BaseSecurityAlertPolicyProperties properties)

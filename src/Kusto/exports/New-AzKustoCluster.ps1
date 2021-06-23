@@ -26,22 +26,19 @@ Location Name                Type                     Zone
 East US  testnewkustocluster Microsoft.Kusto/Clusters
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ICluster
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>: The list of language extensions.
-  [Name <LanguageExtensionName?>]: The language extension name.
-
 TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>: The cluster's external tenants.
   [Value <String>]: GUID representing an external tenant.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.kusto/new-azkustocluster
+https://docs.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 #>
 function New-AzKustoCluster {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ICluster])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ICluster])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,6 +61,21 @@ param(
     # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Header')]
+    [System.String]
+    # The ETag of the cluster.
+    # Omit this value to always overwrite the current cluster.
+    # Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.
+    ${IfMatch},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Header')]
+    [System.String]
+    # Set to '*' to allow a new cluster to be created, but to prevent updating an existing cluster.
+    # Other values will result in a 412 Pre-condition Failed response.
+    ${IfNoneMatch},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -127,7 +139,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # The list of user identities associated with the Kusto cluster.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
@@ -156,13 +168,6 @@ param(
     [System.String]
     # The user assigned identity (ARM resource id) that has access to the key.
     ${KeyVaultPropertyUserIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ILanguageExtension[]]
-    # The list of language extensions.
-    # To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
-    ${LanguageExtensionValue},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -203,7 +208,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.ITrustedExternalTenant[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.ITrustedExternalTenant[]]
     # The cluster's external tenants.
     # To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
     ${TrustedExternalTenant},

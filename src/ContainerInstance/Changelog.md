@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.1.0
+* Removed the display of file share credential [#15224]
+
+## Version 2.0.0
 * Added new cmdlets: `Start-AzContainerGroup`, `Stop-AzContainerGroup` [#10773], `Invoke-AzContainerInstanceCommand` [#7648], `Update-AzContainerGroup`, `Add-AzContainerInstanceOutput`, `Get-AzContainerInstanceCachedImage`, `Get-AzContainerInstanceCapability`, `Get-AzContainerInstanceUsage`, `New-AzContainerGroupImageRegistryCredentialObject`, `New-AzContainerGroupPortObject`, `New-AzContainerGroupVolumeObject`, `New-AzContainerInstanceEnvironmentVariableObject`, `New-AzContainerInstanceInitDefinitionObject`, `New-AzContainerInstanceObject`, `New-AzContainerInstancePortObject` and `New-AzContainerInstanceVolumeMountObject`
 * Supported Log Analytics parameters in `New-AzContainerGroup` [#11117]
 * Added support to specify network profile and the name of Azure File Share in `New-AzContainerGroup` [#9993] [#12218]

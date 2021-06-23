@@ -109,7 +109,58 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 shareRetentionDays = value;
             }
         }
-        private int? shareRetentionDays = null;       
+        private int? shareRetentionDays = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSmbMultichannel
+        {
+            get
+            {
+                return enableSmbMultichannel is null ? false : enableSmbMultichannel.Value;
+            }
+            set
+            {
+                enableSmbMultichannel = value;
+            }
+        }
+        private bool? enableSmbMultichannel = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1.")]
+        [ValidateSet(SmbProtocolVersions.SMB21,
+            SmbProtocolVersions.SMB30,
+            SmbProtocolVersions.SMB311,
+            IgnoreCase = true)]
+        public string[] SmbProtocolVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos.")]
+        [ValidateSet(SmbAuthenticationMethods.Kerberos,
+            SmbAuthenticationMethods.NTLMv2,
+            IgnoreCase = true)]
+        public string[] SmbAuthenticationMethod { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM.")]
+        [ValidateSet(ChannelEncryption.AES128CCM,
+            ChannelEncryption.AES128GCM,
+            ChannelEncryption.AES256GCM,
+            IgnoreCase = true)]
+        public string[] SmbChannelEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Gets or sets kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256.")]
+        [ValidateSet(KerberosTicketEncryption.AES256,
+            KerberosTicketEncryption.RC4HMAC,
+            IgnoreCase = true)]
+        public string[] SmbKerberosTicketEncryption { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -160,8 +211,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
 
+                ProtocolSettings protocolSettings = null;
+                if(this.SmbProtocolVersion != null ||
+                    this.SmbAuthenticationMethod != null ||
+                    this.SmbKerberosTicketEncryption != null ||
+                    this.SmbChannelEncryption != null ||
+                    this.enableSmbMultichannel != null)
+                {
+                    protocolSettings = new ProtocolSettings();
+                    protocolSettings.Smb = new SmbSetting();
+                    if (this.SmbProtocolVersion != null)
+                    {
+                        protocolSettings.Smb.Versions = ConnectStringArray(this.SmbProtocolVersion);
+                    }
+                    if (this.SmbAuthenticationMethod != null)
+                    {
+                        protocolSettings.Smb.AuthenticationMethods = ConnectStringArray(this.SmbAuthenticationMethod);
+                    }
+                    if (this.SmbKerberosTicketEncryption != null)
+                    {
+                        protocolSettings.Smb.KerberosTicketEncryption = ConnectStringArray(this.SmbKerberosTicketEncryption);
+                    }
+                    if (this.SmbChannelEncryption != null)
+                    {
+                        protocolSettings.Smb.ChannelEncryption = ConnectStringArray(this.SmbChannelEncryption);
+                    }
+                    if(this.enableSmbMultichannel != null)
+                    {
+                        protocolSettings.Smb.Multichannel = new Multichannel();
+                        protocolSettings.Smb.Multichannel.Enabled = this.enableSmbMultichannel;
+                    }
+                }
+
                 FileServiceProperties serviceProperties = this.StorageClient.FileServices.SetServiceProperties(this.ResourceGroupName, this.StorageAccountName, 
-                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy));
+                    new FileServiceProperties(shareDeleteRetentionPolicy: deleteRetentionPolicy, protocolSettings: protocolSettings));
 
                 // Get all File service properties from server for output
                 serviceProperties = this.StorageClient.FileServices.GetServiceProperties(this.ResourceGroupName, this.StorageAccountName);

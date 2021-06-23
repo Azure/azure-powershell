@@ -20,13 +20,14 @@ using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Newtonsoft.Json;
-
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
+    [CmdletOutputBreakingChange(typeof(PSSignalRResource), DeprecatedOutputProperties = new String[] { nameof(PSSignalRResource.HostNamePrefix) })]
     public class UpdateAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         private const string DefaultSku = "Standard_S1";
@@ -36,8 +37,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty()]
+        [ResourceGroupCompleter]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
+        [ResourceNameCompleter(Constants.SignalRResourceType, nameof(ResourceGroupName))]
         public string Name { get; set; }
 
         [Parameter(
@@ -130,7 +132,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     IList<string> origins = ParseAndCheckAllowedOrigins(AllowedOrigin);
                     PromptParameter(nameof(AllowedOrigin), origins == null ? null : JsonConvert.SerializeObject(origins));
 
-
                     Sku = Sku ?? DefaultSku;
                     UnitCount = UnitCount ?? DefaultUnitCount;
 
@@ -138,12 +139,12 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     SignalRCorsSettings cors = AllowedOrigin == null ? null : new SignalRCorsSettings(allowedOrigins: origins);
 
                     var parameters = new SignalRResource(
-                                      tags: Tag,
-          sku: new ResourceSku(name: Sku, capacity: UnitCount),
+                        tags: Tag,
+                        sku: new ResourceSku(name: Sku, capacity: UnitCount),
                         features: features,
                         cors: cors);
 
-                    Client.SignalR.Update(ResourceGroupName, Name, parameters);
+                    Client.SignalR.Update(parameters, ResourceGroupName, Name);
 
                     var signalr = (Client.SignalR.Get(ResourceGroupName, Name));
                     WriteObject(new PSSignalRResource(signalr));

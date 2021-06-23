@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Label = backup.Label,
                 ProvisioningState = backup.ProvisioningState,
                 Size = backup.Size,
-                VolumeName = backup.VolumeName
+                VolumeName = backup.VolumeName,
+                UseExistingSnapshot = backup.UseExistingSnapshot
             };
             return psBackup;
         }

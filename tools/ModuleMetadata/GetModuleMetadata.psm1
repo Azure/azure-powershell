@@ -38,7 +38,6 @@ function Get-CmdletBindingPropertyValue
                 }
                 return $null
             }
-            return $null
         }
     }
     elseif ($Cmdlet.CommandType -eq 'Cmdlet')

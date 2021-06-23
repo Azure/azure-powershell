@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.PowerShell
                 sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
                 foreach (var alias in markdownInfo.Aliases)
                 {
-                    sb.Append($"### {alias}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"{alias}{Environment.NewLine}{Environment.NewLine}");
                 }
                 if (markdownInfo.ComplexInterfaceInfos.Any())
                 {

@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.HDInsight","Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand","New-AzHDInsightCluster","0","1050","The parameter set 'Default' for cmdlet 'New-AzHDInsightCluster' has been removed.","Add parameter set 'Default' back to cmdlet 'New-AzHDInsightCluster'."

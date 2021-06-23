@@ -49,6 +49,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false
@@ -76,6 +77,7 @@ AddressSpace           : {
                            ]
                          }
 DhcpOptions            : {}
+FlowTimeoutInMinutes   : null
 Subnets                : []
 VirtualNetworkPeerings : []
 EnableDdosProtection   : false

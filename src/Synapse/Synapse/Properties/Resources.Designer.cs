@@ -856,6 +856,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Spark job definition &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkJobDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Synapse Spark pool &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseSparkPool {
@@ -1050,6 +1059,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseRoleAssignmentById {
             get {
                 return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1311,6 +1329,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
