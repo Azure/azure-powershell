@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = Constants.LocationHelpMessage)]
+        [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

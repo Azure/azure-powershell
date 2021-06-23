@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableDatabaseAccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSRestorableDatabaseAccountGetResult ParentObject { get; set; }
+        public PSRestorableDatabaseAccountGetResult InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                LocationName = ParentObject.Location;
-                DatabaseAccountInstanceId = ParentObject.DatabaseAccountInstanceId;
+                LocationName = InputObject.Location;
+                DatabaseAccountInstanceId = InputObject.DatabaseAccountInstanceId;
             }
 
             IEnumerable restorableMongoDBDatabases = CosmosDBManagementClient.RestorableMongodbDatabases.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId).GetAwaiter().GetResult().Body;

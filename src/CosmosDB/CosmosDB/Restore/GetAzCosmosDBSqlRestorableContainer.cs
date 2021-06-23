@@ -34,24 +34,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string DatabaseRid { get; set; }
+        public string DatabaseRId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableSqlDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSRestorableSqlDatabaseGetResult ParentObject { get; set; }
+        public PSRestorableSqlDatabaseGetResult InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<locationName>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableSqlDatabases/<Id>
-                string[] idComponents = ParentObject.Id.Split('/');
+                string[] idComponents = InputObject.Id.Split('/');
                 LocationName = HttpUtility.UrlDecode(idComponents[6]);
                 DatabaseAccountInstanceId = idComponents[8];
-                DatabaseRid = ParentObject.OwnerResourceId;
+                DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRid).GetAwaiter().GetResult().Body;
+            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
             foreach (RestorableSqlContainerGetResult restorableSqlContainer in restorableSqlContainers)
             {
                 WriteObject(new PSRestorableSqlContainerGetResult(restorableSqlContainer));

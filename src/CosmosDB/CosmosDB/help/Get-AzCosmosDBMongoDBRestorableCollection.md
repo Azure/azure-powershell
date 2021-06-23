@@ -15,7 +15,7 @@ Lists all the restorable Azure Cosmos DB MongoDB collection available for a spec
 ### ByNameParameterSet (Default)
 ```
 Get-AzCosmosDBMongoDBRestorableCollection -LocationName <String> -DatabaseAccountInstanceId <String>
- -DatabaseRid <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -DatabaseRId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -34,7 +34,7 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBRestorableCollection -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRid {DatabaseRid}
+PS C:\> Get-AzCosmosDBMongoDBRestorableCollection -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
 
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
                     /{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBCollections/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseRid
+### -DatabaseRId
 ResourceId of the database.
 
 ```yaml

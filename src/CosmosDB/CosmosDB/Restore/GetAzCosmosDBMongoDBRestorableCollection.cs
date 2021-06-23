@@ -34,24 +34,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.DatabaseResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string DatabaseRid { get; set; }
+        public string DatabaseRId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableMongoDBDatabaseObjectHelpMessage)]
         [ValidateNotNull]
-        public PSRestorableSqlDatabaseGetResult ParentObject { get; set; }
+        public PSRestorableSqlDatabaseGetResult InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
                 // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<locationName>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableMongoDBDatabases/<Id>
-                string[] idComponents = ParentObject.Id.Split('/');
+                string[] idComponents = InputObject.Id.Split('/');
                 LocationName = HttpUtility.UrlDecode(idComponents[6]);
                 DatabaseAccountInstanceId = idComponents[8];
-                DatabaseRid = ParentObject.OwnerResourceId;
+                DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRid).GetAwaiter().GetResult().Body;
+            IEnumerable restorableMongoDBCollections = CosmosDBManagementClient.RestorableMongodbCollections.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
             foreach (RestorableMongodbCollectionGetResult restorableMongoDBCollection in restorableMongoDBCollections)
             {
                 WriteObject(new PSRestorableMongodbCollectionGetResult(restorableMongoDBCollection));

@@ -50,8 +50,8 @@ function Test-RestoreFromNewAccountCmdlets
   Assert-NotNull $restorableSqlDatabases
   Assert-AreEqual $restorableSqlDatabases.Count 1
 
-  $databaseRid=$restorableSqlDatabases[0].OwnerResourceId
-  $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
+  $databaseRId=$restorableSqlDatabases[0].OwnerResourceId
+  $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRId $databaseRId
   Assert-NotNull $restorableSqlContainers
   Assert-True { $restorableSqlContainers.Count -eq 1 }
 
@@ -92,7 +92,7 @@ function Test-RestoreAccountCmdlets
   # $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   # $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   # $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  $restoreTimestampInUtc = "2021-06-23T03:10:16" #[DateTime]::UtcNow.ToString('u')
+  $restoreTimestampInUtc = "2021-06-23T03:10:16Z" #[DateTime]::UtcNow.ToString('u')
 
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1,$collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
@@ -150,8 +150,8 @@ function Test-MongoRestoreAccountCmdlets
   Assert-NotNull $restorableMongoDatabases
   Assert-AreEqual $restorableMongoDatabases.Count 1
 
-  $databaseRid=$restorableMongoDatabases[0].OwnerResourceId
-  $restorableMongoContainers = Get-AzCosmosDBMongoDBRestorableCollection -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
+  $databaseRId=$restorableMongoDatabases[0].OwnerResourceId
+  $restorableMongoContainers = Get-AzCosmosDBMongoDBRestorableCollection -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRId $databaseRId
   Assert-NotNull $restorableMongoContainers
   Assert-AreEqual $restorableMongoContainers.Count 1
 }
@@ -177,7 +177,7 @@ function Test-RestoreFailuresAccountCmdlets
 
   # Restore should fail as account doesn't exist yet
   $invalidSourceCosmosDBAccountName="invalidname"
-  $restoreTimestampInUtc = "2021-06-23T03:10:16" #[DateTime]::UtcNow.ToString('u')
+  $restoreTimestampInUtc = "2021-06-23T03:10:16Z" #[DateTime]::UtcNow.ToString('u')
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -SourceDatabaseAccountName $invalidSourceCosmosDBAccountName -Location $location -RestoreTimestampInUtc $restoreTimestampInUtc
   Assert-Null($restoredCosmosDBAccount)
 
@@ -185,13 +185,13 @@ function Test-RestoreFailuresAccountCmdlets
 
   # Restore should fail as restore timestamp is before account creation timestamp
   # $restoreTimestampInUtc=[DateTime]::UtcNow
-  $restoreTimestampInUtc = "2018-06-23T03:10:16" #$restoreTimestampInUtc.AddDays(-30).ToString('u')
+  $restoreTimestampInUtc = "2018-06-23T03:10:16Z" #$restoreTimestampInUtc.AddDays(-30).ToString('u')
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $location -RestoreTimestampInUtc $restoreTimestampInUtc
   Assert-Null($restoredCosmosDBAccount)
 
   # Restore should fail as restore timestamp is after current timestamp
   # $restoreTimestampInUtc=[DateTime]::UtcNow
-  $restoreTimestampInUtc = "2025-06-23T03:10:16" #$restoreTimestampInUtc.AddDays(30).ToString('u')
+  $restoreTimestampInUtc = "2025-06-23T03:10:16Z" #$restoreTimestampInUtc.AddDays(30).ToString('u')
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $location -RestoreTimestampInUtc $restoreTimestampInUtc
   Assert-Null($restoredCosmosDBAccount)
 
@@ -227,13 +227,13 @@ function Test-RestoreFailuresAccountCmdlets
   Assert-NotNull $restorableSqlDatabases
   Assert-AreEqual $restorableSqlDatabases.Count 1
 
-  $databaseRid=$restorableSqlDatabases[0].OwnerResourceId
-  $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRid $databaseRid
+  $databaseRId=$restorableSqlDatabases[0].OwnerResourceId
+  $restorableSqlContainers = Get-AzCosmosDBSqlRestorableContainer -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId -DatabaseRId $databaseRId
   Assert-NotNull $restorableSqlContainers
   Assert-True { $restorableSqlContainers.Count -eq 2 }
 
   # Trigger restore
-  $restoreTimestampInUtc = "2021-06-23T03:10:16"
+  $restoreTimestampInUtc = "2021-06-23T03:10:16Z"
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $location -RestoreTimestampInUtc $restoreTimestampInUtc -DatabasesToRestore $datatabaseToRestore
 
