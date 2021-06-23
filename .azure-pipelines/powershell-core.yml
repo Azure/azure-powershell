@@ -17,6 +17,7 @@ pr:
   branches:
     include:
       - generation
+      - wyunchi/tmp/azure-pipeline
     exclude:
       - Azs-tzl
 
