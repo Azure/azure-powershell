@@ -22,6 +22,9 @@ Only one key is needed at a time; two are given to provide seamless key regenera
 ### [Get-AzMapsCreator](Get-AzMapsCreator.md)
 Get a Maps Creator resource.
 
+### [Get-AzMapsSubscriptionOperation](Get-AzMapsSubscriptionOperation.md)
+List operations available for the Maps Resource Provider
+
 ### [New-AzMapsAccount](New-AzMapsAccount.md)
 Create or update a Maps Account.
 A Maps Account holds the keys which allow access to the Maps REST APIs.

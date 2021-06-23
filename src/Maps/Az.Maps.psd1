@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Maps.private.dll'
   FormatsToProcess = './Az.Maps.format.ps1xml'
-  FunctionsToExport = 'Get-AzMapsAccount', 'Get-AzMapsAccountKey', 'Get-AzMapsCreator', 'New-AzMapsAccount', 'New-AzMapsAccountKey', 'New-AzMapsCreator', 'Remove-AzMapsAccount', 'Remove-AzMapsCreator', 'Update-AzMapsAccount', 'Update-AzMapsCreator', '*'
+  FunctionsToExport = 'Get-AzMapsAccount', 'Get-AzMapsAccountKey', 'Get-AzMapsCreator', 'Get-AzMapsSubscriptionOperation', 'New-AzMapsAccount', 'New-AzMapsAccountKey', 'New-AzMapsCreator', 'Remove-AzMapsAccount', 'Remove-AzMapsCreator', 'Update-AzMapsAccount', 'Update-AzMapsCreator', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

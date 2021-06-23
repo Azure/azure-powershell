@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzMapsCreator' {
     #NOTE: Only one creator is allowed for a Maps account.
-    It 'List' -Skip {
+    It 'List' {
         { Get-AzMapsCreator -ResourceGroupName $env.resourceGroup -AccountName $env.mapsName01 } | Should -Not -Throw
     }
 

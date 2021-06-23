@@ -1,8 +1,8 @@
 {
-  "Update-AzMapsAccount+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01+1": {
+  "Update-AzMapsAccount+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -18,32 +18,32 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
-        "x-ms-request-id": [ "4704e436-6e17-4082-8fe1-8401b013931b" ],
+        "x-ms-request-id": [ "10d22d35-a5f4-46a8-910b-df8add2cba51" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "15fe5ce0-828e-4c5b-8dfa-04671220e4e8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085120Z:15fe5ce0-828e-4c5b-8dfa-04671220e4e8" ],
+        "x-ms-correlation-request-id": [ "69c39d7c-85ed-4f1c-8d15-57dbbb44fa71" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070424Z:69c39d7c-85ed-4f1c-8d15-57dbbb44fa71" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 May 2021 08:51:20 GMT" ]
+        "Date": [ "Wed, 23 Jun 2021 07:04:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "533" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"914aa212-2341-46eb-b453-4e6f33a0b32a\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2\",\r\n  \"name\": \"mapshngqj2\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01+1": {
+  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "29" ],
-        "x-ms-client-request-id": [ "aa707263-87c7-4b09-8911-7ba456b2185b" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "850196e1-3fd0-46b1-a08d-5f1a2abe67b1" ],
         "CommandName": [ "Get-AzMapsAccount" ],
         "FullCommandName": [ "Get-AzMapsAccount_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -58,28 +58,28 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
-        "x-ms-request-id": [ "8347b4e3-cf8b-4fee-8cf2-4ebfc06e21b8" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11966" ],
+        "x-ms-request-id": [ "ed42c488-6824-4387-939b-f3f3dd0edc17" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "c42a63c9-5988-45e8-b1c0-99b7aa0d9627" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085121Z:c42a63c9-5988-45e8-b1c0-99b7aa0d9627" ],
+        "x-ms-correlation-request-id": [ "bca1e9f1-9f73-41c4-9b6d-3af85006a5cf" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070425Z:bca1e9f1-9f73-41c4-9b6d-3af85006a5cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 May 2021 08:51:21 GMT" ]
+        "Date": [ "Wed, 23 Jun 2021 07:04:25 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "533" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"914aa212-2341-46eb-b453-4e6f33a0b32a\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2\",\r\n  \"name\": \"mapshngqj2\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   },
-  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01+2": {
+  "Update-AzMapsAccount+[NoContext]+UpdateViaIdentityExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2?api-version=2021-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3?api-version=2021-02-01",
       "Content": "{\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -95,20 +95,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1187" ],
-        "x-ms-request-id": [ "f4ecd0b9-3232-4faa-a797-256b2d563f61" ],
+        "x-ms-request-id": [ "1a94072c-98ed-4b9c-ba5f-a5e9bbf8dc96" ],
         "Server": [ "Kestrel" ],
-        "x-ms-correlation-request-id": [ "e5319299-5d62-433b-8547-dbcf768f6822" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210524T085123Z:e5319299-5d62-433b-8547-dbcf768f6822" ],
+        "x-ms-correlation-request-id": [ "a5dbc19a-4857-4b57-83f9-a487c3388942" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20210623T070427Z:a5dbc19a-4857-4b57-83f9-a487c3388942" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Mon, 24 May 2021 08:51:23 GMT" ]
+        "Date": [ "Wed, 23 Jun 2021 07:04:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "533" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"914aa212-2341-46eb-b453-4e6f33a0b32a\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-isgmrk/providers/Microsoft.Maps/accounts/mapshngqj2\",\r\n  \"name\": \"mapshngqj2\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
+      "Content": "{\r\n  \"kind\": \"Gen1\",\r\n  \"type\": \"Microsoft.Maps/accounts\",\r\n  \"sku\": {\r\n    \"name\": \"S1\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"properties\": {\r\n    \"uniqueId\": \"8e667b11-ea54-41a5-a4c0-c0fa98db5da8\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"disableLocalAuth\": false\r\n  },\r\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/maps-rg-2l4gq1/providers/Microsoft.Maps/accounts/mapsim1yk3\",\r\n  \"name\": \"mapsim1yk3\",\r\n  \"location\": \"westcentralus\",\r\n  \"tags\": {\r\n    \"key2\": \"value2\",\r\n    \"key1\": \"value1\"\r\n  }\r\n}",
       "isContentBase64": false
     }
   }

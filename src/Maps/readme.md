@@ -30,7 +30,7 @@ For information on how to develop for `Az.Maps`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5e6a5758c2bd7128984f131be88200cd4d2d1a17
+branch: 34f09c2b143dc50acc8905a415b8d6c959c9e142
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -52,6 +52,13 @@ directive:
       verb: Get
       subject: MapOperation
     remove: true
+  
+  # rename cmdlet
+  - where:
+      verb: Get
+      subject: MapSubscriptionOperation
+    set:
+      subject: SubscriptionOperation
 
   # remove variant
   - where:
@@ -67,11 +74,11 @@ directive:
     remove: true
   
   # Only one creator is allowed for a Maps account.
-  - where:
-      verb: Get
-      subject: Creator
-      variant: ^List$
-    remove: true
+  # - where:
+  #     verb: Get
+  #     subject: Creator
+  #     variant: ^List$
+  #   remove: true
   
   - where:
       verb: New

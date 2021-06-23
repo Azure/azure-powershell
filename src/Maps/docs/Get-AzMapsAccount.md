@@ -39,7 +39,7 @@ Get a Maps Account.
 
 ## EXAMPLES
 
-### Example 1: List all  Maps Accounts under a subscription
+### Example 1: List all Maps Accounts under a subscription
 ```powershell
 PS C:\> Get-AzMapsAccount
 
@@ -50,7 +50,7 @@ eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1
 
 This command lists all Maps Accounts under a subscription.
 
-### Example 2: List all  Maps Accounts under a resource group
+### Example 2: List all Maps Accounts under a resource group
 ```powershell
 PS C:\> Get-AzMapsAccount -ResourceGroupName azure-rg-test
 
