@@ -14,27 +14,27 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHour <Int32>]
  [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHour <Int32>]
  -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays <Int32>] [-DiffBackupIntervalInHour <Int32>]
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzSqlDatabaseBackupShortTermRetentionPolicy** cmdlet sets the short term retention policy for this database.
-The policy is the retention period, in days, for point-in-time restore backups.
+The policy is the retention period, in days, for point-in-time restore backups and differential backup frequency, in hours.
 
 ## EXAMPLES
 
@@ -94,7 +94,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -115,8 +115,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiffBackupIntervalInHours
-The differential backup interval, in hours.
+### -DiffBackupIntervalInHour
+Differential backup frequency in hours.
 
 ```yaml
 Type: System.Int32
@@ -125,7 +125,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 12 or 24
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +139,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -184,7 +184,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
