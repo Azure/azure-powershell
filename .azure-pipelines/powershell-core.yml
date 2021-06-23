@@ -18,6 +18,8 @@ pr:
     include:
       - generation
       - wyunchi/tmp/azure-pipeline
+    exclude:
+      - Azs-tzl
 
 jobs:
 - job: Build
