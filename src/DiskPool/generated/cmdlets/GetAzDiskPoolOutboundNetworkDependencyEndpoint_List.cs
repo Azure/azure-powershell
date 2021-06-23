@@ -11,7 +11,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Cmdlets
     /// <remarks>
     /// [OpenAPI] ListOutboundNetworkDependenciesEndpoints=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StoragePool/diskPools/{diskPoolName}/outboundNetworkDependenciesEndpoints"
     /// </remarks>
-    [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDiskPoolOutboundNetworkDependencyEndpoint_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IOutboundEnvironmentEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Description(@"Gets the network endpoints of all outbound dependencies of a Disk Pool")]

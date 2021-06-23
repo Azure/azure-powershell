@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported enable/disable Blob container soft delete
+    -  `Enable-AzStorageContainerDeleteRetentionPolicy`
+    -  `Disable-AzStorageContainerDeleteRetentionPolicy`
+* Supported list deleted Blob containers
+    -  `Get-AzRmStorageContainer`
+    -  `Get-AzStorageContainer`
+* Supported restore deleted Blob container
+    -  `Restore-AzStorageContainer`
 * Supported secure SMB setting in File service properties
     - `Update-AzStorageFileServiceProperty`
 * Supported create account with EnableNfsV3
