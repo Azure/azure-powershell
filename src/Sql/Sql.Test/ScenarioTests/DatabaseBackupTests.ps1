@@ -443,9 +443,9 @@ function Test-RemoveDatabaseRestorePoint
 function Test-ShortTermRetentionPolicy
 {
 	# Setup
-	$location = "southeast asia"
-	$rg = "PowershellStageResourceGroup"
-	$server = "pssqlserverfortest"
+	$location = "west us 2"
+	$rg = "WestUS2ResourceGroup"
+	$server = "lillian-westus2-server"
 
  	try
 	{

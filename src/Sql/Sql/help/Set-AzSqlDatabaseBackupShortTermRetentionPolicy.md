@@ -14,21 +14,21 @@ Sets a backup short term retention policy.
 
 ### PolicyByResourceServerDatabaseSet (Default)
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
  [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByInputObjectSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
  -AzureSqlDatabaseObject <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Set-AzSqlDatabaseBackupShortTermRetentionPolicy [[-RetentionDays] <Int32>] [-DiffBackupIntervalInHours <Int32>]
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-DiffBackupIntervalInHours] <Int32>
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -125,7 +125,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 24
+Default value: 12 or 24
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +139,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -169,7 +169,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: 7
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -184,7 +184,7 @@ Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
