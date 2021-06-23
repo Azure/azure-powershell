@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact (Skip = "Unrecognized time format for linux/mac.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreAccountCmdlets()
         {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-MongoRestoreAccountCmdlets");
         }
 
-        [Fact]
+        [Fact(Skip = "Unrecognized time format for linux/mac.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreFailuresAccountCmdlets()
         {
