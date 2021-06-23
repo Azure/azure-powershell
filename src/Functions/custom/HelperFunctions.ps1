@@ -1587,6 +1587,79 @@ function NewIdentityUserAssignedIdentity
     return $msiUserAssignedIdentities
 }
 
+function GetShareSuffix
+{
+    param
+    (
+        [Int]
+        $Length = 8
+    )
+
+    $letters = 'a'..'z'
+    $numbers = 0..9
+    $alphanumericLowerCase = $letters + $numbers
+
+    $suffix = [System.Text.StringBuilder]::new()
+
+    for ($index = 0; $index -lt $Length; $index++)
+    {
+        $value = $alphanumericLowerCase | Get-Random
+        $suffix.Append($value) | Out-Null
+    }
+
+    $suffix.ToString()
+}
+
+function GetShareName
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $FunctionAppName
+    )
+
+    $FunctionAppName = $FunctionAppName.ToLower()
+
+    if ($env:FunctionsTestMode)
+    {
+        # To support the tests' playback mode, we need to have the same values for each function app creation payload.
+        # Adding this test hook will allows us to have a constant share name when creation an app.
+
+        return $FunctionAppName
+    }
+
+    <#
+    Share name restrictions:
+        - A share name must be a valid DNS name.
+        - Share names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
+        - Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in share names.
+        - All letters in a share name must be lowercase.
+        - Share names must be from 3 through 63 characters long.
+
+    Docs: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names
+    #>
+
+    # Share name will be function app name + 8 random char suffix with a max length of 60
+    $MAXLENGTH = 60
+    $SUFFIXLENGTH = 8
+    if (($FunctionAppName.Length + $SUFFIXLENGTH) -lt $MAXLENGTH)
+    {
+        $name = $FunctionAppName
+    }
+    else
+    {
+        $endIndex = $MAXLENGTH - $SUFFIXLENGTH - 1
+        $name = $FunctionAppName.Substring(0, $endIndex)
+    }
+
+    $suffix = GetShareSuffix -Length $SUFFIXLENGTH
+    $shareName = $name + $suffix
+
+    return $shareName
+}
+
 # Set Linux and Windows supported runtimes
 Class Runtime {
     [string]$Name
