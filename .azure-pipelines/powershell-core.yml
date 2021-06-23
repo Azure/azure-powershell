@@ -9,13 +9,14 @@ variables:
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
+  IsGenerateBased: $[eq(variables['Build.TargetBranch'], 'refs/heads/generation')]
 
 trigger: none
 
 pr:
   branches:
     include:
-      - '*'
+      - generation
     exclude:
       - Azs-tzl
 

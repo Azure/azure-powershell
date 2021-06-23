@@ -4,6 +4,20 @@ parameters:
   configuration: ''
 
 steps:
+- task: Npm@1
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Install autorest
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: install -g autorest@latest
+- task: PowerShell@2
+  condition: eq(variables.IsGenerateBased, true)
+  displayName: Setup environment for autorest
+  inputs:
+    targetType: inline
+    script: "$env:NODE_OPTIONS=\"--max-old-space-size=65536\"\n\n$currentModule = [System.IO.Path]::GetFileName((Get-Location).Path)\n\nif (@(\"ConnectedMachine\").Contains($currentModule)) {\n    Write-Host \"Generating $currentModule with m3\"\n    autorest --use:@autorest/powershell@2.1.401 --max-memory-size=8192 \n} else {\n    Write-Host \"Generating $currentModule with m4\"\n    autorest --max-memory-size=8192\n}"
+    pwsh: true
 - task: PowerShell@2
   displayName: 'Check Ingored File'
   inputs:
