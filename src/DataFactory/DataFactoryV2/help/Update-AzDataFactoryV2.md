@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactoryV2.dll-Help.xml
 Module Name: Az.DataFactory
 online version: https://docs.microsoft.com/powershell/module/az.datafactory/update-azdatafactoryv2
@@ -14,29 +14,29 @@ Updates the properties of a data factory.
 
 ### ByFactoryName (Default)
 ```
-Update-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Tag <Hashtable>]
- [-IdentityType] <String>
- [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>] 
- [-EncryptionVaultBaseUrl] <String> [-EncryptionKeyName] <String> [-EncryptionKeyVersion] <String> [-EncryptionUserAssignedIdentity] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-IdentityType <String>]
+ [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByFactoryObject
 ```
-Update-AzDataFactoryV2 [-InputObject] <PSDataFactory> [-Tag <Hashtable>]
- [-IdentityType] <String>
- [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>] 
- [-EncryptionVaultBaseUrl] <String> [-EncryptionKeyName] <String> [-EncryptionKeyVersion] <String> [-EncryptionUserAssignedIdentity] <String>
+Update-AzDataFactoryV2 [-IdentityType <String>]
+ [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-InputObject] <PSDataFactory> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzDataFactoryV2 [-ResourceId] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-IdentityType] <String>
- [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>] 
- [-EncryptionVaultBaseUrl] <String> [-EncryptionKeyName] <String> [-EncryptionKeyVersion] <String> [-EncryptionUserAssignedIdentity] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzDataFactoryV2 [-IdentityType <String>]
+ [-UserAssignedIdentity <System.Collections.Generic.IDictionary`2[System.String,System.Object]>]
+ [-EncryptionVaultBaseUrl <String>] [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-ResourceId] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,81 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyName
+The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeyVersion
+The version of the key used for CMK. If not provided, latest version will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionUserAssignedIdentity
+User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionVaultBaseUrl
+The url of the Azure Key Vault used for encryption with CMK.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The Identity type that will be associated with your DataFactory. Options are 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -142,11 +217,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The Identity type that will be associated with your DataFactory. Options are 'SystemAssigned', 'UserAssigned' or 'SystemAssigned,UserAssigned'
+### -Tag
+The tags of the data factory.
 
 ```yaml
-Type: System.String
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -162,81 +237,6 @@ The dictionary containing the user assigned identities of the data factory.
 
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.Object]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionVaultBaseUrl
-The url of the Azure Key Vault used for encryption with CMK.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionKeyName
-The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionKeyVersion
-The version of the key used for CMK. If not provided, latest version will be used.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EncryptionUserAssignedIdentity
-User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-The tags of the data factory.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
