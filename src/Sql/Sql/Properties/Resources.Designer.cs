@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1053,6 +1053,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing allowed FQDN &apos;{0}&apos; from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerOutboundFirewallRuleDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerOutboundFirewallRuleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the allowed FQDN &apos;{0}&apos; from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerOutboundFirewallRuleWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerOutboundFirewallRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Trust Group &apos;{0}&apos; in location &apos;{1}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerTrustGroupDescription {
@@ -1346,6 +1364,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerNotApplicableForThreatDetection {
             get {
                 return ResourceManager.GetString("ServerNotApplicableForThreatDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerOutboundFirewallRuleFQDNDoesNotExist {
+            get {
+                return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed FQDN with name &apos;{0}&apos; already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server &apos;{1}&apos;..
+        /// </summary>
+        internal static string ServerOutboundFirewallRuleFQDNExists {
+            get {
+                return ResourceManager.GetString("ServerOutboundFirewallRuleFQDNExists", resourceCulture);
             }
         }
         
