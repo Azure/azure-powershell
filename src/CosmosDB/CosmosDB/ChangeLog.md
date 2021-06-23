@@ -27,7 +27,7 @@
   - New-AzCosmosBAccount cmdlet is updated with new parameters: IsRestoreReqeust, RestoreSource, RestoreTimestampInUtc, DatabasesToRestore, BackupPolicy.
   - Update-AzCosmosDBAccount cmdlet is updated with new parameters: BackupPolicy.
   - The following cmdlets are added:
-    - New-AzCosmosDBRestore, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
+    - Restore-AzCosmosDBAccount, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
     - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,
     - Get-AzCosmosDBMongoDBRestorableDatabase, Get-AzCosmosDBMongoDBRestorableCollection, Get-AzCosmosDBMongoDBRestorableResource.
 

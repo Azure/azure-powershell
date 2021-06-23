@@ -244,8 +244,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
                 databaseAccountCreateUpdateParameters.BackupPolicy = backupPolicy.ToSDKModel();
             }
-
-            if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
+            else if (BackupIntervalInMinutes.HasValue || BackupRetentionIntervalInHours.HasValue)
             {
                 databaseAccountCreateUpdateParameters.BackupPolicy = new PeriodicModeBackupPolicy()
                 {

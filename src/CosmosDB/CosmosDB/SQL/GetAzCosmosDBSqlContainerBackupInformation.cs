@@ -19,6 +19,8 @@ using Microsoft.Azure.Management.CosmosDB.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.CosmosDB;
 using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Models.Restore.Sql;
+using Microsoft.Azure.Commands.CosmosDB.Exceptions;
+using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -52,18 +54,32 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 CosmosDBManagementClient.SqlResources.GetSqlDatabase(ResourceGroupName, AccountName, DatabaseName);
             }
-            catch (CloudException)
+            catch (CloudException e)
             {
-                throw;
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, DatabaseName), innerException: e);
+                }
+                else
+                {
+                    throw e;
+                }
             }
 
             try
             {
                 CosmosDBManagementClient.SqlResources.GetSqlContainer(ResourceGroupName, AccountName, DatabaseName, Name);
             }
-            catch (CloudException)
+            catch (CloudException e)
             {
-                throw;
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    throw new ResourceNotFoundException(message: string.Format(ExceptionMessage.NotFound, Name), innerException: e);
+                }
+                else
+                {
+                    throw e;
+                }
             }
 
             ContinuousBackupRestoreLocation continuousBackupRestoreLocation = new ContinuousBackupRestoreLocation
