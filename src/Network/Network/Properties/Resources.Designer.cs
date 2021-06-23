@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewaySslProfileName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to trustedClientCertificates.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayTrustedClientCertificateName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to trustedRootCertificates.
         /// </summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewayUrlPathMapName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Checks failed percent for success threshold in test configuration should be between 0-100%. The specified value is out of range..
         /// </summary>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot have both more than one flag set.
+        ///   Looks up a localized string similar to Cannot have more than one state flag set.
         /// </summary>
         internal static string CommissioningStateConflict {
             get {
@@ -1742,7 +1742,40 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule..
+        /// </summary>
+        internal static string VpnGatewayRequiredToCreateVpnNatRule
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VpnGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VpnGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The VirtualNetworkGatewayNatRule could not be found..
+        /// </summary>
+        internal static string VirtualNetworkGatewayNatRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkGatewayNatRuleNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to The VpnServerConfiguration could not be found..
         /// </summary>

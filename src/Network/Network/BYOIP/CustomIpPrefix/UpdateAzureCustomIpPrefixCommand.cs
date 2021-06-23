@@ -63,16 +63,17 @@ namespace Microsoft.Azure.Commands.Network
         [SupportsWildcards]
         public virtual string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "start commissioning process.")]
         public SwitchParameter Commission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Alias("Decomission")]
+        [Parameter(Mandatory = false, HelpMessage = "start decommissioning process.")]
         public SwitchParameter Decommission { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "start provisioning process.")]
         public SwitchParameter Provision { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "start deprovisioning process.")]
         public SwitchParameter Deprovision { get; set; }
 
         [Parameter(
