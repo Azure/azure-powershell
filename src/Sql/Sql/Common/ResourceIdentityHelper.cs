@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
                     identityResult = new Management.Sql.Models.ResourceIdentity()
                     {
-                        Type = ResourceIdentityType.SystemAssignedUserAssigned.ToString()
+                        Type = "SystemAssigned,UserAssigned"
                     };
                 }
                 else if (userAssignedIdentities.Any())
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
                     identityResult = new Management.Sql.Models.ResourceIdentity()
                     {
-                        Type = ResourceIdentityType.SystemAssignedUserAssigned.ToString(),
+                        Type = "SystemAssigned,UserAssigned",
                         UserAssignedIdentities = umiDict
                     };
                 }
