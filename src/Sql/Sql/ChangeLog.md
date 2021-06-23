@@ -25,6 +25,7 @@
       `Get-AzSqlServerOutboundFirewallRule`
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
+* Fixed the identity logic for SystemAssigned,UserAssigned identities for New-AzSqlServer, New-AzSqlInstance
 
 ## Version 3.3.0
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
