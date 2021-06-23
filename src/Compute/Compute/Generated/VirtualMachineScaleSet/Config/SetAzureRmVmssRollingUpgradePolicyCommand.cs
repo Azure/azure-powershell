@@ -64,6 +64,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string PauseTimeBetweenBatches { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool EnableCrossZoneUpgrade { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool PrioritizeUnhealthyInstance { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Set"))
@@ -132,6 +142,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
                 }
                 this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = this.PauseTimeBetweenBatches;
+            }
+
+            if (this.IsParameterBound(c => c.EnableCrossZoneUpgrade))
+            {
+                // UpgradePolicy
+                if (this.VirtualMachineScaleSet.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
+                }
+                // RollingUpgradePolicy
+                if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
+                }
+                this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.EnableCrossZoneUpgrade = this.EnableCrossZoneUpgrade;
+            }
+
+            if (this.IsParameterBound(c => c.PrioritizeUnhealthyInstance))
+            {
+                // UpgradePolicy
+                if (this.VirtualMachineScaleSet.UpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy = new UpgradePolicy();
+                }
+                // RollingUpgradePolicy
+                if (this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy == null)
+                {
+                    this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
+                }
+                this.VirtualMachineScaleSet.UpgradePolicy.RollingUpgradePolicy.PrioritizeUnhealthyInstances = this.PrioritizeUnhealthyInstance;
             }
 
             WriteObject(this.VirtualMachineScaleSet);
