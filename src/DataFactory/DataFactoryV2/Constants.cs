@@ -264,6 +264,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpUserAssignedIdenty = "Dictionary of user assigned identities to use. { \"<UAMI Id>\" : {} }";
 
+        public const string HelpEncryptionVaultBaseUrl = "The url of the Azure Key Vault used for encryption with CMK.";
+
+        public const string HelpEncryptionKeyName = "The name of the key in Azure Key Vault to use as Customer Managed Key for encryption.";
+
+        public const string HelpEncryptionKeyVersion = "The version of the key used for CMK. If not provided, latest version will be used.";
+
+        public const string HelpEncryptionUserAssignedIdentity = "User assigned identity to use to authenticate to customer's key vault. If not provided Managed Service Identity will be used.";
+
         public const string HelpRepoConfigurationProjectName = "The project name for repo configuration.";
 
         public const string HelpRepoConfigurationTenantId = "The tenant id for repo configuration.";
