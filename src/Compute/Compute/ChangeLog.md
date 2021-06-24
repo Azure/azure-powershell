@@ -20,6 +20,10 @@
 
 -->
 ## Upcoming Release
+* Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzGalleryImageVersion`
 * Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
 * Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
 * Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
