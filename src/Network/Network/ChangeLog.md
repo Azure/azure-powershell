@@ -48,6 +48,8 @@
     - `Update-AzVirtualHub`
 * Updated cmdlets to expose two read-only properties of client certificate.
     - `Get-AzApplicationGatewayTrustedClientCertificate`
+* Updated cmdlets to add properties for new BYOIP features.
+    - `New-AzPublicIpAddress`
 
 ## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter
