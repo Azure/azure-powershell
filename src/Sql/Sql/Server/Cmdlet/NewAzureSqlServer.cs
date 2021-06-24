@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
-        public string IdentityType { get; set; }
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None")]
+        public Object[] IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job

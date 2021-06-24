@@ -30,13 +30,22 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
     public class ResourceIdentityHelper
     {
-        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, string resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, System.Object[] resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
+            string resourceIdType = null;
+            if (resourceIdentityType != null && resourceIdentityType.Length == 2)
+            {
+                resourceIdType = "SystemAssigned,UserAssigned";
+            }
+            else if (resourceIdentityType != null)
+            {
+                resourceIdType = (string)resourceIdentityType[0];
+            }
 
             // If the user passes in IdentityType as None, then irrespective of previous config, we set the IdentityType to be None.
             //
-            if (resourceIdentityType != null && resourceIdentityType.Equals(ResourceIdentityType.None.ToString()))
+            if (resourceIdentityType != null && resourceIdType.Equals(ResourceIdentityType.None.ToString()))
             {
                 identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
@@ -46,13 +55,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 return identityResult;
             }
 
-            if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned.ToString()))
+            if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdType.Equals("SystemAssigned,UserAssigned"))
             {
                 Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
 
                 if (userAssignedIdentities == null)
                 {
-                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssignedUserAssigned");
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
                 }
 
                 if (existingResourceIdentity != null && userAssignedIdentities.Any()
@@ -82,13 +91,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     };
                 }
             }
-            else if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdentityType.Equals(ResourceIdentityType.UserAssigned.ToString()))
+            else if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdType.Equals(ResourceIdentityType.UserAssigned.ToString()))
             {
                 Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
 
                 if (userAssignedIdentities == null)
                 {
-                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssignedUserAssigned");
+                    throw new PSArgumentNullException("The list of user assigned identity ids needs to be passed if the IdentityType is UserAssigned or SystemAssigned,UserAssigned");
                 }
 
                 if (existingResourceIdentity != null && userAssignedIdentities.Any()
@@ -140,6 +149,29 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             return identityResult;
+
+        }
+
+        public static string GetEnumValue(ResourceIdentityType resourceIdentityType)
+        {
+            string resourceIdType = null;
+            switch (resourceIdentityType)
+            {
+                case ResourceIdentityType.SystemAssigned:
+                    resourceIdType = "SystemAssigned";
+                    return resourceIdType;
+                case ResourceIdentityType.SystemAssignedUserAssigned:
+                    resourceIdType = "SystemAssigned,UserAssigned";
+                    return resourceIdType;
+                case ResourceIdentityType.UserAssigned:
+                    resourceIdType = "UserAssigned";
+                    return resourceIdType;
+                case ResourceIdentityType.None:
+                    resourceIdType = "None";
+                    return resourceIdType;
+            }
+
+            return resourceIdType;
 
         }
     }
