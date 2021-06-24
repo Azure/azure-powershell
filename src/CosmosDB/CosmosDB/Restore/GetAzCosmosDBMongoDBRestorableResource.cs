@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                LocationName = InputObject.Location;
+                Location = InputObject.Location;
                 DatabaseAccountInstanceId = InputObject.DatabaseAccountInstanceId;
             }
 
-            IEnumerable restorableMongoDBResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, RestoreTimestampInUtc.ToString()).GetAwaiter().GetResult().Body;
+            IEnumerable restorableMongoDBResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, RestoreLocation, RestoreTimestampInUtc.ToString()).GetAwaiter().GetResult().Body;
             foreach (DatabaseRestoreResource restorableMongoDBResource in restorableMongoDBResources)
             {
                 WriteObject(new PSDatabaseToRestore(restorableMongoDBResource));

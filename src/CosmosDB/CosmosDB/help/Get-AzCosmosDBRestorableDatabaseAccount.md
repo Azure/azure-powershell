@@ -13,7 +13,7 @@ Gets the restorable database account object
 ## SYNTAX
 
 ```
-Get-AzCosmosDBRestorableDatabaseAccount [-LocationName <String>] [-DatabaseAccountInstanceId <String>]
+Get-AzCosmosDBRestorableDatabaseAccount [-Location <String>] [-DatabaseAccountInstanceId <String>]
  [-DatabaseAccountName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Lists all the restorable database accounts in the current subscription
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBRestorableDatabaseAccount -LocationName "West US" -DatabaseAccountInstanceId fb8f230e-bab0-452b-81cf-e32643ccc898
+PS C:\> Get-AzCosmosDBRestorableDatabaseAccount -Location "West US" -DatabaseAccountInstanceId fb8f230e-bab0-452b-81cf-e32643ccc898
 
 Id                        : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/fb8f230e-bab0-452b-81cf-e32643ccc898
 DatabaseAccountInstanceId : fb8f230e-bab0-452b-81cf-e32643ccc898
@@ -78,7 +78,7 @@ Gets the restorable database account with the given DatabaseInstanceId in the gi
 The instance Id of the CosmosDB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -119,11 +119,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
+### -Location
 Name of the Location in string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

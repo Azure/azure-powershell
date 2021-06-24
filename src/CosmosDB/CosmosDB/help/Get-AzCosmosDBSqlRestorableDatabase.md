@@ -14,13 +14,13 @@ Gets the list of all the restorable Azure Cosmos DB Sql databases available unde
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlRestorableDatabase -LocationName <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBSqlRestorableDatabase -Location <String> -DatabaseAccountInstanceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlRestorableDatabase -ParentObject <PSRestorableDatabaseAccountGetResult>
+Get-AzCosmosDBSqlRestorableDatabase -InputObject <PSRestorableDatabaseAccountGetResult>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -34,10 +34,10 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBSqlRestorableDatabase -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
+PS C:\> Get-AzCosmosDBSqlRestorableDatabase -Location {location} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId}
 
 Name            : cb04fbfc-4142-413d-b2c5-c91723a17e28
-Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts/{DatabaseAccountInstanceIdInstanceId}/restorableSqlDatabases/cb04fbfc-4142-413d-b2c5-c91723
+Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{DatabaseAccountInstanceIdInstanceId}/restorableSqlDatabases/cb04fbfc-4142-413d-b2c5-c91723
                   a17e28
 Type            : Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlDatabases
 _rid            : a+35ZwAAAA==
@@ -57,7 +57,7 @@ The instance Id of the CosmosDB database account.
 (This is returned as a part of database account properties).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -83,26 +83,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
-Name of the Location in string.
-
-```yaml
-Type: String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
+### -InputObject
 CosmosDB Restorable Database Account object
 
 ```yaml
-Type: PSRestorableDatabaseAccountGetResult
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -110,6 +95,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Name of the Location in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

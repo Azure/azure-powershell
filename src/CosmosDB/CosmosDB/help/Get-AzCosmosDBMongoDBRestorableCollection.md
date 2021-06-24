@@ -14,13 +14,13 @@ Lists all the restorable Azure Cosmos DB MongoDB collection available for a spec
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBMongoDBRestorableCollection -LocationName <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBMongoDBRestorableCollection -Location <String> -DatabaseAccountInstanceId <String>
  -DatabaseRId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBMongoDBRestorableCollection -ParentObject <PSRestorableSqlDatabaseGetResult>
+Get-AzCosmosDBMongoDBRestorableCollection -InputObject <PSRestorableSqlDatabaseGetResult>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ For example, if user wants to restore the database account to a timestamp when a
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBMongoDBRestorableCollection -LocationName {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
+PS C:\> Get-AzCosmosDBMongoDBRestorableCollection -Location {locationName} -DatabaseAccountInstanceId {DatabaseAccountInstanceIdInstanceId} -DatabaseRId {DatabaseRId}
 
 Id              : /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{locationName}/restorableDatabaseAccounts
                     /{DatabaseAccountInstanceIdInstanceId}/restorableMongoDBCollections/6a0cb3e4-7d2b-4363-b585-04a3b14ada8c
@@ -76,22 +76,7 @@ The instance Id of the CosmosDB database account.
 (This is returned as a part of database account properties).
 
 ```yaml
-Type: String
-Parameter Sets: ByNameParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseRId
-ResourceId of the database.
-
-```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -106,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -117,11 +102,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
-Name of the Location in string.
+### -DatabaseRId
+ResourceId of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameParameterSet
 Aliases:
 
@@ -132,11 +117,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
+### -InputObject
 CosmosDB Restorable MongoDB Database object
 
 ```yaml
-Type: PSRestorableSqlDatabaseGetResult
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableSqlDatabaseGetResult
 Parameter Sets: ByParentObjectParameterSet
 Aliases:
 
@@ -144,6 +129,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Name of the Location in string.
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

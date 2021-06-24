@@ -26,7 +26,7 @@ function Test-RestoreFromNewAccountCmdlets
   $consistencyLevel = "Session"
   $apiKind = "Sql"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -85,7 +85,7 @@ function Test-RestoreAccountCmdlets
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   # $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   # New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -126,7 +126,7 @@ function Test-MongoRestoreAccountCmdlets
   $apiKind = "MongoDB"
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -170,7 +170,7 @@ function Test-RestoreFailuresAccountCmdlets
   $consistencyLevel = "Session"
   $apiKind = "Sql"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "West Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   # Create resource group
   # $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -262,7 +262,7 @@ function Test-SqlContainerBackupInformationCmdLets
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -Location "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous

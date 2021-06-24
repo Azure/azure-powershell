@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [Parameter(Mandatory = false, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -49,17 +49,17 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
                 }
             }
-            else if (!string.IsNullOrEmpty(DatabaseAccountInstanceId) && !string.IsNullOrEmpty(LocationName))
+            else if (!string.IsNullOrEmpty(DatabaseAccountInstanceId) && !string.IsNullOrEmpty(Location))
             {
                 RestorableDatabaseAccountGetResult restorableDatabaseAccount = CosmosDBManagementClient.RestorableDatabaseAccounts.GetByLocationWithHttpMessagesAsync(
-                    LocationName,
+                    Location,
                     DatabaseAccountInstanceId).GetAwaiter().GetResult().Body;
 
                 WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));
             }
-            else if (!string.IsNullOrEmpty(LocationName))
+            else if (!string.IsNullOrEmpty(Location))
             {
-                IEnumerable restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListByLocationWithHttpMessagesAsync(LocationName).GetAwaiter().GetResult().Body;
+                IEnumerable restorableDatabaseAccounts = CosmosDBManagementClient.RestorableDatabaseAccounts.ListByLocationWithHttpMessagesAsync(Location).GetAwaiter().GetResult().Body;
                 foreach (RestorableDatabaseAccountGetResult restorableDatabaseAccount in restorableDatabaseAccounts)
                 {
                     WriteObject(new PSRestorableDatabaseAccountGetResult(restorableDatabaseAccount));

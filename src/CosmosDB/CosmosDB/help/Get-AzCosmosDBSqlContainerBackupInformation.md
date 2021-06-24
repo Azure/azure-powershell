@@ -40,7 +40,7 @@ Retrieves the latest restorable timestamp for a sql container. This is the lates
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 Database name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Add a location to the Cosmos DB database account.
 Array of strings, ordered by failover priority.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

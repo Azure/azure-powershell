@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [Parameter(Mandatory = true, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParentObjectParameterSet, HelpMessage = Constants.RestorableDatabaseAccountObjectHelpMessage)]
         [ValidateNotNull]
-        public PSRestorableDatabaseAccountGetResult ParentObject { get; set; }
+        public PSRestorableDatabaseAccountGetResult InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                LocationName = ParentObject.Location;
-                DatabaseAccountInstanceId = ParentObject.DatabaseAccountInstanceId;
+                Location = InputObject.Location;
+                DatabaseAccountInstanceId = InputObject.DatabaseAccountInstanceId;
             }
 
             DateTime dateTimeInUtc;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 dateTimeInUtc = RestoreTimestampInUtc.ToUniversalTime();
             }
 
-            IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
+            IEnumerable restorableSqlResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
             foreach (DatabaseRestoreResource restorableSqlResource in restorableSqlResources)
             {
                 WriteObject(new PSDatabaseToRestore(restorableSqlResource));

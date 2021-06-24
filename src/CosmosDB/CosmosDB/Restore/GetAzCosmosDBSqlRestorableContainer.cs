@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.LocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.AccountInstanceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         {
             if (ParameterSetName.Equals(ParentObjectParameterSet, StringComparison.Ordinal))
             {
-                // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<locationName>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableSqlDatabases/<Id>
+                // id is in the format: /subscriptions/<subscriptionId>/providers/Microsoft.DocumentDB/locations/<location>/restorableDatabaseAccounts/<DatabaseAccountInstanceId>/restorableSqlDatabases/<Id>
                 string[] idComponents = InputObject.Id.Split('/');
-                LocationName = HttpUtility.UrlDecode(idComponents[6]);
+                Location = HttpUtility.UrlDecode(idComponents[6]);
                 DatabaseAccountInstanceId = idComponents[8];
                 DatabaseRId = InputObject.OwnerResourceId;
             }
 
-            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(LocationName, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
+            IEnumerable restorableSqlContainers = CosmosDBManagementClient.RestorableSqlContainers.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, DatabaseRId).GetAwaiter().GetResult().Body;
             foreach (RestorableSqlContainerGetResult restorableSqlContainer in restorableSqlContainers)
             {
                 WriteObject(new PSRestorableSqlContainerGetResult(restorableSqlContainer));

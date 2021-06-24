@@ -24,8 +24,6 @@
   - Introduced support for Point in time restore for accounts with continuous mode backup policy.
   - Introduced support to update the backup interval and backup retention for accounts with periodic mode backup policy.
   - Introduced support to list the restorable resources in a live database account.
-  - New-AzCosmosBAccount cmdlet is updated with new parameters: IsRestoreReqeust, RestoreSource, RestoreTimestampInUtc, DatabasesToRestore, BackupPolicy.
-  - Update-AzCosmosDBAccount cmdlet is updated with new parameters: BackupPolicy.
   - The following cmdlets are added:
     - Restore-AzCosmosDBAccount, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
     - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,

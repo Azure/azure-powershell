@@ -14,16 +14,16 @@ Lists all the restorable Azure Cosmos DB SQL resources available for a specific 
 
 ### ByNameParameterSet (Default)
 ```
-Get-AzCosmosDBSqlRestorableResource -LocationName <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBSqlRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Get-AzCosmosDBSqlRestorableResource -LocationName <String> -DatabaseAccountInstanceId <String>
+Get-AzCosmosDBSqlRestorableResource -Location <String> -DatabaseAccountInstanceId <String>
  -RestoreTimestampInUtc <DateTime> -RestoreLocation <String>
- -ParentObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <PSRestorableDatabaseAccountGetResult> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -52,7 +52,7 @@ The instance Id of the CosmosDB database account.
 (This is returned as a part of database account properties).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,42 +78,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocationName
-Name of the Location in string.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
-CosmosDB Restorable Database Account object
-
-```yaml
-Type: PSRestorableDatabaseAccountGetResult
-Parameter Sets: ByParentObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -RestoreLocation
 The location of the source account from which restore is triggered.
 This will also be the write region of the restored account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +98,37 @@ Accept wildcard characters: False
 The timestamp to which the source account has to be restored to.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+CosmosDB Restorable Database Account object
+
+```yaml
+Type: Microsoft.Azure.Management.CosmosDB.Models.PSRestorableDatabaseAccountGetResult
+Parameter Sets: ByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Name of the Location in string.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

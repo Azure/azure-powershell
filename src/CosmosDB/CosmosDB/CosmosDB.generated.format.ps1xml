@@ -91,8 +91,8 @@
                 <Label>Type</Label>
               </ListItem>
               <ListItem>
-                <PropertyName>_rid</PropertyName>
-                <Label>_rid</Label>
+                <PropertyName>ResourceId</PropertyName>
+                <Label>ResourceId</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>OperationType</PropertyName>
@@ -137,8 +137,8 @@
                 <Label>Type</Label>
               </ListItem>
               <ListItem>
-                <PropertyName>_rid</PropertyName>
-                <Label>_rid</Label>
+                <PropertyName>ResourceId</PropertyName>
+                <Label>ResourceId</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>OperationType</PropertyName>
@@ -183,8 +183,8 @@
                 <Label>Type</Label>
               </ListItem>
               <ListItem>
-                <PropertyName>_rid</PropertyName>
-                <Label>_rid</Label>
+                <PropertyName>ResourceId</PropertyName>
+                <Label>ResourceId</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>OperationType</PropertyName>
@@ -233,8 +233,8 @@
                 <Label>Type</Label>
               </ListItem>
               <ListItem>
-                <PropertyName>_rid</PropertyName>
-                <Label>_rid</Label>
+                <PropertyName>ResourceId</PropertyName>
+                <Label>ResourceId</Label>
               </ListItem>
               <ListItem>
                 <PropertyName>OperationType</PropertyName>
