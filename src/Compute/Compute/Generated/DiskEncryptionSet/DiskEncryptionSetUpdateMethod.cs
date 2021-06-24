@@ -128,6 +128,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public bool? RotationToLatestKeyVersionEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
@@ -179,6 +184,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.DiskEncryptionSetUpdate.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
+
+            if(this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled))
+            {
+                if (this.DiskEncryptionSetUpdate == null)
+                {
+                    this.DiskEncryptionSetUpdate = new DiskEncryptionSetUpdate();
+                }
+                this.DiskEncryptionSetUpdate.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
+            }
         }
 
         private void BuildPutObject()
@@ -209,6 +223,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 this.InputObject.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
             }
+
+            if (this.IsParameterBound(c => c.RotationToLatestKeyVersionEnabled))
+            {
+                this.InputObject.RotationToLatestKeyVersionEnabled = this.RotationToLatestKeyVersionEnabled;
+            }
+
         }
     }
 }

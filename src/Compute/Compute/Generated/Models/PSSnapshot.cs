@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string NetworkAccessPolicy { get; set; }
         public string DiskAccessId { get; set; }
         public PurchasePlan PurchasePlan { get; set; }
+        public bool? SupportsHibernation { get; set; }
 
     }
 }
