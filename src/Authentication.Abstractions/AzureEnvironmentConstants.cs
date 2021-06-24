@@ -140,12 +140,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The token audience for Log Analytics Queries
         /// </summary>
         public const string AzureOperationalInsightsEndpointResourceId = "https://api.loganalytics.io";
+        public const string ChinaOperationalInsightsEndpointResourceId = "https://api.loganalytics.azure.cn";
         public const string USGovernmentOperationalInsightsEndpointResourceId = "https://api.loganalytics.us";
 
         /// <summary>
         /// The endpoint URI for Log Analytics Queries
         /// </summary>
         public const string AzureOperationalInsightsEndpoint = "https://api.loganalytics.io/v1";
+        public const string ChinaOperationalInsightsEndpoint = "https://api.loganalytics.azure.cn/v1";
         public const string USGovernmentOperationalInsightsEndpoint = "https://api.loganalytics.us/v1";
 
         /// <summary>
