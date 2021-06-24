@@ -5,45 +5,30 @@ online version:
 schema: 2.0.0
 ---
 
-# Enable-AzPredictor
+# Open-AzPredictorSurvey
 
 ## SYNOPSIS
-Cmdlet to enable Az Predictor and start receiving suggestions.
+Cmdlet to open a survey link in the default browser.
 
 ## SYNTAX
 
 ```
-Enable-AzPredictor [-AllSession] [-PassThru] [<CommonParameters>]
+Open-AzPredictorSurvey [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use this cmdlet to enable Az Predictor and start receiving suggestions.
+This cmdlet opens a survey link in the default browser and writes the link to the output stream. All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzPredictor
+PS C:\> Open-AzPredictorSurvey
 ```
 
-Enable Az Predictor for the current session.
+Open a survey link in the default browser.
 
 ## PARAMETERS
-
-### -AllSession
-Enable Az Predictor for the current and future PowerShell sessions.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -PassThru
 Indicates whether the user would like to receive output.

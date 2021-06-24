@@ -5,33 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Enable-AzPredictor
+# Send-AzPredictorRating
 
 ## SYNOPSIS
-Cmdlet to enable Az Predictor and start receiving suggestions.
+Cmdlet to send a rating between 1 and 5 about the suggestions provided by the Az.Tools.Predictor module
 
 ## SYNTAX
 
 ```
-Enable-AzPredictor [-AllSession] [-PassThru] [<CommonParameters>]
+Send-AzPredictorRating [-PassThru] [-Rating] <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Use this cmdlet to enable Az Predictor and start receiving suggestions.
+This cmdlet sends the given rating about Az.Tools.Predictor to the server. Accepted values for the rating range 1 (poor) - 5 (great). All data from this survey will be anonymized. See the Microsoft Privacy Policy (https://privacy.microsoft.com/) for more information.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzPredictor
+PS C:\> Send-AzPredictorRating -Rating 5
 ```
 
-Enable Az Predictor for the current session.
+Sends great satisfaction rate about Az.Tools.Predictor
 
 ## PARAMETERS
 
-### -AllSession
-Enable Az Predictor for the current and future PowerShell sessions.
+### -PassThru
+Indicates whether the user would like to receive output.
 
 ```yaml
 Type: SwitchParameter
@@ -45,16 +45,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Indicates whether the user would like to receive output.
+### -Rating
+The rating of Az Predictor: 1 (poor) - 5 (great).
 
 ```yaml
-Type: SwitchParameter
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

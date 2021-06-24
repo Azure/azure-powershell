@@ -32,13 +32,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// <para type="description">Enable Az Predictor for the current and future PowerShell sessions.</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Enable Az Predictor for the current and future PowerShell sessions.")]
         public SwitchParameter AllSession { get; set; }
 
         /// <summary>
         /// <para type="description">Indicates whether the user would like to receive output. </para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether the user would like to receive output.")]
         public SwitchParameter PassThru { get; set; }
 
         /// <inheritdoc/>

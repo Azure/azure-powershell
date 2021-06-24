@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// <para type="description">Indicates whether the user would like to receive output. </para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether the user would like to receive output.")]
         public SwitchParameter PassThru { get; set; }
 
         /// <inheritdoc/>

@@ -33,13 +33,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// <para type="description">Indicates whether the user would like to receive output. </para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether the user would like to receive output.")]
         public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// <para type="description">The rating of Az Predictor: 1 (poor) - 5 (great).</para>
         /// </summary>
-        [Parameter(Mandatory = true, Position = 0)]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = "The rating of Az Predictor: 1 (poor) - 5 (great).")]
         public int Rating { get; set; }
 
         /// <inheritdoc/>
