@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added public ip address as a mandatory parameter to create route server
+    - `New-AzRouteServer`
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter
     - `New-AzureRmIpsecPolicy`
 * Added optional parameter `-EdgeZone` to the following cmdlets:
