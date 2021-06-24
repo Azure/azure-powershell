@@ -1668,8 +1668,8 @@ function SetLinuxandWindowsSupportedRuntimes
                     continue
                 }
 
-                # Skip hidden runtimes if $env:DisplayHiddenRuntimes is set to false
-                if ($majorVersion.isHidden -and (-not $env:DisplayHiddenRuntimes))
+                # Skip hidden runtimes if $env:FunctionsDisplayHiddenRuntimes is set to false
+                if ($majorVersion.isHidden -and (-not $env:FunctionsDisplayHiddenRuntimes))
                 {
                     continue
                 }
