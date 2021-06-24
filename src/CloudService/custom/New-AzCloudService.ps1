@@ -281,19 +281,7 @@ function New-AzCloudService {
         # OS Profile
         if ($PSBoundParameters.ContainsKey("KeyVaultName")) {
             $keyVault = $passMemory.KeyVault 
-
-            $certSecretList = @()
-            $certNameList = @()
-
-            foreach ($role in $cscfg.ServiceConfiguration.Role){
-                foreach ($cert in $role.Certificates.Certificate){
-                    if (-not $certNameList.Contains($cert.name)) {
-                      $certNameList = $cert.name + $certNameList
-                      $aCert = Get-AzKeyVaultCertificate -vaultName $keyvaultName -name $cert.name
-                      $certSecretList = $certSecretList + $aCert.SecretId
-                    }
-                }
-            }
+            $certSecretList = $passMemory.$certSecretList
 
             $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certSecretList 
             $osProfile = @{secret = @($secretGroup)}
@@ -413,7 +401,10 @@ function validation
                 if ( -not $defCerts.name.tolower().Contains($cert.Name.tolower())){
                     throw "The service definition file does not provide a certificate definition for certificate '" + $cert.name + "' for role '"+ $role.name +"'. For more details please refer to : https://aka.ms/cses-cscfg-csdef"
                 }
-                $certList = $certList + $cert
+                if ($certList.Count -eq 0 -or -not $certList.thumbprint.Contains($cert.thumbprint))
+                {
+                    $certList = $certList + $cert
+                }
             }
         }
     }
@@ -626,15 +617,24 @@ function validation
         }
 
         # All certificates are found in the keyvault
-        $certsThumbprints = @()
+        $certsObjsFromKeyvault = @()
+        $certSecretList = @()
         foreach ($cert in $CertsInKV) {
-            $certsThumbprints = $certsThumbprints + (Get-AzKeyVaultCertificate -VaultName $keyvaultname -name $cert.name).thumbprint
+            $certsObjsFromKeyvault = $certsObjsFromKeyvault + (Get-AzKeyVaultCertificate -VaultName $keyvaultname -name $cert.name)
         }
-        foreach ($cert in $certList){
-            if (-not $certsThumbprints.Contains($cert.thumbprint)){
-                throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $cert.name + " " + $cert.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
+        foreach ($certFromFiles in $certList){
+            $thumbprintFound = $false
+            foreach ($certFromKV in $certsObjsFromKeyvault){
+                if ($certFromFiles.thumbprint == $certFromKV.thumbprint){
+                    $thumbprintFound = $true
+                    $certSecretList = $certSecretList + $certFromKV.SecretId
+                }
+            }
+            if (-not $thumbprintFound){
+                throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $certFromFiles.name + " " + $certFromFiles.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
             }
         }
+        $passMemory.Add("certSecretList", $certSecretList)
     }
 
     if ($params.ContainsKey("StorageAccount")) {
