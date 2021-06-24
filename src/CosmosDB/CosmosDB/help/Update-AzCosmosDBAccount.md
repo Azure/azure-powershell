@@ -21,7 +21,7 @@ Update-AzCosmosDBAccount [-EnableAutomaticFailover <Boolean>] [-EnableMultipleWr
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Update-AzCosmosDBAccount -ResourceId <String> [-EnableAutomaticFailover <Boolean
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Update-AzCosmosDBAccount -InputObject <PSDatabaseAccountGetResults> [-EnableAuto
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
- [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
+ [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -117,6 +117,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupPolicyType
+The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BackupRetentionIntervalInHours
 The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)
 
@@ -124,6 +139,21 @@ The time(in hours) for which each backup is retained (only for accounts with per
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -462,21 +492,6 @@ Array of PSVirtualNetworkRuleObjects for virtual network.
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

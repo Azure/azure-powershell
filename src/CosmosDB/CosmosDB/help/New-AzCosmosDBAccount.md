@@ -14,15 +14,15 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
- [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>] [-Location <String[]>]
- [-LocationObject <PSLocation[]>] -ResourceGroupName <String> -Name <String>
+ [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
+ [-Location <String[]>] [-LocationObject <PSLocation[]>] -ResourceGroupName <String> -Name <String>
  [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
  [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob] [-NetworkAclBypass <String>]
  [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,12 +59,94 @@ NetworkAclBypassResourceIds   : {}
 
 A new CosmosDB Account with name databaseAccountName is created in the ResourceGroup resourceGroupName.
 
+### Example 2
+```powershell
+PS C:\> New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -RestoreSourceId /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id} -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+
+
+Id                                 : /subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/restored-account-name
+Name                               : restored-account-name
+InstanceId                         : eeb45f7f-4c05-4b52-9f42-6807d8eb8703
+Location                           : West US
+Tags                               : {}
+EnableCassandraConnector           :
+EnableMultipleWriteLocations       : False
+VirtualNetworkRules                : {}
+FailoverPolicies                   : {restored-account-name-westus}
+Locations                          : {restored-account-name-westus}
+ReadLocations                      : {restored-account-name-westus}
+WriteLocations                     : {restored-account-name-westus}
+Capabilities                       : {}
+ConsistencyPolicy                  : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
+EnableAutomaticFailover            : False
+IsVirtualNetworkFilterEnabled      : False
+IpRules                            : {}
+DatabaseAccountOfferType           : Standard
+DocumentEndpoint                   : https://restored-account-name.documents.azure.com:443/
+ProvisioningState                  : Succeeded
+Kind                               : GlobalDocumentDB
+ConnectorOffer                     :
+DisableKeyBasedMetadataWriteAccess : False
+PublicNetworkAccess                : Enabled
+KeyVaultKeyUri                     :
+PrivateEndpointConnections         :
+EnableFreeTier                     : False
+ApiProperties                      : Microsoft.Azure.Commands.CosmosDB.Models.PSApiProperties
+EnableAnalyticalStorage            : False
+BackupPolicy                       : Microsoft.Azure.Commands.CosmosDB.Models.PSBackupPolicy
+RestoreParameters                  : Microsoft.Azure.Commands.CosmosDB.Models.PSRestoreParameters
+CreateMode                         : Restore
+```
+
+A new account with the name restoredDatabaseAccountName is created by restoring the restorable database account of the given Id to the given timestamp.
+
+### Example 3
+```powershell
+PS C:\> New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+
+
+Id                                 : /subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/restored-account-name
+Name                               : restored-account-name
+InstanceId                         : eeb45f7f-4c05-4b52-9f42-6807d8eb8703
+Location                           : West US
+Tags                               : {}
+EnableCassandraConnector           :
+EnableMultipleWriteLocations       : False
+VirtualNetworkRules                : {}
+FailoverPolicies                   : {restored-account-name-westus}
+Locations                          : {restored-account-name-westus}
+ReadLocations                      : {restored-account-name-westus}
+WriteLocations                     : {restored-account-name-westus}
+Capabilities                       : {}
+ConsistencyPolicy                  : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
+EnableAutomaticFailover            : False
+IsVirtualNetworkFilterEnabled      : False
+IpRules                            : {}
+DatabaseAccountOfferType           : Standard
+DocumentEndpoint                   : https://restored-account-name.documents.azure.com:443/
+ProvisioningState                  : Succeeded
+Kind                               : GlobalDocumentDB
+ConnectorOffer                     :
+DisableKeyBasedMetadataWriteAccess : False
+PublicNetworkAccess                : Enabled
+KeyVaultKeyUri                     :
+PrivateEndpointConnections         :
+EnableFreeTier                     : False
+ApiProperties                      : Microsoft.Azure.Commands.CosmosDB.Models.PSApiProperties
+EnableAnalyticalStorage            : False
+BackupPolicy                       : Microsoft.Azure.Commands.CosmosDB.Models.PSBackupPolicy
+RestoreParameters                  : Microsoft.Azure.Commands.CosmosDB.Models.PSRestoreParameters
+CreateMode                         : Restore
+```
+
+A new account with the name restoredDatabaseAccountName is created by restoring the restorable database account of the given Id to the given timestamp.
+
 ## PARAMETERS
 
 ### -ApiKind
 The type of Cosmos DB database account to create.
-Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra.
-Default value: Sql
+Accepted values: GlobalDocumentDB, MongoDB, Gremlin, Table, Cassandra.
+Default value: GlobalDocumentDB
 
 ```yaml
 Type: System.String
@@ -108,6 +190,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BackupPolicyType
+The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -BackupRetentionIntervalInHours
 The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)
 
@@ -115,6 +212,21 @@ The time(in hours) for which each backup is retained (only for accounts with per
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -235,6 +347,21 @@ Accept wildcard characters: False
 ### -EnableVirtualNetwork
 Enables virtual network on the Cosmos DB database account.
 Accepted values: false, true
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromPointInTimeBackup
+Indicates that the new Cosmos DB account request is a restore request.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -469,21 +596,6 @@ Array of PSVirtualNetworkRuleObjects for virtual network.
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
