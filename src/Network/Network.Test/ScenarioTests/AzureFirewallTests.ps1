@@ -1229,6 +1229,65 @@ function Test-AzureFirewallVirtualHubCRUD {
 
 <#
 .SYNOPSIS
+Tests Hub Firewall with Zones CRUD
+#>
+function Test-AzureFirewallVirtualHubCRUDWithZones {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $azureFirewallPolicyName = Get-ResourceName
+    $skuName = "AZFW_Hub"
+    $skuTier = "Standard"
+    $firewallPIPCount = "2"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+        
+        # Create AzureFirewallPolicy (with no rules, ThreatIntel is in Alert mode by default)
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $policyLocation
+
+        # Get the AzureFirewallPolicy
+        $getazureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        Assert-NotNull $azureFirewallPolicy
+        Assert-NotNull $getazureFirewallPolicy.Id
+
+        $azureFirewallPolicyId = $getazureFirewallPolicy.Id
+
+        $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+
+        New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier  -HubIPAddress $hubIpAddresses -FirewallPolicyId $azureFirewallPolicyId -Zone 1, 2, 3
+        # Get AzureFirewall
+        $getAzureFirewall = Get-AzFirewall -name $azureFirewallName -ResourceGroupName $rgname
+
+        #verification
+        Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
+        Assert-AreEqual $azureFirewallName $getAzureFirewall.Name
+        Assert-NotNull $getAzureFirewall.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewall.Location
+        Assert-NotNull $getAzureFirewall.Sku
+        Assert-AreEqual $skuName $getAzureFirewall.Sku.Name
+        Assert-AreEqual $skuTier $getAzureFirewall.Sku.Tier
+        Assert-NotNull $getAzureFirewall.FirewallPolicy
+        Assert-AreEqual $azureFirewallPolicyId $getAzureFirewall.FirewallPolicy.Id
+        Assert-AreEqual 3 @($getAzureFirewall.Zones).Count
+        Assert-NotNull $getAzureFirewall.HubIPAddresses
+        Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
+        Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests AzureFirewall ThreatIntelWhitelist
 #>
 function Test-AzureFirewallThreatIntelWhitelistCRUD {
