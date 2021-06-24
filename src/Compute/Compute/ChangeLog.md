@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.
