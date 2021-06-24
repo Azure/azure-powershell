@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation.Subsystem.Prediction;
+using System;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
-    /// The data to collect in <see cref="ITelemetryClient.OnSuggestionAccepted"/>.
+    /// The data to collect in <see cref="ITelemetryClient.OnParseCommandLineFailure(CommandLineParsingTelemetryData)"/>.
     /// </summary>
-    public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
+    public sealed class CommandLineParsingTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
         string ITelemetryData.CommandId { get; set; }
@@ -31,31 +31,24 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets client that makes the calls.
+        /// Gets the command line being parsed.
         /// </summary>
-        public PredictionClient Client { get; init; }
+        public string Command { get; }
 
         /// <summary>
-        /// Gets the suggestion that's accepted by the user.
+        /// Gets the exception.
         /// </summary>
-        public string Suggestion { get; }
+        public Exception Exception { get; }
 
         /// <summary>
-        /// Gets the id of the suggestion session.
+        /// Creates a new instance of <see cref="CommandLineParsingTelemetryData"/>.
         /// </summary>
-        public uint SuggestionSessionId { get; init; }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
-        /// </summary>
-        /// <param name="client">The client that makes the call.</param>
-        /// <param name="suggestionSessionId">The suggestion session id.</param>
-        /// <param name="suggestion">The suggestion that's accepted by the user.</param>
-        public SuggestionAcceptedTelemetryData(PredictionClient client, uint suggestionSessionId, string suggestion)
+        /// <param name="command">The command line.</param>
+        /// <param name="exception">The exception that may be thrown.</param>
+        public CommandLineParsingTelemetryData(string command, Exception exception)
         {
-            Client = client;
-            SuggestionSessionId = suggestionSessionId;
-            Suggestion = suggestion;
+            Command = command;
+            Exception = exception;
         }
     }
 }

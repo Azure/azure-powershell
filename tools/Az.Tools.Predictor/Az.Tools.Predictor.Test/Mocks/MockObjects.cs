@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
+using System.Management.Automation.Subsystem.Prediction;
+
+namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 {
     /// <summary>
-    /// A model for the command predicted by the predictor service.
+    /// The instances of mock objects used in the test.
     /// </summary>
-    public class PredictiveCommand
+    public static class MockObjects
     {
         /// <summary>
-        /// The command name.
+        /// The mock prediction clent.
         /// </summary>
-        public string Command { get; set; }
-
-        /// <summary>
-        /// The description of the command.
-        /// </summary>
-        public string Description { get; set; }
+        public static readonly PredictionClient PredictionClient = new PredictionClient("AzPredictorTest", PredictionClientKind.Terminal);
     }
 }
