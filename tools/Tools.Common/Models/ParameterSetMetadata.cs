@@ -72,6 +72,119 @@ namespace Tools.Common.Models
         {
             return base.GetHashCode();
         }
+
+        /// <summary>
+        /// For all mandatory parameters in this parameter set, check if you can find corresponding
+        /// mandatory parameter in another parameter set and their mandatory parameters are exactly the same.
+        /// </summary>
+        /// <param name="other">The ParameterSetMetadata object being compared to this object.</param>
+        /// <returns>True if the two objects are mandatory equal, false otherwise.</returns>
+        public bool AllMandatoryParemeterEquals(object obj)
+        {
+            var other = obj as ParameterSetMetadata;
+            if (other == null)
+            {
+                return false;
+            }
+            var mandatoryCount = 0;
+            var mandatoryOtherCount = 0;
+            foreach (var parameter in Parameters)
+            {
+                if (parameter.Mandatory)
+                {
+                    mandatoryCount++;
+                }
+            }
+            foreach (var parameterOther in other.Parameters)
+            {
+                if (parameterOther.Mandatory)
+                {
+                    mandatoryOtherCount++;
+                }
+            }
+            if (mandatoryCount != mandatoryOtherCount)
+            {
+                return false;
+            }
+
+            foreach (var parameter in Parameters)
+            {
+                if (parameter.Mandatory)
+                {
+                    var containParameter = false;
+                    foreach (var parameterOther in other.Parameters)
+                    {
+                        if (parameterOther.Mandatory && parameterOther.EqualsIncludeName(parameter))
+                        {
+                            containParameter = true;
+                            break;
+                        }
+                    }
+                    if (!containParameter)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// For all mandatory parameters in this parameter set, check if you can find corresponding
+        /// mandatory or optional parameter in another parameter set and the count of mandatory parameters
+        /// in this parameter set must lager than another parameter set
+        /// </summary>
+        /// <param name="other">The ParameterSetMetadata object being compared to this object.</param>
+        /// <returns>True if the two objects are lenient mandatory equal, false otherwise.</returns>
+        public bool AllMandatoryParemeterLenientEquals(object obj)
+        {
+            var other = obj as ParameterSetMetadata;
+            if (other == null)
+            {
+                return false;
+            }
+            var mandatoryCount = 0;
+            var mandatoryOtherCount = 0;
+            foreach (var parameter in Parameters)
+            {
+                if (parameter.Mandatory)
+                {
+                    mandatoryCount++;
+                }
+            }
+            foreach (var parameterOther in other.Parameters)
+            {
+                if (parameterOther.Mandatory)
+                {
+                    mandatoryOtherCount++;
+                }
+            }
+            if (mandatoryCount <= mandatoryOtherCount)
+            {
+                return false;
+            }
+
+            foreach (var parameter in Parameters)
+            {
+                if (parameter.Mandatory)
+                {
+                    var containParameter = false;
+                    foreach (var parameterOther in other.Parameters)
+                    {
+                        if (parameterOther.EqualsIncludeName(parameter))
+                        {
+                            containParameter = true;
+                            break;
+                        }
+                    }
+                    if (!containParameter)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     [Serializable]
@@ -126,6 +239,27 @@ namespace Tools.Common.Models
                            this.ValueFromPipeline == other.ValueFromPipeline &&
                            this.ValueFromPipelineByPropertyName == other.ValueFromPipelineByPropertyName &&
                            this.ParameterMetadata.Equals(other.ParameterMetadata);
+            return paramsEqual;
+        }
+
+        /// <summary>
+        /// Checks if two Parameter objects are equal by comparing
+        /// each of the properties and also their names.
+        /// </summary>
+        /// <param name="other">The Parameter object being compared to this object.</param>
+        /// <returns>True if the two objects are equal include name, false otherwise.</returns>
+        public bool EqualsIncludeName(Object obj)
+        {
+            var other = obj as Parameter;
+            if (other == null)
+            {
+                return false;
+            }
+
+            var paramsEqual = true;
+            paramsEqual &= this.Equals(other) &&
+                           this.ParameterMetadata.Name == other.ParameterMetadata.Name;
+            
             return paramsEqual;
         }
 

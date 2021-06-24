@@ -1,0 +1,44 @@
+{
+  "Get-AzDiskPoolOutboundNetworkDependencyEndpoint+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1/outboundNetworkDependenciesEndpoints?api-version=2021-04-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/eff9fadd-6918-4253-b667-c39271e7435c/resourceGroups/storagepool-rg-test/providers/Microsoft.StoragePool/diskPools/disk-pool-1/outboundNetworkDependenciesEndpoints?api-version=2021-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "f0304042-8359-47cf-bc4e-71521680a1cf" ],
+        "CommandName": [ "Get-AzDiskPoolOutboundNetworkDependencyEndpoint" ],
+        "FullCommandName": [ "Get-AzDiskPoolOutboundNetworkDependencyEndpoint_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "X-Ms-Client-Request-Id": [ "f0304042-8359-47cf-bc4e-71521680a1cf" ],
+        "X-Ms-Request-Id": [ "4b8224f0-0d23-4790-9376-10ec08d59888" ],
+        "X-Ms-Return-Client-Request-Id": [ "true" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "a516a21e-445a-46ff-9184-aa2b09020bfe" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20210615T220452Z:a516a21e-445a-46ff-9184-aa2b09020bfe" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 15 Jun 2021 22:04:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "630" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"category\":\"Microsoft Event Hub\",\"endpoints\":[{\"domainName\":\"evhns-rp-prod-weu.servicebus.windows.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Microsoft Service Bus\",\"endpoints\":[{\"domainName\":\"sb-rp-prod-weu.servicebus.windows.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Microsoft Storage\",\"endpoints\":[{\"domainName\":\"strpprodweu.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]},{\"domainName\":\"stbsprodweu.blob.core.windows.net\",\"endpointDetails\":[{\"port\":443}]}]},{\"category\":\"Microsoft Apt Mirror\",\"endpoints\":[{\"domainName\":\"azure.archive.ubuntu.com\",\"endpointDetails\":[{\"port\":443}]}]}]}",
+      "isContentBase64": false
+    }
+  }
+}

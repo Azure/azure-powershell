@@ -22,7 +22,7 @@ Create a in-memory object for Container
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Container
 .Link
-https://docs.microsoft.com/powershell/module//az.ContainerInstance/new-AzContainerInstanceObject
+https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>
 function New-AzContainerInstanceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210301.Container')]
