@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Custom delegating handlers are per PS instance. We would like to make sure "&$expand" query
-            // string is only applied if the request is a GET request for Blueprint list operation.
+            // string is only applied if the request is GET(point GET and collection) operation for Blueprint service.
             if (request.Method == HttpMethod.Get)
             {
                 var requestUri = request.RequestUri.GetLeftPart(UriPartial.Path);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
         private bool IsBlueprintListRequest(string[] segments)
         {
             return segments.Any()
-                && segments.Length == 3
+                && segments.Length >= 3
                 && BlueprintProviderName.Equals(segments[1], StringComparison.InvariantCultureIgnoreCase)
                 && BlueprintResourceTypeName.Equals(segments[2], StringComparison.InvariantCultureIgnoreCase);
         }
