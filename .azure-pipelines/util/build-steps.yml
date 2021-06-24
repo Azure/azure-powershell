@@ -13,7 +13,7 @@ steps:
   displayName: 'Use .NET Core sdk'
   inputs:
     packageType: sdk
-    version: 2.1.x
+    version: 3.1.x
 
 - task: DotNetCoreCLI@2
   displayName: Build

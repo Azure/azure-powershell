@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.KeyVault","Microsoft.Azure.Commands.KeyVault.Commands.GetAzureManagedHsmRoleDefinition","Get-AzKeyVaultRoleDefinition","0","1050","The parameter set 'Interactive' for cmdlet 'Get-AzKeyVaultRoleDefinition' has been removed.","Add parameter set 'Interactive' back to cmdlet 'Get-AzKeyVaultRoleDefinition'."

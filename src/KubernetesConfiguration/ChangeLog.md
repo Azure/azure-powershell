@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Added SshKnownHosts and ConfigurationProtectedSetting to New-AzKubernetesConfiguration.
 
 ## Version 0.3.0

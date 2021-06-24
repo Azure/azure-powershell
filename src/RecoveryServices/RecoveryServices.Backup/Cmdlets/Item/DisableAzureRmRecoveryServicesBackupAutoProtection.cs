@@ -123,9 +123,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             containerNameResponse = HelperUtils.GetContainerUri(
                             keyValueDictResponse, itemResponse.Properties.ItemId);
 
-                            if (String.Compare(itemNameResponse, itemName, true) == 0 &&
-                            String.Compare(containerUri.Split(';')[3], containerNameResponse.Split(';')[2], true) == 0)
-                            {
+                            if((String.Compare(itemNameResponse, itemName, true) == 0) &&
+                                ((itemType.Contains("sqlavailabilitygroup") && String.Compare(containerUri.Split(';')[1], containerNameResponse, true) == 0)                            
+                                   || (String.Compare(containerUri.Split(';')[3], containerNameResponse.Split(';')[2], true) == 0)))
+                            {   
                                 intentName = itemResponse.Name;
                                 break;
                             }

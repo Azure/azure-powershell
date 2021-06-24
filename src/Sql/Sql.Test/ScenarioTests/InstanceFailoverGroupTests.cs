@@ -25,84 +25,84 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_Named()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-Named");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_Positional()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-Positional");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_AutomaticPolicy()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-AutomaticPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_AutomaticPolicyGracePeriodReadOnlyFailover()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_ManualPolicy()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-ManualPolicy");
         }
         
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_Named()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-Named");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_Positional()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-Positional");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_AutomaticToManual()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-AutomaticToManual");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_ManualToAutomaticNoGracePeriod()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-ManualToAutomaticNoGracePeriod");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test_SwitchInstanceFailoverGroup()
         {
             RunPowerShellTest("Test-SwitchInstanceFailoverGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "Has manual setup, unable to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void Test_SwitchInstanceFailoverGroupAllowDataLoss()
         {

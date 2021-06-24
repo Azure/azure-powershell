@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation.Language;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
@@ -32,9 +33,9 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets the client that makes the calls.
         /// </summary>
-        public string ClientId { get; init; }
+        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// Gets the user input.
@@ -67,15 +68,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// Creates a new instance of <see cref="GetSuggestionTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="userInput">The user input that the <paramref name="suggestion"/> is for.</param>
         /// <param name="suggestion">The suggestions returned for the <paramref name="userInput"/>.</param>
         /// <param name="isCancellationRequested">Indicates if the cancellation has been requested.</param>
         /// <param name="exception">The exception that is thrown if there is an error.</param>
-        public GetSuggestionTelemetryData(string clientId, uint suggestionSessionId, Ast userInput, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
+        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
         {
-            ClientId = clientId;
+            Client = client;
             SuggestionSessionId = suggestionSessionId;
             UserInput = userInput;
             Suggestion = suggestion;

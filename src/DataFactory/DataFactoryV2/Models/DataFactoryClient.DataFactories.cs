@@ -140,6 +140,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             Tags = parameters.Tags?.ToDictionary(),
                             RepoConfiguration = parameters.RepoConfiguration,
                             Identity = parameters.FactoryIdentity,
+                            Encryption = parameters.EncryptionConfiguration,
                             GlobalParameters = parameters.GlobalParameters
                         }),
                     parameters.ResourceGroupName);

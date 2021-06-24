@@ -83,6 +83,11 @@ namespace Microsoft.Azure.Commands.Aks
         [PSArgumentCompleter("AvailabilitySet", "VirtualMachineScaleSets")]
         public string VmSetType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.")]
+        public string[] AvailabilityZone { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Create node pool even if it already exists")]
         public SwitchParameter Force { get; set; }
 
@@ -166,6 +171,10 @@ namespace Microsoft.Azure.Commands.Aks
             if(this.IsParameterBound(c => c.ScaleSetPriority))
             {
                 agentPool.ScaleSetPriority = ScaleSetPriority;
+            }
+            if (this.IsParameterBound(c => c.AvailabilityZone))
+            {
+                agentPool.AvailabilityZones = AvailabilityZone;
             }
 
             return agentPool;

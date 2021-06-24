@@ -242,6 +242,17 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 
 This command first create a keyvault and a user assigned identity, then create a storage account with keyvault encryption (the storage access access keyvault with the user assigned identity).
 
+### Example 13: Create account with EnableNfsV3
+```
+PS C:\> $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -EnableNfsV3 $true -EnableHierarchicalNamespace $true -EnableHttpsTrafficOnly $false -NetworkRuleSet (@{bypass="Logging,Metrics";
+        virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"});
+        defaultAction="deny"}) 
+PS C:\> $account.EnableNfsV3
+True
+```
+
+The command create account with EnableNfsV3 as true, and then show the EnableNfsV3 property of the created account 
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -467,7 +478,7 @@ Default share permission for users using Kerberos authentication if RBAC role is
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor, StorageFileDataSmbShareOwner
+Accepted values: None, StorageFileDataSmbShareContributor, StorageFileDataSmbShareReader, StorageFileDataSmbShareElevatedContributor
 
 Required: False
 Position: Named

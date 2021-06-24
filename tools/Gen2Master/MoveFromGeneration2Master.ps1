@@ -7,12 +7,25 @@ Function Move-Generation2Master {
     )
 
     process {
-        $ModuleName = ($SourcePath.Trim("\").Split("\"))[-1]
-        If (-not ($DestPath.Trim("\").Split("\")[-1] -eq $ModuleName)) {
-            $DestPath = Join-Path -Path $DestPath -ChildPath $ModuleName
+        #Region Handle the hybrid module whoes folder is a subfolder of the module folder.
+        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+        $SourcePsd1Path = Get-ChildItem -path $ModuleFolder -filter Az.$ModuleName.psd1 -Recurse
+        $FolderPathRelativeToSrc = $SourcePsd1Path.Directory.FullName.Replace('/', '\').Split('\src\')[1]
+        if ($FolderPathRelativeToSrc -eq $ModuleName)
+        {
+            $IsHybridModule = $False
         }
+        else
+        {
+            $IsHybridModule = $True
+        }
+        $SourcePath = $SourcePsd1Path.Directory.FullName
+        If (-not ($DestPath.Trim("\").Split("\")[-1] -eq $ModuleName)) {
+            $DestPath = Join-Path -Path $DestPath -ChildPath $FolderPathRelativeToSrc
+        }
+        #EndRegion
         If (-not (Test-Path $DestPath)) {
-            New-Item -ItemType Directory -Path $DestPath
+            New-Item -ItemType Directory -Path $DestPath -Force
         }
         $Dir2Copy = @('custom', 'examples', 'exports', 'generated', 'internal', 'test', 'utils')
         Foreach($Dir in $Dir2Copy) {
@@ -64,7 +77,10 @@ Function Move-Generation2Master {
             $Psd1Version = $Psd1Metadata.ModuleVersion
         }
         $Psd1Metadata = Import-LocalizedData -BaseDirectory $SourcePath -FileName "Az.$ModuleName.psd1"
-        $Psd1Metadata.ModuleVersion = $Psd1Version
+        If ($Null -ne $Psd1Version)
+        {
+            $Psd1Metadata.ModuleVersion = $Psd1Version
+        }
         If ($Null -ne $ModuleGuid) {
             $Psd1Metadata.GUID = $ModuleGuid
         }
@@ -74,7 +90,10 @@ Function Move-Generation2Master {
             $AccountsMetadata = Import-LocalizedData -BaseDirectory $AccountsModulePath -FileName "Az.Accounts.psd1"
             $RequiredModule = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = $AccountsMetadata.ModuleVersion; })
         }
-        $Psd1Metadata.RequiredModules = $RequiredModule
+        If ($Null -ne $RequiredModule)
+        {
+            $Psd1Metadata.RequiredModules = $RequiredModule
+        }
         If ($Psd1Metadata.FunctionsToExport -Contains "*") {
             $Psd1Metadata.FunctionsToExport = ($Psd1Metadata.FunctionsToExport | Where-Object {$_ -ne "*"})
         }
@@ -141,9 +160,36 @@ Function Move-Generation2Master {
         Set-Content -Path $GeneratedModuleListPath -Value $NewModules
         #EndRegion
 
-        Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"
+        if ($IsHybridModule)
+        {
+            Copy-Template -SourceName Az.ModuleName.hybrid.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"
+        }
+        else
+        {
+            Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj"
+        }
         Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md
-        Copy-Template -SourceName ModuleName.sln -DestPath $DestPath -DestName "$ModuleName.sln"
+        #Region create a solution file for module and add the related csproj files to this solution.
+        dotnet new sln -n $ModuleName -o $DestPath
+        $DestParentPath = $DestPath
+        While ("" -eq $DestParentPath)
+        {
+            $DestAccountsPath = Get-ChildItem -Path $DestParentPath -Filter Accounts
+            if ($Null -eq $DestAccountsPath)
+            {
+                $DestParentPath = Split-Path -path $DestParentPath -Parent
+            }
+            else
+            {
+                Break
+            }
+        }
+        $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
+        foreach ($DependenceCsproj in (Get-ChildItem -path $DestAccountsPath -Recurse -Filter *.csproj -Exclude *test*))
+        {
+            dotnet sln $SolutionPath add $DependenceCsproj
+        }
+        #EndRegion
 
         $PropertiesPath = Join-Path -Path $DestPath -ChildPath "Properties"
         If (-not (Test-Path $PropertiesPath)) {

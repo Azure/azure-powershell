@@ -75,6 +75,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionProtocol { get; set; }
 
+        [Ps1Xml(Label = "IngressNatRules", Target = ViewControl.Table)]
+        public List<PSResourceId> IngressNatRules { get; set; }
+
+        [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
+        public List<PSResourceId> EgressNatRules { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {
@@ -103,6 +109,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string TunnelConnectionStatusText
         {
             get { return TunnelConnectionStatus == null ? string.Empty : JsonConvert.SerializeObject(TunnelConnectionStatus, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string IngressNatRulesText
+        {
+            get { return IngressNatRules == null ? string.Empty : JsonConvert.SerializeObject(IngressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string EgressNatRulesText
+        {
+            get { return IngressNatRules == null ? string.Empty : JsonConvert.SerializeObject(EgressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

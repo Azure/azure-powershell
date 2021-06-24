@@ -998,13 +998,13 @@ function Test-NewSetAzStorageAccountFileAADDS
         Assert-AreEqual 'AADDS' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
         Assert-AreEqual 'StorageFileDataSmbShareContributor' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 		
 		
-		$sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryDomainServicesForFile $false -DefaultSharePermission StorageFileDataSmbShareOwner
+		$sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryDomainServicesForFile $false -DefaultSharePermission StorageFileDataSmbShareReader
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind; 
         Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
-        Assert-AreEqual 'StorageFileDataSmbShareOwner' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
+        Assert-AreEqual 'StorageFileDataSmbShareReader' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -1012,7 +1012,7 @@ function Test-NewSetAzStorageAccountFileAADDS
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind; 
         Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
-        Assert-AreEqual 'StorageFileDataSmbShareOwner' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
+        Assert-AreEqual 'StorageFileDataSmbShareReader' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
@@ -1408,7 +1408,7 @@ function Test-NewSetAzureStorageAccountAllowSharedKeyAccess
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
-		#Assert-AreEqual $false $sto.AllowSharedKeyAccess
+        Assert-AreEqual $false $sto.AllowSharedKeyAccess
 		
         Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -AllowSharedKeyAccess $true -EnableHttpsTrafficOnly $true 
 		
@@ -1417,7 +1417,7 @@ function Test-NewSetAzureStorageAccountAllowSharedKeyAccess
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
-		#Assert-AreEqual $true $sto.AllowSharedKeyAccess
+        Assert-AreEqual $true $sto.AllowSharedKeyAccess
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
@@ -1938,6 +1938,59 @@ function Test-StorageBlobInventory
 
 		# remove policy 
 		Remove-AzStorageBlobInventoryPolicy -ResourceGroupName $rgname  -StorageAccountName $stoname
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Test-NewAzureStorageAccountEnableNfsV3
+.DESCRIPTION
+SmokeTest
+#>
+function Test-NewAzureStorageAccountEnableNfsV3
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        $rg = New-AzResourceGroup -Name $rgname -Location $loc;
+        Write-Output ("Resource Group created")
+		
+        ## Create a vnet and subnet in same location, then get the subnet resource id
+        # New-AzVirtualNetwork -ResourceGroupName $rgname -Location $loc -AddressPrefix 10.0.0.0/24 -Name "vnet1" 
+        # $subnet = Get-AzVirtualNetwork -ResourceGroupName $rgname -Name "vnet1" | Add-AzVirtualNetworkSubnetConfig -Name "subnet1" -AddressPrefix "10.0.0.0/28" -ServiceEndpoint "Microsoft.Storage"  | Set-AzVirtualNetwork 
+        # $vnet1 = $subnet.Id
+        $vnet1 = "$($rg.ResourceId)/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+		
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype `
+				-EnableNfsV3 $true `
+				-EnableHierarchicalNamespace $true `
+				-EnableHttpsTrafficOnly $false `
+				-NetworkRuleSet (@{bypass="Logging,Metrics";defaultAction="allow";virtualNetworkRules=(@{VirtualNetworkResourceId="$vnet1";Action="allow"})}) 
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.EnableHierarchicalNamespace
+        Assert-AreEqual $false $sto.EnableHttpsTrafficOnly
+        Assert-AreEqual $true $sto.EnableNfsV3
 
         Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }

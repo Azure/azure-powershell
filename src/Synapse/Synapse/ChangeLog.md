@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
+* Add support for Synapse Spark job definition
+	- Add `New-AzSynapseSparkJobDefinition` cmdlet
+    - Add `Get-AzSynapseSparkJobDefinition` cmdlet
+    - Add `Remove-AzSynapseSparkJobDefinition` cmdlet
+
+## Version 0.12.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
 
 ## Version 0.11.0
 * Removed principaltype in Synapse Role-based access control

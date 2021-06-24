@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.2.0
 * Introduced support for Sql data plane RBAC, allowing the creation, updating, removal, and retrieval of Role Definitions and Role Assignments
   - The following cmdlets are added:
     - Get-AzCosmosDBSqlRoleDefinition, Get-AzCosmosDBSqlRoleAssignment,
