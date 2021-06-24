@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The token audience for authorizing managed hsm requests
         /// </summary>
         public const string AzureManagedHsmServiceEndpointResourceId = "https://managedhsm.azure.net";
-        public const string ChineManagedHsmServiceEndpointResourceId = "https://managedhsm.azure.cn";
+        public const string ChinaManagedHsmServiceEndpointResourceId = "https://managedhsm.azure.cn";
         public const string USGovernmeneManagedHsmServiceEndpointResourceId = "https://managedhsm.usgovcloudapi.net";
         public const string GermanAzureManagedHsmServiceEndpointResourceId = "https://managedhsm.microsoftazure.de";
 
