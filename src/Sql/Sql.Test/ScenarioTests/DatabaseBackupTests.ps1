@@ -455,7 +455,7 @@ function Test-ShortTermRetentionPolicy
 
 		# Test GET default values. 
 		$defaultRetention = 7
-		# After we configure Backup Service's default DiffBackupIntervalInHour to 24 hours for new created databases, $defaultDiffbackupinterval should be changed to 24.
+		# After we configure Backup Service's default DiffBackupIntervalInHours to 24 hours for new created databases, $defaultDiffbackupinterval should be changed to 24.
 		$defaultDiffbackupinterval = 12
 		$policy = Get-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName
 		Assert-AreEqual $policy.Count 1
@@ -465,7 +465,7 @@ function Test-ShortTermRetentionPolicy
  		# Test SET
 		$retention = 6
 		$diffbackupinterval = 24
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHour $diffbackupinterval
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retention $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
@@ -477,7 +477,7 @@ function Test-ShortTermRetentionPolicy
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
 
 		$diffbackupintervalOnly = 12
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -DiffBackupIntervalInHour $diffbackupintervalOnly
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg -ServerName $server -DatabaseName $databaseName -DiffBackupIntervalInHours $diffbackupintervalOnly
 		Assert-AreEqual $policy.Count 1
 		Assert-AreEqual $retentionOnly $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupintervalOnly $policy[0].DiffBackupIntervalInHours
@@ -485,7 +485,7 @@ function Test-ShortTermRetentionPolicy
  		# Test InputObject
 		$retention = 7
 		$diffbackupinterval = 24
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention -DiffBackupIntervalInHour $diffbackupinterval
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
@@ -498,7 +498,7 @@ function Test-ShortTermRetentionPolicy
 		$retention = 6
 		$diffbackupinterval = 12
 		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
-		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention -DiffBackupIntervalInHour $diffbackupinterval
+		$policy = Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours
@@ -510,7 +510,7 @@ function Test-ShortTermRetentionPolicy
  		# Test Piping
 		$retention = 7
 		$diffbackupinterval = 24
-		$policy = $db | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention -DiffBackupIntervalInHour $diffbackupinterval
+		$policy = $db | Set-AzSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention -DiffBackupIntervalInHours $diffbackupinterval
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
 		Assert-AreEqual $diffbackupinterval $policy[0].DiffBackupIntervalInHours

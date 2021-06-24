@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Differential backup frequency in hours.")]
         [PSArgumentCompleter("12", "24")]			
-        public int DiffBackupIntervalInHour { get; set; }	
+        public int DiffBackupIntervalInHours { get; set; }	
 			
         /// <summary>
         /// Get the entities from the service
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     DatabaseName,
                     new Management.Sql.Models.BackupShortTermRetentionPolicy(
                         retentionDays: this.IsParameterBound(c => c.RetentionDays) ? RetentionDays : null as int?, 
-                        diffBackupIntervalInHours: this.IsParameterBound(c => c.DiffBackupIntervalInHour) ? DiffBackupIntervalInHour : null as int?)
+                        diffBackupIntervalInHours: this.IsParameterBound(c => c.DiffBackupIntervalInHours) ? DiffBackupIntervalInHours : null as int?)
                 )
             };
         }
