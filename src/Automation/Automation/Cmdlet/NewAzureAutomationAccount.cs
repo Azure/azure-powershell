@@ -25,10 +25,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationAccount")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationAccount", DefaultParameterSetName = AutomationServicesEncryptionParameterSet)]
     [OutputType(typeof(AutomationAccount))]
     public class NewAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
+        /// <summary>
+        /// AutomationServices Encryption parameter set name
+        /// </summary>
+        private const string AutomationServicesEncryptionParameterSet = "AutomationServicesEncryption";
+
+        /// <summary>
+        /// KeyVault Encryption parameter set name
+        /// </summary>
+        private const string KeyVaultEncryptionParameterSet = "KeyVaultEncryption";
+
         /// <summary>
         /// The automation client.
         /// </summary>
@@ -87,14 +97,70 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Alias("Tag")]
         public IDictionary Tags { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Generate and assign a new System Identity for this automation account")]
+        public SwitchParameter AssignSystemIdentity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Assign the User Assigned Identities to this automation account")]
+        [ValidateNotNullOrEmpty]
+        public string[] AssignUserIdentity { get; set; }
+
+        [Parameter(HelpMessage = "Specify whether set Automation Account KeySource to Microsoft.Automation or not.",
+            Mandatory = false,
+            ParameterSetName = AutomationServicesEncryptionParameterSet)]
+        public SwitchParameter AutomationServicesEncryption { get; set; }
+
+        [Parameter(HelpMessage = "Specifiy whether set Automation Account KeySource to Microsoft.KeyVault (enable CMK) or not.",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        public SwitchParameter KeyVaultEncryption { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyName",
+                    Mandatory = true,
+                    ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyName { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyVersion",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVersion { get; set; }
+
+        [Parameter(HelpMessage = "CMK KeyVaultUri",
+            Mandatory = true,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
+
+        [Parameter(HelpMessage = "User Assigned Identity used for encryption",
+            Mandatory = false,
+            ParameterSetName = KeyVaultEncryptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string UserIdentityEncryption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Whether to disable traffic on the non-ARM endpoints (Webhook/Agent) from the public internet")]
+        public SwitchParameter DisablePublicNetworkAccess { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags);
-            this.WriteObject(account);
+            bool addSystemId = AssignSystemIdentity.IsPresent;
+            bool enableAMK = AutomationServicesEncryption.IsPresent;
+            bool enableCMK = (ParameterSetName == KeyVaultEncryptionParameterSet);
+            bool disablePublicNetworkAccess = DisablePublicNetworkAccess.IsPresent;
+
+            var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags, addSystemId, AssignUserIdentity, enableAMK, enableCMK, KeyName, KeyVersion, KeyVaultUri, UserIdentityEncryption, disablePublicNetworkAccess);
+            this.WriteObject(account);               
+            
         }
     }
 }

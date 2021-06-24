@@ -450,4 +450,10 @@
   <data name="UpdatingRoleAssignment" xml:space="preserve">
     <value>Updating role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
   </data>
+  <data name="NoADObjectFound" xml:space="preserve">
+    <value>No AD object was found with the parameters provided please ensure that the display name or GUID is written properly</value>
+  </data>
+  <data name="NotAuthorizedInGraph" xml:space="preserve">
+    <value>Call to Graph was unsuccesfull, this is likely due to insuficient permissions in Azure AD. Please ensure you have the correct set of permissions.</value>
+  </data>
 </root>

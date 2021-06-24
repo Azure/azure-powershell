@@ -127,6 +127,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 int offset = (int)timeSpan.TotalSeconds;
                 string targetDb = "";
 
+                if (AlternateWorkloadRestore.IsPresent || RestoreAsFiles.IsPresent)
+                {
+                    if (TargetContainer == null)
+                    {
+                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
+                    }
+
+                    azureWorkloadRecoveryConfig.TargetVirtualMachineId = (TargetContainer as AzureVmWorkloadContainer).SourceResourceId;
+                }
+
                 if (TargetItem != null)
                 {
                     if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
@@ -250,11 +260,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else if (RestoreAsFiles.IsPresent)
                 {
-                    if(TargetContainer == null)
-                    {
-                        throw new ArgumentNullException("TargetContainer", Resources.TargetContainerRequiredException);
-                    }
-
                     azureWorkloadRecoveryConfig.OverwriteWLIfpresent = "No";
                     azureWorkloadRecoveryConfig.NoRecoveryMode = "Disabled";
                     azureWorkloadRecoveryConfig.ContainerId = (TargetContainer as AzureVmWorkloadContainer).Id;

@@ -19,7 +19,7 @@
 function Test-DatabasePauseResume
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
@@ -67,7 +67,7 @@ function Test-DatabasePauseResume
 function Test-DatabasePauseResumePiped
 {
 	# Setup
-	$location = "westcentralus"
+	$location = "southeastasia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -80,7 +80,7 @@ function Test-DatabasePauseResumePiped
 		$collationName = "SQL_Latin1_General_CP1_CI_AS"
 		$maxSizeBytes = 250GB
 		$dwdb = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c
+			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100c -Force
 
 
 		# Pause the database. Make sure the database specs remain the same and its Status is Paused.

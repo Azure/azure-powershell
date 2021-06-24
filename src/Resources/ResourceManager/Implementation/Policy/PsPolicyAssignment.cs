@@ -8,7 +8,7 @@
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Class that wraps a policy definition PSObject
+    /// Class that wraps a policy assignment PSObject
     /// </summary>
     public class PsPolicyAssignment
     {

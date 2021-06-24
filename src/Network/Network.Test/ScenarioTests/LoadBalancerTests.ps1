@@ -2201,6 +2201,211 @@ function Test-LoadBalancerCRUD-InternalBasicSku
 
 <#
 .SYNOPSIS
+Tests Gateway LoadBalancer Provider with one pool.
+#>
+function Test-GatewayLoadBalancer-ProviderOnePool
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
+        $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type Internal -Port 2000 -Identifier 800
+        $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig -Protocol Vxlan -Type External -Port 2001 -Identifier 801
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName -TunnelInterface $tunnelInterface1, $tunnelInterface2
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+
+        Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
+
+        Assert-AreEqual 1 @($expectedLb.BackendAddressPools).Count
+        Assert-AreEqual 2 @($expectedLb.BackendAddressPools[0].TunnelInterfaces).Count
+
+        Assert-AreEqual $tunnelInterface1.Protocol $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Protocol
+        Assert-AreEqual $tunnelInterface1.Type $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Type
+        Assert-AreEqual $tunnelInterface1.Port $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Port
+        Assert-AreEqual $tunnelInterface1.Identifier $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Identifier
+
+        Assert-AreEqual $tunnelInterface2.Protocol $expectedLb.BackendAddressPools[0].TunnelInterfaces[1].Protocol
+        Assert-AreEqual $tunnelInterface2.Type $expectedLb.BackendAddressPools[0].TunnelInterfaces[1].Type
+        Assert-AreEqual $tunnelInterface2.Port $expectedLb.BackendAddressPools[0].TunnelInterfaces[1].Port
+        Assert-AreEqual $tunnelInterface2.Identifier $expectedLb.BackendAddressPools[0].TunnelInterfaces[1].Identifier
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Gateway LoadBalancer Provider with two pools.
+#>
+function Test-GatewayLoadBalancer-ProviderTwoPool
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName1 = Get-ResourceName
+    $backendAddressPoolName2 = Get-ResourceName
+    $probeName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 172.20.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 172.20.0.0/16 -Subnet $subnet
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
+        $tunnelInterface1 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig  -Protocol Vxlan -Type Internal -Port 2000 -Identifier 800
+        $tunnelInterface2 = New-AzLoadBalancerBackendAddressPoolTunnelInterfaceConfig  -Protocol Vxlan -Type External -Port 2001 -Identifier 801
+        $backendAddressPool1 = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName1 -TunnelInterface $tunnelInterface1
+        $backendAddressPool2 = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName2 -TunnelInterface $tunnelInterface2
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool1,$backendAddressPool2 -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -LoadDistribution SourceIP -DisableOutboundSNAT
+
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -Probe $probe -LoadBalancingRule $lbrule -Sku Gateway -BackendAddressPool $backendAddressPool1,$backendAddressPool2
+
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
+        Assert-AreEqual $expectedLb.Name $actualLb.Name
+        Assert-AreEqual $expectedLb.Location $actualLb.Location
+        Assert-AreEqualObjectProperties $expectedLb.Sku $actualLb.Sku
+        Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
+
+        Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $vnet.Subnets[0].Id $expectedLb.FrontendIPConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
+
+        Assert-AreEqual 2 @($expectedLb.BackendAddressPools).Count
+        Assert-AreEqual 1 @($expectedLb.BackendAddressPools[0].TunnelInterfaces).Count
+        Assert-AreEqual $tunnelInterface1.Protocol $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Protocol
+        Assert-AreEqual $tunnelInterface1.Type $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Type
+        Assert-AreEqual $tunnelInterface1.Port $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Port
+        Assert-AreEqual $tunnelInterface1.Identifier $expectedLb.BackendAddressPools[0].TunnelInterfaces[0].Identifier
+
+        Assert-AreEqual 1 @($expectedLb.BackendAddressPools[1].TunnelInterfaces).Count
+        Assert-AreEqual $tunnelInterface2.Protocol $expectedLb.BackendAddressPools[1].TunnelInterfaces[0].Protocol
+        Assert-AreEqual $tunnelInterface2.Type $expectedLb.BackendAddressPools[1].TunnelInterfaces[0].Type
+        Assert-AreEqual $tunnelInterface2.Port $expectedLb.BackendAddressPools[1].TunnelInterfaces[0].Port
+        Assert-AreEqual $tunnelInterface2.Identifier $expectedLb.BackendAddressPools[1].TunnelInterfaces[0].Identifier
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests Gateway LoadBalancer Consumer ref Provider.
+#>
+function Test-GatewayLoadBalancer-ConsumerLb
+{
+    # Setup Provider
+    $rgname = Get-ResourceGroupName
+    $vnetProviderName = Get-ResourceName
+    $subnetProviderName = Get-ResourceName
+    $lbProviderName = Get-ResourceName
+    $frontendProviderName = Get-ResourceName
+
+    # Setup Provider
+    $pipConusmerName = Get-ResourceName
+    $subnetConsumerName = Get-ResourceName
+    $lbConsumerName = Get-ResourceName
+    $frontendConsumerName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+
+    $rglocation = "eastus2euap"
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "eastus2euap"
+
+    try 
+    {
+        # Create resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
+
+        # Create Provider Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetProviderName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetProviderName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create Provider LoadBalancer
+        $frontendProvider = New-AzLoadBalancerFrontendIpConfig -Name $frontendProviderName -Subnet $vnet.Subnets[0]
+        $lbProvider = New-AzLoadBalancer -Name $lbProviderName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontendProvider -Sku Gateway
+
+        # Create Consumer publicip
+        $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -Name $pipConusmerName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard
+
+        # Create Consumer LoadBalancer
+        $lbConsumer = New-AzLoadBalancer -Name $lbConsumerName -ResourceGroupName $rgname -Location $location -Sku Standard
+        Add-AzLoadBalancerFrontendIpConfig -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id -LoadBalancer $lbConsumer -Name $frontendConsumerName
+        $lbConsumer = Set-AzLoadBalancer -LoadBalancer $lbConsumer
+
+        $expectedLbConsumer = Get-AzLoadBalancer -Name $lbConsumerName -ResourceGroupName $rgname
+
+        # Verification
+        Assert-NotNull $expectedLbConsumer.frontendIpConfigurations
+        Assert-NotNull $expectedLbConsumer.frontendIpConfigurations[0]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating a public Load balancer with standard sku.
 #>
 function Test-LoadBalancerCRUD-PublicStandardSku
@@ -2650,7 +2855,7 @@ function Test-CreateSubresourcesOnEmptyLoadBalancer
 
         $lb = Add-AzLoadBalancerBackendAddressPoolConfig -Name $poolName -LoadBalancer $lb
         $lb = Add-AzLoadBalancerProbeConfig -Name $probeName -LoadBalancer $lb -Port 2000 -IntervalInSeconds 60 -ProbeCount 3 -Protocol Tcp
-        $lb = Add-AzLoadBalancerRuleConfig -Name $ruleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -Protocol Tcp -FrontendPort 1024 -BackendPort 2048
+        $lb = Add-AzLoadBalancerRuleConfig -Name $ruleName -LoadBalancer $lb -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -BackendAddressPoolId $lb.BackendAddressPools[0].Id -ProbeId $lb.Probes[0].Id -Protocol Tcp -FrontendPort 82 -BackendPort 83 -IdleTimeoutInMinutes 15 -LoadDistribution SourceIP
         $lb = Add-AzLoadBalancerInboundNatRuleConfig -Name $natRuleName -LoadBalancer $lb -FrontendIpConfiguration $ipConfig -FrontendPort 128 -BackendPort 256
 
         # Update load balancer
@@ -2701,6 +2906,63 @@ function Test-CreateSubresourcesOnEmptyLoadBalancer
 
         $list = Get-AzLoadBalancer | Where-Object { $_.ResourceGroupName -eq $rgname }
         Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test creating a load balancer in an edge zone. Subscriptions need to be explicitly whitelisted for access to edge zones.
+#>
+function Test-LoadBalancerInEdgeZone
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = "westus"
+    $location = "westus"
+    $edgeZone = "microsoftlosangeles1"
+
+    try
+    {
+        # Create the resource group
+        New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"}
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet -EdgeZone $edgeZone
+
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel -EdgeZone $edgeZone
+
+        # Create LoadBalancer
+        $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule -EdgeZone $edgeZone
+
+        $loadBalancer = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Assert-AreEqual $loadBalancer.ExtendedLocation.Name $edgeZone
+        Assert-AreEqual $loadBalancer.ExtendedLocation.Type "EdgeZone"
+    }
+    catch [Microsoft.Azure.Commands.Network.Common.NetworkCloudException]
+    {
+        Assert-NotNull { $_.Exception.Message -match 'Resource type .* does not support edge zone .* in location .* The supported edge zones are .*' }
     }
     finally
     {

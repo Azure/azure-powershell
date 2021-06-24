@@ -625,4 +625,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="ZonalRestoreVaultStorageRedundancyException" xml:space="preserve">
     <value>Please check whether the vault storageRedundancy is ZRS or RA-GRS  or remove TargetZone</value>
   </data>
+  <data name="TargetVirtualMachineIdRequiredException" xml:space="preserve">
+    <value>WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore</value>
+  </data>
 </root>

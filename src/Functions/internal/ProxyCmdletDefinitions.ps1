@@ -103,13 +103,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 REQUEST <IBackupRequest>: Description of a backup which will be performed.
-  BackupScheduleFrequencyInterval <Int32>: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-  BackupScheduleFrequencyUnit <FrequencyUnit>: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
-  BackupScheduleKeepAtLeastOneBackup <Boolean>: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
-  BackupScheduleRetentionPeriodInDay <Int32>: After how many days backups should be deleted.
-  StorageAccountUrl <String>: SAS URL to the container.
   [Kind <String>]: Kind of resource.
   [BackupName <String>]: Name of the backup.
+  [BackupScheduleFrequencyInterval <Int32?>]: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+  [BackupScheduleFrequencyUnit <FrequencyUnit?>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+  [BackupScheduleKeepAtLeastOneBackup <Boolean?>]: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+  [BackupScheduleRetentionPeriodInDay <Int32?>]: After how many days backups should be deleted.
   [BackupScheduleStartTime <DateTime?>]: When the schedule should start working.
   [Database <IDatabaseBackupSetting[]>]: Databases included in the backup.
     DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
@@ -117,8 +116,9 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
   [Enabled <Boolean?>]: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
+  [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/backup-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem])]
@@ -423,7 +423,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azappinsightsapikey
+https://docs.microsoft.com/powershell/module/az.functions/get-azappinsightsapikey
 #>
 function Get-AzAppInsightsApiKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponentApiKey])]
@@ -652,7 +652,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azappinsights
+https://docs.microsoft.com/powershell/module/az.functions/get-azappinsights
 #>
 function Get-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -907,7 +907,7 @@ Germany West Central
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappavailablelocation
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappavailablelocation
 #>
 function Get-AzFunctionAppAvailableLocation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IGeoRegion])]
@@ -1153,7 +1153,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 #>
 function Get-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -1413,7 +1413,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunctionapp
 #>
 function Get-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -1649,7 +1649,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azfunction
+https://docs.microsoft.com/powershell/module/az.functions/get-azfunction
 #>
 function Get-AzFunction {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IFunctionEnvelope])]
@@ -1818,7 +1818,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azstorageaccountkey
+https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
 #>
 function Get-AzStorageAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey])]
@@ -1975,7 +1975,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azstorageaccount
+https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccount
 #>
 function Get-AzStorageAccount {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccount])]
@@ -2180,7 +2180,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/get-azuserassignedidentity
 #>
 function Get-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -2338,7 +2338,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappapplicationsettingslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsettingslot
 #>
 function Get-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2490,7 +2490,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappapplicationsetting
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappapplicationsetting
 #>
 function Get-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -2699,7 +2699,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationslot
 #>
 function Get-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -2866,7 +2866,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfoslot
 #>
 function Get-AzWebAppConfigurationSnapshotInfoSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -3020,7 +3020,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotinfo
 #>
 function Get-AzWebAppConfigurationSnapshotInfo {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigurationSnapshotInfo])]
@@ -3229,7 +3229,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshotslot
 #>
 function Get-AzWebAppConfigurationSnapshotSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3459,7 +3459,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfigurationsnapshot
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfigurationsnapshot
 #>
 function Get-AzWebAppConfigurationSnapshot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3682,7 +3682,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/get-azwebappconfiguration
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappconfiguration
 #>
 function Get-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -3909,16 +3909,16 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
 
 INSIGHTPROPERTY <IApplicationInsightsComponent>: An Application Insights component definition.
   Location <String>: Resource location
-  ApplicationType <ApplicationType>: Type of application being monitored.
   Kind <String>: The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
   [Tag <IComponentsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
+  [ApplicationType <ApplicationType?>]: Type of application being monitored.
   [FlowType <FlowType?>]: Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
   [HockeyAppId <String>]: The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
   [RequestSource <RequestSource?>]: Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
   [SamplingPercentage <Double?>]: Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azappinsights
+https://docs.microsoft.com/powershell/module/az.functions/new-azappinsights
 #>
 function New-AzAppInsights {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent])]
@@ -4253,7 +4253,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionappplan
 #>
 function New-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -4703,7 +4703,6 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4755,6 +4754,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -4818,7 +4818,6 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
 
 SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -4833,11 +4832,11 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4889,6 +4888,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -4972,7 +4972,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunctionapp
 #>
 function New-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -5486,7 +5486,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunction
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunction
 #>
 function New-AzFunction {
 [OutputType([System.Boolean])]
@@ -5842,7 +5842,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/new-azuserassignedidentity
 #>
 function New-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -6139,7 +6139,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -6192,6 +6191,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -6268,7 +6268,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azwebappconfigurationslot
+https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfigurationslot
 #>
 function New-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -6590,34 +6590,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -7107,7 +7079,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -7160,6 +7131,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -7236,7 +7208,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azwebappconfiguration
+https://docs.microsoft.com/powershell/module/az.functions/new-azwebappconfiguration
 #>
 function New-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -7550,34 +7522,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -8012,7 +7956,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 #>
 function Remove-AzFunctionAppPlan {
 [OutputType([System.Boolean])]
@@ -8231,7 +8175,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunctionapp
 #>
 function Remove-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -8467,7 +8411,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azfunction
+https://docs.microsoft.com/powershell/module/az.functions/remove-azfunction
 #>
 function Remove-AzFunction {
 [OutputType([System.Boolean])]
@@ -8696,7 +8640,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/remove-azuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]
@@ -8915,7 +8859,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/restart-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/restart-azfunctionapp
 #>
 function Restart-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -9161,8 +9105,6 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 REQUEST <IRestoreRequest>: Description of a restore request.
-  Overwrite <Boolean>: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
-  StorageAccountUrl <String>: SAS URL to the container.
   [Kind <String>]: Kind of resource.
   [AdjustConnectionString <Boolean?>]: <code>true</code> if SiteConfig.ConnectionStrings should be set in new app; otherwise, <code>false</code>.
   [AppServicePlan <String>]: Specify app service plan that will own restored site.
@@ -9176,9 +9118,11 @@ REQUEST <IRestoreRequest>: Description of a restore request.
   [IgnoreConflictingHostName <Boolean?>]: Changes a logic when restoring an app with custom domains. <code>true</code> to remove custom domains automatically. If <code>false</code>, custom domains are added to         the app's object when it is being restored, but that might fail due to conflicts during the operation.
   [IgnoreDatabase <Boolean?>]: Ignore the databases and only restore the site content
   [OperationType <BackupRestoreOperationType?>]: Operation type.
+  [Overwrite <Boolean?>]: <code>true</code> if the restore operation can overwrite target app; otherwise, <code>false</code>. <code>true</code> is needed if trying to restore over an existing app.
   [SiteName <String>]: Name of an app.
+  [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/restore-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/restore-azfunctionapp
 #>
 function Restore-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -9503,7 +9447,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionappplan
 #>
 function Set-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -9842,7 +9786,6 @@ HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage t
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9894,6 +9837,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -9957,7 +9901,6 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
 
 SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   Location <String>: Resource Location.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [Tag <IResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
@@ -9972,11 +9915,11 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -10028,6 +9971,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -10111,7 +10055,7 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/set-azfunctionapp
 #>
 function Set-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -10506,7 +10450,7 @@ PARAMETER <IIdentityAutoGenerated>: Describes an identity resource.
   [Tag <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -10683,7 +10627,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azwebappapplicationsettingslot
+https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsettingslot
 #>
 function Set-AzWebAppApplicationSettingSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -10867,7 +10811,7 @@ APPSETTING <IStringDictionary>: String dictionary resource.
   [Property <IStringDictionaryProperties>]: Settings.
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azwebappapplicationsetting
+https://docs.microsoft.com/powershell/module/az.functions/set-azwebappapplicationsetting
 #>
 function Set-AzWebAppApplicationSetting {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IStringDictionary])]
@@ -11088,7 +11032,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -11141,6 +11084,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -11217,7 +11161,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azwebappconfigurationslot
+https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfigurationslot
 #>
 function Set-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -11489,30 +11433,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
@@ -11905,7 +11825,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -11958,6 +11877,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -12034,7 +11954,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/set-azwebappconfiguration
+https://docs.microsoft.com/powershell/module/az.functions/set-azwebappconfiguration
 #>
 function Set-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -12299,30 +12219,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedPipelineMode])]
@@ -12720,7 +12616,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/start-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 #>
 function Start-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -12939,7 +12835,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/stop-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/stop-azfunctionapp
 #>
 function Stop-AzFunctionApp {
 [OutputType([System.Boolean])]
@@ -13162,7 +13058,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/sync-azfunction
+https://docs.microsoft.com/powershell/module/az.functions/sync-azfunction
 #>
 function Sync-AzFunction {
 [OutputType([System.Boolean])]
@@ -13392,7 +13288,7 @@ REQUEST <IResourceNameAvailabilityRequest>: Resource name availability request c
   Type <CheckNameResourceTypes>: Resource type used for verification.
   [IsFqdn <Boolean?>]: Is fully qualified domain name.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/test-aznameavailability
+https://docs.microsoft.com/powershell/module/az.functions/test-aznameavailability
 #>
 function Test-AzNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceNameAvailability])]
@@ -13646,7 +13542,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionappplan
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionappplan
 #>
 function Update-AzFunctionAppPlan {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan])]
@@ -13980,7 +13876,6 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -14032,6 +13927,7 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -14094,7 +13990,6 @@ SITECONFIG <ISiteConfig>: Configuration of the app.
   [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
 
 SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
-  CloningInfoSourceWebAppId <String>: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [Kind <String>]: Kind of resource.
   [ClientAffinityEnabled <Boolean?>]: <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>.
   [ClientCertEnabled <Boolean?>]: <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>.
@@ -14107,6 +14002,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
   [CloningInfoCorrelationId <String>]: Correlation ID of cloning operation. This ID ties multiple cloning operations         together to use the same snapshot.
   [CloningInfoHostingEnvironment <String>]: App Service Environment.
   [CloningInfoOverwrite <Boolean?>]: <code>true</code> to overwrite destination app; otherwise, <code>false</code>.
+  [CloningInfoSourceWebAppId <String>]: ARM resource ID of the source app. App resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots.
   [CloningInfoSourceWebAppLocation <String>]: Location of source app ex: West US or North Europe
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
@@ -14133,7 +14029,6 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [SiteConfig <ISiteConfig>]: Configuration of the app.
-    IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -14185,6 +14080,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
       [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
       [VnetSubnetResourceId <String>]: Virtual network resource id
       [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+    [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
     [JavaContainer <String>]: Java container.
     [JavaContainerVersion <String>]: Java container version.
     [JavaVersion <String>]: Java version.
@@ -14246,7 +14142,7 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
     [WindowsFxVersion <String>]: Xenon App Framework and version
     [XManagedServiceIdentityId <Int32?>]: Explicit Managed Service Identity Id
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/update-azfunctionapp
 #>
 function Update-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
@@ -14721,7 +14617,7 @@ PARAMETER <IIdentityUpdate>: Describes an identity resource.
   [Tag <IIdentityUpdateTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azuserassignedidentity
+https://docs.microsoft.com/powershell/module/az.functions/update-azuserassignedidentity
 #>
 function Update-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.IIdentityAutoGenerated])]
@@ -15018,7 +14914,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -15071,6 +14966,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -15147,7 +15043,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azwebappconfigurationslot
+https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfigurationslot
 #>
 function Update-AzWebAppConfigurationSlot {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -15469,34 +15365,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -15986,7 +15854,6 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
   [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
-  IsPushEnabled <Boolean>: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [Kind <String>]: Kind of resource.
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
@@ -16039,6 +15906,7 @@ SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
     [Tag <IPFilterTag?>]: Defines what this IP filter will be used for. This is to support IP filtering on proxies.
     [VnetSubnetResourceId <String>]: Virtual network resource id
     [VnetTrafficTag <Int32?>]: (internal) Vnet traffic tag
+  [IsPushEnabled <Boolean?>]: Gets or sets a flag indicating whether the Push endpoint is enabled.
   [JavaContainer <String>]: Java container.
   [JavaContainerVersion <String>]: Java container version.
   [JavaVersion <String>]: Java version.
@@ -16115,7 +15983,7 @@ VIRTUALAPPLICATION <IVirtualApplication[]>: Virtual applications.
     [VirtualPath <String>]: Path to virtual application.
   [VirtualPath <String>]: Virtual path.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/update-azwebappconfiguration
+https://docs.microsoft.com/powershell/module/az.functions/update-azwebappconfiguration
 #>
 function Update-AzWebAppConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISiteConfigResource])]
@@ -16429,34 +16297,6 @@ param(
     [System.Int32]
     # HTTP logs directory size limit.
     ${LogsDirectorySizeLimit},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Algorithm used for decryption.
-    ${MachineKeyDecryption},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Decryption key.
-    ${MachineKeyDecryptionKey},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # MachineKey validation.
-    ${MachineKeyValidation},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # Validation key.
-    ${MachineKeyValidationKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]

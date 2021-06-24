@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Public Certificate byte array</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public byte[] Blob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).Blob = value; }
+        public byte[] Blob { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).Blob; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).Blob = value ?? null /* byte array */; }
 
         /// <summary>Resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -24,11 +24,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Public Certificate Location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation? Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).PublicCertificateLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).PublicCertificateLocation = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation? Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).PublicCertificateLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IPublicCertificatePropertiesInternal)Property).PublicCertificateLocation = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.PublicCertificateLocation)""); }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }

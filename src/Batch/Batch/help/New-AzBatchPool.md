@@ -462,7 +462,7 @@ Accept wildcard characters: False
 
 ### -VirtualMachineSize
 Specifies the size of the virtual machines in the pool.
-For more information about virtual machine sizes, see Sizes for virtual machineshttps://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/ (https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/) in the Microsoft Azure site.
+For more information about virtual machine sizes, see [Sizes for virtual machines](/azure/virtual-machines/sizes) in the Microsoft Azure site.
 
 ```yaml
 Type: System.String

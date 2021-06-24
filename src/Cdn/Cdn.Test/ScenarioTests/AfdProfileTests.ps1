@@ -28,7 +28,7 @@ function Test-CreateStandardAfdProfile
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     Assert-AreEqual $profileName $createdProfile.Name
     Assert-AreEqual $profileSku $createdProfile.Sku
@@ -55,7 +55,7 @@ function Test-CreatePremiumAfdProfile
     $profileTags = @{"ps-test-tag-name"="ps-test-tag-value"}
 
     # Create a Microsoft CDN Profile
-    $createdProfile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku -Tag $profileTags
+    $createdProfile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku -Tag $profileTags
 
     Assert-AreEqual $profileName $createdProfile.Name
     Assert-AreEqual $profileSku $createdProfile.Sku
@@ -81,9 +81,9 @@ function Test-GetStandardAfdProfile
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
-    $profile = Get-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName
+    $profile = Get-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName
 
     Assert-AreEqual $profileName $profile.Name
     Assert-AreEqual $profileSku $profile.Sku
@@ -108,9 +108,9 @@ function Test-RemovePremiumAfdProfile
     $profileSku = "Premium_AzureFrontDoor"
 
     # Create a Microsoft CDN Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
-    $isDeleted = Remove-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -PassThru
+    $isDeleted = Remove-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -PassThru
 
     Assert-AreEqual $isDeleted true
 

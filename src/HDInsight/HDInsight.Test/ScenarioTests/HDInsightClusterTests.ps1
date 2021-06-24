@@ -41,7 +41,7 @@ function Test-ClusterRelatedCommands{
 		#test Set-AzHDInsightClusterSize
 		$resizeCluster = Set-AzHDInsightClusterSize -ClusterName $cluster.Name -ResourceGroupName $cluster.ResourceGroup `
 		-TargetInstanceCount 3
-		Assert-AreEqual $resizeCluster.CoresUsed 20
+		Assert-AreEqual $resizeCluster.CoresUsed 40
 	}
 	finally
 	{
@@ -328,13 +328,17 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		$params= Prepare-ClusterCreateParameter -location "South Central US"
 
 		# prepare custom ambari database
-		$databaseUserName="databaseuser"
-		$databasePassword="xxxxxxx"
+		$databaseUserName="yourdatabaseuser"
+		$databasePassword="xxxxxxxx"
 		$databasePassword=ConvertTo-SecureString $databasePassword -AsPlainText -Force
+	
 		$sqlserverCredential=New-Object System.Management.Automation.PSCredential($databaseUserName, $databasePassword)
 		$sqlserver="yoursqlserver.database.windows.net"
-		$database="yourdatabase"
-		$config=New-AzHDInsightClusterConfig
+		$database="customambaridb"
+
+		$config=New-AzHDInsightClusterConfig|Add-AzHDInsightMetastore `
+        -SqlAzureServerName $sqlserver -DatabaseName $database `
+		-Credential $sqlserverCredential -MetastoreType AmbariDatabase
 
 		# create cluster
 		$cluster = New-AzHDInsightCluster -Location $params.location -ResourceGroupName $params.resourceGroupName `
@@ -345,7 +349,7 @@ function Test-CreateClusterWithCustomAmbariDatabase{
 		-AmbariDatabase $config.AmbariDatabase
 
 		Assert-NotNull $cluster
-
+		
 	}
 	finally
 	{

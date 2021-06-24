@@ -34,7 +34,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
         public static ResourceConfig<Disk> CreateManagedDiskConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            string sourceUri)
+            string sourceUri,
+            string storageAccountId = null)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     CreationData = new CreationData
                     {
                         CreateOption = DiskCreateOption.Import,
-                        SourceUri = sourceUri
+                        SourceUri = sourceUri,
+                        StorageAccountId = storageAccountId
                     }
                 });
     }

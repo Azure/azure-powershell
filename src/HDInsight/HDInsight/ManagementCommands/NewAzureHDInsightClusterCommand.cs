@@ -487,8 +487,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
 
+            bool isKafkaRestProxyEnable = kafkaRestProperties != null;
+            var defaultVmSizeConfigurations = GetDefaultVmsizesConfigurations(Location);
+
             // Compute profile contains headnode, workernode, zookeepernode, edgenode, kafkamanagementnode, idbrokernode, etc.
-            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, KafkaManagementNodeSize, EnableIDBroker.IsPresent);
+            ComputeProfile computeProfile = ClusterCreateHelper.CreateComputeProfile(osProfile, vnetProfile, clusterScriptActions, ClusterType, ClusterSizeInNodes, HeadNodeSize, WorkerNodeSize, ZookeeperNodeSize, EdgeNodeSize, isKafkaRestProxyEnable, KafkaManagementNodeSize, EnableIDBroker.IsPresent, defaultVmSizeConfigurations);
 
             // Handle SecurityProfile
             SecurityProfile securityProfile = ClusterCreateHelper.ConvertAzureHDInsightSecurityProfileToSecurityProfile(SecurityProfile, AssignedIdentity);

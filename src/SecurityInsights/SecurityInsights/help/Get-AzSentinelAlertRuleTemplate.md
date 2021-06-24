@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzSentinelAlertRuleTemplate
 
 ## SYNOPSIS
-Get Analytic Rule Template.
+Gets an Analytic Rule Template.
 
 ## SYNTAX
 
@@ -50,7 +50,14 @@ This example gets all of the **AlertRuleTemplates** in the specified workspace, 
 PS C:\> $AlertRuleTemplate = Get-AzSentinelAlertRuleTemplate -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -AlertRuleTemplateId "MyAlertRuleTemplateId"
 ```
 
-This example gets an **AlertRuleTemplate** in the specified workspace, and then stores it in the $AlertRuleTemplate variable.
+This example gets a specific **AlertRuleTemplate** in the specified workspace, and then stores it in the $AlertRuleTemplate variable.
+
+### Example 3
+```powershell
+Get-AzSentinelAlertRuleTemplate @SentinelConnection | Where-Object {$_.Kind -eq "Scheduled"}
+```
+
+This example (using a connection object) gets AlertRuleTemplates of the kind "Scheduled"
 
 ## PARAMETERS
 

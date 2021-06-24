@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.SecurityInsights.Common
         public const string DiscoveryLogs = "Data Connector Discovery Logs";
         public const string Exchange = "Data Connector Exchange";
         public const string SharePoint = "Data Connector SharePoint";
+        public const string Teams = "Data Connector Teams";
         public const string Indicators = "Data Connector Indicators";
         public const string SubscriptionId = "Data connector Subscription Id";
         #endregion

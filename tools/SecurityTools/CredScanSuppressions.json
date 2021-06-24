@@ -554,6 +554,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightAzureMonitorTests\\TestAzureMonitorRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightSetGatewayCredentialTest\\TestSetGatewayCredential.json",
       "_justification": "Test resource is deleted"
     },
@@ -1324,6 +1328,10 @@
     {
       "file": "src\\Network\\Network.Test\\ScenarioTests\\CortexTests.ps1",
       "_justification": "Generated test resource groups are deleted after test execution"
+    },
+    {
+      "file": "\\src\\Resources\\Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\\TestWhatIfWithQueryString.json",
+      "_justification": "Legitimate session record. Test resources, keys and tokens are deleted."
     }
   ]
 }

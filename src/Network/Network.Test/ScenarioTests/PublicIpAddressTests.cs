@@ -136,5 +136,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PublicIpAddressCRUD-IdleTimeout");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPublicIpAddressInEdgeZone()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressInEdgeZone");
+        }
     }
 }

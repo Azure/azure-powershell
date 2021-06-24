@@ -62,6 +62,29 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string AES256 = "AES-256";
         }
 
+        protected struct ShareListExpand
+        {
+            internal const string Deleted = "deleted";
+            internal const string Snapshots = "snapshots";
+        }
+
+        protected struct ShareRemoveInclude
+        {
+            internal const string LeasedSnapshots = "Leased-Snapshots";
+            internal const string Snapshots = "Snapshots";
+            internal const string None = "None";
+        }
+
+        protected struct ShareGetExpand
+        {
+            internal const string Stats = "stats";
+        }
+
+        protected struct ShareCreateExpand
+        {
+            internal const string Snapshots = "snapshots";
+        }
+
         public string ConnectStringArray(string[] stringArray, string seperator = ";")
         {
             if (stringArray == null)

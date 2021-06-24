@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.7.3
 * Updated IoT Hub Management SDK and models to version 3.0.0 (api-version 2020-03-01)
 
 ## Version 2.7.2

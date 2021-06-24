@@ -18,12 +18,12 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
- -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>] [-SharedKey <String>]
- [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>] 
+ -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
+ [-SharedKey <String>] [-Peer <PSPeering>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
  [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
- [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] [-AsJob]
- [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -31,12 +31,12 @@ New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String>
 New-AzVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <String> -Location <String>
  [-AuthorizationKey <String>] -VirtualNetworkGateway1 <PSVirtualNetworkGateway>
  [-VirtualNetworkGateway2 <PSVirtualNetworkGateway>] [-LocalNetworkGateway2 <PSLocalNetworkGateway>]
- -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>] [-SharedKey <String>]
- [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>] [-Force]
- [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
- [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>] [-AsJob]
- [-ExpressRouteGatewayBypass] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ConnectionType <String> [-RoutingWeight <Int32>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
+ [-SharedKey <String>] [-PeerId <String>] [-EnableBgp <Boolean>] [-UseLocalAzureIpAddress] [-Tag <Hashtable>]
+ [-Force] [-UsePolicyBasedTrafficSelectors <Boolean>] [-IpsecPolicies <PSIpsecPolicy[]>]
+ [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>] [-ConnectionProtocol <String>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-AsJob] [-ExpressRouteGatewayBypass]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,6 +48,16 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 ```
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
+### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
+```
+PS C:\>$ingressnatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule1" -ParentResourceName vnetgw1
+PS C:\>$egressnatrule = get-azVirtualNetworkGatewayNatRule -ResourceGroupName $RG1 -Name "natRule2" -ParentResourceName vnetgw1
+PS C:\>New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' 
+-IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
+```
+The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
+The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
+The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
 
 ## PARAMETERS
 
@@ -67,6 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
+AuthorizationKey.
 
 ```yaml
 Type: System.String
@@ -77,6 +88,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionMode
+Virtual Network Gateway Connection Mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,6 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionType
+Gateway connection type:IPsec/Vnet2Vnet/ExpressRoute/VPNClient
 
 ```yaml
 Type: System.String
@@ -112,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -126,7 +168,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DpdTimeoutInSeconds
+Dead Peer Detection Timeout of the connection in seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EgressNatRule
+The list of egress  NAT rules that are associated with this Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableBgp
+Whether to establish a BGP session over a S2S VPN tunnel
 
 ```yaml
 Type: System.Boolean
@@ -141,6 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteGatewayBypass
+Whether to use accelerated virtual network access by bypassing gateway
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -155,9 +229,25 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IngressNatRule
+The list of ingress NAT rules that are associated with this Connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,6 +274,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocalNetworkGateway2
+local network gateway.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
@@ -198,6 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+location.
 
 ```yaml
 Type: System.String
@@ -212,6 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+The resource name.
 
 ```yaml
 Type: System.String
@@ -226,6 +319,7 @@ Accept wildcard characters: False
 ```
 
 ### -Peer
+Peer
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPeering
@@ -240,6 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerId
+PeerId
 
 ```yaml
 Type: System.String
@@ -254,6 +349,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The resource group name.
 
 ```yaml
 Type: System.String
@@ -268,6 +364,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingWeight
+RoutingWeight.
 
 ```yaml
 Type: System.Int32
@@ -278,38 +375,11 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DpdTimeoutInSeconds
-Dead Peer Detection Timeout of the connection in seconds
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ConnectionMode
-Virtual Network Gateway Connection Mode
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: Default
 Accept wildcard characters: False
 ```
 
 ### -SharedKey
+The Ipsec share key.
 
 ```yaml
 Type: System.String
@@ -324,6 +394,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
+A hashtable which represents resource tags.
 Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
@@ -370,7 +441,7 @@ Accept wildcard characters: False
 ```
 
 ### -UsePolicyBasedTrafficSelectors
-Use policy-based traffic selectors for a S2S connection
+Whether to use policy-based traffic selectors for a S2S connection
 
 ```yaml
 Type: System.Boolean
@@ -385,6 +456,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkGateway1
+First virtual network gateway.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -399,6 +471,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkGateway2
+Second virtual network gateway.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -409,21 +482,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -438,13 +496,13 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -460,13 +518,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Boolean
 
+### System.Management.Automation.SwitchParameter
+
 ### System.Collections.Hashtable
 
 ### Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 
 ### Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
-
-### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for DeletedSiteId</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeletedSiteInternal.DeletedSiteId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeletedSitePropertiesInternal)Property).DeletedSiteId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDeletedSitePropertiesInternal)Property).DeletedSiteId = value; }

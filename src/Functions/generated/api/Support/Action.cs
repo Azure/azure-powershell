@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Support
         /// <param name="value">the value to convert to an instance of <see cref="Action" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new Action(System.Convert.ToString(value));
+            return new Action(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type Action</summary>

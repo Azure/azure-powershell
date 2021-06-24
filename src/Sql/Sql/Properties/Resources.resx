@@ -177,6 +177,12 @@
   <data name="InvalidTenantId" xml:space="preserve">
     <value>Please set a valid tenant id in the AzureEnvironment.</value>
   </data>
+  <data name="LedgerDisableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Disables uploading ledger digests</value>
+  </data>
+  <data name="LedgerEnableConfirmActionProcessMessage" xml:space="preserve">
+    <value>Enable uploading ledger digests</value>
+  </data>
   <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
     <value>A rule that was defined on the same column already exists.</value>
   </data>
@@ -634,7 +640,7 @@
   <data name="ServerNameInvalid" xml:space="preserve">
     <value>The server name '{0}' cannot be empty or null. The server name can only be made up of lowercase letters a-z, the numbers 0-9 and the hyphen. The hyphen may not lead or trail in the server name. Please fix the server name and retry. Please contact Microsoft support if the issue persists.</value>
   </data>
-  <data name="GeoBackupRedundancyChosenWarning" xml:space="preserve">
+  <data name="BackupRedundancyChosenIsGeoWarning" xml:space="preserve">
     <value>Selected value for backup storage redundancy is geo-redundant storage. Note that database backups will be geo-replicated to the paired region. To learn more about Azure Paired Regions visit aka.ms/azure-ragrs-regions.</value>
   </data>
   <data name="BackupRedundancyNotChosenTakeGeoWarning" xml:space="preserve">
@@ -660,5 +666,29 @@
   </data>
   <data name="RemoveAzureSqlServerTrustGroupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Server Trust Group '{0}' in location '{1}'?</value>
+  </data>
+  <data name="InvalidLongTermRetentionBackupResourceIdFormat" xml:space="preserve">
+    <value>Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
+/subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+                    "ResourceId"</value>
+  </data>
+  <data name="MissingExternalAdmin" xml:space="preserve">
+    <value>ExternalAdminName must be provided when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
+    <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
+  </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'?</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNExists" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNDoesNotExist" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
   </data>
 </root>

@@ -1,6 +1,6 @@
 ﻿# ----------------------------------------------------------------------------------
 #
-# Copyright Microsoft Corporation
+# Copyright Microsoft CorporationRemove-AzFrontDoorCdn
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -23,17 +23,18 @@ function Test-CreateAfdOrigin
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
+    $sampleSize = 2
 
-    New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize $sampleSize
 
     $originName = getAssetName
 
     $hostName = "contoso.com"
 
-    $origin = New-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName
+    $origin = New-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName
 
     Assert-AreEqual $hostName $origin.HostName
     Assert-AreEqual $originGroupName $origin.OriginGroupName
@@ -52,19 +53,20 @@ function Test-GetAfdOrigin
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
+    $sampleSize = 2
 
-    New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize $sampleSize
 
     $originName = getAssetName
 
     $hostName = "example.org"
 
-    $newOrigin = New-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName 
+    $newOrigin = New-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName 
 
-    $getOrigin = Get-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName
+    $getOrigin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName
 
     Assert-AreEqual $newOrigin.HostName $getOrigin.HostName
     Assert-AreEqual $newOrigin.ProfileName $getOrigin.ProfileName
@@ -83,21 +85,22 @@ function Test-SetAfdOrigin
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $originGroupName = getAssetName 
+    $sampleSize = 2
 
-    New-AzAfdOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName
+    New-AzFrontDoorCdnOriginGroup -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -SampleSize $sampleSize
 
     $originName = getAssetName
 
     $hostName = "example.org"
 
-    New-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName 
+    New-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -HostName $hostName 
 
-    Set-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -Priority 5 -Weight 10
+    Set-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName -Priority 5 -Weight 10
 
-    $origin = Get-AzAfdOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName
+    $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $resourceGroupName -ProfileName $profileName -OriginGroupName $originGroupName -OriginName $originName
 
     Assert-AreEqual $origin.Priority 5
     Assert-AreEqual $origin.Weight 10

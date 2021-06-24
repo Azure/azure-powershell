@@ -345,7 +345,7 @@ function Test-DataClassificationOnSqlDatabase
 		Assert-AreEqual $params.databaseName $allClassifications.DatabaseName
 
 		# Remove, using pipeline, all classifications, and verify.
-		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityClassification | Remove-AzSqlDatabaseSensitivityClassification
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityClassification | Remove-AzSqlDatabaseSensitivityClassification 
 		$allClassifications = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityClassification
 		$allClassificationsCount = ($allClassifications.SensitivityLabels).count
 		Assert-AreEqual 0 $allClassificationsCount
@@ -388,19 +388,19 @@ function Test-ErrorIsThrownWhenInvalidClassificationIsSet
 		$badInformationTypeMessage = "Information Type '" + $badinformationType + "' is not part of Information Protection Policy. Please add '" + $badinformationType + "' to the Information Protection Policy, or use one of the following: "
 		Assert-ThrowsContains -script { Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName $params.rgname -ServerName $params.serverName `
 		-DatabaseName $params.databaseName -SchemaName $schemaName -TableName $tableName -ColumnName $columnName -InformationType $badInformationType `
-		-SensitivityLabel $sensitivityLabel} -message $badInformationTypeMessage
+		-SensitivityLabel $sensitivityLabel -Force} -message $badInformationTypeMessage
 
 		# Provide illegal sensitivity label, and verify error is raised.
 		$badSensitivityLabel = $sensitivityLabel + $sensitivityLabel
 		$badSensitivityLabelMessage = "Sensitivity Label '" + $badSensitivityLabel + "' is not part of Information Protection Policy. Please add '" + $badSensitivityLabel + "' to the Information Protection Policy, or use one of the following: "
 		Assert-ThrowsContains -script { Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName $params.rgname -ServerName $params.serverName `
 		-DatabaseName $params.databaseName -SchemaName $schemaName -TableName $tableName -ColumnName $columnName -InformationType $badInformationType `
-		-SensitivityLabel $badSensitivityLabel} -message $badSensitivityLabelMessage
+		-SensitivityLabel $badSensitivityLabel -Force} -message $badSensitivityLabelMessage
 		
 		# Do not provide neither information type nor sensitivity label, and verify error is raised.
 		$message = "Value is not specified neither for InformationType parameter nor for SensitivityLabel parameter"
 		Assert-ThrowsContains -script { Set-AzSqlDatabaseSensitivityClassification -ResourceGroupName $params.rgname -ServerName $params.serverName `
-		-DatabaseName $params.databaseName -SchemaName $schemaName -TableName $tableName -ColumnName $columnName} -message $message
+		-DatabaseName $params.databaseName -SchemaName $schemaName -TableName $tableName -ColumnName $columnName -Force} -message $message
 	}
 	finally
 	{
@@ -497,7 +497,7 @@ function Remove-DataClassificationTestEnvironment ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "southeast asia", $serverVersion = "12.0")
 {
 	$params = Get-DataClassificationTestEnvironmentParameters $testSuffix
 	
@@ -512,7 +512,7 @@ function Create-SqlDataClassificationTestEnvironment ($testSuffix, $location = "
 	# Enable Advanced Data Security
 	Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
 
-	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	New-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -Force
 	
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
@@ -586,7 +586,7 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-NotNullOrEmpty $secondSensitivityLabel
 
 		# Disable first two recommdations, second recommdation is disabled using pipeline.
-		Disable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName
+		Disable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -SchemaName $firstSchemaName -TableName $firstTableName -ColumnName $firstColumnName 
 		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Disable-AzSqlDatabaseSensitivityRecommendation -SchemaName $secondSchemaName -TableName $secondTableName -ColumnName $secondColumnName
 
 		# Get, using pipeline, recommended sensitivity labels, and verify.
@@ -618,7 +618,7 @@ function Test-EnableDisableRecommendationsOnSqlDatabase
 		Assert-AreNotEqual $firstColumnName ($recommendations.SensitivityLabels)[2].ColumnName
 
 		# Disable, using pipeline, all recommended columns.
-		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation | Disable-AzSqlDatabaseSensitivityRecommendation
+		Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation | Disable-AzSqlDatabaseSensitivityRecommendation 
 
 		# Verify no recommdations are retrieved since all are disabled.
 		$recommendations = Get-AzSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName | Get-AzSqlDatabaseSensitivityRecommendation

@@ -7,16 +7,16 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"title\": \"PoshModuleTest\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "74141ac9-7e75-472f-b56e-dfa8d55894cd"
+          "e07343be-30f9-4125-b5f8-22a636034743"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -32,20 +32,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
         "Server": [
           "Kestrel"
         ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
         "x-ms-request-id": [
-          "6e50e084-debd-48c2-9f08-1d2726a5792d"
+          "8df95d8e-1306-43f6-811b-e4eb720c4236"
         ],
         "x-ms-correlation-request-id": [
-          "6e50e084-debd-48c2-9f08-1d2726a5792d"
+          "8df95d8e-1306-43f6-811b-e4eb720c4236"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201210T211152Z:6e50e084-debd-48c2-9f08-1d2726a5792d"
+          "WESTUS2:20210413T222810Z:8df95d8e-1306-43f6-811b-e4eb720c4236"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -54,10 +54,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Dec 2020 21:11:51 GMT"
+          "Tue, 13 Apr 2021 22:28:09 GMT"
         ],
         "Content-Length": [
-          "1113"
+          "1115"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,7 +66,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"name\": \"a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"etag\": \"\\\"bd005ca3-0000-0100-0000-5fd28f180000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Incidents\",\r\n  \"properties\": {\r\n    \"title\": \"PoshModuleTest\",\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"owner\": {\r\n      \"objectId\": null,\r\n      \"email\": null,\r\n      \"assignedTo\": null,\r\n      \"userPrincipalName\": null\r\n    },\r\n    \"labels\": [],\r\n    \"lastModifiedTimeUtc\": \"2020-12-10T21:11:52.358693Z\",\r\n    \"createdTimeUtc\": \"2020-12-10T21:11:52.358693Z\",\r\n    \"incidentNumber\": 93,\r\n    \"additionalData\": {\r\n      \"alertsCount\": 0,\r\n      \"bookmarksCount\": 0,\r\n      \"commentsCount\": 0,\r\n      \"alertProductNames\": [],\r\n      \"tactics\": []\r\n    },\r\n    \"relatedAnalyticRuleIds\": [],\r\n    \"incidentUrl\": \"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"name\": \"a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"etag\": \"\\\"e0009c92-0000-0100-0000-60761afa0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Incidents\",\r\n  \"properties\": {\r\n    \"title\": \"PoshModuleTest\",\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"owner\": {\r\n      \"objectId\": null,\r\n      \"email\": null,\r\n      \"assignedTo\": null,\r\n      \"userPrincipalName\": null\r\n    },\r\n    \"labels\": [],\r\n    \"lastModifiedTimeUtc\": \"2021-04-13T22:28:10.5957767Z\",\r\n    \"createdTimeUtc\": \"2021-04-13T22:28:10.5957767Z\",\r\n    \"incidentNumber\": 18,\r\n    \"additionalData\": {\r\n      \"alertsCount\": 0,\r\n      \"bookmarksCount\": 0,\r\n      \"commentsCount\": 0,\r\n      \"alertProductNames\": [],\r\n      \"tactics\": []\r\n    },\r\n    \"relatedAnalyticRuleIds\": [],\r\n    \"incidentUrl\": \"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -76,16 +76,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7ed643ab-60e1-49d7-a521-484d3578121a"
+          "dbceb6bf-e364-4af5-bdb2-777dcd6fd0c1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -95,20 +95,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
         "Server": [
           "Kestrel"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
         "x-ms-request-id": [
-          "05687e94-2fae-4248-92e2-80446a1425f0"
+          "fa85443f-f5a4-4b25-95f1-5a7ba3a52585"
         ],
         "x-ms-correlation-request-id": [
-          "05687e94-2fae-4248-92e2-80446a1425f0"
+          "fa85443f-f5a4-4b25-95f1-5a7ba3a52585"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201210T211152Z:05687e94-2fae-4248-92e2-80446a1425f0"
+          "WESTUS2:20210413T222810Z:fa85443f-f5a4-4b25-95f1-5a7ba3a52585"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,10 +117,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Dec 2020 21:11:51 GMT"
+          "Tue, 13 Apr 2021 22:28:09 GMT"
         ],
         "Content-Length": [
-          "1113"
+          "1115"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -129,7 +129,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"name\": \"a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"etag\": \"\\\"bd005ca3-0000-0100-0000-5fd28f180000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Incidents\",\r\n  \"properties\": {\r\n    \"title\": \"PoshModuleTest\",\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"owner\": {\r\n      \"objectId\": null,\r\n      \"email\": null,\r\n      \"assignedTo\": null,\r\n      \"userPrincipalName\": null\r\n    },\r\n    \"labels\": [],\r\n    \"lastModifiedTimeUtc\": \"2020-12-10T21:11:52.358693Z\",\r\n    \"createdTimeUtc\": \"2020-12-10T21:11:52.358693Z\",\r\n    \"incidentNumber\": 93,\r\n    \"additionalData\": {\r\n      \"alertsCount\": 0,\r\n      \"bookmarksCount\": 0,\r\n      \"commentsCount\": 0,\r\n      \"alertProductNames\": [],\r\n      \"tactics\": []\r\n    },\r\n    \"relatedAnalyticRuleIds\": [],\r\n    \"incidentUrl\": \"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"name\": \"a45dd647-301b-427b-ac4c-6455f65d3081\",\r\n  \"etag\": \"\\\"e0009c92-0000-0100-0000-60761afa0000\\\"\",\r\n  \"type\": \"Microsoft.SecurityInsights/Incidents\",\r\n  \"properties\": {\r\n    \"title\": \"PoshModuleTest\",\r\n    \"severity\": \"Low\",\r\n    \"status\": \"New\",\r\n    \"owner\": {\r\n      \"objectId\": null,\r\n      \"email\": null,\r\n      \"assignedTo\": null,\r\n      \"userPrincipalName\": null\r\n    },\r\n    \"labels\": [],\r\n    \"lastModifiedTimeUtc\": \"2021-04-13T22:28:10.5957767Z\",\r\n    \"createdTimeUtc\": \"2021-04-13T22:28:10.5957767Z\",\r\n    \"incidentNumber\": 18,\r\n    \"additionalData\": {\r\n      \"alertsCount\": 0,\r\n      \"bookmarksCount\": 0,\r\n      \"commentsCount\": 0,\r\n      \"alertProductNames\": [],\r\n      \"tactics\": []\r\n    },\r\n    \"relatedAnalyticRuleIds\": [],\r\n    \"incidentUrl\": \"https://portal.azure.com/#asset/Microsoft_Azure_Security_Insights/Incident/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/ndicola-azsposh/providers/Microsoft.OperationalInsights/workspaces/azsposh/providers/Microsoft.SecurityInsights/Incidents/a45dd647-301b-427b-ac4c-6455f65d3081\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -139,16 +139,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bad10ed4-92a2-4b6a-8329-643c06e3eda2"
+          "ac448ea6-4798-4908-8a53-2cab9cf585e3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.29812.02",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0.0"
+          "Microsoft.Azure.Management.SecurityInsights.SecurityInsightsClient/1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -158,20 +158,20 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
         "Server": [
           "Kestrel"
         ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
         "x-ms-request-id": [
-          "5063a41a-f543-4aad-9895-384eebc3c6af"
+          "331d7fdf-11c2-4f6b-8e8e-66583e443889"
         ],
         "x-ms-correlation-request-id": [
-          "5063a41a-f543-4aad-9895-384eebc3c6af"
+          "331d7fdf-11c2-4f6b-8e8e-66583e443889"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20201210T211152Z:5063a41a-f543-4aad-9895-384eebc3c6af"
+          "WESTUS2:20210413T222810Z:331d7fdf-11c2-4f6b-8e8e-66583e443889"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,7 +180,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 10 Dec 2020 21:11:52 GMT"
+          "Tue, 13 Apr 2021 22:28:09 GMT"
         ],
         "Content-Length": [
           "2"

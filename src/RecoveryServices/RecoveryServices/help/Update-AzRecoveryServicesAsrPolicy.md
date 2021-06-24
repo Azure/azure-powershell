@@ -64,6 +64,14 @@ Update-AzRecoveryServicesAsrPolicy [-VmmToVmm] -InputObject <ASRPolicy> [-Replic
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ReplicateVMwareToAzure
+```
+Update-AzRecoveryServicesAsrPolicy [-ReplicateVMwareToAzure] -InputObject <ASRPolicy>
+ [-RecoveryPointRetentionInHours <Int32>] [-ApplicationConsistentSnapshotFrequencyInHours <Int32>]
+ [-MultiVmSyncStatus <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Update-AzRecoveryServicesAsrPolicy** cmdlet updates the specified Azure Site Recovery replication policy.
 
@@ -220,7 +228,7 @@ Specifies multiVm sync status for the policy.
 
 ```yaml
 Type: System.String
-Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
+Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware, ReplicateVMwareToAzure
 Aliases:
 Accepted values: Enable, Disable
 
@@ -267,7 +275,7 @@ Time in hours to retain recovery points after creation.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
+Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware, ReplicateVMwareToAzure
 Aliases:
 
 Required: False
@@ -288,6 +296,21 @@ Accepted values: Required, NotRequired
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicateVMwareToAzure
+Switch parameter specifying VMware to Azure replication scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ReplicateVMwareToAzure
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

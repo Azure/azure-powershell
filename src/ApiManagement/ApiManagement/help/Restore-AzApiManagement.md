@@ -9,7 +9,7 @@ schema: 2.0.0
 # Restore-AzApiManagement
 
 ## SYNOPSIS
-Restores an API Management Service from the specified Azure storage blob.
+Restores an API Management Service from the specified Azure Storage blob.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Restore-AzApiManagement -ResourceGroupName <String> -Name <String> [-StorageCont
 ```
 
 ## DESCRIPTION
-The **Restore-AzApiManagement** cmdlet restores an API Management Service from the specified backup residing in an Azurestorage blob.
+The **Restore-AzApiManagement** cmdlet restores an API Management Service from the specified backup residing in an Azure Storage blob.
 
 ## EXAMPLES
 
@@ -37,7 +37,7 @@ This command restores an API Management service from Azure storage blob.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer

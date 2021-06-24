@@ -513,21 +513,21 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             if (useSlot)
             {
 
-                if (appSettings != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateApplicationSettingsSlot(
-                        resourceGroupName,
-                        webSiteName,
-                        new StringDictionary { Properties = appSettings },
-                        slotName);
-                }
-
                 if (siteConfig != null)
                 {
                     WrappedWebsitesClient.WebApps().UpdateConfigurationSlot(
                         resourceGroupName,
                         webSiteName,
                         siteConfig.ConvertToSiteConfigResource(),
+                        slotName);
+                }
+
+                if (appSettings != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateApplicationSettingsSlot(
+                        resourceGroupName,
+                        webSiteName,
+                        new StringDictionary { Properties = appSettings },
                         slotName);
                 }
 
@@ -552,17 +552,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             else
             {
 
+                if (siteConfig != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
+                }
+
                 if (appSettings != null)
                 {
                     WrappedWebsitesClient.WebApps().UpdateApplicationSettings(
                         resourceGroupName,
                         webSiteName,
                         new StringDictionary { Properties = appSettings });
-                }
-
-                if (siteConfig != null)
-                {
-                    WrappedWebsitesClient.WebApps().UpdateConfiguration(resourceGroupName, webSiteName, siteConfig.ConvertToSiteConfigResource());
                 }
 
                 if (connectionStrings != null)

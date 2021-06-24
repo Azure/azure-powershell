@@ -103,13 +103,12 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 REQUEST <IBackupRequest>: Description of a backup which will be performed.
-  BackupScheduleFrequencyInterval <Int32>: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
-  BackupScheduleFrequencyUnit <FrequencyUnit>: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
-  BackupScheduleKeepAtLeastOneBackup <Boolean>: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
-  BackupScheduleRetentionPeriodInDay <Int32>: After how many days backups should be deleted.
-  StorageAccountUrl <String>: SAS URL to the container.
   [Kind <String>]: Kind of resource.
   [BackupName <String>]: Name of the backup.
+  [BackupScheduleFrequencyInterval <Int32?>]: How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day)
+  [BackupScheduleFrequencyUnit <FrequencyUnit?>]: The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+  [BackupScheduleKeepAtLeastOneBackup <Boolean?>]: True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise.
+  [BackupScheduleRetentionPeriodInDay <Int32?>]: After how many days backups should be deleted.
   [BackupScheduleStartTime <DateTime?>]: When the schedule should start working.
   [Database <IDatabaseBackupSetting[]>]: Databases included in the backup.
     DatabaseType <DatabaseType>: Database type (e.g. SqlAzure / MySql).
@@ -117,8 +116,9 @@ REQUEST <IBackupRequest>: Description of a backup which will be performed.
     [ConnectionStringName <String>]: Contains a connection string name that is linked to the SiteConfig.ConnectionStrings.         This is used during restore with overwrite connection strings options.
     [Name <String>]: 
   [Enabled <Boolean?>]: True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
+  [StorageAccountUrl <String>]: SAS URL to the container.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/backup-azfunctionapp
+https://docs.microsoft.com/powershell/module/az.functions/backup-azfunctionapp
 #>
 function Backup-AzFunctionApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IBackupItem])]

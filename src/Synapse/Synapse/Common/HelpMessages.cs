@@ -259,13 +259,15 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string EndIpAddress = "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress.";
 
-        public const string AzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access.";
+        public const string AllowAllAzureIpRule = "Creates a special firewall rule that permits all Azure IPs to have access. The Start IP is 0.0.0.0. The End IP is 0.0.0.0.";
+
+        public const string AllowAllIpRule = "Creates a special firewall rule that allows connections from all IP addresses. The Start IP is 0.0.0.0. The End IP is 255.255.255.255.";
 
         public const string RoleAssignmentId = "The ID of the role assignment.";
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
@@ -415,10 +417,18 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
 
+        public const string WorkspaceItemType = "The workspace item type.";
+
+        public const string WorkspaceItem = "The workspace item.";
+
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 
         public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";
 
         public const string KeyObject = "Workspace key input object, usually passed through the pipeline.";
+
+        public const string SparkJobDefinitionName = "The Spark job definition name.";
+
+        public const string SparkJobDefinitionObject = "The Spark job definition object.";
     }
 }

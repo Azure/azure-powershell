@@ -32,6 +32,9 @@ Disable delete retention policy for the Azure Storage Blob service.
 ### [Disable-AzStorageBlobRestorePolicy](Disable-AzStorageBlobRestorePolicy.md)
 Disables Blob Restore Policy on a Storage account.
 
+### [Disable-AzStorageContainerDeleteRetentionPolicy](Disable-AzStorageContainerDeleteRetentionPolicy.md)
+Disable delete retention policy for Azure Storage blob contatiners.
+
 ### [Disable-AzStorageDeleteRetentionPolicy](Disable-AzStorageDeleteRetentionPolicy.md)
 Disable delete retention policy  for the Azure Storage Blob service.
 
@@ -43,6 +46,9 @@ Enable delete retention policy for the Azure Storage Blob service.
 
 ### [Enable-AzStorageBlobRestorePolicy](Enable-AzStorageBlobRestorePolicy.md)
 Enables Blob Restore Policy on a Storage account.
+
+### [Enable-AzStorageContainerDeleteRetentionPolicy](Enable-AzStorageContainerDeleteRetentionPolicy.md)
+Enable delete retention policy for Azure Storage blob contatiners.
 
 ### [Enable-AzStorageDeleteRetentionPolicy](Enable-AzStorageDeleteRetentionPolicy.md)
 Enable delete retention policy  for the Azure Storage Blob service.
@@ -91,6 +97,9 @@ Downloads a storage blob.
 
 ### [Get-AzStorageBlobCopyState](Get-AzStorageBlobCopyState.md)
 Gets the copy status of an Azure Storage blob.
+
+### [Get-AzStorageBlobInventoryPolicy](Get-AzStorageBlobInventoryPolicy.md)
+Gets blob inventory policy from a Storage account.
 
 ### [Get-AzStorageBlobQueryResult](Get-AzStorageBlobQueryResult.md)
 Applies a simple Structured Query Language (SQL) statement on a blob's contents and save only the queried subset of the data to a local file.
@@ -191,6 +200,9 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 ### [New-AzStorageAccountSASToken](New-AzStorageAccountSASToken.md)
 Creates an account-level SAS token.
 
+### [New-AzStorageBlobInventoryPolicyRule](New-AzStorageBlobInventoryPolicyRule.md)
+Creates a blob inventory policy rule object, which can be used in Set-AzStorageBlobInventoryPolicy.
+
 ### [New-AzStorageBlobQueryConfig](New-AzStorageBlobQueryConfig.md)
 Creates a blob query configuration object, which can be used in Get-AzStorageBlobQueryResult.
 
@@ -281,6 +293,9 @@ Remove IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage
 ### [Remove-AzStorageBlob](Remove-AzStorageBlob.md)
 Removes the specified storage blob.
 
+### [Remove-AzStorageBlobInventoryPolicy](Remove-AzStorageBlobInventoryPolicy.md)
+Removes blob inventory policy from a Storage account.
+
 ### [Remove-AzStorageContainer](Remove-AzStorageContainer.md)
 Removes the specified storage container.
 
@@ -323,6 +338,9 @@ Restores a deleted file share.
 ### [Restore-AzStorageBlobRange](Restore-AzStorageBlobRange.md)
 Restores a Storage account for specific blob ranges.
 
+### [Restore-AzStorageContainer](Restore-AzStorageContainer.md)
+Restores a previously deleted Azure storage blob container.
+
 ### [Revoke-AzStorageAccountUserDelegationKeys](Revoke-AzStorageAccountUserDelegationKeys.md)
 Revoke all User Delegation keys of a Storage account.
 
@@ -346,6 +364,9 @@ Creates or modifies the management policy of an Azure Storage account.
 
 ### [Set-AzStorageBlobContent](Set-AzStorageBlobContent.md)
 Uploads a local file to an Azure Storage blob.
+
+### [Set-AzStorageBlobInventoryPolicy](Set-AzStorageBlobInventoryPolicy.md)
+Creates or updates blob inventory policy in a Storage account.
 
 ### [Set-AzStorageContainerAcl](Set-AzStorageContainerAcl.md)
 Sets the public access permission to a storage container.

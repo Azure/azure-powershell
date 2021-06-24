@@ -18,8 +18,8 @@ Tests create new automation variable with string value.
 #>
 function Test-StringVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "StringValue"
     $variableValue = "StringValue"
@@ -67,8 +67,8 @@ Tests create new automation variable with string value.
 #>
 function Test-IntVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "CreateNewVariableWithValue"
     $variableValue = 1
@@ -116,8 +116,8 @@ Tests create new automation variable with string value.
 #>
 function Test-FloatVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "NewFloatVariable"
     $variableValue = 1.1
@@ -164,8 +164,8 @@ Tests create new automation variable with array.
 #>
 function Test-ArrayVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "NewArrayVariable"
     $variableValue = @(@{"key1" = "value1"}, @{"key2" = "value2"}, @{"key3" = "value3"})
@@ -204,8 +204,8 @@ Tests create new automation variable with simple hashtable.
 #>
 function Test-NormalHashTableVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "NormalHashTable"
     $variableValue = @{"key0" = "value0"}
@@ -244,8 +244,8 @@ Tests create new automation variable with multi level dict.
 #>
 function Test-MultiLevelDictVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "MultiLevelDict"
     $variableValue = @{"key0" = @{"subkey" = "subvalue"}}
@@ -284,8 +284,8 @@ Tests create new automation variable with multi level dict.
 #>
 function Test-JsonInDictValueVariable
 {
-    $resourceGroupName = "wyunchi-automation"
-    $automationAccountName = "test-automation-0"
+    $resourceGroupName = "to-delete-01"
+    $automationAccountName = "fbs-aa-01"
     $output = Get-AzAutomationAccount -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -ErrorAction SilentlyContinue
     $variableName = "JsonInDictValue"
     $variableValue = @{"key0" = "{`"subkey`" = `"sub-value`"}"}

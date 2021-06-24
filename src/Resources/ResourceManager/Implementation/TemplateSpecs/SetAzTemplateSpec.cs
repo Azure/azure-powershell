@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -154,6 +155,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string VersionDescription { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionFile { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "UIForm for the templatespec resource")]
+        public string UIFormDefinitionString { get; set; }
         #endregion
 
         #region Cmdlet Overrides
@@ -233,7 +244,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             packagedTemplate = new PackagedTemplate
                             {
                                 RootTemplate = JObject.Parse(TemplateJson),
-                                Artifacts = new TemplateSpecArtifact[0]
+                                Artifacts = new LinkedTemplateArtifact[0]
                             };
                             break;
                         default:
@@ -245,12 +256,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         return;
                     }
 
+                    JObject UIFormDefinition = new JObject();
+                    if (UIFormDefinitionFile == null && UIFormDefinitionString == null)
+                    {
+                        UIFormDefinition = null;
+                    }
+                    else if (!String.IsNullOrEmpty(UIFormDefinitionFile))
+                    {
+                        string UIFormFilePath = this.TryResolvePath(UIFormDefinitionFile);
+                        if (!File.Exists(UIFormFilePath))
+                        {
+                            throw new PSInvalidOperationException(
+                                string.Format(ProjectResources.InvalidFilePath, UIFormDefinitionFile)
+                            );
+                        }
+                        string UIFormJson = FileUtilities.DataStore.ReadFileAsText(UIFormDefinitionFile);
+                        UIFormDefinition = JObject.Parse(UIFormJson);
+                    }
+                    else if (!String.IsNullOrEmpty(UIFormDefinitionString))
+                    {
+                        UIFormDefinition = JObject.Parse(UIFormDefinitionString);
+                    }
+
                     var templateSpecVersion = TemplateSpecsSdkClient.CreateOrUpdateTemplateSpecVersion(
                         ResourceGroupName,
                         Name,
                         Version,
                         Location,
                         packagedTemplate,
+                        UIFormDefinition,
                         templateSpecDescription: Description,
                         templateSpecDisplayName: DisplayName,
                         versionDescription: VersionDescription,

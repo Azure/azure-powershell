@@ -1,0 +1,164 @@
+{
+  "New-AzStaticWebAppUserRoleInvitationLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "61c05794-50d6-4603-8499-9b23eef15db0" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "b545c989-15e1-400f-86e5-ec0f60af52dc" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-correlation-request-id": [ "8574102e-0a04-4989-8869-2bf61431a2f6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T084842Z:8574102e-0a04-4989-8869-2bf61431a2f6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:48:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1017" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[\"www01.azpstest.net\",\"www02.azpstest.net\"],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebAppUserRoleInvitationLink+[NoContext]+CreateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/createUserInvitation?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/createUserInvitation?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"domain\": \"blue-desert-07a7cd310.azurestaticapps.net\",\r\n    \"provider\": \"github\",\r\n    \"userDetails\": \"LucasYao93\",\r\n    \"roles\": \"reader\",\r\n    \"numHoursToExpiration\": 1\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "204" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "ca988c38-8af0-43d6-9adf-226ced0cef42" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "bf045fad-9770-45d1-9246-9c9b27617830" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T084842Z:bf045fad-9770-45d1-9246-9c9b27617830" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:48:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "751" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/invitations/93ed4489-4618-4359-b8a5-5cfded82df4f\",\"name\":\"93ed4489-4618-4359-b8a5-5cfded82df4f\",\"type\":\"Microsoft.Web/staticSites/invitations\",\"location\":\"Central US\",\"properties\":{\"expiresOn\":\"2021-05-07T09:48:42.750556Z\",\"invitationUrl\":\"https://blue-desert-07a7cd310.azurestaticapps.net/.auth/invitations/accept?provider=github\u0026userDetails=LucasYao93\u0026roles=reader\u0026se=2021-05-07T09%3A48%3A42Z\u0026sig=ABspmJAA0FdFC7W%2F%2B3NrUVRQZWQS03DP32%2FPV%2BDfTECliEg6RvLvUb74R3uw5M0UfH6Z%2FYb2fi5oJEfdqq2iLKmNRIw54FfBlpgcNgzXhdsWuRXbuBQ3nD8OtryaT7xnaUAWjZc9lNFWYR2nYDKS95DmjbZ9sbrMnsi4w4qpUgCwVljlG0boZSZwAzUhATaG\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebAppUserRoleInvitationLink+[NoContext]+CreateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "cb654261-eed2-4100-badd-3d5d68607734" ],
+        "CommandName": [ "Get-AzStaticWebApp" ],
+        "FullCommandName": [ "Get-AzStaticWebApp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "55357948-9cfb-4edd-a7c6-19909740766c" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-correlation-request-id": [ "003250a7-7017-4d65-87ff-43ab787c14da" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T084843Z:003250a7-7017-4d65-87ff-43ab787c14da" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:48:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1017" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm\",\"name\":\"staticweb-sw1jfm\",\"type\":\"Microsoft.Web/staticSites\",\"location\":\"Central US\",\"properties\":{\"defaultHostname\":\"blue-desert-07a7cd310.azurestaticapps.net\",\"repositoryUrl\":\"https://github.com/LucasYao93/blazor-starter\",\"branch\":\"lucas/dev\",\"provider\":\"GitHub\",\"customDomains\":[\"www01.azpstest.net\",\"www02.azpstest.net\"],\"privateEndpointConnections\":[],\"contentDistributionEndpoint\":\"https://content-dm1.infrastructure.azurestaticapps.net\",\"keyVaultReferenceIdentity\":\"SystemAssigned\",\"userProvidedFunctionApps\":[{\"functionAppResourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/sites/functionApp-m2gd7q\",\"functionAppRegion\":\"Central US\",\"createdOn\":\"2021-05-07T07:18:08.8899987\"}],\"stagingEnvironmentPolicy\":\"Enabled\",\"allowConfigFileUpdates\":true},\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzStaticWebAppUserRoleInvitationLink+[NoContext]+CreateViaIdentityExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/createUserInvitation?api-version=2020-12-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/createUserInvitation?api-version=2020-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"domain\": \"blue-desert-07a7cd310.azurestaticapps.net\",\r\n    \"provider\": \"github\",\r\n    \"userDetails\": \"LucasYao93\",\r\n    \"roles\": \"admin,contributor\",\r\n    \"numHoursToExpiration\": 1\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "215" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "fc33cacb-b96e-4944-835e-71efb2bd261b" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-correlation-request-id": [ "efaed333-4b4b-4e59-b8e4-a9d9e815597f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T084843Z:efaed333-4b4b-4e59-b8e4-a9d9e815597f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:48:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "795" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-sw1jfm/invitations/17e160f0-057f-4369-8838-ba5e1890f61d\",\"name\":\"17e160f0-057f-4369-8838-ba5e1890f61d\",\"type\":\"Microsoft.Web/staticSites/invitations\",\"location\":\"Central US\",\"properties\":{\"expiresOn\":\"2021-05-07T09:48:43.6244081Z\",\"invitationUrl\":\"https://blue-desert-07a7cd310.azurestaticapps.net/.auth/invitations/accept?provider=github\u0026userDetails=LucasYao93\u0026roles=admin%2Ccontributor\u0026se=2021-05-07T09%3A48%3A43Z\u0026sig=pDALnJq05OkcdIN3t%2FuMsL6S1arJopgwteHIP5dofqR9qduSEk1pp4eCHXnX4V0Bsek52E4SFuxOfA2izPVt%2F6kSgwn6aZp72DTrADbWgEp6nEVtVn%2BeN5%2BNK2X2vKYMrL3n7yAN%2BvzSWmKUfjkKnFXMos%2F8xj1Yy7ySi0cXG2zf3rOy41XLYJ5CMdGxT6CgLtkFaPojljC3EpeZytjQkw%3D%3D\"}}",
+      "isContentBase64": false
+    }
+  }
+}

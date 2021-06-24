@@ -118,7 +118,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Cmdlet
         {
             if (!string.IsNullOrEmpty(QueryString))
             {
-                protectedTemplateUri = TemplateUri + "?" + QueryString;
+                if(QueryString.Substring(0,1) == "?")
+                    protectedTemplateUri = TemplateUri + QueryString;
+                else
+                    protectedTemplateUri = TemplateUri + "?" + QueryString;
             }
             return base.GetDynamicParameters();
         }

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 {
 
-    /// <summary>The type of resource, Microsoft.Kusto/clusters.</summary>
+    /// <summary>The type of resource, for instance Microsoft.Kusto/Clusters/databases.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.TypeTypeConverter))]
     public partial struct Type :
         System.Management.Automation.IArgumentCompleter
@@ -26,10 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/clusters".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/clusters", "Microsoft.Kusto/clusters", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/clusters");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/databases".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/databases", "Microsoft.Kusto/Clusters/databases", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/databases");
@@ -37,18 +33,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/attachedDatabaseConfigurations", "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/attachedDatabaseConfigurations");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/principalAssignments".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/principalAssignments", "Microsoft.Kusto/Clusters/principalAssignments", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/principalAssignments");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/Databases/dataConnections".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/Databases/dataConnections", "Microsoft.Kusto/Clusters/Databases/dataConnections", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/Databases/dataConnections");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Microsoft.Kusto/Clusters/Databases/principalAssignments".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Microsoft.Kusto/Clusters/Databases/principalAssignments", "Microsoft.Kusto/Clusters/Databases/principalAssignments", global::System.Management.Automation.CompletionResultType.ParameterValue, "Microsoft.Kusto/Clusters/Databases/principalAssignments");
             }
         }
     }

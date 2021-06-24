@@ -1,0 +1,210 @@
+{
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01",
+      "Content": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"properties\": {\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "187" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Retry-After": [ "10" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyO2YxYzJmOTk5LTUzNGMtNDVhMi1iZWJkLTI1YTExZDU1MzI2Yw==?api-version=2021-01-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "eb410997-eff7-4185-b206-1f9b1c68f303" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210312T065456Z:eb410997-eff7-4185-b206-1f9b1c68f303" ],
+        "Date": [ "Fri, 12 Mar 2021 06:54:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "401" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6\",\"name\":\"new-testing-vault-vgxrh5mld6\",\"type\":\"Microsoft.DataProtection/backupVaults\",\"properties\":{\"provisioningState\":\"Provisioning\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyO2YxYzJmOTk5LTUzNGMtNDVhMi1iZWJkLTI1YTExZDU1MzI2Yw==?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyO2YxYzJmOTk5LTUzNGMtNDVhMi1iZWJkLTI1YTExZDU1MzI2Yw==?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "fa8c04a9-944f-43b8-8465-f2345de73e88" ],
+        "CommandName": [ "New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11958" ],
+        "x-ms-correlation-request-id": [ "603d5ca4-eee7-474a-a4e4-8db1af858215" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210312T065515Z:603d5ca4-eee7-474a-a4e4-8db1af858215" ],
+        "Date": [ "Fri, 12 Mar 2021 06:55:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "443" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyO2YxYzJmOTk5LTUzNGMtNDVhMi1iZWJkLTI1YTExZDU1MzI2Yw==\",\"name\":\"OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyO2YxYzJmOTk5LTUzNGMtNDVhMi1iZWJkLTI1YTExZDU1MzI2Yw==\",\"status\":\"Succeeded\",\"startTime\":\"2021-03-12T06:54:56.6134141Z\",\"endTime\":\"2021-03-12T06:54:57Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "fa8c04a9-944f-43b8-8465-f2345de73e88" ],
+        "CommandName": [ "New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11957" ],
+        "x-ms-correlation-request-id": [ "48695153-66f4-4e78-8850-c0fd43ef5aba" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210312T065515Z:48695153-66f4-4e78-8850-c0fd43ef5aba" ],
+        "Date": [ "Fri, 12 Mar 2021 06:55:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "398" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6\",\"name\":\"new-testing-vault-vgxrh5mld6\",\"type\":\"Microsoft.DataProtection/backupVaults\",\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "47e738df-afa4-4b31-999a-a25493c1962b" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11956" ],
+        "x-ms-correlation-request-id": [ "ae78d60c-cd10-4526-835f-fcd0812119b7" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210312T065516Z:ae78d60c-cd10-4526-835f-fcd0812119b7" ],
+        "Date": [ "Fri, 12 Mar 2021 06:55:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "398" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"centraluseuap\",\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6\",\"name\":\"new-testing-vault-vgxrh5mld6\",\"type\":\"Microsoft.DataProtection/backupVaults\",\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzDataProtectionBackupVault+[NoContext]+CreateExpanded+$DELETE+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/new-testing-vault-vgxrh5mld6?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "38bbc299-6e25-42d3-bfb0-cc2d81a649c9" ],
+        "CommandName": [ "Remove-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Remove-AzDataProtectionBackupVault_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationResults/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyOzllZTgwM2MyLWJlM2YtNDQ5Ni05M2UxLTA5MGIwNWY2MTdhZA==?api-version=2021-01-01" ],
+        "Retry-After": [ "30" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/providers/Microsoft.DataProtection/locations/centraluseuap/operationStatus/OTg1NmQyOTItMjNkNC00ZjY5LTk4YjMtN2FkMmRlY2FkN2MyOzllZTgwM2MyLWJlM2YtNDQ5Ni05M2UxLTA5MGIwNWY2MTdhZA==?api-version=2021-01-01" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-correlation-request-id": [ "0f2ac23f-ea3c-45ed-9af2-f67f90f72c3f" ],
+        "x-ms-routing-request-id": [ "CENTRALUSEUAP:20210312T065517Z:0f2ac23f-ea3c-45ed-9af2-f67f90f72c3f" ],
+        "Date": [ "Fri, 12 Mar 2021 06:55:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

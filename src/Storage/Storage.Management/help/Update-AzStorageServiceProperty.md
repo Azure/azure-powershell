@@ -64,8 +64,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultServiceVersion
-DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions. 
-See more details in https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-az-storage-services
+DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions.
+See more details in https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services
 
 ```yaml
 Type: System.String
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Specifies the storage service type.
 This cmdlet gets the logging properties for the service type that this parameter specifies.
 The acceptable values for this parameter are:
-- Blob 
+- Blob
 - Table
 - Queue
 - File

@@ -34,7 +34,7 @@ $constants["ReservedFunctionAppSettingNames"] = @(
     'WEBSITE_CONTENTSHARE'
     'APPINSIGHTS_INSTRUMENTATIONKEY'
 )
-$constants["SupportedFunctionsVersion"] = @('2', '3')
+$constants["SupportedFunctionsVersion"] = @('3')
 $constants["FunctionsNoV2Version"] = @(
     "USNat West"
     "USNat East"
@@ -140,7 +140,6 @@ function GetConnectionString
 
     $accountKey = $keys[0].Value
     $connectionString = "DefaultEndpointsProtocol=https;AccountName=$StorageAccountName;AccountKey=$accountKey"
-
     return $connectionString
 }
 
@@ -727,7 +726,7 @@ function GetSkuName
         return "Isolated"
     }
 
-    $guidanceUrl = 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
+    $guidanceUrl = 'https://docs.microsoft.com/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
 
     $errorMessage = "Invalid sku (pricing tier), please refer to '$guidanceUrl' for valid values."
     $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -836,7 +835,7 @@ function ValidateFunctionsVersion
         $currentlySupportedFunctionsVersions = $SupportedFunctionsVersion -join ' and '
         $errorMessage = "Functions version not supported. Currently supported version are: $($currentlySupportedFunctionsVersions)."
         $exception = [System.InvalidOperationException]::New($errorMessage)
-        ThrowTerminatingError -ErrorId "FunctionsVersionIsInvalid" `
+        ThrowTerminatingError -ErrorId "FunctionsVersionNotSupported" `
                               -ErrorMessage $errorMessage `
                               -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
                               -Exception $exception
@@ -1023,7 +1022,7 @@ function ThrowRuntimeNotSupportedException
     )
 
     $Message += [System.Environment]::NewLine
-    $Message += "For supported languages, please visit 'https://docs.microsoft.com/en-us/azure/azure-functions/functions-versions#languages'."
+    $Message += "For supported languages, please visit 'https://docs.microsoft.com/azure/azure-functions/functions-versions#languages'."
 
     $exception = [System.InvalidOperationException]::New($Message)
     ThrowTerminatingError -ErrorId $ErrorId `

@@ -61,9 +61,19 @@ function Test-BackupPolicyCrud
         #returns 0 atm service side issue
         #Assert-AreEqual $yearlyBackupsToKeep $retrievedBackupPolicy.YearlyBackupsToKeep
         
+        #update with set
+        $setDailyBackupsToKeep = 3
+        $retrievedBackupPolicy = Set-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $setDailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+
+        $setDailyBackupsToKeep = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
+        Assert-AreEqual $updatedDailyBackupsToKeep $getSetBackupPolicy.DailyBackupsToKeep
+
+
         $updatedDailyBackupsToKeep = 2
         $updatedBackupPolicy = Update-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -DailyBackupsToKeep $updatedDailyBackupsToKeep
-        Assert-AreEqual $updatedDailyBackupsToKeep $updatedBackupPolicy.DailyBackupsToKeep
+        $getUpdatedBackupPolicy = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
+
+        Assert-AreEqual $updatedDailyBackupsToKeep $getUpdatedBackupPolicy.DailyBackupsToKeep
 
         #create second BackupPolicy
         $secondBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName2 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
