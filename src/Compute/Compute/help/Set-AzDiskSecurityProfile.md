@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzDiskSecurityProfile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Set SecurityProfile on managed disk
 
 ## SYNTAX
 
@@ -18,16 +18,21 @@ Set-AzDiskSecurityProfile [-Disk] <PSDisk> [-SecurityType <String>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set SecurityProfile on managed disk
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$diskconfig = New-AzDiskConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows -CreateOption FromImage;
+$image = '/subscriptions/0000000-0000-0000-0000-000000000000/resourceGroups/ResourceGroup01/providers/Microsoft.Compute/images/TestImage123';        
+$diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image -Lun 0;
+$diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
+New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;
+#$disk.Properties.SecurityProfile.SecurityType == "TrustedLaunch";
 ```
 
-{{ Add example description here }}
+Customers can set the SecurityType of managed Disks.
 
 ## PARAMETERS
 
@@ -62,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityType
-{{ Fill SecurityType Description }}
+Security Type of Disk
 
 ```yaml
 Type: String

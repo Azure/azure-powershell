@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.compute/new-azdiskpurchaseplanconfig.md
 schema: 2.0.0
 ---
 
 # New-AzDiskPurchasePlanConfig
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a PurchasePlan Object
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ New-AzDiskPurchasePlanConfig [-Publisher <String>] [-Name <String>] [-Product <S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a PurchasePlan Object
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$diskPurchasePlan = New-AzDiskPurchasePlanConfig -Name “planName” -Publisher “planPublisher” -Product “planPorduct” -PromotionCode “planPromotionCode”
+$diskConfig = New-AzDiskConfig -Location 'eastus2euap' -AccountType 'Premium_LRS' -CreateOption 'Empty' -DiskSizeGB 32 -PurchasePlan $diskPurchasePlan
+New-AzDisk -ResourceGroupName 'ResourceGroup02' -DiskName 'Disk02' -Disk $diskConfig
+$disk = Get-AzDisk -ResourceGroupName 'ResourceGroup02' -DiskName 'Disk02'
 ```
 
-{{ Add example description here }}
+Customers can set the PurchasePlan on the Managed Disks.
 
 ## PARAMETERS
 
@@ -47,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+Name of Config
 
 ```yaml
 Type: String
@@ -62,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -Product
-{{ Fill Product Description }}
+Name of Product
 
 ```yaml
 Type: String
@@ -77,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -PromotionCode
-{{ Fill PromotionCode Description }}
+PromotionCode for Purchase Plan
 
 ```yaml
 Type: String
@@ -92,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -Publisher
-{{ Fill Publisher Description }}
+Name of Publisher
 
 ```yaml
 Type: String
