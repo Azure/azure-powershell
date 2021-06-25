@@ -31,17 +31,17 @@ namespace Microsoft.Azure.Commands.Compute.Generated.Disk.Config
     {
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string Publisher { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string Product { get; set; }
 

@@ -1449,7 +1449,34 @@ function Test-DiskPurchasePlan
     }
 }
 
-function Test-DiskAccountPremiumZRS
+function Test-DiskSkuPremiumZRSStandardSSDZRS
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $diskConfig = New-AzDiskConfig -Location $loc -SkuName 'Premium_ZRS' -CreateOption 'Empty' -DiskSizeGB 2
+		$diskname = "disk" + $rgname;
+		$diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname
+        Assert-AreEqual $disk.Sku.Name "Premium_ZRS"
+
+        $diskupdateconfig = New-AzDiskUpdateConfig -SkuName 'StandardSSD_ZRS'
+        Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $diskupdateconfig;
+        $updatedDisk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname
+        Assert-AreEqual $updatedDisk.Sku.Name "StandardSSD_ZRS"
+
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-SecurityProfile
 {
     $rgname = Get-ComputeTestResourceName;
 	$loc = "eastus2";
@@ -1458,11 +1485,13 @@ function Test-DiskAccountPremiumZRS
     {
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-		$diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_ZRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+		$diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
 		$diskname = "disk" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
+
 		$diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
 
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "StandardSSD_ZRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
 		$diskname = "disk" + $rgname;
 		$diskSt = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
 
@@ -1482,33 +1511,60 @@ function Test-DiskAccountPremiumZRS
 	}
 }
 
-function Test-SecurityProfile
+function Test-SupportsHibernation
+{
+	$rgname = Get-ComputeTestResourceName;
+	$loc = "eastus2euap";
+
+    try{
+    	New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $diskConfig = New-AzDiskConfig -Location 'eastus2euap' -AccountType 'Premium_LRS' -CreateOption 'Empty' -DiskSizeGB 2 -SupportsHibernation $true
+		$diskname = "disk" + $rgname;
+		New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskConfig;
+        $disk = Get-AzDisk -ResourceGroupName $rgname -DiskName $diskname
+        Assert-AreEqual $disk.SupportsHibernation $true
+
+        $updateconfig = New-AzDiskUpdateConfig -SupportsHibernation $false;
+        $disk = Update-AzDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig;
+        Assert-AreEqual $disk.SupportsHibernation $false
+
+        $snapshotConfig = New-AzSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -SupportsHibernation $true
+        $snapshotname = "snapshot" + $rgname;
+        New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname  -Snapshot $snapshotConfig
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname
+        Assert-AreEqual $snapshot.SupportsHibernation $true
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname
+        $snapshotUpdateConfig = New-AzSnapshotUpdateConfig -SupportsHibernation $false
+        Update-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $snapshotUpdateConfig
+        $newSnapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname
+        Assert-AreEqual $newSnapshot.SupportsHibernation $false
+
+
+    }
+    finally{
+    	# Cleanup
+		Clean-ResourceGroup $rgname
+    }
+}
+
+function Test-AutomaticKeyRotation
 {
     $rgname = Get-ComputeTestResourceName;
-	$loc = "eastus2";
+	$loc = "eastus2euap";
 
 	try
     {
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        $config = New-AzDiskEncryptionSetConfig -Location 'eastus2' -KeyUrl "https://diskrptest.vault.azure.net/keys/test2/f8d94ab139cf4596a947a27f1de7bef8" -SourceVaultId '/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/haagha_pwshelltest/providers/Microsoft.KeyVault/vaults/diskrptest' -IdentityType 'SystemAssigned' -RotationToLatestKeyVersionEnabled $true
+        New-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1' -DiskEncryptionSet $config;
+        $des = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1';
+        Assert-AreEqual $des.RotationToLatestKeyVersionEnabled $true
 
-		$diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_ZRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
-		$diskname = "disk" + $rgname;
-        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
+        Update-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1' -RotationToLatestKeyVersionEnabled $false 
+        $desUpdated = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name 'encd1';
+        Assert-AreEqual $desUpdated.RotationToLatestKeyVersionEnabled $false
 
-		$diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-
-        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "StandardSSD_ZRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
-		$diskname = "disk" + $rgname;
-		$diskSt = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
-
-		$snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
-		$snapshotname = "snapshot" + $rgname
-		$snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
-		Assert-AreEqual $snapshot.Location $loc;
-		Assert-AreEqual $snapshot.ExtendedLocation.Name $edge
-
-		$imageConfig = New-AzImageConfig -Location $loc -EdgeZone $edge -HyperVGeneration "V1";
-		Assert-AreEqual $imageConfig.ExtendedLocation.Name $edge
 	}
     finally 
     {

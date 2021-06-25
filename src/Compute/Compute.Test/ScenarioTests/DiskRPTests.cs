@@ -128,5 +128,34 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DiskPurchasePlan");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskSupportsHibernation()
+        {
+            TestRunner.RunTestScript("Test-SupportsHibernation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDiskSkuPremiumZRSStandardSSDZRS()
+        {
+            TestRunner.RunTestScript("Test-DiskSkuPremiumZRSStandardSSDZRS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-SecurityProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAutomaticKeyRotation()
+        {
+            TestRunner.RunTestScript("Test-AutomaticKeyRotation");
+        }
+        
     }
 }

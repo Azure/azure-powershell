@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -39,7 +40,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Gets or sets possible values include: TrustedLaunch")]
+        [PSArgumentCompleter("TrustedLaunch")]
         public string SecurityType { get; set; }
 
 
