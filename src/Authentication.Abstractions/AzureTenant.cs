@@ -47,11 +47,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 
         public static class Property
         {
-            public const string DisplayName = "DisplayName",
-            TenantCategory = "TenantCategory",
-            Domains = "Domains",
-            CountryCode = "CountryCode",
-            Directory = "Directory";
+            public const string TenantCategory = "TenantCategory",
+                Country = "country",
+                CountryCode = "CountryCode",
+                DisplayName = "DisplayName",
+                Domains = "Domains",
+                DefaultDomain = "defaultDomain",
+                TenantType = "tenantType",
+                TenantBrandingLogoUrl = "tenantBrandingLogoUrl",
+                Directory = "Directory";
         }
     }
 }
