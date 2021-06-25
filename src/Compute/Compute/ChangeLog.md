@@ -27,6 +27,7 @@
 * Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
 * Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
 * Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
+* Fixed IOPS and throughput check in `Test-AzVMAEMExtension`
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.
