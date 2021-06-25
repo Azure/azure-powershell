@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
 {
@@ -189,6 +191,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static void SetSubscriptionPolicies(this IAzureSubscription subscription, string subscriptionPolicies)
         {
             subscription.SetOrAppendProperty(AzureSubscription.Property.SubscriptionPolices, subscriptionPolicies);
+        }
+
+        /// <summary>
+        /// Get the tags associated with this subscription
+        /// </summary>
+        /// <param name="subscription">The subscription to check</param>
+        /// <returns>The tags of the subscription</returns>
+        public static Dictionary<string,string> GetTags(this IAzureSubscription subscription)
+        {
+            return JsonConvert.DeserializeObject<Dictionary<string,string>>(subscription.GetProperty(AzureSubscription.Property.Tags));
         }
 
         /// <summary>
