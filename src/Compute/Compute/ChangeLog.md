@@ -29,6 +29,15 @@
 * Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
 * Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
 * Fixed IOPS and throughput check in `Test-AzVMAEMExtension`
+* Added new cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskPurchasePlanConfig
+    - Set-AzDiskSecurityProfile
+* Changed Cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskConfig
+    - New-AzSnapshotConfig
+    - New-AzDiskUpdateConfig
+    - New-AzDiskEncryptionSetConfig
+    - Update-AzDiskEncryptionSet
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.

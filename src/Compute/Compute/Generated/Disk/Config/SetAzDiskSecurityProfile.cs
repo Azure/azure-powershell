@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute
         public PSDisk Disk { get; set; }
 
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Gets or sets possible values include: TrustedLaunch")]
         [PSArgumentCompleter("TrustedLaunch")]
