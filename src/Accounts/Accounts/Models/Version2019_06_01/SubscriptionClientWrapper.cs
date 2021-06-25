@@ -15,22 +15,22 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
-using Microsoft.Azure.Commands.ResourceManager.Version2019_06_01.Customized;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models;
-using Microsoft.Azure.Management.ResourceManager.Version2019_06_01.Models.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Version2021_01_01.Utilities;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
+using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models.Utilities;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2019_06_01
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Version2021_01_01
 {
     internal class SubscriptionClientWrapper : ISubscriptionClientWrapper
     {
         public SubscriptionClientWrapper()
         {
-            ApiVersion = "2019-06-01";
+            ApiVersion = "2021-01-01";
         }
 
         public IList<AzureTenant> ListAccountTenants(IAccessToken accessToken, IAzureEnvironment environment)

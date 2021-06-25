@@ -210,5 +210,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
             return result;
         }
+
+        public Dictionary<string, string> Tags
+        {
+            get
+            {
+               return this.GetTags();
+            }
+        }
     }
 }

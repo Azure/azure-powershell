@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 false,
                 null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 false,
                 null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 false,
                 null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 false,
                 null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantB, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionC, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 false,
                 null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, azureRmProfile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal(subscriptionB, azureRmProfile.DefaultContext.Subscription.Id.ToString());
         }
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = GetProfileClient();
             var context = client.SetCurrentContext(null, tenantA);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, context.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, context.Subscription.Id.ToString());
         }
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = GetProfileClient();
             var context = client.SetCurrentContext(subscriptionA, null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, context.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, context.Subscription.Id.ToString());
         }
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = GetProfileClient();
             var context = client.SetCurrentContext(subscriptionName.ToString(), null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, context.Tenant.Id.ToString());
             Assert.Equal(subscriptionA, context.Subscription.Id.ToString());
         }
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = GetProfileClient();
             var context = client.SetCurrentContext(subscriptionC.ToString(), null);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, context.Tenant.Id.ToString());
             Assert.Equal(subscriptionC, context.Subscription.Id.ToString());
         }
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionName = (JObject.Parse(subscriptionListA[subscriptionB]))["displayName"];
             var context = client.SetCurrentContext(subscriptionName.ToString(), tenantA);
 
-            Assert.Equal("2019-06-01", client.SubscriptionAndTenantClient.ApiVersion);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
             Assert.Equal(tenantA, context.Tenant.Id.ToString());
             Assert.Equal(subscriptionB, context.Subscription.Id.ToString());
         }
