@@ -279,6 +279,29 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisablePasswordAuthentication { get; set; }
 
+        [Parameter(
+            ParameterSetName = WindowsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [Parameter(
+            ParameterSetName = WinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [Parameter(
+            ParameterSetName = LinuxParamSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Automatic assessment mode value for the virtual machine. Possible values are ImageDefault and AutomaticByPlatform.")]
+        [PSArgumentCompleter("ImageDefault", "AutomaticByPlatform")]
+        public string AssessmentMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             this.VM.OSProfile = new OSProfile
@@ -315,6 +338,19 @@ namespace Microsoft.Azure.Commands.Compute
                     (this.DisablePasswordAuthentication.IsPresent)
                     ? (bool?)true
                     : null;
+
+                if (this.IsParameterBound(c => c.AssessmentMode))
+                {
+                    if (this.VM.OSProfile.LinuxConfiguration == null)
+                    {
+                        this.VM.OSProfile.LinuxConfiguration = new LinuxConfiguration();
+                    }
+                    if (this.VM.OSProfile.LinuxConfiguration.PatchSettings == null)
+                    {
+                        this.VM.OSProfile.LinuxConfiguration.PatchSettings = new LinuxPatchSettings();
+                    }
+                    this.VM.OSProfile.LinuxConfiguration.PatchSettings.AssessmentMode = this.AssessmentMode;
+                }
             }
             else
             {
@@ -327,6 +363,19 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
                     this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContent = null;
+                }
+
+                if (this.IsParameterBound(c => c.AssessmentMode))
+                {
+                    if (this.VM.OSProfile.WindowsConfiguration == null)
+                    {
+                        this.VM.OSProfile.WindowsConfiguration = new WindowsConfiguration();
+                    }
+                    if (this.VM.OSProfile.WindowsConfiguration.PatchSettings == null)
+                    {
+                        this.VM.OSProfile.WindowsConfiguration.PatchSettings = new PatchSettings();
+                    }
+                    this.VM.OSProfile.WindowsConfiguration.PatchSettings.AssessmentMode = this.AssessmentMode;
                 }
 
                 var listenerList = new List<WinRMListener>();

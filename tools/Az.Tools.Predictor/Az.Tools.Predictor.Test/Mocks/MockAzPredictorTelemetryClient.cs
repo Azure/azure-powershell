@@ -117,7 +117,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
 
             if (RecordedTelemetry.Count == ExceptedTelemetryRecordCount)
             {
-                SendTelemetryTaskCompletionSource.TrySetResult();
+                SendTelemetryTaskCompletionSource?.TrySetResult();
             }
         }
     }

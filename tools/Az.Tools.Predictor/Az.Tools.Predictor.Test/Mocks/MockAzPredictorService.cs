@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation.Language;
-using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -51,7 +51,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         /// <param name="history">The history that the suggestion is for</param>
         /// <param name="suggestions">The suggestions collection</param>
         /// <param name="commands">The commands collection</param>
-        public MockAzPredictorService(string history, IList<PredictiveCommand> suggestions, IList<PredictiveCommand> commands)
+        /// <param name="azContext">The Az context which this module runs in.</param>
+        public MockAzPredictorService(string history, IList<PredictiveCommand> suggestions, IList<PredictiveCommand> commands, IAzContext azContext) : base(azContext)
         {
             ResetRequestPredictionTask();
             if (history != null)
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
         }
 
         /// <inheritdoc/>
-        public override Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, CancellationToken cancellationToken)
+        public override Task<bool> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {
             if (ThrowException)
             {

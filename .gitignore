@@ -5,6 +5,10 @@ src/Stack/
 src/local-artifacts/*
 /tools/AzureRM/AzureRM.psm1
 !.placeholder
+SecurityTmp/
+tmp/
+FilesChanged.txt
+CsprojMappings.json
 
 obj
 bin

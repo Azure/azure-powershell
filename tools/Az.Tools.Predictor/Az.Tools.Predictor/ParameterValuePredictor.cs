@@ -39,14 +39,15 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         private string _paramValueHistoryFilePath = "";
         private CancellationTokenSource _cancellationTokenSource;
 
-
         private ITelemetryClient _telemetryClient;
+        private IAzContext _azContext;
 
-        public ParameterValuePredictor(ITelemetryClient telemetryClient)
+        public ParameterValuePredictor(ITelemetryClient telemetryClient, IAzContext azContext)
         {
             Validation.CheckArgument(telemetryClient, $"{nameof(telemetryClient)} cannot be null.");
 
             _telemetryClient = telemetryClient;
+            _azContext = azContext;
 
             var fileInfo = new FileInfo(typeof(Settings).Assembly.Location);
             var directory = fileInfo.DirectoryName;
@@ -87,13 +88,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                         _mutex.ReleaseMutex();
                     }
                 }
-
-                
             });
-
         }
-
-        
 
         /// <summary>
         /// Process the command from history
@@ -140,7 +136,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             return null;
         }
 
-
         public static string GetAzCommandNoun(string commandName)
         {
             var monikerIndex = commandName?.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
@@ -183,70 +178,50 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             Dictionary<string, string> commandNounMap = null;
             _commandParamToResourceMap?.TryGetValue(commandNoun, out commandNounMap);
 
-            // Don't need to check the last command element. If it's a switch parameter, we don't have a value to store.
-            // If it's a value, it should be counted in the previous command element (at Count - 2).
-            for (int i = 1; i < command.CommandElements.Count - 1;)
+            bool isParameterUpdated = false;
+
+            var parameterSet = new ParameterSet(command, _azContext);
+            for (var i = 0; i < parameterSet.Parameters.Count; ++i)
             {
-                if (command.CommandElements[i] is CommandParameterAst parameterAst)
+                var parameterName = parameterSet.Parameters[i].Name.ToLower();
+                var parameterValue = parameterSet.Parameters[i].Value;
+
+                if (string.IsNullOrWhiteSpace(parameterValue) || string.IsNullOrWhiteSpace(parameterName))
                 {
-                    var parameterName = parameterAst.ParameterName.ToLower();
-                    string parameterValue = null;
-
-                    // In the form of "-Name:Value"
-                    if (parameterAst.Argument != null)
-                    {
-                        parameterValue = parameterAst.Argument.ToString();
-                        ++i;
-                    }
-                    else if (i + 1 < command.CommandElements.Count)
-                    {
-                        // We don't support positional parameter.
-                        // The next element is either
-                        // 1. The value of this parameter name.
-                        // 2. This parameter is a switch parameter which doesn't have a value. The next element is a parameter.
-
-                        var nextElement = command.CommandElements[i + 1];
-
-                        if (nextElement is CommandParameterAst)
-                        {
-                            ++i;
-                            continue;
-                        }
-
-                        parameterValue = command.CommandElements[i + 1].ToString();
-                        i += 2;
-                    }
-
-                    var parameterKey = parameterName;
-
-                    if (commandNounMap != null)
-                    {
-                        if (commandNounMap.TryGetValue(parameterName, out var mappedValue))
-                        {
-                            parameterKey = mappedValue;
-                        }
-                    }
-                    _cancellationTokenSource?.Cancel();
-                    _cancellationTokenSource = new CancellationTokenSource();
-                    Task.Run(() =>
-                    {
-                        this._localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
-                        if (_cancellationTokenSource.IsCancellationRequested)
-                        {
-                            throw new OperationCanceledException();
-                        }
-                        String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
-                        _mutex.WaitOne();
-                        try
-                        {
-                            System.IO.File.WriteAllText(_paramValueHistoryFilePath, localParameterValuesJson);
-                        }
-                        finally
-                        {
-                            _mutex.ReleaseMutex();
-                        }
-                    });
+                    continue;
                 }
+
+                var parameterKey = parameterName;
+                var mappedValue = parameterKey;
+                if (commandNounMap?.TryGetValue(parameterName, out mappedValue) == true)
+                {
+                    parameterKey = mappedValue;
+                }
+
+                this._localParameterValues.AddOrUpdate(parameterKey, parameterValue, (k, v) => parameterValue);
+                isParameterUpdated = true;
+            }
+
+            if (isParameterUpdated)
+            {
+                _cancellationTokenSource?.Cancel();
+                _cancellationTokenSource = new CancellationTokenSource();
+                var cancellationToken = _cancellationTokenSource.Token;
+
+                Task.Run(() =>
+                {
+                    String localParameterValuesJson = JsonSerializer.Serialize<ConcurrentDictionary<string, string>>(_localParameterValues, JsonUtilities.DefaultSerializerOptions);
+                    _mutex.WaitOne();
+                    cancellationToken.ThrowIfCancellationRequested();
+                    try
+                    {
+                        System.IO.File.WriteAllText(_paramValueHistoryFilePath, localParameterValuesJson);
+                    }
+                    finally
+                    {
+                        _mutex.ReleaseMutex();
+                    }
+                }, cancellationToken);
             }
         }
     }

@@ -113,8 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public CloudBlobContainer CloudBlobContainer { get; set; }
 
         [Alias("SourceBlob")]
-        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerParameterSet, Mandatory = true, Position = 0)]
-        [Parameter(HelpMessage = "Blob name", ParameterSetName = ContainerNameParameterSet, Mandatory = true, Position = 0)]
+        [Parameter(HelpMessage = "Blob name", ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet, Mandatory = true, Position = 0)]
+        [Parameter(HelpMessage = "Blob name", ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet, Mandatory = true, Position = 0)]
         public string SrcBlob
         {
             get { return BlobName; }
@@ -123,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private string BlobName = String.Empty;
 
         [Alias("SourceContainer")]
-        [Parameter(HelpMessage = "Source Container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Source Container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SrcContainer
         {
@@ -166,25 +166,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public string AbsoluteUri { get; set; }
 
         [Alias("DestinationContainer")]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = UriParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = BlobParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
+        [Parameter(HelpMessage = "Destination container name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         public string DestContainer { get; set; }
 
         [Alias("DestinationBlob")]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = true, ParameterSetName = UriParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerNameParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = BlobParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ContainerParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareNameParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = UriParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerNameParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareNameParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ShareParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = DirParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         public string DestBlob { get; set; }
 
         [Alias("DestICloudBlob", "DestinationCloudBlob", "DestinationICloudBlob")]
@@ -264,7 +264,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override IStorageContext Context { get; set; }
 
         [Alias("DestinationContext")]
-        [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
+        [Parameter(HelpMessage = "Destination Storage context object", ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public IStorageContext DestContext { get; set; }
 
         public override SwitchParameter AsJob { get; set; }

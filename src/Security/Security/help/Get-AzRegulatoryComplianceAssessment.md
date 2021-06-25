@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Security.dll-Help.xml
 Module Name: Az.Security
-online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzRegulatoryComplainceAssessment
+online version: https://docs.microsoft.com/powershell/module/az.security/Get-AzRegulatoryComplianceAssessment
 schema: 2.0.0
 ---
 
-# Get-AzRegulatoryComplainceAssessment
+# Get-AzRegulatoryComplianceAssessment
 
 ## SYNOPSIS
 Gets regulatory compliance assessments
@@ -14,13 +14,13 @@ Gets regulatory compliance assessments
 
 ### SubscriptionLevelResource (Default)
 ```
-Get-AzRegulatoryComplainceAssessment [-Name <String>] -StandardName <String> -ControlName <String>
+Get-AzRegulatoryComplianceAssessment [-Name <String>] -StandardName <String> -ControlName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzRegulatoryComplainceAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzRegulatoryComplianceAssessment -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Get a spcific assessment details or list all the assessments under specific cont
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzRegulatoryComplainceAssessment -StandardName "SOC TSP" -ControlName "CC5.8"
+PS C:\> Get-AzRegulatoryComplianceAssessment -StandardName "SOC TSP" -ControlName "CC5.8"
 
 Id                    : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComp
                         lianceStandards/SOC-TSP/regulatoryComplianceControls/CC5.8/regulatoryComplianceAssessments/0392
@@ -138,7 +138,7 @@ Get all assessments under specific control and standard.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzRegulatoryComplainceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" -Name "fe48038b-f73a-4264-b499-0ff9dfaab05c"
+PS C:\> Get-AzRegulatoryComplianceAssessment -StandardName "SOC TSP" -ControlName "CC5.8" -Name "fe48038b-f73a-4264-b499-0ff9dfaab05c"
 
 Id                    : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComp
                         lianceStandards/SOC-TSP/regulatoryComplianceControls/CC5.8/regulatoryComplianceAssessments/fe48
@@ -159,7 +159,7 @@ Get a specific assessment under specific control and standard according to asses
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzRegulatoryComplainceAssessment -ResourceId"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComp
+PS C:\> Get-AzRegulatoryComplianceAssessment -ResourceId"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComp
                         lianceStandards/SOC-TSP/regulatoryComplianceControls/CC5.8/regulatoryComplianceAssessments/fe48038b-f73a-4264-b499-0ff9dfaab05c"
 
 Id                    : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/regulatoryComp

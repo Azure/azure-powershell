@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [PSArgumentCompleter("Enabled", "Disabled")]
         public string PublicNetworkAccess { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "When enabled, only outbound connections allowed by the outbound firewall rules will succeed.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string RestrictOutboundNetworkAccess { get; set; }
+
         /// <summary>
         /// Gets or sets the sql server minimal tls version
         /// </summary>
@@ -151,6 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 Location = model.FirstOrDefault().Location,
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 PublicNetworkAccess = this.PublicNetworkAccess,
+                RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
                 MinimalTlsVersion = this.MinimalTlsVersion,
                 SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
                 PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
