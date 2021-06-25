@@ -262,35 +262,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return false;
         }
 
-        protected bool CheckIfInteractive()
-        {
-            bool interactive = true;
-            if (this.Host?.UI?.RawUI == null ||
-                Environment.GetCommandLineArgs().Any(s =>
-                    s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
-            {
-                interactive = false;
-            }
-            else
-            {
-                try
-                {
-                    var test = this.Host.UI.RawUI.KeyAvailable;
-                }
-                catch
-                {
-                    interactive = false;
-                }
-            }
-
-            if (!interactive && _dataCollectionProfile != null && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
-            {
-                _dataCollectionProfile.EnableAzureDataCollection = false;
-            }
-            return interactive;
-        }
-
-
         protected virtual void LogCmdletStartInvocationInfo()
         {
             if (string.IsNullOrEmpty(ParameterSetName))
@@ -408,7 +379,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
-            if (CheckIfInteractive() && SurveyHelper.GetInstance().ShouldPropmtSurvey(this.MyInvocation.MyCommand.ModuleName, this.MyInvocation.MyCommand.Version))
+            if (SurveyHelper.GetInstance().ShouldPropmtSurvey(this.MyInvocation.MyCommand.ModuleName, this.MyInvocation.MyCommand.Version))
             {
                 WriteSurvey();
                 if (_qosEvent != null)
