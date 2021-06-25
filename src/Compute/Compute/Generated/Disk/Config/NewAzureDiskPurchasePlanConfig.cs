@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Generated.Disk.Config
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskPurchasePlanConfig"), OutputType(typeof(PSPurchasePlan))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskPurchasePlanConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSPurchasePlan))]
     public class NewAzureDiskPurchasePlanConfig : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -50,7 +50,15 @@ namespace Microsoft.Azure.Commands.Compute.Generated.Disk.Config
             ValueFromPipelineByPropertyName = true)]
         public string PromotionCode { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
+        {
+            if (ShouldProcess("DiskPurchasePlan", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             var purchasePlan = new PSPurchasePlan
             {

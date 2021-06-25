@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskSecurityProfile"), OutputType(typeof(PSDisk))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskSecurityProfile", SupportsShouldProcess = true)]
     public class SetAzDiskSecurityProfile : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("DiskSecurityProfile")]
@@ -45,8 +45,15 @@ namespace Microsoft.Azure.Commands.Compute
         [PSArgumentCompleter("TrustedLaunch")]
         public string SecurityType { get; set; }
 
+        protected override void ProcessRecord()
+        {
+            if (ShouldProcess("DiskSecurityProfile", "Set"))
+            {
+                Run();
+            }
+        }
 
-        public override void ExecuteCmdlet()
+        private void Run()
         {
             if(this.Disk.SecurityProfile == null)
             {
