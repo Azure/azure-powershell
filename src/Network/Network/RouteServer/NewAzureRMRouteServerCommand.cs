@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
         public string HostedSubnet { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The public ip address of ip configuration.")]
         [ValidateNotNullOrEmpty]
         public PSPublicIpAddress PublicIpAddress { get; set; }
