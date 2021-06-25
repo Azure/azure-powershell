@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Common
                     await OnCmdletEndProcessing(id, cancellationToken, getEventData, signal, processRecordId);
                     break;
                 default:
-                    getEventData.Print(signal, cancellationToken, Events.Information, id);
+                    getEventData.Print(signal, cancellationToken, Events.Verbose, id);
                     break;
             }
         }

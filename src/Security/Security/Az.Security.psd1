@@ -113,7 +113,7 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
                'Get-AzSqlInformationProtectionPolicy', 
                'Get-AzRegulatoryComplianceStandard', 
                'Get-AzRegulatoryComplianceControl', 
-               'Get-AzRegulatoryComplainceAssessment', 'Get-AzSecuritySetting', 
+               'Get-AzRegulatoryComplianceAssessment', 'Get-AzSecuritySetting', 
                'Set-AzSecuritySetting', 'Get-AzSecurityAssessment', 
                'Set-AzSecurityAssessment', 'Remove-AzSecurityAssessment', 
                'Get-AzSecurityAssessmentMetadata', 
@@ -131,7 +131,7 @@ CmdletsToExport = 'Get-AzSecurityAlert', 'Set-AzSecurityAlert',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = @('Get-AzRegulatoryComplainceAssessment')
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

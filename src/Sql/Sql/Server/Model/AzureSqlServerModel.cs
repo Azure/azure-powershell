@@ -85,6 +85,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Model
         public string PublicNetworkAccess { get; set; }
 
         /// <summary>
+        /// Gets or sets the flag to restrict the outbound network access from the server
+        /// </summary>
+        public string RestrictOutboundNetworkAccess { get; set; }
+
+        /// <summary>
         /// Gets or sets the Azure SQL Server Active Directory administrator
         /// </summary>
         public Management.Sql.Models.ServerExternalAdministrator Administrators{ get; set; }

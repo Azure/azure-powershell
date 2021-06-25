@@ -25,6 +25,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public const string AzCommandMoniker = "-Az";
 
         /// <summary>
+        /// The value of number of cohort groups.
+        /// </summary>
+        public const int CohortCount = 2;
+
+        /// <summary>
         /// The value to use when the command isn't an Az command.
         /// </summary>
         public const string CommandPlaceholder = "start_of_snippet";
@@ -48,12 +53,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// The service endpoint to get the list of commands.
         /// </summary>
         public const string CommandsEndpoint = "/commands";
-
-        /// <summary>
-        /// The default client id. This is used when we don't get the client id from the caller. For example, when the module
-        /// is imported and it hasn't started processing yet.
-        /// </summary>
-        public const string DefaultClientId = "AzPredictor";
 
         /// <summary>
         /// The service endpoint to get the list of suggestions.

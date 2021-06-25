@@ -679,4 +679,16 @@
   <data name="MissingSQLAdministratorCredentials" xml:space="preserve">
     <value>SQL Administrator Credentials are only optional when Azure Active Directory Only Authentication is enabled via -EnableActiveDirectoryOnlyAuthentication.</value>
   </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerOutboundFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the allowed FQDN '{0}' from the list of Outbound Firewall Rules (Allowed FQDNs) for Azure Sql Database Server '{1}'?</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNExists" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' already exists in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
+  </data>
+  <data name="ServerOutboundFirewallRuleFQDNDoesNotExist" xml:space="preserve">
+    <value>Allowed FQDN with name '{0}' does not exist in the list of Outbound Firewall Rules (Allowed FQDNs) for Azure SQL Database server '{1}'.</value>
+  </data>
 </root>
