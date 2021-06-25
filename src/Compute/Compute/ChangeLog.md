@@ -35,6 +35,7 @@
 * Changed Cmdlets for 2020-12-01 DiskRP API version
     - New-AzDiskConfig
     - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
     - New-AzDiskUpdateConfig
     - New-AzDiskEncryptionSetConfig
     - Update-AzDiskEncryptionSet
