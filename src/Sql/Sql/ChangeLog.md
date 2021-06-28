@@ -25,6 +25,9 @@
       `Get-AzSqlServerOutboundFirewallRule`
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
+* Updated cmdlets for getting and updating SQL database's differential backup frequency
+      `Get-AzSqlDatabaseBackupShortTermRetentionPolicy`
+      `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
 
 ## Version 3.3.0
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.
