@@ -19,7 +19,7 @@
 --->
 
 ## Upcoming Release
-* Added public ip address as a mandatory parameter to create route server
+* Added public ip address as an optional parameter to create route server
     - `New-AzRouteServer`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
