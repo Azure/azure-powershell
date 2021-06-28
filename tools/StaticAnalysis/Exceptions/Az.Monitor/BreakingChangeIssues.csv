@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Monitor","Microsoft.Azure.Commands.Insights.Autoscale.AddAzureRmAutoscaleSettingCommand","Add-AzAutoscaleSetting","0","1050","The parameter set 'UpdateAutoscaleSetting' for cmdlet 'Add-AzAutoscaleSetting' has been removed.","Add parameter set 'UpdateAutoscaleSetting' back to cmdlet 'Add-AzAutoscaleSetting'."
