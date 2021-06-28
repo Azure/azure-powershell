@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             this.PublicNetworkAccessForQuery = component.PublicNetworkAccessForQuery;
             this.PrivateLinkScopedResources = component.PrivateLinkScopedResources;
             this.RetentionInDays = component.RetentionInDays;
+            this.ConnectionString = component.ConnectionString;
         }
 
         public string Id { get; set; }
@@ -88,6 +89,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public string PublicNetworkAccessForQuery { get; set; }
 
         public IList<PrivateLinkScopedResource> PrivateLinkScopedResources { get; private set; }
+
+        public string ConnectionString { get; private set; }
 
         public int? RetentionInDays { get; set; }
 
