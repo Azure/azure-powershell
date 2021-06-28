@@ -188,6 +188,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 databaseAccountUpdateParameters.BackupPolicy = new ContinuousModeBackupPolicy();
             }
 
+            // Update analytical storage schema type.
+            databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
+
             if (ShouldProcess(Name, "Updating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;

@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             BackupPolicy = new PSBackupPolicy(databaseAccountGetResults.BackupPolicy);
             RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
             CreateMode = databaseAccountGetResults.CreateMode;
+            AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
         }
 
         //
@@ -213,5 +214,9 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets the CreateMode of the CosmosDB Account
         public string CreateMode { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the AnalyticalStorageConfiguration of the CosmosDB Account
+        public PSAnalyticalStorageConfiguration AnalyticalStorageConfiguration { get; set; }
     }
 }
