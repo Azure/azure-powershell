@@ -55,6 +55,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         BuildPutObject();
                     }
+
+                    // check if image reference is being updated, if not remove image reference from payload for SIG 
+                    if (this.VirtualMachineScaleSet != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile != null
+                            && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference != null)
+                    {
+                        var newImageRef = this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference;
+                        var currVMSS = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
+                        var currImageRef = currVMSS.VirtualMachineProfile.StorageProfile.ImageReference;
+                        if (currImageRef.Id == newImageRef.Id)
+                        {
+                            this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = null;
+                        }
+                    }
+
                     VirtualMachineScaleSetUpdate parametersupdate = this.VirtualMachineScaleSetUpdate;
                     VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
@@ -315,7 +331,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        public bool EncryptionAtHost { get; set; } 
+        public bool EncryptionAtHost { get; set; }
 
         private void BuildPatchObject()
         {
@@ -1749,6 +1765,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
+
         }
     }
 }
