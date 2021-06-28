@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         Response = response.Response.StatusCode == HttpStatusCode.OK ? Resources.VaultDeletionSuccessMessage : response.Response.StatusCode.ToString()
                     };
-
+                    
                     this.WriteObject(output, true);
                 }
                 catch (Exception exception)

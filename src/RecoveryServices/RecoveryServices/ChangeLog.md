@@ -22,6 +22,8 @@
 
 ## Version 4.3.0
 * Fixed Disable SQL AG AutoProtection.
+* Added Archive for V1 vaults.
+* Added ProtectedItemsCount in Get-AzRecoveryServicesBackupProtectionPolicy.
 
 ## Version 4.2.0
 * Added cross tenant DS Move.
