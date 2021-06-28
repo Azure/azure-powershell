@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed bug for `Add-AzAutoscaleSetting` not able to pipe result from `Get-AzAutoScaleSetting` [#13861]
 
 ## Version 2.5.0
 * Added cmdlet to get diagnostic setting categories for subscription

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Gets or sets the InputObject parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The complete spec of an AutoscaleSetting")]
+        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The complete spec of an AutoscaleSetting")]
         [ValidateNotNullOrEmpty]
         [Alias("SettingSpec")]
         public PSAutoscaleSetting InputObject { get; set; }
@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or set the resource group name
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
-        [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias("ResourceGroup")]
@@ -90,6 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id for the setting")]
         [ValidateNotNullOrEmpty]
+        [Alias("TargetResourceUri")]
         public string TargetResourceId { get; set; }
 
         /// <summary>
