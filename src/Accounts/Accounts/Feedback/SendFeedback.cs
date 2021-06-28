@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Profile
             this.Host.UI.WriteLine(ConsoleColor.Cyan, this.Host.UI.RawUI.BackgroundColor, $"{Environment.NewLine}{question}{Environment.NewLine}");
         }
 
+        //This method was moved from AzurePSCmdlet
         private bool CheckIfInteractive()
         {
             bool interactive = true;
