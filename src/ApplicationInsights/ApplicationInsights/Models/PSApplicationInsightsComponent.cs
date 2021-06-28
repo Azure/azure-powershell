@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
             this.Kind = component.Kind;
             this.Type = component.Type;
             this.AppId = component.AppId;
+            this.ApplicationId = component.ApplicationId;
             this.ApplicationType = component.ApplicationType;
             this.CreationDate = component.CreationDate;
             this.FlowType = component.FlowType;
@@ -61,6 +62,8 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Models
         public string Type { get; set; }
 
         public string AppId { get; set; }
+
+        public string ApplicationId { get; private set; }
 
         public string ApplicationType { get; set; }
 
