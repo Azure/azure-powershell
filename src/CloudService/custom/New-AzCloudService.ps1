@@ -625,7 +625,7 @@ function validation
         foreach ($certFromFiles in $certList){
             $thumbprintFound = $false
             foreach ($certFromKV in $certsObjsFromKeyvault){
-                if ($certFromFiles.thumbprint == $certFromKV.thumbprint){
+                if ($certFromFiles.thumbprint -eq $certFromKV.thumbprint){
                     $thumbprintFound = $true
                     $certSecretList = $certSecretList + $certFromKV.SecretId
                 }
