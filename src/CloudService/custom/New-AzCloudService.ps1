@@ -281,7 +281,7 @@ function New-AzCloudService {
         # OS Profile
         if ($PSBoundParameters.ContainsKey("KeyVaultName")) {
             $keyVault = $passMemory.KeyVault 
-            $certSecretList = $passMemory.$certSecretList
+            $certSecretList = $passMemory.certSecretList
 
             $secretGroup = New-AzCloudServiceVaultSecretGroupObject -Id $keyVault.ResourceId -CertificateUrl $certSecretList 
             $osProfile = @{secret = @($secretGroup)}
@@ -631,7 +631,7 @@ function validation
                 }
             }
             if (-not $thumbprintFound){
-                throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in '" + $keyvaultName + "'. Missing thumbprint: '" + $certFromFiles.name + " " + $certFromFiles.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
+                throw "The thumbprints specified in the CSCFG could not be found in the Key Vault. Add the missing certificates in Key Vault: '" + $keyvaultName + "'. Missing thumbprint: '" + $certFromFiles.name + " " + $certFromFiles.thumbprint +"'. To understand more about how to use KeyVault for certificates, please follow the documentation at https://aka.ms/cses-kv"
             }
         }
         $passMemory.Add("certSecretList", $certSecretList)
