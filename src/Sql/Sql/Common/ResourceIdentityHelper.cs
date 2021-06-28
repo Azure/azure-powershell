@@ -30,10 +30,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
     public class ResourceIdentityHelper
     {
-        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, System.Object[] resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
+        public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, string resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-            string resourceIdType = null;
+            string resourceIdType = resourceIdentityType;
+            /*
             if (resourceIdentityType != null && resourceIdentityType.Length == 2)
             {
                 resourceIdType = "SystemAssigned,UserAssigned";
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 resourceIdType = (string)resourceIdentityType[0];
             }
-
+            */
             // If the user passes in IdentityType as None, then irrespective of previous config, we set the IdentityType to be None.
             //
             if (resourceIdentityType != null && resourceIdType.Equals(ResourceIdentityType.None.ToString()))
@@ -129,18 +130,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
             else if (assignIdentityIsPresent)
             {
-                if (existingResourceIdentity != null)
+                identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
-                    identityResult = existingResourceIdentity;
-                    identityResult.Type = ResourceIdentityType.SystemAssigned.ToString();
-                }
-                else
-                {
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = ResourceIdentityType.SystemAssigned.ToString()
-                    };
-                }       
+                    Type = ResourceIdentityType.SystemAssigned.ToString()
+                };  
             }
             
             if (!assignIdentityIsPresent && existingResourceIdentity != null && existingResourceIdentity.PrincipalId != null)
@@ -149,29 +142,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
 
             return identityResult;
-
-        }
-
-        public static string GetEnumValue(ResourceIdentityType resourceIdentityType)
-        {
-            string resourceIdType = null;
-            switch (resourceIdentityType)
-            {
-                case ResourceIdentityType.SystemAssigned:
-                    resourceIdType = "SystemAssigned";
-                    return resourceIdType;
-                case ResourceIdentityType.SystemAssignedUserAssigned:
-                    resourceIdType = "SystemAssigned,UserAssigned";
-                    return resourceIdType;
-                case ResourceIdentityType.UserAssigned:
-                    resourceIdType = "UserAssigned";
-                    return resourceIdType;
-                case ResourceIdentityType.None:
-                    resourceIdType = "None";
-                    return resourceIdType;
-            }
-
-            return resourceIdType;
 
         }
     }

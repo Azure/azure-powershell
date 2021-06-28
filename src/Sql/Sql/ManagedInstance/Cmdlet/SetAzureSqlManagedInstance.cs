@@ -230,8 +230,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None")]
-        public Object[] IdentityType { get; set; }
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job

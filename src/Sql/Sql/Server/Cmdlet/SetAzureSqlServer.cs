@@ -115,8 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned", "None")]
-        public Object[] IdentityType { get; set; }
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
