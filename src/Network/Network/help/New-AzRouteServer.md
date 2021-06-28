@@ -14,7 +14,7 @@ Creates an Azure RouteServer.
 
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
- -PublicIpAddress <PSPublicIpAddress> -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
