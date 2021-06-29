@@ -22,6 +22,7 @@
 	- Add `New-AzSynapseSparkJobDefinition` cmdlet
     - Add `Get-AzSynapseSparkJobDefinition` cmdlet
     - Add `Remove-AzSynapseSparkJobDefinition` cmdlet
+* Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
 
 ## Version 0.12.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
