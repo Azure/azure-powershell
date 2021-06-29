@@ -103,8 +103,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             Environment = "Environment",
             Account = "Account",
             SubscriptionPolices = "SubscriptionPolices",
-            AuthorizationSource = "authorizationSource",
-            Tags = "tags";
+            AuthorizationSource = "AuthorizationSource",
+            Tags = "Tags";
         }
     }
 }
