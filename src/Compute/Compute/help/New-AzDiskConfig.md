@@ -434,7 +434,7 @@ Accept wildcard characters: False
 ```
 
 ### -PurchasePlan
-{{ Fill PurchasePlan Description }}
+Specifies the Purchase Plan for the Disk.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
@@ -449,7 +449,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
+Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS, Premium_ZRS and StandardSSD_ZRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.
 
 ```yaml
 Type: System.String
@@ -509,7 +509,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Customers can set the SupportsHibernation flag on the Disk.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

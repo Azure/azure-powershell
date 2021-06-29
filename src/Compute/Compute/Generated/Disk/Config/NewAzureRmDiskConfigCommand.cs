@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             Position = 0,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the Sku name of the storage account.  Available values are Standard_LRS, Premium_LRS, StandardSSD_LRS, and UltraSSD_LRS, Premium_ZRS and StandardSSD_ZRS.  UltraSSD_LRS can only be used with Empty value for CreateOption parameter.")]
         [Alias("AccountType")]
         [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "StandardSSD_LRS", "UltraSSD_LRS", "Premium_ZRS", "StandardSSD_ZRS")]
         public string SkuName { get; set; }
@@ -83,12 +84,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the Purchase Plan for the Disk")]
         public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
         public bool? SupportsHibernation { get; set; }
 
         [Parameter(
@@ -233,8 +236,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
-
-            PurchasePlan purchasePlan = new PurchasePlan();
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -389,11 +390,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
-            if (this.IsParameterBound(c => c.PurchasePlan))
-            {
-                ComputeAutomationAutoMapperProfile.Mapper.Map<PSPurchasePlan, PurchasePlan>(this.PurchasePlan, purchasePlan);
-            }
-
             var vDisk = new PSDisk
             {
                 Zones = this.IsParameterBound(c => c.Zone) ? this.Zone : null,
@@ -416,7 +412,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
                 Tier = this.IsParameterBound(c => c.Tier) ? this.Tier : null,
                 BurstingEnabled = this.IsParameterBound(c => c.BurstingEnabled) ? this.BurstingEnabled : null,
-                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? purchasePlan : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
             };
 

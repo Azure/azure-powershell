@@ -96,12 +96,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the Purchase Plan for the Snapshot.")]
         public PSPurchasePlan PurchasePlan { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specify if Disk Supports Hibernation with $true of $false")]
         public bool? SupportsHibernation { get; set; }
 
         [Parameter(
@@ -180,8 +182,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             ExtendedLocation vExtendedLocation = null;
-
-            PurchasePlan purchasePlan = new PurchasePlan();
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -309,11 +309,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
             }
 
-            if (this.IsParameterBound(c => c.PurchasePlan))
-            {
-                ComputeAutomationAutoMapperProfile.Mapper.Map<PSPurchasePlan, PurchasePlan>(this.PurchasePlan, purchasePlan);
-            }
-
             var vSnapshot = new PSSnapshot
             {
                 OsType = this.IsParameterBound(c => c.OsType) ? this.OsType : (OperatingSystemTypes?)null,
@@ -329,7 +324,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Encryption = vEncryption,
                 NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null,
                 DiskAccessId = this.IsParameterBound(c => c.DiskAccessId) ? this.DiskAccessId : null,
-                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? purchasePlan : null,
+                PurchasePlan = this.IsParameterBound(c => c.PurchasePlan) ? this.PurchasePlan : null,
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null
             };
 

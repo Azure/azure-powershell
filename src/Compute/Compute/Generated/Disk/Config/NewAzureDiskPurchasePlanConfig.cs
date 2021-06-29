@@ -32,22 +32,26 @@ namespace Microsoft.Azure.Commands.Compute.Generated.Disk.Config
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set Publisher value")]
         public string Publisher { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set Purchase Plan Name")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set Product value")]
         public string Product { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Set Promotion Code")]
         public string PromotionCode { get; set; }
 
         protected override void ProcessRecord()
