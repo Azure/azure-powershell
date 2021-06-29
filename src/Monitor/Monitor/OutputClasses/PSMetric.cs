@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Unit = metric.Unit;
             this.Id = metric.Id;
             this.Type = metric.Type;
-            this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);
+            this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0 && metric.Timeseries[0].Data != null)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);
             this.Timeseries = metric.Timeseries;
         }
     }
