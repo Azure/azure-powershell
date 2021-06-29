@@ -33,6 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public Encryption Encryption { get; set; }
         public IDictionary<string, string> Tags { get; set; }
         public SnapshotSku Sku { get; set; }
-
+        public bool? SupportsHibernation { get; set; }
     }
 }
