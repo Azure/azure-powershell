@@ -33,20 +33,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public static Management.Sql.Models.ResourceIdentity GetIdentityObjectFromType(bool assignIdentityIsPresent, string resourceIdentityType, List<string> userAssignedIdentities, Management.Sql.Models.ResourceIdentity existingResourceIdentity)
         {
             Management.Sql.Models.ResourceIdentity identityResult = null;
-            string resourceIdType = resourceIdentityType;
-            /*
-            if (resourceIdentityType != null && resourceIdentityType.Length == 2)
-            {
-                resourceIdType = "SystemAssigned,UserAssigned";
-            }
-            else if (resourceIdentityType != null)
-            {
-                resourceIdType = (string)resourceIdentityType[0];
-            }
-            */
+            
             // If the user passes in IdentityType as None, then irrespective of previous config, we set the IdentityType to be None.
             //
-            if (resourceIdentityType != null && resourceIdType.Equals(ResourceIdentityType.None.ToString()))
+            if (resourceIdentityType != null && resourceIdentityType.Equals(ResourceIdentityType.None.ToString()))
             {
                 identityResult = new Management.Sql.Models.ResourceIdentity()
                 {
@@ -56,7 +46,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 return identityResult;
             }
 
-            if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdType.Equals("SystemAssigned,UserAssigned"))
+            if (resourceIdentityType != null && assignIdentityIsPresent && 
+                (resourceIdentityType.Equals("SystemAssigned,UserAssigned") || resourceIdentityType.Equals(ResourceIdentityType.SystemAssignedUserAssigned.ToString())))
             {
                 Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
 
@@ -92,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                     };
                 }
             }
-            else if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdType.Equals(ResourceIdentityType.UserAssigned.ToString()))
+            else if (resourceIdentityType != null && assignIdentityIsPresent && resourceIdentityType.Equals(ResourceIdentityType.UserAssigned.ToString()))
             {
                 Dictionary<string, UserIdentity> umiDict = new Dictionary<string, UserIdentity>();
 
