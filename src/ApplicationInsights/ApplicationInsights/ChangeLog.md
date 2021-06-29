@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added read only property `ConnectionString` and `ApplicationId` to applicationinsights component
 
 ## Version 1.1.1
 * Fixed issue that `ResourcegroupName` is missed when executing below cmdlets with `InputObject` parameter [#14848]

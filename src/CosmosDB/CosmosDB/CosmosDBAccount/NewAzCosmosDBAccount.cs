@@ -256,6 +256,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 };
             }
 
+            // Update analytical storage schema type.
+            databaseAccountCreateUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
+
             if (ShouldProcess(Name, "Creating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountCreateUpdateParameters).GetAwaiter().GetResult().Body;
