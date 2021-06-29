@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
             var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClientVer2019(),
+                clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
             }, true);
             mock.MoqClients = true;
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
@@ -230,8 +230,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubGetQueueVer2019 = new Queue<Func<AzureOperationResponse<Subscription>>>();
-            MockSubscriptionClientFactory.SubGetQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubGetQueueVerLatest = new Queue<Func<AzureOperationResponse<Subscription>>>();
+            MockSubscriptionClientFactory.SubGetQueueVerLatest.Enqueue(() =>
             {
                 throw new CloudException("InvalidAuthenticationTokenTenant: The access token is from the wrong issuer");
             });
@@ -266,8 +266,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 TenantId = DefaultTenant.ToString()
             };
 
-            MockSubscriptionClientFactory.SubListQueueVer2019 = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
-            MockSubscriptionClientFactory.SubListQueueVer2019.Enqueue(() =>
+            MockSubscriptionClientFactory.SubListQueueVerLatest = new Queue<Func<AzureOperationResponse<IPage<Subscription>>>>();
+            MockSubscriptionClientFactory.SubListQueueVerLatest.Enqueue(() =>
             {
                 var sub1 = new Subscription(
                     id: DefaultSubscription.ToString(),

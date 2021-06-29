@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Dictionary<string, string> subscriptionList = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionList.Values.ToList())
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             var subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(GetTenantsJson(tenantA, tenantB).Values.ToArray())
                 , MockSubscriptionClientFactory.CreateSubscripitonsFromJson(subscriptionListA[subscriptionA], subscriptionListB[subscriptionA])
                 , null
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             var subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(tenantList[tenantB], tenantList[tenantA])
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListB.Values.ToList(), subscriptionListA.Values.ToList())
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(GetTenantsJson(tenantA, tenantB).Values.ToArray())
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListA.Values.ToList(), subscriptionListB.Values.ToList())
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , MockSubscriptionClientFactory.CreateSubscripitonsFromJson(subscriptionListA[subscriptionB])
                 , null
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , MockSubscriptionClientFactory.CreateSubscripitonsFromJson(null)
                 , null
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(GetTenantsJson(tenantA, tenantB).Values.ToArray())
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListA.Values.ToList(), subscriptionListB.Values.ToList())
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Dictionary<string, string> subscriptionList = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionList.Values.ToList())
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             var subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(GetTenantsJson(tenantA, tenantB).Values.ToArray())
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListB.Values.ToList(), subscriptionListA.Values.ToList())
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             var subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(tenantList[tenantB], tenantList[tenantA])
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListA.Values.ToList(), subscriptionListB.Values.ToList())
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 MockSubscriptionClientFactory.CreateTenantListFromJson(GetTenantsJson(tenantA, tenantB).Values.ToArray())
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListA.Values.ToList(), subscriptionListB.Values.ToList())
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Dictionary<string, string> subscriptionListA = GetFirstTenantSubscriptionsJson(tenantA, subscriptionA, subscriptionB, subscriptionC, tenantB);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListA.Values.ToList())
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             Dictionary<string, string> subscriptionListB = GetSecondTenantSubscriptionsJson(tenantB, subscriptionA, subscriptionB, subscriptionC, subscriptionD, tenantA);
             subscriptionClients.Clear();
-            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVer2019(
+            subscriptionClients.Enqueue(clientFactory.GetSubscriptionClientVerLatest(
                 null
                 , null
                 , MockSubscriptionClientFactory.CreateSubscriptionListsFromJson(subscriptionListB.Values.ToList())
