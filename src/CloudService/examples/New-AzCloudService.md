@@ -155,11 +155,7 @@ Above set of commands creates a cloud service with single role and certificate f
 
 ```powershell
 # Set up a storage account if you have not
-PS C:\> $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location “East US” -SkuName “Standard_RAGRS” -Kind “StorageV2” 
-
-# Create Subet and Virtual Network 
-PS C:\> $subnet = New-AzVirtualNetworkSubnetConfig -Name "WebTier" -AddressPrefix "10.0.0.0/24" -WarningAction SilentlyContinue 
-PS C:\> $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVnet” -Location “East US” -ResourceGroupName ContosoOrg -AddressPrefix "10.0.0.0/24" -Subnet $subnet
+PS C:\> $storageAccount = New-AzStorageAccount -ResourceGroupName ContosoOrg -Name ContosoStorAcc -Location "East US" -SkuName "Standard_RAGRS" -Kind "StorageV2"
 
 # Create cloud service
 PS C:\> $cloudService = New-AzCloudService                                              `
@@ -201,6 +197,3 @@ PS C:\> $cloudService = New-AzCloudService                                      
 
 Above set of commands creates a cloud service by extracting NetworkProfile and RoleProfile information from the .CsCfg and .CsDef files. 
 Those files will also provide OSProfile information along with the Certificates from the keyvault provided in the '-KeyVaultName' parameter.
-
-
-
