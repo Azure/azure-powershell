@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Removed Interactive mode check in common lib
+* Added endpoint of OperationalInsights to environment AzureChinaCloud [#15305]
 * Printed auto generated modules' default logs to verbose stream
 
 ## Version 2.4.0
