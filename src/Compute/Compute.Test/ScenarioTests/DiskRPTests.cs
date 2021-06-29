@@ -143,6 +143,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-DiskSkuPremiumZRSStandardSSDZRS");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSecurityProfile()
+        {
+            TestRunner.RunTestScript("Test-SecurityProfile");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

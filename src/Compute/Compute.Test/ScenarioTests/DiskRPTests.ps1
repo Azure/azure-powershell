@@ -1481,7 +1481,40 @@ function Test-DiskSkuPremiumZRSStandardSSDZRS
     }
 }
 
+<#
+.SYNOPSIS
+Test Set-AzDiskSecurityProfile
+#>
+function Test-SecurityProfile
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "eastus2";
 
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "disk" + $rgname;
+        $diskconfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "TrustedLaunch";
+        $diskPr = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $diskconfig = New-AzDiskConfig -Location $loc -DiskSizeGB 1 -AccountType "Premium_LRS" -OsType "Windows" -CreateOption "Empty" -HyperVGeneration "V1";
+        $diskname = "disk" + $rgname;
+        $diskSt = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -EdgeZone $edge -DiskSizeGB 5 -SkuName Premium_LRS -OsType Windows -CreateOption Empty;
+        $snapshotname = "snapshot" + $rgname;
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig;
+        Assert-AreEqual $snapshot.Location $loc;
+        Assert-AreEqual $snapshot.ExtendedLocation.Name $edge;
+        $imageConfig = New-AzImageConfig -Location $loc -EdgeZone $edge -HyperVGeneration "V1";
+        Assert-AreEqual $imageConfig.ExtendedLocation.Name $edge;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS
