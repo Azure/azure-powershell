@@ -21,6 +21,9 @@
 ## Upcoming Release
 * Updated cmdlets to enable processing of available zones on AzureFirewalll
     - `New-AzFirewall`
+* Updated cmdlets to add properties for new BYOIP features.
+    - `New-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.
@@ -52,9 +55,6 @@
     - `Update-AzVirtualHub`
 * Updated cmdlets to expose two read-only properties of client certificate.
     - `Get-AzApplicationGatewayTrustedClientCertificate`
-* Updated cmdlets to add properties for new BYOIP features.
-    - `New-AzCustomIpPrefix`
-    - `Update-AzCustomIpPrefix`
 
 ## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter

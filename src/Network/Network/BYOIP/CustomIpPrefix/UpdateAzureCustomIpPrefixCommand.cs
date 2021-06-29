@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Deprovision { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix CIDR.")]
+        [ValidateNotNullOrEmpty]
+        public string Cidr { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.",
@@ -134,9 +141,14 @@ namespace Microsoft.Azure.Commands.Network
             {
                 customIpPrefixToUpdate.CommissionedState = "Provisioning";
             }
-            else
+            else if (Deprovision)
             {
                 customIpPrefixToUpdate.CommissionedState = "Deprovisioning";
+            }
+
+            if (this.Cidr != null)
+            {
+                customIpPrefixToUpdate.Cidr = this.Cidr;
             }
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(customIpPrefixToUpdate);
