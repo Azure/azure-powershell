@@ -21,7 +21,7 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
  [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob] [-NetworkAclBypass <String>]
  [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>]
+ [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -143,6 +143,21 @@ A new account with the name restoredDatabaseAccountName is created by restoring 
 
 ## PARAMETERS
 
+### -AnalyticalStorageSchemaType
+The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ApiKind
 The type of Cosmos DB database account to create.
 Accepted values: GlobalDocumentDB, MongoDB, Gremlin, Table, Cassandra.
@@ -212,21 +227,6 @@ The time(in hours) for which each backup is retained (only for accounts with per
 Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -596,6 +596,21 @@ Array of PSVirtualNetworkRuleObjects for virtual network.
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

@@ -24,6 +24,7 @@
   - Introduced support for Point in time restore for accounts with continuous mode backup policy.
   - Introduced support to update the backup interval and backup retention for accounts with periodic mode backup policy.
   - Introduced support to list the restorable resources in a live database account.
+  - Introduces support to specify analytical storage schema type on account creation/update.
   - The following cmdlets are added:
     - Restore-AzCosmosDBAccount, New-AzCosmosDBDatabaseToRestore, Get-AzCosmosDBRestorableDatabaseAccount,
     - Get-AzCosmosDBSqlRestorableDatabase, Get-AzCosmosDBSqlRestorableContainer, Get-AzCosmosDBSqlRestorableResource,

@@ -266,3 +266,56 @@ function Test-PrivateEndpoint
       Remove-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Force
   }
 }
+
+
+function Test-AnalyticalStorageSchemaTypeNewAccount
+{
+  $resourceGroupName = "cdbrg-asst1"
+  $accountName = "cdbacct-asst1"
+  $location = "East US 2"
+  $schemaType = "FullFidelity"
+
+  try
+  {
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupname $resourceGroupName -Name $accountName -Location $location -AnalyticalStorageSchemaType $schemaType
+    do 
+    {
+        $account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    } while ($account.ProvisioningState -ne "Succeeded")
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType $schemaType
+  }
+  finally
+  {
+    Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    Remove-AzResourceGroup -Name $resourceGroupName
+  }
+}
+
+
+function Test-AnalyticalStorageSchemaTypeUpdateAccount
+{ 
+  $resourceGroupName = "cdbrg-asst3"
+  $accountName = "cdbacct-asst3"
+  $location = "East US 2"
+  $schemaType = "FullFidelity"
+
+  try
+  {
+    New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
+    $account = New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType "WellDefined"
+
+    Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName -AnalyticalStorageSchemaType $schemaType
+    do 
+    {
+        $account = Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    } while ($account.ProvisioningState -ne "Succeeded")
+    Assert-AreEqual $account.AnalyticalStorageConfiguration.SchemaType $schemaType
+  }
+  finally
+  {
+    Remove-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
+    Remove-AzResourceGroup -Name $resourceGroupName
+  }
+}
