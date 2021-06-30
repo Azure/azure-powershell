@@ -684,5 +684,9 @@
   {
     "regex": "ADDomainServices",
     "alias": "ADDomainServices"
+  },
+  {
+    "regex": "MonitoringSolutions",
+    "alias": "MonitoringSolutions"
   }
 ]
