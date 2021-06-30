@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareNameParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = ShareParameterSet)]
         [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = DirParameterSet)]
-        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, VParameterSetName = FileParameterSet)]
+        [Parameter(HelpMessage = "Destination blob name", Mandatory = false, ParameterSetName = FileParameterSet)]
         public string DestBlob { get; set; }
 
         [Alias("DestICloudBlob", "DestinationCloudBlob", "DestinationICloudBlob")]
