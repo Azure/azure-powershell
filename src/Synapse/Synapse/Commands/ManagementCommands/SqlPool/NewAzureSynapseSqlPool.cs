@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Synapse
                     Location = existingWorkspace.Location,
                     Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
                     MaxServiceObjectiveName = this.MaxServiceObjectName,
-                    Sku = new Sku
+                    Sku = new SkuV3
                     {
                         Name = this.PerformanceLevel
                     }

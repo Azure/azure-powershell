@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Synapse
             SqlPoolUpdate sqlPoolPatchInfo = new SqlPoolUpdate
             {
                 Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : existingSqlPool.Tags,
-                Sku = !this.IsParameterBound(c => c.PerformanceLevel) ? existingSqlPool.Sku : new Sku
+                Sku = !this.IsParameterBound(c => c.PerformanceLevel) ? existingSqlPool.Sku : new SkuV3
                 {
                     Name = this.PerformanceLevel
                 }

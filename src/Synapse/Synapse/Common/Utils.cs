@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
             return AzureSession.Instance.DataStore.ReadFileAsText(powerShellDestinationPath);
         }
 
-        internal static Exception CreateAzurePowerShellException(ErrorContractException ex)
+        internal static Exception CreateAzurePowerShellException(ErrorResponseException ex)
         {
             var message = GetAggregatedErrorMessage(ex.Message, ex.Body?.Error?.Message, ex.Body?.Error?.Details?.Select(d => d.Message));
             return CreateAzurePowerShellException(ex.Response.StatusCode, message, ex);
