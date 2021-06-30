@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string galleryName = this.Name;
                     Gallery gallery = new Gallery();
                     gallery.Location = this.Location;
+                    if (this.IsParameterBound(c => c.Permission)){
+                        gallery.SharingProfile = new SharingProfile();
+                        gallery.SharingProfile.Permissions = this.Permission;
+                    }
 
                     if (this.IsParameterBound(c => c.Description))
                     {
@@ -102,6 +106,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Private","Groups")]
+        public string Permission { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -152,6 +162,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.Tag))
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
+                    }
+                    if (this.IsParameterBound(c => c.Permission))
+                    {
+                        if (gallery.SharingProfile == null)
+                        {
+                            gallery.SharingProfile = new SharingProfile();
+                        }
+                        gallery.SharingProfile.Permissions = this.Permission;
+                    }
+                    if (this.IsParameterBound(c => c.Subscriptions))
+                    {
+
+                    }
+                    if (this.IsParameterBound(c => c.Tenants))
+                    {
+                        if (gallery.SharingProfile == null)
+                        {
+                            gallery.SharingProfile = new SharingProfile();
+                        }
+                        if (gallery.SharingProfile.Groups == null)
+                        {
+                            gallery.SharingProfile.Groups = new List<SharingProfileGroup>();
+                        }
                     }
 
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
@@ -205,5 +238,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Private", "Groups")]
+        public string Permission { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Subscriptions { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Tenants { get; set; }
     }
 }
