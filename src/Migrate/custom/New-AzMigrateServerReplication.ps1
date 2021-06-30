@@ -54,6 +54,14 @@ function New-AzMigrateServerReplication {
         # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${LicenseType},
 
+        [Parameter()]
+        [ValidateSet("NoLicenseType" , "PAYG" , "AHUB")]
+        [ArgumentCompleter( { "NoLicenseType" , "PAYG" , "AHUB" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit is applicable for the source server to migrated.
+        ${SqlServerLicenseType},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -118,6 +126,36 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies the Availability Zone to be used for VM creation.
         ${TargetAvailabilityZone},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+        # Specifies the tag to be used for VM creation.
+        ${VMTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+        # Specifies the tag to be used for Nic creation.
+        ${NicTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        # Specifies the tag to be used for Disk creation.
+        ${DiskTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputSeedDiskTags]
+        # Specifies the tag to be used for Seed Disk creation.
+        ${SeedDiskTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Collections.Hashtable]
+        # Specifies the tag to be used for Resource creation.
+        ${Tag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -209,6 +247,12 @@ function New-AzMigrateServerReplication {
         $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
         $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAVZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+        $HasVMTag = $PSBoundParameters.ContainsKey('VMTag')
+        $HasNicTag = $PSBoundParameters.ContainsKey('NicTag')
+        $HasDiskTag = $PSBoundParameters.ContainsKey('DiskTag')
+        $HasSeedDiskTag = $PSBoundParameters.ContainsKey('SeedDiskTag')
+        $HasTag = $PSBoundParameters.ContainsKey('Tag')
+        $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
         $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
@@ -218,6 +262,11 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
+        $null = $PSBoundParameters.Remove('VMTag')
+        $null = $PSBoundParameters.Remove('NicTag')
+        $null = $PSBoundParameters.Remove('DiskTag')
+        $null = $PSBoundParameters.Remove('SeedDiskTag')
+        $null = $PSBoundParameters.Remove('Tag')
         $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('DiskToInclude')
@@ -229,6 +278,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('PerformAutoResync')
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
+        $null = $PSBoundParameters.Remove('SqlServerLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
@@ -464,6 +514,251 @@ public static int hashForArtifact(String artifact)
         if ($HasTargetAVZone) {
             $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
         }
+
+        if ($HasSqlServerLicenseType)
+        {
+            $validLicenseSpellings = @{ 
+                NoLicenseType = "NoLicenseType";
+                PAYG = "PAYG";
+                AHUB = "AHUB"
+            }
+            $SqlServerLicenseType = $validLicenseSpellings[$SqlServerLicenseType]
+            $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
+        }
+
+        if ($HasTag) {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+
+            if ($Tag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($VMTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($x in $Tag.Keys)
+            {
+                 if ($x.length -gt 512)
+                 {
+                     $ExceededLengthKey.add($x)
+                 }
+
+                 if ($x -match "[<>%&\?/.]")
+                 {
+                     $IllegalCharKey.add($x)
+                 }
+
+                 if ($($Tag.Item($x)).length -gt 256)
+                 {
+                     $ExceededLengthValue.add($($Tag.Item($x)))
+                 }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            $ProviderSpecificDetails.SeedDiskTag = $Tag
+            $ProviderSpecificDetails.TargetDiskTag = $Tag
+            $ProviderSpecificDetails.TargetNicTag = $Tag
+            $ProviderSpecificDetails.TargetVmTag = $Tag
+        }
+
+        if ($HasVMTag) {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+
+            if ($VMTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($VMTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($x in $VMTag.Keys)
+            {
+                if ($x.length -gt 512)
+                {
+                    $ExceededLengthKey.add($x)
+                }
+
+                if ($x -match "[<>%&\?/.]")
+                {
+                    $IllegalCharKey.add($x)
+                }
+
+                if ($($VMTag.Item($x)).length -gt 256)
+                {
+                    $ExceededLengthValue.add($($VMTag.Item($x)))
+                }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            $ProviderSpecificDetails.TargetVmTag = $VMTag
+        }
+
+        if ($HasNicTag) {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+
+            if ($NicTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($NicTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($x in $NicTag.Keys)
+            {
+                 if ($x.length -gt 512)
+                 {
+                     $ExceededLengthKey.add($x)
+                 }
+
+                 if ($x -match "[<>%&\?/.]")
+                 {
+                     $IllegalCharKey.add($x)
+                 }
+
+                 if ($($NicTag.Item($x)).length -gt 256)
+                 {
+                     $ExceededLengthValue.add($($NicTag.Item($x)))
+                 }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            $ProviderSpecificDetails.TargetNicTag = $NicTag
+        }
+
+        if ($HasDiskTag) {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+
+            if ($DiskTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($DiskTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($x in $DiskTag.Keys)
+            {
+                 if ($x.length -gt 512)
+                 {
+                     $ExceededLengthKey.add($x)
+                 }
+
+                 if ($x -match "[<>%&\?/.]")
+                 {
+                     $IllegalCharKey.add($x)
+                 }
+
+                 if ($($DiskTag.Item($x)).length -gt 256)
+                 {
+                     $ExceededLengthValue.add($($DiskTag.Item($x)))
+                 }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            $ProviderSpecificDetails.TargetDiskTag = $DiskTag
+        }
+
+        if ($HasSeedDiskTag) {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+
+            if ($SeedDiskTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($SeedDiskTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($x in $SeedDiskTag.Keys)
+            {
+                 if ($x.length -gt 512)
+                 {
+                     $ExceededLengthKey.add($x)
+                 }
+
+                 if ($x -match "[<>%&\?/.]")
+                 {
+                     $IllegalCharKey.add($x)
+                 }
+
+                 if ($($SeedDiskTag.Item($x)).length -gt 256)
+                 {
+                     $ExceededLengthValue.add($($SeedDiskTag.Item($x)))
+                 }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            $ProviderSpecificDetails.SeedDiskTag = $SeedDiskTag
+        }
+
         $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $TargetBootDiagnosticsStorageAccount
         $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
         $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
