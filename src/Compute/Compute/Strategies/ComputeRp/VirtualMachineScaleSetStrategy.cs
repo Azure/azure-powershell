@@ -63,7 +63,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             bool doNotRunExtensionsOnOverprovisionedVMs,
             bool encryptionAtHost,
             int? platformFaultDomainCount,
-            string edgeZone
+            string edgeZone,
+            string orchestrationMode
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -139,7 +140,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     {
                         Rules = scaleInPolicy
                     },
-                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null
+                    DoNotRunExtensionsOnOverprovisionedVMs = doNotRunExtensionsOnOverprovisionedVMs ? true : (bool?)null,
+                    OrchestrationMode = orchestrationMode
                 });
     }
 }

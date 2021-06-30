@@ -26,6 +26,10 @@
       `New-AzSqlServerOutboundFirewallRule`
       `Remove-AzSqlServerOutboundFirewallRule`
 * Fixed the identity logic for SystemAssigned,UserAssigned identities for New-AzSqlServer, New-AzSqlInstance
+* Updated cmdlets for getting and updating SQL database's differential backup frequency
+      `Get-AzSqlDatabaseBackupShortTermRetentionPolicy`
+      `Set-AzSqlDatabaseBackupShortTermRetentionPolicy`
+* Fixed Partial PUT issue for Azure Policy in `Set-AzSqlServer` and `Set-AzSqlInstance`
 
 ## Version 3.3.0
 * Changed the type of parameter `AutoRotationEnabled` in `Set-AzSqlInstanceTransparentDataEncryptionProtector` to bool?.

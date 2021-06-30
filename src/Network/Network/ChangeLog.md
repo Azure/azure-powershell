@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
 * Updated cmdlets to enable specification of edge zone
     - `New-AzPublicIpPrefix`
     - `New-AzLoadBalancer`

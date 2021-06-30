@@ -15,8 +15,9 @@ Creates a configurable snapshot object.
 ```
 New-AzSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
  [[-Location] <String>] [-EdgeZone <String>] [-HyperVGeneration <String>] [-Incremental] [-Tag <Hashtable>]
- [-CreateOption <String>] [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>]
- [-SourceUri <String>] [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
+ [-CreateOption <String>] [-StorageAccountId <String>] [-PurchasePlan <PSPurchasePlan>]
+ [-SupportsHibernation <Boolean>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
+ [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -297,6 +298,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PurchasePlan
+{{ Fill PurchasePlan Description }}
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSPurchasePlan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SkuName
 Specifies the Sku name of the storage account.
 
@@ -347,6 +363,21 @@ Specifies the storage account ID.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SupportsHibernation
+{{ Fill SupportsHibernation Description }}
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

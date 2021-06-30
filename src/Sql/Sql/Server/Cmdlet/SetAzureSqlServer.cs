@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The server being updated</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerModel>() { ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName) };
+            return new List<Model.AzureSqlServerModel>() { ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName, "administrators/activedirectory") };
         }
 
         /// <summary>
@@ -147,22 +147,21 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlServerModel> updateData = new List<Model.AzureSqlServerModel>();
-            updateData.Add(new Model.AzureSqlServerModel()
-            {
-                ResourceGroupName = this.ResourceGroupName,
-                ServerName = this.ServerName,
-                SqlAdministratorPassword = this.SqlAdministratorPassword,
-                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                ServerVersion = this.ServerVersion,
-                Location = model.FirstOrDefault().Location,
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
-                PublicNetworkAccess = this.PublicNetworkAccess,
-                RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess,
-                MinimalTlsVersion = this.MinimalTlsVersion,
-                SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin,
-                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
-                KeyId = this.KeyId
-            });
+            updateData.Add(model.FirstOrDefault());
+            updateData[0].ResourceGroupName = this.ResourceGroupName;
+            updateData[0].ServerName = this.ServerName;
+            updateData[0].SqlAdministratorPassword = this.SqlAdministratorPassword;
+            updateData[0].Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags);
+            updateData[0].ServerVersion = this.ServerVersion ?? updateData[0].ServerVersion;
+            updateData[0].Location = model.FirstOrDefault().Location;
+            updateData[0].Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity);
+            updateData[0].PublicNetworkAccess = this.PublicNetworkAccess ?? updateData[0].PublicNetworkAccess;
+            updateData[0].RestrictOutboundNetworkAccess = this.RestrictOutboundNetworkAccess ?? updateData[0].RestrictOutboundNetworkAccess;
+            updateData[0].MinimalTlsVersion = this.MinimalTlsVersion ?? updateData[0].MinimalTlsVersion;
+            updateData[0].SqlAdministratorLogin = model.FirstOrDefault().SqlAdministratorLogin;
+            updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
+            updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
+
             return updateData;
         }
 

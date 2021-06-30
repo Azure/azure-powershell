@@ -20,9 +20,25 @@
 
 -->
 ## Upcoming Release
+* Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
+* Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzGalleryImageVersion`
 * Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
 * Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
 * Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
+* Fixed IOPS and throughput check in `Test-AzVMAEMExtension`
+* Added new cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskPurchasePlanConfig
+    - Set-AzDiskSecurityProfile
+* Changed Cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskConfig
+    - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
+    - New-AzDiskUpdateConfig
+    - New-AzDiskEncryptionSetConfig
+    - Update-AzDiskEncryptionSet
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.

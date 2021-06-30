@@ -30,6 +30,8 @@
     - `Update-AzStorageFileServiceProperty`
 * Supported create account with EnableNfsV3
     - `New-AzStorageAccount`
+* Supported input more copy blob parameters from pipeline [#15301]
+    -  `Start-AzStorageBlobCopy`
 
 ## Version 3.8.0
 * Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash

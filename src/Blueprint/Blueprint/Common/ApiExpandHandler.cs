@@ -28,12 +28,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
     {
         private const string ExpandString = "versions";
         private const string BlueprintProviderName = "microsoft.blueprint";
+        private const string BlueprintResourceTypeName = "blueprints";
         private const string ProvidersSegment = "/providers/";
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // Custom delegating handlers are per PS instance. We would like to make sure "&$expand" query
-            // string is only applied if the request is a GET request for Blueprint service.
+            // string is only applied if the request is GET(point GET and collection) operation for Blueprint service.
             if (request.Method == HttpMethod.Get)
             {
                 var requestUri = request.RequestUri.GetLeftPart(UriPartial.Path);
@@ -41,19 +42,13 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
 
                 if (lastProvidersSegmentIndex >= 0)
                 {
-                    var resourceProviderSegment = requestUri
-                        .Substring(lastProvidersSegmentIndex + ProvidersSegment.Length)
+                    var segments = requestUri
+                        .Substring(lastProvidersSegmentIndex)
                         .CoalesceString()
                         .Trim('/')
-                        .SplitRemoveEmpty('/')
-                        .FirstOrDefault();
+                        .SplitRemoveEmpty('/');
 
-                    var isBlueprintRequest = !string.IsNullOrWhiteSpace(resourceProviderSegment)
-                        ? resourceProviderSegment
-                            .Equals(BlueprintProviderName, StringComparison.InvariantCultureIgnoreCase)
-                        : false;
-
-                    if (isBlueprintRequest)
+                    if (IsBlueprintListRequest(segments))
                     {
                         var uriString = request.RequestUri.ToString();
                         UriBuilder uri = new UriBuilder(uriString);
@@ -65,6 +60,14 @@ namespace Microsoft.Azure.Commands.Blueprint.Common
             }
 
             return base.SendAsync(request, cancellationToken);
+        }
+
+        private bool IsBlueprintListRequest(string[] segments)
+        {
+            return segments.Any()
+                && segments.Length >= 3
+                && BlueprintProviderName.Equals(segments[1], StringComparison.InvariantCultureIgnoreCase)
+                && BlueprintResourceTypeName.Equals(segments[2], StringComparison.InvariantCultureIgnoreCase);
         }
 
         public object Clone()
