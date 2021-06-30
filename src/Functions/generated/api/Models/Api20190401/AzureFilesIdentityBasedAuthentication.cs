@@ -17,27 +17,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
 
         /// <summary>Specifies the security identifier (SID) for Azure Storage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyAzureStorageSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).AzureStorageSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).AzureStorageSid = value; }
+        public string ActiveDirectoryPropertyAzureStorageSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).AzureStorageSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).AzureStorageSid = value ?? null; }
 
         /// <summary>Specifies the domain GUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyDomainGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainGuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainGuid = value; }
+        public string ActiveDirectoryPropertyDomainGuid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainGuid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainGuid = value ?? null; }
 
         /// <summary>Specifies the primary domain that the AD DNS server is authoritative for.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainName = value; }
+        public string ActiveDirectoryPropertyDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainName = value ?? null; }
 
         /// <summary>Specifies the security identifier (SID).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyDomainSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainSid = value; }
+        public string ActiveDirectoryPropertyDomainSid { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainSid; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).DomainSid = value ?? null; }
 
         /// <summary>Specifies the Active Directory forest to get.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyForestName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).ForestName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).ForestName = value; }
+        public string ActiveDirectoryPropertyForestName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).ForestName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).ForestName = value ?? null; }
 
         /// <summary>Specifies the NetBIOS domain name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string ActiveDirectoryPropertyNetBiosDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).NetBiosDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).NetBiosDomainName = value; }
+        public string ActiveDirectoryPropertyNetBiosDomainName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).NetBiosDomainName; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IActiveDirectoryPropertiesInternal)ActiveDirectoryProperty).NetBiosDomainName = value ?? null; }
 
         /// <summary>Backing field for <see cref="DirectoryServiceOption" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.DirectoryServiceOptions _directoryServiceOption;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
     {
         /// <summary>Specifies the security identifier (SID) for Azure Storage.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the security identifier (SID) for Azure Storage.",
         SerializedName = @"azureStorageSid",
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyAzureStorageSid { get; set; }
         /// <summary>Specifies the domain GUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the domain GUID.",
         SerializedName = @"domainGuid",
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyDomainGuid { get; set; }
         /// <summary>Specifies the primary domain that the AD DNS server is authoritative for.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the primary domain that the AD DNS server is authoritative for.",
         SerializedName = @"domainName",
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyDomainName { get; set; }
         /// <summary>Specifies the security identifier (SID).</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the security identifier (SID).",
         SerializedName = @"domainSid",
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyDomainSid { get; set; }
         /// <summary>Specifies the Active Directory forest to get.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the Active Directory forest to get.",
         SerializedName = @"forestName",
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         string ActiveDirectoryPropertyForestName { get; set; }
         /// <summary>Specifies the NetBIOS domain name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Specifies the NetBIOS domain name.",
         SerializedName = @"netBiosDomainName",

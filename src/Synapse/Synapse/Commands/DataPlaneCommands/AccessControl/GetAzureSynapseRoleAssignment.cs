@@ -1,13 +1,11 @@
-﻿using Azure.Analytics.Synapse.AccessControl;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
+using System.Text.RegularExpressions;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -110,6 +108,44 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ObjectId { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItemType)]
+        [ValidateNotNullOrEmpty]
+        public WorkspaceItemType ItemType { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndRoleDefinitionIdAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceNameAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndRoleDefinitionIdAndObjectIdParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [Parameter(ValueFromPipelineByPropertyName = false, ParameterSetName = GetByWorkspaceObjectAndServicePrincipalNameParameterSet,
+            Mandatory = false, HelpMessage = HelpMessages.WorkspaceItem)]
+        [ValidateNotNullOrEmpty]
+        public string Item { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.WorkspaceObject))
@@ -132,22 +168,39 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ObjectId = SynapseAnalyticsClient.GetObjectIdFromServicePrincipalName(this.ServicePrincipalName);
             }
 
+            string itemType = null;
+            if (this.IsParameterBound(c => c.ItemType))
+            {
+                itemType = this.ItemType.GetItemTypeString();
+            }
+
             if (this.IsParameterBound(c => c.RoleAssignmentId))
             {
                 WriteObject(new PSRoleAssignmentDetails(SynapseAnalyticsClient.GetRoleAssignmentById(this.RoleAssignmentId)));
             }
             else
             {
-                var roleAssignment = SynapseAnalyticsClient.ListRoleAssignments(this.RoleDefinitionId, this.ObjectId)
-                .Select(element => new PSRoleAssignmentDetails(element));
-
-                // TODO: Currently, when only `ObjectId` is specified, the cmdlet returns incorrect result. Filter from client side as a workaround
-                if (!string.IsNullOrEmpty(this.ObjectId))
+                var roleAssignments = SynapseAnalyticsClient.ListRoleAssignments(this.RoleDefinitionId, this.ObjectId).Select(element => new PSRoleAssignmentDetails(element));
+                string allowedScopePattern = null;
+                if (this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
                 {
-                    roleAssignment = roleAssignment.Where(element => element.ObjectId == this.ObjectId);
+                    allowedScopePattern = $"(^workspaces/{this.WorkspaceName}$)|(^workspaces/{this.WorkspaceName}/{itemType}/{this.Item}$)";
+                }
+                else if (this.IsParameterBound(c => c.ItemType) && !this.IsParameterBound(c => c.Item))
+                {
+                    allowedScopePattern = $"(^workspaces/{this.WorkspaceName}$)|(^workspaces/{this.WorkspaceName}/{itemType}/[^/]+$)";
+                }
+                else if (!this.IsParameterBound(c => c.ItemType) && this.IsParameterBound(c => c.Item))
+                {
+                    allowedScopePattern = $"(^workspaces/{this.WorkspaceName}$)|(^workspaces/{this.WorkspaceName}/[^/]+/{this.Item}$)";
                 }
 
-                WriteObject(roleAssignment, true);
+                if (!string.IsNullOrEmpty(allowedScopePattern))
+                {
+                    roleAssignments = roleAssignments.Where(ra => ra.Scope == null || Regex.IsMatch(ra.Scope, allowedScopePattern, RegexOptions.IgnoreCase));
+                }
+
+                WriteObject(roleAssignments, true);
             }
         }
     }

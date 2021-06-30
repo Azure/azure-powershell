@@ -45,7 +45,7 @@ Get access token of AAD graph endpoint for current account
 
 ### Example 3 Get raw access token for AAD graph endpoint
 ```powershell
-PS C:\> Get-AzAccessToken -Resource "https://graph.windows.net/"
+PS C:\> Get-AzAccessToken -ResourceUrl "https://graph.windows.net/"
 ```
 
 Get access token of AAD graph endpoint for current account
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeName
-Optional resouce type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Synapse. Default value is Arm if not specified.
+Optional resouce type name, supported values: AadGraph, AnalysisServices, Arm, Attestation, Batch, DataLake, KeyVault, OperationalInsights, ResourceManager, Storage, Synapse. Default value is Arm if not specified.
 
 ```yaml
 Type: System.String

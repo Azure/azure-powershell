@@ -13,7 +13,7 @@
 
 namespace Microsoft.Azure.Commands.Cdn.AfdModels
 {
-    public class PSAfdRuleCacheExpirationAction
+    public class PSAfdRuleCacheExpirationAction : PSAfdRuleAction
     {
         public string CacheBehavior { get; set; }
 

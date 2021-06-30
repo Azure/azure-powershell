@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Build.Tasks
 {
     using System;
+    using System.IO;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using Microsoft.Build.Framework;
@@ -142,7 +143,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 FilesChanged = new string[] { };
             }
 
+            SerializeChangedFilesToFile(FilesChanged);
+
             return true;
+        }
+
+        // This method will record the changed files into FilesChanged.txt under root folder for other task to consum.
+        private void SerializeChangedFilesToFile(string[] FilesChanged)
+        {
+            File.WriteAllLines("FilesChanged.txt", FilesChanged);
         }
     }
 }

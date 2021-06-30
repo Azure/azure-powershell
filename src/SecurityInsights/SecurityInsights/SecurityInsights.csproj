@@ -7,7 +7,7 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0-preview.1" />
+    <PackageReference Include="Microsoft.Azure.Management.SecurityInsights" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

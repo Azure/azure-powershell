@@ -16,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>OAuth token expiration.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public global::System.DateTime? ExpirationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).ExpirationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).ExpirationTime = value; }
+        public global::System.DateTime? ExpirationTime { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).ExpirationTime; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).ExpirationTime = value ?? default(global::System.DateTime); }
 
         /// <summary>Resource Id.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -51,15 +51,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>OAuth refresh token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string RefreshToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).RefreshToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).RefreshToken = value; }
+        public string RefreshToken { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).RefreshToken; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).RefreshToken = value ?? null; }
 
         /// <summary>OAuth access token.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string Token { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).Token = value; }
+        public string Token { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).Token; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).Token = value ?? null; }
 
         /// <summary>OAuth access token secret.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string TokenSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).TokenSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).TokenSecret = value; }
+        public string TokenSecret { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).TokenSecret; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISourceControlPropertiesInternal)Property).TokenSecret = value ?? null; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]

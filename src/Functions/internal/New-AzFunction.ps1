@@ -113,7 +113,7 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.functions/new-azfunction
+https://docs.microsoft.com/powershell/module/az.functions/new-azfunction
 #>
 function New-AzFunction {
 [OutputType([System.Boolean])]

@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.KeyVault.SecurityDomain.Models
                 JWE jwe_wrapped = new JWE();
                 jwe_wrapped.Encrypt(cert, master_key);
                 securityDomainRestoreData.WrappedKey.enc_key = jwe_wrapped.EncodeCompact();
-                securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlEncoder.Encode(Utils.Sha256Thumbprint(cert));
+                securityDomainRestoreData.WrappedKey.x5t_256 = Base64UrlHelper.Encode(Utils.Sha256Thumbprint(cert));
                 return securityDomainRestoreData;
             }
             catch (Exception ex)

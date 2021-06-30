@@ -20,6 +20,12 @@ Gets the status of a cloud service.
 ### [Get-AzCloudServiceNetworkInterfaces](Get-AzCloudServiceNetworkInterfaces.md)
 Get the network interfaces of a cloud service.
 
+### [Get-AzCloudServiceOSFamily](Get-AzCloudServiceOSFamily.md)
+Gets properties of a guest operating system family that can be specified in the XML service configuration (.cscfg) for a cloud service.
+
+### [Get-AzCloudServiceOSVersion](Get-AzCloudServiceOSVersion.md)
+Gets properties of a guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.
+
 ### [Get-AzCloudServicePublicIPAddress](Get-AzCloudServicePublicIPAddress.md)
 Get the public IP address of a cloud service.
 

@@ -91,6 +91,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.BackupRetentionInHoursHelpMessage)]
         public int? BackupRetentionIntervalInHours { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.BackupTypeHelpMessage)]
+        [PSArgumentCompleter("Periodic", "Continuous")]
+        public string BackupPolicyType { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
+        [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
+        public string AnalyticalStorageSchemaType { get; set; }
+
         public ConsistencyPolicy PopoulateConsistencyPolicy(string DefaultConsistencyLevel, int? MaxStalenessIntervalInSeconds, int? MaxStalenessPrefix)
         {
             ConsistencyPolicy consistencyPolicy = new ConsistencyPolicy();
@@ -145,6 +153,24 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 iprules.Add(new IpAddressOrRange(ipAddressOrRange));
             }
             return iprules;
+        }
+
+        protected AnalyticalStorageConfiguration CreateAnalyticalStorageConfiguration(string param)
+        {
+            AnalyticalStorageConfiguration retval = null;
+            switch (param)
+            {
+                case SDKModel.AnalyticalStorageSchemaType.WellDefined:
+                case SDKModel.AnalyticalStorageSchemaType.FullFidelity:
+                    retval = new AnalyticalStorageConfiguration(param);
+                    break;
+
+                default:
+                    string message = $"Invalid value for AnalyticalStorageSchemaType.  Valid values are '{SDKModel.AnalyticalStorageSchemaType.WellDefined}' and '{SDKModel.AnalyticalStorageSchemaType.FullFidelity}'.";
+                    WriteWarning(message);
+                    break;
+            }
+            return retval;
         }
     }
 }

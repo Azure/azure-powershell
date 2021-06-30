@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
 
         /// <summary>Kind of resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]
-        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value; }
+        public string Kind { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Kind = value ?? null; }
 
         /// <summary>Internal Acessors for Id</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IProxyOnlyResourceInternal)__proxyOnlyResource).Id = value; }
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// to Microsoft.Web/serverFarms defined first.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public string SubnetResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SubnetResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SubnetResourceId = value; }
+        public string SubnetResourceId { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SubnetResourceId; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SubnetResourceId = value ?? null; }
 
         /// <summary>
         /// A flag that specifies if the scale unit this Web App is on supports Swift integration.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inlined)]
-        public bool? SwiftSupported { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SwiftSupported; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SwiftSupported = value; }
+        public bool? SwiftSupported { get => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SwiftSupported; set => ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISwiftVirtualNetworkPropertiesInternal)Property).SwiftSupported = value ?? default(bool); }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Inherited)]

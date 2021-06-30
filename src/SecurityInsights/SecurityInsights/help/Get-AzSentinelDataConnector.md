@@ -8,7 +8,16 @@ schema: 2.0.0
 # Get-AzSentinelDataConnector
 
 ## SYNOPSIS
-Get a Data Connector.
+Gets a Data Connector. <br/><br/>
+Please note that automation support is only available for the following data connectors:
+* AADDataConnector
+* AATPDataConnector
+* ASCDataConnector
+* AwsCloudTrailDataConnector
+* MCASDataConnector
+* MDATPDataConnector
+* OfficeDataConnector
+* TIDataConnector
 
 ## SYNTAX
 
@@ -43,14 +52,21 @@ You can use the **DataConnector** object to update the Data Connector, for examp
 PS C:\> $DataConnectors = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName"
 ```
 
-This example gets all of the **DataConnectors** in the specified workspace, and then stores it in the $DataConnectors variable.
+This example gets all of the DataConnectors in the specified workspace, and then stores it in the $DataConnectors variable.
 
 ### Example 2
 ```powershell
 PS C:\> $DataConnector = Get-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
 ```
 
-This example gets an **DataConnector** in the specified workspace, and then stores it in the $DataConnector variable.
+This example gets an DataConnector in the specified workspace, and then stores it in the $DataConnector variable.
+
+### Example 3
+```powershell
+Get-AzSentinelDataConnector @SentinelConnection | Where-Object {$_.Kind -eq "Office365"}
+```
+
+This example (using a connection object) gets the Office365 data connector.
 
 ## PARAMETERS
 

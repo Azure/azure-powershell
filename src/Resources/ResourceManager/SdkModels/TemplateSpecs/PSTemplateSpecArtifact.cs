@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public string Path { get; set; }
 
-        protected PSTemplateSpecArtifact(TemplateSpecArtifact artifact)
+        protected PSTemplateSpecArtifact(LinkedTemplateArtifact artifact)
         {
             this.Path = artifact.Path;
         }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         public string Template { get; set; }
 
         protected PSTemplateSpecTemplateArtifact(
-            TemplateSpecTemplateArtifact artifact
+            LinkedTemplateArtifact artifact
             ) : base(artifact)
         {
             // Note: Cast is redundant, but present for clarity reasons:
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         }
 
         internal static PSTemplateSpecTemplateArtifact FromAzureSDKTemplateSpecTemplateArtifact(
-            TemplateSpecTemplateArtifact artifact)
+            LinkedTemplateArtifact artifact)
         {
             return artifact != null 
                 ? new PSTemplateSpecTemplateArtifact(artifact)

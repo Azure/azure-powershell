@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210201Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202101
 {
     public partial class BackupInstanceResource
     {

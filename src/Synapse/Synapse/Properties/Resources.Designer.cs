@@ -856,6 +856,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Spark job definition &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemoveSynapseSparkJobDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Synapse Spark pool &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveSynapseSparkPool {
@@ -1050,6 +1059,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string RemovingSynapseRoleAssignmentById {
             get {
                 return ResourceManager.GetString("RemovingSynapseRoleAssignmentById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("RemovingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1311,6 +1329,15 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         internal static string SettingSynapsePipeline {
             get {
                 return ResourceManager.GetString("SettingSynapsePipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Spark job definition &apos;{0}&apos; in workspace &apos;{1}&apos;..
+        /// </summary>
+        internal static string SettingSynapseSparkJobDefinition {
+            get {
+                return ResourceManager.GetString("SettingSynapseSparkJobDefinition", resourceCulture);
             }
         }
         
@@ -1684,11 +1711,38 @@ namespace Microsoft.Azure.Commands.Synapse.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Either -ItemType and -Item should appear together or neither of them should be..
+        /// </summary>
+        internal static string WorkspaceItemTypeAndItemNotAppearTogether {
+            get {
+                return ResourceManager.GetString("WorkspaceItemTypeAndItemNotAppearTogether", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A workspace key with name &apos;{0}&apos; in resource group &apos;{1}&apos; under workspace &apos;{2}&apos; already exists. Please use Update-AzSynapseWorkspaceKey to update an existing workspace key..
         /// </summary>
         internal static string WorkspaceKeyExists {
             get {
                 return ResourceManager.GetString("WorkspaceKeyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one role assignment under workspace &apos;{0}&apos; was found: {1}. Please condiser using Remove-AzSynapseRoleAssignment -WorkspaceName &lt;string&gt; -RoleAssignmentId &lt;string&gt;.
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find role assignment under workspace &apos;{0}&apos;..
+        /// </summary>
+        internal static string WorkspaceRoleAssignmentNotFound {
+            get {
+                return ResourceManager.GetString("WorkspaceRoleAssignmentNotFound", resourceCulture);
             }
         }
     }

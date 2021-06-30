@@ -56,17 +56,17 @@ $testReposInfo = @{
 
     GitHub = @{
         Name = "AASourceControl-GitHub"
-        RepoUrl = "https://github.com/Francisco-Gamino/SwaggerAndCmdletsTests.git"
-        Branch = "master"
+        RepoUrl = "https://github.com/sharma224/SwaggerAndCmdletsTests.git"
+        Branch = "ps"
         FolderPath = "/"
         SourceType = "GitHub"
-        PersonalAccessToken = "5fd81166a9ebaebc60da4756f2094a598f1d4c01"
+        PersonalAccessToken = "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"
     }
 }
 
 # Automation account information
-$resourceGroupName = "frangom-test"
-$automationAccountName = "frangom-sdkCmdlet-tests"
+$resourceGroupName = "to-delete-01"
+$automationAccountName = "fbs-aa-02"
 
 #region Helper functions
 
@@ -114,13 +114,14 @@ function WaitForSourceControlSyncJobState
         $ExpectedState
     )
 
-    $waitTimeInSeconds = 2
+    $waitTimeInSeconds = 5
     $retries = 40
     $jobCompleted = Retry-Function {
         return (Get-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                                           -AutomationAccountName $automationAccountName  `
                                                           -Name $Name `
-                                                          -JobId $JobId).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
+                                                          #-JobId $JobId `
+                                                          ).ProvisioningState -eq $ExpectedState } $null $retries $waitTimeInSeconds
 
     Assert-True {$jobCompleted -gt 0} "Timeout waiting for provisioning state to reach '$ExpectedState'"
 }
@@ -305,15 +306,16 @@ function Test-CreateGitHubSourceControlAndSync
                 "'PublishRunbook' property does not match. Expected: $expectedPropertyValue. Actual: $($updatedSourceControl.PublishRunbook)"
         
         # Start a sync for the source control
-        $jobId = "f7dd56e6-0da3-442a-b1c5-3027065c7786"
+        $jobId = "ba7e6fcd-ea81-4adf-9bed-a38557110065"
         Start-AzAutomationSourceControlSyncJob -ResourceGroupName $resourceGroupName `
                                             -AutomationAccountName $automationAccountName  `
                                             -Name $sourceControl.Name `
-                                            -JobId $jobId
+                                            #-JobId $jobId
 
         WaitForSourceControlSyncJobState -Name $sourceControl.Name -JobId $jobId -ExpectedState Completed
 
         # Get the SourceControlSyncJob streams
+        <#
         $streams =  Get-AzAutomationSourceControlSyncJobOutput -ResourceGroupName $resourceGroupName `
                                                                     -AutomationAccountName $automationAccountName  `
                                                                     -Name $sourceControl.Name `
@@ -321,6 +323,7 @@ function Test-CreateGitHubSourceControlAndSync
                                                                     -Stream Output | % Summary
         
         Assert-True {$streams.count -gt 0} "Failed to get Output stream via Get-AzAutomationSourceControlSyncJobOutput "
+        #>
     }
     finally
     {

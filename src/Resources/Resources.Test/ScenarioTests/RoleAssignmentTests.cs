@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaDeleteByPSRoleAssignment");
         }
 
-        [Fact]
+        [Fact]//(Skip = "Test indicates Graph call is not recorded when it actually is, refer to https://github.com/Azure/azure-powershell/issues/14632 for more details, test passes in record mode")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-RaValidateInputParameters Remove-AzureRmRoleAssignment");
         }
 
-        [Fact]
+        [Fact]//(Skip = "Test indicates Graph call is not recorded when it actually is, refer to https://github.com/Azure/azure-powershell/issues/14632 for more details, test passes in record mode")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
@@ -214,6 +214,48 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void UpdateRa()
         {
             TestRunner.RunTestScript("Test-UpdateRa");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForGroup()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForGroup");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForGuest()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForGuest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForMember()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForMember");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAForServicePrincipal()
+        {
+            TestRunner.RunTestScript("Test-CreateRAForServicePrincipal");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAWhenIdNotExist()
+        {
+            TestRunner.RunTestScript("Test-CreateRAWhenIdNotExist");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreateRAWithObjectType()
+        {
+            TestRunner.RunTestScript("Test-CreateRAWithObjectType");
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]

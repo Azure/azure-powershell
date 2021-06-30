@@ -149,19 +149,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        internal ClusterType GetClusterType(Cluster clusterResource)
-        {
-            if (string.IsNullOrWhiteSpace(clusterResource.Certificate.Thumbprint) &&
-                string.IsNullOrWhiteSpace(clusterResource.Certificate.ThumbprintSecondary))
-            {
-                return ClusterType.Unsecure;
-            }
-            else
-            {
-                return ClusterType.Secure;
-            }
-        }
-
         protected VmImageKind GetVmImage(Cluster cluster)
         {
             var vmImage = cluster.VmImage;

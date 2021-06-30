@@ -15,7 +15,7 @@
 using Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Management.Automation.Subsystem;
+using System.Management.Automation.Subsystem.Prediction;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -74,17 +74,28 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <param name="predictiveSuggestion">The suggestion to show to the user.</param>
         /// <param name="sourceText">The text that used to construct <paramref name="predictiveSuggestion"/>.</param>
         /// <param name="suggestionSource">The source where the suggestion is from.</param>
-        public void AddSuggestion(PredictiveSuggestion predictiveSuggestion, string sourceText, SuggestionSource suggestionSource)
+        /// <returns>True if the suggestion is added. Otherwise, it returns false.</returns>
+        public bool AddSuggestion(PredictiveSuggestion predictiveSuggestion, string sourceText, SuggestionSource suggestionSource)
         {
             Validation.CheckArgument(predictiveSuggestion, $"{nameof(predictiveSuggestion)} cannot be null.");
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(predictiveSuggestion.SuggestionText), $"{nameof(predictiveSuggestion)} cannot have a null or whitespace suggestion text.");
             Validation.CheckArgument(!string.IsNullOrWhiteSpace(sourceText), $"{nameof(sourceText)} cannot be null or whitespace.");
+
+            for (var i = 0; i < _predictiveSuggestions.Count; ++i)
+            {
+                if (string.Equals(_predictiveSuggestions[i].SuggestionText, predictiveSuggestion.SuggestionText, StringComparison.Ordinal))
+                {
+                    return false;
+                }
+            }
 
             _predictiveSuggestions.Add(predictiveSuggestion);
             _sourceTexts.Add(sourceText);
             _suggestionSources.Add(suggestionSource);
 
             CheckObjectInvariant();
+
+            return true;
         }
 
         /// <summary>

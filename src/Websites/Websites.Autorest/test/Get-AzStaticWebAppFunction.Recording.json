@@ -1,0 +1,45 @@
+{
+  "Get-AzStaticWebAppFunction+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/functions?api-version=2020-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/functions?api-version=2020-12-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "5e6e87f7-ccb3-4c2f-ac09-1841c9408797" ],
+        "CommandName": [ "Get-AzStaticWebAppFunction" ],
+        "FullCommandName": [ "Get-AzStaticWebAppFunction_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "f3fa6262-9793-48c5-8464-85e3502e561b" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-correlation-request-id": [ "4185a95b-3e11-4394-bfef-85c3ea3dae5e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210507T082521Z:4185a95b-3e11-4394-bfef-85c3ea3dae5e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 07 May 2021 08:25:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "382" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/staticweb-rg-3kt91e/providers/Microsoft.Web/staticSites/staticweb-p6edux/functions/WeatherForecast\",\"name\":\"WeatherForecast\",\"type\":\"Microsoft.Web/staticSites/functions\",\"location\":\"Central US\",\"properties\":{\"functionName\":\"WeatherForecast\",\"triggerType\":\"HttpTrigger\"}}],\"nextLink\":null,\"id\":null}",
+      "isContentBase64": false
+    }
+  }
+}

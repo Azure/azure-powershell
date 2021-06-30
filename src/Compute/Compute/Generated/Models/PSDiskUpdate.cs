@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
 
         public string Tier { get; set; }
         public bool? BurstingEnabled { get; set; }
+        public PSPurchasePlan PurchasePlan { get; set; }
+        public bool? SupportsHibernation { get; set; }
 
     }
 }

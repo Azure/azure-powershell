@@ -163,16 +163,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
         public int? VolumeFreeSpacePercent { get; set; }
 
         /// <summary>
-        /// Gets or sets the cloud seeded data.
-        /// </summary>
-        /// <value>The cloud seeded data.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferParameter)]
-        public SwitchParameter OfflineDataTransfer { get; set; }
-
-        /// <summary>
         /// Gets or sets the tier files older than days.
         /// </summary>
         /// <value>The tier files older than days.</value>
@@ -181,16 +171,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
           ValueFromPipelineByPropertyName = false,
           HelpMessage = HelpMessages.TierFilesOlderThanDaysParameter)]
         public int? TierFilesOlderThanDays { get; set; }
-
-        /// <summary>
-        /// Gets or sets the cloud seeded data file share URI.
-        /// </summary>
-        /// <value>The cloud seeded data file share URI.</value>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = false,
-          HelpMessage = HelpMessages.OfflineDataTransferShareNameParameter)]
-        public string OfflineDataTransferShareName { get; set; }
 
         // <summary>
         /// Gets or sets a value indicating the policy to use for the initial download sync.
@@ -272,9 +252,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Cmdlets
                     VolumeFreeSpacePercent = VolumeFreeSpacePercent,
                     ServerLocalPath = ServerLocalPath,
                     ServerResourceId = ServerResourceId,
-                    TierFilesOlderThanDays = TierFilesOlderThanDays,
-                    OfflineDataTransfer = OfflineDataTransfer.ToBool() ? StorageSyncConstants.OfflineDataTransferOn : StorageSyncConstants.OfflineDataTransferOff,
-                    OfflineDataTransferShareName = OfflineDataTransferShareName
+                    TierFilesOlderThanDays = TierFilesOlderThanDays
                 };
 
                 StorageSyncModels.InitialDownloadPolicy initialDownloadPolicy;

@@ -45,13 +45,15 @@ PS C:\> $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 
 
 PS C:\> $rule2 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src -DestinationContainer dest -MinCreationTime 2019-01-01T16:00:00Z -PrefixMatch a,abc,dd
 
-PS C:\> $destPolicy = Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccountName  -Rule $rule1,$rule2
+PS C:\> $srcAccount = Get-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount"
 
-PS C:\> $destPolicy
+PS C:\> Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" -PolicyId default -SourceAccount $srcAccount.Id  -Rule $rule1,$rule2
 
 ResourceGroupName StorageAccountName PolicyId                             EnabledTime SourceAccount   DestinationAccount Rules                                     
 ----------------- ------------------ --------                             ----------- -------------   ------------------ -----   
 myresourcegroup   mydestaccount      56bfa11c-81ef-4f8d-b307-5e5386e16fba             mysourceaccount mydestaccount      [5fa8b1d6-4985-4abd-a0b3-ec4d07295a43,...]
+
+PS C:\> $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mydestaccount" 
 
 PS C:\> Set-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mysourceaccount" -InputObject $destPolicy
 
@@ -61,7 +63,8 @@ myresourcegroup   mysourceaccount    56bfa11c-81ef-4f8d-b307-5e5386e16fba       
 ```
 
 This command sets object replication policy to both destination and source account.
-First create 2 object replication policy rules, and set policy with the 2 rules to destination account. Then set the object replication policy from destination account to source account.
+First create 2 object replication policy rules, and set policy to destination account with the 2 rules and source account resource Id. Then get the object replication policy from destination account and set to source account.
+Please note, when storage account has AllowCrossTenantReplication as false, SourceAccount and DestinationAccount should be account resource Id.
 
 ## PARAMETERS
 
@@ -81,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationAccount
-Object Replication Policy DestinationAccount.
+Object Replication Policy DestinationAccount, if SourceAccount is account name it should be account name, else should be account resource id. Default value will be the input StorageAccountName, or the resouceID of the account.
 
 ```yaml
 Type: System.String
@@ -158,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -SourceAccount
-Object Replication Policy SourceAccount.
+Object Replication Policy SourceAccount. It should be resource id if allowCrossTenantReplication is false..
 
 ```yaml
 Type: System.String

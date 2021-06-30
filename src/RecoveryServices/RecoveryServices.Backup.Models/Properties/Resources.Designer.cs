@@ -1895,5 +1895,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ZonalRestoreVaultStorageRedundancyException", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to WorkloadRecoveryConfig TargetVirtualMachineId cannot be null for Alternate location restore.
+        /// </summary>
+        public static string TargetVirtualMachineIdRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetVirtualMachineIdRequiredException", resourceCulture);
+            }
+        }
     }
 }

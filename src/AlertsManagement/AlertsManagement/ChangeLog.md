@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug for `Set-AzActionRule` when RecurrenceType is "Once" and no "ReccurentValue" provided [#14476]
 
 ## Version 0.2.0
 * Fixed bug for `Set-AzActionRule` incorrectly parsed `TargetResourceTypeCondition` to `MonitorCondition` [#12258]

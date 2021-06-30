@@ -14,8 +14,11 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Rest.Azure.OData;
+using Newtonsoft.Json;
 using RestAzureNS = Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -100,10 +103,67 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="azureRegion">Azure region to fetch AAD properties</param>
         /// <returns>vault response object.</returns>
-        public AADPropertiesResource GetAADProperties(string azureRegion)
+        public AADPropertiesResource GetAADProperties(string azureRegion, string backupManagementType = null)
         {
-            AADPropertiesResource aadProperties =  BmsAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion).Result.Body;
+            ODataQuery<BMSAADPropertiesQueryObject> queryParams = null;
+
+            if(backupManagementType == BackupManagementType.AzureWorkload)
+            {
+                queryParams = new ODataQuery<BMSAADPropertiesQueryObject>(q => q.BackupManagementType == BackupManagementType.AzureWorkload);
+            }
+
+            AADPropertiesResource aadProperties =  BmsAdapter.Client.AadProperties.GetWithHttpMessagesAsync(azureRegion, queryParams).Result.Body;
             return aadProperties;
+        }
+
+        /// <summary>
+        /// This method prepares the source vault for Data Move operation.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="prepareMoveRequest"></param>
+        public string PrepareDataMove(string vaultName, string resourceGroupName, PrepareDataMoveRequest prepareMoveRequest)
+        {
+            // prepare move
+            var prepareMoveOperationResponse = BmsAdapter.Client.BeginBMSPrepareDataMoveWithHttpMessagesAsync(
+                           vaultName, resourceGroupName, prepareMoveRequest).Result;
+
+            // track prepare-move operation to success
+            var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
+                prepareMoveOperationResponse,
+                operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
+
+            Logger.Instance.WriteDebug("Prepare move operation: " + operationStatus.Body.Status);
+
+            // get the correlation Id and return it for trigger data move
+            var operationResult = TrackingHelpers.GetCorrelationId(
+                prepareMoveOperationResponse,
+                operationId => GetPrepareDataMoveOperationResult(operationId, vaultName, resourceGroupName));
+
+            Logger.Instance.WriteDebug("Prepare move - correlationId:" + operationResult.CorrelationId);
+
+            return operationResult.CorrelationId;
+        }
+
+        /// <summary>
+        /// This method triggers the Data Move operation on Target vault.
+        /// </summary>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="triggerMoveRequest"></param>
+        public void TriggerDataMove(string vaultName, string resourceGroupName, TriggerDataMoveRequest triggerMoveRequest)
+        {
+            //trigger move 
+            var triggerMoveOperationResponse = BmsAdapter.Client.BeginBMSTriggerDataMoveWithHttpMessagesAsync(
+                           vaultName, resourceGroupName, triggerMoveRequest).Result;
+
+            // track trigger-move operation to success
+            var operationStatus = TrackingHelpers.GetOperationStatusDataMove(
+                triggerMoveOperationResponse,
+                operationId => GetDataMoveOperationStatus(operationId, vaultName, resourceGroupName));
+
+            Logger.Instance.WriteDebug("Trigger move operation: " + operationStatus.Body.Status);
+
         }
     }
 }

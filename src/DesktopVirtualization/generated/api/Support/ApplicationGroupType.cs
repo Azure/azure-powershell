@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support
         /// <param name="value">the value to convert to an instance of <see cref="ApplicationGroupType" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ApplicationGroupType(System.Convert.ToString(value));
+            return new ApplicationGroupType(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ApplicationGroupType</summary>

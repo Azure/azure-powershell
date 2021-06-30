@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Collections.Generic;
 using System;
+using Microsoft.Azure.Commands.Common.Exceptions;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             if (existingAccount != null)
             {
-                throw new Exception(string.Format("A NetAppAccount with name '{0}' in resource group '{1}' already exists. Only one active directory allowed. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.", this.Name, this.ResourceGroupName));
+                throw new AzPSResourceNotFoundCloudException($"A NetAppAccount with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Only one active directory allowed. Please use Set/Update-AzNetAppFilesAccount to update an existing NetAppAccount.");
             }
 
             var netAppAccountBody = new NetAppAccount()
