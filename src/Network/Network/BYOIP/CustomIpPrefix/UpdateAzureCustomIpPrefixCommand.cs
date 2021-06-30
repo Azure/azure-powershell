@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Deprovision { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The customIpPrefix CIDR.")]
         [ValidateNotNullOrEmpty]
