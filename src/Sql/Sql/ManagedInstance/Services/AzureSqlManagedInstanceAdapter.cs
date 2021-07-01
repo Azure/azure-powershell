@@ -265,6 +265,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             {
                 managedInstance.Administrators.AdministratorType = "ActiveDirectory";
             }
+            managedInstance.PrimaryUserAssignedIdentityId = resp.PrimaryUserAssignedIdentityId;
+            managedInstance.KeyId = resp.KeyId;
 
             return managedInstance;
         }
