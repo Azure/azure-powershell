@@ -84,7 +84,7 @@ function Set-AzMigrateServerReplication {
         [ArgumentCompleter( { "NoLicenseType" , "PAYG" , "AHUB" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies if Azure Hybrid benefit is applicable for the source server to migrated.
+        # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${SqlServerLicenseType},
 
         [Parameter()]
@@ -118,7 +118,7 @@ function Set-AzMigrateServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
-        # Specifies the tag to be used for Nic creation.
+        # Specifies the tag to be used for NIC creation.
         ${UpdateNicTags},
 
         [Parameter()]
@@ -126,13 +126,13 @@ function Set-AzMigrateServerReplication {
         [ArgumentCompleter( { "Merge" , "Replace" , "Delete" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies update Nic tag operation.
+        # Specifies update NIC tag operation.
         ${UpdateNicTagsOperation},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
-        # Specifies the tag to be used for Disk creation.
+        # Specifies the tag to be used for disk creation.
         ${UpdateDiskTags},
 
         [Parameter()]
@@ -140,7 +140,7 @@ function Set-AzMigrateServerReplication {
         [ArgumentCompleter( { "Merge" , "Replace" , "Delete" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies update Disk tag operation.
+        # Specifies update disk tag operation.
         ${UpdateDiskTagsOperation},
 
         [Parameter()]
@@ -223,7 +223,6 @@ function Set-AzMigrateServerReplication {
         $HasUpdateDiskTags = $PSBoundParameters.ContainsKey('UpdateDiskTags')
         $HasUpdateDiskTagsOperation = $PSBoundParameters.ContainsKey('UpdateDiskTagsOperation')
         $HasTargetBootDignosticStorageAccount = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
-            
 
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('TargetVMName')
@@ -301,33 +300,68 @@ function Set-AzMigrateServerReplication {
                 $ProviderSpecificDetails.SqlServerLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.SqlServerLicenseType
             }
 
-            if ($HasUpdateTags -And $HasUpdateTagsOperation)
+            $tags = $null
+            if ($HasUpdateTags -And $HasUpdateTagsOperation -And $UpdateTags)
+            {
+                $operation = @("UpdateTags", $HasUpdateTagsOperation)
+                $tags += @{$operation = $UpdateTags}
+            }
+
+            if ($HasUpdateVMTags -And $HasUpdateVMTagsOperation -And $UpdateVMTags)
+            {
+                $operation = @("UpdateVMTags", $HasUpdateVMTagsOperation)
+                $tags += @{$operation = $UpdateVMTags}
+            }
+            else {
+                $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
+            }
+
+            if ($HasUpdateNicTags -And $HasUpdateNicTagsOperation -And $UpdateNicTags)
+            {
+                $operation = @("UpdateNicTags", $HasUpdateNicTagsOperation)
+                $tags += @{"UpdateNicTags" = $UpdateNicTags}
+            }
+            else {
+                $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
+            }
+
+            if ($HasUpdateDiskTags -And $HasUpdateDiskTagsOperation -And $UpdateDiskTags)
+            {
+                $operation = @("UpdateDiskTags", $HasUpdateDiskTagsOperation)
+                $tags += @{"UpdateDiskTags" = $UpdateDiskTags}
+            }
+            else {
+                $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
+            }
+
+            foreach($tag in $tags.Keys)
             {
                 $IllegalCharKey = New-Object Collections.Generic.List[String]
                 $ExceededLengthKey = New-Object Collections.Generic.List[String]
                 $ExceededLengthValue = New-Object Collections.Generic.List[String]
+                $IndividualTag = $($tags.Item($tag))
 
-                foreach ($x in $UpdateTags.Keys)
+                foreach ($key in $IndividualTag.Keys)
                 {
-                    if ($x.length -gt 512)
+                    if ($key.length -gt 512)
                     {
-                        $ExceededLengthKey.add($x)
+                        $ExceededLengthKey.add($key)
                     }
 
-                    if ($x -match "[<>%&\?/.]")
+                    if ($key -match "[<>%&\?/.]")
                     {
-                        $IllegalCharKey.add($x)
+                        $IllegalCharKey.add($key)
                     }
 
-                    if ($($UpdateTags.Item($x)).length -gt 256)
+                    if ($($UpdateTags.Item($key)).length -gt 256)
                     {
-                        $ExceededLengthValue.add($($UpdateTags.Item($x)))
+                        $ExceededLengthValue.add($($UpdateTags.Item($key)))
                     }
                 }
 
                 if ($IllegalCharKey.Count -gt 0)
                 {
-                    throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
+                    throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters."
                 }
 
                 if ($ExceededLengthKey.Count -gt 0)
@@ -340,48 +374,91 @@ function Set-AzMigrateServerReplication {
                     throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
                 }
 
-                if ($UpdateTagsOperation -eq "Merge")
+                if ($tag[1] -eq "Merge")
                 {
-                    foreach ($t in $UpdateTags.Keys)
+                    foreach ($key in $IndividualTag.Keys)
                     {
-                        $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Add($t, $($UpdateTags.Item($t)))
-                        $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Add($t, $($UpdateTags.Item($t)))
-                        $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Add($t, $($UpdateTags.Item($t)))
+                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($key) -And `
+                        ($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags"))
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Remove($key)
+                        }
+
+                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.ContainsKey($key)-And `
+                        ($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags"))
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Remove($key)
+                        }
+
+                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.ContainsKey($key)-And `
+                        ($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags"))
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Remove($key)
+                        }
+
+                        if($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags")
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Add($key, $($IndividualTag.Item($key)))
+                        }
+
+                        if($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags")
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Add($key, $($IndividualTag.Item($key)))
+                        }
+
+                        if($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags")
+                        {
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Add($key, $($IndividualTag.Item($key)))
+                        }
                     }
                     
                     $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
                     $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
                     $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
                 }
-                elseif ($UpdateTagsOperation -eq "Replace")
+                elseif ($tag[1] -eq "Replace")
                 {
-                    $ProviderSpecificDetails.TargetVmTag = $UpdateTags
-                    $ProviderSpecificDetails.TargetNicTag = $UpdateTags
-                    $ProviderSpecificDetails.TargetDiskTag = $UpdateTags
+                    if($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags")
+                    {
+                        $ProviderSpecificDetails.TargetVmTag = $IndividualTag
+                    }
+
+                    if($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags")
+                    {
+                        $ProviderSpecificDetails.TargetNicTag = $IndividualTag
+                    }
+
+                    if($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags")
+                    {
+                        $ProviderSpecificDetails.TargetDiskTag = $IndividualTag
+                    }
                 }
                 else
                 {
-                    foreach($x in $UpdateTags.Keys)
+                    foreach($key in $IndividualTag.Keys)
                     {
-                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($x) `
-                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Item($x)) `
-                            -eq $($UpdateTags.Item($x))))
+                        if (($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags") `
+                            -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($key) `
+                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Item($key)) `
+                            -eq $($IndividualTag.Item($key))))
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Remove($x)
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Remove($key)
                         }
 
-                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.ContainsKey($x) `
-                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Item($x)) `
-                            -eq $($UpdateTags.Item($x))))
+                        if (($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags") `
+                            -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.ContainsKey($key) `
+                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Item($key)) `
+                            -eq $($UpdateTags.Item($key))))
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Remove($x)
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Remove($key)
                         }
 
-                        if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.ContainsKey($x) `
-                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Item($x)) `
-                            -eq $($UpdateTags.Item($x))))
+                        if (($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags") `
+                            -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.ContainsKey($key) `
+                            -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Item($key)) `
+                            -eq $($UpdateTags.Item($key))))
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Remove($x)
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Remove($key)
                         }
                     }
 
@@ -403,229 +480,6 @@ function Set-AzMigrateServerReplication {
                     {
                         throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetDiskTag.Count)'. Maximum number of tags allowed - '50'."
                     }
-                }
-            }
-
-            else
-            {
-                if ($HasUpdateVMTags -And $HasUpdateVMTagsOperation) {
-                    $IllegalCharKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthValue = New-Object Collections.Generic.List[String]
-
-                    foreach ($x in $UpdateVMTags.Keys)
-                    {
-                        if ($x.length -gt 512)
-                        {
-                            $ExceededLengthKey.add($x)
-                        }
-
-                        if ($x -match "[<>%&\?/.]")
-                        {
-                            $IllegalCharKey.add($x)
-                        }
-
-                        if ($($UpdateVMTags.Item($x)).length -gt 256)
-                        {
-                            $ExceededLengthValue.add($($UpdateVMTags.Item($x)))
-                        }
-                    }
-
-                    if ($IllegalCharKey.Count -gt 0)
-                    {
-                        throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
-                    }
-
-                    if ($ExceededLengthKey.Count -gt 0)
-                    {
-                        throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
-                    }
-
-                    if ($ExceededLengthValue.Count -gt 0)
-                    {
-                        throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
-                    }
-
-                    if ($UpdateVMTagsOperation -eq "Merge")
-                    {
-                        foreach ($t in $UpdateVMTags.Keys)
-                        {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Add($t, $($UpdateVMTags.Item($t)))
-                        }
-                        $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
-                    }
-                    elseif ($UpdateVMTagsOperation -eq "Replace")
-                    {
-                        $ProviderSpecificDetails.TargetVmTag = $UpdateVMTags
-                    }
-                    else
-                    {
-                        foreach($x in $UpdateVMTags.Keys)
-                        {
-                            if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($x) `
-                                -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Item($x)) `
-                                -eq $($UpdateVMTags.Item($x))))
-                            {
-                                $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Remove($x)
-                            }
-                         }
-                         $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
-                    }
-                    
-                    if ($ProviderSpecificDetails.TargetVmTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetVmTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
-                }
-                else {
-                    $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
-                }
-
-                if ($HasUpdateNicTags -And $HasUpdateNicTagsOperation) {
-                    $IllegalCharKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthValue = New-Object Collections.Generic.List[String]
-
-                    foreach ($x in $UpdateNicTags.Keys)
-                    {
-                         if ($x.length -gt 512)
-                         {
-                             $ExceededLengthKey.add($x)
-                         }
-
-                         if ($x -match "[<>%&\?/.]")
-                         {
-                             $IllegalCharKey.add($x)
-                         }
-
-                         if ($($UpdateNicTags.Item($x)).length -gt 256)
-                         {
-                             $ExceededLengthValue.add($($UpdateNicTags.Item($x)))
-                         }
-                    }
-
-                    if ($IllegalCharKey.Count -gt 0)
-                    {
-                        throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
-                    }
-
-                    if ($ExceededLengthKey.Count -gt 0)
-                    {
-                        throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
-                    }
-
-                    if ($ExceededLengthValue.Count -gt 0)
-                    {
-                        throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
-                    }
-
-                    if ($UpdateNicTagsOperation -eq "Merge")
-                    {
-                        foreach ($t in $UpdateNicTags.Keys)
-                        {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Add($t, $($UpdateNicTags.Item($t)))
-                        }
-
-                        $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
-                    }
-                    elseif ($UpdateNicTagsOperation -eq "Replace")
-                    {
-                        $ProviderSpecificDetails.TargetNicTag = $UpdateNicTags
-                    }
-                    else
-                    {
-                        foreach($x in $UpdateNicTags.Keys)
-                        {
-                            if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.ContainsKey($x) `
-                                -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Item($x)) `
-                                -eq $($UpdateNicTags.Item($x))))
-                            {
-                                $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Remove($x)
-                            }
-                         }
-                         $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
-                    }
-                    
-                    if ($ProviderSpecificDetails.TargetNicTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetNicTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
-                }
-                else {
-                    $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
-                }
-
-                if ($HasUpdateDiskTags -And $HasUpdateDiskTagsOperation) {
-                    $IllegalCharKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthKey = New-Object Collections.Generic.List[String]
-                    $ExceededLengthValue = New-Object Collections.Generic.List[String]
-
-                    foreach ($x in $UpdateDiskTags.Keys)
-                    {
-                         if ($x.length -gt 512)
-                         {
-                             $ExceededLengthKey.add($x)
-                         }
-
-                         if ($x -match "[<>%&\?/.]")
-                         {
-                             $IllegalCharKey.add($x)
-                         }
-
-                         if ($($UpdateDiskTags.Item($x)).length -gt 256)
-                         {
-                             $ExceededLengthValue.add($($UpdateDiskTags.Item($x)))
-                         }
-                    }
-
-                    if ($IllegalCharKey.Count -gt 0)
-                    {
-                        throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters. These characters are only allowed for tags that start with the prefix 'hidden, link'."
-                    }
-
-                    if ($ExceededLengthKey.Count -gt 0)
-                    {
-                        throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
-                    }
-
-                    if ($ExceededLengthValue.Count -gt 0)
-                    {
-                        throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
-                    }
-
-                    if ($UpdateDiskTagsOperation -eq "Merge")
-                    {
-                        foreach ($t in $UpdateDiskTags.Keys)
-                        {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Add($t, $($UpdateDiskTags.Item($t)))
-                        }
-                        $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
-                    }
-                    elseif ($UpdateDiskTagsOperation -eq "Replace")
-                    {
-                        $ProviderSpecificDetails.TargetDiskTag = $UpdateDiskTags
-                    }
-                    else
-                    {
-                        foreach($x in $UpdateDiskTags.Keys)
-                        {
-                            if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.ContainsKey($x) `
-                                -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Item($x)) `
-                                -eq $($UpdateDiskTags.Item($x))))
-                            {
-                                $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Remove($x)
-                            }
-                         }
-                         $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
-                    }
-                    
-                    if ($ProviderSpecificDetails.TargetDiskTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetDiskTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
-                }
-                else{
-                    $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
                 }
             }
 
