@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagement.Common.Models;
@@ -30,7 +31,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
-    public class AzureRMProfileTestsForMultitenant
+    public class AzureRMProfileTestsForMultitenant : IDisposable
     {
         private const string DefaultAccount = "admin@contoso.com";
         private static Guid DefaultSubscription = Guid.NewGuid();
@@ -56,6 +57,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 AccessToken = "bbb",
                 TenantId = tenant
             };
+        }
+
+        public void Dispose()
+        {
+            SubscritpionClientCandidates.Reset();
         }
 
         private RMProfileClient GetProfileClient()
