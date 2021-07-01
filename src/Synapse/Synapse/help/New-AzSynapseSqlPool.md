@@ -16,7 +16,7 @@ Creates a Synapse Analytics SQL pool.
 ```
 New-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
  [-Tag <Hashtable>] -PerformanceLevel <String> [-Collation <String>] [-MaxServiceObjectName <String>]
- [-AutoPauseTimer <Int32>] [-AutoResume] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-AutoPauseTimer <Int32>] [-EnableAutoResume] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,8 @@ New-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name
 ```
 New-AzSynapseSqlPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Version <Int32>] [-Tag <Hashtable>]
  -PerformanceLevel <String> [-Collation <String>] [-MaxServiceObjectName <String>] [-AutoPauseTimer <Int32>]
- [-AutoResume] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableAutoResume] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,21 +72,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AutoResume
-Indicates whether the sql pool can automatically resume when connection attempts are made.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Collation
 Collation defines the rules that sort and compare data, and cannot be changed after SQL pool creation.
 The default collation is SQL_Latin1_General_CP1_CI_AS.
@@ -109,6 +95,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAutoResume
+Indicates whether the sql pool can automatically resume when connection attempts are made.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
