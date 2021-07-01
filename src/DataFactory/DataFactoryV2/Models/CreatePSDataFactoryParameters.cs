@@ -27,7 +27,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public FactoryRepoConfiguration RepoConfiguration { get; set; }
 
         public IDictionary<string, GlobalParameterSpecification> GlobalParameters { get; set; }
-
-        public FactoryIdentity FactoryIdentity { get; set; }
     }
 }

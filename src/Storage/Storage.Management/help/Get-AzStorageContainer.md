@@ -54,7 +54,7 @@ PS C:\> $containers =  Get-AzStorageContainer -IncludeDeleted -Context $ctx
 
 PS C:\> $containers
 
-   Blob End Point: https://storageaccountname.blob.core.windows.net/
+   Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                      
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                   

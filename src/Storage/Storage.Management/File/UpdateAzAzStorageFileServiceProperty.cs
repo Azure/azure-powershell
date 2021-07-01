@@ -111,10 +111,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private int? shareRetentionDays = null;
 
-
         [Parameter(
-        Mandatory = false,
-        HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
+            Mandatory = false,
+            HelpMessage = "Enable Multichannel by set to $true, disable Multichannel by set to $false. Applies to Premium FileStorage only.")]
         [ValidateNotNullOrEmpty]
         public bool EnableSmbMultichannel
         {

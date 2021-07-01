@@ -31,7 +31,7 @@ Highlight parameters differences in auto-gen modules as below.
 - Implement cmdlets in C# based on management SDK for Dotnet
 - Implement testcases
 - Generate docs, and populate them with examples
-- Create a PR in master branch for code review
+- Create a PR in main branch for code review
 
 ### Auto-gen Module
 
@@ -45,7 +45,7 @@ Highlight parameters differences in auto-gen modules as below.
 - Implement testcases
 - Generate docs and populate them with examples
 - Create a PR in **generation** branch for code review
-- Azure team members will help merge code from generation branch to master branch
+- Azure team members will help merge code from generation branch to main branch
 
 ## Customization
 
@@ -78,7 +78,7 @@ Generally speaking, hero scenarios are implemented through customization through
 
 ### SDK-based Module
 
-Docs are generated through playPS, please see [platyPS](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/help-generation.md#Installing-platyPS) for details. And developers should populate generated docs with examples.
+Docs are generated through playPS, please see [platyPS](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md#Installing-platyPS) for details. And developers should populate generated docs with examples.
 
 ### Auto-gen Module
 

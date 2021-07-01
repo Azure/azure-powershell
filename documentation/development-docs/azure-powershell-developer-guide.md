@@ -76,10 +76,10 @@ You now be able to create your own branches, commit changes, and push commits to
 git remote add upstream https://github.com/Azure/azure-powershell.git
 ```
 
-Then, to pull changes from the **master** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
+Then, to pull changes from the **main** branch in _Azure/azure-powershell_ into your local working branch, run the following command:
 
 ```
-git pull upstream master
+git pull upstream main
 ```
 
 ## Building the Environment

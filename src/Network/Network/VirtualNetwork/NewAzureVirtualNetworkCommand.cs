@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public string EdgeZone { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
@@ -70,6 +65,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
         public string[] DnsServer { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "FlowTimeout enables connection tracking for intra-VM flows. The value should be between 4 and 30 minutes (inclusive) to enable tracking, or null to disable tracking.")]
+        public int? FlowTimeout { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -108,6 +109,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The edge zone of the virtual network.")]
+        public string EdgeZone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to override a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -141,14 +148,14 @@ namespace Microsoft.Azure.Commands.Network
                 AddressSpace = new PSAddressSpace {AddressPrefixes = AddressPrefix?.ToList()}
             };
 
-            if (this.EdgeZone != null)
-            {
-                vnet.ExtendedLocation = new PSExtendedLocation(EdgeZone);
-            }
-
             if (DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions {DnsServers = DnsServer?.ToList()};
+            }
+            
+            if (this.FlowTimeout > 0)
+            {
+                vnet.FlowTimeoutInMinutes = this.FlowTimeout;
             }
 
             vnet.Subnets = this.Subnet?.ToList();
@@ -162,6 +169,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(BgpCommunity))
             {
                 vnet.BgpCommunities = new PSVirtualNetworkBgpCommunities {VirtualNetworkCommunity = this.BgpCommunity};
+            }
+
+            if (!string.IsNullOrEmpty(this.EdgeZone))
+            {
+                vnet.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
             // Map to the sdk object

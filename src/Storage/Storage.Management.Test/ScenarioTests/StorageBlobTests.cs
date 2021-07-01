@@ -106,6 +106,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestStorageBlobChangeFeed()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobChangeFeed");
-        }        
+        }
     }
 }

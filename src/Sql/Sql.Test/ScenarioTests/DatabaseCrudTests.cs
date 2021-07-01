@@ -190,5 +190,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-GetDatabaseWithBackupStorageRedundancy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseCreateWithLedgerEnabled()
+        {
+            RunPowerShellTest("Test-DatabaseCreateWithLedgerEnabled");
+        }
     }
 }

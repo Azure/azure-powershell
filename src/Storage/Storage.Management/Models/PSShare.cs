@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Etag = share.Etag;
             this.LastModifiedTime = share.LastModifiedTime;
             this.QuotaGiB = share.ShareQuota;
+            this.EnabledProtocols = share.EnabledProtocols;
+            this.RootSquash = share.RootSquash;
             this.Version = share.Version;
             this.Deleted = share.Deleted;
             this.DeletedTime = share.DeletedTime;
@@ -63,6 +65,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Etag = share.Etag;
             this.LastModifiedTime = share.LastModifiedTime;
             this.QuotaGiB = share.ShareQuota;
+            this.EnabledProtocols = share.EnabledProtocols;
+            this.RootSquash = share.RootSquash;
             this.Version = share.Version;
             this.Deleted = share.Deleted;
             this.DeletedTime = share.DeletedTime;

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `AvailabilityZone` for `New-AzAksNodePool`. [#14505]
+
+## Version 2.1.1
+* Fixed the issue that `Set-AzAks` will fail in Automation Runbook. [#15006]
 
 ## Version 2.1.0
 * Added support `AcrNameToAttach` in `Set-AzAksCluster`. [#14692]

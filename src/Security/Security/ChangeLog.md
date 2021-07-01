@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* General availability of `Az.Security` module
+* Changed the name of `Get-AzRegulatoryComplainceAssessment` to `Get-AzRegulatoryComplianceAssessment` to fix typo
 
 ## Version 0.11.0
 * Fix typo in printing SQL vulnerability assessment scan results

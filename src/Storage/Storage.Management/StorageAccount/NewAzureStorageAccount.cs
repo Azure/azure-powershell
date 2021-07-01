@@ -484,7 +484,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             DefaultSharePermissionType.StorageFileDataSmbShareContributor,
             DefaultSharePermissionType.StorageFileDataSmbShareReader,
             DefaultSharePermissionType.StorageFileDataSmbShareElevatedContributor,
-            DefaultSharePermissionType.StorageFileDataSmbShareOwner,
             IgnoreCase = true)]
         public string DefaultSharePermission { get; set; }
 
@@ -701,7 +700,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.EnableNfsV3 = enableNfsV3;
             }
-            if(this.EdgeZone != null)
+            if (enableNfsV3 != null)
+            {
+                createParameters.EnableNfsV3 = enableNfsV3;
+            }
+            if (this.EdgeZone != null)
             {
                 createParameters.ExtendedLocation = new ExtendedLocation()
                 {

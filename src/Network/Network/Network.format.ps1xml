@@ -111,6 +111,10 @@
                 <PropertyName>DhcpOptionsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>FlowTimeoutInMinutes</Label>
+                <PropertyName>FlowTimeoutInMinutesText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
@@ -134,6 +138,10 @@
               <ListItem>
                 <Label>DdosProtectionPlan</Label>
                 <PropertyName>DdosProtectionPlanText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -715,6 +723,14 @@
                 <Label>TunnelConnectionStatus</Label>
                 <PropertyName>TunnelConnectionStatusText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>IngressNatRules</Label>
+                <PropertyName>IngressNatRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EgressNatRules</Label>
+                <PropertyName>EgressNatRulesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -947,6 +963,14 @@
                 <Label>BgpSettings</Label>
                 <PropertyName>BgpSettingsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>NatRules</Label>
+                <PropertyName>NatRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableBgpRouteTranslationForNat</Label>
+                <PropertyName>EnableBgpRouteTranslationForNat</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1018,6 +1042,56 @@
               <ListItem>
                 <Label>VpnClientIpsecPolicies</Label>
                 <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayNatRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>VirtualNetworkGatewayNatRulePropertiesType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Mode</Label>
+                <PropertyName>Mode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>InternalMappings</Label>
+                <PropertyName>InternalMappingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExternalMappings</Label>
+                <PropertyName>ExternalMappingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpConfigurationId</Label>
+                <PropertyName>IpConfigurationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1348,6 +1422,10 @@
                 <PropertyName>VirtualNetworkName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeeringSyncLevel</Label>
+                <PropertyName>PeeringSyncLevel</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>PeeringState</Label>
                 <PropertyName>PeeringState</PropertyName>
               </ListItem>
@@ -1378,6 +1456,10 @@
               <ListItem>
                 <Label>RemoteGateways</Label>
                 <PropertyName>RemoteGatewaysText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeeredRemoteAddressSpace</Label>
+                <PropertyName>PeeredRemoteAddressSpaceText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RemoteVirtualNetworkAddressSpace</Label>
@@ -1473,6 +1555,10 @@
               <ListItem>
                 <Label>IpTags</Label>
                 <PropertyName>IpTagsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1636,6 +1722,10 @@
                 <Label>PublicIpAddresses</Label>
                 <PropertyName>PublicIpAddressesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1739,6 +1829,10 @@
               <ListItem>
                 <Label>MacAddress</Label>
                 <PropertyName>MacAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2367,6 +2461,10 @@
               <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -4226,6 +4324,10 @@
                 <PropertyName>Type</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PreferredRoutingGateway</Label>
+                <PropertyName>PreferredRoutingGateway</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
@@ -5027,6 +5129,10 @@
                 <Label>CustomDnsConfigs</Label>
                 <PropertyName>CustomDnsConfigsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -5214,6 +5320,10 @@
               <ListItem>
                 <Label>NetworkInterfaces</Label>
                 <PropertyName>NetworkInterfacesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtendedLocation</Label>
+                <PropertyName>ExtendedLocationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 4.3.0
+* Support new azure monitor feature in HDInsight:
+    - Add cmdlet `Get-AzHDInsightAzureMonitor` to allow customer to get the Azure Monitor status of HDInsight cluster.
+    - Add cmdlet `Enable-AzHDInsightAzureMonitor` to allow customer to enable the Azure Monitor in HDInsight cluster.
+    - Add cmdlet `Disable-AzHDInsightAzureMonitor` to allow customer to disable the Azure Monitor in HDInsight cluster.
+
+
 ## Version 4.2.1
 * Supported getting default vmsize from backend if customer does not provide the related parameters: `-WorkerNodeSize`, `-HeadNodeSize`, `-ZookeeperNodeSize`, `-EdgeNodeSize`, `-KafkaManagementNodeSize`.
 

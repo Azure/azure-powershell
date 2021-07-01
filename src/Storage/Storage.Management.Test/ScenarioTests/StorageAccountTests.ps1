@@ -982,13 +982,13 @@ function Test-NewSetAzStorageAccountFileAADDS
         Assert-AreEqual 'AADDS' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
         Assert-AreEqual 'StorageFileDataSmbShareContributor' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 		
 		
-		$sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryDomainServicesForFile $false -DefaultSharePermission StorageFileDataSmbShareOwner
+		$sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryDomainServicesForFile $false -DefaultSharePermission StorageFileDataSmbShareReader
         Assert-AreEqual $stoname $sto.StorageAccountName;
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind; 
         Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
-        Assert-AreEqual 'StorageFileDataSmbShareOwner' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
+        Assert-AreEqual 'StorageFileDataSmbShareReader' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
 
         $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         Assert-AreEqual $stoname $sto.StorageAccountName;
@@ -996,7 +996,7 @@ function Test-NewSetAzStorageAccountFileAADDS
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind; 
         Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
-        Assert-AreEqual 'StorageFileDataSmbShareOwner' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
+        Assert-AreEqual 'StorageFileDataSmbShareReader' $sto.AzureFilesIdentityBasedAuth.DefaultSharePermission; 
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
@@ -1931,6 +1931,7 @@ function Test-StorageBlobInventory
         Clean-ResourceGroup $rgname
     }
 }
+
 
 <#
 .SYNOPSIS

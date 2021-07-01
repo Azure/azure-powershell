@@ -14,17 +14,53 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Models
 {
+    using System.Collections;
     using System.Collections.Generic;
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSResourceGraphResponse
+    public class PSResourceGraphResponse<PSObject> : IList<PSObject>
     {
         [Ps1Xml(Target = ViewControl.List)]
         public string SkipToken { get; set; }
 
         [Ps1Xml(Target = ViewControl.List)]
         public IList<PSObject> Data { get; set; }
+        public PSObject this[int index]
+        {
+            get => Data[index];
+            set => Data[index] = value;
+        }
 
+        public IEnumerator<PSObject> GetEnumerator()
+        {
+            return Data.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public bool IsReadOnly => Data.IsReadOnly;
+
+        public int Count => Data.Count;
+
+        public void Add(PSObject value) => Data.Add(value);
+
+        public void Clear() => Data.Clear();
+
+        public bool Contains(PSObject value) => Data.Contains(value);
+
+        public void CopyTo(PSObject[] array, int index) => Data.CopyTo(array, index);
+
+        public int IndexOf(PSObject value) => Data.IndexOf(value);
+
+        public void Insert(int index, PSObject value) => Data.Insert(index, value);
+
+        public void Remove(PSObject value) => Data.Remove(value);
+
+        public void RemoveAt(int index) => Data.RemoveAt(index);
+
+        bool ICollection<PSObject>.Remove(PSObject item) => Data.Remove(item);
     }
 }

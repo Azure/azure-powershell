@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
     /// <para type="description">Use this cmdlet to enable Az Predictor and start receiving suggestions</para>
     /// </summary>
     [Cmdlet("Enable", "AzPredictor"), OutputType(typeof(bool))]
-    public sealed class EnableAzPredictor : PSCmdlet
+    public sealed class EnableAzPredictor : BasePSCmdlet
     {
         private static readonly string[] _EnableStatements = {
             "Import-Module Az.Tools.Predictor",
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         /// <summary>
         /// <para type="description">Enable Az Predictor for the current and future PowerShell sessions.</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Enable Az Predictor for the current and future PowerShell sessions.")]
         public SwitchParameter AllSession { get; set; }
 
         /// <summary>
         /// <para type="description">Indicates whether the user would like to receive output. </para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether the user would like to receive output.")]
         public SwitchParameter PassThru { get; set; }
 
         /// <inheritdoc/>
