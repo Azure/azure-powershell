@@ -29,10 +29,30 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public string SignedMessage { get; set; }
+
+        public string AuthorizationMessage { get; set; }
+
+        public PSCustomIpPrefix CustomIpPrefixParent { get; set; }
+
+        public List<PSResourceId> ChildCustomIpPrefixes { get; set; }
+
         [JsonIgnore]
         public string PublicIpPrefixesText
         {
             get { return JsonConvert.SerializeObject(PublicIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string CustomIpPrefixParentText
+        {
+            get { return JsonConvert.SerializeObject(new PSResourceId() { Id = CustomIpPrefixParent.Id }, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ChildCustomIpPrefixesText
+        {
+            get { return JsonConvert.SerializeObject(ChildCustomIpPrefixes, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
