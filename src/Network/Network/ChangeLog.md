@@ -23,6 +23,8 @@
     - `New-AzFirewall`
 * Updated cmdlets to add properties for new BYOIP features.
     - `New-AzPublicIpAddress`
+    - `New-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix`
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.

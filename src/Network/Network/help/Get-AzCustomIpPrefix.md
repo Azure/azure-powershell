@@ -45,6 +45,10 @@ Cidr                 : 111.111.111.111/24
 CommissionedState    : Provisioning
 PublicIpPrefixes     : []
 Zones                : {}
+SignedMessage        : SignedMessage
+AuthorizationMessage : AuthorizationMessage
+CustomIpPrefixParent :
+ChildCustomIpPrefixes: []
 ```
 
 This command gets a CustomIpPrefix resource named myCustomIpPrefix in resource group myRg
