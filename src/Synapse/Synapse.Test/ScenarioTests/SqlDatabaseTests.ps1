@@ -66,8 +66,8 @@ function Test-SynapseSqlDatabase
     }
     finally
     {
-        # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+		# Cleanup
+		Remove-SqlPoolV3TestEnvironment $testSuffix
     }
 }
 
@@ -94,7 +94,7 @@ function Get-SqlPoolV3TestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "sqlcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "canadacentral";
+              location = "eastus2euap";
 		}
 }
 
