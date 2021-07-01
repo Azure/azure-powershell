@@ -12,13 +12,13 @@
 RootModule = './Az.Maps.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.7.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'dc0410d0-8396-4441-a4d3-fdaaa915369d'
+GUID = '20503d22-7610-4f47-aa76-b41b6d7e3815'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -99,7 +99,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','PSModule','Maps'
+        Tags = 'Azure','ResourceManager','ARM','PSModule','Maps','LBS','LocationBasedServices'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
