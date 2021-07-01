@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant
+* Upgraded subscription client to 2021-01-01
 * Removed Interactive mode check in common lib
 * Added endpoint of OperationalInsights to environment AzureChinaCloud [#15305]
 * Printed auto generated modules' default logs to verbose stream
