@@ -14,7 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Aks.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+
+    using System;
     using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The Resource model definition.
@@ -67,5 +73,19 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets resource tags
         /// </summary>
         public IDictionary<string, string> Tags { get; set; }
+
+        public string ToJsonString()
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+
+            return JsonConvert.SerializeObject(this, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            });
+        }
     }
 }

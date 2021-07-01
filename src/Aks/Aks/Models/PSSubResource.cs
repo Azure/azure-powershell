@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 namespace Microsoft.Azure.Commands.Aks.Models
 {
     /// <summary>
@@ -34,6 +37,20 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets resource type
         /// </summary>
         public string Type { get; private set; }
+
+        public string ToJsonString()
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+
+            return JsonConvert.SerializeObject(this, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            });
+        }
 
     }
 }
