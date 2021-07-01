@@ -129,5 +129,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The unique name of the Shared Image Gallery.")]
+        public string GalleryUniqueName { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.")]
+        [PSArgumentCompleter("Subscription", "Tenant")]
+        public string Scope { get; set; }
     }
 }
