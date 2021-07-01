@@ -91,32 +91,6 @@ function Test-SynapseWorkspace
         }
         Assert-True {$found -eq 1} "Workspace created earlier is not found when listing all in resource group: $resourceGroupName."
 
-<<<<<<< HEAD
-        # Unable to deserialize results in `Get-AzSynapseWorkspace`
-        # TODO: Update test after SDK upgrade
-
-        # List all Workspaces in subscription
-
-        # [array]$workspacesInSubscription = Get-AzSynapseWorkspace
-        # Assert-True {$workspacesInSubscription.Count -ge 1}
-        # Assert-True {$workspacesInSubscription.Count -ge $workspacesInResourceGroup.Count}
-        #
-        # $found = 0
-        # for ($i = 0; $i -lt $workspacesInSubscription.Count; $i++)
-        # {
-        #     if ($workspacesInSubscription[$i].Name -eq $workspaceName)
-        #     {
-        #         $found = 1
-        #         Assert-AreEqual $location $workspacesInSubscription[$i].Location
-        #         Assert-AreEqual "Microsoft.Synapse/workspaces" $workspacesInSubscription[$i].Type
-        #         Assert-True {$workspacesInSubscription[$i].Id -like "*$resourceGroupName*"}
-        #         break
-        #     }
-        # }
-        # Assert-True {$found -eq 1} "Workspace created earlier is not found when listing all in subscription."
-
-=======
->>>>>>> e8840237e1... Refresh session records
         # Delete workspace
         Assert-True {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -PassThru -Force} "Remove Workspace failed."
 
@@ -473,11 +447,7 @@ function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-<<<<<<< HEAD
-              location = "eastus2euap";
-=======
               location = "canadacentral";
->>>>>>> e8840237e1... Refresh session records
               encryptionKeyIdentifier = "<your-encryptionKeyIdentifier>";
 		}
 }
