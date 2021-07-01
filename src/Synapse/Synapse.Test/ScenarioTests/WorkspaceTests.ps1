@@ -91,6 +91,7 @@ function Test-SynapseWorkspace
         }
         Assert-True {$found -eq 1} "Workspace created earlier is not found when listing all in resource group: $resourceGroupName."
 
+<<<<<<< HEAD
         # Unable to deserialize results in `Get-AzSynapseWorkspace`
         # TODO: Update test after SDK upgrade
 
@@ -114,6 +115,8 @@ function Test-SynapseWorkspace
         # }
         # Assert-True {$found -eq 1} "Workspace created earlier is not found when listing all in subscription."
 
+=======
+>>>>>>> e8840237e1... Refresh session records
         # Delete workspace
         Assert-True {Remove-AzSynapseWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -PassThru -Force} "Remove Workspace failed."
 
@@ -211,12 +214,12 @@ function Test-SynapseWorkspaceSecurity
         Assert-AreEqual $auditing.StorageAccountResourceId $account.id
         
         # Enable SQL Data Security
-        $dataSecurityEnable = Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName $workspaceName -DoNotConfigureVulnerabilityAssessment
+        $dataSecurityEnable = Enable-AzSynapseSqlAdvancedDataSecurity -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -DoNotConfigureVulnerabilityAssessment
 
         Assert-True {$dataSecurityEnable.IsEnabled}
 
         # Get SQL Data Security Policy
-        $dataSecurityGet = Get-AzSynapseSqlAdvancedDataSecurityPolicy -WorkspaceName $workspaceName
+        $dataSecurityGet = Get-AzSynapseSqlAdvancedDataSecurityPolicy -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
 
         Assert-True {$dataSecurityGet.IsEnabled}
 
@@ -251,7 +254,7 @@ function Test-SynapseWorkspaceSecurity
         Assert-AreEqual $threatProtectionGet.ThreatDetectionState Disabled
 
         # Disable SQL Data Security
-        $dataSecurityDisable = Disable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName $workspaceName
+        $dataSecurityDisable = Disable-AzSynapseSqlAdvancedDataSecurity -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
 
         Assert-False {$dataSecurityDisable.IsEnabled}
 
@@ -470,7 +473,11 @@ function Get-WorkspaceEncryptionTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
+<<<<<<< HEAD
               location = "eastus2euap";
+=======
+              location = "canadacentral";
+>>>>>>> e8840237e1... Refresh session records
               encryptionKeyIdentifier = "<your-encryptionKeyIdentifier>";
 		}
 }
@@ -539,7 +546,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "eastus2euap";
+              location = "canadacentral";
 		}
 }
 
