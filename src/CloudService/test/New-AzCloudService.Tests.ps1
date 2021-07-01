@@ -43,10 +43,4 @@ Describe 'New-AzCloudService' {
                           -ExtensionProfile $extensionProfile
         $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
     }
-    It 'quickCreateParameterSetWithoutStorage' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-    It 'quickCreateParameterSetWithStorage' {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }
