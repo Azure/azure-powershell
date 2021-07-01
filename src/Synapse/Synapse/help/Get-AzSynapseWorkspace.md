@@ -56,6 +56,16 @@ PS C:\> Get-AzSynapseWorkspace -ResourceId /subscriptions/21686af7-58ec-4f4d-9c6
 
 This command gets the Azure Synapse Analytics workspace with the specified resource ID.
 
+### Example 5
+```powershell
+PS C:\> $config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
+PS C:\> $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+PS C:\> $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+PS C:\> New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config
+```
+
+The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.
+
 ## PARAMETERS
 
 ### -DefaultProfile
