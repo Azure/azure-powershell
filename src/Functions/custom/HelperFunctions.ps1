@@ -149,6 +149,9 @@ function GetConnectionString
 
 function GetEndpointSuffix
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param()
+
     $environmentName = (Get-AzContext).Environment.Name
 
     switch ($environmentName)
@@ -1589,6 +1592,7 @@ function NewIdentityUserAssignedIdentity
 
 function GetShareSuffix
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Int]
@@ -1612,6 +1616,7 @@ function GetShareSuffix
 
 function GetShareName
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
         [Parameter(Mandatory=$true)]
