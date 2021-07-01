@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create or migrate container to enable immutable Storage with versioning.
+    -  `New-AzRmStorageContainer`
+    -  `Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration`
+* Supported set/remove immutability policy on a Storage blob.
+    -  `Set-AzStorageBlobImmutabilityPolicy`
+    -  `Remove-AzStorageBlobImmutabilityPolicy`
+* Supported enable/disable legal hold on a Storage blob.
+    -  `Set-AzStorageBlobLegalHold`
+
 * Supported Blob Last Access Time
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
