@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string WorkspaceObject = "workspace input object, usually passed through the pipeline.";
 
+        public const string ManagedResourceGroupName = "A container that holds ancillary resources. Created by default while the name can be specified. Note that this group must be different with ResourceGroupName.";
+
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";

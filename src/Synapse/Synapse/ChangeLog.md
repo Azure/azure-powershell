@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
 * Add support for Synapse Spark job definition
 	- Add `New-AzSynapseSparkJobDefinition` cmdlet
     - Add `Get-AzSynapseSparkJobDefinition` cmdlet
