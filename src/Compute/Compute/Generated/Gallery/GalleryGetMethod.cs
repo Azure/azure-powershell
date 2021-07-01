@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         resourceGroupName = GetResourceGroupName(this.ResourceId);
                         galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/galleries");
                         break;
+                    case "SharedGalleryParameterSet":
+                        SharedGalleryGet();
+                        return;
                     default:
                         resourceGroupName = this.ResourceGroupName;
                         galleryName = this.Name;
@@ -107,6 +110,48 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             });
         }
 
+        public void SharedGalleryGet()
+        {
+            if (this.IsParameterBound(c => c.GalleryUniqueName))
+            {
+                SharedGallery result = SharedGalleriesClient.Get(this.Location, this.GalleryUniqueName);
+                var psObject = new PSSharedGallery();
+                ComputeAutomationAutoMapperProfile.Mapper.Map<SharedGallery, PSSharedGallery>(result, psObject);
+                WriteObject(psObject);
+            }
+            else
+            {
+                Rest.Azure.IPage<SharedGallery> result = new Page<SharedGallery>();
+
+                if (this.IsParameterBound(c => c.Scope) && this.Scope != "subscription")
+                {
+                    result = SharedGalleriesClient.List(this.Location, this.Scope);
+                }
+                else
+                {
+                    result = SharedGalleriesClient.List(this.Location);
+                }
+
+                var resultList = result.ToList();
+                var nextPageLink = result.NextPageLink;
+                while (!string.IsNullOrEmpty(nextPageLink))
+                {
+                    var pageResult = SharedGalleriesClient.ListNext(nextPageLink);
+                    foreach (var pageItem in pageResult)
+                    {
+                        resultList.Add(pageItem);
+                    }
+                    nextPageLink = pageResult.NextPageLink;
+                }
+                var psObject = new List<PSSharedGalleryList>();
+                foreach (var r in resultList)
+                {
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<SharedGallery, PSSharedGalleryList>(r));
+                }
+                WriteObject(psObject);
+            }
+        }
+
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 0,
@@ -133,14 +178,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "SharedGalleryParameterSet",
            HelpMessage = "The unique name of the Shared Image Gallery.")]
         public string GalleryUniqueName { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.")]
-        [PSArgumentCompleter("Subscription", "Tenant")]
+           ParameterSetName = "SharedGalleryParameterSet",
+           HelpMessage = "Specifies galleries shared to subscription or tenant.")]
+        [PSArgumentCompleter("subscription", "tenant")]
         public string Scope { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "SharedGalleryParameterSet")]
+        [LocationCompleter("Microsoft.Compute/Galleries")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
     }
 }

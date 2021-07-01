@@ -179,16 +179,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         if (this.Reset.IsPresent)
                         {
                             // if sub or tenant is present return error 
-                            if (this.IsParameterBound(c => c.Subscriptions) || this.IsParameterBound(c => c.Tenants))
+                            if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant))
                             {
-                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenants' or '-Subscription'.");
+                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant' or '-Subscription'.");
                             }
                             else
                             {
                                 sharingUpdate.OperationType = "Reset";
                             }
                         }
-                        if (this.IsParameterBound(c => c.Subscriptions))
+                        if (this.IsParameterBound(c => c.Subscription))
                         {
                             if (sharingUpdate.Groups == null)
                             {
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             SharingProfileGroup sharingProfile = new SharingProfileGroup();
                             sharingProfile.Type = "Subscriptions";
                             sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.Subscriptions)
+                            foreach (var id in this.Subscription)
                             {
                                 sharingProfile.Ids.Add(id);
                             }
                             sharingUpdate.Groups.Add(sharingProfile);
                         }
-                        if (this.IsParameterBound(c => c.Tenants))
+                        if (this.IsParameterBound(c => c.Tenant))
                         {
                             if (sharingUpdate.Groups == null)
                             {
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             SharingProfileGroup sharingProfile = new SharingProfileGroup();
                             sharingProfile.Type = "AADTenants";
                             sharingProfile.Ids = new List<string>();
-                            foreach (var id in this.Tenants)
+                            foreach (var id in this.Tenant)
                             {
                                 sharingProfile.Ids.Add(id);
                             }
@@ -220,9 +220,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
 
                     }
-                    else if (this.IsParameterBound(c => c.Subscriptions) || this.IsParameterBound(c => c.Tenants) || this.Reset.IsPresent)
+                    else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.Reset.IsPresent)
                     {
-                        throw new Exception("Parameters '-Subscriptions', '-Tenants', and '-Reset' must be used with '-Share' parameter.");
+                        throw new Exception("Parameters '-Subscription', '-Tenant', and '-Reset' must be used with '-Share' parameter.");
                     }
                     
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
@@ -293,13 +293,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of subscription ids the gallery is aimed to be shared to.")]
-        public string[] Subscriptions { get; set; }
+        public string[] Subscription { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of tenant ids the gallery is aimed to be shared to.")]
-        public string[] Tenants { get; set; }
+        public string[] Tenant { get; set; }
 
         [Parameter(
             Mandatory = false,
