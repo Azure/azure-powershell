@@ -23,6 +23,15 @@
 	- Add `New-AzSynapseSparkJobDefinition` cmdlet
     - Add `Get-AzSynapseSparkJobDefinition` cmdlet
     - Add `Remove-AzSynapseSparkJobDefinition` cmdlet
+* `New-AzSynapseSqlDatabase` now supports storage redundancy
+  - Removed parameter `-MaxSizeInBytes`. It is no longer supported any more.
+  - Added parameter `-StorageRedundancy`. Possible values: Geo, GeoZone, Local, Zone
+* `New-AzSynapseSqlPool` now supports autoScale and autoPause
+  - Added parameters `-MaxServiceObjectName -AutoPauseTimer -EnableAutoResume`
+* `Resume-AzSynapseSqlPool`, `Suspend-AzSynapseSqlPool` now supports SQL pool Gen3
+  - Added parameter `-Version`
+* `Update-AzSynapseSqlPool` now supports autoScale and autoPause
+  - Added parameters `-MaxServiceObjectName -AutoPauseTimer -AutoResume`
 
 ## Version 0.12.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.9
