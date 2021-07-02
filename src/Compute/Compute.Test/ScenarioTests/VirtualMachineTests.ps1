@@ -4950,7 +4950,8 @@ function Test-InvokeAzVMInstallPatch
 
 <#
 .SYNOPSIS
-Windows machine enable hot patching, linux machines patchmode
+Windows machine enable hot patching, linux machines patchmode,
+and EnableAutoUpdate does not overwrite the VM object's EnableAutoUpdate value.
 #>
 function Test-VirtualMachineAssessmentMode
 {
@@ -5005,6 +5006,15 @@ function Test-VirtualMachineAssessmentMode
         Assert-NotNull $vm;
 
         Assert-AreEqual $vm.osProfile.WindowsConfiguration.PatchSettings.AssessmentMode "AutomaticByPlatform";
+
+        # Try to update EnableAutoUpdate value
+        $origAutoUpdate = $vm.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates;
+        Assert-AreEqual $vm.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $origAutoUpdate;
+        $vmUp = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        Assert-AreEqual $vmUp.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $origAutoUpdate;
+
+        $vmUp2 = Set-AzVMOperatingSystem -VM $vmUp -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        Assert-True $vmUp2.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates;
     }
     finally 
     {

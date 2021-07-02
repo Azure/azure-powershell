@@ -408,8 +408,11 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = false;
                 }
 
-                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
-
+                if (this.EnableAutoUpdate.IsPresent)
+                {
+                    this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
+                }
+                
                 this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
 
                 this.VM.OSProfile.WindowsConfiguration.WinRM =
