@@ -29,6 +29,9 @@ Copy a blob synchronously.
 ### [Disable-AzStorageBlobDeleteRetentionPolicy](Disable-AzStorageBlobDeleteRetentionPolicy.md)
 Disable delete retention policy for the Azure Storage Blob service.
 
+### [Disable-AzStorageBlobLastAccessTimeTracking](Disable-AzStorageBlobLastAccessTimeTracking.md)
+Disable last access time tracking for the Azure Storage Blob service.
+
 ### [Disable-AzStorageBlobRestorePolicy](Disable-AzStorageBlobRestorePolicy.md)
 Disables Blob Restore Policy on a Storage account.
 
@@ -43,6 +46,9 @@ Disable static website for the Azure Storage account.
 
 ### [Enable-AzStorageBlobDeleteRetentionPolicy](Enable-AzStorageBlobDeleteRetentionPolicy.md)
 Enable delete retention policy for the Azure Storage Blob service.
+
+### [Enable-AzStorageBlobLastAccessTimeTracking](Enable-AzStorageBlobLastAccessTimeTracking.md)
+Enable last access time tracking for the Azure Storage Blob service.
 
 ### [Enable-AzStorageBlobRestorePolicy](Enable-AzStorageBlobRestorePolicy.md)
 Enables Blob Restore Policy on a Storage account.
