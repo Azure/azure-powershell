@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System;
 using System.Collections.Generic;
-using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 {
     public class PSCognitiveServicesAccount
     {
-        public PSCognitiveServicesAccount(CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
+        public PSCognitiveServicesAccount(Account cognitiveServicesAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(cognitiveServicesAccount.Id);
             this.AccountName = cognitiveServicesAccount.Name;
@@ -34,18 +32,25 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
             this.ResourceType = cognitiveServicesAccount.Type;
             this.Tags = cognitiveServicesAccount.Tags;
 
-            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
-            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
+            // Properties aliases
             this.CustomSubDomainName = cognitiveServicesAccount.Properties.CustomSubDomainName;
-
             this.Identity = cognitiveServicesAccount.Identity;
             this.UserOwnedStorage = cognitiveServicesAccount.Properties.UserOwnedStorage;
             this.Encryption = cognitiveServicesAccount.Properties.Encryption;
-            this.ApiProperties = cognitiveServicesAccount.Properties.ApiProperties;
-
+            this.ApiProperties = CognitiveServicesAccountApiProperties.Parse(cognitiveServicesAccount.Properties.ApiProperties);
             this.PublicNetworkAccess = cognitiveServicesAccount.Properties.PublicNetworkAccess;
+            this.DisableLocalAuth = cognitiveServicesAccount.Properties.DisableLocalAuth;
+            this.RestrictOutboundNetworkAccess = cognitiveServicesAccount.Properties.RestrictOutboundNetworkAccess;
+            this.AllowedFqdnList = cognitiveServicesAccount.Properties.AllowedFqdnList;
+
+            // other properties
+            this.Properties = cognitiveServicesAccount.Properties;
+
+            // Read-only properties, should not add more as they can be retrived from properties
             this.PrivateEndpointConnections = cognitiveServicesAccount.Properties.PrivateEndpointConnections;
             this.Capabilities = cognitiveServicesAccount.Properties.Capabilities;
+            this.Endpoint = cognitiveServicesAccount.Properties.Endpoint;
+            this.ProvisioningState = cognitiveServicesAccount.Properties.ProvisioningState;
 
             if (cognitiveServicesAccount.Properties.NetworkAcls != null)
             {
@@ -87,13 +92,21 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 
         public CognitiveServicesAccountApiProperties ApiProperties { get; private set; }
 
+        public AccountProperties Properties { get; private set; }
+
+        public bool? RestrictOutboundNetworkAccess { get; private set; }
+
+        public IList<string> AllowedFqdnList { get; private set; }
+
+        public bool? DisableLocalAuth { get; private set; }
+
         public PSNetworkRuleSet NetworkRuleSet { get; private set; }
 
         public IList<SkuCapability> Capabilities { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 
-        public static PSCognitiveServicesAccount Create(CognitiveServicesModels.CognitiveServicesAccount cognitiveServicesAccount)
+        public static PSCognitiveServicesAccount Create(Account cognitiveServicesAccount)
         {
             var result = new PSCognitiveServicesAccount(cognitiveServicesAccount);
             return result;
