@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added read only property `ConnectionString` and `ApplicationId` to applicationinsights component
 
 ## Version 1.1.1

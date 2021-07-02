@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.9.0
 * Supported enable/disable Blob container soft delete
     -  `Enable-AzStorageContainerDeleteRetentionPolicy`
     -  `Disable-AzStorageContainerDeleteRetentionPolicy`

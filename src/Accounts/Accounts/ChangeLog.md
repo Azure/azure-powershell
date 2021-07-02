@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.5.0
 * Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
 * Upgraded subscription client to 2021-01-01 [#15220]
 * Removed Interactive mode check in common lib

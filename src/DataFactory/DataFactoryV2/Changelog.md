@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.0
 * Added Customer Managed Key Encryption to DataFactory
 
 ## Version 1.12.1
