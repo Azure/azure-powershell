@@ -134,10 +134,6 @@ directive:
       subject: ^CloudService$
       verb: Update|Set
     remove: true
-  - where:
-      subject: ^CloudService$
-      verb: New
-    hide: true
 
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$
@@ -149,6 +145,10 @@ directive:
       verb: New
     set:
       verb: Update
+  - where:
+      subject: ^CloudService$
+      verb: New
+    hide: true
 
   - where:
       variant: ^GetViaIdentity$
