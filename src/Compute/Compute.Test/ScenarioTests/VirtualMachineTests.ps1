@@ -5006,15 +5006,48 @@ function Test-VirtualMachineAssessmentMode
         Assert-NotNull $vm;
 
         Assert-AreEqual $vm.osProfile.WindowsConfiguration.PatchSettings.AssessmentMode "AutomaticByPlatform";
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
 
-        # Try to update EnableAutoUpdate value
-        $origAutoUpdate = $vm.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates;
-        Assert-AreEqual $vm.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $origAutoUpdate;
-        $vmUp = Set-AzVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        Assert-AreEqual $vmUp.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $origAutoUpdate;
+<#
+.SYNOPSIS
+Windows machine enable hot patching, linux machines patchmode,
+and EnableAutoUpdate does not overwrite the VM object's EnableAutoUpdate value.
+#>
+function Test-VirtualMachineEnableAutoUpdate
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
 
-        $vmUp2 = Set-AzVMOperatingSystem -VM $vmUp -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
-        Assert-True $vmUp2.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates;
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmname = 'vm' + $rgname;
+        $vmsize = "Standard_B1s";
+        $domainNameLabel = "d1" + $rgname;
+        $computerName = "v" + $rgname;
+
+        # VM Credential
+        $user = "usertest";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Creating a VM 
+        $vmConfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize;
+        $vmSet = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate;
+        Assert-True $vmSet.OSProfile.WindowsConfiguration.EnableAutoUpdate;
+
+        $vmSet = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate:$false;
+        Assert-False $vmSet.OSProfile.WindowsConfiguration.EnableAutoUpdate;
     }
     finally 
     {

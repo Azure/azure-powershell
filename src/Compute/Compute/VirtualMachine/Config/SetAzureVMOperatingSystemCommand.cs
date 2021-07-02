@@ -408,9 +408,9 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = false;
                 }
 
-                if (this.EnableAutoUpdate.IsPresent)
+                if (this.IsParameterBound(c => c.EnableAutoUpdate))
                 {
-                    this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
+                    this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate;
                 }
                 
                 this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
