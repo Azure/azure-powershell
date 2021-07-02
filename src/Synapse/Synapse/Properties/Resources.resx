@@ -672,4 +672,13 @@ Are you sure you want to continue?</value>
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
   </data>
+  <data name="RemoveSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Are you sure you want to remove Spark job definition '{0}'?</value>
+  </data>
+  <data name="RemovingSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Deleting Spark job definition '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SettingSynapseSparkJobDefinition" xml:space="preserve">
+    <value>Setting Spark job definition '{0}' in workspace '{1}'.</value>
+  </data>
 </root>

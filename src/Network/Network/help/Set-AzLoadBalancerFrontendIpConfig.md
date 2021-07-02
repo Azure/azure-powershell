@@ -55,6 +55,13 @@ Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
  [<CommonParameters>]
 ```
 
+### SetByResourceGatewayLoadBalancerId
+```
+Set-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
+ -PublicIpAddress <PSPublicIpAddress> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzLoadBalancerFrontendIpConfig** cmdlet updates a front-end IP configuration for a load balancer.
 
@@ -68,11 +75,19 @@ PS C:\> $slb | Add-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $S
 PS C:\> $slb | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subnet $Subnet
 PS C:\> $slb | Set-AzLoadBalancer
 ```
-
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
 The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
 The third command uses the pipeline operator to pass the load balancer in $slb to Add-AzLoadBalancerFrontendIpConfig, which creates a front-end IP configuration named NewFrontend for $slb.
 The fourth command passes the load balancer in $slb to **Set-AzLoadBalancerFrontendIpConfig**, which saves and updates the front-end IP configuration.
+
+### Example 2: Modify the front-end IP configuration of a load balancer with Gateway Load Balancer
+```powershell
+PS C:\> $slb1 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
+PS C:\> $feip = $Get-AzLoadBalancerFrontendIpConfig -Name "MyFrontEnd" -LoadBalancer $slb1
+PS C:\> $slb2 = Get-AzLoadBalancer -Name "MyLoadBalancer1" -ResourceGroupName "MyResourceGroup"
+PS C:\> $slb2 | Set-AzLoadBalancerFrontendIpConfig -Name "NewFrontend" -PublicIpAddress $publicIp -GatewayLoadBalancerId $feip.Id
+PS C:\> $slb2 | Set-AzLoadBalancer
+```
 
 ## PARAMETERS
 
@@ -104,6 +119,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -GatewayLoadBalancerId
+Specifies the ID of the Gateway Load Balancer Provider Frontend Ip Configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByResourceGatewayLoadBalancer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -323,5 +353,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzLoadBalancerFrontendIpConfig](./New-AzLoadBalancerFrontendIpConfig.md)
 
 [Remove-AzLoadBalancerFrontendIpConfig](./Remove-AzLoadBalancerFrontendIpConfig.md)
-
-

@@ -50,7 +50,7 @@ DeleteRetentionPolicy.Enabled : False
 DeleteRetentionPolicy.Days    : 
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
-ChangeFeed                    : 
+ChangeFeed.Enabled            : 
 ChangeFeed.RetentionInDays    :
 IsVersioningEnabled           :
 ```
@@ -68,7 +68,7 @@ DeleteRetentionPolicy.Enabled : False
 DeleteRetentionPolicy.Days    : 
 RestorePolicy.Enabled         : 
 RestorePolicy.Days            : 
-ChangeFeed                    : True
+ChangeFeed.Enabled            : True
 ChangeFeed.RetentionInDays    : 5
 IsVersioningEnabled           :
 ```

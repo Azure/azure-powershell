@@ -58,7 +58,7 @@ myshare
 
 This command creates a Storage file share with Storage account object and share name.
 
-### Example 3: Create a Storage file share with EnabledProtocol proeprty as NFS, and RootSquash proeprty as NoRootSquash
+### Example 3: Create a Storage file share with EnabledProtocol property as NFS, and RootSquash proeprty as NoRootSquash
 ```
 PS C:\>$share = New-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -EnabledProtocol NFS -RootSquash NoRootSquash 
 

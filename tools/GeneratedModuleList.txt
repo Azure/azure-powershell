@@ -10,9 +10,11 @@ Az.ContainerInstance
 Az.CostManagement
 Az.CustomProviders
 Az.Databricks
+Az.Datadog
 Az.DataProtection
 Az.DedicatedHsm
 Az.DesktopVirtualization
+Az.DiskPool
 Az.Functions
 Az.HanaOnAzure
 Az.HealthBot

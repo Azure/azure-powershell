@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Type = policy.Type;
             this.Cors = policy.Cors is null ? null : new PSCorsRules(policy.Cors);
             this.ShareDeleteRetentionPolicy = policy.ShareDeleteRetentionPolicy is null ? null : new PSDeleteRetentionPolicy(policy.ShareDeleteRetentionPolicy);
-            this.ProtocolSettings = policy.ProtocolSettings is null? null : new PSProtocolSettings(policy.ProtocolSettings);
+            this.ProtocolSettings = policy.ProtocolSettings is null ? null : new PSProtocolSettings(policy.ProtocolSettings);
         }
-        public FileServiceProperties ParseBlobServiceProperties()
+        public FileServiceProperties ParseFileServiceProperties()
         {
             return new FileServiceProperties
             {
@@ -98,6 +98,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Enabled = multichannel.Enabled;
         }
     }
-
 }
 

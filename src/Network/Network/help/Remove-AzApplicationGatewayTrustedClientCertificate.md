@@ -26,9 +26,10 @@ The **Remove-AzApplicationGatewayTrustedClientCertificate** cmdlet removes the t
 ```powershell
 PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
 PS C:\> $gw = Remove-AzApplicationGatewayTrustedClientCertificate -ApplicationGateway $gw -Name "TrustedClientCertificate01"
+PS C:\> Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
-The first command gets an application gateway and stores it in the $gw variable. The second command removes the trusted client CA certificate chain named "TrustedClientCertificate01" from the application gateway stored in $gw.
+The first command gets an application gateway and stores it in the $gw variable. The second command removes the trusted client CA certificate chain named "TrustedClientCertificate01" from the application gateway stored in $gw. The last command updates the application gateway.
 
 ## PARAMETERS
 

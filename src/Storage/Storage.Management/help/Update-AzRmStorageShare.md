@@ -15,28 +15,28 @@ Modifies a Storage file share.
 ### AccountName (Default)
 ```
 Update-AzRmStorageShare [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-RootSquash <String>] [-AccessTier <String>]
+ [-QuotaGiB <Int32>] [-Metadata <Hashtable>] [-AccessTier <String>] [-RootSquash <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Update-AzRmStorageShare -Name <String> -StorageAccount <PSStorageAccount> [-QuotaGiB <Int32>]
- [-Metadata <Hashtable>] [-RootSquash <String>] [-AccessTier <String>]
+ [-Metadata <Hashtable>] [-AccessTier <String>] [-RootSquash <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ShareResourceId
 ```
 Update-AzRmStorageShare [-ResourceId] <String> [-QuotaGiB <Int32>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-AccessTier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AccessTier <String>] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ShareObject
 ```
 Update-AzRmStorageShare -InputObject <PSShare> [-QuotaGiB <Int32>] [-Metadata <Hashtable>]
- [-RootSquash <String>] [-AccessTier <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AccessTier <String>] [-RootSquash <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -53,8 +53,8 @@ PS C:\>$share
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  200
 
 PS C:\>$share.Metadata
@@ -81,15 +81,28 @@ PS C:\>Get-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccount
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
-Name     QuotaGiB EnabledProtocol AccessTier Deleted Version ShareUsageBytes
-----     -------- --------------- ---------- ------- ------- ---------------
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
 share1   5000
 share2   5000
 ```
 
 This command modifies share quota as 5000 GiB for all Storage file shares in a Storage account with pipeline.
 
-### Example 4: Modifies rootsquash for a file shares in a Storage account
+### Example 4: Modify a Storage file share with accesstier as Cool
+```
+PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Cool
+
+   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
+
+Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
+----     -------- ---------------- ---------- ------- ------- ---------------
+myshare                            Cool
+```
+
+This command modifies a Storage file share with accesstier as Cool.
+
+### Example 5: Modifies rootsquash for a file shares in a Storage account
 ```
 PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -RootSquash NoRootSquash 
 
@@ -106,19 +119,6 @@ NoRootSquash
 ```
 
 This command modifies share RootSquash property to NoRootSquash. RootSquash property is only avaialbe on share with EnabledProtocol as NFS.
-
-### Example 5: Modify a Storage file share with accesstier as Cool
-```
-PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -AccessTier Cool
-
-   ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
-
-Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
-----     -------- ---------------- ---------- ------- ------- ---------------
-myshare                            Cool
-```
-
-This command modifies a Storage file share with accesstier as Cool.
 
 ## PARAMETERS
 

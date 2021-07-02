@@ -13,9 +13,8 @@ Restores a previously deleted Azure storage blob container.
 ## SYNTAX
 
 ```
-Restore-AzStorageContainer [-Name] <String> [-VersionId] <String> [-DestinationContainerName <String>]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzStorageContainer [-Name] <String> [-VersionId] <String> [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +27,7 @@ This cmdlet only works after enabled Container softdelete with Enable-AzStorageB
 ```
 PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } | Restore-AzStorageContainer
 
-   Blob End Point: https://storageaccountname.blob.core.windows.net/
+   Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                         
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                    
@@ -38,28 +37,28 @@ container2           Off
 
 This command lists all containers include deleted containers, filter out all the deleted containers, then restore all deleted container to the same container name with pipeline.
 
-### Example 2: Restore a deleted container to a new container name
+### Example 2: Restore a single deleted container
 ```
 PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } 
 
-   Blob End Point: https://storageaccountname.blob.core.windows.net/
+   Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                      
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                   
 container1                                8/28/2020 10:18:13 AM +00:00   True       01D685BC91A88F22                                                                                                                                                                                                                                                                
 container2                                9/4/2020 12:52:37 PM +00:00    True       01D67D248986B6DA  
 
-PS C:\> Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -DestinationContainerName newcontainer -Context $ctx
+PS C:\> Restore-AzStorageContainer -Name container1 -VersionId 01D685BC91A88F22 -Context $ctx
 
-   Blob End Point: https://storageaccountname.blob.core.windows.net/
+   Storage Account Name: storageaccountname
 
 Name                 PublicAccess         LastModified                   IsDeleted  VersionId                                                                                                                                                                                                                                                     
 ----                 ------------         ------------                   ---------  ---------                                                                                                                                                                                                                                                        
-newcontainer         Off
+container1           Off
 ```
 
 This first command lists all containers and filter out deleted containers.
-The secondary command restores a deleted container to a new container name.
+The secondary command restores a deleted container by manually input the parameters.
 
 ## PARAMETERS
 
@@ -85,21 +84,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DestinationContainerName
-Use this parameter if you would like to restore the container under a different name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

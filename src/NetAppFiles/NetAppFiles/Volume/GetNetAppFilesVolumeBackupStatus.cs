@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (Name != null)
             {
-                var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.VolumeBackupStatus.Get(ResourceGroupName, AccountName, PoolName, Name);
+                var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.Backups.GetStatus(ResourceGroupName, AccountName, PoolName, Name);
                 WriteObject(anfVolumeBackupStatus.ConvertToPs());
             }
         }

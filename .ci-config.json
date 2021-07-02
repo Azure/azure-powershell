@@ -2,6 +2,19 @@
   "rules": [
     {
       "patterns": [
+        "src/{ModuleName}/readme.md",
+        "src/{ModuleName}[a-zA-Z`.`/]*/readme.md"
+      ],
+      "phases": [
+        "build:related-module",
+        "breaking-change:module",
+        "help:module",
+        "signature:module",
+        "test:dependence-module"
+      ]
+    },
+    {
+      "patterns": [
         ".azure-pipeline/*",
         "NugGet.Config",
         "Repo.props"
@@ -96,10 +109,10 @@
     },
     {
       "patterns": [
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/MissingAssemblies.csv",
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/AssemblyVersionConflict.csv",
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/ExtraAssemblies.csv",
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/SharedAssemblyConflict.csv"
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/MissingAssemblies.csv",
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/AssemblyVersionConflict.csv",
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/ExtraAssemblies.csv",
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/SharedAssemblyConflict.csv"
       ],
       "phases": [
         "build:module",
@@ -108,7 +121,7 @@
     },
     {
       "patterns": [
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/BreakingChangeIssues.csv"
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/BreakingChangeIssues.csv"
       ],
       "phases": [
         "build:module",
@@ -117,7 +130,7 @@
     },
     {
       "patterns": [
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/HelpIssues.csv"
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/HelpIssues.csv"
       ],
       "phases": [
         "build:module",
@@ -126,7 +139,7 @@
     },
     {
       "patterns": [
-        "tools/StaticAnalysis/Exceptions/{ModuleName}/SignatureIssues.csv"
+        "tools/StaticAnalysis/Exceptions/Az.{ModuleName}/SignatureIssues.csv"
       ],
       "phases": [
         "build:module",

@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Security.Permissions;
 
     /// <summary>
-    /// remove specified azure container
+    /// restore specified azure container
     /// </summary>
     [Cmdlet("Restore", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageContainer", SupportsShouldProcess = true),OutputType(typeof(Boolean))]
     public class RestoreAzureStorageContainerCommand : StorageCloudBlobCmdletBase
@@ -44,13 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string VersionId { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "Use this parameter if you would like to restore the container under a different name.")]
-        [ValidateNotNullOrEmpty]
-        public string DestinationContainerName { get; set; }
-
         // Overwrite the useless parameter
-        public override string TagCondition { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ServerTimeoutPerRequest { get; set; }
@@ -93,14 +87,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 {
                     throw new ArgumentException(String.Format(Resources.InvalidContainerName, this.Name));
                 }
-                if (this.DestinationContainerName != null && !NameUtil.IsValidContainerName(this.DestinationContainerName))
-                {
-                    throw new ArgumentException(String.Format(Resources.InvalidContainerName, this.DestinationContainerName));
-                }
 
                 BlobServiceClient blobServiceClient = Util.GetTrack2BlobServiceClient(this.Channel.StorageContext, ClientOptions);
 
-                BlobContainerClient destContainerClient = blobServiceClient.UndeleteBlobContainer(this.Name, this.VersionId, this.DestinationContainerName, this.CmdletCancellationToken).Value;
+                BlobContainerClient destContainerClient = blobServiceClient.UndeleteBlobContainer(this.Name, this.VersionId, this.Name, this.CmdletCancellationToken).Value;
 
                 AzureStorageContainer destAzureStorageContainer = new AzureStorageContainer(destContainerClient, Channel.StorageContext);
                 destAzureStorageContainer.SetTrack2Permission();

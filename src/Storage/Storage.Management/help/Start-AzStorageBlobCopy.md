@@ -327,7 +327,19 @@ Specifies the name of the destination blob.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance
+Parameter Sets: ContainerName, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance
+Aliases: DestinationBlob
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: BlobInstance
 Aliases: DestinationBlob
 
 Required: False
@@ -369,7 +381,19 @@ Specifies the name of the destination container.
 
 ```yaml
 Type: System.String
-Parameter Sets: ContainerName, BlobInstance, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, UriPipeline
+Parameter Sets: ContainerName, ContainerInstance, ShareName, ShareInstance, DirInstance, FileInstance, UriPipeline
+Aliases: DestinationContainer
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: BlobInstance
 Aliases: DestinationContainer
 
 Required: True
@@ -391,7 +415,7 @@ Aliases: DestinationContext
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -663,7 +687,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll'
@@ -163,7 +163,18 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Remove-AzCosmosDBSqlRoleDefinition', 
                'Remove-AzCosmosDBSqlRoleAssignment', 
                'Update-AzCosmosDBSqlRoleDefinition', 
-               'Update-AzCosmosDBSqlRoleAssignment', 'New-AzCosmosDBPermission'
+               'Update-AzCosmosDBSqlRoleAssignment', 'New-AzCosmosDBPermission',
+               'Remove-AzCosmosDBSqlRoleAssignment',
+               'New-AzCosmosDBDatabaseToRestore',
+               'Restore-AzCosmosDBAccount',
+               'Get-AzCosmosDBRestorableDatabaseAccount',
+               'Get-AzCosmosDBSqlRestorableDatabase',
+               'Get-AzCosmosDBSqlRestorableContainer',
+               'Get-AzCosmosDBSqlRestorableResource',
+               'Get-AzCosmosDBMongoDBRestorableDatabase',
+               'Get-AzCosmosDBMongoDBRestorableCollection',
+               'Get-AzCosmosDBMongoDBRestorableResource',
+               'Get-AzCosmosDBSqlContainerBackupInformation'
 
 # Variables to export from this module
 # VariablesToExport = @()
