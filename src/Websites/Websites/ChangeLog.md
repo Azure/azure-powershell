@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.8.0
 * Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
 * Fixed `Added an optional parameter to delete or keep Appservice plan when the last WebApp is removing from plan`
 

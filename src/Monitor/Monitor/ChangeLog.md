@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.6.0
 * Fixed null reference bug for `Get-AzMetric` when `ResultType` set to "Metadata"
 * Fixed bug for `Add-AzAutoscaleSetting` not able to pipe result from `Get-AzAutoscaleSetting` [#13861]
 
