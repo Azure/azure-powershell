@@ -18,8 +18,6 @@
 Create a CloudService Resource
 .Description
 Create a CloudService Resource 
-.Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/new-azcloudservice
 #>
 
 function New-AzCloudService {
@@ -329,13 +327,14 @@ function New-AzCloudService {
 
         # Perform action
         Write-Host("Creating the Cloud Service resource.")
-        Az.CloudService\New-AzCloudService @PSBoundParameters
+        Az.CloudService.internal\New-AzCloudService @PSBoundParameters
     }
 
 }
 
 function validation
 {
+    [Microsoft.Azure.PowerShell.Cmdlets.CloudService.DoNotExportAttribute()]
     param(
         [Parameter()]
         [object]

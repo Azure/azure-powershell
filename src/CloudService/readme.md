@@ -55,7 +55,7 @@ input-file:
   - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
 
 title: CloudService
-module-version: 0.2.15
+module-version: 0.1.0
 
 identity-correction-for-post: true
 
@@ -134,6 +134,10 @@ directive:
       subject: ^CloudService$
       verb: Update|Set
     remove: true
+  - where:
+      subject: ^CloudService$
+      verb: New
+    hide: true
 
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$
