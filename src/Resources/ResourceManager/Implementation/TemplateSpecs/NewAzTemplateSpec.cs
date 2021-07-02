@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ParameterSetName = FromJsonFileParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
