@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
 * Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
     - `Update-AzVm`

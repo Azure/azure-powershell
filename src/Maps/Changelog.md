@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.8.0
 * Updated api version to `2021-02-01`.
 
 ## Version 0.7.3

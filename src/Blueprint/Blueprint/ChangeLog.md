@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Fix custom delegating handler to only apply to Blueprint requests
 
 ## Version 0.3.0

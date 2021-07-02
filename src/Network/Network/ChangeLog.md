@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.10.0
 * Added public ip address as an optional parameter to create route server
     - `New-AzRouteServer`
 * Updated cmdlets to enable specification of edge zone

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.13.0
 * Add support for Synapse Spark job definition
 	- Add `New-AzSynapseSparkJobDefinition` cmdlet
     - Add `Get-AzSynapseSparkJobDefinition` cmdlet
