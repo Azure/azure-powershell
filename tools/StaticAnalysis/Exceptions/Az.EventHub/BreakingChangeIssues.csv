@@ -1,1 +1,2 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.EventHub","Microsoft.Azure.Commands.EventHub.Commands.EventHub.GetAzureRmEventHub","Get-AzEventHub","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Get-AzEventHub' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Get-AzEventHub'."

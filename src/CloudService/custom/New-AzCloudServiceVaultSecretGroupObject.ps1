@@ -17,11 +17,6 @@
 Create a in-memory object for Vault Secret Group
 .Description
 Create a in-memory object for Secret Group
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudServiceVaultSecretGroup
-.Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceVaultSecretGroupObject
 #>
 
 function New-AzCloudServiceVaultSecretGroupObject {

@@ -11,11 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+
 <#
 .Synopsis
-Creates a new MariaDB.
+Create a new MariaDB.
 .Description
-Creates a new MariaDB.
+Create a new MariaDB.
 #>
 function New-AzMariaDbServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

@@ -45,7 +45,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-Branch: b04e1a6a2a3382f6ea42288fc5c1e791536221ce
+branch: b04e1a6a2a3382f6ea42288fc5c1e791536221ce
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -54,64 +54,6 @@ title: BotService
 module-version: 0.1.0
 subject-prefix: ''
 directive:
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}"].put.parameters
-    transform: >-
-        return
-            [
-            {
-              "$ref": "#/parameters/resourceGroupNameParameter"
-            },
-            {
-              "$ref": "#/parameters/resourceNameParameter"
-            },
-            {
-              "$ref": "#/parameters/channelNameParameter"
-            },
-            {
-              "name": "parameters",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/BotChannel"
-              },
-              "description": "The parameters to provide for the created bot."
-            },
-            {
-              "$ref": "#/parameters/apiVersionParameter"
-            },
-            {
-              "$ref": "#/parameters/subscriptionIdParameter"
-            }
-          ]        
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}"].get.parameters
-    transform: >-
-        return
-            [
-            {
-              "$ref": "#/parameters/resourceGroupNameParameter"
-            },
-            {
-              "$ref": "#/parameters/resourceNameParameter"
-            },
-            {
-              "name": "channelName",
-              "in": "path",
-              "required": true,
-              "type": "string",
-              "maxLength": 64,
-              "minLength": 2,
-              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]*$",
-              "description": "The name of the Bot resource."
-            },
-            {
-              "$ref": "#/parameters/apiVersionParameter"
-            },
-            {
-              "$ref": "#/parameters/subscriptionIdParameter"
-            }
-          ]
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
     remove: true
@@ -135,7 +77,4 @@ directive:
     set:
       parameter-name: Name
       alias: BotName
-  - from: Az.BotService.nuspec
-    where: $
-    transform: $ = $.replace('</files>', '  <file src="resources\\**\\*.*" target="resources" />\n  </files>');
 ```

@@ -57,12 +57,18 @@ function setupEnv() {
         BackupRuleName = "BackupHourly"
     }
 
+    $BlobsRestoreVariables = @{
+        ResourceGroupName = "BlobBackup-BugBash"
+        VaultName = "jecECYBlobVault"
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
     $env.add("TestBackupJob", $BackupJobTestVariables) | Out-Null
     $env.add("TestDiskBackupScenario", $DiskE2ETestVariables) | Out-Null
     $env.add("TestTriggerBackup", $TriggerBackupTestVariables) | Out-Null
+    $env.add("TestBlobsRestore", $BlobsRestoreVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

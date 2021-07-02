@@ -1,0 +1,85 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "IotHubs_lucasiothub02_connectionString": {
+            "type": "SecureString"
+        },
+        "IotHubs_lucasiothub02_containerName": {
+            "type": "SecureString"
+        },
+        "IotHubs_lucasiothub02_name": {
+            "defaultValue": "lucasiothub02",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2020-08-31",
+            "name": "[parameters('IotHubs_lucasiothub02_name')]",
+            "location": "eastus",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "identity": {
+                "type": "None"
+            },
+            "properties": {
+                "ipFilterRules": [],
+                "eventHubEndpoints": {
+                    "events": {
+                        "retentionTimeInDays": 1,
+                        "partitionCount": 4
+                    }
+                },
+                "routing": {
+                    "endpoints": {
+                        "serviceBusQueues": [],
+                        "serviceBusTopics": [],
+                        "eventHubs": [],
+                        "storageContainers": []
+                    },
+                    "routes": [],
+                    "fallbackRoute": {
+                        "name": "$fallback",
+                        "source": "DeviceMessages",
+                        "condition": "true",
+                        "endpointNames": [
+                            "events"
+                        ],
+                        "isEnabled": true
+                    }
+                },
+                "storageEndpoints": {
+                    "$default": {
+                        "sasTtlAsIso8601": "PT1H",
+                        "connectionString": "[parameters('IotHubs_lucasiothub02_connectionString')]",
+                        "containerName": "[parameters('IotHubs_lucasiothub02_containerName')]"
+                    }
+                },
+                "messagingEndpoints": {
+                    "fileNotifications": {
+                        "lockDurationAsIso8601": "PT1M",
+                        "ttlAsIso8601": "PT1H",
+                        "maxDeliveryCount": 10
+                    }
+                },
+                "enableFileUploadNotifications": false,
+                "cloudToDevice": {
+                    "maxDeliveryCount": 10,
+                    "defaultTtlAsIso8601": "PT1H",
+                    "feedback": {
+                        "lockDurationAsIso8601": "PT1M",
+                        "ttlAsIso8601": "PT1H",
+                        "maxDeliveryCount": 10
+                    }
+                },
+                "features": "None"
+            }
+        }
+    ]
+}

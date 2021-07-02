@@ -395,9 +395,9 @@ function New-AzFunctionApp {
         }
 
         # Validate storage account and get connection string
-        $connectionStrings = GetConnectionString -StorageAccountName $StorageAccountName @params
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionStrings))
-        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionStrings))
+        $connectionString = GetConnectionString -StorageAccountName $StorageAccountName @params
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsStorage' -Value $connectionString))
+        $appSettings.Add((NewAppSetting -Name 'AzureWebJobsDashboard' -Value $connectionString))
 
         if (-not $functionAppIsCustomDockerImage)
         {
@@ -411,13 +411,13 @@ function New-AzFunctionApp {
             $siteCofig.AlwaysOn = $true
         }
 
-        # If plan is elastic premium or windows consumption, we need these app settings
-        $IsWindowsConsumption = $consumptionPlan -and (-not $OSIsLinux)
-
-        if ($planIsElasticPremium -or $IsWindowsConsumption)
+        # If plan is Elastic Premium or Consumption (Windows or Linux), we need these app settings
+        if ($planIsElasticPremium -or $consumptionPlan)
         {
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionStrings))
-            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $Name.ToLower()))
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTAZUREFILECONNECTIONSTRING' -Value $connectionString))
+
+            $shareName = GetShareName -FunctionAppName $Name
+            $appSettings.Add((NewAppSetting -Name 'WEBSITE_CONTENTSHARE' -Value $shareName))
         }
 
         if (-not $DisableApplicationInsights)

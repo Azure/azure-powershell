@@ -108,6 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
             LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
             StackRMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "Az.KeyVault");
+            LogIfNotNull($"KeyVault Module path: {module}");
+            RMKeyVaultModule = module;
 
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
@@ -167,6 +170,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string StackRMStorageModule { get; private set; }
 
         public string StackRMStorageDataPlaneModule { get; private set; }
+
+        public string RMKeyVaultModule { get; private set; }
 
         private void LogIfNotNull(string message)
         {
@@ -422,6 +427,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+            environment.AzureKeyVaultDnsSuffix = AzureEnvironmentConstants.AzureKeyVaultDnsSuffix;
+            environment.AzureKeyVaultServiceEndpointResourceId = AzureEnvironmentConstants.AzureKeyVaultServiceEndpointResourceId;
             if (!AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable.ContainsKey(testEnvironmentName))
             {
                 AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>().EnvironmentTable[testEnvironmentName] = environment;
@@ -450,8 +457,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var testTenant = new AzureTenant() { Id = Guid.NewGuid().ToString() };
                 if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
                 {
-                    Guid tenant;
-                    if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
+                    if (Guid.TryParse(currentEnvironment.Tenant, out Guid tenant))
                     {
                         testTenant.Id = currentEnvironment.Tenant;
                     }
@@ -544,7 +550,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     {"Microsoft.Features", null},
                     {"Microsoft.Authorization", null},
                     {"Microsoft.Compute", null},
-                    {"Microsoft.KeyVault", null}
                 };
                 var providersToIgnore = new Dictionary<string, string>
                 {
@@ -584,7 +589,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.Streams.Error.Clear();
-                }
+                }   
             }
         }
 

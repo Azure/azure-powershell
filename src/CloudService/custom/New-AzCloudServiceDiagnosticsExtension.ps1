@@ -17,11 +17,6 @@
 Create a in-memory object for Diagnostics Extension
 .Description
 Create a in-memory object for Diagnostics Extension
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension
-.Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 
 function New-AzCloudServiceDiagnosticsExtension {
