@@ -287,12 +287,12 @@ function Set-AzMigrateServerReplication {
 
             if ($HasSqlServerLicenseType)
             {
-                $validLicenseSpellings = @{ 
+                $validSqlLicenseSpellings = @{ 
                     NoLicenseType = "NoLicenseType";
                     PAYG = "PAYG";
                     AHUB = "AHUB"
                 }
-                $SqlServerLicenseType = $validLicenseSpellings[$SqlServerLicenseType]
+                $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
                 $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
             }
             else
@@ -300,17 +300,17 @@ function Set-AzMigrateServerReplication {
                 $ProviderSpecificDetails.SqlServerLicenseType = $ReplicationMigrationItem.ProviderSpecificDetail.SqlServerLicenseType
             }
 
-            $tags = $null
+            $UserProvidedTags = $null
             if ($HasUpdateTags -And $HasUpdateTagsOperation -And $UpdateTags)
             {
                 $operation = @("UpdateTags", $UpdateTagsOperation)
-                $tags += @{$operation = $UpdateTags}
+                $UserProvidedTags += @{$operation = $UpdateTags}
             }
 
             if ($HasUpdateVMTags -And $HasUpdateVMTagsOperation -And $UpdateVMTags)
             {
                 $operation = @("UpdateVMTags", $UpdateVMTagsOperation)
-                $tags += @{$operation = $UpdateVMTags}
+                $UserProvidedTags += @{$operation = $UpdateVMTags}
             }
             else {
                 $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
@@ -319,7 +319,7 @@ function Set-AzMigrateServerReplication {
             if ($HasUpdateNicTags -And $HasUpdateNicTagsOperation -And $UpdateNicTags)
             {
                 $operation = @("UpdateNicTags", $UpdateNicTagsOperation)
-                $tags += @{$operation = $UpdateNicTags}
+                $UserProvidedTags += @{$operation = $UpdateNicTags}
             }
             else {
                 $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
@@ -328,20 +328,20 @@ function Set-AzMigrateServerReplication {
             if ($HasUpdateDiskTags -And $HasUpdateDiskTagsOperation -And $UpdateDiskTags)
             {
                 $operation = @("UpdateDiskTags", $UpdateDiskTagsOperation)
-                $tags += @{$operation = $UpdateDiskTags}
+                $UserProvidedTags += @{$operation = $UpdateDiskTags}
             }
             else {
                 $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
             }
 
-            foreach($tag in $tags.Keys)
+            foreach($tag in $UserProvidedTags.Keys)
             {
                 $IllegalCharKey = New-Object Collections.Generic.List[String]
                 $ExceededLengthKey = New-Object Collections.Generic.List[String]
                 $ExceededLengthValue = New-Object Collections.Generic.List[String]
-                $IndividualTag = $($tags.Item($tag))
+                $ResourceTag = $($UserProvidedTags.Item($tag))
 
-                foreach ($key in $IndividualTag.Keys)
+                foreach ($key in $ResourceTag.Keys)
                 {
                     if ($key.length -gt 512)
                     {
@@ -353,9 +353,9 @@ function Set-AzMigrateServerReplication {
                         $IllegalCharKey.add($key)
                     }
 
-                    if ($($IndividualTag.Item($key)).length -gt 256)
+                    if ($($ResourceTag.Item($key)).length -gt 256)
                     {
-                        $ExceededLengthValue.add($($IndividualTag.Item($key)))
+                        $ExceededLengthValue.add($($ResourceTag.Item($key)))
                     }
                 }
 
@@ -376,7 +376,7 @@ function Set-AzMigrateServerReplication {
 
                 if ($tag[1] -eq "Merge")
                 {
-                    foreach ($key in $IndividualTag.Keys)
+                    foreach ($key in $ResourceTag.Keys)
                     {
                         if ($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($key) -And `
                         ($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags"))
@@ -398,17 +398,17 @@ function Set-AzMigrateServerReplication {
 
                         if($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags")
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Add($key, $($IndividualTag.Item($key)))
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Add($key, $($ResourceTag.Item($key)))
                         }
 
                         if($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags")
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Add($key, $($IndividualTag.Item($key)))
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Add($key, $($ResourceTag.Item($key)))
                         }
 
                         if($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags")
                         {
-                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Add($key, $($IndividualTag.Item($key)))
+                            $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Add($key, $($ResourceTag.Item($key)))
                         }
                     }
                     
@@ -420,27 +420,27 @@ function Set-AzMigrateServerReplication {
                 {
                     if($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags")
                     {
-                        $ProviderSpecificDetails.TargetVmTag = $IndividualTag
+                        $ProviderSpecificDetails.TargetVmTag = $ResourceTag
                     }
 
                     if($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags")
                     {
-                        $ProviderSpecificDetails.TargetNicTag = $IndividualTag
+                        $ProviderSpecificDetails.TargetNicTag = $ResourceTag
                     }
 
                     if($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags")
                     {
-                        $ProviderSpecificDetails.TargetDiskTag = $IndividualTag
+                        $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
                     }
                 }
                 else
                 {
-                    foreach($key in $IndividualTag.Keys)
+                    foreach($key in $ResourceTag.Keys)
                     {
                         if (($tag[0] -eq "UpdateVMTags" -or $tag[0] -eq "UpdateTags") `
                             -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.ContainsKey($key) `
                             -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Item($key)) `
-                            -eq $($IndividualTag.Item($key))))
+                            -eq $($ResourceTag.Item($key))))
                         {
                             $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag.Remove($key)
                         }
@@ -448,7 +448,7 @@ function Set-AzMigrateServerReplication {
                         if (($tag[0] -eq "UpdateNicTags" -or $tag[0] -eq "UpdateTags") `
                             -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.ContainsKey($key) `
                             -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Item($key)) `
-                            -eq $($IndividualTag.Item($key))))
+                            -eq $($ResourceTag.Item($key))))
                         {
                             $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag.Remove($key)
                         }
@@ -456,7 +456,7 @@ function Set-AzMigrateServerReplication {
                         if (($tag[0] -eq "UpdateDiskTags" -or $tag[0] -eq "UpdateTags") `
                             -And $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.ContainsKey($key) `
                             -And ($($ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Item($key)) `
-                            -eq $($IndividualTag.Item($key))))
+                            -eq $($ResourceTag.Item($key))))
                         {
                             $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag.Remove($key)
                         }

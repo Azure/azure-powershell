@@ -511,49 +511,49 @@ public static int hashForArtifact(String artifact)
 
         if ($HasSqlServerLicenseType)
         {
-            $validLicenseSpellings = @{ 
+            $validSqlLicenseSpellings = @{ 
                 NoLicenseType = "NoLicenseType";
                 PAYG = "PAYG";
                 AHUB = "AHUB"
             }
-            $SqlServerLicenseType = $validLicenseSpellings[$SqlServerLicenseType]
+            $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
             $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
         }
 
-        $tags = $null
+        $UserProvidedTags = $null
         if ($HasTag -And $Tag)
         {
-            $tags += @{"Tag" = $Tag}
+            $UserProvidedTags += @{"Tag" = $Tag}
         }
 
         if ($HasVMTag -And $VMTag)
         {
-            $tags += @{"VMTag" = $VMTag}
+            $UserProvidedTags += @{"VMTag" = $VMTag}
         }
 
         if ($HasNicTag -And $NicTag)
         {
-            $tags += @{"NicTag" = $NicTag}
+            $UserProvidedTags += @{"NicTag" = $NicTag}
         }
 
         if ($HasDiskTag -And $DiskTag)
         {
-            $tags += @{"DiskTag" = $DiskTag}
+            $UserProvidedTags += @{"DiskTag" = $DiskTag}
         }
 
-        foreach($tagtype in $tags.Keys)
+        foreach($tagtype in $UserProvidedTags.Keys)
         {
             $IllegalCharKey = New-Object Collections.Generic.List[String]
             $ExceededLengthKey = New-Object Collections.Generic.List[String]
             $ExceededLengthValue = New-Object Collections.Generic.List[String]
-            $IndividualTag = $($tags.Item($tagtype))
+            $ResourceTag = $($UserProvidedTags.Item($tagtype))
 
-            if ($IndividualTag.Count -gt 50)
+            if ($ResourceTag.Count -gt 50)
             {
-                throw "InvalidTags : Too many tags specified. Requested tag count - '$($IndividualTag.Count)'. Maximum number of tags allowed - '50'."
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($ResourceTag.Count)'. Maximum number of tags allowed - '50'."
             }
 
-            foreach ($key in $IndividualTag.Keys)
+            foreach ($key in $ResourceTag.Keys)
             {
                 if ($key.length -gt 512)
                 {
@@ -565,9 +565,9 @@ public static int hashForArtifact(String artifact)
                     $IllegalCharKey.add($key)
                 }
 
-                if ($($IndividualTag.Item($key)).length -gt 256)
+                if ($($ResourceTag.Item($key)).length -gt 256)
                 {
-                    $ExceededLengthValue.add($($IndividualTag.Item($key)))
+                    $ExceededLengthValue.add($($ResourceTag.Item($key)))
                 }
             }
 
@@ -588,18 +588,18 @@ public static int hashForArtifact(String artifact)
 
             if( $tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
             {
-                $ProviderSpecificDetails.SeedDiskTag = $IndividualTag
-                $ProviderSpecificDetails.TargetDiskTag = $IndividualTag
+                $ProviderSpecificDetails.SeedDiskTag = $ResourceTag
+                $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
             }
 
             if( $tagtype -eq "Tag" -or $tagtype -eq "NicTag")
             {
-                $ProviderSpecificDetails.TargetNicTag = $IndividualTag
+                $ProviderSpecificDetails.TargetNicTag = $ResourceTag
             }
 
             if( $tagtype -eq "Tag" -or $tagtype -eq "VMTag")
             {
-                $ProviderSpecificDetails.TargetVmTag = $IndividualTag
+                $ProviderSpecificDetails.TargetVmTag = $ResourceTag
             }
         }
 
