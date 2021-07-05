@@ -1556,6 +1556,10 @@
                 <Label>IpTags</Label>
                 <PropertyName>IpTagsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PublicIpPrefix</Label>
+                <PropertyName>PublicIpPrefixText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

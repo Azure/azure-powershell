@@ -22,6 +22,7 @@
 * Updated cmdlets to enable processing of available zones on AzureFirewalll
     - `New-AzFirewall`
 * Updated cmdlets to add properties for new BYOIP features.
+    - `New-AzPublicIpAddress`
     - `New-AzCustomIpPrefix`
     - `Update-AzCustomIpPrefix`
 
