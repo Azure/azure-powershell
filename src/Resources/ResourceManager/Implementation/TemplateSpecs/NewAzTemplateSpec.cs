@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ParameterSetName = FromJsonFileParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The file path to the local Azure Resource Manager template JSON file.")]
+            HelpMessage = "The file path to the local Azure Resource Manager template JSON/Bicep file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateFile { get; set; }
 
@@ -161,6 +162,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             throw new PSInvalidOperationException(
                                 string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                             );
+                        }
+
+                        if (BicepUtility.IsBicepFile(TemplateFile))
+                        {
+                            filePath = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose);
                         }
 
                         packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath);
