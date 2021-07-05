@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         static AzAssemblyLoadContextInitializer()
         {
-            var d = new Dictionary<string, Version>()
+            var azSharedAssemblies = new Dictionary<string, Version>()
             {
                 {"Azure.Core", new Version("1.14.0.0")},
                 {"Azure.Identity", new Version("1.4.0.0")},
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
                 {"System.Text.Json", new Version("4.0.0.0")},
             };
 
-            AzSharedAssemblyMap = new ConcurrentDictionary<string, Version>(d, StringComparer.InvariantCultureIgnoreCase);
+            AzSharedAssemblyMap = new ConcurrentDictionary<string, Version>(azSharedAssemblies, StringComparer.OrdinalIgnoreCase);
 
             ModuleAlcEntryAssemblyMap = new ConcurrentDictionary<string, string>();
         }
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
             AssemblyLoadContext.Default.Resolving += Default_Resolving;
         }
 
+        //Entry assembly name for each module ALC must be unique
         public static void RegisterModuleAssemblyLoadContext(string contextEntryAssembly, string directory)
         {
             ModuleAlcEntryAssemblyMap.TryAdd(contextEntryAssembly, directory);
@@ -57,20 +58,14 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         private static System.Reflection.Assembly Default_Resolving(AssemblyLoadContext context, System.Reflection.AssemblyName assemblyName)
         {
-            try
+            if (AzSharedAssemblyMap.ContainsKey(assemblyName.Name) && AzSharedAssemblyMap[assemblyName.Name] >= assemblyName.Version)
             {
-                if (AzSharedAssemblyMap.ContainsKey(assemblyName.Name) && AzSharedAssemblyMap[assemblyName.Name] >= assemblyName.Version)
-                {
-                    return AzAssemblyLoadContext.GetForDirectory(AzSharedAssemblyDirectory).LoadFromAssemblyName(assemblyName);
-                }
-
-                if(ModuleAlcEntryAssemblyMap.TryGetValue(assemblyName.Name, out string moduleLoadContextDirectory))
-                {
-                    return AzAssemblyLoadContext.GetForDirectory(moduleLoadContextDirectory).LoadFromAssemblyPath(Path.Combine(moduleLoadContextDirectory, assemblyName.Name + ".dll"));
-                }
+                return AzAssemblyLoadContext.GetForDirectory(AzSharedAssemblyDirectory).LoadFromAssemblyName(assemblyName);
             }
-            catch
+
+            if (ModuleAlcEntryAssemblyMap.TryGetValue(assemblyName.Name, out string moduleLoadContextDirectory))
             {
+                return AzAssemblyLoadContext.GetForDirectory(moduleLoadContextDirectory).LoadFromAssemblyPath(Path.Combine(moduleLoadContextDirectory, assemblyName.Name + ".dll"));
             }
             return null;
         }

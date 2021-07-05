@@ -13,12 +13,6 @@
     <AssemblyName>$(LegacyAssemblyPrefix)$(PsModuleName).AlcWrapper</AssemblyName>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <!--<OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\NetCoreLoadContext</OutputPath>
-    <PublishDir>$(OutputPath)</PublishDir>-->
-  </PropertyGroup>
-
-
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.1.0" />
   </ItemGroup>
