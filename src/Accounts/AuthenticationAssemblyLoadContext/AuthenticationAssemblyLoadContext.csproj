@@ -9,8 +9,8 @@
   <Import Project="$(MSBuildThisFileDirectory)\..\..\Az.Shared.props" />-->
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.AuthenticationAssemlbyLoadContext</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.AuthenticationAssemlbyLoadContext</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
