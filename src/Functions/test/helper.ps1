@@ -76,3 +76,17 @@ function ValidateAvailableLocation
         $ActualRegions | Should -Contain $region
     }
 }
+
+function GetStorageAccountEndpointSuffix
+{
+    $environmentName = (Get-AzContext).Environment.Name
+
+    switch ($environmentName)
+    {
+        "AzureUSGovernment" { ';EndpointSuffix=core.usgovcloudapi.net' }
+        "AzureChinaCloud"   { ';EndpointSuffix=core.chinacloudapi.cn' }
+        "AzureGermanCloud"  { ';EndpointSuffix=core.cloudapi.de' }
+        "AzureCloud"        { ';EndpointSuffix=core.windows.net' }
+        default { '' }
+    }
+}

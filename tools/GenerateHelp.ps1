@@ -11,7 +11,7 @@ Param(
     [string]$FilteredModules
 )
 
-$ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' }
+$ResourceManagerFolders = Get-ChildItem -Directory -Path "$PSScriptRoot\..\src" | Where-Object { $_.Name -ne 'lib' -and $_.Name -ne 'Package' -and $_.Name -ne 'packages' } | Where-Object { (Get-ChildItem -Directory -Path $_ -Filter *.psd1).Count -ne 0 }
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
 
 .($PSScriptRoot + "\PreloadToolDll.ps1")
