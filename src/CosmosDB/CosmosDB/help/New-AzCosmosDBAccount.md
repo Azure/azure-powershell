@@ -14,15 +14,15 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
- [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>] [-Location <String[]>]
- [-LocationObject <PSLocation[]>] -ResourceGroupName <String> -Name <String>
+ [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
+ [-Location <String[]>] [-LocationObject <PSLocation[]>] -ResourceGroupName <String> -Name <String>
  [-DefaultConsistencyLevel <String>] [-IpRule <String[]>] [-MaxStalenessIntervalInSeconds <Int32>]
  [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>] [-VirtualNetworkRule <String[]>]
  [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>] [-PublicNetworkAccess <String>]
  [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob] [-NetworkAclBypass <String>]
  [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>] [-BackupIntervalInMinutes <Int32>]
- [-BackupRetentionIntervalInHours <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-BackupRetentionIntervalInHours <Int32>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,15 +59,112 @@ NetworkAclBypassResourceIds   : {}
 
 A new CosmosDB Account with name databaseAccountName is created in the ResourceGroup resourceGroupName.
 
+### Example 2
+```powershell
+PS C:\> New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -RestoreSourceId /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id} -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+
+
+Id                                 : /subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/restored-account-name
+Name                               : restored-account-name
+InstanceId                         : eeb45f7f-4c05-4b52-9f42-6807d8eb8703
+Location                           : West US
+Tags                               : {}
+EnableCassandraConnector           :
+EnableMultipleWriteLocations       : False
+VirtualNetworkRules                : {}
+FailoverPolicies                   : {restored-account-name-westus}
+Locations                          : {restored-account-name-westus}
+ReadLocations                      : {restored-account-name-westus}
+WriteLocations                     : {restored-account-name-westus}
+Capabilities                       : {}
+ConsistencyPolicy                  : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
+EnableAutomaticFailover            : False
+IsVirtualNetworkFilterEnabled      : False
+IpRules                            : {}
+DatabaseAccountOfferType           : Standard
+DocumentEndpoint                   : https://restored-account-name.documents.azure.com:443/
+ProvisioningState                  : Succeeded
+Kind                               : GlobalDocumentDB
+ConnectorOffer                     :
+DisableKeyBasedMetadataWriteAccess : False
+PublicNetworkAccess                : Enabled
+KeyVaultKeyUri                     :
+PrivateEndpointConnections         :
+EnableFreeTier                     : False
+ApiProperties                      : Microsoft.Azure.Commands.CosmosDB.Models.PSApiProperties
+EnableAnalyticalStorage            : False
+BackupPolicy                       : Microsoft.Azure.Commands.CosmosDB.Models.PSBackupPolicy
+RestoreParameters                  : Microsoft.Azure.Commands.CosmosDB.Models.PSRestoreParameters
+CreateMode                         : Restore
+```
+
+A new account with the name restoredDatabaseAccountName is created by restoring the restorable database account of the given Id to the given timestamp.
+
+### Example 3
+```powershell
+PS C:\> New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name  -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+
+
+Id                                 : /subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/restored-account-name
+Name                               : restored-account-name
+InstanceId                         : eeb45f7f-4c05-4b52-9f42-6807d8eb8703
+Location                           : West US
+Tags                               : {}
+EnableCassandraConnector           :
+EnableMultipleWriteLocations       : False
+VirtualNetworkRules                : {}
+FailoverPolicies                   : {restored-account-name-westus}
+Locations                          : {restored-account-name-westus}
+ReadLocations                      : {restored-account-name-westus}
+WriteLocations                     : {restored-account-name-westus}
+Capabilities                       : {}
+ConsistencyPolicy                  : Microsoft.Azure.Management.CosmosDB.Models.ConsistencyPolicy
+EnableAutomaticFailover            : False
+IsVirtualNetworkFilterEnabled      : False
+IpRules                            : {}
+DatabaseAccountOfferType           : Standard
+DocumentEndpoint                   : https://restored-account-name.documents.azure.com:443/
+ProvisioningState                  : Succeeded
+Kind                               : GlobalDocumentDB
+ConnectorOffer                     :
+DisableKeyBasedMetadataWriteAccess : False
+PublicNetworkAccess                : Enabled
+KeyVaultKeyUri                     :
+PrivateEndpointConnections         :
+EnableFreeTier                     : False
+ApiProperties                      : Microsoft.Azure.Commands.CosmosDB.Models.PSApiProperties
+EnableAnalyticalStorage            : False
+BackupPolicy                       : Microsoft.Azure.Commands.CosmosDB.Models.PSBackupPolicy
+RestoreParameters                  : Microsoft.Azure.Commands.CosmosDB.Models.PSRestoreParameters
+CreateMode                         : Restore
+```
+
+A new account with the name restoredDatabaseAccountName is created by restoring the restorable database account of the given Id to the given timestamp.
+
 ## PARAMETERS
+
+### -AnalyticalStorageSchemaType
+The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ApiKind
 The type of Cosmos DB database account to create.
-Accepted values: Sql, MongoDB, Gremlin, Table, Cassandra.
-Default value: Sql
+Accepted values: GlobalDocumentDB, MongoDB, Gremlin, Table, Cassandra.
+Default value: GlobalDocumentDB
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +179,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +194,22 @@ Accept wildcard characters: False
 The interval(in minutes) with which backup are taken (only for accounts with periodic mode backups)
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupPolicyType
+The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,24 +224,9 @@ Accept wildcard characters: False
 The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -143,7 +240,7 @@ Default consistency level of the Cosmos DB database account.
 Accepted values: BoundedStaleness, ConsistentPrefix, Eventual, Session, Strong
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +255,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -173,7 +270,7 @@ Accept wildcard characters: False
 Disable write operations on metadata resources (databases, containers, throughput) via account keys
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +285,7 @@ Accept wildcard characters: False
 Bool to indicate if AnalyticalStorage is enabled on the account.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +302,7 @@ Automatic failover will result in a new write region for the account and is chos
 Accepted values: false, true
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +317,7 @@ Accept wildcard characters: False
 Bool to indicate if FreeTier is enabled on the account.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +333,7 @@ Enable Multiple Write Locations.
 Accepted values: false, true
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +349,22 @@ Enables virtual network on the Cosmos DB database account.
 Accepted values: false, true
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FromPointInTimeBackup
+Indicates that the new Cosmos DB account request is a restore request.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +379,7 @@ Accept wildcard characters: False
 Firewall support. Specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -282,7 +394,7 @@ Accept wildcard characters: False
 URI of the KeyVault
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +410,7 @@ Add a location to the Cosmos DB database account.
 Array of strings, ordered by failover priority.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +425,7 @@ Accept wildcard characters: False
 Add a location to the Cosmos DB database account. Array of PSLocation objects.
 
 ```yaml
-Type: PSLocation[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSLocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -329,7 +441,7 @@ When used with Bounded Staleness consistency, this value represents the time amo
 Accepted range for this value is 5-86400.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -345,7 +457,7 @@ When used with Bounded Staleness consistency, this value represents the number o
 Accepted range for this value is 1 - 2,147,483,647.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -360,7 +472,7 @@ Accept wildcard characters: False
 Name of the Cosmos DB database account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -375,7 +487,7 @@ Accept wildcard characters: False
 Whether or not Network Acl Bypass is enabled for this account for Synapse Link. Possible values include: 'None', 'AzureServices'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -390,7 +502,7 @@ Accept wildcard characters: False
 List of Resource Ids to allow Network Acl Bypass for Synapse Link.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +517,7 @@ Accept wildcard characters: False
 Whether or not public endpoint access is allowed for this server. Possible values include: 'Enabled', 'Disabled'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -420,7 +532,7 @@ Accept wildcard characters: False
 Name of resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -435,7 +547,7 @@ Accept wildcard characters: False
 ServerVersion, valid only in case of MongoDB Accounts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -451,7 +563,7 @@ Hashtable of tags as key-value pairs.
 Use empty string to clear existing tag.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +578,7 @@ Accept wildcard characters: False
 Array of string values of ACL's for virtual network.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -481,9 +593,24 @@ Accept wildcard characters: False
 Array of PSVirtualNetworkRuleObjects for virtual network.
 
 ```yaml
-Type: PSVirtualNetworkRule[]
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSVirtualNetworkRule[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -497,7 +624,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

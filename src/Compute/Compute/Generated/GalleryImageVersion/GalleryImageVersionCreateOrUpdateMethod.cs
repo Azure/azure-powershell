@@ -339,6 +339,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
+                    if (galleryImageVersion.StorageProfile != null && galleryImageVersion.StorageProfile.Source != null && galleryImageVersion.StorageProfile.Source.Id != null)
+                    {
+                        galleryImageVersion.StorageProfile.Source.Id = null;
+                    }
+
                     galleryImageVersion.StorageProfile.DataDiskImages = null;
                     galleryImageVersion.StorageProfile.OsDiskImage = null;
 

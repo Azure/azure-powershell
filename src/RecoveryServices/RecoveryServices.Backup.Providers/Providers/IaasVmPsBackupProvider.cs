@@ -394,6 +394,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             String secondaryRegion = useSecondaryRegion ? (string)ProviderData[CRRParams.SecondaryRegion]: null;
             IList<string> targetZones = ProviderData.ContainsKey(RecoveryPointParams.TargetZone) ?
                 new List<string>(new string[]{(ProviderData[RecoveryPointParams.TargetZone].ToString())}) : null;
+            bool restoreWithManagedDisks = (bool)ProviderData[RestoreVMBackupItemParams.RestoreAsManagedDisk];
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -419,7 +420,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             // if the vm is unmanaged, target rg should not be provided
-            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null)
+            if(rp.IsManagedVirtualMachine == false && targetResourceGroupName != null && !restoreWithManagedDisks)
             {
                 Logger.Instance.WriteWarning(Resources.TargetResourcegroupNotSupported);
             }
@@ -451,7 +452,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     null,
                 OriginalStorageAccountOption = useOsa,
                 RestoreDiskLunList = restoreDiskLUNS,
-                DiskEncryptionSetId = DiskEncryptionSetId
+                DiskEncryptionSetId = DiskEncryptionSetId,
+                RestoreWithManagedDisks = restoreWithManagedDisks
             };
 
             if(targetZones != null)

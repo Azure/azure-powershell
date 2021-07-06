@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support
 {
 
-    /// <summary>TypeConverter implementation for OperatorType.</summary>
+    /// <summary>Type of the operator</summary>
     public partial class OperatorTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

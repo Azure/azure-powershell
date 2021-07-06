@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.6.0
+* Fixed null reference bug for `Get-AzMetric` when `ResultType` set to "Metadata"
+* Fixed bug for `Add-AzAutoscaleSetting` not able to pipe result from `Get-AzAutoscaleSetting` [#13861]
+
+## Version 2.5.0
 * Added cmdlet to get diagnostic setting categories for subscription
     - `Get-AzSubscriptionDiagnosticSettingCategory`
 * Supported subscription diagnostic setting operations with new parameter: SubscriptionId

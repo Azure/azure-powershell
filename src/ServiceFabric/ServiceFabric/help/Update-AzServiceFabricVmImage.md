@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
 online version: https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage
@@ -15,8 +15,7 @@ Update the cluster resource vmImage setting which maps the appropriate runtime p
 
 ```
 Update-AzServiceFabricVmImage [-ResourceGroupName] <String> [-Name] <String> -VmImage <VmImageKind>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,13 +60,13 @@ Specify the name of the cluster, if not given it will be same as resource group 
 
 ```yaml
 Type: System.String
-Parameter Sets: ByDefaultArmTemplate
+Parameter Sets: (All)
 Aliases: ClusterName
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -93,7 +92,7 @@ Specify common target vmImage to be used for the cluster.
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 Parameter Sets: (All)
-Aliases: Level
+Aliases:
 Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04
 
 Required: True

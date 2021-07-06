@@ -19,9 +19,9 @@ Update-AzContainerRegistryTag -RepositoryName <String> -Name <String> [-DeleteEn
 ```
 
 ## DESCRIPTION
-Update ACR tag.
-To use this cmdlet please run 
-`Update-AzContainerRegistryRepository -RegistryName XXX -Repository XXX -WriteEnable $true`
+Update attributes of a given ACR tag.
+
+Before using this cmdlet you must run `Update-AzContainerRegistryRepository -RegistryName XXX -Repository XXX -WriteEnable $true`
 first.
 
 ## EXAMPLES

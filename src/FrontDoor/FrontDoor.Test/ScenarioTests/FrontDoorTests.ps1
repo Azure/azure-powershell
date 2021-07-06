@@ -283,27 +283,45 @@ function Test-FrontDoorEndpointCustomDomainHTTPS-FrontDoor
     Assert-NotNull $retrievedFrontDoor
 
     $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2"
-    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabling"
-    [int]$counter = 0
-    do 
-    {
-       Wait-Seconds 600
-       $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
-    } while ($customDomain.CustomHttpsProvisioningState -ne "Enabled" -and $counter++ -lt 50)
-    Assert-AreEqual $customDomain.CustomHttpsProvisioningState "Enabled"
-	Assert-AreEqual $customDomain.MinimumTlsVersion "1.2"
-
-    $customDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
-    $disabledCustomDomain = $customDomain | Disable-AzFrontDoorCustomDomainHttps
-    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabling"
-    [int]$counter = 0
-    do 
-    {
-       Wait-Seconds 600
-       $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName $ResourceGroupName -FrontDoorName $Name -Name $customFrontendEndpointName
-    } while ($disabledCustomDomain.CustomHttpsProvisioningState -ne "Disabled" -and $counter++ -lt 50)
-    Assert-AreEqual $disabledCustomDomain.CustomHttpsProvisioningState "Disabled"
+    TestCleanUp-DisableCustomDomainHttps $ResourceGroupName $Name $customFrontendEndpointName
     $disabledCustomDomain = Get-AzFrontDoorFrontendEndpoint -ResourceId $disabledCustomDomain.Id
+}
+
+<#
+.SYNOPSIS
+Set custom domain https configuration for FrontDoor endpoint using specific secret version.
+This case should only been ran in Playback model, live run requires the resource setup which is too cumbersome.
+#>
+function Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion
+{
+    $frontDoorName = "frontdoorpstest2"
+    $resourceGroupName = "bzhanafdtest"
+    $customFrontendEndpointName = "afd-byoc-latest-localdev-cdn-azure-cn"
+    $vaultId = "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest"
+    $secretName = "frontdoorpstest2"
+    $secretVersion = "d6b1f0ffd2a142efb2a8a89289802c77"
+
+    $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2" -VaultId $vaultId -SecretName $secretName -SecretVersion $secretVersion
+    Assert-AreEqual $customDomain.SecretVersion $secretVersion
+    TestCleanUp-DisableCustomDomainHttps $resourceGroupName $frontDoorName $customFrontendEndpointName
+}
+
+<#
+.SYNOPSIS
+Set custom domain https configuration for FrontDoor endpoint using latest secret version.
+This case should only been ran in Playback model, live run requires the resource setup which is too cumbersome.
+#>
+function Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion
+{
+    $frontDoorName = "frontdoorpstest2"
+    $resourceGroupName = "bzhanafdtest"
+    $customFrontendEndpointName = "afd-byoc-latest-localdev-cdn-azure-cn"
+    $vaultId = "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest"
+    $secretName = "frontdoorpstest2"
+
+    $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2" -VaultId $vaultId -SecretName $secretName
+    Assert-Null $customDomain.SecretVersion
+    TestCleanUp-DisableCustomDomainHttps $resourceGroupName $frontDoorName $customFrontendEndpointName
 }
 
 <#

@@ -9,7 +9,7 @@ schema: 2.0.0
 # Disable-AzSqlInstanceDatabaseSensitivityRecommendation
 
 ## SYNOPSIS
-Disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
+Disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
 
 ## SYNTAX
 
@@ -35,21 +35,21 @@ Disable-AzSqlInstanceDatabaseSensitivityRecommendation -DatabaseObject <AzureSql
 ```
 
 ## DESCRIPTION
-The Disable-AzSqlInstanceDatabaseSensitivityRecommendation cmdlet disables (dismisses) sensitivity recommendations on columns in the Azure SQL managed instance database.
+The Disable-AzSqlInstanceDatabaseSensitivityRecommendation cmdlet disables (dismisses) sensitivity recommendations on columns in the Azure SQL Managed Instance database.
 
 ## EXAMPLES
 
-### Example 1: Disable sensitivity recommendations on a given column in an Azure SQL managed instance database.
+### Example 1: Disable sensitivity recommendations on a given column in an Azure SQL Managed Instance database.
 ```powershell
 PS C:\> Disable-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
-### Example 2: Disable sensitivity recommendations on columns which have sensitivity recommendations in an Azure SQL managed instance database with Piping.
+### Example 2: Disable sensitivity recommendations on columns which have sensitivity recommendations in an Azure SQL Managed Instance database with Piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -InstanceName managedInstance -DatabaseName database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation
 ```
 
-### Example 3: Disable sensitivity recommendations on a given column in an Azure SQL managed instance database with Piping.
+### Example 3: Disable sensitivity recommendations on a given column in an Azure SQL Managed Instance database with Piping.
 ```powershell
 PS C:\> Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName managedInstance -Name database | Disable-AzSqlInstanceDatabaseSensitivityRecommendation -SchemaName schema -TableName table -ColumnName column
 ```
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The name of the Azure SQL managed instance database.
+The name of the Azure SQL Managed Instance database.
 
 ```yaml
 Type: System.String
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseObject
-The Azure SQL managed instance database object.
+The Azure SQL Managed Instance database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceName
-Azure SQL managed instance name.
+Azure SQL Managed Instance name.
 
 ```yaml
 Type: System.String

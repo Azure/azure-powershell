@@ -23,6 +23,9 @@ Adds or removes schedule tag in an existing backup policy.
 ### [Edit-AzDataProtectionPolicyTriggerClientObject](Edit-AzDataProtectionPolicyTriggerClientObject.md)
 Updates Backup schedule of an existing backup policy.
 
+### [Find-AzDataProtectionRestorableTimeRange](Find-AzDataProtectionRestorableTimeRange.md)
+
+
 ### [Get-AzDataProtectionBackupInstance](Get-AzDataProtectionBackupInstance.md)
 Gets a backup instance with name in a backup vault
 

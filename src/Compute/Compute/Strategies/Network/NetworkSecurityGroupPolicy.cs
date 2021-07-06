@@ -12,15 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using System.Linq;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using System;
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network;
+using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {

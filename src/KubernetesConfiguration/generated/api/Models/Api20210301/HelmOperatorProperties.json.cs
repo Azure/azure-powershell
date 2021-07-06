@@ -70,8 +70,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
             {
                 return;
             }
-            {_chartValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("chartValues"), out var __jsonChartValues) ? (string)__jsonChartValues : (string)ChartValue;}
             {_chartVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("chartVersion"), out var __jsonChartVersion) ? (string)__jsonChartVersion : (string)ChartVersion;}
+            {_chartValue = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString>("chartValues"), out var __jsonChartValues) ? (string)__jsonChartValues : (string)ChartValue;}
             AfterFromJson(json);
         }
 
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api2
             {
                 return container;
             }
-            AddIf( null != (((object)this._chartValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString(this._chartValue.ToString()) : null, "chartValues" ,container.Add );
             AddIf( null != (((object)this._chartVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString(this._chartVersion.ToString()) : null, "chartVersion" ,container.Add );
+            AddIf( null != (((object)this._chartValue)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Json.JsonString(this._chartValue.ToString()) : null, "chartValues" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

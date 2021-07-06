@@ -19,6 +19,20 @@
 -->
 ## Upcoming Release
 
+## Version 2.8.0
+* Fixed `Import-AzWebAppKeyVaultCertificate` to support ServerFarmId [#15091] 
+* Fixed `Added an optional parameter to delete or keep Appservice plan when the last WebApp is removing from plan`
+
+## Version 2.7.0
+* Fixed issue that prevented removing rules by name and unique identifier in `Remove-AzWebAppAccessRestrictionRule`
+* Fixed issue that defaults AlwaysOn to false in `Set-AzWebAppSlot`
+
+## Version 2.6.0
+* updated `Set-AzAppServicePlan` to keep existing Tags when adding new Tags
+* Fixed `Set-AzWebApp` to set the AppSettings
+* updated `Set-AzWebAppSlot` to set FtpsState
+* Added support for StaticSites.
+
 ## Version 2.5.0
 * Updated `Add-AzWebAppAccessRestrictionRule` to allow all supported Service Tags and validate against Service Tag API.
 

@@ -23,11 +23,13 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Id { get; set; }
 
         public string Location { get; set; }
+
+        public string EdgeZone { get; set; }
+
     }
 
     public class PSVirtualMachineImagePublisher : PSVirtualMachineImageBase
     {
-
         public string PublisherName { get; set; }
     }
 

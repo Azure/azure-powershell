@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
     /// <summary>
-    /// A command predicted by the predictor service.
+    /// A model for the command predicted by the predictor service.
     /// </summary>
     public class PredictiveCommand
     {

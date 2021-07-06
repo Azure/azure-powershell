@@ -91,5 +91,20 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets azure lifecycle management
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        /// <summary>
+        /// Gets or sets Volume name
+        /// </summary>
+        public string VolumeName { get; set; }
+
+        /// <summary>
+        /// Gets or sets UseExistingSnapshot
+        /// </summary>
+        /// <remarks>
+        /// Manual backup an already existing snapshot. This will always be
+        /// false for scheduled backups and true/false for manual backups
+        /// </remarks>
+        public bool? UseExistingSnapshot { get; set; }
+        
     }
 }

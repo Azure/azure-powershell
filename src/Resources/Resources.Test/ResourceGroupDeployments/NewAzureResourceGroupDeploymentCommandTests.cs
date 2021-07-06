@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                         id: templateSpecId,
                         name: templateSpecVersion,
                         type: "Microsoft.Resources/templateSpecs/versions",
-                        template: JObject.Parse(templateContentForTest)
+                        mainTemplate: JObject.Parse(templateContentForTest)
                     );
 
                     return Task.Factory.StartNew(() =>

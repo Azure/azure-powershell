@@ -151,6 +151,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Private IP Range")]
+        public string[] PrivateRange { get; set; }
+
         private void AddPremiumProperties(PSAzureFirewallPolicy firewallPolicy)
         {
             firewallPolicy.Sku = new PSAzureFirewallPolicySku
@@ -232,6 +237,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Identity = this.IsParameterBound(c => c.Identity) ? Identity : (InputObject.Identity != null ? InputObject.Identity : null);
                 this.UserAssignedIdentityId = this.IsParameterBound(c => c.UserAssignedIdentityId) ? UserAssignedIdentityId : (InputObject.Identity?.UserAssignedIdentities != null ? InputObject.Identity.UserAssignedIdentities?.First().Key : null);
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
+                this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -241,7 +247,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = this.BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(this.BasePolicy) : null,
-                    DnsSettings = this.DnsSetting
+                    DnsSettings = this.DnsSetting,
+                    PrivateRange = this.PrivateRange
                 };
 
                 AddPremiumProperties(firewallPolicy);
@@ -263,7 +270,8 @@ namespace Microsoft.Azure.Commands.Network
                     ThreatIntelMode = this.ThreatIntelMode ?? MNM.AzureFirewallThreatIntelMode.Alert,
                     ThreatIntelWhitelist = this.ThreatIntelWhitelist,
                     BasePolicy = BasePolicy != null ? new Microsoft.Azure.Management.Network.Models.SubResource(BasePolicy) : null,
-                    DnsSettings = this.DnsSetting
+                    DnsSettings = this.DnsSetting,
+                    PrivateRange = this.PrivateRange
                 };
 
                 AddPremiumProperties(firewallPolicy);

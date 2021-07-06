@@ -363,7 +363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Power
         public string OnlineVersion { get; }
         public string[] RelatedLinks { get; }
 
-        private const string HelpLinkPrefix = @"https://docs.microsoft.com/en-us/powershell/module/";
+        private const string HelpLinkPrefix = @"https://docs.microsoft.com/powershell/module/";
 
         public CommentInfo(VariantGroup variantGroup)
         {

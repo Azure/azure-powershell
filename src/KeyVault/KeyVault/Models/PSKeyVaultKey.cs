@@ -12,10 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.KeyVault.WebKey;
+
 using System;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Linq;
+
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Track2Sdk = Azure.Security.KeyVault.Keys;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -35,6 +38,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, keyBundle.KeyIdentifier);
 
             Key = keyBundle.Key;
+
+            KeySize = JwkHelper.ConvertToRSAKey(Key)?.KeySize;
+
             Attributes = new PSKeyVaultKeyAttributes(
                 keyBundle.Attributes.Enabled,
                 keyBundle.Attributes.Expires,
@@ -93,6 +99,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyAttributes Attributes { get; set; }
 
         public JsonWebKey Key { get; set; }
+
+        public string KeyType
+        {
+            get { return Key.Kty; }
+        }
+
+        public int? KeySize;
 
     }
 }

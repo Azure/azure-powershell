@@ -1,0 +1,38 @@
+{
+  "New-AzDatadogMarketplaceAgreement+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Datadog/agreements/default?api-version=2021-03-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Datadog/agreements/default?api-version=2021-03-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"accepted\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "14150d45-9873-433b-8dec-37e85266c0ff" ],
+        "x-ms-correlation-request-id": [ "114a6fcb-6868-40da-89db-ba2ea56da4b3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210531T071608Z:114a6fcb-6868-40da-89db-ba2ea56da4b3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 31 May 2021 07:16:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "558" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Datadog/agreements/default\",\"name\":\"default\",\"type\":\"microsoft.Datadog/agreements\",\"systemData\":{\"createdBy\":\"v-diya@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2021-05-31T07:16:00.9297499Z\",\"lastModifiedBy\":\"v-diya@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2021-05-31T07:16:00.9297499Z\"},\"properties\":{\"publisher\":null,\"product\":null,\"plan\":null,\"licenseTextLink\":null,\"privacyPolicyLink\":null,\"retrieveDatetime\":null,\"signature\":null,\"accepted\":true}}",
+      "isContentBase64": false
+    }
+  }
+}

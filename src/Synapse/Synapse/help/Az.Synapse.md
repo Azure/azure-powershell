@@ -83,8 +83,14 @@ Gets a Synapse Analytics role assignment.
 ### [Get-AzSynapseRoleDefinition](Get-AzSynapseRoleDefinition.md)
 Gets a Synapse Analytics role definition.
 
+### [Get-AzSynapseRoleScope](Get-AzSynapseRoleScope.md)
+Gets a Synapse Analytics role scope.
+
 ### [Get-AzSynapseSparkJob](Get-AzSynapseSparkJob.md)
 Gets a Synapse Analytics Spark job.
+
+### [Get-AzSynapseSparkJobDefinition](Get-AzSynapseSparkJobDefinition.md)
+Gets a Spark job definition in workspace.
 
 ### [Get-AzSynapseSparkPool](Get-AzSynapseSparkPool.md)
 Gets a Synapse Analytics Spark pool.
@@ -227,6 +233,9 @@ Removes a pipeline from workspace.
 ### [Remove-AzSynapseRoleAssignment](Remove-AzSynapseRoleAssignment.md)
 Deletes a Synapse Analytics role assignment.
 
+### [Remove-AzSynapseSparkJobDefinition](Remove-AzSynapseSparkJobDefinition.md)
+Removes a Spark job definition from workspace.
+
 ### [Remove-AzSynapseSparkPool](Remove-AzSynapseSparkPool.md)
 Deletes a Synapse Analytics Spark pool.
 
@@ -304,6 +313,9 @@ Creates or updates a notebook in a workspace.
 
 ### [Set-AzSynapsePipeline](Set-AzSynapsePipeline.md)
 Creates a pipeline in workspace.
+
+### [Set-AzSynapseSparkJobDefinition](Set-AzSynapseSparkJobDefinition.md)
+Creates a Spark job definition in workspace.
 
 ### [Set-AzSynapseSqlActiveDirectoryAdministrator](Set-AzSynapseSqlActiveDirectoryAdministrator.md)
 Provisions an Azure AD administrator for Synapse Analytics SQL pool.

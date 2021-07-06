@@ -61,7 +61,8 @@ function New-AzSentinelAlertRule-CreateFusion
 {
     $AlertRuleTemplateName = "f71aba3d-28fb-450b-b192-4e76a83015c8"
 	$AlertRuleId = "db5ded90-76a4-4c59-8581-1c8b7601b375"
-		
+	#remove builtin rule
+	Remove-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId "BuiltInFusion"
 	#Create Alert Rule
 	$alertrule = New-AzSentinelAlertRule -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -AlertRuleId $AlertRuleId -Fusion -Enabled -AlertRuleTemplateName $AlertRuleTemplateName
 	

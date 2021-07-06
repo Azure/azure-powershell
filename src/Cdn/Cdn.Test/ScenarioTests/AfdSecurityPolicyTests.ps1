@@ -23,11 +23,11 @@ function Test-GetAfdSecurityPolicy
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    $profile = New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    $profile = New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $securityPolicyName = getAssetName
 
-    Assert-ThrowsContains { Get-AzAfdSecurityPolicy -ResourceGroupName $resourceGroupName -ProfileName $profileName -SecurityPolicyName $securityPolicyName } "NotFound"
+    Assert-ThrowsContains { Get-AzFrontDoorCdnSecurityPolicy -ResourceGroupName $resourceGroupName -ProfileName $profileName -SecurityPolicyName $securityPolicyName } "NotFound"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

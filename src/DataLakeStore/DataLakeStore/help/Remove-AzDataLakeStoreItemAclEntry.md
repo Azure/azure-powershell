@@ -46,9 +46,9 @@ PS C:\>Remove-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Ace
 
 ### Example 3: Remove permissions for an ACE recursively using Acl object
 ```
-PS C:\>$fullAcl="user:userid1,default:user:userid1
-PS C:\>$newFullAcl = $fullAcl.Split("{,}")
-PS C:\>Remove-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
+PS C:\>$fullAcl="user:enterpriseObjectID:rwx,default:user:enterpriseObjectID:rwx"
+PS C:\>$newFullAcl = $fullAcl.Split(",")
+PS C:\>Remove-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128 -ShowProgress -Verbose
 ```
 
 This command removes the user ACE for Patti Fuller from the root and recursively from all it's subdirectories and files for account ContosoADL.

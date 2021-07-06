@@ -20,7 +20,64 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.15.0
+* Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
+* Updated the following cmdlets to work when the resource uses a remote image source using AKS or Shared Image Gallery.
+    - `Update-AzVm`
+    - `Update-AzVmss`
+    - `Update-AzGalleryImageVersion`
+* Added parameters `-EnableCrossZoneUpgrade` and `-PrioritizeUnhealthyInstance` to the `Set-AzVmssRollingUpgradePolicy`  
+* Added `AssessmentMode` parameter to the `Set-AzVMOperatingSystem` cmdlet.
+* Fixed a bug in `Add-AzVmssNetworkInterfaceConfiguration`
+* Fixed IOPS and throughput check in `Test-AzVMAEMExtension`
+* Added new cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskPurchasePlanConfig
+    - Set-AzDiskSecurityProfile
+* Changed Cmdlets for 2020-12-01 DiskRP API version
+    - New-AzDiskConfig
+    - New-AzSnapshotConfig
+    - New-AzSnapshotUpdateConfig
+    - New-AzDiskUpdateConfig
+    - New-AzDiskEncryptionSetConfig
+    - Update-AzDiskEncryptionSet
+
+## Version 4.14.0
+* Updated Compute module to use the latest .Net SDK version 47.0.0.
+
+## Version 4.13.0
+* Added `Invoke-AzVmInstallPatch` to support patch installation in VMs using PowerShell.
+* Updated Compute module to use the latest .Net SDK version 46.0.0.
+* Added optional parameter `-EdgeZone` to the following cmdlets:
+    - `Get-AzVMImage
+    - `Get-AzVMImageOffer`
+    - `Get-AzVMImageSku`
+    - `New-AzDiskConfig`
+    - `New-AzImageConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzVM`
+    - `New-AzVmssConfig`
+    - `New-AzVMSS`
+* Added cmdlets to create, update, delete, and get new Azure resource: Ssh Public Key
+    - `New-AzSshKey`
+    - `Remove-AzSshKey`
+    - `Get-AzSshKey`
+    - `Update-AzSshKey`
+
+## Version 4.12.0
+* Updated the `Set-AzVMDiskEncryptionExtension` cmdlet to support ADE extension migration from two pass (version with AAD input parameters) to single pass (version without AAD input parameters).
+    - Added a switch parameter `-Migrate` to trigger migration workflow.
+    - Added a switch parameter `-MigrationRecovery` to trigger recovery workflow for VMs experiencing failures after migration from two pass ADE.
+* Added `Win2019Datacenter` in the argument completer list for `Image` parameter in the `New-AzVM` cmdlet.
+
+## Version 4.11.0
 * Fixed a bug when 1 data disk attached to VMSS for Remove-AzVmssDataDisk [#13368]
+* Added new cmdlets to support TrustedLaunch related cmdlets:
+    - `Set-AzVmSecurityProfile`
+    - `Set-AzVmUefi`
+    - `Set-AzVmssSecurityProfile`
+    - `Set-AzVmssUefi`
+* Edited default value for Size parameter in New-AzVM cmdlet from Standard_DS1_v2 to Standard_D2s_v3.
 
 ## Version 4.10.0
 * Added parameter `-EnableHotpatching` to the `Set-AzVMOperatingSystem` cmdlet for Windows machines. 

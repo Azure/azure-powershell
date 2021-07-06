@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string WorkspaceObject = "workspace input object, usually passed through the pipeline.";
 
+        public const string ManagedResourceGroupName = "A container that holds ancillary resources. Created by default while the name can be specified. Note that this group must be different with ResourceGroupName.";
+
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
@@ -267,7 +269,7 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string RoleDefinitionId = "Id of the Role that is assigned to the principal.";
 
-        public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
+         public const string RoleDefinitionName = "Name of the Role that is assigned to the principal.";
 
         public const string PrincipalId = "The Azure AD ObjectId of the User, Group or Service Principal.";
 
@@ -417,10 +419,18 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
 
         public const string WorkspaceKeyName = "The name of the workspace key.";
 
+        public const string WorkspaceItemType = "The workspace item type.";
+
+        public const string WorkspaceItem = "The workspace item.";
+
         public const string IsActiveCustomerManagedKey = "Indicates whether to activate the workspace after a customer managed key is provided.";
 
         public const string KeyResourceId = "The resource identifier of Synapse SQL Pool.";
 
         public const string KeyObject = "Workspace key input object, usually passed through the pipeline.";
+
+        public const string SparkJobDefinitionName = "The Spark job definition name.";
+
+        public const string SparkJobDefinitionObject = "The Spark job definition object.";
     }
 }

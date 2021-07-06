@@ -18,10 +18,11 @@ Test Gremlin CRUD cmdlets using Name paramter set
 #>
 function Test-GremlinOperationsCmdlets
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "gremlin-db1050"
+  $rgName = "CosmosDBResourceGroup50"
   $DatabaseName = "dbName"
   $graphName = "graph1"
+  $location = "East US"
 
   $DatabaseName2 = "dbName29"
   $graphName2 = "graph2"
@@ -29,8 +30,16 @@ function Test-GremlinOperationsCmdlets
   $PartitionKeyPathValue = "/foo"
   $PartitionKeyKindValue = "Hash"
 
+  $apiKind = "Gremlin"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
   Try{
       # create a new database
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      
       $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $NewDatabase.Name $DatabaseName
 
@@ -143,18 +152,27 @@ Test Gremlin CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-GremlinOperationsCmdletsUsingInputObject
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
-  $DatabaseName = "dbName2"
+  $AccountName = "gremlin-db1052"
+  $rgName = "CosmosDBResourceGroup52"
+  $DatabaseName = "dbName4"
   $GraphName = "graph1"
 
-  $DatabaseName2 = "dbName2"
+  $DatabaseName2 = "dbName5"
   $graphName2 = "graph2"
 
   $PartitionKeyPathValue = "/foo"
   $PartitionKeyKindValue = "Hash"
 
+  $apiKind = "Gremlin"
+  $location = "East US"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       # get the database account object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
@@ -252,9 +270,9 @@ Test Gremlin throughput cmdlets using all paramter sets
 #>
 function Test-GremlinThroughputCmdlets
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
-  $DatabaseName = "dbName30"
+  $AccountName = "gremlin-db1053"
+  $rgName = "CosmosDBResourceGroup53"
+  $DatabaseName = "dbName3"
   $GraphName = "graphName"
 
   $PartitionKeyPathValue = "/foo"
@@ -270,7 +288,16 @@ function Test-GremlinThroughputCmdlets
   $UpdatedGraphThroughputValue2 = 600
   $UpdatedGraphThroughputValue3 = 500
 
+  $apiKind = "Gremlin"
+  $location = "East US"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
+
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
@@ -313,10 +340,15 @@ Test Gremlin migrate throughput cmdlets
 #>
 function Test-GremlinMigrateThroughputCmdlets
 {
-  $AccountName = "db1002"
-  $rgName = "CosmosDBResourceGroup2510"
+  $AccountName = "gremlin-db1053"
+  $rgName = "CosmosDBResourceGroup53"
   $DatabaseName = "dbName4"
   $GraphName = "graphName"
+  $apiKind = "Gremlin"
+  $location = "East US"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   $PartitionKeyPathValue = "/foo"
   $PartitionKeyKindValue = "Hash"
@@ -329,6 +361,9 @@ function Test-GremlinMigrateThroughputCmdlets
   $Manual = "Manual"
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBGremlinDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue

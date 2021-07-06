@@ -138,6 +138,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Plan = this.VM.Plan,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.VM.Location,
+                        ExtendedLocation = this.VM.ExtendedLocation,
                         LicenseType = this.VM.LicenseType,
                         Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = ComputeAutoMapperProfile.Mapper.Map<VirtualMachineIdentity>(this.VM.Identity),
@@ -223,6 +224,11 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.SecurityProfile = new SecurityProfile();
                         }
                         parameters.SecurityProfile.EncryptionAtHost = this.EncryptionAtHost;
+                    }
+
+                    if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
+                    {
+                        parameters.StorageProfile.ImageReference.Id = null;
                     }
 
                     if (NoWait.IsPresent)

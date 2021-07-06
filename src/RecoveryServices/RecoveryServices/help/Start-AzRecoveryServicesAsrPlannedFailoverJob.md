@@ -25,8 +25,16 @@ Start-AzRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem <ASRRepl
 ```
 Start-AzRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan <ASRRecoveryPlan> -Direction <String>
  [-Optimize <String>] [-CreateVmIfNotFound <String>] [-DataEncryptionPrimaryCertFile <String>]
- [-DataEncryptionSecondaryCertFile <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataEncryptionSecondaryCertFile <String>] [-MultiVmSyncPoint <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByRPIObjectWithRecoveryTag
+```
+Start-AzRecoveryServicesAsrPlannedFailoverJob -ReplicationProtectedItem <ASRReplicationProtectedItem>
+ -Direction <String> [-Optimize <String>] [-CreateVmIfNotFound <String>]
+ [-DataEncryptionPrimaryCertFile <String>] [-DataEncryptionSecondaryCertFile <String>] -RecoveryTag <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +137,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MultiVmSyncPoint
+Specifies whether to enable multi VM sync points for failover of multi VM sync enabled VMs (Applicable only for VMware to Azure replication scenario).
+
+```yaml
+Type: System.String
+Parameter Sets: ByRPObject
+Aliases:
+Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Optimize
 Specifies what to optimize for.
 This parameter applies when failover is done from an Azure site to an on-premise site which requires substantial data synchronization.
@@ -174,12 +198,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -RecoveryTag
+Specifies the recovery tag: RecoveryTagApplicationConsistent, RecoveryTagCrashConsistent (Applicable only for VMware to Azure replication scenario).
+
+```yaml
+Type: System.String
+Parameter Sets: ByRPIObjectWithRecoveryTag
+Aliases:
+Accepted values: RecoveryTagApplicationConsistent, RecoveryTagCrashConsistent
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReplicationProtectedItem
 Specifies the ASR replication protected item object corresponding to the replication protected item to be failed over.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject
+Parameter Sets: ByRPIObject, ByRPIObjectWithRecoveryTag
 Aliases:
 
 Required: True

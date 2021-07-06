@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation.Subsystem.Prediction;
+
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
 {
     /// <summary>
@@ -20,15 +22,18 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
     public sealed class SuggestionAcceptedTelemetryData : ITelemetryData
     {
         /// <inheritdoc/>
-        string ITelemetryData.SessionId { get; set; }
+        string ITelemetryData.CommandId { get; set; }
 
         /// <inheritdoc/>
-        string ITelemetryData.CorrelationId { get; set; }
+        string ITelemetryData.RequestId { get; set; }
+
+        /// <inheritdoc/>
+        string ITelemetryData.SessionId { get; set; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets client that makes the calls.
         /// </summary>
-        public string ClientId { get; init; }
+        public PredictionClient Client { get; init; }
 
         /// <summary>
         /// Gets the suggestion that's accepted by the user.
@@ -36,19 +41,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public string Suggestion { get; }
 
         /// <summary>
-        /// Gets the id of the client that makes the calls.
+        /// Gets the id of the suggestion session.
         /// </summary>
         public uint SuggestionSessionId { get; init; }
 
         /// <summary>
         /// Creates a new instance of <see cref="SuggestionAcceptedTelemetryData"/>.
         /// </summary>
-        /// <param name="clientId">The client id that makes the call.</param>
+        /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="suggestion">The suggestion that's accepted by the user.</param>
-        public SuggestionAcceptedTelemetryData(string clientId, uint suggestionSessionId, string suggestion)
+        public SuggestionAcceptedTelemetryData(PredictionClient client, uint suggestionSessionId, string suggestion)
         {
-            ClientId = clientId;
+            Client = client;
             SuggestionSessionId = suggestionSessionId;
             Suggestion = suggestion;
         }

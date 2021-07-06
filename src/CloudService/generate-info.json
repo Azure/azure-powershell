@@ -1,8 +1,5 @@
 {
-  "autorest_core": "3.0.6375",
   "autorest": "3.0.6149",
-  "node": "v10.16.3",
-  "swagger_commit": "21c970568229eb388d0fce7097e889411ee0a85f",
-  "autorest_powershell": "3.0.423",
-  "autorest_modelerfour": "4.15.414"
+  "swagger_commit": "99651319107286b850b2b938dc47b2e30c76fca6",
+  "node": "v10.16.3"
 }

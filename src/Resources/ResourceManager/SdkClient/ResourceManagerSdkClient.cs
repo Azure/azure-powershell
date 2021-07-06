@@ -1671,7 +1671,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <returns>The validation errors if there's any, or empty list otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidateDeployment(PSDeploymentCmdletParameters parameters)
         {
-            parameters.DeploymentName = GenerateDeploymentName(parameters);
+            if (parameters.DeploymentName == null){
+                parameters.DeploymentName = GenerateDeploymentName(parameters);
+            }
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode, null);
 
             var validationInfo = this.GetTemplateValidationResult(parameters, deployment);

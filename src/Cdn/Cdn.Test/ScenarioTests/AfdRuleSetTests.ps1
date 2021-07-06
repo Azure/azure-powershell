@@ -23,11 +23,11 @@ function Test-CreateAfdRuleSet
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $ruleSetName = getAssetName
 
-    $ruleSet = New-AzAfdRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
+    $ruleSet = New-AzFrontDoorCdnRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
 
     Assert-AreEqual $ruleSetName $ruleSet.Name
     Assert-AreEqual $ruleSet.Type "Microsoft.Cdn/profiles/rulesets"
@@ -46,15 +46,15 @@ function Test-RemoveAfdRuleSet
     $profileSku = "Standard_AzureFrontDoor"
 
     # Create a Microsoft AFD Profile
-    New-AzAfdProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
+    New-AzFrontDoorCdnProfile -ResourceGroupName $resourceGroupName -ProfileName $profileName -Sku $profileSku
 
     $ruleSetName = getAssetName
 
-    $ruleSet = New-AzAfdRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
+    $ruleSet = New-AzFrontDoorCdnRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName
 
-    Get-AzAfdRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName | Remove-AzAfdRuleSet
+    Get-AzFrontDoorCdnRuleSet -ResourceGroupName $resourceGroupName -ProfileName $profileName -RuleSetName $ruleSetName | Remove-AzFrontDoorCdnRuleSet
 
-    Assert-ThrowsContains { Get-AzAfdRuleSet -ResourceId $ruleSet.Id } "NotFound"
+    Assert-ThrowsContains { Get-AzFrontDoorCdnRuleSet -ResourceId $ruleSet.Id } "NotFound"
 
     Remove-AzResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

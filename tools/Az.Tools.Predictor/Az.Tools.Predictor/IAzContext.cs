@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Management.Automation.Runspaces;
 
 namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 {
@@ -52,9 +53,20 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public Version AzVersion { get; }
 
         /// <summary>
+        /// Gets the group number of the cohort.
+        /// </summary>
+        public int Cohort { get; }
+
+        /// <summary>
         /// Gets whether the user is an internal user.
         /// </summary>
         public bool IsInternal { get; }
+
+        /// <summary>
+        /// Gets the minimum PowerShell Runspace. This isn't the necessary the same one as the PowerShell environment that Az
+        /// Predictor is running on.
+        /// </summary>
+        public Runspace DefaultRunspace { get;}
 
         /// <summary>
         /// Updates the Az context.

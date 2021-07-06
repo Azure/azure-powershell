@@ -32,9 +32,6 @@ This command can be used to manually initiate the detection of namespaces change
 ### [Invoke-AzStorageSyncCompatibilityCheck](Invoke-AzStorageSyncCompatibilityCheck.md)
 Checks for potential compatibility issues between your system and Azure File Sync.
 
-### [Invoke-AzStorageSyncFileRecall](Invoke-AzStorageSyncFileRecall.md)
-This command recalls all tiered files back to local disk.
-
 ### [New-AzStorageSyncCloudEndpoint](New-AzStorageSyncCloudEndpoint.md)
 This command creates an Azure File Sync cloud endpoint in a sync group.
 

@@ -2,7 +2,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Extensions;
 
-    /// <summary>The resource model definition for a ARM tracked top level resource</summary>
+    /// <summary>
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+    /// </summary>
     public partial class TrackedResource :
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResource,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceInternal,
@@ -14,7 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
         private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.Resource();
 
         /// <summary>
-        /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+        /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Inherited)]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.IResourceInternal)__resource).Id; }
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
         public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceTags Tag { get => (this._tag = this._tag ?? new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.TrackedResourceTags()); set => this._tag = value; }
 
         /// <summary>
-        /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+        /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Origin(Microsoft.Azure.PowerShell.Cmdlets.Kusto.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.IResourceInternal)__resource).Type; }
@@ -70,7 +72,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
             await eventListener.AssertObjectIsValid(nameof(__resource), __resource);
         }
     }
-    /// The resource model definition for a ARM tracked top level resource
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
     public partial interface ITrackedResource :
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.IResource
@@ -93,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceTags Tag { get; set; }
 
     }
-    /// The resource model definition for a ARM tracked top level resource
+    /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
     internal partial interface ITrackedResourceInternal :
         Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.IResourceInternal
     {

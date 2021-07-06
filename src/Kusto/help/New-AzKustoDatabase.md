@@ -23,16 +23,23 @@ Creates or updates a database.
 
 ## EXAMPLES
 
-### Example 1: Create a new Kusto database by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
+PS C:\> {{ Add code here }}
 
-Kind      Location Name                                Type
-----      -------- ----                                ----
-ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
+{{ Add output here }}
 ```
 
-The above command creates a new Kusto database named "mykustodatabase" in the existing cluster "testnewkustocluster" found in the resource group "testrg".
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -240,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20200918.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IDatabase
 
 ## NOTES
 

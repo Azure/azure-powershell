@@ -27,9 +27,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static readonly object _lock = new object();
         private byte[] AdalTokenCache { get; set; }
 
+        private TokenCachePersistenceOptions TokenCachePersistenceOptions { get; set; }
+
         public SharedTokenCacheProvider(byte[] adalTokenCache = null)
         {
             AdalTokenCache = adalTokenCache;
+            TokenCachePersistenceOptions = new TokenCachePersistenceOptions()
+            {
+                UnsafeAllowUnencryptedStorage = true
+            };
         }
 
         public override byte[] ReadTokenData()
@@ -98,7 +104,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public override void ClearCache()
         {
-            GetCacheHelper().Clear();
+            var client = CreatePublicClient();
+            var accounts = client.GetAccountsAsync().GetAwaiter().GetResult();
+            foreach(var account in accounts)
+            {
+                client.RemoveAsync(account).GetAwaiter().GetResult();
+            }
         }
 
         private static MsalCacheHelper GetCacheHelper()
@@ -123,9 +134,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return MsalCacheHelperProvider.GetCacheHelper();
         }
 
-        public override PowerShellTokenCache GetTokenCache()
+        public override TokenCachePersistenceOptions GetTokenCachePersistenceOptions()
         {
-            return new PowerShellTokenCache(new PersistentTokenCache());
+            return TokenCachePersistenceOptions;
         }
     }
 }
