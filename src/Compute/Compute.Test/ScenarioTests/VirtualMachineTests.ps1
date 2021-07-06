@@ -4950,8 +4950,7 @@ function Test-InvokeAzVMInstallPatch
 
 <#
 .SYNOPSIS
-Windows machine enable hot patching, linux machines patchmode,
-and EnableAutoUpdate does not overwrite the VM object's EnableAutoUpdate value.
+Windows machine enable hot patching, linux machines patchmode.
 #>
 function Test-VirtualMachineAssessmentMode
 {
@@ -5016,8 +5015,8 @@ function Test-VirtualMachineAssessmentMode
 
 <#
 .SYNOPSIS
-Windows machine enable hot patching, linux machines patchmode,
-and EnableAutoUpdate does not overwrite the VM object's EnableAutoUpdate value.
+Windows machine est ensuring the EnableAutoUpdate value on the 
+provided VM is not overwritten. 
 #>
 function Test-VirtualMachineEnableAutoUpdate
 {
