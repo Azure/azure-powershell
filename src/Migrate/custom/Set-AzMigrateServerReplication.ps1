@@ -84,7 +84,7 @@ function Set-AzMigrateServerReplication {
         [ArgumentCompleter( { "NoLicenseType" , "PAYG" , "AHUB" })]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
+        # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
         ${SqlServerLicenseType},
 
         [Parameter()]
@@ -366,7 +366,7 @@ function Set-AzMigrateServerReplication {
 
                 if ($ExceededLengthKey.Count -gt 0)
                 {
-                    throw "InvalidTagName : Tag value too large. Following tag value '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '512' characters."
+                    throw "InvalidTagName : Tag key too large. Following tag name '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag name - '512' characters."
                 }
 
                 if ($ExceededLengthValue.Count -gt 0)
@@ -465,21 +465,21 @@ function Set-AzMigrateServerReplication {
                     $ProviderSpecificDetails.TargetVmTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVmTag
                     $ProviderSpecificDetails.TargetNicTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNicTag
                     $ProviderSpecificDetails.TargetDiskTag = $ReplicationMigrationItem.ProviderSpecificDetail.TargetDiskTag
+                }
 
-                    if ($ProviderSpecificDetails.TargetVmTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetVmTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
+                if ($ProviderSpecificDetails.TargetVmTag.Count -gt 50)
+                {
+                    throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetVmTag.Count)'. Maximum number of tags allowed - '50'."
+                }
 
-                    if ($ProviderSpecificDetails.TargetNicTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetNicTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
+                if ($ProviderSpecificDetails.TargetNicTag.Count -gt 50)
+                {
+                    throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetNicTag.Count)'. Maximum number of tags allowed - '50'."
+                }
 
-                    if ($ProviderSpecificDetails.TargetDiskTag.Count -gt 50)
-                    {
-                        throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetDiskTag.Count)'. Maximum number of tags allowed - '50'."
-                    }
+                if ($ProviderSpecificDetails.TargetDiskTag.Count -gt 50)
+                {
+                    throw "InvalidTags : Too many tags specified. Requested tag count - '$($ProviderSpecificDetails.TargetDiskTag.Count)'. Maximum number of tags allowed - '50'."
                 }
             }
 
@@ -599,7 +599,7 @@ function Set-AzMigrateServerReplication {
             $null = $PSBoundParameters.Add('JobName', $JobName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-            
+
             return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
         }
         else {
