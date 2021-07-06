@@ -64,8 +64,33 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow remote gateways be used on this virtual network")]
         public SwitchParameter UseRemoteGateways { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to peer secific address space and not complete virtual network")]
+        public SwitchParameter PeerSelectiveSpace { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to peer secific address space and not complete virtual network")]
+        public string[] LocalSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to peer secific address space and not complete virtual network")]
+        public string[] RemoteSubnetNames { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to peer secific address space and not complete virtual network")]
+        public PSAddressSpace LocalAddressSpace { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to peer secific address space and not complete virtual network")]
+        public PSAddressSpace RemoteAddressSpace { get; set; }
 
         public override void Execute()
         {
@@ -107,6 +132,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
             vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
+            vnetPeering.PeerCompleteVnets = !this.PeerSelectiveSpace;
+            vnetPeering.LocalSubnetNames = this.LocalSubnetNames;
+            vnetPeering.RemoteSubnetNames = this.RemoteSubnetNames;
+            vnetPeering.PeeredLocalAddressSpace = this.LocalAddressSpace;
+            vnetPeering.PeeredRemoteAddressSpace = this.RemoteAddressSpace;
 
             // Map to the sdk object
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);

@@ -51,6 +51,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? UseRemoteGateways { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? PeerCompleteVnets { get; set; }
+
+        [JsonProperty(Order = 1)]
         public PSResourceId RemoteVirtualNetwork { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -61,6 +65,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public PSAddressSpace RemoteVirtualNetworkAddressSpace { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSAddressSpace PeeredLocalAddressSpace { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public PSAddressSpace LocalVirtualNetworkAddressSpace { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] LocalSubnetNames { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public string[] RemoteSubnetNames { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSVirtualNetworkBgpCommunities RemoteBgpCommunities { get; set; }
