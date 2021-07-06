@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.Azure.PowerShell.Common.Share.Survey;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -353,10 +352,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     if (_metricHelper == null)
                     {
                         _metricHelper = new MetricHelper(profile);
-                        _metricHelper.AddTelemetryClient(new TelemetryClient
-                        {
-                            InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
-                        });
+                        _metricHelper.AddDefaultTelemetryClient();
                     }
                 }
             }

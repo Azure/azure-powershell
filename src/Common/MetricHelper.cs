@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 #if DEBUG
             if (TestMockSupport.RunningMocked)
             {
-                TelemetryConfiguration.Active.DisableTelemetry = true;
+                telemetryConfiguration.DisableTelemetry = true;
             }
 #endif
         }
@@ -425,7 +425,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         private static string[] exceptionTrackAcceptModuleList = { "Az.Accounts", "Az.Compute", "Az.AKS", "Az.ContainerRegistry" };
         private static string[] exceptionTrackAcceptCmdletList = { "Get-AzKeyVaultSecret", "Get-AzKeyVaultCert" };
 
-        private static string ConvertFrameToString(StackFrame frame)
+        private static string ConvertFrameToString(System.Diagnostics.StackFrame frame)
         {
             string[] fullNameParts = frame?.GetMethod()?.DeclaringType?.FullName?.Split('.');
             if(fullNameParts == null || fullNameParts.Length == 0)
@@ -512,6 +512,16 @@ namespace Microsoft.WindowsAzure.Commands.Common
             });
 
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(payloadAsJson);
+        }
+
+        private static TelemetryConfiguration telemetryConfiguration = new TelemetryConfiguration()
+        {
+            InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
+        };
+
+        public void AddDefaultTelemetryClient()
+        {
+            AddTelemetryClient(new TelemetryClient(telemetryConfiguration));
         }
     }
 }
