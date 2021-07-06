@@ -5042,11 +5042,15 @@ function Test-VirtualMachineEnableAutoUpdate
 
         # Creating a VM 
         $vmConfig = New-AzVmConfig -VMName $vmname -vmsize $vmsize;
-        $vmSet = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate;
-        Assert-True $vmSet.OSProfile.WindowsConfiguration.EnableAutoUpdate;
-
+        
         $vmSet = Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate:$false;
-        Assert-False $vmSet.OSProfile.WindowsConfiguration.EnableAutoUpdate;
+        Assert-AreEqual $vmSet.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $false;
+        
+        $vmSet2 = Set-AzVMOperatingSystem -VM $vmSet -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent -EnableAutoUpdate;
+        Assert-AreEqual $vmSet2.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $true;
+
+        $vmSet3 = Set-AzVMOperatingSystem -VM $vmSet2 -Windows -ComputerName $computerName -Credential $cred -provisionVMAgent;
+        Assert-AreEqual $vmSet3.OSProfile.WindowsConfiguration.EnableAutomaticUpdates $true;
     }
     finally 
     {
