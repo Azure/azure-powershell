@@ -416,7 +416,10 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate;
                 }
 
-                this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+                if (this.IsParameterBound(c => c.TimeZone))
+                {
+                    this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
+                }
 
                 this.VM.OSProfile.WindowsConfiguration.WinRM =
                     !(this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
