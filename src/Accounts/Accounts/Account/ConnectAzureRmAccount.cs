@@ -16,6 +16,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -619,6 +621,10 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
                         // We cannot just throw an exception here because this is called when importing the module
+                        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                        {
+                            throw new MsalCachePersistenceException($"Persistence check failed.");
+                        }
                         WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                     }
                 }
