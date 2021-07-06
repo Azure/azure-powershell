@@ -7,7 +7,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.AvailableServiceTiers
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsAvailableServiceTiers"), OutputType(typeof(PSAvailableServiceTiers))]
     public class GetAzureOperationalInsightsAvailableServiceTiersCommand : OperationalInsightsBaseCmdlet
     {
-
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]

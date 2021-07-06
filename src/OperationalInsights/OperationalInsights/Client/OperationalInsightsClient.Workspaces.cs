@@ -306,6 +306,34 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return new PSOperationStatus(OperationalInsightsManagementClient.OperationStatuses.Get(location, operationId));
         }
 
+        public virtual PSWorkspacePurgeResponse PurgeWorksace(string resourceGroupName, string workspaceName, PSWorkspacePurgeBody purgeBody)
+        {
+            try
+            {
+                PSWorkspacePurgeResponse response = new PSWorkspacePurgeResponse(OperationalInsightsManagementClient.WorkspacePurge.Purge(resourceGroupName, workspaceName, purgeBody.GetWorkspacePurgeBody()));
+                return response;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+        }
+
+        public virtual PSWorkspacePurgeStatusResponse GetPurgeWorksaceStatus(string resourceGroupName, string workspaceName, string purgeId)
+        {
+            try
+            {
+                var response = new PSWorkspacePurgeStatusResponse(OperationalInsightsManagementClient.WorkspacePurge.GetPurgeStatus(resourceGroupName, workspaceName, purgeId));
+                return response;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+        }
+
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
         {
             try
