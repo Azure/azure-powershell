@@ -14,7 +14,7 @@ Gets the details of the upgrade profile for an agent pool with a specified resou
 
 ### Get (Default)
 ```
-Get-AzAksNodePoolUpgradeProfile -AgentPoolName <String> -ClusterName <String> -ResourceGroupName <String>
+Get-AzAksNodePoolUpgradeProfile -ClusterName <String> -NodePoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -40,21 +40,6 @@ default Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles
 Get Aks node pool upgrade profile with resource group name and cluster name.
 
 ## PARAMETERS
-
-### -AgentPoolName
-The name of the agent pool.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ClusterName
 The name of the managed cluster resource.
@@ -99,6 +84,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NodePoolName
+The name of the agent pool.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

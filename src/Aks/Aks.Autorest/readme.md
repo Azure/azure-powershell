@@ -70,6 +70,11 @@ directive:
     set:
       parameter-name: ClusterName
   - where:
+      subject: NodePoolUpgradeProfile
+      parameter-name: AgentPoolName
+    set:
+      parameter-name: NodePoolName
+  - where:
       subject: ManagedClusterUpgradeProfile
       verb: Get
     set:
