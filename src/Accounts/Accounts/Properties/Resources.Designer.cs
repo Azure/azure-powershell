@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Persistence check fails of unknow error.
+        ///   Looks up a localized string similar to Persistence check fails due to unknown error.
         /// </summary>
         internal static string TokenCachePersistenceCheckError {
             get {

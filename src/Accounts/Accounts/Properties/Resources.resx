@@ -532,6 +532,6 @@
     <value>This function is in preview. It may not be available in the selected subscription.</value>
   </data>
   <data name="TokenCachePersistenceCheckError" xml:space="preserve">
-    <value>Persistence check fails of unknow error</value>
+    <value>Persistence check fails due to unknown error</value>
   </data>
 </root>

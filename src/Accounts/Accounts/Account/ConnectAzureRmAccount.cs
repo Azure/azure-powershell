@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                         {
-                            // In Windows and OSX platforms, unknown errors are discovered that fails the persistence check.
+                            // In Windows and macOS platforms, unknown errors are discovered that fails the persistence check.
                             // Disable context autosaving before msal library provide a fallback method for the case.
                             throw new PSInvalidOperationException(Resources.TokenCachePersistenceCheckError);
                         }
