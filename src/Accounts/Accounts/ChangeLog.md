@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Disabled Context auto saving when token cache persistence fails
 * Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
 
 ## Version 2.5.0

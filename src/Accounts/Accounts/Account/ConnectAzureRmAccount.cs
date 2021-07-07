@@ -36,7 +36,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -619,12 +618,14 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (autoSaveEnabled && !TokenCachePersistenceChecker.Verify())
                     {
-                        // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
-                        // We cannot just throw an exception here because this is called when importing the module
                         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                         {
-                            throw new MsalCachePersistenceException($"Persistence check failed.");
+                            // In Windows and OSX platforms, unknown errors are discovered that fails the persistence check.
+                            // Disable context autosaving before msal library provide a fallback method for the case.
+                            throw new PSInvalidOperationException(Resources.TokenCachePersistenceCheckError);
                         }
+                        // If token cache persistence is not supported, fall back to plain text persistence, and print a warning
+                        // We cannot just throw an exception here because this is called when importing the module
                         WriteInitializationWarnings(Resources.TokenCacheEncryptionNotSupportedWithFallback);
                     }
                 }
