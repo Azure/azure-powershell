@@ -372,5 +372,8 @@ switch ($PSCmdlet.ParameterSetName)
         Bump-AzVersion
 
         Generate-AzPreview
+
+        # Generate dotnet csv
+        &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
     }
 }
