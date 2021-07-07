@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false, HelpMessage = "Billing type can be set as 'Cluster' or 'Workspaces'")]
         [ValidateSet("Cluster", "Workspaces", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string BillingType { get; private set; }//TODO dabenham curently not supportted from Nuget
+        public string BillingType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             }
 
             if (ShouldProcess(this.ClusterName,
-                string.Format("update cluster: {0} in resource group: {1}", this.ClusterName, this.ResourceGroupName)))
+                $"update cluster: {this.ClusterName} in resource group: {this.ResourceGroupName}"))
             {
                 WriteObject(this.OperationalInsightsClient.UpdatePSCluster(this.ResourceGroupName, this.ClusterName, parameters));
             }

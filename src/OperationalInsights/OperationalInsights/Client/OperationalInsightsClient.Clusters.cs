@@ -87,9 +87,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 throw new System.ArgumentException($"Cluster {clusterName} under {resourceGroupName} is not existed");
             }
 
-            parameters.Tags = parameters.Tags == null
-                ? existingCluster.Tags
-                : parameters.Tags;
+            parameters.Tags = parameters.Tags ?? existingCluster.Tags;
 
             parameters.BillingType = string.IsNullOrEmpty(parameters.BillingType)    
                 ? existingCluster.BillingType    

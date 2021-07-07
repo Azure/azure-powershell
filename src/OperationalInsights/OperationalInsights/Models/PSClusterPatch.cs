@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Identity = new PSIdentity(patch.Identity);
             }
 
-            //if (patch.BillingType != null) // todo dabenham
-            //{
-            //    this.BillingType = (patch.BillingType;
-            //}
+            if (patch.BillingType != null)
+            {
+                this.BillingType = patch.BillingType;
+            }
         }
 
         public PSKeyVaultProperties KeyVaultProperties { get; set; }
@@ -77,12 +77,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public ClusterPatch GetClusterPatch()
         {
             return new ClusterPatch(
-                this.KeyVaultProperties?.GetKeyVaultProperties(), 
+                this.KeyVaultProperties?.GetKeyVaultProperties(),
+                billingType: this.BillingType,
                 identity: Identity.getIdentity(), 
                 this.Sku?.getClusterSku(),
                 this.getTags()
-                //this.BillingType // todo dabenham
-                );
+            );
         }
     }
 }

@@ -42,10 +42,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             Enable = dataExport.Enable;
             CreatedDate = dataExport.CreatedDate;
             LastModifiedDate = dataExport.LastModifiedDate;
-            // TOTO dabenham once this will become TrackedResource in the .NET nuget uncomment these
-            //Name = dataExport.Name;
-            //Id = dataExport.Id;
-            //Type = dataExport.Type;
+            Name = dataExport.Name;
+            Id = dataExport.Id;
+            Type = dataExport.Type;
         }
 
 
