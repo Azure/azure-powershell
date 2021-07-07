@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 87fe548940e52c5f46fd86ac587de9c1f4bdde83
 require:
-# readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/master/specification/vmware/resource-manager/Microsoft.AVS/stable/2020-03-20/vmware.json
+input-file: 
+  - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-06-01/vmware.json
 
 module-version: 0.1.0
 title: VMware
