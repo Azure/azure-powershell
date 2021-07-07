@@ -818,4 +818,72 @@ function Test-StorageBlobContainerSoftDelete
     }
 }
 
+<#
+.SYNOPSIS
+Test StorageAccount Blob LastAccessTimeTracking
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageBlobLastAccessTimeTracking
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2'
+	
+        Write-Verbose "RGName: $rgname | Loc: $loc"
+        New-AzResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_canary ResourceManagement;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
+        $stos = Get-AzStorageAccount -ResourceGroupName $rgname;
+		
+        # Enable Blob LastAccessTimeTracking
+        $policy = Enable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru
+        Assert-AreEqual $true $policy.Enable
+        $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+        Assert-AreEqual $true $property.LastAccessTimeTrackingPolicy.Enable
+
+        # set management policy
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -DaysAfterLastAccessTimeGreaterThan 50  -InputObject $action
+        $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
+        $action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
+        $filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch prefix1,prefix2
+        $rule = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+        $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname -Rule $rule
+        Assert-AreEqual $true $policy.Rules[0].Definition.Actions.BaseBlob.EnableAutoTierToHotFromCool
+        Assert-AreEqual  30 $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan
+        Assert-AreEqual  50 $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan
+        Assert-AreEqual  100 $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+
+        # remove management policy
+        Remove-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $stoname 
+
+        # Disable Blob LastAccessTimeTracking
+        $policy = Disable-AzStorageBlobLastAccessTimeTracking -ResourceGroupName $rgname -StorageAccountName $stoname -PassThru
+        # Assert-AreEqual $true (($policy.Enable -eq $false) -or ($policy -eq $null))
+        $property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname
+        #Assert-AreEqual $true (($property.LastAccessTimeTrackingPolicy.Enable -eq $false) -or ($property.LastAccessTimeTrackingPolicy -eq $null))
+        # Assert-AreEqual $false $property.LastAccessTimeTrackingPolicy.Enable
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+
+
+
+
 

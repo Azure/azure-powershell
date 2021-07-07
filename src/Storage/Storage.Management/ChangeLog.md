@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported Blob Last Access Time
+    -  `Enable-AzStorageBlobLastAccessTimeTracking`
+    -  `Disable-AzStorageBlobLastAccessTimeTracking`
+    -  `Add-AzStorageAccountManagementPolicyAction`
+* Fixed a display issue in list datalake gen2 items
+    - `Get-AzDataLakeGen2ChildItem`
+
+## Version 3.9.0
 * Supported enable/disable Blob container soft delete
     -  `Enable-AzStorageContainerDeleteRetentionPolicy`
     -  `Disable-AzStorageContainerDeleteRetentionPolicy`

@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
+
+## Version 2.5.0
+* Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
+* Upgraded subscription client to 2021-01-01 [#15220]
 * Removed Interactive mode check in common lib
 * Added endpoint of OperationalInsights to environment AzureChinaCloud [#15305]
 * Printed auto generated modules' default logs to verbose stream

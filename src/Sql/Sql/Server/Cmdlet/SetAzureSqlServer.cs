@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,8 +114,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// Type of identity to be assigned to the server..
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
         public string IdentityType { get; set; }
 
         /// <summary>

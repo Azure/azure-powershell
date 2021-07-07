@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added property `IdentityProfile` in the output of `Get-AzAksCluster`. [#12546]
+
+## Version 2.2.0
 * Added parameter `AvailabilityZone` for `New-AzAksNodePool`. [#14505]
 
 ## Version 2.1.1

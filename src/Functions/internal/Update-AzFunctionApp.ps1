@@ -549,6 +549,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IHostNameSslState[]]
     # Hostname SSL states are used to manage the SSL bindings for app's hostnames.
