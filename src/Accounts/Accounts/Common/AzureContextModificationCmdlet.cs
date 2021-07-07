@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Commands.Profile.Common
         /// Get the default profile for the current cmdlet invocation
         /// </summary>
         /// <returns>The default profile, whether it is a process-specific profile, ot a profile for the current user</returns>
-        protected virtual IProfileOperations GetDefaultProfile()
+        protected new virtual IProfileOperations GetDefaultProfile()
         {
             IProfileOperations result = null;
-            var currentProfile = DefaultProfile as AzureRmProfile;
+            var currentProfile = base.GetDefaultProfile() as AzureRmProfile;
             switch (GetContextModificationScope())
             {
                 case ContextModificationScope.Process:

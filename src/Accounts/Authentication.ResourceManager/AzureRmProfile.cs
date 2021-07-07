@@ -64,18 +64,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         {
             get
             {
-                if (_cachedDefaultContext != null)
-                {
-                    return _cachedDefaultContext;
-                }
-
                 if (ShouldRefreshContextsFromCache && AzureSession.Instance != null && AzureSession.Instance.ARMContextSaveMode == "CurrentUser")
                 {
                     // If context autosave is enabled, try reading from the cache, updating the contexts, and writing them out
                     RefreshContextsFromCache();
                 }
 
-                //IAzureContext result = null;
+                IAzureContext result = null;
                 if (DefaultContextKey == Constants.DefaultValue && Contexts.Any(c => c.Key != Constants.DefaultValue))
                 {
                     // If the default context is "Default", but there are other contexts set, remove the "Default" context and select first avaiable context as default
@@ -85,23 +80,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 if (!string.IsNullOrEmpty(DefaultContextKey) && Contexts != null && Contexts.ContainsKey(DefaultContextKey))
                 {
-                    _cachedDefaultContext = this.Contexts[DefaultContextKey]?.Clone();
+                    result = this.Contexts[DefaultContextKey];
                 }
                 else if (DefaultContextKey == null)
                 {
                     throw new PSInvalidOperationException(Resources.DefaultContextMissing);
                 }
 
-                return _cachedDefaultContext;
+                return result;
             }
             set
             {
                 this.Contexts[DefaultContextKey] = value;
-                _cachedDefaultContext = value.Clone();
             }
         }
-
-        private IAzureContext _cachedDefaultContext;
 
         [JsonIgnore]
         [XmlIgnore]
@@ -837,6 +829,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             }
 
             Save(ProfilePath, false);
+        }
+
+        public IAzureContextContainer Clone()
+        {
+            var clone = MemberwiseClone() as AzureRmProfile;
+            clone.DefaultContext = DefaultContext.Clone(); // Clone for modification
+            return clone;
         }
     }
 }
