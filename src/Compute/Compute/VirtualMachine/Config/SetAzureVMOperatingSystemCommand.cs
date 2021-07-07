@@ -314,6 +314,11 @@ namespace Microsoft.Azure.Commands.Compute
                     CustomData = string.IsNullOrWhiteSpace(this.CustomData) ? null : Convert.ToBase64String(Encoding.UTF8.GetBytes(this.CustomData)),
                 };
             }
+            //else if check if -Linux and ahs WindowsConfig, then null the config. Same other way.
+            //else if (this.Para)
+            //{
+
+            //}
             
             if (this.ParameterSetName == LinuxParamSet)
             {
@@ -416,10 +421,10 @@ namespace Microsoft.Azure.Commands.Compute
                     this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate;
                 }
 
-                if (this.IsParameterBound(c => c.TimeZone))
-                {
+                //adam tmp removal, if (this.IsParameterBound(c => c.TimeZone))
+                //{
                     this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
-                }
+                //}
 
                 this.VM.OSProfile.WindowsConfiguration.WinRM =
                     !(this.WinRMHttp.IsPresent || this.WinRMHttps.IsPresent)
