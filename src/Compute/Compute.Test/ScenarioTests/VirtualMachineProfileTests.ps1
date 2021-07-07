@@ -249,6 +249,8 @@ function Test-VirtualMachineProfile
     # Linux OS
     $img = "b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP3-v206";
 
+    # adam $p.OSProfile.WindowsConfiguration = $null;
+
     $p = Set-AzVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -CustomData $custom -DisablePasswordAuthentication;
 
     $imgRef = Get-DefaultCRPLinuxImageOffline -loc $loc;

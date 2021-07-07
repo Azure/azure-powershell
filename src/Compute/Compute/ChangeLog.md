@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Edited `Set-AzVmOperatingSystem` cmdlet to no longer overwrite any existing EnableAutomaticUpdates value on the passed in virtual machine if it exists.
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`
