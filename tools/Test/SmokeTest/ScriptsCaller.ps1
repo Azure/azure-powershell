@@ -11,11 +11,12 @@ param(
 Write-Host "Required Version:", $requiredPsVersion, ", script:", $script
 $windowsPowershellVersion = "5.1.14"
 
+$script += " -ErrorAction Stop"
 if($requiredPsVersion -eq $windowsPowershellVersion){
-    Invoke-Command -ScriptBlock { param ($command) &"powershell.exe" -Command $command -ErrorAction Stop } -ArgumentList $script 
+    Invoke-Command -ScriptBlock { param ($command) &"powershell.exe" -Command $command } -ArgumentList $script 
 }else{
     $command = "`$PSVersionTable `
                 $script `
                 Exit"
-    dotnet tool run pwsh -c $command -ErrorAction Stop
+    dotnet tool run pwsh -c $command
 }
