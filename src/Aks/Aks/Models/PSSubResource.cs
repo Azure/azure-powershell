@@ -34,5 +34,6 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets resource type
         /// </summary>
         public string Type { get; private set; }
+
     }
 }

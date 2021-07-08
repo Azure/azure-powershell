@@ -14,10 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Aks.Models
 {
-    using System;
     using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The Resource model definition.
