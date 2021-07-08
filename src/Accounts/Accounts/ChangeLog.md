@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed access error when subscripiton has no `Tags` property [#15425].
 
 ## Version 2.5.0
 * Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]
