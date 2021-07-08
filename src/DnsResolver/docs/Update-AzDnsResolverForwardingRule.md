@@ -1,74 +1,56 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverforwardingrule
 schema: 2.0.0
 ---
 
-# Update-AzDnsResolver
+# Update-AzDnsResolverForwardingRule
 
 ## SYNOPSIS
-Updates a DNS resolver.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-ForwardingRuleState <ForwardingRuleState>] [-Metadata <Hashtable>] [-TargetDnsServer <ITargetDnsServer[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver.
+Updates a forwarding rule in a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Resolver by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+PS C:\> {{ Add code here }}
 
-
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by name ( adding tag ).
+{{ Add description here }}
 
-### Example 2: Updates an existing DNS Resolver by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> {{ Add code here }}
 
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by identity ( removing tag ).
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -77,6 +59,36 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ForwardingRuleState
+The state of forwarding rule.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.ForwardingRuleState
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -118,30 +130,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the DNS resolver.
+### -Metadata
+Metadata attached to the forwarding rule.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: DnsResolverName
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -Name
+The name of the forwarding rule.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases: ForwardingRuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,11 +191,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Tags for DNS Resolver.
+### -TargetDnsServer
+DNS servers to forward the DNS query to.
+To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +247,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
 
 ## NOTES
 
@@ -255,6 +268,10 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+
+TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
+  - `[IPAddress <String>]`: DNS server IP address.
+  - `[Port <Int64?>]`: DNS server port.
 
 ## RELATED LINKS
 

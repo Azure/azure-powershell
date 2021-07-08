@@ -1,62 +1,57 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolverinboundendpoint
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/get-azdnsresolvervirtualnetworklink
 schema: 2.0.0
 ---
 
-# Get-AzDnsResolverInboundEndpoint
+# Get-AzDnsResolverVirtualNetworkLink
 
 ## SYNOPSIS
-Gets properties of an inbound endpoint for a DNS resolver.
+Gets properties of a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -ResourceGroupName <String>
+Get-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
+Get-AzDnsResolverVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets properties of an inbound endpoint for a DNS resolver.
+Gets properties of a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: List Inbound Endpoints under a DNS Resolver
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -ResourceGroupName powershell-test-rg
+PS C:\> {{ Add code here }}
 
-Name                   Type                                            Etag
-----                   ----                                            ----
-sampleInboundEndpoint  Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
-sampleInboundEndpoint1 Microsoft.Network/dnsResolvers/inboundEndpoints "0b0071aa-0000-0800-0000-60406a2d0000"
+{{ Add output here }}
 ```
 
 {{ Add description here }}
 
-### Example 2: Get single Inbound Endpoint by name
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint -ResourceGroupName powershell-test-rg
+PS C:\> {{ Add code here }}
 
-Name                  Type                                            Etag
-----                  ----                                            ----
-sampleInboundEndpoint Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-0000-0800-0000-60402b960000"
+{{ Add output here }}
 ```
 
-This command gets single Inbound Endpoint by name
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,8 +70,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DnsResolverName
-The name of the DNS resolver.
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
@@ -107,12 +102,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the inbound endpoint for the DNS resolver.
+The name of the virtual network link.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: InboundEndpointName
+Aliases: VirtualNetworkLinkName
 
 Required: True
 Position: Named
@@ -177,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink
 
 ## NOTES
 

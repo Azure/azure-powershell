@@ -239,12 +239,15 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
+  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
   - `[Id <String>]`: Resource identity path
   - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
+  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkName <String>]`: The name of the virtual network.
+  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
 

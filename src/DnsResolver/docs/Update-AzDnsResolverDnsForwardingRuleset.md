@@ -1,57 +1,52 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolverdnsforwardingruleset
 schema: 2.0.0
 ---
 
-# Update-AzDnsResolver
+# Update-AzDnsResolverDnsForwardingRuleset
 
 ## SYNOPSIS
-Updates a DNS resolver.
+Updates a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverDnsForwardingRuleset -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-IfMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverDnsForwardingRuleset -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver.
+Updates a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Resolver by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+PS C:\> {{ Add code here }}
 
-
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by name ( adding tag ).
+{{ Add description here }}
 
-### Example 2: Updates an existing DNS Resolver by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> {{ Add code here }}
 
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by identity ( removing tag ).
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -119,12 +114,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the DNS resolver.
+The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: DnsResolverName
+Aliases: DnsForwardingRulesetName
 
 Required: True
 Position: Named
@@ -234,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset
 
 ## NOTES
 

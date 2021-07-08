@@ -9,9 +9,9 @@
   Description = 'Microsoft Azure PowerShell: DnsResolver cmdlets'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
-  RequiredAssemblies = './bin/DnsResolver.private.dll'
+  RequiredAssemblies = './bin/Az.DnsResolver.private.dll'
   FormatsToProcess = './Az.DnsResolver.format.ps1xml'
-  FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverInboundEndpoint', 'New-AzDnsResolver', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolver', 'Update-AzDnsResolverInboundEndpoint', '*'
+  FunctionsToExport = 'Get-AzDnsResolver', 'Get-AzDnsResolverDnsForwardingRuleset', 'Get-AzDnsResolverForwardingRule', 'Get-AzDnsResolverInboundEndpoint', 'Get-AzDnsResolverOutboundEndpoint', 'Get-AzDnsResolverVirtualNetworkLink', 'New-AzDnsResolver', 'New-AzDnsResolverDnsForwardingRuleset', 'New-AzDnsResolverForwardingRule', 'New-AzDnsResolverInboundEndpoint', 'New-AzDnsResolverIPConfigurationObject', 'New-AzDnsResolverOutboundEndpoint', 'New-AzDnsResolverVirtualNetworkLink', 'Remove-AzDnsResolver', 'Remove-AzDnsResolverDnsForwardingRuleset', 'Remove-AzDnsResolverForwardingRule', 'Remove-AzDnsResolverInboundEndpoint', 'Remove-AzDnsResolverOutboundEndpoint', 'Remove-AzDnsResolverVirtualNetworkLink', 'Update-AzDnsResolver', 'Update-AzDnsResolverDnsForwardingRuleset', 'Update-AzDnsResolverForwardingRule', 'Update-AzDnsResolverInboundEndpoint', 'Update-AzDnsResolverOutboundEndpoint', 'Update-AzDnsResolverVirtualNetworkLink', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

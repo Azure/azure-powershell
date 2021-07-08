@@ -1,57 +1,53 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolvervirtualnetworklink
 schema: 2.0.0
 ---
 
-# Update-AzDnsResolver
+# Update-AzDnsResolverVirtualNetworkLink
 
 ## SYNOPSIS
-Updates a DNS resolver.
+Updates a virtual network link to a DNS forwarding ruleset.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-Metadata <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDnsResolverVirtualNetworkLink -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver.
+Updates a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Resolver by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+PS C:\> {{ Add code here }}
 
-
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by name ( adding tag ).
+{{ Add description here }}
 
-### Example 2: Updates an existing DNS Resolver by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> {{ Add code here }}
 
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by identity ( removing tag ).
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -79,6 +75,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,13 +129,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Metadata
+Metadata attached to the virtual network link.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-The name of the DNS resolver.
+The name of the virtual network link.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: DnsResolverName
+Aliases: VirtualNetworkLinkName
 
 Required: True
 Position: Named
@@ -179,21 +205,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Tags for DNS Resolver.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -234,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink
 
 ## NOTES
 

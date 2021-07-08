@@ -1,74 +1,56 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/remove-azdnsresolverforwardingrule
 schema: 2.0.0
 ---
 
-# Update-AzDnsResolver
+# Remove-AzDnsResolverForwardingRule
 
 ## SYNOPSIS
-Updates a DNS resolver.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Delete (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDnsResolverForwardingRule -DnsForwardingRulesetName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
+### DeleteViaIdentity
 ```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzDnsResolverForwardingRule -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver.
+Deletes a forwarding rule in a DNS forwarding ruleset.
+WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Resolver by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+PS C:\> {{ Add code here }}
 
-
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by name ( adding tag ).
+{{ Add description here }}
 
-### Example 2: Updates an existing DNS Resolver by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> {{ Add code here }}
 
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by identity ( removing tag ).
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -79,6 +61,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsForwardingRulesetName
+The name of the DNS forwarding ruleset.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +105,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -119,12 +116,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the DNS resolver.
+The name of the forwarding rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: DnsResolverName
+Parameter Sets: Delete
+Aliases: ForwardingRuleName
 
 Required: True
 Position: Named
@@ -133,8 +130,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -154,7 +151,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -169,27 +166,12 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Tags for DNS Resolver.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -234,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### System.Boolean
 
 ## NOTES
 

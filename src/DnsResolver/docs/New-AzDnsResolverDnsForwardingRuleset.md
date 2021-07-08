@@ -1,57 +1,46 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/update-azdnsresolver
+online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolverdnsforwardingruleset
 schema: 2.0.0
 ---
 
-# Update-AzDnsResolver
+# New-AzDnsResolverDnsForwardingRuleset
 
 ## SYNOPSIS
-Updates a DNS resolver.
+Creates or updates a DNS forwarding ruleset.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzDnsResolver -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzDnsResolver -InputObject <IDnsResolverIdentity> [-IfMatch <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDnsResolverDnsForwardingRuleset -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+ [-DnsResolverOutboundEndpoint <ISubResource[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a DNS resolver.
+Creates or updates a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: Update an existing DNS Resolver by name
+### Example 1: {{ Add title here }}
 ```powershell
-PS C:\> Update-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz -Tag @{"key0" = "value0"} 
+PS C:\> {{ Add code here }}
 
-
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by name ( adding tag ).
+{{ Add description here }}
 
-### Example 2: Updates an existing DNS Resolver by identity
+### Example 2: {{ Add title here }}
 ```powershell
-PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> {{ Add code here }}
 
-Location Name                      Type                           Etag
--------- ----                      ----                           ----
-westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
+{{ Add output here }}
 ```
 
-This command updates an existing DNS Resolver by identity ( removing tag ).
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -85,6 +74,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DnsResolverOutboundEndpoint
+The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
+To construct, see NOTES section for DNSRESOLVEROUTBOUNDENDPOINT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IfMatch
 ETag of the resource.
 Omit this value to always overwrite the current resource.
@@ -102,29 +107,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -IfNoneMatch
+Set to '*' to allow a new resource to be created, but to prevent updating an existing resource.
+Other values will be ignored.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The geo-location where the resource lives
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the DNS resolver.
+The name of the DNS forwarding ruleset.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: DnsResolverName
+Parameter Sets: (All)
+Aliases: DnsForwardingRulesetName
 
 Required: True
 Position: Named
@@ -154,7 +174,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -169,7 +189,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -180,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Tags for DNS Resolver.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -230,11 +250,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.IDnsResolverIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset
 
 ## NOTES
 
@@ -245,16 +263,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
-  - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
-  - `[Id <String>]`: Resource identity path
-  - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
+DNSRESOLVEROUTBOUNDENDPOINT <ISubResource[]>: The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
+  - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
 
