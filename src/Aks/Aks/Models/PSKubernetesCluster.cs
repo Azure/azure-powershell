@@ -12,10 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Aks.Models
 {
+    [System.ComponentModel.TypeConverter(typeof(PSKubernetesClusterTypeConverter))]
     public class PSKubernetesCluster : PSResource
     {
         /// <summary>
@@ -58,6 +62,20 @@ namespace Microsoft.Azure.Commands.Aks.Models
             AgentPoolProfiles = agentPoolProfiles;
             LinuxProfile = linuxProfile;
             ServicePrincipalProfile = servicePrincipalProfile;
+        }
+
+        public static PSKubernetesCluster FromJsonString(string content)
+        {
+            DefaultContractResolver contractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+
+            return JsonConvert.DeserializeObject<PSKubernetesCluster>(content, new JsonSerializerSettings
+            {
+                ContractResolver = contractResolver,
+                Formatting = Formatting.Indented
+            });
         }
 
         /// <summary>
