@@ -222,7 +222,6 @@ namespace Microsoft.Azure.Commands.Synapse.Common
                     itemTypeString = "credentials";
                     break;
             }
-
             return itemTypeString;
         }
     }
