@@ -15,6 +15,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.SqlPoolGuid = sqlPool?.SqlPoolGuid;
             this.SystemData = sqlPool?.SystemData != null ? new PSSystemData(sqlPool.SystemData) : null;
             this.Status = sqlPool?.Status;
+            this.MaxServiceObjectiveName = sqlPool?.MaxServiceObjectiveName;
+            this.AutoPauseTimer = sqlPool?.AutoPauseTimer;
+            this.AutoResume = sqlPool?.AutoResume;
         }
 
         /// <summary>
@@ -51,5 +54,22 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets resource status
         /// </summary>
         public string Status { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the max service level objective name of the sql pool.
+        /// </summary>
+        public string MaxServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the period of inactivity in minutes before
+        /// automatically pausing the sql pool.
+        /// </summary>
+        public int? AutoPauseTimer { get; set; }
+
+        /// <summary>
+        /// Gets or sets indicates whether the sql pool can automatically
+        /// resume when connection attempts are made.
+        /// </summary>
+        public bool? AutoResume { get; set; }
     }
 }

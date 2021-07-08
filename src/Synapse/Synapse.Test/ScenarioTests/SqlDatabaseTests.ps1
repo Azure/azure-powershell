@@ -4,19 +4,18 @@ Tests Synapse SqlDatabase Lifecycle (Create, Update, Get, List, Delete).
 #>
 function Test-SynapseSqlDatabase
 {
-    param
-    (
-        $resourceGroupName = (Get-ResourceGroupName),
-        $workspaceName = (Get-SynapseWorkspaceName),
-        $SqlDatabaseName = (Get-SynapseSqlDatabaseName)
-    )
+	# Setup
+	$testSuffix = getAssetName
+	Create-SqlPoolV3TestEnvironment $testSuffix
+	$params = Get-SqlPoolV3TestEnvironmentParameters $testSuffix
+
 
     try
     {
-        $resourceGroupName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("resourceGroupName", $resourceGroupName)
-        $workspaceName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("workspaceName", $workspaceName)
-        $workspace = Get-AzSynapseWorkspace -resourceGroupName $resourceGroupName -Name $workspaceName
-        $location = $workspace.Location
+        $resourceGroupName = $params.rgname
+        $workspaceName = $params.WorkspaceName
+        $location = $params.location
+        $sqlDatabaseName = $params.sqlDatabaseName
 
         # Test to make sure the SqlDatabase doesn't exist
         Assert-False {Test-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName}
@@ -67,7 +66,44 @@ function Test-SynapseSqlDatabase
     }
     finally
     {
-        # cleanup the SQL pool that was used in case it still exists. This is a best effort task, we ignore failures here.
-        Invoke-HandledCmdlet -Command {Remove-AzSynapseSqlDatabase -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $SqlDatabaseName -ErrorAction SilentlyContinue -Force} -IgnoreFailures
+		# Cleanup
+		Remove-SqlPoolV3TestEnvironment $testSuffix
     }
+}
+
+<#
+.SYNOPSIS
+Creates the test environment needed to perform the tests
+#>
+function Create-SqlPoolV3TestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolV3TestEnvironmentParameters $testSuffix
+	Create-TestEnvironmentWithParams $params $params.location
+}
+
+<#
+.SYNOPSIS
+Gets the values of the parameters used at the tests
+#>
+function Get-SqlPoolV3TestEnvironmentParameters ($testSuffix)
+{
+	return @{ rgname = "sql-cmdlet-test-rg" +$testSuffix;
+			  workspaceName = "sqlws" +$testSuffix;
+			  sqlDatabaseName = "sqldb" + $testSuffix;
+			  storageAccountName = "sqlstorage" + $testSuffix;
+			  fileSystemName = "sqlcmdletfs" + $testSuffix;
+			  loginName = "testlogin";
+			  pwd = "testp@ssMakingIt1007Longer";
+              location = "eastus2euap";
+		}
+}
+
+<#
+.SYNOPSIS
+Removes the test environment that was needed to perform the tests
+#>
+function Remove-SqlPoolV3TestEnvironment ($testSuffix)
+{
+	$params = Get-SqlPoolV3TestEnvironmentParameters $testSuffix
+	Remove-AzResourceGroup -Name $params.rgname -Force
 }

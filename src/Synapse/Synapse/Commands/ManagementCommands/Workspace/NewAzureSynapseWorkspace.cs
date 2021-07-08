@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Synapse
             }
             catch (AzPSResourceNotFoundCloudException ex)
             {
-                var innerException = ex.InnerException as ErrorContractException;
+                var innerException = ex.InnerException as ErrorResponseException;
                 if (innerException.Body?.Error?.Code == "ResourceNotFound" || innerException.Body?.Error?.Message.Contains("ResourceNotFound") == true)
                 {
                     // account does not exists so go ahead and create one
