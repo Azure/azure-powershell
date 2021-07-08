@@ -80,6 +80,7 @@ param(
     ${InputObject},
 
     [Parameter(Mandatory)]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Body')]
     [System.String[]]
     # List of cloud service role instance names.
