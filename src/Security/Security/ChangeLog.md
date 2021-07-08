@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-* Fix typo under description
-
 
 ## Version 1.0.0
 * General availability of `Az.Security` module
