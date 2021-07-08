@@ -83,16 +83,6 @@ function Test-SynapseSqlPoolV3
         }
         Assert-True {$found -eq 1} "SqlPool created earlier is not found when listing all in resource group: $resourceGroupName."
 
-        # Suspend SqlPool
-        $sqlPoolSuspended = Suspend-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3
-
-        Assert-AreEqual "Paused" $sqlPoolSuspended.Status
-
-        # Resume SqlPool
-        $sqlPoolResumed = Resume-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3
-
-        Assert-AreEqual "Online" $sqlPoolResumed.Status
-
         # Delete SqlPool
         Assert-True {Remove-AzSynapseSqlPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sqlPoolName -Version 3 -PassThru -Force} "Remove SqlPool failed."
 

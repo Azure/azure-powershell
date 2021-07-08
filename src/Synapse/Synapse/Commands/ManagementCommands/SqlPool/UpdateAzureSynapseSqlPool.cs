@@ -92,15 +92,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string NewName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.MaxServiceObjectName)]
-        public string MaxServiceObjectName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoPauseTimer)]
-        public int AutoPauseTimer { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoResume)]
-        public bool AutoResume { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
@@ -215,21 +206,6 @@ namespace Microsoft.Azure.Commands.Synapse
                     Name = this.PerformanceLevel
                 }
             };
-
-            if (this.IsParameterBound(c => this.MaxServiceObjectName))
-            {
-                sqlPoolPatchInfo.MaxServiceObjectiveName = this.MaxServiceObjectName == null ? SynapseConstants.DisableMaxServiceObjectiveName : this.MaxServiceObjectName;
-            }
-
-            if (this.IsParameterBound(c => c.AutoPauseTimer))
-            {
-                sqlPoolPatchInfo.AutoPauseTimer = this.AutoPauseTimer;
-            }
-
-            if (this.IsParameterBound(c => c.AutoResume))
-            {
-                sqlPoolPatchInfo.AutoResume = this.AutoResume;
-            }
 
             if (this.ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
             {

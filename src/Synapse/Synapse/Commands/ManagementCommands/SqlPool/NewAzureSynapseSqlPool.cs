@@ -63,16 +63,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Collation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.MaxServiceObjectName)]
-        [ValidateNotNullOrEmpty]
-        public string MaxServiceObjectName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoPauseTimer)]
-        public int AutoPauseTimer { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.AutoResume)]
-        public SwitchParameter EnableAutoResume { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -107,27 +97,19 @@ namespace Microsoft.Azure.Commands.Synapse
                 var createParams = new SqlPoolV3
                 {
                     Location = existingWorkspace.Location,
-                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true),
-                    MaxServiceObjectiveName = this.MaxServiceObjectName,
-                    Sku = new SkuV3
-                    {
-                        Name = this.PerformanceLevel
-                    }
+                    Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true)
                 };
 
-                if (this.IsParameterBound(c => this.MaxServiceObjectName))
+                switch (this.ParameterSetName)
                 {
-                    createParams.MaxServiceObjectiveName = this.MaxServiceObjectName;
-                }
-
-                if (this.IsParameterBound(c => c.AutoPauseTimer))
-                {
-                    createParams.AutoPauseTimer = this.AutoPauseTimer;
-                }
-
-                if (this.EnableAutoResume.IsPresent)
-                {
-                    createParams.AutoResume = true;
+                    case CreateByNameParameterSet:
+                    case CreateByParentObjectParameterSet:
+                        createParams.Sku = new SkuV3
+                        {
+                            Name = this.PerformanceLevel
+                        };
+                        break;
+                    default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
                 }
 
                 if (this.ShouldProcess(this.Name, string.Format(Resources.CreatingSynapseSqlPool, this.ResourceGroupName, this.WorkspaceName, this.Name)))

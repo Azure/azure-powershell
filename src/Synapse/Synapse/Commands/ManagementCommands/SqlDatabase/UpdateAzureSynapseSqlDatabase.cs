@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = UpdateByNameParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
-        [Parameter(ParameterSetName = UpdateByParentObjectParameterSet, Mandatory = false, HelpMessage = HelpMessages.MaxSizeInBytes)]
-        [ValidateNotNullOrEmpty]
-        public long MaxSizeInBytes { get; set; }
-
         [Parameter(ValueFromPipeline = true, ParameterSetName = UpdateByParentObjectParameterSet,
             Mandatory = true, HelpMessage = HelpMessages.WorkspaceObject)]
         [ValidateNotNull]
