@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Profile.Common;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -219,6 +220,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        [JsonIgnore]
         public Dictionary<string, string> Tags
         {
             get
