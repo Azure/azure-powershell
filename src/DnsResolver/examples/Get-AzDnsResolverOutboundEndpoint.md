@@ -18,5 +18,5 @@ Name         Type                                             Etag
 sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
 ```
 
-{{ Add description here }}
+This command gets an outbound endpoint under the DNS resolver in a resouce group.
 
