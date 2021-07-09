@@ -1,18 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an outbound endpoint by name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
+```
+This command removes an outbound endpoint by name.
 
-{{ Add output here }}
+### Example 2: Remove an outbound endpoint by identity
+```powershell
+PS C:\> $inputObject = Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup
+PS C:\> Remove-AzDnsResolverOutboundEndpoint -InputObject $dnsResolverObject 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command removes an outbound endpoint by identity.
