@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.5.1
 * Fixed access error when subscripiton has no `Tags` property [#15425].
 
 ## Version 2.5.0
