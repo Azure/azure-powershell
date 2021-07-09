@@ -1,17 +1,21 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all outbound endpoints under the DNS resolver in a resouce group 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -ResourceGroupName sampleResouceGroup
 
-{{ Add output here }}
+Name         Type                                             Etag
+----         ----                                             ----
+sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
+sampleOutbound2 Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a27-0000-0800-0000-60e3846a0000"
 ```
+This command gets all outbound endpoints under the DNS resolver in a resouce group.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get single outbound endpoint by name 
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResouceGroup
 
-{{ Add output here }}
+Name         Type                                             Etag
+----         ----                                             ----
+sampleOutbound Microsoft.Network/dnsResolvers/outboundEndpoints "0a001a28-0000-0800-0000-60e3846a0000"
 ```
 
 {{ Add description here }}
