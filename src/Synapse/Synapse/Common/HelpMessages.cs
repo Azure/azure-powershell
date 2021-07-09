@@ -158,6 +158,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         
         public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
 
+        public const string StorageRedundancy = "Storage redundancy of the database.";
+
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 
         public const string BackupWorkspaceName = "The Synapse workspace name of bakcup SQL pool object to create from.";
@@ -432,5 +434,11 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkJobDefinitionName = "The Spark job definition name.";
 
         public const string SparkJobDefinitionObject = "The Spark job definition object.";
+
+        public const string MaxServiceObjectName = "The max service level objective name of the sql pool.";
+
+        public const string AutoPauseTimer = "The period of inactivity in minutes before automatically pausing the sql pool.";
+
+        public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
     }
 }

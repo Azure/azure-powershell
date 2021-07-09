@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Synapse
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
+        [ValidateRange(2, 3)]
         [ValidateNotNullOrEmpty]
         public int Version { get; set; }
 

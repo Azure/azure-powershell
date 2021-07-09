@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
 
 ## Version 2.5.0
 * Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]

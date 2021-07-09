@@ -146,6 +146,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         public PSManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets identities associated with the cluster.
+        public IDictionary<string, PSManagedClusterPropertiesIdentityProfile> IdentityProfile { get; set; }
+
         /// <summary>
         /// Gets or sets the identity of the managed cluster, if configured.
         /// </summary>
