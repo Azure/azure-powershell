@@ -22,6 +22,7 @@ function setupEnv() {
     $null = $env.Add("InboundEndpointNamePrefix", "psinboundendpointname");
     $null = $env.Add("SubnetNamePrefix", "pssubnetname");
     $null = $env.Add("InboundEnpointNamePrefix", "psinboundendpointname");
+    $null = $env.Add("OutboundEndpointNamePrefix", "psoutboundendpointname");
 
 
     $null = $env.Add("SuccessProvisioningState", "Succeeded");
@@ -48,7 +49,8 @@ function setupEnv() {
     $dnsResolverNameEnvKeyPrefix = "DnsResolverName"
     $virtualNetworkIdEnvKeyPrefix = "VirtualNetworkId"
     $subnetIdEnvKeyPrefix = "SubnetId"
-    $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName" 
+    $inboundEndpointNameEnvKeyPrefix = "InboundEnpointName"
+    $outboundEndpointNameEnvKeyPrefix = "OutboundEndpointName"
     For($i=0; $i -le 70; $i++){
         $dnsResolverNameEnvKey = $dnsResolverNameEnvKeyPrefix + $i
         $dnsResolverName = $env.DnsResolverNamePrefix + $i + (RandomString -allChars $false -len 6)
@@ -57,6 +59,10 @@ function setupEnv() {
         $inboundEndpointNameEnvKey = $inboundEndpointNameEnvKeyPrefix + $i
         $inboundEndpointName = $env.InboundEnpointNamePrefix + $i + (RandomString -allChars $false -len 6)
         $null = $env.Add($inboundEndpointNameEnvKey, $inboundEndpointName);
+
+        $outboundEndpointNameEnvKey = $outboundEndpointNameEnvKeyPrefix + $i
+        $outboundEndpointName = $env.OutboundEndpointNamePrefix + $i + (RandomString -allChars $false -len 6)
+        $null = $env.Add($outboundEndpointNameEnvKey, $outboundEndpointName);
 
         $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
         $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)

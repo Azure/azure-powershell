@@ -12,11 +12,46 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolverOutboundEndpoint' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete an existing outbound endpoint by name, expect outbound endpoint deleted'  -skip{
+        $dnsResolverName = $env.DnsResolverName0
+        $outboundEndpointName = "outbound"
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName
+        {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete an existing outbound endpoint via identity, expect outbound endpoint deleted'  -skip{
+        $dnsResolverName = $env.DnsResolverName0
+        $outboundEndpointName = "oubound"
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+        $resolverObject = (Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName)
+        Remove-AzDnsResolverOutboundEndpoint  -InputObject $resolverObject
+        {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
+
+    It 'Delete an existing outbound endpoint by name and IfMatch success, expect outbound endpoint deleted' -skip{
+        $dnsResolverName = $env.DnsResolverName0
+        $outboundEndpointName = "outbound"
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -IfMatch $resolver.Etag
+        {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
+    }
+
+    It 'Delete an existing outbound endpoint by name and IfMatch wildcard success, expect outbound endpoint deleted'  -skip{
+        $dnsResolverName = $env.DnsResolverName0
+        $outboundEndpointName = "outbound"
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+        Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -IfMatch *
+        {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
+    }
+
+    It 'Delete an existing outbound endpoint by name and IfMatch failure, expect outbound endpoint not deleted'  -skip{
+        $dnsResolverName = $env.DnsResolverName0
+        $outboundEndpointName = "outbound"
+        New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+        {Remove-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -IfMatch (RandomString -allChars $false -len 6)} | Should -Throw "is invalid"
+        $resolver = Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName
+        $resolver| Should -BeSuccessfullyCreated
+    }
+
 }
