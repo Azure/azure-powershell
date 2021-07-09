@@ -31,23 +31,28 @@ Updates a virtual network link to a DNS forwarding ruleset.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update virtual network link by name (adding metadata)
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Update-AzDnsResolverVirtualNetworkLink -DnsForwardingRulesetName sampleDnsForwardingRuleset -Name sampleVnetLink -Metadata @{"value0" = "value1"}
 
-{{ Add output here }}
+Name         Type                                             Etag
+----         ----                                             ----
+sampleVnetLink Microsoft.Network/dnsForwardingRuleset/virtualNetworkLinks "02001eab-0000-0800-0000-60e792500000"
 ```
 
-{{ Add description here }}
+This command updates virtual network link by name (adding metadata)
 
-### Example 2: {{ Add title here }}
+### Example 2: Update Outbound Endpoint via identity (adding metadata)
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> $inputObject = Get-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name samplevnetLink1 -ResourceGroupName powershell-test-rg
+PS C:\> Update-AzDnsResolverVirtualNetworkLink -InputObject $inputObject -Metadata @{"value0" = "value1"}
 
-{{ Add output here }}
+Name         Type                                             Etag
+----         ----                                             ----
+sampleVnetLink Microsoft.Network/dnsForwardingRuleset/virtualNetworkLinks "02001eab-0000-0800-0000-60e792500000"
 ```
 
-{{ Add description here }}
+This command updates virtual network link via identity (adding metadata)
 
 ## PARAMETERS
 

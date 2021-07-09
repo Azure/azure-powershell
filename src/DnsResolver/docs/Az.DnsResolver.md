@@ -47,6 +47,9 @@ Create a in-memory object for IPConfiguration
 ### [New-AzDnsResolverOutboundEndpoint](New-AzDnsResolverOutboundEndpoint.md)
 Creates or updates an outbound endpoint for a DNS resolver.
 
+### [New-AzDnsResolverTargetDnsServerObject](New-AzDnsResolverTargetDnsServerObject.md)
+Create a in-memory object for Target DNS server
+
 ### [New-AzDnsResolverVirtualNetworkLink](New-AzDnsResolverVirtualNetworkLink.md)
 Creates or updates a virtual network link to a DNS forwarding ruleset.
 

@@ -45,7 +45,7 @@ sampleInboundEndpoint  Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451
 sampleInboundEndpoint1 Microsoft.Network/dnsResolvers/inboundEndpoints "0b0071aa-0000-0800-0000-60406a2d0000"
 ```
 
-{{ Add description here }}
+This command gets all Inbound Endpoint by name
 
 ### Example 2: Get single Inbound Endpoint by name
 ```powershell

@@ -32,23 +32,20 @@ WARNING: This operation cannot be undone.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an outbound endpoint by name.
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -ResourceGroupName powershell-test-rg -Name psdnsresolvername33nmy1fz
 ```
 
-{{ Add description here }}
+This command removes an outbound endpoint by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove an outbound endpoint by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $inputObject = Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup
+PS C:\> Remove-AzDnsResolverOutboundEndpoint -InputObject $inputObject 
 ```
 
-{{ Add description here }}
+This command removes an outbound endpoint by identity.
 
 ## PARAMETERS
 

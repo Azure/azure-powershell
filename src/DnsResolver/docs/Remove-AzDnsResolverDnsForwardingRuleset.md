@@ -34,23 +34,21 @@ All forwarding rules within the ruleset will be deleted.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an DNS forwarding ruleset by name.
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRulset -ResourceGroupName sampleRG
 
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a DNS forwarding ruleset by name.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a DNS forwarding ruleset by identity
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> $dnsResolverDnsForwardingRulesetObject = Get-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName sampleRG
+PS C:\> Remove-AzDnsResolverDnsForwardingRuleset -InputObject $dnsResolverDnsForwardingRulesetObject 
 ```
 
-{{ Add description here }}
+This command removes a DNS forwarding ruleset by identity.
 
 ## PARAMETERS
 
