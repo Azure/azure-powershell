@@ -21,23 +21,16 @@ Create a in-memory object for Target DNS server
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an Target DNS server
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzDnsResolverIPConfigurationObject -PrivateIPAddress 10.0.0.3 -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/ea40042d-63d8-4d02-9261-fb31450e6c67/resourceGroups/sampleRG/providers/Microsoft.Network/virtualNetworks/vnet-hub/subnets/test-subnet
 
-{{ Add output here }}
+PrivateIPAddress PrivateIPAllocationMethod
+---------------- -------------------------
+1.1.2.12       Dynamic
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates an target DNS server.
 
 ## PARAMETERS
 
