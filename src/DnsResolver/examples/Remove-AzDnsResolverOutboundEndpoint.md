@@ -7,7 +7,7 @@ This command removes an outbound endpoint by name.
 ### Example 2: Remove an outbound endpoint by identity
 ```powershell
 PS C:\> $inputObject = Get-AzDnsResolverOutboundEndpoint -DnsResolverName sampleResolver -Name sampleOutbound -ResourceGroupName sampleResourceGroup
-PS C:\> Remove-AzDnsResolverOutboundEndpoint -InputObject $dnsResolverObject 
+PS C:\> Remove-AzDnsResolverOutboundEndpoint -InputObject $inputObject 
 ```
 
 This command removes an outbound endpoint by identity.

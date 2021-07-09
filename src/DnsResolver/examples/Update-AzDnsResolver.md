@@ -13,7 +13,7 @@ This command updates an existing DNS Resolver by name ( adding tag ).
 ### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
 PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
+PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject -Tag @{} 
 
 Location Name                      Type                           Etag
 -------- ----                      ----                           ----
