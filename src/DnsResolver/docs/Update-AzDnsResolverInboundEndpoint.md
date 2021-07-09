@@ -15,16 +15,15 @@ Updates an inbound endpoint for a DNS resolver.
 ### UpdateExpanded (Default)
 ```
 Update-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-IPConfiguration <IIPConfiguration[]>]
- [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDnsResolverInboundEndpoint -InputObject <IDnsResolverIdentity> [-IfMatch <String>]
- [-IPConfiguration <IIPConfiguration[]>] [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Metadata <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,21 +132,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IPConfiguration
-IP configurations for the inbound endpoint.
-To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IIPConfiguration[]
-Parameter Sets: (All)
-Aliases:
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -289,10 +273,5 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
-IPCONFIGURATION <IIPConfiguration[]>: IP configurations for the inbound endpoint.
-  - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
-  - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: Private IP address allocation method.
-  - `[SubnetId <String>]`: Resource ID.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 ## RELATED LINKS
 
