@@ -110,6 +110,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string PeeredLocalAddressSpaceText
+        {
+            get { return JsonConvert.SerializeObject(PeeredLocalAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string LocalVirtualNetworkAddressSpaceText
+        {
+            get { return JsonConvert.SerializeObject(LocalVirtualNetworkAddressSpace, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string RemoteBgpCommunitiesText
         {
             get { return JsonConvert.SerializeObject(RemoteBgpCommunities, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }

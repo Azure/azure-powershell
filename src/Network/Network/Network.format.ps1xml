@@ -1454,6 +1454,10 @@
                 <PropertyName>UseRemoteGateways</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeerCompleteVnets</Label>
+                <PropertyName>PeerCompleteVnets</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>RemoteGateways</Label>
                 <PropertyName>RemoteGatewaysText</PropertyName>
               </ListItem>
@@ -1464,6 +1468,22 @@
               <ListItem>
                 <Label>RemoteVirtualNetworkAddressSpace</Label>
                 <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeeredLocalAddressSpace</Label>
+                <PropertyName>PeeredLocalAddressSpaceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LocalVirtualNetworkAddressSpace</Label>
+                <PropertyName>LocalVirtualNetworkAddressSpaceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LocalSubnetNames</Label>
+                <PropertyName>LocalSubnetNames</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteSubnetNames</Label>
+                <PropertyName>RemoteSubnetNames</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RemoteBgpCommunities</Label>
