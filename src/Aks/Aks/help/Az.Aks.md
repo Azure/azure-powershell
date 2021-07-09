@@ -59,3 +59,14 @@ Stop the Kubectl SSH tunnel created in Start-AzKubernetesDashboard.
 ### [Update-AzAksNodePool](Update-AzAksNodePool.md)
 Update node pool in a managed cluster.
 
+### [Get-AzAksNodePoolUpgradeProfile](Get-AzAksNodePoolUpgradeProfile.md)
+Gets the details of the upgrade profile for an agent pool with a specified resource group and managed cluster name.
+
+### [Get-AzAksUpgradeProfile](Get-AzAksUpgradeProfile.md)
+Gets the details of the upgrade profile for a managed cluster with a specified resource group and name.
+
+### [Start-AzAksCluster](Start-AzAksCluster.md)
+Starts a Stopped Managed Cluster
+
+### [Stop-AzAksCluster](Stop-AzAksCluster.md)
+Stops a Running Managed Cluster
