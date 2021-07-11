@@ -12,27 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.OperationalInsights.Models;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.OperationalInsights.Models
+namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class PSSearchGetSavedSearchResponse
+    public class PSStorageInsightParameters : OperationalInsightsParametersBase
     {
-        public PSSearchGetSavedSearchResponse()
-        {
-        }
+        public string Name { get; set; }
 
-        public PSSearchGetSavedSearchResponse(SavedSearch response)
-        {
-            if (response != null)
-            {
-                this.Id = response.Id;
-                this.ETag = response.ETag;
-                this.Properties = new PSSavedSearchProperties(response);
-            }
-        }
-        public string Id { get; set; }
-        public string ETag { get; set; }
-        public PSSavedSearchProperties Properties { get; set; }
+        public string StorageAccountKey { get; set; }
+
+        public string StorageAccountResourceId { get; set; }
+
+        public List<string> Tables { get; set; }
+
+        public List<string> Containers { get; set; }
+
+        public string Etag { get; set; }
+
+        public Hashtable Tags { get; set; }
     }
 }

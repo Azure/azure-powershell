@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.Tags = new Hashtable();
                 this.FunctionAlias = properties.FunctionAlias;
                 this.FunctionParameters = properties.FunctionParameters;
+                this.Etag = properties.Etag;
 
                 if (properties.Tags != null)
                 {
@@ -52,5 +53,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public Hashtable Tags { get; set; }
         public string FunctionAlias { get; set; }
         public string FunctionParameters { get; set; }
+        public string Etag { get; set; }
     }
 }

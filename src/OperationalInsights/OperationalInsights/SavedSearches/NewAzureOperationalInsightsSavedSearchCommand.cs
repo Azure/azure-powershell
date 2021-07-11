@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Net;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsComputerGroup", SupportsShouldProcess = true), OutputType(typeof(HttpStatusCode))]
-    public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(PSSavedSearch))]
+    public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -56,26 +55,49 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string Query { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        HelpMessage = "The saved search tags.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
+        [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The saved search version.")]
         [PSDefaultValue(Help = "1", Value = 1)]
         [ValidateNotNullOrEmpty]
         public long Version { get; set; } = 1;
+
+        [Parameter(Position = 8, Mandatory = false,
+            HelpMessage = "The function alias if query serves as a function.")]
+        [ValidateNotNullOrEmpty]
+        public string FunctionAlias { get; set; }
+
+        [Parameter(Position = 9, Mandatory = false,
+            HelpMessage = "The optional function parameters if query serves as a function. Value should be in the following format: 'param-name1:type1 = default_value1, param-name2:type2 = default_value2'. For more examples and proper syntax please refer to https://docs.microsoft.com/en-us/azure/kusto/query/functions/user-defined-functions.")]
+        [ValidateNotNull]
+        [Alias("FunctionParameters")]
+        public string FunctionParameter { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
-            SavedSearch properties = new SavedSearch()
-            {
-                Category = this.Category,
-                DisplayName = this.DisplayName,
-                Query = this.Query,
-                Version = this.Version,
-                Tags = new List<Tag>() { new Tag() { Name = "Group", Value = "Computer" } }
-            };
+            PSSavedSearchParameters parameters = new PSSavedSearchParameters(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                savedSearchId: SavedSearchId,
+                category: Category,
+                displayName: DisplayName,
+                query: Query,
+                version: Version,
+                functionAlias: FunctionAlias,
+                functionParameter: FunctionParameter,
+                eTag: string.Empty,
+                tags: Tag);
 
-            WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, false, Force, ConfirmAction), true);
+            if (ShouldProcess(DisplayName, $"Create new saved search: {DisplayName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
+            {
+                WriteObject(OperationalInsightsClient.CreateSavedSearch(parameters, ConfirmAction, force: Force));
+            }
         }
 
     }

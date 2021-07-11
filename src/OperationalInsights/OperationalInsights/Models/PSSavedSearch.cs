@@ -12,17 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.OperationalInsights.Models;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+    public class PSSavedSearch
     {
-        public string StorageAccountResourceId { get; set; }
+        public PSSavedSearch()
+        {
+        }
 
-        public bool Force { get; set; }
-
-        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
+        public PSSavedSearch(SavedSearch v)
+        {
+            if (v != null)
+            {
+                this.Id = v.Id;
+                this.Name = v.Name;
+                this.Type = v.Type;
+                this.Properties = new PSSavedSearchProperties(v);
+            }
+        }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public PSSavedSearchProperties Properties { get; set; }
     }
 }

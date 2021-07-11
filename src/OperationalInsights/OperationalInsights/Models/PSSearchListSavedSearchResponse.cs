@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 throw new ArgumentNullException("saved search response");
             }
 
-            this.Value = new List<PSSavedSearchValue>();
+            this.Value = new List<PSSavedSearch>();
             foreach (SavedSearch v in searchResponse.Value)
             {
-                this.Value.Add(new PSSavedSearchValue(v));
+                this.Value.Add(new PSSavedSearch(v));
             }
         }
 
-        public List<PSSavedSearchValue> Value { get; set; }
+        public List<PSSavedSearch> Value { get; set; }
     }
 }

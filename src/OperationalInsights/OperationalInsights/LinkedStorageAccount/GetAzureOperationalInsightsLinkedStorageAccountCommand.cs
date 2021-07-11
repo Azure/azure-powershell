@@ -14,41 +14,37 @@
 
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsSavedSearch"), OutputType(typeof(PSSearchListSavedSearchResponse), typeof(PSSearchGetSavedSearchResponse))]
-    public class GetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsLinkedStorageAccount"), OutputType(typeof(PSLinkedStorageAccountsResource))]
+    public class GetAzureOperationalInsightsLinkedStorageAccountCommand : OperationalInsightsBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+        [Parameter(Position = 0, 
+                   Mandatory = true,
+                   HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("Name")]
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The workspace name.")]
+        [Parameter(Position = 1, 
+                   Mandatory = true,
+                   HelpMessage = "The workspace name.")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The saved search id.")]
+        [Parameter(Position = 2,
+            Mandatory = false,
+            HelpMessage = "Data Source Type should be one of 'CustomLogs', 'AzureWatson', 'Query', 'Alerts'.")]
         [ValidateNotNullOrEmpty]
-        public string SavedSearchId { get; set; }
+        [ValidateSet("CustomLogs", "AzureWatson", "Query", "Alerts", IgnoreCase = true)]
+        public string DataSourceType { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            if (SavedSearchId != null)
-            {
-                WriteObject(OperationalInsightsClient.GetSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId), true);
-            }
-            else
-            {
-                WriteObject(OperationalInsightsClient.GetSavedSearches(ResourceGroupName, WorkspaceName), true);
-            }
+            WriteObject(this.OperationalInsightsClient.FilterPSLinkedStorageAccounts(this.ResourceGroupName, this.WorkspaceName, this.DataSourceType), true);
         }
-
     }
 }
