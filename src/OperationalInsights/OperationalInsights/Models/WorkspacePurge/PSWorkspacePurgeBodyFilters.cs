@@ -30,5 +30,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models.WorkspacePurge
         public object Value { get; set; }
 
         public string Key { get; set; }
+
+        public WorkspacePurgeBodyFilters GetFilter()
+        {
+            return new WorkspacePurgeBodyFilters(Column, OperatorProperty, Value, Key);
+        }
     }
 }

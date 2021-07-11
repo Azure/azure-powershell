@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.WorkspacePurge
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsWorkspace", SupportsShouldProcess = true), OutputType(typeof(PSWorkspacePurgeStatusResponse))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsPurgeWorkspaceStatus"), OutputType(typeof(PSWorkspacePurgeStatusResponse))]
     public class GetAzureOperationalInsightsWorkspacePurgeStatusCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -28,26 +28,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.WorkspacePurge
 
         protected override void ProcessRecord()
         {
-            
-            //var tags = new Hashtable();
-            //tags.Add(key: "Group", value: "Computer");
-
-            //PSSavedSearchParameters parameters = new PSSavedSearchParameters(
-            //    resourceGroupName: ResourceGroupName,
-            //    workspaceName: WorkspaceName,
-            //    savedSearchId: SavedSearchId,
-            //    category: Category,
-            //    displayName: DisplayName,
-            //    query: Query,
-            //    version: Version,
-            //    functionAlias: null,
-            //    functionParameter: null,
-            //    eTag: string.Empty,
-            //    tags: tags
-            //    );
-                
-            WriteObject(OperationalInsightsClient.GetPurgeWorksaceStatus(ResourceGroupName, WorkspaceName, PurgeId));
-            
+            WriteObject(OperationalInsightsClient.GetPurgeWorkspaceStatus(ResourceGroupName, WorkspaceName, PurgeId));
         }
     }
 }

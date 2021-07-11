@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         protected const string DeleteByNameParameterSet = "DeleteByNameParameterSet";
         protected const string DeleteByInputObjectParameterSet = "DeleteByInputObjectParameterSet";
         protected const string DeleteByResourceIdParameterSet = "DeleteByResourceIdParameterSet";
+        protected const string CreateByNameParameterSet = "CreateByNameParameterSet";
+        protected const string CreateByObjectParameterSet = "CreateByObjectParameterSet";
 
         private OperationalInsightsClient operationalInsightsClient;
 

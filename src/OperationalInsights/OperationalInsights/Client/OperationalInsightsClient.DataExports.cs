@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (existingDataExport != null)
             {
-                throw new PSInvalidOperationException(string.Format("DataExport: '{0}' already exists in workspace '{1}'. Please use Update-AzOperationalInsightsDataExport for updating.", parameters.DataExportName, parameters.WorkspaceName)); // TODO Test if a Data Export already exists tiwht this name - what exeption is throwen
+                throw new PSInvalidOperationException(string.Format("DataExport: '{0}' already exists in workspace '{1}'. Please use Update-AzOperationalInsightsDataExport for updating.", parameters.DataExportName, parameters.WorkspaceName));
             }
 
             return new PSDataExport(OperationalInsightsManagementClient.DataExports.CreateOrUpdate(
