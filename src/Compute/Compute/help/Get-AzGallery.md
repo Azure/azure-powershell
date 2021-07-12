@@ -14,13 +14,19 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzGallery [[-ResourceGroupName] <String>] [[-Name] <String>] [-Select <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGallery [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SharedGalleryParameterSet
+```
+Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,6 +161,14 @@ Tags              : {}
 
 Get all galleries in subscription that start with "gallery".
 
+### Example 5
+```powershell
+PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Select Permissions
+
+```
+
+Get a gallery's sharing profile.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -169,6 +183,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GalleryUniqueName
+The unique name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -212,6 +256,36 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Scope
+Specifies galleries shared to subscription or tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: SharedGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Select
+The select expression to apply on the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -120,7 +120,7 @@ Gets an .rdp file.
 Gets the properties of a snapshot
 
 ### [Get-AzSshKey](Get-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Gets the properties of SSH Public Key resources.
 
 ### [Get-AzVM](Get-AzVM.md)
 Gets the properties of a virtual machine.
@@ -282,7 +282,7 @@ Creates a configurable snapshot object.
 Creates a configurable snapshot update object.
 
 ### [New-AzSshKey](New-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Create a SSH Public Key resource.
 
 ### [New-AzVM](New-AzVM.md)
 Creates a virtual machine.
@@ -360,7 +360,7 @@ Delete Proximity Placement Group resource.
 Removes a snapshot.
 
 ### [Remove-AzSshKey](Remove-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Delete a SSH Public Key resource.
 
 ### [Remove-AzVM](Remove-AzVM.md)
 Removes a virtual machine from Azure.
@@ -618,7 +618,7 @@ Updates an image.
 Updates a snapshot.
 
 ### [Update-AzSshKey](Update-AzSshKey.md)
-{{ Fill in the Synopsis }}
+Update a SSH Public Key resource.
 
 ### [Update-AzVM](Update-AzVM.md)
 Updates the state of an Azure virtual machine.

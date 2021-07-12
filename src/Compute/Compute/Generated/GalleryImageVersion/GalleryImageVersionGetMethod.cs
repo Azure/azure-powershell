@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public void SharedGalleryGet()
         {
-            if (this.IsParameterBound(c => c.GalleryUniqueName))
+            if (this.IsParameterBound(c => c.Name))
             {
                 SharedGalleryImageVersion result = SharedGalleryImageVersionsClient.Get(this.Location, this.GalleryUniqueName, this.GalleryImageDefinitionName, this.Name);
                 var psObject = new PSSharedGalleryImageVersion();
