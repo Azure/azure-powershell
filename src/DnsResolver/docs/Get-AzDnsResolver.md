@@ -17,6 +17,11 @@ Gets properties of a DNS resolver.
 Get-AzDnsResolver [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
+### List2
+```
+Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
 
 ### Get
 ```
