@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported secure SMB setting in File service properties
+    - `Update-AzStorageFileServiceProperty`
+* Supported create account with EnableNfsV3
+    - `New-AzStorageAccount`
+
+## Version 3.8.0
+* Supported create file share with NFS/SMB enabledEnabledProtocol and RootSquash, and update share with RootSquash
+    - `New-AzRmStorageShare`
+    - `Update-AzRmStorageShare`
+* Supported enable Smb Multichannel on File service
+    -  `Update-AzStorageFileServiceProperty`
+* Fixed copy inside same account issue by access source with anonymous credential, when copy Blob inside same account with Oauth credential
+* Removed StorageFileDataSmbShareOwner from value set of parameter DefaultSharePermission in create/update storage account
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 3.7.0
 * Supported file share snapshot

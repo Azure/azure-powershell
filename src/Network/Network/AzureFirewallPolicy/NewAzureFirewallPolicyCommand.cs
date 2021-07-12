@@ -132,6 +132,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSManagedServiceIdentity Identity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The private IP ranges to which traffic won't be SNAT'ed"
+        )]
+        public string[] PrivateRange { get; set; }
+
         public override void Execute()
         {
 
@@ -162,7 +168,8 @@ namespace Microsoft.Azure.Commands.Network
                 Sku = new PSAzureFirewallPolicySku {
                     Tier = this.SkuTier ?? MNM.FirewallPolicySkuTier.Standard
                 },
-                IntrusionDetection = this.IntrusionDetection
+                IntrusionDetection = this.IntrusionDetection,
+                PrivateRange = this.PrivateRange
             };
 
             if (this.UserAssignedIdentityId != null)

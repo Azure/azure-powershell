@@ -554,6 +554,10 @@
       "_justification": "Test resource is deleted"
     },
     {
+      "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightAzureMonitorTests\\TestAzureMonitorRelatedCommands.json",
+      "_justification": "Test resource is deleted"
+    },
+    {
       "file": "src\\HDInsight\\HDInsight.Test\\SessionRecords\\Commands.HDInsight.Test.ScenarioTests.HDInsightSetGatewayCredentialTest\\TestSetGatewayCredential.json",
       "_justification": "Test resource is deleted"
     },

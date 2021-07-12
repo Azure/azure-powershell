@@ -183,6 +183,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
+        /// Id of the primary user assigned identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The primary user managed identity(UMI) id")]
+        public string PrimaryUserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// URI of the key to use for encryption
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Key Vault URI for encryption")]
+        public string KeyId { get; set; }
+
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
@@ -203,6 +217,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Maintenance configuration id for the Sql Azure Managed Instance.")]
         public string MaintenanceConfigurationId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "List of user assigned identities")]
+        public List<string> UserAssignedIdentityId { get; set; }
+
+        // <summary>
+        /// List of user assigned identities.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+        public string IdentityType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -287,10 +316,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
                 ProxyOverride = this.ProxyOverride,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
                 InstancePoolName = this.InstancePoolName,
                 MinimalTlsVersion = this.MinimalTlsVersion,
-                MaintenanceConfigurationId = this.MaintenanceConfigurationId
+                MaintenanceConfigurationId = this.MaintenanceConfigurationId,
+                AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
+                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
+                KeyId = this.KeyId
             });
             return updateData;
         }

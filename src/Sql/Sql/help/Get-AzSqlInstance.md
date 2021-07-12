@@ -14,31 +14,32 @@ Returns information about Azure SQL Managed Database Instance.
 
 ### DefaultParameterSet (Default)
 ```
-Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-Name <String>] [-ResourceGroupName <String>] [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolObjectParameterSet
 ```
-Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-InstancePool] <AzureSqlInstancePoolModel> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolResourceIdentiferParameterSet
 ```
-Get-AzSqlInstance [-InstancePoolResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzSqlInstance [-InstancePoolResourceId] <String> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByManagedInstanceResourceIdentifierParameterSet
 ```
-Get-AzSqlInstance [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSqlInstance [-ResourceId] <String> [-ExpandActiveDirectoryAdministrator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListByInstancePoolParameterSet
 ```
 Get-AzSqlInstance [-InstancePoolName] <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ExpandActiveDirectoryAdministrator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -288,6 +289,90 @@ InstancePoolName         :
 
 This command gets information about the instance named managedInstance1.
 
+### Example 8: Get all instances assigned to a resource group with external administrator information
+```powershell
+PS C:\> $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance2
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance2
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance2.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin2
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+
+PS C:\> $val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy2
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+```
+
+This command gets information about all instances assigned to the resource group ResourceGroup01. .
+
+### Example 9: Get information about an instance with external administrator information
+```powershell
+PS C:\> $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
+Location                 : westcentralus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName        : resourcegroup01
+ManagedInstanceName      : managedInstance1
+Tags                     :
+Identity                 : Microsoft.Azure.Management.Sql.Models.ResourceIdentity
+Sku                      : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName : managedInstance1.wcusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin       : adminLogin1
+AdministratorPassword    :
+SubnetId                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name
+LicenseType              : BasePrice
+VCores                   : 8
+StorageSizeInGB          : 512
+DnsZone                  : ad35cna0mw
+Administrators           : Microsoft.Azure.Management.Sql.Models.ManagedInstanceExternalAdministrator
+
+PS C:\> $val.Administrators
+AdministratorType         : ActiveDirectory
+PrincipalType             : Group
+Login                     : Dummy
+Sid                       : df7667b8-f9fd-4029-a0e3-b43c75ce9538
+TenantId                  : f553829b-6d84-481b-86a9-42db57c1dc73
+AzureADOnlyAuthentication : True
+```
+This command gets information about the instance named managedInstance1.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -297,6 +382,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandActiveDirectoryAdministrator
+Expand Active Directory Administrator Information on the server.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

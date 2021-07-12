@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.RouteServerName));
+
                     PSVirtualHub virtualHub = new PSVirtualHub
                     {
                         ResourceGroupName = this.ResourceGroupName,
@@ -130,7 +131,7 @@ namespace Microsoft.Azure.Commands.Network
 
                     virtualHub = NetworkResourceManagerProfile.Mapper.Map<PSVirtualHub>(virtualHubModel);
                     virtualHub.ResourceGroupName = this.ResourceGroupName;
-                    AddIpConfigurtaionToPSVirtualHub(virtualHub, this.ResourceGroupName, this.RouteServerName, ipConfigName);
+                    AddIpConfigurtaionToPSVirtualHub(virtualHub, this.ResourceGroupName, this.RouteServerName);
 
                     var routeServerModel = new PSRouteServer(virtualHub);
                     routeServerModel.Tag = TagsConversionHelper.CreateTagHashtable(virtualHubModel.Tags);

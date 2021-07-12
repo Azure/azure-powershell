@@ -21,7 +21,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-ZoneRedundant] [-AsJob] [-Force] [-LicenseType <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-EnableLedger] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ New-AzSqlDatabase -DatabaseName <String> [-CollationName <String>] [-CatalogColl
  [-LicenseType <String>] [-ComputeModel <String>] [-AutoPauseDelayInMinutes <Int32>]
  [-MinimumCapacity <Double>] [-HighAvailabilityReplicaCount <Int32>] [-BackupStorageRedundancy <String>]
  [-SecondaryType <String>] [-MaintenanceConfigurationId <String>] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-EnableLedger] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -65,6 +65,7 @@ ElasticPoolName               :
 EarliestRestoreDate           :
 LicenseType                   :
 Tags                          :
+EnableLedger                  : False
 ```
 
 This command creates a database named Database01 on server Server01.
@@ -91,6 +92,7 @@ ElasticPoolName               : ElasticPool01
 EarliestRestoreDate           :
 LicenseType                   :
 Tags                          :
+EnableLedger                  : False
 ```
 
 This command creates a database named Database02 in the elastic pool named ElasticPool01 on server Server01.
@@ -115,6 +117,7 @@ ElasticPoolName               :
 EarliestRestoreDate           :
 LicenseType                   : LicenseIncluded
 Tags                          :
+EnableLedger                  : False
 ```
 
 This command creates a Vcore database named Database03 on server Server01.
@@ -146,6 +149,7 @@ Family                        : Gen5
 SkuName                       : GP_S_Gen5
 LicenseType                   : LicenseIncluded
 AutoPauseDelayInMinutes       : 360
+EnableLedger                  : False
 MinimumCapacity          : 0.5
 ```
 
@@ -331,6 +335,21 @@ Specifies the name of the elastic pool in which to put the database.
 ```yaml
 Type: System.String
 Parameter Sets: DtuBasedDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableLedger
+Creates a ledger database, in which the integrity of all data is protected by the ledger feature. All tables in the ledger database must be ledger tables. Note: the value of this property cannot be changed after the database has been created.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

@@ -197,6 +197,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ForceOption = "Forces the data move operation (prevents confirmation dialog). This parameter is optional.";
             public const string CmdletOutput = "Please monitor the operation using Get-AzRecoveryServicesBackupJob cmdlet";
             public const string RetryOnlyFailed = "Switch parameter to try data move only for containers in the source vault which are not yet moved.";
+            public const string CorrelationId = "Correlation Id for triggering DS Move";
         }
 
         internal static class Encryption

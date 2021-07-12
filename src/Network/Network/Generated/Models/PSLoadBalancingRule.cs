@@ -27,6 +27,7 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -64,6 +65,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSResourceId BackendAddressPool { get; set; }
         [JsonProperty(Order = 1)]
+        public List<PSResourceId> BackendAddressPools { get; set; }
+        [JsonProperty(Order = 1)]
         public PSResourceId Probe { get; set; }
 
         [JsonIgnore]
@@ -76,6 +79,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string BackendAddressPoolText
         {
             get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string BackendAddressPoolsText
+        {
+            get { return JsonConvert.SerializeObject(BackendAddressPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
