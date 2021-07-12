@@ -72,7 +72,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public void GetsResourcesById()
         {
             var pipeline = new List<PSResource>();
-            var expected = new PSResource(resourceId, subscriptionId, resourceGroupName, resourceName, kind, location, resourceType, null, null, null, null, tags);
+
+            var gr = new GenericResource(resourceId, resourceName, resourceType, location, tags, null, null, kind, null, null, null);
+            var expected = new PSResource(gr);
             resourcesClientMock.Setup(f => f.GetById(resourceId, Constants.ResourcesApiVersion)).Returns(expected);
             commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSResource>())).Callback<object>(resource => pipeline.Add((PSResource)resource));
             cmdlet.ResourceId = resourceId;

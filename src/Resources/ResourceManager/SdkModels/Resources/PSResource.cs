@@ -77,12 +77,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ETag { get; set; }
 
-        public PSResource(string id, string subscriptionId, string resourceGroupName, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
+        private PSResource(string id, string name, string kind, string location, string type, Identity identity, PSObject properties, Plan plan, Sku sku, IDictionary<string, string> tags)
         {
             this.ResourceId = id;
             this.Id = id;
-            this.SubscriptionId = subscriptionId;
-            this.ResourceGroupName = resourceGroupName;
             this.ResourceName = name;
             this.Name = name;
             this.Kind = kind;
@@ -98,11 +96,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public PSResource(GenericResource resource): this(
             resource.Id,
-            (new ResourceIdentifier(resource.Id)).Subscription, 
-            (new ResourceIdentifier(resource.Id)).ResourceGroupName,
             resource.Name,
             resource.Kind,
-            resource.Location, 
+            resource.Location,
             resource.Type,
             resource.Identity,
             ((JToken)resource.Properties).ToPsObject(),
@@ -111,6 +107,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             resource.Tags
         )
         {
+            ResourceIdentifier resourceId = new ResourceIdentifier(resource.Id);
+            this.SubscriptionId = resourceId.Subscription;
+            this.ResourceGroupName = resourceId.ResourceGroupName;
+            this.ParentResource = resourceId.ParentResource;
             this.ManagedBy = resource.ManagedBy;
         }
 
@@ -124,8 +124,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public PSResource(Resource<JToken> resource): this(
             resource.Id,
-            resource.Id == null ? null : ResourceIdUtility.GetSubscriptionId(resource.Id),
-            resource.Id == null ? null : ResourceIdUtility.GetResourceGroupName(resource.Id),
             resource.Name,
             resource.Kind,
             resource.Location,
@@ -154,6 +152,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.CreatedTime = resource.CreatedTime;
             this.ChangedTime = resource.ChangedTime;
 
+            this.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
+            this.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
             this.ExtensionResourceName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id);
             this.ExtensionResourceType = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceType(resource.Id);
             this.ETag = resource.ETag;
