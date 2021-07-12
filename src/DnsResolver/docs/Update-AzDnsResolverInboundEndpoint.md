@@ -143,8 +143,8 @@ To construct, see NOTES section for IPCONFIGURATION properties and create a hash
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IIPConfiguration[]
 Parameter Sets: (All)
-
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
