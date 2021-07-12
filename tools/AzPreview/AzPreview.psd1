@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.2.0'
+ModuleVersion = '6.2.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.1'; }, 
             @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.1.0'; }, 
             @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.1'; }, 
             @{ModuleName = 'Az.Aks'; RequiredVersion = '2.2.0'; }, 

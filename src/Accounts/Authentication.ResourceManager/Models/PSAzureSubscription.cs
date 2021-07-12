@@ -223,7 +223,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             get
             {
-               return this.GetTags();
+                if (!string.IsNullOrEmpty(this.GetProperty(AzureSubscription.Property.Tags)))
+                {
+                    return this.GetTags();
+                }
+                return null;
             }
         }
     }
