@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced 2 additional parameter sets for `New-AzCloudService`.
 
 ## Version 0.3.0
 * Fixed the issue that FrontendIPConfiguration is empty in `Get-AzCloudService`.[#14702]

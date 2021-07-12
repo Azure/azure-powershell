@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Azure site recovery bug fix for azure to azure in update vm properties.
 
 ## Version 4.3.0
 * Fixed Disable SQL AG AutoProtection.
