@@ -146,6 +146,12 @@
     - New-AzDiskUpdateConfig
     - New-AzDiskEncryptionSetConfig
     - Update-AzDiskEncryptionSet
+* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
+* `Update-AzGallery` can update sharingProfile.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
 
 ## Version 4.14.0
 * Updated Compute module to use the latest .Net SDK version 47.0.0.

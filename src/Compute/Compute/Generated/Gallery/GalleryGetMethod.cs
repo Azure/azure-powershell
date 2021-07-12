@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (ShouldGetByName(resourceGroupName, galleryName))
                 {
-                    var result = GalleriesClient.Get(resourceGroupName, galleryName);
+                    var result = GalleriesClient.Get(resourceGroupName, galleryName, this.Select);
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
                     WriteObject(psObject);
@@ -197,5 +197,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [LocationCompleter("Microsoft.Compute/Galleries")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+        
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = "DefaultParameter",
+           HelpMessage = "The select expression to apply on the operation.")]
+        [PSArgumentCompleter("Permissions")]
+        public string Select { get; set; }
     }
 }

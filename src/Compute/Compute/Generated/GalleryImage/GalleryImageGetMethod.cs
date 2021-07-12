@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         public void SharedGalleryGet()
         {
-            if (this.IsParameterBound(c => c.GalleryUniqueName))
+            if (this.IsParameterBound(c => c.Name))
             {
                 SharedGalleryImage result = SharedGalleryImagesClient.Get(this.Location, this.GalleryUniqueName, this.Name);
                 var psObject = new PSSharedGalleryImage();
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Rest.Azure.IPage<SharedGalleryImage> result = new Page<SharedGalleryImage>();
 
-                if (this.IsParameterBound(c => c.Scope))
+                if (this.IsParameterBound(c => c.Scope) && this.Scope != "subscription")
                 {
                     result = SharedGalleryImagesClient.List(this.Location, this.GalleryUniqueName, this.Scope);
                 }
