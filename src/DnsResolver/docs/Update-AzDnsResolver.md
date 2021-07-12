@@ -44,7 +44,7 @@ This command updates an existing DNS Resolver by name ( adding tag ).
 ### Example 2: Updates an existing DNS Resolver by identity
 ```powershell
 PS C:\> $dnsResolverObject = Get-AzDnsResolver -ResourceGroupName powershell-test-rg -Name  psdnsresolvername33nmy1fz
-PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject -Tag @{} 
+PS C:\> Update-AzDnsResolver -InputObject $dnsResolverObject  -Tag @{} 
 
 Location Name                      Type                           Etag
 -------- ----                      ----                           ----
@@ -254,6 +254,7 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkName <String>]`: The name of the virtual network.
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
