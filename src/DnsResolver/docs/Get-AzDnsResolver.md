@@ -34,6 +34,7 @@ Get-AzDnsResolver -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject
 Get-AzDnsResolver -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
+
 ### List2
 ```
 Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
