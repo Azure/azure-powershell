@@ -54,6 +54,14 @@ function New-AzMigrateServerReplication {
         # Specifies if Azure Hybrid benefit is applicable for the source server to be migrated.
         ${LicenseType},
 
+        [Parameter()]
+        [ValidateSet("NoLicenseType" , "PAYG" , "AHUB")]
+        [ArgumentCompleter( { "NoLicenseType" , "PAYG" , "AHUB" })]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies if Azure Hybrid benefit for SQL Server is applicable for the server to be migrated.
+        ${SqlServerLicenseType},
+
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
@@ -118,6 +126,30 @@ function New-AzMigrateServerReplication {
         [System.String]
         # Specifies the Availability Zone to be used for VM creation.
         ${TargetAvailabilityZone},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags]
+        # Specifies the tag to be used for VM creation.
+        ${VMTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags]
+        # Specifies the tag to be used for NIC creation.
+        ${NicTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags]
+        # Specifies the tag to be used for disk creation.
+        ${DiskTag},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.Collections.Hashtable]
+        # Specifies the tag to be used for Resource creation.
+        ${Tag},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -209,6 +241,11 @@ function New-AzMigrateServerReplication {
         $HasRunAsAccountId = $PSBoundParameters.ContainsKey('VMWarerunasaccountID')
         $HasTargetAVSet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAVZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
+        $HasVMTag = $PSBoundParameters.ContainsKey('VMTag')
+        $HasNicTag = $PSBoundParameters.ContainsKey('NicTag')
+        $HasDiskTag = $PSBoundParameters.ContainsKey('DiskTag')
+        $HasTag = $PSBoundParameters.ContainsKey('Tag')
+        $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
         $HasTargetBDStorage = $PSBoundParameters.ContainsKey('TargetBootDiagnosticsStorageAccount')
         $HasResync = $PSBoundParameters.ContainsKey('PerformAutoResync')
         $HasDiskEncryptionSetID = $PSBoundParameters.ContainsKey('DiskEncryptionSetID')
@@ -218,6 +255,10 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('VMWarerunasaccountID')
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
+        $null = $PSBoundParameters.Remove('VMTag')
+        $null = $PSBoundParameters.Remove('NicTag')
+        $null = $PSBoundParameters.Remove('DiskTag')
+        $null = $PSBoundParameters.Remove('Tag')
         $null = $PSBoundParameters.Remove('TargetBootDiagnosticsStorageAccount')
         $null = $PSBoundParameters.Remove('MachineId')
         $null = $PSBoundParameters.Remove('DiskToInclude')
@@ -229,6 +270,7 @@ function New-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('PerformAutoResync')
         $null = $PSBoundParameters.Remove('DiskType')
         $null = $PSBoundParameters.Remove('OSDiskID')
+        $null = $PSBoundParameters.Remove('SqlServerLicenseType')
         $null = $PSBoundParameters.Remove('LicenseType')
         $null = $PSBoundParameters.Remove('DiskEncryptionSetID')
 
@@ -258,7 +300,7 @@ function New-AzMigrateServerReplication {
                 }
             }
         }
-           
+
         if (($parameterSet -match 'Id') -or ($parameterSet -match 'InputObject')) {
             if (($parameterSet -match 'InputObject')) {
                 $MachineId = $InputObject.Id
@@ -464,6 +506,101 @@ public static int hashForArtifact(String artifact)
         if ($HasTargetAVZone) {
             $ProviderSpecificDetails.TargetAvailabilityZone = $TargetAvailabilityZone
         }
+
+        if ($HasSqlServerLicenseType)
+        {
+            $validSqlLicenseSpellings = @{ 
+                NoLicenseType = "NoLicenseType";
+                PAYG = "PAYG";
+                AHUB = "AHUB"
+            }
+            $SqlServerLicenseType = $validSqlLicenseSpellings[$SqlServerLicenseType]
+            $ProviderSpecificDetails.SqlServerLicenseType = $SqlServerLicenseType
+        }
+
+        $UserProvidedTags = $null
+        if ($HasTag -And $Tag)
+        {
+            $UserProvidedTags += @{"Tag" = $Tag}
+        }
+
+        if ($HasVMTag -And $VMTag)
+        {
+            $UserProvidedTags += @{"VMTag" = $VMTag}
+        }
+
+        if ($HasNicTag -And $NicTag)
+        {
+            $UserProvidedTags += @{"NicTag" = $NicTag}
+        }
+
+        if ($HasDiskTag -And $DiskTag)
+        {
+            $UserProvidedTags += @{"DiskTag" = $DiskTag}
+        }
+
+        foreach($tagtype in $UserProvidedTags.Keys)
+        {
+            $IllegalCharKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthKey = New-Object Collections.Generic.List[String]
+            $ExceededLengthValue = New-Object Collections.Generic.List[String]
+            $ResourceTag = $($UserProvidedTags.Item($tagtype))
+
+            if ($ResourceTag.Count -gt 50)
+            {
+                throw "InvalidTags : Too many tags specified. Requested tag count - '$($ResourceTag.Count)'. Maximum number of tags allowed - '50'."
+            }
+
+            foreach ($key in $ResourceTag.Keys)
+            {
+                if ($key.length -gt 512)
+                {
+                    $ExceededLengthKey.add($key)
+                }
+
+                if ($key -match "[<>%&\?/.]")
+                {
+                    $IllegalCharKey.add($key)
+                }
+
+                if ($($ResourceTag.Item($key)).length -gt 256)
+                {
+                    $ExceededLengthValue.add($($ResourceTag.Item($key)))
+                }
+            }
+
+            if ($IllegalCharKey.Count -gt 0)
+            {
+                throw "InvalidTagNameCharacters : The tag names '$($IllegalCharKey -join ', ')' have reserved characters '<,>,%,&,\,?,/' or control characters."
+            }
+
+            if ($ExceededLengthKey.Count -gt 0)
+            {
+                throw "InvalidTagName : Tag key too large. Following tag name '$($ExceededLengthKey -join ', ')' exceeded the maximum length. Maximum allowed length for tag name - '512' characters."
+            }
+
+            if ($ExceededLengthValue.Count -gt 0)
+            {
+                throw "InvalidTagValueLength : Tag value too large. Following tag value '$($ExceededLengthValue -join ', ')' exceeded the maximum length. Maximum allowed length for tag value - '256' characters."
+            }
+
+            if( $tagtype -eq "Tag" -or $tagtype -eq "DiskTag")
+            {
+                $ProviderSpecificDetails.SeedDiskTag = $ResourceTag
+                $ProviderSpecificDetails.TargetDiskTag = $ResourceTag
+            }
+
+            if( $tagtype -eq "Tag" -or $tagtype -eq "NicTag")
+            {
+                $ProviderSpecificDetails.TargetNicTag = $ResourceTag
+            }
+
+            if( $tagtype -eq "Tag" -or $tagtype -eq "VMTag")
+            {
+                $ProviderSpecificDetails.TargetVmTag = $ResourceTag
+            }
+        }
+
         $ProviderSpecificDetails.TargetBootDiagnosticsStorageAccountId = $TargetBootDiagnosticsStorageAccount
         $ProviderSpecificDetails.TargetNetworkId = $TargetNetworkId
         $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupId
