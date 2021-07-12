@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * Fixed bug with `PSResource` where some constructors left `SubscriptionId` property unassigned/null.  [#10783]
+* Added support for creating and updating Template Spec in Bicep file [#15313]
 
 ## Version 4.2.0
 * Allowed naming the deployment when testing deployments [#11497]

@@ -19,14 +19,21 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.10.0
+* Added public ip address as an optional parameter to create route server
+    - `New-AzRouteServer`
+* Updated cmdlets to enable specification of edge zone
+    - `New-AzPublicIpPrefix`
+    - `New-AzLoadBalancer`
+    - `New-AzPrivateLinkService`
+    - `New-AzPrivateEndpoint`
 * Added support for viewing extended location of virtual network in the console
     - `New-AzVirtualNetwork`
     - `Get-AzVirtualNetwork`
 * Added support for viewing extended location of public IP address in the console
     - `New-AzPublicIpAddress`
     - `Get-AzPublicIpAddress`
-* Updated cmdlets to enable specification of edge zone
-    - `New-AzPublicIpPrefix`
 
 ## Version 4.9.0
 * Updated cmdlets for route server for a more stable way to add IP configuration.

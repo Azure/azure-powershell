@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string WorkspaceObject = "workspace input object, usually passed through the pipeline.";
 
+        public const string ManagedResourceGroupName = "A container that holds ancillary resources. Created by default while the name can be specified. Note that this group must be different with ResourceGroupName.";
+
         public const string DefaultDataLakeStorageAccountName = "The default ADLS Gen2 storage account name.";
 
         public const string DefaultDataLakeStorageFilesystem = "The default ADLS Gen2 file system.";
@@ -155,6 +157,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string Collation = "Collation defines the rules that sort and compare data, and cannot be changed after SQL pool creation. The default collation is " + SynapseConstants.DefaultCollation + ".";
         
         public const string MaxSizeInBytes = "Specifies the maximum size of the database in bytes.";
+
+        public const string StorageRedundancy = "Storage redundancy of the database.";
 
         public const string BackupResourceGroupName = "The resource group name of bakcup SQL pool object to create from.";
 
@@ -430,5 +434,11 @@ For more information, see https://docs.microsoft.com/en-us/sql/relational-databa
         public const string SparkJobDefinitionName = "The Spark job definition name.";
 
         public const string SparkJobDefinitionObject = "The Spark job definition object.";
+
+        public const string MaxServiceObjectName = "The max service level objective name of the sql pool.";
+
+        public const string AutoPauseTimer = "The period of inactivity in minutes before automatically pausing the sql pool.";
+
+        public const string AutoResume = "Indicates whether the sql pool can automatically resume when connection attempts are made.";
     }
 }

@@ -18,6 +18,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
         /// Directory.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 0)]
         public string Category { get => this._category; set => this._category = value; }
 
         /// <summary>Backing field for <see cref="Endpoint" /> property.</summary>
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview
 
         /// <summary>The endpoints that the App Service Environment reaches the service at.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Origin(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.FormatTable(Index = 1)]
         public Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210401Preview.IEndpointDependency[] Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
         /// <summary>Creates an new <see cref="OutboundEnvironmentEndpoint" /> instance.</summary>

@@ -121,3 +121,15 @@ function Test-SetAzureRmContextWithoutSubscription
     Assert-AreEqual $context.Tenant.Id $firstSubscription.HomeTenantId
     Assert-AreEqual $context.Subscription.Id $firstSubscription.Id
 }
+
+<#
+.SYNOPSIS
+Check whether tags works with subscripiton 
+.DESCRIPTION
+SmokeTest
+#>
+function Test-GetSubscriptionsWithTags
+{
+	$allSubscriptions = Get-AzSubscription
+	Assert-True {($allSubscriptions | Where-Object { $_.Tags -ne $null}).Count -gt 0}
+}

@@ -229,8 +229,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// List of user assigned identities.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Type of Identity to be used. Possible values are SystemAsssigned, UserAssigned, SystemAssignedUserAssigned and None.")]
-        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "SystemAssignedUserAssigned", "None")]
+            HelpMessage = "Type of Identity to be used. Possible values are SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' and None.")]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "\"SystemAssigned,UserAssigned\"", "None")]
         public string IdentityType { get; set; }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The instance being updated</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
-            return new List<AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
+            return new List<AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name, "administrators/activedirectory") };
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<AzureSqlManagedInstanceModel> model)
         {
-            AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
+            AzureSqlManagedInstanceModel existingInstance = ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name, "administrators/activedirectory");
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
 
             // Get current edition and family
@@ -302,28 +302,26 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
             // Construct a new entity so we only send the relevant data to the Managed instance
             List<AzureSqlManagedInstanceModel> updateData = new List<AzureSqlManagedInstanceModel>();
-            updateData.Add(new AzureSqlManagedInstanceModel()
-            {
-                ResourceGroupName = this.ResourceGroupName,
-                ManagedInstanceName = this.Name,
-                FullyQualifiedDomainName = this.Name,
-                Location = model.FirstOrDefault().Location,
-                Sku = Sku,
-                AdministratorPassword = this.AdministratorPassword,
-                LicenseType = this.LicenseType,
-                StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB,
-                VCores = this.VCore,
-                PublicDataEndpointEnabled = this.PublicDataEndpointEnabled,
-                ProxyOverride = this.ProxyOverride,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity),
-                InstancePoolName = this.InstancePoolName,
-                MinimalTlsVersion = this.MinimalTlsVersion,
-                MaintenanceConfigurationId = this.MaintenanceConfigurationId,
-                AdministratorLogin = model.FirstOrDefault().AdministratorLogin,
-                PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId,
-                KeyId = this.KeyId
-            });
+            updateData.Add(model.FirstOrDefault());
+            updateData[0].ResourceGroupName = this.ResourceGroupName;
+            updateData[0].ManagedInstanceName = this.Name;
+            updateData[0].FullyQualifiedDomainName = this.Name;
+            updateData[0].Location = model.FirstOrDefault().Location;
+            updateData[0].Sku = Sku;
+            updateData[0].AdministratorPassword = this.AdministratorPassword;
+            updateData[0].LicenseType = this.LicenseType ?? updateData[0].LicenseType;
+            updateData[0].StorageSizeInGB = this.StorageSizeInGB ?? model.FirstOrDefault().StorageSizeInGB;
+            updateData[0].VCores = this.VCore ?? updateData[0].VCores;
+            updateData[0].PublicDataEndpointEnabled = this.PublicDataEndpointEnabled ?? updateData[0].PublicDataEndpointEnabled;
+            updateData[0].ProxyOverride = this.ProxyOverride ?? this.ProxyOverride;
+            updateData[0].Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            updateData[0].Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent, this.IdentityType ?? null, UserAssignedIdentityId, model.FirstOrDefault().Identity);
+            updateData[0].InstancePoolName = this.InstancePoolName ?? updateData[0].InstancePoolName;
+            updateData[0].MinimalTlsVersion = this.MinimalTlsVersion ?? updateData[0].MinimalTlsVersion;
+            updateData[0].MaintenanceConfigurationId = this.MaintenanceConfigurationId ?? updateData[0].MaintenanceConfigurationId;
+            updateData[0].AdministratorLogin = model.FirstOrDefault().AdministratorLogin;
+            updateData[0].PrimaryUserAssignedIdentityId = this.PrimaryUserAssignedIdentityId ?? model.FirstOrDefault().PrimaryUserAssignedIdentityId;
+            updateData[0].KeyId = this.KeyId ?? updateData[0].KeyId;
             return updateData;
         }
 

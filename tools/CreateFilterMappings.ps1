@@ -96,6 +96,10 @@ function Create-ProjectToFullPathMappings
         $CsprojFiles = Get-ChildItem -Path $ServiceFolder -Filter "*.csproj" -Recurse
         foreach ($CsprojFile in $CsprojFiles)
         {
+            if ($Mappings.Contains($CsprojFile.BaseName))
+            {
+                throw ($CsprojFile.FullName + " is conflicts with " + $Mappings[$CsprojFile.BaseName])
+            }
             $Mappings[$CsprojFile.BaseName] = $CsprojFile.FullName
         }
     }
@@ -124,7 +128,7 @@ function Create-SolutionToProjectMappings
     $Mappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
     {
-        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln"
+        $SolutionFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.sln" -Recurse
         foreach ($SolutionFile in $SolutionFiles)
         {
             $Mappings = Add-ProjectDependencies -Mappings $Mappings -SolutionPath $SolutionFile.FullName
@@ -149,11 +153,23 @@ function Add-ProjectDependencies
     )
 
     $CommonProjectsToIgnore = @("ScenarioTest.ResourceManager", "TestFx", "Tests" )
-
-    $ProjectDependencies = @()
+    $CsprojList = @()
     $Content = Get-Content -Path $SolutionPath
-    $Content | Select-String -Pattern "`"[a-zA-Z0-9.]*`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $ProjectDependencies += $_ }
-    $Mappings[$SolutionPath] = $ProjectDependencies
+    $SolutionFoloderPath = Split-Path -Parent $SolutionPath
+    $Content | Select-String -Pattern "`"[a-zA-Z0-9`.`\\`/]*.csproj`"" | ForEach-Object { $_.Matches[0].Value.Trim('"') } | Where-Object { $CommonProjectsToIgnore -notcontains $_ } | ForEach-Object { $CsprojList += $_ }
+    
+    foreach ($Csproj in $CsprojList)
+    {
+        try
+        {
+            $CsprojAbslutionPath = Resolve-Path -Path ($SolutionFoloderPath + "\\" + $Csproj)
+        }
+        catch
+        {
+            throw "${SolutionPath}: $Csproj is not found!"
+        }
+    }
+    $Mappings[$SolutionPath] = $CsprojList | ForEach-Object { (Split-Path -Path $_ -Leaf).Replace('.csproj', '') }
     return $Mappings
 }
 
@@ -260,7 +276,7 @@ function Get-ModuleFromPath
         [string]$FilePath
     )
 
-    return $FilePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+    return $FilePath.Replace('/', '\').Split('\src\')[-1].Split('\')[0]
 }
 function Add-CsprojMappings
 {

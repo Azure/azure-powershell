@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
             if (sqlPool?.RestorePointInTime != null)
             {
-                this.RestorePointInTime = DateTime.Parse(sqlPool.RestorePointInTime);
+                this.RestorePointInTime = sqlPool.RestorePointInTime;
             }
         }
 

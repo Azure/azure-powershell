@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.DataFactory.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
@@ -21,6 +22,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }
+
+        public FactoryIdentity FactoryIdentity { get; set; }
+
+        public EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         public bool Force { get; set; }
 
