@@ -64,10 +64,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                         existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
                     }
 
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = "SystemAssigned,UserAssigned"
-                    };
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = "SystemAssigned,UserAssigned";
                 }
                 else if (userAssignedIdentities.Any())
                 {
@@ -100,10 +98,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
                         existingResourceIdentity.UserAssignedIdentities.Add(identity, new UserIdentity());
                     }
 
-                    identityResult = new Management.Sql.Models.ResourceIdentity()
-                    {
-                        Type = ResourceIdentityType.UserAssigned.ToString()
-                    };
+                    identityResult = existingResourceIdentity;
+                    identityResult.Type = ResourceIdentityType.UserAssigned.ToString();
                 }
                 else if (userAssignedIdentities.Any())
                 {
