@@ -6,6 +6,6 @@
   <Target Name="PostBuildModuleAlc" AfterTargets="Build" Condition="'@(ModuleAlcEntryAssembly)' != ''">
     <!--generate ps1; move ALC assembly to sub folder-->
     <Message Text="@(ModuleAlcRefAssembly)" Importance="high" />
-    <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/PostBuildModuleAlc.ps1' -ModuleFolder '$(OutDir)' -AlcEntryAssembly '@(ModuleAlcEntryAssembly)' -AlcRefAssembly '@(ModuleAlcRefAssembly)' &quot;" />
+    <Exec Command="pwsh -NonInteractive -NoLogo -NoProfile -Command &quot;. '$(OutDir)../../../tools/PostBuildModuleAlc.ps1' -ModuleFolder '$(OutDir)' -AlcEntryAssembly '@(ModuleAlcEntryAssembly)' -AlcRefAssembly '@(ModuleAlcRefAssembly)' -Configuration '$(Configuration)' &quot;" />
   </Target>
 </Project>
