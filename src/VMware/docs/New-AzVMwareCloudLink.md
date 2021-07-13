@@ -23,23 +23,16 @@ Create or update a cloud link in a private cloud
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a cloud link in a private cloud
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzVMwareCloudLink -Name azps_test_cloudlink -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -LinkedCloud /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2/
 
-{{ Add output here }}
+Name                Type
+----                ----
+azps_test_cloudlink Microsoft.AVS/privateClouds/cloudLinks
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a cloud link in a private cloud
 
 ## PARAMETERS
 

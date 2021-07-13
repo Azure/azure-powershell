@@ -12,11 +12,36 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzVMwarePrivateCloud' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $job_cloud_new = New-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location $env.location -AcceptEULA -AsJob
+            $job_cloud_new | Wait-Job
+            $job_cloud_new | Receive-Job
+
+            $job_cloud_update = Update-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup -ManagementClusterSize 4 -AsJob
+            $job_cloud_update | Wait-Job
+            $job_cloud_update | Receive-Job
+
+            $job_cloud_Remove = Remove-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr2 -AsJob
+            $job_cloud_Remove | Wait-Job
+            $job_cloud_Remove | Receive-Job
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $job_cloud_new = New-AzVMwarePrivateCloud -Name $env.rstr2 -ResourceGroupName $env.resourceGroup -NetworkBlock 192.168.48.0/22 -Sku av36 -ManagementClusterSize 3 -Location $env.location -AcceptEULA -AsJob
+            $job_cloud_new | Wait-Job
+            $job_cloud_new | Receive-Job
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.rstr2)"
+            
+            $job_cloud_update = Update-AzVMwarePrivateCloud -InputObject $ID -ManagementClusterSize 4 -AsJob
+            $job_cloud_update | Wait-Job
+            $job_cloud_update | Receive-Job
+
+            $job_cloud_Remove = Remove-AzVMwarePrivateCloud -ResourceGroupName $env.resourceGroup -Name $env.rstr2 -AsJob
+            $job_cloud_Remove | Wait-Job
+            $job_cloud_Remove | Receive-Job
+        } | Should -Not -Thorw
     }
 }
