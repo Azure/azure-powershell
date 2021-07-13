@@ -200,7 +200,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <returns>The tags of the subscription</returns>
         public static Dictionary<string,string> GetTags(this IAzureSubscription subscription)
         {
-            return JsonConvert.DeserializeObject<Dictionary<string,string>>(subscription.GetProperty(AzureSubscription.Property.Tags));
+            var tags = subscription.GetProperty(AzureSubscription.Property.Tags);
+            return string.IsNullOrEmpty(tags) ? null : JsonConvert.DeserializeObject<Dictionary<string,string>>(tags);
         }
 
         /// <summary>
