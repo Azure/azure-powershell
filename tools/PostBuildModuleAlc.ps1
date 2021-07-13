@@ -37,7 +37,11 @@ param (
 
     [Parameter(Mandatory=$true)]
     [string]
-    $AlcRefAssembly
+    $AlcRefAssembly,
+
+    [Parameter(Mandatory=$true)]
+    [string]
+    $Configuration
 )
 
 $alcTemplate = @'
@@ -59,19 +63,34 @@ if (-not (Test-Path $scriptPath)){
 }
 $alcTemplate | Out-File -FilePath $scriptPath -Encoding utf8 -Force
 
+$isReleaseConfiguration = $Configuration -eq 'Release'
+
 $alcDestinationDir = [System.IO.Path]::Combine($ModuleFolder, "ModuleAlcAssemblies")
 $entryAssemblyPath = [System.IO.Path]::Combine($ModuleFolder, $AlcEntryAssembly + ".dll")
 if(-not (Test-Path $alcDestinationDir))
 {
     New-Item -ItemType Directory -Path $alcDestinationDir -Force
 }
-Move-Item -Path $entryAssemblyPath -Destination $alcDestinationDir -Force
+
+if($isReleaseConfiguration)
+{
+    Move-Item -Path $entryAssemblyPath -Destination $alcDestinationDir -Force
+}
+else
+{
+    Copy-Item -Path $entryAssemblyPath -Destination $alcDestinationDir -Force #Move-Item cause test project build error: CS0006 metadata file AlcWrapper.dll could not be found
+}
 
 if(-not [System.String]::IsNullOrEmpty($AlcRefAssembly))
 {
     $refAssemblies = $AlcRefAssembly.Split(';')
     $refAssemblies | ForEach-Object {
         $refAssemblyPath = [System.IO.Path]::Combine($ModuleFolder, $_ + ".dll")
-        Move-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+        if($isReleaseConfiguration){
+            Move-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+        }
+        else {
+            Copy-Item -Path $refAssemblyPath -Destination $alcDestinationDir -Force
+        }
     }
 }
