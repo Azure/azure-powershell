@@ -96,6 +96,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         public override string ToString() => HasValidateNotNull ? $"{Indent}[ValidateNotNull()]{Environment.NewLine}" : String.Empty;
     }
 
+    internal class AllowEmptyArrayOutput
+    {
+        public bool HasAllowEmptyArray { get; }
+
+        public AllowEmptyArrayOutput(bool hasAllowEmptyArray)
+        {
+            HasAllowEmptyArray = hasAllowEmptyArray;
+        }
+
+        public override string ToString() => HasAllowEmptyArray ? $"{Indent}[AllowEmptyCollection()]{Environment.NewLine}" : String.Empty;
+    }
     internal class ArgumentCompleterOutput
     {
         public CompleterInfo CompleterInfo { get; }
@@ -464,6 +475,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.PowerShell
         public static AliasOutput ToAliasOutput(this string[] aliases, bool includeIndent = false) => new AliasOutput(aliases, includeIndent);
 
         public static ValidateNotNullOutput ToValidateNotNullOutput(this bool hasValidateNotNull) => new ValidateNotNullOutput(hasValidateNotNull);
+
+        public static AllowEmptyArrayOutput ToAllowEmptyArray(this bool hasAllowEmptyArray) => new AllowEmptyArrayOutput(hasAllowEmptyArray);
 
         public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => new ArgumentCompleterOutput(completerInfo);
 
