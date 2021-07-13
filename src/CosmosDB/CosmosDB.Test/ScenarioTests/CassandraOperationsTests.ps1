@@ -19,17 +19,27 @@ Test Cassandra CRUD cmdlets using Name paramter set
 function Test-CassandraCreateUpdateGetCmdlets
 {
   # using a pre-created CosmosDB Account, since account provisioning takes some time
-  $AccountName = "cassandra-db2725"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "cassandra-db2749"
+  $rgName = "CosmosDBResourceGroup49"
   $KeyspaceName = "keyspace1"
   $TableName = "table"
   $KeyspaceName2 = "keyspace2"
   $TableName2 = "table2"
   $ThroughputValue = 500
   $UpdatedThroughputValue = 600
+  $apiKind = "Cassandra"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $ThroughputValue = 500
+  $UpdatedThroughputValue = 600
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try {
-      
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location      
+      $account = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       # create a new keyspace
       $NewKeyspace =  New-AzCosmosDBCassandraKeyspace -AccountName $AccountName -ResourceGroupName $rgName -Name $KeyspaceName -Throughput $ThroughputValue
       Assert-AreEqual $NewKeyspace.Name $KeyspaceName
@@ -144,15 +154,23 @@ Test Cassandra CRUD cmdlets using Parent Object and InputObject paramter set
 #>
 function Test-CassandraCreateUpdateGetCmdletsByPiping
 {
-  $AccountName = "cassandra-db2725"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "cassandra-db2745"
+  $rgName = "CosmosDBResourceGroup45"
+  $location = "East US"
   $KeyspaceName = "db2"
   $TableName = "table"
+  $apiKind = "Cassandra"
+  $consistencyLevel = "Session"
   $ThroughputValue = 500
   $UpdatedThroughputValue = 600
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
       #get the CosmosDBAccount object
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+
+      $account = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
       #create a new keyspace
@@ -235,12 +253,22 @@ Test Cassandra Throughput cmdlets using all paramter sets
 #>
 function Test-CassandraThroughputCmdlets
 {
-  $AccountName = "cassandra-db2725"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "cassandra-db2748"
+  $rgName = "CosmosDBResourceGroup48"
   $KeyspaceName = "KeyspaceName"
   $TableName = "tableName"
+  $apiKind = "Cassandra"
+  $consistencyLevel = "Session"
+  $location = "East US"
+  $ThroughputValue = 500
+  $UpdatedThroughputValue = 600
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
+  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+  $account = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      
   $Column1 = New-AzCosmosDBCassandraColumn -Name "ColumnA" -Type "int"
   $Column2 = New-AzCosmosDBCassandraColumn -Name "ColumnB" -Type "ascii"
   $clusterkey1 = New-AzCosmosDBCassandraClusterKey -Name "ColumnB" -OrderBy "Asc"

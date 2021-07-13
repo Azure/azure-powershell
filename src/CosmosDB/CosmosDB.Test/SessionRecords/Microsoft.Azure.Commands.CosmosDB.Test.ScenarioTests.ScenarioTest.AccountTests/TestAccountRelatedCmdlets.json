@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourcegroups/CosmosDBResourceGroup32?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourcegroups/CosmosDBResourceGroup91?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "612275b3-9665-472f-8627-d3087607fceb"
+          "97e392bd-7331-4ac3-87b1-ae2272c6595e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.29"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.30"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "cb9dbd39-a001-488b-914a-643e91dd6b50"
+          "0b04e62b-eb20-4fac-aebb-95594a602731"
         ],
         "x-ms-correlation-request-id": [
-          "cb9dbd39-a001-488b-914a-643e91dd6b50"
+          "0b04e62b-eb20-4fac-aebb-95594a602731"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001124Z:cb9dbd39-a001-488b-914a-643e91dd6b50"
+          "WESTUS2:20210604T211211Z:0b04e62b-eb20-4fac-aebb-95594a602731"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:11:24 GMT"
+          "Fri, 04 Jun 2021 21:12:10 GMT"
         ],
         "Content-Length": [
           "199"
@@ -63,26 +63,26 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32\",\r\n  \"name\": \"CosmosDBResourceGroup32\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91\",\r\n  \"name\": \"CosmosDBResourceGroup91\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bb3f2d14-fd19-42f4-a399-4d112f3fd18a"
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "e7b004d7-33bf-417b-906b-90eb530fd4a3"
+          "662a0663-44c6-40c3-8b6e-372792f4338b"
         ],
         "x-ms-correlation-request-id": [
-          "e7b004d7-33bf-417b-906b-90eb530fd4a3"
+          "662a0663-44c6-40c3-8b6e-372792f4338b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001125Z:e7b004d7-33bf-417b-906b-90eb530fd4a3"
+          "WESTUS2:20210604T211211Z:662a0663-44c6-40c3-8b6e-372792f4338b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:11:24 GMT"
+          "Fri, 04 Jun 2021 21:12:10 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -120,23 +120,26 @@
           "-1"
         ],
         "Content-Length": [
-          "245"
+          "247"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3' under resource group 'CosmosDBResourceGroup32' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DocumentDB/databaseAccounts/cosmosdb678902' under resource group 'CosmosDBResourceGroup91' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -150,7 +153,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -159,47 +162,47 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "11638313-fd6c-4bf8-bab6-8aea4b159bca"
+          "b2cca59d-5a5b-46ba-9d96-a25a4023d5b9"
         ],
         "x-ms-correlation-request-id": [
-          "11638313-fd6c-4bf8-bab6-8aea4b159bca"
+          "b2cca59d-5a5b-46ba-9d96-a25a4023d5b9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001301Z:11638313-fd6c-4bf8-bab6-8aea4b159bca"
+          "WESTUS2:20210604T211417Z:b2cca59d-5a5b-46ba-9d96-a25a4023d5b9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:01 GMT"
+          "Fri, 04 Jun 2021 21:14:17 GMT"
         ],
         "Content-Length": [
-          "2130"
+          "2332"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3\",\r\n  \"name\": \"cosmosdb32-3\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:12:05.5052355Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb32-3.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"80063f01-2e25-4534-8576-501bad973f13\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:13:26.3073556Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb678902.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4956096d-3950-4a0f-a05a-cb8e810b9c16"
+          "b0dc59df-47ed-4e78-9ff8-9fb437214a8a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -213,7 +216,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -222,47 +225,170 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "fafb2907-5286-4d47-abb4-4732a97bfbe9"
+          "ef78ed50-0418-4905-85ec-a391d33a8eae"
         ],
         "x-ms-correlation-request-id": [
-          "fafb2907-5286-4d47-abb4-4732a97bfbe9"
+          "ef78ed50-0418-4905-85ec-a391d33a8eae"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001302Z:fafb2907-5286-4d47-abb4-4732a97bfbe9"
+          "WESTUS2:20210604T211417Z:ef78ed50-0418-4905-85ec-a391d33a8eae"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:01 GMT"
+          "Fri, 04 Jun 2021 21:14:17 GMT"
         ],
         "Content-Length": [
-          "2130"
+          "2332"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3\",\r\n  \"name\": \"cosmosdb32-3\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:12:05.5052355Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb32-3.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"80063f01-2e25-4534-8576-501bad973f13\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb32-3-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:13:26.3073556Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb678902.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"kind\": \"MongoDB\",\r\n  \"properties\": {\r\n    \"createMode\": \"Default\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxStalenessPrefix\": 20,\r\n      \"maxIntervalInSeconds\": 10\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"enableAutomaticFailover\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableFreeTier\": false,\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"enableAnalyticalStorage\": false,\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  }\r\n}",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "101fad23-d93d-41e6-988a-84d9ccbc0036"
+          "7c5b164f-f491-49f7-bdd3-4b1f99cccea6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-request-id": [
+          "5812f86a-70cd-408e-be0c-d818627e7914"
+        ],
+        "x-ms-correlation-request-id": [
+          "5812f86a-70cd-408e-be0c-d818627e7914"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T211418Z:5812f86a-70cd-408e-be0c-d818627e7914"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:14:17 GMT"
+        ],
+        "Content-Length": [
+          "2332"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:13:26.3073556Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb678902.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c5b164f-f491-49f7-bdd3-4b1f99cccea6"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-request-id": [
+          "b521cf7e-fec9-4b14-8152-26abe4642a36"
+        ],
+        "x-ms-correlation-request-id": [
+          "b521cf7e-fec9-4b14-8152-26abe4642a36"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T211451Z:b521cf7e-fec9-4b14-8152-26abe4642a36"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:14:50 GMT"
+        ],
+        "Content-Length": [
+          "2332"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:13:26.3073556Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb678902.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"kind\": \"MongoDB\",\r\n  \"properties\": {\r\n    \"createMode\": \"Default\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxStalenessPrefix\": 20,\r\n      \"maxIntervalInSeconds\": 10\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"enableAutomaticFailover\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableFreeTier\": false,\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"enableAnalyticalStorage\": false,\r\n    \"databaseAccountOfferType\": \"Standard\"\r\n  },\r\n  \"location\": \"East US\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -279,19 +405,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/operationResults/a6b72b32-e137-4161-8886-a4bce3e6bd48?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/operationResults/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview"
         ],
         "x-ms-request-id": [
-          "a6b72b32-e137-4161-8886-a4bce3e6bd48"
+          "e9e08094-8ee9-4b7d-b145-cd4c3f436681"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6b72b32-e137-4161-8886-a4bce3e6bd48?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,38 +426,41 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "1b80ae41-d861-44e7-9a9d-745448ffd0c3"
+          "38cc545d-c5ea-497a-bb68-73f44eaeae45"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001130Z:1b80ae41-d861-44e7-9a9d-745448ffd0c3"
+          "WESTUS2:20210604T211217Z:38cc545d-c5ea-497a-bb68-73f44eaeae45"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:11:29 GMT"
+          "Fri, 04 Jun 2021 21:12:16 GMT"
         ],
         "Content-Length": [
-          "1811"
+          "2006"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3\",\r\n  \"name\": \"cosmosdb32-3\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:11:28.845443Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"80063f01-2e25-4534-8576-501bad973f13\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb32-3-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:12:14.8105367Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6b72b32-e137-4161-8886-a4bce3e6bd48?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZiNzJiMzItZTEzNy00MTYxLTg4ODYtYTRiY2UzZTZiZDQ4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTllMDgwOTQtOGVlOS00YjdkLWIxNDUtY2Q0YzNmNDM2NjgxP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -345,7 +474,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -354,19 +483,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "374a1031-033b-49d8-b084-c12de0abadd4"
+          "ebe7f1a0-8f7b-4e6e-aedc-e1daecd16524"
         ],
         "x-ms-correlation-request-id": [
-          "374a1031-033b-49d8-b084-c12de0abadd4"
+          "ebe7f1a0-8f7b-4e6e-aedc-e1daecd16524"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001201Z:374a1031-033b-49d8-b084-c12de0abadd4"
+          "WESTUS2:20210604T211247Z:ebe7f1a0-8f7b-4e6e-aedc-e1daecd16524"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:12:00 GMT"
+          "Fri, 04 Jun 2021 21:12:46 GMT"
         ],
         "Content-Length": [
           "21"
@@ -379,16 +508,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6b72b32-e137-4161-8886-a4bce3e6bd48?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZiNzJiMzItZTEzNy00MTYxLTg4ODYtYTRiY2UzZTZiZDQ4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTllMDgwOTQtOGVlOS00YjdkLWIxNDUtY2Q0YzNmNDM2NjgxP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -402,7 +534,67 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "9cc80c3d-9866-410d-879b-4ada3cf4b627"
+        ],
+        "x-ms-correlation-request-id": [
+          "9cc80c3d-9866-410d-879b-4ada3cf4b627"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T211317Z:9cc80c3d-9866-410d-879b-4ada3cf4b627"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:13:16 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTllMDgwOTQtOGVlOS00YjdkLWIxNDUtY2Q0YzNmNDM2NjgxP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -411,19 +603,19 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "f30bc8a2-1b7a-488a-8e81-0556cc7986b7"
+          "6c8c55aa-2f2e-4db3-82d6-d8c3bafa73f2"
         ],
         "x-ms-correlation-request-id": [
-          "f30bc8a2-1b7a-488a-8e81-0556cc7986b7"
+          "6c8c55aa-2f2e-4db3-82d6-d8c3bafa73f2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001231Z:f30bc8a2-1b7a-488a-8e81-0556cc7986b7"
+          "WESTUS2:20210604T211347Z:6c8c55aa-2f2e-4db3-82d6-d8c3bafa73f2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:12:30 GMT"
+          "Fri, 04 Jun 2021 21:13:47 GMT"
         ],
         "Content-Length": [
           "21"
@@ -436,16 +628,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a6b72b32-e137-4161-8886-a4bce3e6bd48?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTZiNzJiMzItZTEzNy00MTYxLTg4ODYtYTRiY2UzZTZiZDQ4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e9e08094-8ee9-4b7d-b145-cd4c3f436681?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTllMDgwOTQtOGVlOS00YjdkLWIxNDUtY2Q0YzNmNDM2NjgxP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e70aa74a-115f-4621-993c-c0bc8291088c"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -459,7 +654,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -468,19 +663,19 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "d4d24ffa-59c8-40f8-848a-8a19c5c7cda3"
+          "219c5507-4289-44d6-b8c2-514d71a17a04"
         ],
         "x-ms-correlation-request-id": [
-          "d4d24ffa-59c8-40f8-848a-8a19c5c7cda3"
+          "219c5507-4289-44d6-b8c2-514d71a17a04"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001301Z:d4d24ffa-59c8-40f8-848a-8a19c5c7cda3"
+          "WESTUS2:20210604T211417Z:219c5507-4289-44d6-b8c2-514d71a17a04"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:01 GMT"
+          "Fri, 04 Jun 2021 21:14:17 GMT"
         ],
         "Content-Length": [
           "22"
@@ -493,142 +688,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2RiYWNjb3VudDMyLTE/YXBpLXZlcnNpb249MjAyMC0wNi0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "013e0204-ba0d-4c95-9a13-8b18d8ff76a2"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.11.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "f9078e50-da05-4b08-939a-7ec08c0520b4"
-        ],
-        "x-ms-correlation-request-id": [
-          "f9078e50-da05-4b08-939a-7ec08c0520b4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20210108T001302Z:f9078e50-da05-4b08-939a-7ec08c0520b4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 08 Jan 2021 00:13:01 GMT"
-        ],
-        "Content-Length": [
-          "2092"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1\",\r\n  \"name\": \"dbaccount32-1\",\r\n  \"location\": \"West US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {\r\n    \"defaultExperience\": \"Core (SQL)\",\r\n    \"hidden-cosmos-mmspecial\": \"\",\r\n    \"CosmosAccountType\": \"Non-Production\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:10:14.3490612Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://dbaccount32-1.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"f3ab2086-604f-4203-b59b-584c5df5e904\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2RiYWNjb3VudDMyLTE/YXBpLXZlcnNpb249MjAyMC0wNi0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.29321.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.11.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-request-id": [
-          "57108bd8-c770-4d8c-922b-bc9dc12bd5ed"
-        ],
-        "x-ms-correlation-request-id": [
-          "57108bd8-c770-4d8c-922b-bc9dc12bd5ed"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20210108T001336Z:57108bd8-c770-4d8c-922b-bc9dc12bd5ed"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Fri, 08 Jan 2021 00:13:35 GMT"
-        ],
-        "Content-Length": [
-          "2081"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1\",\r\n  \"name\": \"dbaccount32-1\",\r\n  \"location\": \"West US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:10:14.3490612Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://dbaccount32-1.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"f3ab2086-604f-4203-b59b-584c5df5e904\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2RiYWNjb3VudDMyLTE/YXBpLXZlcnNpb249MjAyMC0wNi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "PATCH",
-      "RequestBody": "{\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Shape\": \"Square\",\r\n    \"Color\": \"Blue\"\r\n  },\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxStalenessPrefix\": 20,\r\n      \"maxIntervalInSeconds\": 10\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"West US\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"enableAutomaticFailover\": true,\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"location\": \"East US\",\r\n  \"properties\": {\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxStalenessPrefix\": 20,\r\n      \"maxIntervalInSeconds\": 10\r\n    },\r\n    \"locations\": [\r\n      {\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"enableAutomaticFailover\": true,\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1f53038d-176a-4eba-b7ee-7a295ea9267c"
+          "7c5b164f-f491-49f7-bdd3-4b1f99cccea6"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -645,19 +720,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1/operationResults/50bfa1b8-eb97-4eea-8391-aa3047b99c44?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/operationResults/e0259fac-a97e-49d9-8c52-0e36e54f5cfa?api-version=2021-03-01-preview"
         ],
         "x-ms-request-id": [
-          "50bfa1b8-eb97-4eea-8391-aa3047b99c44"
+          "e0259fac-a97e-49d9-8c52-0e36e54f5cfa"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/westus/operationsStatus/50bfa1b8-eb97-4eea-8391-aa3047b99c44?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e0259fac-a97e-49d9-8c52-0e36e54f5cfa?api-version=2021-03-01-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -666,38 +741,41 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "a21524c8-514d-452b-bf16-579a4c7f65e0"
+          "41f65576-6721-4c59-88c9-32502e41947a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001306Z:a21524c8-514d-452b-bf16-579a4c7f65e0"
+          "WESTUS2:20210604T211421Z:41f65576-6721-4c59-88c9-32502e41947a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:05 GMT"
+          "Fri, 04 Jun 2021 21:14:20 GMT"
         ],
         "Content-Length": [
-          "2088"
+          "2331"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount32-1\",\r\n  \"name\": \"dbaccount32-1\",\r\n  \"location\": \"West US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {\r\n    \"defaultExperience\": \"Core (SQL)\",\r\n    \"hidden-cosmos-mmspecial\": \"\",\r\n    \"CosmosAccountType\": \"Non-Production\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-01-08T00:10:14.3490612Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"documentEndpoint\": \"https://dbaccount32-1.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"instanceId\": \"f3ab2086-604f-4203-b59b-584c5df5e904\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Updating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Updating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"documentEndpoint\": \"https://dbaccount32-1-westus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Updating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"dbaccount32-1-westus\",\r\n        \"locationName\": \"West US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902\",\r\n  \"name\": \"cosmosdb678902\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {\r\n    \"name\": \"test\",\r\n    \"Color\": \"Blue\",\r\n    \"Shape\": \"Square\"\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2021-06-04T21:13:26.3073556Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"documentEndpoint\": \"https://cosmosdb678902.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": true,\r\n    \"enableMultipleWriteLocations\": true,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": true,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": null,\r\n    \"instanceId\": \"6eb45f88-f356-4698-960a-67a2568f598f\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableCassandraConnector\": false,\r\n    \"connectorOffer\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"BoundedStaleness\",\r\n      \"maxIntervalInSeconds\": 10,\r\n      \"maxStalenessPrefix\": 20\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.2\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb678902-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb678902-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [],\r\n    \"ipRules\": [\r\n      {\r\n        \"ipAddressOrRange\": \"201.168.50.1\"\r\n      }\r\n    ],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": []\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/westus/operationsStatus/50bfa1b8-eb97-4eea-8391-aa3047b99c44?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvd2VzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTBiZmExYjgtZWI5Ny00ZWVhLTgzOTEtYWEzMDQ3Yjk5YzQ0P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e0259fac-a97e-49d9-8c52-0e36e54f5cfa?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTAyNTlmYWMtYTk3ZS00OWQ5LThjNTItMGUzNmU1NGY1Y2ZhP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c5b164f-f491-49f7-bdd3-4b1f99cccea6"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -711,7 +789,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -720,19 +798,19 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "1bfafcc3-c2c2-44a6-8ae3-b71d1dde6989"
+          "4473e1d0-9582-4df5-bb52-bcf221eb8ac4"
         ],
         "x-ms-correlation-request-id": [
-          "1bfafcc3-c2c2-44a6-8ae3-b71d1dde6989"
+          "4473e1d0-9582-4df5-bb52-bcf221eb8ac4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001336Z:1bfafcc3-c2c2-44a6-8ae3-b71d1dde6989"
+          "WESTUS2:20210604T211451Z:4473e1d0-9582-4df5-bb52-bcf221eb8ac4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:35 GMT"
+          "Fri, 04 Jun 2021 21:14:50 GMT"
         ],
         "Content-Length": [
           "22"
@@ -745,22 +823,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/listKeys?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/listKeys?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a11ad6b0-0918-4267-9bb0-1113f6a310b8"
+          "8595540a-01b0-47b3-b50c-63617fa03aec"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -774,7 +852,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -783,19 +861,19 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "d7b5777f-9872-4927-b625-adea6173f4e0"
+          "76852343-f67a-45d7-a3d1-fa85778ee97b"
         ],
         "x-ms-correlation-request-id": [
-          "d7b5777f-9872-4927-b625-adea6173f4e0"
+          "76852343-f67a-45d7-a3d1-fa85778ee97b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001337Z:d7b5777f-9872-4927-b625-adea6173f4e0"
+          "WESTUS2:20210604T211451Z:76852343-f67a-45d7-a3d1-fa85778ee97b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:36 GMT"
+          "Fri, 04 Jun 2021 21:14:50 GMT"
         ],
         "Content-Length": [
           "461"
@@ -804,26 +882,26 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"MVGKpQtE6LznhF4p25BnJC9AnX13cR1BQTantFgIOwDfPThgvSd6clHiT946fxRTn03WeAy7wkCvJAQM2l1l2w==\",\r\n  \"secondaryMasterKey\": \"qFNHJ7N3NhipYf0I5evKHoUyO5UuLx4vNXwz3uTJ3hfQGc7EUbEtq7lzGaLFsN9hfjajudT5cr7fzQm8uwkcbw==\",\r\n  \"primaryReadonlyMasterKey\": \"XGKL895LvfQlUxjchmcOENZOduDp4t23stONmjpAQuNdgIngpB9NQSci2DgTKgGfzCBezldGZHRB6rZXpo28rg==\",\r\n  \"secondaryReadonlyMasterKey\": \"bZbKghiw0OLWVaHP9SDdQF9jW2XQH35PFEJ7aKqOFZHstBQI2nPghHJsxIIHGAHAGbweV7vPA9Hsz4kEUxLQxQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"3d9Ld5z99GtmYjGy8PZoeQf00qdCuqnBMyGqosYDJiI3hCr50icb8YI9PP18zPNjVZIZ1xqqvrFNPL90XpJXqA==\",\r\n  \"secondaryMasterKey\": \"GpJhgt2xkfH0kXLJSEIwKpcOkQmtslI0TQITf8TEy5mt3Kn6mfK5Iy7L6eUXrj00MtKOEArIRD11R0aU4lFjcw==\",\r\n  \"primaryReadonlyMasterKey\": \"9jvWeMne3aa5mMYcNmNwv8AcCBhIcHoiYDfcZRBQPVz5Esg9XQiMyDcLQgLVXNKatTuy2fGlB4jHk0J94tnFMA==\",\r\n  \"secondaryReadonlyMasterKey\": \"Rgdn0dIqcUNqupz06mQLLjwjykFuJRUjdjQd4h0FktSCWi8PRrWJRn7UzyKvFYHCNRiY5tdPsPnHzDrbPoOhEw==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/listKeys?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9saXN0S2V5cz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/listKeys?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL2xpc3RLZXlzP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "129e4cf3-4232-4736-ae0b-345c2616eaad"
+          "ca99248e-0659-40d2-9b52-fea9017b7224"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -837,7 +915,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -846,19 +924,19 @@
           "1195"
         ],
         "x-ms-request-id": [
-          "a3f56912-5bff-489b-aa7c-f72245d44696"
+          "6fae152d-bc29-4213-a55c-db2348aa97e2"
         ],
         "x-ms-correlation-request-id": [
-          "a3f56912-5bff-489b-aa7c-f72245d44696"
+          "6fae152d-bc29-4213-a55c-db2348aa97e2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001409Z:a3f56912-5bff-489b-aa7c-f72245d44696"
+          "WESTUS2:20210604T211524Z:6fae152d-bc29-4213-a55c-db2348aa97e2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:14:09 GMT"
+          "Fri, 04 Jun 2021 21:15:23 GMT"
         ],
         "Content-Length": [
           "461"
@@ -867,26 +945,26 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"dPdMoNZhG1gSEVjFBmZXhzjjCqlWoD2SukoR3VkrAbqyAc8vRnDlsGjDf7QsYszuCST5PTOLDPVHytAUfSRADA==\",\r\n  \"secondaryMasterKey\": \"qFNHJ7N3NhipYf0I5evKHoUyO5UuLx4vNXwz3uTJ3hfQGc7EUbEtq7lzGaLFsN9hfjajudT5cr7fzQm8uwkcbw==\",\r\n  \"primaryReadonlyMasterKey\": \"XGKL895LvfQlUxjchmcOENZOduDp4t23stONmjpAQuNdgIngpB9NQSci2DgTKgGfzCBezldGZHRB6rZXpo28rg==\",\r\n  \"secondaryReadonlyMasterKey\": \"bZbKghiw0OLWVaHP9SDdQF9jW2XQH35PFEJ7aKqOFZHstBQI2nPghHJsxIIHGAHAGbweV7vPA9Hsz4kEUxLQxQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryMasterKey\": \"nRjH2NuY5djqd2G3QKBIGzxYikTpUjzEaaercrcZveusKAwSywnkfVqk0qWHa5SytcjbiD7xhMY2lGNa7O7efw==\",\r\n  \"secondaryMasterKey\": \"GpJhgt2xkfH0kXLJSEIwKpcOkQmtslI0TQITf8TEy5mt3Kn6mfK5Iy7L6eUXrj00MtKOEArIRD11R0aU4lFjcw==\",\r\n  \"primaryReadonlyMasterKey\": \"9jvWeMne3aa5mMYcNmNwv8AcCBhIcHoiYDfcZRBQPVz5Esg9XQiMyDcLQgLVXNKatTuy2fGlB4jHk0J94tnFMA==\",\r\n  \"secondaryReadonlyMasterKey\": \"Rgdn0dIqcUNqupz06mQLLjwjykFuJRUjdjQd4h0FktSCWi8PRrWJRn7UzyKvFYHCNRiY5tdPsPnHzDrbPoOhEw==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/listConnectionStrings?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9saXN0Q29ubmVjdGlvblN0cmluZ3M/YXBpLXZlcnNpb249MjAyMC0wNi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/listConnectionStrings?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL2xpc3RDb25uZWN0aW9uU3RyaW5ncz9hcGktdmVyc2lvbj0yMDIxLTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7ada94e2-dcec-43de-b056-82706e145804"
+          "3e2083c8-3585-4127-b2b2-80fe7072664e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -900,7 +978,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -909,47 +987,47 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "b8d3b79c-4c30-4997-89b9-0364d8a4adf3"
+          "97cd69d4-4096-41a8-b270-ec627a144ef4"
         ],
         "x-ms-correlation-request-id": [
-          "b8d3b79c-4c30-4997-89b9-0364d8a4adf3"
+          "97cd69d4-4096-41a8-b270-ec627a144ef4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001337Z:b8d3b79c-4c30-4997-89b9-0364d8a4adf3"
+          "WESTUS2:20210604T211452Z:97cd69d4-4096-41a8-b270-ec627a144ef4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:36 GMT"
+          "Fri, 04 Jun 2021 21:14:51 GMT"
         ],
         "Content-Length": [
-          "1063"
+          "1079"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"connectionStrings\": [\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb32-3:MVGKpQtE6LznhF4p25BnJC9AnX13cR1BQTantFgIOwDfPThgvSd6clHiT946fxRTn03WeAy7wkCvJAQM2l1l2w==@cosmosdb32-3.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb32-3:qFNHJ7N3NhipYf0I5evKHoUyO5UuLx4vNXwz3uTJ3hfQGc7EUbEtq7lzGaLFsN9hfjajudT5cr7fzQm8uwkcbw==@cosmosdb32-3.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb32-3:XGKL895LvfQlUxjchmcOENZOduDp4t23stONmjpAQuNdgIngpB9NQSci2DgTKgGfzCBezldGZHRB6rZXpo28rg==@cosmosdb32-3.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary Read-Only MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb32-3:bZbKghiw0OLWVaHP9SDdQF9jW2XQH35PFEJ7aKqOFZHstBQI2nPghHJsxIIHGAHAGbweV7vPA9Hsz4kEUxLQxQ==@cosmosdb32-3.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary Read-Only MongoDB Connection String\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"connectionStrings\": [\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb678902:3d9Ld5z99GtmYjGy8PZoeQf00qdCuqnBMyGqosYDJiI3hCr50icb8YI9PP18zPNjVZIZ1xqqvrFNPL90XpJXqA==@cosmosdb678902.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb678902:GpJhgt2xkfH0kXLJSEIwKpcOkQmtslI0TQITf8TEy5mt3Kn6mfK5Iy7L6eUXrj00MtKOEArIRD11R0aU4lFjcw==@cosmosdb678902.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb678902:9jvWeMne3aa5mMYcNmNwv8AcCBhIcHoiYDfcZRBQPVz5Esg9XQiMyDcLQgLVXNKatTuy2fGlB4jHk0J94tnFMA==@cosmosdb678902.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Primary Read-Only MongoDB Connection String\"\r\n    },\r\n    {\r\n      \"connectionString\": \"mongodb://cosmosdb678902:Rgdn0dIqcUNqupz06mQLLjwjykFuJRUjdjQd4h0FktSCWi8PRrWJRn7UzyKvFYHCNRiY5tdPsPnHzDrbPoOhEw==@cosmosdb678902.documents.azure.com:10255/?ssl=true&replicaSet=globaldb\",\r\n      \"description\": \"Secondary Read-Only MongoDB Connection String\"\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/readonlykeys?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9yZWFkb25seWtleXM/YXBpLXZlcnNpb249MjAyMC0wNi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/readonlykeys?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL3JlYWRvbmx5a2V5cz9hcGktdmVyc2lvbj0yMDIxLTAzLTAxLXByZXZpZXc=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "16363574-55e6-4100-a4a7-e898e318bcb2"
+          "91187b49-2f1c-4ddd-b208-c23ff750e75a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -963,7 +1041,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -972,19 +1050,19 @@
           "1197"
         ],
         "x-ms-request-id": [
-          "4ed08c61-9c69-4183-8801-d30db23ed9c9"
+          "2626bcfc-5c76-4eb4-862e-e64a4f7fe3c9"
         ],
         "x-ms-correlation-request-id": [
-          "4ed08c61-9c69-4183-8801-d30db23ed9c9"
+          "2626bcfc-5c76-4eb4-862e-e64a4f7fe3c9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001337Z:4ed08c61-9c69-4183-8801-d30db23ed9c9"
+          "WESTUS2:20210604T211452Z:2626bcfc-5c76-4eb4-862e-e64a4f7fe3c9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:37 GMT"
+          "Fri, 04 Jun 2021 21:14:51 GMT"
         ],
         "Content-Length": [
           "239"
@@ -993,26 +1071,26 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"primaryReadonlyMasterKey\": \"XGKL895LvfQlUxjchmcOENZOduDp4t23stONmjpAQuNdgIngpB9NQSci2DgTKgGfzCBezldGZHRB6rZXpo28rg==\",\r\n  \"secondaryReadonlyMasterKey\": \"bZbKghiw0OLWVaHP9SDdQF9jW2XQH35PFEJ7aKqOFZHstBQI2nPghHJsxIIHGAHAGbweV7vPA9Hsz4kEUxLQxQ==\"\r\n}",
+      "ResponseBody": "{\r\n  \"primaryReadonlyMasterKey\": \"9jvWeMne3aa5mMYcNmNwv8AcCBhIcHoiYDfcZRBQPVz5Esg9XQiMyDcLQgLVXNKatTuy2fGlB4jHk0J94tnFMA==\",\r\n  \"secondaryReadonlyMasterKey\": \"Rgdn0dIqcUNqupz06mQLLjwjykFuJRUjdjQd4h0FktSCWi8PRrWJRn7UzyKvFYHCNRiY5tdPsPnHzDrbPoOhEw==\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/regenerateKey?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9yZWdlbmVyYXRlS2V5P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/regenerateKey?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL3JlZ2VuZXJhdGVLZXk/YXBpLXZlcnNpb249MjAyMS0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"keyKind\": \"primary\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dad6dde9-6bc6-4a3c-8dbf-7a09f151eaca"
+          "ca99248e-0659-40d2-9b52-fea9017b7224"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1029,19 +1107,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/regenerateKey/operationResults/146fccc6-7b5d-4e13-9e1c-4f1c5998b732?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/regenerateKey/operationResults/abcf2f41-8ad1-48dc-bb55-1ec0f2beda64?api-version=2021-03-01-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/146fccc6-7b5d-4e13-9e1c-4f1c5998b732?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/abcf2f41-8ad1-48dc-bb55-1ec0f2beda64?api-version=2021-03-01-preview"
         ],
         "x-ms-request-id": [
-          "146fccc6-7b5d-4e13-9e1c-4f1c5998b732"
+          "abcf2f41-8ad1-48dc-bb55-1ec0f2beda64"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1050,16 +1128,16 @@
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "9ec5dec5-02d4-4981-a456-e419c2b03391"
+          "eeea0036-0832-4419-a7ae-f8101bac7f7e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001339Z:9ec5dec5-02d4-4981-a456-e419c2b03391"
+          "WESTUS2:20210604T211453Z:eeea0036-0832-4419-a7ae-f8101bac7f7e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:13:38 GMT"
+          "Fri, 04 Jun 2021 21:14:52 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1072,16 +1150,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/146fccc6-7b5d-4e13-9e1c-4f1c5998b732?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMTQ2ZmNjYzYtN2I1ZC00ZTEzLTllMWMtNGYxYzU5OThiNzMyP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/abcf2f41-8ad1-48dc-bb55-1ec0f2beda64?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYWJjZjJmNDEtOGFkMS00OGRjLWJiNTUtMWVjMGYyYmVkYTY0P2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca99248e-0659-40d2-9b52-fea9017b7224"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1095,7 +1176,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1104,19 +1185,19 @@
           "11989"
         ],
         "x-ms-request-id": [
-          "a3b34d77-97e6-4430-bd0d-e94667bee67c"
+          "bba14ca6-d4ed-46c7-a8c2-ad5749457727"
         ],
         "x-ms-correlation-request-id": [
-          "a3b34d77-97e6-4430-bd0d-e94667bee67c"
+          "bba14ca6-d4ed-46c7-a8c2-ad5749457727"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001409Z:a3b34d77-97e6-4430-bd0d-e94667bee67c"
+          "WESTUS2:20210604T211523Z:bba14ca6-d4ed-46c7-a8c2-ad5749457727"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:14:09 GMT"
+          "Fri, 04 Jun 2021 21:15:23 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1129,16 +1210,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3/regenerateKey/operationResults/146fccc6-7b5d-4e13-9e1c-4f1c5998b732?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMy9yZWdlbmVyYXRlS2V5L29wZXJhdGlvblJlc3VsdHMvMTQ2ZmNjYzYtN2I1ZC00ZTEzLTllMWMtNGYxYzU5OThiNzMyP2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902/regenerateKey/operationResults/abcf2f41-8ad1-48dc-bb55-1ec0f2beda64?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyL3JlZ2VuZXJhdGVLZXkvb3BlcmF0aW9uUmVzdWx0cy9hYmNmMmY0MS04YWQxLTQ4ZGMtYmI1NS0xZWMwZjJiZWRhNjQ/YXBpLXZlcnNpb249MjAyMS0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca99248e-0659-40d2-9b52-fea9017b7224"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1152,7 +1236,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1161,19 +1245,19 @@
           "11988"
         ],
         "x-ms-request-id": [
-          "d68f4e16-28a2-41ae-9f6f-44e0396a75ef"
+          "55484226-ae11-4579-b962-641659a3f7fd"
         ],
         "x-ms-correlation-request-id": [
-          "d68f4e16-28a2-41ae-9f6f-44e0396a75ef"
+          "55484226-ae11-4579-b962-641659a3f7fd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001409Z:d68f4e16-28a2-41ae-9f6f-44e0396a75ef"
+          "WESTUS2:20210604T211523Z:55484226-ae11-4579-b962-641659a3f7fd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:14:09 GMT"
+          "Fri, 04 Jun 2021 21:15:23 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1186,22 +1270,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup32/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb32-3?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDMyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiMzItMz9hcGktdmVyc2lvbj0yMDIwLTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/CosmosDBResourceGroup91/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb678902?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDkxL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiNjc4OTAyP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e437fad0-586b-4f0d-92f4-c1547d72bafc"
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1212,19 +1296,19 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationResults/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationResults/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview"
+          "https://management.azure.com/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview"
         ],
         "x-ms-request-id": [
-          "0465312f-30b7-47f2-af55-d58043fb9498"
+          "95179f50-b642-4a7b-b709-ae92553b4de0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1233,16 +1317,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "6541810e-777a-46f3-9227-582de04b2d7f"
+          "afa407a6-21d4-4ca7-9d2a-291a173e310a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001412Z:6541810e-777a-46f3-9227-582de04b2d7f"
+          "WESTUS2:20210604T211525Z:afa407a6-21d4-4ca7-9d2a-291a173e310a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:14:12 GMT"
+          "Fri, 04 Jun 2021 21:15:25 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1255,16 +1339,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1278,7 +1365,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1287,19 +1374,19 @@
           "11987"
         ],
         "x-ms-request-id": [
-          "c5c1d705-1f50-4df0-bb1a-71d4036b3868"
+          "f1b15827-a4a5-4a55-b843-af4b6741c2d1"
         ],
         "x-ms-correlation-request-id": [
-          "c5c1d705-1f50-4df0-bb1a-71d4036b3868"
+          "f1b15827-a4a5-4a55-b843-af4b6741c2d1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001442Z:c5c1d705-1f50-4df0-bb1a-71d4036b3868"
+          "WESTUS2:20210604T211555Z:f1b15827-a4a5-4a55-b843-af4b6741c2d1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:14:41 GMT"
+          "Fri, 04 Jun 2021 21:15:55 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1312,16 +1399,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1335,7 +1425,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1344,19 +1434,19 @@
           "11986"
         ],
         "x-ms-request-id": [
-          "12e23ee6-2b55-47a3-96e7-eda6c42fc91b"
+          "a80e138d-0e63-4ca3-a043-315fb1476610"
         ],
         "x-ms-correlation-request-id": [
-          "12e23ee6-2b55-47a3-96e7-eda6c42fc91b"
+          "a80e138d-0e63-4ca3-a043-315fb1476610"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001512Z:12e23ee6-2b55-47a3-96e7-eda6c42fc91b"
+          "WESTUS2:20210604T211626Z:a80e138d-0e63-4ca3-a043-315fb1476610"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:15:12 GMT"
+          "Fri, 04 Jun 2021 21:16:25 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1369,16 +1459,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1392,7 +1485,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1401,19 +1494,19 @@
           "11985"
         ],
         "x-ms-request-id": [
-          "7c483b13-57c4-4b5b-94ff-eeb9b91a7076"
+          "c4c4f32b-5d1c-4913-8ef4-983b6bd7e9a0"
         ],
         "x-ms-correlation-request-id": [
-          "7c483b13-57c4-4b5b-94ff-eeb9b91a7076"
+          "c4c4f32b-5d1c-4913-8ef4-983b6bd7e9a0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001542Z:7c483b13-57c4-4b5b-94ff-eeb9b91a7076"
+          "WESTUS2:20210604T211656Z:c4c4f32b-5d1c-4913-8ef4-983b6bd7e9a0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:15:42 GMT"
+          "Fri, 04 Jun 2021 21:16:55 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1426,16 +1519,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1449,7 +1545,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1458,19 +1554,19 @@
           "11984"
         ],
         "x-ms-request-id": [
-          "186b637a-b4df-47f6-b3a1-0201111e5dc1"
+          "9f8f9cd2-9365-4613-8f5f-98b7ccd84719"
         ],
         "x-ms-correlation-request-id": [
-          "186b637a-b4df-47f6-b3a1-0201111e5dc1"
+          "9f8f9cd2-9365-4613-8f5f-98b7ccd84719"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001612Z:186b637a-b4df-47f6-b3a1-0201111e5dc1"
+          "WESTUS2:20210604T211726Z:9f8f9cd2-9365-4613-8f5f-98b7ccd84719"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:16:12 GMT"
+          "Fri, 04 Jun 2021 21:17:26 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1483,16 +1579,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1506,7 +1605,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1515,19 +1614,19 @@
           "11983"
         ],
         "x-ms-request-id": [
-          "e5f1fd75-0ea9-4162-93ae-141aadef7cf1"
+          "12719a1a-2ac6-4678-a27c-bc63565d6819"
         ],
         "x-ms-correlation-request-id": [
-          "e5f1fd75-0ea9-4162-93ae-141aadef7cf1"
+          "12719a1a-2ac6-4678-a27c-bc63565d6819"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001642Z:e5f1fd75-0ea9-4162-93ae-141aadef7cf1"
+          "WESTUS2:20210604T211756Z:12719a1a-2ac6-4678-a27c-bc63565d6819"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:16:42 GMT"
+          "Fri, 04 Jun 2021 21:17:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1540,16 +1639,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1563,7 +1665,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1572,19 +1674,19 @@
           "11982"
         ],
         "x-ms-request-id": [
-          "5514c643-0132-4d67-983b-7193daeee78a"
+          "1f624c17-a7a4-4d94-b1cf-303be43ebe3a"
         ],
         "x-ms-correlation-request-id": [
-          "5514c643-0132-4d67-983b-7193daeee78a"
+          "1f624c17-a7a4-4d94-b1cf-303be43ebe3a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001713Z:5514c643-0132-4d67-983b-7193daeee78a"
+          "WESTUS2:20210604T211826Z:1f624c17-a7a4-4d94-b1cf-303be43ebe3a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:17:12 GMT"
+          "Fri, 04 Jun 2021 21:18:25 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1597,16 +1699,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1620,7 +1725,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1629,19 +1734,19 @@
           "11981"
         ],
         "x-ms-request-id": [
-          "273e08b3-e185-4891-81c9-02da29240d01"
+          "d346a3bd-7b0e-47bc-af28-5fb39863206a"
         ],
         "x-ms-correlation-request-id": [
-          "273e08b3-e185-4891-81c9-02da29240d01"
+          "d346a3bd-7b0e-47bc-af28-5fb39863206a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001743Z:273e08b3-e185-4891-81c9-02da29240d01"
+          "WESTUS2:20210604T211856Z:d346a3bd-7b0e-47bc-af28-5fb39863206a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:17:43 GMT"
+          "Fri, 04 Jun 2021 21:18:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1654,16 +1759,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1677,7 +1785,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1686,19 +1794,19 @@
           "11980"
         ],
         "x-ms-request-id": [
-          "1c6a19d9-0821-480f-8382-01cc6a52e5b2"
+          "c3e12e21-a520-43bd-a484-579c768393f5"
         ],
         "x-ms-correlation-request-id": [
-          "1c6a19d9-0821-480f-8382-01cc6a52e5b2"
+          "c3e12e21-a520-43bd-a484-579c768393f5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001813Z:1c6a19d9-0821-480f-8382-01cc6a52e5b2"
+          "WESTUS2:20210604T211927Z:c3e12e21-a520-43bd-a484-579c768393f5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:18:13 GMT"
+          "Fri, 04 Jun 2021 21:19:26 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1711,16 +1819,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1734,7 +1845,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1743,19 +1854,19 @@
           "11979"
         ],
         "x-ms-request-id": [
-          "d49b0bf9-6f5d-4a2d-b146-6922ce7709a5"
+          "1a1eba3d-2005-4531-82ac-b3a840e21341"
         ],
         "x-ms-correlation-request-id": [
-          "d49b0bf9-6f5d-4a2d-b146-6922ce7709a5"
+          "1a1eba3d-2005-4531-82ac-b3a840e21341"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001843Z:d49b0bf9-6f5d-4a2d-b146-6922ce7709a5"
+          "WESTUS2:20210604T211957Z:1a1eba3d-2005-4531-82ac-b3a840e21341"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:18:43 GMT"
+          "Fri, 04 Jun 2021 21:19:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1768,16 +1879,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1791,7 +1905,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1800,19 +1914,19 @@
           "11978"
         ],
         "x-ms-request-id": [
-          "9c8603e1-2a42-482b-a3f2-44b793d26366"
+          "b9dc8a8c-f70a-4bed-9b0b-013cb940c5c8"
         ],
         "x-ms-correlation-request-id": [
-          "9c8603e1-2a42-482b-a3f2-44b793d26366"
+          "b9dc8a8c-f70a-4bed-9b0b-013cb940c5c8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001913Z:9c8603e1-2a42-482b-a3f2-44b793d26366"
+          "WESTUS2:20210604T212027Z:b9dc8a8c-f70a-4bed-9b0b-013cb940c5c8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:19:12 GMT"
+          "Fri, 04 Jun 2021 21:20:26 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1825,16 +1939,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1848,7 +1965,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1857,19 +1974,19 @@
           "11977"
         ],
         "x-ms-request-id": [
-          "b7d7214d-81e3-41d1-a93d-b8c680cacbb6"
+          "4db44c34-fe8e-47b0-937f-7fb479f71e03"
         ],
         "x-ms-correlation-request-id": [
-          "b7d7214d-81e3-41d1-a93d-b8c680cacbb6"
+          "4db44c34-fe8e-47b0-937f-7fb479f71e03"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T001943Z:b7d7214d-81e3-41d1-a93d-b8c680cacbb6"
+          "WESTUS2:20210604T212057Z:4db44c34-fe8e-47b0-937f-7fb479f71e03"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:19:42 GMT"
+          "Fri, 04 Jun 2021 21:20:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1882,16 +1999,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1905,7 +2025,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1914,19 +2034,19 @@
           "11976"
         ],
         "x-ms-request-id": [
-          "e4fc79f8-a146-4259-bdf2-5881ac59ffd9"
+          "f78354f6-0208-468a-b901-a2d8e7274392"
         ],
         "x-ms-correlation-request-id": [
-          "e4fc79f8-a146-4259-bdf2-5881ac59ffd9"
+          "f78354f6-0208-468a-b901-a2d8e7274392"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T002013Z:e4fc79f8-a146-4259-bdf2-5881ac59ffd9"
+          "WESTUS2:20210604T212127Z:f78354f6-0208-468a-b901-a2d8e7274392"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:20:12 GMT"
+          "Fri, 04 Jun 2021 21:21:27 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1939,16 +2059,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1962,7 +2085,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1971,19 +2094,19 @@
           "11975"
         ],
         "x-ms-request-id": [
-          "c96619f8-75f0-4f2f-b8c5-2f6e27eb71f8"
+          "571d1cff-a2af-4be5-a08f-872203c56122"
         ],
         "x-ms-correlation-request-id": [
-          "c96619f8-75f0-4f2f-b8c5-2f6e27eb71f8"
+          "571d1cff-a2af-4be5-a08f-872203c56122"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T002044Z:c96619f8-75f0-4f2f-b8c5-2f6e27eb71f8"
+          "WESTUS2:20210604T212157Z:571d1cff-a2af-4be5-a08f-872203c56122"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:20:44 GMT"
+          "Fri, 04 Jun 2021 21:21:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1996,16 +2119,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2019,7 +2145,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2028,19 +2154,19 @@
           "11974"
         ],
         "x-ms-request-id": [
-          "059e2d6c-7e28-42e5-ae79-3c15a1124dba"
+          "14fafe0a-ba86-45b4-a3d8-e683a6bdb581"
         ],
         "x-ms-correlation-request-id": [
-          "059e2d6c-7e28-42e5-ae79-3c15a1124dba"
+          "14fafe0a-ba86-45b4-a3d8-e683a6bdb581"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T002114Z:059e2d6c-7e28-42e5-ae79-3c15a1124dba"
+          "WESTUS2:20210604T212227Z:14fafe0a-ba86-45b4-a3d8-e683a6bdb581"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:21:14 GMT"
+          "Fri, 04 Jun 2021 21:22:26 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2053,16 +2179,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2076,7 +2205,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-gatewayversion": [
-          "version=2.11.0"
+          "version=2.14.0"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2085,19 +2214,199 @@
           "11973"
         ],
         "x-ms-request-id": [
-          "7a3bf6d1-fc96-4060-80c5-5c4f63ca2d5d"
+          "4c04480f-176f-4999-b976-f5400f66a6c6"
         ],
         "x-ms-correlation-request-id": [
-          "7a3bf6d1-fc96-4060-80c5-5c4f63ca2d5d"
+          "4c04480f-176f-4999-b976-f5400f66a6c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T002144Z:7a3bf6d1-fc96-4060-80c5-5c4f63ca2d5d"
+          "WESTUS2:20210604T212257Z:4c04480f-176f-4999-b976-f5400f66a6c6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:21:44 GMT"
+          "Fri, 04 Jun 2021 21:22:57 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11972"
+        ],
+        "x-ms-request-id": [
+          "5f33dcc1-fe34-4b8d-995f-6dce00b103b8"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f33dcc1-fe34-4b8d-995f-6dce00b103b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T212328Z:5f33dcc1-fe34-4b8d-995f-6dce00b103b8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:23:27 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11971"
+        ],
+        "x-ms-request-id": [
+          "0e1684cd-60be-4520-bff7-a8671c74ba93"
+        ],
+        "x-ms-correlation-request-id": [
+          "0e1684cd-60be-4520-bff7-a8671c74ba93"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T212358Z:0e1684cd-60be-4520-bff7-a8671c74ba93"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:23:57 GMT"
+        ],
+        "Content-Length": [
+          "21"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.28207.03",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11970"
+        ],
+        "x-ms-request-id": [
+          "c64f732f-ae1d-43d0-8faf-54be86aa165e"
+        ],
+        "x-ms-correlation-request-id": [
+          "c64f732f-ae1d-43d0-8faf-54be86aa165e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20210604T212428Z:c64f732f-ae1d-43d0-8faf-54be86aa165e"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Fri, 04 Jun 2021 21:24:27 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2110,16 +2419,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/providers/Microsoft.DocumentDB/locations/eastus/operationResults/0465312f-30b7-47f2-af55-d58043fb9498?api-version=2020-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblJlc3VsdHMvMDQ2NTMxMmYtMzBiNy00N2YyLWFmNTUtZDU4MDQzZmI5NDk4P2FwaS12ZXJzaW9uPTIwMjAtMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/providers/Microsoft.DocumentDB/locations/eastus/operationResults/95179f50-b642-4a7b-b709-ae92553b4de0?api-version=2021-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGQzMWVjYWUtNDUyMi00NjhlLThiMjctNWJlZmQwNTFkZDUzL3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvblJlc3VsdHMvOTUxNzlmNTAtYjY0Mi00YTdiLWI3MDktYWU5MjU1M2I0ZGUwP2FwaS12ZXJzaW9uPTIwMjEtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
+        ],
         "User-Agent": [
-          "FxVersion/4.6.29321.03",
+          "FxVersion/4.6.28207.03",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.17763.",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.3.3.0"
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2133,28 +2445,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "0a810498-c72f-47d9-a6d1-03ea440072e0"
+          "c56443ae-e150-4fb3-88ff-861d7699b8ab"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11972"
+          "11969"
         ],
         "x-ms-request-id": [
-          "360cc7d1-9ea8-404f-b3fc-d9e8836a148b"
+          "e3e66df0-99e1-4bed-94c6-37e83d94756d"
         ],
         "x-ms-correlation-request-id": [
-          "360cc7d1-9ea8-404f-b3fc-d9e8836a148b"
+          "e3e66df0-99e1-4bed-94c6-37e83d94756d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20210108T002144Z:360cc7d1-9ea8-404f-b3fc-d9e8836a148b"
+          "WESTUS2:20210604T212428Z:e3e66df0-99e1-4bed-94c6-37e83d94756d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 08 Jan 2021 00:21:44 GMT"
+          "Fri, 04 Jun 2021 21:24:27 GMT"
         ],
         "Content-Length": [
           "0"
@@ -2166,6 +2478,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "259fbb24-9bcd-4cfc-865c-fc33b22fe38a"
+    "SubscriptionId": "dd31ecae-4522-468e-8b27-5befd051dd53"
   }
 }

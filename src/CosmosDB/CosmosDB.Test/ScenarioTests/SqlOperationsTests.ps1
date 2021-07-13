@@ -18,20 +18,21 @@ Test SQL CRUD operations using Name parameter set
 #>
 function Test-SqlOperationsCmdlets
 {
-  $AccountName = "dbaccount27-1"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "dbaccount60-1"
+  $rgName = "CosmosDBResourceGroup60"
   $DatabaseName = "dbName"
   $ContainerName = "container1"
   $StoredProcedureName = "storedProcedure"
   $UDFName = "udf"
   $TriggerName = "trigger"
-
+  $location = "East US"
   $DatabaseName2 = "dbName2"
   $ContainerName2 = "container2"
   $StoredProcedureName2 = "storedProcedure2"
   $UDFName2 = "udf2"
   $TriggerName2 = "trigger2"
-
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
   $PartitionKeyPathValue = "/foo/bar"
   $PartitionKeyKindValue = "Hash"
 
@@ -44,8 +45,13 @@ function Test-SqlOperationsCmdlets
 
   $TriggerOperation = "All"
   $TriggerType = "Pre"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       # create a new database
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $NewDatabase.Name $DatabaseName
@@ -274,8 +280,8 @@ Test SQL CRUD operations using input object and parent object set
 #>
 function Test-SqlOperationsCmdletsUsingInputObject
 {
-  $AccountName = "dbaccount27-1"
-  $rgName = "CosmosDBResourceGroup27"
+  $AccountName = "dbaccount61-1"
+  $rgName = "CosmosDBResourceGroup61"
   $DatabaseName = "dbName"
   $ContainerName = "container1"
   $StoredProcedureName = "storedProcedure"
@@ -300,9 +306,17 @@ function Test-SqlOperationsCmdletsUsingInputObject
 
   $TriggerOperation = "All"
   $TriggerType = "Pre"
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
       
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       # get the database account object
       $cosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $AccountName
 
@@ -489,8 +503,8 @@ Test SQL throughput cmdlets using all parameter sets
 #>
 function Test-SqlThroughputCmdlets
 {
-  $AccountName = "dbaccount29-1"
-  $rgName = "CosmosDBResourceGroup29"
+  $AccountName = "dbaccount62-1"
+  $rgName = "CosmosDBResourceGroup62"
   $DatabaseName = "dbName3"
   $ContainerName = "containerName"
 
@@ -513,8 +527,16 @@ function Test-SqlThroughputCmdlets
   $AutoscaleUpdatedContainerThroughput = 10000
   $AutoscaleDatabaseThroughput = 8000
   $AutoscaleUpdatedDatabaseThroughput = 12000
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+
       $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput  $ThroughputValue
       $Throughput = Get-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
       Assert-AreEqual $Throughput.Throughput $ThroughputValue
@@ -577,10 +599,18 @@ Test SQL Roles cmdlets using all parameter sets
 #>
 function Test-SqlRoleCmdlets
 {
-  $AccountName = "rbactestps"
-  $rgName = "rgtest9921232812"
+  $AccountName = "rbactestps73"
+  $rgName = "rgtest9921232873"
+  $location = "East US"
   $subscriptionId = $(getVariable "SubscriptionId")
 
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $maxStalenessInterval = 300
+  $maxStalenessPrefix = 100000
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 0 -IsZoneRedundant 0
+  
   $DatabaseName = "dbName"
 
   $RoleName = "roleDefinitionName"
@@ -615,8 +645,17 @@ function Test-SqlRoleCmdlets
   $FullyQualifiedRoleDefinitionId2 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/a36e56a5-9afc-4819-aa78-3a8083a3ee74"
   $RoleDefinitionId3 = "9ee200b5-73fd-4779-b36a-e2a31f9244f3"
   $FullyQualifiedRoleDefinitionId3 = "/subscriptions/$subscriptionId/resourceGroups/$rgName/providers/Microsoft.DocumentDB/databaseAccounts/$AccountName/sqlRoleDefinitions/9ee200b5-73fd-4779-b36a-e2a31f9244f3"
+  $location = "East US"
+  $apiKind = "Sql"
+  $consistencyLevel = "BoundedStaleness"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "East Us" -FailoverPriority 0 -IsZoneRedundant 0
 
   Try{
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      $cosmosDBAccount = New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
+      $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+
       $DatabaseAccount = Get-AzCosmosDBAccount -Name $AccountName -ResourceGroupName $rgName
 
       # create a new role definition - using parent object and permission
