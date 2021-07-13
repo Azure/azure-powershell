@@ -19,15 +19,6 @@
 -->
 ## Upcoming Release
 * Added parameter `-ManagedResourceGroupName` for the `New-AzSynapseWorkspace` cmdlet
-* `New-AzSynapseSqlDatabase` now supports storage redundancy
-  - Removed parameter `-MaxSizeInBytes`. It is no longer supported any more.
-  - Added parameter `-StorageRedundancy`. Possible values: Geo, GeoZone, Local, Zone
-* `New-AzSynapseSqlPool` now supports autoScale and autoPause
-  - Added parameters `-MaxServiceObjectName -AutoPauseTimer -EnableAutoResume`
-* `Resume-AzSynapseSqlPool`, `Suspend-AzSynapseSqlPool` now supports SQL pool Gen3
-  - Added parameter `-Version`
-* `Update-AzSynapseSqlPool` now supports autoScale and autoPause
-  - Added parameters `-MaxServiceObjectName -AutoPauseTimer -AutoResume`
 
 ## Version 0.13.0
 * Add support for Synapse Spark job definition

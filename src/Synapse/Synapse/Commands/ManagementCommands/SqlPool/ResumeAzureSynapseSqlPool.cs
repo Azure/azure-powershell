@@ -55,11 +55,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.SqlPoolVersion)]
-        [ValidateRange(2, 3)]
-        [ValidateNotNullOrEmpty]
-        public int Version { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru { get; set; }
 
@@ -97,53 +92,26 @@ namespace Microsoft.Azure.Commands.Synapse
                 this.ResourceGroupName = this.SynapseAnalyticsClient.GetResourceGroupByWorkspaceName(this.WorkspaceName);
             }
 
-            if (this.Version == 3)
+            SqlPool existingSqlPool = null;
+            try
             {
-                SqlPoolV3 existingSqlPool = null;
-                try
-                {
-                    existingSqlPool = this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                }
-                catch
-                {
-                    existingSqlPool = null;
-                }
-
-                if (existingSqlPool == null)
-                {
-                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
-                }
-
-                if (this.ShouldProcess(this.Name, string.Format(Resources.ResumingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
-                {
-                    this.SynapseAnalyticsClient.ResumeSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                    var result = new PSSynapseSqlPoolV3(this.SynapseAnalyticsClient.GetSqlPoolV3(this.ResourceGroupName, this.WorkspaceName, this.Name));
-                    WriteObject(result);
-                }
+                existingSqlPool = this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
             }
-            else
+            catch
             {
-                SqlPool existingSqlPool = null;
-                try
-                {
-                    existingSqlPool = this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                }
-                catch
-                {
-                    existingSqlPool = null;
-                }
+                existingSqlPool = null;
+            }
 
-                if (existingSqlPool == null)
-                {
-                    throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
-                }
+            if (existingSqlPool == null)
+            {
+                throw new AzPSResourceNotFoundCloudException(string.Format(Resources.FailedToDiscoverSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName));
+            }
 
-                if (this.ShouldProcess(this.Name, string.Format(Resources.ResumingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
-                {
-                    this.SynapseAnalyticsClient.ResumeSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
-                    var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
-                    WriteObject(result);
-                }
+            if (this.ShouldProcess(this.Name, string.Format(Resources.ResumingSynapseSqlPool, this.Name, this.ResourceGroupName, this.WorkspaceName)))
+            {
+                this.SynapseAnalyticsClient.ResumeSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name);
+                var result = new PSSynapseSqlPool(this.ResourceGroupName, this.WorkspaceName, this.SynapseAnalyticsClient.GetSqlPool(this.ResourceGroupName, this.WorkspaceName, this.Name));
+                WriteObject(result);
             }
         }
     }

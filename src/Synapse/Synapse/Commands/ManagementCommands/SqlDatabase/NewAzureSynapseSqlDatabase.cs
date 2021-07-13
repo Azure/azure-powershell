@@ -51,9 +51,6 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string Collation { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.StorageRedundancy)]
-        public PSSqlDatabaseStorageRedundancyType StorageRedundancy { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Commands.Synapse
                 case CreateByNameParameterSet:
                 case CreateByParentObjectParameterSet:
                     createParams.Collation = this.IsParameterBound(c => c.Collation) ? this.Collation : SynapseConstants.DefaultCollation;
-                    createParams.StorageRedundancy = this.IsParameterBound(c => c.StorageRedundancy) ? this.StorageRedundancy.ToString() : null;
                     break;
 
                 default: throw new AzPSInvalidOperationException(string.Format(Resources.InvalidParameterSet, this.ParameterSetName));
