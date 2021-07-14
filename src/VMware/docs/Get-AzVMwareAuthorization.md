@@ -36,29 +36,25 @@ Get an ExpressRoute Circuit Authorization by name in a private cloud
 
 ### Example 1: Get authorization
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
-
-
+PS C:\> Get-AzVMwareAuthorization -Name azps_test_auth -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 Name           Type
 ----           ----
-azps-test-auth Microsoft.AVS/privateClouds/authorizations
+azps_test_auth Microsoft.AVS/privateClouds/authorizations
 ```
 
-This cmdlet gets authorization `azps-test-auth` under private cloud `azps-test-cloud`
+This cmdlet gets authorization `azps_test_auth` under private cloud `azps_test_cloud`
 
 ### Example 2: List authorization
 ```powershell
-PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
-
-
+PS C:\> Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 Name           Type
 ----           ----
-azps-test-auth Microsoft.AVS/privateClouds/authorizations
+azps_test_auth Microsoft.AVS/privateClouds/authorizations
 ```
 
-This cmdlet lists authorization `azps-test-auth` under private cloud `azps-test-cloud`
+This cmdlet lists authorization `azps_test_auth` under private cloud `azps_test_cloud`
 
 ## PARAMETERS
 

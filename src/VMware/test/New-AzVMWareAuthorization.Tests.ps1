@@ -15,6 +15,7 @@ Describe 'New-AzVMwareAuthorization' {
     It 'CreateExpanded' {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }

@@ -16,6 +16,7 @@ Describe 'New-AzVMwareCloudLink' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname2)/"
             New-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup -LinkedCloud $ID
+
             Remove-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -resourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }

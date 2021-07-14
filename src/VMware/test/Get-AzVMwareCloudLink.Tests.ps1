@@ -16,7 +16,9 @@ Describe 'Get-AzVMwareCloudLink' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname2)/"
             New-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup -LinkedCloud $ID
+
             Get-AzVMwareCloudLink -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -resourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
@@ -25,7 +27,9 @@ Describe 'Get-AzVMwareCloudLink' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname2)/"
             New-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup -LinkedCloud $ID
+
             Get-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -resourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
@@ -34,8 +38,10 @@ Describe 'Get-AzVMwareCloudLink' {
         {
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname2)/"
             New-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup -LinkedCloud $ID
+
             $ID2 = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname1)/cloudLinks/$($env.rstr2)"
             Get-AzVMwareCloudLink -InputObject $ID2
+
             Remove-AzVMwareCloudLink -Name $env.rstr2 -PrivateCloudName $env.privatecloudname1 -resourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }

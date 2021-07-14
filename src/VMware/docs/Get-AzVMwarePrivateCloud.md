@@ -45,29 +45,29 @@ PS C:\> Get-AzVMwarePrivateCloud
 
 Location      Name            Type
 --------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds
 ```
 
 List private cloud under subscription
 
 ### Example 2: List private cloud under resource group
 ```powershell
-PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps-test-group
+PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group
 
 Location      Name            Type
 --------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds
 ```
 
 List private cloud under resource group
 
 ### Example 3: Get private cloud
 ```powershell
-PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps-test-group -Name azps-test-cloud
+PS C:\> Get-AzVMwarePrivateCloud -ResourceGroupName azps_test_group -Name azps_test_cloud
 
 Location      Name            Type
 --------      ----            ----
-australiaeast azps-test-cloud Microsoft.AVS/privateClouds
+australiaeast azps_test_cloud Microsoft.AVS/privateClouds
 ```
 
 Get private cloud

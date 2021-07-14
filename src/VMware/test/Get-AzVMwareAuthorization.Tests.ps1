@@ -15,7 +15,9 @@ Describe 'Get-AzVMwareAuthorization' {
     It 'List' {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Get-AzVMwareAuthorization -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
@@ -23,7 +25,9 @@ Describe 'Get-AzVMwareAuthorization' {
     It 'Get' {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Get-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
@@ -31,8 +35,10 @@ Describe 'Get-AzVMwareAuthorization' {
     It 'GetViaIdentity' {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname1)/authorizations/$($env.rstr3)"
             Get-AzVMwareAuthorization -InputObject $ID
+
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }

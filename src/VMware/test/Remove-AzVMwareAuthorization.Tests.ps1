@@ -15,6 +15,7 @@ Describe 'Remove-AzVMwareAuthorization' {
     It 'Delete' -skip {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             Remove-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
@@ -22,6 +23,7 @@ Describe 'Remove-AzVMwareAuthorization' {
     It 'DeleteViaIdentity' -skip {
         {
             New-AzVMwareAuthorization -Name $env.rstr3 -PrivateCloudName $env.privatecloudname1 -ResourceGroupName $env.resourceGroup
+
             $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.AVS/privateClouds/$($env.privatecloudname1)/authorizations/$($env.rstr3)"
             Remove-AzVMwareAuthorization -InputObject $ID
         } | Should -Not -Throw

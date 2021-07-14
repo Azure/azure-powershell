@@ -25,11 +25,11 @@ Create or update a cluster in a private cloud
 
 ### Example 1: Create cluster
 ```powershell
-PS C:\> New-AzVMwareCluster -Name azps-test-cluster -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group -ClusterSize 3 -SkuName av36
+PS C:\> New-AzVMwareCluster -Name azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -ClusterSize 3 -SkuName av36
 
 Name              Type
 ----              ----
-azps-test-cluster Microsoft.AVS/privateClouds/clusters
+azps_test_cluster Microsoft.AVS/privateClouds/clusters
 ```
 
 Create cluster

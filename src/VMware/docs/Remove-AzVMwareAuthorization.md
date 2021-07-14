@@ -32,7 +32,7 @@ Delete an ExpressRoute Circuit Authorization in a private cloud
 
 ### Example 1: Delete authorization for private cloud
 ```powershell
-PS C:\> Remove-AzVMwareAuthorization -Name azps-test-auth -PrivateCloudName azps-test-cloud -ResourceGroupName azps-test-group
+PS C:\> Remove-AzVMwareAuthorization -Name azps_test_auth -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 ```
 
