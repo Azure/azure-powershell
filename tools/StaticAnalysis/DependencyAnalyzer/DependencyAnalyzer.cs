@@ -189,6 +189,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "Microsoft.Bcl.AsyncInterfaces",
             "System.Threading.Tasks.Extensions",
             "System.Buffers",
+            "System.Text.Encodings.Web",
             "System.Text.Json" //TODO: Compare Version along with Azure.Core
         }, StringComparer.OrdinalIgnoreCase);
 
