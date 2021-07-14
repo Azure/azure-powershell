@@ -40,6 +40,12 @@ Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-Sub
  [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List2
+```
+Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets properties of a DNS resolver.
 
@@ -199,6 +205,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VirtualNetworkName
+The name of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -220,16 +241,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
-  - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
-  - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
   - `[Id <String>]`: Resource identity path
   - `[InboundEndpointName <String>]`: The name of the inbound endpoint for the DNS resolver.
-  - `[OutboundEndpointName <String>]`: The name of the outbound endpoint for the DNS resolver.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkName <String>]`: The name of the virtual network.
-  - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
 
 ## RELATED LINKS
 
