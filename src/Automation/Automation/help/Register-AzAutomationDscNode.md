@@ -34,11 +34,12 @@ for more details.
 
 ### Example 1: Register an Azure virtual machine as an Azure DSC node
 ```
-PS C:\>Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01"-NodeConfigurationName "ContosoConfiguration.webserver"
+Register-AzAutomationDscNode -AutomationAccountName "Contoso17" -AzureVMName "VirtualMachine01" -ResourceGroupName "ResourceGroup01" -NodeConfigurationName "ContosoConfiguration.webserver" -AzureVMLocation eastus
 ```
 
-This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17.
+This command registers the Azure virtual machine named VirtualMachine01 as a DSC node in the Automation account named Contoso17 where the Azure Virtual Machine is located in 'eastus'
 
+```
 ## PARAMETERS
 
 ### -ActionAfterReboot
