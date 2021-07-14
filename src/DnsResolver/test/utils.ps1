@@ -81,7 +81,6 @@ function setupEnv() {
         $virtualNetworkIdEnvKey = $virtualNetworkIdEnvKeyPrefix + $i
         $virtualNetworkName = $env.VirtualNetworkNamePrefix + $i + (RandomString -allChars $false -len 6)
         $virtualNetworkId = (CreateVirtualNetwork -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName).id
-        write-host "virtual network ID = "  + $virtualNetworkId
         $null = $env.Add($virtualNetworkIdEnvKey, $virtualNetworkId);
 
         $subnetIdEnvKey = $subnetIdEnvKeyPrefix + $i
@@ -94,6 +93,7 @@ function setupEnv() {
     $dnsResolverName = $env.DnsResolverName60
     $virtualNetworkId = $env.VirtualNetworkId60
     New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+    $virtualNetworkName = ExtractArmResourceName -ResourceId $virtualNetworkId
     $numberOfInboundEndpointForGet = 3
     $inboundEndpointNamePrefixForGet = "inboundEndpointNameForGet"
     $null = $env.Add("NumberOfInboundEndpointForGet", $numberOfInboundEndpointForGet);
@@ -106,9 +106,9 @@ function setupEnv() {
         $privateIp = RandomIp
         $inboundEndpointName = "inboundEndpointNameForGet" + (RandomString -allChars $false -len 6)
         $null = $env.Add("InboundEndpointNamePrefixForGet" + $i, $inboundEndpointName);
-        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid
         write-host "creating test Inbound Endpoint for get ...name = "  + $inboundEndpointName
-        New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
+        # New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
     }
 
     # 
@@ -116,7 +116,6 @@ function setupEnv() {
     $virtualNetworkId = $env.VirtualNetworkId61
     New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation -SubscriptionId $env.SubscriptionId
     $virtualNetworkName = ExtractArmResourceName -ResourceId $virtualNetworkId
-    write-host "virtual network name = "  + $virtualNetworkName
     $numberOfResources = 2
     $outboundEndpointNamePrefixForGet = "outboundEndpointNameForGet"
     $null = $env.Add("NumberOfResources", $numberOfResources);
