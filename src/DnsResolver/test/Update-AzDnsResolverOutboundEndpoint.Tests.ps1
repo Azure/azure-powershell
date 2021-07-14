@@ -19,7 +19,7 @@ while(-not $mockingPath){
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Update-AzDnsResolverOutboundEndpoint'{
-    It 'Update outbound endpoint with no change, expect outbound endpoint not changed' {
+    It 'Update outbound endpoint with no change, expect outbound endpoint not changed' -skip {
         $dnsResolverName = $env.DnsResolverName22
         $virtualNetworkId = $env.VirtualNetworkId22
         $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -36,7 +36,7 @@ Describe 'Update-AzDnsResolverOutboundEndpoint'{
         $retrievedOutboundEndpoint.Metadata.Count | Should -Be 0
     }
 
-    It 'Update outbound endpoint with new metaddata expect outbound endpoint updated' {
+    It 'Update outbound endpoint with new metaddata expect outbound endpoint updated' -skip {
         $dnsResolverName = $env.DnsResolverName23
         $virtualNetworkId = $env.VirtualNetworkId23
         $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -55,7 +55,7 @@ Describe 'Update-AzDnsResolverOutboundEndpoint'{
         $retrievedOutboundEndpoint.Metadata.Count | Should -Be 3
     }
 
-    It 'Update outbound endpoint with new metadata via identity, expect outbound endpoint updated' {
+    It 'Update outbound endpoint with new metadata via identity, expect outbound endpoint updated' -skip {
         $dnsResolverName = $env.DnsResolverName24
         $virtualNetworkId = $env.VirtualNetworkId24
         $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -76,7 +76,7 @@ Describe 'Update-AzDnsResolverOutboundEndpoint'{
         $retrievedOutboundEndpoint.Metadata.Count | Should -Be 3
     }
 
-    It 'Update outbound endpoint with new metadata via identity and IfMatch matches, expect outbound endpoint updated' {
+    It 'Update outbound endpoint with new metadata via identity and IfMatch matches, expect outbound endpoint updated' -skip {
         $dnsResolverName = $env.DnsResolverName25
         $virtualNetworkId = $env.VirtualNetworkId25
         $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
@@ -98,7 +98,7 @@ Describe 'Update-AzDnsResolverOutboundEndpoint'{
     }
 
     
-    It 'Update outbound endpoint with new metadata via identity and IfMatch not match, expect outbound endpoint not updated' {
+    It 'Update outbound endpoint with new metadata via identity and IfMatch not match, expect outbound endpoint not updated' -skip {
         $dnsResolverName = $env.DnsResolverName26
         $virtualNetworkId = $env.VirtualNetworkId26
         $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)

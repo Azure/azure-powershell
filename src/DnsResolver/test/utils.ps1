@@ -90,7 +90,28 @@ function setupEnv() {
         $null = $env.Add($subnetIdEnvKey, $subnetId);
     }
 
-     # 
+    # 
+    $dnsResolverName = $env.DnsResolverName60
+    $virtualNetworkId = $env.VirtualNetworkId60
+    New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+    $numberOfInboundEndpointForGet = 3
+    $inboundEndpointNamePrefixForGet = "inboundEndpointNameForGet"
+    $null = $env.Add("NumberOfInboundEndpointForGet", $numberOfInboundEndpointForGet);
+    $null = $env.Add("DnsResolverNameForInboundEndpointGet", $dnsResolverName);
+    $null = $env.Add("InboundEndpointNamePrefixForGet", $inboundEndpointNamePrefixForGet);
+    New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+    For($i=0; $i -lt $numberOfInboundEndpointForGet; $i++){
+        $subnetName = "subnetNameForGet" + (RandomString -allChars $false -len 6)
+        $subnetid = (CreateSubnet -SubscriptionId  $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -VirtualNetworkName $virtualNetworkName -SubnetName $subnetName).id
+        $privateIp = RandomIp
+        $inboundEndpointName = "inboundEndpointNameForGet" + (RandomString -allChars $false -len 6)
+        $null = $env.Add("InboundEndpointNamePrefixForGet" + $i, $inboundEndpointName);
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid
+        write-host "creating test Inbound Endpoint for get ...name = "  + $inboundEndpointName
+        New-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName -IPConfiguration $ipConfiguration
+    }
+
+    # 
     $dnsResolverName = $env.DnsResolverName61
     $virtualNetworkId = $env.VirtualNetworkId61
     New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation -SubscriptionId $env.SubscriptionId

@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Remove-AzDnsResolverOutboundEndpoint' {
-    It 'Delete an existing outbound endpoint by name, expect outbound endpoint deleted' {
+    It 'Delete an existing outbound endpoint by name, expect outbound endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $outboundEndpointName = "outbound"
@@ -24,7 +24,7 @@ Describe 'Remove-AzDnsResolverOutboundEndpoint' {
         {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing outbound endpoint via identity, expect outbound endpoint deleted' {
+    It 'Delete an existing outbound endpoint via identity, expect outbound endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $outboundEndpointName = "outbound"
@@ -37,7 +37,7 @@ Describe 'Remove-AzDnsResolverOutboundEndpoint' {
         {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing outbound endpoint by name and IfMatch success, expect outbound endpoint deleted' {
+    It 'Delete an existing outbound endpoint by name and IfMatch success, expect outbound endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $outboundEndpointName = "outbound"
@@ -49,7 +49,7 @@ Describe 'Remove-AzDnsResolverOutboundEndpoint' {
         {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing outbound endpoint by name and IfMatch wildcard success, expect outbound endpoint deleted' {
+    It 'Delete an existing outbound endpoint by name and IfMatch wildcard success, expect outbound endpoint deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $outboundEndpointName = "outbound"
@@ -61,7 +61,7 @@ Describe 'Remove-AzDnsResolverOutboundEndpoint' {
         {Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw 'not found'
     }
 
-    It 'Delete an existing outbound endpoint by name and IfMatch failure, expect outbound endpoint not deleted' {
+    It 'Delete an existing outbound endpoint by name and IfMatch failure, expect outbound endpoint not deleted' -skip {
         $dnsResolverName = $env.DnsResolverName61
         $virtualNetworkId = $env.VirtualNetworkId61
         $outboundEndpointName = "outbound"
