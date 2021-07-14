@@ -32,11 +32,14 @@ To install certificates on a virtual machine it is recommended to use the [Azure
 
 ```
 # Build settings
-    $settings = '{"secretsManagementSettings": 
-    { "pollingIntervalInS": "' + <pollingInterval> + 
-    '", "certificateStoreName": "' + <certStoreName> + 
-    '", "certificateStoreLocation": "' + <certStoreLoc> + 
-    '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
+$settings = @{
+    secretsManagementSettings = @{
+        pollingIntervalInS       = "<pollingInterval>"
+        certificateStoreName     = "<certStoreName>"
+        certificateStoreLocation = "<certStoreLoc>"
+        observedCertificates     = @("<observedCert1>", "<observedCert2>")
+    } 
+} | ConvertTo-Json
     $extName =  "KeyVaultForLinux"
     $extPublisher = "Microsoft.Azure.KeyVault"
     $extType = "KeyVaultForLinux"
