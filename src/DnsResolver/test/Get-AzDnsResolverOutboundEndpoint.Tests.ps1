@@ -33,6 +33,6 @@ Describe 'Get-AzDnsResolverOutboundEndpoint' -skip {
     It 'List outbound Endpoints under a DNS Resolver name, expected exact number of outbound endpoints retrieved' -skip {
         $dnsResolverName = $env.DnsResolverNameForOutboundEndpointGet
         $outboundEndpoints =  Get-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -ResourceGroupName $env.ResourceGroupName
-        $outboundEndpoints.Count | Should -Be $env.NumberOfResources
+        $outboundEndpoints.Count | Should -Be $env.NumberOfOutboundEndpointForGet
     }
 }

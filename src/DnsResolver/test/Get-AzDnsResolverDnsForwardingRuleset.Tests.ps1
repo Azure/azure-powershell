@@ -19,23 +19,23 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDnsResolverDnsForwardingRuleset' {
-    It 'Get single DNS forwarding ruleset by name, expect DNS forwarding ruleset by name retrieved' -skip {
+    It 'Get single DNS forwarding ruleset by name, expect DNS forwarding ruleset by name retrieved' {
         $dnsForwardingRulesetName = $env.ForwardingRulesetForGet0
         $dnsForwardingRuleset =  Get-AzDnsResolverDnsForwardingRuleset -Name $dnsForwardingRulesetName -ResourceGroupName $env.ResourceGroupName
         $dnsForwardingRuleset | Should -BeSuccessfullyCreatedDnsForwardingRuleset
     }
 
-    It 'Get single DNS forwarding ruleset that does not exist by name, expect failure' -skip {
+    It 'Get single DNS forwarding ruleset that does not exist by name, expect failure' {
         $dnsForwardingRulesetName = (RandomString -allChars $false -len 10)
         {Get-AzDnsResolverDnsForwardingRuleset -Name dnsForwardingRuleset -ResourceGroupName $env.ResourceGroupName} | Should -Throw "not found"
     }
 
-    It 'List DNS forwarding rulesets under a subscription, expected exact number of DNS forwarding rulesets retrieved' -skip {
+    It 'List DNS forwarding rulesets under a subscription, expected exact number of DNS forwarding rulesets retrieved' {
         $dnsForwardingRuleset =  Get-AzDnsResolverDnsForwardingRuleset -SubscriptionId  $env.SubscriptionId
         $dnsForwardingRuleset.Count | Should -gt 1
     }
 
-    It 'List DNS forwarding rulesets under a resource group, expected exact number of DNS forwarding rulesets retrieved' -skip {
+    It 'List DNS forwarding rulesets under a resource group, expected exact number of DNS forwarding rulesets retrieved' {
         $dnsForwardingRuleset =  Get-AzDnsResolverDnsForwardingRuleset -ResourceGroupName $env.ResourceGroupName
         $dnsForwardingRuleset.Count | Should -Be $env.NumberOfResources
     }
