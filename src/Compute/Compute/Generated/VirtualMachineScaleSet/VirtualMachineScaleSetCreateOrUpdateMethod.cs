@@ -62,11 +62,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     "Consider using \"latest\" as the image version. This allows VMSS to auto upgrade when a newer version is available.");
                             }
 
+                            var networkProfile = parameters?.VirtualMachineProfile?.NetworkProfile;
                             if (parameters?.OrchestrationMode == "Flexible")
                             {
-                                if (parameters?.VirtualMachineProfile?.NetworkProfile?.NetworkInterfaceConfigurations != null)
+                                if (networkProfile?.NetworkInterfaceConfigurations != null)
                                 {
-                                    foreach (var nicConfig in parameters.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations)
+                                    foreach (var nicConfig in networkProfile.NetworkInterfaceConfigurations)
                                     {
                                         if (nicConfig.IpConfigurations != null)
                                         {
@@ -79,6 +80,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
 
                                 parameters.UpgradePolicy = null;
+                            }
+                            else
+                            {
+                                if (networkProfile != null)
+                                {
+                                    // networkApiVersion is not supported for orchestration modes other than flexible
+                                    networkProfile.NetworkApiVersion = null;
+                                }
                             }
 
                             var result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
