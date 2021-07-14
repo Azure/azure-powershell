@@ -41,8 +41,6 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         protected override Assembly Load(AssemblyName requestedAssemblyName)
         {
-            //TODO: Use cache for loaded assemblies, may refer to PowerShell code https://github.com/PowerShell/PowerShell/blob/8f8ddc3fb76a03dad93f5664314c2795dd69f390/src/System.Management.Automation/CoreCLR/CorePsAssemblyLoadContext.cs
-
             if (AssemblyCache.TryGetValue(requestedAssemblyName.Name, out Assembly assembly))
             {
                 if(IsAssemblyMatching(requestedAssemblyName, assembly.GetName()))
