@@ -6,9 +6,9 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 
+
 function CreateVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName){
     $nrpSimulatorUri = $env.NRP_SIMULATOR_URI
-
     if( $null -eq $nrpSimulatorUri){
         return CreateNrpVirtualNetwork -ResourceGroupName $ResourceGroupName  -Location $env.LocationForVirtualNetwork -VirtualNetworkName $VirtualNetworkName AddressPrefix $env.AddressPrefix
     }else {
@@ -28,7 +28,7 @@ function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceG
     $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
 
     $data = [ordered]@{
-        location = "westus2"
+        location = "eastus2"
         properties = @{
           addressSpace = @{
             addressPrefixes = @({"40.121.0.0/16 "})

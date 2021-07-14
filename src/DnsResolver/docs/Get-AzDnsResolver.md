@@ -34,6 +34,11 @@ Get-AzDnsResolver -InputObject <IDnsResolverIdentity> [-DefaultProfile <PSObject
 Get-AzDnsResolver -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
+### List2
+```
+Get-AzDnsResolver -ResourceGroupName <String> -VirtualNetworkName <String> [-SubscriptionId <String[]>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
 
 ### List2
 ```
@@ -181,6 +186,19 @@ Parameter Sets: List, List1, List2
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -VirtualNetworkName
+The name of the virtual network.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases:
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
