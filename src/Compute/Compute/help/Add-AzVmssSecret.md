@@ -30,7 +30,7 @@ For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershel
 ### Example 1: Add a secret to the VMSS using the Azure Key Vault virtual machine extension
 To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). 
 
-```
+```poewrshell
 # Build settings
     $settings = '{"secretsManagementSettings": 
     { "pollingIntervalInS": "' + <pollingInterval> + 
@@ -48,7 +48,7 @@ To install certificates on a virtual machine it is recommended to use the [Azure
 ```
 
 ### Example 2: Add a secret to the VMSS using Add-AzVmssSecret
-```
+```powershell
 PS C:\> $Vault = Get-AzKeyVault -VaultName "ContosoVault"
 PS C:\> $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
 PS C:\> $VMSS = New-AzVmssConfig
