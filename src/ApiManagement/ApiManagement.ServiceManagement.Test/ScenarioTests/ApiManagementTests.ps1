@@ -2286,7 +2286,7 @@ function Logger-CrudTest {
         $newLoggerDescription = getAssetName
         $eventHubName = "powershell"
         # Replace the Connection string with actual EventHub connection string when recording tests
-        $eventHubConnectionString = "Endpoint=sb://sdkeventhub.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=GUjgwMQ25fgHXE4ShYesdTHGEafE1hYQ4fOqFqH6HqI=;EntityPath=powershell"
+        $eventHubConnectionString = "Test-ConnectionString"
 
         $logger = New-AzApiManagementLogger -Context $context -LoggerId $loggerId -Name $eventHubName -ConnectionString $eventHubConnectionString -Description $newLoggerDescription
 
