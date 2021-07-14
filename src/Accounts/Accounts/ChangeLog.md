@@ -19,7 +19,11 @@
 -->
 
 ## Upcoming Release
+* Disabled context auto saving when token cache persistence fails on Windows and macOS
 * Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
+
+## Version 2.5.1
+* Fixed access error when subscripiton has no `Tags` property [#15425].
 
 ## Version 2.5.0
 * Added Tags, AuthorizationSource to PSAzureSusbscripiton and added TenantType, DefaultDomain, TenantBrandingLogoUrl, CountryCode to PSAzureTenant [#15220]

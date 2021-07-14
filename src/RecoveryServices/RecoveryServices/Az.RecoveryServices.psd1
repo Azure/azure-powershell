@@ -54,7 +54,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.2.8'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 
@@ -191,12 +191,15 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
                'Get-AzRecoveryServicesBackupStatus', 
                'Undo-AzRecoveryServicesBackupItemDeletion', 
                'Set-AzRecoveryServicesVaultProperty', 
-               'Get-AzRecoveryServicesVaultProperty', 
-               'Copy-AzRecoveryServicesVault', 'Update-AzRecoveryServicesVault', 
+               'Get-AzRecoveryServicesVaultProperty',               
+               'Copy-AzRecoveryServicesVault', 
+               'Update-AzRecoveryServicesVault',
                'New-AzRecoveryServicesAsrInMageRcmDiskInput', 
                'Start-AzRecoveryServicesAsrCancelFailoverJob', 
-               'Test-AzRecoveryServicesDSMove', 
-               'Initialize-AzRecoveryServicesDSMove'
+               'Test-AzRecoveryServicesDSMove',
+               'Initialize-AzRecoveryServicesDSMove',
+               'Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup',
+               'Move-AzRecoveryServicesBackupRecoveryPoint'
 
 # Variables to export from this module
 # VariablesToExport = @()

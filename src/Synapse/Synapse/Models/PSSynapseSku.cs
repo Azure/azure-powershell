@@ -8,6 +8,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.Tier = sku?.Tier;
             this.Name = sku?.Name;
+            this.Capacity = sku?.Capacity ?? 0;
+        }
+
+        public PSSynapseSku(SkuV3 sku)
+        {
+            this.Tier = sku?.Tier;
+            this.Name = sku?.Name;
         }
 
         /// <summary>
@@ -19,6 +26,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         /// Gets the SKU name
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets if the SKU supports scale out/in then the capacity
+        /// integer should be included. If scale out/in is not possible for the
+        /// resource this may be omitted.
+        /// </summary>
+        public int Capacity { get; set; }
 
         public override string ToString()
         {

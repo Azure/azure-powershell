@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed the warning in `New-AzVM` cmdlet stating the sku of the VM is being defaulted even if a sku size is provided by the user. Now it only occurs when the user does not provide a sku size.
 
 ## Version 4.15.0
 * Added optional parameter `-OrchestrationMode` to `New-AzVmss` and `New-AzVmssConfig`

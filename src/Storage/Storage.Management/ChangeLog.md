@@ -22,7 +22,7 @@
     -  `Enable-AzStorageBlobLastAccessTimeTracking`
     -  `Disable-AzStorageBlobLastAccessTimeTracking`
     -  `Add-AzStorageAccountManagementPolicyAction`
-* Fixed a display issue in list datalake gen2 items
+* Make list datalake gen2 items list out all items by default, instead of need user to list chunk by chunk.
     - `Get-AzDataLakeGen2ChildItem`
 
 ## Version 3.9.0
