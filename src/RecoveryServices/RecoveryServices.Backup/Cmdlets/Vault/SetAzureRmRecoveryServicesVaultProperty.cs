@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
                     else if (EncryptionKeyId != null)
                     {
-                        BackupResourceEncryptionConfigResource vaultEncryptionSettings = ServiceClientAdapter.GetVaultEncryptionConfig(resourceGroupName, vaultName);
+                        BackupResourceEncryptionConfigResource vaultEncryptionSettings = new BackupResourceEncryptionConfigResource();
 
                         vaultEncryptionSettings.Properties.EncryptionAtRestType = "CustomerManaged";
                         vaultEncryptionSettings.Properties.KeyUri = EncryptionKeyId;
