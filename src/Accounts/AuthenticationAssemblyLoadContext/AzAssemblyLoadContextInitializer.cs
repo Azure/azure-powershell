@@ -46,6 +46,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         public static void RegisterAzSharedAssemblyLoadContext(string azSharedAssemblyDirectory)
         {
+            
             AzSharedAssemblyDirectory = azSharedAssemblyDirectory;
             AssemblyLoadContext.Default.Resolving += Default_Resolving;
         }
