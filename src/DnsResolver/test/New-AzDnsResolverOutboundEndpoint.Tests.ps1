@@ -18,20 +18,35 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzDnsResolverOutboundEndpoint' {
-    It 'Create outbound endpoint with a DNS resolver' {
-        $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -DnsResolverName $env.DnsResolverName0 -Name $env.OutboundEndpointName1 -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId
+    It 'Create outbound endpoint with a DNS resolver' -skip {
+        $dnsResolverName = $env.DnsResolverName37
+        $virtualNetworkId = $env.VirtualNetworkId37
+        $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
+        $subnetid = $env.SubnetId37
+        $privateIp = RandomIp
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
+
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+        $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $subnetid
         $outboundEndpoint | Should -BeSuccessfullyCreatedOutboundEndpoint
-        $outboundEndpoint.SubnetId | Should -Be $env.SubnetId 
     }
 
-    It 'Create outbound endpoint with non existent DNS resolver' {
+    It 'Create outbound endpoint with non existent DNS resolver' -skip{
         $nonExistantResolverName = RandomString -allChars $false -len 6
-         {New-AzDnsResolverOutboundEndpoint -DnsResolverName $env.DnsResolverName0 -Name $env.OutboundEndpointName1 -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId }| Should -Throw 'Unparseable resource ID'
+         {New-AzDnsResolverOutboundEndpoint -DnsResolverName $nonExistantResolverName -Name $env.OutboundEndpointName1 -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId35 }| Should -Throw 'ParentResourceNotFound'
     }
 
-    It 'Create outbound endpoint IfNoneMatch wildcard, expect outbound endpoint created' {
-        $tag = GetRandomHashtable -size 5
-        $resolver = New-AzDnsResolverOutboundEndpoint -DnsResolverName $env.DnsResolverName0 -Name $env.OutboundEndpointName1 -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $env.SubnetId -Tag $tag -IfNoneMatch *
-        $resolver.ProvisioningState | Should -Be $env.SuccessProvisioningState
+    It 'Create outbound endpoint IfNoneMatch wildcard, expect outbound endpoint created' -skip {
+        $metadata = GetRandomHashtable -size 5
+        $dnsResolverName = $env.DnsResolverName36
+        $virtualNetworkId = $env.VirtualNetworkId36
+        $outboundEndpointName =  $env.OutboundEndpointNamePrefix + (RandomString -allChars $false -len 6)
+        $subnetid = $env.SubnetId36
+        $privateIp = RandomIp
+        $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAddress $privateIp -PrivateIPAllocationMethod Dynamic -SubnetId $subnetid 
+
+        New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $env.ResourceGroupName -VirtualNetworkId $virtualNetworkId -Location $env.ResourceLocation
+        $outboundEndpoint = New-AzDnsResolverOutboundEndpoint -DnsResolverName $dnsResolverName -Name $outboundEndpointName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId -SubnetId $subnetid -Metadata metadata
+        $outboundEndpoint | Should -BeSuccessfullyCreatedOutboundEndpoint
     }
 }

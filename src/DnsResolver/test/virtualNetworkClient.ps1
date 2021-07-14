@@ -6,9 +6,11 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 }
 . ($loadEnvPath)
 
+write-host "sangeeta"
+
 function CreateVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName){
     $nrpSimulatorUri = $env.NRP_SIMULATOR_URI
-
+    write-host "sangeeta1"
     if( $null -eq $nrpSimulatorUri){
         return CreateNrpVirtualNetwork -ResourceGroupName $ResourceGroupName  -Location $env.LocationForVirtualNetwork -VirtualNetworkName $VirtualNetworkName AddressPrefix $env.AddressPrefix
     }else {
@@ -18,17 +20,19 @@ function CreateVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupNam
 }
 
 function CreateNrpVirtualNetwork([String]$ResourceGroupName, [String]$Location, [String]$VirtualNetworkName, [String]$AddressPrefix){
+    write-host "sangeeta2"
     $virtualNetwork = New-AzVirtualNetwork -ResourceGroupName $ResourceGroupName -Location $Location -Name $VirtualNetworkName  -AddressPrefix $AddressPrefix
     return $virtualNetwork
 }
 
 function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$NrpSimulatorUri) {
+    write-host "sangeeta3"
     $contentType3 = "application/json"
     $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName"
     $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
 
     $data = [ordered]@{
-        location = "westus2"
+        location = "eastus2"
         properties = @{
           addressSpace = @{
             addressPrefixes = @({"40.121.0.0/16 "})
@@ -42,6 +46,7 @@ function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceG
 }
 
 function CreateSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$SubnetName){
+    write-host "sangeeta4"
     $nrpSimulatorUri = $env.NRP_SIMULATOR_URI
 
     if($null -eq $nrpSimulatorUri){
@@ -52,6 +57,7 @@ function CreateSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [Stri
 }
 
 function CreateNrpMockSubnet([String]$SubscriptionId, [String]$ResourceGroupName, [String]$VirtualNetworkName, [String]$SubnetName, [String]$NrpSimulatorUri) {
+    write-host "sangeeta5"
     $contentType3 = "application/json"
     $relativeRequestUri = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VirtualNetworkName/subnets/$SubnetName"
     $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
