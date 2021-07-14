@@ -18,18 +18,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     using System.Collections;
     using System.Collections.Generic;
 
-    public class PsApiManagementServiceFabric
+    public class PsApiManagementKeyVaultEntity
     {
-        public string ClientCertificateThumbprint { get; set; }
+        public string SecretIdentifier { get; set; }
 
-        public string ClientCertificateId { get; set; }
+        public string IdentityClientId { get; set; }
 
-        public int? MaxPartitionResolutionRetries { get; set; }
-
-        public string[] ManagementEndpoints { get; set; }
-
-        public Hashtable ServerX509Names { get; set; }
-
-        public string[] ServerCertificateThumbprint { get; set; }
+        public PsApiManagementKeyVaultLastStatus LastStatus { get; set; }
     }
 }
