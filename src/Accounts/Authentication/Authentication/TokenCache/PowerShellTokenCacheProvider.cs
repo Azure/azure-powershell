@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             return AzureSession.Instance.ClientFactory.CreateCustomArmClient<SubscriptionClient>(
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                new TokenCredentials(token.AccessToken) as ServiceClientCredentials,
+                new RenewingTokenCredential(token),
                 AzureSession.Instance.ClientFactory.GetCustomHandlers());
         }
 

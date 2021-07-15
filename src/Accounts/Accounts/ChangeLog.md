@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Implement CAE by adding handler to http pipeline
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Enabled CAE for Get-AzTenant and Get-AzSubcription
+* Added test cases
 * Disabled context auto saving when token cache persistence fails on Windows and macOS
 * Upgraded Microsoft.ApplicationInsights from 2.4.0 to 2.12.0
 * Updated Azure.Core to 1.16.0
