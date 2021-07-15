@@ -83,6 +83,7 @@ $resourceTestCommands = @(
     @{Name = "Az.Storage [Management]";       Command = {New-AzStorageAccount -Name $storageAccountName -SkuName Standard_LRS -Location westus -ResourceGroupName $resourceGroupName -ErrorAction Stop}},
     @{Name = "Az.Storage [Data]";             Command = {New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 12345678 -ErrorAction Stop}},
     @{Name = "Az.Accounts";                   Command = {Get-AzDomain -ErrorAction Stop}},
+    @{Name = "Az.Accounts [DefaultProfile]";  Command = {Get-AzSubscription -DefaultProfile (Get-AzContext)}},
     @{Name = "Az.Advisor";                    Command = {Get-AzAdvisorConfiguration -ErrorAction Stop}},
     @{Name = "Az.Aks";                        Command = {Get-AzAksCluster -ErrorAction Stop}},
     @{Name = "Az.AnalysisServices";           Command = {Get-AzAnalysisServicesServer -ErrorAction Stop}},

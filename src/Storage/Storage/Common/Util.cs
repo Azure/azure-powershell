@@ -679,5 +679,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return cloudFileNtfsAttributes;
         }
+
+        public static string GetSASStringWithoutQuestionMark(string sas)
+        {
+            if (sas.StartsWith("?"))
+            {
+                sas = sas.Substring(1);
+            }
+            return sas;
+        }
     }
 }

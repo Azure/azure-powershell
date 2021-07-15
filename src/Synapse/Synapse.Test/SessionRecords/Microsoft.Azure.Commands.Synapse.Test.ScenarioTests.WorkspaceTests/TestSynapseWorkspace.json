@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourcegroups/ws-cmdlet-test-rgps2186?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlZ3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourcegroups/ws-cmdlet-test-rgps1065?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlZ3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"canadacentral\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "19c65f14-e92d-443b-bada-94c89b53db01"
+          "d1d78404-03ca-4a54-bc68-21bca618af55"
         ],
         "Accept-Language": [
           "en-US"
@@ -16,13 +16,13 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "33"
+          "35"
         ]
       },
       "ResponseHeaders": {
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "4f415504-53bc-42fc-a488-ceaf6d82691f"
+          "e5b01421-0bd4-4f06-bb23-441b86b34ac1"
         ],
         "x-ms-correlation-request-id": [
-          "4f415504-53bc-42fc-a488-ceaf6d82691f"
+          "e5b01421-0bd4-4f06-bb23-441b86b34ac1"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T055952Z:4f415504-53bc-42fc-a488-ceaf6d82691f"
+          "WESTCENTRALUS:20210701T111605Z:e5b01421-0bd4-4f06-bb23-441b86b34ac1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,10 +51,10 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 05:59:51 GMT"
+          "Thu, 01 Jul 2021 11:16:05 GMT"
         ],
         "Content-Length": [
-          "204"
+          "206"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,17 +63,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186\",\r\n  \"name\": \"ws-cmdlet-test-rgps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065\",\r\n  \"name\": \"ws-cmdlet-test-rgps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
       "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/providers/Microsoft.Storage/checkNameAvailability?api-version=2021-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9jaGVja05hbWVBdmFpbGFiaWxpdHk/YXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"name\": \"wsstorageps2186\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"wsstorageps1065\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d07fae9c-7dc4-4e6f-ba6b-5e974a638ab9"
+          "e75a16a4-74e7-4026-952e-4c4a2bb05dbc"
         ],
         "Accept-Language": [
           "en-US"
@@ -99,7 +99,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "874e05db-cec3-4b1e-9af8-681dcf1c2c01"
+          "421806f9-9e22-49ce-b719-9c52db2da318"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,16 +111,16 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "94991d99-534a-4160-8fb4-448e22cb982c"
+          "eab879b1-529b-4cb4-be15-1951e959d434"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T055954Z:94991d99-534a-4160-8fb4-448e22cb982c"
+          "WESTCENTRALUS:20210701T111606Z:eab879b1-529b-4cb4-be15-1951e959d434"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 05:59:54 GMT"
+          "Thu, 01 Jul 2021 11:16:05 GMT"
         ],
         "Content-Length": [
           "22"
@@ -136,13 +136,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Storage/storageAccounts/wsstorageps2186?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvd3NzdG9yYWdlcHMyMTg2P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Storage/storageAccounts/wsstorageps1065?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvd3NzdG9yYWdlcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"isHnsEnabled\": true\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"location\": \"canadacentral\",\r\n  \"properties\": {\r\n    \"isHnsEnabled\": true\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d07fae9c-7dc4-4e6f-ba6b-5e974a638ab9"
+          "e75a16a4-74e7-4026-952e-4c4a2bb05dbc"
         ],
         "Accept-Language": [
           "en-US"
@@ -157,7 +157,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "154"
+          "156"
         ]
       },
       "ResponseHeaders": {
@@ -168,13 +168,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/7c1c823a-47ab-4a68-9518-7ebb9daa3ca3?monitor=true&api-version=2021-04-01"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/providers/Microsoft.Storage/locations/canadacentral/asyncoperations/c47ecd01-3149-4491-8548-c510955f811d?monitor=true&api-version=2021-04-01"
         ],
         "Retry-After": [
           "17"
         ],
         "x-ms-request-id": [
-          "7c1c823a-47ab-4a68-9518-7ebb9daa3ca3"
+          "c47ecd01-3149-4491-8548-c510955f811d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,16 +186,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "b9e6cb2b-1225-45e0-85d4-33240e1f8f66"
+          "94eb3c40-3bca-4f8a-a105-e24ca7d3b98c"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060001Z:b9e6cb2b-1225-45e0-85d4-33240e1f8f66"
+          "WESTCENTRALUS:20210701T111610Z:94eb3c40-3bca-4f8a-a105-e24ca7d3b98c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:00:01 GMT"
+          "Thu, 01 Jul 2021 11:16:10 GMT"
         ],
         "Content-Type": [
           "text/plain; charset=utf-8"
@@ -211,13 +211,13 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/providers/Microsoft.Storage/locations/eastus2euap/asyncoperations/7c1c823a-47ab-4a68-9518-7ebb9daa3ca3?monitor=true&api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvZWFzdHVzMmV1YXAvYXN5bmNvcGVyYXRpb25zLzdjMWM4MjNhLTQ3YWItNGE2OC05NTE4LTdlYmI5ZGFhM2NhMz9tb25pdG9yPXRydWUmYXBpLXZlcnNpb249MjAyMS0wNC0wMQ==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/providers/Microsoft.Storage/locations/canadacentral/asyncoperations/c47ecd01-3149-4491-8548-c510955f811d?monitor=true&api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9sb2NhdGlvbnMvY2FuYWRhY2VudHJhbC9hc3luY29wZXJhdGlvbnMvYzQ3ZWNkMDEtMzE0OS00NDkxLTg1NDgtYzUxMDk1NWY4MTFkP21vbml0b3I9dHJ1ZSZhcGktdmVyc2lvbj0yMDIxLTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d07fae9c-7dc4-4e6f-ba6b-5e974a638ab9"
+          "e75a16a4-74e7-4026-952e-4c4a2bb05dbc"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
@@ -234,7 +234,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b4cf0051-6933-47a7-989c-38dad4574620"
+          "7c74fa5c-4a90-454b-8890-619992076225"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,19 +246,19 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "27d55fe6-180d-41a4-aefb-8dac6d3f76be"
+          "c97aa52d-465d-4292-8d51-de27c39b5233"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060018Z:27d55fe6-180d-41a4-aefb-8dac6d3f76be"
+          "WESTCENTRALUS:20210701T111627Z:c97aa52d-465d-4292-8d51-de27c39b5233"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:00:18 GMT"
+          "Thu, 01 Jul 2021 11:16:27 GMT"
         ],
         "Content-Length": [
-          "1460"
+          "1461"
         ],
         "Content-Type": [
           "application/json"
@@ -267,17 +267,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Storage/storageAccounts/wsstorageps2186\",\r\n  \"name\": \"wsstorageps2186\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-06-29T05:59:59.582069Z\",\r\n      \"key2\": \"2021-06-29T05:59:59.582069Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"isHnsEnabled\": true,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-06-29T05:59:59.582069Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-06-29T05:59:59.582069Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-06-29T05:59:59.4414242Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://wsstorageps2186.dfs.core.windows.net/\",\r\n      \"web\": \"https://wsstorageps2186.z3.web.core.windows.net/\",\r\n      \"blob\": \"https://wsstorageps2186.blob.core.windows.net/\",\r\n      \"queue\": \"https://wsstorageps2186.queue.core.windows.net/\",\r\n      \"table\": \"https://wsstorageps2186.table.core.windows.net/\",\r\n      \"file\": \"https://wsstorageps2186.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"eastus2euap\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"centraluseuap\",\r\n    \"statusOfSecondary\": \"available\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Storage/storageAccounts/wsstorageps1065\",\r\n  \"name\": \"wsstorageps1065\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-07-01T11:16:09.1229843Z\",\r\n      \"key2\": \"2021-07-01T11:16:09.1229843Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"isHnsEnabled\": true,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-01T11:16:09.1229843Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-01T11:16:09.1229843Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-07-01T11:16:09.0447636Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://wsstorageps1065.dfs.core.windows.net/\",\r\n      \"web\": \"https://wsstorageps1065.z9.web.core.windows.net/\",\r\n      \"blob\": \"https://wsstorageps1065.blob.core.windows.net/\",\r\n      \"queue\": \"https://wsstorageps1065.queue.core.windows.net/\",\r\n      \"table\": \"https://wsstorageps1065.table.core.windows.net/\",\r\n      \"file\": \"https://wsstorageps1065.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"canadacentral\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"canadaeast\",\r\n    \"statusOfSecondary\": \"available\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Storage/storageAccounts/wsstorageps2186?api-version=2021-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvd3NzdG9yYWdlcHMyMTg2P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Storage/storageAccounts/wsstorageps1065?api-version=2021-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS9zdG9yYWdlQWNjb3VudHMvd3NzdG9yYWdlcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d07fae9c-7dc4-4e6f-ba6b-5e974a638ab9"
+          "e75a16a4-74e7-4026-952e-4c4a2bb05dbc"
         ],
         "Accept-Language": [
           "en-US"
@@ -297,7 +297,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8f78f696-4bd6-4c21-a92b-4e52f06d3e7d"
+          "58d4af2a-3b21-49ed-9dc6-2d9b880a4222"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -309,19 +309,19 @@
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "8519aa8d-be9a-4939-bff7-a268f92e2432"
+          "b18f345c-543f-4669-9674-14e7f341b0a1"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060019Z:8519aa8d-be9a-4939-bff7-a268f92e2432"
+          "WESTCENTRALUS:20210701T111628Z:b18f345c-543f-4669-9674-14e7f341b0a1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:00:18 GMT"
+          "Thu, 01 Jul 2021 11:16:27 GMT"
         ],
         "Content-Length": [
-          "1460"
+          "1461"
         ],
         "Content-Type": [
           "application/json"
@@ -330,17 +330,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Storage/storageAccounts/wsstorageps2186\",\r\n  \"name\": \"wsstorageps2186\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"eastus2euap\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-06-29T05:59:59.582069Z\",\r\n      \"key2\": \"2021-06-29T05:59:59.582069Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"isHnsEnabled\": true,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-06-29T05:59:59.582069Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-06-29T05:59:59.582069Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-06-29T05:59:59.4414242Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://wsstorageps2186.dfs.core.windows.net/\",\r\n      \"web\": \"https://wsstorageps2186.z3.web.core.windows.net/\",\r\n      \"blob\": \"https://wsstorageps2186.blob.core.windows.net/\",\r\n      \"queue\": \"https://wsstorageps2186.queue.core.windows.net/\",\r\n      \"table\": \"https://wsstorageps2186.table.core.windows.net/\",\r\n      \"file\": \"https://wsstorageps2186.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"eastus2euap\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"centraluseuap\",\r\n    \"statusOfSecondary\": \"available\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_GRS\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"kind\": \"StorageV2\",\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Storage/storageAccounts/wsstorageps1065\",\r\n  \"name\": \"wsstorageps1065\",\r\n  \"type\": \"Microsoft.Storage/storageAccounts\",\r\n  \"location\": \"canadacentral\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"keyCreationTime\": {\r\n      \"key1\": \"2021-07-01T11:16:09.1229843Z\",\r\n      \"key2\": \"2021-07-01T11:16:09.1229843Z\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"isHnsEnabled\": true,\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"virtualNetworkRules\": [],\r\n      \"ipRules\": [],\r\n      \"defaultAction\": \"Allow\"\r\n    },\r\n    \"supportsHttpsTrafficOnly\": true,\r\n    \"encryption\": {\r\n      \"services\": {\r\n        \"file\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-01T11:16:09.1229843Z\"\r\n        },\r\n        \"blob\": {\r\n          \"keyType\": \"Account\",\r\n          \"enabled\": true,\r\n          \"lastEnabledTime\": \"2021-07-01T11:16:09.1229843Z\"\r\n        }\r\n      },\r\n      \"keySource\": \"Microsoft.Storage\"\r\n    },\r\n    \"accessTier\": \"Hot\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"creationTime\": \"2021-07-01T11:16:09.0447636Z\",\r\n    \"primaryEndpoints\": {\r\n      \"dfs\": \"https://wsstorageps1065.dfs.core.windows.net/\",\r\n      \"web\": \"https://wsstorageps1065.z9.web.core.windows.net/\",\r\n      \"blob\": \"https://wsstorageps1065.blob.core.windows.net/\",\r\n      \"queue\": \"https://wsstorageps1065.queue.core.windows.net/\",\r\n      \"table\": \"https://wsstorageps1065.table.core.windows.net/\",\r\n      \"file\": \"https://wsstorageps1065.file.core.windows.net/\"\r\n    },\r\n    \"primaryLocation\": \"canadacentral\",\r\n    \"statusOfPrimary\": \"available\",\r\n    \"secondaryLocation\": \"canadaeast\",\r\n    \"statusOfSecondary\": \"available\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "Accept-Language": [
           "en-US"
@@ -349,7 +349,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -363,13 +363,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "3492ca9b-a81a-4afe-961e-11214472732d"
+          "0082978c-a44c-4862-a291-721e82bb00b1"
         ],
         "x-ms-correlation-request-id": [
-          "3492ca9b-a81a-4afe-961e-11214472732d"
+          "0082978c-a44c-4862-a291-721e82bb00b1"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060020Z:3492ca9b-a81a-4afe-961e-11214472732d"
+          "WESTCENTRALUS:20210701T111628Z:0082978c-a44c-4862-a291-721e82bb00b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -378,7 +378,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:00:19 GMT"
+          "Thu, 01 Jul 2021 11:16:28 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -390,23 +390,23 @@
           "232"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Synapse/workspaces/wsps2186' under resource group 'ws-cmdlet-test-rgps2186' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Synapse/workspaces/wsps1065' under resource group 'ws-cmdlet-test-rgps1065' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -420,28 +420,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7072002b-2d22-46a1-85a1-e9c2e84da48a"
+          "a26a79ed-102a-4deb-9b6f-c797189d7131"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
+          "11992"
         ],
         "x-ms-correlation-request-id": [
-          "3be7db9a-20a8-437a-8338-86086be10a02"
+          "d01d07eb-ebae-4c92-af56-4a00859fbe64"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060334Z:3be7db9a-20a8-437a-8338-86086be10a02"
+          "WESTCENTRALUS:20210701T111935Z:d01d07eb-ebae-4c92-af56-4a00859fbe64"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:33 GMT"
+          "Thu, 01 Jul 2021 11:19:35 GMT"
         ],
         "Content-Length": [
-          "1177"
+          "1211"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -450,17 +450,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0de9917d-43af-4ed5-8fed-919f0e15bc5c"
+          "197ee2c8-599b-409f-a45e-9c4b3d6c8479"
         ],
         "Accept-Language": [
           "en-US"
@@ -469,7 +469,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -483,7 +483,379 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a20368f2-5612-48a8-a502-28681226b379"
+          "81bb3709-3f87-48c4-850a-e66cd176ae1a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c573b75-973b-4685-97e2-086ea2425bef"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T111946Z:0c573b75-973b-4685-97e2-086ea2425bef"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:19:45 GMT"
+        ],
+        "Content-Length": [
+          "1211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4204fe3a-5ead-433e-beda-897d06552886"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "289b49b4-d21a-4f09-a656-24cc41d2ad7b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "8ad61256-b5a1-410f-93cc-efe49e576ec1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T111946Z:8ad61256-b5a1-410f-93cc-efe49e576ec1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:19:45 GMT"
+        ],
+        "Content-Length": [
+          "1211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8db5a223-b98d-497a-af39-242a487ef427"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "289a12ff-084a-4217-939b-97aa22e0e24c"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "b53aab2f-7a74-4eb8-b018-54a8bb8193dc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T111946Z:b53aab2f-7a74-4eb8-b018-54a8bb8193dc"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:19:45 GMT"
+        ],
+        "Content-Length": [
+          "1211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cbbdfddc-c5a7-4564-b622-b184d7c88f2b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "0870e4f8-a84c-4766-8686-f3f974cc28f1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "0d278d78-9506-40f2-a3ef-93c37c40e0e2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T111946Z:0d278d78-9506-40f2-a3ef-93c37c40e0e2"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:19:46 GMT"
+        ],
+        "Content-Length": [
+          "1211"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cbbdfddc-c5a7-4564-b622-b184d7c88f2b"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8867b2ce-1c07-444e-a18c-7d53b991e13b"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "03b71bf5-4583-493f-b383-54757211f474"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T112018Z:03b71bf5-4583-493f-b383-54757211f474"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:20:17 GMT"
+        ],
+        "Content-Length": [
+          "1243"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d359457e-106b-40e5-b8f9-f31e1b1d1e8a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "217b4998-c31a-4167-9d32-b262706f9b2a"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f7bf4d3-854f-409a-80af-493ed511d289"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T112018Z:7f7bf4d3-854f-409a-80af-493ed511d289"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:20:17 GMT"
+        ],
+        "Content-Length": [
+          "1243"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d359457e-106b-40e5-b8f9-f31e1b1d1e8a"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b40ef1c8-b3d0-4c38-bfe1-da70c1662b78"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -492,19 +864,19 @@
           "11983"
         ],
         "x-ms-correlation-request-id": [
-          "8e811bd8-c157-42e1-b7a2-55b623d1b3b6"
+          "a81c51c8-8021-448a-929d-6e863a6f84ae"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060344Z:8e811bd8-c157-42e1-b7a2-55b623d1b3b6"
+          "WESTCENTRALUS:20210701T112049Z:a81c51c8-8021-448a-929d-6e863a6f84ae"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:44 GMT"
+          "Thu, 01 Jul 2021 11:20:49 GMT"
         ],
         "Content-Length": [
-          "1177"
+          "1243"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -513,17 +885,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2ebfab81-d40e-44bc-8748-387f6b33bf98"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "Accept-Language": [
           "en-US"
@@ -532,7 +904,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -546,70 +918,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "44a9a7f5-a203-43ab-9a57-95f623ca4676"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11982"
-        ],
-        "x-ms-correlation-request-id": [
-          "38aa7690-7976-4293-85b5-e0b8b2313915"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060345Z:38aa7690-7976-4293-85b5-e0b8b2313915"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:03:44 GMT"
-        ],
-        "Content-Length": [
-          "1177"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ecd54bef-4b7c-4118-815b-df4e962eefe9"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "91bd2b53-e853-4c85-90e1-e05743cba287"
+          "289941fa-cbbe-4be8-a6df-eec315f76238"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -618,19 +927,19 @@
           "11981"
         ],
         "x-ms-correlation-request-id": [
-          "8ad5be22-e60d-4db4-8b1a-ade0708542da"
+          "040681d3-d064-4f5a-b1e5-1025da3ba62c"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060345Z:8ad5be22-e60d-4db4-8b1a-ade0708542da"
+          "WESTCENTRALUS:20210701T112050Z:040681d3-d064-4f5a-b1e5-1025da3ba62c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:44 GMT"
+          "Thu, 01 Jul 2021 11:20:50 GMT"
         ],
         "Content-Length": [
-          "1177"
+          "1243"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -639,17 +948,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cd7b5d2d-dcd5-4a91-a4f0-71239923b146"
+          "c5f44eee-dfaf-45f0-bd9e-861530728b06"
         ],
         "Accept-Language": [
           "en-US"
@@ -658,316 +967,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "2bedb194-28ec-4fed-97b0-f0c6307798d7"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
-        ],
-        "x-ms-correlation-request-id": [
-          "0a6a821d-4147-4548-8c2f-be115a17a361"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060345Z:0a6a821d-4147-4548-8c2f-be115a17a361"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:03:45 GMT"
-        ],
-        "Content-Length": [
-          "1177"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "cd7b5d2d-dcd5-4a91-a4f0-71239923b146"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "f5b308d7-83cd-4450-8607-879e8ccf8a35"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11978"
-        ],
-        "x-ms-correlation-request-id": [
-          "9c373b04-3015-42d0-80f3-36c20a22d013"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060420Z:9c373b04-3015-42d0-80f3-36c20a22d013"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:04:19 GMT"
-        ],
-        "Content-Length": [
-          "1209"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5ce939c0-b003-4116-b6c9-1e0599bad438"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "17c7236c-17b2-486a-b34b-bf47f61326f0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11977"
-        ],
-        "x-ms-correlation-request-id": [
-          "217d2ff1-121d-484c-918b-720d134dec25"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060420Z:217d2ff1-121d-484c-918b-720d134dec25"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:04:19 GMT"
-        ],
-        "Content-Length": [
-          "1209"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "5ce939c0-b003-4116-b6c9-1e0599bad438"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "dae56af3-d751-471d-bbf1-50cf666f41df"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11975"
-        ],
-        "x-ms-correlation-request-id": [
-          "c7ab12af-42bb-42e2-887e-afe69cfbf3ed"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060451Z:c7ab12af-42bb-42e2-887e-afe69cfbf3ed"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:04:51 GMT"
-        ],
-        "Content-Length": [
-          "1209"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "476e7431-8fb9-471e-ae4a-b2ee749e0191"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11973"
-        ],
-        "x-ms-correlation-request-id": [
-          "416a9c1b-b6ce-4ae1-85c7-22de4527aa2d"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060452Z:416a9c1b-b6ce-4ae1-85c7-22de4527aa2d"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:04:52 GMT"
-        ],
-        "Content-Length": [
-          "1209"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "4679d394-3ff6-43fc-a58b-0f531f3c4de6"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -981,13 +981,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "d82ec26d-8f09-477a-83ec-094035469209"
+          "88cd6e9e-f1ab-478f-9c58-a849128377e2"
         ],
         "x-ms-correlation-request-id": [
-          "d82ec26d-8f09-477a-83ec-094035469209"
+          "88cd6e9e-f1ab-478f-9c58-a849128377e2"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060828Z:d82ec26d-8f09-477a-83ec-094035469209"
+          "WESTCENTRALUS:20210701T112352Z:88cd6e9e-f1ab-478f-9c58-a849128377e2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -996,7 +996,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:08:27 GMT"
+          "Thu, 01 Jul 2021 11:23:51 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1008,17 +1008,17 @@
           "232"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Synapse/workspaces/wsps2186' under resource group 'ws-cmdlet-test-rgps2186' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Synapse/workspaces/wsps1065' under resource group 'ws-cmdlet-test-rgps1065' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\",\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"eastus2euap\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\",\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"sqlAdministratorLogin\": \"testlogin\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"canadacentral\"\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "Accept-Language": [
           "en-US"
@@ -1027,13 +1027,13 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "417"
+          "419"
         ]
       },
       "ResponseHeaders": {
@@ -1047,10 +1047,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview"
         ],
         "x-ms-request-id": [
-          "b7f91ffe-007e-4fb9-a3dd-96d540521eb6"
+          "f6479f61-e2b5-4bc4-b63d-3c3b1d2ce436"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1059,19 +1059,19 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "37b0f0a2-a834-44da-b9f3-d9c8c9d0bb4d"
+          "a3551a8e-b436-485f-9d7f-c881d009c9f2"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060032Z:37b0f0a2-a834-44da-b9f3-d9c8c9d0bb4d"
+          "WESTCENTRALUS:20210701T111634Z:a3551a8e-b436-485f-9d7f-c881d009c9f2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:00:32 GMT"
+          "Thu, 01 Jul 2021 11:16:34 GMT"
         ],
         "Content-Length": [
-          "1144"
+          "1178"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1080,23 +1080,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1110,25 +1110,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "400359e3-81ee-4f50-9740-942de7d4fce2"
+          "fae4976a-c094-4863-bcae-f9a57caf3272"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "0900ee9d-99f6-42e0-b787-d77b6a2b9c48"
+          "f3951c50-5acb-4d61-995e-922bc54d8cd0"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060102Z:0900ee9d-99f6-42e0-b787-d77b6a2b9c48"
+          "WESTCENTRALUS:20210701T111705Z:f3951c50-5acb-4d61-995e-922bc54d8cd0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:01:02 GMT"
+          "Thu, 01 Jul 2021 11:17:04 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1144,19 +1144,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1170,25 +1170,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c98310b3-50fc-453e-97b4-621e805dd5ab"
+          "d21e5e91-50ff-4bca-a264-84f93a440a66"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "687c148f-3f6e-4a0b-bcae-c2e1ae6ec38a"
+          "38002508-9c34-4958-8c6d-61b613092a54"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060132Z:687c148f-3f6e-4a0b-bcae-c2e1ae6ec38a"
+          "WESTCENTRALUS:20210701T111735Z:38002508-9c34-4958-8c6d-61b613092a54"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:01:32 GMT"
+          "Thu, 01 Jul 2021 11:17:34 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1204,19 +1204,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1230,25 +1230,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "da923bfb-bbea-4f48-93de-d3054b3c0799"
+          "dc368d41-ff6b-4d59-9bb4-e0e1869a5c57"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "f94f7bc7-3b42-4bda-85a2-6554c8adf2ca"
+          "bba85907-a90e-4574-8ecf-cbe4d91d0105"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060203Z:f94f7bc7-3b42-4bda-85a2-6554c8adf2ca"
+          "WESTCENTRALUS:20210701T111805Z:bba85907-a90e-4574-8ecf-cbe4d91d0105"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:02:02 GMT"
+          "Thu, 01 Jul 2021 11:18:04 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1264,19 +1264,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1290,25 +1290,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ca8bfbb9-30f7-45f2-b8e3-cd68822a3da9"
+          "53fea197-e6b1-4f06-bc24-485083b265e8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11987"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "ecc747a6-ff2e-443c-a667-5dff447cc957"
+          "d4a9d65c-248e-4a3b-b48b-bc558ea2586c"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060233Z:ecc747a6-ff2e-443c-a667-5dff447cc957"
+          "WESTCENTRALUS:20210701T111835Z:d4a9d65c-248e-4a3b-b48b-bc558ea2586c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:02:33 GMT"
+          "Thu, 01 Jul 2021 11:18:34 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1324,19 +1324,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1350,25 +1350,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "58344dbb-a214-4097-a5ee-3fd3e6cd7807"
+          "cf3ef150-c861-4efb-a9c8-9d61aee6dbf6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11986"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "6e2d495f-f2f8-4875-9e23-06b19953b2c8"
+          "9ee8c751-1c35-4295-9506-68b4ced28f3f"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060303Z:6e2d495f-f2f8-4875-9e23-06b19953b2c8"
+          "WESTCENTRALUS:20210701T111905Z:9ee8c751-1c35-4295-9506-68b4ced28f3f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:03 GMT"
+          "Thu, 01 Jul 2021 11:19:05 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1384,19 +1384,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1d4bd0a9-0c66-4474-b403-0cfdb10a41d5?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzFkNGJkMGE5LTBjNjYtNDQ3NC1iNDAzLTBjZmRiMTBhNDFkNT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/799d1de8-b956-4ee9-987a-25bacc8f52ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzc5OWQxZGU4LWI5NTYtNGVlOS05ODdhLTI1YmFjYzhmNTJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e22efddc-d60e-4b39-b3e4-01f21d56b75b"
+          "948c7cf0-454d-4a93-b4bd-5961492fa20e"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1410,25 +1410,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "ef2b006e-cb0b-462b-9909-29731557fdcc"
+          "691b8461-7da1-4703-b507-d74bece39b0f"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11985"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "4369a8a4-3f0f-432a-9d24-760436672dbc"
+          "d5b84a8a-11b2-4290-93da-5ad49d2feb89"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060334Z:4369a8a4-3f0f-432a-9d24-760436672dbc"
+          "WESTCENTRALUS:20210701T111935Z:d5b84a8a-11b2-4290-93da-5ad49d2feb89"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:33 GMT"
+          "Thu, 01 Jul 2021 11:19:35 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1444,13 +1444,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cd7b5d2d-dcd5-4a91-a4f0-71239923b146"
+          "cbbdfddc-c5a7-4564-b622-b184d7c88f2b"
         ],
         "Accept-Language": [
           "en-US"
@@ -1459,7 +1459,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1479,10 +1479,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/2054acc4-65a6-4d7f-8d10-0b02cba852d7?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/0777fc43-ffc5-4e46-a4bc-20cd76e932ac?api-version=2021-04-01-preview"
         ],
         "x-ms-request-id": [
-          "731f0f26-ded9-4068-aa98-b1915c9098d5"
+          "7079eae3-1be8-48e5-9e08-33ae6540ea7d"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1491,19 +1491,19 @@
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "b65ef9eb-d7e0-41a9-8edf-a6a96a39c489"
+          "2564ce85-ccf3-4322-92ba-a415ce27eb1a"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060349Z:b65ef9eb-d7e0-41a9-8edf-a6a96a39c489"
+          "WESTCENTRALUS:20210701T111948Z:2564ce85-ccf3-4322-92ba-a415ce27eb1a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:03:49 GMT"
+          "Thu, 01 Jul 2021 11:19:47 GMT"
         ],
         "Content-Length": [
-          "1212"
+          "1246"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1512,17 +1512,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"sqlAdministratorLoginPassword\": \"testp@ssMakingIt1007Longer\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5ce939c0-b003-4116-b6c9-1e0599bad438"
+          "d359457e-106b-40e5-b8f9-f31e1b1d1e8a"
         ],
         "Accept-Language": [
           "en-US"
@@ -1531,7 +1531,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1551,10 +1551,10 @@
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/e1471cd2-168e-407e-84d3-90ac3002a47c?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/cbe06f41-ceeb-4d8e-b180-1627de73a143?api-version=2021-04-01-preview"
         ],
         "x-ms-request-id": [
-          "a010e9c2-47e9-4b04-b72e-083abe45784f"
+          "190011d7-22e0-4142-b72d-6a04b8684cf3"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1563,19 +1563,19 @@
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "72fdb281-7718-4aae-94df-17b566b85e4f"
+          "73ba6f18-609f-4d81-879e-f90c25b090dc"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060421Z:72fdb281-7718-4aae-94df-17b566b85e4f"
+          "WESTCENTRALUS:20210701T112019Z:73ba6f18-609f-4d81-879e-f90c25b090dc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:04:20 GMT"
+          "Thu, 01 Jul 2021 11:20:18 GMT"
         ],
         "Content-Length": [
-          "1212"
+          "1246"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1584,23 +1584,23 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n      \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps2186\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps2186.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps2186\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n  \"location\": \"eastus2euap\",\r\n  \"name\": \"wsps2186\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"type\": \"Microsoft.Synapse/workspaces\",\r\n  \"properties\": {\r\n    \"encryption\": {\r\n      \"doubleEncryptionEnabled\": false\r\n    },\r\n    \"provisioningState\": \"Provisioning\",\r\n    \"connectivityEndpoints\": {\r\n      \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n      \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n      \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n      \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n    },\r\n    \"managedResourceGroupName\": \"mrgps1065\",\r\n    \"defaultDataLakeStorage\": {\r\n      \"accountUrl\": \"https://wsstorageps1065.dfs.core.windows.net\",\r\n      \"filesystem\": \"wscmdletfsps1065\"\r\n    },\r\n    \"sqlAdministratorLogin\": \"testlogin\",\r\n    \"privateEndpointConnections\": [],\r\n    \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n    \"extraProperties\": {\r\n      \"IsScopeEnabled\": false,\r\n      \"WorkspaceType\": \"Normal\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\"\r\n  },\r\n  \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n  \"location\": \"canadacentral\",\r\n  \"name\": \"wsps1065\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n  },\r\n  \"tags\": {\r\n    \"TestTag\": \"TestUpdate\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/2054acc4-65a6-4d7f-8d10-0b02cba852d7?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzIwNTRhY2M0LTY1YTYtNGQ3Zi04ZDEwLTBiMDJjYmE4NTJkNz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/0777fc43-ffc5-4e46-a4bc-20cd76e932ac?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzA3NzdmYzQzLWZmYzUtNGU0Ni1hNGJjLTIwY2Q3NmU5MzJhYz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cd7b5d2d-dcd5-4a91-a4f0-71239923b146"
+          "cbbdfddc-c5a7-4564-b622-b184d7c88f2b"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1614,25 +1614,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "19c40e18-8146-441c-a738-af60fc8e980d"
+          "7acbc6c0-8ddc-467d-ab42-5fdcf3059766"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11987"
         ],
         "x-ms-correlation-request-id": [
-          "72444287-a6a7-4e11-80aa-8dac95503f0f"
+          "eccc9873-a192-4152-a0b2-0450a7c02b2d"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060420Z:72444287-a6a7-4e11-80aa-8dac95503f0f"
+          "WESTCENTRALUS:20210701T112018Z:eccc9873-a192-4152-a0b2-0450a7c02b2d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:04:19 GMT"
+          "Thu, 01 Jul 2021 11:20:17 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1648,19 +1648,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/e1471cd2-168e-407e-84d3-90ac3002a47c?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzL2UxNDcxY2QyLTE2OGUtNDA3ZS04NGQzLTkwYWMzMDAyYTQ3Yz9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/cbe06f41-ceeb-4d8e-b180-1627de73a143?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzL2NiZTA2ZjQxLWNlZWItNGQ4ZS1iMTgwLTE2MjdkZTczYTE0Mz9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5ce939c0-b003-4116-b6c9-1e0599bad438"
+          "d359457e-106b-40e5-b8f9-f31e1b1d1e8a"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1674,25 +1674,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "005f643a-f01d-4746-b737-444731b8c9d0"
+          "4919ee15-844f-4342-a5d2-0a8486b083e6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11976"
-        ],
         "x-ms-correlation-request-id": [
-          "62f9853e-e4ad-4fc0-a478-20cca5987549"
+          "cfd5eae5-ece3-420e-b348-c001d83abaf8"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060451Z:62f9853e-e4ad-4fc0-a478-20cca5987549"
+          "WESTCENTRALUS:20210701T112049Z:cfd5eae5-ece3-420e-b348-c001d83abaf8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:04:51 GMT"
+          "Thu, 01 Jul 2021 11:20:49 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1708,13 +1708,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzP2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f3da506a-cf66-4ba4-ad29-d8f91512eb6f"
+          "01650c4b-6b8f-4ee9-9b96-d7b6d0432287"
         ],
         "Accept-Language": [
           "en-US"
@@ -1723,7 +1723,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1737,28 +1737,28 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "efc45268-2933-400a-99dd-f200851d7811"
+          "5792b215-686b-409c-aba4-425b324ab6aa"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11974"
+          "11982"
         ],
         "x-ms-correlation-request-id": [
-          "14a3d097-91c1-4084-ba52-7a5894e16119"
+          "3ae2c82e-b476-4c6d-971e-c794ed950762"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060452Z:14a3d097-91c1-4084-ba52-7a5894e16119"
+          "WESTCENTRALUS:20210701T112049Z:3ae2c82e-b476-4c6d-971e-c794ed950762"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:04:52 GMT"
+          "Thu, 01 Jul 2021 11:20:49 GMT"
         ],
         "Content-Length": [
-          "1102"
+          "1136"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1767,17 +1767,17 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"type\": \"Microsoft.Synapse/workspaces\",\r\n      \"properties\": {\r\n        \"encryption\": {\r\n          \"doubleEncryptionEnabled\": false\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"connectivityEndpoints\": {\r\n          \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps2186%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps2186\",\r\n          \"dev\": \"https://wsps2186.dev.azuresynapse.net\",\r\n          \"sqlOnDemand\": \"wsps2186-ondemand.sql.azuresynapse.net\",\r\n          \"sql\": \"wsps2186.sql.azuresynapse.net\"\r\n        },\r\n        \"managedResourceGroupName\": \"mrgps2186\",\r\n        \"sqlAdministratorLogin\": \"testlogin\",\r\n        \"privateEndpointConnections\": [],\r\n        \"workspaceUID\": \"2e68f540-64a9-4f1f-a662-0322e2fba0bb\",\r\n        \"extraProperties\": {\r\n          \"IsScopeEnabled\": false,\r\n          \"WorkspaceType\": \"Normal\"\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186\",\r\n      \"location\": \"eastus2euap\",\r\n      \"name\": \"wsps2186\",\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"c28c12c9-68ea-497f-b9f3-2955139a3231\"\r\n      },\r\n      \"tags\": {\r\n        \"TestTag\": \"TestUpdate\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"type\": \"Microsoft.Synapse/workspaces\",\r\n      \"properties\": {\r\n        \"encryption\": {\r\n          \"doubleEncryptionEnabled\": false\r\n        },\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"connectivityEndpoints\": {\r\n          \"web\": \"https://web.azuresynapse.net?workspace=%2fsubscriptions%2f051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3%2fresourceGroups%2fws-cmdlet-test-rgps1065%2fproviders%2fMicrosoft.Synapse%2fworkspaces%2fwsps1065\",\r\n          \"dev\": \"https://wsps1065.dev.azuresynapse.net\",\r\n          \"sqlOnDemand\": \"wsps1065-ondemand.sql.azuresynapse.net\",\r\n          \"sql\": \"wsps1065.sql.azuresynapse.net\"\r\n        },\r\n        \"managedResourceGroupName\": \"mrgps1065\",\r\n        \"sqlAdministratorLogin\": \"testlogin\",\r\n        \"privateEndpointConnections\": [],\r\n        \"workspaceUID\": \"2bb9fe86-3179-4562-8f37-a5e44a58b750\",\r\n        \"extraProperties\": {\r\n          \"IsScopeEnabled\": false,\r\n          \"WorkspaceType\": \"Normal\"\r\n        },\r\n        \"publicNetworkAccess\": \"Enabled\"\r\n      },\r\n      \"id\": \"/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065\",\r\n      \"location\": \"canadacentral\",\r\n      \"name\": \"wsps1065\",\r\n      \"identity\": {\r\n        \"type\": \"SystemAssigned\",\r\n        \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n        \"principalId\": \"622de54d-23b3-4286-befa-a109f87091d3\"\r\n      },\r\n      \"tags\": {\r\n        \"TestTag\": \"TestUpdate\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2P2FwaS12ZXJzaW9uPTIwMTktMDYtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1P2FwaS12ZXJzaW9uPTIwMjEtMDQtMDEtcHJldmlldw==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "Accept-Language": [
           "en-US"
@@ -1786,7 +1786,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1797,13 +1797,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationResults/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationResults/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview"
         ],
         "Access-Control-Allow-Headers": [
           "Location"
@@ -1812,25 +1812,25 @@
           "Location"
         ],
         "x-ms-request-id": [
-          "b341da8f-9329-4ce6-9db1-c5ba40cc912f"
+          "114103f8-a509-4d7f-869a-59bee203fd3a"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14997"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "85f36061-787e-4b68-a59f-3a9ec09326c5"
+          "c8dedb17-3e85-4547-8966-2d536baadffc"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060454Z:85f36061-787e-4b68-a59f-3a9ec09326c5"
+          "WESTCENTRALUS:20210701T112050Z:c8dedb17-3e85-4547-8966-2d536baadffc"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:04:54 GMT"
+          "Thu, 01 Jul 2021 11:20:50 GMT"
         ],
         "Expires": [
           "-1"
@@ -1843,19 +1843,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1869,25 +1869,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "37d02a68-2cfb-479e-be01-3f6aee421c1b"
+          "d4e78ee6-af26-4b96-9b19-74a93c2976b6"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11972"
+          "11980"
         ],
         "x-ms-correlation-request-id": [
-          "3bca12c8-c198-49ad-aa84-36f7c82c9bd3"
+          "1c232d3b-ed1d-4227-9cc1-a08537e01e4a"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060525Z:3bca12c8-c198-49ad-aa84-36f7c82c9bd3"
+          "WESTCENTRALUS:20210701T112120Z:1c232d3b-ed1d-4227-9cc1-a08537e01e4a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:05:24 GMT"
+          "Thu, 01 Jul 2021 11:21:20 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1903,19 +1903,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1929,25 +1929,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "42232421-da20-43fe-af03-851d2dc66709"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11971"
+          "efeb7868-daaf-4a43-9b44-df436da99f18"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11979"
+        ],
         "x-ms-correlation-request-id": [
-          "b215fc25-6313-4ead-b266-0cea8c65482b"
+          "1e2f3da8-7558-4d5b-a236-94cee797c678"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060555Z:b215fc25-6313-4ead-b266-0cea8c65482b"
+          "WESTCENTRALUS:20210701T112151Z:1e2f3da8-7558-4d5b-a236-94cee797c678"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:05:54 GMT"
+          "Thu, 01 Jul 2021 11:21:50 GMT"
         ],
         "Content-Length": [
           "23"
@@ -1963,19 +1963,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -1989,25 +1989,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "15c69101-4407-42b6-95ae-88a7e20b7b22"
+          "547fb389-40ad-4197-a2bf-d924adce5804"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11970"
+          "11978"
         ],
         "x-ms-correlation-request-id": [
-          "a63fd358-f2f1-4254-bf01-edf8bf2dc83f"
+          "ac98b855-480e-4b8f-a420-13c642980544"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060626Z:a63fd358-f2f1-4254-bf01-edf8bf2dc83f"
+          "WESTCENTRALUS:20210701T112221Z:ac98b855-480e-4b8f-a420-13c642980544"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:06:26 GMT"
+          "Thu, 01 Jul 2021 11:22:20 GMT"
         ],
         "Content-Length": [
           "23"
@@ -2023,19 +2023,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2049,25 +2049,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "454d0bc8-502d-4443-9dfa-875ed5ad534b"
+          "86477ace-8d4d-4132-9bb8-485f750c120c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11969"
+          "11977"
         ],
         "x-ms-correlation-request-id": [
-          "935d3c1c-6139-4fa4-9cd4-a240a7c6107d"
+          "0a07a4fd-82c5-4321-95c4-0dafa906c17d"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060656Z:935d3c1c-6139-4fa4-9cd4-a240a7c6107d"
+          "WESTCENTRALUS:20210701T112251Z:0a07a4fd-82c5-4321-95c4-0dafa906c17d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:06:56 GMT"
+          "Thu, 01 Jul 2021 11:22:51 GMT"
         ],
         "Content-Length": [
           "23"
@@ -2083,19 +2083,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2109,25 +2109,25 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d71ba594-9bb8-4d43-bbdd-aedaa3054250"
+          "80a059be-ec7b-448e-bb65-266490d213b8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11968"
+          "11976"
         ],
         "x-ms-correlation-request-id": [
-          "ee53b637-6d22-48e0-adae-7cda3f266026"
+          "2cb225bd-b89e-46fc-9993-a51a757408ce"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060726Z:ee53b637-6d22-48e0-adae-7cda3f266026"
+          "WESTCENTRALUS:20210701T112321Z:2cb225bd-b89e-46fc-9993-a51a757408ce"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:07:26 GMT"
+          "Thu, 01 Jul 2021 11:23:20 GMT"
         ],
         "Content-Length": [
           "23"
@@ -2143,79 +2143,19 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps1065/providers/Microsoft.Synapse/workspaces/wsps1065/operationStatuses/88fec9ce-f8de-4a45-966f-b2cde0a9de50?api-version=2021-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMxMDY1L29wZXJhdGlvblN0YXR1c2VzLzg4ZmVjOWNlLWY4ZGUtNGE0NS05NjZmLWIyY2RlMGE5ZGU1MD9hcGktdmVyc2lvbj0yMDIxLTA0LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
+          "c8ca641b-9372-45dc-b67f-464978076791"
         ],
         "User-Agent": [
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "6655ffc3-a6d9-461d-81eb-a50522080cd3"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11967"
-        ],
-        "x-ms-correlation-request-id": [
-          "4949f93d-3a8e-4b04-98f4-dacb4221d0d7"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060757Z:4949f93d-3a8e-4b04-98f4-dacb4221d0d7"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:07:56 GMT"
-        ],
-        "Content-Length": [
-          "23"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"InProgress\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourceGroups/ws-cmdlet-test-rgps2186/providers/Microsoft.Synapse/workspaces/wsps2186/operationStatuses/1810d84f-3315-46ae-b3cb-315b8afceeda?api-version=2019-06-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlR3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2L3Byb3ZpZGVycy9NaWNyb3NvZnQuU3luYXBzZS93b3Jrc3BhY2VzL3dzcHMyMTg2L29wZXJhdGlvblN0YXR1c2VzLzE4MTBkODRmLTMzMTUtNDZhZS1iM2NiLTMxNWI4YWZjZWVkYT9hcGktdmVyc2lvbj0yMDE5LTA2LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "b3fdf9b5-6a69-4290-b65c-104e1528c94f"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Synapse.SynapseManagementClient/2.1.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -2229,13 +2169,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "54b97fda-5be5-4cce-8958-420da6ac0761"
+          "6921f112-0506-4566-b4c8-5331ba26b1cd"
         ],
         "x-ms-correlation-request-id": [
-          "54b97fda-5be5-4cce-8958-420da6ac0761"
+          "6921f112-0506-4566-b4c8-5331ba26b1cd"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060827Z:54b97fda-5be5-4cce-8958-420da6ac0761"
+          "WESTCENTRALUS:20210701T112351Z:6921f112-0506-4566-b4c8-5331ba26b1cd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2244,7 +2184,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:08:27 GMT"
+          "Thu, 01 Jul 2021 11:23:51 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -2256,17 +2196,17 @@
           "149"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'wsps2186' not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'wsps1065' not found.\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourcegroups/ws-cmdlet-test-rgps2186?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlZ3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMyMTg2P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/resourcegroups/ws-cmdlet-test-rgps1065?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL3Jlc291cmNlZ3JvdXBzL3dzLWNtZGxldC10ZXN0LXJncHMxMDY1P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "99240073-69c4-4933-a74b-655bdca7c40e"
+          "9370d85e-c381-42e8-b991-eada0237aad7"
         ],
         "Accept-Language": [
           "en-US"
@@ -2275,7 +2215,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2286,7 +2226,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2295,13 +2235,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "80f0619b-bd86-4025-bac1-08d03bfa09fa"
+          "4a76bd8f-f84f-4614-9574-5666357963c2"
         ],
         "x-ms-correlation-request-id": [
-          "80f0619b-bd86-4025-bac1-08d03bfa09fa"
+          "4a76bd8f-f84f-4614-9574-5666357963c2"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060832Z:80f0619b-bd86-4025-bac1-08d03bfa09fa"
+          "WESTCENTRALUS:20210701T112353Z:4a76bd8f-f84f-4614-9574-5666357963c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2310,7 +2250,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:08:31 GMT"
+          "Thu, 01 Jul 2021 11:23:52 GMT"
         ],
         "Expires": [
           "-1"
@@ -2323,8 +2263,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2332,7 +2272,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2343,7 +2283,178 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "701d2bc4-dbce-4f62-92f9-392f8c66dec8"
+        ],
+        "x-ms-correlation-request-id": [
+          "701d2bc4-dbce-4f62-92f9-392f8c66dec8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T112408Z:701d2bc4-dbce-4f62-92f9-392f8c66dec8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:24:08 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "1452bc8c-39fd-43bf-aa50-32a5f5473eb4"
+        ],
+        "x-ms-correlation-request-id": [
+          "1452bc8c-39fd-43bf-aa50-32a5f5473eb4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T112423Z:1452bc8c-39fd-43bf-aa50-32a5f5473eb4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:24:23 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "5eedb17d-421d-4a9d-bb23-8109eb508995"
+        ],
+        "x-ms-correlation-request-id": [
+          "5eedb17d-421d-4a9d-bb23-8109eb508995"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTCENTRALUS:20210701T112438Z:5eedb17d-421d-4a9d-bb23-8109eb508995"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 01 Jul 2021 11:24:38 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.30015.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19043.",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2352,13 +2463,13 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "f053f952-b62f-4636-99e7-463e1d40c402"
+          "43a51b63-51ea-411b-95fb-8482d8091b9c"
         ],
         "x-ms-correlation-request-id": [
-          "f053f952-b62f-4636-99e7-463e1d40c402"
+          "43a51b63-51ea-411b-95fb-8482d8091b9c"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060847Z:f053f952-b62f-4636-99e7-463e1d40c402"
+          "WESTCENTRALUS:20210701T112454Z:43a51b63-51ea-411b-95fb-8482d8091b9c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2367,7 +2478,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:08:46 GMT"
+          "Thu, 01 Jul 2021 11:24:53 GMT"
         ],
         "Expires": [
           "-1"
@@ -2380,8 +2491,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2389,7 +2500,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2400,7 +2511,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2409,13 +2520,13 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "959752a6-ba94-46b9-942d-0b1d432eec58"
+          "05791026-c52b-457f-825f-8626d0db3088"
         ],
         "x-ms-correlation-request-id": [
-          "959752a6-ba94-46b9-942d-0b1d432eec58"
+          "05791026-c52b-457f-825f-8626d0db3088"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060903Z:959752a6-ba94-46b9-942d-0b1d432eec58"
+          "WESTCENTRALUS:20210701T112509Z:05791026-c52b-457f-825f-8626d0db3088"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2424,7 +2535,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:09:03 GMT"
+          "Thu, 01 Jul 2021 11:25:09 GMT"
         ],
         "Expires": [
           "-1"
@@ -2437,8 +2548,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2446,7 +2557,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2457,7 +2568,7 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -2466,13 +2577,13 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "3cdb3a39-5658-43d1-9b14-7249463e0106"
+          "3deb3e33-47c4-47c8-a7f9-9287ff5d681e"
         ],
         "x-ms-correlation-request-id": [
-          "3cdb3a39-5658-43d1-9b14-7249463e0106"
+          "3deb3e33-47c4-47c8-a7f9-9287ff5d681e"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060918Z:3cdb3a39-5658-43d1-9b14-7249463e0106"
+          "WESTCENTRALUS:20210701T112524Z:3deb3e33-47c4-47c8-a7f9-9287ff5d681e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2481,7 +2592,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:09:18 GMT"
+          "Thu, 01 Jul 2021 11:25:24 GMT"
         ],
         "Expires": [
           "-1"
@@ -2494,8 +2605,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2503,7 +2614,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2512,24 +2623,18 @@
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11993"
         ],
         "x-ms-request-id": [
-          "9179430e-a465-4df9-853f-d5b8e158cda5"
+          "cfe4fe15-b639-4e62-a652-fdbe25079f9d"
         ],
         "x-ms-correlation-request-id": [
-          "9179430e-a465-4df9-853f-d5b8e158cda5"
+          "cfe4fe15-b639-4e62-a652-fdbe25079f9d"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060934Z:9179430e-a465-4df9-853f-d5b8e158cda5"
+          "WESTCENTRALUS:20210701T112539Z:cfe4fe15-b639-4e62-a652-fdbe25079f9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2538,172 +2643,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:09:33 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "32ef1900-c2b0-45b8-b46f-6ad94a9c0e73"
-        ],
-        "x-ms-correlation-request-id": [
-          "32ef1900-c2b0-45b8-b46f-6ad94a9c0e73"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T060949Z:32ef1900-c2b0-45b8-b46f-6ad94a9c0e73"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:09:49 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-request-id": [
-          "bb3c6a15-5f81-4907-a934-f310d6b71eba"
-        ],
-        "x-ms-correlation-request-id": [
-          "bb3c6a15-5f81-4907-a934-f310d6b71eba"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T061004Z:bb3c6a15-5f81-4907-a934-f310d6b71eba"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:10:04 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.6.30015.01",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-request-id": [
-          "6398b8a6-4348-47d7-8626-c1eeb00bcc6c"
-        ],
-        "x-ms-correlation-request-id": [
-          "6398b8a6-4348-47d7-8626-c1eeb00bcc6c"
-        ],
-        "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T061020Z:6398b8a6-4348-47d7-8626-c1eeb00bcc6c"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 29 Jun 2021 06:10:19 GMT"
+          "Thu, 01 Jul 2021 11:25:38 GMT"
         ],
         "Expires": [
           "-1"
@@ -2716,8 +2656,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMjE4Ni1FQVNUVVMyRVVBUCIsImpvYkxvY2F0aW9uIjoiZWFzdHVzMmV1YXAifQ?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNakU0TmkxRlFWTlVWVk15UlZWQlVDSXNJbXB2WWt4dlkyRjBhVzl1SWpvaVpXRnpkSFZ6TW1WMVlYQWlmUT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/051ddeca-1ed6-4d8b-ba6f-1ff561e5f3b3/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1XUzoyRENNRExFVDoyRFRFU1Q6MkRSR1BTMTA2NS1DQU5BREFDRU5UUkFMIiwiam9iTG9jYXRpb24iOiJjYW5hZGFjZW50cmFsIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDUxZGRlY2EtMWVkNi00ZDhiLWJhNmYtMWZmNTYxZTVmM2IzL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFYVXpveVJFTk5SRXhGVkRveVJGUkZVMVE2TWtSU1IxQlRNVEEyTlMxRFFVNUJSRUZEUlU1VVVrRk1JaXdpYW05aVRHOWpZWFJwYjI0aU9pSmpZVzVoWkdGalpXNTBjbUZzSW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2725,7 +2665,7 @@
           "FxVersion/4.6.30015.01",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.19043.",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.36"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.39"
         ]
       },
       "ResponseHeaders": {
@@ -2736,16 +2676,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11992"
         ],
         "x-ms-request-id": [
-          "0afe645c-2605-4d04-a194-087a076c342e"
+          "926946bc-d6d0-493a-9930-365465dacbb8"
         ],
         "x-ms-correlation-request-id": [
-          "0afe645c-2605-4d04-a194-087a076c342e"
+          "926946bc-d6d0-493a-9930-365465dacbb8"
         ],
         "x-ms-routing-request-id": [
-          "JAPANEAST:20210629T061020Z:0afe645c-2605-4d04-a194-087a076c342e"
+          "WESTCENTRALUS:20210701T112539Z:926946bc-d6d0-493a-9930-365465dacbb8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2754,7 +2694,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 29 Jun 2021 06:10:20 GMT"
+          "Thu, 01 Jul 2021 11:25:39 GMT"
         ],
         "Expires": [
           "-1"
@@ -2769,8 +2709,8 @@
   ],
   "Names": {
     "Test-SynapseWorkspace": [
-      "ps2186",
-      "ps7340"
+      "ps1065",
+      "ps4118"
     ]
   },
   "Variables": {

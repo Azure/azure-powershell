@@ -253,12 +253,28 @@
                 <Label>BaseBlob.TierToCool.DaysAfterModificationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
+                <Label>BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.BaseBlob.EnableAutoTierToHotFromCool</ScriptBlock>
+                <Label>BaseBlob.EnableAutoTierToHotFromCool</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan</ScriptBlock>
                 <Label>BaseBlob.TierToArchive.DaysAfterModificationGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
+                <Label>BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.BaseBlob.Delete.DaysAfterModificationGreaterThan</ScriptBlock>
                 <Label>BaseBlob.Delete.DaysAfterModificationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
+                <Label>BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan</Label>
               </ListItem>
               <ListItem>
                 <ScriptBlock>$_.Snapshot.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
@@ -425,6 +441,22 @@
               <ListItem>
                 <PropertyName>IsVersioningEnabled</PropertyName>
                 <Label>IsVersioningEnabled</Label>
+              </ListItem>
+              <ListItem>
+                <Label>LastAccessTimeTrackingPolicy.Enable</Label>
+                <ScriptBlock>$_.LastAccessTimeTrackingPolicy.Enable</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LastAccessTimeTrackingPolicy.Name</Label>
+                <ScriptBlock>$_.LastAccessTimeTrackingPolicy.Name</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LastAccessTimeTrackingPolicy.TrackingGranularityInDays</Label>
+                <ScriptBlock>$_.LastAccessTimeTrackingPolicy.TrackingGranularityInDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LastAccessTimeTrackingPolicy.BlobType</Label>
+                <ScriptBlock>$_.LastAccessTimeTrackingPolicy.BlobType</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
