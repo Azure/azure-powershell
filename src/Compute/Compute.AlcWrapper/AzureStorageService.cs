@@ -14,8 +14,12 @@
 
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-
+using Azure.Storage.Blobs.Specialized;
 using System.IO;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -55,5 +59,26 @@ namespace Microsoft.Azure.Commands.Compute
         public Stream Content { get { return _blobDownloadInfo.Content; } }
 
         public string ContentType { get { return _blobDownloadInfo.ContentType; } }
+    }
+
+    public class PSPageBlobClient
+    {
+        private PageBlobClient _pageBlobClient;
+
+        internal PSPageBlobClient(PageBlobClient pageblobclient)
+        {
+            _pageBlobClient = pageblobclient;
+        }
+        public PSPageBlobClient(Uri blobUri)
+        {
+            _pageBlobClient = new PageBlobClient(blobUri, null);
+        }
+
+        public Uri Uri { get { return _pageBlobClient.Uri; } }
+
+        public void UploadPagesAsync(Stream content, long offset)
+        {
+            _pageBlobClient.UploadPagesAsync(content, offset).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
     }
 }
