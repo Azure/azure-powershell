@@ -66,12 +66,16 @@ function setupEnv() {
     }
     
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
-    $env.Location = "EastUS2EUAP"
+    $env.Location = "EastUS"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
+    $env.CloudServiceName2 = "cscmdlettest" + (RandomString $false 8)
+    $env.CloudServiceName3 = "cscmdlettest" + (RandomString $false 8)
 
     $env.CscfgFile = "test-artifacts\CSCmdletTest.cscfg"
+    $env.CscfgFile2 = "test-artifacts\CSCmdletTest2.cscfg"
+    $env.CscfgFile3 = "test-artifacts\CSCmdletTest3.cscfg"
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
-    $env.csdefFile = "test-artifacts\ServiceDefinition.txt"
+    $env.CsdefFile = "test-artifacts\CSCmdletTest.csdef"
     $env.RoleInstanceName = "WebRole_IN_0"
     
     $env.RDPOutputFile = Join-Path $PSScriptRoot "test-artifacts\desktopdowntest.rdp"
