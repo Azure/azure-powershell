@@ -73,14 +73,14 @@ In this directory, run AutoRest:
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(this-folder)/dnsResolver.json
-  
+  - $(this-folder)/resources/specification/dnsresolver/resource-manager/Microsoft.Network/preview/2020-04-01-preview/dnsResolver.json
+
 module-version: 0.1.0
 title: DnsResolver
 subject-prefix: $(service-name)
 
 inlining-threshold: 50
-# If there are post APIs for some kinds of actions in the RP, you may need to 
+# If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
