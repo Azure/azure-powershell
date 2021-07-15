@@ -24,7 +24,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ModuleAlcEntryAssembly Include="Microsoft.Azure.Commands.Compute.AlcWrapper" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Blobs" />
+    <ModuleAlcRefAssembly Include="Azure.Storage.Common" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Compute.Helpers\Compute.Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Compute.AlcWrapper\Compute.AlcWrapper.csproj" />
   </ItemGroup>
 
 </Project>

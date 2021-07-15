@@ -22,8 +22,8 @@
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
-    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
-    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)PreloadAssemblies" />
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)AzSharedAlcAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
     <!--To automatically lauch pwsh for debugging when hitting F5, set below and UNCOMMENT Copy:
       Executable: pwsh
