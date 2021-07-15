@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -ApiRevision
-Identifier of API Revision. This parameter is optional. If not specified, the operation will be attached to the currently active api revision.
+Identifier of API Revision. This parameter is optional. If not specified, the operation will be attached to the currently active api revision.Non-current revision has ;rev=n as a suffix where n is the revision number.
 
 ```yaml
 Type: System.String
@@ -97,7 +97,7 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
+For 
 ### -Context
 Specifies the instance of the **PsApiManagementContext** object.
 
