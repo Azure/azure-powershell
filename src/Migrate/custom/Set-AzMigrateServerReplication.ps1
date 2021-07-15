@@ -46,6 +46,12 @@ function Set-AzMigrateServerReplication {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
+        # Specifies the name of the Azure VM to be created.
+        ${TargetDiskName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
         # Updates the SKU of the Azure VM to be created.
         ${TargetVMSize},
 
@@ -66,6 +72,12 @@ function Set-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
         ${NicToUpdate},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]]
+        # Updates the disk for the Azure VM to be created.
+        ${DiskToUpdate},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -207,10 +219,12 @@ function Set-AzMigrateServerReplication {
     process {
 
         $HasTargetVMName = $PSBoundParameters.ContainsKey('TargetVMName')
+        $HasTargetDiskName = $PSBoundParameters.ContainsKey('TargetDiskName')
         $HasTargetVmSize = $PSBoundParameters.ContainsKey('TargetVMSize')
         $HasTargetNetworkId = $PSBoundParameters.ContainsKey('TargetNetworkId')
         $HasTargetResourceGroupID = $PSBoundParameters.ContainsKey('TargetResourceGroupID')
         $HasNicToUpdate = $PSBoundParameters.ContainsKey('NicToUpdate')
+        $HasDiskToUpdate = $PSBoundParameters.ContainsKey('DiskToUpdate')
         $HasTargetAvailabilitySet = $PSBoundParameters.ContainsKey('TargetAvailabilitySet')
         $HasTargetAvailabilityZone = $PSBoundParameters.ContainsKey('TargetAvailabilityZone')
         $HasSqlServerLicenseType = $PSBoundParameters.ContainsKey('SqlServerLicenseType')
@@ -226,10 +240,12 @@ function Set-AzMigrateServerReplication {
 
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('TargetVMName')
+        $null = $PSBoundParameters.Remove('TargetDiskName')
         $null = $PSBoundParameters.Remove('TargetVMSize')
         $null = $PSBoundParameters.Remove('TargetNetworkId')
         $null = $PSBoundParameters.Remove('TargetResourceGroupID')
         $null = $PSBoundParameters.Remove('NicToUpdate')
+        $null = $PSBoundParameters.Remove('DiskToUpdate')
         $null = $PSBoundParameters.Remove('TargetAvailabilitySet')
         $null = $PSBoundParameters.Remove('TargetAvailabilityZone')
         $null = $PSBoundParameters.Remove('SqlServerLicenseType')
@@ -490,13 +506,6 @@ function Set-AzMigrateServerReplication {
                 $ProviderSpecificDetails.TargetNetworkId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetNetworkId
             }
 
-            if ($HasTargetVMName) {
-                $ProviderSpecificDetails.TargetVMName = $TargetVMName
-            }
-            else {
-                $ProviderSpecificDetails.TargetVMName = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVMName
-            }
-
             if ($HasTargetResourceGroupID) {
                 $ProviderSpecificDetails.TargetResourceGroupId = $TargetResourceGroupID
             }
@@ -527,8 +536,80 @@ function Set-AzMigrateServerReplication {
                 }
             }
 
+            $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
+
+            if ($HasTargetVMName) {
+                if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
+                    throw "The virtual machine name must be between 1 and 64 characters long."
+                }
+
+                $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                if ($VMNamePresentinRg) {
+                    throw "Virtual machine name must be unique in the target resource group."
+                }
+
+                if ($TargetVMName -notmatch "^[^_\W][a-zA-Z0-9\-]{0,63}(?<![-._])$") {
+                    throw "The virtual machine name must begin with a letter or number, and can contain only letters, numbers, or hyphens(-). The names cannot contain special characters \/""[]:|<>+=;,?*@&, whitespace, or begin with '_' or end with '.' or '-'."
+                }
+
+                $ProviderSpecificDetails.TargetVMName = $TargetVMName
+            }
+            else {
+                $ProviderSpecificDetails.TargetVMName = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVMName
+            }
+
+            if ($HasDiskToUpdate) {
+                $diskNamePresentinRg = New-Object Collections.Generic.List[String]
+                $duplicateDiskName = New-Object System.Collections.Generic.HashSet[String]
+                foreach($DiskObject in $DiskToUpdate) {
+                    $diskNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $DiskObject.TargetDiskName -ResourceType "Microsoft.Compute/disks" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    if($diskNamePresent) {
+                         $diskNamePresentinRg.Add($DiskObject.TargetDiskName)
+                    }
+
+                    if ($duplicateDiskName.Contains($DiskObject.TargetDiskName)) {
+                        throw "The disk name '$($DiskObject.TargetDiskName)' is already taken."
+                    }
+                    $res = $duplicateDiskName.Add($DiskObject.TargetDiskName)
+                }
+                if($diskNamePresentinRg) {
+                    throw "Disks with name $($diskNamePresentinRg -join ', ')' already exists in the target resource group."
+                }
+                $ProviderSpecificDetails.VMDisK = $DiskToUpdate
+            }
+
+            if ($HasTargetDiskName) {
+                if ($TargetDiskName.length -gt 80 -or $TargetDiskName.length -eq 0) {
+                    throw "The disk name must be between 1 and 80 characters long."
+                }
+
+                if ($TargetDiskName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
+                    throw "The disk name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
+                }
+
+                $diskNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetDiskName -ResourceType "Microsoft.Compute/disks" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                if($diskNamePresent) {
+                    throw "A disk with name $($TargetDiskName)' already exists in the target resource group."
+                }
+
+                [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]]$updateDisksArray = @()
+                $originalDisks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
+                foreach ($DiskObject in $originalDisks) {
+                    if ( $DiskObject.IsOSDisk) {
+                        $updateDisk = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtUpdateDiskInput]::new()
+                        $updateDisk.DiskId = $DiskObject.DiskId
+                        $updateDisk.TargetDiskName = $TargetDiskName
+                        $updateDisksArray += $updateDisk
+                        $ProviderSpecificDetails.VMDisk = $updateDisksArray
+                        break
+                    }
+                }
+            }
+
             $originalNics = $ReplicationMigrationItem.ProviderSpecificDetail.VMNic
             [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]]$updateNicsArray = @()
+            $nicNamePresentinRg = New-Object Collections.Generic.List[String]
+            $duplicateNicName = New-Object System.Collections.Generic.HashSet[String]
 
             foreach ($storedNic in $originalNics) {
                 $updateNic = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtNicInput]::new()
@@ -537,7 +618,7 @@ function Set-AzMigrateServerReplication {
                 $updateNic.NicId = $storedNic.NicId
                 $updateNic.TargetStaticIPAddress = $storedNic.TargetIPAddress
                 $updateNic.TargetSubnetName = $storedNic.TargetSubnetName
-                    
+
                 $matchingUserInputNic = $null
                 if ($HasNicToUpdate) {
                     foreach ($userInputNic in $NicToUpdate) {
@@ -558,6 +639,19 @@ function Set-AzMigrateServerReplication {
                     }
                     if ($null -ne $matchingUserInputNic.TargetSubnetName) {
                         $updateNic.TargetSubnetName = $matchingUserInputNic.TargetSubnetName
+                    }
+                    if ($null -ne $matchingUserInputNic.TargetNicName) {
+                        $nicNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $matchingUserInputNic.TargetNicName -ResourceType "Microsoft.Network/networkInterfaces" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
+                        if($nicNamePresent){
+                            $nicNamePresentinRg.Add($matchingUserInputNic.TargetNicName)
+                        }
+                        $updateNic.TargetNicName = $matchingUserInputNic.TargetNicName
+
+                        if ($duplicateNicName.Contains($matchingUserInputNic.TargetNicName)) {
+                            throw "The NIC name '$($matchingUserInputNic.TargetNicName)' is already taken."
+                        }
+                        $res = $duplicateNicName.Add($matchingUserInputNic.TargetNicName)
                     }
                     if ($null -ne $matchingUserInputNic.TargetStaticIPAddress) {
                         if ($matchingUserInputNic.TargetStaticIPAddress -eq "auto") {
@@ -581,7 +675,11 @@ function Set-AzMigrateServerReplication {
             if ($primaryNicCountInUpdate -ne 1) {
                 throw "One NIC has to be Primary."
             }
-                
+
+            if($nicNamePresentinRg){
+                throw "NIC name '$($nicNamePresentinRg -join ', ')' must be unique in the target resource group."
+            }
+
             $ProviderSpecificDetails.VMNic = $updateNicsArray
             $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSpecificDetails)
             $null = $PSBoundParameters.Add('NoWait', $true)

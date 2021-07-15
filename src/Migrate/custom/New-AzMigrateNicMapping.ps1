@@ -48,6 +48,12 @@ function New-AzMigrateNicMapping {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
+        # Specifies the name of the NIC to be created.
+        ${TargetNicName},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
         # Specifies the IP within the destination subnet to be used for the NIC.
         ${TargetNicIP}
     )
@@ -76,6 +82,18 @@ function New-AzMigrateNicMapping {
         if ($PSBoundParameters.ContainsKey('TargetNicIP')) {
             $NicObject.TargetStaticIPAddress = $TargetNicIP
         }
+
+        if ($PSBoundParameters.ContainsKey('TargetNicName')) {
+            if ($TargetNicName.length -gt 80 -or $TargetNicName.length -eq 0) {
+                throw "The NIC name must be between 1 and 80 characters long."
+            }
+
+            if ($TargetNicName -notmatch "^[^_\W][a-zA-Z0-9_\-\.]{0,79}(?<![-.])$") {
+                throw "The NIC name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
+            }
+            $NicObject.TargetNicName = $TargetNicName
+        }
+
         return $NicObject
     }
 
