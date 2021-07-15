@@ -17,6 +17,7 @@
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
