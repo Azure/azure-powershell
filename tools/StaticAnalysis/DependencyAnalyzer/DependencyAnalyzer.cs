@@ -238,7 +238,6 @@ namespace StaticAnalysis.DependencyAnalyzer
         public DependencyAnalyzer()
         {
             Name = "Dependency Analyzer";
-            _loader = new AssemblyMetadataLoader();
         }
 
         public AnalysisLogger Logger { get; set; }
@@ -280,6 +279,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
                     Logger.WriteMessage("Processing Directory {0}", directoryPath);
                     _assemblies.Clear();
+                    _loader = new AssemblyMetadataLoader();
                     _versionConflictLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _missingAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _extraAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
