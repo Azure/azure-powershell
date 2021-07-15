@@ -43,4 +43,34 @@ Describe 'New-AzCloudService' {
                           -ExtensionProfile $extensionProfile
         $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
     }
+
+    It 'quickCreateParameterSetWithoutStorage' {
+        # Create Cloud Service
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile2
+        $csdefFilePath = Join-Path $PSScriptRoot $env.CsdefFile
+        $cloudService = New-AzCloudService                                            `
+                          -Name $env.CloudServiceName2                                `
+                          -ResourceGroupName $env.ResourceGroupName                   `
+                          -Location $env.Location                                     `
+                          -PackageUrl $env.CspkgUrl                                   `
+                          -ConfigurationFile $cscfgFilePath                           `
+                          -DefinitionFile $csdefFilePath
+        $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
+    }
+
+    It 'quickCreateParameterSetWithStorage' {
+        # Create Cloud Service
+        $cspkgFilePath = Join-Path $PSScriptRoot $env.CspkgFile
+        $cscfgFilePath = Join-Path $PSScriptRoot $env.CscfgFile3
+        $csdefFilePath = Join-Path $PSScriptRoot $env.CsdefFile
+        $cloudService = New-AzCloudService                                            `
+                          -Name $env.CloudServiceName3                                `
+                          -ResourceGroupName $env.ResourceGroupName                   `
+                          -Location $env.Location                                     `
+                          -PackageFile $cspkgFilePath                                 `
+                          -ConfigurationFile $cscfgFilePath                           `
+                          -DefinitionFile $csdefFilePath                              `
+                          -StorageAccount $env.StorageName
+        $cloudService.ResourceGroupName -eq $env.ResourceGroupName | Should be $true
+    }
 }
