@@ -46,26 +46,16 @@ Describe 'New-AzFunctionApp' {
     # Validate RuntimeVersion default values
     $expectedDefaultRuntimeVersion = @{
         "Linux" = @{
-            "2"= @{
-                "Node" = "10"
-                "DotNet"= "2"
-                "Python" = "3.7"
-            }
             "3" =  @{
-                "Node" = "12"
+                "Node" = "14"
                 "DotNet" = "3"
                 "Python" = "3.8"
                 "Java" = "8"
             }
         }
         "Windows" = @{
-            "2"= @{
-                "Node" = "10"
-                "DotNet"= "2"
-                "Java" = "8"
-            }
             "3" =  @{
-                "Node" = "12"
+                "Node" = "14"
                 "DotNet" = "3"
                 "PowerShell" = "7.0"
                 "Java" = "8"
@@ -107,7 +97,7 @@ Describe 'New-AzFunctionApp' {
 
     foreach ($OSType in @("Linux", "Windows"))
     {
-        foreach ($functionsVersion in @("2", "3"))
+        foreach ($functionsVersion in @("3"))
         {
             $testData = GetTestData -OSType $OSType
 
@@ -118,18 +108,6 @@ Describe 'New-AzFunctionApp' {
 
             foreach ($runtime in $runtimes)
             {
-                if (($functionsVersion -eq "2") -and ($OSType -eq "Linux") -and ($runtime -eq "Java"))
-                {
-                    # Java 8 is not supported in Linux for Functions V2.
-                    continue
-                }
-
-                if (($functionsVersion -eq "2") -and ($OSType -eq "Windows") -and ($runtime -eq "PowerShell"))
-                {
-                    # PowerShel 7.0 is not supported in Windows for Functions V2.
-                    continue
-                }
-
                 It "Validate New-AzFunctionApp default runtime version for $runtime in Functions version $functionsVersion for $OSType" {
 
                     # Note: These set of tests are for consumptions function apps. We do this for two things:
@@ -290,21 +268,15 @@ Describe 'New-AzFunctionApp' {
     # For these scenarios, the runtime is supported for the os type, but the runtime version is invalid.
     $runtimeVersionNotSupported = @{
         "Linux" = @{
-            "2"= @{
-                "Python" = "3.9"
-                "Java" = "8"
-            }
             "3" =  @{
-                "Node" = "8"
+                "Node" = "10"
+                "Python" = "3.6"
             }
         }
         "Windows" = @{
-            "2"= @{
-                "Node" = "12"
-                "PowerShell" = "7.0"
-            }
             "3" =  @{
-                "Node" = "8"
+                "Node" = "10"
+                "PowerShell" = "6.2"
             }
         }
     }
@@ -404,13 +376,28 @@ Describe 'New-AzFunctionApp' {
         }
     }
 
-    It "New-AzFunctionApp -Location supports locations with no spaces, e.g., 'centralus'" {
+    It "Create Windows Consumption app and validiate app properties: 1) Location 2) App settings 3) Connection string suffix" {
+
+        <# Validate the following:
+            - Location parameter supports passing a region with no spaces, e.g., `centralus` for Central US.
+            - Allow empty app settings
+            - App settings:
+              - WEBSITE_CONTENTSHARE
+              - AzureWebJobsStorage, AzureWebJobsDashboard, and WEBSITE_CONTENTAZUREFILECONNECTIONSTRING (these should include a suffix)
+            - Tag values
+        #>
 
         $functionName = $env.functionNamePowerShell
         $location = 'centralus'
         $tags = @{
             "MyTag1" = "MyTag1Value1"
             "MyTag2" = "MyTag1Value2"
+        }
+
+        $appSetting = @{
+            "AppSetting1" = "Value1"
+            "AppSetting2" = $null
+            "AppSetting3" = ""
         }
 
         try
@@ -422,8 +409,8 @@ Describe 'New-AzFunctionApp' {
                               -OSType "Windows" `
                               -Runtime "PowerShell" `
                               -FunctionsVersion 3 `
-                              -Tag $tags
-
+                              -Tag $tags `
+                              -AppSetting $appSetting
 
             $functionApp = Get-AzFunctionApp -Name $functionName -ResourceGroupName $env.resourceGroupNameWindowsConsumption
             $functionApp.OSType | Should -Be "Windows"
@@ -434,6 +421,29 @@ Describe 'New-AzFunctionApp' {
             foreach ($tagName in $tags.Keys)
             {
                 $functionApp.Tag.AdditionalProperties[$tagName] | Should Be $tags[$tagName]
+            }
+
+            # Validate app settings
+            foreach ($appSettingName in $appSetting.Keys)
+            {
+                $expectedValue = $appSetting[$appSettingName]
+                if ($expectedValue -eq $null)
+                {
+                    # null app settings are created as an empty string.
+                    $expectedValue = ""
+                }
+
+                $functionApp.ApplicationSettings[$appSettingName] | Should Be $expectedValue
+            }
+
+            # Validate WEBSITE_CONTENTSHARE
+            $functionApp.ApplicationSettings["WEBSITE_CONTENTSHARE"] | Should Match $functionName
+
+            # Validate the connection string suffix
+            $expectedSuffix = GetStorageAccountEndpointSuffix
+            foreach ($appSettingName in @("AzureWebJobsStorage", "AzureWebJobsDashboard", "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"))
+            {
+                $functionApp.ApplicationSettings[$appSettingName] | Should Match $expectedSuffix
             }
 
         }
@@ -466,11 +476,6 @@ Describe 'New-AzFunctionApp' {
             $functionApp.OSType | Should -Be "Windows"
             $functionApp.Runtime | Should -Be "PowerShell"
             $functionApp.IdentityType | Should -Be "UserAssigned"
-
-            foreach ($appSettingName in $appSetting.Keys)
-            {
-                $functionApp.ApplicationSettings[$appSettingName] | Should Be $appSetting[$appSettingName]
-            }
         }
         finally
         {
@@ -596,6 +601,7 @@ Describe 'New-AzFunctionApp' {
     }
 
     $functionAppCreationTestCases = @(
+        # Consumption
         @{
             "Name" = $env.functionNameJava
             "Runtime" = "Java"
@@ -610,6 +616,32 @@ Describe 'New-AzFunctionApp' {
             }
         },
         @{
+            "Name" = $env.functionNameNode
+            "Runtime" = "Node"
+            "RuntimeVersion" = "14"
+            "StorageAccountName" = $env.storageAccountLinux
+            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
+            "Location" = $env.location
+            "FunctionsVersion" = 3
+            "OSType" = "Linux"
+            "ExpectedVersion" = @{
+                "LinuxFxVersion" = "Node|14"
+            }
+        },
+        @{
+            "Name" = $env.functionNamePython
+            "Runtime" = "Python"
+            "RuntimeVersion" = "3.9"
+            "StorageAccountName" = $env.storageAccountLinux
+            "ResourceGroupName" = $env.resourceGroupNameLinuxConsumption
+            "Location" = $env.location
+            "FunctionsVersion" = 3
+            "OSType" = "Linux"
+            "ExpectedVersion" = @{
+                "LinuxFxVersion" = "Python|3.9"
+            }
+        },
+        @{
             "Name" = $env.functionNamePowerShell
             "Runtime" = "PowerShell"
             "RuntimeVersion" = "7.0"
@@ -620,6 +652,20 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Windows"
             "ExpectedVersion" = @{
                 "PowerShellVersion" = "~7"
+            }
+        },
+        # Premium function app service plan
+        @{
+            "Name" = $env.functionNamePython
+            "Runtime" = "Python"
+            "RuntimeVersion" = "3.9"
+            "StorageAccountName" = $env.storageAccountLinux
+            "ResourceGroupName" = $env.resourceGroupNameLinuxPremium
+            "PlanName" = $env.planNameWorkerTypeLinux
+            "FunctionsVersion" = 3
+            "OSType" = "Linux"
+            "ExpectedVersion" = @{
+                "LinuxFxVersion" = "Python|3.9"
             }
         },
         @{
@@ -646,6 +692,33 @@ Describe 'New-AzFunctionApp' {
             "OSType" = "Windows"
             "ExpectedVersion" = @{
                 "PowerShellVersion" = "~7"
+            }
+        },
+        @{
+            "Name" = $env.functionNameNode
+            "Runtime" = "Node"
+            "RuntimeVersion" = "14"
+            "StorageAccountName" = $env.storageAccountWindows
+            "ResourceGroupName" = $env.resourceGroupNameWindowsPremium
+            "PlanName" = $env.planNameWorkerTypeWindows
+            "FunctionsVersion" = 3
+            "OSType" = "Windows"
+            "ExpectedAppSettings" = @{
+                "FUNCTIONS_WORKER_RUNTIME" = "node"
+                "WEBSITE_NODE_DEFAULT_VERSION" = "~14"
+            }
+        },
+        @{
+            "Name" = $env.functionNamePython
+            "Runtime" = "Python"
+            "RuntimeVersion" = "3.9"
+            "StorageAccountName" = $env.storageAccountLinux
+            "ResourceGroupName" = $env.resourceGroupNameLinuxPremium
+            "PlanName" = $env.planNameWorkerTypeLinux
+            "FunctionsVersion" = 3
+            "OSType" = "Linux"
+            "ExpectedVersion" = @{
+                "LinuxFxVersion" = "Python|3.9"
             }
         }
     )
@@ -715,6 +788,16 @@ Describe 'New-AzFunctionApp' {
                         $functionApp.SiteConfig.$propertyName | Should -Be $expectedVersion
                     }
                 }
+
+                if ($testCase.ContainsKey("ExpectedAppSettings"))
+                {
+                    $expectedAppSettings = $testCase["ExpectedAppSettings"]
+                    foreach ($appSettingName in $expectedAppSettings.Keys)
+                    {
+                        $expectedAppSettingValue = $expectedAppSettings[$appSettingName]
+                        $functionApp.ApplicationSettings[$appSettingName] | Should -Be $expectedAppSettingValue
+                    }
+                }
             }
             finally
             {
@@ -724,6 +807,32 @@ Describe 'New-AzFunctionApp' {
                     Remove-AzFunctionApp -InputObject $functionApp -Force -ErrorAction SilentlyContinue
                 }
             }
+        }
+    }
+
+    foreach ($functionsVersion in @(1, 2))
+    {
+        It "New-AzFunctionApp throws FunctionsVersionNotSupported when trying to create a function app with FunctionsVersion set to $functionsVersion " {
+
+            $myError = $null
+            $errorId = "FunctionsVersionNotSupported"
+            $expectedErrorMessage = "Functions version not supported. Currently supported version are:"
+            try
+            {
+                New-AzFunctionApp -Name $env.functionNameTestApp `
+                                  -ResourceGroupName $env.resourceGroupNameWindowsPremium `
+                                  -PlanName $env.planNameWorkerTypeWindows `
+                                  -StorageAccount $env.storageAccountWindows  `
+                                  -Runtime PowerShell `
+                                  -FunctionsVersion $functionsVersion
+            }
+            catch
+            {
+                $myError = $_
+            }
+
+            $myError.FullyQualifiedErrorId | Should Be $errorId
+            $myError.Exception.Message | Should Match $expectedErrorMessage
         }
     }
 }

@@ -31,7 +31,8 @@ To execute tests in a specific order, update `test-module.ps1`. An example updat
       Join-Path $testFolder 'Export*'
       Join-Path $testFolder 'Import*'
       Join-Path $testFolder 'Get*'
-      Join-Path $testFolder 'Remove*'
+      Join-Path $testFolder 'Remove*CacheDatabase.Tests*'
+      Join-Path $testFolder 'Remove*Cache.Tests*'
   )
   Invoke-Pester -Script $orderedTests ...
 ```

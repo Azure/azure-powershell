@@ -19,7 +19,7 @@ To pack `Az.DesktopVirtualization` for distribution, run the `pack-module.ps1` s
 ## Module Script Details
 There are multiple scripts created for performing different actions for developing `Az.DesktopVirtualization`.
 - `build-module.ps1`
-  - Builds the module DLL (`./bin/Az.DesktopVirtualization.private.dll`), creates the exported cmdlets and documentation, generates custom cmdlet test stubs and exported cmdlet example stubs, and updates `./Az.DesktopVirtualization.psd1` with Azure profile information.
+  - Builds the module DLL (`./bin/DesktopVirtualization.private.dll`), creates the exported cmdlets and documentation, generates custom cmdlet test stubs and exported cmdlet example stubs, and updates `./Az.DesktopVirtualization.psd1` with Azure profile information.
   - **Parameters**: [`Switch` parameters]
     - `-Run`: After building, creates an isolated PowerShell session and loads `Az.DesktopVirtualization`.
     - `-Test`: After building, runs the `Pester` tests defined in the `test` folder.

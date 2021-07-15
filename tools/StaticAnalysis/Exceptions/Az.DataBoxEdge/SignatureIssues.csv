@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.dll","Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Common.Cmdlets.Share.DataBoxEdgeShareNewCmdletBase","New-AzDataBoxEdgeShare","1","8700","Parameter set 'CloudShareNfsParameterSet', 'CloudShareSmbParameterSet' of cmdlet 'New-AzDataBoxEdgeShare' have the same mandatory parameters, and both of them are not default parameter set which may cause confusion.","Merge these parameter sets into one parameter set."

@@ -19,12 +19,12 @@ Create a new Kubernetes Source Control Configuration.
 .Description
 Create a new Kubernetes Source Control Configuration.
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration
 .Link
 https://docs.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 #>
 function New-AzKubernetesConfiguration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20201001Preview.ISourceControlConfiguration])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.ISourceControlConfiguration])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage="The name of the kubernetes cluster.")]
@@ -107,6 +107,19 @@ function New-AzKubernetesConfiguration {
         [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
         [switch]
         ${ClusterScoped},
+
+        [Parameter(HelpMessage="If passed set the scope of the Configuration to Cluster (default is nameSpace).")]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [System.String]
+        # Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+        ${SshKnownHosts},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20210301.IConfigurationProtectedSettings]))]
+        [System.Collections.Hashtable]
+        # Name-value pairs of protected configuration settings for the configuration
+        ${ConfigurationProtectedSetting},
     
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -157,13 +170,6 @@ function New-AzKubernetesConfiguration {
     )
     
     process {
-
-        if ($PSBoundParameters.ContainsKey('EnableHelmOperator')) {
-            $PSBoundParameters.EnableHelmOperator = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType]::True
-        } else {
-            $PSBoundParameters.EnableHelmOperator = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.EnableHelmOperatorType]::False
-        }
-
         if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
             $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
         } else {
@@ -181,23 +187,8 @@ function New-AzKubernetesConfiguration {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        if ($PSBoundParameters.ContainsKey('HelmOperatorChartValues')) {
-            $PSBoundParameters.Add('HelmOperatorPropertyChartValue', $HelmOperatorChartValues)
-            $null = $PSBoundParameters.Remove('HelmOperatorChartValues')
-        }
-
-        if ($PSBoundParameters.ContainsKey('HelmOperatorChartVersion')) {
-            $PSBoundParameters.Add('HelmOperatorPropertyChartVersion', $HelmOperatorChartVersion)
-            $null = $PSBoundParameters.Remove('HelmOperatorChartVersion')
-        }
-
-        if ($PSBoundParameters.ContainsKey('OperatorParam')) {
-            $PSBoundParameters.Add('OperatorParameters', $OperatorParam)
-            $null = $PSBoundParameters.Remove('OperatorParam')
-        }
         $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
 
-        
         Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
     }
 }

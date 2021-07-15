@@ -16,7 +16,8 @@ function CreateCloudService([string]$publicIpName, [string]$cloudServiceName) {
     # Create Public IP
     Write-Host -ForegroundColor Yellow "Creating Public IP" $publicIpName
     $publicIp = New-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $env.ResourceGroupName -Location $env.Location -AllocationMethod "Dynamic" -IpAddressVersion "IPv4" -DomainNameLabel ("cscmdlettest" + (RandomString $false 8)) -Sku "Basic"
-    
+    $env.PublicIpId = $publicIp.Id
+
     # Create Network Profile
     $feIpConfig = New-AzCloudServiceLoadBalancerFrontendIPConfigurationObject -Name "cscmdlettestLBFE" -PublicIPAddressId $publicIp.Id
     $loadBalancerConfig = New-AzCloudServiceLoadBalancerConfigurationObject -Name "cscmdlettestLB" -FrontendIPConfiguration $feIpConfig
@@ -67,9 +68,10 @@ function setupEnv() {
     $env.ResourceGroupName = "cscmdlettest" + (RandomString $false 8)
     $env.Location = "EastUS2EUAP"
     $env.CloudServiceName = "cscmdlettest" +  (RandomString $false 8)
-    
+
     $env.CscfgFile = "test-artifacts\CSCmdletTest.cscfg"
     $env.CspkgFile = "test-artifacts\CSCmdletTest.cspkg"
+    $env.csdefFile = "test-artifacts\ServiceDefinition.txt"
     $env.RoleInstanceName = "WebRole_IN_0"
     
     $env.RDPOutputFile = Join-Path $PSScriptRoot "test-artifacts\desktopdowntest.rdp"
@@ -82,11 +84,14 @@ function setupEnv() {
 
     # Create Storage Account and upload package
     $storageName = "cscmdlettest" + (RandomString $false 8)
+    $env.StorageName = $storageName
     $containerName = "cscmdlettestcontainer"
+    $env.ContainerName = $containerName
     Write-Host -ForegroundColor Yellow "Creating Storage Account" $storageName
     $storageAccount = New-AzStorageAccount -ResourceGroupName $env.ResourceGroupName -Name $storageName -Location $env.Location -SkuName "Standard_RAGRS" -Kind "StorageV2"
     $container = New-AzStorageContainer -Name $containerName -Context $storageAccount.Context -Permission blob
-    $blob = Set-AzStorageBlobContent -File $cspkgFilePath -Container $containerName -Blob "CSCmdletTest.cspkg" -Context $storageAccount.Context
+    $env.BlobName = "CSCmdletTest.cspkg"
+    $blob = Set-AzStorageBlobContent -File $cspkgFilePath -Container $containerName -Blob $env.BlobName -Context $storageAccount.Context
     $tokenStartTime = Get-Date
     $tokenEndTime = $tokenStartTime.AddYears(1)
     $token = New-AzStorageBlobSASToken -Container $containerName -Blob $blob.Name -Permission rwd -StartTime $tokenStartTime -ExpiryTime $tokenEndTime -Context $storageAccount.Context
@@ -103,6 +108,12 @@ function setupEnv() {
     $env.NewCSPublicIPId = $publicIp.Id
 
     CreateCloudService "cscmdlettestip" $env.CloudServiceName
+
+    # Get and OS version/family to validate
+    $osVersions = Get-AzCloudServiceOSVersion -Location $env.Location
+    $osFamilies = Get-AzCloudServiceOSFamily -Location $env.Location
+    $env.OSVersionName = $osVersions[0].Name
+    $env.OSFamilyName = $osFamilies[0].Name
 
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }

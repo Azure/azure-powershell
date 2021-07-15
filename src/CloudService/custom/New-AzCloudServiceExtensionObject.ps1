@@ -18,14 +18,9 @@
 Create a in-memory object for Extension
 .Description
 Create a in-memory object for Extension
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension
-.Link
-https://docs.microsoft.com/powershell/module/az.CloudService/new-AzCloudServiceExtensionObject
 #>
 function New-AzCloudServiceExtensionObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -56,7 +51,7 @@ function New-AzCloudServiceExtensionObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20201001Preview.Extension]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.Extension]::New()
 
         $Object.AutoUpgradeMinorVersion = $AutoUpgradeMinorVersion
         $Object.Name = $Name

@@ -76,18 +76,27 @@ function Get-AzMigrateDiscoveredServer {
             throw "Server Discovery Solution not found."
         }
 
-        $appMapV2 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
-        $appMapV3 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
         $appMap = @{}
 
-        # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
-        foreach ($item in $appMapV2) {
-            $appMap[$item.ApplianceName] = $item.SiteId
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"]) {
+            $appMapV2 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] | ConvertFrom-Json
+            # Fetch all appliance from V2 map first. Then these can be updated if found again in V3 map.
+            foreach ($item in $appMapV2) {
+                $appMap[$item.ApplianceName] = $item.SiteId
+            }
+        }
+        
+        if ($null -ne $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"]) {
+            $appMapV3 = $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] | ConvertFrom-Json
+            foreach ($item in $appMapV3) {
+                $t = $item.psobject.properties
+                $appMap[$t.Name] = $t.Value.SiteId
+            }    
         }
 
-        foreach ($item in $appMapV3) {
-            $t = $item.psobject.properties
-            $appMap[$t.Name] = $t.Value.SiteId
+        if ($null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV2"] -And
+             $null -eq $discoverySolution.DetailExtendedDetail["applianceNameToSiteIdMapV3"] ) {
+            throw "Server Discovery Solution missing Appliance Details. Invalid Solution."           
         }
 
         # Regex to match site name.

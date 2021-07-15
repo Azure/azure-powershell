@@ -634,10 +634,10 @@
       "Content": "{\"sku\":{\"name\":\"GP_Gen5_4\",\"tier\":\"GeneralPurpose\",\"family\":\"Gen5\",\"capacity\":4},\"properties\":{\"administratorLogin\":\"postgresql_test\",\"storageProfile\":{\"storageMB\":5120,\"backupRetentionDays\":7,\"geoRedundantBackup\":\"Disabled\",\"storageAutogrow\":\"Enabled\"},\"version\":\"9.6\",\"sslEnforcement\":\"Enabled\",\"minimalTlsVersion\":\"TLSEnforcementDisabled\",\"userVisibleState\":\"Ready\",\"fullyQualifiedDomainName\":\"postgresql-test-100-replica.postgres.database.azure.com\",\"earliestRestoreDate\":\"2020-09-25T11:15:13.76+00:00\",\"replicationRole\":\"Replica\",\"masterServerId\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100\",\"replicaCapacity\":0,\"byokEnforcement\":\"Disabled\",\"privateEndpointConnections\":[],\"infrastructureEncryption\":\"Disabled\",\"publicNetworkAccess\":\"Enabled\"},\"location\":\"eastus2euap\",\"id\":\"/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100-replica\",\"name\":\"postgresql-test-100-replica\",\"type\":\"Microsoft.DBForPostgreSQL/servers\"}"
     }
   },
-  "Get-AzPostgreSqlReplica+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100/Replicas?api-version=2017-12-01+17": {
+  "Get-AzPostgreSqlReplica+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100/replicas?api-version=2017-12-01+17": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100/Replicas?api-version=2017-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7fec3109-5b78-4a24-b834-5d47d63e2596/resourceGroups/PostgreSqlTest/providers/Microsoft.DBForPostgreSQL/servers/postgresql-test-100/replicas?api-version=2017-12-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "60" ],

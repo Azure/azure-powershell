@@ -29,6 +29,9 @@ Get a desktop.
 ### [Get-AzWvdHostPool](Get-AzWvdHostPool.md)
 Get a host pool.
 
+### [Get-AzWvdHostPoolRegistrationToken](Get-AzWvdHostPoolRegistrationToken.md)
+Registration token of the host pool.
+
 ### [Get-AzWvdMsixPackage](Get-AzWvdMsixPackage.md)
 Get a msixpackage.
 

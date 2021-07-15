@@ -119,10 +119,10 @@ function Initialize-AzBotServicePrepareDeploy {
                     Write-Warning "WARNING: This command should normally be run in the same folder as the package.json for Node.js bots. Package.json and web.config are usually in the same folder and at the root level of the .zip file."
                 }
                 if ("JavaScript" -eq $Language) {
-                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'web.config')
+                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, 'web.config')
                 }
                 else {
-                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, '..', 'resources', 'typescript.web.config')
+                    $SourceWebConfig = [System.IO.Path]::Combine($PSScriptRoot, 'typescript.web.config')
                 }
                 Copy-Item -Path $SourceWebConfig -Destination $DestWebConfig
             }
