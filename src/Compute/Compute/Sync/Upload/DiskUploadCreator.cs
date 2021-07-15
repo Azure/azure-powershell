@@ -28,7 +28,6 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
-using Azure.Storage.Blobs.Specialized;
 using Microsoft.WindowsAzure.Commands.Sync;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         private const long FourTeraByte = 4 * 1024L * 1024L * 1024L * 1024L;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Need to keep UploadContext till the end of upload")]
-        public UploadContextDisk Create(FileInfo localVhd, PageBlobClient pageblob, bool overWrite)
+        public UploadContextDisk Create(FileInfo localVhd, PSPageBlobClient pageblob, bool overWrite)
         {
             AssertIfValidhVhd(localVhd);
             AssertIfValidVhdSize(localVhd);
@@ -62,12 +61,6 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                     DestinationDisk = pageblob,
                     SingleInstanceMutex = AcquireSingleInstanceMutex(pageblob.Uri)
                 };
-
-                // TODO is this necessary? 
-                //var metaData = pageblob.GetUploadMetaData();
-
-                //AssertMetaDataExists(metaData);
-                //AssertMetaDataMatch(metaData, OperationMetaData);
 
                 PopulateContextWithUploadableRanges(localVhd, context, false);
                 PopulateContextWithDataToUpload(localVhd, context);

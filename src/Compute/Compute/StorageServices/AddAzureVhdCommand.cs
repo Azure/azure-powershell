@@ -36,7 +36,6 @@ using System.Management;
 using Microsoft.Samples.HyperV.Storage;
 using Microsoft.Samples.HyperV.Common;
 using System.Threading;
-using Azure.Storage.Blobs.Specialized;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -228,7 +227,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("Preparing for Upload");
                     Console.ResetColor();
-                    PageBlobClient managedDisk = new PageBlobClient(sasUri, null);
+                    PSPageBlobClient managedDisk = new PSPageBlobClient(sasUri);
                     DiskUploadCreator diskUploadCreator = new DiskUploadCreator();
                     var uploadContext = diskUploadCreator.Create(this.LocalFilePath, managedDisk, false);
                     var synchronizer = new DiskSynchronizer(uploadContext, this.NumberOfUploaderThreads ?? DefaultNumberOfUploaderThreads);

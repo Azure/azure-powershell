@@ -20,7 +20,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
-using Azure.Storage.Blobs.Specialized;
 using Microsoft.WindowsAzure.Commands.Sync;
 
 namespace Microsoft.Azure.Commands.Compute.Sync.Upload
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
         private readonly int maxParallelism;
         private readonly long dataToUpload;
         private readonly long alreadyUploadedData;
-        private PageBlobClient pageBlob;
+        private PSPageBlobClient pageBlob;
 
         public DiskSynchronizer(UploadContextDisk context, int maxParallelism)
         {
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             using (new ProgressTracker(uploadStatus))
             {
                 var loopResult = Parallel.ForEach(dataWithRanges,
-                                                  () => new PageBlobClient(pageBlob.Uri),
+                                                  () => new PSPageBlobClient(pageBlob.Uri),
                                                   (dwr, b) =>
                                                   {
                                                       using (dwr)
@@ -62,8 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                                                           var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
                                                           using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                           {
-                                                              b.UploadPagesAsync(stream, dwr.Range.StartIndex)
-                                                                        .ConfigureAwait(false).GetAwaiter().GetResult();
+                                                              b.UploadPagesAsync(stream, dwr.Range.StartIndex);
                                                           }
                                                       }
                                                       uploadStatus.AddToProcessedBytes((int)dwr.Range.Length);
