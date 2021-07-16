@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Location = Location,
                 Tags = tagPairs,
                 QosType = QosType,
-                CoolAccess = CoolAccess                
+                CoolAccess = CoolAccess
             };
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))

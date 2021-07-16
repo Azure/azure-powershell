@@ -234,13 +234,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public int? CoolnessPeriod { get; set; }
 
         /// <summary>
-        /// Gets or sets UnixPermissions
+        /// Gets or sets UnixPermission
         /// </summary>
         /// <value>
         /// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. 
         /// Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. 
         /// The fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
         /// </value>
-        public string UnixPermissions { get; set; }
+        public string UnixPermission { get; set; }
     }
 }

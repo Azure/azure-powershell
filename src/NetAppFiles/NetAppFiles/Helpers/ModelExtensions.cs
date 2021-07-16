@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 LdapEnabled = volume.LdapEnabled,
                 CoolAccess = volume.CoolAccess,
                 CoolnessPeriod = volume.CoolnessPeriod,
-                UnixPermissions = volume.UnixPermissions
+                UnixPermission = volume.UnixPermissions
             };
         }
 
