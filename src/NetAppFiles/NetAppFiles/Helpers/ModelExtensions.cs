@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ServerRootCACertificate = psActiveDirectory.ServerRootCACertificate,
                 AesEncryption = psActiveDirectory.AesEncryption,
                 LdapSigning = psActiveDirectory.LdapSigning,
-                SecurityOperators = psActiveDirectory.SecurityOperators,                
-                LdapOverTLS = psActiveDirectory.LdapOverTLS,                
-                AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap
+                SecurityOperators = psActiveDirectory.SecurityOperators,
+                LdapOverTLS = psActiveDirectory.LdapOverTLS,
+                AllowLocalNfsUsersWithLdap = psActiveDirectory.AllowLocalNfsUsersWithLdap,
+                Administrators = psActiveDirectory.Administrators
 
             }).ToList();
         }
@@ -113,7 +114,8 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ProvisioningState = capacityPool.ProvisioningState,
                 QosType = capacityPool.QosType,
                 TotalThroughputMibps = capacityPool.TotalThroughputMibps,
-                UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps
+                UtilizedThroughputMibps = capacityPool.UtilizedThroughputMibps,
+                CoolAccess = capacityPool.CoolAccess
             };
         }
 
@@ -138,7 +140,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                     Kerberos5pReadOnly = rule.Kerberos5pReadOnly,
                     Kerberos5pReadWrite = rule.Kerberos5pReadWrite,
                     Kerberos5ReadOnly = rule.Kerberos5ReadOnly,
-                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite
+                    Kerberos5ReadWrite = rule.Kerberos5ReadWrite,                                        
                 };
 
                 exportPolicy.Rules.Add(exportPolicyRule);
@@ -326,8 +328,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 ThroughputMibps = volume.ThroughputMibps,
                 KerberosEnabled = volume.KerberosEnabled,
                 SmbEncryption = volume.SmbEncryption,
-                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable
-
+                SmbContinuouslyAvailable = volume.SmbContinuouslyAvailable,
+                LdapEnabled = volume.LdapEnabled,
+                CoolAccess = volume.CoolAccess,
+                CoolnessPeriod = volume.CoolnessPeriod,
+                UnixPermission = volume.UnixPermissions
             };
         }
 

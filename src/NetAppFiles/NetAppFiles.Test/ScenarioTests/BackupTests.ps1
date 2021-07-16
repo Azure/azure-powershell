@@ -29,9 +29,10 @@ function Test-BackupCrud
     $backupName2 = Get-ResourceName    
     $backupPolicyName1 = Get-ResourceName
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
-    #$backupLocation = "eastus2euap"
-    $backupLocation = "southcentralusstage"
-    $backupVNetLocation = "southcentralus"
+    $backupLocation = "eastus2euap"
+    $backupVNetLocation = "eastus2euap"
+    #$backupLocation = "southcentralusstage"
+    #$backupVNetLocation = "southcentralus"
     #$backupLocation = "centralus"
     $label = "powershellBackupTest"
     $labelUpdate = "powershellBackupTestUpdate"
@@ -244,8 +245,8 @@ function Test-BackupPipelines
     $usageThreshold = 100 * $gibibyte
     $doubleUsage = 2 * $usageThreshold
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
-    $backupLocation = "southcentralusstage"
-    $backupVNetLocation = "southcentralus"
+    $backupLocation = "eastus2euap"
+    $backupVNetLocation = "eastus2euap"
     $subnetName = "default"
     $poolSize = 4398046511104
     $serviceLevel = "Premium"
@@ -380,8 +381,8 @@ function Test-VolumeBackupStatus
     $usageThreshold = 100 * $gibibyte    
     #$resourceLocation = Get-ProviderLocation "Microsoft.NetApp" "eastus" -UseCanonical
     $resourceLocation = "westus2"
-    $backupLocation = "southcentralusstage"
-    $backupVNetLocation = "southcentralus"
+    $backupLocation = "eastus2euap"
+    $backupVNetLocation = "eastus2euap"
     $label = "powershellBackupTest"
     #$backupLocation = "eastus2euap"
     #$backupVNetLocation = "eastus2euap"

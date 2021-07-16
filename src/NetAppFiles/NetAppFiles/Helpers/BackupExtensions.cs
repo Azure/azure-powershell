@@ -55,9 +55,26 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                MirrorState = backupStatus.MirrorState,
                RelationshipStatus = backupStatus.RelationshipStatus,
                UnhealthyReason = backupStatus.UnhealthyReason,
-               ErrorMessage = backupStatus.ErrorMessage
+               ErrorMessage = backupStatus.ErrorMessage,
+               LastTransferSize = backupStatus.LastTransferSize,
+               LastTransferType = backupStatus.LastTransferType,
+               TotalTransferBytes = backupStatus.TotalTransferBytes
             };
             return psBackupStatus;
+        }
+
+        public static PSNetAppFilesVolumeRestoreStatus ConvertToPs(this Management.NetApp.Models.RestoreStatus restoreStatus)
+        {
+            var psRestoreStatus = new PSNetAppFilesVolumeRestoreStatus
+            {
+                Healthy = restoreStatus.Healthy,
+                MirrorState = restoreStatus.MirrorState,
+                RelationshipStatus = restoreStatus.RelationshipStatus,
+                UnhealthyReason = restoreStatus.UnhealthyReason,
+                ErrorMessage = restoreStatus.ErrorMessage,
+                TotalTransferBytes = restoreStatus.TotalTransferBytes
+            };
+            return psRestoreStatus;
         }
     }
 }
