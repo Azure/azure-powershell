@@ -19,18 +19,18 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDnsResolverInboundEndpoint' {
-    It 'Get single inbound endpoint by name, expect inbound endpoint by name retrieved' {
+    It 'Get single inbound endpoint by name, expect inbound endpoint by name retrieved' -skip {
         $inboundEndpointName = $env.InboundEndpointNamePrefixForGet0
         $inboundEndpoint =  Get-AzDnsResolverInboundEndpoint -DnsResolverName $env.DnsResolverNameForInboundEndpointGet -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName
         $inboundEndpoint | Should -BeSuccessfullyCreatedInboundEndpoint
     }
 
-    It 'Get single inbound endpoint that does not exist by name, expect failure' {
+    It 'Get single inbound endpoint that does not exist by name, expect failure' -skip {
         $inboundEndpointName = (RandomString -allChars $false -len 10)
-        {Get-AzDnsResolverInboundEndpoint -DnsResolverName $env.DnsResolverNameForInboundEndpointGet -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw "not found"
+        {$retrievedData = Get-AzDnsResolverInboundEndpoint -DnsResolverName $env.DnsResolverNameForInboundEndpointGet -Name $inboundEndpointName -ResourceGroupName $env.ResourceGroupName} | Should -Throw "not found"
     }
 
-    It 'List Inbound Endpoints under a DNS Resolver name, expected exact number of inbound endpoints retrieved' {
+    It 'List Inbound Endpoints under a DNS Resolver name, expected exact number of inbound endpoints retrieved' -skip {
         $dnsResolverName = $env.DnsResolverNameForInboundEndpointGet
         $inboundEndpoints =  Get-AzDnsResolverInboundEndpoint -DnsResolverName $dnsResolverName -ResourceGroupName $env.ResourceGroupName
         $inboundEndpoints.Count | Should -Be $env.NumberOfInboundEndpointForGet

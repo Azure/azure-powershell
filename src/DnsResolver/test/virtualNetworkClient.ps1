@@ -28,7 +28,7 @@ function CreateNrpMockVirtualNetwork([String]$SubscriptionId, [String]$ResourceG
     $completeVirtualNetworkRequestUri = $NrpSimulatorUri + $relativeRequestUri
 
     $data = [ordered]@{
-        location = "westus2"
+        location = "eastus2"
         properties = @{
           addressSpace = @{
             addressPrefixes = @({"40.121.0.0/16 "})
