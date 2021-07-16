@@ -32,7 +32,7 @@ To install certificates on a virtual machine it is recommended to use the [Azure
 
 ```powershell
 # Build settings
-$settings = @{
+PS C:\> $settings = @{
     secretsManagementSettings = @{
         pollingIntervalInS       = "<pollingInterval>"
         certificateStoreName     = "<certStoreName>"
@@ -40,11 +40,11 @@ $settings = @{
         observedCertificates     = @("<observedCert1>", "<observedCert2>")
     } 
 } | ConvertTo-Json
-    $extName =  "KeyVaultForLinux"
-    $extPublisher = "Microsoft.Azure.KeyVault"
-    $extType = "KeyVaultForLinux"
-    # Start the deployment
-    Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+PS C:\> $extName =  "KeyVaultForLinux"
+PS C:\> $extPublisher = "Microsoft.Azure.KeyVault"
+PS C:\> $extType = "KeyVaultForLinux"
+# Start the deployment
+PS C:\> Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
 ```
 
 ### Example 2: Add a secret to a virtual machine using Add-AzVMSecret
