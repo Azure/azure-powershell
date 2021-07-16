@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Az.AppConfiguration
-This directory contains the PowerShell module for the AppConfiguration service.
+This directory contains the PowerShell module for the AppConfiguration service. 
 
 ---
 ## Status
