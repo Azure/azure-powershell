@@ -14,7 +14,7 @@ Delete dhcp by id in a private cloud workload network.
 
 ### Delete (Default)
 ```
-Remove-AzVMwareWorkloadNetworkDhcp -DhcpIdName <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Remove-AzVMwareWorkloadNetworkDhcp -DhcpName <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -80,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DhcpIdName
+### -DhcpName
 NSX DHCP identifier.
 Generally the same as the DHCP display name
 

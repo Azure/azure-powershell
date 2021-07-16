@@ -106,7 +106,7 @@ directive:
       subject: ^WorkloadNetworkDhcp$
       parameter-name: DhcpId
     set:
-      parameter-name: DhcpIdName
+      parameter-name: DhcpName
   - where:
       verb: New|Get|Update|Remove
       subject: ^WorkloadNetworkDnsService$

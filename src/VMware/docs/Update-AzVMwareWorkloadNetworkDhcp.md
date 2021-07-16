@@ -14,7 +14,7 @@ Create or update dhcp by id in a private cloud workload network.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzVMwareWorkloadNetworkDhcp -DhcpIdName <String> -PrivateCloudName <String> -ResourceGroupName <String>
+Update-AzVMwareWorkloadNetworkDhcp -DhcpName <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DhcpType <DhcpTypeEnum>] [-DisplayName <String>] [-Revision <Int64>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -81,7 +81,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DhcpIdName
+### -DhcpName
 NSX DHCP identifier.
 Generally the same as the DHCP display name
 
