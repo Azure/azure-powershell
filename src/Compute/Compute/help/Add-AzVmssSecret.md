@@ -27,8 +27,32 @@ For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershel
 
 ## EXAMPLES
 
-### Example 1: Add a secret to the VMSS
+### Example 1: Add a secret to the VMSS using the Azure Key Vault virtual machine extension
+
+```powershell
+# Build settings
+PS C:\> $settings = @{
+    secretsManagementSettings = @{
+        pollingIntervalInS       = "<pollingInterval>"
+        certificateStoreName     = "<certStoreName>"
+        certificateStoreLocation = "<certStoreLoc>"
+        observedCertificates     = @("<observedCert1>", "<observedCert2>")
+    } 
+} | ConvertTo-Json
+PS C:\> $extName = "KeyVaultForLinux"
+PS C:\> $extPublisher = "Microsoft.Azure.KeyVault"
+PS C:\> $extType = "KeyVaultForLinux"
+# Add Extension to VMSS
+PS C:\> $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
+PS C:\> Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
+# Start the deployment
+PS C:\> Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss
 ```
+
+To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). 
+
+### Example 2: Add a secret to the VMSS using Add-AzVmssSecret
+```powershell
 PS C:\> $Vault = Get-AzKeyVault -VaultName "ContosoVault"
 PS C:\> $CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl "http://keyVaultName.vault.contoso.net/secrets/secretName/secretVersion" -CertificateStore "Certificates"
 PS C:\> $VMSS = New-AzVmssConfig

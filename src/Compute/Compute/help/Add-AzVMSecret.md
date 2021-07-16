@@ -27,8 +27,28 @@ For more information about the cmdlets, see [Azure Key Vault Cmdlets](/powershel
 
 ## EXAMPLES
 
-### Example 1: Add a secret to a virtual machine
+### Example 1: Add a secret to a virtual machine using the Azure Key Vault virtul machine extension
+To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+
+```powershell
+# Build settings
+PS C:\> $settings = @{
+    secretsManagementSettings = @{
+        pollingIntervalInS       = "<pollingInterval>"
+        certificateStoreName     = "<certStoreName>"
+        certificateStoreLocation = "<certStoreLoc>"
+        observedCertificates     = @("<observedCert1>", "<observedCert2>")
+    } 
+} | ConvertTo-Json
+PS C:\> $extName =  "KeyVaultForLinux"
+PS C:\> $extPublisher = "Microsoft.Azure.KeyVault"
+PS C:\> $extType = "KeyVaultForLinux"
+# Start the deployment
+PS C:\> Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
 ```
+
+### Example 2: Add a secret to a virtual machine using Add-AzVMSecret
+```powershell
 PS C:\> $VirtualMachine = New-AzVMConfig -VMName "VirtualMachine07" -VMSize "Standard_A1" -AvailabilitySetID $AvailabilitySet.Id
 PS C:\> $Credential = Get-Credential
 PS C:\> $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine  -Windows -ComputerName "Contoso26" -Credential $Credential
