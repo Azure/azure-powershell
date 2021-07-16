@@ -41,17 +41,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         /// has lost network connectivity to the resource, from inside the
         /// Virtual Network.The date conforms to the following format:
         /// `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-        ///
         /// </summary>
         public System.DateTime LastUpdated { get; set; }
 
         /// <summary>
-        /// Gets or sets the date when the resource connectivity status last
+        /// Gets the date when the resource connectivity status last
         /// Changed from success to failure or vice-versa. The date conforms to
         /// the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the
         /// ISO 8601 standard.
-        ///
         /// </summary>
         public System.DateTime LastStatusChange { get; set; }
+
+        /// <summary>
+        /// Gets the resourceType.
+        /// </summary>
+        public string ResourceType { get; set; }
+
+        /// <summary>
+        /// Gets whether Resourcetype is optional.
+        /// </summary>
+        public bool? IsOptional { get; set; }
     }
 }
